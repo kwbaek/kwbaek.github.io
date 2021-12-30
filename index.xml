@@ -5,6 +5,16 @@
     <link>http://example.org/</link>
     <description>Recent content on Kyungwook&#39;s Devlog</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>ko-kr</language><atom:link href="http://example.org/index.xml" rel="self" type="application/rss+xml" />
+    <language>ko-kr</language>
+    <lastBuildDate>Thu, 30 Dec 2021 16:24:21 +0900</lastBuildDate><atom:link href="http://example.org/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>My First Post</title>
+      <link>http://example.org/posts/my-first-post/</link>
+      <pubDate>Thu, 30 Dec 2021 16:24:21 +0900</pubDate>
+      
+      <guid>http://example.org/posts/my-first-post/</guid>
+      <description> post  site test    </description>
+    </item>
+    
   </channel>
 </rss>
