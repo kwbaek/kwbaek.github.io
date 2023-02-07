@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Kyungwook&#39;s Devlog</title>
-    <link>https://kwbaek.github.io/</link>
-    <description>Recent content on Kyungwook&#39;s Devlog</description>
+    <title>os on Kyungwook&#39;s Devlog</title>
+    <link>https://kwbaek.github.io/tags/os/</link>
+    <description>Recent content in os on Kyungwook&#39;s Devlog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Mon, 06 Feb 2023 16:53:04 +0900</lastBuildDate><atom:link href="https://kwbaek.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 06 Feb 2023 16:53:04 +0900</lastBuildDate><atom:link href="https://kwbaek.github.io/tags/os/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Ubuntu Install Oh My Zsh</title>
       <link>https://kwbaek.github.io/posts/ubuntu-install-oh-my-zsh/</link>
@@ -19,15 +19,6 @@
   설치 command
 $ sudo apt install curl wget git   설치 결과 화면   터미널 기본 셀 변경
   chsh -s $(which zsh)   zsh 를 설치 후 chsh 명령어를 통해 기본 shell 을 변경</description>
-    </item>
-    
-    <item>
-      <title>처음 써보는 Github pages</title>
-      <link>https://kwbaek.github.io/posts/my-first-post/</link>
-      <pubDate>Thu, 30 Dec 2021 16:24:21 +0900</pubDate>
-      
-      <guid>https://kwbaek.github.io/posts/my-first-post/</guid>
-      <description>Github blog 시작  블로그를 tistory 에서 운영 중이지만 글을 올린지 십수년, 주로 코드 기억용으로 snippet 처럼 사용 했다. 그 이후에는 oneNote, evernote 를 거쳐 Notion 으로 개발 관련 내용을 관리하고 있다. Github pages를 시작하게 된 계기는 지금 내가 하고 있는 것이 True인지 알고자 개발자 분들과 소통하기 위해!  </description>
     </item>
     
   </channel>
