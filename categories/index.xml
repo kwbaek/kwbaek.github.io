@@ -4,26 +4,30 @@
     <title>Categories on Kyungwook&#39;s Devlog</title>
     <link>https://kwbaek.github.io/categories/</link>
     <description>Recent content in Categories on Kyungwook&#39;s Devlog</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo -- 0.155.3</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Thu, 30 Dec 2021 16:24:21 +0900</lastBuildDate><atom:link href="https://kwbaek.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 09 Feb 2026 23:11:00 +0900</lastBuildDate>
+    <atom:link href="https://kwbaek.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>diary</title>
-      <link>https://kwbaek.github.io/categories/diary/</link>
-      <pubDate>Thu, 30 Dec 2021 16:24:21 +0900</pubDate>
-      
-      <guid>https://kwbaek.github.io/categories/diary/</guid>
+      <title>Ai-Ml</title>
+      <link>https://kwbaek.github.io/categories/ai-ml/</link>
+      <pubDate>Mon, 09 Feb 2026 23:11:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/categories/ai-ml/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>os/linux</title>
+      <title>Os/Linux</title>
       <link>https://kwbaek.github.io/categories/os/linux/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
+      <pubDate>Thu, 09 Feb 2023 16:11:40 +0900</pubDate>
       <guid>https://kwbaek.github.io/categories/os/linux/</guid>
       <description></description>
     </item>
-    
+    <item>
+      <title>Diary</title>
+      <link>https://kwbaek.github.io/categories/diary/</link>
+      <pubDate>Thu, 30 Dec 2021 16:24:21 +0900</pubDate>
+      <guid>https://kwbaek.github.io/categories/diary/</guid>
+      <description></description>
+    </item>
   </channel>
 </rss>

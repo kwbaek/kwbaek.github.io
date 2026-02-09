@@ -4,35 +4,72 @@
     <title>Tags on Kyungwook&#39;s Devlog</title>
     <link>https://kwbaek.github.io/tags/</link>
     <description>Recent content in Tags on Kyungwook&#39;s Devlog</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo -- 0.155.3</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Mon, 06 Feb 2023 16:53:04 +0900</lastBuildDate><atom:link href="https://kwbaek.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 09 Feb 2026 23:11:00 +0900</lastBuildDate>
+    <atom:link href="https://kwbaek.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>linux</title>
+      <title>2026</title>
+      <link>https://kwbaek.github.io/tags/2026/</link>
+      <pubDate>Mon, 09 Feb 2026 23:11:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/tags/2026/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>AI</title>
+      <link>https://kwbaek.github.io/tags/ai/</link>
+      <pubDate>Mon, 09 Feb 2026 23:11:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/tags/ai/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Gemini</title>
+      <link>https://kwbaek.github.io/tags/gemini/</link>
+      <pubDate>Mon, 09 Feb 2026 23:11:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/tags/gemini/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>GPT</title>
+      <link>https://kwbaek.github.io/tags/gpt/</link>
+      <pubDate>Mon, 09 Feb 2026 23:11:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/tags/gpt/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>ML</title>
+      <link>https://kwbaek.github.io/tags/ml/</link>
+      <pubDate>Mon, 09 Feb 2026 23:11:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/tags/ml/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>트렌드</title>
+      <link>https://kwbaek.github.io/tags/%ED%8A%B8%EB%A0%8C%EB%93%9C/</link>
+      <pubDate>Mon, 09 Feb 2026 23:11:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/tags/%ED%8A%B8%EB%A0%8C%EB%93%9C/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Linux</title>
       <link>https://kwbaek.github.io/tags/linux/</link>
-      <pubDate>Mon, 06 Feb 2023 16:53:04 +0900</pubDate>
-      
+      <pubDate>Thu, 09 Feb 2023 16:11:40 +0900</pubDate>
       <guid>https://kwbaek.github.io/tags/linux/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>os</title>
+      <title>Os</title>
       <link>https://kwbaek.github.io/tags/os/</link>
-      <pubDate>Mon, 06 Feb 2023 16:53:04 +0900</pubDate>
-      
+      <pubDate>Thu, 09 Feb 2023 16:11:40 +0900</pubDate>
       <guid>https://kwbaek.github.io/tags/os/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>diary</title>
+      <title>Diary</title>
       <link>https://kwbaek.github.io/tags/diary/</link>
       <pubDate>Thu, 30 Dec 2021 16:24:21 +0900</pubDate>
-      
       <guid>https://kwbaek.github.io/tags/diary/</guid>
       <description></description>
     </item>
-    
   </channel>
 </rss>

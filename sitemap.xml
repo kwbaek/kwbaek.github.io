@@ -2,36 +2,64 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://kwbaek.github.io/tags/2026/</loc>
+    <lastmod>2026-02-09T23:11:00+09:00</lastmod>
+  </url><url>
+    <loc>https://kwbaek.github.io/posts/2026-02-09-ai-ml-trends-feb-2026/</loc>
+    <lastmod>2026-02-09T23:11:00+09:00</lastmod>
+  </url><url>
+    <loc>https://kwbaek.github.io/tags/ai/</loc>
+    <lastmod>2026-02-09T23:11:00+09:00</lastmod>
+  </url><url>
+    <loc>https://kwbaek.github.io/categories/ai-ml/</loc>
+    <lastmod>2026-02-09T23:11:00+09:00</lastmod>
+  </url><url>
+    <loc>https://kwbaek.github.io/categories/</loc>
+    <lastmod>2026-02-09T23:11:00+09:00</lastmod>
+  </url><url>
+    <loc>https://kwbaek.github.io/tags/gemini/</loc>
+    <lastmod>2026-02-09T23:11:00+09:00</lastmod>
+  </url><url>
+    <loc>https://kwbaek.github.io/tags/gpt/</loc>
+    <lastmod>2026-02-09T23:11:00+09:00</lastmod>
+  </url><url>
     <loc>https://kwbaek.github.io/</loc>
-    <lastmod>2023-02-06T16:53:04+09:00</lastmod>
+    <lastmod>2026-02-09T23:11:00+09:00</lastmod>
   </url><url>
-    <loc>https://kwbaek.github.io/tags/linux/</loc>
-    <lastmod>2023-02-06T16:53:04+09:00</lastmod>
-  </url><url>
-    <loc>https://kwbaek.github.io/tags/os/</loc>
-    <lastmod>2023-02-06T16:53:04+09:00</lastmod>
+    <loc>https://kwbaek.github.io/tags/ml/</loc>
+    <lastmod>2026-02-09T23:11:00+09:00</lastmod>
   </url><url>
     <loc>https://kwbaek.github.io/posts/</loc>
-    <lastmod>2023-02-06T16:53:04+09:00</lastmod>
+    <lastmod>2026-02-09T23:11:00+09:00</lastmod>
   </url><url>
     <loc>https://kwbaek.github.io/tags/</loc>
-    <lastmod>2023-02-06T16:53:04+09:00</lastmod>
+    <lastmod>2026-02-09T23:11:00+09:00</lastmod>
+  </url><url>
+    <loc>https://kwbaek.github.io/tags/%ED%8A%B8%EB%A0%8C%EB%93%9C/</loc>
+    <lastmod>2026-02-09T23:11:00+09:00</lastmod>
+  </url><url>
+    <loc>https://kwbaek.github.io/posts/install-kubeflow-15-16/</loc>
+    <lastmod>2023-02-09T16:11:40+09:00</lastmod>
+  </url><url>
+    <loc>https://kwbaek.github.io/tags/linux/</loc>
+    <lastmod>2023-02-09T16:11:40+09:00</lastmod>
+  </url><url>
+    <loc>https://kwbaek.github.io/tags/os/</loc>
+    <lastmod>2023-02-09T16:11:40+09:00</lastmod>
+  </url><url>
+    <loc>https://kwbaek.github.io/categories/os/linux/</loc>
+    <lastmod>2023-02-09T16:11:40+09:00</lastmod>
   </url><url>
     <loc>https://kwbaek.github.io/posts/ubuntu-install-oh-my-zsh/</loc>
     <lastmod>2023-02-06T16:53:04+09:00</lastmod>
   </url><url>
-    <loc>https://kwbaek.github.io/categories/</loc>
+    <loc>https://kwbaek.github.io/categories/diary/</loc>
     <lastmod>2021-12-30T16:24:21+09:00</lastmod>
   </url><url>
     <loc>https://kwbaek.github.io/tags/diary/</loc>
     <lastmod>2021-12-30T16:24:21+09:00</lastmod>
   </url><url>
-    <loc>https://kwbaek.github.io/categories/diary/</loc>
-    <lastmod>2021-12-30T16:24:21+09:00</lastmod>
-  </url><url>
     <loc>https://kwbaek.github.io/posts/my-first-post/</loc>
     <lastmod>2021-12-30T16:24:21+09:00</lastmod>
-  </url><url>
-    <loc>https://kwbaek.github.io/categories/os/linux/</loc>
   </url>
 </urlset>

@@ -1,7 +1,8 @@
 <!DOCTYPE html>
-<html lang="en" dir="auto">
+<html lang="en" dir="auto" data-theme="auto">
 
-<head><meta charset="utf-8">
+<head>
+	<meta name="generator" content="Hugo 0.155.3"><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
@@ -9,8 +10,8 @@
 
 <meta name="description" content="">
 <meta name="author" content="">
-<link rel="canonical" href="https://kwbaek.github.io/" />
-<link crossorigin="anonymous" href="/assets/css/stylesheet.min.c88963fe2d79462000fd0fb1b3737783c32855d340583e4523343f8735c787f0.css" integrity="sha256-yIlj/i15RiAA/Q&#43;xs3N3g8MoVdNAWD5FIzQ/hzXHh/A=" rel="preload stylesheet" as="style">
+<link rel="canonical" href="https://kwbaek.github.io/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.da3211e5ef867bf2b75fd5a6515cfed7195c011e8ab735694e203810a827097b.css" integrity="sha256-2jIR5e&#43;Ge/K3X9WmUVz&#43;1xlcAR6KtzVpTiA4EKgnCXs=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://kwbaek.github.io/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://kwbaek.github.io/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://kwbaek.github.io/favicon-32x32.png">
@@ -18,8 +19,8 @@
 <link rel="mask-icon" href="https://kwbaek.github.io/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<meta name="generator" content="Hugo 0.92.0-DEV" />
-<link rel="alternate" type="application/rss+xml" href="https://kwbaek.github.io/index.xml">
+<link rel="alternate" type="application/rss+xml" href="https://kwbaek.github.io/index.xml" title="rss">
+<link rel="alternate" hreflang="en" href="https://kwbaek.github.io/">
 <noscript>
     <style>
         #theme-toggle,
@@ -37,73 +38,76 @@
                 --secondary: rgb(155, 156, 157);
                 --tertiary: rgb(65, 66, 68);
                 --content: rgb(196, 196, 197);
-                --hljs-bg: rgb(46, 46, 51);
+                --code-block-bg: rgb(46, 46, 51);
                 --code-bg: rgb(55, 56, 62);
                 --border: rgb(51, 51, 51);
+                color-scheme: dark;
             }
 
             .list {
                 background: var(--theme);
             }
 
-            .list:not(.dark)::-webkit-scrollbar-track {
-                background: 0 0;
+            .toc {
+                background: var(--entry);
             }
+        }
 
-            .list:not(.dark)::-webkit-scrollbar-thumb {
-                border-color: var(--theme);
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
             }
         }
 
     </style>
-</noscript><meta property="og:title" content="Kyungwook&#39;s Devlog" />
-<meta property="og:description" content="" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://kwbaek.github.io/" />
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
 
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Kyungwook&#39;s Devlog"/>
-<meta name="twitter:description" content=""/>
+</script><meta property="og:url" content="https://kwbaek.github.io/">
+  <meta property="og:site_name" content="Kyungwook&#39;s Devlog">
+  <meta property="og:title" content="Kyungwook&#39;s Devlog">
+  <meta property="og:locale" content="ko-kr">
+  <meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Kyungwook&#39;s Devlog">
+<meta name="twitter:description" content="">
 
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Organization",
   "name": "Kyungwook's Devlog",
-  "url": "https://kwbaek.github.io",
+  "url": "https://kwbaek.github.io/",
   "description": "",
-  "thumbnailUrl": "https://kwbaek.github.io/favicon.ico",
+  "logo": "https://kwbaek.github.io/favicon.ico",
   "sameAs": [
       
   ]
 }
 </script>
 </head>
-
 <body class="list" id="top">
-<script>
-    if (localStorage.getItem("pref-theme") === "dark") {
-        document.body.classList.add('dark');
-    } else if (localStorage.getItem("pref-theme") === "light") {
-        document.body.classList.remove('dark')
-    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        document.body.classList.add('dark');
-    }
-
-</script>
-
-<header class="header">
+    <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="https://kwbaek.github.io" accesskey="h" title="Kyungwook&#39;s Devlog (Alt + H)">Kyungwook&#39;s Devlog</a>
-            <span class="logo-switches">
-                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
-                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+            <a href="https://kwbaek.github.io/" accesskey="h" title="Kyungwook&#39;s Devlog (Alt + H)">Kyungwook&#39;s Devlog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
                         <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
                     </svg>
-                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
                         <circle cx="12" cy="12" r="5"></circle>
@@ -117,7 +121,7 @@
                         <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
                     </svg>
                 </button>
-            </span>
+            </div>
         </div>
         <ul id="menu">
             <li>
@@ -132,7 +136,13 @@
             </li>
             <li>
                 <a href="https://kwbaek.github.io/" title="Kyungwook&#39;s Devlog">
-                    <span class="active">Kyungwook&#39;s Devlog</span>
+                    <span class="active">Kyungwook&#39;s Devlog</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
                 </a>
             </li>
         </ul>
@@ -142,50 +152,74 @@
 
 <article class="first-entry"> 
   <header class="entry-header">
-    <h2>Ubuntu Install Oh My Zsh
+    <h2 class="entry-hint-parent">2026년 2월 AI/ML 트렌드: Gemini 3 출시, GPT-5.3-Codex, 그리고 AI 산업의 전환점
     </h2>
   </header>
-  <section class="entry-content">
-    <p>Ubuntu 에 Oh My Zsh 설치하기 설치전 요구사항   zsh 설치 되어 있어야함 (V5.0.8 또는 그 이상)
-  Curl or Wget 이 설치되어 있어야함
-  Git 이 설치 되어 있어야함 (V2.4.11 또는 그 이상)
-  설치 command
-$ sudo apt install curl wget git   설치 결과 화면   터미널 기본 셀 변경
-  chsh -s $(which zsh)   zsh 를 설치 후 chsh 명령어를 통해 기본 shell 을 변경...</p>
-  </section>
+  <div class="entry-content">
+    <p>2026년 2월, AI 업계는 모델 성능 경쟁에서 실용화와 수익화로 무게 중심이 이동하는 중요한 전환점을 맞이하고 있습니다. 이번 글에서는 최근 가장 주목할 만한 소식들을 정리하고, 개발자와 엔지니어 관점에서 어떤 의미가 있는지 살펴보겠습니다.
+1. Google Gemini 3 출시 — 에이전트 오케스트레이션의 새 기준 2월 5일, Google은 Agent Factory 이벤트에서 Gemini 3를 공개했습니다. 단순한 모델 업그레이드가 아니라, 복잡한 에이전틱(agentic) 워크플로우를 관리하는 오케스트레이터 역할에 초점을 맞춘 것이 핵심입니다.
+주요 특징:
+Gemini CLI 도입: 터미널에서 직접 Gemini 모델과 상호작용, 파이핑과 체이닝을 지원 LinkedIn 프로필을 포트폴리오 웹사이트로 자동 변환하는 데모 시연 여러 AI 에이전트를 조율해 복잡한 비디오 콘텐츠를 생성하는 워크플로우 예측 시장에서도 Google은 2월 말 최고 모델 확률 92%를 기록하며 압도적 우위를 보이고 있습니다. Reuters에 따르면, 1년 전 “AI 후발주자&#34;라는 평가를 받았던 Google이 이제 리더 자리를 탈환했다는 분석이 나오고 있습니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-02-09 23:11:00 +0900 KST'>February 9, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to 2026년 2월 AI/ML 트렌드: Gemini 3 출시, GPT-5.3-Codex, 그리고 AI 산업의 전환점" href="https://kwbaek.github.io/posts/2026-02-09-ai-ml-trends-feb-2026/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Install Kubeflow 15 16
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>기
+kubeflow 16 설치하기 개요 kubeflow 를 설치 시 쉽고 빠른 좋은 설치 방법이 있어 공유 합니다. 하기 참조 링크를 참고하여 kubeflow 설치 및 실행 방법에 대해 정리 한 문서 입니다. 설치전 기존 설치환경 초기화 kubernetes 초기화 기존에 쿠버네티스가 설치되어 있으면 기존 쿠버네티스를 삭제 및 초기화 하여 새로운 설치를 시도 합니다. 실행 스크립트 ## 쿠버네티스 초기화 sudo kubeadm reset y ## 쿠버네티스 &amp;&amp; 도커 기동 중지 sudo systemctl stop kubelet sudo systemctl stop docker ## 쿠버네티스 네트워크 설정( Cluster Network Interface ) 삭제 sudo ip link delete cni0 sudo ip link delete flannel.1 ## 쿠버네티스 관련 파일 삭제 sudo rm -rf /var/lib/cni/ sudo rm -rf /var/lib/kubelet/* sudo rm -rf /var/lib/etcd sudo rm -rf /run/flannel sudo rm -rf /etc/cni sudo rm -rf /etc/kubernetes sudo rm -rf ~/.kube ## 쿠버네티스 관련 패키지 삭제(Ubuntu) sudo apt-get purge kubeadm kubectl kubelet kubernetes-cni kube* -y sudo apt-get autoremove docker 초기화 실행 스크립트 sudo apt-get purge docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin docker-ce-rootless-extras sudo rm -rf /var/lib/docker sudo rm -rf /var/lib/containerd sudo apt-get purge nvidia-docker2 sudo apt-get purge nvidia-container-toolkit sudo apt autoremove kubeflow 설치 kubeflow 설치 스크립트 clone git clone https://github.com/myoh0623/kubeflow.git 1. install cudnn 실행 스크립트 cd kubeflow_tutorial/kubeflow/section1_install ./1_install_cudnn.sh 테스트 서버에 gpu 는 A100 이고 스크립트 에 있는 cuda 버전 이 낮아 최신 버전으로 변경하기 위해 다음과 같이 수정
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2023-02-09 16:11:40 +0900 KST'>February 9, 2023</span></footer>
+  <a class="entry-link" aria-label="post link to Install Kubeflow 15 16" href="https://kwbaek.github.io/posts/install-kubeflow-15-16/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Ubuntu Install Oh My Zsh
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Ubuntu 에 Oh My Zsh 설치하기 설치전 요구사항 zsh 설치 되어 있어야함 (V5.0.8 또는 그 이상)
+Curl or Wget 이 설치되어 있어야함
+Git 이 설치 되어 있어야함 (V2.4.11 또는 그 이상)
+설치 command
+$ sudo apt install curl wget git 설치 결과 화면 터미널 기본 셀 변경
+chsh -s $(which zsh) zsh 를 설치 후 chsh 명령어를 통해 기본 shell 을 변경
+터미널을 재시작 하면 자동으로 zsh 설정 화면이 나오는데, 0을 입력해서 파일 생성만 한다.
+...</p>
+  </div>
   <footer class="entry-footer"><span title='2023-02-06 16:53:04 +0900 KST'>February 6, 2023</span></footer>
   <a class="entry-link" aria-label="post link to Ubuntu Install Oh My Zsh" href="https://kwbaek.github.io/posts/ubuntu-install-oh-my-zsh/"></a>
 </article>
 
 <article class="post-entry"> 
   <header class="entry-header">
-    <h2>처음 써보는 Github pages
+    <h2 class="entry-hint-parent">처음 써보는 Github pages
     </h2>
   </header>
-  <section class="entry-content">
-    <p>Github blog 시작  블로그를 tistory 에서 운영 중이지만 글을 올린지 십수년, 주로 코드 기억용으로 snippet 처럼 사용 했다. 그 이후에는 oneNote, evernote 를 거쳐 Notion 으로 개발 관련 내용을 관리하고 있다. Github pages를 시작하게 된 계기는 지금 내가 하고 있는 것이 True인지 알고자 개발자 분들과 소통하기 위해!  </p>
-  </section>
+  <div class="entry-content">
+    <p>Github blog 시작 블로그를 tistory 에서 운영 중이지만 글을 올린지 십수년, 주로 코드 기억용으로 snippet 처럼 사용 했다. 그 이후에는 oneNote, evernote 를 거쳐 Notion 으로 개발 관련 내용을 관리하고 있다. Github pages를 시작하게 된 계기는 지금 내가 하고 있는 것이 True인지 알고자 개발자 분들과 소통하기 위해! </p>
+  </div>
   <footer class="entry-footer"><span title='2021-12-30 16:24:21 +0900 KST'>December 30, 2021</span></footer>
   <a class="entry-link" aria-label="post link to 처음 써보는 Github pages" href="https://kwbaek.github.io/posts/my-first-post/"></a>
 </article>
     </main>
     
 <footer class="footer">
-    <div><script src="https://utteranc.es/client.js"
-        repo="kwbaek/blog-comments"
-        issue-term="pathname"
-        label=":sparkles::speech_balloon::sparkles:"
-        theme="github-dark"
-        crossorigin="anonymous"
-        async>
-</script></div>
-    <span>&copy; 2023 <a href="https://kwbaek.github.io">Kyungwook&#39;s Devlog</a></span>
+        <span>&copy; 2026 <a href="https://kwbaek.github.io/">Kyungwook&#39;s Devlog</a></span> · 
+
     <span>
         Powered by
         <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
-        <a href="https://git.io/hugopapermod" rel="noopener" target="_blank">PaperMod</a>
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
     </span>
-
 </footer>
 <a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
@@ -194,9 +228,14 @@ $ sudo apt install curl wget git   설치 결과 화면   터미널 기본 셀 �
 </a>
 
 <script>
-    let menu = document.getElementById('menu')
+    let menu = document.getElementById('menu');
     if (menu) {
-        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
         menu.onscroll = function () {
             localStorage.setItem("menu-scroll-position", menu.scrollLeft);
         }
@@ -237,11 +276,12 @@ $ sudo apt install curl wget git   설치 결과 화면   터미널 기본 셀 �
 </script>
 <script>
     document.getElementById("theme-toggle").addEventListener("click", () => {
-        if (document.body.className.includes("dark")) {
-            document.body.classList.remove('dark');
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
             localStorage.setItem("pref-theme", 'light');
         } else {
-            document.body.classList.add('dark');
+            html.dataset.theme = 'dark';
             localStorage.setItem("pref-theme", 'dark');
         }
     })

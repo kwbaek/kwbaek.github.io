@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Gemini on Kyungwook&#39;s Devlog</title>
+    <link>https://kwbaek.github.io/tags/gemini/</link>
+    <description>Recent content in Gemini on Kyungwook&#39;s Devlog</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Mon, 09 Feb 2026 23:11:00 +0900</lastBuildDate>
+    <atom:link href="https://kwbaek.github.io/tags/gemini/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>2026년 2월 AI/ML 트렌드: Gemini 3 출시, GPT-5.3-Codex, 그리고 AI 산업의 전환점</title>
+      <link>https://kwbaek.github.io/posts/2026-02-09-ai-ml-trends-feb-2026/</link>
+      <pubDate>Mon, 09 Feb 2026 23:11:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-02-09-ai-ml-trends-feb-2026/</guid>
+      <description>&lt;p&gt;2026년 2월, AI 업계는 모델 성능 경쟁에서 &lt;strong&gt;실용화와 수익화&lt;/strong&gt;로 무게 중심이 이동하는 중요한 전환점을 맞이하고 있습니다. 이번 글에서는 최근 가장 주목할 만한 소식들을 정리하고, 개발자와 엔지니어 관점에서 어떤 의미가 있는지 살펴보겠습니다.&lt;/p&gt;
+&lt;h2 id=&#34;1-google-gemini-3-출시--에이전트-오케스트레이션의-새-기준&#34;&gt;1. Google Gemini 3 출시 — 에이전트 오케스트레이션의 새 기준&lt;/h2&gt;
+&lt;p&gt;2월 5일, Google은 Agent Factory 이벤트에서 &lt;strong&gt;Gemini 3&lt;/strong&gt;를 공개했습니다. 단순한 모델 업그레이드가 아니라, 복잡한 에이전틱(agentic) 워크플로우를 관리하는 &lt;strong&gt;오케스트레이터&lt;/strong&gt; 역할에 초점을 맞춘 것이 핵심입니다.&lt;/p&gt;
+&lt;p&gt;주요 특징:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Gemini CLI&lt;/strong&gt; 도입: 터미널에서 직접 Gemini 모델과 상호작용, 파이핑과 체이닝을 지원&lt;/li&gt;
+&lt;li&gt;LinkedIn 프로필을 포트폴리오 웹사이트로 자동 변환하는 데모 시연&lt;/li&gt;
+&lt;li&gt;여러 AI 에이전트를 조율해 복잡한 비디오 콘텐츠를 생성하는 워크플로우&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;예측 시장에서도 Google은 2월 말 최고 모델 확률 92%를 기록하며 압도적 우위를 보이고 있습니다. Reuters에 따르면, 1년 전 &amp;ldquo;AI 후발주자&amp;quot;라는 평가를 받았던 Google이 이제 &lt;strong&gt;리더&lt;/strong&gt; 자리를 탈환했다는 분석이 나오고 있습니다.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

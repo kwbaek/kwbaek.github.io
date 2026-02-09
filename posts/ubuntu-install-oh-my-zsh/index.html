@@ -1,23 +1,46 @@
 <!DOCTYPE html>
-<html lang="en" dir="auto">
+<html lang="en" dir="auto" data-theme="auto">
 
 <head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
 <title>Ubuntu Install Oh My Zsh | Kyungwook&#39;s Devlog</title>
-<meta name="keywords" content="os, linux" />
-<meta name="description" content="Ubuntu 에 Oh My Zsh 설치하기 설치전 요구사항   zsh 설치 되어 있어야함 (V5.0.8 또는 그 이상)
-  Curl or Wget 이 설치되어 있어야함
-  Git 이 설치 되어 있어야함 (V2.4.11 또는 그 이상)
-  설치 command
-$ sudo apt install curl wget git   설치 결과 화면   터미널 기본 셀 변경
-  chsh -s $(which zsh)   zsh 를 설치 후 chsh 명령어를 통해 기본 shell 을 변경">
+<meta name="keywords" content="os, linux">
+<meta name="description" content="Ubuntu 에 Oh My Zsh 설치하기
+설치전 요구사항
+
+
+zsh 설치 되어 있어야함 (V5.0.8 또는 그 이상)
+
+
+Curl or Wget 이 설치되어 있어야함
+
+
+Git 이 설치 되어 있어야함 (V2.4.11 또는 그 이상)
+
+
+설치 command
+$ sudo apt install curl wget git
+
+
+설치 결과 화면
+
+
+
+터미널 기본 셀 변경
+
+
+chsh -s $(which zsh)
+
+
+zsh 를 설치 후 chsh 명령어를 통해 기본 shell 을 변경
+
+
+터미널을 재시작 하면 자동으로 zsh 설정 화면이 나오는데, 0을 입력해서 파일 생성만 한다.">
 <meta name="author" content="">
-<link rel="canonical" href="https://kwbaek.github.io/posts/ubuntu-install-oh-my-zsh/" />
-<link crossorigin="anonymous" href="/assets/css/stylesheet.min.c88963fe2d79462000fd0fb1b3737783c32855d340583e4523343f8735c787f0.css" integrity="sha256-yIlj/i15RiAA/Q&#43;xs3N3g8MoVdNAWD5FIzQ/hzXHh/A=" rel="preload stylesheet" as="style">
-<script defer crossorigin="anonymous" src="/assets/js/highlight.min.7680afc38aa6b15ddf158a4f3780b7b1f7dde7e91d26f073e6229bb7a0793c92.js" integrity="sha256-doCvw4qmsV3fFYpPN4C3sffd5&#43;kdJvBz5iKbt6B5PJI="
-    onload="hljs.initHighlightingOnLoad();"></script>
+<link rel="canonical" href="https://kwbaek.github.io/posts/ubuntu-install-oh-my-zsh/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.da3211e5ef867bf2b75fd5a6515cfed7195c011e8ab735694e203810a827097b.css" integrity="sha256-2jIR5e&#43;Ge/K3X9WmUVz&#43;1xlcAR6KtzVpTiA4EKgnCXs=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://kwbaek.github.io/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://kwbaek.github.io/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://kwbaek.github.io/favicon-32x32.png">
@@ -25,7 +48,7 @@ $ sudo apt install curl wget git   설치 결과 화면   터미널 기본 셀 �
 <link rel="mask-icon" href="https://kwbaek.github.io/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<meta name="generator" content="Hugo 0.92.0-DEV" />
+<link rel="alternate" hreflang="en" href="https://kwbaek.github.io/posts/ubuntu-install-oh-my-zsh/">
 <noscript>
     <style>
         #theme-toggle,
@@ -43,61 +66,106 @@ $ sudo apt install curl wget git   설치 결과 화면   터미널 기본 셀 �
                 --secondary: rgb(155, 156, 157);
                 --tertiary: rgb(65, 66, 68);
                 --content: rgb(196, 196, 197);
-                --hljs-bg: rgb(46, 46, 51);
+                --code-block-bg: rgb(46, 46, 51);
                 --code-bg: rgb(55, 56, 62);
                 --border: rgb(51, 51, 51);
+                color-scheme: dark;
             }
 
             .list {
                 background: var(--theme);
             }
 
-            .list:not(.dark)::-webkit-scrollbar-track {
-                background: 0 0;
+            .toc {
+                background: var(--entry);
             }
+        }
 
-            .list:not(.dark)::-webkit-scrollbar-thumb {
-                border-color: var(--theme);
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
             }
         }
 
     </style>
-</noscript><meta property="og:title" content="Ubuntu Install Oh My Zsh" />
-<meta property="og:description" content="Ubuntu 에 Oh My Zsh 설치하기 설치전 요구사항   zsh 설치 되어 있어야함 (V5.0.8 또는 그 이상)
-  Curl or Wget 이 설치되어 있어야함
-  Git 이 설치 되어 있어야함 (V2.4.11 또는 그 이상)
-  설치 command
-$ sudo apt install curl wget git   설치 결과 화면   터미널 기본 셀 변경
-  chsh -s $(which zsh)   zsh 를 설치 후 chsh 명령어를 통해 기본 shell 을 변경" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://kwbaek.github.io/posts/ubuntu-install-oh-my-zsh/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2023-02-06T16:53:04&#43;09:00" />
-<meta property="article:modified_time" content="2023-02-06T16:53:04&#43;09:00" />
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
 
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Ubuntu Install Oh My Zsh"/>
-<meta name="twitter:description" content="Ubuntu 에 Oh My Zsh 설치하기 설치전 요구사항   zsh 설치 되어 있어야함 (V5.0.8 또는 그 이상)
-  Curl or Wget 이 설치되어 있어야함
-  Git 이 설치 되어 있어야함 (V2.4.11 또는 그 이상)
-  설치 command
-$ sudo apt install curl wget git   설치 결과 화면   터미널 기본 셀 변경
-  chsh -s $(which zsh)   zsh 를 설치 후 chsh 명령어를 통해 기본 shell 을 변경"/>
+</script><meta property="og:url" content="https://kwbaek.github.io/posts/ubuntu-install-oh-my-zsh/">
+  <meta property="og:site_name" content="Kyungwook&#39;s Devlog">
+  <meta property="og:title" content="Ubuntu Install Oh My Zsh">
+  <meta property="og:description" content="Ubuntu 에 Oh My Zsh 설치하기 설치전 요구사항 zsh 설치 되어 있어야함 (V5.0.8 또는 그 이상)
+Curl or Wget 이 설치되어 있어야함
+Git 이 설치 되어 있어야함 (V2.4.11 또는 그 이상)
+설치 command
+$ sudo apt install curl wget git 설치 결과 화면 터미널 기본 셀 변경
+chsh -s $(which zsh) zsh 를 설치 후 chsh 명령어를 통해 기본 shell 을 변경
+터미널을 재시작 하면 자동으로 zsh 설정 화면이 나오는데, 0을 입력해서 파일 생성만 한다.">
+  <meta property="og:locale" content="ko-kr">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2023-02-06T16:53:04+09:00">
+    <meta property="article:modified_time" content="2023-02-06T16:53:04+09:00">
+    <meta property="article:tag" content="Os">
+    <meta property="article:tag" content="Linux">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Ubuntu Install Oh My Zsh">
+<meta name="twitter:description" content="Ubuntu 에 Oh My Zsh 설치하기
+설치전 요구사항
+
+
+zsh 설치 되어 있어야함 (V5.0.8 또는 그 이상)
+
+
+Curl or Wget 이 설치되어 있어야함
+
+
+Git 이 설치 되어 있어야함 (V2.4.11 또는 그 이상)
+
+
+설치 command
+$ sudo apt install curl wget git
+
+
+설치 결과 화면
+
+
+
+터미널 기본 셀 변경
+
+
+chsh -s $(which zsh)
+
+
+zsh 를 설치 후 chsh 명령어를 통해 기본 shell 을 변경
+
+
+터미널을 재시작 하면 자동으로 zsh 설정 화면이 나오는데, 0을 입력해서 파일 생성만 한다.">
 
 
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
-  "itemListElement": [, 
+  "itemListElement": [
     {
       "@type": "ListItem",
-      "position":  2 ,
+      "position":  1 ,
       "name": "Posts",
       "item": "https://kwbaek.github.io/posts/"
     }, 
     {
       "@type": "ListItem",
-      "position":  3 ,
+      "position":  2 ,
       "name": "Ubuntu Install Oh My Zsh",
       "item": "https://kwbaek.github.io/posts/ubuntu-install-oh-my-zsh/"
     }
@@ -110,11 +178,11 @@ $ sudo apt install curl wget git   설치 결과 화면   터미널 기본 셀 �
   "@type": "BlogPosting",
   "headline": "Ubuntu Install Oh My Zsh",
   "name": "Ubuntu Install Oh My Zsh",
-  "description": "Ubuntu 에 Oh My Zsh 설치하기 설치전 요구사항   zsh 설치 되어 있어야함 (V5.0.8 또는 그 이상)\n  Curl or Wget 이 설치되어 있어야함\n  Git 이 설치 되어 있어야함 (V2.4.11 또는 그 이상)\n  설치 command\n$ sudo apt install curl wget git   설치 결과 화면   터미널 기본 셀 변경\n  chsh -s $(which zsh)   zsh 를 설치 후 chsh 명령어를 통해 기본 shell 을 변경",
+  "description": "Ubuntu 에 Oh My Zsh 설치하기 설치전 요구사항 zsh 설치 되어 있어야함 (V5.0.8 또는 그 이상)\nCurl or Wget 이 설치되어 있어야함\nGit 이 설치 되어 있어야함 (V2.4.11 또는 그 이상)\n설치 command\n$ sudo apt install curl wget git 설치 결과 화면 터미널 기본 셀 변경\nchsh -s $(which zsh) zsh 를 설치 후 chsh 명령어를 통해 기본 shell 을 변경\n터미널을 재시작 하면 자동으로 zsh 설정 화면이 나오는데, 0을 입력해서 파일 생성만 한다.\n",
   "keywords": [
     "os", "linux"
   ],
-  "articleBody": "Ubuntu 에 Oh My Zsh 설치하기 설치전 요구사항   zsh 설치 되어 있어야함 (V5.0.8 또는 그 이상)\n  Curl or Wget 이 설치되어 있어야함\n  Git 이 설치 되어 있어야함 (V2.4.11 또는 그 이상)\n  설치 command\n$ sudo apt install curl wget git   설치 결과 화면   터미널 기본 셀 변경\n  chsh -s $(which zsh)   zsh 를 설치 후 chsh 명령어를 통해 기본 shell 을 변경\n  터미널을 재시작 하면 자동으로 zsh 설정 화면이 나오는데, 0을 입력해서 파일 생성만 한다.\n  OH-MY-ZSH 설치 $ sh -c \"$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)\" OR $ sh -c \"$(wget https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)\"   설치 결과 화면   .zshrc 폴더를 열고 테마를 바꿔줍니다.\n  vim ~/.zshrc   하기 링크에서 원하는 테마로 선택해서 바꿔주면 됩니다. https://github.com/ohmyzsh/ohmyzsh/wiki/themes\n  agnoster 테마로 변경 완료\n  터미널을 재시작 하면 바뀐 터미널을 확인 가능 합니다.\n  ",
+  "articleBody": "Ubuntu 에 Oh My Zsh 설치하기 설치전 요구사항 zsh 설치 되어 있어야함 (V5.0.8 또는 그 이상)\nCurl or Wget 이 설치되어 있어야함\nGit 이 설치 되어 있어야함 (V2.4.11 또는 그 이상)\n설치 command\n$ sudo apt install curl wget git 설치 결과 화면 터미널 기본 셀 변경\nchsh -s $(which zsh) zsh 를 설치 후 chsh 명령어를 통해 기본 shell 을 변경\n터미널을 재시작 하면 자동으로 zsh 설정 화면이 나오는데, 0을 입력해서 파일 생성만 한다.\nOH-MY-ZSH 설치 $ sh -c \"$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)\" OR $ sh -c \"$(wget https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)\" 설치 결과 화면 .zshrc 폴더를 열고 테마를 바꿔줍니다.\nvim ~/.zshrc 하기 링크에서 원하는 테마로 선택해서 바꿔주면 됩니다. https://github.com/ohmyzsh/ohmyzsh/wiki/themes\nagnoster 테마로 변경 완료\n터미널을 재시작 하면 바뀐 터미널을 확인 가능 합니다.\n",
   "wordCount" : "121",
   "inLanguage": "en",
   "datePublished": "2023-02-06T16:53:04+09:00",
@@ -134,31 +202,19 @@ $ sudo apt install curl wget git   설치 결과 화면   터미널 기본 셀 �
 }
 </script>
 </head>
-
-<body class="" id="top">
-<script>
-    if (localStorage.getItem("pref-theme") === "dark") {
-        document.body.classList.add('dark');
-    } else if (localStorage.getItem("pref-theme") === "light") {
-        document.body.classList.remove('dark')
-    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        document.body.classList.add('dark');
-    }
-
-</script>
-
-<header class="header">
+<body id="top">
+    <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="https://kwbaek.github.io" accesskey="h" title="Kyungwook&#39;s Devlog (Alt + H)">Kyungwook&#39;s Devlog</a>
-            <span class="logo-switches">
-                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
-                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+            <a href="https://kwbaek.github.io/" accesskey="h" title="Kyungwook&#39;s Devlog (Alt + H)">Kyungwook&#39;s Devlog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
                         <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
                     </svg>
-                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
                         <circle cx="12" cy="12" r="5"></circle>
@@ -172,7 +228,7 @@ $ sudo apt install curl wget git   설치 결과 화면   터미널 기본 셀 �
                         <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
                     </svg>
                 </button>
-            </span>
+            </div>
         </div>
         <ul id="menu">
             <li>
@@ -187,7 +243,13 @@ $ sudo apt install curl wget git   설치 결과 화면   터미널 기본 셀 �
             </li>
             <li>
                 <a href="https://kwbaek.github.io/" title="Kyungwook&#39;s Devlog">
-                    <span>Kyungwook&#39;s Devlog</span>
+                    <span>Kyungwook&#39;s Devlog</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
                 </a>
             </li>
         </ul>
@@ -198,7 +260,7 @@ $ sudo apt install curl wget git   설치 결과 화면   터미널 기본 셀 �
 <article class="post-single">
   <header class="post-header">
     
-    <h1 class="post-title">
+    <h1 class="post-title entry-hint-parent">
       Ubuntu Install Oh My Zsh
     </h1>
     <div class="post-meta"><span title='2023-02-06 16:53:04 +0900 KST'>February 6, 2023</span>
@@ -219,45 +281,41 @@ $ sudo apt install curl wget git   설치 결과 화면   터미널 기본 셀 �
 </li>
 <li>
 <p>설치 command</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ sudo apt install curl wget git
-</code></pre></div></li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ sudo apt install curl wget git
+</span></span></code></pre></div></li>
 <li>
 <p>설치 결과 화면
-<img loading="lazy" src="imgaes/1.zsh.png" alt="설치 결과 화면"  />
-</p>
+<img alt="설치 결과 화면" loading="lazy" src="/posts/ubuntu-install-oh-my-zsh/imgaes/1.zsh.png"></p>
 </li>
 <li>
 <p>터미널 기본 셀 변경</p>
 </li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">chsh -s <span style="color:#66d9ef">$(</span>which zsh<span style="color:#66d9ef">)</span>
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>chsh -s <span style="color:#66d9ef">$(</span>which zsh<span style="color:#66d9ef">)</span>
+</span></span></code></pre></div><ul>
 <li>
 <p>zsh 를 설치 후 chsh 명령어를 통해 기본 shell 을 변경</p>
 </li>
 <li>
 <p>터미널을 재시작 하면 자동으로 zsh 설정 화면이 나오는데, 0을 입력해서 파일 생성만 한다.</p>
-<p><img loading="lazy" src="imgaes/2.zshrc.png" alt="설치 결과 화면"  />
-</p>
+<p><img alt="설치 결과 화면" loading="lazy" src="/posts/ubuntu-install-oh-my-zsh/imgaes/2.zshrc.png"></p>
 </li>
 </ul>
 <h2 id="oh-my-zsh-설치">OH-MY-ZSH 설치<a hidden class="anchor" aria-hidden="true" href="#oh-my-zsh-설치">#</a></h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ sh -c <span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span>
-OR
-$ sh -c <span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>wget https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span>
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ sh -c <span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>OR
+</span></span><span style="display:flex;"><span>$ sh -c <span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>wget https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span>
+</span></span></code></pre></div><ul>
 <li>
 <p>설치 결과 화면
-<img loading="lazy" src="imgaes/3.png" alt="설치 결과 화면"  />
-</p>
+<img alt="설치 결과 화면" loading="lazy" src="/posts/ubuntu-install-oh-my-zsh/imgaes/3.png"></p>
 </li>
 <li>
 <p>.zshrc 폴더를 열고 테마를 바꿔줍니다.</p>
 </li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">vim ~/.zshrc
-</code></pre></div><p><img loading="lazy" src="imgaes/4.png" alt="설치 결과 화면"  />
-</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>vim ~/.zshrc
+</span></span></code></pre></div><p><img alt="설치 결과 화면" loading="lazy" src="/posts/ubuntu-install-oh-my-zsh/imgaes/4.png"></p>
 <ul>
 <li>
 <p>하기 링크에서 원하는 테마로 선택해서 바꿔주면 됩니다.
@@ -265,13 +323,11 @@ $ sh -c <span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</
 </li>
 <li>
 <p>agnoster 테마로 변경 완료</p>
-<p><img loading="lazy" src="imgaes/5.png" alt="설치 결과 화면"  />
-</p>
+<p><img alt="설치 결과 화면" loading="lazy" src="/posts/ubuntu-install-oh-my-zsh/imgaes/5.png"></p>
 </li>
 <li>
 <p>터미널을 재시작 하면 바뀐 터미널을 확인 가능 합니다.</p>
-<p><img loading="lazy" src="imgaes/6.png" alt="설치 결과 화면"  />
-</p>
+<p><img alt="설치 결과 화면" loading="lazy" src="/posts/ubuntu-install-oh-my-zsh/imgaes/6.png"></p>
 </li>
 </ul>
 
@@ -280,29 +336,21 @@ $ sh -c <span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</
 
   <footer class="post-footer">
     <ul class="post-tags">
-      <li><a href="https://kwbaek.github.io/tags/os/">os</a></li>
-      <li><a href="https://kwbaek.github.io/tags/linux/">linux</a></li>
+      <li><a href="https://kwbaek.github.io/tags/os/">Os</a></li>
+      <li><a href="https://kwbaek.github.io/tags/linux/">Linux</a></li>
     </ul>
   </footer>
 </article>
     </main>
     
 <footer class="footer">
-    <div><script src="https://utteranc.es/client.js"
-        repo="kwbaek/blog-comments"
-        issue-term="pathname"
-        label=":sparkles::speech_balloon::sparkles:"
-        theme="github-dark"
-        crossorigin="anonymous"
-        async>
-</script></div>
-    <span>&copy; 2023 <a href="https://kwbaek.github.io">Kyungwook&#39;s Devlog</a></span>
+        <span>&copy; 2026 <a href="https://kwbaek.github.io/">Kyungwook&#39;s Devlog</a></span> · 
+
     <span>
         Powered by
         <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
-        <a href="https://git.io/hugopapermod" rel="noopener" target="_blank">PaperMod</a>
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
     </span>
-
 </footer>
 <a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
@@ -311,9 +359,14 @@ $ sh -c <span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</
 </a>
 
 <script>
-    let menu = document.getElementById('menu')
+    let menu = document.getElementById('menu');
     if (menu) {
-        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
         menu.onscroll = function () {
             localStorage.setItem("menu-scroll-position", menu.scrollLeft);
         }
@@ -354,11 +407,12 @@ $ sh -c <span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</
 </script>
 <script>
     document.getElementById("theme-toggle").addEventListener("click", () => {
-        if (document.body.className.includes("dark")) {
-            document.body.classList.remove('dark');
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
             localStorage.setItem("pref-theme", 'light');
         } else {
-            document.body.classList.add('dark');
+            html.dataset.theme = 'dark';
             localStorage.setItem("pref-theme", 'dark');
         }
     })
