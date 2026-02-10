@@ -1,20 +1,28 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
-  <channel>
-    <title>Openclaw on Kyungwook&#39;s Devlog</title>
-    <link>https://kwbaek.github.io/categories/openclaw/</link>
-    <description>Recent content in Openclaw on Kyungwook&#39;s Devlog</description>
-    <generator>Hugo -- 0.155.3</generator>
-    <language>ko-kr</language>
-    <lastBuildDate>Mon, 09 Feb 2026 23:00:00 +0900</lastBuildDate>
-    <atom:link href="https://kwbaek.github.io/categories/openclaw/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>OpenClaw 서브에이전트로 반복 작업 자동화하기</title>
-      <link>https://kwbaek.github.io/posts/2026-02-09-openclaw-subagent-automation/</link>
-      <pubDate>Mon, 09 Feb 2026 23:00:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/posts/2026-02-09-openclaw-subagent-automation/</guid>
-      <description>&lt;p&gt;OpenClaw를 쓰면서 가장 생산성이 올라간 기능 중 하나가 바로 &lt;strong&gt;서브에이전트(Subagent)&lt;/strong&gt; 시스템입니다. 이 글에서는 서브에이전트가 무엇인지, 어떻게 활용하면 좋은지 실제 경험을 바탕으로 공유합니다.&lt;/p&gt;
-&lt;h2 id=&#34;서브에이전트란&#34;&gt;서브에이전트란?&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Openclaw on Kyungwook's Devlog</title><link>https://kwbaek.github.io/categories/openclaw/</link><description>Recent content in Openclaw on Kyungwook's Devlog</description><generator>Hugo -- 0.155.3</generator><language>ko-kr</language><lastBuildDate>Tue, 10 Feb 2026 21:00:00 +0900</lastBuildDate><atom:link href="https://kwbaek.github.io/categories/openclaw/index.xml" rel="self" type="application/rss+xml"/><item><title>OpenClaw Heartbeat 활용법: AI가 알아서 챙겨주는 똑똑한 비서 만들기</title><link>https://kwbaek.github.io/posts/2026-02-10-openclaw-heartbeat-guide/</link><pubDate>Tue, 10 Feb 2026 21:00:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-02-10-openclaw-heartbeat-guide/</guid><description>&lt;h2 id="ai-비서가-내-일을-알아서-챙긴다면"&gt;AI 비서가 내 일을 알아서 챙긴다면?&lt;/h2&gt;
+&lt;p&gt;OpenClaw의 &lt;strong&gt;Heartbeat&lt;/strong&gt; 기능을 제대로 활용하면, AI 비서가 단순한 대화 상대를 넘어 &lt;strong&gt;진짜 일을 대신 처리해주는 존재&lt;/strong&gt;로 진화합니다. 이 글에서는 Heartbeat를 실전에서 어떻게 활용할 수 있는지 소개합니다.&lt;/p&gt;
+&lt;h2 id="heartbeat란"&gt;Heartbeat란?&lt;/h2&gt;
+&lt;p&gt;Heartbeat는 &lt;strong&gt;주기적으로 AI가 깨어나 체크리스트를 수행하는 기능&lt;/strong&gt;입니다. 사용자가 명령을 내리지 않아도, AI가 스스로 필요한 작업을 확인하고 보고합니다.&lt;/p&gt;
+&lt;p&gt;기본 동작 방식:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;OpenClaw Gateway가 설정된 주기(기본 30분)마다 AI 세션에 heartbeat 메시지를 전송&lt;/li&gt;
+&lt;li&gt;AI가 &lt;code&gt;HEARTBEAT.md&lt;/code&gt; 파일을 읽고 작성된 작업을 수행&lt;/li&gt;
+&lt;li&gt;특별한 일이 없으면 &lt;code&gt;HEARTBEAT_OK&lt;/code&gt; 응답으로 조용히 넘어감&lt;/li&gt;
+&lt;li&gt;중요한 사항이 있으면 사용자에게 알림&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="실전-활용-예시"&gt;실전 활용 예시&lt;/h2&gt;
+&lt;h3 id="1-이메일-모니터링"&gt;1. 이메일 모니터링&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-markdown" data-lang="markdown"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;# HEARTBEAT.md
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;## 이메일 체크 (하루 3-4회)
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;-&lt;/span&gt; Gmail 미읽은 메일 확인
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;-&lt;/span&gt; &amp;#34;urgent&amp;#34;, &amp;#34;ASAP&amp;#34;, &amp;#34;중요&amp;#34; 키워드 포함 메일은 즉시 알림
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;-&lt;/span&gt; 그 외 메일은 요약 정리
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;AI가 알아서 inbox를 스캔하고, 급한 메일만 골라서 알려줍니다.&lt;/p&gt;</description></item><item><title>OpenClaw 실전 활용: 에이전틱 워크플로우로 블로그 자동화하기</title><link>https://kwbaek.github.io/posts/2026-02-09-openclaw-agentic-workflow-tips/</link><pubDate>Mon, 09 Feb 2026 23:15:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-02-09-openclaw-agentic-workflow-tips/</guid><description>&lt;p&gt;AI 에이전트가 단순한 챗봇을 넘어 실제 업무를 자동화하는 시대가 왔습니다. 이번 글에서는 제가 실제로 사용하고 있는 &lt;strong&gt;OpenClaw의 에이전틱 워크플로우&lt;/strong&gt;를 소개합니다. 이 블로그 포스트 자체가 OpenClaw가 자동으로 작성하고 배포한 결과물입니다.&lt;/p&gt;
+&lt;h2 id="openclaw란"&gt;OpenClaw란?&lt;/h2&gt;
+&lt;p&gt;OpenClaw는 개인용 AI 비서 프레임워크입니다. 단순 대화를 넘어 &lt;strong&gt;파일 시스템 접근, 웹 검색, Git 작업, 크론 작업, 브라우저 제어&lt;/strong&gt; 등 실제 도구를 사용할 수 있는 에이전트를 실행할 수 있습니다. 텔레그램, 디스코드 등 메신저와 연동해 어디서든 에이전트와 소통할 수 있죠.&lt;/p&gt;
+&lt;h2 id="자동-블로그-포스팅-워크플로우"&gt;자동 블로그 포스팅 워크플로우&lt;/h2&gt;
+&lt;p&gt;현재 제 블로그는 다음과 같은 자동화 파이프라인으로 운영됩니다:&lt;/p&gt;</description></item><item><title>OpenClaw 서브에이전트로 반복 작업 자동화하기</title><link>https://kwbaek.github.io/posts/2026-02-09-openclaw-subagent-automation/</link><pubDate>Mon, 09 Feb 2026 23:00:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-02-09-openclaw-subagent-automation/</guid><description>&lt;p&gt;OpenClaw를 쓰면서 가장 생산성이 올라간 기능 중 하나가 바로 &lt;strong&gt;서브에이전트(Subagent)&lt;/strong&gt; 시스템입니다. 이 글에서는 서브에이전트가 무엇인지, 어떻게 활용하면 좋은지 실제 경험을 바탕으로 공유합니다.&lt;/p&gt;
+&lt;h2 id="서브에이전트란"&gt;서브에이전트란?&lt;/h2&gt;
 &lt;p&gt;서브에이전트는 메인 에이전트가 특정 작업을 위해 &lt;strong&gt;독립적으로 생성하는 하위 에이전트&lt;/strong&gt;입니다. 메인 에이전트와 별도의 세션에서 동작하며, 작업이 완료되면 결과를 메인 에이전트에게 보고합니다.&lt;/p&gt;
 &lt;p&gt;핵심 특징:&lt;/p&gt;
 &lt;ul&gt;
@@ -22,8 +30,5 @@
 &lt;li&gt;&lt;strong&gt;작업 집중&lt;/strong&gt;: 할당된 작업만 수행하고 종료&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;병렬 처리&lt;/strong&gt;: 여러 서브에이전트를 동시에 띄울 수 있음&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;실제-활용-사례-블로그-포스팅-자동화&#34;&gt;실제 활용 사례: 블로그 포스팅 자동화&lt;/h2&gt;
-&lt;p&gt;이 블로그 포스트 자체가 서브에이전트로 작성되고 있습니다! 워크플로우는 다음과 같습니다:&lt;/p&gt;</description>
-    </item>
-  </channel>
-</rss>
+&lt;h2 id="실제-활용-사례-블로그-포스팅-자동화"&gt;실제 활용 사례: 블로그 포스팅 자동화&lt;/h2&gt;
+&lt;p&gt;이 블로그 포스트 자체가 서브에이전트로 작성되고 있습니다! 워크플로우는 다음과 같습니다:&lt;/p&gt;</description></item></channel></rss>

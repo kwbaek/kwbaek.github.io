@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Heartbeat on Kyungwook's Devlog</title><link>https://kwbaek.github.io/tags/heartbeat/</link><description>Recent content in Heartbeat on Kyungwook's Devlog</description><generator>Hugo -- 0.155.3</generator><language>ko-kr</language><lastBuildDate>Tue, 10 Feb 2026 21:00:00 +0900</lastBuildDate><atom:link href="https://kwbaek.github.io/tags/heartbeat/index.xml" rel="self" type="application/rss+xml"/><item><title>OpenClaw Heartbeat 활용법: AI가 알아서 챙겨주는 똑똑한 비서 만들기</title><link>https://kwbaek.github.io/posts/2026-02-10-openclaw-heartbeat-guide/</link><pubDate>Tue, 10 Feb 2026 21:00:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-02-10-openclaw-heartbeat-guide/</guid><description>&lt;h2 id="ai-비서가-내-일을-알아서-챙긴다면"&gt;AI 비서가 내 일을 알아서 챙긴다면?&lt;/h2&gt;
+&lt;p&gt;OpenClaw의 &lt;strong&gt;Heartbeat&lt;/strong&gt; 기능을 제대로 활용하면, AI 비서가 단순한 대화 상대를 넘어 &lt;strong&gt;진짜 일을 대신 처리해주는 존재&lt;/strong&gt;로 진화합니다. 이 글에서는 Heartbeat를 실전에서 어떻게 활용할 수 있는지 소개합니다.&lt;/p&gt;
+&lt;h2 id="heartbeat란"&gt;Heartbeat란?&lt;/h2&gt;
+&lt;p&gt;Heartbeat는 &lt;strong&gt;주기적으로 AI가 깨어나 체크리스트를 수행하는 기능&lt;/strong&gt;입니다. 사용자가 명령을 내리지 않아도, AI가 스스로 필요한 작업을 확인하고 보고합니다.&lt;/p&gt;
+&lt;p&gt;기본 동작 방식:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;OpenClaw Gateway가 설정된 주기(기본 30분)마다 AI 세션에 heartbeat 메시지를 전송&lt;/li&gt;
+&lt;li&gt;AI가 &lt;code&gt;HEARTBEAT.md&lt;/code&gt; 파일을 읽고 작성된 작업을 수행&lt;/li&gt;
+&lt;li&gt;특별한 일이 없으면 &lt;code&gt;HEARTBEAT_OK&lt;/code&gt; 응답으로 조용히 넘어감&lt;/li&gt;
+&lt;li&gt;중요한 사항이 있으면 사용자에게 알림&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="실전-활용-예시"&gt;실전 활용 예시&lt;/h2&gt;
+&lt;h3 id="1-이메일-모니터링"&gt;1. 이메일 모니터링&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-markdown" data-lang="markdown"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;# HEARTBEAT.md
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;## 이메일 체크 (하루 3-4회)
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;-&lt;/span&gt; Gmail 미읽은 메일 확인
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;-&lt;/span&gt; &amp;#34;urgent&amp;#34;, &amp;#34;ASAP&amp;#34;, &amp;#34;중요&amp;#34; 키워드 포함 메일은 즉시 알림
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;-&lt;/span&gt; 그 외 메일은 요약 정리
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;AI가 알아서 inbox를 스캔하고, 급한 메일만 골라서 알려줍니다.&lt;/p&gt;</description></item></channel></rss>
