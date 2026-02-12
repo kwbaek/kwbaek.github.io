@@ -1,1 +1,40 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Categories on Kyungwook's Devlog</title><link>https://kwbaek.github.io/categories/</link><description>Recent content in Categories on Kyungwook's Devlog</description><generator>Hugo -- 0.155.3</generator><language>ko-kr</language><lastBuildDate>Wed, 11 Feb 2026 21:00:00 +0900</lastBuildDate><atom:link href="https://kwbaek.github.io/categories/index.xml" rel="self" type="application/rss+xml"/><item><title>Ai-Ml</title><link>https://kwbaek.github.io/categories/ai-ml/</link><pubDate>Wed, 11 Feb 2026 21:00:00 +0900</pubDate><guid>https://kwbaek.github.io/categories/ai-ml/</guid><description/></item><item><title>Openclaw</title><link>https://kwbaek.github.io/categories/openclaw/</link><pubDate>Wed, 11 Feb 2026 21:00:00 +0900</pubDate><guid>https://kwbaek.github.io/categories/openclaw/</guid><description/></item><item><title>Os/Linux</title><link>https://kwbaek.github.io/categories/os/linux/</link><pubDate>Thu, 09 Feb 2023 16:11:40 +0900</pubDate><guid>https://kwbaek.github.io/categories/os/linux/</guid><description/></item><item><title>Diary</title><link>https://kwbaek.github.io/categories/diary/</link><pubDate>Thu, 30 Dec 2021 16:24:21 +0900</pubDate><guid>https://kwbaek.github.io/categories/diary/</guid><description/></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Categories on Kyungwook&#39;s Devlog</title>
+    <link>https://kwbaek.github.io/categories/</link>
+    <description>Recent content in Categories on Kyungwook&#39;s Devlog</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Wed, 11 Feb 2026 21:00:00 +0900</lastBuildDate>
+    <atom:link href="https://kwbaek.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Ai-Ml</title>
+      <link>https://kwbaek.github.io/categories/ai-ml/</link>
+      <pubDate>Wed, 11 Feb 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/categories/ai-ml/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Openclaw</title>
+      <link>https://kwbaek.github.io/categories/openclaw/</link>
+      <pubDate>Wed, 11 Feb 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/categories/openclaw/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Os/Linux</title>
+      <link>https://kwbaek.github.io/categories/os/linux/</link>
+      <pubDate>Thu, 09 Feb 2023 16:11:40 +0900</pubDate>
+      <guid>https://kwbaek.github.io/categories/os/linux/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Diary</title>
+      <link>https://kwbaek.github.io/categories/diary/</link>
+      <pubDate>Thu, 30 Dec 2021 16:24:21 +0900</pubDate>
+      <guid>https://kwbaek.github.io/categories/diary/</guid>
+      <description></description>
+    </item>
+  </channel>
+</rss>

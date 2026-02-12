@@ -1,16 +1,355 @@
-<!doctype html><html lang=en dir=auto data-theme=auto><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=robots content="index, follow"><title>2026년 2월 AI/ML 트렌드: Gemini 3 출시, GPT-5.3-Codex, 그리고 AI 산업의 전환점 | Kyungwook's Devlog</title><meta name=keywords content="AI,머신러닝,Gemini 3,GPT-5.3,트렌드"><meta name=description content="2026년 2월, AI 업계는 모델 출시 경쟁에서 실제 비즈니스 가치 창출로 무게 중심이 이동하는 중요한 전환점을 맞이하고 있습니다. 이번 글에서는 이번 주 가장 주목할 만한 소식들을 정리합니다.
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>2026년 2월 AI/ML 트렌드: Gemini 3 출시, GPT-5.3-Codex, 그리고 AI 산업의 전환점 | Kyungwook&#39;s Devlog</title>
+<meta name="keywords" content="AI, 머신러닝, Gemini 3, GPT-5.3, 트렌드">
+<meta name="description" content="2026년 2월, AI 업계는 모델 출시 경쟁에서 실제 비즈니스 가치 창출로 무게 중심이 이동하는 중요한 전환점을 맞이하고 있습니다. 이번 글에서는 이번 주 가장 주목할 만한 소식들을 정리합니다.
 🚀 Google Gemini 3 출시 — 에이전트 시대의 본격 개막
 2월 5일, Google은 차세대 플래그십 모델 Gemini 3를 공개했습니다. Agent Factory 이벤트에서 시연된 이 모델은 단순한 텍스트 생성을 넘어 복잡한 에이전틱 워크플로우를 오케스트레이션할 수 있도록 설계되었습니다.
-특히 주목할 점은 Gemini CLI(Command Line Interface)의 등장입니다. 개발자들이 터미널에서 직접 Gemini 모델과 상호작용할 수 있으며, 파이프와 체이닝을 통해 복잡한 인프라 없이도 경량 &lsquo;AI 워커&rsquo;를 구축할 수 있습니다. 시연에서는 LinkedIn 프로필을 포트폴리오 웹사이트로 변환하고 배포하는 과정, 여러 AI 생성 청크를 일관된 비디오 콘텐츠로 조합하는 과정이 보여졌습니다."><meta name=author content><link rel=canonical href=https://kwbaek.github.io/posts/2026-02-09-ai-ml-trends-feb-2026/><link crossorigin=anonymous href=/assets/css/stylesheet.da3211e5ef867bf2b75fd5a6515cfed7195c011e8ab735694e203810a827097b.css integrity="sha256-2jIR5e+Ge/K3X9WmUVz+1xlcAR6KtzVpTiA4EKgnCXs=" rel="preload stylesheet" as=style><link rel=icon href=https://kwbaek.github.io/favicon.ico><link rel=icon type=image/png sizes=16x16 href=https://kwbaek.github.io/favicon-16x16.png><link rel=icon type=image/png sizes=32x32 href=https://kwbaek.github.io/favicon-32x32.png><link rel=apple-touch-icon href=https://kwbaek.github.io/apple-touch-icon.png><link rel=mask-icon href=https://kwbaek.github.io/safari-pinned-tab.svg><meta name=theme-color content="#2e2e33"><meta name=msapplication-TileColor content="#2e2e33"><link rel=alternate hreflang=en href=https://kwbaek.github.io/posts/2026-02-09-ai-ml-trends-feb-2026/><noscript><style>#theme-toggle,.top-link{display:none}</style><style>@media(prefers-color-scheme:dark){:root{--theme:rgb(29, 30, 32);--entry:rgb(46, 46, 51);--primary:rgb(218, 218, 219);--secondary:rgb(155, 156, 157);--tertiary:rgb(65, 66, 68);--content:rgb(196, 196, 197);--code-block-bg:rgb(46, 46, 51);--code-bg:rgb(55, 56, 62);--border:rgb(51, 51, 51);color-scheme:dark}.list{background:var(--theme)}.toc{background:var(--entry)}}@media(prefers-color-scheme:light){.list::-webkit-scrollbar-thumb{border-color:var(--code-bg)}}</style></noscript><script>localStorage.getItem("pref-theme")==="dark"?document.querySelector("html").dataset.theme="dark":localStorage.getItem("pref-theme")==="light"?document.querySelector("html").dataset.theme="light":window.matchMedia("(prefers-color-scheme: dark)").matches?document.querySelector("html").dataset.theme="dark":document.querySelector("html").dataset.theme="light"</script><meta property="og:url" content="https://kwbaek.github.io/posts/2026-02-09-ai-ml-trends-feb-2026/"><meta property="og:site_name" content="Kyungwook's Devlog"><meta property="og:title" content="2026년 2월 AI/ML 트렌드: Gemini 3 출시, GPT-5.3-Codex, 그리고 AI 산업의 전환점"><meta property="og:description" content="2026년 2월, AI 업계는 모델 출시 경쟁에서 실제 비즈니스 가치 창출로 무게 중심이 이동하는 중요한 전환점을 맞이하고 있습니다. 이번 글에서는 이번 주 가장 주목할 만한 소식들을 정리합니다.
+특히 주목할 점은 Gemini CLI(Command Line Interface)의 등장입니다. 개발자들이 터미널에서 직접 Gemini 모델과 상호작용할 수 있으며, 파이프와 체이닝을 통해 복잡한 인프라 없이도 경량 &lsquo;AI 워커&rsquo;를 구축할 수 있습니다. 시연에서는 LinkedIn 프로필을 포트폴리오 웹사이트로 변환하고 배포하는 과정, 여러 AI 생성 청크를 일관된 비디오 콘텐츠로 조합하는 과정이 보여졌습니다.">
+<meta name="author" content="">
+<link rel="canonical" href="https://kwbaek.github.io/posts/2026-02-09-ai-ml-trends-feb-2026/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.da3211e5ef867bf2b75fd5a6515cfed7195c011e8ab735694e203810a827097b.css" integrity="sha256-2jIR5e&#43;Ge/K3X9WmUVz&#43;1xlcAR6KtzVpTiA4EKgnCXs=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://kwbaek.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://kwbaek.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://kwbaek.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://kwbaek.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://kwbaek.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://kwbaek.github.io/posts/2026-02-09-ai-ml-trends-feb-2026/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="https://kwbaek.github.io/posts/2026-02-09-ai-ml-trends-feb-2026/">
+  <meta property="og:site_name" content="Kyungwook&#39;s Devlog">
+  <meta property="og:title" content="2026년 2월 AI/ML 트렌드: Gemini 3 출시, GPT-5.3-Codex, 그리고 AI 산업의 전환점">
+  <meta property="og:description" content="2026년 2월, AI 업계는 모델 출시 경쟁에서 실제 비즈니스 가치 창출로 무게 중심이 이동하는 중요한 전환점을 맞이하고 있습니다. 이번 글에서는 이번 주 가장 주목할 만한 소식들을 정리합니다.
 🚀 Google Gemini 3 출시 — 에이전트 시대의 본격 개막 2월 5일, Google은 차세대 플래그십 모델 Gemini 3를 공개했습니다. Agent Factory 이벤트에서 시연된 이 모델은 단순한 텍스트 생성을 넘어 복잡한 에이전틱 워크플로우를 오케스트레이션할 수 있도록 설계되었습니다.
-특히 주목할 점은 Gemini CLI(Command Line Interface)의 등장입니다. 개발자들이 터미널에서 직접 Gemini 모델과 상호작용할 수 있으며, 파이프와 체이닝을 통해 복잡한 인프라 없이도 경량 ‘AI 워커’를 구축할 수 있습니다. 시연에서는 LinkedIn 프로필을 포트폴리오 웹사이트로 변환하고 배포하는 과정, 여러 AI 생성 청크를 일관된 비디오 콘텐츠로 조합하는 과정이 보여졌습니다."><meta property="og:locale" content="ko-kr"><meta property="og:type" content="article"><meta property="article:section" content="posts"><meta property="article:published_time" content="2026-02-09T23:00:00+09:00"><meta property="article:modified_time" content="2026-02-09T23:00:00+09:00"><meta property="article:tag" content="AI"><meta property="article:tag" content="머신러닝"><meta property="article:tag" content="Gemini 3"><meta property="article:tag" content="GPT-5.3"><meta property="article:tag" content="트렌드"><meta name=twitter:card content="summary"><meta name=twitter:title content="2026년 2월 AI/ML 트렌드: Gemini 3 출시, GPT-5.3-Codex, 그리고 AI 산업의 전환점"><meta name=twitter:description content="2026년 2월, AI 업계는 모델 출시 경쟁에서 실제 비즈니스 가치 창출로 무게 중심이 이동하는 중요한 전환점을 맞이하고 있습니다. 이번 글에서는 이번 주 가장 주목할 만한 소식들을 정리합니다.
+특히 주목할 점은 Gemini CLI(Command Line Interface)의 등장입니다. 개발자들이 터미널에서 직접 Gemini 모델과 상호작용할 수 있으며, 파이프와 체이닝을 통해 복잡한 인프라 없이도 경량 ‘AI 워커’를 구축할 수 있습니다. 시연에서는 LinkedIn 프로필을 포트폴리오 웹사이트로 변환하고 배포하는 과정, 여러 AI 생성 청크를 일관된 비디오 콘텐츠로 조합하는 과정이 보여졌습니다.">
+  <meta property="og:locale" content="ko-kr">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2026-02-09T23:00:00+09:00">
+    <meta property="article:modified_time" content="2026-02-09T23:00:00+09:00">
+    <meta property="article:tag" content="AI">
+    <meta property="article:tag" content="머신러닝">
+    <meta property="article:tag" content="Gemini 3">
+    <meta property="article:tag" content="GPT-5.3">
+    <meta property="article:tag" content="트렌드">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="2026년 2월 AI/ML 트렌드: Gemini 3 출시, GPT-5.3-Codex, 그리고 AI 산업의 전환점">
+<meta name="twitter:description" content="2026년 2월, AI 업계는 모델 출시 경쟁에서 실제 비즈니스 가치 창출로 무게 중심이 이동하는 중요한 전환점을 맞이하고 있습니다. 이번 글에서는 이번 주 가장 주목할 만한 소식들을 정리합니다.
 🚀 Google Gemini 3 출시 — 에이전트 시대의 본격 개막
 2월 5일, Google은 차세대 플래그십 모델 Gemini 3를 공개했습니다. Agent Factory 이벤트에서 시연된 이 모델은 단순한 텍스트 생성을 넘어 복잡한 에이전틱 워크플로우를 오케스트레이션할 수 있도록 설계되었습니다.
-특히 주목할 점은 Gemini CLI(Command Line Interface)의 등장입니다. 개발자들이 터미널에서 직접 Gemini 모델과 상호작용할 수 있으며, 파이프와 체이닝을 통해 복잡한 인프라 없이도 경량 &lsquo;AI 워커&rsquo;를 구축할 수 있습니다. 시연에서는 LinkedIn 프로필을 포트폴리오 웹사이트로 변환하고 배포하는 과정, 여러 AI 생성 청크를 일관된 비디오 콘텐츠로 조합하는 과정이 보여졌습니다."><script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Posts","item":"https://kwbaek.github.io/posts/"},{"@type":"ListItem","position":2,"name":"2026년 2월 AI/ML 트렌드: Gemini 3 출시, GPT-5.3-Codex, 그리고 AI 산업의 전환점","item":"https://kwbaek.github.io/posts/2026-02-09-ai-ml-trends-feb-2026/"}]}</script><script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"2026년 2월 AI/ML 트렌드: Gemini 3 출시, GPT-5.3-Codex, 그리고 AI 산업의 전환점","name":"2026년 2월 AI\/ML 트렌드: Gemini 3 출시, GPT-5.3-Codex, 그리고 AI 산업의 전환점","description":"2026년 2월, AI 업계는 모델 출시 경쟁에서 실제 비즈니스 가치 창출로 무게 중심이 이동하는 중요한 전환점을 맞이하고 있습니다. 이번 글에서는 이번 주 가장 주목할 만한 소식들을 정리합니다.\n🚀 Google Gemini 3 출시 — 에이전트 시대의 본격 개막 2월 5일, Google은 차세대 플래그십 모델 Gemini 3를 공개했습니다. Agent Factory 이벤트에서 시연된 이 모델은 단순한 텍스트 생성을 넘어 복잡한 에이전틱 워크플로우를 오케스트레이션할 수 있도록 설계되었습니다.\n특히 주목할 점은 Gemini CLI(Command Line Interface)의 등장입니다. 개발자들이 터미널에서 직접 Gemini 모델과 상호작용할 수 있으며, 파이프와 체이닝을 통해 복잡한 인프라 없이도 경량 \u0026lsquo;AI 워커\u0026rsquo;를 구축할 수 있습니다. 시연에서는 LinkedIn 프로필을 포트폴리오 웹사이트로 변환하고 배포하는 과정, 여러 AI 생성 청크를 일관된 비디오 콘텐츠로 조합하는 과정이 보여졌습니다.\n","keywords":["AI","머신러닝","Gemini 3","GPT-5.3","트렌드"],"articleBody":"2026년 2월, AI 업계는 모델 출시 경쟁에서 실제 비즈니스 가치 창출로 무게 중심이 이동하는 중요한 전환점을 맞이하고 있습니다. 이번 글에서는 이번 주 가장 주목할 만한 소식들을 정리합니다.\n🚀 Google Gemini 3 출시 — 에이전트 시대의 본격 개막 2월 5일, Google은 차세대 플래그십 모델 Gemini 3를 공개했습니다. Agent Factory 이벤트에서 시연된 이 모델은 단순한 텍스트 생성을 넘어 복잡한 에이전틱 워크플로우를 오케스트레이션할 수 있도록 설계되었습니다.\n특히 주목할 점은 Gemini CLI(Command Line Interface)의 등장입니다. 개발자들이 터미널에서 직접 Gemini 모델과 상호작용할 수 있으며, 파이프와 체이닝을 통해 복잡한 인프라 없이도 경량 ‘AI 워커’를 구축할 수 있습니다. 시연에서는 LinkedIn 프로필을 포트폴리오 웹사이트로 변환하고 배포하는 과정, 여러 AI 생성 청크를 일관된 비디오 콘텐츠로 조합하는 과정이 보여졌습니다.\n실무적 시사점: 에이전트 기반 개발이 프레임워크 수준에서 모델 네이티브 수준으로 올라오고 있습니다. LangChain 같은 외부 오케스트레이션 도구의 역할이 재정의될 수 있습니다.\n🧑‍💻 OpenAI GPT-5.3-Codex — 자기 개선하는 코딩 AI OpenAI는 소프트웨어 개발 특화 모델 GPT-5.3-Codex를 발표했습니다. 코드 생성뿐 아니라 배포, 테스트, 문서화, 심지어 프레젠테이션과 스프레드시트 작성까지 처리합니다.\n가장 흥미로운 점은 학습 과정에서 스스로를 개선했다는 주장입니다. 멀티스텝 프로세스에서의 컨텍스트 유지 능력이 크게 향상되었으며, 이는 실제 엔터프라이즈 소프트웨어 개발 파이프라인에 AI를 통합하려는 기업들에게 큰 의미가 있습니다.\n📊 Google, AI 리더십 탈환 Reuters 보도에 따르면, Alphabet은 OpenAI를 제치고 AI 분야 리더십을 되찾고 있습니다. 1년 전만 해도 경쟁에서 뒤처진다는 평가를 받았지만, 공격적인 투자와 제품 출시로 월가의 인식이 완전히 바뀌었습니다. AI 예측 시장에서도 Google이 2월 말 기준 최고 모델 보유 확률 **92%**로 압도적 1위를 기록하고 있습니다.\n🤖 AI 봇 트래픽, 인간 웹 방문에 근접 The Register의 보도에 따르면 AI 봇 트래픽이 인간의 웹 방문 수에 근접하고 있습니다. 이는 웹 생태계의 근본적인 변화를 의미하며, robots.txt 정책, API 우선 설계, 콘텐츠 보호 전략의 중요성이 더욱 커지고 있습니다.\n🔮 핵심 트렌드 요약 트렌드 의미 에이전틱 AI 단일 모델 → 멀티 에이전트 오케스트레이션 수익화 전환 벤치마크 경쟁 → 실제 비즈니스 모델 구축 추론 모델 성숙 속도를 희생하고 정확도를 높이는 전략 효율성 혁신 GPT-4급 성능을 극적으로 낮은 비용으로 2026년 AI 산업의 키워드는 **“배포와 수익화”**입니다. 모델 자체의 능력은 이미 충분하고, 이제는 이를 어떻게 현실 세계에 안정적으로 적용하고 돈을 벌 수 있는지가 핵심 경쟁력이 되고 있습니다.\n","wordCount":"333","inLanguage":"en","datePublished":"2026-02-09T23:00:00+09:00","dateModified":"2026-02-09T23:00:00+09:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://kwbaek.github.io/posts/2026-02-09-ai-ml-trends-feb-2026/"},"publisher":{"@type":"Organization","name":"Kyungwook's Devlog","logo":{"@type":"ImageObject","url":"https://kwbaek.github.io/favicon.ico"}}}</script></head><body id=top><header class=header><nav class=nav><div class=logo><a href=https://kwbaek.github.io/ accesskey=h title="Kyungwook's Devlog (Alt + H)">Kyungwook's Devlog</a><div class=logo-switches><button id=theme-toggle accesskey=t title="(Alt + T)" aria-label="Toggle theme">
-<svg id="moon" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
-<svg id="sun" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button></div></div><ul id=menu><li><a href=https://kwbaek.github.io/categories/ title=categories><span>categories</span></a></li><li><a href=https://kwbaek.github.io/tags/ title=tags><span>tags</span></a></li><li><a href=https://kwbaek.github.io/ title="Kyungwook's Devlog"><span>Kyungwook's Devlog</span>&nbsp;
-<svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><path d="M15 3h6v6"/><path d="M10 14 21 3"/></svg></a></li></ul></nav></header><main class=main><article class=post-single><header class=post-header><h1 class="post-title entry-hint-parent">2026년 2월 AI/ML 트렌드: Gemini 3 출시, GPT-5.3-Codex, 그리고 AI 산업의 전환점</h1><div class=post-meta><span title='2026-02-09 23:00:00 +0900 KST'>February 9, 2026</span></div></header><div class=post-content><p>2026년 2월, AI 업계는 모델 출시 경쟁에서 <strong>실제 비즈니스 가치 창출</strong>로 무게 중심이 이동하는 중요한 전환점을 맞이하고 있습니다. 이번 글에서는 이번 주 가장 주목할 만한 소식들을 정리합니다.</p><h2 id=-google-gemini-3-출시--에이전트-시대의-본격-개막>🚀 Google Gemini 3 출시 — 에이전트 시대의 본격 개막<a hidden class=anchor aria-hidden=true href=#-google-gemini-3-출시--에이전트-시대의-본격-개막>#</a></h2><p>2월 5일, Google은 차세대 플래그십 모델 <strong>Gemini 3</strong>를 공개했습니다. Agent Factory 이벤트에서 시연된 이 모델은 단순한 텍스트 생성을 넘어 <strong>복잡한 에이전틱 워크플로우</strong>를 오케스트레이션할 수 있도록 설계되었습니다.</p><p>특히 주목할 점은 <strong>Gemini CLI</strong>(Command Line Interface)의 등장입니다. 개발자들이 터미널에서 직접 Gemini 모델과 상호작용할 수 있으며, 파이프와 체이닝을 통해 복잡한 인프라 없이도 경량 &lsquo;AI 워커&rsquo;를 구축할 수 있습니다. 시연에서는 LinkedIn 프로필을 포트폴리오 웹사이트로 변환하고 배포하는 과정, 여러 AI 생성 청크를 일관된 비디오 콘텐츠로 조합하는 과정이 보여졌습니다.</p><p><strong>실무적 시사점:</strong> 에이전트 기반 개발이 프레임워크 수준에서 모델 네이티브 수준으로 올라오고 있습니다. LangChain 같은 외부 오케스트레이션 도구의 역할이 재정의될 수 있습니다.</p><h2 id=-openai-gpt-53-codex--자기-개선하는-코딩-ai>🧑‍💻 OpenAI GPT-5.3-Codex — 자기 개선하는 코딩 AI<a hidden class=anchor aria-hidden=true href=#-openai-gpt-53-codex--자기-개선하는-코딩-ai>#</a></h2><p>OpenAI는 소프트웨어 개발 특화 모델 <strong>GPT-5.3-Codex</strong>를 발표했습니다. 코드 생성뿐 아니라 배포, 테스트, 문서화, 심지어 프레젠테이션과 스프레드시트 작성까지 처리합니다.</p><p>가장 흥미로운 점은 <strong>학습 과정에서 스스로를 개선했다</strong>는 주장입니다. 멀티스텝 프로세스에서의 컨텍스트 유지 능력이 크게 향상되었으며, 이는 실제 엔터프라이즈 소프트웨어 개발 파이프라인에 AI를 통합하려는 기업들에게 큰 의미가 있습니다.</p><h2 id=-google-ai-리더십-탈환>📊 Google, AI 리더십 탈환<a hidden class=anchor aria-hidden=true href=#-google-ai-리더십-탈환>#</a></h2><p>Reuters 보도에 따르면, Alphabet은 OpenAI를 제치고 <strong>AI 분야 리더십</strong>을 되찾고 있습니다. 1년 전만 해도 경쟁에서 뒤처진다는 평가를 받았지만, 공격적인 투자와 제품 출시로 월가의 인식이 완전히 바뀌었습니다. AI 예측 시장에서도 Google이 2월 말 기준 최고 모델 보유 확률 **92%**로 압도적 1위를 기록하고 있습니다.</p><h2 id=-ai-봇-트래픽-인간-웹-방문에-근접>🤖 AI 봇 트래픽, 인간 웹 방문에 근접<a hidden class=anchor aria-hidden=true href=#-ai-봇-트래픽-인간-웹-방문에-근접>#</a></h2><p>The Register의 보도에 따르면 AI 봇 트래픽이 인간의 웹 방문 수에 <strong>근접</strong>하고 있습니다. 이는 웹 생태계의 근본적인 변화를 의미하며, robots.txt 정책, API 우선 설계, 콘텐츠 보호 전략의 중요성이 더욱 커지고 있습니다.</p><h2 id=-핵심-트렌드-요약>🔮 핵심 트렌드 요약<a hidden class=anchor aria-hidden=true href=#-핵심-트렌드-요약>#</a></h2><table><thead><tr><th>트렌드</th><th>의미</th></tr></thead><tbody><tr><td>에이전틱 AI</td><td>단일 모델 → 멀티 에이전트 오케스트레이션</td></tr><tr><td>수익화 전환</td><td>벤치마크 경쟁 → 실제 비즈니스 모델 구축</td></tr><tr><td>추론 모델 성숙</td><td>속도를 희생하고 정확도를 높이는 전략</td></tr><tr><td>효율성 혁신</td><td>GPT-4급 성능을 극적으로 낮은 비용으로</td></tr></tbody></table><p>2026년 AI 산업의 키워드는 **&ldquo;배포와 수익화&rdquo;**입니다. 모델 자체의 능력은 이미 충분하고, 이제는 이를 어떻게 현실 세계에 안정적으로 적용하고 돈을 벌 수 있는지가 핵심 경쟁력이 되고 있습니다.</p></div><footer class=post-footer><ul class=post-tags><li><a href=https://kwbaek.github.io/tags/ai/>AI</a></li><li><a href=https://kwbaek.github.io/tags/%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D/>머신러닝</a></li><li><a href=https://kwbaek.github.io/tags/gemini-3/>Gemini 3</a></li><li><a href=https://kwbaek.github.io/tags/gpt-5.3/>GPT-5.3</a></li><li><a href=https://kwbaek.github.io/tags/%ED%8A%B8%EB%A0%8C%EB%93%9C/>트렌드</a></li></ul></footer></article></main><footer class=footer><span>&copy; 2026 <a href=https://kwbaek.github.io/>Kyungwook's Devlog</a></span> ·
-<span>Powered by
-<a href=https://gohugo.io/ rel="noopener noreferrer" target=_blank>Hugo</a> &
-<a href=https://github.com/adityatelange/hugo-PaperMod/ rel=noopener target=_blank>PaperMod</a></span></footer><a href=#top aria-label="go to top" title="Go to Top (Alt + G)" class=top-link id=top-link accesskey=g><svg viewBox="0 0 12 6" fill="currentColor"><path d="M12 6H0l6-6z"/></svg>
-</a><script>let menu=document.getElementById("menu");if(menu){const e=localStorage.getItem("menu-scroll-position");e&&(menu.scrollLeft=parseInt(e,10)),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)}}document.querySelectorAll('a[href^="#"]').forEach(e=>{e.addEventListener("click",function(e){e.preventDefault();var t=this.getAttribute("href").substr(1);window.matchMedia("(prefers-reduced-motion: reduce)").matches?document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView({behavior:"smooth"}),t==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${t}`)})})</script><script>var mybutton=document.getElementById("top-link");window.onscroll=function(){document.body.scrollTop>800||document.documentElement.scrollTop>800?(mybutton.style.visibility="visible",mybutton.style.opacity="1"):(mybutton.style.visibility="hidden",mybutton.style.opacity="0")}</script><script>document.getElementById("theme-toggle").addEventListener("click",()=>{const e=document.querySelector("html");e.dataset.theme==="dark"?(e.dataset.theme="light",localStorage.setItem("pref-theme","light")):(e.dataset.theme="dark",localStorage.setItem("pref-theme","dark"))})</script></body></html>
+특히 주목할 점은 Gemini CLI(Command Line Interface)의 등장입니다. 개발자들이 터미널에서 직접 Gemini 모델과 상호작용할 수 있으며, 파이프와 체이닝을 통해 복잡한 인프라 없이도 경량 &lsquo;AI 워커&rsquo;를 구축할 수 있습니다. 시연에서는 LinkedIn 프로필을 포트폴리오 웹사이트로 변환하고 배포하는 과정, 여러 AI 생성 청크를 일관된 비디오 콘텐츠로 조합하는 과정이 보여졌습니다.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://kwbaek.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "2026년 2월 AI/ML 트렌드: Gemini 3 출시, GPT-5.3-Codex, 그리고 AI 산업의 전환점",
+      "item": "https://kwbaek.github.io/posts/2026-02-09-ai-ml-trends-feb-2026/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "2026년 2월 AI/ML 트렌드: Gemini 3 출시, GPT-5.3-Codex, 그리고 AI 산업의 전환점",
+  "name": "2026년 2월 AI\/ML 트렌드: Gemini 3 출시, GPT-5.3-Codex, 그리고 AI 산업의 전환점",
+  "description": "2026년 2월, AI 업계는 모델 출시 경쟁에서 실제 비즈니스 가치 창출로 무게 중심이 이동하는 중요한 전환점을 맞이하고 있습니다. 이번 글에서는 이번 주 가장 주목할 만한 소식들을 정리합니다.\n🚀 Google Gemini 3 출시 — 에이전트 시대의 본격 개막 2월 5일, Google은 차세대 플래그십 모델 Gemini 3를 공개했습니다. Agent Factory 이벤트에서 시연된 이 모델은 단순한 텍스트 생성을 넘어 복잡한 에이전틱 워크플로우를 오케스트레이션할 수 있도록 설계되었습니다.\n특히 주목할 점은 Gemini CLI(Command Line Interface)의 등장입니다. 개발자들이 터미널에서 직접 Gemini 모델과 상호작용할 수 있으며, 파이프와 체이닝을 통해 복잡한 인프라 없이도 경량 \u0026lsquo;AI 워커\u0026rsquo;를 구축할 수 있습니다. 시연에서는 LinkedIn 프로필을 포트폴리오 웹사이트로 변환하고 배포하는 과정, 여러 AI 생성 청크를 일관된 비디오 콘텐츠로 조합하는 과정이 보여졌습니다.\n",
+  "keywords": [
+    "AI", "머신러닝", "Gemini 3", "GPT-5.3", "트렌드"
+  ],
+  "articleBody": "2026년 2월, AI 업계는 모델 출시 경쟁에서 실제 비즈니스 가치 창출로 무게 중심이 이동하는 중요한 전환점을 맞이하고 있습니다. 이번 글에서는 이번 주 가장 주목할 만한 소식들을 정리합니다.\n🚀 Google Gemini 3 출시 — 에이전트 시대의 본격 개막 2월 5일, Google은 차세대 플래그십 모델 Gemini 3를 공개했습니다. Agent Factory 이벤트에서 시연된 이 모델은 단순한 텍스트 생성을 넘어 복잡한 에이전틱 워크플로우를 오케스트레이션할 수 있도록 설계되었습니다.\n특히 주목할 점은 Gemini CLI(Command Line Interface)의 등장입니다. 개발자들이 터미널에서 직접 Gemini 모델과 상호작용할 수 있으며, 파이프와 체이닝을 통해 복잡한 인프라 없이도 경량 ‘AI 워커’를 구축할 수 있습니다. 시연에서는 LinkedIn 프로필을 포트폴리오 웹사이트로 변환하고 배포하는 과정, 여러 AI 생성 청크를 일관된 비디오 콘텐츠로 조합하는 과정이 보여졌습니다.\n실무적 시사점: 에이전트 기반 개발이 프레임워크 수준에서 모델 네이티브 수준으로 올라오고 있습니다. LangChain 같은 외부 오케스트레이션 도구의 역할이 재정의될 수 있습니다.\n🧑‍💻 OpenAI GPT-5.3-Codex — 자기 개선하는 코딩 AI OpenAI는 소프트웨어 개발 특화 모델 GPT-5.3-Codex를 발표했습니다. 코드 생성뿐 아니라 배포, 테스트, 문서화, 심지어 프레젠테이션과 스프레드시트 작성까지 처리합니다.\n가장 흥미로운 점은 학습 과정에서 스스로를 개선했다는 주장입니다. 멀티스텝 프로세스에서의 컨텍스트 유지 능력이 크게 향상되었으며, 이는 실제 엔터프라이즈 소프트웨어 개발 파이프라인에 AI를 통합하려는 기업들에게 큰 의미가 있습니다.\n📊 Google, AI 리더십 탈환 Reuters 보도에 따르면, Alphabet은 OpenAI를 제치고 AI 분야 리더십을 되찾고 있습니다. 1년 전만 해도 경쟁에서 뒤처진다는 평가를 받았지만, 공격적인 투자와 제품 출시로 월가의 인식이 완전히 바뀌었습니다. AI 예측 시장에서도 Google이 2월 말 기준 최고 모델 보유 확률 **92%**로 압도적 1위를 기록하고 있습니다.\n🤖 AI 봇 트래픽, 인간 웹 방문에 근접 The Register의 보도에 따르면 AI 봇 트래픽이 인간의 웹 방문 수에 근접하고 있습니다. 이는 웹 생태계의 근본적인 변화를 의미하며, robots.txt 정책, API 우선 설계, 콘텐츠 보호 전략의 중요성이 더욱 커지고 있습니다.\n🔮 핵심 트렌드 요약 트렌드 의미 에이전틱 AI 단일 모델 → 멀티 에이전트 오케스트레이션 수익화 전환 벤치마크 경쟁 → 실제 비즈니스 모델 구축 추론 모델 성숙 속도를 희생하고 정확도를 높이는 전략 효율성 혁신 GPT-4급 성능을 극적으로 낮은 비용으로 2026년 AI 산업의 키워드는 **“배포와 수익화”**입니다. 모델 자체의 능력은 이미 충분하고, 이제는 이를 어떻게 현실 세계에 안정적으로 적용하고 돈을 벌 수 있는지가 핵심 경쟁력이 되고 있습니다.\n",
+  "wordCount" : "333",
+  "inLanguage": "en",
+  "datePublished": "2026-02-09T23:00:00+09:00",
+  "dateModified": "2026-02-09T23:00:00+09:00",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://kwbaek.github.io/posts/2026-02-09-ai-ml-trends-feb-2026/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Kyungwook's Devlog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://kwbaek.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://kwbaek.github.io/" accesskey="h" title="Kyungwook&#39;s Devlog (Alt + H)">Kyungwook&#39;s Devlog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://kwbaek.github.io/categories/" title="categories">
+                    <span>categories</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kwbaek.github.io/tags/" title="tags">
+                    <span>tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kwbaek.github.io/" title="Kyungwook&#39;s Devlog">
+                    <span>Kyungwook&#39;s Devlog</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      2026년 2월 AI/ML 트렌드: Gemini 3 출시, GPT-5.3-Codex, 그리고 AI 산업의 전환점
+    </h1>
+    <div class="post-meta"><span title='2026-02-09 23:00:00 +0900 KST'>February 9, 2026</span>
+
+</div>
+  </header> 
+  <div class="post-content"><p>2026년 2월, AI 업계는 모델 출시 경쟁에서 <strong>실제 비즈니스 가치 창출</strong>로 무게 중심이 이동하는 중요한 전환점을 맞이하고 있습니다. 이번 글에서는 이번 주 가장 주목할 만한 소식들을 정리합니다.</p>
+<h2 id="-google-gemini-3-출시--에이전트-시대의-본격-개막">🚀 Google Gemini 3 출시 — 에이전트 시대의 본격 개막<a hidden class="anchor" aria-hidden="true" href="#-google-gemini-3-출시--에이전트-시대의-본격-개막">#</a></h2>
+<p>2월 5일, Google은 차세대 플래그십 모델 <strong>Gemini 3</strong>를 공개했습니다. Agent Factory 이벤트에서 시연된 이 모델은 단순한 텍스트 생성을 넘어 <strong>복잡한 에이전틱 워크플로우</strong>를 오케스트레이션할 수 있도록 설계되었습니다.</p>
+<p>특히 주목할 점은 <strong>Gemini CLI</strong>(Command Line Interface)의 등장입니다. 개발자들이 터미널에서 직접 Gemini 모델과 상호작용할 수 있으며, 파이프와 체이닝을 통해 복잡한 인프라 없이도 경량 &lsquo;AI 워커&rsquo;를 구축할 수 있습니다. 시연에서는 LinkedIn 프로필을 포트폴리오 웹사이트로 변환하고 배포하는 과정, 여러 AI 생성 청크를 일관된 비디오 콘텐츠로 조합하는 과정이 보여졌습니다.</p>
+<p><strong>실무적 시사점:</strong> 에이전트 기반 개발이 프레임워크 수준에서 모델 네이티브 수준으로 올라오고 있습니다. LangChain 같은 외부 오케스트레이션 도구의 역할이 재정의될 수 있습니다.</p>
+<h2 id="-openai-gpt-53-codex--자기-개선하는-코딩-ai">🧑‍💻 OpenAI GPT-5.3-Codex — 자기 개선하는 코딩 AI<a hidden class="anchor" aria-hidden="true" href="#-openai-gpt-53-codex--자기-개선하는-코딩-ai">#</a></h2>
+<p>OpenAI는 소프트웨어 개발 특화 모델 <strong>GPT-5.3-Codex</strong>를 발표했습니다. 코드 생성뿐 아니라 배포, 테스트, 문서화, 심지어 프레젠테이션과 스프레드시트 작성까지 처리합니다.</p>
+<p>가장 흥미로운 점은 <strong>학습 과정에서 스스로를 개선했다</strong>는 주장입니다. 멀티스텝 프로세스에서의 컨텍스트 유지 능력이 크게 향상되었으며, 이는 실제 엔터프라이즈 소프트웨어 개발 파이프라인에 AI를 통합하려는 기업들에게 큰 의미가 있습니다.</p>
+<h2 id="-google-ai-리더십-탈환">📊 Google, AI 리더십 탈환<a hidden class="anchor" aria-hidden="true" href="#-google-ai-리더십-탈환">#</a></h2>
+<p>Reuters 보도에 따르면, Alphabet은 OpenAI를 제치고 <strong>AI 분야 리더십</strong>을 되찾고 있습니다. 1년 전만 해도 경쟁에서 뒤처진다는 평가를 받았지만, 공격적인 투자와 제품 출시로 월가의 인식이 완전히 바뀌었습니다. AI 예측 시장에서도 Google이 2월 말 기준 최고 모델 보유 확률 **92%**로 압도적 1위를 기록하고 있습니다.</p>
+<h2 id="-ai-봇-트래픽-인간-웹-방문에-근접">🤖 AI 봇 트래픽, 인간 웹 방문에 근접<a hidden class="anchor" aria-hidden="true" href="#-ai-봇-트래픽-인간-웹-방문에-근접">#</a></h2>
+<p>The Register의 보도에 따르면 AI 봇 트래픽이 인간의 웹 방문 수에 <strong>근접</strong>하고 있습니다. 이는 웹 생태계의 근본적인 변화를 의미하며, robots.txt 정책, API 우선 설계, 콘텐츠 보호 전략의 중요성이 더욱 커지고 있습니다.</p>
+<h2 id="-핵심-트렌드-요약">🔮 핵심 트렌드 요약<a hidden class="anchor" aria-hidden="true" href="#-핵심-트렌드-요약">#</a></h2>
+<table>
+  <thead>
+      <tr>
+          <th>트렌드</th>
+          <th>의미</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>에이전틱 AI</td>
+          <td>단일 모델 → 멀티 에이전트 오케스트레이션</td>
+      </tr>
+      <tr>
+          <td>수익화 전환</td>
+          <td>벤치마크 경쟁 → 실제 비즈니스 모델 구축</td>
+      </tr>
+      <tr>
+          <td>추론 모델 성숙</td>
+          <td>속도를 희생하고 정확도를 높이는 전략</td>
+      </tr>
+      <tr>
+          <td>효율성 혁신</td>
+          <td>GPT-4급 성능을 극적으로 낮은 비용으로</td>
+      </tr>
+  </tbody>
+</table>
+<p>2026년 AI 산업의 키워드는 **&ldquo;배포와 수익화&rdquo;**입니다. 모델 자체의 능력은 이미 충분하고, 이제는 이를 어떻게 현실 세계에 안정적으로 적용하고 돈을 벌 수 있는지가 핵심 경쟁력이 되고 있습니다.</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://kwbaek.github.io/tags/ai/">AI</a></li>
+      <li><a href="https://kwbaek.github.io/tags/%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D/">머신러닝</a></li>
+      <li><a href="https://kwbaek.github.io/tags/gemini-3/">Gemini 3</a></li>
+      <li><a href="https://kwbaek.github.io/tags/gpt-5.3/">GPT-5.3</a></li>
+      <li><a href="https://kwbaek.github.io/tags/%ED%8A%B8%EB%A0%8C%EB%93%9C/">트렌드</a></li>
+    </ul>
+  </footer><script src="https://utteranc.es/client.js"
+        repo="kwbaek/blog-comments"
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://kwbaek.github.io/">Kyungwook&#39;s Devlog</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

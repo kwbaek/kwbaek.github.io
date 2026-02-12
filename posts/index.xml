@@ -1,38 +1,74 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Posts on Kyungwook's Devlog</title><link>https://kwbaek.github.io/posts/</link><description>Recent content in Posts on Kyungwook's Devlog</description><generator>Hugo -- 0.155.3</generator><language>ko-kr</language><lastBuildDate>Wed, 11 Feb 2026 21:00:00 +0900</lastBuildDate><atom:link href="https://kwbaek.github.io/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>2026년 2월 AI/ML 트렌드: AI가 AI를 만들고, AI가 거짓말을 탐지하다</title><link>https://kwbaek.github.io/posts/2026-02-11-ai-ml-trends-feb-2026/</link><pubDate>Wed, 11 Feb 2026 21:00:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-02-11-ai-ml-trends-feb-2026/</guid><description>&lt;p&gt;2026년 2월 첫째 주는 AI 업계에 정말 많은 일이 있었습니다. NVIDIA는 AI 에이전트가 만든 딥러닝 런타임을 공개했고, Microsoft는 AI 모델이 거짓말을 숨기는 방법을 탐지하는 혁신적인 기술을 발표했습니다. 이번 주 가장 흥미로운 AI/ML 트렌드를 정리해봤습니다.&lt;/p&gt;
-&lt;h2 id="1-nvidia-vibetensor-ai가-만든-딥러닝-시스템"&gt;1. NVIDIA VibeTensor: AI가 만든 딥러닝 시스템&lt;/h2&gt;
-&lt;p&gt;&lt;img alt="VibeTensor" loading="lazy" src="https://www.marktechpost.com/wp-content/uploads/2026/02/blog-banner23-10.png"&gt;&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Posts on Kyungwook&#39;s Devlog</title>
+    <link>https://kwbaek.github.io/posts/</link>
+    <description>Recent content in Posts on Kyungwook&#39;s Devlog</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Wed, 11 Feb 2026 21:00:00 +0900</lastBuildDate>
+    <atom:link href="https://kwbaek.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>2026년 2월 AI/ML 트렌드: AI가 AI를 만들고, AI가 거짓말을 탐지하다</title>
+      <link>https://kwbaek.github.io/posts/2026-02-11-ai-ml-trends-feb-2026/</link>
+      <pubDate>Wed, 11 Feb 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-02-11-ai-ml-trends-feb-2026/</guid>
+      <description>&lt;p&gt;2026년 2월 첫째 주는 AI 업계에 정말 많은 일이 있었습니다. NVIDIA는 AI 에이전트가 만든 딥러닝 런타임을 공개했고, Microsoft는 AI 모델이 거짓말을 숨기는 방법을 탐지하는 혁신적인 기술을 발표했습니다. 이번 주 가장 흥미로운 AI/ML 트렌드를 정리해봤습니다.&lt;/p&gt;
+&lt;h2 id=&#34;1-nvidia-vibetensor-ai가-만든-딥러닝-시스템&#34;&gt;1. NVIDIA VibeTensor: AI가 만든 딥러닝 시스템&lt;/h2&gt;
+&lt;p&gt;&lt;img alt=&#34;VibeTensor&#34; loading=&#34;lazy&#34; src=&#34;https://www.marktechpost.com/wp-content/uploads/2026/02/blog-banner23-10.png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;NVIDIA가 공개한 &lt;strong&gt;VibeTensor&lt;/strong&gt;는 매우 독특한 프로젝트입니다. 이 딥러닝 런타임은 &lt;strong&gt;사람이 아닌 AI 코딩 에이전트가 처음부터 끝까지 프로그래밍으로 생성&lt;/strong&gt;했습니다.&lt;/p&gt;
-&lt;h3 id="핵심-특징"&gt;핵심 특징&lt;/h3&gt;
+&lt;h3 id=&#34;핵심-특징&#34;&gt;핵심 특징&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;완전 자동 생성&lt;/strong&gt;: LLM 기반 코딩 에이전트가 고수준 인간 가이드만으로 전체 소프트웨어 스택을 작성&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;PyTorch 스타일&lt;/strong&gt;: 기존 딥러닝 프레임워크와 유사한 인터페이스&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;CUDA 기반&lt;/strong&gt;: NVIDIA GPU 최적화&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;오픈소스&lt;/strong&gt;: Apache 2.0 라이선스로 공개&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;이것이 의미하는 바는 명확합니다. &lt;strong&gt;AI가 AI를 만드는 시대&lt;/strong&gt;가 본격적으로 시작되었습니다. 물론 아직은 연구 단계이지만, 앞으로 소프트웨어 개발 방식에 큰 변화를 가져올 것으로 보입니다.&lt;/p&gt;</description></item><item><title>OpenClaw 크론으로 블로그 자동 포스팅하기: AI 비서가 매일 글을 써준다</title><link>https://kwbaek.github.io/posts/2026-02-11-openclaw-cron-automation/</link><pubDate>Wed, 11 Feb 2026 21:00:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-02-11-openclaw-cron-automation/</guid><description>&lt;p&gt;매일 블로그 글을 쓰는 것은 쉽지 않은 일입니다. 하지만 &lt;strong&gt;OpenClaw의 크론 작업&lt;/strong&gt;을 활용하면, AI 에이전트가 자동으로 콘텐츠를 수집하고 정리해서 블로그 글을 작성할 수 있습니다. 이 글에서는 제가 실제로 사용하고 있는 자동 블로그 포스팅 시스템을 소개합니다.&lt;/p&gt;
-&lt;h2 id="왜-크론을-사용하는가"&gt;왜 크론을 사용하는가?&lt;/h2&gt;
+&lt;p&gt;이것이 의미하는 바는 명확합니다. &lt;strong&gt;AI가 AI를 만드는 시대&lt;/strong&gt;가 본격적으로 시작되었습니다. 물론 아직은 연구 단계이지만, 앞으로 소프트웨어 개발 방식에 큰 변화를 가져올 것으로 보입니다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>OpenClaw 크론으로 블로그 자동 포스팅하기: AI 비서가 매일 글을 써준다</title>
+      <link>https://kwbaek.github.io/posts/2026-02-11-openclaw-cron-automation/</link>
+      <pubDate>Wed, 11 Feb 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-02-11-openclaw-cron-automation/</guid>
+      <description>&lt;p&gt;매일 블로그 글을 쓰는 것은 쉽지 않은 일입니다. 하지만 &lt;strong&gt;OpenClaw의 크론 작업&lt;/strong&gt;을 활용하면, AI 에이전트가 자동으로 콘텐츠를 수집하고 정리해서 블로그 글을 작성할 수 있습니다. 이 글에서는 제가 실제로 사용하고 있는 자동 블로그 포스팅 시스템을 소개합니다.&lt;/p&gt;
+&lt;h2 id=&#34;왜-크론을-사용하는가&#34;&gt;왜 크론을 사용하는가?&lt;/h2&gt;
 &lt;p&gt;OpenClaw에는 두 가지 자동화 방식이 있습니다:&lt;/p&gt;
-&lt;h3 id="1-heartbeat-심장박동"&gt;1. Heartbeat (심장박동)&lt;/h3&gt;
+&lt;h3 id=&#34;1-heartbeat-심장박동&#34;&gt;1. Heartbeat (심장박동)&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;타이밍&lt;/strong&gt;: 대략 30분마다, 약간의 편차 있음&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;용도&lt;/strong&gt;: 여러 체크를 배치 처리 (이메일+캘린더+알림 등)&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;컨텍스트&lt;/strong&gt;: 최근 대화 내역 접근 가능&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;적합한 경우&lt;/strong&gt;: 정확한 시간이 중요하지 않을 때, 대화형 컨텍스트가 필요할 때&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id="2-cron-크론"&gt;2. Cron (크론)&lt;/h3&gt;
+&lt;h3 id=&#34;2-cron-크론&#34;&gt;2. Cron (크론)&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;타이밍&lt;/strong&gt;: 정확한 스케줄 (예: 매일 오후 9시)&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;용도&lt;/strong&gt;: 독립적인 작업 실행&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;격리&lt;/strong&gt;: 메인 세션과 분리된 독립 세션&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;적합한 경우&lt;/strong&gt;: 정확한 시간이 중요할 때, 독립적인 작업일 때&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;저는 &lt;strong&gt;매일 정해진 시간에 블로그 글을 작성하고 배포&lt;/strong&gt;해야 하기 때문에 크론을 선택했습니다.&lt;/p&gt;</description></item><item><title>AI 에이전트가 시스템을 만드는 시대: NVIDIA VibeTensor와 자기 학습의 진화</title><link>https://kwbaek.github.io/posts/2026-02-10-ai-agents-building-systems/</link><pubDate>Tue, 10 Feb 2026 21:00:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-02-10-ai-agents-building-systems/</guid><description>&lt;h2 id="ai가-ai를-만든다"&gt;AI가 AI를 만든다&lt;/h2&gt;
-&lt;p&gt;2026년 2월, NVIDIA가 공개한 &lt;a href="https://www.marktechpost.com/2026/02/04/nvidia-ai-release-vibetensor-an-ai-generated-deep-learning-runtime-built-end-to-end-by-coding-agents-programmatically/"&gt;VibeTensor&lt;/a&gt;는 AI 개발의 새로운 패러다임을 제시합니다. 이 프로젝트의 핵심은 &lt;strong&gt;LLM 기반 코딩 에이전트가 전체 딥러닝 런타임 스택을 프로그래밍 방식으로 생성&lt;/strong&gt;했다는 점입니다.&lt;/p&gt;
+&lt;p&gt;저는 &lt;strong&gt;매일 정해진 시간에 블로그 글을 작성하고 배포&lt;/strong&gt;해야 하기 때문에 크론을 선택했습니다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>AI 에이전트가 시스템을 만드는 시대: NVIDIA VibeTensor와 자기 학습의 진화</title>
+      <link>https://kwbaek.github.io/posts/2026-02-10-ai-agents-building-systems/</link>
+      <pubDate>Tue, 10 Feb 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-02-10-ai-agents-building-systems/</guid>
+      <description>&lt;h2 id=&#34;ai가-ai를-만든다&#34;&gt;AI가 AI를 만든다&lt;/h2&gt;
+&lt;p&gt;2026년 2월, NVIDIA가 공개한 &lt;a href=&#34;https://www.marktechpost.com/2026/02/04/nvidia-ai-release-vibetensor-an-ai-generated-deep-learning-runtime-built-end-to-end-by-coding-agents-programmatically/&#34;&gt;VibeTensor&lt;/a&gt;는 AI 개발의 새로운 패러다임을 제시합니다. 이 프로젝트의 핵심은 &lt;strong&gt;LLM 기반 코딩 에이전트가 전체 딥러닝 런타임 스택을 프로그래밍 방식으로 생성&lt;/strong&gt;했다는 점입니다.&lt;/p&gt;
 &lt;p&gt;사람이 작성한 것은 high-level 가이드뿐. 나머지 시스템 소프트웨어는 AI 에이전트가 직접 작성했습니다. 이는 단순히 &amp;ldquo;코드 자동 생성&amp;quot;을 넘어, &lt;strong&gt;AI가 복잡한 시스템 아키텍처를 이해하고 구현할 수 있는 수준&lt;/strong&gt;에 도달했음을 의미합니다.&lt;/p&gt;
-&lt;h3 id="자기-대화mumbling로-학습하는-ai"&gt;자기 대화(Mumbling)로 학습하는 AI&lt;/h3&gt;
-&lt;p&gt;더 흥미로운 것은 AI의 학습 방식 자체도 진화하고 있다는 점입니다. 최근 연구(1월 28일 발표)에 따르면, &lt;strong&gt;AI가 내부적으로 &amp;ldquo;중얼거리는(mumbling)&amp;rdquo; 행위와 단기 메모리를 결합&lt;/strong&gt;하면 새로운 작업 적응, 목표 전환, 복잡한 과제 처리가 더 쉬워진다고 합니다.&lt;/p&gt;</description></item><item><title>OpenClaw Heartbeat 활용법: AI가 알아서 챙겨주는 똑똑한 비서 만들기</title><link>https://kwbaek.github.io/posts/2026-02-10-openclaw-heartbeat-guide/</link><pubDate>Tue, 10 Feb 2026 21:00:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-02-10-openclaw-heartbeat-guide/</guid><description>&lt;h2 id="ai-비서가-내-일을-알아서-챙긴다면"&gt;AI 비서가 내 일을 알아서 챙긴다면?&lt;/h2&gt;
+&lt;h3 id=&#34;자기-대화mumbling로-학습하는-ai&#34;&gt;자기 대화(Mumbling)로 학습하는 AI&lt;/h3&gt;
+&lt;p&gt;더 흥미로운 것은 AI의 학습 방식 자체도 진화하고 있다는 점입니다. 최근 연구(1월 28일 발표)에 따르면, &lt;strong&gt;AI가 내부적으로 &amp;ldquo;중얼거리는(mumbling)&amp;rdquo; 행위와 단기 메모리를 결합&lt;/strong&gt;하면 새로운 작업 적응, 목표 전환, 복잡한 과제 처리가 더 쉬워진다고 합니다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>OpenClaw Heartbeat 활용법: AI가 알아서 챙겨주는 똑똑한 비서 만들기</title>
+      <link>https://kwbaek.github.io/posts/2026-02-10-openclaw-heartbeat-guide/</link>
+      <pubDate>Tue, 10 Feb 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-02-10-openclaw-heartbeat-guide/</guid>
+      <description>&lt;h2 id=&#34;ai-비서가-내-일을-알아서-챙긴다면&#34;&gt;AI 비서가 내 일을 알아서 챙긴다면?&lt;/h2&gt;
 &lt;p&gt;OpenClaw의 &lt;strong&gt;Heartbeat&lt;/strong&gt; 기능을 제대로 활용하면, AI 비서가 단순한 대화 상대를 넘어 &lt;strong&gt;진짜 일을 대신 처리해주는 존재&lt;/strong&gt;로 진화합니다. 이 글에서는 Heartbeat를 실전에서 어떻게 활용할 수 있는지 소개합니다.&lt;/p&gt;
-&lt;h2 id="heartbeat란"&gt;Heartbeat란?&lt;/h2&gt;
+&lt;h2 id=&#34;heartbeat란&#34;&gt;Heartbeat란?&lt;/h2&gt;
 &lt;p&gt;Heartbeat는 &lt;strong&gt;주기적으로 AI가 깨어나 체크리스트를 수행하는 기능&lt;/strong&gt;입니다. 사용자가 명령을 내리지 않아도, AI가 스스로 필요한 작업을 확인하고 보고합니다.&lt;/p&gt;
 &lt;p&gt;기본 동작 방식:&lt;/p&gt;
 &lt;ul&gt;
@@ -41,23 +77,44 @@
 &lt;li&gt;특별한 일이 없으면 &lt;code&gt;HEARTBEAT_OK&lt;/code&gt; 응답으로 조용히 넘어감&lt;/li&gt;
 &lt;li&gt;중요한 사항이 있으면 사용자에게 알림&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id="실전-활용-예시"&gt;실전 활용 예시&lt;/h2&gt;
-&lt;h3 id="1-이메일-모니터링"&gt;1. 이메일 모니터링&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-markdown" data-lang="markdown"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;# HEARTBEAT.md
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;## 이메일 체크 (하루 3-4회)
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;-&lt;/span&gt; Gmail 미읽은 메일 확인
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;-&lt;/span&gt; &amp;#34;urgent&amp;#34;, &amp;#34;ASAP&amp;#34;, &amp;#34;중요&amp;#34; 키워드 포함 메일은 즉시 알림
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;-&lt;/span&gt; 그 외 메일은 요약 정리
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;AI가 알아서 inbox를 스캔하고, 급한 메일만 골라서 알려줍니다.&lt;/p&gt;</description></item><item><title>OpenClaw 실전 활용: 에이전틱 워크플로우로 블로그 자동화하기</title><link>https://kwbaek.github.io/posts/2026-02-09-openclaw-agentic-workflow-tips/</link><pubDate>Mon, 09 Feb 2026 23:15:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-02-09-openclaw-agentic-workflow-tips/</guid><description>&lt;p&gt;AI 에이전트가 단순한 챗봇을 넘어 실제 업무를 자동화하는 시대가 왔습니다. 이번 글에서는 제가 실제로 사용하고 있는 &lt;strong&gt;OpenClaw의 에이전틱 워크플로우&lt;/strong&gt;를 소개합니다. 이 블로그 포스트 자체가 OpenClaw가 자동으로 작성하고 배포한 결과물입니다.&lt;/p&gt;
-&lt;h2 id="openclaw란"&gt;OpenClaw란?&lt;/h2&gt;
+&lt;h2 id=&#34;실전-활용-예시&#34;&gt;실전 활용 예시&lt;/h2&gt;
+&lt;h3 id=&#34;1-이메일-모니터링&#34;&gt;1. 이메일 모니터링&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;# HEARTBEAT.md
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;## 이메일 체크 (하루 3-4회)
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;-&lt;/span&gt; Gmail 미읽은 메일 확인
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;-&lt;/span&gt; &amp;#34;urgent&amp;#34;, &amp;#34;ASAP&amp;#34;, &amp;#34;중요&amp;#34; 키워드 포함 메일은 즉시 알림
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;-&lt;/span&gt; 그 외 메일은 요약 정리
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;AI가 알아서 inbox를 스캔하고, 급한 메일만 골라서 알려줍니다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>OpenClaw 실전 활용: 에이전틱 워크플로우로 블로그 자동화하기</title>
+      <link>https://kwbaek.github.io/posts/2026-02-09-openclaw-agentic-workflow-tips/</link>
+      <pubDate>Mon, 09 Feb 2026 23:15:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-02-09-openclaw-agentic-workflow-tips/</guid>
+      <description>&lt;p&gt;AI 에이전트가 단순한 챗봇을 넘어 실제 업무를 자동화하는 시대가 왔습니다. 이번 글에서는 제가 실제로 사용하고 있는 &lt;strong&gt;OpenClaw의 에이전틱 워크플로우&lt;/strong&gt;를 소개합니다. 이 블로그 포스트 자체가 OpenClaw가 자동으로 작성하고 배포한 결과물입니다.&lt;/p&gt;
+&lt;h2 id=&#34;openclaw란&#34;&gt;OpenClaw란?&lt;/h2&gt;
 &lt;p&gt;OpenClaw는 개인용 AI 비서 프레임워크입니다. 단순 대화를 넘어 &lt;strong&gt;파일 시스템 접근, 웹 검색, Git 작업, 크론 작업, 브라우저 제어&lt;/strong&gt; 등 실제 도구를 사용할 수 있는 에이전트를 실행할 수 있습니다. 텔레그램, 디스코드 등 메신저와 연동해 어디서든 에이전트와 소통할 수 있죠.&lt;/p&gt;
-&lt;h2 id="자동-블로그-포스팅-워크플로우"&gt;자동 블로그 포스팅 워크플로우&lt;/h2&gt;
-&lt;p&gt;현재 제 블로그는 다음과 같은 자동화 파이프라인으로 운영됩니다:&lt;/p&gt;</description></item><item><title>2026년 2월 AI/ML 트렌드: Gemini 3 출시, GPT-5.3-Codex, 그리고 AI 산업의 전환점</title><link>https://kwbaek.github.io/posts/2026-02-09-ai-ml-trends-feb-2026/</link><pubDate>Mon, 09 Feb 2026 23:00:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-02-09-ai-ml-trends-feb-2026/</guid><description>&lt;p&gt;2026년 2월, AI 업계는 모델 출시 경쟁에서 &lt;strong&gt;실제 비즈니스 가치 창출&lt;/strong&gt;로 무게 중심이 이동하는 중요한 전환점을 맞이하고 있습니다. 이번 글에서는 이번 주 가장 주목할 만한 소식들을 정리합니다.&lt;/p&gt;
-&lt;h2 id="-google-gemini-3-출시--에이전트-시대의-본격-개막"&gt;🚀 Google Gemini 3 출시 — 에이전트 시대의 본격 개막&lt;/h2&gt;
+&lt;h2 id=&#34;자동-블로그-포스팅-워크플로우&#34;&gt;자동 블로그 포스팅 워크플로우&lt;/h2&gt;
+&lt;p&gt;현재 제 블로그는 다음과 같은 자동화 파이프라인으로 운영됩니다:&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>2026년 2월 AI/ML 트렌드: Gemini 3 출시, GPT-5.3-Codex, 그리고 AI 산업의 전환점</title>
+      <link>https://kwbaek.github.io/posts/2026-02-09-ai-ml-trends-feb-2026/</link>
+      <pubDate>Mon, 09 Feb 2026 23:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-02-09-ai-ml-trends-feb-2026/</guid>
+      <description>&lt;p&gt;2026년 2월, AI 업계는 모델 출시 경쟁에서 &lt;strong&gt;실제 비즈니스 가치 창출&lt;/strong&gt;로 무게 중심이 이동하는 중요한 전환점을 맞이하고 있습니다. 이번 글에서는 이번 주 가장 주목할 만한 소식들을 정리합니다.&lt;/p&gt;
+&lt;h2 id=&#34;-google-gemini-3-출시--에이전트-시대의-본격-개막&#34;&gt;🚀 Google Gemini 3 출시 — 에이전트 시대의 본격 개막&lt;/h2&gt;
 &lt;p&gt;2월 5일, Google은 차세대 플래그십 모델 &lt;strong&gt;Gemini 3&lt;/strong&gt;를 공개했습니다. Agent Factory 이벤트에서 시연된 이 모델은 단순한 텍스트 생성을 넘어 &lt;strong&gt;복잡한 에이전틱 워크플로우&lt;/strong&gt;를 오케스트레이션할 수 있도록 설계되었습니다.&lt;/p&gt;
-&lt;p&gt;특히 주목할 점은 &lt;strong&gt;Gemini CLI&lt;/strong&gt;(Command Line Interface)의 등장입니다. 개발자들이 터미널에서 직접 Gemini 모델과 상호작용할 수 있으며, 파이프와 체이닝을 통해 복잡한 인프라 없이도 경량 &amp;lsquo;AI 워커&amp;rsquo;를 구축할 수 있습니다. 시연에서는 LinkedIn 프로필을 포트폴리오 웹사이트로 변환하고 배포하는 과정, 여러 AI 생성 청크를 일관된 비디오 콘텐츠로 조합하는 과정이 보여졌습니다.&lt;/p&gt;</description></item><item><title>OpenClaw 서브에이전트로 반복 작업 자동화하기</title><link>https://kwbaek.github.io/posts/2026-02-09-openclaw-subagent-automation/</link><pubDate>Mon, 09 Feb 2026 23:00:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-02-09-openclaw-subagent-automation/</guid><description>&lt;p&gt;OpenClaw를 쓰면서 가장 생산성이 올라간 기능 중 하나가 바로 &lt;strong&gt;서브에이전트(Subagent)&lt;/strong&gt; 시스템입니다. 이 글에서는 서브에이전트가 무엇인지, 어떻게 활용하면 좋은지 실제 경험을 바탕으로 공유합니다.&lt;/p&gt;
-&lt;h2 id="서브에이전트란"&gt;서브에이전트란?&lt;/h2&gt;
+&lt;p&gt;특히 주목할 점은 &lt;strong&gt;Gemini CLI&lt;/strong&gt;(Command Line Interface)의 등장입니다. 개발자들이 터미널에서 직접 Gemini 모델과 상호작용할 수 있으며, 파이프와 체이닝을 통해 복잡한 인프라 없이도 경량 &amp;lsquo;AI 워커&amp;rsquo;를 구축할 수 있습니다. 시연에서는 LinkedIn 프로필을 포트폴리오 웹사이트로 변환하고 배포하는 과정, 여러 AI 생성 청크를 일관된 비디오 콘텐츠로 조합하는 과정이 보여졌습니다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>OpenClaw 서브에이전트로 반복 작업 자동화하기</title>
+      <link>https://kwbaek.github.io/posts/2026-02-09-openclaw-subagent-automation/</link>
+      <pubDate>Mon, 09 Feb 2026 23:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-02-09-openclaw-subagent-automation/</guid>
+      <description>&lt;p&gt;OpenClaw를 쓰면서 가장 생산성이 올라간 기능 중 하나가 바로 &lt;strong&gt;서브에이전트(Subagent)&lt;/strong&gt; 시스템입니다. 이 글에서는 서브에이전트가 무엇인지, 어떻게 활용하면 좋은지 실제 경험을 바탕으로 공유합니다.&lt;/p&gt;
+&lt;h2 id=&#34;서브에이전트란&#34;&gt;서브에이전트란?&lt;/h2&gt;
 &lt;p&gt;서브에이전트는 메인 에이전트가 특정 작업을 위해 &lt;strong&gt;독립적으로 생성하는 하위 에이전트&lt;/strong&gt;입니다. 메인 에이전트와 별도의 세션에서 동작하며, 작업이 완료되면 결과를 메인 에이전트에게 보고합니다.&lt;/p&gt;
 &lt;p&gt;핵심 특징:&lt;/p&gt;
 &lt;ul&gt;
@@ -65,64 +122,78 @@
 &lt;li&gt;&lt;strong&gt;작업 집중&lt;/strong&gt;: 할당된 작업만 수행하고 종료&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;병렬 처리&lt;/strong&gt;: 여러 서브에이전트를 동시에 띄울 수 있음&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id="실제-활용-사례-블로그-포스팅-자동화"&gt;실제 활용 사례: 블로그 포스팅 자동화&lt;/h2&gt;
-&lt;p&gt;이 블로그 포스트 자체가 서브에이전트로 작성되고 있습니다! 워크플로우는 다음과 같습니다:&lt;/p&gt;</description></item><item><title>Install Kubeflow 15 16</title><link>https://kwbaek.github.io/posts/install-kubeflow-15-16/</link><pubDate>Thu, 09 Feb 2023 16:11:40 +0900</pubDate><guid>https://kwbaek.github.io/posts/install-kubeflow-15-16/</guid><description>&lt;p&gt;기&lt;/p&gt;
-&lt;h1 id="kubeflow-16-설치하기"&gt;kubeflow 16 설치하기&lt;/h1&gt;
-&lt;h2 id="개요"&gt;개요&lt;/h2&gt;
+&lt;h2 id=&#34;실제-활용-사례-블로그-포스팅-자동화&#34;&gt;실제 활용 사례: 블로그 포스팅 자동화&lt;/h2&gt;
+&lt;p&gt;이 블로그 포스트 자체가 서브에이전트로 작성되고 있습니다! 워크플로우는 다음과 같습니다:&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Install Kubeflow 15 16</title>
+      <link>https://kwbaek.github.io/posts/install-kubeflow-15-16/</link>
+      <pubDate>Thu, 09 Feb 2023 16:11:40 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/install-kubeflow-15-16/</guid>
+      <description>&lt;p&gt;기&lt;/p&gt;
+&lt;h1 id=&#34;kubeflow-16-설치하기&#34;&gt;kubeflow 16 설치하기&lt;/h1&gt;
+&lt;h2 id=&#34;개요&#34;&gt;개요&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;kubeflow 를 설치 시 쉽고 빠른 좋은 설치 방법이 있어 공유 합니다.&lt;/li&gt;
 &lt;li&gt;하기 참조 링크를 참고하여 kubeflow 설치 및 실행 방법에 대해 정리 한 문서 입니다.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id="설치전-기존-설치환경-초기화"&gt;설치전 기존 설치환경 초기화&lt;/h2&gt;
-&lt;h3 id="kubernetes-초기화"&gt;kubernetes 초기화&lt;/h3&gt;
+&lt;h2 id=&#34;설치전-기존-설치환경-초기화&#34;&gt;설치전 기존 설치환경 초기화&lt;/h2&gt;
+&lt;h3 id=&#34;kubernetes-초기화&#34;&gt;kubernetes 초기화&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;기존에 쿠버네티스가 설치되어 있으면 기존 쿠버네티스를 삭제 및 초기화 하여 새로운 설치를 시도 합니다.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id="실행-스크립트"&gt;실행 스크립트&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;## 쿠버네티스 초기화&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo kubeadm reset
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;y
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;## 쿠버네티스 &amp;amp;&amp;amp; 도커 기동 중지&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo systemctl stop kubelet
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo systemctl stop docker
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;## 쿠버네티스 네트워크 설정( Cluster Network Interface ) 삭제&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo ip link delete cni0
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo ip link delete flannel.1
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;## 쿠버네티스 관련 파일 삭제&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo rm -rf /var/lib/cni/
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo rm -rf /var/lib/kubelet/*
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo rm -rf /var/lib/etcd
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo rm -rf /run/flannel
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo rm -rf /etc/cni
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo rm -rf /etc/kubernetes
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo rm -rf ~/.kube
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;## 쿠버네티스 관련 패키지 삭제(Ubuntu)&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo apt-get purge kubeadm kubectl kubelet kubernetes-cni kube* -y
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo apt-get autoremove
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="docker-초기화"&gt;docker 초기화&lt;/h3&gt;
-&lt;h3 id="실행-스크립트-1"&gt;실행 스크립트&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo apt-get purge docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin docker-ce-rootless-extras
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo rm -rf /var/lib/docker
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo rm -rf /var/lib/containerd
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo apt-get purge nvidia-docker2
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo apt-get purge nvidia-container-toolkit
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo apt autoremove
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="kubeflow-설치"&gt;kubeflow 설치&lt;/h2&gt;
-&lt;h2 id="kubeflow-설치-스크립트-clone"&gt;kubeflow 설치 스크립트 clone&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;git clone https://github.com/myoh0623/kubeflow.git
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="1-install-cudnn"&gt;1. install cudnn&lt;/h2&gt;
-&lt;h3 id="실행-스크립트-2"&gt;실행 스크립트&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;cd kubeflow_tutorial/kubeflow/section1_install
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;./1_install_cudnn.sh
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;테스트 서버에 gpu 는 A100 이고 스크립트 에 있는 cuda 버전 이 낮아 최신 버전으로 변경하기 위해 다음과 같이 수정&lt;/p&gt;</description></item><item><title>Ubuntu Install Oh My Zsh</title><link>https://kwbaek.github.io/posts/ubuntu-install-oh-my-zsh/</link><pubDate>Mon, 06 Feb 2023 16:53:04 +0900</pubDate><guid>https://kwbaek.github.io/posts/ubuntu-install-oh-my-zsh/</guid><description>&lt;h1 id="ubuntu-에-oh-my-zsh-설치하기"&gt;Ubuntu 에 Oh My Zsh 설치하기&lt;/h1&gt;
-&lt;h2 id="설치전-요구사항"&gt;설치전 요구사항&lt;/h2&gt;
+&lt;h3 id=&#34;실행-스크립트&#34;&gt;실행 스크립트&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;## 쿠버네티스 초기화&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo kubeadm reset
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;y
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;## 쿠버네티스 &amp;amp;&amp;amp; 도커 기동 중지&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo systemctl stop kubelet
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo systemctl stop docker
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;## 쿠버네티스 네트워크 설정( Cluster Network Interface ) 삭제&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo ip link delete cni0
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo ip link delete flannel.1
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;## 쿠버네티스 관련 파일 삭제&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo rm -rf /var/lib/cni/
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo rm -rf /var/lib/kubelet/*
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo rm -rf /var/lib/etcd
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo rm -rf /run/flannel
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo rm -rf /etc/cni
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo rm -rf /etc/kubernetes
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo rm -rf ~/.kube
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;## 쿠버네티스 관련 패키지 삭제(Ubuntu)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo apt-get purge kubeadm kubectl kubelet kubernetes-cni kube* -y
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo apt-get autoremove
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;docker-초기화&#34;&gt;docker 초기화&lt;/h3&gt;
+&lt;h3 id=&#34;실행-스크립트-1&#34;&gt;실행 스크립트&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo apt-get purge docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin docker-ce-rootless-extras
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo rm -rf /var/lib/docker
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo rm -rf /var/lib/containerd
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo apt-get purge nvidia-docker2
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo apt-get purge nvidia-container-toolkit
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo apt autoremove
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;kubeflow-설치&#34;&gt;kubeflow 설치&lt;/h2&gt;
+&lt;h2 id=&#34;kubeflow-설치-스크립트-clone&#34;&gt;kubeflow 설치 스크립트 clone&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git clone https://github.com/myoh0623/kubeflow.git
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;1-install-cudnn&#34;&gt;1. install cudnn&lt;/h2&gt;
+&lt;h3 id=&#34;실행-스크립트-2&#34;&gt;실행 스크립트&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;cd kubeflow_tutorial/kubeflow/section1_install
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;./1_install_cudnn.sh
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;테스트 서버에 gpu 는 A100 이고 스크립트 에 있는 cuda 버전 이 낮아 최신 버전으로 변경하기 위해 다음과 같이 수정&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Ubuntu Install Oh My Zsh</title>
+      <link>https://kwbaek.github.io/posts/ubuntu-install-oh-my-zsh/</link>
+      <pubDate>Mon, 06 Feb 2023 16:53:04 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/ubuntu-install-oh-my-zsh/</guid>
+      <description>&lt;h1 id=&#34;ubuntu-에-oh-my-zsh-설치하기&#34;&gt;Ubuntu 에 Oh My Zsh 설치하기&lt;/h1&gt;
+&lt;h2 id=&#34;설치전-요구사항&#34;&gt;설치전 요구사항&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;zsh 설치 되어 있어야함 (V5.0.8 또는 그 이상)&lt;/p&gt;
@@ -135,25 +206,35 @@
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;설치 command&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;$ sudo apt install curl wget git
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ sudo apt install curl wget git
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;설치 결과 화면
-&lt;img alt="설치 결과 화면" loading="lazy" src="https://kwbaek.github.io/posts/ubuntu-install-oh-my-zsh/imgaes/1.zsh.png"&gt;&lt;/p&gt;
+&lt;img alt=&#34;설치 결과 화면&#34; loading=&#34;lazy&#34; src=&#34;https://kwbaek.github.io/posts/ubuntu-install-oh-my-zsh/imgaes/1.zsh.png&#34;&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;터미널 기본 셀 변경&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;chsh -s &lt;span style="color:#66d9ef"&gt;$(&lt;/span&gt;which zsh&lt;span style="color:#66d9ef"&gt;)&lt;/span&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;chsh -s &lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;which zsh&lt;span style=&#34;color:#66d9ef&#34;&gt;)&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;zsh 를 설치 후 chsh 명령어를 통해 기본 shell 을 변경&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;터미널을 재시작 하면 자동으로 zsh 설정 화면이 나오는데, 0을 입력해서 파일 생성만 한다.&lt;/p&gt;</description></item><item><title>처음 써보는 Github pages</title><link>https://kwbaek.github.io/posts/my-first-post/</link><pubDate>Thu, 30 Dec 2021 16:24:21 +0900</pubDate><guid>https://kwbaek.github.io/posts/my-first-post/</guid><description>&lt;h1 id="github-blog-시작"&gt;Github blog 시작&lt;/h1&gt;
+&lt;p&gt;터미널을 재시작 하면 자동으로 zsh 설정 화면이 나오는데, 0을 입력해서 파일 생성만 한다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>처음 써보는 Github pages</title>
+      <link>https://kwbaek.github.io/posts/my-first-post/</link>
+      <pubDate>Thu, 30 Dec 2021 16:24:21 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/my-first-post/</guid>
+      <description>&lt;h1 id=&#34;github-blog-시작&#34;&gt;Github blog 시작&lt;/h1&gt;
 &lt;ul&gt;
 &lt;li&gt;블로그를 tistory 에서 운영 중이지만 글을 올린지 십수년, 주로 코드 기억용으로 snippet 처럼 사용 했다.&lt;/li&gt;
 &lt;li&gt;그 이후에는 oneNote, evernote 를 거쳐 Notion 으로 개발 관련 내용을 관리하고 있다.&lt;/li&gt;
 &lt;li&gt;Github pages를 시작하게 된 계기는 지금 내가 하고 있는 것이 True인지 알고자 개발자 분들과 소통하기 위해!&lt;/li&gt;
-&lt;/ul&gt;</description></item></channel></rss>
+&lt;/ul&gt;</description>
+    </item>
+  </channel>
+</rss>
