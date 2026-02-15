@@ -1,26 +1,8 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
-  <channel>
-    <title>Discord on Kyungwook&#39;s Devlog</title>
-    <link>https://kwbaek.github.io/tags/discord/</link>
-    <description>Recent content in Discord on Kyungwook&#39;s Devlog</description>
-    <generator>Hugo -- 0.155.3</generator>
-    <language>ko-kr</language>
-    <lastBuildDate>Sat, 14 Feb 2026 21:00:00 +0900</lastBuildDate>
-    <atom:link href="https://kwbaek.github.io/tags/discord/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>OpenClaw로 AI 트렌드 자동 수집하기 - Camofox와 Discord 활용법</title>
-      <link>https://kwbaek.github.io/posts/2026-02-14-openclaw-ai-trends-automation/</link>
-      <pubDate>Sat, 14 Feb 2026 21:00:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/posts/2026-02-14-openclaw-ai-trends-automation/</guid>
-      <description>&lt;h2 id=&#34;-openclaw로-ai-트렌드-자동-수집-시스템-만들기&#34;&gt;🤖 OpenClaw로 AI 트렌드 자동 수집 시스템 만들기&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Discord on Kyungwook's Devlog</title><link>https://kwbaek.github.io/tags/discord/</link><description>Recent content in Discord on Kyungwook's Devlog</description><generator>Hugo -- 0.155.3</generator><language>ko-kr</language><lastBuildDate>Sat, 14 Feb 2026 21:00:00 +0900</lastBuildDate><atom:link href="https://kwbaek.github.io/tags/discord/index.xml" rel="self" type="application/rss+xml"/><item><title>OpenClaw로 AI 트렌드 자동 수집하기 - Camofox와 Discord 활용법</title><link>https://kwbaek.github.io/posts/2026-02-14-openclaw-ai-trends-automation/</link><pubDate>Sat, 14 Feb 2026 21:00:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-02-14-openclaw-ai-trends-automation/</guid><description>&lt;h2 id="-openclaw로-ai-트렌드-자동-수집-시스템-만들기"&gt;🤖 OpenClaw로 AI 트렌드 자동 수집 시스템 만들기&lt;/h2&gt;
 &lt;p&gt;매일 쏟아지는 AI/ML 트렌드를 놓치지 않으려면 어떻게 해야 할까요? 저는 &lt;strong&gt;OpenClaw&lt;/strong&gt;를 이용해 1시간마다 자동으로 트렌드를 수집하고, Discord 채널에 정리해서 받아보는 시스템을 만들었습니다.&lt;/p&gt;
 &lt;p&gt;오늘은 이 시스템을 어떻게 구축했는지 공유해드릴게요!&lt;/p&gt;
-&lt;h2 id=&#34;-시스템-구성&#34;&gt;🛠️ 시스템 구성&lt;/h2&gt;
+&lt;h2 id="-시스템-구성"&gt;🛠️ 시스템 구성&lt;/h2&gt;
 &lt;p&gt;저의 AI 트렌드 자동 수집 시스템은 다음과 같이 구성되어 있습니다:&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;[Camofox Browser] → [Google Search] → [OpenClaw Agent] → [Discord #ai-ml-trends]
-&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;1-camofox-안티디텍션-브라우저&#34;&gt;1. Camofox: 안티디텍션 브라우저&lt;/h3&gt;
-&lt;p&gt;OpenClaw의 &lt;strong&gt;Camofox 플러그인&lt;/strong&gt;을 사용하면 봇 탐지를 우회하며 Google 검색을 자동화할 수 있습니다. Chrome이나 일반 브라우저는 Google에서 봇으로 인식되기 쉬운데, Camofox는 이를 우아하게 해결해줍니다.&lt;/p&gt;</description>
-    </item>
-  </channel>
-</rss>
+&lt;pre tabindex="0"&gt;&lt;code&gt;[Camofox Browser] → [Google Search] → [OpenClaw Agent] → [Discord #ai-ml-trends]
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id="1-camofox-안티디텍션-브라우저"&gt;1. Camofox: 안티디텍션 브라우저&lt;/h3&gt;
+&lt;p&gt;OpenClaw의 &lt;strong&gt;Camofox 플러그인&lt;/strong&gt;을 사용하면 봇 탐지를 우회하며 Google 검색을 자동화할 수 있습니다. Chrome이나 일반 브라우저는 Google에서 봇으로 인식되기 쉬운데, Camofox는 이를 우아하게 해결해줍니다.&lt;/p&gt;</description></item></channel></rss>

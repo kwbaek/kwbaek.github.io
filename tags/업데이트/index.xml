@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>업데이트 on Kyungwook's Devlog</title><link>https://kwbaek.github.io/tags/%EC%97%85%EB%8D%B0%EC%9D%B4%ED%8A%B8/</link><description>Recent content in 업데이트 on Kyungwook's Devlog</description><generator>Hugo -- 0.155.3</generator><language>ko-kr</language><lastBuildDate>Sun, 15 Feb 2026 21:00:00 +0900</lastBuildDate><atom:link href="https://kwbaek.github.io/tags/%EC%97%85%EB%8D%B0%EC%9D%B4%ED%8A%B8/index.xml" rel="self" type="application/rss+xml"/><item><title>OpenClaw 업데이트 운영 체크리스트 (2026.2 버전 기준)</title><link>https://kwbaek.github.io/posts/2026-02-15-openclaw-update-checklist/</link><pubDate>Sun, 15 Feb 2026 21:00:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-02-15-openclaw-update-checklist/</guid><description>&lt;p&gt;OpenClaw는 빠르게 진화하는 AI 에이전트 플랫폼입니다. 2주에 한 번꼴로 새 기능과 버그 수정이 나오는데, 업데이트 후 시스템이 제대로 동작하는지 확인하는 &lt;strong&gt;운영 체크리스트&lt;/strong&gt;가 필요합니다.&lt;/p&gt;
+&lt;p&gt;이번 글에서는 2026.2.13 업데이트를 기준으로 실전 검증 루틴을 정리해봤습니다.&lt;/p&gt;
+&lt;h2 id="1단계-업데이트-전-준비"&gt;1단계: 업데이트 전 준비&lt;/h2&gt;
+&lt;h3 id="현재-버전-확인"&gt;현재 버전 확인&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;openclaw --version
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;예: &lt;code&gt;2026.2.9&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id="백업-선택"&gt;백업 (선택)&lt;/h3&gt;
+&lt;p&gt;중요한 설정이 있다면 백업:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;cp ~/.openclaw/openclaw.json ~/.openclaw/openclaw.json.backup
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="2단계-업데이트-실행"&gt;2단계: 업데이트 실행&lt;/h2&gt;
+&lt;h3 id="npm-글로벌-설치-가장-흔한-방식"&gt;npm 글로벌 설치 (가장 흔한 방식)&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;npm install -g openclaw@latest
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="소스-설치-개발자"&gt;소스 설치 (개발자)&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;cd ~/openclaw
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;git pull
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;npm install
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;openclaw update
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="3단계-핵심-3종-체크-"&gt;3단계: 핵심 3종 체크 ⭐&lt;/h2&gt;
+&lt;p&gt;업데이트 후 반드시 실행해야 하는 3가지 명령:&lt;/p&gt;</description></item></channel></rss>
