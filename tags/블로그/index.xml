@@ -1,5 +1,33 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>블로그 on Kyungwook's Devlog</title><link>https://kwbaek.github.io/tags/%EB%B8%94%EB%A1%9C%EA%B7%B8/</link><description>Recent content in 블로그 on Kyungwook's Devlog</description><generator>Hugo -- 0.155.3</generator><language>ko-kr</language><lastBuildDate>Mon, 09 Feb 2026 23:15:00 +0900</lastBuildDate><atom:link href="https://kwbaek.github.io/tags/%EB%B8%94%EB%A1%9C%EA%B7%B8/index.xml" rel="self" type="application/rss+xml"/><item><title>OpenClaw 실전 활용: 에이전틱 워크플로우로 블로그 자동화하기</title><link>https://kwbaek.github.io/posts/2026-02-09-openclaw-agentic-workflow-tips/</link><pubDate>Mon, 09 Feb 2026 23:15:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-02-09-openclaw-agentic-workflow-tips/</guid><description>&lt;p&gt;AI 에이전트가 단순한 챗봇을 넘어 실제 업무를 자동화하는 시대가 왔습니다. 이번 글에서는 제가 실제로 사용하고 있는 &lt;strong&gt;OpenClaw의 에이전틱 워크플로우&lt;/strong&gt;를 소개합니다. 이 블로그 포스트 자체가 OpenClaw가 자동으로 작성하고 배포한 결과물입니다.&lt;/p&gt;
-&lt;h2 id="openclaw란"&gt;OpenClaw란?&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>블로그 on Kyungwook&#39;s Devlog</title>
+    <link>https://kwbaek.github.io/tags/%EB%B8%94%EB%A1%9C%EA%B7%B8/</link>
+    <description>Recent content in 블로그 on Kyungwook&#39;s Devlog</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Tue, 17 Feb 2026 21:00:00 +0900</lastBuildDate>
+    <atom:link href="https://kwbaek.github.io/tags/%EB%B8%94%EB%A1%9C%EA%B7%B8/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>OpenClaw로 블로그 자동화하기: 크론잡과 Discord 연동</title>
+      <link>https://kwbaek.github.io/posts/2026-02-17-openclaw-blog-automation/</link>
+      <pubDate>Tue, 17 Feb 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-02-17-openclaw-blog-automation/</guid>
+      <description>&lt;p&gt;이 글을 읽고 계신다면, 여러분은 지금 &lt;strong&gt;AI가 자동으로 작성하고 배포한 블로그 포스트&lt;/strong&gt;를 보고 있는 것입니다. 매일 밤 9시, OpenClaw의 크론잡이 작동해 Discord 채널에서 AI/ML 트렌드를 수집하고, 블로그 글을 작성하고, Hugo로 빌드한 뒤 GitHub Pages에 자동으로 배포합니다.&lt;/p&gt;
+&lt;p&gt;어떻게 가능할까요? OpenClaw의 강력한 자동화 기능을 활용하면 됩니다.&lt;/p&gt;
+&lt;h2 id=&#34;-openclaw-크론잡이란&#34;&gt;📅 OpenClaw 크론잡이란?&lt;/h2&gt;
+&lt;p&gt;OpenClaw의 크론잡(Cron Job)은 &lt;strong&gt;정해진 시간에 AI 에이전트가 자동으로 작업을 수행&lt;/strong&gt;하도록 예약하는 기능입니다. 일반적인 크론처럼 시간 기반으로 작동하지만, 단순한 스크립트 실행이 아니라 &lt;strong&gt;AI 에이전트가 자율적으로 판단하고 행동&lt;/strong&gt;한다는 점이 다릅니다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>OpenClaw 실전 활용: 에이전틱 워크플로우로 블로그 자동화하기</title>
+      <link>https://kwbaek.github.io/posts/2026-02-09-openclaw-agentic-workflow-tips/</link>
+      <pubDate>Mon, 09 Feb 2026 23:15:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-02-09-openclaw-agentic-workflow-tips/</guid>
+      <description>&lt;p&gt;AI 에이전트가 단순한 챗봇을 넘어 실제 업무를 자동화하는 시대가 왔습니다. 이번 글에서는 제가 실제로 사용하고 있는 &lt;strong&gt;OpenClaw의 에이전틱 워크플로우&lt;/strong&gt;를 소개합니다. 이 블로그 포스트 자체가 OpenClaw가 자동으로 작성하고 배포한 결과물입니다.&lt;/p&gt;
+&lt;h2 id=&#34;openclaw란&#34;&gt;OpenClaw란?&lt;/h2&gt;
 &lt;p&gt;OpenClaw는 개인용 AI 비서 프레임워크입니다. 단순 대화를 넘어 &lt;strong&gt;파일 시스템 접근, 웹 검색, Git 작업, 크론 작업, 브라우저 제어&lt;/strong&gt; 등 실제 도구를 사용할 수 있는 에이전트를 실행할 수 있습니다. 텔레그램, 디스코드 등 메신저와 연동해 어디서든 에이전트와 소통할 수 있죠.&lt;/p&gt;
-&lt;h2 id="자동-블로그-포스팅-워크플로우"&gt;자동 블로그 포스팅 워크플로우&lt;/h2&gt;
-&lt;p&gt;현재 제 블로그는 다음과 같은 자동화 파이프라인으로 운영됩니다:&lt;/p&gt;</description></item></channel></rss>
+&lt;h2 id=&#34;자동-블로그-포스팅-워크플로우&#34;&gt;자동 블로그 포스팅 워크플로우&lt;/h2&gt;
+&lt;p&gt;현재 제 블로그는 다음과 같은 자동화 파이프라인으로 운영됩니다:&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

@@ -1,32 +1,61 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Automation on Kyungwook's Devlog</title><link>https://kwbaek.github.io/tags/automation/</link><description>Recent content in Automation on Kyungwook's Devlog</description><generator>Hugo -- 0.155.3</generator><language>ko-kr</language><lastBuildDate>Fri, 13 Feb 2026 21:00:00 +0900</lastBuildDate><atom:link href="https://kwbaek.github.io/tags/automation/index.xml" rel="self" type="application/rss+xml"/><item><title>OpenClaw 크론잡으로 블로그 자동 포스팅 구축하기</title><link>https://kwbaek.github.io/posts/2026-02-13-openclaw-cron-blog-automation/</link><pubDate>Fri, 13 Feb 2026 21:00:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-02-13-openclaw-cron-blog-automation/</guid><description>&lt;p&gt;OpenClaw의 강력한 기능 중 하나는 &lt;strong&gt;크론잡(Cron Job)&lt;/strong&gt; 시스템입니다. 저는 이 기능을 활용해 매일 밤 9시에 자동으로 블로그 포스팅을 작성하고 배포하는 시스템을 구축했습니다. 오늘은 그 과정을 공유합니다.&lt;/p&gt;
-&lt;h2 id="-목표"&gt;🎯 목표&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Automation on Kyungwook&#39;s Devlog</title>
+    <link>https://kwbaek.github.io/tags/automation/</link>
+    <description>Recent content in Automation on Kyungwook&#39;s Devlog</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Fri, 13 Feb 2026 21:00:00 +0900</lastBuildDate>
+    <atom:link href="https://kwbaek.github.io/tags/automation/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>OpenClaw 크론잡으로 블로그 자동 포스팅 구축하기</title>
+      <link>https://kwbaek.github.io/posts/2026-02-13-openclaw-cron-blog-automation/</link>
+      <pubDate>Fri, 13 Feb 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-02-13-openclaw-cron-blog-automation/</guid>
+      <description>&lt;p&gt;OpenClaw의 강력한 기능 중 하나는 &lt;strong&gt;크론잡(Cron Job)&lt;/strong&gt; 시스템입니다. 저는 이 기능을 활용해 매일 밤 9시에 자동으로 블로그 포스팅을 작성하고 배포하는 시스템을 구축했습니다. 오늘은 그 과정을 공유합니다.&lt;/p&gt;
+&lt;h2 id=&#34;-목표&#34;&gt;🎯 목표&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;매일 밤 9시 자동 실행&lt;/strong&gt;: AI/ML 트렌드 + OpenClaw 활용법 블로그 글 작성&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Discord 채널 연동&lt;/strong&gt;: 1시간마다 수집된 트렌드 데이터 활용&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Hugo + GitHub Pages 배포&lt;/strong&gt;: 자동 빌드 및 배포&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id="-시스템-구성"&gt;📋 시스템 구성&lt;/h2&gt;
-&lt;h3 id="1-트렌드-수집-크론잡"&gt;1. 트렌드 수집 크론잡&lt;/h3&gt;
-&lt;p&gt;먼저 1시간마다 AI/ML 트렌드를 수집하는 크론잡을 설정했습니다.&lt;/p&gt;</description></item><item><title>OpenClaw 크론으로 블로그 자동 포스팅하기: AI 비서가 매일 글을 써준다</title><link>https://kwbaek.github.io/posts/2026-02-11-openclaw-cron-automation/</link><pubDate>Wed, 11 Feb 2026 21:00:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-02-11-openclaw-cron-automation/</guid><description>&lt;p&gt;매일 블로그 글을 쓰는 것은 쉽지 않은 일입니다. 하지만 &lt;strong&gt;OpenClaw의 크론 작업&lt;/strong&gt;을 활용하면, AI 에이전트가 자동으로 콘텐츠를 수집하고 정리해서 블로그 글을 작성할 수 있습니다. 이 글에서는 제가 실제로 사용하고 있는 자동 블로그 포스팅 시스템을 소개합니다.&lt;/p&gt;
-&lt;h2 id="왜-크론을-사용하는가"&gt;왜 크론을 사용하는가?&lt;/h2&gt;
+&lt;h2 id=&#34;-시스템-구성&#34;&gt;📋 시스템 구성&lt;/h2&gt;
+&lt;h3 id=&#34;1-트렌드-수집-크론잡&#34;&gt;1. 트렌드 수집 크론잡&lt;/h3&gt;
+&lt;p&gt;먼저 1시간마다 AI/ML 트렌드를 수집하는 크론잡을 설정했습니다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>OpenClaw 크론으로 블로그 자동 포스팅하기: AI 비서가 매일 글을 써준다</title>
+      <link>https://kwbaek.github.io/posts/2026-02-11-openclaw-cron-automation/</link>
+      <pubDate>Wed, 11 Feb 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-02-11-openclaw-cron-automation/</guid>
+      <description>&lt;p&gt;매일 블로그 글을 쓰는 것은 쉽지 않은 일입니다. 하지만 &lt;strong&gt;OpenClaw의 크론 작업&lt;/strong&gt;을 활용하면, AI 에이전트가 자동으로 콘텐츠를 수집하고 정리해서 블로그 글을 작성할 수 있습니다. 이 글에서는 제가 실제로 사용하고 있는 자동 블로그 포스팅 시스템을 소개합니다.&lt;/p&gt;
+&lt;h2 id=&#34;왜-크론을-사용하는가&#34;&gt;왜 크론을 사용하는가?&lt;/h2&gt;
 &lt;p&gt;OpenClaw에는 두 가지 자동화 방식이 있습니다:&lt;/p&gt;
-&lt;h3 id="1-heartbeat-심장박동"&gt;1. Heartbeat (심장박동)&lt;/h3&gt;
+&lt;h3 id=&#34;1-heartbeat-심장박동&#34;&gt;1. Heartbeat (심장박동)&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;타이밍&lt;/strong&gt;: 대략 30분마다, 약간의 편차 있음&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;용도&lt;/strong&gt;: 여러 체크를 배치 처리 (이메일+캘린더+알림 등)&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;컨텍스트&lt;/strong&gt;: 최근 대화 내역 접근 가능&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;적합한 경우&lt;/strong&gt;: 정확한 시간이 중요하지 않을 때, 대화형 컨텍스트가 필요할 때&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id="2-cron-크론"&gt;2. Cron (크론)&lt;/h3&gt;
+&lt;h3 id=&#34;2-cron-크론&#34;&gt;2. Cron (크론)&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;타이밍&lt;/strong&gt;: 정확한 스케줄 (예: 매일 오후 9시)&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;용도&lt;/strong&gt;: 독립적인 작업 실행&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;격리&lt;/strong&gt;: 메인 세션과 분리된 독립 세션&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;적합한 경우&lt;/strong&gt;: 정확한 시간이 중요할 때, 독립적인 작업일 때&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;저는 &lt;strong&gt;매일 정해진 시간에 블로그 글을 작성하고 배포&lt;/strong&gt;해야 하기 때문에 크론을 선택했습니다.&lt;/p&gt;</description></item><item><title>OpenClaw Heartbeat 활용법: AI가 알아서 챙겨주는 똑똑한 비서 만들기</title><link>https://kwbaek.github.io/posts/2026-02-10-openclaw-heartbeat-guide/</link><pubDate>Tue, 10 Feb 2026 21:00:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-02-10-openclaw-heartbeat-guide/</guid><description>&lt;h2 id="ai-비서가-내-일을-알아서-챙긴다면"&gt;AI 비서가 내 일을 알아서 챙긴다면?&lt;/h2&gt;
+&lt;p&gt;저는 &lt;strong&gt;매일 정해진 시간에 블로그 글을 작성하고 배포&lt;/strong&gt;해야 하기 때문에 크론을 선택했습니다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>OpenClaw Heartbeat 활용법: AI가 알아서 챙겨주는 똑똑한 비서 만들기</title>
+      <link>https://kwbaek.github.io/posts/2026-02-10-openclaw-heartbeat-guide/</link>
+      <pubDate>Tue, 10 Feb 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-02-10-openclaw-heartbeat-guide/</guid>
+      <description>&lt;h2 id=&#34;ai-비서가-내-일을-알아서-챙긴다면&#34;&gt;AI 비서가 내 일을 알아서 챙긴다면?&lt;/h2&gt;
 &lt;p&gt;OpenClaw의 &lt;strong&gt;Heartbeat&lt;/strong&gt; 기능을 제대로 활용하면, AI 비서가 단순한 대화 상대를 넘어 &lt;strong&gt;진짜 일을 대신 처리해주는 존재&lt;/strong&gt;로 진화합니다. 이 글에서는 Heartbeat를 실전에서 어떻게 활용할 수 있는지 소개합니다.&lt;/p&gt;
-&lt;h2 id="heartbeat란"&gt;Heartbeat란?&lt;/h2&gt;
+&lt;h2 id=&#34;heartbeat란&#34;&gt;Heartbeat란?&lt;/h2&gt;
 &lt;p&gt;Heartbeat는 &lt;strong&gt;주기적으로 AI가 깨어나 체크리스트를 수행하는 기능&lt;/strong&gt;입니다. 사용자가 명령을 내리지 않아도, AI가 스스로 필요한 작업을 확인하고 보고합니다.&lt;/p&gt;
 &lt;p&gt;기본 동작 방식:&lt;/p&gt;
 &lt;ul&gt;
@@ -35,12 +64,15 @@
 &lt;li&gt;특별한 일이 없으면 &lt;code&gt;HEARTBEAT_OK&lt;/code&gt; 응답으로 조용히 넘어감&lt;/li&gt;
 &lt;li&gt;중요한 사항이 있으면 사용자에게 알림&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id="실전-활용-예시"&gt;실전 활용 예시&lt;/h2&gt;
-&lt;h3 id="1-이메일-모니터링"&gt;1. 이메일 모니터링&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-markdown" data-lang="markdown"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;# HEARTBEAT.md
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;## 이메일 체크 (하루 3-4회)
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;-&lt;/span&gt; Gmail 미읽은 메일 확인
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;-&lt;/span&gt; &amp;#34;urgent&amp;#34;, &amp;#34;ASAP&amp;#34;, &amp;#34;중요&amp;#34; 키워드 포함 메일은 즉시 알림
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;-&lt;/span&gt; 그 외 메일은 요약 정리
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;AI가 알아서 inbox를 스캔하고, 급한 메일만 골라서 알려줍니다.&lt;/p&gt;</description></item></channel></rss>
+&lt;h2 id=&#34;실전-활용-예시&#34;&gt;실전 활용 예시&lt;/h2&gt;
+&lt;h3 id=&#34;1-이메일-모니터링&#34;&gt;1. 이메일 모니터링&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;# HEARTBEAT.md
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;## 이메일 체크 (하루 3-4회)
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;-&lt;/span&gt; Gmail 미읽은 메일 확인
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;-&lt;/span&gt; &amp;#34;urgent&amp;#34;, &amp;#34;ASAP&amp;#34;, &amp;#34;중요&amp;#34; 키워드 포함 메일은 즉시 알림
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;-&lt;/span&gt; 그 외 메일은 요약 정리
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;AI가 알아서 inbox를 스캔하고, 급한 메일만 골라서 알려줍니다.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

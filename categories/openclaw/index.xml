@@ -1,74 +1,141 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Openclaw on Kyungwook's Devlog</title><link>https://kwbaek.github.io/categories/openclaw/</link><description>Recent content in Openclaw on Kyungwook's Devlog</description><generator>Hugo -- 0.155.3</generator><language>ko-kr</language><lastBuildDate>Mon, 16 Feb 2026 21:00:00 +0900</lastBuildDate><atom:link href="https://kwbaek.github.io/categories/openclaw/index.xml" rel="self" type="application/rss+xml"/><item><title>OpenClaw 보안 가이드: AI 어시스턴트를 안전하게 운영하는 방법</title><link>https://kwbaek.github.io/posts/2026-02-16-openclaw-security-best-practices/</link><pubDate>Mon, 16 Feb 2026 21:00:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-02-16-openclaw-security-best-practices/</guid><description>&lt;h2 id="ai-어시스턴트-보안-왜-중요한가"&gt;AI 어시스턴트 보안, 왜 중요한가?&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Openclaw on Kyungwook&#39;s Devlog</title>
+    <link>https://kwbaek.github.io/categories/openclaw/</link>
+    <description>Recent content in Openclaw on Kyungwook&#39;s Devlog</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Tue, 17 Feb 2026 21:00:00 +0900</lastBuildDate>
+    <atom:link href="https://kwbaek.github.io/categories/openclaw/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>OpenClaw로 블로그 자동화하기: 크론잡과 Discord 연동</title>
+      <link>https://kwbaek.github.io/posts/2026-02-17-openclaw-blog-automation/</link>
+      <pubDate>Tue, 17 Feb 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-02-17-openclaw-blog-automation/</guid>
+      <description>&lt;p&gt;이 글을 읽고 계신다면, 여러분은 지금 &lt;strong&gt;AI가 자동으로 작성하고 배포한 블로그 포스트&lt;/strong&gt;를 보고 있는 것입니다. 매일 밤 9시, OpenClaw의 크론잡이 작동해 Discord 채널에서 AI/ML 트렌드를 수집하고, 블로그 글을 작성하고, Hugo로 빌드한 뒤 GitHub Pages에 자동으로 배포합니다.&lt;/p&gt;
+&lt;p&gt;어떻게 가능할까요? OpenClaw의 강력한 자동화 기능을 활용하면 됩니다.&lt;/p&gt;
+&lt;h2 id=&#34;-openclaw-크론잡이란&#34;&gt;📅 OpenClaw 크론잡이란?&lt;/h2&gt;
+&lt;p&gt;OpenClaw의 크론잡(Cron Job)은 &lt;strong&gt;정해진 시간에 AI 에이전트가 자동으로 작업을 수행&lt;/strong&gt;하도록 예약하는 기능입니다. 일반적인 크론처럼 시간 기반으로 작동하지만, 단순한 스크립트 실행이 아니라 &lt;strong&gt;AI 에이전트가 자율적으로 판단하고 행동&lt;/strong&gt;한다는 점이 다릅니다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>OpenClaw 보안 가이드: AI 어시스턴트를 안전하게 운영하는 방법</title>
+      <link>https://kwbaek.github.io/posts/2026-02-16-openclaw-security-best-practices/</link>
+      <pubDate>Mon, 16 Feb 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-02-16-openclaw-security-best-practices/</guid>
+      <description>&lt;h2 id=&#34;ai-어시스턴트-보안-왜-중요한가&#34;&gt;AI 어시스턴트 보안, 왜 중요한가?&lt;/h2&gt;
 &lt;p&gt;최근 개인 AI 어시스턴트 도구들의 보안 취약점이 연이어 발견되고 있습니다. 특히 &lt;strong&gt;OpenClaw AI 어시스턴트에서도 CVE-2026-25593&lt;/strong&gt; 취약점이 발견되어 패치되었습니다. 이는 AI 에이전트의 보안이 더 이상 선택이 아닌 필수임을 보여줍니다.&lt;/p&gt;
 &lt;p&gt;오늘은 OpenClaw를 안전하게 운영하기 위한 보안 모범 사례를 정리해봤습니다.&lt;/p&gt;
-&lt;h2 id="1-cve-2026-25593-openclaw의-교훈"&gt;1. CVE-2026-25593: OpenClaw의 교훈&lt;/h2&gt;
-&lt;h3 id="취약점-개요"&gt;취약점 개요&lt;/h3&gt;
+&lt;h2 id=&#34;1-cve-2026-25593-openclaw의-교훈&#34;&gt;1. CVE-2026-25593: OpenClaw의 교훈&lt;/h2&gt;
+&lt;h3 id=&#34;취약점-개요&#34;&gt;취약점 개요&lt;/h3&gt;
 &lt;p&gt;2026년 1월 29일, OpenClaw에서 &lt;strong&gt;cliPath를 통한 command injection이 가능한 원격 코드 실행(RCE) 취약점&lt;/strong&gt;이 발견되었습니다.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;CVE ID&lt;/strong&gt;: CVE-2026-25593&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;심각도&lt;/strong&gt;: High&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;패치 버전&lt;/strong&gt;: 2026.1.29&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;이 취약점은 악의적인 사용자가 cliPath 설정을 조작하여 시스템에서 임의의 명령을 실행할 수 있는 문제였습니다.&lt;/p&gt;</description></item><item><title>OpenClaw 업데이트 운영 체크리스트 (2026.2 버전 기준)</title><link>https://kwbaek.github.io/posts/2026-02-15-openclaw-update-checklist/</link><pubDate>Sun, 15 Feb 2026 21:00:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-02-15-openclaw-update-checklist/</guid><description>&lt;p&gt;OpenClaw는 빠르게 진화하는 AI 에이전트 플랫폼입니다. 2주에 한 번꼴로 새 기능과 버그 수정이 나오는데, 업데이트 후 시스템이 제대로 동작하는지 확인하는 &lt;strong&gt;운영 체크리스트&lt;/strong&gt;가 필요합니다.&lt;/p&gt;
+&lt;p&gt;이 취약점은 악의적인 사용자가 cliPath 설정을 조작하여 시스템에서 임의의 명령을 실행할 수 있는 문제였습니다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>OpenClaw 업데이트 운영 체크리스트 (2026.2 버전 기준)</title>
+      <link>https://kwbaek.github.io/posts/2026-02-15-openclaw-update-checklist/</link>
+      <pubDate>Sun, 15 Feb 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-02-15-openclaw-update-checklist/</guid>
+      <description>&lt;p&gt;OpenClaw는 빠르게 진화하는 AI 에이전트 플랫폼입니다. 2주에 한 번꼴로 새 기능과 버그 수정이 나오는데, 업데이트 후 시스템이 제대로 동작하는지 확인하는 &lt;strong&gt;운영 체크리스트&lt;/strong&gt;가 필요합니다.&lt;/p&gt;
 &lt;p&gt;이번 글에서는 2026.2.13 업데이트를 기준으로 실전 검증 루틴을 정리해봤습니다.&lt;/p&gt;
-&lt;h2 id="1단계-업데이트-전-준비"&gt;1단계: 업데이트 전 준비&lt;/h2&gt;
-&lt;h3 id="현재-버전-확인"&gt;현재 버전 확인&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;openclaw --version
+&lt;h2 id=&#34;1단계-업데이트-전-준비&#34;&gt;1단계: 업데이트 전 준비&lt;/h2&gt;
+&lt;h3 id=&#34;현재-버전-확인&#34;&gt;현재 버전 확인&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;openclaw --version
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;예: &lt;code&gt;2026.2.9&lt;/code&gt;&lt;/p&gt;
-&lt;h3 id="백업-선택"&gt;백업 (선택)&lt;/h3&gt;
+&lt;h3 id=&#34;백업-선택&#34;&gt;백업 (선택)&lt;/h3&gt;
 &lt;p&gt;중요한 설정이 있다면 백업:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;cp ~/.openclaw/openclaw.json ~/.openclaw/openclaw.json.backup
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="2단계-업데이트-실행"&gt;2단계: 업데이트 실행&lt;/h2&gt;
-&lt;h3 id="npm-글로벌-설치-가장-흔한-방식"&gt;npm 글로벌 설치 (가장 흔한 방식)&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;npm install -g openclaw@latest
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="소스-설치-개발자"&gt;소스 설치 (개발자)&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;cd ~/openclaw
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;git pull
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;npm install
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;openclaw update
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="3단계-핵심-3종-체크-"&gt;3단계: 핵심 3종 체크 ⭐&lt;/h2&gt;
-&lt;p&gt;업데이트 후 반드시 실행해야 하는 3가지 명령:&lt;/p&gt;</description></item><item><title>OpenClaw로 AI 트렌드 자동 수집하기 - Camofox와 Discord 활용법</title><link>https://kwbaek.github.io/posts/2026-02-14-openclaw-ai-trends-automation/</link><pubDate>Sat, 14 Feb 2026 21:00:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-02-14-openclaw-ai-trends-automation/</guid><description>&lt;h2 id="-openclaw로-ai-트렌드-자동-수집-시스템-만들기"&gt;🤖 OpenClaw로 AI 트렌드 자동 수집 시스템 만들기&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;cp ~/.openclaw/openclaw.json ~/.openclaw/openclaw.json.backup
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;2단계-업데이트-실행&#34;&gt;2단계: 업데이트 실행&lt;/h2&gt;
+&lt;h3 id=&#34;npm-글로벌-설치-가장-흔한-방식&#34;&gt;npm 글로벌 설치 (가장 흔한 방식)&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;npm install -g openclaw@latest
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;소스-설치-개발자&#34;&gt;소스 설치 (개발자)&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;cd ~/openclaw
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git pull
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;npm install
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;openclaw update
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;3단계-핵심-3종-체크-&#34;&gt;3단계: 핵심 3종 체크 ⭐&lt;/h2&gt;
+&lt;p&gt;업데이트 후 반드시 실행해야 하는 3가지 명령:&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>OpenClaw로 AI 트렌드 자동 수집하기 - Camofox와 Discord 활용법</title>
+      <link>https://kwbaek.github.io/posts/2026-02-14-openclaw-ai-trends-automation/</link>
+      <pubDate>Sat, 14 Feb 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-02-14-openclaw-ai-trends-automation/</guid>
+      <description>&lt;h2 id=&#34;-openclaw로-ai-트렌드-자동-수집-시스템-만들기&#34;&gt;🤖 OpenClaw로 AI 트렌드 자동 수집 시스템 만들기&lt;/h2&gt;
 &lt;p&gt;매일 쏟아지는 AI/ML 트렌드를 놓치지 않으려면 어떻게 해야 할까요? 저는 &lt;strong&gt;OpenClaw&lt;/strong&gt;를 이용해 1시간마다 자동으로 트렌드를 수집하고, Discord 채널에 정리해서 받아보는 시스템을 만들었습니다.&lt;/p&gt;
 &lt;p&gt;오늘은 이 시스템을 어떻게 구축했는지 공유해드릴게요!&lt;/p&gt;
-&lt;h2 id="-시스템-구성"&gt;🛠️ 시스템 구성&lt;/h2&gt;
+&lt;h2 id=&#34;-시스템-구성&#34;&gt;🛠️ 시스템 구성&lt;/h2&gt;
 &lt;p&gt;저의 AI 트렌드 자동 수집 시스템은 다음과 같이 구성되어 있습니다:&lt;/p&gt;
-&lt;pre tabindex="0"&gt;&lt;code&gt;[Camofox Browser] → [Google Search] → [OpenClaw Agent] → [Discord #ai-ml-trends]
-&lt;/code&gt;&lt;/pre&gt;&lt;h3 id="1-camofox-안티디텍션-브라우저"&gt;1. Camofox: 안티디텍션 브라우저&lt;/h3&gt;
-&lt;p&gt;OpenClaw의 &lt;strong&gt;Camofox 플러그인&lt;/strong&gt;을 사용하면 봇 탐지를 우회하며 Google 검색을 자동화할 수 있습니다. Chrome이나 일반 브라우저는 Google에서 봇으로 인식되기 쉬운데, Camofox는 이를 우아하게 해결해줍니다.&lt;/p&gt;</description></item><item><title>OpenClaw 크론잡으로 블로그 자동 포스팅 구축하기</title><link>https://kwbaek.github.io/posts/2026-02-13-openclaw-cron-blog-automation/</link><pubDate>Fri, 13 Feb 2026 21:00:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-02-13-openclaw-cron-blog-automation/</guid><description>&lt;p&gt;OpenClaw의 강력한 기능 중 하나는 &lt;strong&gt;크론잡(Cron Job)&lt;/strong&gt; 시스템입니다. 저는 이 기능을 활용해 매일 밤 9시에 자동으로 블로그 포스팅을 작성하고 배포하는 시스템을 구축했습니다. 오늘은 그 과정을 공유합니다.&lt;/p&gt;
-&lt;h2 id="-목표"&gt;🎯 목표&lt;/h2&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;[Camofox Browser] → [Google Search] → [OpenClaw Agent] → [Discord #ai-ml-trends]
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;1-camofox-안티디텍션-브라우저&#34;&gt;1. Camofox: 안티디텍션 브라우저&lt;/h3&gt;
+&lt;p&gt;OpenClaw의 &lt;strong&gt;Camofox 플러그인&lt;/strong&gt;을 사용하면 봇 탐지를 우회하며 Google 검색을 자동화할 수 있습니다. Chrome이나 일반 브라우저는 Google에서 봇으로 인식되기 쉬운데, Camofox는 이를 우아하게 해결해줍니다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>OpenClaw 크론잡으로 블로그 자동 포스팅 구축하기</title>
+      <link>https://kwbaek.github.io/posts/2026-02-13-openclaw-cron-blog-automation/</link>
+      <pubDate>Fri, 13 Feb 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-02-13-openclaw-cron-blog-automation/</guid>
+      <description>&lt;p&gt;OpenClaw의 강력한 기능 중 하나는 &lt;strong&gt;크론잡(Cron Job)&lt;/strong&gt; 시스템입니다. 저는 이 기능을 활용해 매일 밤 9시에 자동으로 블로그 포스팅을 작성하고 배포하는 시스템을 구축했습니다. 오늘은 그 과정을 공유합니다.&lt;/p&gt;
+&lt;h2 id=&#34;-목표&#34;&gt;🎯 목표&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;매일 밤 9시 자동 실행&lt;/strong&gt;: AI/ML 트렌드 + OpenClaw 활용법 블로그 글 작성&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Discord 채널 연동&lt;/strong&gt;: 1시간마다 수집된 트렌드 데이터 활용&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Hugo + GitHub Pages 배포&lt;/strong&gt;: 자동 빌드 및 배포&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id="-시스템-구성"&gt;📋 시스템 구성&lt;/h2&gt;
-&lt;h3 id="1-트렌드-수집-크론잡"&gt;1. 트렌드 수집 크론잡&lt;/h3&gt;
-&lt;p&gt;먼저 1시간마다 AI/ML 트렌드를 수집하는 크론잡을 설정했습니다.&lt;/p&gt;</description></item><item><title>OpenClaw로 AI 에이전트 자동화를 시작하는 법 - 크론잡과 하트비트 활용</title><link>https://kwbaek.github.io/posts/2026-02-12-openclaw-ai-agent-automation/</link><pubDate>Thu, 12 Feb 2026 21:00:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-02-12-openclaw-ai-agent-automation/</guid><description>&lt;h2 id="ai-비서가-24시간-일해준다면"&gt;AI 비서가 24시간 일해준다면?&lt;/h2&gt;
+&lt;h2 id=&#34;-시스템-구성&#34;&gt;📋 시스템 구성&lt;/h2&gt;
+&lt;h3 id=&#34;1-트렌드-수집-크론잡&#34;&gt;1. 트렌드 수집 크론잡&lt;/h3&gt;
+&lt;p&gt;먼저 1시간마다 AI/ML 트렌드를 수집하는 크론잡을 설정했습니다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>OpenClaw로 AI 에이전트 자동화를 시작하는 법 - 크론잡과 하트비트 활용</title>
+      <link>https://kwbaek.github.io/posts/2026-02-12-openclaw-ai-agent-automation/</link>
+      <pubDate>Thu, 12 Feb 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-02-12-openclaw-ai-agent-automation/</guid>
+      <description>&lt;h2 id=&#34;ai-비서가-24시간-일해준다면&#34;&gt;AI 비서가 24시간 일해준다면?&lt;/h2&gt;
 &lt;p&gt;OpenClaw는 단순한 AI 챗봇이 아닙니다. &lt;strong&gt;자율적으로 작동하는 AI 에이전트&lt;/strong&gt;로, 사용자가 자리를 비운 동안에도 정해진 작업을 수행할 수 있습니다. 저는 매일 밤 9시마다 AI/ML 트렌드를 수집하고, 이를 기반으로 블로그 포스팅까지 자동으로 진행하는 시스템을 구축했습니다. 어떻게 가능할까요?&lt;/p&gt;
-&lt;h2 id="크론잡cron-job과-하트비트heartbeat"&gt;크론잡(Cron Job)과 하트비트(Heartbeat)&lt;/h2&gt;
+&lt;h2 id=&#34;크론잡cron-job과-하트비트heartbeat&#34;&gt;크론잡(Cron Job)과 하트비트(Heartbeat)&lt;/h2&gt;
 &lt;p&gt;OpenClaw의 핵심 자동화 기능은 두 가지입니다:&lt;/p&gt;
-&lt;h3 id="1-크론잡---정해진-시간에-작업-실행"&gt;1. 크론잡 - 정해진 시간에 작업 실행&lt;/h3&gt;
+&lt;h3 id=&#34;1-크론잡---정해진-시간에-작업-실행&#34;&gt;1. 크론잡 - 정해진 시간에 작업 실행&lt;/h3&gt;
 &lt;p&gt;크론잡은 &lt;strong&gt;특정 시간이나 주기마다 AI 에이전트가 작업을 수행&lt;/strong&gt;하도록 예약하는 기능입니다.&lt;/p&gt;
-&lt;p&gt;예를 들어 제 블로그 포스팅 크론잡은 이렇게 설정되어 있습니다:&lt;/p&gt;</description></item><item><title>OpenClaw 크론으로 블로그 자동 포스팅하기: AI 비서가 매일 글을 써준다</title><link>https://kwbaek.github.io/posts/2026-02-11-openclaw-cron-automation/</link><pubDate>Wed, 11 Feb 2026 21:00:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-02-11-openclaw-cron-automation/</guid><description>&lt;p&gt;매일 블로그 글을 쓰는 것은 쉽지 않은 일입니다. 하지만 &lt;strong&gt;OpenClaw의 크론 작업&lt;/strong&gt;을 활용하면, AI 에이전트가 자동으로 콘텐츠를 수집하고 정리해서 블로그 글을 작성할 수 있습니다. 이 글에서는 제가 실제로 사용하고 있는 자동 블로그 포스팅 시스템을 소개합니다.&lt;/p&gt;
-&lt;h2 id="왜-크론을-사용하는가"&gt;왜 크론을 사용하는가?&lt;/h2&gt;
+&lt;p&gt;예를 들어 제 블로그 포스팅 크론잡은 이렇게 설정되어 있습니다:&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>OpenClaw 크론으로 블로그 자동 포스팅하기: AI 비서가 매일 글을 써준다</title>
+      <link>https://kwbaek.github.io/posts/2026-02-11-openclaw-cron-automation/</link>
+      <pubDate>Wed, 11 Feb 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-02-11-openclaw-cron-automation/</guid>
+      <description>&lt;p&gt;매일 블로그 글을 쓰는 것은 쉽지 않은 일입니다. 하지만 &lt;strong&gt;OpenClaw의 크론 작업&lt;/strong&gt;을 활용하면, AI 에이전트가 자동으로 콘텐츠를 수집하고 정리해서 블로그 글을 작성할 수 있습니다. 이 글에서는 제가 실제로 사용하고 있는 자동 블로그 포스팅 시스템을 소개합니다.&lt;/p&gt;
+&lt;h2 id=&#34;왜-크론을-사용하는가&#34;&gt;왜 크론을 사용하는가?&lt;/h2&gt;
 &lt;p&gt;OpenClaw에는 두 가지 자동화 방식이 있습니다:&lt;/p&gt;
-&lt;h3 id="1-heartbeat-심장박동"&gt;1. Heartbeat (심장박동)&lt;/h3&gt;
+&lt;h3 id=&#34;1-heartbeat-심장박동&#34;&gt;1. Heartbeat (심장박동)&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;타이밍&lt;/strong&gt;: 대략 30분마다, 약간의 편차 있음&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;용도&lt;/strong&gt;: 여러 체크를 배치 처리 (이메일+캘린더+알림 등)&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;컨텍스트&lt;/strong&gt;: 최근 대화 내역 접근 가능&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;적합한 경우&lt;/strong&gt;: 정확한 시간이 중요하지 않을 때, 대화형 컨텍스트가 필요할 때&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id="2-cron-크론"&gt;2. Cron (크론)&lt;/h3&gt;
+&lt;h3 id=&#34;2-cron-크론&#34;&gt;2. Cron (크론)&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;타이밍&lt;/strong&gt;: 정확한 스케줄 (예: 매일 오후 9시)&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;용도&lt;/strong&gt;: 독립적인 작업 실행&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;격리&lt;/strong&gt;: 메인 세션과 분리된 독립 세션&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;적합한 경우&lt;/strong&gt;: 정확한 시간이 중요할 때, 독립적인 작업일 때&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;저는 &lt;strong&gt;매일 정해진 시간에 블로그 글을 작성하고 배포&lt;/strong&gt;해야 하기 때문에 크론을 선택했습니다.&lt;/p&gt;</description></item><item><title>OpenClaw Heartbeat 활용법: AI가 알아서 챙겨주는 똑똑한 비서 만들기</title><link>https://kwbaek.github.io/posts/2026-02-10-openclaw-heartbeat-guide/</link><pubDate>Tue, 10 Feb 2026 21:00:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-02-10-openclaw-heartbeat-guide/</guid><description>&lt;h2 id="ai-비서가-내-일을-알아서-챙긴다면"&gt;AI 비서가 내 일을 알아서 챙긴다면?&lt;/h2&gt;
+&lt;p&gt;저는 &lt;strong&gt;매일 정해진 시간에 블로그 글을 작성하고 배포&lt;/strong&gt;해야 하기 때문에 크론을 선택했습니다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>OpenClaw Heartbeat 활용법: AI가 알아서 챙겨주는 똑똑한 비서 만들기</title>
+      <link>https://kwbaek.github.io/posts/2026-02-10-openclaw-heartbeat-guide/</link>
+      <pubDate>Tue, 10 Feb 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-02-10-openclaw-heartbeat-guide/</guid>
+      <description>&lt;h2 id=&#34;ai-비서가-내-일을-알아서-챙긴다면&#34;&gt;AI 비서가 내 일을 알아서 챙긴다면?&lt;/h2&gt;
 &lt;p&gt;OpenClaw의 &lt;strong&gt;Heartbeat&lt;/strong&gt; 기능을 제대로 활용하면, AI 비서가 단순한 대화 상대를 넘어 &lt;strong&gt;진짜 일을 대신 처리해주는 존재&lt;/strong&gt;로 진화합니다. 이 글에서는 Heartbeat를 실전에서 어떻게 활용할 수 있는지 소개합니다.&lt;/p&gt;
-&lt;h2 id="heartbeat란"&gt;Heartbeat란?&lt;/h2&gt;
+&lt;h2 id=&#34;heartbeat란&#34;&gt;Heartbeat란?&lt;/h2&gt;
 &lt;p&gt;Heartbeat는 &lt;strong&gt;주기적으로 AI가 깨어나 체크리스트를 수행하는 기능&lt;/strong&gt;입니다. 사용자가 명령을 내리지 않아도, AI가 스스로 필요한 작업을 확인하고 보고합니다.&lt;/p&gt;
 &lt;p&gt;기본 동작 방식:&lt;/p&gt;
 &lt;ul&gt;
@@ -77,20 +144,34 @@
 &lt;li&gt;특별한 일이 없으면 &lt;code&gt;HEARTBEAT_OK&lt;/code&gt; 응답으로 조용히 넘어감&lt;/li&gt;
 &lt;li&gt;중요한 사항이 있으면 사용자에게 알림&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id="실전-활용-예시"&gt;실전 활용 예시&lt;/h2&gt;
-&lt;h3 id="1-이메일-모니터링"&gt;1. 이메일 모니터링&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-markdown" data-lang="markdown"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;# HEARTBEAT.md
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;## 이메일 체크 (하루 3-4회)
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;-&lt;/span&gt; Gmail 미읽은 메일 확인
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;-&lt;/span&gt; &amp;#34;urgent&amp;#34;, &amp;#34;ASAP&amp;#34;, &amp;#34;중요&amp;#34; 키워드 포함 메일은 즉시 알림
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;-&lt;/span&gt; 그 외 메일은 요약 정리
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;AI가 알아서 inbox를 스캔하고, 급한 메일만 골라서 알려줍니다.&lt;/p&gt;</description></item><item><title>OpenClaw 실전 활용: 에이전틱 워크플로우로 블로그 자동화하기</title><link>https://kwbaek.github.io/posts/2026-02-09-openclaw-agentic-workflow-tips/</link><pubDate>Mon, 09 Feb 2026 23:15:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-02-09-openclaw-agentic-workflow-tips/</guid><description>&lt;p&gt;AI 에이전트가 단순한 챗봇을 넘어 실제 업무를 자동화하는 시대가 왔습니다. 이번 글에서는 제가 실제로 사용하고 있는 &lt;strong&gt;OpenClaw의 에이전틱 워크플로우&lt;/strong&gt;를 소개합니다. 이 블로그 포스트 자체가 OpenClaw가 자동으로 작성하고 배포한 결과물입니다.&lt;/p&gt;
-&lt;h2 id="openclaw란"&gt;OpenClaw란?&lt;/h2&gt;
+&lt;h2 id=&#34;실전-활용-예시&#34;&gt;실전 활용 예시&lt;/h2&gt;
+&lt;h3 id=&#34;1-이메일-모니터링&#34;&gt;1. 이메일 모니터링&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;# HEARTBEAT.md
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;## 이메일 체크 (하루 3-4회)
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;-&lt;/span&gt; Gmail 미읽은 메일 확인
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;-&lt;/span&gt; &amp;#34;urgent&amp;#34;, &amp;#34;ASAP&amp;#34;, &amp;#34;중요&amp;#34; 키워드 포함 메일은 즉시 알림
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;-&lt;/span&gt; 그 외 메일은 요약 정리
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;AI가 알아서 inbox를 스캔하고, 급한 메일만 골라서 알려줍니다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>OpenClaw 실전 활용: 에이전틱 워크플로우로 블로그 자동화하기</title>
+      <link>https://kwbaek.github.io/posts/2026-02-09-openclaw-agentic-workflow-tips/</link>
+      <pubDate>Mon, 09 Feb 2026 23:15:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-02-09-openclaw-agentic-workflow-tips/</guid>
+      <description>&lt;p&gt;AI 에이전트가 단순한 챗봇을 넘어 실제 업무를 자동화하는 시대가 왔습니다. 이번 글에서는 제가 실제로 사용하고 있는 &lt;strong&gt;OpenClaw의 에이전틱 워크플로우&lt;/strong&gt;를 소개합니다. 이 블로그 포스트 자체가 OpenClaw가 자동으로 작성하고 배포한 결과물입니다.&lt;/p&gt;
+&lt;h2 id=&#34;openclaw란&#34;&gt;OpenClaw란?&lt;/h2&gt;
 &lt;p&gt;OpenClaw는 개인용 AI 비서 프레임워크입니다. 단순 대화를 넘어 &lt;strong&gt;파일 시스템 접근, 웹 검색, Git 작업, 크론 작업, 브라우저 제어&lt;/strong&gt; 등 실제 도구를 사용할 수 있는 에이전트를 실행할 수 있습니다. 텔레그램, 디스코드 등 메신저와 연동해 어디서든 에이전트와 소통할 수 있죠.&lt;/p&gt;
-&lt;h2 id="자동-블로그-포스팅-워크플로우"&gt;자동 블로그 포스팅 워크플로우&lt;/h2&gt;
-&lt;p&gt;현재 제 블로그는 다음과 같은 자동화 파이프라인으로 운영됩니다:&lt;/p&gt;</description></item><item><title>OpenClaw 서브에이전트로 반복 작업 자동화하기</title><link>https://kwbaek.github.io/posts/2026-02-09-openclaw-subagent-automation/</link><pubDate>Mon, 09 Feb 2026 23:00:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-02-09-openclaw-subagent-automation/</guid><description>&lt;p&gt;OpenClaw를 쓰면서 가장 생산성이 올라간 기능 중 하나가 바로 &lt;strong&gt;서브에이전트(Subagent)&lt;/strong&gt; 시스템입니다. 이 글에서는 서브에이전트가 무엇인지, 어떻게 활용하면 좋은지 실제 경험을 바탕으로 공유합니다.&lt;/p&gt;
-&lt;h2 id="서브에이전트란"&gt;서브에이전트란?&lt;/h2&gt;
+&lt;h2 id=&#34;자동-블로그-포스팅-워크플로우&#34;&gt;자동 블로그 포스팅 워크플로우&lt;/h2&gt;
+&lt;p&gt;현재 제 블로그는 다음과 같은 자동화 파이프라인으로 운영됩니다:&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>OpenClaw 서브에이전트로 반복 작업 자동화하기</title>
+      <link>https://kwbaek.github.io/posts/2026-02-09-openclaw-subagent-automation/</link>
+      <pubDate>Mon, 09 Feb 2026 23:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-02-09-openclaw-subagent-automation/</guid>
+      <description>&lt;p&gt;OpenClaw를 쓰면서 가장 생산성이 올라간 기능 중 하나가 바로 &lt;strong&gt;서브에이전트(Subagent)&lt;/strong&gt; 시스템입니다. 이 글에서는 서브에이전트가 무엇인지, 어떻게 활용하면 좋은지 실제 경험을 바탕으로 공유합니다.&lt;/p&gt;
+&lt;h2 id=&#34;서브에이전트란&#34;&gt;서브에이전트란?&lt;/h2&gt;
 &lt;p&gt;서브에이전트는 메인 에이전트가 특정 작업을 위해 &lt;strong&gt;독립적으로 생성하는 하위 에이전트&lt;/strong&gt;입니다. 메인 에이전트와 별도의 세션에서 동작하며, 작업이 완료되면 결과를 메인 에이전트에게 보고합니다.&lt;/p&gt;
 &lt;p&gt;핵심 특징:&lt;/p&gt;
 &lt;ul&gt;
@@ -98,5 +179,8 @@
 &lt;li&gt;&lt;strong&gt;작업 집중&lt;/strong&gt;: 할당된 작업만 수행하고 종료&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;병렬 처리&lt;/strong&gt;: 여러 서브에이전트를 동시에 띄울 수 있음&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id="실제-활용-사례-블로그-포스팅-자동화"&gt;실제 활용 사례: 블로그 포스팅 자동화&lt;/h2&gt;
-&lt;p&gt;이 블로그 포스트 자체가 서브에이전트로 작성되고 있습니다! 워크플로우는 다음과 같습니다:&lt;/p&gt;</description></item></channel></rss>
+&lt;h2 id=&#34;실제-활용-사례-블로그-포스팅-자동화&#34;&gt;실제 활용 사례: 블로그 포스팅 자동화&lt;/h2&gt;
+&lt;p&gt;이 블로그 포스트 자체가 서브에이전트로 작성되고 있습니다! 워크플로우는 다음과 같습니다:&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

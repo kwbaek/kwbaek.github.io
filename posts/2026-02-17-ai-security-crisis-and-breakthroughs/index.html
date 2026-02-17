@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>AI 보안 위기와 과학적 돌파구: 2026년 2월 AI/ML 트렌드 | Kyungwook&#39;s Devlog</title>
+<meta name="keywords" content="AI보안, GitHub Copilot, GPT-5.2, Claude, Zero-Day, 이론물리학">
+<meta name="description" content="2026년 2월, AI 업계는 극과 극의 뉴스로 요동치고 있습니다. 한편에서는 AI가 10년 동안 풀리지 않던 이론물리학 문제를 해결하며 과학의 새 지평을 열고 있고, 다른 한편에서는 AI 도구들의 심각한 보안 취약점이 연이어 발견되며 사이버보안 위기를 촉발하고 있습니다.
+🔐 RoguePilot: GitHub Copilot의 충격적인 보안 결함
+Orca Security가 발견한 RoguePilot 취약점은 AI 코딩 어시스턴트의 어두운 면을 드러냈습니다. GitHub Copilot Codespaces에서 passive prompt injection을 통해 공격자가 사용자의 GitHub 토큰과 민감 데이터를 탈취할 수 있다는 것입니다.">
+<meta name="author" content="">
+<link rel="canonical" href="https://kwbaek.github.io/posts/2026-02-17-ai-security-crisis-and-breakthroughs/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.da3211e5ef867bf2b75fd5a6515cfed7195c011e8ab735694e203810a827097b.css" integrity="sha256-2jIR5e&#43;Ge/K3X9WmUVz&#43;1xlcAR6KtzVpTiA4EKgnCXs=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://kwbaek.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://kwbaek.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://kwbaek.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://kwbaek.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://kwbaek.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://kwbaek.github.io/posts/2026-02-17-ai-security-crisis-and-breakthroughs/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="https://kwbaek.github.io/posts/2026-02-17-ai-security-crisis-and-breakthroughs/">
+  <meta property="og:site_name" content="Kyungwook&#39;s Devlog">
+  <meta property="og:title" content="AI 보안 위기와 과학적 돌파구: 2026년 2월 AI/ML 트렌드">
+  <meta property="og:description" content="2026년 2월, AI 업계는 극과 극의 뉴스로 요동치고 있습니다. 한편에서는 AI가 10년 동안 풀리지 않던 이론물리학 문제를 해결하며 과학의 새 지평을 열고 있고, 다른 한편에서는 AI 도구들의 심각한 보안 취약점이 연이어 발견되며 사이버보안 위기를 촉발하고 있습니다.
+🔐 RoguePilot: GitHub Copilot의 충격적인 보안 결함 Orca Security가 발견한 RoguePilot 취약점은 AI 코딩 어시스턴트의 어두운 면을 드러냈습니다. GitHub Copilot Codespaces에서 passive prompt injection을 통해 공격자가 사용자의 GitHub 토큰과 민감 데이터를 탈취할 수 있다는 것입니다.">
+  <meta property="og:locale" content="ko-kr">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2026-02-17T21:00:00+09:00">
+    <meta property="article:modified_time" content="2026-02-17T21:00:00+09:00">
+    <meta property="article:tag" content="AI보안">
+    <meta property="article:tag" content="GitHub Copilot">
+    <meta property="article:tag" content="GPT-5.2">
+    <meta property="article:tag" content="Claude">
+    <meta property="article:tag" content="Zero-Day">
+    <meta property="article:tag" content="이론물리학">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="AI 보안 위기와 과학적 돌파구: 2026년 2월 AI/ML 트렌드">
+<meta name="twitter:description" content="2026년 2월, AI 업계는 극과 극의 뉴스로 요동치고 있습니다. 한편에서는 AI가 10년 동안 풀리지 않던 이론물리학 문제를 해결하며 과학의 새 지평을 열고 있고, 다른 한편에서는 AI 도구들의 심각한 보안 취약점이 연이어 발견되며 사이버보안 위기를 촉발하고 있습니다.
+🔐 RoguePilot: GitHub Copilot의 충격적인 보안 결함
+Orca Security가 발견한 RoguePilot 취약점은 AI 코딩 어시스턴트의 어두운 면을 드러냈습니다. GitHub Copilot Codespaces에서 passive prompt injection을 통해 공격자가 사용자의 GitHub 토큰과 민감 데이터를 탈취할 수 있다는 것입니다.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://kwbaek.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "AI 보안 위기와 과학적 돌파구: 2026년 2월 AI/ML 트렌드",
+      "item": "https://kwbaek.github.io/posts/2026-02-17-ai-security-crisis-and-breakthroughs/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "AI 보안 위기와 과학적 돌파구: 2026년 2월 AI/ML 트렌드",
+  "name": "AI 보안 위기와 과학적 돌파구: 2026년 2월 AI\/ML 트렌드",
+  "description": "2026년 2월, AI 업계는 극과 극의 뉴스로 요동치고 있습니다. 한편에서는 AI가 10년 동안 풀리지 않던 이론물리학 문제를 해결하며 과학의 새 지평을 열고 있고, 다른 한편에서는 AI 도구들의 심각한 보안 취약점이 연이어 발견되며 사이버보안 위기를 촉발하고 있습니다.\n🔐 RoguePilot: GitHub Copilot의 충격적인 보안 결함 Orca Security가 발견한 RoguePilot 취약점은 AI 코딩 어시스턴트의 어두운 면을 드러냈습니다. GitHub Copilot Codespaces에서 passive prompt injection을 통해 공격자가 사용자의 GitHub 토큰과 민감 데이터를 탈취할 수 있다는 것입니다.\n",
+  "keywords": [
+    "AI보안", "GitHub Copilot", "GPT-5.2", "Claude", "Zero-Day", "이론물리학"
+  ],
+  "articleBody": "2026년 2월, AI 업계는 극과 극의 뉴스로 요동치고 있습니다. 한편에서는 AI가 10년 동안 풀리지 않던 이론물리학 문제를 해결하며 과학의 새 지평을 열고 있고, 다른 한편에서는 AI 도구들의 심각한 보안 취약점이 연이어 발견되며 사이버보안 위기를 촉발하고 있습니다.\n🔐 RoguePilot: GitHub Copilot의 충격적인 보안 결함 Orca Security가 발견한 RoguePilot 취약점은 AI 코딩 어시스턴트의 어두운 면을 드러냈습니다. GitHub Copilot Codespaces에서 passive prompt injection을 통해 공격자가 사용자의 GitHub 토큰과 민감 데이터를 탈취할 수 있다는 것입니다.\n왜 이것이 중요한가?\n수백만 개발자가 매일 사용하는 GitHub Copilot의 보안 취약점은 단순한 개인 정보 유출을 넘어 소프트웨어 공급망 전체에 대한 위협입니다. 악의적인 코드 저장소 하나가 수천 개의 프로젝트에 침투할 수 있는 새로운 공격 벡터가 된 것입니다.\n이는 AI 도구가 개발 워크플로우에 깊숙이 통합될수록, 그들이 **새로운 공격 표면(attack surface)**이 되고 있음을 보여줍니다.\n🧪 GPT-5.2, 10년 동안 풀리지 않던 물리학 문제 해결 반대편 극단에서는 역사적인 순간이 펼쳐졌습니다. OpenAI의 GPT-5.2가 gluon amplitude(글루온 진폭)에 대한 새로운 수식을 제안하고, 내부 AI 모델이 이를 수학적으로 증명했습니다.\n10년간 미해결 상태였던 이론물리학 문제를 AI가 스스로 풀어낸 것입니다. GPT-5.2 Pro는 12시간 동안 수학적 증명을 개발했고, 주요 대학들이 이를 검증했습니다.\nAI가 단순한 보조 도구를 넘어 독립적인 과학 연구 파트너로 진화했음을 보여주는 역사적 순간입니다. AI가 새로운 과학적 지식을 직접 생성하는 시대가 열린 것입니다.\n🚨 Claude Opus 4.6, 500개 Zero-Day 취약점 발견 Anthropic의 Claude Opus 4.6는 오픈소스 소프트웨어에서 500개 이상의 고위험도 취약점을 자동으로 발견하며 사이버보안의 판도를 바꾸고 있습니다.\n이는 양날의 검입니다. 방어자들에게는 취약점을 빠르게 찾을 수 있는 강력한 도구지만, 공격자들도 동일한 AI 도구에 접근할 수 있다면 자동화된 취약점 발견 경쟁이 시작될 것입니다.\nAI가 대규모 보안 취약점을 찾을 수 있는 능력을 입증한 것은 사이버보안 분야에서 AI의 역할이 획기적으로 확대될 것임을 의미합니다.\n🇨🇳 중국 AI 모델 러시: Alibaba Qwen 3.5 \u0026 ByteDance Doubao 2.0 춘절(설날) 기간 동안 중국 AI 기업들이 대거 신모델을 발표했습니다:\nAlibaba Qwen 3.5: “에이전틱 AI 시대\"를 위한 플래그십 모델 ByteDance Doubao 2.0: Agent 작업에 최적화된 복잡한 다단계 작업 수행 모델 Alibaba RynnBrain: 물리 AI/로봇 전용 모델 Kuaishou Kling 3.0: 비디오 생성 모델 중국 AI 업계의 경쟁이 새로운 국면으로 접어들고 있습니다. DeepSeek 쇼크 이후 1년, 중국 기업들은 단순한 모방을 넘어 에이전틱 AI와 Physical AI라는 새로운 전선을 열고 있습니다.\n⚠️ OpenAI, 미션에서 “Safely” 삭제 논란 OpenAI가 공식 미션 문구에서 “안전하게(Safely)“라는 단어를 삭제했습니다. 새로운 영리 구조 전환과 맞물려 안전보다 성장을 우선시하는 것 아니냐는 비판이 제기되고 있습니다.\nOpenAI는 원래 “안전하게 AGI를 개발\"하겠다는 미션을 내걸었습니다. 이 단어의 삭제는 내부 안전팀 축소 논란과 함께 업계의 주목을 받고 있으며, AI 안전에 대한 우선순위가 흔들리고 있다는 우려를 낳고 있습니다.\n💰 Anthropic, $30B 펀딩으로 밸류에이션 $380B Claude 개발사 Anthropic이 역대 2번째로 큰 VC 투자인 $300억을 유치했습니다. Microsoft, NVIDIA 등 기존 투자자가 참여했으며, 포스트머니 밸류에이션은 $3,800억에 달합니다.\nOpenAI와의 경쟁이 격화되는 가운데, Anthropic의 밸류에이션이 9월 대비 2배 이상 급증했습니다. AI 인프라 투자 전쟁이 새로운 단계로 접어들고 있습니다.\n🔥 결론: AI의 양면성 2026년 2월의 AI 트렌드는 AI의 양면성을 극명하게 보여줍니다:\n희망: AI가 10년 된 물리학 문제를 풀고, 500개의 보안 취약점을 찾아내며 과학과 보안을 혁신하고 있습니다. 위험: 동시에 AI 도구 자체가 새로운 공격 벡터가 되고, 안전보다 성장을 우선시하는 기업 문화가 확산되고 있습니다. AI가 더 강력해질수록, 우리는 더 신중해져야 합니다. 기술의 발전 속도가 안전 체계의 발전 속도를 앞지르고 있는 지금, AI 안전과 윤리에 대한 논의는 선택이 아닌 필수가 되었습니다.\n",
+  "wordCount" : "505",
+  "inLanguage": "en",
+  "datePublished": "2026-02-17T21:00:00+09:00",
+  "dateModified": "2026-02-17T21:00:00+09:00",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://kwbaek.github.io/posts/2026-02-17-ai-security-crisis-and-breakthroughs/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Kyungwook's Devlog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://kwbaek.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://kwbaek.github.io/" accesskey="h" title="Kyungwook&#39;s Devlog (Alt + H)">Kyungwook&#39;s Devlog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://kwbaek.github.io/categories/" title="categories">
+                    <span>categories</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kwbaek.github.io/tags/" title="tags">
+                    <span>tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kwbaek.github.io/" title="Kyungwook&#39;s Devlog">
+                    <span>Kyungwook&#39;s Devlog</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      AI 보안 위기와 과학적 돌파구: 2026년 2월 AI/ML 트렌드
+    </h1>
+    <div class="post-meta"><span title='2026-02-17 21:00:00 +0900 KST'>February 17, 2026</span>
+
+</div>
+  </header> 
+  <div class="post-content"><p>2026년 2월, AI 업계는 극과 극의 뉴스로 요동치고 있습니다. 한편에서는 AI가 10년 동안 풀리지 않던 이론물리학 문제를 해결하며 과학의 새 지평을 열고 있고, 다른 한편에서는 AI 도구들의 심각한 보안 취약점이 연이어 발견되며 사이버보안 위기를 촉발하고 있습니다.</p>
+<h2 id="-roguepilot-github-copilot의-충격적인-보안-결함">🔐 RoguePilot: GitHub Copilot의 충격적인 보안 결함<a hidden class="anchor" aria-hidden="true" href="#-roguepilot-github-copilot의-충격적인-보안-결함">#</a></h2>
+<p>Orca Security가 발견한 <a href="https://orca.security/resources/blog/roguepilot-github-copilot-vulnerability/">RoguePilot 취약점</a>은 AI 코딩 어시스턴트의 어두운 면을 드러냈습니다. GitHub Copilot Codespaces에서 <strong>passive prompt injection</strong>을 통해 공격자가 사용자의 GitHub 토큰과 민감 데이터를 탈취할 수 있다는 것입니다.</p>
+<p><strong>왜 이것이 중요한가?</strong></p>
+<p>수백만 개발자가 매일 사용하는 GitHub Copilot의 보안 취약점은 단순한 개인 정보 유출을 넘어 <strong>소프트웨어 공급망 전체에 대한 위협</strong>입니다. 악의적인 코드 저장소 하나가 수천 개의 프로젝트에 침투할 수 있는 새로운 공격 벡터가 된 것입니다.</p>
+<p>이는 AI 도구가 개발 워크플로우에 깊숙이 통합될수록, 그들이 **새로운 공격 표면(attack surface)**이 되고 있음을 보여줍니다.</p>
+<h2 id="-gpt-52-10년-동안-풀리지-않던-물리학-문제-해결">🧪 GPT-5.2, 10년 동안 풀리지 않던 물리학 문제 해결<a hidden class="anchor" aria-hidden="true" href="#-gpt-52-10년-동안-풀리지-않던-물리학-문제-해결">#</a></h2>
+<p>반대편 극단에서는 역사적인 순간이 펼쳐졌습니다. OpenAI의 GPT-5.2가 <a href="https://m.economictimes.com/us/news/can-gpt-5-2-solve-a-complex-physics-problem-ai-achieves-a-path-breaking-scientific-breakthrough-after-solving-a-decade-long-mystery/articleshow/128451346.cms">gluon amplitude(글루온 진폭)</a>에 대한 새로운 수식을 제안하고, 내부 AI 모델이 이를 수학적으로 증명했습니다.</p>
+<p>10년간 미해결 상태였던 이론물리학 문제를 AI가 <strong>스스로</strong> 풀어낸 것입니다. GPT-5.2 Pro는 12시간 동안 수학적 증명을 개발했고, 주요 대학들이 이를 검증했습니다.</p>
+<p><strong>AI가 단순한 보조 도구를 넘어 독립적인 과학 연구 파트너로 진화했음을 보여주는 역사적 순간입니다.</strong> AI가 새로운 과학적 지식을 직접 생성하는 시대가 열린 것입니다.</p>
+<h2 id="-claude-opus-46-500개-zero-day-취약점-발견">🚨 Claude Opus 4.6, 500개 Zero-Day 취약점 발견<a hidden class="anchor" aria-hidden="true" href="#-claude-opus-46-500개-zero-day-취약점-발견">#</a></h2>
+<p>Anthropic의 <a href="https://red.anthropic.com/2026/zero-days/">Claude Opus 4.6</a>는 오픈소스 소프트웨어에서 <strong>500개 이상의 고위험도 취약점</strong>을 자동으로 발견하며 사이버보안의 판도를 바꾸고 있습니다.</p>
+<p>이는 양날의 검입니다. 방어자들에게는 취약점을 빠르게 찾을 수 있는 강력한 도구지만, 공격자들도 동일한 AI 도구에 접근할 수 있다면 <strong>자동화된 취약점 발견 경쟁</strong>이 시작될 것입니다.</p>
+<p>AI가 대규모 보안 취약점을 찾을 수 있는 능력을 입증한 것은 사이버보안 분야에서 AI의 역할이 획기적으로 확대될 것임을 의미합니다.</p>
+<h2 id="-중국-ai-모델-러시-alibaba-qwen-35--bytedance-doubao-20">🇨🇳 중국 AI 모델 러시: Alibaba Qwen 3.5 &amp; ByteDance Doubao 2.0<a hidden class="anchor" aria-hidden="true" href="#-중국-ai-모델-러시-alibaba-qwen-35--bytedance-doubao-20">#</a></h2>
+<p>춘절(설날) 기간 동안 중국 AI 기업들이 대거 신모델을 발표했습니다:</p>
+<ul>
+<li><strong><a href="https://www.reuters.com/world/china/alibaba-unveils-new-qwen35-model-agentic-ai-era-2026-02-16/">Alibaba Qwen 3.5</a></strong>: &ldquo;에이전틱 AI 시대&quot;를 위한 플래그십 모델</li>
+<li><strong>ByteDance Doubao 2.0</strong>: Agent 작업에 최적화된 복잡한 다단계 작업 수행 모델</li>
+<li><strong>Alibaba RynnBrain</strong>: 물리 AI/로봇 전용 모델</li>
+<li><strong>Kuaishou Kling 3.0</strong>: 비디오 생성 모델</li>
+</ul>
+<p>중국 AI 업계의 경쟁이 새로운 국면으로 접어들고 있습니다. DeepSeek 쇼크 이후 1년, 중국 기업들은 단순한 모방을 넘어 <strong>에이전틱 AI와 Physical AI</strong>라는 새로운 전선을 열고 있습니다.</p>
+<h2 id="-openai-미션에서-safely-삭제-논란">⚠️ OpenAI, 미션에서 &ldquo;Safely&rdquo; 삭제 논란<a hidden class="anchor" aria-hidden="true" href="#-openai-미션에서-safely-삭제-논란">#</a></h2>
+<p>OpenAI가 공식 미션 문구에서 <a href="https://www.claimsjournal.com/news/national/2026/02/17/335719.htm">&ldquo;안전하게(Safely)&ldquo;라는 단어를 삭제</a>했습니다. 새로운 영리 구조 전환과 맞물려 <strong>안전보다 성장을 우선시하는 것 아니냐</strong>는 비판이 제기되고 있습니다.</p>
+<p>OpenAI는 원래 &ldquo;안전하게 AGI를 개발&quot;하겠다는 미션을 내걸었습니다. 이 단어의 삭제는 내부 안전팀 축소 논란과 함께 업계의 주목을 받고 있으며, AI 안전에 대한 우선순위가 흔들리고 있다는 우려를 낳고 있습니다.</p>
+<h2 id="-anthropic-30b-펀딩으로-밸류에이션-380b">💰 Anthropic, $30B 펀딩으로 밸류에이션 $380B<a hidden class="anchor" aria-hidden="true" href="#-anthropic-30b-펀딩으로-밸류에이션-380b">#</a></h2>
+<p>Claude 개발사 Anthropic이 <a href="https://www.cnbc.com/2026/02/12/anthropic-closes-30-billion-funding-round-at-380-billion-valuation.html">역대 2번째로 큰 VC 투자</a>인 $300억을 유치했습니다. Microsoft, NVIDIA 등 기존 투자자가 참여했으며, 포스트머니 밸류에이션은 $3,800억에 달합니다.</p>
+<p>OpenAI와의 경쟁이 격화되는 가운데, Anthropic의 밸류에이션이 9월 대비 2배 이상 급증했습니다. AI 인프라 투자 전쟁이 새로운 단계로 접어들고 있습니다.</p>
+<h2 id="-결론-ai의-양면성">🔥 결론: AI의 양면성<a hidden class="anchor" aria-hidden="true" href="#-결론-ai의-양면성">#</a></h2>
+<p>2026년 2월의 AI 트렌드는 AI의 양면성을 극명하게 보여줍니다:</p>
+<ul>
+<li><strong>희망</strong>: AI가 10년 된 물리학 문제를 풀고, 500개의 보안 취약점을 찾아내며 과학과 보안을 혁신하고 있습니다.</li>
+<li><strong>위험</strong>: 동시에 AI 도구 자체가 새로운 공격 벡터가 되고, 안전보다 성장을 우선시하는 기업 문화가 확산되고 있습니다.</li>
+</ul>
+<p>AI가 더 강력해질수록, 우리는 더 신중해져야 합니다. 기술의 발전 속도가 안전 체계의 발전 속도를 앞지르고 있는 지금, <strong>AI 안전과 윤리</strong>에 대한 논의는 선택이 아닌 필수가 되었습니다.</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://kwbaek.github.io/tags/ai%EB%B3%B4%EC%95%88/">AI보안</a></li>
+      <li><a href="https://kwbaek.github.io/tags/github-copilot/">GitHub Copilot</a></li>
+      <li><a href="https://kwbaek.github.io/tags/gpt-5.2/">GPT-5.2</a></li>
+      <li><a href="https://kwbaek.github.io/tags/claude/">Claude</a></li>
+      <li><a href="https://kwbaek.github.io/tags/zero-day/">Zero-Day</a></li>
+      <li><a href="https://kwbaek.github.io/tags/%EC%9D%B4%EB%A1%A0%EB%AC%BC%EB%A6%AC%ED%95%99/">이론물리학</a></li>
+    </ul>
+  </footer><script src="https://utteranc.es/client.js"
+        repo="kwbaek/blog-comments"
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://kwbaek.github.io/">Kyungwook&#39;s Devlog</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

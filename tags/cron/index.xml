@@ -1,31 +1,63 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Cron on Kyungwook's Devlog</title><link>https://kwbaek.github.io/tags/cron/</link><description>Recent content in Cron on Kyungwook's Devlog</description><generator>Hugo -- 0.155.3</generator><language>ko-kr</language><lastBuildDate>Fri, 13 Feb 2026 21:00:00 +0900</lastBuildDate><atom:link href="https://kwbaek.github.io/tags/cron/index.xml" rel="self" type="application/rss+xml"/><item><title>OpenClaw 크론잡으로 블로그 자동 포스팅 구축하기</title><link>https://kwbaek.github.io/posts/2026-02-13-openclaw-cron-blog-automation/</link><pubDate>Fri, 13 Feb 2026 21:00:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-02-13-openclaw-cron-blog-automation/</guid><description>&lt;p&gt;OpenClaw의 강력한 기능 중 하나는 &lt;strong&gt;크론잡(Cron Job)&lt;/strong&gt; 시스템입니다. 저는 이 기능을 활용해 매일 밤 9시에 자동으로 블로그 포스팅을 작성하고 배포하는 시스템을 구축했습니다. 오늘은 그 과정을 공유합니다.&lt;/p&gt;
-&lt;h2 id="-목표"&gt;🎯 목표&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Cron on Kyungwook&#39;s Devlog</title>
+    <link>https://kwbaek.github.io/tags/cron/</link>
+    <description>Recent content in Cron on Kyungwook&#39;s Devlog</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Fri, 13 Feb 2026 21:00:00 +0900</lastBuildDate>
+    <atom:link href="https://kwbaek.github.io/tags/cron/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>OpenClaw 크론잡으로 블로그 자동 포스팅 구축하기</title>
+      <link>https://kwbaek.github.io/posts/2026-02-13-openclaw-cron-blog-automation/</link>
+      <pubDate>Fri, 13 Feb 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-02-13-openclaw-cron-blog-automation/</guid>
+      <description>&lt;p&gt;OpenClaw의 강력한 기능 중 하나는 &lt;strong&gt;크론잡(Cron Job)&lt;/strong&gt; 시스템입니다. 저는 이 기능을 활용해 매일 밤 9시에 자동으로 블로그 포스팅을 작성하고 배포하는 시스템을 구축했습니다. 오늘은 그 과정을 공유합니다.&lt;/p&gt;
+&lt;h2 id=&#34;-목표&#34;&gt;🎯 목표&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;매일 밤 9시 자동 실행&lt;/strong&gt;: AI/ML 트렌드 + OpenClaw 활용법 블로그 글 작성&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Discord 채널 연동&lt;/strong&gt;: 1시간마다 수집된 트렌드 데이터 활용&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Hugo + GitHub Pages 배포&lt;/strong&gt;: 자동 빌드 및 배포&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id="-시스템-구성"&gt;📋 시스템 구성&lt;/h2&gt;
-&lt;h3 id="1-트렌드-수집-크론잡"&gt;1. 트렌드 수집 크론잡&lt;/h3&gt;
-&lt;p&gt;먼저 1시간마다 AI/ML 트렌드를 수집하는 크론잡을 설정했습니다.&lt;/p&gt;</description></item><item><title>OpenClaw 크론으로 블로그 자동 포스팅하기: AI 비서가 매일 글을 써준다</title><link>https://kwbaek.github.io/posts/2026-02-11-openclaw-cron-automation/</link><pubDate>Wed, 11 Feb 2026 21:00:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-02-11-openclaw-cron-automation/</guid><description>&lt;p&gt;매일 블로그 글을 쓰는 것은 쉽지 않은 일입니다. 하지만 &lt;strong&gt;OpenClaw의 크론 작업&lt;/strong&gt;을 활용하면, AI 에이전트가 자동으로 콘텐츠를 수집하고 정리해서 블로그 글을 작성할 수 있습니다. 이 글에서는 제가 실제로 사용하고 있는 자동 블로그 포스팅 시스템을 소개합니다.&lt;/p&gt;
-&lt;h2 id="왜-크론을-사용하는가"&gt;왜 크론을 사용하는가?&lt;/h2&gt;
+&lt;h2 id=&#34;-시스템-구성&#34;&gt;📋 시스템 구성&lt;/h2&gt;
+&lt;h3 id=&#34;1-트렌드-수집-크론잡&#34;&gt;1. 트렌드 수집 크론잡&lt;/h3&gt;
+&lt;p&gt;먼저 1시간마다 AI/ML 트렌드를 수집하는 크론잡을 설정했습니다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>OpenClaw 크론으로 블로그 자동 포스팅하기: AI 비서가 매일 글을 써준다</title>
+      <link>https://kwbaek.github.io/posts/2026-02-11-openclaw-cron-automation/</link>
+      <pubDate>Wed, 11 Feb 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-02-11-openclaw-cron-automation/</guid>
+      <description>&lt;p&gt;매일 블로그 글을 쓰는 것은 쉽지 않은 일입니다. 하지만 &lt;strong&gt;OpenClaw의 크론 작업&lt;/strong&gt;을 활용하면, AI 에이전트가 자동으로 콘텐츠를 수집하고 정리해서 블로그 글을 작성할 수 있습니다. 이 글에서는 제가 실제로 사용하고 있는 자동 블로그 포스팅 시스템을 소개합니다.&lt;/p&gt;
+&lt;h2 id=&#34;왜-크론을-사용하는가&#34;&gt;왜 크론을 사용하는가?&lt;/h2&gt;
 &lt;p&gt;OpenClaw에는 두 가지 자동화 방식이 있습니다:&lt;/p&gt;
-&lt;h3 id="1-heartbeat-심장박동"&gt;1. Heartbeat (심장박동)&lt;/h3&gt;
+&lt;h3 id=&#34;1-heartbeat-심장박동&#34;&gt;1. Heartbeat (심장박동)&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;타이밍&lt;/strong&gt;: 대략 30분마다, 약간의 편차 있음&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;용도&lt;/strong&gt;: 여러 체크를 배치 처리 (이메일+캘린더+알림 등)&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;컨텍스트&lt;/strong&gt;: 최근 대화 내역 접근 가능&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;적합한 경우&lt;/strong&gt;: 정확한 시간이 중요하지 않을 때, 대화형 컨텍스트가 필요할 때&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id="2-cron-크론"&gt;2. Cron (크론)&lt;/h3&gt;
+&lt;h3 id=&#34;2-cron-크론&#34;&gt;2. Cron (크론)&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;타이밍&lt;/strong&gt;: 정확한 스케줄 (예: 매일 오후 9시)&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;용도&lt;/strong&gt;: 독립적인 작업 실행&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;격리&lt;/strong&gt;: 메인 세션과 분리된 독립 세션&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;적합한 경우&lt;/strong&gt;: 정확한 시간이 중요할 때, 독립적인 작업일 때&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;저는 &lt;strong&gt;매일 정해진 시간에 블로그 글을 작성하고 배포&lt;/strong&gt;해야 하기 때문에 크론을 선택했습니다.&lt;/p&gt;</description></item><item><title>OpenClaw 실전 활용: 에이전틱 워크플로우로 블로그 자동화하기</title><link>https://kwbaek.github.io/posts/2026-02-09-openclaw-agentic-workflow-tips/</link><pubDate>Mon, 09 Feb 2026 23:15:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-02-09-openclaw-agentic-workflow-tips/</guid><description>&lt;p&gt;AI 에이전트가 단순한 챗봇을 넘어 실제 업무를 자동화하는 시대가 왔습니다. 이번 글에서는 제가 실제로 사용하고 있는 &lt;strong&gt;OpenClaw의 에이전틱 워크플로우&lt;/strong&gt;를 소개합니다. 이 블로그 포스트 자체가 OpenClaw가 자동으로 작성하고 배포한 결과물입니다.&lt;/p&gt;
-&lt;h2 id="openclaw란"&gt;OpenClaw란?&lt;/h2&gt;
+&lt;p&gt;저는 &lt;strong&gt;매일 정해진 시간에 블로그 글을 작성하고 배포&lt;/strong&gt;해야 하기 때문에 크론을 선택했습니다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>OpenClaw 실전 활용: 에이전틱 워크플로우로 블로그 자동화하기</title>
+      <link>https://kwbaek.github.io/posts/2026-02-09-openclaw-agentic-workflow-tips/</link>
+      <pubDate>Mon, 09 Feb 2026 23:15:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-02-09-openclaw-agentic-workflow-tips/</guid>
+      <description>&lt;p&gt;AI 에이전트가 단순한 챗봇을 넘어 실제 업무를 자동화하는 시대가 왔습니다. 이번 글에서는 제가 실제로 사용하고 있는 &lt;strong&gt;OpenClaw의 에이전틱 워크플로우&lt;/strong&gt;를 소개합니다. 이 블로그 포스트 자체가 OpenClaw가 자동으로 작성하고 배포한 결과물입니다.&lt;/p&gt;
+&lt;h2 id=&#34;openclaw란&#34;&gt;OpenClaw란?&lt;/h2&gt;
 &lt;p&gt;OpenClaw는 개인용 AI 비서 프레임워크입니다. 단순 대화를 넘어 &lt;strong&gt;파일 시스템 접근, 웹 검색, Git 작업, 크론 작업, 브라우저 제어&lt;/strong&gt; 등 실제 도구를 사용할 수 있는 에이전트를 실행할 수 있습니다. 텔레그램, 디스코드 등 메신저와 연동해 어디서든 에이전트와 소통할 수 있죠.&lt;/p&gt;
-&lt;h2 id="자동-블로그-포스팅-워크플로우"&gt;자동 블로그 포스팅 워크플로우&lt;/h2&gt;
-&lt;p&gt;현재 제 블로그는 다음과 같은 자동화 파이프라인으로 운영됩니다:&lt;/p&gt;</description></item></channel></rss>
+&lt;h2 id=&#34;자동-블로그-포스팅-워크플로우&#34;&gt;자동 블로그 포스팅 워크플로우&lt;/h2&gt;
+&lt;p&gt;현재 제 블로그는 다음과 같은 자동화 파이프라인으로 운영됩니다:&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
