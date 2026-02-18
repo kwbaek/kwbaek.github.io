@@ -6,8 +6,26 @@
     <description>Recent content in 생산성 on Kyungwook&#39;s Devlog</description>
     <generator>Hugo -- 0.155.3</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Mon, 09 Feb 2026 23:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Wed, 18 Feb 2026 21:00:00 +0900</lastBuildDate>
     <atom:link href="https://kwbaek.github.io/tags/%EC%83%9D%EC%82%B0%EC%84%B1/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>OpenClaw 완전정복: Heartbeat과 Cron으로 AI 비서를 자동화하기</title>
+      <link>https://kwbaek.github.io/posts/2026-02-18-openclaw-heartbeat-cron-guide/</link>
+      <pubDate>Wed, 18 Feb 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-02-18-openclaw-heartbeat-cron-guide/</guid>
+      <description>&lt;h2 id=&#34;openclaw를-진정한-비서로-만드는-법&#34;&gt;OpenClaw를 진정한 비서로 만드는 법&lt;/h2&gt;
+&lt;p&gt;OpenClaw를 사용하고 계신가요? 챗봇처럼 매번 명령을 내려야 하는 게 불편하지 않으셨나요? 오늘은 OpenClaw를 &lt;strong&gt;진짜 비서처럼 자동으로 움직이게&lt;/strong&gt; 만드는 두 가지 핵심 기능을 소개합니다.&lt;/p&gt;
+&lt;p&gt;바로 &lt;strong&gt;Heartbeat&lt;/strong&gt;과 &lt;strong&gt;Cron&lt;/strong&gt;입니다.&lt;/p&gt;
+&lt;h2 id=&#34;heartbeat-비서의-심장박동&#34;&gt;Heartbeat: 비서의 심장박동&lt;/h2&gt;
+&lt;h3 id=&#34;heartbeat이란&#34;&gt;Heartbeat이란?&lt;/h3&gt;
+&lt;p&gt;Heartbeat은 OpenClaw가 주기적으로 &amp;ldquo;지금 내가 해야 할 일이 있나?&amp;ldquo;라고 스스로 체크하는 기능입니다. 마치 사람 비서가 30분마다 &amp;ldquo;혹시 필요한 거 없으세요?&amp;ldquo;라고 물어보는 것과 같습니다.&lt;/p&gt;
+&lt;h3 id=&#34;기본-설정&#34;&gt;기본 설정&lt;/h3&gt;
+&lt;p&gt;OpenClaw의 기본 Heartbeat 프롬프트는 다음과 같습니다:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;Read HEARTBEAT.md if it exists (workspace context). Follow it strictly. 
+Do not infer or repeat old tasks from prior chats. 
+If nothing needs attention, reply HEARTBEAT_OK.
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;즉, &lt;code&gt;HEARTBEAT.md&lt;/code&gt; 파일에 체크할 항목을 적어두면, OpenClaw가 주기적으로 그 파일을 읽고 필요한 작업을 수행합니다.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>OpenClaw 서브에이전트로 반복 작업 자동화하기</title>
       <link>https://kwbaek.github.io/posts/2026-02-09-openclaw-subagent-automation/</link>
