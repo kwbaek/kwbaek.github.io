@@ -1,13 +1,31 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Openclaw on Kyungwook&#39;s Devlog</title>
+    <title>OpenClaw on Kyungwook&#39;s Devlog</title>
     <link>https://kwbaek.github.io/tags/openclaw/</link>
-    <description>Recent content in Openclaw on Kyungwook&#39;s Devlog</description>
+    <description>Recent content in OpenClaw on Kyungwook&#39;s Devlog</description>
     <generator>Hugo -- 0.155.3</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Wed, 18 Feb 2026 21:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Thu, 19 Feb 2026 21:00:00 +0900</lastBuildDate>
     <atom:link href="https://kwbaek.github.io/tags/openclaw/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>OpenClaw 고급 활용법: Cron, Heartbeat, 그리고 서브에이전트 마스터하기</title>
+      <link>https://kwbaek.github.io/posts/2026-02-19-openclaw-advanced-tips/</link>
+      <pubDate>Thu, 19 Feb 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-02-19-openclaw-advanced-tips/</guid>
+      <description>&lt;p&gt;OpenClaw를 단순한 AI 어시스턴트로 사용하고 계신가요? 이 강력한 플랫폼은 훨씬 더 많은 것을 할 수 있습니다. 이번 포스트에서는 OpenClaw의 고급 기능들을 활용하여 진정한 자동화와 자율성을 구현하는 방법을 다룹니다.&lt;/p&gt;
+&lt;h2 id=&#34;cron-스마트-스케줄링의-힘&#34;&gt;Cron: 스마트 스케줄링의 힘&lt;/h2&gt;
+&lt;p&gt;OpenClaw의 cron 시스템은 단순한 작업 스케줄러가 아닙니다. AI 에이전트가 정해진 시간에 자율적으로 작업을 수행하고, 결과를 분석하고, 당신에게 보고하는 완전한 자동화 시스템입니다.&lt;/p&gt;
+&lt;h3 id=&#34;기본-cron-작업-생성&#34;&gt;기본 cron 작업 생성&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 매일 오전 9시에 이메일 체크&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;openclaw cron add &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  --schedule &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;0 9 * * *&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  --task &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Check my Gmail inbox and summarize important unread emails&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  --session isolated &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  --delivery announce
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;webhook-통합-외부-시스템과-연동&#34;&gt;Webhook 통합: 외부 시스템과 연동&lt;/h3&gt;
+&lt;p&gt;cron 작업 완료 시 외부 시스템에 알림을 보낼 수 있습니다:&lt;/p&gt;</description>
+    </item>
     <item>
       <title>OpenClaw 완전정복: Heartbeat과 Cron으로 AI 비서를 자동화하기</title>
       <link>https://kwbaek.github.io/posts/2026-02-18-openclaw-heartbeat-cron-guide/</link>
