@@ -6,8 +6,29 @@
     <description>Recent content in Openclaw on Kyungwook&#39;s Devlog</description>
     <generator>Hugo -- 0.155.3</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Thu, 19 Feb 2026 21:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Fri, 20 Feb 2026 21:00:00 +0900</lastBuildDate>
     <atom:link href="https://kwbaek.github.io/categories/openclaw/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>OpenClaw 2월 중순 업데이트: Cron 안정화와 보안 강화</title>
+      <link>https://kwbaek.github.io/posts/2026-02-20-openclaw-latest-updates/</link>
+      <pubDate>Fri, 20 Feb 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-02-20-openclaw-latest-updates/</guid>
+      <description>&lt;p&gt;OpenClaw가 2월 중순 동안 여러 차례 중요한 업데이트를 진행했습니다. 특히 &lt;strong&gt;Cron 안정성 대폭 개선&lt;/strong&gt;과 &lt;strong&gt;보안 강화&lt;/strong&gt;에 초점을 맞춘 업데이트들이 많았는데요, 주요 내용을 정리해봤습니다.&lt;/p&gt;
+&lt;h2 id=&#34;-cron-시스템-전면-개선-212-업데이트&#34;&gt;🔧 Cron 시스템 전면 개선 (2.12 업데이트)&lt;/h2&gt;
+&lt;p&gt;OpenClaw의 Cron 기능이 대폭 안정화되었습니다. 기존에 간헐적으로 발생하던 문제들이 대부분 해결되었습니다.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;주요 개선사항:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;중복 실행 방지&lt;/li&gt;
+&lt;li&gt;작업 누락 방지&lt;/li&gt;
+&lt;li&gt;재시작 후 오동작 수정&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;openclaw logs --local-time&lt;/code&gt; 로컬 타임존 지원 (운영 디버깅 편의성 향상)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;운영 체크 루틴&lt;/strong&gt; (업데이트 후 권장):&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;openclaw doctor
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;openclaw gateway restart
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;openclaw health
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Cron을 사용 중이라면 이번 업데이트는 필수입니다!&lt;/p&gt;</description>
+    </item>
     <item>
       <title>OpenClaw 고급 활용법: Cron, Heartbeat, 그리고 서브에이전트 마스터하기</title>
       <link>https://kwbaek.github.io/posts/2026-02-19-openclaw-advanced-tips/</link>

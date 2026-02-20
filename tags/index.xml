@@ -6,8 +6,99 @@
     <description>Recent content in Tags on Kyungwook&#39;s Devlog</description>
     <generator>Hugo -- 0.155.3</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Thu, 19 Feb 2026 21:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Fri, 20 Feb 2026 21:00:00 +0900</lastBuildDate>
     <atom:link href="https://kwbaek.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI</title>
+      <link>https://kwbaek.github.io/tags/ai/</link>
+      <pubDate>Fri, 20 Feb 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/tags/ai/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Ai-Agent</title>
+      <link>https://kwbaek.github.io/tags/ai-agent/</link>
+      <pubDate>Fri, 20 Feb 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/tags/ai-agent/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Claude</title>
+      <link>https://kwbaek.github.io/tags/claude/</link>
+      <pubDate>Fri, 20 Feb 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/tags/claude/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Cron</title>
+      <link>https://kwbaek.github.io/tags/cron/</link>
+      <pubDate>Fri, 20 Feb 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/tags/cron/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Gemini</title>
+      <link>https://kwbaek.github.io/tags/gemini/</link>
+      <pubDate>Fri, 20 Feb 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/tags/gemini/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Machine Learning</title>
+      <link>https://kwbaek.github.io/tags/machine-learning/</link>
+      <pubDate>Fri, 20 Feb 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/tags/machine-learning/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Openclaw</title>
+      <link>https://kwbaek.github.io/tags/openclaw/</link>
+      <pubDate>Fri, 20 Feb 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/tags/openclaw/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>OpenSSL</title>
+      <link>https://kwbaek.github.io/tags/openssl/</link>
+      <pubDate>Fri, 20 Feb 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/tags/openssl/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>모델 출시</title>
+      <link>https://kwbaek.github.io/tags/%EB%AA%A8%EB%8D%B8-%EC%B6%9C%EC%8B%9C/</link>
+      <pubDate>Fri, 20 Feb 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/tags/%EB%AA%A8%EB%8D%B8-%EC%B6%9C%EC%8B%9C/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>보안</title>
+      <link>https://kwbaek.github.io/tags/%EB%B3%B4%EC%95%88/</link>
+      <pubDate>Fri, 20 Feb 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/tags/%EB%B3%B4%EC%95%88/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>업데이트</title>
+      <link>https://kwbaek.github.io/tags/%EC%97%85%EB%8D%B0%EC%9D%B4%ED%8A%B8/</link>
+      <pubDate>Fri, 20 Feb 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/tags/%EC%97%85%EB%8D%B0%EC%9D%B4%ED%8A%B8/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>자동화</title>
+      <link>https://kwbaek.github.io/tags/%EC%9E%90%EB%8F%99%ED%99%94/</link>
+      <pubDate>Fri, 20 Feb 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/tags/%EC%9E%90%EB%8F%99%ED%99%94/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>투자</title>
+      <link>https://kwbaek.github.io/tags/%ED%88%AC%EC%9E%90/</link>
+      <pubDate>Fri, 20 Feb 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/tags/%ED%88%AC%EC%9E%90/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Agents</title>
       <link>https://kwbaek.github.io/tags/agents/</link>
@@ -44,31 +135,10 @@
       <description></description>
     </item>
     <item>
-      <title>Claude</title>
-      <link>https://kwbaek.github.io/tags/claude/</link>
-      <pubDate>Thu, 19 Feb 2026 21:00:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/tags/claude/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Cron</title>
-      <link>https://kwbaek.github.io/tags/cron/</link>
-      <pubDate>Thu, 19 Feb 2026 21:00:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/tags/cron/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Llm</title>
+      <title>LLM</title>
       <link>https://kwbaek.github.io/tags/llm/</link>
       <pubDate>Thu, 19 Feb 2026 21:00:00 +0900</pubDate>
       <guid>https://kwbaek.github.io/tags/llm/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>OpenClaw</title>
-      <link>https://kwbaek.github.io/tags/openclaw/</link>
-      <pubDate>Thu, 19 Feb 2026 21:00:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/tags/openclaw/</guid>
       <description></description>
     </item>
     <item>
@@ -121,13 +191,6 @@
       <description></description>
     </item>
     <item>
-      <title>투자</title>
-      <link>https://kwbaek.github.io/tags/%ED%88%AC%EC%9E%90/</link>
-      <pubDate>Wed, 18 Feb 2026 21:00:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/tags/%ED%88%AC%EC%9E%90/</guid>
-      <description></description>
-    </item>
-    <item>
       <title>AI보안</title>
       <link>https://kwbaek.github.io/tags/ai%EB%B3%B4%EC%95%88/</link>
       <pubDate>Tue, 17 Feb 2026 21:00:00 +0900</pubDate>
@@ -177,13 +240,6 @@
       <description></description>
     </item>
     <item>
-      <title>자동화</title>
-      <link>https://kwbaek.github.io/tags/%EC%9E%90%EB%8F%99%ED%99%94/</link>
-      <pubDate>Tue, 17 Feb 2026 21:00:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/tags/%EC%9E%90%EB%8F%99%ED%99%94/</guid>
-      <description></description>
-    </item>
-    <item>
       <title>크론잡</title>
       <link>https://kwbaek.github.io/tags/%ED%81%AC%EB%A1%A0%EC%9E%A1/</link>
       <pubDate>Tue, 17 Feb 2026 21:00:00 +0900</pubDate>
@@ -219,13 +275,6 @@
       <description></description>
     </item>
     <item>
-      <title>보안</title>
-      <link>https://kwbaek.github.io/tags/%EB%B3%B4%EC%95%88/</link>
-      <pubDate>Mon, 16 Feb 2026 21:00:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/tags/%EB%B3%B4%EC%95%88/</guid>
-      <description></description>
-    </item>
-    <item>
       <title>에이전틱AI</title>
       <link>https://kwbaek.github.io/tags/%EC%97%90%EC%9D%B4%EC%A0%84%ED%8B%B1ai/</link>
       <pubDate>Mon, 16 Feb 2026 21:00:00 +0900</pubDate>
@@ -244,13 +293,6 @@
       <link>https://kwbaek.github.io/tags/%EC%B7%A8%EC%95%BD%EC%A0%90/</link>
       <pubDate>Mon, 16 Feb 2026 21:00:00 +0900</pubDate>
       <guid>https://kwbaek.github.io/tags/%EC%B7%A8%EC%95%BD%EC%A0%90/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Ai</title>
-      <link>https://kwbaek.github.io/tags/ai/</link>
-      <pubDate>Sun, 15 Feb 2026 21:00:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/tags/ai/</guid>
       <description></description>
     </item>
     <item>
@@ -286,13 +328,6 @@
       <link>https://kwbaek.github.io/tags/%EC%95%88%EC%A0%95%EC%84%B1-%ED%8C%A8%ED%84%B4/</link>
       <pubDate>Sun, 15 Feb 2026 21:00:00 +0900</pubDate>
       <guid>https://kwbaek.github.io/tags/%EC%95%88%EC%A0%95%EC%84%B1-%ED%8C%A8%ED%84%B4/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>업데이트</title>
-      <link>https://kwbaek.github.io/tags/%EC%97%85%EB%8D%B0%EC%9D%B4%ED%8A%B8/</link>
-      <pubDate>Sun, 15 Feb 2026 21:00:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/tags/%EC%97%85%EB%8D%B0%EC%9D%B4%ED%8A%B8/</guid>
       <description></description>
     </item>
     <item>
@@ -373,13 +408,6 @@
       <description></description>
     </item>
     <item>
-      <title>Gemini</title>
-      <link>https://kwbaek.github.io/tags/gemini/</link>
-      <pubDate>Fri, 13 Feb 2026 21:00:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/tags/gemini/</guid>
-      <description></description>
-    </item>
-    <item>
       <title>Google</title>
       <link>https://kwbaek.github.io/tags/google/</link>
       <pubDate>Fri, 13 Feb 2026 21:00:00 +0900</pubDate>
@@ -436,13 +464,6 @@
       <description></description>
     </item>
     <item>
-      <title>Ai-Agent</title>
-      <link>https://kwbaek.github.io/tags/ai-agent/</link>
-      <pubDate>Wed, 11 Feb 2026 21:00:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/tags/ai-agent/</guid>
-      <description></description>
-    </item>
-    <item>
       <title>Ai-Security</title>
       <link>https://kwbaek.github.io/tags/ai-security/</link>
       <pubDate>Wed, 11 Feb 2026 21:00:00 +0900</pubDate>
@@ -464,7 +485,7 @@
       <description></description>
     </item>
     <item>
-      <title>VibeTensor</title>
+      <title>Vibetensor</title>
       <link>https://kwbaek.github.io/tags/vibetensor/</link>
       <pubDate>Wed, 11 Feb 2026 21:00:00 +0900</pubDate>
       <guid>https://kwbaek.github.io/tags/vibetensor/</guid>

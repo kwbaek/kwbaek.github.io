@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>OpenClaw 2월 중순 업데이트: Cron 안정화와 보안 강화 | Kyungwook&#39;s Devlog</title>
+<meta name="keywords" content="OpenClaw, 업데이트, Cron, 보안, AI Agent, 자동화">
+<meta name="description" content="OpenClaw가 2월 중순 동안 여러 차례 중요한 업데이트를 진행했습니다. 특히 Cron 안정성 대폭 개선과 보안 강화에 초점을 맞춘 업데이트들이 많았는데요, 주요 내용을 정리해봤습니다.
+🔧 Cron 시스템 전면 개선 (2.12 업데이트)
+OpenClaw의 Cron 기능이 대폭 안정화되었습니다. 기존에 간헐적으로 발생하던 문제들이 대부분 해결되었습니다.
+주요 개선사항:
+
+중복 실행 방지
+작업 누락 방지
+재시작 후 오동작 수정
+openclaw logs --local-time 로컬 타임존 지원 (운영 디버깅 편의성 향상)
+
+운영 체크 루틴 (업데이트 후 권장):
+openclaw doctor
+openclaw gateway restart
+openclaw health
+Cron을 사용 중이라면 이번 업데이트는 필수입니다!">
+<meta name="author" content="">
+<link rel="canonical" href="https://kwbaek.github.io/posts/2026-02-20-openclaw-latest-updates/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.da3211e5ef867bf2b75fd5a6515cfed7195c011e8ab735694e203810a827097b.css" integrity="sha256-2jIR5e&#43;Ge/K3X9WmUVz&#43;1xlcAR6KtzVpTiA4EKgnCXs=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://kwbaek.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://kwbaek.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://kwbaek.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://kwbaek.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://kwbaek.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://kwbaek.github.io/posts/2026-02-20-openclaw-latest-updates/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="https://kwbaek.github.io/posts/2026-02-20-openclaw-latest-updates/">
+  <meta property="og:site_name" content="Kyungwook&#39;s Devlog">
+  <meta property="og:title" content="OpenClaw 2월 중순 업데이트: Cron 안정화와 보안 강화">
+  <meta property="og:description" content="OpenClaw가 2월 중순 동안 여러 차례 중요한 업데이트를 진행했습니다. 특히 Cron 안정성 대폭 개선과 보안 강화에 초점을 맞춘 업데이트들이 많았는데요, 주요 내용을 정리해봤습니다.
+🔧 Cron 시스템 전면 개선 (2.12 업데이트) OpenClaw의 Cron 기능이 대폭 안정화되었습니다. 기존에 간헐적으로 발생하던 문제들이 대부분 해결되었습니다.
+주요 개선사항:
+중복 실행 방지 작업 누락 방지 재시작 후 오동작 수정 openclaw logs --local-time 로컬 타임존 지원 (운영 디버깅 편의성 향상) 운영 체크 루틴 (업데이트 후 권장):
+openclaw doctor openclaw gateway restart openclaw health Cron을 사용 중이라면 이번 업데이트는 필수입니다!">
+  <meta property="og:locale" content="ko-kr">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2026-02-20T21:00:00+09:00">
+    <meta property="article:modified_time" content="2026-02-20T21:00:00+09:00">
+    <meta property="article:tag" content="Openclaw">
+    <meta property="article:tag" content="업데이트">
+    <meta property="article:tag" content="Cron">
+    <meta property="article:tag" content="보안">
+    <meta property="article:tag" content="Ai-Agent">
+    <meta property="article:tag" content="자동화">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="OpenClaw 2월 중순 업데이트: Cron 안정화와 보안 강화">
+<meta name="twitter:description" content="OpenClaw가 2월 중순 동안 여러 차례 중요한 업데이트를 진행했습니다. 특히 Cron 안정성 대폭 개선과 보안 강화에 초점을 맞춘 업데이트들이 많았는데요, 주요 내용을 정리해봤습니다.
+🔧 Cron 시스템 전면 개선 (2.12 업데이트)
+OpenClaw의 Cron 기능이 대폭 안정화되었습니다. 기존에 간헐적으로 발생하던 문제들이 대부분 해결되었습니다.
+주요 개선사항:
+
+중복 실행 방지
+작업 누락 방지
+재시작 후 오동작 수정
+openclaw logs --local-time 로컬 타임존 지원 (운영 디버깅 편의성 향상)
+
+운영 체크 루틴 (업데이트 후 권장):
+openclaw doctor
+openclaw gateway restart
+openclaw health
+Cron을 사용 중이라면 이번 업데이트는 필수입니다!">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://kwbaek.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "OpenClaw 2월 중순 업데이트: Cron 안정화와 보안 강화",
+      "item": "https://kwbaek.github.io/posts/2026-02-20-openclaw-latest-updates/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "OpenClaw 2월 중순 업데이트: Cron 안정화와 보안 강화",
+  "name": "OpenClaw 2월 중순 업데이트: Cron 안정화와 보안 강화",
+  "description": "OpenClaw가 2월 중순 동안 여러 차례 중요한 업데이트를 진행했습니다. 특히 Cron 안정성 대폭 개선과 보안 강화에 초점을 맞춘 업데이트들이 많았는데요, 주요 내용을 정리해봤습니다.\n🔧 Cron 시스템 전면 개선 (2.12 업데이트) OpenClaw의 Cron 기능이 대폭 안정화되었습니다. 기존에 간헐적으로 발생하던 문제들이 대부분 해결되었습니다.\n주요 개선사항:\n중복 실행 방지 작업 누락 방지 재시작 후 오동작 수정 openclaw logs --local-time 로컬 타임존 지원 (운영 디버깅 편의성 향상) 운영 체크 루틴 (업데이트 후 권장):\nopenclaw doctor openclaw gateway restart openclaw health Cron을 사용 중이라면 이번 업데이트는 필수입니다!\n",
+  "keywords": [
+    "OpenClaw", "업데이트", "Cron", "보안", "AI Agent", "자동화"
+  ],
+  "articleBody": "OpenClaw가 2월 중순 동안 여러 차례 중요한 업데이트를 진행했습니다. 특히 Cron 안정성 대폭 개선과 보안 강화에 초점을 맞춘 업데이트들이 많았는데요, 주요 내용을 정리해봤습니다.\n🔧 Cron 시스템 전면 개선 (2.12 업데이트) OpenClaw의 Cron 기능이 대폭 안정화되었습니다. 기존에 간헐적으로 발생하던 문제들이 대부분 해결되었습니다.\n주요 개선사항:\n중복 실행 방지 작업 누락 방지 재시작 후 오동작 수정 openclaw logs --local-time 로컬 타임존 지원 (운영 디버깅 편의성 향상) 운영 체크 루틴 (업데이트 후 권장):\nopenclaw doctor openclaw gateway restart openclaw health Cron을 사용 중이라면 이번 업데이트는 필수입니다!\n🔐 보안 강화 업데이트 (2.18-2.20) 최근 며칠간 보안 관련 업데이트가 집중적으로 이루어졌습니다.\nSSRF(Server-Side Request Forgery) 방어 강화 Cron webhook SSRF guard 강화 (2.18):\n내부/메타데이터 대상 오발송 방어 NAT64/6to4/Teredo 대역 고려 cross-origin redirect 보안 (2.20 후보):\nCross-origin redirect 시 Authorization/Cookie 등 민감 헤더 자동 제거 Provider failover에서 HTTP 503도 failover 대상으로 처리 Docker 공급망 안정성 Base image digest pinning으로 공급망 보안 강화 📱 iOS/Watch 앱 MVP 출시 (2.19) OpenClaw가 Apple Watch를 지원합니다! iOS/Watch companion MVP가 출시되어 손목에서 바로 OpenClaw를 제어할 수 있습니다.\n주요 기능:\nInbox/알림 relay 명령 송신 Watch에서 간편한 에이전트 제어 모바일 환경에서 OpenClaw 사용 경험이 크게 개선되었습니다.\n🎛️ 디바이스 페어링 관리 개선 (2.19) 노드/모바일 디바이스 관리 기능이 추가되었습니다.\n새로운 명령어:\nopenclaw devices remove openclaw devices clear --yes [--pending] openclaw devices list 노드/모바일을 재페어링할 때 stale device 정리가 훨씬 쉬워졌습니다.\n⚙️ Cron 정밀 제어 강화 (2.17) Cron 작업을 더 세밀하게 제어할 수 있게 되었습니다.\n새로운 옵션:\ndelivery.mode=\"webhook\" 분리 운영 + job별 URL 검증 openclaw cron add/edit --stagger + --exact run logs/webhook usage telemetry (모델/프로바이더 사용량 추적) 운영 팁:\n정시 배치에서 정확히 정각이 중요하면 --exact 명시 외부 webhook 연동은 cron.webhookToken 분리 사용 권장 🔔 Discord Components v2 강화 (2.15-2.16) Discord 인터랙션이 훨씬 풍부해졌습니다.\n주요 기능:\n버튼/셀렉트/모달 기반 상호작용 components.reusable=true로 재사용형 인터랙션 가능 버튼별 allowedUsers allowlist로 클릭 권한 제한 상태/승인형 플로우 구현이 훨씬 쉬워졌습니다!\n🌐 Web 도구 보안 옵션 (2.17) web_search/web_fetch에 URL allowlist 지원이 추가되었습니다. 웹 리서치 자동화 시 URL allowlist를 먼저 걸고 시작하면 더 안전합니다 (최소권한 원칙).\n🛠️ 실용적인 운영 팁 Gateway 설정 주의사항 Gateway를 mode=none으로 열어둘 때는 loopback 한정 + reverse proxy ACL을 반드시 함께 적용하세요. gateway.auth.mode=\"none\"으로 HTTP API가 노출되면 gateway.http.no_auth 진단 경고가 뜹니다. Webhook 보안 Cron 웹훅 사용 시 Gateway 메인 토큰 대신 cron.webhookToken 별도 발급 권장 토큰을 쿼리스트링(?token=)으로 전달하는 방식은 deprecated (헤더 Authorization: Bearer 권장) 업데이트 후 점검 루틴 openclaw doctor openclaw gateway restart openclaw health 이 세 명령어로 시스템 상태를 빠르게 점검할 수 있습니다.\n🚀 Nested Subagent 지원 (2.15) agents.defaults.subagents.maxSpawnDepth로 서브에이전트의 하위 에이전트 실행이 가능해졌습니다. 복잡한 에이전트 오케스트레이션을 구현할 수 있습니다!\n📊 Anthropic Sonnet 4.6 + 1M context beta (2.17) OpenClaw에서 Anthropic의 최신 모델을 바로 사용할 수 있습니다:\nanthropic/claude-sonnet-4-6 params.context1m: true (1M 컨텍스트 윈도우 베타) 장문 문서 처리나 복잡한 작업에 유용합니다.\n💡 마치며 OpenClaw는 2월 중순 동안 안정성과 보안에 집중한 업데이트를 진행했습니다. 특히 Cron 시스템의 안정화와 SSRF 방어 강화는 프로덕션 환경에서 OpenClaw를 운영하는 사용자들에게 큰 도움이 될 것입니다.\n업데이트 권장사항:\nCron 사용 중이라면 즉시 업데이트 권장 업데이트 후 openclaw doctor 실행 Gateway 재시작 openclaw health로 상태 확인 OpenClaw의 다음 업데이트도 기대해주세요! 🚀\n참고: 2026.2.20 후보 버전의 일부 기능은 정식 릴리즈 전이므로, 실제 사용 전 릴리즈 노트를 재확인하세요.\n",
+  "wordCount" : "504",
+  "inLanguage": "en",
+  "datePublished": "2026-02-20T21:00:00+09:00",
+  "dateModified": "2026-02-20T21:00:00+09:00",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://kwbaek.github.io/posts/2026-02-20-openclaw-latest-updates/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Kyungwook's Devlog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://kwbaek.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://kwbaek.github.io/" accesskey="h" title="Kyungwook&#39;s Devlog (Alt + H)">Kyungwook&#39;s Devlog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://kwbaek.github.io/categories/" title="categories">
+                    <span>categories</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kwbaek.github.io/tags/" title="tags">
+                    <span>tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kwbaek.github.io/" title="Kyungwook&#39;s Devlog">
+                    <span>Kyungwook&#39;s Devlog</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      OpenClaw 2월 중순 업데이트: Cron 안정화와 보안 강화
+    </h1>
+    <div class="post-meta"><span title='2026-02-20 21:00:00 +0900 KST'>February 20, 2026</span>
+
+</div>
+  </header> 
+  <div class="post-content"><p>OpenClaw가 2월 중순 동안 여러 차례 중요한 업데이트를 진행했습니다. 특히 <strong>Cron 안정성 대폭 개선</strong>과 <strong>보안 강화</strong>에 초점을 맞춘 업데이트들이 많았는데요, 주요 내용을 정리해봤습니다.</p>
+<h2 id="-cron-시스템-전면-개선-212-업데이트">🔧 Cron 시스템 전면 개선 (2.12 업데이트)<a hidden class="anchor" aria-hidden="true" href="#-cron-시스템-전면-개선-212-업데이트">#</a></h2>
+<p>OpenClaw의 Cron 기능이 대폭 안정화되었습니다. 기존에 간헐적으로 발생하던 문제들이 대부분 해결되었습니다.</p>
+<p><strong>주요 개선사항:</strong></p>
+<ul>
+<li>중복 실행 방지</li>
+<li>작업 누락 방지</li>
+<li>재시작 후 오동작 수정</li>
+<li><code>openclaw logs --local-time</code> 로컬 타임존 지원 (운영 디버깅 편의성 향상)</li>
+</ul>
+<p><strong>운영 체크 루틴</strong> (업데이트 후 권장):</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>openclaw doctor
+</span></span><span style="display:flex;"><span>openclaw gateway restart
+</span></span><span style="display:flex;"><span>openclaw health
+</span></span></code></pre></div><p>Cron을 사용 중이라면 이번 업데이트는 필수입니다!</p>
+<h2 id="-보안-강화-업데이트-218-220">🔐 보안 강화 업데이트 (2.18-2.20)<a hidden class="anchor" aria-hidden="true" href="#-보안-강화-업데이트-218-220">#</a></h2>
+<p>최근 며칠간 보안 관련 업데이트가 집중적으로 이루어졌습니다.</p>
+<h3 id="ssrfserver-side-request-forgery-방어-강화">SSRF(Server-Side Request Forgery) 방어 강화<a hidden class="anchor" aria-hidden="true" href="#ssrfserver-side-request-forgery-방어-강화">#</a></h3>
+<p><strong>Cron webhook SSRF guard 강화</strong> (2.18):</p>
+<ul>
+<li>내부/메타데이터 대상 오발송 방어</li>
+<li>NAT64/6to4/Teredo 대역 고려</li>
+</ul>
+<p><strong>cross-origin redirect 보안</strong> (2.20 후보):</p>
+<ul>
+<li>Cross-origin redirect 시 <code>Authorization/Cookie</code> 등 민감 헤더 자동 제거</li>
+<li>Provider failover에서 HTTP 503도 failover 대상으로 처리</li>
+</ul>
+<h3 id="docker-공급망-안정성">Docker 공급망 안정성<a hidden class="anchor" aria-hidden="true" href="#docker-공급망-안정성">#</a></h3>
+<ul>
+<li>Base image digest pinning으로 공급망 보안 강화</li>
+</ul>
+<h2 id="-ioswatch-앱-mvp-출시-219">📱 iOS/Watch 앱 MVP 출시 (2.19)<a hidden class="anchor" aria-hidden="true" href="#-ioswatch-앱-mvp-출시-219">#</a></h2>
+<p>OpenClaw가 <strong>Apple Watch</strong>를 지원합니다! iOS/Watch companion MVP가 출시되어 손목에서 바로 OpenClaw를 제어할 수 있습니다.</p>
+<p><strong>주요 기능:</strong></p>
+<ul>
+<li>Inbox/알림 relay</li>
+<li>명령 송신</li>
+<li>Watch에서 간편한 에이전트 제어</li>
+</ul>
+<p>모바일 환경에서 OpenClaw 사용 경험이 크게 개선되었습니다.</p>
+<h2 id="-디바이스-페어링-관리-개선-219">🎛️ 디바이스 페어링 관리 개선 (2.19)<a hidden class="anchor" aria-hidden="true" href="#-디바이스-페어링-관리-개선-219">#</a></h2>
+<p>노드/모바일 디바이스 관리 기능이 추가되었습니다.</p>
+<p><strong>새로운 명령어:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>openclaw devices remove &lt;device-id&gt;
+</span></span><span style="display:flex;"><span>openclaw devices clear --yes <span style="color:#f92672">[</span>--pending<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>openclaw devices list
+</span></span></code></pre></div><p>노드/모바일을 재페어링할 때 stale device 정리가 훨씬 쉬워졌습니다.</p>
+<h2 id="-cron-정밀-제어-강화-217">⚙️ Cron 정밀 제어 강화 (2.17)<a hidden class="anchor" aria-hidden="true" href="#-cron-정밀-제어-강화-217">#</a></h2>
+<p>Cron 작업을 더 세밀하게 제어할 수 있게 되었습니다.</p>
+<p><strong>새로운 옵션:</strong></p>
+<ul>
+<li><code>delivery.mode=&quot;webhook&quot;</code> 분리 운영 + job별 URL 검증</li>
+<li><code>openclaw cron add/edit --stagger &lt;duration&gt;</code> + <code>--exact</code></li>
+<li>run logs/webhook usage telemetry (모델/프로바이더 사용량 추적)</li>
+</ul>
+<p><strong>운영 팁:</strong></p>
+<ul>
+<li>정시 배치에서 정확히 정각이 중요하면 <code>--exact</code> 명시</li>
+<li>외부 webhook 연동은 <code>cron.webhookToken</code> 분리 사용 권장</li>
+</ul>
+<h2 id="-discord-components-v2-강화-215-216">🔔 Discord Components v2 강화 (2.15-2.16)<a hidden class="anchor" aria-hidden="true" href="#-discord-components-v2-강화-215-216">#</a></h2>
+<p>Discord 인터랙션이 훨씬 풍부해졌습니다.</p>
+<p><strong>주요 기능:</strong></p>
+<ul>
+<li>버튼/셀렉트/모달 기반 상호작용</li>
+<li><code>components.reusable=true</code>로 재사용형 인터랙션 가능</li>
+<li>버튼별 <code>allowedUsers</code> allowlist로 클릭 권한 제한</li>
+</ul>
+<p>상태/승인형 플로우 구현이 훨씬 쉬워졌습니다!</p>
+<h2 id="-web-도구-보안-옵션-217">🌐 Web 도구 보안 옵션 (2.17)<a hidden class="anchor" aria-hidden="true" href="#-web-도구-보안-옵션-217">#</a></h2>
+<p><code>web_search</code>/<code>web_fetch</code>에 URL allowlist 지원이 추가되었습니다. 웹 리서치 자동화 시 URL allowlist를 먼저 걸고 시작하면 더 안전합니다 (최소권한 원칙).</p>
+<h2 id="-실용적인-운영-팁">🛠️ 실용적인 운영 팁<a hidden class="anchor" aria-hidden="true" href="#-실용적인-운영-팁">#</a></h2>
+<h3 id="gateway-설정-주의사항">Gateway 설정 주의사항<a hidden class="anchor" aria-hidden="true" href="#gateway-설정-주의사항">#</a></h3>
+<ul>
+<li>Gateway를 <code>mode=none</code>으로 열어둘 때는 loopback 한정 + reverse proxy ACL을 반드시 함께 적용하세요.</li>
+<li><code>gateway.auth.mode=&quot;none&quot;</code>으로 HTTP API가 노출되면 <code>gateway.http.no_auth</code> 진단 경고가 뜹니다.</li>
+</ul>
+<h3 id="webhook-보안">Webhook 보안<a hidden class="anchor" aria-hidden="true" href="#webhook-보안">#</a></h3>
+<ul>
+<li>Cron 웹훅 사용 시 Gateway 메인 토큰 대신 <strong><code>cron.webhookToken</code> 별도 발급</strong> 권장</li>
+<li>토큰을 쿼리스트링(<code>?token=</code>)으로 전달하는 방식은 deprecated (헤더 <code>Authorization: Bearer</code> 권장)</li>
+</ul>
+<h3 id="업데이트-후-점검-루틴">업데이트 후 점검 루틴<a hidden class="anchor" aria-hidden="true" href="#업데이트-후-점검-루틴">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>openclaw doctor
+</span></span><span style="display:flex;"><span>openclaw gateway restart
+</span></span><span style="display:flex;"><span>openclaw health
+</span></span></code></pre></div><p>이 세 명령어로 시스템 상태를 빠르게 점검할 수 있습니다.</p>
+<h2 id="-nested-subagent-지원-215">🚀 Nested Subagent 지원 (2.15)<a hidden class="anchor" aria-hidden="true" href="#-nested-subagent-지원-215">#</a></h2>
+<p><code>agents.defaults.subagents.maxSpawnDepth</code>로 서브에이전트의 하위 에이전트 실행이 가능해졌습니다. 복잡한 에이전트 오케스트레이션을 구현할 수 있습니다!</p>
+<h2 id="-anthropic-sonnet-46--1m-context-beta-217">📊 Anthropic Sonnet 4.6 + 1M context beta (2.17)<a hidden class="anchor" aria-hidden="true" href="#-anthropic-sonnet-46--1m-context-beta-217">#</a></h2>
+<p>OpenClaw에서 Anthropic의 최신 모델을 바로 사용할 수 있습니다:</p>
+<ul>
+<li><code>anthropic/claude-sonnet-4-6</code></li>
+<li><code>params.context1m: true</code> (1M 컨텍스트 윈도우 베타)</li>
+</ul>
+<p>장문 문서 처리나 복잡한 작업에 유용합니다.</p>
+<h2 id="-마치며">💡 마치며<a hidden class="anchor" aria-hidden="true" href="#-마치며">#</a></h2>
+<p>OpenClaw는 2월 중순 동안 <strong>안정성</strong>과 <strong>보안</strong>에 집중한 업데이트를 진행했습니다. 특히 Cron 시스템의 안정화와 SSRF 방어 강화는 프로덕션 환경에서 OpenClaw를 운영하는 사용자들에게 큰 도움이 될 것입니다.</p>
+<p><strong>업데이트 권장사항:</strong></p>
+<ol>
+<li>Cron 사용 중이라면 즉시 업데이트 권장</li>
+<li>업데이트 후 <code>openclaw doctor</code> 실행</li>
+<li>Gateway 재시작</li>
+<li><code>openclaw health</code>로 상태 확인</li>
+</ol>
+<p>OpenClaw의 다음 업데이트도 기대해주세요! 🚀</p>
+<hr>
+<p><em>참고: 2026.2.20 후보 버전의 일부 기능은 정식 릴리즈 전이므로, 실제 사용 전 릴리즈 노트를 재확인하세요.</em></p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://kwbaek.github.io/tags/openclaw/">Openclaw</a></li>
+      <li><a href="https://kwbaek.github.io/tags/%EC%97%85%EB%8D%B0%EC%9D%B4%ED%8A%B8/">업데이트</a></li>
+      <li><a href="https://kwbaek.github.io/tags/cron/">Cron</a></li>
+      <li><a href="https://kwbaek.github.io/tags/%EB%B3%B4%EC%95%88/">보안</a></li>
+      <li><a href="https://kwbaek.github.io/tags/ai-agent/">Ai-Agent</a></li>
+      <li><a href="https://kwbaek.github.io/tags/%EC%9E%90%EB%8F%99%ED%99%94/">자동화</a></li>
+    </ul>
+  </footer><script src="https://utteranc.es/client.js"
+        repo="kwbaek/blog-comments"
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://kwbaek.github.io/">Kyungwook&#39;s Devlog</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>
