@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>NIST on Kyungwook&#39;s Devlog</title>
+    <link>https://kwbaek.github.io/tags/nist/</link>
+    <description>Recent content in NIST on Kyungwook&#39;s Devlog</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Sat, 21 Feb 2026 21:00:00 +0900</lastBuildDate>
+    <atom:link href="https://kwbaek.github.io/tags/nist/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI 에이전트 시대의 서막: Claude Sonnet 4.6과 NIST 표준화 이니셔티브</title>
+      <link>https://kwbaek.github.io/posts/2026-02-21-ai-agent-era-claude-sonnet-nist-standards/</link>
+      <pubDate>Sat, 21 Feb 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-02-21-ai-agent-era-claude-sonnet-nist-standards/</guid>
+      <description>&lt;h2 id=&#34;ai-에이전트-시대가-본격화되고-있다&#34;&gt;AI 에이전트 시대가 본격화되고 있다&lt;/h2&gt;
+&lt;p&gt;2026년 2월, AI 업계에서 두 가지 중요한 발표가 있었습니다. Anthropic의 &lt;strong&gt;Claude Sonnet 4.6&lt;/strong&gt; 출시와 미국 NIST(국립표준기술연구소)의 &lt;strong&gt;AI Agent Standards Initiative&lt;/strong&gt; 출범입니다. 이 두 사건은 AI 에이전트 시대가 본격적으로 시작되고 있음을 보여주는 명확한 신호입니다.&lt;/p&gt;
+&lt;h2 id=&#34;claude-sonnet-46-에이전트-능력의-전방위-업그레이드&#34;&gt;Claude Sonnet 4.6: 에이전트 능력의 전방위 업그레이드&lt;/h2&gt;
+&lt;p&gt;Anthropic이 발표한 Claude Sonnet 4.6는 단순한 모델 업데이트가 아닙니다. 이번 업그레이드는 AI 에이전트로서의 핵심 능력들을 대폭 강화했습니다:&lt;/p&gt;
+&lt;h3 id=&#34;주요-개선-사항&#34;&gt;주요 개선 사항&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;코딩 능력&lt;/strong&gt;: 복잡한 코드 생성 및 디버깅 능력 향상&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;컴퓨터 사용(Computer Use)&lt;/strong&gt;: 실제 컴퓨터 환경에서 작업 수행 능력 강화&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;장기 추론(Long-Reasoning)&lt;/strong&gt;: 여러 단계를 거치는 복잡한 문제 해결&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;에이전트 플래닝&lt;/strong&gt;: 목표 달성을 위한 체계적인 계획 수립&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;지식 작업&lt;/strong&gt;: 정보 검색, 분석, 종합 능력&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;특히 눈에 띄는 점은 **&amp;ldquo;에이전트 플래닝&amp;rdquo;**이 별도 항목으로 강조되었다는 것입니다. 이는 단순히 질문에 답하는 것을 넘어, 복잡한 목표를 독립적으로 수행할 수 있는 자율 에이전트로의 진화를 의미합니다.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

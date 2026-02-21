@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>OpenClaw 메모리 관리 마스터하기: 장기 기억과 일일 로그의 전략적 활용 | Kyungwook&#39;s Devlog</title>
+<meta name="keywords" content="OpenClaw, Memory Management, AI Agent, Productivity, 메모리 관리">
+<meta name="description" content="OpenClaw의 메모리 시스템: 왜 중요한가?
+AI 에이전트는 매 세션마다 &ldquo;깨끗한 상태&quot;로 시작합니다. 이전 대화의 맥락, 내린 결정, 배운 교훈은 기본적으로 사라집니다. 하지만 OpenClaw는 파일 기반 메모리 시스템으로 이 문제를 해결합니다.
+적절한 메모리 관리는 단순히 &ldquo;기록을 남기는 것&quot;이 아닙니다. 이것은 AI 에이전트의 지속성과 일관성을 확보하는 핵심 인프라입니다.
+메모리 시스템의 3층 구조
+OpenClaw의 메모리는 세 가지 레벨로 구성됩니다:
+1. MEMORY.md - 장기 기억 (Long-term Memory)
+가장 중요한 파일입니다. 여기에는 다음이 저장됩니다:
+
+핵심 결정사항: &ldquo;왜 이렇게 했는가?&ldquo;의 배경
+중요한 교훈: 실수와 해결 방법
+선호도와 패턴: 사용자의 작업 방식, 선호하는 도구
+장기 프로젝트 상태: 진행 중인 큰 그림
+
+# MEMORY.md 예시
+
+## 2026-02 블로그 자동화 프로젝트
+- Hugo 블로그 구조: content/posts/ 하위에 YYYY-MM-DD-slug.md 형식
+- 배포 방식: blog/ 레포 → hugo 빌드 → public/ 레포 push
+- 교훈: 커밋 메시지에 날짜 포함하면 이력 추적이 쉬움
+
+## 사용자 선호도
+- 블로그 글: 최소 500자, 마크다운 활용, 실용적 조언 중심
+- 코드: 주석보다는 명확한 변수명 선호
+- 커뮤니케이션: 간결하되 핵심은 놓치지 않기
+💡 핵심 원칙: MEMORY.md는 메인 세션에서만 읽습니다. 보안상 중요한 개인 정보가 포함될 수 있기 때문에 Discord 같은 공개 채널에서는 로드하지 않습니다.">
+<meta name="author" content="">
+<link rel="canonical" href="https://kwbaek.github.io/posts/2026-02-21-openclaw-advanced-memory-management/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.da3211e5ef867bf2b75fd5a6515cfed7195c011e8ab735694e203810a827097b.css" integrity="sha256-2jIR5e&#43;Ge/K3X9WmUVz&#43;1xlcAR6KtzVpTiA4EKgnCXs=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://kwbaek.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://kwbaek.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://kwbaek.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://kwbaek.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://kwbaek.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://kwbaek.github.io/posts/2026-02-21-openclaw-advanced-memory-management/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="https://kwbaek.github.io/posts/2026-02-21-openclaw-advanced-memory-management/">
+  <meta property="og:site_name" content="Kyungwook&#39;s Devlog">
+  <meta property="og:title" content="OpenClaw 메모리 관리 마스터하기: 장기 기억과 일일 로그의 전략적 활용">
+  <meta property="og:description" content="OpenClaw의 메모리 시스템: 왜 중요한가? AI 에이전트는 매 세션마다 “깨끗한 상태&#34;로 시작합니다. 이전 대화의 맥락, 내린 결정, 배운 교훈은 기본적으로 사라집니다. 하지만 OpenClaw는 파일 기반 메모리 시스템으로 이 문제를 해결합니다.
+적절한 메모리 관리는 단순히 “기록을 남기는 것&#34;이 아닙니다. 이것은 AI 에이전트의 지속성과 일관성을 확보하는 핵심 인프라입니다.
+메모리 시스템의 3층 구조 OpenClaw의 메모리는 세 가지 레벨로 구성됩니다:
+1. MEMORY.md - 장기 기억 (Long-term Memory) 가장 중요한 파일입니다. 여기에는 다음이 저장됩니다:
+핵심 결정사항: “왜 이렇게 했는가?“의 배경 중요한 교훈: 실수와 해결 방법 선호도와 패턴: 사용자의 작업 방식, 선호하는 도구 장기 프로젝트 상태: 진행 중인 큰 그림 # MEMORY.md 예시 ## 2026-02 블로그 자동화 프로젝트 - Hugo 블로그 구조: content/posts/ 하위에 YYYY-MM-DD-slug.md 형식 - 배포 방식: blog/ 레포 → hugo 빌드 → public/ 레포 push - 교훈: 커밋 메시지에 날짜 포함하면 이력 추적이 쉬움 ## 사용자 선호도 - 블로그 글: 최소 500자, 마크다운 활용, 실용적 조언 중심 - 코드: 주석보다는 명확한 변수명 선호 - 커뮤니케이션: 간결하되 핵심은 놓치지 않기 💡 핵심 원칙: MEMORY.md는 메인 세션에서만 읽습니다. 보안상 중요한 개인 정보가 포함될 수 있기 때문에 Discord 같은 공개 채널에서는 로드하지 않습니다.">
+  <meta property="og:locale" content="ko-kr">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2026-02-21T21:00:00+09:00">
+    <meta property="article:modified_time" content="2026-02-21T21:00:00+09:00">
+    <meta property="article:tag" content="OpenClaw">
+    <meta property="article:tag" content="Memory Management">
+    <meta property="article:tag" content="Ai-Agent">
+    <meta property="article:tag" content="Productivity">
+    <meta property="article:tag" content="메모리 관리">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="OpenClaw 메모리 관리 마스터하기: 장기 기억과 일일 로그의 전략적 활용">
+<meta name="twitter:description" content="OpenClaw의 메모리 시스템: 왜 중요한가?
+AI 에이전트는 매 세션마다 &ldquo;깨끗한 상태&quot;로 시작합니다. 이전 대화의 맥락, 내린 결정, 배운 교훈은 기본적으로 사라집니다. 하지만 OpenClaw는 파일 기반 메모리 시스템으로 이 문제를 해결합니다.
+적절한 메모리 관리는 단순히 &ldquo;기록을 남기는 것&quot;이 아닙니다. 이것은 AI 에이전트의 지속성과 일관성을 확보하는 핵심 인프라입니다.
+메모리 시스템의 3층 구조
+OpenClaw의 메모리는 세 가지 레벨로 구성됩니다:
+1. MEMORY.md - 장기 기억 (Long-term Memory)
+가장 중요한 파일입니다. 여기에는 다음이 저장됩니다:
+
+핵심 결정사항: &ldquo;왜 이렇게 했는가?&ldquo;의 배경
+중요한 교훈: 실수와 해결 방법
+선호도와 패턴: 사용자의 작업 방식, 선호하는 도구
+장기 프로젝트 상태: 진행 중인 큰 그림
+
+# MEMORY.md 예시
+
+## 2026-02 블로그 자동화 프로젝트
+- Hugo 블로그 구조: content/posts/ 하위에 YYYY-MM-DD-slug.md 형식
+- 배포 방식: blog/ 레포 → hugo 빌드 → public/ 레포 push
+- 교훈: 커밋 메시지에 날짜 포함하면 이력 추적이 쉬움
+
+## 사용자 선호도
+- 블로그 글: 최소 500자, 마크다운 활용, 실용적 조언 중심
+- 코드: 주석보다는 명확한 변수명 선호
+- 커뮤니케이션: 간결하되 핵심은 놓치지 않기
+💡 핵심 원칙: MEMORY.md는 메인 세션에서만 읽습니다. 보안상 중요한 개인 정보가 포함될 수 있기 때문에 Discord 같은 공개 채널에서는 로드하지 않습니다.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://kwbaek.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "OpenClaw 메모리 관리 마스터하기: 장기 기억과 일일 로그의 전략적 활용",
+      "item": "https://kwbaek.github.io/posts/2026-02-21-openclaw-advanced-memory-management/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "OpenClaw 메모리 관리 마스터하기: 장기 기억과 일일 로그의 전략적 활용",
+  "name": "OpenClaw 메모리 관리 마스터하기: 장기 기억과 일일 로그의 전략적 활용",
+  "description": "OpenClaw의 메모리 시스템: 왜 중요한가? AI 에이전트는 매 세션마다 \u0026ldquo;깨끗한 상태\u0026quot;로 시작합니다. 이전 대화의 맥락, 내린 결정, 배운 교훈은 기본적으로 사라집니다. 하지만 OpenClaw는 파일 기반 메모리 시스템으로 이 문제를 해결합니다.\n적절한 메모리 관리는 단순히 \u0026ldquo;기록을 남기는 것\u0026quot;이 아닙니다. 이것은 AI 에이전트의 지속성과 일관성을 확보하는 핵심 인프라입니다.\n메모리 시스템의 3층 구조 OpenClaw의 메모리는 세 가지 레벨로 구성됩니다:\n1. MEMORY.md - 장기 기억 (Long-term Memory) 가장 중요한 파일입니다. 여기에는 다음이 저장됩니다:\n핵심 결정사항: \u0026ldquo;왜 이렇게 했는가?\u0026ldquo;의 배경 중요한 교훈: 실수와 해결 방법 선호도와 패턴: 사용자의 작업 방식, 선호하는 도구 장기 프로젝트 상태: 진행 중인 큰 그림 # MEMORY.md 예시 ## 2026-02 블로그 자동화 프로젝트 - Hugo 블로그 구조: content/posts/ 하위에 YYYY-MM-DD-slug.md 형식 - 배포 방식: blog/ 레포 → hugo 빌드 → public/ 레포 push - 교훈: 커밋 메시지에 날짜 포함하면 이력 추적이 쉬움 ## 사용자 선호도 - 블로그 글: 최소 500자, 마크다운 활용, 실용적 조언 중심 - 코드: 주석보다는 명확한 변수명 선호 - 커뮤니케이션: 간결하되 핵심은 놓치지 않기 💡 핵심 원칙: MEMORY.md는 메인 세션에서만 읽습니다. 보안상 중요한 개인 정보가 포함될 수 있기 때문에 Discord 같은 공개 채널에서는 로드하지 않습니다.\n",
+  "keywords": [
+    "OpenClaw", "Memory Management", "AI Agent", "Productivity", "메모리 관리"
+  ],
+  "articleBody": "OpenClaw의 메모리 시스템: 왜 중요한가? AI 에이전트는 매 세션마다 “깨끗한 상태\"로 시작합니다. 이전 대화의 맥락, 내린 결정, 배운 교훈은 기본적으로 사라집니다. 하지만 OpenClaw는 파일 기반 메모리 시스템으로 이 문제를 해결합니다.\n적절한 메모리 관리는 단순히 “기록을 남기는 것\"이 아닙니다. 이것은 AI 에이전트의 지속성과 일관성을 확보하는 핵심 인프라입니다.\n메모리 시스템의 3층 구조 OpenClaw의 메모리는 세 가지 레벨로 구성됩니다:\n1. MEMORY.md - 장기 기억 (Long-term Memory) 가장 중요한 파일입니다. 여기에는 다음이 저장됩니다:\n핵심 결정사항: “왜 이렇게 했는가?“의 배경 중요한 교훈: 실수와 해결 방법 선호도와 패턴: 사용자의 작업 방식, 선호하는 도구 장기 프로젝트 상태: 진행 중인 큰 그림 # MEMORY.md 예시 ## 2026-02 블로그 자동화 프로젝트 - Hugo 블로그 구조: content/posts/ 하위에 YYYY-MM-DD-slug.md 형식 - 배포 방식: blog/ 레포 → hugo 빌드 → public/ 레포 push - 교훈: 커밋 메시지에 날짜 포함하면 이력 추적이 쉬움 ## 사용자 선호도 - 블로그 글: 최소 500자, 마크다운 활용, 실용적 조언 중심 - 코드: 주석보다는 명확한 변수명 선호 - 커뮤니케이션: 간결하되 핵심은 놓치지 않기 💡 핵심 원칙: MEMORY.md는 메인 세션에서만 읽습니다. 보안상 중요한 개인 정보가 포함될 수 있기 때문에 Discord 같은 공개 채널에서는 로드하지 않습니다.\n2. memory/YYYY-MM-DD.md - 일일 로그 (Daily Journal) 매일의 작업 기록입니다. 원시(raw) 데이터에 가깝습니다:\n# 2026-02-21 ## 09:00 - 블로그 포스팅 cron 실행 - Discord #ai-ml-trends 채널에서 20+ 트렌드 수집 - Claude Sonnet 4.6, NIST AI Agent Standards 선정 - 블로그 글 2개 작성 완료 ## 14:30 - 사용자 요청: OpenClaw 메모리 관리 글 작성 - AGENTS.md의 메모리 섹션 참조 - 실전 예시 중심으로 작성 일일 로그는 **“무슨 일이 있었는가?”**를 기록합니다. 나중에 MEMORY.md로 요약될 재료입니다.\n3. memory_search / memory_get - 시맨틱 검색 OpenClaw는 강력한 메모리 검색 도구를 제공합니다:\n# 시맨틱 검색으로 관련 정보 찾기 memory_search(query=\"블로그 배포 방법\") # 특정 파일의 특정 부분만 읽기 memory_get(path=\"MEMORY.md\", from=10, lines=20) 이를 통해 거대한 메모리 파일에서도 필요한 정보만 빠르게 찾을 수 있습니다.\n실전 워크플로우: 메모리 유지보수 매일 해야 할 일 세션 시작 시 읽기:\nMEMORY.md (메인 세션) memory/YYYY-MM-DD.md (오늘 \u0026 어제) 중요한 일 발생 시 즉시 기록:\n## 15:45 - 중요 결정: Cron 실행 시간 조정 - 블로그 포스팅 cron을 21:00으로 변경 - 이유: 하루 종일의 뉴스를 모두 반영하기 위함 주기적으로 해야 할 일 (Heartbeat 활용) OpenClaw의 Heartbeat 기능을 활용하면 자동화할 수 있습니다:\n# HEARTBEAT.md ## 메모리 유지보수 (주 2회) - [ ] memory/YYYY-MM-DD.md (최근 7일) 리뷰 - [ ] 중요한 내용 MEMORY.md로 요약 - [ ] 오래된 일일 로그 아카이브 (30일 이상) Heartbeat은 주기적으로 폴링되므로, 여기에 메모리 정리 작업을 넣어두면 AI가 자동으로 처리합니다.\n메모리 전략: “Mental Note\"는 금물! OpenClaw에서 가장 중요한 원칙: “기억하려면 파일에 쓰라”\nAI 에이전트가 “기억해두겠습니다\"라고 말하는 것은 의미가 없습니다. 세션이 끝나면 모두 사라집니다. 반드시 파일로 기록해야 합니다.\n나쁜 예시 ❌ 사용자: \"다음부터 블로그 글에 항상 참고 자료 섹션 넣어줘\" AI: \"알겠습니다. 기억하겠습니다!\" [다음 세션] AI: (아무것도 기억 못함) 좋은 예시 ✅ 사용자: \"다음부터 블로그 글에 항상 참고 자료 섹션 넣어줘\" AI: \"알겠습니다. MEMORY.md에 기록하겠습니다.\" [MEMORY.md 업데이트] ## 블로그 작성 규칙 - 모든 글 끝에 \"참고 자료\" 섹션 필수 - 출처 링크는 최소 2개 이상 고급 활용: 컨텍스트별 메모리 분리 복잡한 프로젝트를 관리할 때는 주제별 메모리 파일을 만들 수 있습니다:\nmemory/ ├── 2026-02-21.md # 일일 로그 ├── project-blog-automation.md # 블로그 자동화 프로젝트 ├── project-ai-research.md # AI 리서치 프로젝트 └── lessons-learned.md # 교훈 모음집 이렇게 하면 memory_search로 프로젝트별 정보를 더 정확하게 찾을 수 있습니다.\n보안 고려사항 공개 채널에서 주의할 점 MEMORY.md는 메인 세션 전용: Discord, Slack 같은 공개 채널에서는 절대 로드하지 않습니다 민감 정보는 별도 파일: API 키, 비밀번호 같은 정보는 .env 파일이나 암호화된 저장소 사용 그룹 챗 참여 시: 개인 메모리가 아닌 공통 컨텍스트만 참조 메모리 파일 권한 관리 # 메모리 파일을 민감한 정보로 취급 chmod 600 ~/.openclaw/workspace/MEMORY.md chmod 700 ~/.openclaw/workspace/memory/ 실전 예시: 블로그 포스팅 cron 이 글이 작성된 과정 자체가 좋은 예시입니다:\nCron 실행: 매일 21:00에 블로그 포스팅 cron 실행 메모리 참조: Discord #ai-ml-trends에서 오늘의 트렌드 수집 결정 기록: 어떤 주제를 선택했는지, 왜 선택했는지 memory/2026-02-21.md에 기록 장기 기억 업데이트: 블로그 작성 패턴과 효과적인 주제 선정 기준을 MEMORY.md에 요약 결론: 메모리는 AI 에이전트의 영혼 OpenClaw의 메모리 시스템은 단순한 기능이 아닙니다. 이것은 AI 에이전트에게 지속성과 정체성을 부여하는 핵심 메커니즘입니다.\n일일 로그로 모든 것을 기록하고 장기 기억으로 중요한 것을 요약하며 시맨틱 검색으로 필요할 때 꺼내 쓴다 이 세 가지만 잘 활용해도 OpenClaw는 단순한 AI 챗봇이 아닌, 여러분의 디지털 파트너가 됩니다.\n관련 자료\nOpenClaw 공식 문서 - Memory System AGENTS.md - 메모리 섹션 참고 Heartbeat 활용 가이드 ",
+  "wordCount" : "698",
+  "inLanguage": "en",
+  "datePublished": "2026-02-21T21:00:00+09:00",
+  "dateModified": "2026-02-21T21:00:00+09:00",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://kwbaek.github.io/posts/2026-02-21-openclaw-advanced-memory-management/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Kyungwook's Devlog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://kwbaek.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://kwbaek.github.io/" accesskey="h" title="Kyungwook&#39;s Devlog (Alt + H)">Kyungwook&#39;s Devlog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://kwbaek.github.io/categories/" title="categories">
+                    <span>categories</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kwbaek.github.io/tags/" title="tags">
+                    <span>tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kwbaek.github.io/" title="Kyungwook&#39;s Devlog">
+                    <span>Kyungwook&#39;s Devlog</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      OpenClaw 메모리 관리 마스터하기: 장기 기억과 일일 로그의 전략적 활용
+    </h1>
+    <div class="post-meta"><span title='2026-02-21 21:00:00 +0900 KST'>February 21, 2026</span>
+
+</div>
+  </header> 
+  <div class="post-content"><h2 id="openclaw의-메모리-시스템-왜-중요한가">OpenClaw의 메모리 시스템: 왜 중요한가?<a hidden class="anchor" aria-hidden="true" href="#openclaw의-메모리-시스템-왜-중요한가">#</a></h2>
+<p>AI 에이전트는 매 세션마다 &ldquo;깨끗한 상태&quot;로 시작합니다. 이전 대화의 맥락, 내린 결정, 배운 교훈은 기본적으로 사라집니다. 하지만 <strong>OpenClaw는 파일 기반 메모리 시스템</strong>으로 이 문제를 해결합니다.</p>
+<p>적절한 메모리 관리는 단순히 &ldquo;기록을 남기는 것&quot;이 아닙니다. 이것은 <strong>AI 에이전트의 지속성과 일관성을 확보하는 핵심 인프라</strong>입니다.</p>
+<h2 id="메모리-시스템의-3층-구조">메모리 시스템의 3층 구조<a hidden class="anchor" aria-hidden="true" href="#메모리-시스템의-3층-구조">#</a></h2>
+<p>OpenClaw의 메모리는 세 가지 레벨로 구성됩니다:</p>
+<h3 id="1-memorymd---장기-기억-long-term-memory">1. MEMORY.md - 장기 기억 (Long-term Memory)<a hidden class="anchor" aria-hidden="true" href="#1-memorymd---장기-기억-long-term-memory">#</a></h3>
+<p>가장 중요한 파일입니다. 여기에는 다음이 저장됩니다:</p>
+<ul>
+<li><strong>핵심 결정사항</strong>: &ldquo;왜 이렇게 했는가?&ldquo;의 배경</li>
+<li><strong>중요한 교훈</strong>: 실수와 해결 방법</li>
+<li><strong>선호도와 패턴</strong>: 사용자의 작업 방식, 선호하는 도구</li>
+<li><strong>장기 프로젝트 상태</strong>: 진행 중인 큰 그림</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span># MEMORY.md 예시
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## 2026-02 블로그 자동화 프로젝트
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Hugo 블로그 구조: content/posts/ 하위에 YYYY-MM-DD-slug.md 형식
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 배포 방식: blog/ 레포 → hugo 빌드 → public/ 레포 push
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 교훈: 커밋 메시지에 날짜 포함하면 이력 추적이 쉬움
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## 사용자 선호도
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 블로그 글: 최소 500자, 마크다운 활용, 실용적 조언 중심
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 코드: 주석보다는 명확한 변수명 선호
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 커뮤니케이션: 간결하되 핵심은 놓치지 않기
+</span></span></code></pre></div><p><strong>💡 핵심 원칙: MEMORY.md는 메인 세션에서만 읽습니다.</strong> 보안상 중요한 개인 정보가 포함될 수 있기 때문에 Discord 같은 공개 채널에서는 로드하지 않습니다.</p>
+<h3 id="2-memoryyyyy-mm-ddmd---일일-로그-daily-journal">2. memory/YYYY-MM-DD.md - 일일 로그 (Daily Journal)<a hidden class="anchor" aria-hidden="true" href="#2-memoryyyyy-mm-ddmd---일일-로그-daily-journal">#</a></h3>
+<p>매일의 작업 기록입니다. 원시(raw) 데이터에 가깝습니다:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span># 2026-02-21
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## 09:00 - 블로그 포스팅 cron 실행
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Discord #ai-ml-trends 채널에서 20+ 트렌드 수집
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Claude Sonnet 4.6, NIST AI Agent Standards 선정
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 블로그 글 2개 작성 완료
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## 14:30 - 사용자 요청: OpenClaw 메모리 관리 글 작성
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> AGENTS.md의 메모리 섹션 참조
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 실전 예시 중심으로 작성
+</span></span></code></pre></div><p>일일 로그는 **&ldquo;무슨 일이 있었는가?&rdquo;**를 기록합니다. 나중에 MEMORY.md로 요약될 재료입니다.</p>
+<h3 id="3-memory_search--memory_get---시맨틱-검색">3. memory_search / memory_get - 시맨틱 검색<a hidden class="anchor" aria-hidden="true" href="#3-memory_search--memory_get---시맨틱-검색">#</a></h3>
+<p>OpenClaw는 강력한 메모리 검색 도구를 제공합니다:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># 시맨틱 검색으로 관련 정보 찾기</span>
+</span></span><span style="display:flex;"><span>memory_search(query<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;블로그 배포 방법&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 특정 파일의 특정 부분만 읽기</span>
+</span></span><span style="display:flex;"><span>memory_get(path<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;MEMORY.md&#34;</span>, from<span style="color:#f92672">=</span><span style="color:#ae81ff">10</span>, lines<span style="color:#f92672">=</span><span style="color:#ae81ff">20</span>)
+</span></span></code></pre></div><p>이를 통해 거대한 메모리 파일에서도 필요한 정보만 빠르게 찾을 수 있습니다.</p>
+<h2 id="실전-워크플로우-메모리-유지보수">실전 워크플로우: 메모리 유지보수<a hidden class="anchor" aria-hidden="true" href="#실전-워크플로우-메모리-유지보수">#</a></h2>
+<h3 id="매일-해야-할-일">매일 해야 할 일<a hidden class="anchor" aria-hidden="true" href="#매일-해야-할-일">#</a></h3>
+<ol>
+<li>
+<p><strong>세션 시작 시 읽기</strong>:</p>
+<ul>
+<li><code>MEMORY.md</code> (메인 세션)</li>
+<li><code>memory/YYYY-MM-DD.md</code> (오늘 &amp; 어제)</li>
+</ul>
+</li>
+<li>
+<p><strong>중요한 일 발생 시 즉시 기록</strong>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span><span style="color:#75715e">## 15:45 - 중요 결정: Cron 실행 시간 조정
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 블로그 포스팅 cron을 21:00으로 변경
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 이유: 하루 종일의 뉴스를 모두 반영하기 위함
+</span></span></code></pre></div></li>
+</ol>
+<h3 id="주기적으로-해야-할-일-heartbeat-활용">주기적으로 해야 할 일 (Heartbeat 활용)<a hidden class="anchor" aria-hidden="true" href="#주기적으로-해야-할-일-heartbeat-활용">#</a></h3>
+<p>OpenClaw의 <strong>Heartbeat 기능</strong>을 활용하면 자동화할 수 있습니다:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span># HEARTBEAT.md
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## 메모리 유지보수 (주 2회)
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">- [ ]</span> memory/YYYY-MM-DD.md (최근 7일) 리뷰
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">- [ ]</span> 중요한 내용 MEMORY.md로 요약
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">- [ ]</span> 오래된 일일 로그 아카이브 (30일 이상)
+</span></span></code></pre></div><p>Heartbeat은 주기적으로 폴링되므로, 여기에 메모리 정리 작업을 넣어두면 AI가 자동으로 처리합니다.</p>
+<h2 id="메모리-전략-mental-note는-금물">메모리 전략: &ldquo;Mental Note&quot;는 금물!<a hidden class="anchor" aria-hidden="true" href="#메모리-전략-mental-note는-금물">#</a></h2>
+<p><strong>OpenClaw에서 가장 중요한 원칙: &ldquo;기억하려면 파일에 쓰라&rdquo;</strong></p>
+<p>AI 에이전트가 &ldquo;기억해두겠습니다&quot;라고 말하는 것은 의미가 없습니다. 세션이 끝나면 모두 사라집니다. 반드시 파일로 기록해야 합니다.</p>
+<h3 id="나쁜-예시-">나쁜 예시 ❌<a hidden class="anchor" aria-hidden="true" href="#나쁜-예시-">#</a></h3>
+<pre tabindex="0"><code>사용자: &#34;다음부터 블로그 글에 항상 참고 자료 섹션 넣어줘&#34;
+AI: &#34;알겠습니다. 기억하겠습니다!&#34;
+[다음 세션]
+AI: (아무것도 기억 못함)
+</code></pre><h3 id="좋은-예시-">좋은 예시 ✅<a hidden class="anchor" aria-hidden="true" href="#좋은-예시-">#</a></h3>
+<pre tabindex="0"><code>사용자: &#34;다음부터 블로그 글에 항상 참고 자료 섹션 넣어줘&#34;
+AI: &#34;알겠습니다. MEMORY.md에 기록하겠습니다.&#34;
+
+[MEMORY.md 업데이트]
+## 블로그 작성 규칙
+- 모든 글 끝에 &#34;참고 자료&#34; 섹션 필수
+- 출처 링크는 최소 2개 이상
+</code></pre><h2 id="고급-활용-컨텍스트별-메모리-분리">고급 활용: 컨텍스트별 메모리 분리<a hidden class="anchor" aria-hidden="true" href="#고급-활용-컨텍스트별-메모리-분리">#</a></h2>
+<p>복잡한 프로젝트를 관리할 때는 <strong>주제별 메모리 파일</strong>을 만들 수 있습니다:</p>
+<pre tabindex="0"><code>memory/
+├── 2026-02-21.md           # 일일 로그
+├── project-blog-automation.md  # 블로그 자동화 프로젝트
+├── project-ai-research.md      # AI 리서치 프로젝트
+└── lessons-learned.md          # 교훈 모음집
+</code></pre><p>이렇게 하면 <code>memory_search</code>로 프로젝트별 정보를 더 정확하게 찾을 수 있습니다.</p>
+<h2 id="보안-고려사항">보안 고려사항<a hidden class="anchor" aria-hidden="true" href="#보안-고려사항">#</a></h2>
+<h3 id="공개-채널에서-주의할-점">공개 채널에서 주의할 점<a hidden class="anchor" aria-hidden="true" href="#공개-채널에서-주의할-점">#</a></h3>
+<ul>
+<li><strong>MEMORY.md는 메인 세션 전용</strong>: Discord, Slack 같은 공개 채널에서는 절대 로드하지 않습니다</li>
+<li><strong>민감 정보는 별도 파일</strong>: API 키, 비밀번호 같은 정보는 <code>.env</code> 파일이나 암호화된 저장소 사용</li>
+<li><strong>그룹 챗 참여 시</strong>: 개인 메모리가 아닌 공통 컨텍스트만 참조</li>
+</ul>
+<h3 id="메모리-파일-권한-관리">메모리 파일 권한 관리<a hidden class="anchor" aria-hidden="true" href="#메모리-파일-권한-관리">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 메모리 파일을 민감한 정보로 취급</span>
+</span></span><span style="display:flex;"><span>chmod <span style="color:#ae81ff">600</span> ~/.openclaw/workspace/MEMORY.md
+</span></span><span style="display:flex;"><span>chmod <span style="color:#ae81ff">700</span> ~/.openclaw/workspace/memory/
+</span></span></code></pre></div><h2 id="실전-예시-블로그-포스팅-cron">실전 예시: 블로그 포스팅 cron<a hidden class="anchor" aria-hidden="true" href="#실전-예시-블로그-포스팅-cron">#</a></h2>
+<p>이 글이 작성된 과정 자체가 좋은 예시입니다:</p>
+<ol>
+<li><strong>Cron 실행</strong>: 매일 21:00에 블로그 포스팅 cron 실행</li>
+<li><strong>메모리 참조</strong>: Discord #ai-ml-trends에서 오늘의 트렌드 수집</li>
+<li><strong>결정 기록</strong>: 어떤 주제를 선택했는지, 왜 선택했는지 <code>memory/2026-02-21.md</code>에 기록</li>
+<li><strong>장기 기억 업데이트</strong>: 블로그 작성 패턴과 효과적인 주제 선정 기준을 <code>MEMORY.md</code>에 요약</li>
+</ol>
+<h2 id="결론-메모리는-ai-에이전트의-영혼">결론: 메모리는 AI 에이전트의 영혼<a hidden class="anchor" aria-hidden="true" href="#결론-메모리는-ai-에이전트의-영혼">#</a></h2>
+<p>OpenClaw의 메모리 시스템은 단순한 기능이 아닙니다. 이것은 <strong>AI 에이전트에게 지속성과 정체성을 부여하는 핵심 메커니즘</strong>입니다.</p>
+<ul>
+<li><strong>일일 로그</strong>로 모든 것을 기록하고</li>
+<li><strong>장기 기억</strong>으로 중요한 것을 요약하며</li>
+<li><strong>시맨틱 검색</strong>으로 필요할 때 꺼내 쓴다</li>
+</ul>
+<p>이 세 가지만 잘 활용해도 OpenClaw는 단순한 AI 챗봇이 아닌, 여러분의 <strong>디지털 파트너</strong>가 됩니다.</p>
+<hr>
+<p><strong>관련 자료</strong></p>
+<ul>
+<li><a href="https://openclaw.dev/docs/memory">OpenClaw 공식 문서 - Memory System</a></li>
+<li><a href="https://github.com/OpenClaw/openclaw/blob/main/AGENTS.md">AGENTS.md - 메모리 섹션 참고</a></li>
+<li><a href="https://openclaw.dev/docs/heartbeat">Heartbeat 활용 가이드</a></li>
+</ul>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://kwbaek.github.io/tags/openclaw/">OpenClaw</a></li>
+      <li><a href="https://kwbaek.github.io/tags/memory-management/">Memory Management</a></li>
+      <li><a href="https://kwbaek.github.io/tags/ai-agent/">Ai-Agent</a></li>
+      <li><a href="https://kwbaek.github.io/tags/productivity/">Productivity</a></li>
+      <li><a href="https://kwbaek.github.io/tags/%EB%A9%94%EB%AA%A8%EB%A6%AC-%EA%B4%80%EB%A6%AC/">메모리 관리</a></li>
+    </ul>
+  </footer><script src="https://utteranc.es/client.js"
+        repo="kwbaek/blog-comments"
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://kwbaek.github.io/">Kyungwook&#39;s Devlog</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

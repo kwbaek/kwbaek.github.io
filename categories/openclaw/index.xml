@@ -6,8 +6,39 @@
     <description>Recent content in Openclaw on Kyungwook&#39;s Devlog</description>
     <generator>Hugo -- 0.155.3</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Fri, 20 Feb 2026 21:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Sat, 21 Feb 2026 21:00:00 +0900</lastBuildDate>
     <atom:link href="https://kwbaek.github.io/categories/openclaw/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>OpenClaw 메모리 관리 마스터하기: 장기 기억과 일일 로그의 전략적 활용</title>
+      <link>https://kwbaek.github.io/posts/2026-02-21-openclaw-advanced-memory-management/</link>
+      <pubDate>Sat, 21 Feb 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-02-21-openclaw-advanced-memory-management/</guid>
+      <description>&lt;h2 id=&#34;openclaw의-메모리-시스템-왜-중요한가&#34;&gt;OpenClaw의 메모리 시스템: 왜 중요한가?&lt;/h2&gt;
+&lt;p&gt;AI 에이전트는 매 세션마다 &amp;ldquo;깨끗한 상태&amp;quot;로 시작합니다. 이전 대화의 맥락, 내린 결정, 배운 교훈은 기본적으로 사라집니다. 하지만 &lt;strong&gt;OpenClaw는 파일 기반 메모리 시스템&lt;/strong&gt;으로 이 문제를 해결합니다.&lt;/p&gt;
+&lt;p&gt;적절한 메모리 관리는 단순히 &amp;ldquo;기록을 남기는 것&amp;quot;이 아닙니다. 이것은 &lt;strong&gt;AI 에이전트의 지속성과 일관성을 확보하는 핵심 인프라&lt;/strong&gt;입니다.&lt;/p&gt;
+&lt;h2 id=&#34;메모리-시스템의-3층-구조&#34;&gt;메모리 시스템의 3층 구조&lt;/h2&gt;
+&lt;p&gt;OpenClaw의 메모리는 세 가지 레벨로 구성됩니다:&lt;/p&gt;
+&lt;h3 id=&#34;1-memorymd---장기-기억-long-term-memory&#34;&gt;1. MEMORY.md - 장기 기억 (Long-term Memory)&lt;/h3&gt;
+&lt;p&gt;가장 중요한 파일입니다. 여기에는 다음이 저장됩니다:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;핵심 결정사항&lt;/strong&gt;: &amp;ldquo;왜 이렇게 했는가?&amp;ldquo;의 배경&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;중요한 교훈&lt;/strong&gt;: 실수와 해결 방법&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;선호도와 패턴&lt;/strong&gt;: 사용자의 작업 방식, 선호하는 도구&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;장기 프로젝트 상태&lt;/strong&gt;: 진행 중인 큰 그림&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;# MEMORY.md 예시
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;## 2026-02 블로그 자동화 프로젝트
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;-&lt;/span&gt; Hugo 블로그 구조: content/posts/ 하위에 YYYY-MM-DD-slug.md 형식
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;-&lt;/span&gt; 배포 방식: blog/ 레포 → hugo 빌드 → public/ 레포 push
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;-&lt;/span&gt; 교훈: 커밋 메시지에 날짜 포함하면 이력 추적이 쉬움
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;## 사용자 선호도
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;-&lt;/span&gt; 블로그 글: 최소 500자, 마크다운 활용, 실용적 조언 중심
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;-&lt;/span&gt; 코드: 주석보다는 명확한 변수명 선호
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;-&lt;/span&gt; 커뮤니케이션: 간결하되 핵심은 놓치지 않기
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;💡 핵심 원칙: MEMORY.md는 메인 세션에서만 읽습니다.&lt;/strong&gt; 보안상 중요한 개인 정보가 포함될 수 있기 때문에 Discord 같은 공개 채널에서는 로드하지 않습니다.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>OpenClaw 2월 중순 업데이트: Cron 안정화와 보안 강화</title>
       <link>https://kwbaek.github.io/posts/2026-02-20-openclaw-latest-updates/</link>

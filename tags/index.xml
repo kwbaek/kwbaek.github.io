@@ -6,27 +6,83 @@
     <description>Recent content in Tags on Kyungwook&#39;s Devlog</description>
     <generator>Hugo -- 0.155.3</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Fri, 20 Feb 2026 21:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Sat, 21 Feb 2026 21:00:00 +0900</lastBuildDate>
     <atom:link href="https://kwbaek.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>AI</title>
-      <link>https://kwbaek.github.io/tags/ai/</link>
-      <pubDate>Fri, 20 Feb 2026 21:00:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/tags/ai/</guid>
+      <title>AI 에이전트</title>
+      <link>https://kwbaek.github.io/tags/ai-%EC%97%90%EC%9D%B4%EC%A0%84%ED%8A%B8/</link>
+      <pubDate>Sat, 21 Feb 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/tags/ai-%EC%97%90%EC%9D%B4%EC%A0%84%ED%8A%B8/</guid>
       <description></description>
     </item>
     <item>
       <title>Ai-Agent</title>
       <link>https://kwbaek.github.io/tags/ai-agent/</link>
-      <pubDate>Fri, 20 Feb 2026 21:00:00 +0900</pubDate>
+      <pubDate>Sat, 21 Feb 2026 21:00:00 +0900</pubDate>
       <guid>https://kwbaek.github.io/tags/ai-agent/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Anthropic</title>
+      <link>https://kwbaek.github.io/tags/anthropic/</link>
+      <pubDate>Sat, 21 Feb 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/tags/anthropic/</guid>
       <description></description>
     </item>
     <item>
       <title>Claude</title>
       <link>https://kwbaek.github.io/tags/claude/</link>
-      <pubDate>Fri, 20 Feb 2026 21:00:00 +0900</pubDate>
+      <pubDate>Sat, 21 Feb 2026 21:00:00 +0900</pubDate>
       <guid>https://kwbaek.github.io/tags/claude/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Memory Management</title>
+      <link>https://kwbaek.github.io/tags/memory-management/</link>
+      <pubDate>Sat, 21 Feb 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/tags/memory-management/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>NIST</title>
+      <link>https://kwbaek.github.io/tags/nist/</link>
+      <pubDate>Sat, 21 Feb 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/tags/nist/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>OpenClaw</title>
+      <link>https://kwbaek.github.io/tags/openclaw/</link>
+      <pubDate>Sat, 21 Feb 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/tags/openclaw/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Productivity</title>
+      <link>https://kwbaek.github.io/tags/productivity/</link>
+      <pubDate>Sat, 21 Feb 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/tags/productivity/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Standards</title>
+      <link>https://kwbaek.github.io/tags/standards/</link>
+      <pubDate>Sat, 21 Feb 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/tags/standards/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>메모리 관리</title>
+      <link>https://kwbaek.github.io/tags/%EB%A9%94%EB%AA%A8%EB%A6%AC-%EA%B4%80%EB%A6%AC/</link>
+      <pubDate>Sat, 21 Feb 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/tags/%EB%A9%94%EB%AA%A8%EB%A6%AC-%EA%B4%80%EB%A6%AC/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Ai</title>
+      <link>https://kwbaek.github.io/tags/ai/</link>
+      <pubDate>Fri, 20 Feb 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/tags/ai/</guid>
       <description></description>
     </item>
     <item>
@@ -48,13 +104,6 @@
       <link>https://kwbaek.github.io/tags/machine-learning/</link>
       <pubDate>Fri, 20 Feb 2026 21:00:00 +0900</pubDate>
       <guid>https://kwbaek.github.io/tags/machine-learning/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Openclaw</title>
-      <link>https://kwbaek.github.io/tags/openclaw/</link>
-      <pubDate>Fri, 20 Feb 2026 21:00:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/tags/openclaw/</guid>
       <description></description>
     </item>
     <item>
@@ -121,13 +170,6 @@
       <description></description>
     </item>
     <item>
-      <title>Anthropic</title>
-      <link>https://kwbaek.github.io/tags/anthropic/</link>
-      <pubDate>Thu, 19 Feb 2026 21:00:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/tags/anthropic/</guid>
-      <description></description>
-    </item>
-    <item>
       <title>Automation</title>
       <link>https://kwbaek.github.io/tags/automation/</link>
       <pubDate>Thu, 19 Feb 2026 21:00:00 +0900</pubDate>
@@ -139,13 +181,6 @@
       <link>https://kwbaek.github.io/tags/llm/</link>
       <pubDate>Thu, 19 Feb 2026 21:00:00 +0900</pubDate>
       <guid>https://kwbaek.github.io/tags/llm/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Productivity</title>
-      <link>https://kwbaek.github.io/tags/productivity/</link>
-      <pubDate>Thu, 19 Feb 2026 21:00:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/tags/productivity/</guid>
       <description></description>
     </item>
     <item>
@@ -478,7 +513,7 @@
       <description></description>
     </item>
     <item>
-      <title>NVIDIA</title>
+      <title>Nvidia</title>
       <link>https://kwbaek.github.io/tags/nvidia/</link>
       <pubDate>Wed, 11 Feb 2026 21:00:00 +0900</pubDate>
       <guid>https://kwbaek.github.io/tags/nvidia/</guid>
