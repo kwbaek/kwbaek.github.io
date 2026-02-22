@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>AI 에이전트의 위험한 과신: 실제로는 22% 성공하지만 77% 성공할 거라 예측 | Kyungwook&#39;s Devlog</title>
+<meta name="keywords" content="AI Agent, LLM, 연구, 벤치마크, 신뢰성">
+<meta name="description" content="AI 에이전트, 자신의 능력을 과대평가하다
+최신 AI 에이전트 연구에서 충격적인 결과가 나왔습니다. AI 에이전트들이 작업 성공 확률을 예측할 때 실제 성능보다 훨씬 높게 평가하는 체계적인 과신(overconfidence) 패턴을 보인다는 것입니다.
+arXiv에 공개된 &ldquo;Agentic Uncertainty Reveals Agentic Overconfidence&rdquo; 논문에 따르면, 일부 에이전트는 실제로 22%의 작업만 성공했음에도 불구하고 77%의 성공률을 예측했습니다. 이는 3배 이상의 과대평가입니다.
+왜 이 문제가 중요한가?
+AI 에이전트가 실제 업무 환경에 배치되는 상황을 생각해보세요:
+
+의료 진단 에이전트가 자신의 진단 정확도를 과대평가한다면?
+금융 거래 에이전트가 리스크를 과소평가한다면?
+자율주행 에이전트가 자신의 판단 능력을 과신한다면?
+
+이런 과신은 단순한 정확도 문제를 넘어 신뢰와 안전의 문제로 직결됩니다.">
+<meta name="author" content="">
+<link rel="canonical" href="https://kwbaek.github.io/posts/2026-02-22-ai-agent-overconfidence/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.da3211e5ef867bf2b75fd5a6515cfed7195c011e8ab735694e203810a827097b.css" integrity="sha256-2jIR5e&#43;Ge/K3X9WmUVz&#43;1xlcAR6KtzVpTiA4EKgnCXs=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://kwbaek.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://kwbaek.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://kwbaek.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://kwbaek.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://kwbaek.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://kwbaek.github.io/posts/2026-02-22-ai-agent-overconfidence/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="https://kwbaek.github.io/posts/2026-02-22-ai-agent-overconfidence/">
+  <meta property="og:site_name" content="Kyungwook&#39;s Devlog">
+  <meta property="og:title" content="AI 에이전트의 위험한 과신: 실제로는 22% 성공하지만 77% 성공할 거라 예측">
+  <meta property="og:description" content="AI 에이전트, 자신의 능력을 과대평가하다 최신 AI 에이전트 연구에서 충격적인 결과가 나왔습니다. AI 에이전트들이 작업 성공 확률을 예측할 때 실제 성능보다 훨씬 높게 평가하는 체계적인 과신(overconfidence) 패턴을 보인다는 것입니다.
+arXiv에 공개된 “Agentic Uncertainty Reveals Agentic Overconfidence” 논문에 따르면, 일부 에이전트는 실제로 22%의 작업만 성공했음에도 불구하고 77%의 성공률을 예측했습니다. 이는 3배 이상의 과대평가입니다.
+왜 이 문제가 중요한가? AI 에이전트가 실제 업무 환경에 배치되는 상황을 생각해보세요:
+의료 진단 에이전트가 자신의 진단 정확도를 과대평가한다면? 금융 거래 에이전트가 리스크를 과소평가한다면? 자율주행 에이전트가 자신의 판단 능력을 과신한다면? 이런 과신은 단순한 정확도 문제를 넘어 신뢰와 안전의 문제로 직결됩니다.">
+  <meta property="og:locale" content="ko-kr">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2026-02-22T21:00:00+09:00">
+    <meta property="article:modified_time" content="2026-02-22T21:00:00+09:00">
+    <meta property="article:tag" content="Ai-Agent">
+    <meta property="article:tag" content="LLM">
+    <meta property="article:tag" content="연구">
+    <meta property="article:tag" content="벤치마크">
+    <meta property="article:tag" content="신뢰성">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="AI 에이전트의 위험한 과신: 실제로는 22% 성공하지만 77% 성공할 거라 예측">
+<meta name="twitter:description" content="AI 에이전트, 자신의 능력을 과대평가하다
+최신 AI 에이전트 연구에서 충격적인 결과가 나왔습니다. AI 에이전트들이 작업 성공 확률을 예측할 때 실제 성능보다 훨씬 높게 평가하는 체계적인 과신(overconfidence) 패턴을 보인다는 것입니다.
+arXiv에 공개된 &ldquo;Agentic Uncertainty Reveals Agentic Overconfidence&rdquo; 논문에 따르면, 일부 에이전트는 실제로 22%의 작업만 성공했음에도 불구하고 77%의 성공률을 예측했습니다. 이는 3배 이상의 과대평가입니다.
+왜 이 문제가 중요한가?
+AI 에이전트가 실제 업무 환경에 배치되는 상황을 생각해보세요:
+
+의료 진단 에이전트가 자신의 진단 정확도를 과대평가한다면?
+금융 거래 에이전트가 리스크를 과소평가한다면?
+자율주행 에이전트가 자신의 판단 능력을 과신한다면?
+
+이런 과신은 단순한 정확도 문제를 넘어 신뢰와 안전의 문제로 직결됩니다.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://kwbaek.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "AI 에이전트의 위험한 과신: 실제로는 22% 성공하지만 77% 성공할 거라 예측",
+      "item": "https://kwbaek.github.io/posts/2026-02-22-ai-agent-overconfidence/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "AI 에이전트의 위험한 과신: 실제로는 22% 성공하지만 77% 성공할 거라 예측",
+  "name": "AI 에이전트의 위험한 과신: 실제로는 22% 성공하지만 77% 성공할 거라 예측",
+  "description": "AI 에이전트, 자신의 능력을 과대평가하다 최신 AI 에이전트 연구에서 충격적인 결과가 나왔습니다. AI 에이전트들이 작업 성공 확률을 예측할 때 실제 성능보다 훨씬 높게 평가하는 체계적인 과신(overconfidence) 패턴을 보인다는 것입니다.\narXiv에 공개된 \u0026ldquo;Agentic Uncertainty Reveals Agentic Overconfidence\u0026rdquo; 논문에 따르면, 일부 에이전트는 실제로 22%의 작업만 성공했음에도 불구하고 77%의 성공률을 예측했습니다. 이는 3배 이상의 과대평가입니다.\n왜 이 문제가 중요한가? AI 에이전트가 실제 업무 환경에 배치되는 상황을 생각해보세요:\n의료 진단 에이전트가 자신의 진단 정확도를 과대평가한다면? 금융 거래 에이전트가 리스크를 과소평가한다면? 자율주행 에이전트가 자신의 판단 능력을 과신한다면? 이런 과신은 단순한 정확도 문제를 넘어 신뢰와 안전의 문제로 직결됩니다.\n",
+  "keywords": [
+    "AI Agent", "LLM", "연구", "벤치마크", "신뢰성"
+  ],
+  "articleBody": "AI 에이전트, 자신의 능력을 과대평가하다 최신 AI 에이전트 연구에서 충격적인 결과가 나왔습니다. AI 에이전트들이 작업 성공 확률을 예측할 때 실제 성능보다 훨씬 높게 평가하는 체계적인 과신(overconfidence) 패턴을 보인다는 것입니다.\narXiv에 공개된 “Agentic Uncertainty Reveals Agentic Overconfidence” 논문에 따르면, 일부 에이전트는 실제로 22%의 작업만 성공했음에도 불구하고 77%의 성공률을 예측했습니다. 이는 3배 이상의 과대평가입니다.\n왜 이 문제가 중요한가? AI 에이전트가 실제 업무 환경에 배치되는 상황을 생각해보세요:\n의료 진단 에이전트가 자신의 진단 정확도를 과대평가한다면? 금융 거래 에이전트가 리스크를 과소평가한다면? 자율주행 에이전트가 자신의 판단 능력을 과신한다면? 이런 과신은 단순한 정확도 문제를 넘어 신뢰와 안전의 문제로 직결됩니다.\nResearchGym: 실제 연구 능력을 측정하는 새로운 벤치마크 또 다른 중요한 연구는 AI 에이전트의 실제 연구 수행 능력을 평가하는 “ResearchGym”입니다.\n기존의 AI 벤치마크는 대부분 단일 정답형 테스트에 집중했습니다. 하지만 실제 연구는 그렇지 않죠. 탐색하고, 도구를 사용하고, 반복적으로 개선하는 복잡한 과정입니다.\nResearchGym은 ICML, ICLR, ACL 등 정상급 학회에 게재된 논문 5개를 기반으로 end-to-end 연구 워크플로우를 재현할 수 있는 환경을 제공합니다. 데이터셋과 평가 도구는 그대로 두고, 제안된 방법론만 숨긴 상태에서 AI 에이전트가 독자적으로 해결책을 찾아낼 수 있는지 테스트합니다.\n현실형 에이전트 평가의 시작 이제 우리는 AI 에이전트를 다음과 같은 기준으로 평가할 수 있습니다:\n탐색 능력: 문제 공간을 체계적으로 탐색하는가? 도구 활용: 적절한 도구를 선택하고 사용하는가? 반복 개선: 실패에서 배워 접근법을 개선하는가? Google Gemini 3.1 Pro: 복잡한 작업에 특화된 차세대 모델 Google DeepMind가 Gemini 3.1 Pro를 발표했습니다. Gemini 3 시리즈의 최신 모델로, 고도의 멀티모달 추론 능력을 갖춘 차세대 모델입니다.\n주요 특징 복잡한 작업 처리: 여러 단계의 추론이 필요한 작업에 최적화 멀티모달 능력: 텍스트, 이미지, 코드 등을 통합적으로 처리 에이전트 통합: AI 에이전트 시스템과의 원활한 통합 지원 Gemini 3.1 Pro는 단순히 더 큰 모델이 아니라, 에이전트형 AI 시대를 위해 설계된 모델입니다.\nOpenAI의 천문학적 투자: 2030년까지 6,000억 달러 Reuters 보도에 따르면 OpenAI는 2030년까지 누적 컴퓨트 지출을 약 6,000억 달러 수준으로 계획하고 있습니다.\n이는 AI 경쟁이 더 이상 알고리즘 경쟁이 아닌 인프라 경쟁으로 확대되고 있음을 보여줍니다:\n데이터센터 구축 전력 인프라 칩 조달 냉각 시스템 AI 기술의 미래는 이제 누가 더 많은 컴퓨팅 자원을 확보하느냐에 달려 있습니다.\n결론: 신뢰할 수 있는 에이전트 AI를 향해 AI 에이전트 기술은 빠르게 발전하고 있지만, 동시에 새로운 도전 과제도 드러나고 있습니다:\n과신 문제: 에이전트가 자신의 능력을 정확히 평가하도록 만들기 평가 기준: 실제 업무 환경에 가까운 벤치마크 개발 인프라 경쟁: 대규모 컴퓨팅 자원 확보 경쟁 AI 에이전트가 진정으로 신뢰할 수 있는 동료가 되려면, 기술적 성능뿐 아니라 자기 인식과 겸손함도 필요합니다. 이것이 바로 다음 세대 AI 연구가 나아가야 할 방향일 것입니다.\n참고 자료:\nAgentic Uncertainty Reveals Agentic Overconfidence (arXiv) ResearchGym: Evaluating Language Model Agents on Real-World AI Research (arXiv) Gemini 3.1 Pro Model Card (Google DeepMind) OpenAI sees compute spend around $600 billion by 2030 (Reuters) ",
+  "wordCount" : "422",
+  "inLanguage": "en",
+  "datePublished": "2026-02-22T21:00:00+09:00",
+  "dateModified": "2026-02-22T21:00:00+09:00",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://kwbaek.github.io/posts/2026-02-22-ai-agent-overconfidence/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Kyungwook's Devlog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://kwbaek.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://kwbaek.github.io/" accesskey="h" title="Kyungwook&#39;s Devlog (Alt + H)">Kyungwook&#39;s Devlog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://kwbaek.github.io/categories/" title="categories">
+                    <span>categories</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kwbaek.github.io/tags/" title="tags">
+                    <span>tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kwbaek.github.io/" title="Kyungwook&#39;s Devlog">
+                    <span>Kyungwook&#39;s Devlog</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      AI 에이전트의 위험한 과신: 실제로는 22% 성공하지만 77% 성공할 거라 예측
+    </h1>
+    <div class="post-meta"><span title='2026-02-22 21:00:00 +0900 KST'>February 22, 2026</span>
+
+</div>
+  </header> 
+  <div class="post-content"><h2 id="ai-에이전트-자신의-능력을-과대평가하다">AI 에이전트, 자신의 능력을 과대평가하다<a hidden class="anchor" aria-hidden="true" href="#ai-에이전트-자신의-능력을-과대평가하다">#</a></h2>
+<p>최신 AI 에이전트 연구에서 충격적인 결과가 나왔습니다. AI 에이전트들이 작업 성공 확률을 예측할 때 실제 성능보다 훨씬 높게 평가하는 <strong>체계적인 과신(overconfidence)</strong> 패턴을 보인다는 것입니다.</p>
+<p>arXiv에 공개된 <a href="https://arxiv.org/abs/2602.06948">&ldquo;Agentic Uncertainty Reveals Agentic Overconfidence&rdquo;</a> 논문에 따르면, 일부 에이전트는 실제로 22%의 작업만 성공했음에도 불구하고 <strong>77%의 성공률을 예측</strong>했습니다. 이는 3배 이상의 과대평가입니다.</p>
+<h3 id="왜-이-문제가-중요한가">왜 이 문제가 중요한가?<a hidden class="anchor" aria-hidden="true" href="#왜-이-문제가-중요한가">#</a></h3>
+<p>AI 에이전트가 실제 업무 환경에 배치되는 상황을 생각해보세요:</p>
+<ul>
+<li><strong>의료 진단 에이전트</strong>가 자신의 진단 정확도를 과대평가한다면?</li>
+<li><strong>금융 거래 에이전트</strong>가 리스크를 과소평가한다면?</li>
+<li><strong>자율주행 에이전트</strong>가 자신의 판단 능력을 과신한다면?</li>
+</ul>
+<p>이런 과신은 단순한 정확도 문제를 넘어 <strong>신뢰와 안전의 문제</strong>로 직결됩니다.</p>
+<h2 id="researchgym-실제-연구-능력을-측정하는-새로운-벤치마크">ResearchGym: 실제 연구 능력을 측정하는 새로운 벤치마크<a hidden class="anchor" aria-hidden="true" href="#researchgym-실제-연구-능력을-측정하는-새로운-벤치마크">#</a></h2>
+<p>또 다른 중요한 연구는 AI 에이전트의 실제 연구 수행 능력을 평가하는 <a href="https://arxiv.org/abs/2602.15112">&ldquo;ResearchGym&rdquo;</a>입니다.</p>
+<p>기존의 AI 벤치마크는 대부분 <strong>단일 정답형 테스트</strong>에 집중했습니다. 하지만 실제 연구는 그렇지 않죠. 탐색하고, 도구를 사용하고, 반복적으로 개선하는 복잡한 과정입니다.</p>
+<p>ResearchGym은 ICML, ICLR, ACL 등 정상급 학회에 게재된 논문 5개를 기반으로 <strong>end-to-end 연구 워크플로우</strong>를 재현할 수 있는 환경을 제공합니다. 데이터셋과 평가 도구는 그대로 두고, 제안된 방법론만 숨긴 상태에서 AI 에이전트가 독자적으로 해결책을 찾아낼 수 있는지 테스트합니다.</p>
+<h3 id="현실형-에이전트-평가의-시작">현실형 에이전트 평가의 시작<a hidden class="anchor" aria-hidden="true" href="#현실형-에이전트-평가의-시작">#</a></h3>
+<p>이제 우리는 AI 에이전트를 다음과 같은 기준으로 평가할 수 있습니다:</p>
+<ul>
+<li><strong>탐색 능력</strong>: 문제 공간을 체계적으로 탐색하는가?</li>
+<li><strong>도구 활용</strong>: 적절한 도구를 선택하고 사용하는가?</li>
+<li><strong>반복 개선</strong>: 실패에서 배워 접근법을 개선하는가?</li>
+</ul>
+<h2 id="google-gemini-31-pro-복잡한-작업에-특화된-차세대-모델">Google Gemini 3.1 Pro: 복잡한 작업에 특화된 차세대 모델<a hidden class="anchor" aria-hidden="true" href="#google-gemini-31-pro-복잡한-작업에-특화된-차세대-모델">#</a></h2>
+<p>Google DeepMind가 <a href="https://deepmind.google/models/model-cards/gemini-3-1-pro/">Gemini 3.1 Pro</a>를 발표했습니다. Gemini 3 시리즈의 최신 모델로, 고도의 <strong>멀티모달 추론 능력</strong>을 갖춘 차세대 모델입니다.</p>
+<h3 id="주요-특징">주요 특징<a hidden class="anchor" aria-hidden="true" href="#주요-특징">#</a></h3>
+<ul>
+<li><strong>복잡한 작업 처리</strong>: 여러 단계의 추론이 필요한 작업에 최적화</li>
+<li><strong>멀티모달 능력</strong>: 텍스트, 이미지, 코드 등을 통합적으로 처리</li>
+<li><strong>에이전트 통합</strong>: AI 에이전트 시스템과의 원활한 통합 지원</li>
+</ul>
+<p>Gemini 3.1 Pro는 단순히 더 큰 모델이 아니라, <strong>에이전트형 AI 시대</strong>를 위해 설계된 모델입니다.</p>
+<h2 id="openai의-천문학적-투자-2030년까지-6000억-달러">OpenAI의 천문학적 투자: 2030년까지 6,000억 달러<a hidden class="anchor" aria-hidden="true" href="#openai의-천문학적-투자-2030년까지-6000억-달러">#</a></h2>
+<p><a href="https://www.reuters.com/technology/openai-sees-compute-spend-around-600-billion-by-2030-cnbc-reports-2026-02-20/">Reuters 보도</a>에 따르면 OpenAI는 2030년까지 누적 컴퓨트 지출을 약 <strong>6,000억 달러</strong> 수준으로 계획하고 있습니다.</p>
+<p>이는 AI 경쟁이 더 이상 알고리즘 경쟁이 아닌 <strong>인프라 경쟁</strong>으로 확대되고 있음을 보여줍니다:</p>
+<ul>
+<li>데이터센터 구축</li>
+<li>전력 인프라</li>
+<li>칩 조달</li>
+<li>냉각 시스템</li>
+</ul>
+<p>AI 기술의 미래는 이제 누가 더 많은 컴퓨팅 자원을 확보하느냐에 달려 있습니다.</p>
+<h2 id="결론-신뢰할-수-있는-에이전트-ai를-향해">결론: 신뢰할 수 있는 에이전트 AI를 향해<a hidden class="anchor" aria-hidden="true" href="#결론-신뢰할-수-있는-에이전트-ai를-향해">#</a></h2>
+<p>AI 에이전트 기술은 빠르게 발전하고 있지만, 동시에 새로운 도전 과제도 드러나고 있습니다:</p>
+<ol>
+<li><strong>과신 문제</strong>: 에이전트가 자신의 능력을 정확히 평가하도록 만들기</li>
+<li><strong>평가 기준</strong>: 실제 업무 환경에 가까운 벤치마크 개발</li>
+<li><strong>인프라 경쟁</strong>: 대규모 컴퓨팅 자원 확보 경쟁</li>
+</ol>
+<p>AI 에이전트가 진정으로 신뢰할 수 있는 동료가 되려면, 기술적 성능뿐 아니라 <strong>자기 인식</strong>과 <strong>겸손함</strong>도 필요합니다. 이것이 바로 다음 세대 AI 연구가 나아가야 할 방향일 것입니다.</p>
+<hr>
+<p><strong>참고 자료:</strong></p>
+<ul>
+<li><a href="https://arxiv.org/abs/2602.06948">Agentic Uncertainty Reveals Agentic Overconfidence (arXiv)</a></li>
+<li><a href="https://arxiv.org/abs/2602.15112">ResearchGym: Evaluating Language Model Agents on Real-World AI Research (arXiv)</a></li>
+<li><a href="https://deepmind.google/models/model-cards/gemini-3-1-pro/">Gemini 3.1 Pro Model Card (Google DeepMind)</a></li>
+<li><a href="https://www.reuters.com/technology/openai-sees-compute-spend-around-600-billion-by-2030-cnbc-reports-2026-02-20/">OpenAI sees compute spend around $600 billion by 2030 (Reuters)</a></li>
+</ul>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://kwbaek.github.io/tags/ai-agent/">Ai-Agent</a></li>
+      <li><a href="https://kwbaek.github.io/tags/llm/">LLM</a></li>
+      <li><a href="https://kwbaek.github.io/tags/%EC%97%B0%EA%B5%AC/">연구</a></li>
+      <li><a href="https://kwbaek.github.io/tags/%EB%B2%A4%EC%B9%98%EB%A7%88%ED%81%AC/">벤치마크</a></li>
+      <li><a href="https://kwbaek.github.io/tags/%EC%8B%A0%EB%A2%B0%EC%84%B1/">신뢰성</a></li>
+    </ul>
+  </footer><script src="https://utteranc.es/client.js"
+        repo="kwbaek/blog-comments"
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://kwbaek.github.io/">Kyungwook&#39;s Devlog</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

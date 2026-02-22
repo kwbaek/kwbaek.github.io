@@ -6,8 +6,25 @@
     <description>Recent content in Ai-Ml on Kyungwook&#39;s Devlog</description>
     <generator>Hugo -- 0.155.3</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Sat, 21 Feb 2026 21:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 22 Feb 2026 21:00:00 +0900</lastBuildDate>
     <atom:link href="https://kwbaek.github.io/categories/ai-ml/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI 에이전트의 위험한 과신: 실제로는 22% 성공하지만 77% 성공할 거라 예측</title>
+      <link>https://kwbaek.github.io/posts/2026-02-22-ai-agent-overconfidence/</link>
+      <pubDate>Sun, 22 Feb 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-02-22-ai-agent-overconfidence/</guid>
+      <description>&lt;h2 id=&#34;ai-에이전트-자신의-능력을-과대평가하다&#34;&gt;AI 에이전트, 자신의 능력을 과대평가하다&lt;/h2&gt;
+&lt;p&gt;최신 AI 에이전트 연구에서 충격적인 결과가 나왔습니다. AI 에이전트들이 작업 성공 확률을 예측할 때 실제 성능보다 훨씬 높게 평가하는 &lt;strong&gt;체계적인 과신(overconfidence)&lt;/strong&gt; 패턴을 보인다는 것입니다.&lt;/p&gt;
+&lt;p&gt;arXiv에 공개된 &lt;a href=&#34;https://arxiv.org/abs/2602.06948&#34;&gt;&amp;ldquo;Agentic Uncertainty Reveals Agentic Overconfidence&amp;rdquo;&lt;/a&gt; 논문에 따르면, 일부 에이전트는 실제로 22%의 작업만 성공했음에도 불구하고 &lt;strong&gt;77%의 성공률을 예측&lt;/strong&gt;했습니다. 이는 3배 이상의 과대평가입니다.&lt;/p&gt;
+&lt;h3 id=&#34;왜-이-문제가-중요한가&#34;&gt;왜 이 문제가 중요한가?&lt;/h3&gt;
+&lt;p&gt;AI 에이전트가 실제 업무 환경에 배치되는 상황을 생각해보세요:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;의료 진단 에이전트&lt;/strong&gt;가 자신의 진단 정확도를 과대평가한다면?&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;금융 거래 에이전트&lt;/strong&gt;가 리스크를 과소평가한다면?&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;자율주행 에이전트&lt;/strong&gt;가 자신의 판단 능력을 과신한다면?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;이런 과신은 단순한 정확도 문제를 넘어 &lt;strong&gt;신뢰와 안전의 문제&lt;/strong&gt;로 직결됩니다.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>AI 에이전트 시대의 서막: Claude Sonnet 4.6과 NIST 표준화 이니셔티브</title>
       <link>https://kwbaek.github.io/posts/2026-02-21-ai-agent-era-claude-sonnet-nist-standards/</link>
