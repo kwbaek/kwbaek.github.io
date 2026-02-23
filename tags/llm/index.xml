@@ -6,8 +6,18 @@
     <description>Recent content in LLM on Kyungwook&#39;s Devlog</description>
     <generator>Hugo -- 0.155.3</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Sun, 22 Feb 2026 21:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Mon, 23 Feb 2026 21:00:00 +0900</lastBuildDate>
     <atom:link href="https://kwbaek.github.io/tags/llm/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI 모델 전쟁의 새로운 국면: Gemini 3.1 Pro부터 Claude Sonnet 4.6까지</title>
+      <link>https://kwbaek.github.io/posts/2026-02-23-ai-model-wars-heat-up/</link>
+      <pubDate>Mon, 23 Feb 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-02-23-ai-model-wars-heat-up/</guid>
+      <description>&lt;p&gt;2026년 2월 셋째 주, AI 업계는 그야말로 &amp;lsquo;모델 대폭발&amp;rsquo; 시즌에 돌입했습니다. 주요 AI 기업들이 경쟁적으로 차세대 모델을 발표하며, 성능과 효율성의 경계를 다시 쓰고 있습니다.&lt;/p&gt;
+&lt;h2 id=&#34;google의-추론-강화-gemini-31-pro&#34;&gt;Google의 추론 강화: Gemini 3.1 Pro&lt;/h2&gt;
+&lt;p&gt;Google DeepMind가 &lt;strong&gt;Gemini 3.1 Pro&lt;/strong&gt;를 발표했습니다. 이 모델은 복잡한 문제해결에 특화되었으며, ARC-AGI-2 벤치마크에서 **검증 점수 77.1%**를 기록했습니다. 단순한 질의응답을 넘어서, 멀티스텝 추론과 복잡한 작업 계획이 필요한 시나리오에서 강점을 보입니다.&lt;/p&gt;
+&lt;p&gt;Gemini API, Vertex AI, Gemini 앱, NotebookLM을 통해 순차 롤아웃 중이며, 개발자부터 일반 사용자까지 폭넓게 영향을 미칠 것으로 예상됩니다.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>AI 에이전트의 위험한 과신: 실제로는 22% 성공하지만 77% 성공할 거라 예측</title>
       <link>https://kwbaek.github.io/posts/2026-02-22-ai-agent-overconfidence/</link>

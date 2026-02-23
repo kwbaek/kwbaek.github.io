@@ -6,8 +6,34 @@
     <description>Recent content in Posts on Kyungwook&#39;s Devlog</description>
     <generator>Hugo -- 0.155.3</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Sun, 22 Feb 2026 21:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Mon, 23 Feb 2026 21:00:00 +0900</lastBuildDate>
     <atom:link href="https://kwbaek.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI 모델 전쟁의 새로운 국면: Gemini 3.1 Pro부터 Claude Sonnet 4.6까지</title>
+      <link>https://kwbaek.github.io/posts/2026-02-23-ai-model-wars-heat-up/</link>
+      <pubDate>Mon, 23 Feb 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-02-23-ai-model-wars-heat-up/</guid>
+      <description>&lt;p&gt;2026년 2월 셋째 주, AI 업계는 그야말로 &amp;lsquo;모델 대폭발&amp;rsquo; 시즌에 돌입했습니다. 주요 AI 기업들이 경쟁적으로 차세대 모델을 발표하며, 성능과 효율성의 경계를 다시 쓰고 있습니다.&lt;/p&gt;
+&lt;h2 id=&#34;google의-추론-강화-gemini-31-pro&#34;&gt;Google의 추론 강화: Gemini 3.1 Pro&lt;/h2&gt;
+&lt;p&gt;Google DeepMind가 &lt;strong&gt;Gemini 3.1 Pro&lt;/strong&gt;를 발표했습니다. 이 모델은 복잡한 문제해결에 특화되었으며, ARC-AGI-2 벤치마크에서 **검증 점수 77.1%**를 기록했습니다. 단순한 질의응답을 넘어서, 멀티스텝 추론과 복잡한 작업 계획이 필요한 시나리오에서 강점을 보입니다.&lt;/p&gt;
+&lt;p&gt;Gemini API, Vertex AI, Gemini 앱, NotebookLM을 통해 순차 롤아웃 중이며, 개발자부터 일반 사용자까지 폭넓게 영향을 미칠 것으로 예상됩니다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>OpenClaw 하트비트(Heartbeat) 활용: AI 에이전트를 능동적으로 만드는 법</title>
+      <link>https://kwbaek.github.io/posts/2026-02-23-openclaw-heartbeat-automation/</link>
+      <pubDate>Mon, 23 Feb 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-02-23-openclaw-heartbeat-automation/</guid>
+      <description>&lt;p&gt;OpenClaw를 사용하다 보면 &amp;ldquo;AI가 좀 더 능동적으로 움직였으면 좋겠다&amp;quot;는 생각을 하게 됩니다. 매번 명령을 내리는 것이 아니라, AI가 스스로 주기적으로 상태를 확인하고 필요한 작업을 수행한다면 얼마나 편할까요?&lt;/p&gt;
+&lt;p&gt;바로 이것이 &lt;strong&gt;하트비트(Heartbeat)&lt;/strong&gt; 기능이 해결하는 문제입니다.&lt;/p&gt;
+&lt;h2 id=&#34;하트비트란-무엇인가&#34;&gt;하트비트란 무엇인가?&lt;/h2&gt;
+&lt;p&gt;하트비트는 OpenClaw 에이전트가 일정 주기로 받는 &amp;ldquo;펄스(pulse)&amp;ldquo;입니다. 심장 박동처럼 규칙적으로 발생하며, 에이전트는 이 신호를 받을 때마다 &amp;ldquo;지금 내가 해야 할 일이 있나?&amp;ldquo;를 스스로 판단합니다.&lt;/p&gt;
+&lt;p&gt;기본 하트비트 프롬프트는 다음과 같습니다:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;Read HEARTBEAT.md if it exists (workspace context). 
+Follow it strictly. Do not infer or repeat old tasks from prior chats. 
+If nothing needs attention, reply HEARTBEAT_OK.
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;하트비트-vs-cron-언제-무엇을-쓸까&#34;&gt;하트비트 vs Cron: 언제 무엇을 쓸까?&lt;/h2&gt;
+&lt;p&gt;OpenClaw에는 Cron도 있는데, 하트비트와 어떻게 다를까요?&lt;/p&gt;</description>
+    </item>
     <item>
       <title>AI 에이전트의 위험한 과신: 실제로는 22% 성공하지만 77% 성공할 거라 예측</title>
       <link>https://kwbaek.github.io/posts/2026-02-22-ai-agent-overconfidence/</link>
