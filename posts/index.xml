@@ -6,8 +6,31 @@
     <description>Recent content in Posts on Kyungwook&#39;s Devlog</description>
     <generator>Hugo -- 0.155.3</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Mon, 23 Feb 2026 21:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Tue, 24 Feb 2026 21:00:00 +0900</lastBuildDate>
     <atom:link href="https://kwbaek.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI 경쟁의 중심축 이동: 모델 성능에서 운영 거버넌스로</title>
+      <link>https://kwbaek.github.io/posts/2026-02-24-ai-governance-shift-frontier/</link>
+      <pubDate>Tue, 24 Feb 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-02-24-ai-governance-shift-frontier/</guid>
+      <description>&lt;p&gt;2026년 2월 24일 기준, 오늘 AI/ML 트렌드 채널에서 가장 중요한 신호는 &lt;strong&gt;&amp;ldquo;누가 더 똑똑한 모델을 만드느냐&amp;quot;보다 &amp;ldquo;누가 더 안전하고 운영 가능한 AI 시스템을 구축하느냐&amp;quot;로 경쟁의 기준이 바뀌고 있다는 점&lt;/strong&gt;입니다.&lt;/p&gt;
+&lt;p&gt;가장 대표적인 사례가 OpenAI의 &lt;em&gt;Frontier&lt;/em&gt; 발표입니다. 이 발표는 단순히 모델 API를 늘리는 업데이트가 아니라, 에이전트를 실제 조직 내에서 배포하고 관리하기 위한 플랫폼 레이어(권한, 온보딩, 공유 컨텍스트, 거버넌스)를 전면에 내세웠다는 점에서 의미가 큽니다. 즉, 모델 자체의 성능 우위만으로는 더 이상 엔터프라이즈 시장을 장악하기 어렵고, 운영 체계 전체를 제공하는 쪽이 유리해지는 국면입니다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>OpenClaw 2026.2.22 이후 운영 플레이북: 업데이트, 보안, 배포</title>
+      <link>https://kwbaek.github.io/posts/2026-02-24-openclaw-release-2026-2-22-playbook/</link>
+      <pubDate>Tue, 24 Feb 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-02-24-openclaw-release-2026-2-22-playbook/</guid>
+      <description>&lt;p&gt;최근 OpenClaw를 실무에 붙여 쓰면서 느낀 핵심은, 기능이 빨리 늘어나는 만큼 &lt;strong&gt;업데이트 루틴을 표준화한 팀이 결국 안정적으로 오래 간다&lt;/strong&gt;는 점입니다. 특히 2026.2.22 릴리즈 구간은 운영 관점에서 체감 변화가 꽤 큽니다.&lt;/p&gt;
+&lt;p&gt;이번 구간의 실무 포인트를 한 줄로 요약하면 이렇습니다.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;“새 기능을 바로 쓰기보다, &lt;code&gt;사전 점검 → 설정 정리 → 재시작 → 헬스체크&lt;/code&gt;를 루틴화하라.”&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;1-업데이트-전에-꼭-할-것-dry-run&#34;&gt;1) 업데이트 전에 꼭 할 것: dry-run&lt;/h2&gt;
+&lt;p&gt;OpenClaw는 이제 업데이트 전에 영향을 예측하는 흐름이 훨씬 중요해졌습니다.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;openclaw update --dry-run
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;이 한 줄로 어떤 변경이 들어오는지 먼저 확인해두면, 실제 운영 중 예상치 못한 중단을 크게 줄일 수 있습니다. 특히 여러 채널(Discord/Telegram/Slack)을 동시에 쓰는 환경에서는 설정 키 변경 영향이 생각보다 크게 나타납니다.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>AI 모델 전쟁의 새로운 국면: Gemini 3.1 Pro부터 Claude Sonnet 4.6까지</title>
       <link>https://kwbaek.github.io/posts/2026-02-23-ai-model-wars-heat-up/</link>

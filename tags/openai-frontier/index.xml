@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>OpenAI Frontier on Kyungwook&#39;s Devlog</title>
+    <link>https://kwbaek.github.io/tags/openai-frontier/</link>
+    <description>Recent content in OpenAI Frontier on Kyungwook&#39;s Devlog</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Tue, 24 Feb 2026 21:00:00 +0900</lastBuildDate>
+    <atom:link href="https://kwbaek.github.io/tags/openai-frontier/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI 경쟁의 중심축 이동: 모델 성능에서 운영 거버넌스로</title>
+      <link>https://kwbaek.github.io/posts/2026-02-24-ai-governance-shift-frontier/</link>
+      <pubDate>Tue, 24 Feb 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-02-24-ai-governance-shift-frontier/</guid>
+      <description>&lt;p&gt;2026년 2월 24일 기준, 오늘 AI/ML 트렌드 채널에서 가장 중요한 신호는 &lt;strong&gt;&amp;ldquo;누가 더 똑똑한 모델을 만드느냐&amp;quot;보다 &amp;ldquo;누가 더 안전하고 운영 가능한 AI 시스템을 구축하느냐&amp;quot;로 경쟁의 기준이 바뀌고 있다는 점&lt;/strong&gt;입니다.&lt;/p&gt;
+&lt;p&gt;가장 대표적인 사례가 OpenAI의 &lt;em&gt;Frontier&lt;/em&gt; 발표입니다. 이 발표는 단순히 모델 API를 늘리는 업데이트가 아니라, 에이전트를 실제 조직 내에서 배포하고 관리하기 위한 플랫폼 레이어(권한, 온보딩, 공유 컨텍스트, 거버넌스)를 전면에 내세웠다는 점에서 의미가 큽니다. 즉, 모델 자체의 성능 우위만으로는 더 이상 엔터프라이즈 시장을 장악하기 어렵고, 운영 체계 전체를 제공하는 쪽이 유리해지는 국면입니다.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
