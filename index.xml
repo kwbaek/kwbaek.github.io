@@ -6,8 +6,38 @@
     <description>Recent content on Kyungwook&#39;s Devlog</description>
     <generator>Hugo -- 0.155.3</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Tue, 24 Feb 2026 21:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Wed, 25 Feb 2026 21:00:00 +0900</lastBuildDate>
     <atom:link href="https://kwbaek.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI 인프라의 진짜 병목: 모델이 아니라 전력과 정책</title>
+      <link>https://kwbaek.github.io/posts/2026-02-25-ai-infrastructure-power-shift/</link>
+      <pubDate>Wed, 25 Feb 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-02-25-ai-infrastructure-power-shift/</guid>
+      <description>&lt;p&gt;오늘 Discord &lt;code&gt;#ai-ml-trends&lt;/code&gt; 채널을 보면, 가장 큰 흐름은 논문 하나의 성능 경쟁이 아니라 &lt;strong&gt;AI 인프라의 병목이 계산 자원에서 전력·정책·공급망으로 이동하고 있다는 점&lt;/strong&gt;입니다.&lt;/p&gt;
+&lt;p&gt;특히 인상적이었던 신호는 세 가지입니다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;미국에서 빅테크에 데이터센터 전력을 자체 조달하라는 압박이 공개적으로 등장했다는 점&lt;/li&gt;
+&lt;li&gt;유럽 클린에너지 관련 종목이 AI 전력 수요 기대와 정책 리스크 사이에서 큰 변동성을 보인다는 점&lt;/li&gt;
+&lt;li&gt;Alcoa 같은 전통 산업 자산이 데이터센터 부지/전력 인프라 관점에서 재평가되고 있다는 점&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;이 세 가지를 합치면 메시지는 명확합니다. 이제 AI 경쟁은 “누가 더 좋은 모델을 만들었는가”에 더해, &lt;strong&gt;누가 더 안정적으로 전력·부지·규제 조건을 확보했는가&lt;/strong&gt;의 싸움이 됐습니다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>OpenClaw 실전 운영법: Heartbeat &#43; Cron 2계층 자동화 패턴</title>
+      <link>https://kwbaek.github.io/posts/2026-02-25-openclaw-two-tier-automation-guide/</link>
+      <pubDate>Wed, 25 Feb 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-02-25-openclaw-two-tier-automation-guide/</guid>
+      <description>&lt;p&gt;OpenClaw를 오래 쓰다 보면 공통 문제가 하나 생깁니다.
+처음에는 자동화가 편한데, 시간이 지나면 잡이 늘어나면서 알림 노이즈와 관리 복잡도가 같이 커집니다.&lt;/p&gt;
+&lt;p&gt;이때 가장 효율이 좋았던 방식이 &lt;strong&gt;Heartbeat + Cron 2계층 패턴&lt;/strong&gt;입니다.&lt;/p&gt;
+&lt;p&gt;핵심 아이디어는 간단합니다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Heartbeat&lt;/strong&gt;: 대화 컨텍스트가 필요한 점검 작업(메일/캘린더/멘션/상태 확인)을 묶어서 처리&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Cron&lt;/strong&gt;: 정확한 시각이 중요한 작업(정시 리포트, 마감 알림, 배포 체크)을 분리 실행&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;1-heartbeat는-배치-점검-레이어로-쓴다&#34;&gt;1) Heartbeat는 “배치 점검 레이어”로 쓴다&lt;/h2&gt;
+&lt;p&gt;Heartbeat는 1개 태스크를 정시에 수행하는 도구라기보다, 여러 점검 항목을 한 번에 처리하는 라우터로 보는 게 맞습니다.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>AI 경쟁의 중심축 이동: 모델 성능에서 운영 거버넌스로</title>
       <link>https://kwbaek.github.io/posts/2026-02-24-ai-governance-shift-frontier/</link>

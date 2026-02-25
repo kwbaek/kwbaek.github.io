@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>AI 인프라의 진짜 병목: 모델이 아니라 전력과 정책 | Kyungwook&#39;s Devlog</title>
+<meta name="keywords" content="AI/ML, 데이터센터, 전력, 정책리스크, 인프라, 투자">
+<meta name="description" content="오늘 Discord #ai-ml-trends 채널을 보면, 가장 큰 흐름은 논문 하나의 성능 경쟁이 아니라 AI 인프라의 병목이 계산 자원에서 전력·정책·공급망으로 이동하고 있다는 점입니다.
+특히 인상적이었던 신호는 세 가지입니다.
+
+미국에서 빅테크에 데이터센터 전력을 자체 조달하라는 압박이 공개적으로 등장했다는 점
+유럽 클린에너지 관련 종목이 AI 전력 수요 기대와 정책 리스크 사이에서 큰 변동성을 보인다는 점
+Alcoa 같은 전통 산업 자산이 데이터센터 부지/전력 인프라 관점에서 재평가되고 있다는 점
+
+이 세 가지를 합치면 메시지는 명확합니다. 이제 AI 경쟁은 “누가 더 좋은 모델을 만들었는가”에 더해, 누가 더 안정적으로 전력·부지·규제 조건을 확보했는가의 싸움이 됐습니다.">
+<meta name="author" content="">
+<link rel="canonical" href="https://kwbaek.github.io/posts/2026-02-25-ai-infrastructure-power-shift/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.da3211e5ef867bf2b75fd5a6515cfed7195c011e8ab735694e203810a827097b.css" integrity="sha256-2jIR5e&#43;Ge/K3X9WmUVz&#43;1xlcAR6KtzVpTiA4EKgnCXs=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://kwbaek.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://kwbaek.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://kwbaek.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://kwbaek.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://kwbaek.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://kwbaek.github.io/posts/2026-02-25-ai-infrastructure-power-shift/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="https://kwbaek.github.io/posts/2026-02-25-ai-infrastructure-power-shift/">
+  <meta property="og:site_name" content="Kyungwook&#39;s Devlog">
+  <meta property="og:title" content="AI 인프라의 진짜 병목: 모델이 아니라 전력과 정책">
+  <meta property="og:description" content="오늘 Discord #ai-ml-trends 채널을 보면, 가장 큰 흐름은 논문 하나의 성능 경쟁이 아니라 AI 인프라의 병목이 계산 자원에서 전력·정책·공급망으로 이동하고 있다는 점입니다.
+특히 인상적이었던 신호는 세 가지입니다.
+미국에서 빅테크에 데이터센터 전력을 자체 조달하라는 압박이 공개적으로 등장했다는 점 유럽 클린에너지 관련 종목이 AI 전력 수요 기대와 정책 리스크 사이에서 큰 변동성을 보인다는 점 Alcoa 같은 전통 산업 자산이 데이터센터 부지/전력 인프라 관점에서 재평가되고 있다는 점 이 세 가지를 합치면 메시지는 명확합니다. 이제 AI 경쟁은 “누가 더 좋은 모델을 만들었는가”에 더해, 누가 더 안정적으로 전력·부지·규제 조건을 확보했는가의 싸움이 됐습니다.">
+  <meta property="og:locale" content="ko-kr">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2026-02-25T21:00:00+09:00">
+    <meta property="article:modified_time" content="2026-02-25T21:00:00+09:00">
+    <meta property="article:tag" content="AI/ML">
+    <meta property="article:tag" content="데이터센터">
+    <meta property="article:tag" content="전력">
+    <meta property="article:tag" content="정책리스크">
+    <meta property="article:tag" content="인프라">
+    <meta property="article:tag" content="투자">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="AI 인프라의 진짜 병목: 모델이 아니라 전력과 정책">
+<meta name="twitter:description" content="오늘 Discord #ai-ml-trends 채널을 보면, 가장 큰 흐름은 논문 하나의 성능 경쟁이 아니라 AI 인프라의 병목이 계산 자원에서 전력·정책·공급망으로 이동하고 있다는 점입니다.
+특히 인상적이었던 신호는 세 가지입니다.
+
+미국에서 빅테크에 데이터센터 전력을 자체 조달하라는 압박이 공개적으로 등장했다는 점
+유럽 클린에너지 관련 종목이 AI 전력 수요 기대와 정책 리스크 사이에서 큰 변동성을 보인다는 점
+Alcoa 같은 전통 산업 자산이 데이터센터 부지/전력 인프라 관점에서 재평가되고 있다는 점
+
+이 세 가지를 합치면 메시지는 명확합니다. 이제 AI 경쟁은 “누가 더 좋은 모델을 만들었는가”에 더해, 누가 더 안정적으로 전력·부지·규제 조건을 확보했는가의 싸움이 됐습니다.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://kwbaek.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "AI 인프라의 진짜 병목: 모델이 아니라 전력과 정책",
+      "item": "https://kwbaek.github.io/posts/2026-02-25-ai-infrastructure-power-shift/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "AI 인프라의 진짜 병목: 모델이 아니라 전력과 정책",
+  "name": "AI 인프라의 진짜 병목: 모델이 아니라 전력과 정책",
+  "description": "오늘 Discord #ai-ml-trends 채널을 보면, 가장 큰 흐름은 논문 하나의 성능 경쟁이 아니라 AI 인프라의 병목이 계산 자원에서 전력·정책·공급망으로 이동하고 있다는 점입니다.\n특히 인상적이었던 신호는 세 가지입니다.\n미국에서 빅테크에 데이터센터 전력을 자체 조달하라는 압박이 공개적으로 등장했다는 점 유럽 클린에너지 관련 종목이 AI 전력 수요 기대와 정책 리스크 사이에서 큰 변동성을 보인다는 점 Alcoa 같은 전통 산업 자산이 데이터센터 부지/전력 인프라 관점에서 재평가되고 있다는 점 이 세 가지를 합치면 메시지는 명확합니다. 이제 AI 경쟁은 “누가 더 좋은 모델을 만들었는가”에 더해, 누가 더 안정적으로 전력·부지·규제 조건을 확보했는가의 싸움이 됐습니다.\n",
+  "keywords": [
+    "AI/ML", "데이터센터", "전력", "정책리스크", "인프라", "투자"
+  ],
+  "articleBody": "오늘 Discord #ai-ml-trends 채널을 보면, 가장 큰 흐름은 논문 하나의 성능 경쟁이 아니라 AI 인프라의 병목이 계산 자원에서 전력·정책·공급망으로 이동하고 있다는 점입니다.\n특히 인상적이었던 신호는 세 가지입니다.\n미국에서 빅테크에 데이터센터 전력을 자체 조달하라는 압박이 공개적으로 등장했다는 점 유럽 클린에너지 관련 종목이 AI 전력 수요 기대와 정책 리스크 사이에서 큰 변동성을 보인다는 점 Alcoa 같은 전통 산업 자산이 데이터센터 부지/전력 인프라 관점에서 재평가되고 있다는 점 이 세 가지를 합치면 메시지는 명확합니다. 이제 AI 경쟁은 “누가 더 좋은 모델을 만들었는가”에 더해, 누가 더 안정적으로 전력·부지·규제 조건을 확보했는가의 싸움이 됐습니다.\n왜 이 흐름이 중요한가 그동안 AI 산업은 주로 GPU, 모델 크기, 벤치마크 점수 중심으로 이야기됐습니다. 하지만 실제 사업에서 모델 성능은 출발점일 뿐이고, 대규모 서비스 운영 단계에서는 전력 단가, 전력망 접속 속도, 인허가, 지역 규제가 더 강력한 제약이 됩니다.\n예를 들어 같은 수준의 모델이라도 전력 비용이 높은 지역에 구축하면 마진 구조가 급격히 악화됩니다. 반대로 안정적인 전력 공급과 장기 계약을 가진 기업은 모델 업그레이드 속도가 다소 느려도 운영 효율에서 우위를 가져갈 수 있습니다.\n앞으로 주목할 포인트 전력 확보 전략의 수직화\n자체 발전, 장기 PPA, 에너지 기업과의 합작 등 하이퍼스케일러의 전략이 더 공격적으로 바뀔 가능성이 큽니다. 정책 리스크의 가격 반영\n보조금, 규제, 환경 기준 변화가 AI 밸류체인 기업들의 밸류에이션에 즉시 반영되는 장세가 강화될 수 있습니다. 산업 자산의 재분류\n유휴 제련소/공장/발전 인접 부지가 데이터센터 후보지로 재평가되면서, 전통 산업의 자산 가치가 AI 사이클과 연결될 수 있습니다. 결국 2026년의 AI/ML 트렌드를 한 줄로 요약하면 이렇습니다.\n모델의 시대에서 운영의 시대로, 그리고 운영의 핵심은 전력·정책·공급망이다.\n지금부터는 모델 성능 그래프만 볼 게 아니라, 전력 계약 구조와 규제 지형을 함께 읽는 팀이 더 현실적인 승자가 될 가능성이 높습니다.\n",
+  "wordCount" : "255",
+  "inLanguage": "en",
+  "datePublished": "2026-02-25T21:00:00+09:00",
+  "dateModified": "2026-02-25T21:00:00+09:00",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://kwbaek.github.io/posts/2026-02-25-ai-infrastructure-power-shift/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Kyungwook's Devlog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://kwbaek.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://kwbaek.github.io/" accesskey="h" title="Kyungwook&#39;s Devlog (Alt + H)">Kyungwook&#39;s Devlog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://kwbaek.github.io/categories/" title="categories">
+                    <span>categories</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kwbaek.github.io/tags/" title="tags">
+                    <span>tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kwbaek.github.io/" title="Kyungwook&#39;s Devlog">
+                    <span>Kyungwook&#39;s Devlog</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      AI 인프라의 진짜 병목: 모델이 아니라 전력과 정책
+    </h1>
+    <div class="post-meta"><span title='2026-02-25 21:00:00 +0900 KST'>February 25, 2026</span>
+
+</div>
+  </header> 
+  <div class="post-content"><p>오늘 Discord <code>#ai-ml-trends</code> 채널을 보면, 가장 큰 흐름은 논문 하나의 성능 경쟁이 아니라 <strong>AI 인프라의 병목이 계산 자원에서 전력·정책·공급망으로 이동하고 있다는 점</strong>입니다.</p>
+<p>특히 인상적이었던 신호는 세 가지입니다.</p>
+<ul>
+<li>미국에서 빅테크에 데이터센터 전력을 자체 조달하라는 압박이 공개적으로 등장했다는 점</li>
+<li>유럽 클린에너지 관련 종목이 AI 전력 수요 기대와 정책 리스크 사이에서 큰 변동성을 보인다는 점</li>
+<li>Alcoa 같은 전통 산업 자산이 데이터센터 부지/전력 인프라 관점에서 재평가되고 있다는 점</li>
+</ul>
+<p>이 세 가지를 합치면 메시지는 명확합니다. 이제 AI 경쟁은 “누가 더 좋은 모델을 만들었는가”에 더해, <strong>누가 더 안정적으로 전력·부지·규제 조건을 확보했는가</strong>의 싸움이 됐습니다.</p>
+<h2 id="왜-이-흐름이-중요한가">왜 이 흐름이 중요한가<a hidden class="anchor" aria-hidden="true" href="#왜-이-흐름이-중요한가">#</a></h2>
+<p>그동안 AI 산업은 주로 GPU, 모델 크기, 벤치마크 점수 중심으로 이야기됐습니다. 하지만 실제 사업에서 모델 성능은 출발점일 뿐이고, 대규모 서비스 운영 단계에서는 전력 단가, 전력망 접속 속도, 인허가, 지역 규제가 더 강력한 제약이 됩니다.</p>
+<p>예를 들어 같은 수준의 모델이라도 전력 비용이 높은 지역에 구축하면 마진 구조가 급격히 악화됩니다. 반대로 안정적인 전력 공급과 장기 계약을 가진 기업은 모델 업그레이드 속도가 다소 느려도 운영 효율에서 우위를 가져갈 수 있습니다.</p>
+<h2 id="앞으로-주목할-포인트">앞으로 주목할 포인트<a hidden class="anchor" aria-hidden="true" href="#앞으로-주목할-포인트">#</a></h2>
+<ol>
+<li>
+<p><strong>전력 확보 전략의 수직화</strong></p>
+<ul>
+<li>자체 발전, 장기 PPA, 에너지 기업과의 합작 등 하이퍼스케일러의 전략이 더 공격적으로 바뀔 가능성이 큽니다.</li>
+</ul>
+</li>
+<li>
+<p><strong>정책 리스크의 가격 반영</strong></p>
+<ul>
+<li>보조금, 규제, 환경 기준 변화가 AI 밸류체인 기업들의 밸류에이션에 즉시 반영되는 장세가 강화될 수 있습니다.</li>
+</ul>
+</li>
+<li>
+<p><strong>산업 자산의 재분류</strong></p>
+<ul>
+<li>유휴 제련소/공장/발전 인접 부지가 데이터센터 후보지로 재평가되면서, 전통 산업의 자산 가치가 AI 사이클과 연결될 수 있습니다.</li>
+</ul>
+</li>
+</ol>
+<p>결국 2026년의 AI/ML 트렌드를 한 줄로 요약하면 이렇습니다.</p>
+<blockquote>
+<p>모델의 시대에서 운영의 시대로, 그리고 운영의 핵심은 전력·정책·공급망이다.</p>
+</blockquote>
+<p>지금부터는 모델 성능 그래프만 볼 게 아니라, <strong>전력 계약 구조와 규제 지형</strong>을 함께 읽는 팀이 더 현실적인 승자가 될 가능성이 높습니다.</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://kwbaek.github.io/tags/ai/ml/">AI/ML</a></li>
+      <li><a href="https://kwbaek.github.io/tags/%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%84%BC%ED%84%B0/">데이터센터</a></li>
+      <li><a href="https://kwbaek.github.io/tags/%EC%A0%84%EB%A0%A5/">전력</a></li>
+      <li><a href="https://kwbaek.github.io/tags/%EC%A0%95%EC%B1%85%EB%A6%AC%EC%8A%A4%ED%81%AC/">정책리스크</a></li>
+      <li><a href="https://kwbaek.github.io/tags/%EC%9D%B8%ED%94%84%EB%9D%BC/">인프라</a></li>
+      <li><a href="https://kwbaek.github.io/tags/%ED%88%AC%EC%9E%90/">투자</a></li>
+    </ul>
+  </footer><script src="https://utteranc.es/client.js"
+        repo="kwbaek/blog-comments"
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://kwbaek.github.io/">Kyungwook&#39;s Devlog</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

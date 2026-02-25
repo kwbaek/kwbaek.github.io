@@ -6,8 +6,24 @@
     <description>Recent content in Openclaw on Kyungwook&#39;s Devlog</description>
     <generator>Hugo -- 0.155.3</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Tue, 24 Feb 2026 21:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Wed, 25 Feb 2026 21:00:00 +0900</lastBuildDate>
     <atom:link href="https://kwbaek.github.io/categories/openclaw/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>OpenClaw 실전 운영법: Heartbeat &#43; Cron 2계층 자동화 패턴</title>
+      <link>https://kwbaek.github.io/posts/2026-02-25-openclaw-two-tier-automation-guide/</link>
+      <pubDate>Wed, 25 Feb 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-02-25-openclaw-two-tier-automation-guide/</guid>
+      <description>&lt;p&gt;OpenClaw를 오래 쓰다 보면 공통 문제가 하나 생깁니다.
+처음에는 자동화가 편한데, 시간이 지나면 잡이 늘어나면서 알림 노이즈와 관리 복잡도가 같이 커집니다.&lt;/p&gt;
+&lt;p&gt;이때 가장 효율이 좋았던 방식이 &lt;strong&gt;Heartbeat + Cron 2계층 패턴&lt;/strong&gt;입니다.&lt;/p&gt;
+&lt;p&gt;핵심 아이디어는 간단합니다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Heartbeat&lt;/strong&gt;: 대화 컨텍스트가 필요한 점검 작업(메일/캘린더/멘션/상태 확인)을 묶어서 처리&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Cron&lt;/strong&gt;: 정확한 시각이 중요한 작업(정시 리포트, 마감 알림, 배포 체크)을 분리 실행&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;1-heartbeat는-배치-점검-레이어로-쓴다&#34;&gt;1) Heartbeat는 “배치 점검 레이어”로 쓴다&lt;/h2&gt;
+&lt;p&gt;Heartbeat는 1개 태스크를 정시에 수행하는 도구라기보다, 여러 점검 항목을 한 번에 처리하는 라우터로 보는 게 맞습니다.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>OpenClaw 2026.2.22 이후 운영 플레이북: 업데이트, 보안, 배포</title>
       <link>https://kwbaek.github.io/posts/2026-02-24-openclaw-release-2026-2-22-playbook/</link>

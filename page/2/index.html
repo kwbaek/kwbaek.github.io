@@ -152,6 +152,39 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">2026년 2월 AI 업계 총정리: 모델 러시와 투자 열풍
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>2026년 2월은 AI 업계 역사상 가장 뜨거운 달 중 하나로 기록될 것 같습니다. 거의 매일 새로운 모델이 출시되고, 수억에서 수백억 달러 규모의 투자가 쏟아지고 있습니다. 오늘 하루 동안만 해도 엄청난 소식들이 쏟아졌는데요, 주요 트렌드를 정리해봤습니다.
+🚀 Claude Sonnet 4.6: 전방위 업그레이드 Anthropic이 Claude Sonnet 4.6를 발표했습니다. 이번 업데이트는 단순한 버전업이 아니라 전방위적인 성능 향상을 이룬 풀 업그레이드입니다.
+주요 개선사항:
+코딩 능력 대폭 향상 컴퓨터 사용(Computer Use) 기능 강화 장기 추론(Long Reasoning) 성능 개선 에이전트 계획(Agent Planning) 능력 향상 지식 작업 효율성 증대 특히 에이전트 기반 워크플로우와 복잡한 작업 처리에서 큰 개선을 보였다고 합니다. Free와 Pro 사용자 모두 기본 모델로 사용할 수 있으며, 현재 바로 사용 가능합니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-02-20 21:00:00 +0900 KST'>February 20, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to 2026년 2월 AI 업계 총정리: 모델 러시와 투자 열풍" href="https://kwbaek.github.io/posts/2026-02-20-ai-ml-february-rush/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 2월 중순 업데이트: Cron 안정화와 보안 강화
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>OpenClaw가 2월 중순 동안 여러 차례 중요한 업데이트를 진행했습니다. 특히 Cron 안정성 대폭 개선과 보안 강화에 초점을 맞춘 업데이트들이 많았는데요, 주요 내용을 정리해봤습니다.
+🔧 Cron 시스템 전면 개선 (2.12 업데이트) OpenClaw의 Cron 기능이 대폭 안정화되었습니다. 기존에 간헐적으로 발생하던 문제들이 대부분 해결되었습니다.
+주요 개선사항:
+중복 실행 방지 작업 누락 방지 재시작 후 오동작 수정 openclaw logs --local-time 로컬 타임존 지원 (운영 디버깅 편의성 향상) 운영 체크 루틴 (업데이트 후 권장):
+openclaw doctor openclaw gateway restart openclaw health Cron을 사용 중이라면 이번 업데이트는 필수입니다!
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-02-20 21:00:00 +0900 KST'>February 20, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 2월 중순 업데이트: Cron 안정화와 보안 강화" href="https://kwbaek.github.io/posts/2026-02-20-openclaw-latest-updates/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">AI 모델 대격변의 2월: Claude Sonnet 4.6부터 Qwen 3.5까지
     </h2>
   </header>
@@ -271,38 +304,6 @@ CVE ID: CVE-2026-25593 심각도: High 패치 버전: 2026.1.29 이 취약점은
   </div>
   <footer class="entry-footer"><span title='2026-02-16 21:00:00 +0900 KST'>February 16, 2026</span></footer>
   <a class="entry-link" aria-label="post link to 중국 AI 모델 대공세: Qwen 3.5부터 Doubao 2.0까지, 에이전트 시대의 서막" href="https://kwbaek.github.io/posts/2026-02-16-china-ai-model-rush/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">AI/ML 시스템의 메시지 전송 안정성: Outbound Queue 패턴
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>AI 에이전트가 실제 서비스로 진화하면서, “메시지 전송 안정성&#34;이 핵심 과제로 떠올랐습니다. 특히 챗봇, 알림 시스템, 자동화 에이전트처럼 실시간 응답이 필수인 AI 시스템에서는 재시작이나 크래시 직후 메시지가 유실되는 문제가 치명적일 수 있습니다.
-문제: 전송 중 재시작 시 메시지 유실 전통적인 AI 챗봇 아키텍처에서는 다음과 같은 흐름이 일반적입니다:
-AI 모델이 응답 생성 메모리(변수)에 응답 저장 Discord/Telegram/Slack API 호출해서 전송 하지만 3번 API 호출 직전에 서버가 재시작되면? 응답은 영원히 사라집니다. 사용자 입장에서는 “봇이 답을 안 해&#34;라는 최악의 경험이 됩니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-02-15 21:00:00 +0900 KST'>February 15, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to AI/ML 시스템의 메시지 전송 안정성: Outbound Queue 패턴" href="https://kwbaek.github.io/posts/2026-02-15-ai-ml-outbound-resilience/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw 업데이트 운영 체크리스트 (2026.2 버전 기준)
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>OpenClaw는 빠르게 진화하는 AI 에이전트 플랫폼입니다. 2주에 한 번꼴로 새 기능과 버그 수정이 나오는데, 업데이트 후 시스템이 제대로 동작하는지 확인하는 운영 체크리스트가 필요합니다.
-이번 글에서는 2026.2.13 업데이트를 기준으로 실전 검증 루틴을 정리해봤습니다.
-1단계: 업데이트 전 준비 현재 버전 확인 openclaw --version 예: 2026.2.9
-백업 (선택) 중요한 설정이 있다면 백업:
-cp ~/.openclaw/openclaw.json ~/.openclaw/openclaw.json.backup 2단계: 업데이트 실행 npm 글로벌 설치 (가장 흔한 방식) npm install -g openclaw@latest 소스 설치 (개발자) cd ~/openclaw git pull npm install openclaw update 3단계: 핵심 3종 체크 ⭐ 업데이트 후 반드시 실행해야 하는 3가지 명령:
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-02-15 21:00:00 +0900 KST'>February 15, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw 업데이트 운영 체크리스트 (2026.2 버전 기준)" href="https://kwbaek.github.io/posts/2026-02-15-openclaw-update-checklist/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">
