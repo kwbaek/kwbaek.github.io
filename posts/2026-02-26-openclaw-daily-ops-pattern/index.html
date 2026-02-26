@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>OpenClaw 운영 팁: 매일 쓰는 실전 패턴 5가지 (cron, heartbeat, 보안, 배포) | Kyungwook&#39;s Devlog</title>
+<meta name="keywords" content="OpenClaw, Automation, Cron, Heartbeat, Security">
+<meta name="description" content="OpenClaw를 일정 기간 운영해보면, 기능 자체보다도 운영 패턴이 성능과 안정성을 가릅니다. 오늘은 최근 업데이트 흐름(보안 강화, cron 정밀 제어, delivery 개선)을 바탕으로 실무에서 바로 쓰기 좋은 패턴을 정리해봅니다.
+1) cron은 “정확 시간 작업”에만 쓰고, 나머지는 heartbeat로 묶기
+많은 사용자가 모든 점검을 cron으로 쪼개는데, 이 방식은 잡 수가 늘수록 노이즈와 관리 부담이 급증합니다. 권장 방식은 다음과 같습니다.
+
+cron: 정시성이 중요한 작업만 (--exact 필요한 배치, 고정 알림)
+heartbeat: 이메일/캘린더/멘션/간단 상태점검 같은 느슨한 주기 작업 묶음
+
+이렇게 분리하면 호출 비용과 중복 알림이 확 줄고, 점검 로직도 유지보수가 쉬워집니다.">
+<meta name="author" content="">
+<link rel="canonical" href="https://kwbaek.github.io/posts/2026-02-26-openclaw-daily-ops-pattern/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.da3211e5ef867bf2b75fd5a6515cfed7195c011e8ab735694e203810a827097b.css" integrity="sha256-2jIR5e&#43;Ge/K3X9WmUVz&#43;1xlcAR6KtzVpTiA4EKgnCXs=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://kwbaek.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://kwbaek.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://kwbaek.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://kwbaek.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://kwbaek.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://kwbaek.github.io/posts/2026-02-26-openclaw-daily-ops-pattern/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="https://kwbaek.github.io/posts/2026-02-26-openclaw-daily-ops-pattern/">
+  <meta property="og:site_name" content="Kyungwook&#39;s Devlog">
+  <meta property="og:title" content="OpenClaw 운영 팁: 매일 쓰는 실전 패턴 5가지 (cron, heartbeat, 보안, 배포)">
+  <meta property="og:description" content="OpenClaw를 일정 기간 운영해보면, 기능 자체보다도 운영 패턴이 성능과 안정성을 가릅니다. 오늘은 최근 업데이트 흐름(보안 강화, cron 정밀 제어, delivery 개선)을 바탕으로 실무에서 바로 쓰기 좋은 패턴을 정리해봅니다.
+1) cron은 “정확 시간 작업”에만 쓰고, 나머지는 heartbeat로 묶기 많은 사용자가 모든 점검을 cron으로 쪼개는데, 이 방식은 잡 수가 늘수록 노이즈와 관리 부담이 급증합니다. 권장 방식은 다음과 같습니다.
+cron: 정시성이 중요한 작업만 (--exact 필요한 배치, 고정 알림) heartbeat: 이메일/캘린더/멘션/간단 상태점검 같은 느슨한 주기 작업 묶음 이렇게 분리하면 호출 비용과 중복 알림이 확 줄고, 점검 로직도 유지보수가 쉬워집니다.">
+  <meta property="og:locale" content="ko-kr">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2026-02-26T21:00:00+09:00">
+    <meta property="article:modified_time" content="2026-02-26T21:00:00+09:00">
+    <meta property="article:tag" content="OpenClaw">
+    <meta property="article:tag" content="Automation">
+    <meta property="article:tag" content="Cron">
+    <meta property="article:tag" content="Heartbeat">
+    <meta property="article:tag" content="Security">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="OpenClaw 운영 팁: 매일 쓰는 실전 패턴 5가지 (cron, heartbeat, 보안, 배포)">
+<meta name="twitter:description" content="OpenClaw를 일정 기간 운영해보면, 기능 자체보다도 운영 패턴이 성능과 안정성을 가릅니다. 오늘은 최근 업데이트 흐름(보안 강화, cron 정밀 제어, delivery 개선)을 바탕으로 실무에서 바로 쓰기 좋은 패턴을 정리해봅니다.
+1) cron은 “정확 시간 작업”에만 쓰고, 나머지는 heartbeat로 묶기
+많은 사용자가 모든 점검을 cron으로 쪼개는데, 이 방식은 잡 수가 늘수록 노이즈와 관리 부담이 급증합니다. 권장 방식은 다음과 같습니다.
+
+cron: 정시성이 중요한 작업만 (--exact 필요한 배치, 고정 알림)
+heartbeat: 이메일/캘린더/멘션/간단 상태점검 같은 느슨한 주기 작업 묶음
+
+이렇게 분리하면 호출 비용과 중복 알림이 확 줄고, 점검 로직도 유지보수가 쉬워집니다.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://kwbaek.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "OpenClaw 운영 팁: 매일 쓰는 실전 패턴 5가지 (cron, heartbeat, 보안, 배포)",
+      "item": "https://kwbaek.github.io/posts/2026-02-26-openclaw-daily-ops-pattern/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "OpenClaw 운영 팁: 매일 쓰는 실전 패턴 5가지 (cron, heartbeat, 보안, 배포)",
+  "name": "OpenClaw 운영 팁: 매일 쓰는 실전 패턴 5가지 (cron, heartbeat, 보안, 배포)",
+  "description": "OpenClaw를 일정 기간 운영해보면, 기능 자체보다도 운영 패턴이 성능과 안정성을 가릅니다. 오늘은 최근 업데이트 흐름(보안 강화, cron 정밀 제어, delivery 개선)을 바탕으로 실무에서 바로 쓰기 좋은 패턴을 정리해봅니다.\n1) cron은 “정확 시간 작업”에만 쓰고, 나머지는 heartbeat로 묶기 많은 사용자가 모든 점검을 cron으로 쪼개는데, 이 방식은 잡 수가 늘수록 노이즈와 관리 부담이 급증합니다. 권장 방식은 다음과 같습니다.\ncron: 정시성이 중요한 작업만 (--exact 필요한 배치, 고정 알림) heartbeat: 이메일/캘린더/멘션/간단 상태점검 같은 느슨한 주기 작업 묶음 이렇게 분리하면 호출 비용과 중복 알림이 확 줄고, 점검 로직도 유지보수가 쉬워집니다.\n",
+  "keywords": [
+    "OpenClaw", "Automation", "Cron", "Heartbeat", "Security"
+  ],
+  "articleBody": "OpenClaw를 일정 기간 운영해보면, 기능 자체보다도 운영 패턴이 성능과 안정성을 가릅니다. 오늘은 최근 업데이트 흐름(보안 강화, cron 정밀 제어, delivery 개선)을 바탕으로 실무에서 바로 쓰기 좋은 패턴을 정리해봅니다.\n1) cron은 “정확 시간 작업”에만 쓰고, 나머지는 heartbeat로 묶기 많은 사용자가 모든 점검을 cron으로 쪼개는데, 이 방식은 잡 수가 늘수록 노이즈와 관리 부담이 급증합니다. 권장 방식은 다음과 같습니다.\ncron: 정시성이 중요한 작업만 (--exact 필요한 배치, 고정 알림) heartbeat: 이메일/캘린더/멘션/간단 상태점검 같은 느슨한 주기 작업 묶음 이렇게 분리하면 호출 비용과 중복 알림이 확 줄고, 점검 로직도 유지보수가 쉬워집니다.\n2) delivery 설계는 “요약”보다 “원문 전달” 기준으로 최근 OpenClaw cron delivery는 텍스트 전달 품질이 개선되어, 리서치/리포트 계열 작업에서 본문 그대로 전달 전략이 더 유리해졌습니다. 특히 블로그 원고 생성, 시장 브리핑, 회의 요약처럼 후처리가 필요한 경우에는 요약본보다 원문 전달이 훨씬 실무적입니다.\n운영 팁:\n생성형 결과물은 webhook/채널에 전문 전달 사용자 최종 노출은 별도 후처리 레이어에서 압축 3) 토큰은 용도별로 분리 운영하기 실운영에서 가장 자주 터지는 문제는 기능이 아니라 토큰 관리입니다. 안전한 기본값은 다음입니다.\ngateway.auth.token hooks.token cron.webhookToken 위 3개를 분리하고, 재발급 주기를 다르게 가져가면 사고 영향 반경이 크게 줄어듭니다. 특히 외부 webhook을 붙일 때 메인 토큰 재사용은 피하는 게 좋습니다.\n4) 업데이트 루틴을 고정해 장애를 예방하기 업데이트 직후 문제의 상당수는 “기능 미숙”이 아니라 검증 루틴 부재에서 발생합니다. 아래 순서를 습관화하면 대부분 예방됩니다.\nopenclaw update --dry-run openclaw doctor openclaw gateway restart openclaw health 여기에 필요 시 openclaw security audit까지 더하면, 설정 drift와 보안 퇴행을 빠르게 잡을 수 있습니다.\n5) 블로그/리포트 자동화는 “생성→검증→배포” 3단계로 분리 콘텐츠 자동화를 단일 잡으로 만들면 편해 보이지만, 실패 지점 추적이 어렵습니다. 아래처럼 나누면 운영성이 좋아집니다.\n생성 단계: 원고 작성, 파일 저장 검증 단계: lint/빌드(hugo), 링크/메타 점검 배포 단계: public 반영 후 별도 커밋/푸시 이 구조를 쓰면 실패했을 때 어디서 멈췄는지 명확하고, 재시도도 빠릅니다.\nOpenClaw의 강점은 “도구가 많다”가 아니라, 도구를 안정적으로 반복 실행하게 만드는 운영 감각에 있습니다. 결국 자동화 품질은 모델 지능보다 워크플로우 설계가 좌우합니다. 오늘 소개한 다섯 가지 패턴만 적용해도, 같은 기능으로 훨씬 덜 흔들리는 운영이 가능합니다.\n",
+  "wordCount" : "312",
+  "inLanguage": "en",
+  "datePublished": "2026-02-26T21:00:00+09:00",
+  "dateModified": "2026-02-26T21:00:00+09:00",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://kwbaek.github.io/posts/2026-02-26-openclaw-daily-ops-pattern/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Kyungwook's Devlog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://kwbaek.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://kwbaek.github.io/" accesskey="h" title="Kyungwook&#39;s Devlog (Alt + H)">Kyungwook&#39;s Devlog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://kwbaek.github.io/categories/" title="categories">
+                    <span>categories</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kwbaek.github.io/tags/" title="tags">
+                    <span>tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kwbaek.github.io/" title="Kyungwook&#39;s Devlog">
+                    <span>Kyungwook&#39;s Devlog</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      OpenClaw 운영 팁: 매일 쓰는 실전 패턴 5가지 (cron, heartbeat, 보안, 배포)
+    </h1>
+    <div class="post-meta"><span title='2026-02-26 21:00:00 +0900 KST'>February 26, 2026</span>
+
+</div>
+  </header> 
+  <div class="post-content"><p>OpenClaw를 일정 기간 운영해보면, 기능 자체보다도 <strong>운영 패턴</strong>이 성능과 안정성을 가릅니다. 오늘은 최근 업데이트 흐름(보안 강화, cron 정밀 제어, delivery 개선)을 바탕으로 실무에서 바로 쓰기 좋은 패턴을 정리해봅니다.</p>
+<h2 id="1-cron은-정확-시간-작업에만-쓰고-나머지는-heartbeat로-묶기">1) cron은 “정확 시간 작업”에만 쓰고, 나머지는 heartbeat로 묶기<a hidden class="anchor" aria-hidden="true" href="#1-cron은-정확-시간-작업에만-쓰고-나머지는-heartbeat로-묶기">#</a></h2>
+<p>많은 사용자가 모든 점검을 cron으로 쪼개는데, 이 방식은 잡 수가 늘수록 노이즈와 관리 부담이 급증합니다. 권장 방식은 다음과 같습니다.</p>
+<ul>
+<li><strong>cron</strong>: 정시성이 중요한 작업만 (<code>--exact</code> 필요한 배치, 고정 알림)</li>
+<li><strong>heartbeat</strong>: 이메일/캘린더/멘션/간단 상태점검 같은 느슨한 주기 작업 묶음</li>
+</ul>
+<p>이렇게 분리하면 호출 비용과 중복 알림이 확 줄고, 점검 로직도 유지보수가 쉬워집니다.</p>
+<h2 id="2-delivery-설계는-요약보다-원문-전달-기준으로">2) delivery 설계는 “요약”보다 “원문 전달” 기준으로<a hidden class="anchor" aria-hidden="true" href="#2-delivery-설계는-요약보다-원문-전달-기준으로">#</a></h2>
+<p>최근 OpenClaw cron delivery는 텍스트 전달 품질이 개선되어, 리서치/리포트 계열 작업에서 <strong>본문 그대로 전달</strong> 전략이 더 유리해졌습니다. 특히 블로그 원고 생성, 시장 브리핑, 회의 요약처럼 후처리가 필요한 경우에는 요약본보다 원문 전달이 훨씬 실무적입니다.</p>
+<p>운영 팁:</p>
+<ul>
+<li>생성형 결과물은 webhook/채널에 전문 전달</li>
+<li>사용자 최종 노출은 별도 후처리 레이어에서 압축</li>
+</ul>
+<h2 id="3-토큰은-용도별로-분리-운영하기">3) 토큰은 용도별로 분리 운영하기<a hidden class="anchor" aria-hidden="true" href="#3-토큰은-용도별로-분리-운영하기">#</a></h2>
+<p>실운영에서 가장 자주 터지는 문제는 기능이 아니라 토큰 관리입니다. 안전한 기본값은 다음입니다.</p>
+<ul>
+<li><code>gateway.auth.token</code></li>
+<li><code>hooks.token</code></li>
+<li><code>cron.webhookToken</code></li>
+</ul>
+<p>위 3개를 분리하고, 재발급 주기를 다르게 가져가면 사고 영향 반경이 크게 줄어듭니다. 특히 외부 webhook을 붙일 때 메인 토큰 재사용은 피하는 게 좋습니다.</p>
+<h2 id="4-업데이트-루틴을-고정해-장애를-예방하기">4) 업데이트 루틴을 고정해 장애를 예방하기<a hidden class="anchor" aria-hidden="true" href="#4-업데이트-루틴을-고정해-장애를-예방하기">#</a></h2>
+<p>업데이트 직후 문제의 상당수는 “기능 미숙”이 아니라 검증 루틴 부재에서 발생합니다. 아래 순서를 습관화하면 대부분 예방됩니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>openclaw update --dry-run
+</span></span><span style="display:flex;"><span>openclaw doctor
+</span></span><span style="display:flex;"><span>openclaw gateway restart
+</span></span><span style="display:flex;"><span>openclaw health
+</span></span></code></pre></div><p>여기에 필요 시 <code>openclaw security audit</code>까지 더하면, 설정 drift와 보안 퇴행을 빠르게 잡을 수 있습니다.</p>
+<h2 id="5-블로그리포트-자동화는-생성검증배포-3단계로-분리">5) 블로그/리포트 자동화는 “생성→검증→배포” 3단계로 분리<a hidden class="anchor" aria-hidden="true" href="#5-블로그리포트-자동화는-생성검증배포-3단계로-분리">#</a></h2>
+<p>콘텐츠 자동화를 단일 잡으로 만들면 편해 보이지만, 실패 지점 추적이 어렵습니다. 아래처럼 나누면 운영성이 좋아집니다.</p>
+<ol>
+<li>생성 단계: 원고 작성, 파일 저장</li>
+<li>검증 단계: lint/빌드(hugo), 링크/메타 점검</li>
+<li>배포 단계: public 반영 후 별도 커밋/푸시</li>
+</ol>
+<p>이 구조를 쓰면 실패했을 때 어디서 멈췄는지 명확하고, 재시도도 빠릅니다.</p>
+<hr>
+<p>OpenClaw의 강점은 “도구가 많다”가 아니라, <strong>도구를 안정적으로 반복 실행하게 만드는 운영 감각</strong>에 있습니다. 결국 자동화 품질은 모델 지능보다 워크플로우 설계가 좌우합니다. 오늘 소개한 다섯 가지 패턴만 적용해도, 같은 기능으로 훨씬 덜 흔들리는 운영이 가능합니다.</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://kwbaek.github.io/tags/openclaw/">OpenClaw</a></li>
+      <li><a href="https://kwbaek.github.io/tags/automation/">Automation</a></li>
+      <li><a href="https://kwbaek.github.io/tags/cron/">Cron</a></li>
+      <li><a href="https://kwbaek.github.io/tags/heartbeat/">Heartbeat</a></li>
+      <li><a href="https://kwbaek.github.io/tags/security/">Security</a></li>
+    </ul>
+  </footer><script src="https://utteranc.es/client.js"
+        repo="kwbaek/blog-comments"
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://kwbaek.github.io/">Kyungwook&#39;s Devlog</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

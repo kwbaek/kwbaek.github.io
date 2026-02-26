@@ -6,8 +6,37 @@
     <description>Recent content in Posts on Kyungwook&#39;s Devlog</description>
     <generator>Hugo -- 0.155.3</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Wed, 25 Feb 2026 21:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Thu, 26 Feb 2026 21:00:00 +0900</lastBuildDate>
     <atom:link href="https://kwbaek.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>OpenClaw 운영 팁: 매일 쓰는 실전 패턴 5가지 (cron, heartbeat, 보안, 배포)</title>
+      <link>https://kwbaek.github.io/posts/2026-02-26-openclaw-daily-ops-pattern/</link>
+      <pubDate>Thu, 26 Feb 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-02-26-openclaw-daily-ops-pattern/</guid>
+      <description>&lt;p&gt;OpenClaw를 일정 기간 운영해보면, 기능 자체보다도 &lt;strong&gt;운영 패턴&lt;/strong&gt;이 성능과 안정성을 가릅니다. 오늘은 최근 업데이트 흐름(보안 강화, cron 정밀 제어, delivery 개선)을 바탕으로 실무에서 바로 쓰기 좋은 패턴을 정리해봅니다.&lt;/p&gt;
+&lt;h2 id=&#34;1-cron은-정확-시간-작업에만-쓰고-나머지는-heartbeat로-묶기&#34;&gt;1) cron은 “정확 시간 작업”에만 쓰고, 나머지는 heartbeat로 묶기&lt;/h2&gt;
+&lt;p&gt;많은 사용자가 모든 점검을 cron으로 쪼개는데, 이 방식은 잡 수가 늘수록 노이즈와 관리 부담이 급증합니다. 권장 방식은 다음과 같습니다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;cron&lt;/strong&gt;: 정시성이 중요한 작업만 (&lt;code&gt;--exact&lt;/code&gt; 필요한 배치, 고정 알림)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;heartbeat&lt;/strong&gt;: 이메일/캘린더/멘션/간단 상태점검 같은 느슨한 주기 작업 묶음&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;이렇게 분리하면 호출 비용과 중복 알림이 확 줄고, 점검 로직도 유지보수가 쉬워집니다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>반응형에서 선제형으로: ProactiveMobile이 여는 모바일 AI 에이전트의 다음 경쟁축</title>
+      <link>https://kwbaek.github.io/posts/2026-02-26-ai-proactive-mobile-agents/</link>
+      <pubDate>Thu, 26 Feb 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-02-26-ai-proactive-mobile-agents/</guid>
+      <description>&lt;p&gt;오늘 AI/ML 트렌드 채널에서 가장 흥미로웠던 포인트는 &lt;strong&gt;모바일 AI 에이전트의 평가 기준이 ‘반응형(reactive)’에서 ‘선제형(proactive)’으로 이동&lt;/strong&gt;하고 있다는 점입니다. 특히 &lt;code&gt;ProactiveMobile&lt;/code&gt; 벤치마크는 “사용자가 명령하면 수행하는 모델”을 넘어, 사용 맥락을 이해하고 먼저 제안/행동하는 모델을 별도의 축으로 측정한다는 점에서 의미가 큽니다.&lt;/p&gt;
+&lt;h2 id=&#34;왜-이-흐름이-중요한가&#34;&gt;왜 이 흐름이 중요한가&lt;/h2&gt;
+&lt;p&gt;지금까지 모바일 에이전트의 성능 비교는 대체로 다음 질문에 머물렀습니다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;명령을 정확히 이해하는가?&lt;/li&gt;
+&lt;li&gt;여러 앱 단계를 실수 없이 수행하는가?&lt;/li&gt;
+&lt;li&gt;응답 지연은 충분히 짧은가?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;하지만 실제 사용자 경험에서 중요한 순간은 종종 &lt;strong&gt;명령 이전&lt;/strong&gt;에 발생합니다. 예를 들어 출근 시간 교통 지연, 정기 결제 만료, 회의 직전 자료 준비 같은 상황은 “요청 후 실행”보다 “상황 인지 후 제안”이 훨씬 큰 가치를 만듭니다. 결국 모바일 AI의 승부처는 단순 자동화가 아니라, &lt;strong&gt;맥락 추론 + 타이밍 + 과잉개입 제어&lt;/strong&gt;의 균형으로 넘어가고 있습니다.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>AI 인프라의 진짜 병목: 모델이 아니라 전력과 정책</title>
       <link>https://kwbaek.github.io/posts/2026-02-25-ai-infrastructure-power-shift/</link>
