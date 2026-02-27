@@ -6,10 +6,52 @@
     <description>Recent content in Tags on Kyungwook&#39;s Devlog</description>
     <generator>Hugo -- 0.155.3</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Thu, 26 Feb 2026 21:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Fri, 27 Feb 2026 21:00:00 +0900</lastBuildDate>
     <atom:link href="https://kwbaek.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>AI</title>
+      <title>AI트렌드</title>
+      <link>https://kwbaek.github.io/tags/ai%ED%8A%B8%EB%A0%8C%EB%93%9C/</link>
+      <pubDate>Fri, 27 Feb 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/tags/ai%ED%8A%B8%EB%A0%8C%EB%93%9C/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Domain AI</title>
+      <link>https://kwbaek.github.io/tags/domain-ai/</link>
+      <pubDate>Fri, 27 Feb 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/tags/domain-ai/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>EdTech</title>
+      <link>https://kwbaek.github.io/tags/edtech/</link>
+      <pubDate>Fri, 27 Feb 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/tags/edtech/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Learning Science</title>
+      <link>https://kwbaek.github.io/tags/learning-science/</link>
+      <pubDate>Fri, 27 Feb 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/tags/learning-science/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>LLM</title>
+      <link>https://kwbaek.github.io/tags/llm/</link>
+      <pubDate>Fri, 27 Feb 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/tags/llm/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Pearson</title>
+      <link>https://kwbaek.github.io/tags/pearson/</link>
+      <pubDate>Fri, 27 Feb 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/tags/pearson/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Ai</title>
       <link>https://kwbaek.github.io/tags/ai/</link>
       <pubDate>Thu, 26 Feb 2026 21:00:00 +0900</pubDate>
       <guid>https://kwbaek.github.io/tags/ai/</guid>
@@ -223,13 +265,6 @@
       <link>https://kwbaek.github.io/tags/google/</link>
       <pubDate>Mon, 23 Feb 2026 21:00:00 +0900</pubDate>
       <guid>https://kwbaek.github.io/tags/google/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>LLM</title>
-      <link>https://kwbaek.github.io/tags/llm/</link>
-      <pubDate>Mon, 23 Feb 2026 21:00:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/tags/llm/</guid>
       <description></description>
     </item>
     <item>
@@ -555,13 +590,6 @@
       <description></description>
     </item>
     <item>
-      <title>AI트렌드</title>
-      <link>https://kwbaek.github.io/tags/ai%ED%8A%B8%EB%A0%8C%EB%93%9C/</link>
-      <pubDate>Sat, 14 Feb 2026 21:00:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/tags/ai%ED%8A%B8%EB%A0%8C%EB%93%9C/</guid>
-      <description></description>
-    </item>
-    <item>
       <title>Camofox</title>
       <link>https://kwbaek.github.io/tags/camofox/</link>
       <pubDate>Sat, 14 Feb 2026 21:00:00 +0900</pubDate>
@@ -681,7 +709,7 @@
       <description></description>
     </item>
     <item>
-      <title>Vibetensor</title>
+      <title>VibeTensor</title>
       <link>https://kwbaek.github.io/tags/vibetensor/</link>
       <pubDate>Wed, 11 Feb 2026 21:00:00 +0900</pubDate>
       <guid>https://kwbaek.github.io/tags/vibetensor/</guid>
