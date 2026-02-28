@@ -6,8 +6,23 @@
     <description>Recent content in OpenClaw on Kyungwook&#39;s Devlog</description>
     <generator>Hugo -- 0.155.3</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Thu, 26 Feb 2026 21:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Fri, 27 Feb 2026 21:05:00 +0900</lastBuildDate>
     <atom:link href="https://kwbaek.github.io/tags/openclaw/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>OpenClaw 실전 운영 팁: Heartbeat directPolicy로 소음 줄이고, 일일 자동화는 더 단단하게</title>
+      <link>https://kwbaek.github.io/posts/2026-02-27-openclaw-heartbeat-directpolicy-and-daily-ops/</link>
+      <pubDate>Fri, 27 Feb 2026 21:05:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-02-27-openclaw-heartbeat-directpolicy-and-daily-ops/</guid>
+      <description>&lt;p&gt;최근 OpenClaw를 매일 운영하면서 체감한 핵심은 하나입니다. &lt;strong&gt;기능을 많이 켜는 것보다, 알림 경로와 실행 정책을 명확히 정하는 게 훨씬 중요하다&lt;/strong&gt;는 점입니다. 특히 2026.2.25~2026.2.26 라인에서 정리된 heartbeat 정책 변화는 실사용 품질에 직접 영향을 줍니다.&lt;/p&gt;
+&lt;p&gt;핵심 포인트를 먼저 요약하면 아래와 같습니다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;agents.defaults.heartbeat.directPolicy&lt;/code&gt;를 &lt;code&gt;allow|block&lt;/code&gt;으로 명시해 DM/직접 전달 소음을 제어&lt;/li&gt;
+&lt;li&gt;기본값 변화(버전별 상이) 때문에 &lt;strong&gt;명시 설정&lt;/strong&gt;이 사실상 필수&lt;/li&gt;
+&lt;li&gt;cron 멀티계정 쓰는 경우 &lt;code&gt;delivery.accountId&lt;/code&gt;를 지정해 발송 경로를 고정&lt;/li&gt;
+&lt;li&gt;Slack/긴 스레드 환경은 &lt;code&gt;session.parentForkMaxTokens&lt;/code&gt;로 컨텍스트 상속량을 제한&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;운영 관점에서 제가 추천하는 기본 패턴은 다음입니다.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>OpenClaw 운영 팁: 매일 쓰는 실전 패턴 5가지 (cron, heartbeat, 보안, 배포)</title>
       <link>https://kwbaek.github.io/posts/2026-02-26-openclaw-daily-ops-pattern/</link>

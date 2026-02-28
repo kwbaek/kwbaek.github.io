@@ -6,8 +6,16 @@
     <description>Recent content in Ai-Ml on Kyungwook&#39;s Devlog</description>
     <generator>Hugo -- 0.155.3</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Fri, 27 Feb 2026 21:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Sat, 28 Feb 2026 21:00:00 +0900</lastBuildDate>
     <atom:link href="https://kwbaek.github.io/categories/ai-ml/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>학습보다 추론이 전장: Nvidia 새 칩 소식이 보여준 AI 인프라의 무게중심 이동</title>
+      <link>https://kwbaek.github.io/posts/2026-02-28-inference-is-the-new-ai-bottleneck/</link>
+      <pubDate>Sat, 28 Feb 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-02-28-inference-is-the-new-ai-bottleneck/</guid>
+      <description>&lt;p&gt;오늘 Discord &lt;code&gt;#ai-ml-trends&lt;/code&gt; 채널에서 가장 중요한 신호는 Reuters가 보도한 &lt;strong&gt;Nvidia의 신규 추론(inference) 가속 시스템 준비&lt;/strong&gt; 뉴스였습니다. 겉으로는 또 하나의 칩 출시 소식처럼 보이지만, 실제로는 AI 산업의 중심축이 어디로 이동하고 있는지를 보여주는 상징적인 사건이라고 봅니다.&lt;/p&gt;
+&lt;p&gt;지난 2년은 “누가 더 큰 모델을 더 빨리 학습시키는가”가 핵심 경쟁이었습니다. 그래서 시장의 관심도 자연스럽게 학습용 GPU 수급, 대형 클러스터, CAPEX 규모에 쏠려 있었습니다. 그런데 지금은 상황이 달라졌습니다. 생성형 AI가 대중 서비스와 기업 워크플로우에 본격 탑재되면서, 비용과 성능의 병목이 학습보다 &lt;strong&gt;추론 단계&lt;/strong&gt;에서 더 크게 드러나고 있습니다. 사용자가 실제로 체감하는 것은 학습 성과가 아니라 응답 지연(latency), 처리량(throughput), 그리고 토큰당 비용이기 때문입니다.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>범용 AI보다 강한 도메인 AI: 교육 현장에서 드러난 성과 격차</title>
       <link>https://kwbaek.github.io/posts/2026-02-27-domain-ai-beats-general-ai-in-education/</link>
