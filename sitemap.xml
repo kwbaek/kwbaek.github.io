@@ -2,8 +2,65 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://kwbaek.github.io/tags/agent/</loc>
+    <lastmod>2026-03-01T21:00:00+09:00</lastmod>
+  </url><url>
+    <loc>https://kwbaek.github.io/tags/ai/</loc>
+    <lastmod>2026-03-01T21:00:00+09:00</lastmod>
+  </url><url>
     <loc>https://kwbaek.github.io/categories/ai-ml/</loc>
-    <lastmod>2026-02-28T21:00:00+09:00</lastmod>
+    <lastmod>2026-03-01T21:00:00+09:00</lastmod>
+  </url><url>
+    <loc>https://kwbaek.github.io/posts/2026-03-01-ai-agent-operations-over-benchmarks/</loc>
+    <lastmod>2026-03-01T21:00:00+09:00</lastmod>
+  </url><url>
+    <loc>https://kwbaek.github.io/tags/benchmark/</loc>
+    <lastmod>2026-03-01T21:00:00+09:00</lastmod>
+  </url><url>
+    <loc>https://kwbaek.github.io/categories/</loc>
+    <lastmod>2026-03-01T21:00:00+09:00</lastmod>
+  </url><url>
+    <loc>https://kwbaek.github.io/tags/interpretability/</loc>
+    <lastmod>2026-03-01T21:00:00+09:00</lastmod>
+  </url><url>
+    <loc>https://kwbaek.github.io/</loc>
+    <lastmod>2026-03-01T21:00:00+09:00</lastmod>
+  </url><url>
+    <loc>https://kwbaek.github.io/tags/ml/</loc>
+    <lastmod>2026-03-01T21:00:00+09:00</lastmod>
+  </url><url>
+    <loc>https://kwbaek.github.io/posts/</loc>
+    <lastmod>2026-03-01T21:00:00+09:00</lastmod>
+  </url><url>
+    <loc>https://kwbaek.github.io/tags/reasoning/</loc>
+    <lastmod>2026-03-01T21:00:00+09:00</lastmod>
+  </url><url>
+    <loc>https://kwbaek.github.io/tags/</loc>
+    <lastmod>2026-03-01T21:00:00+09:00</lastmod>
+  </url><url>
+    <loc>https://kwbaek.github.io/tags/agents/</loc>
+    <lastmod>2026-02-28T21:05:00+09:00</lastmod>
+  </url><url>
+    <loc>https://kwbaek.github.io/tags/bindings/</loc>
+    <lastmod>2026-02-28T21:05:00+09:00</lastmod>
+  </url><url>
+    <loc>https://kwbaek.github.io/tags/devops/</loc>
+    <lastmod>2026-02-28T21:05:00+09:00</lastmod>
+  </url><url>
+    <loc>https://kwbaek.github.io/categories/openclaw/</loc>
+    <lastmod>2026-02-28T21:05:00+09:00</lastmod>
+  </url><url>
+    <loc>https://kwbaek.github.io/tags/openclaw/</loc>
+    <lastmod>2026-02-28T21:05:00+09:00</lastmod>
+  </url><url>
+    <loc>https://kwbaek.github.io/posts/2026-02-28-openclaw-secrets-and-bindings-ops-guide/</loc>
+    <lastmod>2026-02-28T21:05:00+09:00</lastmod>
+  </url><url>
+    <loc>https://kwbaek.github.io/tags/secrets/</loc>
+    <lastmod>2026-02-28T21:05:00+09:00</lastmod>
+  </url><url>
+    <loc>https://kwbaek.github.io/tags/%EC%9A%B4%EC%98%81%EC%9E%90%EB%8F%99%ED%99%94/</loc>
+    <lastmod>2026-02-28T21:05:00+09:00</lastmod>
   </url><url>
     <loc>https://kwbaek.github.io/tags/ai%EC%9D%B8%ED%94%84%EB%9D%BC/</loc>
     <lastmod>2026-02-28T21:00:00+09:00</lastmod>
@@ -11,22 +68,10 @@
     <loc>https://kwbaek.github.io/tags/ai%ED%8A%B8%EB%A0%8C%EB%93%9C/</loc>
     <lastmod>2026-02-28T21:00:00+09:00</lastmod>
   </url><url>
-    <loc>https://kwbaek.github.io/categories/</loc>
-    <lastmod>2026-02-28T21:00:00+09:00</lastmod>
-  </url><url>
     <loc>https://kwbaek.github.io/tags/inference/</loc>
     <lastmod>2026-02-28T21:00:00+09:00</lastmod>
   </url><url>
-    <loc>https://kwbaek.github.io/</loc>
-    <lastmod>2026-02-28T21:00:00+09:00</lastmod>
-  </url><url>
     <loc>https://kwbaek.github.io/tags/nvidia/</loc>
-    <lastmod>2026-02-28T21:00:00+09:00</lastmod>
-  </url><url>
-    <loc>https://kwbaek.github.io/posts/</loc>
-    <lastmod>2026-02-28T21:00:00+09:00</lastmod>
-  </url><url>
-    <loc>https://kwbaek.github.io/tags/</loc>
     <lastmod>2026-02-28T21:00:00+09:00</lastmod>
   </url><url>
     <loc>https://kwbaek.github.io/tags/%EB%B0%98%EB%8F%84%EC%B2%B4/</loc>
@@ -50,16 +95,7 @@
     <loc>https://kwbaek.github.io/tags/heartbeat/</loc>
     <lastmod>2026-02-27T21:05:00+09:00</lastmod>
   </url><url>
-    <loc>https://kwbaek.github.io/categories/openclaw/</loc>
-    <lastmod>2026-02-27T21:05:00+09:00</lastmod>
-  </url><url>
-    <loc>https://kwbaek.github.io/tags/openclaw/</loc>
-    <lastmod>2026-02-27T21:05:00+09:00</lastmod>
-  </url><url>
     <loc>https://kwbaek.github.io/posts/2026-02-27-openclaw-heartbeat-directpolicy-and-daily-ops/</loc>
-    <lastmod>2026-02-27T21:05:00+09:00</lastmod>
-  </url><url>
-    <loc>https://kwbaek.github.io/tags/%EC%9A%B4%EC%98%81%EC%9E%90%EB%8F%99%ED%99%94/</loc>
     <lastmod>2026-02-27T21:05:00+09:00</lastmod>
   </url><url>
     <loc>https://kwbaek.github.io/tags/domain-ai/</loc>
@@ -80,13 +116,7 @@
     <loc>https://kwbaek.github.io/posts/2026-02-27-domain-ai-beats-general-ai-in-education/</loc>
     <lastmod>2026-02-27T21:00:00+09:00</lastmod>
   </url><url>
-    <loc>https://kwbaek.github.io/tags/ai/</loc>
-    <lastmod>2026-02-26T21:00:00+09:00</lastmod>
-  </url><url>
     <loc>https://kwbaek.github.io/tags/automation/</loc>
-    <lastmod>2026-02-26T21:00:00+09:00</lastmod>
-  </url><url>
-    <loc>https://kwbaek.github.io/tags/benchmark/</loc>
     <lastmod>2026-02-26T21:00:00+09:00</lastmod>
   </url><url>
     <loc>https://kwbaek.github.io/tags/mobile-agent/</loc>
@@ -259,9 +289,6 @@
   </url><url>
     <loc>https://kwbaek.github.io/tags/%EB%AA%A8%EB%8D%B8-%EC%B6%9C%EC%8B%9C/</loc>
     <lastmod>2026-02-20T21:00:00+09:00</lastmod>
-  </url><url>
-    <loc>https://kwbaek.github.io/tags/agents/</loc>
-    <lastmod>2026-02-19T21:00:00+09:00</lastmod>
   </url><url>
     <loc>https://kwbaek.github.io/posts/2026-02-19-ai-model-rush-february/</loc>
     <lastmod>2026-02-19T21:00:00+09:00</lastmod>

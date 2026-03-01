@@ -143,6 +143,23 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 완전정복: Heartbeat과 Cron으로 AI 비서를 자동화하기
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>OpenClaw를 진정한 비서로 만드는 법 OpenClaw를 사용하고 계신가요? 챗봇처럼 매번 명령을 내려야 하는 게 불편하지 않으셨나요? 오늘은 OpenClaw를 진짜 비서처럼 자동으로 움직이게 만드는 두 가지 핵심 기능을 소개합니다.
+바로 Heartbeat과 Cron입니다.
+Heartbeat: 비서의 심장박동 Heartbeat이란? Heartbeat은 OpenClaw가 주기적으로 “지금 내가 해야 할 일이 있나?“라고 스스로 체크하는 기능입니다. 마치 사람 비서가 30분마다 “혹시 필요한 거 없으세요?“라고 물어보는 것과 같습니다.
+기본 설정 OpenClaw의 기본 Heartbeat 프롬프트는 다음과 같습니다:
+Read HEARTBEAT.md if it exists (workspace context). Follow it strictly. Do not infer or repeat old tasks from prior chats. If nothing needs attention, reply HEARTBEAT_OK. 즉, HEARTBEAT.md 파일에 체크할 항목을 적어두면, OpenClaw가 주기적으로 그 파일을 읽고 필요한 작업을 수행합니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-02-18 21:00:00 +0900 KST'>February 18, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 완전정복: Heartbeat과 Cron으로 AI 비서를 자동화하기" href="https://kwbaek.github.io/posts/2026-02-18-openclaw-heartbeat-cron-guide/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">OpenClaw로 블로그 자동화하기: 크론잡과 Discord 연동
     </h2>
   </header>
@@ -280,26 +297,12 @@ OpenClaw란? OpenClaw는 개인용 AI 비서 프레임워크입니다. 단순 �
   <footer class="entry-footer"><span title='2026-02-09 23:15:00 +0900 KST'>February 9, 2026</span></footer>
   <a class="entry-link" aria-label="post link to OpenClaw 실전 활용: 에이전틱 워크플로우로 블로그 자동화하기" href="https://kwbaek.github.io/posts/2026-02-09-openclaw-agentic-workflow-tips/"></a>
 </article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw 서브에이전트로 반복 작업 자동화하기
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>OpenClaw를 쓰면서 가장 생산성이 올라간 기능 중 하나가 바로 서브에이전트(Subagent) 시스템입니다. 이 글에서는 서브에이전트가 무엇인지, 어떻게 활용하면 좋은지 실제 경험을 바탕으로 공유합니다.
-서브에이전트란? 서브에이전트는 메인 에이전트가 특정 작업을 위해 독립적으로 생성하는 하위 에이전트입니다. 메인 에이전트와 별도의 세션에서 동작하며, 작업이 완료되면 결과를 메인 에이전트에게 보고합니다.
-핵심 특징:
-독립 실행: 메인 세션의 컨텍스트 윈도우를 소모하지 않음 작업 집중: 할당된 작업만 수행하고 종료 병렬 처리: 여러 서브에이전트를 동시에 띄울 수 있음 실제 활용 사례: 블로그 포스팅 자동화 이 블로그 포스트 자체가 서브에이전트로 작성되고 있습니다! 워크플로우는 다음과 같습니다:
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-02-09 23:00:00 +0900 KST'>February 9, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw 서브에이전트로 반복 작업 자동화하기" href="https://kwbaek.github.io/posts/2026-02-09-openclaw-subagent-automation/"></a>
-</article>
 <footer class="page-footer">
   <nav class="pagination">
     <a class="prev" href="https://kwbaek.github.io/categories/openclaw/">
       «&nbsp;Prev&nbsp;
+    </a>
+    <a class="next" href="https://kwbaek.github.io/categories/openclaw/page/3/">Next&nbsp;&nbsp;»
     </a>
   </nav>
 </footer>

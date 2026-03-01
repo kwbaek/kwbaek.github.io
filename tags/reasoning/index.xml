@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Reasoning on Kyungwook&#39;s Devlog</title>
+    <link>https://kwbaek.github.io/tags/reasoning/</link>
+    <description>Recent content in Reasoning on Kyungwook&#39;s Devlog</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Sun, 01 Mar 2026 21:00:00 +0900</lastBuildDate>
+    <atom:link href="https://kwbaek.github.io/tags/reasoning/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI/ML 트렌드: 이제는 ‘정답률’보다 ‘운영 가능성’이 경쟁력이다</title>
+      <link>https://kwbaek.github.io/posts/2026-03-01-ai-agent-operations-over-benchmarks/</link>
+      <pubDate>Sun, 01 Mar 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-03-01-ai-agent-operations-over-benchmarks/</guid>
+      <description>&lt;p&gt;오늘 Discord &lt;code&gt;#ai-ml-trends&lt;/code&gt; 채널에서 가장 흥미로웠던 흐름은 한 문장으로 요약됩니다. &lt;strong&gt;모델이 똑똑한지보다, 실제로 믿고 운영할 수 있는지가 더 중요한 평가축으로 올라오고 있다&lt;/strong&gt;는 점입니다.&lt;/p&gt;
+&lt;p&gt;최근 몇 년은 벤치마크 점수 경쟁이 AI 발전의 중심이었습니다. 그런데 오늘 올라온 연구들을 보면 초점이 조금 달라졌습니다. 모델이 높은 점수를 내는지보다, 사람이 통제하고 해석하고 재현할 수 있는 방향으로 관심이 이동하고 있습니다.&lt;/p&gt;
+&lt;h2 id=&#34;오늘의-핵심-신호-3가지&#34;&gt;오늘의 핵심 신호 3가지&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Knob: Physics-Inspired Gating Interface&lt;/strong&gt;&lt;br&gt;
+단순히 성능을 올리는 게 아니라, 모델 내부 동역학을 사람이 이해 가능한 “노브” 형태로 조절하려는 시도입니다.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

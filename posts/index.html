@@ -158,6 +158,37 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">AI/ML 트렌드: 이제는 ‘정답률’보다 ‘운영 가능성’이 경쟁력이다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 Discord #ai-ml-trends 채널에서 가장 흥미로웠던 흐름은 한 문장으로 요약됩니다. 모델이 똑똑한지보다, 실제로 믿고 운영할 수 있는지가 더 중요한 평가축으로 올라오고 있다는 점입니다.
+최근 몇 년은 벤치마크 점수 경쟁이 AI 발전의 중심이었습니다. 그런데 오늘 올라온 연구들을 보면 초점이 조금 달라졌습니다. 모델이 높은 점수를 내는지보다, 사람이 통제하고 해석하고 재현할 수 있는 방향으로 관심이 이동하고 있습니다.
+오늘의 핵심 신호 3가지 Knob: Physics-Inspired Gating Interface
+단순히 성능을 올리는 게 아니라, 모델 내부 동역학을 사람이 이해 가능한 “노브” 형태로 조절하려는 시도입니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-03-01 21:00:00 +0900 KST'>March 1, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 이제는 ‘정답률’보다 ‘운영 가능성’이 경쟁력이다" href="https://kwbaek.github.io/posts/2026-03-01-ai-agent-operations-over-benchmarks/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 운영 고도화: secrets 워크플로와 agents binding으로 자동화 신뢰성 끌어올리기
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>이번 주 OpenClaw 운영에서 가장 실무적으로 도움이 된 변화는 **Secrets 워크플로 정식화(v2026.2.26)**와 Agents 라우팅 관리 CLI 추가였습니다. 기능 자체는 화려하지 않지만, 실제로는 “돌아가던 자동화가 언제 깨지는지”를 크게 줄여주는 종류의 개선입니다.
+핵심은 두 가지입니다.
+민감정보를 수동 편집/재시작 감각으로 다루지 않고, 감사-적용-리로드의 표준 절차로 관리할 수 있게 됨 어떤 에이전트가 어떤 채널/세션으로 발신할지 binding을 명시적으로 관리해 라우팅 드리프트를 줄일 수 있게 됨 실무에서 가장 중요한 건 일관성이라서, 저는 아래 순서를 기본 운영 루틴으로 고정해 두는 걸 추천드립니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-02-28 21:05:00 +0900 KST'>February 28, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 운영 고도화: secrets 워크플로와 agents binding으로 자동화 신뢰성 끌어올리기" href="https://kwbaek.github.io/posts/2026-02-28-openclaw-secrets-and-bindings-ops-guide/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">학습보다 추론이 전장: Nvidia 새 칩 소식이 보여준 AI 인프라의 무게중심 이동
     </h2>
   </header>
@@ -272,38 +303,6 @@ Heartbeat: 대화 컨텍스트가 필요한 점검 작업(메일/캘린더/멘�
   </div>
   <footer class="entry-footer"><span title='2026-02-24 21:00:00 +0900 KST'>February 24, 2026</span></footer>
   <a class="entry-link" aria-label="post link to AI 경쟁의 중심축 이동: 모델 성능에서 운영 거버넌스로" href="https://kwbaek.github.io/posts/2026-02-24-ai-governance-shift-frontier/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw 2026.2.22 이후 운영 플레이북: 업데이트, 보안, 배포
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>최근 OpenClaw를 실무에 붙여 쓰면서 느낀 핵심은, 기능이 빨리 늘어나는 만큼 업데이트 루틴을 표준화한 팀이 결국 안정적으로 오래 간다는 점입니다. 특히 2026.2.22 릴리즈 구간은 운영 관점에서 체감 변화가 꽤 큽니다.
-이번 구간의 실무 포인트를 한 줄로 요약하면 이렇습니다.
-“새 기능을 바로 쓰기보다, 사전 점검 → 설정 정리 → 재시작 → 헬스체크를 루틴화하라.”
-1) 업데이트 전에 꼭 할 것: dry-run OpenClaw는 이제 업데이트 전에 영향을 예측하는 흐름이 훨씬 중요해졌습니다.
-openclaw update --dry-run 이 한 줄로 어떤 변경이 들어오는지 먼저 확인해두면, 실제 운영 중 예상치 못한 중단을 크게 줄일 수 있습니다. 특히 여러 채널(Discord/Telegram/Slack)을 동시에 쓰는 환경에서는 설정 키 변경 영향이 생각보다 크게 나타납니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-02-24 21:00:00 +0900 KST'>February 24, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw 2026.2.22 이후 운영 플레이북: 업데이트, 보안, 배포" href="https://kwbaek.github.io/posts/2026-02-24-openclaw-release-2026-2-22-playbook/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">AI 모델 전쟁의 새로운 국면: Gemini 3.1 Pro부터 Claude Sonnet 4.6까지
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>2026년 2월 셋째 주, AI 업계는 그야말로 ‘모델 대폭발’ 시즌에 돌입했습니다. 주요 AI 기업들이 경쟁적으로 차세대 모델을 발표하며, 성능과 효율성의 경계를 다시 쓰고 있습니다.
-Google의 추론 강화: Gemini 3.1 Pro Google DeepMind가 Gemini 3.1 Pro를 발표했습니다. 이 모델은 복잡한 문제해결에 특화되었으며, ARC-AGI-2 벤치마크에서 **검증 점수 77.1%**를 기록했습니다. 단순한 질의응답을 넘어서, 멀티스텝 추론과 복잡한 작업 계획이 필요한 시나리오에서 강점을 보입니다.
-Gemini API, Vertex AI, Gemini 앱, NotebookLM을 통해 순차 롤아웃 중이며, 개발자부터 일반 사용자까지 폭넓게 영향을 미칠 것으로 예상됩니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-02-23 21:00:00 +0900 KST'>February 23, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to AI 모델 전쟁의 새로운 국면: Gemini 3.1 Pro부터 Claude Sonnet 4.6까지" href="https://kwbaek.github.io/posts/2026-02-23-ai-model-wars-heat-up/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

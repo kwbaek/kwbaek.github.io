@@ -152,6 +152,38 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 2026.2.22 이후 운영 플레이북: 업데이트, 보안, 배포
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>최근 OpenClaw를 실무에 붙여 쓰면서 느낀 핵심은, 기능이 빨리 늘어나는 만큼 업데이트 루틴을 표준화한 팀이 결국 안정적으로 오래 간다는 점입니다. 특히 2026.2.22 릴리즈 구간은 운영 관점에서 체감 변화가 꽤 큽니다.
+이번 구간의 실무 포인트를 한 줄로 요약하면 이렇습니다.
+“새 기능을 바로 쓰기보다, 사전 점검 → 설정 정리 → 재시작 → 헬스체크를 루틴화하라.”
+1) 업데이트 전에 꼭 할 것: dry-run OpenClaw는 이제 업데이트 전에 영향을 예측하는 흐름이 훨씬 중요해졌습니다.
+openclaw update --dry-run 이 한 줄로 어떤 변경이 들어오는지 먼저 확인해두면, 실제 운영 중 예상치 못한 중단을 크게 줄일 수 있습니다. 특히 여러 채널(Discord/Telegram/Slack)을 동시에 쓰는 환경에서는 설정 키 변경 영향이 생각보다 크게 나타납니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-02-24 21:00:00 +0900 KST'>February 24, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 2026.2.22 이후 운영 플레이북: 업데이트, 보안, 배포" href="https://kwbaek.github.io/posts/2026-02-24-openclaw-release-2026-2-22-playbook/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">AI 모델 전쟁의 새로운 국면: Gemini 3.1 Pro부터 Claude Sonnet 4.6까지
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>2026년 2월 셋째 주, AI 업계는 그야말로 ‘모델 대폭발’ 시즌에 돌입했습니다. 주요 AI 기업들이 경쟁적으로 차세대 모델을 발표하며, 성능과 효율성의 경계를 다시 쓰고 있습니다.
+Google의 추론 강화: Gemini 3.1 Pro Google DeepMind가 Gemini 3.1 Pro를 발표했습니다. 이 모델은 복잡한 문제해결에 특화되었으며, ARC-AGI-2 벤치마크에서 **검증 점수 77.1%**를 기록했습니다. 단순한 질의응답을 넘어서, 멀티스텝 추론과 복잡한 작업 계획이 필요한 시나리오에서 강점을 보입니다.
+Gemini API, Vertex AI, Gemini 앱, NotebookLM을 통해 순차 롤아웃 중이며, 개발자부터 일반 사용자까지 폭넓게 영향을 미칠 것으로 예상됩니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-02-23 21:00:00 +0900 KST'>February 23, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to AI 모델 전쟁의 새로운 국면: Gemini 3.1 Pro부터 Claude Sonnet 4.6까지" href="https://kwbaek.github.io/posts/2026-02-23-ai-model-wars-heat-up/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">OpenClaw 하트비트(Heartbeat) 활용: AI 에이전트를 능동적으로 만드는 법
     </h2>
   </header>
@@ -278,36 +310,6 @@ Claude Sonnet 4.6: 전방위 업그레이드 Anthropic이 2월 18일 발표한 C
   </div>
   <footer class="entry-footer"><span title='2026-02-19 21:00:00 +0900 KST'>February 19, 2026</span></footer>
   <a class="entry-link" aria-label="post link to AI 모델 대격변의 2월: Claude Sonnet 4.6부터 Qwen 3.5까지" href="https://kwbaek.github.io/posts/2026-02-19-ai-model-rush-february/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw 고급 활용법: Cron, Heartbeat, 그리고 서브에이전트 마스터하기
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>OpenClaw를 단순한 AI 어시스턴트로 사용하고 계신가요? 이 강력한 플랫폼은 훨씬 더 많은 것을 할 수 있습니다. 이번 포스트에서는 OpenClaw의 고급 기능들을 활용하여 진정한 자동화와 자율성을 구현하는 방법을 다룹니다.
-Cron: 스마트 스케줄링의 힘 OpenClaw의 cron 시스템은 단순한 작업 스케줄러가 아닙니다. AI 에이전트가 정해진 시간에 자율적으로 작업을 수행하고, 결과를 분석하고, 당신에게 보고하는 완전한 자동화 시스템입니다.
-기본 cron 작업 생성 # 매일 오전 9시에 이메일 체크 openclaw cron add \ --schedule &#34;0 9 * * *&#34; \ --task &#34;Check my Gmail inbox and summarize important unread emails&#34; \ --session isolated \ --delivery announce Webhook 통합: 외부 시스템과 연동 cron 작업 완료 시 외부 시스템에 알림을 보낼 수 있습니다:
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-02-19 21:00:00 +0900 KST'>February 19, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw 고급 활용법: Cron, Heartbeat, 그리고 서브에이전트 마스터하기" href="https://kwbaek.github.io/posts/2026-02-19-openclaw-advanced-tips/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">2026년 2월 AI 모델 전쟁: Anthropic의 $380B 밸류와 Alibaba Qwen 3.5의 도전
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>AI 업계의 2월은 뜨겁다 2026년 2월, AI 업계가 그 어느 때보다 뜨겁게 달아오르고 있습니다. 단 한 달 사이에 7개의 주요 AI 모델이 출시되었고, 수백억 달러의 투자가 쏟아졌으며, AI 에이전트 시대의 본격적인 개막을 알리는 신호탄들이 연이어 터졌습니다.
-오늘은 그 중에서도 가장 주목할 만한 두 가지 이야기를 다뤄보려 합니다.
-Anthropic, $380B 밸류에이션 달성 역사적 투자 규모 Anthropic이 Amazon과 Google의 지원을 받아 $30B 규모의 펀딩을 유치하며 $380B 밸류에이션을 기록했습니다. 이는 AI 스타트업 역사상 가장 큰 규모의 투자 중 하나입니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-02-18 21:00:00 +0900 KST'>February 18, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to 2026년 2월 AI 모델 전쟁: Anthropic의 $380B 밸류와 Alibaba Qwen 3.5의 도전" href="https://kwbaek.github.io/posts/2026-02-18-ai-model-rush-anthropic-alibaba/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">
