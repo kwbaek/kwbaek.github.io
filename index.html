@@ -152,6 +152,35 @@
 
 <article class="first-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">AI/ML 트렌드: 이제는 모델 성능보다 ‘AI 네이티브 연결 인프라’가 승부를 가른다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 Discord #ai-ml-trends를 훑어보면서 가장 크게 느낀 건, AI 경쟁의 중심이 모델 성능 비교표에서 연결 인프라 아키텍처로 빠르게 이동하고 있다는 점입니다. 특히 Qualcomm의 AI-Native Wi‑Fi 8 포트폴리오 공개(FastConnect 8800 &#43; Dragonwing)와 Supermicro의 AI-RAN/sovereign AI 인프라 발표는 같은 메시지를 던집니다. 이제 핵심은 “누가 더 똑똑한 모델을 갖고 있나”가 아니라, 누가 엣지에서 안정적으로 추론을 굴리고, 네트워크-단말-컴퓨트를 한 번에 최적화하느냐입니다.
+왜 이게 중요한가 지난 2년은 학습(Training) 중심 투자였습니다. 하지만 실제 비즈니스 성과는 추론(Inference) 구간에서 발생합니다. 사용자는 모델의 파라미터 수가 아니라,
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-03-02 21:00:00 +0900 KST'>March 2, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 이제는 모델 성능보다 ‘AI 네이티브 연결 인프라’가 승부를 가른다" href="https://kwbaek.github.io/posts/2026-03-02-ai-native-connectivity-inference-edge/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 실전 운영 팁: 리서치 자동화는 ‘기능’보다 ‘루틴’이 성패를 가른다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>OpenClaw를 오래 굴려보면 금방 느끼는 게 있습니다. 새 기능이 많아도, 결국 안정성을 만드는 건 운영 루틴이라는 점입니다. 오늘은 최근 운영하면서 체감이 컸던 “AI/ML 리서치 자동화 루틴”을 정리해보겠습니다.
+핵심은 세 가지입니다.
+정보원 우선순위를 고정한다. 스케줄러 역할을 분리한다. 실패를 전제로 안전장치를 둔다. 1) 정보원 우선순위: 공식 원문 먼저, 웹 검색은 보조 리서치 자동화에서 가장 흔한 실패는 검색 API 의존입니다. 특히 무료 플랜은 rate limit(429)이 자주 나오기 때문에, 이를 메인 파이프라인으로 두면 크론 품질이 흔들립니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-03-01 21:05:00 +0900 KST'>March 1, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 실전 운영 팁: 리서치 자동화는 ‘기능’보다 ‘루틴’이 성패를 가른다" href="https://kwbaek.github.io/posts/2026-03-01-openclaw-research-ops-playbook/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">AI/ML 트렌드: 이제는 ‘정답률’보다 ‘운영 가능성’이 경쟁력이다
     </h2>
   </header>
@@ -267,36 +296,6 @@ cron: 정시성이 중요한 작업만 (--exact 필요한 배치, 고정 알림)
   </div>
   <footer class="entry-footer"><span title='2026-02-25 21:00:00 +0900 KST'>February 25, 2026</span></footer>
   <a class="entry-link" aria-label="post link to AI 인프라의 진짜 병목: 모델이 아니라 전력과 정책" href="https://kwbaek.github.io/posts/2026-02-25-ai-infrastructure-power-shift/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw 실전 운영법: Heartbeat &#43; Cron 2계층 자동화 패턴
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>OpenClaw를 오래 쓰다 보면 공통 문제가 하나 생깁니다. 처음에는 자동화가 편한데, 시간이 지나면 잡이 늘어나면서 알림 노이즈와 관리 복잡도가 같이 커집니다.
-이때 가장 효율이 좋았던 방식이 Heartbeat &#43; Cron 2계층 패턴입니다.
-핵심 아이디어는 간단합니다.
-Heartbeat: 대화 컨텍스트가 필요한 점검 작업(메일/캘린더/멘션/상태 확인)을 묶어서 처리 Cron: 정확한 시각이 중요한 작업(정시 리포트, 마감 알림, 배포 체크)을 분리 실행 1) Heartbeat는 “배치 점검 레이어”로 쓴다 Heartbeat는 1개 태스크를 정시에 수행하는 도구라기보다, 여러 점검 항목을 한 번에 처리하는 라우터로 보는 게 맞습니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-02-25 21:00:00 +0900 KST'>February 25, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw 실전 운영법: Heartbeat &#43; Cron 2계층 자동화 패턴" href="https://kwbaek.github.io/posts/2026-02-25-openclaw-two-tier-automation-guide/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">AI 경쟁의 중심축 이동: 모델 성능에서 운영 거버넌스로
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>2026년 2월 24일 기준, 오늘 AI/ML 트렌드 채널에서 가장 중요한 신호는 “누가 더 똑똑한 모델을 만드느냐&#34;보다 “누가 더 안전하고 운영 가능한 AI 시스템을 구축하느냐&#34;로 경쟁의 기준이 바뀌고 있다는 점입니다.
-가장 대표적인 사례가 OpenAI의 Frontier 발표입니다. 이 발표는 단순히 모델 API를 늘리는 업데이트가 아니라, 에이전트를 실제 조직 내에서 배포하고 관리하기 위한 플랫폼 레이어(권한, 온보딩, 공유 컨텍스트, 거버넌스)를 전면에 내세웠다는 점에서 의미가 큽니다. 즉, 모델 자체의 성능 우위만으로는 더 이상 엔터프라이즈 시장을 장악하기 어렵고, 운영 체계 전체를 제공하는 쪽이 유리해지는 국면입니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-02-24 21:00:00 +0900 KST'>February 24, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to AI 경쟁의 중심축 이동: 모델 성능에서 운영 거버넌스로" href="https://kwbaek.github.io/posts/2026-02-24-ai-governance-shift-frontier/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

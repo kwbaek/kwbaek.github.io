@@ -158,6 +158,39 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 2월 중순 업데이트: Cron 안정화와 보안 강화
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>OpenClaw가 2월 중순 동안 여러 차례 중요한 업데이트를 진행했습니다. 특히 Cron 안정성 대폭 개선과 보안 강화에 초점을 맞춘 업데이트들이 많았는데요, 주요 내용을 정리해봤습니다.
+🔧 Cron 시스템 전면 개선 (2.12 업데이트) OpenClaw의 Cron 기능이 대폭 안정화되었습니다. 기존에 간헐적으로 발생하던 문제들이 대부분 해결되었습니다.
+주요 개선사항:
+중복 실행 방지 작업 누락 방지 재시작 후 오동작 수정 openclaw logs --local-time 로컬 타임존 지원 (운영 디버깅 편의성 향상) 운영 체크 루틴 (업데이트 후 권장):
+openclaw doctor openclaw gateway restart openclaw health Cron을 사용 중이라면 이번 업데이트는 필수입니다!
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-02-20 21:00:00 +0900 KST'>February 20, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 2월 중순 업데이트: Cron 안정화와 보안 강화" href="https://kwbaek.github.io/posts/2026-02-20-openclaw-latest-updates/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">AI 모델 대격변의 2월: Claude Sonnet 4.6부터 Qwen 3.5까지
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>2026년 2월이 채 끝나기도 전에, AI 업계는 전례 없는 모델 러시를 경험하고 있습니다. 주요 기업들이 앞다퉈 새로운 모델을 출시하면서 AI 에이전트 시대가 본격적으로 열리고 있습니다.
+Claude Sonnet 4.6: 전방위 업그레이드 Anthropic이 2월 18일 발표한 Claude Sonnet 4.6는 이전 버전 대비 모든 영역에서 성능이 대폭 향상되었습니다.
+주요 개선사항:
+코딩: 복잡한 코드 생성과 디버깅 능력 강화 컴퓨터 사용(Computer Use): 사람의 컴퓨터를 더 효과적으로 조작 가능 장기 추론(Long-reasoning): 복잡한 문제 해결을 위한 사고력 향상 에이전트 플래닝: 멀티스텝 작업 계획 수립 능력 개선 지식 작업: 연구, 문서 작성 등 전문 지식 작업 효율성 증대 Free와 Pro 사용자 모두에게 기본 모델로 제공되며, 현재 즉시 사용 가능합니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-02-19 21:00:00 +0900 KST'>February 19, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to AI 모델 대격변의 2월: Claude Sonnet 4.6부터 Qwen 3.5까지" href="https://kwbaek.github.io/posts/2026-02-19-ai-model-rush-february/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">OpenClaw 고급 활용법: Cron, Heartbeat, 그리고 서브에이전트 마스터하기
     </h2>
   </header>
@@ -276,38 +309,6 @@ AI 모델이 응답 생성 메모리(변수)에 응답 저장 Discord/Telegram/S
   </div>
   <footer class="entry-footer"><span title='2026-02-15 21:00:00 +0900 KST'>February 15, 2026</span></footer>
   <a class="entry-link" aria-label="post link to AI/ML 시스템의 메시지 전송 안정성: Outbound Queue 패턴" href="https://kwbaek.github.io/posts/2026-02-15-ai-ml-outbound-resilience/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw 업데이트 운영 체크리스트 (2026.2 버전 기준)
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>OpenClaw는 빠르게 진화하는 AI 에이전트 플랫폼입니다. 2주에 한 번꼴로 새 기능과 버그 수정이 나오는데, 업데이트 후 시스템이 제대로 동작하는지 확인하는 운영 체크리스트가 필요합니다.
-이번 글에서는 2026.2.13 업데이트를 기준으로 실전 검증 루틴을 정리해봤습니다.
-1단계: 업데이트 전 준비 현재 버전 확인 openclaw --version 예: 2026.2.9
-백업 (선택) 중요한 설정이 있다면 백업:
-cp ~/.openclaw/openclaw.json ~/.openclaw/openclaw.json.backup 2단계: 업데이트 실행 npm 글로벌 설치 (가장 흔한 방식) npm install -g openclaw@latest 소스 설치 (개발자) cd ~/openclaw git pull npm install openclaw update 3단계: 핵심 3종 체크 ⭐ 업데이트 후 반드시 실행해야 하는 3가지 명령:
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-02-15 21:00:00 +0900 KST'>February 15, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw 업데이트 운영 체크리스트 (2026.2 버전 기준)" href="https://kwbaek.github.io/posts/2026-02-15-openclaw-update-checklist/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">2026년 2월, 중국 AI 모델 러시와 Gemini 3 Deep Think의 등장
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>🚀 2026년 2월, AI 업계에 무슨 일이? 2026년 2월은 AI 업계에 엄청난 변화가 일어나고 있는 달입니다. 특히 중국 AI 기업들의 공격적인 모델 출시와 Google, Anthropic의 신규 모델 발표가 동시에 터지면서 AI 모델 전쟁이 새로운 국면으로 접어들었습니다.
-🇨🇳 중국 AI 모델 러시: Alibaba, ByteDance, Zhipu의 동시다발 공세 이번 주 중국 AI 업계가 폭발적인 움직임을 보였습니다:
-Alibaba: RynnBrain (물리적 AI/로봇 특화) Kuaishou: Kling 3.0 ByteDance: Seedance 모델 Zhipu AI: GLM-5 (Agentic Engineering 돌파구) 특히 Zhipu AI의 주가는 30% 급등하며 시장의 뜨거운 반응을 얻었습니다. GLM-5는 에이전트 시스템에 특화된 모델로, 중국발 AI 모델이 글로벌 경쟁에서 본격적으로 주목받는 신호탄이 되었습니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-02-14 21:00:00 +0900 KST'>February 14, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to 2026년 2월, 중국 AI 모델 러시와 Gemini 3 Deep Think의 등장" href="https://kwbaek.github.io/posts/2026-02-14-ai-ml-trends-china-rush/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

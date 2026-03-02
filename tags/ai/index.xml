@@ -6,8 +6,17 @@
     <description>Recent content in Ai on Kyungwook&#39;s Devlog</description>
     <generator>Hugo -- 0.155.3</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Sun, 01 Mar 2026 21:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Mon, 02 Mar 2026 21:00:00 +0900</lastBuildDate>
     <atom:link href="https://kwbaek.github.io/tags/ai/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI/ML 트렌드: 이제는 모델 성능보다 ‘AI 네이티브 연결 인프라’가 승부를 가른다</title>
+      <link>https://kwbaek.github.io/posts/2026-03-02-ai-native-connectivity-inference-edge/</link>
+      <pubDate>Mon, 02 Mar 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-03-02-ai-native-connectivity-inference-edge/</guid>
+      <description>&lt;p&gt;오늘 Discord &lt;code&gt;#ai-ml-trends&lt;/code&gt;를 훑어보면서 가장 크게 느낀 건, AI 경쟁의 중심이 &lt;strong&gt;모델 성능 비교표&lt;/strong&gt;에서 &lt;strong&gt;연결 인프라 아키텍처&lt;/strong&gt;로 빠르게 이동하고 있다는 점입니다. 특히 Qualcomm의 AI-Native Wi‑Fi 8 포트폴리오 공개(FastConnect 8800 + Dragonwing)와 Supermicro의 AI-RAN/sovereign AI 인프라 발표는 같은 메시지를 던집니다. 이제 핵심은 “누가 더 똑똑한 모델을 갖고 있나”가 아니라, &lt;strong&gt;누가 엣지에서 안정적으로 추론을 굴리고, 네트워크-단말-컴퓨트를 한 번에 최적화하느냐&lt;/strong&gt;입니다.&lt;/p&gt;
+&lt;h2 id=&#34;왜-이게-중요한가&#34;&gt;왜 이게 중요한가&lt;/h2&gt;
+&lt;p&gt;지난 2년은 학습(Training) 중심 투자였습니다. 하지만 실제 비즈니스 성과는 추론(Inference) 구간에서 발생합니다. 사용자는 모델의 파라미터 수가 아니라,&lt;/p&gt;</description>
+    </item>
     <item>
       <title>AI/ML 트렌드: 이제는 ‘정답률’보다 ‘운영 가능성’이 경쟁력이다</title>
       <link>https://kwbaek.github.io/posts/2026-03-01-ai-agent-operations-over-benchmarks/</link>

@@ -6,8 +6,23 @@
     <description>Recent content in Openclaw on Kyungwook&#39;s Devlog</description>
     <generator>Hugo -- 0.155.3</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Sat, 28 Feb 2026 21:05:00 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 01 Mar 2026 21:05:00 +0900</lastBuildDate>
     <atom:link href="https://kwbaek.github.io/categories/openclaw/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>OpenClaw 실전 운영 팁: 리서치 자동화는 ‘기능’보다 ‘루틴’이 성패를 가른다</title>
+      <link>https://kwbaek.github.io/posts/2026-03-01-openclaw-research-ops-playbook/</link>
+      <pubDate>Sun, 01 Mar 2026 21:05:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-03-01-openclaw-research-ops-playbook/</guid>
+      <description>&lt;p&gt;OpenClaw를 오래 굴려보면 금방 느끼는 게 있습니다. 새 기능이 많아도, 결국 안정성을 만드는 건 &lt;strong&gt;운영 루틴&lt;/strong&gt;이라는 점입니다. 오늘은 최근 운영하면서 체감이 컸던 “AI/ML 리서치 자동화 루틴”을 정리해보겠습니다.&lt;/p&gt;
+&lt;p&gt;핵심은 세 가지입니다.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;정보원 우선순위를 고정&lt;/strong&gt;한다.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;스케줄러 역할을 분리&lt;/strong&gt;한다.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;실패를 전제로 안전장치&lt;/strong&gt;를 둔다.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;1-정보원-우선순위-공식-원문-먼저-웹-검색은-보조&#34;&gt;1) 정보원 우선순위: 공식 원문 먼저, 웹 검색은 보조&lt;/h2&gt;
+&lt;p&gt;리서치 자동화에서 가장 흔한 실패는 검색 API 의존입니다. 특히 무료 플랜은 rate limit(429)이 자주 나오기 때문에, 이를 메인 파이프라인으로 두면 크론 품질이 흔들립니다.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>OpenClaw 운영 고도화: secrets 워크플로와 agents binding으로 자동화 신뢰성 끌어올리기</title>
       <link>https://kwbaek.github.io/posts/2026-02-28-openclaw-secrets-and-bindings-ops-guide/</link>

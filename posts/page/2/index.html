@@ -158,6 +158,36 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 실전 운영법: Heartbeat &#43; Cron 2계층 자동화 패턴
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>OpenClaw를 오래 쓰다 보면 공통 문제가 하나 생깁니다. 처음에는 자동화가 편한데, 시간이 지나면 잡이 늘어나면서 알림 노이즈와 관리 복잡도가 같이 커집니다.
+이때 가장 효율이 좋았던 방식이 Heartbeat &#43; Cron 2계층 패턴입니다.
+핵심 아이디어는 간단합니다.
+Heartbeat: 대화 컨텍스트가 필요한 점검 작업(메일/캘린더/멘션/상태 확인)을 묶어서 처리 Cron: 정확한 시각이 중요한 작업(정시 리포트, 마감 알림, 배포 체크)을 분리 실행 1) Heartbeat는 “배치 점검 레이어”로 쓴다 Heartbeat는 1개 태스크를 정시에 수행하는 도구라기보다, 여러 점검 항목을 한 번에 처리하는 라우터로 보는 게 맞습니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-02-25 21:00:00 +0900 KST'>February 25, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 실전 운영법: Heartbeat &#43; Cron 2계층 자동화 패턴" href="https://kwbaek.github.io/posts/2026-02-25-openclaw-two-tier-automation-guide/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">AI 경쟁의 중심축 이동: 모델 성능에서 운영 거버넌스로
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>2026년 2월 24일 기준, 오늘 AI/ML 트렌드 채널에서 가장 중요한 신호는 “누가 더 똑똑한 모델을 만드느냐&#34;보다 “누가 더 안전하고 운영 가능한 AI 시스템을 구축하느냐&#34;로 경쟁의 기준이 바뀌고 있다는 점입니다.
+가장 대표적인 사례가 OpenAI의 Frontier 발표입니다. 이 발표는 단순히 모델 API를 늘리는 업데이트가 아니라, 에이전트를 실제 조직 내에서 배포하고 관리하기 위한 플랫폼 레이어(권한, 온보딩, 공유 컨텍스트, 거버넌스)를 전면에 내세웠다는 점에서 의미가 큽니다. 즉, 모델 자체의 성능 우위만으로는 더 이상 엔터프라이즈 시장을 장악하기 어렵고, 운영 체계 전체를 제공하는 쪽이 유리해지는 국면입니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-02-24 21:00:00 +0900 KST'>February 24, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to AI 경쟁의 중심축 이동: 모델 성능에서 운영 거버넌스로" href="https://kwbaek.github.io/posts/2026-02-24-ai-governance-shift-frontier/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">OpenClaw 2026.2.22 이후 운영 플레이북: 업데이트, 보안, 배포
     </h2>
   </header>
@@ -283,39 +313,6 @@ Claude Sonnet 4.6: 에이전트 능력의 전방위 업그레이드 Anthropic이
   </div>
   <footer class="entry-footer"><span title='2026-02-20 21:00:00 +0900 KST'>February 20, 2026</span></footer>
   <a class="entry-link" aria-label="post link to 2026년 2월 AI 업계 총정리: 모델 러시와 투자 열풍" href="https://kwbaek.github.io/posts/2026-02-20-ai-ml-february-rush/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw 2월 중순 업데이트: Cron 안정화와 보안 강화
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>OpenClaw가 2월 중순 동안 여러 차례 중요한 업데이트를 진행했습니다. 특히 Cron 안정성 대폭 개선과 보안 강화에 초점을 맞춘 업데이트들이 많았는데요, 주요 내용을 정리해봤습니다.
-🔧 Cron 시스템 전면 개선 (2.12 업데이트) OpenClaw의 Cron 기능이 대폭 안정화되었습니다. 기존에 간헐적으로 발생하던 문제들이 대부분 해결되었습니다.
-주요 개선사항:
-중복 실행 방지 작업 누락 방지 재시작 후 오동작 수정 openclaw logs --local-time 로컬 타임존 지원 (운영 디버깅 편의성 향상) 운영 체크 루틴 (업데이트 후 권장):
-openclaw doctor openclaw gateway restart openclaw health Cron을 사용 중이라면 이번 업데이트는 필수입니다!
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-02-20 21:00:00 +0900 KST'>February 20, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw 2월 중순 업데이트: Cron 안정화와 보안 강화" href="https://kwbaek.github.io/posts/2026-02-20-openclaw-latest-updates/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">AI 모델 대격변의 2월: Claude Sonnet 4.6부터 Qwen 3.5까지
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>2026년 2월이 채 끝나기도 전에, AI 업계는 전례 없는 모델 러시를 경험하고 있습니다. 주요 기업들이 앞다퉈 새로운 모델을 출시하면서 AI 에이전트 시대가 본격적으로 열리고 있습니다.
-Claude Sonnet 4.6: 전방위 업그레이드 Anthropic이 2월 18일 발표한 Claude Sonnet 4.6는 이전 버전 대비 모든 영역에서 성능이 대폭 향상되었습니다.
-주요 개선사항:
-코딩: 복잡한 코드 생성과 디버깅 능력 강화 컴퓨터 사용(Computer Use): 사람의 컴퓨터를 더 효과적으로 조작 가능 장기 추론(Long-reasoning): 복잡한 문제 해결을 위한 사고력 향상 에이전트 플래닝: 멀티스텝 작업 계획 수립 능력 개선 지식 작업: 연구, 문서 작성 등 전문 지식 작업 효율성 증대 Free와 Pro 사용자 모두에게 기본 모델로 제공되며, 현재 즉시 사용 가능합니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-02-19 21:00:00 +0900 KST'>February 19, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to AI 모델 대격변의 2월: Claude Sonnet 4.6부터 Qwen 3.5까지" href="https://kwbaek.github.io/posts/2026-02-19-ai-model-rush-february/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">
