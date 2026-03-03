@@ -6,8 +6,28 @@
     <description>Recent content in Posts on Kyungwook&#39;s Devlog</description>
     <generator>Hugo -- 0.155.3</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Mon, 02 Mar 2026 21:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Tue, 03 Mar 2026 21:00:00 +0900</lastBuildDate>
     <atom:link href="https://kwbaek.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI/ML 트렌드: 모델 성능 경쟁을 넘어 ‘배치 거버넌스’가 주전장이 되다</title>
+      <link>https://kwbaek.github.io/posts/2026-03-03-ai-governance-moves-to-deployment-layer/</link>
+      <pubDate>Tue, 03 Mar 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-03-03-ai-governance-moves-to-deployment-layer/</guid>
+      <description>&lt;p&gt;오늘 Discord &lt;strong&gt;#ai-ml-trends&lt;/strong&gt; 채널에서 가장 중요하게 보인 흐름은 한 줄로 정리하면 이렇습니다.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;AI 경쟁의 중심이 ‘누가 더 똑똑한 모델을 만드느냐’에서, ‘어떤 규칙으로 실제 배치하고 통제하느냐’로 빠르게 이동하고 있다.&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;특히 인상적이었던 신호는 제네바에서 다시 가속된 &lt;strong&gt;치명적 자율무기(LAWS) 국제 규범 논의&lt;/strong&gt;였습니다. 회의 의장이 “긴급하다”는 표현을 공식적으로 썼다는 건, 이 이슈가 윤리 토론 수준을 넘어 실무 협상 단계로 압축되고 있다는 뜻입니다. 동시에 NIST의 AI Agent Standards Initiative 같은 움직임도 같은 방향을 가리킵니다. 즉, 앞으로의 차별화 포인트는 모델 점수 1~2점 차이가 아니라, &lt;strong&gt;상호운용성·감사 가능성·책임 경계&lt;/strong&gt;를 얼마나 명확히 설계했느냐가 될 가능성이 큽니다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>OpenClaw 실전 운영: Secrets &#43; Security Audit 루틴만 고정해도 사고 확률이 급감한다</title>
+      <link>https://kwbaek.github.io/posts/2026-03-02-openclaw-secrets-security-audit-routine/</link>
+      <pubDate>Mon, 02 Mar 2026 21:03:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-03-02-openclaw-secrets-security-audit-routine/</guid>
+      <description>&lt;p&gt;OpenClaw를 매일 운영하다 보면, 새 기능보다 더 중요한 게 하나 있습니다. 바로 **운영 위생(operational hygiene)**입니다. 최근 버전들(특히 v2026.2.26 이후)에서 체감이 컸던 포인트는 &lt;code&gt;secrets&lt;/code&gt; 워크플로와 &lt;code&gt;security audit&lt;/code&gt; 체계가 훨씬 실무적으로 정리됐다는 점입니다. 결론부터 말하면, 아래 두 루틴을 고정하면 운영 사고 확률이 확실히 줄어듭니다.&lt;/p&gt;
+&lt;h2 id=&#34;1-secrets-루틴-설정을-감으로-만지지-말고-단계로-굴리기&#34;&gt;1) Secrets 루틴: 설정을 ‘감’으로 만지지 말고 단계로 굴리기&lt;/h2&gt;
+&lt;p&gt;예전에는 토큰이나 키를 여기저기 흩어두고, 문제 나면 그때 수정하는 식으로 운영하기 쉬웠습니다. 그런데 이 방식은 팀 규모가 커질수록 반드시 사고가 납니다. OpenClaw는 이 문제를 다음 흐름으로 정리해줍니다.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>AI/ML 트렌드: 이제는 모델 성능보다 ‘AI 네이티브 연결 인프라’가 승부를 가른다</title>
       <link>https://kwbaek.github.io/posts/2026-03-02-ai-native-connectivity-inference-edge/</link>

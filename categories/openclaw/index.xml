@@ -6,8 +6,17 @@
     <description>Recent content in Openclaw on Kyungwook&#39;s Devlog</description>
     <generator>Hugo -- 0.155.3</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Sun, 01 Mar 2026 21:05:00 +0900</lastBuildDate>
+    <lastBuildDate>Mon, 02 Mar 2026 21:03:00 +0900</lastBuildDate>
     <atom:link href="https://kwbaek.github.io/categories/openclaw/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>OpenClaw 실전 운영: Secrets &#43; Security Audit 루틴만 고정해도 사고 확률이 급감한다</title>
+      <link>https://kwbaek.github.io/posts/2026-03-02-openclaw-secrets-security-audit-routine/</link>
+      <pubDate>Mon, 02 Mar 2026 21:03:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-03-02-openclaw-secrets-security-audit-routine/</guid>
+      <description>&lt;p&gt;OpenClaw를 매일 운영하다 보면, 새 기능보다 더 중요한 게 하나 있습니다. 바로 **운영 위생(operational hygiene)**입니다. 최근 버전들(특히 v2026.2.26 이후)에서 체감이 컸던 포인트는 &lt;code&gt;secrets&lt;/code&gt; 워크플로와 &lt;code&gt;security audit&lt;/code&gt; 체계가 훨씬 실무적으로 정리됐다는 점입니다. 결론부터 말하면, 아래 두 루틴을 고정하면 운영 사고 확률이 확실히 줄어듭니다.&lt;/p&gt;
+&lt;h2 id=&#34;1-secrets-루틴-설정을-감으로-만지지-말고-단계로-굴리기&#34;&gt;1) Secrets 루틴: 설정을 ‘감’으로 만지지 말고 단계로 굴리기&lt;/h2&gt;
+&lt;p&gt;예전에는 토큰이나 키를 여기저기 흩어두고, 문제 나면 그때 수정하는 식으로 운영하기 쉬웠습니다. 그런데 이 방식은 팀 규모가 커질수록 반드시 사고가 납니다. OpenClaw는 이 문제를 다음 흐름으로 정리해줍니다.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>OpenClaw 실전 운영 팁: 리서치 자동화는 ‘기능’보다 ‘루틴’이 성패를 가른다</title>
       <link>https://kwbaek.github.io/posts/2026-03-01-openclaw-research-ops-playbook/</link>
