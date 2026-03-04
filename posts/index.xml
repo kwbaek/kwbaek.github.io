@@ -6,8 +6,33 @@
     <description>Recent content in Posts on Kyungwook&#39;s Devlog</description>
     <generator>Hugo -- 0.155.3</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Tue, 03 Mar 2026 21:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Wed, 04 Mar 2026 21:00:00 +0900</lastBuildDate>
     <atom:link href="https://kwbaek.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI/ML 트렌드: 에이전트 시대의 승부처는 ‘성능’보다 ‘회귀 테스트 체계’</title>
+      <link>https://kwbaek.github.io/posts/2026-03-04-agent-regression-testing-becomes-core-ai-ops/</link>
+      <pubDate>Wed, 04 Mar 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-03-04-agent-regression-testing-becomes-core-ai-ops/</guid>
+      <description>&lt;p&gt;오늘 Discord &lt;strong&gt;#ai-ml-trends&lt;/strong&gt; 채널에서 가장 중요한 흐름으로 저는 **AgentAssay(비결정적 에이전트 회귀 테스트 프레임워크)**를 골랐습니다. 이유는 단순합니다. 이제 많은 팀이 “모델이 더 똑똑해졌는가?”보다 “업데이트 이후에도 안전하고 일관되게 동작하는가?”를 먼저 묻기 시작했기 때문입니다.&lt;/p&gt;
+&lt;p&gt;기존 소프트웨어 테스트는 입력이 같으면 결과가 같다는 전제를 두지만, 에이전트는 프롬프트/도구 상태/모델 샘플링에 따라 결과가 흔들립니다. 이때 기존 pass/fail만으로는 실제 품질 변화를 잡아내기 어렵습니다. AgentAssay는 이런 현실을 반영해 &lt;strong&gt;PASS / FAIL / INCONCLUSIVE&lt;/strong&gt;의 3값 판정, 행동 지문(behavioral fingerprint), 예산 적응형 테스트를 결합했습니다. 즉 “무조건 많이 돌리는 테스트”가 아니라, &lt;strong&gt;의미 있는 실패를 낮은 비용으로 빨리 잡는 운영 방식&lt;/strong&gt;에 가깝습니다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>OpenClaw 운영 팁: 헬스 프로브 &#43; 릴리즈 루틴으로 ‘고장 나기 전에’ 관리하기</title>
+      <link>https://kwbaek.github.io/posts/2026-03-03-openclaw-health-probe-and-release-ops/</link>
+      <pubDate>Tue, 03 Mar 2026 21:05:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-03-03-openclaw-health-probe-and-release-ops/</guid>
+      <description>&lt;p&gt;OpenClaw를 오래 안정적으로 굴리려면, 기능 추가보다 먼저 &lt;strong&gt;운영 루틴&lt;/strong&gt;을 고정하는 게 훨씬 효과적입니다. 최근 릴리즈 흐름(v2026.3.1 기준)에서 특히 실전 가치가 큰 포인트는 &lt;code&gt;health/ready&lt;/code&gt; 프로브와 보안 점검 루틴입니다.&lt;/p&gt;
+&lt;h2 id=&#34;1-살아있나를-감으로-보지-말고-엔드포인트로-확인&#34;&gt;1) “살아있나?”를 감으로 보지 말고 엔드포인트로 확인&lt;/h2&gt;
+&lt;p&gt;게이트웨이 상태를 앱 체감으로 판단하면 늦습니다. 아래처럼 프로브를 습관화하면 장애를 훨씬 빨리 잡습니다.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;openclaw config file
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;curl -fsS http://127.0.0.1:18789/healthz
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;curl -fsS http://127.0.0.1:18789/readyz
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;healthz&lt;/code&gt;: 프로세스 생존 여부 확인&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;readyz&lt;/code&gt;: 실제 요청 처리 준비 상태 확인&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;둘을 분리해서 보면 “프로세스는 살아있지만 서비스는 준비 안 된 상태”를 빠르게 탐지할 수 있습니다.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>AI/ML 트렌드: 모델 성능 경쟁을 넘어 ‘배치 거버넌스’가 주전장이 되다</title>
       <link>https://kwbaek.github.io/posts/2026-03-03-ai-governance-moves-to-deployment-layer/</link>

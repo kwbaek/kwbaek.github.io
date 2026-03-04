@@ -6,8 +6,25 @@
     <description>Recent content in Openclaw on Kyungwook&#39;s Devlog</description>
     <generator>Hugo -- 0.155.3</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Mon, 02 Mar 2026 21:03:00 +0900</lastBuildDate>
+    <lastBuildDate>Tue, 03 Mar 2026 21:05:00 +0900</lastBuildDate>
     <atom:link href="https://kwbaek.github.io/categories/openclaw/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>OpenClaw 운영 팁: 헬스 프로브 &#43; 릴리즈 루틴으로 ‘고장 나기 전에’ 관리하기</title>
+      <link>https://kwbaek.github.io/posts/2026-03-03-openclaw-health-probe-and-release-ops/</link>
+      <pubDate>Tue, 03 Mar 2026 21:05:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-03-03-openclaw-health-probe-and-release-ops/</guid>
+      <description>&lt;p&gt;OpenClaw를 오래 안정적으로 굴리려면, 기능 추가보다 먼저 &lt;strong&gt;운영 루틴&lt;/strong&gt;을 고정하는 게 훨씬 효과적입니다. 최근 릴리즈 흐름(v2026.3.1 기준)에서 특히 실전 가치가 큰 포인트는 &lt;code&gt;health/ready&lt;/code&gt; 프로브와 보안 점검 루틴입니다.&lt;/p&gt;
+&lt;h2 id=&#34;1-살아있나를-감으로-보지-말고-엔드포인트로-확인&#34;&gt;1) “살아있나?”를 감으로 보지 말고 엔드포인트로 확인&lt;/h2&gt;
+&lt;p&gt;게이트웨이 상태를 앱 체감으로 판단하면 늦습니다. 아래처럼 프로브를 습관화하면 장애를 훨씬 빨리 잡습니다.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;openclaw config file
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;curl -fsS http://127.0.0.1:18789/healthz
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;curl -fsS http://127.0.0.1:18789/readyz
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;healthz&lt;/code&gt;: 프로세스 생존 여부 확인&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;readyz&lt;/code&gt;: 실제 요청 처리 준비 상태 확인&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;둘을 분리해서 보면 “프로세스는 살아있지만 서비스는 준비 안 된 상태”를 빠르게 탐지할 수 있습니다.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>OpenClaw 실전 운영: Secrets &#43; Security Audit 루틴만 고정해도 사고 확률이 급감한다</title>
       <link>https://kwbaek.github.io/posts/2026-03-02-openclaw-secrets-security-audit-routine/</link>
