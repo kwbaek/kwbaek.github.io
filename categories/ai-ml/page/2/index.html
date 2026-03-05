@@ -1,384 +1,41 @@
-<!DOCTYPE html>
-<html lang="en" dir="auto" data-theme="auto">
-
-<head><meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="robots" content="index, follow">
-<title>Ai-Ml | Kyungwook&#39;s Devlog</title>
-<meta name="keywords" content="">
-<meta name="description" content="">
-<meta name="author" content="">
-<link rel="canonical" href="https://kwbaek.github.io/categories/ai-ml/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.da3211e5ef867bf2b75fd5a6515cfed7195c011e8ab735694e203810a827097b.css" integrity="sha256-2jIR5e&#43;Ge/K3X9WmUVz&#43;1xlcAR6KtzVpTiA4EKgnCXs=" rel="preload stylesheet" as="style">
-<link rel="icon" href="https://kwbaek.github.io/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="https://kwbaek.github.io/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="https://kwbaek.github.io/favicon-32x32.png">
-<link rel="apple-touch-icon" href="https://kwbaek.github.io/apple-touch-icon.png">
-<link rel="mask-icon" href="https://kwbaek.github.io/safari-pinned-tab.svg">
-<meta name="theme-color" content="#2e2e33">
-<meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" type="application/rss+xml" href="https://kwbaek.github.io/categories/ai-ml/index.xml" title="rss">
-<link rel="alternate" hreflang="en" href="https://kwbaek.github.io/categories/ai-ml/">
-<noscript>
-    <style>
-        #theme-toggle,
-        .top-link {
-            display: none;
-        }
-
-    </style>
-    <style>
-        @media (prefers-color-scheme: dark) {
-            :root {
-                --theme: rgb(29, 30, 32);
-                --entry: rgb(46, 46, 51);
-                --primary: rgb(218, 218, 219);
-                --secondary: rgb(155, 156, 157);
-                --tertiary: rgb(65, 66, 68);
-                --content: rgb(196, 196, 197);
-                --code-block-bg: rgb(46, 46, 51);
-                --code-bg: rgb(55, 56, 62);
-                --border: rgb(51, 51, 51);
-                color-scheme: dark;
-            }
-
-            .list {
-                background: var(--theme);
-            }
-
-            .toc {
-                background: var(--entry);
-            }
-        }
-
-        @media (prefers-color-scheme: light) {
-            .list::-webkit-scrollbar-thumb {
-                border-color: var(--code-bg);
-            }
-        }
-
-    </style>
-</noscript>
-<script>
-    if (localStorage.getItem("pref-theme") === "dark") {
-        document.querySelector("html").dataset.theme = 'dark';
-    } else if (localStorage.getItem("pref-theme") === "light") {
-       document.querySelector("html").dataset.theme = 'light';
-    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        document.querySelector("html").dataset.theme = 'dark';
-    } else {
-        document.querySelector("html").dataset.theme = 'light';
-    }
-
-</script><meta property="og:url" content="https://kwbaek.github.io/categories/ai-ml/">
-  <meta property="og:site_name" content="Kyungwook&#39;s Devlog">
-  <meta property="og:title" content="Ai-Ml">
-  <meta property="og:locale" content="ko-kr">
-  <meta property="og:type" content="website">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Ai-Ml">
-<meta name="twitter:description" content="">
-
-</head>
-<body class="list" id="top">
-    <header class="header">
-    <nav class="nav">
-        <div class="logo">
-            <a href="https://kwbaek.github.io/" accesskey="h" title="Kyungwook&#39;s Devlog (Alt + H)">Kyungwook&#39;s Devlog</a>
-            <div class="logo-switches">
-                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
-                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-                    </svg>
-                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <circle cx="12" cy="12" r="5"></circle>
-                        <line x1="12" y1="1" x2="12" y2="3"></line>
-                        <line x1="12" y1="21" x2="12" y2="23"></line>
-                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                        <line x1="1" y1="12" x2="3" y2="12"></line>
-                        <line x1="21" y1="12" x2="23" y2="12"></line>
-                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-                    </svg>
-                </button>
-            </div>
-        </div>
-        <ul id="menu">
-            <li>
-                <a href="https://kwbaek.github.io/categories/" title="categories">
-                    <span>categories</span>
-                </a>
-            </li>
-            <li>
-                <a href="https://kwbaek.github.io/tags/" title="tags">
-                    <span>tags</span>
-                </a>
-            </li>
-            <li>
-                <a href="https://kwbaek.github.io/" title="Kyungwook&#39;s Devlog">
-                    <span>Kyungwook&#39;s Devlog</span>&nbsp;
-                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
-                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
-                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
-                        <path d="M15 3h6v6"></path>
-                        <path d="M10 14L21 3"></path>
-                    </svg>
-                </a>
-            </li>
-        </ul>
-    </nav>
-</header>
-<main class="main"> 
-<header class="page-header">
-  <h1>
-    Ai-Ml
-  </h1>
-</header>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">AI 에이전트의 위험한 과신: 실제로는 22% 성공하지만 77% 성공할 거라 예측
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>AI 에이전트, 자신의 능력을 과대평가하다 최신 AI 에이전트 연구에서 충격적인 결과가 나왔습니다. AI 에이전트들이 작업 성공 확률을 예측할 때 실제 성능보다 훨씬 높게 평가하는 체계적인 과신(overconfidence) 패턴을 보인다는 것입니다.
+<!doctype html><html lang=en dir=auto data-theme=auto><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=robots content="index, follow"><title>Ai-Ml | Kyungwook's Devlog</title><meta name=keywords content><meta name=description content><meta name=author content><link rel=canonical href=https://kwbaek.github.io/categories/ai-ml/><link crossorigin=anonymous href=/assets/css/stylesheet.da3211e5ef867bf2b75fd5a6515cfed7195c011e8ab735694e203810a827097b.css integrity="sha256-2jIR5e+Ge/K3X9WmUVz+1xlcAR6KtzVpTiA4EKgnCXs=" rel="preload stylesheet" as=style><link rel=icon href=https://kwbaek.github.io/favicon.ico><link rel=icon type=image/png sizes=16x16 href=https://kwbaek.github.io/favicon-16x16.png><link rel=icon type=image/png sizes=32x32 href=https://kwbaek.github.io/favicon-32x32.png><link rel=apple-touch-icon href=https://kwbaek.github.io/apple-touch-icon.png><link rel=mask-icon href=https://kwbaek.github.io/safari-pinned-tab.svg><meta name=theme-color content="#2e2e33"><meta name=msapplication-TileColor content="#2e2e33"><link rel=alternate type=application/rss+xml href=https://kwbaek.github.io/categories/ai-ml/index.xml title=rss><link rel=alternate hreflang=en href=https://kwbaek.github.io/categories/ai-ml/><noscript><style>#theme-toggle,.top-link{display:none}</style><style>@media(prefers-color-scheme:dark){:root{--theme:rgb(29, 30, 32);--entry:rgb(46, 46, 51);--primary:rgb(218, 218, 219);--secondary:rgb(155, 156, 157);--tertiary:rgb(65, 66, 68);--content:rgb(196, 196, 197);--code-block-bg:rgb(46, 46, 51);--code-bg:rgb(55, 56, 62);--border:rgb(51, 51, 51);color-scheme:dark}.list{background:var(--theme)}.toc{background:var(--entry)}}@media(prefers-color-scheme:light){.list::-webkit-scrollbar-thumb{border-color:var(--code-bg)}}</style></noscript><script>localStorage.getItem("pref-theme")==="dark"?document.querySelector("html").dataset.theme="dark":localStorage.getItem("pref-theme")==="light"?document.querySelector("html").dataset.theme="light":window.matchMedia("(prefers-color-scheme: dark)").matches?document.querySelector("html").dataset.theme="dark":document.querySelector("html").dataset.theme="light"</script><meta property="og:url" content="https://kwbaek.github.io/categories/ai-ml/"><meta property="og:site_name" content="Kyungwook's Devlog"><meta property="og:title" content="Ai-Ml"><meta property="og:locale" content="ko-kr"><meta property="og:type" content="website"><meta name=twitter:card content="summary"><meta name=twitter:title content="Ai-Ml"><meta name=twitter:description content></head><body class=list id=top><header class=header><nav class=nav><div class=logo><a href=https://kwbaek.github.io/ accesskey=h title="Kyungwook's Devlog (Alt + H)">Kyungwook's Devlog</a><div class=logo-switches><button id=theme-toggle accesskey=t title="(Alt + T)" aria-label="Toggle theme">
+<svg id="moon" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+<svg id="sun" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button></div></div><ul id=menu><li><a href=https://kwbaek.github.io/categories/ title=categories><span>categories</span></a></li><li><a href=https://kwbaek.github.io/tags/ title=tags><span>tags</span></a></li><li><a href=https://kwbaek.github.io/ title="Kyungwook's Devlog"><span>Kyungwook's Devlog</span>&nbsp;
+<svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><path d="M15 3h6v6"/><path d="M10 14 21 3"/></svg></a></li></ul></nav></header><main class=main><header class=page-header><h1>Ai-Ml</h1></header><article class="post-entry tag-entry"><header class=entry-header><h2 class=entry-hint-parent>AI 모델 전쟁의 새로운 국면: Gemini 3.1 Pro부터 Claude Sonnet 4.6까지</h2></header><div class=entry-content><p>2026년 2월 셋째 주, AI 업계는 그야말로 ‘모델 대폭발’ 시즌에 돌입했습니다. 주요 AI 기업들이 경쟁적으로 차세대 모델을 발표하며, 성능과 효율성의 경계를 다시 쓰고 있습니다.
+Google의 추론 강화: Gemini 3.1 Pro Google DeepMind가 Gemini 3.1 Pro를 발표했습니다. 이 모델은 복잡한 문제해결에 특화되었으며, ARC-AGI-2 벤치마크에서 **검증 점수 77.1%**를 기록했습니다. 단순한 질의응답을 넘어서, 멀티스텝 추론과 복잡한 작업 계획이 필요한 시나리오에서 강점을 보입니다.
+Gemini API, Vertex AI, Gemini 앱, NotebookLM을 통해 순차 롤아웃 중이며, 개발자부터 일반 사용자까지 폭넓게 영향을 미칠 것으로 예상됩니다.
+...</p></div><footer class=entry-footer><span title='2026-02-23 21:00:00 +0900 KST'>February 23, 2026</span></footer><a class=entry-link aria-label="post link to AI 모델 전쟁의 새로운 국면: Gemini 3.1 Pro부터 Claude Sonnet 4.6까지" href=https://kwbaek.github.io/posts/2026-02-23-ai-model-wars-heat-up/></a></article><article class="post-entry tag-entry"><header class=entry-header><h2 class=entry-hint-parent>AI 에이전트의 위험한 과신: 실제로는 22% 성공하지만 77% 성공할 거라 예측</h2></header><div class=entry-content><p>AI 에이전트, 자신의 능력을 과대평가하다 최신 AI 에이전트 연구에서 충격적인 결과가 나왔습니다. AI 에이전트들이 작업 성공 확률을 예측할 때 실제 성능보다 훨씬 높게 평가하는 체계적인 과신(overconfidence) 패턴을 보인다는 것입니다.
 arXiv에 공개된 “Agentic Uncertainty Reveals Agentic Overconfidence” 논문에 따르면, 일부 에이전트는 실제로 22%의 작업만 성공했음에도 불구하고 77%의 성공률을 예측했습니다. 이는 3배 이상의 과대평가입니다.
 왜 이 문제가 중요한가? AI 에이전트가 실제 업무 환경에 배치되는 상황을 생각해보세요:
 의료 진단 에이전트가 자신의 진단 정확도를 과대평가한다면? 금융 거래 에이전트가 리스크를 과소평가한다면? 자율주행 에이전트가 자신의 판단 능력을 과신한다면? 이런 과신은 단순한 정확도 문제를 넘어 신뢰와 안전의 문제로 직결됩니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-02-22 21:00:00 +0900 KST'>February 22, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to AI 에이전트의 위험한 과신: 실제로는 22% 성공하지만 77% 성공할 거라 예측" href="https://kwbaek.github.io/posts/2026-02-22-ai-agent-overconfidence/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">AI 에이전트 시대의 서막: Claude Sonnet 4.6과 NIST 표준화 이니셔티브
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>AI 에이전트 시대가 본격화되고 있다 2026년 2월, AI 업계에서 두 가지 중요한 발표가 있었습니다. Anthropic의 Claude Sonnet 4.6 출시와 미국 NIST(국립표준기술연구소)의 AI Agent Standards Initiative 출범입니다. 이 두 사건은 AI 에이전트 시대가 본격적으로 시작되고 있음을 보여주는 명확한 신호입니다.
+...</p></div><footer class=entry-footer><span title='2026-02-22 21:00:00 +0900 KST'>February 22, 2026</span></footer><a class=entry-link aria-label="post link to AI 에이전트의 위험한 과신: 실제로는 22% 성공하지만 77% 성공할 거라 예측" href=https://kwbaek.github.io/posts/2026-02-22-ai-agent-overconfidence/></a></article><article class="post-entry tag-entry"><header class=entry-header><h2 class=entry-hint-parent>AI 에이전트 시대의 서막: Claude Sonnet 4.6과 NIST 표준화 이니셔티브</h2></header><div class=entry-content><p>AI 에이전트 시대가 본격화되고 있다 2026년 2월, AI 업계에서 두 가지 중요한 발표가 있었습니다. Anthropic의 Claude Sonnet 4.6 출시와 미국 NIST(국립표준기술연구소)의 AI Agent Standards Initiative 출범입니다. 이 두 사건은 AI 에이전트 시대가 본격적으로 시작되고 있음을 보여주는 명확한 신호입니다.
 Claude Sonnet 4.6: 에이전트 능력의 전방위 업그레이드 Anthropic이 발표한 Claude Sonnet 4.6는 단순한 모델 업데이트가 아닙니다. 이번 업그레이드는 AI 에이전트로서의 핵심 능력들을 대폭 강화했습니다:
 주요 개선 사항 코딩 능력: 복잡한 코드 생성 및 디버깅 능력 향상 컴퓨터 사용(Computer Use): 실제 컴퓨터 환경에서 작업 수행 능력 강화 장기 추론(Long-Reasoning): 여러 단계를 거치는 복잡한 문제 해결 에이전트 플래닝: 목표 달성을 위한 체계적인 계획 수립 지식 작업: 정보 검색, 분석, 종합 능력 특히 눈에 띄는 점은 **“에이전트 플래닝”**이 별도 항목으로 강조되었다는 것입니다. 이는 단순히 질문에 답하는 것을 넘어, 복잡한 목표를 독립적으로 수행할 수 있는 자율 에이전트로의 진화를 의미합니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-02-21 21:00:00 +0900 KST'>February 21, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to AI 에이전트 시대의 서막: Claude Sonnet 4.6과 NIST 표준화 이니셔티브" href="https://kwbaek.github.io/posts/2026-02-21-ai-agent-era-claude-sonnet-nist-standards/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">2026년 2월 AI 업계 총정리: 모델 러시와 투자 열풍
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>2026년 2월은 AI 업계 역사상 가장 뜨거운 달 중 하나로 기록될 것 같습니다. 거의 매일 새로운 모델이 출시되고, 수억에서 수백억 달러 규모의 투자가 쏟아지고 있습니다. 오늘 하루 동안만 해도 엄청난 소식들이 쏟아졌는데요, 주요 트렌드를 정리해봤습니다.
+...</p></div><footer class=entry-footer><span title='2026-02-21 21:00:00 +0900 KST'>February 21, 2026</span></footer><a class=entry-link aria-label="post link to AI 에이전트 시대의 서막: Claude Sonnet 4.6과 NIST 표준화 이니셔티브" href=https://kwbaek.github.io/posts/2026-02-21-ai-agent-era-claude-sonnet-nist-standards/></a></article><article class="post-entry tag-entry"><header class=entry-header><h2 class=entry-hint-parent>2026년 2월 AI 업계 총정리: 모델 러시와 투자 열풍</h2></header><div class=entry-content><p>2026년 2월은 AI 업계 역사상 가장 뜨거운 달 중 하나로 기록될 것 같습니다. 거의 매일 새로운 모델이 출시되고, 수억에서 수백억 달러 규모의 투자가 쏟아지고 있습니다. 오늘 하루 동안만 해도 엄청난 소식들이 쏟아졌는데요, 주요 트렌드를 정리해봤습니다.
 🚀 Claude Sonnet 4.6: 전방위 업그레이드 Anthropic이 Claude Sonnet 4.6를 발표했습니다. 이번 업데이트는 단순한 버전업이 아니라 전방위적인 성능 향상을 이룬 풀 업그레이드입니다.
 주요 개선사항:
 코딩 능력 대폭 향상 컴퓨터 사용(Computer Use) 기능 강화 장기 추론(Long Reasoning) 성능 개선 에이전트 계획(Agent Planning) 능력 향상 지식 작업 효율성 증대 특히 에이전트 기반 워크플로우와 복잡한 작업 처리에서 큰 개선을 보였다고 합니다. Free와 Pro 사용자 모두 기본 모델로 사용할 수 있으며, 현재 바로 사용 가능합니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-02-20 21:00:00 +0900 KST'>February 20, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to 2026년 2월 AI 업계 총정리: 모델 러시와 투자 열풍" href="https://kwbaek.github.io/posts/2026-02-20-ai-ml-february-rush/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">AI 모델 대격변의 2월: Claude Sonnet 4.6부터 Qwen 3.5까지
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>2026년 2월이 채 끝나기도 전에, AI 업계는 전례 없는 모델 러시를 경험하고 있습니다. 주요 기업들이 앞다퉈 새로운 모델을 출시하면서 AI 에이전트 시대가 본격적으로 열리고 있습니다.
+...</p></div><footer class=entry-footer><span title='2026-02-20 21:00:00 +0900 KST'>February 20, 2026</span></footer><a class=entry-link aria-label="post link to 2026년 2월 AI 업계 총정리: 모델 러시와 투자 열풍" href=https://kwbaek.github.io/posts/2026-02-20-ai-ml-february-rush/></a></article><article class="post-entry tag-entry"><header class=entry-header><h2 class=entry-hint-parent>AI 모델 대격변의 2월: Claude Sonnet 4.6부터 Qwen 3.5까지</h2></header><div class=entry-content><p>2026년 2월이 채 끝나기도 전에, AI 업계는 전례 없는 모델 러시를 경험하고 있습니다. 주요 기업들이 앞다퉈 새로운 모델을 출시하면서 AI 에이전트 시대가 본격적으로 열리고 있습니다.
 Claude Sonnet 4.6: 전방위 업그레이드 Anthropic이 2월 18일 발표한 Claude Sonnet 4.6는 이전 버전 대비 모든 영역에서 성능이 대폭 향상되었습니다.
 주요 개선사항:
 코딩: 복잡한 코드 생성과 디버깅 능력 강화 컴퓨터 사용(Computer Use): 사람의 컴퓨터를 더 효과적으로 조작 가능 장기 추론(Long-reasoning): 복잡한 문제 해결을 위한 사고력 향상 에이전트 플래닝: 멀티스텝 작업 계획 수립 능력 개선 지식 작업: 연구, 문서 작성 등 전문 지식 작업 효율성 증대 Free와 Pro 사용자 모두에게 기본 모델로 제공되며, 현재 즉시 사용 가능합니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-02-19 21:00:00 +0900 KST'>February 19, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to AI 모델 대격변의 2월: Claude Sonnet 4.6부터 Qwen 3.5까지" href="https://kwbaek.github.io/posts/2026-02-19-ai-model-rush-february/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">2026년 2월 AI 모델 전쟁: Anthropic의 $380B 밸류와 Alibaba Qwen 3.5의 도전
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>AI 업계의 2월은 뜨겁다 2026년 2월, AI 업계가 그 어느 때보다 뜨겁게 달아오르고 있습니다. 단 한 달 사이에 7개의 주요 AI 모델이 출시되었고, 수백억 달러의 투자가 쏟아졌으며, AI 에이전트 시대의 본격적인 개막을 알리는 신호탄들이 연이어 터졌습니다.
+...</p></div><footer class=entry-footer><span title='2026-02-19 21:00:00 +0900 KST'>February 19, 2026</span></footer><a class=entry-link aria-label="post link to AI 모델 대격변의 2월: Claude Sonnet 4.6부터 Qwen 3.5까지" href=https://kwbaek.github.io/posts/2026-02-19-ai-model-rush-february/></a></article><article class="post-entry tag-entry"><header class=entry-header><h2 class=entry-hint-parent>2026년 2월 AI 모델 전쟁: Anthropic의 $380B 밸류와 Alibaba Qwen 3.5의 도전</h2></header><div class=entry-content><p>AI 업계의 2월은 뜨겁다 2026년 2월, AI 업계가 그 어느 때보다 뜨겁게 달아오르고 있습니다. 단 한 달 사이에 7개의 주요 AI 모델이 출시되었고, 수백억 달러의 투자가 쏟아졌으며, AI 에이전트 시대의 본격적인 개막을 알리는 신호탄들이 연이어 터졌습니다.
 오늘은 그 중에서도 가장 주목할 만한 두 가지 이야기를 다뤄보려 합니다.
 Anthropic, $380B 밸류에이션 달성 역사적 투자 규모 Anthropic이 Amazon과 Google의 지원을 받아 $30B 규모의 펀딩을 유치하며 $380B 밸류에이션을 기록했습니다. 이는 AI 스타트업 역사상 가장 큰 규모의 투자 중 하나입니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-02-18 21:00:00 +0900 KST'>February 18, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to 2026년 2월 AI 모델 전쟁: Anthropic의 $380B 밸류와 Alibaba Qwen 3.5의 도전" href="https://kwbaek.github.io/posts/2026-02-18-ai-model-rush-anthropic-alibaba/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">AI 보안 위기와 과학적 돌파구: 2026년 2월 AI/ML 트렌드
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>2026년 2월, AI 업계는 극과 극의 뉴스로 요동치고 있습니다. 한편에서는 AI가 10년 동안 풀리지 않던 이론물리학 문제를 해결하며 과학의 새 지평을 열고 있고, 다른 한편에서는 AI 도구들의 심각한 보안 취약점이 연이어 발견되며 사이버보안 위기를 촉발하고 있습니다.
+...</p></div><footer class=entry-footer><span title='2026-02-18 21:00:00 +0900 KST'>February 18, 2026</span></footer><a class=entry-link aria-label="post link to 2026년 2월 AI 모델 전쟁: Anthropic의 $380B 밸류와 Alibaba Qwen 3.5의 도전" href=https://kwbaek.github.io/posts/2026-02-18-ai-model-rush-anthropic-alibaba/></a></article><article class="post-entry tag-entry"><header class=entry-header><h2 class=entry-hint-parent>AI 보안 위기와 과학적 돌파구: 2026년 2월 AI/ML 트렌드</h2></header><div class=entry-content><p>2026년 2월, AI 업계는 극과 극의 뉴스로 요동치고 있습니다. 한편에서는 AI가 10년 동안 풀리지 않던 이론물리학 문제를 해결하며 과학의 새 지평을 열고 있고, 다른 한편에서는 AI 도구들의 심각한 보안 취약점이 연이어 발견되며 사이버보안 위기를 촉발하고 있습니다.
 🔐 RoguePilot: GitHub Copilot의 충격적인 보안 결함 Orca Security가 발견한 RoguePilot 취약점은 AI 코딩 어시스턴트의 어두운 면을 드러냈습니다. GitHub Copilot Codespaces에서 passive prompt injection을 통해 공격자가 사용자의 GitHub 토큰과 민감 데이터를 탈취할 수 있다는 것입니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-02-17 21:00:00 +0900 KST'>February 17, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to AI 보안 위기와 과학적 돌파구: 2026년 2월 AI/ML 트렌드" href="https://kwbaek.github.io/posts/2026-02-17-ai-security-crisis-and-breakthroughs/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">중국 AI 모델 대공세: Qwen 3.5부터 Doubao 2.0까지, 에이전트 시대의 서막
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>중국 AI 업계의 춘절 공세 2026년 2월, 중국의 AI 업계가 춘절(설날) 시즌을 맞아 대규모 모델 공개 러시를 펼치고 있습니다. 작년 DeepSeek의 등장 이후 1년 만에, 중국 기업들은 더욱 공격적인 모습으로 글로벌 AI 경쟁에 뛰어들고 있습니다.
-1. Alibaba Qwen 3.5: “에이전틱 AI 시대&#34;의 선언 Alibaba가 오늘(2월 16일) 공개한 Qwen 3.5는 “에이전틱 AI 시대&#34;를 겨냥한 플래그십 모델입니다. 주요 특징은:
+...</p></div><footer class=entry-footer><span title='2026-02-17 21:00:00 +0900 KST'>February 17, 2026</span></footer><a class=entry-link aria-label="post link to AI 보안 위기와 과학적 돌파구: 2026년 2월 AI/ML 트렌드" href=https://kwbaek.github.io/posts/2026-02-17-ai-security-crisis-and-breakthroughs/></a></article><article class="post-entry tag-entry"><header class=entry-header><h2 class=entry-hint-parent>중국 AI 모델 대공세: Qwen 3.5부터 Doubao 2.0까지, 에이전트 시대의 서막</h2></header><div class=entry-content><p>중국 AI 업계의 춘절 공세 2026년 2월, 중국의 AI 업계가 춘절(설날) 시즌을 맞아 대규모 모델 공개 러시를 펼치고 있습니다. 작년 DeepSeek의 등장 이후 1년 만에, 중국 기업들은 더욱 공격적인 모습으로 글로벌 AI 경쟁에 뛰어들고 있습니다.
+1. Alibaba Qwen 3.5: “에이전틱 AI 시대"의 선언 Alibaba가 오늘(2월 16일) 공개한 Qwen 3.5는 “에이전틱 AI 시대"를 겨냥한 플래그십 모델입니다. 주요 특징은:
 에이전트 작업에 최적화된 향상된 추론 능력 멀티모달 지원 (텍스트, 이미지, 비디오 입력 처리) DeepSeek V4 출시를 앞두고 선제적 발표 이 모델은 단순한 질문-답변을 넘어 복잡한 다단계 작업을 자율적으로 수행하는 에이전트 역할에 집중하고 있습니다. Alibaba는 이를 통해 중국 AI 업계의 경쟁에서 차별화를 시도하고 있습니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-02-16 21:00:00 +0900 KST'>February 16, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to 중국 AI 모델 대공세: Qwen 3.5부터 Doubao 2.0까지, 에이전트 시대의 서막" href="https://kwbaek.github.io/posts/2026-02-16-china-ai-model-rush/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">AI/ML 시스템의 메시지 전송 안정성: Outbound Queue 패턴
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>AI 에이전트가 실제 서비스로 진화하면서, “메시지 전송 안정성&#34;이 핵심 과제로 떠올랐습니다. 특히 챗봇, 알림 시스템, 자동화 에이전트처럼 실시간 응답이 필수인 AI 시스템에서는 재시작이나 크래시 직후 메시지가 유실되는 문제가 치명적일 수 있습니다.
+...</p></div><footer class=entry-footer><span title='2026-02-16 21:00:00 +0900 KST'>February 16, 2026</span></footer><a class=entry-link aria-label="post link to 중국 AI 모델 대공세: Qwen 3.5부터 Doubao 2.0까지, 에이전트 시대의 서막" href=https://kwbaek.github.io/posts/2026-02-16-china-ai-model-rush/></a></article><article class="post-entry tag-entry"><header class=entry-header><h2 class=entry-hint-parent>AI/ML 시스템의 메시지 전송 안정성: Outbound Queue 패턴</h2></header><div class=entry-content><p>AI 에이전트가 실제 서비스로 진화하면서, “메시지 전송 안정성"이 핵심 과제로 떠올랐습니다. 특히 챗봇, 알림 시스템, 자동화 에이전트처럼 실시간 응답이 필수인 AI 시스템에서는 재시작이나 크래시 직후 메시지가 유실되는 문제가 치명적일 수 있습니다.
 문제: 전송 중 재시작 시 메시지 유실 전통적인 AI 챗봇 아키텍처에서는 다음과 같은 흐름이 일반적입니다:
-AI 모델이 응답 생성 메모리(변수)에 응답 저장 Discord/Telegram/Slack API 호출해서 전송 하지만 3번 API 호출 직전에 서버가 재시작되면? 응답은 영원히 사라집니다. 사용자 입장에서는 “봇이 답을 안 해&#34;라는 최악의 경험이 됩니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-02-15 21:00:00 +0900 KST'>February 15, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to AI/ML 시스템의 메시지 전송 안정성: Outbound Queue 패턴" href="https://kwbaek.github.io/posts/2026-02-15-ai-ml-outbound-resilience/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">2026년 2월, 중국 AI 모델 러시와 Gemini 3 Deep Think의 등장
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>🚀 2026년 2월, AI 업계에 무슨 일이? 2026년 2월은 AI 업계에 엄청난 변화가 일어나고 있는 달입니다. 특히 중국 AI 기업들의 공격적인 모델 출시와 Google, Anthropic의 신규 모델 발표가 동시에 터지면서 AI 모델 전쟁이 새로운 국면으로 접어들었습니다.
+AI 모델이 응답 생성 메모리(변수)에 응답 저장 Discord/Telegram/Slack API 호출해서 전송 하지만 3번 API 호출 직전에 서버가 재시작되면? 응답은 영원히 사라집니다. 사용자 입장에서는 “봇이 답을 안 해"라는 최악의 경험이 됩니다.
+...</p></div><footer class=entry-footer><span title='2026-02-15 21:00:00 +0900 KST'>February 15, 2026</span></footer><a class=entry-link aria-label="post link to AI/ML 시스템의 메시지 전송 안정성: Outbound Queue 패턴" href=https://kwbaek.github.io/posts/2026-02-15-ai-ml-outbound-resilience/></a></article><article class="post-entry tag-entry"><header class=entry-header><h2 class=entry-hint-parent>2026년 2월, 중국 AI 모델 러시와 Gemini 3 Deep Think의 등장</h2></header><div class=entry-content><p>🚀 2026년 2월, AI 업계에 무슨 일이? 2026년 2월은 AI 업계에 엄청난 변화가 일어나고 있는 달입니다. 특히 중국 AI 기업들의 공격적인 모델 출시와 Google, Anthropic의 신규 모델 발표가 동시에 터지면서 AI 모델 전쟁이 새로운 국면으로 접어들었습니다.
 🇨🇳 중국 AI 모델 러시: Alibaba, ByteDance, Zhipu의 동시다발 공세 이번 주 중국 AI 업계가 폭발적인 움직임을 보였습니다:
 Alibaba: RynnBrain (물리적 AI/로봇 특화) Kuaishou: Kling 3.0 ByteDance: Seedance 모델 Zhipu AI: GLM-5 (Agentic Engineering 돌파구) 특히 Zhipu AI의 주가는 30% 급등하며 시장의 뜨거운 반응을 얻었습니다. GLM-5는 에이전트 시스템에 특화된 모델로, 중국발 AI 모델이 글로벌 경쟁에서 본격적으로 주목받는 신호탄이 되었습니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-02-14 21:00:00 +0900 KST'>February 14, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to 2026년 2월, 중국 AI 모델 러시와 Gemini 3 Deep Think의 등장" href="https://kwbaek.github.io/posts/2026-02-14-ai-ml-trends-china-rush/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">2026년 2월 AI 모델 러시: Gemini 3 Deep Think와 격화되는 경쟁
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>2026년 2월, AI 업계는 그야말로 모델 러시(Model Rush) 시대에 돌입했습니다. Google의 Gemini 3 Deep Think 출시를 시작으로, Anthropic의 Claude Opus 4.6, OpenAI의 GPT-5.3-Codex, 그리고 중국의 GLM-5까지 연이어 출시되며 전례 없는 경쟁이 펼쳐지고 있습니다.
-🔬 Gemini 3 Deep Think: 과학/연구 특화 추론 모델 Google이 2월 13일(한국 시간 기준) 공개한 Gemini 3 Deep Think는 과학, 연구, 엔지니어링 분야에 특화된 고급 추론 모델입니다.
-주요 특징:
-고난이도 추론 작업에 강점: 복잡한 과학적 문제 해결에 최적화 Gemini 3 시리즈의 전략적 분화: Flash(빠른 처리)와 Deep Think(고급 추론)로 이원화 전문 분야 특화 전략: 범용 모델에서 벗어나 전문성 강화 Google 공식 블로그에서는 “과학 연구를 가속화하는 특화된 추론 모드&#34;라고 소개하고 있습니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-02-13 21:00:00 +0900 KST'>February 13, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to 2026년 2월 AI 모델 러시: Gemini 3 Deep Think와 격화되는 경쟁" href="https://kwbaek.github.io/posts/2026-02-13-gemini-3-deep-think-ai-model-rush/"></a>
-</article>
-<footer class="page-footer">
-  <nav class="pagination">
-    <a class="prev" href="https://kwbaek.github.io/categories/ai-ml/">
-      «&nbsp;Prev&nbsp;
-    </a>
-    <a class="next" href="https://kwbaek.github.io/categories/ai-ml/page/3/">Next&nbsp;&nbsp;»
-    </a>
-  </nav>
-</footer>
-    </main>
-    
-<footer class="footer">
-        <span>&copy; 2026 <a href="https://kwbaek.github.io/">Kyungwook&#39;s Devlog</a></span> · 
-
-    <span>
-        Powered by
-        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
-        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
-    </span>
-</footer>
-<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
-        <path d="M12 6H0l6-6z" />
-    </svg>
-</a>
-
-<script>
-    let menu = document.getElementById('menu');
-    if (menu) {
-        
-        const scrollPosition = localStorage.getItem("menu-scroll-position");
-        if (scrollPosition) {
-            menu.scrollLeft = parseInt(scrollPosition, 10);
-        }
-        
-        menu.onscroll = function () {
-            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
-        }
-    }
-
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener("click", function (e) {
-            e.preventDefault();
-            var id = this.getAttribute("href").substr(1);
-            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
-                    behavior: "smooth"
-                });
-            } else {
-                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
-            }
-            if (id === "top") {
-                history.replaceState(null, null, " ");
-            } else {
-                history.pushState(null, null, `#${id}`);
-            }
-        });
-    });
-
-</script>
-<script>
-    var mybutton = document.getElementById("top-link");
-    window.onscroll = function () {
-        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
-            mybutton.style.visibility = "visible";
-            mybutton.style.opacity = "1";
-        } else {
-            mybutton.style.visibility = "hidden";
-            mybutton.style.opacity = "0";
-        }
-    };
-
-</script>
-<script>
-    document.getElementById("theme-toggle").addEventListener("click", () => {
-        const html = document.querySelector("html");
-        if (html.dataset.theme === "dark") {
-            html.dataset.theme = 'light';
-            localStorage.setItem("pref-theme", 'light');
-        } else {
-            html.dataset.theme = 'dark';
-            localStorage.setItem("pref-theme", 'dark');
-        }
-    })
-
-</script>
-</body>
-
-</html>
+...</p></div><footer class=entry-footer><span title='2026-02-14 21:00:00 +0900 KST'>February 14, 2026</span></footer><a class=entry-link aria-label="post link to 2026년 2월, 중국 AI 모델 러시와 Gemini 3 Deep Think의 등장" href=https://kwbaek.github.io/posts/2026-02-14-ai-ml-trends-china-rush/></a></article><footer class=page-footer><nav class=pagination><a class=prev href=https://kwbaek.github.io/categories/ai-ml/>«&nbsp;Prev&nbsp;
+</a><a class=next href=https://kwbaek.github.io/categories/ai-ml/page/3/>Next&nbsp;&nbsp;»</a></nav></footer></main><footer class=footer><span>&copy; 2026 <a href=https://kwbaek.github.io/>Kyungwook's Devlog</a></span> ·
+<span>Powered by
+<a href=https://gohugo.io/ rel="noopener noreferrer" target=_blank>Hugo</a> &
+<a href=https://github.com/adityatelange/hugo-PaperMod/ rel=noopener target=_blank>PaperMod</a></span></footer><a href=#top aria-label="go to top" title="Go to Top (Alt + G)" class=top-link id=top-link accesskey=g><svg viewBox="0 0 12 6" fill="currentColor"><path d="M12 6H0l6-6z"/></svg>
+</a><script>let menu=document.getElementById("menu");if(menu){const e=localStorage.getItem("menu-scroll-position");e&&(menu.scrollLeft=parseInt(e,10)),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)}}document.querySelectorAll('a[href^="#"]').forEach(e=>{e.addEventListener("click",function(e){e.preventDefault();var t=this.getAttribute("href").substr(1);window.matchMedia("(prefers-reduced-motion: reduce)").matches?document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView({behavior:"smooth"}),t==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${t}`)})})</script><script>var mybutton=document.getElementById("top-link");window.onscroll=function(){document.body.scrollTop>800||document.documentElement.scrollTop>800?(mybutton.style.visibility="visible",mybutton.style.opacity="1"):(mybutton.style.visibility="hidden",mybutton.style.opacity="0")}</script><script>document.getElementById("theme-toggle").addEventListener("click",()=>{const e=document.querySelector("html");e.dataset.theme==="dark"?(e.dataset.theme="light",localStorage.setItem("pref-theme","light")):(e.dataset.theme="dark",localStorage.setItem("pref-theme","dark"))})</script></body></html>

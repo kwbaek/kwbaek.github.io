@@ -1,30 +1,11 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
-  <channel>
-    <title>OpenAI on Kyungwook&#39;s Devlog</title>
-    <link>https://kwbaek.github.io/tags/openai/</link>
-    <description>Recent content in OpenAI on Kyungwook&#39;s Devlog</description>
-    <generator>Hugo -- 0.155.3</generator>
-    <language>ko-kr</language>
-    <lastBuildDate>Mon, 23 Feb 2026 21:00:00 +0900</lastBuildDate>
-    <atom:link href="https://kwbaek.github.io/tags/openai/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>AI 모델 전쟁의 새로운 국면: Gemini 3.1 Pro부터 Claude Sonnet 4.6까지</title>
-      <link>https://kwbaek.github.io/posts/2026-02-23-ai-model-wars-heat-up/</link>
-      <pubDate>Mon, 23 Feb 2026 21:00:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/posts/2026-02-23-ai-model-wars-heat-up/</guid>
-      <description>&lt;p&gt;2026년 2월 셋째 주, AI 업계는 그야말로 &amp;lsquo;모델 대폭발&amp;rsquo; 시즌에 돌입했습니다. 주요 AI 기업들이 경쟁적으로 차세대 모델을 발표하며, 성능과 효율성의 경계를 다시 쓰고 있습니다.&lt;/p&gt;
-&lt;h2 id=&#34;google의-추론-강화-gemini-31-pro&#34;&gt;Google의 추론 강화: Gemini 3.1 Pro&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>OpenAI on Kyungwook's Devlog</title><link>https://kwbaek.github.io/tags/openai/</link><description>Recent content in OpenAI on Kyungwook's Devlog</description><generator>Hugo -- 0.155.3</generator><language>ko-kr</language><lastBuildDate>Thu, 05 Mar 2026 21:00:00 +0900</lastBuildDate><atom:link href="https://kwbaek.github.io/tags/openai/index.xml" rel="self" type="application/rss+xml"/><item><title>AI/ML 트렌드 브리핑: 2026년 3월 5일 — 에이전트 시대의 본격화</title><link>https://kwbaek.github.io/posts/2026-03-05-ai-ml-trends/</link><pubDate>Thu, 05 Mar 2026 21:00:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-03-05-ai-ml-trends/</guid><description>&lt;p&gt;오늘 하루 AI/ML 씬에서 쏟아진 뉴스를 추려봤다. 큰 그림으로 보면 한 가지 흐름이 선명하다 — &lt;strong&gt;AI가 더 이상 실험실 단계가 아닌, 실제 산업 현장과 경제 구조 자체를 재편하고 있다는 것&lt;/strong&gt;.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id="-openai-연간-매출-250억-달러-돌파"&gt;🏆 OpenAI, 연간 매출 250억 달러 돌파&lt;/h2&gt;
+&lt;p&gt;ChatGPT 출시 약 2년 만에 OpenAI의 연간 환산 매출(ARR)이 &lt;strong&gt;250억 달러&lt;/strong&gt;를 넘어섰다. AI 기업 중 역대 최단기 대규모 매출 달성이다. 구독·API·엔터프라이즈 계약이 고르게 성장하며 이뤄낸 결과로, 연내 IPO 밸류에이션에도 직접 영향을 줄 전망이다.&lt;/p&gt;</description></item><item><title>AI 모델 전쟁의 새로운 국면: Gemini 3.1 Pro부터 Claude Sonnet 4.6까지</title><link>https://kwbaek.github.io/posts/2026-02-23-ai-model-wars-heat-up/</link><pubDate>Mon, 23 Feb 2026 21:00:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-02-23-ai-model-wars-heat-up/</guid><description>&lt;p&gt;2026년 2월 셋째 주, AI 업계는 그야말로 &amp;lsquo;모델 대폭발&amp;rsquo; 시즌에 돌입했습니다. 주요 AI 기업들이 경쟁적으로 차세대 모델을 발표하며, 성능과 효율성의 경계를 다시 쓰고 있습니다.&lt;/p&gt;
+&lt;h2 id="google의-추론-강화-gemini-31-pro"&gt;Google의 추론 강화: Gemini 3.1 Pro&lt;/h2&gt;
 &lt;p&gt;Google DeepMind가 &lt;strong&gt;Gemini 3.1 Pro&lt;/strong&gt;를 발표했습니다. 이 모델은 복잡한 문제해결에 특화되었으며, ARC-AGI-2 벤치마크에서 **검증 점수 77.1%**를 기록했습니다. 단순한 질의응답을 넘어서, 멀티스텝 추론과 복잡한 작업 계획이 필요한 시나리오에서 강점을 보입니다.&lt;/p&gt;
-&lt;p&gt;Gemini API, Vertex AI, Gemini 앱, NotebookLM을 통해 순차 롤아웃 중이며, 개발자부터 일반 사용자까지 폭넓게 영향을 미칠 것으로 예상됩니다.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>2026년 2월 AI 모델 러시: Gemini 3 Deep Think와 격화되는 경쟁</title>
-      <link>https://kwbaek.github.io/posts/2026-02-13-gemini-3-deep-think-ai-model-rush/</link>
-      <pubDate>Fri, 13 Feb 2026 21:00:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/posts/2026-02-13-gemini-3-deep-think-ai-model-rush/</guid>
-      <description>&lt;p&gt;2026년 2월, AI 업계는 그야말로 &lt;strong&gt;모델 러시(Model Rush)&lt;/strong&gt; 시대에 돌입했습니다. Google의 Gemini 3 Deep Think 출시를 시작으로, Anthropic의 Claude Opus 4.6, OpenAI의 GPT-5.3-Codex, 그리고 중국의 GLM-5까지 연이어 출시되며 전례 없는 경쟁이 펼쳐지고 있습니다.&lt;/p&gt;
-&lt;h2 id=&#34;-gemini-3-deep-think-과학연구-특화-추론-모델&#34;&gt;🔬 Gemini 3 Deep Think: 과학/연구 특화 추론 모델&lt;/h2&gt;
+&lt;p&gt;Gemini API, Vertex AI, Gemini 앱, NotebookLM을 통해 순차 롤아웃 중이며, 개발자부터 일반 사용자까지 폭넓게 영향을 미칠 것으로 예상됩니다.&lt;/p&gt;</description></item><item><title>2026년 2월 AI 모델 러시: Gemini 3 Deep Think와 격화되는 경쟁</title><link>https://kwbaek.github.io/posts/2026-02-13-gemini-3-deep-think-ai-model-rush/</link><pubDate>Fri, 13 Feb 2026 21:00:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-02-13-gemini-3-deep-think-ai-model-rush/</guid><description>&lt;p&gt;2026년 2월, AI 업계는 그야말로 &lt;strong&gt;모델 러시(Model Rush)&lt;/strong&gt; 시대에 돌입했습니다. Google의 Gemini 3 Deep Think 출시를 시작으로, Anthropic의 Claude Opus 4.6, OpenAI의 GPT-5.3-Codex, 그리고 중국의 GLM-5까지 연이어 출시되며 전례 없는 경쟁이 펼쳐지고 있습니다.&lt;/p&gt;
+&lt;h2 id="-gemini-3-deep-think-과학연구-특화-추론-모델"&gt;🔬 Gemini 3 Deep Think: 과학/연구 특화 추론 모델&lt;/h2&gt;
 &lt;p&gt;Google이 2월 13일(한국 시간 기준) 공개한 &lt;strong&gt;Gemini 3 Deep Think&lt;/strong&gt;는 과학, 연구, 엔지니어링 분야에 특화된 고급 추론 모델입니다.&lt;/p&gt;
 &lt;p&gt;주요 특징:&lt;/p&gt;
 &lt;ul&gt;
@@ -32,7 +13,4 @@
 &lt;li&gt;&lt;strong&gt;Gemini 3 시리즈의 전략적 분화&lt;/strong&gt;: Flash(빠른 처리)와 Deep Think(고급 추론)로 이원화&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;전문 분야 특화 전략&lt;/strong&gt;: 범용 모델에서 벗어나 전문성 강화&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;a href=&#34;https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-deep-think/&#34;&gt;Google 공식 블로그&lt;/a&gt;에서는 &amp;ldquo;과학 연구를 가속화하는 특화된 추론 모드&amp;quot;라고 소개하고 있습니다.&lt;/p&gt;</description>
-    </item>
-  </channel>
-</rss>
+&lt;p&gt;&lt;a href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-deep-think/"&gt;Google 공식 블로그&lt;/a&gt;에서는 &amp;ldquo;과학 연구를 가속화하는 특화된 추론 모드&amp;quot;라고 소개하고 있습니다.&lt;/p&gt;</description></item></channel></rss>
