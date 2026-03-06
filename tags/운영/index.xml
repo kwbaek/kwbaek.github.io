@@ -1,4 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>운영 on Kyungwook's Devlog</title><link>https://kwbaek.github.io/tags/%EC%9A%B4%EC%98%81/</link><description>Recent content in 운영 on Kyungwook's Devlog</description><generator>Hugo -- 0.155.3</generator><language>ko-kr</language><lastBuildDate>Wed, 25 Feb 2026 21:00:00 +0900</lastBuildDate><atom:link href="https://kwbaek.github.io/tags/%EC%9A%B4%EC%98%81/index.xml" rel="self" type="application/rss+xml"/><item><title>OpenClaw 실전 운영법: Heartbeat + Cron 2계층 자동화 패턴</title><link>https://kwbaek.github.io/posts/2026-02-25-openclaw-two-tier-automation-guide/</link><pubDate>Wed, 25 Feb 2026 21:00:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-02-25-openclaw-two-tier-automation-guide/</guid><description>&lt;p&gt;OpenClaw를 오래 쓰다 보면 공통 문제가 하나 생깁니다.
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>운영 on Kyungwook&#39;s Devlog</title>
+    <link>https://kwbaek.github.io/tags/%EC%9A%B4%EC%98%81/</link>
+    <description>Recent content in 운영 on Kyungwook&#39;s Devlog</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Wed, 25 Feb 2026 21:00:00 +0900</lastBuildDate>
+    <atom:link href="https://kwbaek.github.io/tags/%EC%9A%B4%EC%98%81/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>OpenClaw 실전 운영법: Heartbeat &#43; Cron 2계층 자동화 패턴</title>
+      <link>https://kwbaek.github.io/posts/2026-02-25-openclaw-two-tier-automation-guide/</link>
+      <pubDate>Wed, 25 Feb 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-02-25-openclaw-two-tier-automation-guide/</guid>
+      <description>&lt;p&gt;OpenClaw를 오래 쓰다 보면 공통 문제가 하나 생깁니다.
 처음에는 자동화가 편한데, 시간이 지나면 잡이 늘어나면서 알림 노이즈와 관리 복잡도가 같이 커집니다.&lt;/p&gt;
 &lt;p&gt;이때 가장 효율이 좋았던 방식이 &lt;strong&gt;Heartbeat + Cron 2계층 패턴&lt;/strong&gt;입니다.&lt;/p&gt;
 &lt;p&gt;핵심 아이디어는 간단합니다.&lt;/p&gt;
@@ -6,31 +21,48 @@
 &lt;li&gt;&lt;strong&gt;Heartbeat&lt;/strong&gt;: 대화 컨텍스트가 필요한 점검 작업(메일/캘린더/멘션/상태 확인)을 묶어서 처리&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Cron&lt;/strong&gt;: 정확한 시각이 중요한 작업(정시 리포트, 마감 알림, 배포 체크)을 분리 실행&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id="1-heartbeat는-배치-점검-레이어로-쓴다"&gt;1) Heartbeat는 “배치 점검 레이어”로 쓴다&lt;/h2&gt;
-&lt;p&gt;Heartbeat는 1개 태스크를 정시에 수행하는 도구라기보다, 여러 점검 항목을 한 번에 처리하는 라우터로 보는 게 맞습니다.&lt;/p&gt;</description></item><item><title>OpenClaw 2026.2.22 이후 운영 플레이북: 업데이트, 보안, 배포</title><link>https://kwbaek.github.io/posts/2026-02-24-openclaw-release-2026-2-22-playbook/</link><pubDate>Tue, 24 Feb 2026 21:00:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-02-24-openclaw-release-2026-2-22-playbook/</guid><description>&lt;p&gt;최근 OpenClaw를 실무에 붙여 쓰면서 느낀 핵심은, 기능이 빨리 늘어나는 만큼 &lt;strong&gt;업데이트 루틴을 표준화한 팀이 결국 안정적으로 오래 간다&lt;/strong&gt;는 점입니다. 특히 2026.2.22 릴리즈 구간은 운영 관점에서 체감 변화가 꽤 큽니다.&lt;/p&gt;
+&lt;h2 id=&#34;1-heartbeat는-배치-점검-레이어로-쓴다&#34;&gt;1) Heartbeat는 “배치 점검 레이어”로 쓴다&lt;/h2&gt;
+&lt;p&gt;Heartbeat는 1개 태스크를 정시에 수행하는 도구라기보다, 여러 점검 항목을 한 번에 처리하는 라우터로 보는 게 맞습니다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>OpenClaw 2026.2.22 이후 운영 플레이북: 업데이트, 보안, 배포</title>
+      <link>https://kwbaek.github.io/posts/2026-02-24-openclaw-release-2026-2-22-playbook/</link>
+      <pubDate>Tue, 24 Feb 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-02-24-openclaw-release-2026-2-22-playbook/</guid>
+      <description>&lt;p&gt;최근 OpenClaw를 실무에 붙여 쓰면서 느낀 핵심은, 기능이 빨리 늘어나는 만큼 &lt;strong&gt;업데이트 루틴을 표준화한 팀이 결국 안정적으로 오래 간다&lt;/strong&gt;는 점입니다. 특히 2026.2.22 릴리즈 구간은 운영 관점에서 체감 변화가 꽤 큽니다.&lt;/p&gt;
 &lt;p&gt;이번 구간의 실무 포인트를 한 줄로 요약하면 이렇습니다.&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;“새 기능을 바로 쓰기보다, &lt;code&gt;사전 점검 → 설정 정리 → 재시작 → 헬스체크&lt;/code&gt;를 루틴화하라.”&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h2 id="1-업데이트-전에-꼭-할-것-dry-run"&gt;1) 업데이트 전에 꼭 할 것: dry-run&lt;/h2&gt;
+&lt;h2 id=&#34;1-업데이트-전에-꼭-할-것-dry-run&#34;&gt;1) 업데이트 전에 꼭 할 것: dry-run&lt;/h2&gt;
 &lt;p&gt;OpenClaw는 이제 업데이트 전에 영향을 예측하는 흐름이 훨씬 중요해졌습니다.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;openclaw update --dry-run
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;이 한 줄로 어떤 변경이 들어오는지 먼저 확인해두면, 실제 운영 중 예상치 못한 중단을 크게 줄일 수 있습니다. 특히 여러 채널(Discord/Telegram/Slack)을 동시에 쓰는 환경에서는 설정 키 변경 영향이 생각보다 크게 나타납니다.&lt;/p&gt;</description></item><item><title>OpenClaw 업데이트 운영 체크리스트 (2026.2 버전 기준)</title><link>https://kwbaek.github.io/posts/2026-02-15-openclaw-update-checklist/</link><pubDate>Sun, 15 Feb 2026 21:00:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-02-15-openclaw-update-checklist/</guid><description>&lt;p&gt;OpenClaw는 빠르게 진화하는 AI 에이전트 플랫폼입니다. 2주에 한 번꼴로 새 기능과 버그 수정이 나오는데, 업데이트 후 시스템이 제대로 동작하는지 확인하는 &lt;strong&gt;운영 체크리스트&lt;/strong&gt;가 필요합니다.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;openclaw update --dry-run
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;이 한 줄로 어떤 변경이 들어오는지 먼저 확인해두면, 실제 운영 중 예상치 못한 중단을 크게 줄일 수 있습니다. 특히 여러 채널(Discord/Telegram/Slack)을 동시에 쓰는 환경에서는 설정 키 변경 영향이 생각보다 크게 나타납니다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>OpenClaw 업데이트 운영 체크리스트 (2026.2 버전 기준)</title>
+      <link>https://kwbaek.github.io/posts/2026-02-15-openclaw-update-checklist/</link>
+      <pubDate>Sun, 15 Feb 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-02-15-openclaw-update-checklist/</guid>
+      <description>&lt;p&gt;OpenClaw는 빠르게 진화하는 AI 에이전트 플랫폼입니다. 2주에 한 번꼴로 새 기능과 버그 수정이 나오는데, 업데이트 후 시스템이 제대로 동작하는지 확인하는 &lt;strong&gt;운영 체크리스트&lt;/strong&gt;가 필요합니다.&lt;/p&gt;
 &lt;p&gt;이번 글에서는 2026.2.13 업데이트를 기준으로 실전 검증 루틴을 정리해봤습니다.&lt;/p&gt;
-&lt;h2 id="1단계-업데이트-전-준비"&gt;1단계: 업데이트 전 준비&lt;/h2&gt;
-&lt;h3 id="현재-버전-확인"&gt;현재 버전 확인&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;openclaw --version
+&lt;h2 id=&#34;1단계-업데이트-전-준비&#34;&gt;1단계: 업데이트 전 준비&lt;/h2&gt;
+&lt;h3 id=&#34;현재-버전-확인&#34;&gt;현재 버전 확인&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;openclaw --version
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;예: &lt;code&gt;2026.2.9&lt;/code&gt;&lt;/p&gt;
-&lt;h3 id="백업-선택"&gt;백업 (선택)&lt;/h3&gt;
+&lt;h3 id=&#34;백업-선택&#34;&gt;백업 (선택)&lt;/h3&gt;
 &lt;p&gt;중요한 설정이 있다면 백업:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;cp ~/.openclaw/openclaw.json ~/.openclaw/openclaw.json.backup
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="2단계-업데이트-실행"&gt;2단계: 업데이트 실행&lt;/h2&gt;
-&lt;h3 id="npm-글로벌-설치-가장-흔한-방식"&gt;npm 글로벌 설치 (가장 흔한 방식)&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;npm install -g openclaw@latest
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="소스-설치-개발자"&gt;소스 설치 (개발자)&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;cd ~/openclaw
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;git pull
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;npm install
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;openclaw update
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="3단계-핵심-3종-체크-"&gt;3단계: 핵심 3종 체크 ⭐&lt;/h2&gt;
-&lt;p&gt;업데이트 후 반드시 실행해야 하는 3가지 명령:&lt;/p&gt;</description></item></channel></rss>
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;cp ~/.openclaw/openclaw.json ~/.openclaw/openclaw.json.backup
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;2단계-업데이트-실행&#34;&gt;2단계: 업데이트 실행&lt;/h2&gt;
+&lt;h3 id=&#34;npm-글로벌-설치-가장-흔한-방식&#34;&gt;npm 글로벌 설치 (가장 흔한 방식)&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;npm install -g openclaw@latest
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;소스-설치-개발자&#34;&gt;소스 설치 (개발자)&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;cd ~/openclaw
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git pull
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;npm install
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;openclaw update
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;3단계-핵심-3종-체크-&#34;&gt;3단계: 핵심 3종 체크 ⭐&lt;/h2&gt;
+&lt;p&gt;업데이트 후 반드시 실행해야 하는 3가지 명령:&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

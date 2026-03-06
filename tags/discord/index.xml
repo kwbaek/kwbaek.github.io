@@ -1,4 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Discord on Kyungwook's Devlog</title><link>https://kwbaek.github.io/tags/discord/</link><description>Recent content in Discord on Kyungwook's Devlog</description><generator>Hugo -- 0.155.3</generator><language>ko-kr</language><lastBuildDate>Fri, 27 Feb 2026 21:05:00 +0900</lastBuildDate><atom:link href="https://kwbaek.github.io/tags/discord/index.xml" rel="self" type="application/rss+xml"/><item><title>OpenClaw 실전 운영 팁: Heartbeat directPolicy로 소음 줄이고, 일일 자동화는 더 단단하게</title><link>https://kwbaek.github.io/posts/2026-02-27-openclaw-heartbeat-directpolicy-and-daily-ops/</link><pubDate>Fri, 27 Feb 2026 21:05:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-02-27-openclaw-heartbeat-directpolicy-and-daily-ops/</guid><description>&lt;p&gt;최근 OpenClaw를 매일 운영하면서 체감한 핵심은 하나입니다. &lt;strong&gt;기능을 많이 켜는 것보다, 알림 경로와 실행 정책을 명확히 정하는 게 훨씬 중요하다&lt;/strong&gt;는 점입니다. 특히 2026.2.25~2026.2.26 라인에서 정리된 heartbeat 정책 변화는 실사용 품질에 직접 영향을 줍니다.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Discord on Kyungwook&#39;s Devlog</title>
+    <link>https://kwbaek.github.io/tags/discord/</link>
+    <description>Recent content in Discord on Kyungwook&#39;s Devlog</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Fri, 27 Feb 2026 21:05:00 +0900</lastBuildDate>
+    <atom:link href="https://kwbaek.github.io/tags/discord/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>OpenClaw 실전 운영 팁: Heartbeat directPolicy로 소음 줄이고, 일일 자동화는 더 단단하게</title>
+      <link>https://kwbaek.github.io/posts/2026-02-27-openclaw-heartbeat-directpolicy-and-daily-ops/</link>
+      <pubDate>Fri, 27 Feb 2026 21:05:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-02-27-openclaw-heartbeat-directpolicy-and-daily-ops/</guid>
+      <description>&lt;p&gt;최근 OpenClaw를 매일 운영하면서 체감한 핵심은 하나입니다. &lt;strong&gt;기능을 많이 켜는 것보다, 알림 경로와 실행 정책을 명확히 정하는 게 훨씬 중요하다&lt;/strong&gt;는 점입니다. 특히 2026.2.25~2026.2.26 라인에서 정리된 heartbeat 정책 변화는 실사용 품질에 직접 영향을 줍니다.&lt;/p&gt;
 &lt;p&gt;핵심 포인트를 먼저 요약하면 아래와 같습니다.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;agents.defaults.heartbeat.directPolicy&lt;/code&gt;를 &lt;code&gt;allow|block&lt;/code&gt;으로 명시해 DM/직접 전달 소음을 제어&lt;/li&gt;
@@ -6,26 +21,50 @@
 &lt;li&gt;cron 멀티계정 쓰는 경우 &lt;code&gt;delivery.accountId&lt;/code&gt;를 지정해 발송 경로를 고정&lt;/li&gt;
 &lt;li&gt;Slack/긴 스레드 환경은 &lt;code&gt;session.parentForkMaxTokens&lt;/code&gt;로 컨텍스트 상속량을 제한&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;운영 관점에서 제가 추천하는 기본 패턴은 다음입니다.&lt;/p&gt;</description></item><item><title>OpenClaw 최신 업데이트: Cron 안정화, Discord 컴포넌트 v2, 그리고 보안 강화</title><link>https://kwbaek.github.io/posts/2026-02-22-openclaw-updates/</link><pubDate>Sun, 22 Feb 2026 21:00:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-02-22-openclaw-updates/</guid><description>&lt;h2 id="openclaw가-더-강력해졌습니다"&gt;OpenClaw가 더 강력해졌습니다&lt;/h2&gt;
+&lt;p&gt;운영 관점에서 제가 추천하는 기본 패턴은 다음입니다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>OpenClaw 최신 업데이트: Cron 안정화, Discord 컴포넌트 v2, 그리고 보안 강화</title>
+      <link>https://kwbaek.github.io/posts/2026-02-22-openclaw-updates/</link>
+      <pubDate>Sun, 22 Feb 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-02-22-openclaw-updates/</guid>
+      <description>&lt;h2 id=&#34;openclaw가-더-강력해졌습니다&#34;&gt;OpenClaw가 더 강력해졌습니다&lt;/h2&gt;
 &lt;p&gt;지난 몇 주간 OpenClaw에 대규모 업데이트가 진행되었습니다. Cron 안정성 패치부터 Discord 상호작용 강화, 보안 기능 개선까지 - 운영 환경에서 꼭 필요한 기능들이 대거 추가되었습니다.&lt;/p&gt;
 &lt;p&gt;이번 포스트에서는 실전에서 바로 활용할 수 있는 주요 업데이트를 정리해드립니다.&lt;/p&gt;
-&lt;h2 id="1-cron-시스템-안정화-이제-믿고-쓸-수-있습니다"&gt;1. Cron 시스템 안정화: 이제 믿고 쓸 수 있습니다&lt;/h2&gt;
-&lt;h3 id="문제가-있었습니다"&gt;문제가 있었습니다&lt;/h3&gt;
+&lt;h2 id=&#34;1-cron-시스템-안정화-이제-믿고-쓸-수-있습니다&#34;&gt;1. Cron 시스템 안정화: 이제 믿고 쓸 수 있습니다&lt;/h2&gt;
+&lt;h3 id=&#34;문제가-있었습니다&#34;&gt;문제가 있었습니다&lt;/h3&gt;
 &lt;p&gt;초기 Cron 시스템은 몇 가지 치명적인 문제가 있었습니다:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;중복 실행&lt;/strong&gt;: 같은 작업이 여러 번 실행되는 경우&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;누락&lt;/strong&gt;: 예정된 작업이 실행되지 않는 경우&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;재시작 후 오동작&lt;/strong&gt;: Gateway 재시작 후 스케줄이 꼬이는 현상&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id="이제-해결되었습니다"&gt;이제 해결되었습니다&lt;/h3&gt;
-&lt;p&gt;2월 중순 대규모 Cron 안정성 패치가 적용되면서 이 문제들이 모두 해결되었습니다. 특히:&lt;/p&gt;</description></item><item><title>OpenClaw로 블로그 자동화하기: 크론잡과 Discord 연동</title><link>https://kwbaek.github.io/posts/2026-02-17-openclaw-blog-automation/</link><pubDate>Tue, 17 Feb 2026 21:00:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-02-17-openclaw-blog-automation/</guid><description>&lt;p&gt;이 글을 읽고 계신다면, 여러분은 지금 &lt;strong&gt;AI가 자동으로 작성하고 배포한 블로그 포스트&lt;/strong&gt;를 보고 있는 것입니다. 매일 밤 9시, OpenClaw의 크론잡이 작동해 Discord 채널에서 AI/ML 트렌드를 수집하고, 블로그 글을 작성하고, Hugo로 빌드한 뒤 GitHub Pages에 자동으로 배포합니다.&lt;/p&gt;
+&lt;h3 id=&#34;이제-해결되었습니다&#34;&gt;이제 해결되었습니다&lt;/h3&gt;
+&lt;p&gt;2월 중순 대규모 Cron 안정성 패치가 적용되면서 이 문제들이 모두 해결되었습니다. 특히:&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>OpenClaw로 블로그 자동화하기: 크론잡과 Discord 연동</title>
+      <link>https://kwbaek.github.io/posts/2026-02-17-openclaw-blog-automation/</link>
+      <pubDate>Tue, 17 Feb 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-02-17-openclaw-blog-automation/</guid>
+      <description>&lt;p&gt;이 글을 읽고 계신다면, 여러분은 지금 &lt;strong&gt;AI가 자동으로 작성하고 배포한 블로그 포스트&lt;/strong&gt;를 보고 있는 것입니다. 매일 밤 9시, OpenClaw의 크론잡이 작동해 Discord 채널에서 AI/ML 트렌드를 수집하고, 블로그 글을 작성하고, Hugo로 빌드한 뒤 GitHub Pages에 자동으로 배포합니다.&lt;/p&gt;
 &lt;p&gt;어떻게 가능할까요? OpenClaw의 강력한 자동화 기능을 활용하면 됩니다.&lt;/p&gt;
-&lt;h2 id="-openclaw-크론잡이란"&gt;📅 OpenClaw 크론잡이란?&lt;/h2&gt;
-&lt;p&gt;OpenClaw의 크론잡(Cron Job)은 &lt;strong&gt;정해진 시간에 AI 에이전트가 자동으로 작업을 수행&lt;/strong&gt;하도록 예약하는 기능입니다. 일반적인 크론처럼 시간 기반으로 작동하지만, 단순한 스크립트 실행이 아니라 &lt;strong&gt;AI 에이전트가 자율적으로 판단하고 행동&lt;/strong&gt;한다는 점이 다릅니다.&lt;/p&gt;</description></item><item><title>OpenClaw로 AI 트렌드 자동 수집하기 - Camofox와 Discord 활용법</title><link>https://kwbaek.github.io/posts/2026-02-14-openclaw-ai-trends-automation/</link><pubDate>Sat, 14 Feb 2026 21:00:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-02-14-openclaw-ai-trends-automation/</guid><description>&lt;h2 id="-openclaw로-ai-트렌드-자동-수집-시스템-만들기"&gt;🤖 OpenClaw로 AI 트렌드 자동 수집 시스템 만들기&lt;/h2&gt;
+&lt;h2 id=&#34;-openclaw-크론잡이란&#34;&gt;📅 OpenClaw 크론잡이란?&lt;/h2&gt;
+&lt;p&gt;OpenClaw의 크론잡(Cron Job)은 &lt;strong&gt;정해진 시간에 AI 에이전트가 자동으로 작업을 수행&lt;/strong&gt;하도록 예약하는 기능입니다. 일반적인 크론처럼 시간 기반으로 작동하지만, 단순한 스크립트 실행이 아니라 &lt;strong&gt;AI 에이전트가 자율적으로 판단하고 행동&lt;/strong&gt;한다는 점이 다릅니다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>OpenClaw로 AI 트렌드 자동 수집하기 - Camofox와 Discord 활용법</title>
+      <link>https://kwbaek.github.io/posts/2026-02-14-openclaw-ai-trends-automation/</link>
+      <pubDate>Sat, 14 Feb 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-02-14-openclaw-ai-trends-automation/</guid>
+      <description>&lt;h2 id=&#34;-openclaw로-ai-트렌드-자동-수집-시스템-만들기&#34;&gt;🤖 OpenClaw로 AI 트렌드 자동 수집 시스템 만들기&lt;/h2&gt;
 &lt;p&gt;매일 쏟아지는 AI/ML 트렌드를 놓치지 않으려면 어떻게 해야 할까요? 저는 &lt;strong&gt;OpenClaw&lt;/strong&gt;를 이용해 1시간마다 자동으로 트렌드를 수집하고, Discord 채널에 정리해서 받아보는 시스템을 만들었습니다.&lt;/p&gt;
 &lt;p&gt;오늘은 이 시스템을 어떻게 구축했는지 공유해드릴게요!&lt;/p&gt;
-&lt;h2 id="-시스템-구성"&gt;🛠️ 시스템 구성&lt;/h2&gt;
+&lt;h2 id=&#34;-시스템-구성&#34;&gt;🛠️ 시스템 구성&lt;/h2&gt;
 &lt;p&gt;저의 AI 트렌드 자동 수집 시스템은 다음과 같이 구성되어 있습니다:&lt;/p&gt;
-&lt;pre tabindex="0"&gt;&lt;code&gt;[Camofox Browser] → [Google Search] → [OpenClaw Agent] → [Discord #ai-ml-trends]
-&lt;/code&gt;&lt;/pre&gt;&lt;h3 id="1-camofox-안티디텍션-브라우저"&gt;1. Camofox: 안티디텍션 브라우저&lt;/h3&gt;
-&lt;p&gt;OpenClaw의 &lt;strong&gt;Camofox 플러그인&lt;/strong&gt;을 사용하면 봇 탐지를 우회하며 Google 검색을 자동화할 수 있습니다. Chrome이나 일반 브라우저는 Google에서 봇으로 인식되기 쉬운데, Camofox는 이를 우아하게 해결해줍니다.&lt;/p&gt;</description></item></channel></rss>
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;[Camofox Browser] → [Google Search] → [OpenClaw Agent] → [Discord #ai-ml-trends]
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;1-camofox-안티디텍션-브라우저&#34;&gt;1. Camofox: 안티디텍션 브라우저&lt;/h3&gt;
+&lt;p&gt;OpenClaw의 &lt;strong&gt;Camofox 플러그인&lt;/strong&gt;을 사용하면 봇 탐지를 우회하며 Google 검색을 자동화할 수 있습니다. Chrome이나 일반 브라우저는 Google에서 봇으로 인식되기 쉬운데, Camofox는 이를 우아하게 해결해줍니다.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

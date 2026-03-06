@@ -1,5 +1,23 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Coding Agent on Kyungwook's Devlog</title><link>https://kwbaek.github.io/tags/coding-agent/</link><description>Recent content in Coding Agent on Kyungwook's Devlog</description><generator>Hugo -- 0.155.3</generator><language>ko-kr</language><lastBuildDate>Tue, 10 Feb 2026 21:00:00 +0900</lastBuildDate><atom:link href="https://kwbaek.github.io/tags/coding-agent/index.xml" rel="self" type="application/rss+xml"/><item><title>AI 에이전트가 시스템을 만드는 시대: NVIDIA VibeTensor와 자기 학습의 진화</title><link>https://kwbaek.github.io/posts/2026-02-10-ai-agents-building-systems/</link><pubDate>Tue, 10 Feb 2026 21:00:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-02-10-ai-agents-building-systems/</guid><description>&lt;h2 id="ai가-ai를-만든다"&gt;AI가 AI를 만든다&lt;/h2&gt;
-&lt;p&gt;2026년 2월, NVIDIA가 공개한 &lt;a href="https://www.marktechpost.com/2026/02/04/nvidia-ai-release-vibetensor-an-ai-generated-deep-learning-runtime-built-end-to-end-by-coding-agents-programmatically/"&gt;VibeTensor&lt;/a&gt;는 AI 개발의 새로운 패러다임을 제시합니다. 이 프로젝트의 핵심은 &lt;strong&gt;LLM 기반 코딩 에이전트가 전체 딥러닝 런타임 스택을 프로그래밍 방식으로 생성&lt;/strong&gt;했다는 점입니다.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Coding Agent on Kyungwook&#39;s Devlog</title>
+    <link>https://kwbaek.github.io/tags/coding-agent/</link>
+    <description>Recent content in Coding Agent on Kyungwook&#39;s Devlog</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Tue, 10 Feb 2026 21:00:00 +0900</lastBuildDate>
+    <atom:link href="https://kwbaek.github.io/tags/coding-agent/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI 에이전트가 시스템을 만드는 시대: NVIDIA VibeTensor와 자기 학습의 진화</title>
+      <link>https://kwbaek.github.io/posts/2026-02-10-ai-agents-building-systems/</link>
+      <pubDate>Tue, 10 Feb 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-02-10-ai-agents-building-systems/</guid>
+      <description>&lt;h2 id=&#34;ai가-ai를-만든다&#34;&gt;AI가 AI를 만든다&lt;/h2&gt;
+&lt;p&gt;2026년 2월, NVIDIA가 공개한 &lt;a href=&#34;https://www.marktechpost.com/2026/02/04/nvidia-ai-release-vibetensor-an-ai-generated-deep-learning-runtime-built-end-to-end-by-coding-agents-programmatically/&#34;&gt;VibeTensor&lt;/a&gt;는 AI 개발의 새로운 패러다임을 제시합니다. 이 프로젝트의 핵심은 &lt;strong&gt;LLM 기반 코딩 에이전트가 전체 딥러닝 런타임 스택을 프로그래밍 방식으로 생성&lt;/strong&gt;했다는 점입니다.&lt;/p&gt;
 &lt;p&gt;사람이 작성한 것은 high-level 가이드뿐. 나머지 시스템 소프트웨어는 AI 에이전트가 직접 작성했습니다. 이는 단순히 &amp;ldquo;코드 자동 생성&amp;quot;을 넘어, &lt;strong&gt;AI가 복잡한 시스템 아키텍처를 이해하고 구현할 수 있는 수준&lt;/strong&gt;에 도달했음을 의미합니다.&lt;/p&gt;
-&lt;h3 id="자기-대화mumbling로-학습하는-ai"&gt;자기 대화(Mumbling)로 학습하는 AI&lt;/h3&gt;
-&lt;p&gt;더 흥미로운 것은 AI의 학습 방식 자체도 진화하고 있다는 점입니다. 최근 연구(1월 28일 발표)에 따르면, &lt;strong&gt;AI가 내부적으로 &amp;ldquo;중얼거리는(mumbling)&amp;rdquo; 행위와 단기 메모리를 결합&lt;/strong&gt;하면 새로운 작업 적응, 목표 전환, 복잡한 과제 처리가 더 쉬워진다고 합니다.&lt;/p&gt;</description></item></channel></rss>
+&lt;h3 id=&#34;자기-대화mumbling로-학습하는-ai&#34;&gt;자기 대화(Mumbling)로 학습하는 AI&lt;/h3&gt;
+&lt;p&gt;더 흥미로운 것은 AI의 학습 방식 자체도 진화하고 있다는 점입니다. 최근 연구(1월 28일 발표)에 따르면, &lt;strong&gt;AI가 내부적으로 &amp;ldquo;중얼거리는(mumbling)&amp;rdquo; 행위와 단기 메모리를 결합&lt;/strong&gt;하면 새로운 작업 적응, 목표 전환, 복잡한 과제 처리가 더 쉬워진다고 합니다.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

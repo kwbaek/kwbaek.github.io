@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>OpenClaw v2026.3.2 실전 팁 — Secrets 워크플로와 스트리밍 설정 완전 정리 | Kyungwook&#39;s Devlog</title>
+<meta name="keywords" content="OpenClaw, secrets, streaming, cron, 설정, 운영팁">
+<meta name="description" content="OpenClaw v2026.3.2가 안정화된 지 며칠이 지났다. 이번 릴리즈에서 조용히 바뀐 것들 중 실제 운영에서 체감하는 두 가지 — Secrets 워크플로와 스트리밍 설정 — 를 집중 정리한다.
+
+Secrets 워크플로: audit → configure → apply → reload
+v2026.2.26부터 정식화된 Secrets 관리 워크플로가 이제 꽤 안정적으로 쓸 수 있는 상태다. 기본 순서는 이렇다:
+# 1. 현재 상태 점검
+openclaw secrets audit --check
+
+# 2. 미설정 항목 구성
+openclaw secrets configure
+
+# 3. 드라이런으로 영향 확인
+openclaw secrets apply --dry-run
+
+# 4. 실제 적용
+openclaw secrets apply
+
+# 5. 게이트웨이에 반영
+openclaw secrets reload
+특히 --dry-run 단계를 절대 건너뛰지 말 것. active surface에서 unresolved secret ref가 있으면 fail-fast로 즉시 실패 처리되기 때문에, 실수로 운영 중단이 생길 수 있다.">
+<meta name="author" content="">
+<link rel="canonical" href="https://kwbaek.github.io/posts/2026-03-06-openclaw-secrets-and-streaming/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.da3211e5ef867bf2b75fd5a6515cfed7195c011e8ab735694e203810a827097b.css" integrity="sha256-2jIR5e&#43;Ge/K3X9WmUVz&#43;1xlcAR6KtzVpTiA4EKgnCXs=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://kwbaek.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://kwbaek.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://kwbaek.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://kwbaek.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://kwbaek.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://kwbaek.github.io/posts/2026-03-06-openclaw-secrets-and-streaming/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="https://kwbaek.github.io/posts/2026-03-06-openclaw-secrets-and-streaming/">
+  <meta property="og:site_name" content="Kyungwook&#39;s Devlog">
+  <meta property="og:title" content="OpenClaw v2026.3.2 실전 팁 — Secrets 워크플로와 스트리밍 설정 완전 정리">
+  <meta property="og:description" content="OpenClaw v2026.3.2가 안정화된 지 며칠이 지났다. 이번 릴리즈에서 조용히 바뀐 것들 중 실제 운영에서 체감하는 두 가지 — Secrets 워크플로와 스트리밍 설정 — 를 집중 정리한다.
+Secrets 워크플로: audit → configure → apply → reload v2026.2.26부터 정식화된 Secrets 관리 워크플로가 이제 꽤 안정적으로 쓸 수 있는 상태다. 기본 순서는 이렇다:
+# 1. 현재 상태 점검 openclaw secrets audit --check # 2. 미설정 항목 구성 openclaw secrets configure # 3. 드라이런으로 영향 확인 openclaw secrets apply --dry-run # 4. 실제 적용 openclaw secrets apply # 5. 게이트웨이에 반영 openclaw secrets reload 특히 --dry-run 단계를 절대 건너뛰지 말 것. active surface에서 unresolved secret ref가 있으면 fail-fast로 즉시 실패 처리되기 때문에, 실수로 운영 중단이 생길 수 있다.">
+  <meta property="og:locale" content="ko-kr">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2026-03-06T21:00:00+09:00">
+    <meta property="article:modified_time" content="2026-03-06T21:00:00+09:00">
+    <meta property="article:tag" content="Openclaw">
+    <meta property="article:tag" content="Secrets">
+    <meta property="article:tag" content="Streaming">
+    <meta property="article:tag" content="Cron">
+    <meta property="article:tag" content="설정">
+    <meta property="article:tag" content="운영팁">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="OpenClaw v2026.3.2 실전 팁 — Secrets 워크플로와 스트리밍 설정 완전 정리">
+<meta name="twitter:description" content="OpenClaw v2026.3.2가 안정화된 지 며칠이 지났다. 이번 릴리즈에서 조용히 바뀐 것들 중 실제 운영에서 체감하는 두 가지 — Secrets 워크플로와 스트리밍 설정 — 를 집중 정리한다.
+
+Secrets 워크플로: audit → configure → apply → reload
+v2026.2.26부터 정식화된 Secrets 관리 워크플로가 이제 꽤 안정적으로 쓸 수 있는 상태다. 기본 순서는 이렇다:
+# 1. 현재 상태 점검
+openclaw secrets audit --check
+
+# 2. 미설정 항목 구성
+openclaw secrets configure
+
+# 3. 드라이런으로 영향 확인
+openclaw secrets apply --dry-run
+
+# 4. 실제 적용
+openclaw secrets apply
+
+# 5. 게이트웨이에 반영
+openclaw secrets reload
+특히 --dry-run 단계를 절대 건너뛰지 말 것. active surface에서 unresolved secret ref가 있으면 fail-fast로 즉시 실패 처리되기 때문에, 실수로 운영 중단이 생길 수 있다.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://kwbaek.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "OpenClaw v2026.3.2 실전 팁 — Secrets 워크플로와 스트리밍 설정 완전 정리",
+      "item": "https://kwbaek.github.io/posts/2026-03-06-openclaw-secrets-and-streaming/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "OpenClaw v2026.3.2 실전 팁 — Secrets 워크플로와 스트리밍 설정 완전 정리",
+  "name": "OpenClaw v2026.3.2 실전 팁 — Secrets 워크플로와 스트리밍 설정 완전 정리",
+  "description": "OpenClaw v2026.3.2가 안정화된 지 며칠이 지났다. 이번 릴리즈에서 조용히 바뀐 것들 중 실제 운영에서 체감하는 두 가지 — Secrets 워크플로와 스트리밍 설정 — 를 집중 정리한다.\nSecrets 워크플로: audit → configure → apply → reload v2026.2.26부터 정식화된 Secrets 관리 워크플로가 이제 꽤 안정적으로 쓸 수 있는 상태다. 기본 순서는 이렇다:\n# 1. 현재 상태 점검 openclaw secrets audit --check # 2. 미설정 항목 구성 openclaw secrets configure # 3. 드라이런으로 영향 확인 openclaw secrets apply --dry-run # 4. 실제 적용 openclaw secrets apply # 5. 게이트웨이에 반영 openclaw secrets reload 특히 --dry-run 단계를 절대 건너뛰지 말 것. active surface에서 unresolved secret ref가 있으면 fail-fast로 즉시 실패 처리되기 때문에, 실수로 운영 중단이 생길 수 있다.\n",
+  "keywords": [
+    "OpenClaw", "secrets", "streaming", "cron", "설정", "운영팁"
+  ],
+  "articleBody": "OpenClaw v2026.3.2가 안정화된 지 며칠이 지났다. 이번 릴리즈에서 조용히 바뀐 것들 중 실제 운영에서 체감하는 두 가지 — Secrets 워크플로와 스트리밍 설정 — 를 집중 정리한다.\nSecrets 워크플로: audit → configure → apply → reload v2026.2.26부터 정식화된 Secrets 관리 워크플로가 이제 꽤 안정적으로 쓸 수 있는 상태다. 기본 순서는 이렇다:\n# 1. 현재 상태 점검 openclaw secrets audit --check # 2. 미설정 항목 구성 openclaw secrets configure # 3. 드라이런으로 영향 확인 openclaw secrets apply --dry-run # 4. 실제 적용 openclaw secrets apply # 5. 게이트웨이에 반영 openclaw secrets reload 특히 --dry-run 단계를 절대 건너뛰지 말 것. active surface에서 unresolved secret ref가 있으면 fail-fast로 즉시 실패 처리되기 때문에, 실수로 운영 중단이 생길 수 있다.\n토큰 분리 원칙 운영에서 가장 중요한 건 토큰 분리다:\n용도 설정 키 게이트웨이 메인 인증 gateway.auth.token Webhook/Hooks hooks.token Cron 전용 cron.webhookToken 세 개를 모두 같은 값으로 쓰는 분들이 많은데, 분리하면 Cron 웹훅 연동 시 게이트웨이 마스터 토큰을 노출할 필요가 없어진다. 특히 외부 서비스와 연동하는 cron job이 있다면 cron.webhookToken은 꼭 별도 발급하자.\n스트리밍 설정: canonical 키로 통일하기 v2026.2.22 이후 스트리밍 설정의 canonical 키가 정리됐다.\n기본 형식 channels: telegram: streaming: partial # off | partial | block | progress discord: streaming: block Slack은 예외:\nchannels: slack: nativeStreaming: true # Slack 전용 토글 streamMode 같은 레거시 키를 아직 쓰고 있다면:\nopenclaw doctor --fix 으로 자동 마이그레이션할 수 있다. 실제로 openclaw doctor 출력에서 deprecated key 경고가 뜬다면 바로 --fix 실행을 추천.\n각 모드의 차이 off: 스트리밍 완전 비활성. 응답이 완성된 후 한 번에 전송. partial: 청크 단위로 순차 전송. Telegram 기본값(신규 설치 기준). block: 문단/블록 단위로 묶어서 전송. Discord에서 메시지 도배 방지에 유용. progress: 진행 표시기 포함 전송. 긴 작업에서 “생각 중…” 피드백을 주고 싶을 때. 블록 단위 전송을 더 세밀하게 제어하고 싶다면:\nblockStreamingCoalesce: minChars: 100 maxChars: 500 idleMs: 300 idleMs 동안 새 청크가 없으면 묶음 전송한다. Discord에서 짧은 단어들이 따로따로 오는 현상을 방지하는 데 효과적이다.\nHeartbeat 운영 팁: DM 정책 명시 v2026.2.27 이후 heartbeat DM 기본값이 allow로 복귀됐다. DM을 원하지 않으면 명시적으로 설정해야 한다:\nagents: defaults: heartbeat: directPolicy: \"block\" 반대로 “특정 시간대에만 DM 허용” 같은 세밀한 제어는 현재 cron으로 우회하는 게 현실적이다.\n운영 체크 루틴 (2026.3.x 기준) 업데이트 전후, 그리고 주기적으로 돌릴 루틴:\n# 설정 유효성 검사 openclaw config validate --json # 헬스 프로브 (v2026.3.1부터 내장) curl -fsS http://127.0.0.1:18789/healthz curl -fsS http://127.0.0.1:18789/readyz # 보안 점검 openclaw secrets audit --check openclaw security audit # 세션 저장소 점검 openclaw sessions cleanup --all-agents --dry-run --json /healthz와 /readyz는 v2026.3.1에서 게이트웨이에 내장된 프로브 엔드포인트다. Docker나 systemd 헬스체크에 바로 연결할 수 있어서, 컨테이너로 운영하는 분들에게 특히 유용하다.\nCron: 정시성이 중요한 잡은 --exact Cron 스케줄에서 정확히 정각이 중요한 잡은 --exact 플래그를 명시하자:\nopenclaw cron add \"0 9 * * 1\" --exact \"weekly-report\" -- openclaw agent \"주간 리포트 생성\" --exact 없이는 스태거(jitter)가 걸릴 수 있다. 반면 배치 점검(메일·캘린더·날씨 등)은 heartbeat에 묶는 게 비용 면에서 훨씬 효율적이다. 개별 cron으로 5개 돌리는 것보다 heartbeat 하나에서 로직으로 분기하는 게 낫다.\n마치며 OpenClaw가 v2026.3.x대에 들어서면서 운영 안정성 관련 기능들이 많이 성숙해졌다. Secrets 분리, 스트리밍 canonical 설정, 헬스 프로브 내장 — 이 세 가지만 제대로 정리해도 운영 중 당황할 일이 확 줄어든다.\n다음 포스트에서는 멀티에이전트 구성(sessions_spawn + subagents) 실전 패턴을 다뤄볼 예정이다.\n",
+  "wordCount" : "510",
+  "inLanguage": "en",
+  "datePublished": "2026-03-06T21:00:00+09:00",
+  "dateModified": "2026-03-06T21:00:00+09:00",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://kwbaek.github.io/posts/2026-03-06-openclaw-secrets-and-streaming/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Kyungwook's Devlog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://kwbaek.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://kwbaek.github.io/" accesskey="h" title="Kyungwook&#39;s Devlog (Alt + H)">Kyungwook&#39;s Devlog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://kwbaek.github.io/categories/" title="categories">
+                    <span>categories</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kwbaek.github.io/tags/" title="tags">
+                    <span>tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kwbaek.github.io/" title="Kyungwook&#39;s Devlog">
+                    <span>Kyungwook&#39;s Devlog</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      OpenClaw v2026.3.2 실전 팁 — Secrets 워크플로와 스트리밍 설정 완전 정리
+    </h1>
+    <div class="post-meta"><span title='2026-03-06 21:00:00 +0900 KST'>March 6, 2026</span>
+
+</div>
+  </header> 
+  <div class="post-content"><p>OpenClaw v2026.3.2가 안정화된 지 며칠이 지났다. 이번 릴리즈에서 조용히 바뀐 것들 중 실제 운영에서 체감하는 두 가지 — <strong>Secrets 워크플로</strong>와 <strong>스트리밍 설정</strong> — 를 집중 정리한다.</p>
+<hr>
+<h2 id="secrets-워크플로-audit--configure--apply--reload">Secrets 워크플로: <code>audit → configure → apply → reload</code><a hidden class="anchor" aria-hidden="true" href="#secrets-워크플로-audit--configure--apply--reload">#</a></h2>
+<p>v2026.2.26부터 정식화된 Secrets 관리 워크플로가 이제 꽤 안정적으로 쓸 수 있는 상태다. 기본 순서는 이렇다:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 1. 현재 상태 점검</span>
+</span></span><span style="display:flex;"><span>openclaw secrets audit --check
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 2. 미설정 항목 구성</span>
+</span></span><span style="display:flex;"><span>openclaw secrets configure
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 3. 드라이런으로 영향 확인</span>
+</span></span><span style="display:flex;"><span>openclaw secrets apply --dry-run
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 4. 실제 적용</span>
+</span></span><span style="display:flex;"><span>openclaw secrets apply
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 5. 게이트웨이에 반영</span>
+</span></span><span style="display:flex;"><span>openclaw secrets reload
+</span></span></code></pre></div><p>특히 <code>--dry-run</code> 단계를 절대 건너뛰지 말 것. active surface에서 unresolved secret ref가 있으면 fail-fast로 즉시 실패 처리되기 때문에, 실수로 운영 중단이 생길 수 있다.</p>
+<h3 id="토큰-분리-원칙">토큰 분리 원칙<a hidden class="anchor" aria-hidden="true" href="#토큰-분리-원칙">#</a></h3>
+<p>운영에서 가장 중요한 건 토큰 분리다:</p>
+<table>
+  <thead>
+      <tr>
+          <th>용도</th>
+          <th>설정 키</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>게이트웨이 메인 인증</td>
+          <td><code>gateway.auth.token</code></td>
+      </tr>
+      <tr>
+          <td>Webhook/Hooks</td>
+          <td><code>hooks.token</code></td>
+      </tr>
+      <tr>
+          <td>Cron 전용</td>
+          <td><code>cron.webhookToken</code></td>
+      </tr>
+  </tbody>
+</table>
+<p>세 개를 모두 같은 값으로 쓰는 분들이 많은데, 분리하면 Cron 웹훅 연동 시 게이트웨이 마스터 토큰을 노출할 필요가 없어진다. 특히 외부 서비스와 연동하는 cron job이 있다면 <code>cron.webhookToken</code>은 꼭 별도 발급하자.</p>
+<hr>
+<h2 id="스트리밍-설정-canonical-키로-통일하기">스트리밍 설정: canonical 키로 통일하기<a hidden class="anchor" aria-hidden="true" href="#스트리밍-설정-canonical-키로-통일하기">#</a></h2>
+<p>v2026.2.22 이후 스트리밍 설정의 canonical 키가 정리됐다.</p>
+<h3 id="기본-형식">기본 형식<a hidden class="anchor" aria-hidden="true" href="#기본-형식">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">channels</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">telegram</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">streaming</span>: <span style="color:#ae81ff">partial  </span> <span style="color:#75715e"># off | partial | block | progress</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">discord</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">streaming</span>: <span style="color:#ae81ff">block</span>
+</span></span></code></pre></div><p>Slack은 예외:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">channels</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">slack</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">nativeStreaming</span>: <span style="color:#66d9ef">true</span>  <span style="color:#75715e"># Slack 전용 토글</span>
+</span></span></code></pre></div><p><code>streamMode</code> 같은 레거시 키를 아직 쓰고 있다면:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>openclaw doctor --fix
+</span></span></code></pre></div><p>으로 자동 마이그레이션할 수 있다. 실제로 <code>openclaw doctor</code> 출력에서 deprecated key 경고가 뜬다면 바로 <code>--fix</code> 실행을 추천.</p>
+<h3 id="각-모드의-차이">각 모드의 차이<a hidden class="anchor" aria-hidden="true" href="#각-모드의-차이">#</a></h3>
+<ul>
+<li><strong>off</strong>: 스트리밍 완전 비활성. 응답이 완성된 후 한 번에 전송.</li>
+<li><strong>partial</strong>: 청크 단위로 순차 전송. Telegram 기본값(신규 설치 기준).</li>
+<li><strong>block</strong>: 문단/블록 단위로 묶어서 전송. Discord에서 메시지 도배 방지에 유용.</li>
+<li><strong>progress</strong>: 진행 표시기 포함 전송. 긴 작업에서 &ldquo;생각 중&hellip;&rdquo; 피드백을 주고 싶을 때.</li>
+</ul>
+<p>블록 단위 전송을 더 세밀하게 제어하고 싶다면:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">blockStreamingCoalesce</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">minChars</span>: <span style="color:#ae81ff">100</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">maxChars</span>: <span style="color:#ae81ff">500</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">idleMs</span>: <span style="color:#ae81ff">300</span>
+</span></span></code></pre></div><p><code>idleMs</code> 동안 새 청크가 없으면 묶음 전송한다. Discord에서 짧은 단어들이 따로따로 오는 현상을 방지하는 데 효과적이다.</p>
+<hr>
+<h2 id="heartbeat-운영-팁-dm-정책-명시">Heartbeat 운영 팁: DM 정책 명시<a hidden class="anchor" aria-hidden="true" href="#heartbeat-운영-팁-dm-정책-명시">#</a></h2>
+<p>v2026.2.27 이후 heartbeat DM 기본값이 <code>allow</code>로 복귀됐다. DM을 원하지 않으면 명시적으로 설정해야 한다:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">agents</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">defaults</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">heartbeat</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">directPolicy</span>: <span style="color:#e6db74">&#34;block&#34;</span>
+</span></span></code></pre></div><p>반대로 &ldquo;특정 시간대에만 DM 허용&rdquo; 같은 세밀한 제어는 현재 cron으로 우회하는 게 현실적이다.</p>
+<hr>
+<h2 id="운영-체크-루틴-20263x-기준">운영 체크 루틴 (2026.3.x 기준)<a hidden class="anchor" aria-hidden="true" href="#운영-체크-루틴-20263x-기준">#</a></h2>
+<p>업데이트 전후, 그리고 주기적으로 돌릴 루틴:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 설정 유효성 검사</span>
+</span></span><span style="display:flex;"><span>openclaw config validate --json
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 헬스 프로브 (v2026.3.1부터 내장)</span>
+</span></span><span style="display:flex;"><span>curl -fsS http://127.0.0.1:18789/healthz
+</span></span><span style="display:flex;"><span>curl -fsS http://127.0.0.1:18789/readyz
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 보안 점검</span>
+</span></span><span style="display:flex;"><span>openclaw secrets audit --check
+</span></span><span style="display:flex;"><span>openclaw security audit
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 세션 저장소 점검</span>
+</span></span><span style="display:flex;"><span>openclaw sessions cleanup --all-agents --dry-run --json
+</span></span></code></pre></div><p><code>/healthz</code>와 <code>/readyz</code>는 v2026.3.1에서 게이트웨이에 내장된 프로브 엔드포인트다. Docker나 systemd 헬스체크에 바로 연결할 수 있어서, 컨테이너로 운영하는 분들에게 특히 유용하다.</p>
+<hr>
+<h2 id="cron-정시성이-중요한-잡은---exact">Cron: 정시성이 중요한 잡은 <code>--exact</code><a hidden class="anchor" aria-hidden="true" href="#cron-정시성이-중요한-잡은---exact">#</a></h2>
+<p>Cron 스케줄에서 정확히 정각이 중요한 잡은 <code>--exact</code> 플래그를 명시하자:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>openclaw cron add <span style="color:#e6db74">&#34;0 9 * * 1&#34;</span> --exact <span style="color:#e6db74">&#34;weekly-report&#34;</span> -- openclaw agent <span style="color:#e6db74">&#34;주간 리포트 생성&#34;</span>
+</span></span></code></pre></div><p><code>--exact</code> 없이는 스태거(jitter)가 걸릴 수 있다. 반면 배치 점검(메일·캘린더·날씨 등)은 heartbeat에 묶는 게 비용 면에서 훨씬 효율적이다. 개별 cron으로 5개 돌리는 것보다 heartbeat 하나에서 로직으로 분기하는 게 낫다.</p>
+<hr>
+<h2 id="마치며">마치며<a hidden class="anchor" aria-hidden="true" href="#마치며">#</a></h2>
+<p>OpenClaw가 v2026.3.x대에 들어서면서 운영 안정성 관련 기능들이 많이 성숙해졌다. Secrets 분리, 스트리밍 canonical 설정, 헬스 프로브 내장 — 이 세 가지만 제대로 정리해도 운영 중 당황할 일이 확 줄어든다.</p>
+<p>다음 포스트에서는 <strong>멀티에이전트 구성(sessions_spawn + subagents)</strong> 실전 패턴을 다뤄볼 예정이다.</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://kwbaek.github.io/tags/openclaw/">Openclaw</a></li>
+      <li><a href="https://kwbaek.github.io/tags/secrets/">Secrets</a></li>
+      <li><a href="https://kwbaek.github.io/tags/streaming/">Streaming</a></li>
+      <li><a href="https://kwbaek.github.io/tags/cron/">Cron</a></li>
+      <li><a href="https://kwbaek.github.io/tags/%EC%84%A4%EC%A0%95/">설정</a></li>
+      <li><a href="https://kwbaek.github.io/tags/%EC%9A%B4%EC%98%81%ED%8C%81/">운영팁</a></li>
+    </ul>
+  </footer><script src="https://utteranc.es/client.js"
+        repo="kwbaek/blog-comments"
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://kwbaek.github.io/">Kyungwook&#39;s Devlog</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>
