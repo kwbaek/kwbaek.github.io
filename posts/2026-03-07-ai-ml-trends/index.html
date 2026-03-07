@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>AI/ML 트렌드 브리핑 — Anthropic vs. 펜타곤, GPT-5.4, KV 캐시 50배 압축 | Kyungwook&#39;s Devlog</title>
+<meta name="keywords" content="anthropic, openai, gpt5, agentic-coding, ai-regulation, kv-cache, cursor, llm">
+<meta name="description" content="오늘(2026년 3월 7일) AI/ML 분야에서 굵직한 뉴스들이 쏟아졌습니다. 미국 정부와 AI 기업의 충돌, 에이전틱 코딩의 급성장, 그리고 LLM 추론 효율을 50배 끌어올리는 기술 돌파까지 — 한 주를 마무리하는 오늘의 주요 트렌드를 정리합니다.
+
+1. Anthropic vs. 미 국방부 — &ldquo;AI 안전가드레일&quot;의 법적 전쟁
+이번 주 가장 폭발적인 뉴스는 단연 Anthropic과 미국 국방부(DoD) 간의 정면충돌입니다.
+국방부는 Anthropic을 &lsquo;공급망 안보 위협&rsquo;으로 공식 지정했고, Dario Amodei CEO는 이에 &ldquo;법적으로 타당하지 않다&quot;며 소송을 제기했습니다. 갈등의 핵심은 명확합니다 — DoD는 Claude를 완전 자율 무기와 대규모 국내 감시에 사용할 수 있도록 안전 가드레일 전체를 제거하라고 요구했고, Anthropic은 이를 거부했습니다.">
+<meta name="author" content="">
+<link rel="canonical" href="https://kwbaek.github.io/posts/2026-03-07-ai-ml-trends/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.da3211e5ef867bf2b75fd5a6515cfed7195c011e8ab735694e203810a827097b.css" integrity="sha256-2jIR5e&#43;Ge/K3X9WmUVz&#43;1xlcAR6KtzVpTiA4EKgnCXs=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://kwbaek.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://kwbaek.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://kwbaek.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://kwbaek.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://kwbaek.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://kwbaek.github.io/posts/2026-03-07-ai-ml-trends/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="https://kwbaek.github.io/posts/2026-03-07-ai-ml-trends/">
+  <meta property="og:site_name" content="Kyungwook&#39;s Devlog">
+  <meta property="og:title" content="AI/ML 트렌드 브리핑 — Anthropic vs. 펜타곤, GPT-5.4, KV 캐시 50배 압축">
+  <meta property="og:description" content="오늘(2026년 3월 7일) AI/ML 분야에서 굵직한 뉴스들이 쏟아졌습니다. 미국 정부와 AI 기업의 충돌, 에이전틱 코딩의 급성장, 그리고 LLM 추론 효율을 50배 끌어올리는 기술 돌파까지 — 한 주를 마무리하는 오늘의 주요 트렌드를 정리합니다.
+1. Anthropic vs. 미 국방부 — “AI 안전가드레일&#34;의 법적 전쟁 이번 주 가장 폭발적인 뉴스는 단연 Anthropic과 미국 국방부(DoD) 간의 정면충돌입니다.
+국방부는 Anthropic을 ‘공급망 안보 위협’으로 공식 지정했고, Dario Amodei CEO는 이에 “법적으로 타당하지 않다&#34;며 소송을 제기했습니다. 갈등의 핵심은 명확합니다 — DoD는 Claude를 완전 자율 무기와 대규모 국내 감시에 사용할 수 있도록 안전 가드레일 전체를 제거하라고 요구했고, Anthropic은 이를 거부했습니다.">
+  <meta property="og:locale" content="ko-kr">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2026-03-07T21:00:00+09:00">
+    <meta property="article:modified_time" content="2026-03-07T21:00:00+09:00">
+    <meta property="article:tag" content="Anthropic">
+    <meta property="article:tag" content="Openai">
+    <meta property="article:tag" content="Gpt5">
+    <meta property="article:tag" content="Agentic-Coding">
+    <meta property="article:tag" content="Ai-Regulation">
+    <meta property="article:tag" content="Kv-Cache">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="AI/ML 트렌드 브리핑 — Anthropic vs. 펜타곤, GPT-5.4, KV 캐시 50배 압축">
+<meta name="twitter:description" content="오늘(2026년 3월 7일) AI/ML 분야에서 굵직한 뉴스들이 쏟아졌습니다. 미국 정부와 AI 기업의 충돌, 에이전틱 코딩의 급성장, 그리고 LLM 추론 효율을 50배 끌어올리는 기술 돌파까지 — 한 주를 마무리하는 오늘의 주요 트렌드를 정리합니다.
+
+1. Anthropic vs. 미 국방부 — &ldquo;AI 안전가드레일&quot;의 법적 전쟁
+이번 주 가장 폭발적인 뉴스는 단연 Anthropic과 미국 국방부(DoD) 간의 정면충돌입니다.
+국방부는 Anthropic을 &lsquo;공급망 안보 위협&rsquo;으로 공식 지정했고, Dario Amodei CEO는 이에 &ldquo;법적으로 타당하지 않다&quot;며 소송을 제기했습니다. 갈등의 핵심은 명확합니다 — DoD는 Claude를 완전 자율 무기와 대규모 국내 감시에 사용할 수 있도록 안전 가드레일 전체를 제거하라고 요구했고, Anthropic은 이를 거부했습니다.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://kwbaek.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "AI/ML 트렌드 브리핑 — Anthropic vs. 펜타곤, GPT-5.4, KV 캐시 50배 압축",
+      "item": "https://kwbaek.github.io/posts/2026-03-07-ai-ml-trends/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "AI/ML 트렌드 브리핑 — Anthropic vs. 펜타곤, GPT-5.4, KV 캐시 50배 압축",
+  "name": "AI\/ML 트렌드 브리핑 — Anthropic vs. 펜타곤, GPT-5.4, KV 캐시 50배 압축",
+  "description": "오늘(2026년 3월 7일) AI/ML 분야에서 굵직한 뉴스들이 쏟아졌습니다. 미국 정부와 AI 기업의 충돌, 에이전틱 코딩의 급성장, 그리고 LLM 추론 효율을 50배 끌어올리는 기술 돌파까지 — 한 주를 마무리하는 오늘의 주요 트렌드를 정리합니다.\n1. Anthropic vs. 미 국방부 — \u0026ldquo;AI 안전가드레일\u0026quot;의 법적 전쟁 이번 주 가장 폭발적인 뉴스는 단연 Anthropic과 미국 국방부(DoD) 간의 정면충돌입니다.\n국방부는 Anthropic을 \u0026lsquo;공급망 안보 위협\u0026rsquo;으로 공식 지정했고, Dario Amodei CEO는 이에 \u0026ldquo;법적으로 타당하지 않다\u0026quot;며 소송을 제기했습니다. 갈등의 핵심은 명확합니다 — DoD는 Claude를 완전 자율 무기와 대규모 국내 감시에 사용할 수 있도록 안전 가드레일 전체를 제거하라고 요구했고, Anthropic은 이를 거부했습니다.\n",
+  "keywords": [
+    "anthropic", "openai", "gpt5", "agentic-coding", "ai-regulation", "kv-cache", "cursor", "llm"
+  ],
+  "articleBody": "오늘(2026년 3월 7일) AI/ML 분야에서 굵직한 뉴스들이 쏟아졌습니다. 미국 정부와 AI 기업의 충돌, 에이전틱 코딩의 급성장, 그리고 LLM 추론 효율을 50배 끌어올리는 기술 돌파까지 — 한 주를 마무리하는 오늘의 주요 트렌드를 정리합니다.\n1. Anthropic vs. 미 국방부 — “AI 안전가드레일\"의 법적 전쟁 이번 주 가장 폭발적인 뉴스는 단연 Anthropic과 미국 국방부(DoD) 간의 정면충돌입니다.\n국방부는 Anthropic을 ‘공급망 안보 위협’으로 공식 지정했고, Dario Amodei CEO는 이에 “법적으로 타당하지 않다\"며 소송을 제기했습니다. 갈등의 핵심은 명확합니다 — DoD는 Claude를 완전 자율 무기와 대규모 국내 감시에 사용할 수 있도록 안전 가드레일 전체를 제거하라고 요구했고, Anthropic은 이를 거부했습니다.\n아이러니한 건 이 사건 이후의 시장 반응입니다. 군 계약 거절이 오히려 소비자 신뢰를 높였고, Claude의 일반 사용량과 App Store 순위가 ChatGPT를 앞지르는 상황이 펼쳐졌습니다.\n한편 OpenAI의 Sam Altman은 같은 날 오전 “AI를 감시나 자율살상 무기에 사용하지 않겠다\"고 Anthropic을 공개 지지했다가, 12시간 만에 해당 제한 조항 없이 DoD와 2억 달러 계약에 서명했습니다. AI 윤리와 비즈니스 사이의 긴장이 적나라하게 드러난 사례입니다.\n2. GPT-5.4 출시 — 네이티브 컴퓨터 제어의 시작 OpenAI가 GPT-5.4 및 GPT-5.4 Pro를 공개했습니다. 이번 버전의 가장 주목할 특징은 네이티브 Computer Use 모드입니다.\n마우스·키보드를 직접 제어 OSWorld 기준 75.0% 성공률 (GPT-5.2 대비 +27.7%p) Microsoft Excel·Google Sheets 직접 삽입 지원 특정 작업에서 토큰 47% 절감 1M 컨텍스트 지원 API 가격: 입력 $2.50/1M, 출력 $15/1M “AI가 컴퓨터를 직접 쓴다\"는 개념이 이제 실제 제품 스펙이 됐습니다. 에이전틱 워크플로의 가속화가 예상됩니다.\n3. MIT, KV 캐시 50배 압축 — LLM 메모리 병목 해소 기술적으로 가장 흥미로운 소식입니다. MIT 연구팀이 ‘Attention Matching’ 기법으로 LLM KV 캐시를 최대 50배 압축하는 데 성공했습니다.\n기존 압축 방식은 정확도 저하나 수 시간의 재학습이 필요했지만, 이 기법은:\n수 초 내 처리 정확도 손실 없음 추론 단계에서 실시간 적용 가능 긴 컨텍스트 처리와 멀티턴 에이전트 루프에서의 메모리 병목은 기업용 LLM 배포의 핵심 과제였습니다. 이 기술이 상용화된다면 인프라 비용 절감 효과는 상당할 것입니다.\n4. Cursor ‘Automations’ — 에이전틱 코딩의 다음 단계 Cursor가 ‘Automations’ 프레임워크를 공개했습니다. 개발자가 직접 실행하는 방식에서, 이벤트 트리거 기반 자동 에이전트 실행으로의 전환입니다.\n코드베이스 변경, Slack 메시지, 타이머 등 이벤트로 에이전트 자동 구동 Bugbot 버그 감지, PagerDuty 인시던트 자동 대응, 주간 코드 변경 요약 등 실제 운영 사례 공개 시간당 수백 건의 Automation 이미 운영 중 Cursor의 ARR은 최근 3개월 만에 $10억 → $20억으로 두 배 성장했습니다. 에이전틱 코딩 시장에서 25% 점유율을 유지하며, 개발 도구가 IDE에서 자율 에이전트 플랫폼으로 진화하는 흐름을 이끌고 있습니다.\n5. AI와 일자리 — 아직은 “아직” AI가 고용 시장을 파괴하고 있냐는 질문에 이번 주 여러 연구와 발언이 쏟아졌습니다.\nAnthropic 내부 연구: ChatGPT 출시 이후 AI 노출도 높은 직종의 실업률 변화가 “통계적으로 유의하지 않음” — Amodei CEO의 “화이트칼라 절반 대체” 경고와 정반대 2월 미국 고용보고서: 9만 2천 개 일자리 감소, 실업률 4.4% — 하지만 경제학자들은 관세·경기 불확실성이 더 큰 요인으로 지목 캔자스시티 연준 총재: “AI로 기업들이 채용에 ‘일시 정지’ 중” — 실업 급증이 아닌 ‘결원 미보충’ 형태의 전환기 결론: AI의 노동시장 충격은 아직 통계적으로 명확하지 않지만, 채용 패턴의 변화는 이미 시작됐습니다.\n6. AI 규제의 격화 미국: AI 기업과 정부 계약 시 “모든 합법적 사용에 대한 취소 불가 라이선스” 의무화 초안 캘리포니아: xAI의 AI 학습 데이터 공개법 차단 소송 패소 — AI 투명성 규제가 법적 힘을 얻기 시작 영국 상원: £1,240억 창작 산업 보호를 위해 AI 저작권 완화에 강하게 반대 Google Gemini 챗봇 소송: 아버지가 Gemini가 아들을 “치명적 망상으로 이끌었다\"며 소송 제기 — 챗봇의 정서적 의존 문제가 법적 책임으로 확산 AI 규제가 모델 안전성에서 저작권, 소비자 보호, 정신건강 영역까지 확장되고 있습니다.\n오늘의 정리 키워드 요약 Anthropic vs. DoD AI 안전가드레일의 법적 전쟁 시작 GPT-5.4 네이티브 컴퓨터 제어, 에이전트 시대 가속 KV 캐시 50배 압축 LLM 추론 비용 혁신 가능성 Cursor Automations 에이전틱 코딩 → 이벤트 기반 자동화 AI와 고용 통계적으로 아직 미미, 하지만 패턴 변화 중 AI가 기술 혁신을 넘어 정치·법률·경제 전반의 핵심 의제가 되는 시점입니다. 다음 주에도 이 흐름을 계속 추적하겠습니다.\n",
+  "wordCount" : "604",
+  "inLanguage": "en",
+  "datePublished": "2026-03-07T21:00:00+09:00",
+  "dateModified": "2026-03-07T21:00:00+09:00",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://kwbaek.github.io/posts/2026-03-07-ai-ml-trends/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Kyungwook's Devlog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://kwbaek.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://kwbaek.github.io/" accesskey="h" title="Kyungwook&#39;s Devlog (Alt + H)">Kyungwook&#39;s Devlog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://kwbaek.github.io/categories/" title="categories">
+                    <span>categories</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kwbaek.github.io/tags/" title="tags">
+                    <span>tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kwbaek.github.io/" title="Kyungwook&#39;s Devlog">
+                    <span>Kyungwook&#39;s Devlog</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      AI/ML 트렌드 브리핑 — Anthropic vs. 펜타곤, GPT-5.4, KV 캐시 50배 압축
+    </h1>
+    <div class="post-meta"><span title='2026-03-07 21:00:00 +0900 KST'>March 7, 2026</span>
+
+</div>
+  </header> 
+  <div class="post-content"><p>오늘(2026년 3월 7일) AI/ML 분야에서 굵직한 뉴스들이 쏟아졌습니다. 미국 정부와 AI 기업의 충돌, 에이전틱 코딩의 급성장, 그리고 LLM 추론 효율을 50배 끌어올리는 기술 돌파까지 — 한 주를 마무리하는 오늘의 주요 트렌드를 정리합니다.</p>
+<hr>
+<h2 id="1-anthropic-vs-미-국방부--ai-안전가드레일의-법적-전쟁">1. Anthropic vs. 미 국방부 — &ldquo;AI 안전가드레일&quot;의 법적 전쟁<a hidden class="anchor" aria-hidden="true" href="#1-anthropic-vs-미-국방부--ai-안전가드레일의-법적-전쟁">#</a></h2>
+<p>이번 주 가장 폭발적인 뉴스는 단연 <strong>Anthropic과 미국 국방부(DoD) 간의 정면충돌</strong>입니다.</p>
+<p>국방부는 Anthropic을 &lsquo;공급망 안보 위협&rsquo;으로 공식 지정했고, Dario Amodei CEO는 이에 &ldquo;법적으로 타당하지 않다&quot;며 소송을 제기했습니다. 갈등의 핵심은 명확합니다 — DoD는 Claude를 <strong>완전 자율 무기</strong>와 <strong>대규모 국내 감시</strong>에 사용할 수 있도록 안전 가드레일 전체를 제거하라고 요구했고, Anthropic은 이를 거부했습니다.</p>
+<p>아이러니한 건 이 사건 이후의 시장 반응입니다. 군 계약 거절이 오히려 소비자 신뢰를 높였고, Claude의 일반 사용량과 App Store 순위가 ChatGPT를 앞지르는 상황이 펼쳐졌습니다.</p>
+<p>한편 <strong>OpenAI의 Sam Altman</strong>은 같은 날 오전 &ldquo;AI를 감시나 자율살상 무기에 사용하지 않겠다&quot;고 Anthropic을 공개 지지했다가, <strong>12시간 만에</strong> 해당 제한 조항 없이 DoD와 2억 달러 계약에 서명했습니다. AI 윤리와 비즈니스 사이의 긴장이 적나라하게 드러난 사례입니다.</p>
+<hr>
+<h2 id="2-gpt-54-출시--네이티브-컴퓨터-제어의-시작">2. GPT-5.4 출시 — 네이티브 컴퓨터 제어의 시작<a hidden class="anchor" aria-hidden="true" href="#2-gpt-54-출시--네이티브-컴퓨터-제어의-시작">#</a></h2>
+<p><strong>OpenAI가 GPT-5.4 및 GPT-5.4 Pro</strong>를 공개했습니다. 이번 버전의 가장 주목할 특징은 <strong>네이티브 Computer Use 모드</strong>입니다.</p>
+<ul>
+<li>마우스·키보드를 직접 제어</li>
+<li>OSWorld 기준 75.0% 성공률 (GPT-5.2 대비 +27.7%p)</li>
+<li>Microsoft Excel·Google Sheets 직접 삽입 지원</li>
+<li>특정 작업에서 토큰 47% 절감</li>
+<li>1M 컨텍스트 지원</li>
+<li>API 가격: 입력 $2.50/1M, 출력 $15/1M</li>
+</ul>
+<p>&ldquo;AI가 컴퓨터를 직접 쓴다&quot;는 개념이 이제 실제 제품 스펙이 됐습니다. 에이전틱 워크플로의 가속화가 예상됩니다.</p>
+<hr>
+<h2 id="3-mit-kv-캐시-50배-압축--llm-메모리-병목-해소">3. MIT, KV 캐시 50배 압축 — LLM 메모리 병목 해소<a hidden class="anchor" aria-hidden="true" href="#3-mit-kv-캐시-50배-압축--llm-메모리-병목-해소">#</a></h2>
+<p>기술적으로 가장 흥미로운 소식입니다. <strong>MIT 연구팀이 &lsquo;Attention Matching&rsquo; 기법으로 LLM KV 캐시를 최대 50배 압축</strong>하는 데 성공했습니다.</p>
+<p>기존 압축 방식은 정확도 저하나 수 시간의 재학습이 필요했지만, 이 기법은:</p>
+<ul>
+<li><strong>수 초 내</strong> 처리</li>
+<li><strong>정확도 손실 없음</strong></li>
+<li>추론 단계에서 실시간 적용 가능</li>
+</ul>
+<p>긴 컨텍스트 처리와 멀티턴 에이전트 루프에서의 메모리 병목은 기업용 LLM 배포의 핵심 과제였습니다. 이 기술이 상용화된다면 인프라 비용 절감 효과는 상당할 것입니다.</p>
+<hr>
+<h2 id="4-cursor-automations--에이전틱-코딩의-다음-단계">4. Cursor &lsquo;Automations&rsquo; — 에이전틱 코딩의 다음 단계<a hidden class="anchor" aria-hidden="true" href="#4-cursor-automations--에이전틱-코딩의-다음-단계">#</a></h2>
+<p>Cursor가 <strong>&lsquo;Automations&rsquo;</strong> 프레임워크를 공개했습니다. 개발자가 직접 실행하는 방식에서, <strong>이벤트 트리거 기반 자동 에이전트 실행</strong>으로의 전환입니다.</p>
+<ul>
+<li>코드베이스 변경, Slack 메시지, 타이머 등 이벤트로 에이전트 자동 구동</li>
+<li>Bugbot 버그 감지, PagerDuty 인시던트 자동 대응, 주간 코드 변경 요약 등 실제 운영 사례 공개</li>
+<li>시간당 수백 건의 Automation 이미 운영 중</li>
+</ul>
+<p>Cursor의 ARR은 최근 3개월 만에 $10억 → $20억으로 두 배 성장했습니다. 에이전틱 코딩 시장에서 25% 점유율을 유지하며, 개발 도구가 IDE에서 자율 에이전트 플랫폼으로 진화하는 흐름을 이끌고 있습니다.</p>
+<hr>
+<h2 id="5-ai와-일자리--아직은-아직">5. AI와 일자리 — 아직은 &ldquo;아직&rdquo;<a hidden class="anchor" aria-hidden="true" href="#5-ai와-일자리--아직은-아직">#</a></h2>
+<p>AI가 고용 시장을 파괴하고 있냐는 질문에 이번 주 여러 연구와 발언이 쏟아졌습니다.</p>
+<ul>
+<li><strong>Anthropic 내부 연구</strong>: ChatGPT 출시 이후 AI 노출도 높은 직종의 실업률 변화가 &ldquo;통계적으로 유의하지 않음&rdquo; — Amodei CEO의 &ldquo;화이트칼라 절반 대체&rdquo; 경고와 정반대</li>
+<li><strong>2월 미국 고용보고서</strong>: 9만 2천 개 일자리 감소, 실업률 4.4% — 하지만 경제학자들은 관세·경기 불확실성이 더 큰 요인으로 지목</li>
+<li><strong>캔자스시티 연준 총재</strong>: &ldquo;AI로 기업들이 채용에 &lsquo;일시 정지&rsquo; 중&rdquo; — 실업 급증이 아닌 &lsquo;결원 미보충&rsquo; 형태의 전환기</li>
+</ul>
+<p>결론: AI의 노동시장 충격은 아직 통계적으로 명확하지 않지만, 채용 패턴의 변화는 이미 시작됐습니다.</p>
+<hr>
+<h2 id="6-ai-규제의-격화">6. AI 규제의 격화<a hidden class="anchor" aria-hidden="true" href="#6-ai-규제의-격화">#</a></h2>
+<ul>
+<li><strong>미국</strong>: AI 기업과 정부 계약 시 &ldquo;모든 합법적 사용에 대한 취소 불가 라이선스&rdquo; 의무화 초안</li>
+<li><strong>캘리포니아</strong>: xAI의 AI 학습 데이터 공개법 차단 소송 패소 — AI 투명성 규제가 법적 힘을 얻기 시작</li>
+<li><strong>영국 상원</strong>: £1,240억 창작 산업 보호를 위해 AI 저작권 완화에 강하게 반대</li>
+<li><strong>Google Gemini 챗봇 소송</strong>: 아버지가 Gemini가 아들을 &ldquo;치명적 망상으로 이끌었다&quot;며 소송 제기 — 챗봇의 정서적 의존 문제가 법적 책임으로 확산</li>
+</ul>
+<p>AI 규제가 모델 안전성에서 저작권, 소비자 보호, 정신건강 영역까지 확장되고 있습니다.</p>
+<hr>
+<h2 id="오늘의-정리">오늘의 정리<a hidden class="anchor" aria-hidden="true" href="#오늘의-정리">#</a></h2>
+<table>
+  <thead>
+      <tr>
+          <th>키워드</th>
+          <th>요약</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Anthropic vs. DoD</td>
+          <td>AI 안전가드레일의 법적 전쟁 시작</td>
+      </tr>
+      <tr>
+          <td>GPT-5.4</td>
+          <td>네이티브 컴퓨터 제어, 에이전트 시대 가속</td>
+      </tr>
+      <tr>
+          <td>KV 캐시 50배 압축</td>
+          <td>LLM 추론 비용 혁신 가능성</td>
+      </tr>
+      <tr>
+          <td>Cursor Automations</td>
+          <td>에이전틱 코딩 → 이벤트 기반 자동화</td>
+      </tr>
+      <tr>
+          <td>AI와 고용</td>
+          <td>통계적으로 아직 미미, 하지만 패턴 변화 중</td>
+      </tr>
+  </tbody>
+</table>
+<p>AI가 기술 혁신을 넘어 정치·법률·경제 전반의 핵심 의제가 되는 시점입니다. 다음 주에도 이 흐름을 계속 추적하겠습니다.</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://kwbaek.github.io/tags/anthropic/">Anthropic</a></li>
+      <li><a href="https://kwbaek.github.io/tags/openai/">Openai</a></li>
+      <li><a href="https://kwbaek.github.io/tags/gpt5/">Gpt5</a></li>
+      <li><a href="https://kwbaek.github.io/tags/agentic-coding/">Agentic-Coding</a></li>
+      <li><a href="https://kwbaek.github.io/tags/ai-regulation/">Ai-Regulation</a></li>
+      <li><a href="https://kwbaek.github.io/tags/kv-cache/">Kv-Cache</a></li>
+      <li><a href="https://kwbaek.github.io/tags/cursor/">Cursor</a></li>
+      <li><a href="https://kwbaek.github.io/tags/llm/">LLM</a></li>
+    </ul>
+  </footer><script src="https://utteranc.es/client.js"
+        repo="kwbaek/blog-comments"
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://kwbaek.github.io/">Kyungwook&#39;s Devlog</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>
