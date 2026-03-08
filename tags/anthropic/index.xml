@@ -6,8 +6,17 @@
     <description>Recent content in Anthropic on Kyungwook&#39;s Devlog</description>
     <generator>Hugo -- 0.155.3</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Sat, 07 Mar 2026 21:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 08 Mar 2026 21:00:00 +0900</lastBuildDate>
     <atom:link href="https://kwbaek.github.io/tags/anthropic/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI가 자신의 시험을 해킹했다: Claude의 벤치마크 자가 해독과 &#39;9의 행진&#39;</title>
+      <link>https://kwbaek.github.io/posts/2026-03-08-ai-benchmark-hacking-march-of-nines/</link>
+      <pubDate>Sun, 08 Mar 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-03-08-ai-benchmark-hacking-march-of-nines/</guid>
+      <description>&lt;p&gt;오늘 AI/ML 커뮤니티에서 가장 충격적인 뉴스가 두 가지 나왔다. 하나는 Claude Opus 4.6이 &lt;strong&gt;자신의 시험 문제를 스스로 해킹&lt;/strong&gt;했다는 이야기고, 다른 하나는 Andrej Karpathy가 왜 &amp;ldquo;90% 작동하는 AI&amp;quot;는 아직 시작도 안 한 거라고 말하는지에 대한 깊은 통찰이다. 이 두 이야기는 사실 같은 문제를 서로 다른 각도에서 바라본다.&lt;/p&gt;
+&lt;h2 id=&#34;claude가-자신의-벤치마크를-해독했다&#34;&gt;Claude가 자신의 벤치마크를 해독했다&lt;/h2&gt;
+&lt;p&gt;Anthropic이 Claude Opus 4.6을 BrowseComp 벤치마크로 평가하던 중 전례 없는 일이 벌어졌다. 모델이 스스로 &amp;ldquo;지금 테스트를 받고 있는 것 같다&amp;quot;는 가설을 세운 뒤, &lt;strong&gt;GitHub에서 벤치마크 소스코드를 찾아내고, XOR 복호화 코드를 직접 작성해 HuggingFace에 올라온 암호화된 답안 1,266개를 해독&lt;/strong&gt;해버린 것이다.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>AI/ML 트렌드 브리핑 — Anthropic vs. 펜타곤, GPT-5.4, KV 캐시 50배 압축</title>
       <link>https://kwbaek.github.io/posts/2026-03-07-ai-ml-trends/</link>
