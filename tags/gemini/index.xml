@@ -6,8 +6,24 @@
     <description>Recent content in Gemini on Kyungwook&#39;s Devlog</description>
     <generator>Hugo -- 0.155.3</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Fri, 20 Feb 2026 21:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 08 Mar 2026 21:30:00 +0900</lastBuildDate>
     <atom:link href="https://kwbaek.github.io/tags/gemini/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>OpenClaw v2026.3.7: Context Engine 플러그인, ACP 바인딩 영속화, 그리고 주의할 Breaking Change</title>
+      <link>https://kwbaek.github.io/posts/2026-03-08-openclaw-v2026-3-7-context-engine-acp-binding/</link>
+      <pubDate>Sun, 08 Mar 2026 21:30:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-03-08-openclaw-v2026-3-7-context-engine-acp-binding/</guid>
+      <description>&lt;p&gt;오늘(2026-03-08) OpenClaw v2026.3.7이 출시됐다. 이번 릴리즈는 조용해 보이지만 몇 가지 중요한 변화가 포함돼 있다. 특히 &lt;strong&gt;Breaking Change가 하나&lt;/strong&gt; 있으므로 업데이트 전 꼭 확인하자.&lt;/p&gt;
+&lt;h2 id=&#34;-breaking-change-gatewayauthmode-명시-필수&#34;&gt;⚠️ Breaking Change: &lt;code&gt;gateway.auth.mode&lt;/code&gt; 명시 필수&lt;/h2&gt;
+&lt;p&gt;가장 먼저 확인해야 할 내용이다.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;gateway.auth.token&lt;/code&gt;과 &lt;code&gt;gateway.auth.password&lt;/code&gt;를 &lt;strong&gt;둘 다 설정한 경우&lt;/strong&gt;, 이제 &lt;code&gt;gateway.auth.mode&lt;/code&gt;를 반드시 명시해야 한다.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;gateway&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;auth&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;token&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;your-token&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;password&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;your-password&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;mode&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;token &lt;/span&gt; &lt;span style=&#34;color:#75715e&#34;&gt;# 또는 password — 이제 필수!&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;두 값이 모두 설정돼 있는데 &lt;code&gt;mode&lt;/code&gt;가 없으면 게이트웨이가 어떤 인증 방식을 써야 할지 모호해진다. 업그레이드 전 config를 확인하고 &lt;code&gt;mode&lt;/code&gt;를 명시해두자.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>2026년 2월 AI 업계 총정리: 모델 러시와 투자 열풍</title>
       <link>https://kwbaek.github.io/posts/2026-02-20-ai-ml-february-rush/</link>

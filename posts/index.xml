@@ -6,8 +6,33 @@
     <description>Recent content in Posts on Kyungwook&#39;s Devlog</description>
     <generator>Hugo -- 0.155.3</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Sun, 08 Mar 2026 21:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Tue, 10 Mar 2026 21:00:00 +0900</lastBuildDate>
     <atom:link href="https://kwbaek.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>에이전트 추론의 다음 단계: 똑똑함보다 운영 가능성이 승부를 가른다</title>
+      <link>https://kwbaek.github.io/posts/2026-03-10-agentic-reasoning-production-trend/</link>
+      <pubDate>Tue, 10 Mar 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-03-10-agentic-reasoning-production-trend/</guid>
+      <description>&lt;p&gt;오늘 Discord AI/ML 트렌드 채널에서 올라온 소식들을 묶어보면, 공통된 흐름이 꽤 선명합니다. 이제 업계의 관심은 &amp;ldquo;모델이 더 똑똑해졌는가&amp;quot;를 넘어서, &lt;strong&gt;에이전트가 실제 환경에서 얼마나 안정적으로 동작하느냐&lt;/strong&gt;로 이동하고 있습니다. 특히 오늘 올라온 ACT(Agentic Critical Training), OfficeQA Pro, Ares, 그리고 TI/Afeela 사례는 이 변화를 서로 다른 층위에서 보여줍니다.&lt;/p&gt;
+&lt;h2 id=&#34;1-act-정답률이-아니라-스스로-고치는-능력을-학습시키는-방향&#34;&gt;1) ACT: 정답률이 아니라 &amp;ldquo;스스로 고치는 능력&amp;quot;을 학습시키는 방향&lt;/h2&gt;
+&lt;p&gt;ACT는 모델이 한 번에 답을 내고 끝내는 방식이 아니라, 비판-수정 루프를 학습 과정에 포함해 추론 품질을 높이려는 접근입니다. 핵심은 단순 정확도 상승이 아니라, 다단계 문제에서 오류가 누적되는 패턴을 줄이는 데 있습니다. 이건 실무에서 굉장히 중요합니다. 실제 업무 시나리오에서 에이전트는 항상 애매한 입력과 불완전한 문맥을 받기 때문에, &amp;ldquo;처음부터 완벽한 답&amp;quot;보다 &amp;ldquo;틀렸을 때 빨리 자가 수정&amp;quot;이 더 가치 있기 때문입니다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>OpenClaw v2026.3.7: Context Engine 플러그인, ACP 바인딩 영속화, 그리고 주의할 Breaking Change</title>
+      <link>https://kwbaek.github.io/posts/2026-03-08-openclaw-v2026-3-7-context-engine-acp-binding/</link>
+      <pubDate>Sun, 08 Mar 2026 21:30:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-03-08-openclaw-v2026-3-7-context-engine-acp-binding/</guid>
+      <description>&lt;p&gt;오늘(2026-03-08) OpenClaw v2026.3.7이 출시됐다. 이번 릴리즈는 조용해 보이지만 몇 가지 중요한 변화가 포함돼 있다. 특히 &lt;strong&gt;Breaking Change가 하나&lt;/strong&gt; 있으므로 업데이트 전 꼭 확인하자.&lt;/p&gt;
+&lt;h2 id=&#34;-breaking-change-gatewayauthmode-명시-필수&#34;&gt;⚠️ Breaking Change: &lt;code&gt;gateway.auth.mode&lt;/code&gt; 명시 필수&lt;/h2&gt;
+&lt;p&gt;가장 먼저 확인해야 할 내용이다.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;gateway.auth.token&lt;/code&gt;과 &lt;code&gt;gateway.auth.password&lt;/code&gt;를 &lt;strong&gt;둘 다 설정한 경우&lt;/strong&gt;, 이제 &lt;code&gt;gateway.auth.mode&lt;/code&gt;를 반드시 명시해야 한다.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;gateway&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;auth&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;token&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;your-token&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;password&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;your-password&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;mode&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;token &lt;/span&gt; &lt;span style=&#34;color:#75715e&#34;&gt;# 또는 password — 이제 필수!&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;두 값이 모두 설정돼 있는데 &lt;code&gt;mode&lt;/code&gt;가 없으면 게이트웨이가 어떤 인증 방식을 써야 할지 모호해진다. 업그레이드 전 config를 확인하고 &lt;code&gt;mode&lt;/code&gt;를 명시해두자.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>AI가 자신의 시험을 해킹했다: Claude의 벤치마크 자가 해독과 &#39;9의 행진&#39;</title>
       <link>https://kwbaek.github.io/posts/2026-03-08-ai-benchmark-hacking-march-of-nines/</link>
