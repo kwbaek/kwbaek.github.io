@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>AI/ML 트렌드: 모델 경쟁에서 인프라 경쟁으로 — 메모리, 전력, 공급망이 승부를 가른다 | Kyungwook&#39;s Devlog</title>
+<meta name="keywords" content="AI, HBM, Infrastructure, Supply Chain, Data Center, Trends">
+<meta name="description" content="오늘 #ai-ml-trends에서 가장 강하게 보인 신호는 하나입니다. 이제 AI 경쟁의 중심이 모델 품질 자체에서 인프라 확보 능력으로 빠르게 이동하고 있다는 점입니다. 특히 AMD CEO의 방한 보도(삼성과 HBM 공급 협력 논의), Applied Materials-SK hynix/Micron의 차세대 메모리 공동개발, 그리고 미국 전력수요의 연속 최고치 전망(EIA)은 같은 문장을 다른 각도에서 반복합니다. “좋은 모델을 만드는 것”만으로는 부족하고, 그 모델을 지속적으로 돌릴 수 있는 메모리·전력·공급망이 있어야 실제 시장 지배력이 생긴다는 것입니다.
+많은 팀이 아직도 LLM 성능 벤치마크만 비교하지만, 현장에서 더 먼저 부딪히는 병목은 대개 인프라입니다. 추론량이 늘면 GPU만 필요한 것이 아닙니다. 고대역폭 메모리(HBM), 안정적인 전력 조달, 데이터센터 증설 리드타임, 네트워크/냉각 비용까지 전부 함께 움직입니다. 그래서 최근 뉴스 흐름은 ‘누가 더 똑똑한 모델을 내놨나’보다 ‘누가 더 오래, 더 싸게, 더 안정적으로 서비스하나’에 무게가 실리고 있습니다.">
+<meta name="author" content="">
+<link rel="canonical" href="https://kwbaek.github.io/posts/2026-03-11-ai-infrastructure-memory-supply-chain/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.da3211e5ef867bf2b75fd5a6515cfed7195c011e8ab735694e203810a827097b.css" integrity="sha256-2jIR5e&#43;Ge/K3X9WmUVz&#43;1xlcAR6KtzVpTiA4EKgnCXs=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://kwbaek.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://kwbaek.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://kwbaek.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://kwbaek.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://kwbaek.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://kwbaek.github.io/posts/2026-03-11-ai-infrastructure-memory-supply-chain/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="https://kwbaek.github.io/posts/2026-03-11-ai-infrastructure-memory-supply-chain/">
+  <meta property="og:site_name" content="Kyungwook&#39;s Devlog">
+  <meta property="og:title" content="AI/ML 트렌드: 모델 경쟁에서 인프라 경쟁으로 — 메모리, 전력, 공급망이 승부를 가른다">
+  <meta property="og:description" content="오늘 #ai-ml-trends에서 가장 강하게 보인 신호는 하나입니다. 이제 AI 경쟁의 중심이 모델 품질 자체에서 인프라 확보 능력으로 빠르게 이동하고 있다는 점입니다. 특히 AMD CEO의 방한 보도(삼성과 HBM 공급 협력 논의), Applied Materials-SK hynix/Micron의 차세대 메모리 공동개발, 그리고 미국 전력수요의 연속 최고치 전망(EIA)은 같은 문장을 다른 각도에서 반복합니다. “좋은 모델을 만드는 것”만으로는 부족하고, 그 모델을 지속적으로 돌릴 수 있는 메모리·전력·공급망이 있어야 실제 시장 지배력이 생긴다는 것입니다.
+많은 팀이 아직도 LLM 성능 벤치마크만 비교하지만, 현장에서 더 먼저 부딪히는 병목은 대개 인프라입니다. 추론량이 늘면 GPU만 필요한 것이 아닙니다. 고대역폭 메모리(HBM), 안정적인 전력 조달, 데이터센터 증설 리드타임, 네트워크/냉각 비용까지 전부 함께 움직입니다. 그래서 최근 뉴스 흐름은 ‘누가 더 똑똑한 모델을 내놨나’보다 ‘누가 더 오래, 더 싸게, 더 안정적으로 서비스하나’에 무게가 실리고 있습니다.">
+  <meta property="og:locale" content="ko-kr">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2026-03-11T21:00:00+09:00">
+    <meta property="article:modified_time" content="2026-03-11T21:00:00+09:00">
+    <meta property="article:tag" content="AI">
+    <meta property="article:tag" content="HBM">
+    <meta property="article:tag" content="Infrastructure">
+    <meta property="article:tag" content="Supply Chain">
+    <meta property="article:tag" content="Data Center">
+    <meta property="article:tag" content="Trends">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="AI/ML 트렌드: 모델 경쟁에서 인프라 경쟁으로 — 메모리, 전력, 공급망이 승부를 가른다">
+<meta name="twitter:description" content="오늘 #ai-ml-trends에서 가장 강하게 보인 신호는 하나입니다. 이제 AI 경쟁의 중심이 모델 품질 자체에서 인프라 확보 능력으로 빠르게 이동하고 있다는 점입니다. 특히 AMD CEO의 방한 보도(삼성과 HBM 공급 협력 논의), Applied Materials-SK hynix/Micron의 차세대 메모리 공동개발, 그리고 미국 전력수요의 연속 최고치 전망(EIA)은 같은 문장을 다른 각도에서 반복합니다. “좋은 모델을 만드는 것”만으로는 부족하고, 그 모델을 지속적으로 돌릴 수 있는 메모리·전력·공급망이 있어야 실제 시장 지배력이 생긴다는 것입니다.
+많은 팀이 아직도 LLM 성능 벤치마크만 비교하지만, 현장에서 더 먼저 부딪히는 병목은 대개 인프라입니다. 추론량이 늘면 GPU만 필요한 것이 아닙니다. 고대역폭 메모리(HBM), 안정적인 전력 조달, 데이터센터 증설 리드타임, 네트워크/냉각 비용까지 전부 함께 움직입니다. 그래서 최근 뉴스 흐름은 ‘누가 더 똑똑한 모델을 내놨나’보다 ‘누가 더 오래, 더 싸게, 더 안정적으로 서비스하나’에 무게가 실리고 있습니다.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://kwbaek.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "AI/ML 트렌드: 모델 경쟁에서 인프라 경쟁으로 — 메모리, 전력, 공급망이 승부를 가른다",
+      "item": "https://kwbaek.github.io/posts/2026-03-11-ai-infrastructure-memory-supply-chain/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "AI/ML 트렌드: 모델 경쟁에서 인프라 경쟁으로 — 메모리, 전력, 공급망이 승부를 가른다",
+  "name": "AI\/ML 트렌드: 모델 경쟁에서 인프라 경쟁으로 — 메모리, 전력, 공급망이 승부를 가른다",
+  "description": "오늘 #ai-ml-trends에서 가장 강하게 보인 신호는 하나입니다. 이제 AI 경쟁의 중심이 모델 품질 자체에서 인프라 확보 능력으로 빠르게 이동하고 있다는 점입니다. 특히 AMD CEO의 방한 보도(삼성과 HBM 공급 협력 논의), Applied Materials-SK hynix/Micron의 차세대 메모리 공동개발, 그리고 미국 전력수요의 연속 최고치 전망(EIA)은 같은 문장을 다른 각도에서 반복합니다. “좋은 모델을 만드는 것”만으로는 부족하고, 그 모델을 지속적으로 돌릴 수 있는 메모리·전력·공급망이 있어야 실제 시장 지배력이 생긴다는 것입니다.\n많은 팀이 아직도 LLM 성능 벤치마크만 비교하지만, 현장에서 더 먼저 부딪히는 병목은 대개 인프라입니다. 추론량이 늘면 GPU만 필요한 것이 아닙니다. 고대역폭 메모리(HBM), 안정적인 전력 조달, 데이터센터 증설 리드타임, 네트워크/냉각 비용까지 전부 함께 움직입니다. 그래서 최근 뉴스 흐름은 ‘누가 더 똑똑한 모델을 내놨나’보다 ‘누가 더 오래, 더 싸게, 더 안정적으로 서비스하나’에 무게가 실리고 있습니다.\n",
+  "keywords": [
+    "AI", "HBM", "Infrastructure", "Supply Chain", "Data Center", "Trends"
+  ],
+  "articleBody": "오늘 #ai-ml-trends에서 가장 강하게 보인 신호는 하나입니다. 이제 AI 경쟁의 중심이 모델 품질 자체에서 인프라 확보 능력으로 빠르게 이동하고 있다는 점입니다. 특히 AMD CEO의 방한 보도(삼성과 HBM 공급 협력 논의), Applied Materials-SK hynix/Micron의 차세대 메모리 공동개발, 그리고 미국 전력수요의 연속 최고치 전망(EIA)은 같은 문장을 다른 각도에서 반복합니다. “좋은 모델을 만드는 것”만으로는 부족하고, 그 모델을 지속적으로 돌릴 수 있는 메모리·전력·공급망이 있어야 실제 시장 지배력이 생긴다는 것입니다.\n많은 팀이 아직도 LLM 성능 벤치마크만 비교하지만, 현장에서 더 먼저 부딪히는 병목은 대개 인프라입니다. 추론량이 늘면 GPU만 필요한 것이 아닙니다. 고대역폭 메모리(HBM), 안정적인 전력 조달, 데이터센터 증설 리드타임, 네트워크/냉각 비용까지 전부 함께 움직입니다. 그래서 최근 뉴스 흐름은 ‘누가 더 똑똑한 모델을 내놨나’보다 ‘누가 더 오래, 더 싸게, 더 안정적으로 서비스하나’에 무게가 실리고 있습니다.\n기업 전략 관점에서도 변화가 분명합니다. 첫째, AI 프로젝트는 이제 MLOps 범위를 넘어 InfraOps + FinOps를 함께 설계해야 합니다. 둘째, 공급망 리스크는 기술 리스크만큼 중요합니다. 특정 벤더 의존도가 높으면 제품 로드맵 전체가 흔들릴 수 있습니다. 셋째, ROI는 모델 정확도보다 “서비스 지속성”에서 갈립니다. 내부 데모는 성공했는데 운영비가 감당 안 되는 순간, 혁신은 바로 중단됩니다.\n결론적으로 2026년의 핵심 질문은 “가장 똑똑한 모델이 누구인가?”가 아니라 “가장 견고한 AI 생산 체인을 누가 구축했는가?”입니다. 앞으로는 연구 조직, 반도체·클라우드·전력 사업자, 그리고 정부 정책까지 얽힌 산업형 AI 경쟁이 더 본격화될 가능성이 큽니다. 모델 시대는 계속되지만, 승부는 인프라에서 결정됩니다.\n참고 이슈 (오늘 채널 기준) AMD CEO 방한 및 삼성 HBM 협력 논의 (Reuters) Applied Materials-SK hynix/Micron 차세대 AI 메모리 공동개발 (Reuters) 미국 전력수요 2026~2027 연속 최고치 전망, AI/데이터센터 수요 반영 (EIA/Reuters) ",
+  "wordCount" : "240",
+  "inLanguage": "en",
+  "datePublished": "2026-03-11T21:00:00+09:00",
+  "dateModified": "2026-03-11T21:00:00+09:00",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://kwbaek.github.io/posts/2026-03-11-ai-infrastructure-memory-supply-chain/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Kyungwook's Devlog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://kwbaek.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://kwbaek.github.io/" accesskey="h" title="Kyungwook&#39;s Devlog (Alt + H)">Kyungwook&#39;s Devlog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://kwbaek.github.io/categories/" title="categories">
+                    <span>categories</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kwbaek.github.io/tags/" title="tags">
+                    <span>tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kwbaek.github.io/" title="Kyungwook&#39;s Devlog">
+                    <span>Kyungwook&#39;s Devlog</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      AI/ML 트렌드: 모델 경쟁에서 인프라 경쟁으로 — 메모리, 전력, 공급망이 승부를 가른다
+    </h1>
+    <div class="post-meta"><span title='2026-03-11 21:00:00 +0900 KST'>March 11, 2026</span>
+
+</div>
+  </header> 
+  <div class="post-content"><p>오늘 #ai-ml-trends에서 가장 강하게 보인 신호는 하나입니다. 이제 AI 경쟁의 중심이 <strong>모델 품질 자체</strong>에서 <strong>인프라 확보 능력</strong>으로 빠르게 이동하고 있다는 점입니다. 특히 AMD CEO의 방한 보도(삼성과 HBM 공급 협력 논의), Applied Materials-SK hynix/Micron의 차세대 메모리 공동개발, 그리고 미국 전력수요의 연속 최고치 전망(EIA)은 같은 문장을 다른 각도에서 반복합니다. “좋은 모델을 만드는 것”만으로는 부족하고, 그 모델을 지속적으로 돌릴 수 있는 메모리·전력·공급망이 있어야 실제 시장 지배력이 생긴다는 것입니다.</p>
+<p>많은 팀이 아직도 LLM 성능 벤치마크만 비교하지만, 현장에서 더 먼저 부딪히는 병목은 대개 인프라입니다. 추론량이 늘면 GPU만 필요한 것이 아닙니다. 고대역폭 메모리(HBM), 안정적인 전력 조달, 데이터센터 증설 리드타임, 네트워크/냉각 비용까지 전부 함께 움직입니다. 그래서 최근 뉴스 흐름은 ‘누가 더 똑똑한 모델을 내놨나’보다 ‘누가 더 오래, 더 싸게, 더 안정적으로 서비스하나’에 무게가 실리고 있습니다.</p>
+<p>기업 전략 관점에서도 변화가 분명합니다. 첫째, AI 프로젝트는 이제 MLOps 범위를 넘어 <strong>InfraOps + FinOps</strong>를 함께 설계해야 합니다. 둘째, 공급망 리스크는 기술 리스크만큼 중요합니다. 특정 벤더 의존도가 높으면 제품 로드맵 전체가 흔들릴 수 있습니다. 셋째, ROI는 모델 정확도보다 “서비스 지속성”에서 갈립니다. 내부 데모는 성공했는데 운영비가 감당 안 되는 순간, 혁신은 바로 중단됩니다.</p>
+<p>결론적으로 2026년의 핵심 질문은 “가장 똑똑한 모델이 누구인가?”가 아니라 “가장 견고한 AI 생산 체인을 누가 구축했는가?”입니다. 앞으로는 연구 조직, 반도체·클라우드·전력 사업자, 그리고 정부 정책까지 얽힌 <strong>산업형 AI 경쟁</strong>이 더 본격화될 가능성이 큽니다. 모델 시대는 계속되지만, 승부는 인프라에서 결정됩니다.</p>
+<h2 id="참고-이슈-오늘-채널-기준">참고 이슈 (오늘 채널 기준)<a hidden class="anchor" aria-hidden="true" href="#참고-이슈-오늘-채널-기준">#</a></h2>
+<ul>
+<li>AMD CEO 방한 및 삼성 HBM 협력 논의 (Reuters)</li>
+<li>Applied Materials-SK hynix/Micron 차세대 AI 메모리 공동개발 (Reuters)</li>
+<li>미국 전력수요 2026~2027 연속 최고치 전망, AI/데이터센터 수요 반영 (EIA/Reuters)</li>
+</ul>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://kwbaek.github.io/tags/ai/">AI</a></li>
+      <li><a href="https://kwbaek.github.io/tags/hbm/">HBM</a></li>
+      <li><a href="https://kwbaek.github.io/tags/infrastructure/">Infrastructure</a></li>
+      <li><a href="https://kwbaek.github.io/tags/supply-chain/">Supply Chain</a></li>
+      <li><a href="https://kwbaek.github.io/tags/data-center/">Data Center</a></li>
+      <li><a href="https://kwbaek.github.io/tags/trends/">Trends</a></li>
+    </ul>
+  </footer><script src="https://utteranc.es/client.js"
+        repo="kwbaek/blog-comments"
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://kwbaek.github.io/">Kyungwook&#39;s Devlog</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

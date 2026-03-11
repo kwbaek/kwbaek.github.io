@@ -6,8 +6,25 @@
     <description>Recent content in Openclaw on Kyungwook&#39;s Devlog</description>
     <generator>Hugo -- 0.155.3</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Sun, 08 Mar 2026 21:30:00 +0900</lastBuildDate>
+    <lastBuildDate>Wed, 11 Mar 2026 21:00:00 +0900</lastBuildDate>
     <atom:link href="https://kwbaek.github.io/categories/openclaw/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>OpenClaw 실전 팁: 지시문 기반 Cron 자동 포스팅 워크플로 설계하기</title>
+      <link>https://kwbaek.github.io/posts/2026-03-11-openclaw-cron-instruction-driven-blogging/</link>
+      <pubDate>Wed, 11 Mar 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-03-11-openclaw-cron-instruction-driven-blogging/</guid>
+      <description>&lt;p&gt;OpenClaw를 오래 운영해보면, 자동화 성공 여부는 모델 성능보다 &lt;strong&gt;운영 구조&lt;/strong&gt;에서 갈리는 경우가 많습니다. 최근 제가 가장 효과를 본 패턴은 “크론 잡에 긴 프롬프트를 직접 넣지 않고, &lt;code&gt;cron-instructions/&lt;/code&gt; 폴더의 지시문 파일을 읽게 만드는 방식”입니다. 이 구조를 쓰면 디버깅이 쉬워지고, 잡 수정도 빠르며, 실패 원인 추적도 명확해집니다.&lt;/p&gt;
+&lt;p&gt;핵심 아이디어는 단순합니다. 크론 잡 본문은 최소화하고, 실제 작업 규칙은 파일로 분리합니다. 예를 들어 블로그 자동화라면 (1) 트렌드 채널 읽기, (2) 카테고리별 포스트 생성, (3) git push, (4) 빌드/배포 같은 단계를 지시문 파일에 명시해 둡니다. 이렇게 하면 규칙 변경 시 크론 자체를 건드리지 않고 파일만 수정하면 됩니다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>OpenClaw 운영 메모: v2026.3.7 이후 꼭 챙길 4가지 (실전 체크리스트)</title>
+      <link>https://kwbaek.github.io/posts/2026-03-10-openclaw-v2026-3-7-operations-playbook/</link>
+      <pubDate>Tue, 10 Mar 2026 21:05:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-03-10-openclaw-v2026-3-7-operations-playbook/</guid>
+      <description>&lt;p&gt;OpenClaw를 계속 굴리다 보면 새 기능보다 더 중요한 게 있습니다. 바로 &amp;ldquo;이번 업데이트에서 운영 리스크가 어디로 이동했는지&amp;quot;를 빨리 잡는 것입니다. 최근 버전 흐름(v2026.3.7 기준)을 보면, 단순 기능 추가보다 &lt;strong&gt;보안 기본값, 라우팅 안정성, 운영 점검 루틴&lt;/strong&gt;이 점점 더 중요해지고 있습니다. 오늘은 실제로 바로 적용 가능한 포인트만 압축해서 정리합니다.&lt;/p&gt;
+&lt;h2 id=&#34;1-먼저-확인-auth-설정의-브레이킹-포인트&#34;&gt;1) 먼저 확인: auth 설정의 브레이킹 포인트&lt;/h2&gt;
+&lt;p&gt;v2026.3.7에서 가장 먼저 체크할 건 gateway 인증 조합입니다. &lt;code&gt;gateway.auth.token&lt;/code&gt;과 &lt;code&gt;gateway.auth.password&lt;/code&gt;를 동시에 쓰는 환경이라면 &lt;code&gt;gateway.auth.mode&lt;/code&gt;를 반드시 명시해야 합니다. 이걸 놓치면 업데이트 직후 &amp;ldquo;왜 갑자기 인증이 꼬였지?&amp;rdquo; 같은 장애가 생기기 쉽습니다.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>OpenClaw v2026.3.7: Context Engine 플러그인, ACP 바인딩 영속화, 그리고 주의할 Breaking Change</title>
       <link>https://kwbaek.github.io/posts/2026-03-08-openclaw-v2026-3-7-context-engine-acp-binding/</link>

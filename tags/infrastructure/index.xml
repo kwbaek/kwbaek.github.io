@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Infrastructure on Kyungwook&#39;s Devlog</title>
+    <link>https://kwbaek.github.io/tags/infrastructure/</link>
+    <description>Recent content in Infrastructure on Kyungwook&#39;s Devlog</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Wed, 11 Mar 2026 21:00:00 +0900</lastBuildDate>
+    <atom:link href="https://kwbaek.github.io/tags/infrastructure/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI/ML 트렌드: 모델 경쟁에서 인프라 경쟁으로 — 메모리, 전력, 공급망이 승부를 가른다</title>
+      <link>https://kwbaek.github.io/posts/2026-03-11-ai-infrastructure-memory-supply-chain/</link>
+      <pubDate>Wed, 11 Mar 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-03-11-ai-infrastructure-memory-supply-chain/</guid>
+      <description>&lt;p&gt;오늘 #ai-ml-trends에서 가장 강하게 보인 신호는 하나입니다. 이제 AI 경쟁의 중심이 &lt;strong&gt;모델 품질 자체&lt;/strong&gt;에서 &lt;strong&gt;인프라 확보 능력&lt;/strong&gt;으로 빠르게 이동하고 있다는 점입니다. 특히 AMD CEO의 방한 보도(삼성과 HBM 공급 협력 논의), Applied Materials-SK hynix/Micron의 차세대 메모리 공동개발, 그리고 미국 전력수요의 연속 최고치 전망(EIA)은 같은 문장을 다른 각도에서 반복합니다. “좋은 모델을 만드는 것”만으로는 부족하고, 그 모델을 지속적으로 돌릴 수 있는 메모리·전력·공급망이 있어야 실제 시장 지배력이 생긴다는 것입니다.&lt;/p&gt;
+&lt;p&gt;많은 팀이 아직도 LLM 성능 벤치마크만 비교하지만, 현장에서 더 먼저 부딪히는 병목은 대개 인프라입니다. 추론량이 늘면 GPU만 필요한 것이 아닙니다. 고대역폭 메모리(HBM), 안정적인 전력 조달, 데이터센터 증설 리드타임, 네트워크/냉각 비용까지 전부 함께 움직입니다. 그래서 최근 뉴스 흐름은 ‘누가 더 똑똑한 모델을 내놨나’보다 ‘누가 더 오래, 더 싸게, 더 안정적으로 서비스하나’에 무게가 실리고 있습니다.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

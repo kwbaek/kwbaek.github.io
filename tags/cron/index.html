@@ -143,6 +143,34 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 실전 팁: 지시문 기반 Cron 자동 포스팅 워크플로 설계하기
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>OpenClaw를 오래 운영해보면, 자동화 성공 여부는 모델 성능보다 운영 구조에서 갈리는 경우가 많습니다. 최근 제가 가장 효과를 본 패턴은 “크론 잡에 긴 프롬프트를 직접 넣지 않고, cron-instructions/ 폴더의 지시문 파일을 읽게 만드는 방식”입니다. 이 구조를 쓰면 디버깅이 쉬워지고, 잡 수정도 빠르며, 실패 원인 추적도 명확해집니다.
+핵심 아이디어는 단순합니다. 크론 잡 본문은 최소화하고, 실제 작업 규칙은 파일로 분리합니다. 예를 들어 블로그 자동화라면 (1) 트렌드 채널 읽기, (2) 카테고리별 포스트 생성, (3) git push, (4) 빌드/배포 같은 단계를 지시문 파일에 명시해 둡니다. 이렇게 하면 규칙 변경 시 크론 자체를 건드리지 않고 파일만 수정하면 됩니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-03-11 21:00:00 +0900 KST'>March 11, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 실전 팁: 지시문 기반 Cron 자동 포스팅 워크플로 설계하기" href="https://kwbaek.github.io/posts/2026-03-11-openclaw-cron-instruction-driven-blogging/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 운영 메모: v2026.3.7 이후 꼭 챙길 4가지 (실전 체크리스트)
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>OpenClaw를 계속 굴리다 보면 새 기능보다 더 중요한 게 있습니다. 바로 “이번 업데이트에서 운영 리스크가 어디로 이동했는지&#34;를 빨리 잡는 것입니다. 최근 버전 흐름(v2026.3.7 기준)을 보면, 단순 기능 추가보다 보안 기본값, 라우팅 안정성, 운영 점검 루틴이 점점 더 중요해지고 있습니다. 오늘은 실제로 바로 적용 가능한 포인트만 압축해서 정리합니다.
+1) 먼저 확인: auth 설정의 브레이킹 포인트 v2026.3.7에서 가장 먼저 체크할 건 gateway 인증 조합입니다. gateway.auth.token과 gateway.auth.password를 동시에 쓰는 환경이라면 gateway.auth.mode를 반드시 명시해야 합니다. 이걸 놓치면 업데이트 직후 “왜 갑자기 인증이 꼬였지?” 같은 장애가 생기기 쉽습니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-03-10 21:05:00 +0900 KST'>March 10, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 운영 메모: v2026.3.7 이후 꼭 챙길 4가지 (실전 체크리스트)" href="https://kwbaek.github.io/posts/2026-03-10-openclaw-v2026-3-7-operations-playbook/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">OpenClaw 활용법 — Cron으로 매일 블로그 자동 포스팅하기
     </h2>
   </header>
@@ -264,38 +292,6 @@ openclaw update --dry-run 이 한 줄로 어떤 변경이 들어오는지 먼저
   </div>
   <footer class="entry-footer"><span title='2026-02-22 21:00:00 +0900 KST'>February 22, 2026</span></footer>
   <a class="entry-link" aria-label="post link to OpenClaw 최신 업데이트: Cron 안정화, Discord 컴포넌트 v2, 그리고 보안 강화" href="https://kwbaek.github.io/posts/2026-02-22-openclaw-updates/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw 2월 중순 업데이트: Cron 안정화와 보안 강화
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>OpenClaw가 2월 중순 동안 여러 차례 중요한 업데이트를 진행했습니다. 특히 Cron 안정성 대폭 개선과 보안 강화에 초점을 맞춘 업데이트들이 많았는데요, 주요 내용을 정리해봤습니다.
-🔧 Cron 시스템 전면 개선 (2.12 업데이트) OpenClaw의 Cron 기능이 대폭 안정화되었습니다. 기존에 간헐적으로 발생하던 문제들이 대부분 해결되었습니다.
-주요 개선사항:
-중복 실행 방지 작업 누락 방지 재시작 후 오동작 수정 openclaw logs --local-time 로컬 타임존 지원 (운영 디버깅 편의성 향상) 운영 체크 루틴 (업데이트 후 권장):
-openclaw doctor openclaw gateway restart openclaw health Cron을 사용 중이라면 이번 업데이트는 필수입니다!
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-02-20 21:00:00 +0900 KST'>February 20, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw 2월 중순 업데이트: Cron 안정화와 보안 강화" href="https://kwbaek.github.io/posts/2026-02-20-openclaw-latest-updates/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw 고급 활용법: Cron, Heartbeat, 그리고 서브에이전트 마스터하기
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>OpenClaw를 단순한 AI 어시스턴트로 사용하고 계신가요? 이 강력한 플랫폼은 훨씬 더 많은 것을 할 수 있습니다. 이번 포스트에서는 OpenClaw의 고급 기능들을 활용하여 진정한 자동화와 자율성을 구현하는 방법을 다룹니다.
-Cron: 스마트 스케줄링의 힘 OpenClaw의 cron 시스템은 단순한 작업 스케줄러가 아닙니다. AI 에이전트가 정해진 시간에 자율적으로 작업을 수행하고, 결과를 분석하고, 당신에게 보고하는 완전한 자동화 시스템입니다.
-기본 cron 작업 생성 # 매일 오전 9시에 이메일 체크 openclaw cron add \ --schedule &#34;0 9 * * *&#34; \ --task &#34;Check my Gmail inbox and summarize important unread emails&#34; \ --session isolated \ --delivery announce Webhook 통합: 외부 시스템과 연동 cron 작업 완료 시 외부 시스템에 알림을 보낼 수 있습니다:
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-02-19 21:00:00 +0900 KST'>February 19, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw 고급 활용법: Cron, Heartbeat, 그리고 서브에이전트 마스터하기" href="https://kwbaek.github.io/posts/2026-02-19-openclaw-advanced-tips/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

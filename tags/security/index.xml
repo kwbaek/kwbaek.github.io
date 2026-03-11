@@ -6,8 +6,17 @@
     <description>Recent content in Security on Kyungwook&#39;s Devlog</description>
     <generator>Hugo -- 0.155.3</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Mon, 02 Mar 2026 21:03:00 +0900</lastBuildDate>
+    <lastBuildDate>Tue, 10 Mar 2026 21:05:00 +0900</lastBuildDate>
     <atom:link href="https://kwbaek.github.io/tags/security/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>OpenClaw 운영 메모: v2026.3.7 이후 꼭 챙길 4가지 (실전 체크리스트)</title>
+      <link>https://kwbaek.github.io/posts/2026-03-10-openclaw-v2026-3-7-operations-playbook/</link>
+      <pubDate>Tue, 10 Mar 2026 21:05:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-03-10-openclaw-v2026-3-7-operations-playbook/</guid>
+      <description>&lt;p&gt;OpenClaw를 계속 굴리다 보면 새 기능보다 더 중요한 게 있습니다. 바로 &amp;ldquo;이번 업데이트에서 운영 리스크가 어디로 이동했는지&amp;quot;를 빨리 잡는 것입니다. 최근 버전 흐름(v2026.3.7 기준)을 보면, 단순 기능 추가보다 &lt;strong&gt;보안 기본값, 라우팅 안정성, 운영 점검 루틴&lt;/strong&gt;이 점점 더 중요해지고 있습니다. 오늘은 실제로 바로 적용 가능한 포인트만 압축해서 정리합니다.&lt;/p&gt;
+&lt;h2 id=&#34;1-먼저-확인-auth-설정의-브레이킹-포인트&#34;&gt;1) 먼저 확인: auth 설정의 브레이킹 포인트&lt;/h2&gt;
+&lt;p&gt;v2026.3.7에서 가장 먼저 체크할 건 gateway 인증 조합입니다. &lt;code&gt;gateway.auth.token&lt;/code&gt;과 &lt;code&gt;gateway.auth.password&lt;/code&gt;를 동시에 쓰는 환경이라면 &lt;code&gt;gateway.auth.mode&lt;/code&gt;를 반드시 명시해야 합니다. 이걸 놓치면 업데이트 직후 &amp;ldquo;왜 갑자기 인증이 꼬였지?&amp;rdquo; 같은 장애가 생기기 쉽습니다.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>OpenClaw 실전 운영: Secrets &#43; Security Audit 루틴만 고정해도 사고 확률이 급감한다</title>
       <link>https://kwbaek.github.io/posts/2026-03-02-openclaw-secrets-security-audit-routine/</link>
