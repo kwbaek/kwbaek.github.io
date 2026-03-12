@@ -6,8 +6,16 @@
     <description>Recent content in Automation on Kyungwook&#39;s Devlog</description>
     <generator>Hugo -- 0.155.3</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Wed, 11 Mar 2026 21:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Thu, 12 Mar 2026 21:00:00 +0900</lastBuildDate>
     <atom:link href="https://kwbaek.github.io/tags/automation/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>OpenClaw 운영 팁: Heartbeat와 Cron을 분리하면 자동화 품질이 급상승한다</title>
+      <link>https://kwbaek.github.io/posts/2026-03-12-openclaw-two-track-ops-heartbeat-cron/</link>
+      <pubDate>Thu, 12 Mar 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-03-12-openclaw-two-track-ops-heartbeat-cron/</guid>
+      <description>&lt;p&gt;OpenClaw를 꾸준히 돌리다 보면, 자동화가 흔들리는 가장 흔한 원인은 모델 성능이 아니라 &lt;strong&gt;스케줄 설계의 혼선&lt;/strong&gt;입니다. 특히 &amp;ldquo;모든 주기 작업을 cron으로 밀어 넣는 방식&amp;quot;은 초반엔 단순해 보이지만, 시간이 지나면 잡 개수가 늘고 디버깅이 어려워집니다. 최근 운영에서 가장 효과적이었던 패턴은 &lt;strong&gt;Heartbeat는 배치 점검용, Cron은 정시·원샷 작업용&lt;/strong&gt;으로 역할을 강하게 분리하는 방식입니다.&lt;/p&gt;
+&lt;p&gt;Heartbeat는 컨텍스트를 묶어 처리할 수 있다는 장점이 큽니다. 예를 들어 메일/캘린더/알림/날씨처럼 서로 연관된 점검은 heartbeat 한 번에 묶으면 API 호출과 토큰 사용량을 줄일 수 있고, &amp;ldquo;지금 정말 사용자에게 알려야 하나&amp;rdquo; 같은 판단도 더 자연스럽게 됩니다. 반대로 Cron은 9시 정각 보고, 20분 뒤 리마인드처럼 &lt;strong&gt;시간 정확도&lt;/strong&gt;가 중요한 작업에 적합합니다. 이 두 축을 섞지 않으면 운영 소음이 줄고, 실패 원인도 훨씬 명확해집니다.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>OpenClaw 실전 팁: 지시문 기반 Cron 자동 포스팅 워크플로 설계하기</title>
       <link>https://kwbaek.github.io/posts/2026-03-11-openclaw-cron-instruction-driven-blogging/</link>
