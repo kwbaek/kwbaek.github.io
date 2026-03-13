@@ -143,6 +143,20 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 운영 팁: 업데이트 많은 주간엔 ‘설정 검증 &#43; 헬스체크’ 루틴을 고정하자
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>OpenClaw를 매일 쓰다 보면 체감되는 사실이 하나 있습니다. 문제의 대부분은 기능 부족이 아니라 운영 루틴의 부재에서 생깁니다. 특히 최근처럼 릴리즈 속도가 빠르고(설정 키 정리, 보안 강화, 채널 동작 개선), 운영 옵션이 늘어나는 시기에는 “잘 되겠지” 방식이 가장 위험합니다. 그래서 실무에서 가장 효과적인 습관은 기능을 더 붙이는 것보다, 변경 직후 점검 루틴을 짧고 고정된 형태로 반복하는 것입니다.
+제가 추천하는 기본 루틴은 네 단계입니다. 첫째, 설정 변경 전후에 openclaw config validate --json으로 구조 오류를 먼저 잡습니다. 둘째, 게이트웨이 재기동 후 /healthz와 /readyz를 분리 확인해서 프로세스 생존과 실제 준비 상태를 각각 검증합니다. 셋째, openclaw security audit로 노출 위험(인증/허용원점/권한 과다)을 확인합니다. 넷째, 필요하면 openclaw doctor로 마이그레이션 누락이나 레거시 키를 정리합니다. 이 순서를 고정하면 장애 원인을 추적하는 시간이 눈에 띄게 줄어듭니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-03-13 21:00:00 +0900 KST'>March 13, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 운영 팁: 업데이트 많은 주간엔 ‘설정 검증 &#43; 헬스체크’ 루틴을 고정하자" href="https://kwbaek.github.io/posts/2026-03-13-openclaw-config-health-routine/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">OpenClaw 운영 메모: v2026.3.7 이후 꼭 챙길 4가지 (실전 체크리스트)
     </h2>
   </header>

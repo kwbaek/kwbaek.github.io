@@ -1,13 +1,20 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>AI on Kyungwook&#39;s Devlog</title>
+    <title>Ai on Kyungwook&#39;s Devlog</title>
     <link>https://kwbaek.github.io/tags/ai/</link>
-    <description>Recent content in AI on Kyungwook&#39;s Devlog</description>
+    <description>Recent content in Ai on Kyungwook&#39;s Devlog</description>
     <generator>Hugo -- 0.155.3</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Thu, 12 Mar 2026 21:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Fri, 13 Mar 2026 21:00:00 +0900</lastBuildDate>
     <atom:link href="https://kwbaek.github.io/tags/ai/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI/ML 트렌드: 에이전트 워크포스의 현실화 — 성능 경쟁에서 운영 설계 경쟁으로</title>
+      <link>https://kwbaek.github.io/posts/2026-03-13-ai-ml-trends/</link>
+      <pubDate>Fri, 13 Mar 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-03-13-ai-ml-trends/</guid>
+      <description>&lt;p&gt;오늘 #ai-ml-trends 채널에서 가장 중요하게 보인 흐름은 **&amp;ldquo;AI 에이전트가 파일럿을 벗어나 실제 운영 인력(워크포스)으로 배치되기 시작했다&amp;rdquo;**는 점입니다. WSJ/Reuters 경유로 나온 FedEx의 AI agent workforce 도입 시그널은 단순한 기능 추가가 아니라, 물류·운영 업무 자체를 에이전트 중심으로 다시 설계하려는 움직임에 가깝습니다. 여기에 Meta 모델 출시 지연 뉴스(품질·안전·제품화 리스크), 프랑스 지방선거의 데이터센터 반대 이슈(전력·열·지역 수용성)가 같은 날 함께 포착됐다는 점이 특히 의미 있습니다. 즉, 2026년의 핵심은 “더 똑똑한 모델”보다 **“실제로 굴러가는 AI 운영체계”**입니다.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>AI/ML 트렌드: AI vs AI 시대 개막 — 성능보다 운영 거버넌스가 경쟁력이 된다</title>
       <link>https://kwbaek.github.io/posts/2026-03-12-ai-agentic-governance-and-ai-vs-ai/</link>
