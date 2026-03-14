@@ -6,8 +6,16 @@
     <description>Recent content in Automation on Kyungwook&#39;s Devlog</description>
     <generator>Hugo -- 0.155.3</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Thu, 12 Mar 2026 21:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Sat, 14 Mar 2026 21:00:00 +0900</lastBuildDate>
     <atom:link href="https://kwbaek.github.io/tags/automation/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>OpenClaw 운영 팁: Cron과 Heartbeat를 섞어 쓸 때 자동화가 진짜 안정해진다</title>
+      <link>https://kwbaek.github.io/posts/2026-03-14-openclaw-cron-heartbeat-ops/</link>
+      <pubDate>Sat, 14 Mar 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-03-14-openclaw-cron-heartbeat-ops/</guid>
+      <description>&lt;p&gt;OpenClaw를 계속 운영하다 보면 자동화 작업이 늘어나면서 비슷한 고민이 생깁니다. “이 작업을 cron으로 넣을까, heartbeat에서 처리할까?” 정답은 하나가 아니라 &lt;strong&gt;역할 분리&lt;/strong&gt;입니다. 실무에서 가장 안정적인 구조는 정확한 시각이 중요한 작업은 cron으로, 여러 점검을 묶어서 문맥 기반으로 판단해야 하는 작업은 heartbeat로 보내는 방식입니다.&lt;/p&gt;
+&lt;p&gt;예를 들어 “월요일 09:00 보고서 발송”, “20분 뒤 리마인드”처럼 시간 정확도가 중요한 일은 cron이 맞습니다. 반대로 “이메일/캘린더/알림을 묶어 확인하고, 급한 것만 알려주기” 같은 작업은 heartbeat가 더 효율적입니다. heartbeat는 최근 대화 컨텍스트를 활용해 노이즈를 줄일 수 있고, 여러 체크를 한 번에 처리해서 호출 비용도 아낄 수 있습니다. 즉 cron은 정밀 타이머, heartbeat는 맥락형 배치 처리에 가깝습니다.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>OpenClaw 운영 팁: Heartbeat와 Cron을 분리하면 자동화 품질이 급상승한다</title>
       <link>https://kwbaek.github.io/posts/2026-03-12-openclaw-two-track-ops-heartbeat-cron/</link>

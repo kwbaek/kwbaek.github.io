@@ -6,8 +6,23 @@
     <description>Recent content on Kyungwook&#39;s Devlog</description>
     <generator>Hugo -- 0.155.3</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Fri, 13 Mar 2026 21:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Sat, 14 Mar 2026 21:00:00 +0900</lastBuildDate>
     <atom:link href="https://kwbaek.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI/ML 트렌드: 인프라 재편의 시작 — 모델 경쟁에서 ‘패키징·라우팅·규제’ 경쟁으로</title>
+      <link>https://kwbaek.github.io/posts/2026-03-14-ai-ml-trends-infrastructure-rewiring/</link>
+      <pubDate>Sat, 14 Mar 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-03-14-ai-ml-trends-infrastructure-rewiring/</guid>
+      <description>&lt;p&gt;오늘 #ai-ml-trends 채널에서 가장 중요했던 흐름은 한 줄로 정리하면 이겁니다. &lt;strong&gt;AI 경쟁의 중심이 모델 성능 자체에서, 인프라 공급망과 추론 파이프라인 설계로 빠르게 이동하고 있다&lt;/strong&gt;는 점입니다. 특히 세 가지 뉴스가 같은 날 묶여 등장한 게 강한 신호였습니다. 첫째, Amazon-Cerebras 협력으로 추론 파이프라인을 단계별로 분리(프리필/디코드 분담)하려는 시도. 둘째, Besi 인수 관심 보도처럼 첨단 패키징 장비가 전략 자산으로 재평가되는 움직임. 셋째, 미국 상무부의 AI 칩 수출 규정안 철회 보도로 확인된 정책 불확실성 확대입니다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>OpenClaw 운영 팁: Cron과 Heartbeat를 섞어 쓸 때 자동화가 진짜 안정해진다</title>
+      <link>https://kwbaek.github.io/posts/2026-03-14-openclaw-cron-heartbeat-ops/</link>
+      <pubDate>Sat, 14 Mar 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-03-14-openclaw-cron-heartbeat-ops/</guid>
+      <description>&lt;p&gt;OpenClaw를 계속 운영하다 보면 자동화 작업이 늘어나면서 비슷한 고민이 생깁니다. “이 작업을 cron으로 넣을까, heartbeat에서 처리할까?” 정답은 하나가 아니라 &lt;strong&gt;역할 분리&lt;/strong&gt;입니다. 실무에서 가장 안정적인 구조는 정확한 시각이 중요한 작업은 cron으로, 여러 점검을 묶어서 문맥 기반으로 판단해야 하는 작업은 heartbeat로 보내는 방식입니다.&lt;/p&gt;
+&lt;p&gt;예를 들어 “월요일 09:00 보고서 발송”, “20분 뒤 리마인드”처럼 시간 정확도가 중요한 일은 cron이 맞습니다. 반대로 “이메일/캘린더/알림을 묶어 확인하고, 급한 것만 알려주기” 같은 작업은 heartbeat가 더 효율적입니다. heartbeat는 최근 대화 컨텍스트를 활용해 노이즈를 줄일 수 있고, 여러 체크를 한 번에 처리해서 호출 비용도 아낄 수 있습니다. 즉 cron은 정밀 타이머, heartbeat는 맥락형 배치 처리에 가깝습니다.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>AI/ML 트렌드: 에이전트 워크포스의 현실화 — 성능 경쟁에서 운영 설계 경쟁으로</title>
       <link>https://kwbaek.github.io/posts/2026-03-13-ai-ml-trends/</link>
