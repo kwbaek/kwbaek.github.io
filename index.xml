@@ -6,8 +6,24 @@
     <description>Recent content on Kyungwook&#39;s Devlog</description>
     <generator>Hugo -- 0.155.3</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Sat, 14 Mar 2026 21:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 15 Mar 2026 21:00:00 +0900</lastBuildDate>
     <atom:link href="https://kwbaek.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI/ML 트렌드: 성능 경쟁 다음 단계 — 에이전트 안전성·거버넌스가 제품 경쟁력이다</title>
+      <link>https://kwbaek.github.io/posts/2026-03-15-ai-ml-trends-agent-safety-and-governance/</link>
+      <pubDate>Sun, 15 Mar 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-03-15-ai-ml-trends-agent-safety-and-governance/</guid>
+      <description>&lt;p&gt;오늘 #ai-ml-trends 채널에서 가장 중요하게 보인 흐름은 명확했습니다. &lt;strong&gt;모델 자체 성능보다, 에이전트를 실제 환경에 안전하게 배치·운영하는 능력이 경쟁력을 좌우하기 시작했다&lt;/strong&gt;는 점입니다. 특히 오늘 올라온 이슈들을 같이 보면 방향이 더 선명해집니다. Perplexity의 에이전트 보안 정리 논문, Reasoning LLM-as-a-Judge 취약점 분석, 그리고 Anthropic의 기업 도입형 조인트벤처(JV) 논의까지 — 모두 같은 질문으로 수렴합니다. “좋은 모델을 만들었는가?”가 아니라 “그 모델을 통제 가능한 시스템으로 운영할 수 있는가?”입니다.&lt;/p&gt;
+&lt;p&gt;먼저 보안 측면입니다. 에이전트는 단순 챗봇과 달리 도구 호출, 장기 워크플로, 외부 시스템 연동이 기본이기 때문에 공격면이 훨씬 넓습니다. 간접 프롬프트 인젝션, confused deputy, 장기 실행 중 정책 이탈은 이제 이론이 아니라 운영 리스크입니다. 즉 방어 전략도 입력 필터 하나로 끝나지 않습니다. 샌드박스 실행, 권한 경계, 정책 강제, 감사 가능한 로깅까지 계층형으로 설계해야 실제 사고를 줄일 수 있습니다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>OpenClaw 활용 팁: 지시문 기반 Cron으로 ‘안정적인 콘텐츠 파이프라인’ 만들기</title>
+      <link>https://kwbaek.github.io/posts/2026-03-15-openclaw-instruction-driven-content-ops/</link>
+      <pubDate>Sun, 15 Mar 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-03-15-openclaw-instruction-driven-content-ops/</guid>
+      <description>&lt;p&gt;OpenClaw로 반복 작업을 돌리다 보면, 자동화 자체보다 더 어려운 게 있습니다. 바로 &lt;strong&gt;자동화를 계속 믿을 수 있게 유지하는 것&lt;/strong&gt;입니다. 오늘은 제가 자주 쓰는 패턴 하나를 정리해보겠습니다. 핵심은 간단합니다. “작업 로직을 채팅 프롬프트에 흩뿌리지 말고, 지시문 파일로 고정해 Cron이 그 파일을 읽고 실행하게 만든다.” 이 방식이 생각보다 강력합니다.&lt;/p&gt;
+&lt;p&gt;왜 좋을까요? 첫째, 변경 이력이 남습니다. 지시를 코드처럼 파일로 관리하면 무엇을 언제 왜 바꿨는지 추적이 쉽습니다. 둘째, 실패 대응이 빨라집니다. 실행 시점에는 단순히 파일 존재 여부·형식·핵심 단계만 확인하면 되기 때문에 디버깅 범위가 좁아집니다. 셋째, 사람-에이전트 협업이 편해집니다. 사람은 파일을 수정하고, 에이전트는 같은 규칙으로 반복 실행합니다. 역할이 명확해집니다.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>AI/ML 트렌드: 인프라 재편의 시작 — 모델 경쟁에서 ‘패키징·라우팅·규제’ 경쟁으로</title>
       <link>https://kwbaek.github.io/posts/2026-03-14-ai-ml-trends-infrastructure-rewiring/</link>

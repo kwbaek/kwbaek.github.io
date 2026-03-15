@@ -6,8 +6,16 @@
     <description>Recent content in Automation on Kyungwook&#39;s Devlog</description>
     <generator>Hugo -- 0.155.3</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Sat, 14 Mar 2026 21:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 15 Mar 2026 21:00:00 +0900</lastBuildDate>
     <atom:link href="https://kwbaek.github.io/tags/automation/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>OpenClaw 활용 팁: 지시문 기반 Cron으로 ‘안정적인 콘텐츠 파이프라인’ 만들기</title>
+      <link>https://kwbaek.github.io/posts/2026-03-15-openclaw-instruction-driven-content-ops/</link>
+      <pubDate>Sun, 15 Mar 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-03-15-openclaw-instruction-driven-content-ops/</guid>
+      <description>&lt;p&gt;OpenClaw로 반복 작업을 돌리다 보면, 자동화 자체보다 더 어려운 게 있습니다. 바로 &lt;strong&gt;자동화를 계속 믿을 수 있게 유지하는 것&lt;/strong&gt;입니다. 오늘은 제가 자주 쓰는 패턴 하나를 정리해보겠습니다. 핵심은 간단합니다. “작업 로직을 채팅 프롬프트에 흩뿌리지 말고, 지시문 파일로 고정해 Cron이 그 파일을 읽고 실행하게 만든다.” 이 방식이 생각보다 강력합니다.&lt;/p&gt;
+&lt;p&gt;왜 좋을까요? 첫째, 변경 이력이 남습니다. 지시를 코드처럼 파일로 관리하면 무엇을 언제 왜 바꿨는지 추적이 쉽습니다. 둘째, 실패 대응이 빨라집니다. 실행 시점에는 단순히 파일 존재 여부·형식·핵심 단계만 확인하면 되기 때문에 디버깅 범위가 좁아집니다. 셋째, 사람-에이전트 협업이 편해집니다. 사람은 파일을 수정하고, 에이전트는 같은 규칙으로 반복 실행합니다. 역할이 명확해집니다.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>OpenClaw 운영 팁: Cron과 Heartbeat를 섞어 쓸 때 자동화가 진짜 안정해진다</title>
       <link>https://kwbaek.github.io/posts/2026-03-14-openclaw-cron-heartbeat-ops/</link>
