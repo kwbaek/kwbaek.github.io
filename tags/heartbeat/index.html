@@ -1,381 +1,41 @@
-<!DOCTYPE html>
-<html lang="en" dir="auto" data-theme="auto">
-
-<head><meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="robots" content="index, follow">
-<title>Heartbeat | Kyungwook&#39;s Devlog</title>
-<meta name="keywords" content="">
-<meta name="description" content="">
-<meta name="author" content="">
-<link rel="canonical" href="https://kwbaek.github.io/tags/heartbeat/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.da3211e5ef867bf2b75fd5a6515cfed7195c011e8ab735694e203810a827097b.css" integrity="sha256-2jIR5e&#43;Ge/K3X9WmUVz&#43;1xlcAR6KtzVpTiA4EKgnCXs=" rel="preload stylesheet" as="style">
-<link rel="icon" href="https://kwbaek.github.io/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="https://kwbaek.github.io/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="https://kwbaek.github.io/favicon-32x32.png">
-<link rel="apple-touch-icon" href="https://kwbaek.github.io/apple-touch-icon.png">
-<link rel="mask-icon" href="https://kwbaek.github.io/safari-pinned-tab.svg">
-<meta name="theme-color" content="#2e2e33">
-<meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" type="application/rss+xml" href="https://kwbaek.github.io/tags/heartbeat/index.xml" title="rss">
-<link rel="alternate" hreflang="en" href="https://kwbaek.github.io/tags/heartbeat/">
-<noscript>
-    <style>
-        #theme-toggle,
-        .top-link {
-            display: none;
-        }
-
-    </style>
-    <style>
-        @media (prefers-color-scheme: dark) {
-            :root {
-                --theme: rgb(29, 30, 32);
-                --entry: rgb(46, 46, 51);
-                --primary: rgb(218, 218, 219);
-                --secondary: rgb(155, 156, 157);
-                --tertiary: rgb(65, 66, 68);
-                --content: rgb(196, 196, 197);
-                --code-block-bg: rgb(46, 46, 51);
-                --code-bg: rgb(55, 56, 62);
-                --border: rgb(51, 51, 51);
-                color-scheme: dark;
-            }
-
-            .list {
-                background: var(--theme);
-            }
-
-            .toc {
-                background: var(--entry);
-            }
-        }
-
-        @media (prefers-color-scheme: light) {
-            .list::-webkit-scrollbar-thumb {
-                border-color: var(--code-bg);
-            }
-        }
-
-    </style>
-</noscript>
-<script>
-    if (localStorage.getItem("pref-theme") === "dark") {
-        document.querySelector("html").dataset.theme = 'dark';
-    } else if (localStorage.getItem("pref-theme") === "light") {
-       document.querySelector("html").dataset.theme = 'light';
-    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        document.querySelector("html").dataset.theme = 'dark';
-    } else {
-        document.querySelector("html").dataset.theme = 'light';
-    }
-
-</script><meta property="og:url" content="https://kwbaek.github.io/tags/heartbeat/">
-  <meta property="og:site_name" content="Kyungwook&#39;s Devlog">
-  <meta property="og:title" content="Heartbeat">
-  <meta property="og:locale" content="ko-kr">
-  <meta property="og:type" content="website">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Heartbeat">
-<meta name="twitter:description" content="">
-
-</head>
-<body class="list" id="top">
-    <header class="header">
-    <nav class="nav">
-        <div class="logo">
-            <a href="https://kwbaek.github.io/" accesskey="h" title="Kyungwook&#39;s Devlog (Alt + H)">Kyungwook&#39;s Devlog</a>
-            <div class="logo-switches">
-                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
-                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-                    </svg>
-                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <circle cx="12" cy="12" r="5"></circle>
-                        <line x1="12" y1="1" x2="12" y2="3"></line>
-                        <line x1="12" y1="21" x2="12" y2="23"></line>
-                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                        <line x1="1" y1="12" x2="3" y2="12"></line>
-                        <line x1="21" y1="12" x2="23" y2="12"></line>
-                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-                    </svg>
-                </button>
-            </div>
-        </div>
-        <ul id="menu">
-            <li>
-                <a href="https://kwbaek.github.io/categories/" title="categories">
-                    <span>categories</span>
-                </a>
-            </li>
-            <li>
-                <a href="https://kwbaek.github.io/tags/" title="tags">
-                    <span>tags</span>
-                </a>
-            </li>
-            <li>
-                <a href="https://kwbaek.github.io/" title="Kyungwook&#39;s Devlog">
-                    <span>Kyungwook&#39;s Devlog</span>&nbsp;
-                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
-                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
-                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
-                        <path d="M15 3h6v6"></path>
-                        <path d="M10 14L21 3"></path>
-                    </svg>
-                </a>
-            </li>
-        </ul>
-    </nav>
-</header>
-<main class="main"> 
-<header class="page-header">
-  <h1>
-    Heartbeat
-  </h1>
-</header>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw 운영 팁: Cron과 Heartbeat를 섞어 쓸 때 자동화가 진짜 안정해진다
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>OpenClaw를 계속 운영하다 보면 자동화 작업이 늘어나면서 비슷한 고민이 생깁니다. “이 작업을 cron으로 넣을까, heartbeat에서 처리할까?” 정답은 하나가 아니라 역할 분리입니다. 실무에서 가장 안정적인 구조는 정확한 시각이 중요한 작업은 cron으로, 여러 점검을 묶어서 문맥 기반으로 판단해야 하는 작업은 heartbeat로 보내는 방식입니다.
+<!doctype html><html lang=en dir=auto data-theme=auto><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=robots content="index, follow"><title>Heartbeat | Kyungwook's Devlog</title><meta name=keywords content><meta name=description content><meta name=author content><link rel=canonical href=https://kwbaek.github.io/tags/heartbeat/><link crossorigin=anonymous href=/assets/css/stylesheet.da3211e5ef867bf2b75fd5a6515cfed7195c011e8ab735694e203810a827097b.css integrity="sha256-2jIR5e+Ge/K3X9WmUVz+1xlcAR6KtzVpTiA4EKgnCXs=" rel="preload stylesheet" as=style><link rel=icon href=https://kwbaek.github.io/favicon.ico><link rel=icon type=image/png sizes=16x16 href=https://kwbaek.github.io/favicon-16x16.png><link rel=icon type=image/png sizes=32x32 href=https://kwbaek.github.io/favicon-32x32.png><link rel=apple-touch-icon href=https://kwbaek.github.io/apple-touch-icon.png><link rel=mask-icon href=https://kwbaek.github.io/safari-pinned-tab.svg><meta name=theme-color content="#2e2e33"><meta name=msapplication-TileColor content="#2e2e33"><link rel=alternate type=application/rss+xml href=https://kwbaek.github.io/tags/heartbeat/index.xml title=rss><link rel=alternate hreflang=en href=https://kwbaek.github.io/tags/heartbeat/><noscript><style>#theme-toggle,.top-link{display:none}</style><style>@media(prefers-color-scheme:dark){:root{--theme:rgb(29, 30, 32);--entry:rgb(46, 46, 51);--primary:rgb(218, 218, 219);--secondary:rgb(155, 156, 157);--tertiary:rgb(65, 66, 68);--content:rgb(196, 196, 197);--code-block-bg:rgb(46, 46, 51);--code-bg:rgb(55, 56, 62);--border:rgb(51, 51, 51);color-scheme:dark}.list{background:var(--theme)}.toc{background:var(--entry)}}@media(prefers-color-scheme:light){.list::-webkit-scrollbar-thumb{border-color:var(--code-bg)}}</style></noscript><script>localStorage.getItem("pref-theme")==="dark"?document.querySelector("html").dataset.theme="dark":localStorage.getItem("pref-theme")==="light"?document.querySelector("html").dataset.theme="light":window.matchMedia("(prefers-color-scheme: dark)").matches?document.querySelector("html").dataset.theme="dark":document.querySelector("html").dataset.theme="light"</script><meta property="og:url" content="https://kwbaek.github.io/tags/heartbeat/"><meta property="og:site_name" content="Kyungwook's Devlog"><meta property="og:title" content="Heartbeat"><meta property="og:locale" content="ko-kr"><meta property="og:type" content="website"><meta name=twitter:card content="summary"><meta name=twitter:title content="Heartbeat"><meta name=twitter:description content></head><body class=list id=top><header class=header><nav class=nav><div class=logo><a href=https://kwbaek.github.io/ accesskey=h title="Kyungwook's Devlog (Alt + H)">Kyungwook's Devlog</a><div class=logo-switches><button id=theme-toggle accesskey=t title="(Alt + T)" aria-label="Toggle theme">
+<svg id="moon" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+<svg id="sun" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button></div></div><ul id=menu><li><a href=https://kwbaek.github.io/categories/ title=categories><span>categories</span></a></li><li><a href=https://kwbaek.github.io/tags/ title=tags><span>tags</span></a></li><li><a href=https://kwbaek.github.io/ title="Kyungwook's Devlog"><span>Kyungwook's Devlog</span>&nbsp;
+<svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><path d="M15 3h6v6"/><path d="M10 14 21 3"/></svg></a></li></ul></nav></header><main class=main><header class=page-header><h1>Heartbeat</h1></header><article class="post-entry tag-entry"><header class=entry-header><h2 class=entry-hint-parent>OpenClaw 운영 팁: Cron과 Heartbeat를 섞어 쓸 때 자동화가 진짜 안정해진다</h2></header><div class=entry-content><p>OpenClaw를 계속 운영하다 보면 자동화 작업이 늘어나면서 비슷한 고민이 생깁니다. “이 작업을 cron으로 넣을까, heartbeat에서 처리할까?” 정답은 하나가 아니라 역할 분리입니다. 실무에서 가장 안정적인 구조는 정확한 시각이 중요한 작업은 cron으로, 여러 점검을 묶어서 문맥 기반으로 판단해야 하는 작업은 heartbeat로 보내는 방식입니다.
 예를 들어 “월요일 09:00 보고서 발송”, “20분 뒤 리마인드”처럼 시간 정확도가 중요한 일은 cron이 맞습니다. 반대로 “이메일/캘린더/알림을 묶어 확인하고, 급한 것만 알려주기” 같은 작업은 heartbeat가 더 효율적입니다. heartbeat는 최근 대화 컨텍스트를 활용해 노이즈를 줄일 수 있고, 여러 체크를 한 번에 처리해서 호출 비용도 아낄 수 있습니다. 즉 cron은 정밀 타이머, heartbeat는 맥락형 배치 처리에 가깝습니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-03-14 21:00:00 +0900 KST'>March 14, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw 운영 팁: Cron과 Heartbeat를 섞어 쓸 때 자동화가 진짜 안정해진다" href="https://kwbaek.github.io/posts/2026-03-14-openclaw-cron-heartbeat-ops/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw 운영 팁: Heartbeat와 Cron을 분리하면 자동화 품질이 급상승한다
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>OpenClaw를 꾸준히 돌리다 보면, 자동화가 흔들리는 가장 흔한 원인은 모델 성능이 아니라 스케줄 설계의 혼선입니다. 특히 “모든 주기 작업을 cron으로 밀어 넣는 방식&#34;은 초반엔 단순해 보이지만, 시간이 지나면 잡 개수가 늘고 디버깅이 어려워집니다. 최근 운영에서 가장 효과적이었던 패턴은 Heartbeat는 배치 점검용, Cron은 정시·원샷 작업용으로 역할을 강하게 분리하는 방식입니다.
+...</p></div><footer class=entry-footer><span title='2026-03-14 21:00:00 +0900 KST'>March 14, 2026</span></footer><a class=entry-link aria-label="post link to OpenClaw 운영 팁: Cron과 Heartbeat를 섞어 쓸 때 자동화가 진짜 안정해진다" href=https://kwbaek.github.io/posts/2026-03-14-openclaw-cron-heartbeat-ops/></a></article><article class="post-entry tag-entry"><header class=entry-header><h2 class=entry-hint-parent>OpenClaw 운영 팁: Heartbeat와 Cron을 분리하면 자동화 품질이 급상승한다</h2></header><div class=entry-content><p>OpenClaw를 꾸준히 돌리다 보면, 자동화가 흔들리는 가장 흔한 원인은 모델 성능이 아니라 스케줄 설계의 혼선입니다. 특히 “모든 주기 작업을 cron으로 밀어 넣는 방식"은 초반엔 단순해 보이지만, 시간이 지나면 잡 개수가 늘고 디버깅이 어려워집니다. 최근 운영에서 가장 효과적이었던 패턴은 Heartbeat는 배치 점검용, Cron은 정시·원샷 작업용으로 역할을 강하게 분리하는 방식입니다.
 Heartbeat는 컨텍스트를 묶어 처리할 수 있다는 장점이 큽니다. 예를 들어 메일/캘린더/알림/날씨처럼 서로 연관된 점검은 heartbeat 한 번에 묶으면 API 호출과 토큰 사용량을 줄일 수 있고, “지금 정말 사용자에게 알려야 하나” 같은 판단도 더 자연스럽게 됩니다. 반대로 Cron은 9시 정각 보고, 20분 뒤 리마인드처럼 시간 정확도가 중요한 작업에 적합합니다. 이 두 축을 섞지 않으면 운영 소음이 줄고, 실패 원인도 훨씬 명확해집니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-03-12 21:00:00 +0900 KST'>March 12, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw 운영 팁: Heartbeat와 Cron을 분리하면 자동화 품질이 급상승한다" href="https://kwbaek.github.io/posts/2026-03-12-openclaw-two-track-ops-heartbeat-cron/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw 운영 메모: v2026.3.7 이후 꼭 챙길 4가지 (실전 체크리스트)
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>OpenClaw를 계속 굴리다 보면 새 기능보다 더 중요한 게 있습니다. 바로 “이번 업데이트에서 운영 리스크가 어디로 이동했는지&#34;를 빨리 잡는 것입니다. 최근 버전 흐름(v2026.3.7 기준)을 보면, 단순 기능 추가보다 보안 기본값, 라우팅 안정성, 운영 점검 루틴이 점점 더 중요해지고 있습니다. 오늘은 실제로 바로 적용 가능한 포인트만 압축해서 정리합니다.
+...</p></div><footer class=entry-footer><span title='2026-03-12 21:00:00 +0900 KST'>March 12, 2026</span></footer><a class=entry-link aria-label="post link to OpenClaw 운영 팁: Heartbeat와 Cron을 분리하면 자동화 품질이 급상승한다" href=https://kwbaek.github.io/posts/2026-03-12-openclaw-two-track-ops-heartbeat-cron/></a></article><article class="post-entry tag-entry"><header class=entry-header><h2 class=entry-hint-parent>OpenClaw 운영 메모: v2026.3.7 이후 꼭 챙길 4가지 (실전 체크리스트)</h2></header><div class=entry-content><p>OpenClaw를 계속 굴리다 보면 새 기능보다 더 중요한 게 있습니다. 바로 “이번 업데이트에서 운영 리스크가 어디로 이동했는지"를 빨리 잡는 것입니다. 최근 버전 흐름(v2026.3.7 기준)을 보면, 단순 기능 추가보다 보안 기본값, 라우팅 안정성, 운영 점검 루틴이 점점 더 중요해지고 있습니다. 오늘은 실제로 바로 적용 가능한 포인트만 압축해서 정리합니다.
 1) 먼저 확인: auth 설정의 브레이킹 포인트 v2026.3.7에서 가장 먼저 체크할 건 gateway 인증 조합입니다. gateway.auth.token과 gateway.auth.password를 동시에 쓰는 환경이라면 gateway.auth.mode를 반드시 명시해야 합니다. 이걸 놓치면 업데이트 직후 “왜 갑자기 인증이 꼬였지?” 같은 장애가 생기기 쉽습니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-03-10 21:05:00 +0900 KST'>March 10, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw 운영 메모: v2026.3.7 이후 꼭 챙길 4가지 (실전 체크리스트)" href="https://kwbaek.github.io/posts/2026-03-10-openclaw-v2026-3-7-operations-playbook/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw 활용법 — Cron으로 매일 블로그 자동 포스팅하기
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>이 블로그 포스트는 사실 제가 직접 쓴 게 아닙니다. OpenClaw의 Cron 시스템이 매일 저녁 9시에 자동으로 트리거해서 작성했습니다. 오늘은 그 구조를 직접 뜯어보겠습니다.
+...</p></div><footer class=entry-footer><span title='2026-03-10 21:05:00 +0900 KST'>March 10, 2026</span></footer><a class=entry-link aria-label="post link to OpenClaw 운영 메모: v2026.3.7 이후 꼭 챙길 4가지 (실전 체크리스트)" href=https://kwbaek.github.io/posts/2026-03-10-openclaw-v2026-3-7-operations-playbook/></a></article><article class="post-entry tag-entry"><header class=entry-header><h2 class=entry-hint-parent>OpenClaw 활용법 — Cron으로 매일 블로그 자동 포스팅하기</h2></header><div class=entry-content><p>이 블로그 포스트는 사실 제가 직접 쓴 게 아닙니다. OpenClaw의 Cron 시스템이 매일 저녁 9시에 자동으로 트리거해서 작성했습니다. 오늘은 그 구조를 직접 뜯어보겠습니다.
 OpenClaw Cron이란? OpenClaw의 Cron은 단순한 스케줄러가 아닙니다. LLM 에이전트를 특정 시각에 실행하는 시스템입니다.
 일반 cron과 다른 점은:
-실행 결과가 텍스트가 아닌 에이전트의 행동 Discord, Telegram 등 채널에 자동으로 결과 전달 이전 세션 컨텍스트 없이 독립 실행 # 현재 등록된 cron 확인 openclaw cron list # 새 cron 추가 (매일 오후 9시) openclaw cron add --schedule &#34;0 21 * * *&#34; \ --name &#34;Daily Blog Post&#34; \ --deliver-to discord 이 블로그 자동화의 구조 제가 매일 운영하는 자동 블로그 포스팅 파이프라인은 이렇게 생겼습니다:
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-03-07 21:00:00 +0900 KST'>March 7, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw 활용법 — Cron으로 매일 블로그 자동 포스팅하기" href="https://kwbaek.github.io/posts/2026-03-07-openclaw-cron-blog-automation/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw 실전 운영 팁: 리서치 자동화는 ‘기능’보다 ‘루틴’이 성패를 가른다
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>OpenClaw를 오래 굴려보면 금방 느끼는 게 있습니다. 새 기능이 많아도, 결국 안정성을 만드는 건 운영 루틴이라는 점입니다. 오늘은 최근 운영하면서 체감이 컸던 “AI/ML 리서치 자동화 루틴”을 정리해보겠습니다.
+실행 결과가 텍스트가 아닌 에이전트의 행동 Discord, Telegram 등 채널에 자동으로 결과 전달 이전 세션 컨텍스트 없이 독립 실행 # 현재 등록된 cron 확인 openclaw cron list # 새 cron 추가 (매일 오후 9시) openclaw cron add --schedule "0 21 * * *" \ --name "Daily Blog Post" \ --deliver-to discord 이 블로그 자동화의 구조 제가 매일 운영하는 자동 블로그 포스팅 파이프라인은 이렇게 생겼습니다:
+...</p></div><footer class=entry-footer><span title='2026-03-07 21:00:00 +0900 KST'>March 7, 2026</span></footer><a class=entry-link aria-label="post link to OpenClaw 활용법 — Cron으로 매일 블로그 자동 포스팅하기" href=https://kwbaek.github.io/posts/2026-03-07-openclaw-cron-blog-automation/></a></article><article class="post-entry tag-entry"><header class=entry-header><h2 class=entry-hint-parent>OpenClaw 실전 운영 팁: 리서치 자동화는 ‘기능’보다 ‘루틴’이 성패를 가른다</h2></header><div class=entry-content><p>OpenClaw를 오래 굴려보면 금방 느끼는 게 있습니다. 새 기능이 많아도, 결국 안정성을 만드는 건 운영 루틴이라는 점입니다. 오늘은 최근 운영하면서 체감이 컸던 “AI/ML 리서치 자동화 루틴”을 정리해보겠습니다.
 핵심은 세 가지입니다.
 정보원 우선순위를 고정한다. 스케줄러 역할을 분리한다. 실패를 전제로 안전장치를 둔다. 1) 정보원 우선순위: 공식 원문 먼저, 웹 검색은 보조 리서치 자동화에서 가장 흔한 실패는 검색 API 의존입니다. 특히 무료 플랜은 rate limit(429)이 자주 나오기 때문에, 이를 메인 파이프라인으로 두면 크론 품질이 흔들립니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-03-01 21:05:00 +0900 KST'>March 1, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw 실전 운영 팁: 리서치 자동화는 ‘기능’보다 ‘루틴’이 성패를 가른다" href="https://kwbaek.github.io/posts/2026-03-01-openclaw-research-ops-playbook/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw 실전 운영 팁: Heartbeat directPolicy로 소음 줄이고, 일일 자동화는 더 단단하게
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>최근 OpenClaw를 매일 운영하면서 체감한 핵심은 하나입니다. 기능을 많이 켜는 것보다, 알림 경로와 실행 정책을 명확히 정하는 게 훨씬 중요하다는 점입니다. 특히 2026.2.25~2026.2.26 라인에서 정리된 heartbeat 정책 변화는 실사용 품질에 직접 영향을 줍니다.
+...</p></div><footer class=entry-footer><span title='2026-03-01 21:05:00 +0900 KST'>March 1, 2026</span></footer><a class=entry-link aria-label="post link to OpenClaw 실전 운영 팁: 리서치 자동화는 ‘기능’보다 ‘루틴’이 성패를 가른다" href=https://kwbaek.github.io/posts/2026-03-01-openclaw-research-ops-playbook/></a></article><article class="post-entry tag-entry"><header class=entry-header><h2 class=entry-hint-parent>OpenClaw 실전 운영 팁: Heartbeat directPolicy로 소음 줄이고, 일일 자동화는 더 단단하게</h2></header><div class=entry-content><p>최근 OpenClaw를 매일 운영하면서 체감한 핵심은 하나입니다. 기능을 많이 켜는 것보다, 알림 경로와 실행 정책을 명확히 정하는 게 훨씬 중요하다는 점입니다. 특히 2026.2.25~2026.2.26 라인에서 정리된 heartbeat 정책 변화는 실사용 품질에 직접 영향을 줍니다.
 핵심 포인트를 먼저 요약하면 아래와 같습니다.
 agents.defaults.heartbeat.directPolicy를 allow|block으로 명시해 DM/직접 전달 소음을 제어 기본값 변화(버전별 상이) 때문에 명시 설정이 사실상 필수 cron 멀티계정 쓰는 경우 delivery.accountId를 지정해 발송 경로를 고정 Slack/긴 스레드 환경은 session.parentForkMaxTokens로 컨텍스트 상속량을 제한 운영 관점에서 제가 추천하는 기본 패턴은 다음입니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-02-27 21:05:00 +0900 KST'>February 27, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw 실전 운영 팁: Heartbeat directPolicy로 소음 줄이고, 일일 자동화는 더 단단하게" href="https://kwbaek.github.io/posts/2026-02-27-openclaw-heartbeat-directpolicy-and-daily-ops/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw 운영 팁: 매일 쓰는 실전 패턴 5가지 (cron, heartbeat, 보안, 배포)
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>OpenClaw를 일정 기간 운영해보면, 기능 자체보다도 운영 패턴이 성능과 안정성을 가릅니다. 오늘은 최근 업데이트 흐름(보안 강화, cron 정밀 제어, delivery 개선)을 바탕으로 실무에서 바로 쓰기 좋은 패턴을 정리해봅니다.
+...</p></div><footer class=entry-footer><span title='2026-02-27 21:05:00 +0900 KST'>February 27, 2026</span></footer><a class=entry-link aria-label="post link to OpenClaw 실전 운영 팁: Heartbeat directPolicy로 소음 줄이고, 일일 자동화는 더 단단하게" href=https://kwbaek.github.io/posts/2026-02-27-openclaw-heartbeat-directpolicy-and-daily-ops/></a></article><article class="post-entry tag-entry"><header class=entry-header><h2 class=entry-hint-parent>OpenClaw 운영 팁: 매일 쓰는 실전 패턴 5가지 (cron, heartbeat, 보안, 배포)</h2></header><div class=entry-content><p>OpenClaw를 일정 기간 운영해보면, 기능 자체보다도 운영 패턴이 성능과 안정성을 가릅니다. 오늘은 최근 업데이트 흐름(보안 강화, cron 정밀 제어, delivery 개선)을 바탕으로 실무에서 바로 쓰기 좋은 패턴을 정리해봅니다.
 1) cron은 “정확 시간 작업”에만 쓰고, 나머지는 heartbeat로 묶기 많은 사용자가 모든 점검을 cron으로 쪼개는데, 이 방식은 잡 수가 늘수록 노이즈와 관리 부담이 급증합니다. 권장 방식은 다음과 같습니다.
 cron: 정시성이 중요한 작업만 (--exact 필요한 배치, 고정 알림) heartbeat: 이메일/캘린더/멘션/간단 상태점검 같은 느슨한 주기 작업 묶음 이렇게 분리하면 호출 비용과 중복 알림이 확 줄고, 점검 로직도 유지보수가 쉬워집니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-02-26 21:00:00 +0900 KST'>February 26, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw 운영 팁: 매일 쓰는 실전 패턴 5가지 (cron, heartbeat, 보안, 배포)" href="https://kwbaek.github.io/posts/2026-02-26-openclaw-daily-ops-pattern/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw 실전 운영법: Heartbeat &#43; Cron 2계층 자동화 패턴
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>OpenClaw를 오래 쓰다 보면 공통 문제가 하나 생깁니다. 처음에는 자동화가 편한데, 시간이 지나면 잡이 늘어나면서 알림 노이즈와 관리 복잡도가 같이 커집니다.
-이때 가장 효율이 좋았던 방식이 Heartbeat &#43; Cron 2계층 패턴입니다.
+...</p></div><footer class=entry-footer><span title='2026-02-26 21:00:00 +0900 KST'>February 26, 2026</span></footer><a class=entry-link aria-label="post link to OpenClaw 운영 팁: 매일 쓰는 실전 패턴 5가지 (cron, heartbeat, 보안, 배포)" href=https://kwbaek.github.io/posts/2026-02-26-openclaw-daily-ops-pattern/></a></article><article class="post-entry tag-entry"><header class=entry-header><h2 class=entry-hint-parent>OpenClaw 실전 운영법: Heartbeat + Cron 2계층 자동화 패턴</h2></header><div class=entry-content><p>OpenClaw를 오래 쓰다 보면 공통 문제가 하나 생깁니다. 처음에는 자동화가 편한데, 시간이 지나면 잡이 늘어나면서 알림 노이즈와 관리 복잡도가 같이 커집니다.
+이때 가장 효율이 좋았던 방식이 Heartbeat + Cron 2계층 패턴입니다.
 핵심 아이디어는 간단합니다.
 Heartbeat: 대화 컨텍스트가 필요한 점검 작업(메일/캘린더/멘션/상태 확인)을 묶어서 처리 Cron: 정확한 시각이 중요한 작업(정시 리포트, 마감 알림, 배포 체크)을 분리 실행 1) Heartbeat는 “배치 점검 레이어”로 쓴다 Heartbeat는 1개 태스크를 정시에 수행하는 도구라기보다, 여러 점검 항목을 한 번에 처리하는 라우터로 보는 게 맞습니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-02-25 21:00:00 +0900 KST'>February 25, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw 실전 운영법: Heartbeat &#43; Cron 2계층 자동화 패턴" href="https://kwbaek.github.io/posts/2026-02-25-openclaw-two-tier-automation-guide/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw 하트비트(Heartbeat) 활용: AI 에이전트를 능동적으로 만드는 법
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>OpenClaw를 사용하다 보면 “AI가 좀 더 능동적으로 움직였으면 좋겠다&#34;는 생각을 하게 됩니다. 매번 명령을 내리는 것이 아니라, AI가 스스로 주기적으로 상태를 확인하고 필요한 작업을 수행한다면 얼마나 편할까요?
+...</p></div><footer class=entry-footer><span title='2026-02-25 21:00:00 +0900 KST'>February 25, 2026</span></footer><a class=entry-link aria-label="post link to OpenClaw 실전 운영법: Heartbeat + Cron 2계층 자동화 패턴" href=https://kwbaek.github.io/posts/2026-02-25-openclaw-two-tier-automation-guide/></a></article><article class="post-entry tag-entry"><header class=entry-header><h2 class=entry-hint-parent>OpenClaw 하트비트(Heartbeat) 활용: AI 에이전트를 능동적으로 만드는 법</h2></header><div class=entry-content><p>OpenClaw를 사용하다 보면 “AI가 좀 더 능동적으로 움직였으면 좋겠다"는 생각을 하게 됩니다. 매번 명령을 내리는 것이 아니라, AI가 스스로 주기적으로 상태를 확인하고 필요한 작업을 수행한다면 얼마나 편할까요?
 바로 이것이 하트비트(Heartbeat) 기능이 해결하는 문제입니다.
 하트비트란 무엇인가? 하트비트는 OpenClaw 에이전트가 일정 주기로 받는 “펄스(pulse)“입니다. 심장 박동처럼 규칙적으로 발생하며, 에이전트는 이 신호를 받을 때마다 “지금 내가 해야 할 일이 있나?“를 스스로 판단합니다.
 기본 하트비트 프롬프트는 다음과 같습니다:
 Read HEARTBEAT.md if it exists (workspace context). Follow it strictly. Do not infer or repeat old tasks from prior chats. If nothing needs attention, reply HEARTBEAT_OK. 하트비트 vs Cron: 언제 무엇을 쓸까? OpenClaw에는 Cron도 있는데, 하트비트와 어떻게 다를까요?
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-02-23 21:00:00 +0900 KST'>February 23, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw 하트비트(Heartbeat) 활용: AI 에이전트를 능동적으로 만드는 법" href="https://kwbaek.github.io/posts/2026-02-23-openclaw-heartbeat-automation/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw 완전정복: Heartbeat과 Cron으로 AI 비서를 자동화하기
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>OpenClaw를 진정한 비서로 만드는 법 OpenClaw를 사용하고 계신가요? 챗봇처럼 매번 명령을 내려야 하는 게 불편하지 않으셨나요? 오늘은 OpenClaw를 진짜 비서처럼 자동으로 움직이게 만드는 두 가지 핵심 기능을 소개합니다.
+...</p></div><footer class=entry-footer><span title='2026-02-23 21:00:00 +0900 KST'>February 23, 2026</span></footer><a class=entry-link aria-label="post link to OpenClaw 하트비트(Heartbeat) 활용: AI 에이전트를 능동적으로 만드는 법" href=https://kwbaek.github.io/posts/2026-02-23-openclaw-heartbeat-automation/></a></article><article class="post-entry tag-entry"><header class=entry-header><h2 class=entry-hint-parent>OpenClaw 완전정복: Heartbeat과 Cron으로 AI 비서를 자동화하기</h2></header><div class=entry-content><p>OpenClaw를 진정한 비서로 만드는 법 OpenClaw를 사용하고 계신가요? 챗봇처럼 매번 명령을 내려야 하는 게 불편하지 않으셨나요? 오늘은 OpenClaw를 진짜 비서처럼 자동으로 움직이게 만드는 두 가지 핵심 기능을 소개합니다.
 바로 Heartbeat과 Cron입니다.
 Heartbeat: 비서의 심장박동 Heartbeat이란? Heartbeat은 OpenClaw가 주기적으로 “지금 내가 해야 할 일이 있나?“라고 스스로 체크하는 기능입니다. 마치 사람 비서가 30분마다 “혹시 필요한 거 없으세요?“라고 물어보는 것과 같습니다.
 기본 설정 OpenClaw의 기본 Heartbeat 프롬프트는 다음과 같습니다:
 Read HEARTBEAT.md if it exists (workspace context). Follow it strictly. Do not infer or repeat old tasks from prior chats. If nothing needs attention, reply HEARTBEAT_OK. 즉, HEARTBEAT.md 파일에 체크할 항목을 적어두면, OpenClaw가 주기적으로 그 파일을 읽고 필요한 작업을 수행합니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-02-18 21:00:00 +0900 KST'>February 18, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw 완전정복: Heartbeat과 Cron으로 AI 비서를 자동화하기" href="https://kwbaek.github.io/posts/2026-02-18-openclaw-heartbeat-cron-guide/"></a>
-</article>
-<footer class="page-footer">
-  <nav class="pagination">
-    <a class="next" href="https://kwbaek.github.io/tags/heartbeat/page/2/">Next&nbsp;&nbsp;»
-    </a>
-  </nav>
-</footer>
-    </main>
-    
-<footer class="footer">
-        <span>&copy; 2026 <a href="https://kwbaek.github.io/">Kyungwook&#39;s Devlog</a></span> · 
-
-    <span>
-        Powered by
-        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
-        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
-    </span>
-</footer>
-<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
-        <path d="M12 6H0l6-6z" />
-    </svg>
-</a>
-
-<script>
-    let menu = document.getElementById('menu');
-    if (menu) {
-        
-        const scrollPosition = localStorage.getItem("menu-scroll-position");
-        if (scrollPosition) {
-            menu.scrollLeft = parseInt(scrollPosition, 10);
-        }
-        
-        menu.onscroll = function () {
-            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
-        }
-    }
-
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener("click", function (e) {
-            e.preventDefault();
-            var id = this.getAttribute("href").substr(1);
-            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
-                    behavior: "smooth"
-                });
-            } else {
-                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
-            }
-            if (id === "top") {
-                history.replaceState(null, null, " ");
-            } else {
-                history.pushState(null, null, `#${id}`);
-            }
-        });
-    });
-
-</script>
-<script>
-    var mybutton = document.getElementById("top-link");
-    window.onscroll = function () {
-        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
-            mybutton.style.visibility = "visible";
-            mybutton.style.opacity = "1";
-        } else {
-            mybutton.style.visibility = "hidden";
-            mybutton.style.opacity = "0";
-        }
-    };
-
-</script>
-<script>
-    document.getElementById("theme-toggle").addEventListener("click", () => {
-        const html = document.querySelector("html");
-        if (html.dataset.theme === "dark") {
-            html.dataset.theme = 'light';
-            localStorage.setItem("pref-theme", 'light');
-        } else {
-            html.dataset.theme = 'dark';
-            localStorage.setItem("pref-theme", 'dark');
-        }
-    })
-
-</script>
-</body>
-
-</html>
+...</p></div><footer class=entry-footer><span title='2026-02-18 21:00:00 +0900 KST'>February 18, 2026</span></footer><a class=entry-link aria-label="post link to OpenClaw 완전정복: Heartbeat과 Cron으로 AI 비서를 자동화하기" href=https://kwbaek.github.io/posts/2026-02-18-openclaw-heartbeat-cron-guide/></a></article><footer class=page-footer><nav class=pagination><a class=next href=https://kwbaek.github.io/tags/heartbeat/page/2/>Next&nbsp;&nbsp;»</a></nav></footer></main><footer class=footer><span>&copy; 2026 <a href=https://kwbaek.github.io/>Kyungwook's Devlog</a></span> ·
+<span>Powered by
+<a href=https://gohugo.io/ rel="noopener noreferrer" target=_blank>Hugo</a> &
+<a href=https://github.com/adityatelange/hugo-PaperMod/ rel=noopener target=_blank>PaperMod</a></span></footer><a href=#top aria-label="go to top" title="Go to Top (Alt + G)" class=top-link id=top-link accesskey=g><svg viewBox="0 0 12 6" fill="currentColor"><path d="M12 6H0l6-6z"/></svg>
+</a><script>let menu=document.getElementById("menu");if(menu){const e=localStorage.getItem("menu-scroll-position");e&&(menu.scrollLeft=parseInt(e,10)),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)}}document.querySelectorAll('a[href^="#"]').forEach(e=>{e.addEventListener("click",function(e){e.preventDefault();var t=this.getAttribute("href").substr(1);window.matchMedia("(prefers-reduced-motion: reduce)").matches?document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView({behavior:"smooth"}),t==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${t}`)})})</script><script>var mybutton=document.getElementById("top-link");window.onscroll=function(){document.body.scrollTop>800||document.documentElement.scrollTop>800?(mybutton.style.visibility="visible",mybutton.style.opacity="1"):(mybutton.style.visibility="hidden",mybutton.style.opacity="0")}</script><script>document.getElementById("theme-toggle").addEventListener("click",()=>{const e=document.querySelector("html");e.dataset.theme==="dark"?(e.dataset.theme="light",localStorage.setItem("pref-theme","light")):(e.dataset.theme="dark",localStorage.setItem("pref-theme","dark"))})</script></body></html>

@@ -1,36 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
-  <channel>
-    <title>Runbook on Kyungwook&#39;s Devlog</title>
-    <link>https://kwbaek.github.io/tags/runbook/</link>
-    <description>Recent content in Runbook on Kyungwook&#39;s Devlog</description>
-    <generator>Hugo -- 0.155.3</generator>
-    <language>ko-kr</language>
-    <lastBuildDate>Sun, 15 Mar 2026 21:00:00 +0900</lastBuildDate>
-    <atom:link href="https://kwbaek.github.io/tags/runbook/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>OpenClaw 활용 팁: 지시문 기반 Cron으로 ‘안정적인 콘텐츠 파이프라인’ 만들기</title>
-      <link>https://kwbaek.github.io/posts/2026-03-15-openclaw-instruction-driven-content-ops/</link>
-      <pubDate>Sun, 15 Mar 2026 21:00:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/posts/2026-03-15-openclaw-instruction-driven-content-ops/</guid>
-      <description>&lt;p&gt;OpenClaw로 반복 작업을 돌리다 보면, 자동화 자체보다 더 어려운 게 있습니다. 바로 &lt;strong&gt;자동화를 계속 믿을 수 있게 유지하는 것&lt;/strong&gt;입니다. 오늘은 제가 자주 쓰는 패턴 하나를 정리해보겠습니다. 핵심은 간단합니다. “작업 로직을 채팅 프롬프트에 흩뿌리지 말고, 지시문 파일로 고정해 Cron이 그 파일을 읽고 실행하게 만든다.” 이 방식이 생각보다 강력합니다.&lt;/p&gt;
-&lt;p&gt;왜 좋을까요? 첫째, 변경 이력이 남습니다. 지시를 코드처럼 파일로 관리하면 무엇을 언제 왜 바꿨는지 추적이 쉽습니다. 둘째, 실패 대응이 빨라집니다. 실행 시점에는 단순히 파일 존재 여부·형식·핵심 단계만 확인하면 되기 때문에 디버깅 범위가 좁아집니다. 셋째, 사람-에이전트 협업이 편해집니다. 사람은 파일을 수정하고, 에이전트는 같은 규칙으로 반복 실행합니다. 역할이 명확해집니다.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>OpenClaw 운영 팁: Cron과 Heartbeat를 섞어 쓸 때 자동화가 진짜 안정해진다</title>
-      <link>https://kwbaek.github.io/posts/2026-03-14-openclaw-cron-heartbeat-ops/</link>
-      <pubDate>Sat, 14 Mar 2026 21:00:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/posts/2026-03-14-openclaw-cron-heartbeat-ops/</guid>
-      <description>&lt;p&gt;OpenClaw를 계속 운영하다 보면 자동화 작업이 늘어나면서 비슷한 고민이 생깁니다. “이 작업을 cron으로 넣을까, heartbeat에서 처리할까?” 정답은 하나가 아니라 &lt;strong&gt;역할 분리&lt;/strong&gt;입니다. 실무에서 가장 안정적인 구조는 정확한 시각이 중요한 작업은 cron으로, 여러 점검을 묶어서 문맥 기반으로 판단해야 하는 작업은 heartbeat로 보내는 방식입니다.&lt;/p&gt;
-&lt;p&gt;예를 들어 “월요일 09:00 보고서 발송”, “20분 뒤 리마인드”처럼 시간 정확도가 중요한 일은 cron이 맞습니다. 반대로 “이메일/캘린더/알림을 묶어 확인하고, 급한 것만 알려주기” 같은 작업은 heartbeat가 더 효율적입니다. heartbeat는 최근 대화 컨텍스트를 활용해 노이즈를 줄일 수 있고, 여러 체크를 한 번에 처리해서 호출 비용도 아낄 수 있습니다. 즉 cron은 정밀 타이머, heartbeat는 맥락형 배치 처리에 가깝습니다.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>OpenClaw 운영 팁: 업데이트 많은 주간엔 ‘설정 검증 &#43; 헬스체크’ 루틴을 고정하자</title>
-      <link>https://kwbaek.github.io/posts/2026-03-13-openclaw-config-health-routine/</link>
-      <pubDate>Fri, 13 Mar 2026 21:00:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/posts/2026-03-13-openclaw-config-health-routine/</guid>
-      <description>&lt;p&gt;OpenClaw를 매일 쓰다 보면 체감되는 사실이 하나 있습니다. 문제의 대부분은 기능 부족이 아니라 &lt;strong&gt;운영 루틴의 부재&lt;/strong&gt;에서 생깁니다. 특히 최근처럼 릴리즈 속도가 빠르고(설정 키 정리, 보안 강화, 채널 동작 개선), 운영 옵션이 늘어나는 시기에는 “잘 되겠지” 방식이 가장 위험합니다. 그래서 실무에서 가장 효과적인 습관은 기능을 더 붙이는 것보다, &lt;strong&gt;변경 직후 점검 루틴을 짧고 고정된 형태로 반복&lt;/strong&gt;하는 것입니다.&lt;/p&gt;
-&lt;p&gt;제가 추천하는 기본 루틴은 네 단계입니다. 첫째, 설정 변경 전후에 &lt;code&gt;openclaw config validate --json&lt;/code&gt;으로 구조 오류를 먼저 잡습니다. 둘째, 게이트웨이 재기동 후 &lt;code&gt;/healthz&lt;/code&gt;와 &lt;code&gt;/readyz&lt;/code&gt;를 분리 확인해서 프로세스 생존과 실제 준비 상태를 각각 검증합니다. 셋째, &lt;code&gt;openclaw security audit&lt;/code&gt;로 노출 위험(인증/허용원점/권한 과다)을 확인합니다. 넷째, 필요하면 &lt;code&gt;openclaw doctor&lt;/code&gt;로 마이그레이션 누락이나 레거시 키를 정리합니다. 이 순서를 고정하면 장애 원인을 추적하는 시간이 눈에 띄게 줄어듭니다.&lt;/p&gt;</description>
-    </item>
-  </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Runbook on Kyungwook's Devlog</title><link>https://kwbaek.github.io/tags/runbook/</link><description>Recent content in Runbook on Kyungwook's Devlog</description><generator>Hugo -- 0.155.3</generator><language>ko-kr</language><lastBuildDate>Sun, 15 Mar 2026 21:00:00 +0900</lastBuildDate><atom:link href="https://kwbaek.github.io/tags/runbook/index.xml" rel="self" type="application/rss+xml"/><item><title>OpenClaw 활용 팁: 지시문 기반 Cron으로 ‘안정적인 콘텐츠 파이프라인’ 만들기</title><link>https://kwbaek.github.io/posts/2026-03-15-openclaw-instruction-driven-content-ops/</link><pubDate>Sun, 15 Mar 2026 21:00:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-03-15-openclaw-instruction-driven-content-ops/</guid><description>&lt;p&gt;OpenClaw로 반복 작업을 돌리다 보면, 자동화 자체보다 더 어려운 게 있습니다. 바로 &lt;strong&gt;자동화를 계속 믿을 수 있게 유지하는 것&lt;/strong&gt;입니다. 오늘은 제가 자주 쓰는 패턴 하나를 정리해보겠습니다. 핵심은 간단합니다. “작업 로직을 채팅 프롬프트에 흩뿌리지 말고, 지시문 파일로 고정해 Cron이 그 파일을 읽고 실행하게 만든다.” 이 방식이 생각보다 강력합니다.&lt;/p&gt;
+&lt;p&gt;왜 좋을까요? 첫째, 변경 이력이 남습니다. 지시를 코드처럼 파일로 관리하면 무엇을 언제 왜 바꿨는지 추적이 쉽습니다. 둘째, 실패 대응이 빨라집니다. 실행 시점에는 단순히 파일 존재 여부·형식·핵심 단계만 확인하면 되기 때문에 디버깅 범위가 좁아집니다. 셋째, 사람-에이전트 협업이 편해집니다. 사람은 파일을 수정하고, 에이전트는 같은 규칙으로 반복 실행합니다. 역할이 명확해집니다.&lt;/p&gt;</description></item><item><title>OpenClaw 운영 팁: Cron과 Heartbeat를 섞어 쓸 때 자동화가 진짜 안정해진다</title><link>https://kwbaek.github.io/posts/2026-03-14-openclaw-cron-heartbeat-ops/</link><pubDate>Sat, 14 Mar 2026 21:00:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-03-14-openclaw-cron-heartbeat-ops/</guid><description>&lt;p&gt;OpenClaw를 계속 운영하다 보면 자동화 작업이 늘어나면서 비슷한 고민이 생깁니다. “이 작업을 cron으로 넣을까, heartbeat에서 처리할까?” 정답은 하나가 아니라 &lt;strong&gt;역할 분리&lt;/strong&gt;입니다. 실무에서 가장 안정적인 구조는 정확한 시각이 중요한 작업은 cron으로, 여러 점검을 묶어서 문맥 기반으로 판단해야 하는 작업은 heartbeat로 보내는 방식입니다.&lt;/p&gt;
+&lt;p&gt;예를 들어 “월요일 09:00 보고서 발송”, “20분 뒤 리마인드”처럼 시간 정확도가 중요한 일은 cron이 맞습니다. 반대로 “이메일/캘린더/알림을 묶어 확인하고, 급한 것만 알려주기” 같은 작업은 heartbeat가 더 효율적입니다. heartbeat는 최근 대화 컨텍스트를 활용해 노이즈를 줄일 수 있고, 여러 체크를 한 번에 처리해서 호출 비용도 아낄 수 있습니다. 즉 cron은 정밀 타이머, heartbeat는 맥락형 배치 처리에 가깝습니다.&lt;/p&gt;</description></item><item><title>OpenClaw 운영 팁: 업데이트 많은 주간엔 ‘설정 검증 + 헬스체크’ 루틴을 고정하자</title><link>https://kwbaek.github.io/posts/2026-03-13-openclaw-config-health-routine/</link><pubDate>Fri, 13 Mar 2026 21:00:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-03-13-openclaw-config-health-routine/</guid><description>&lt;p&gt;OpenClaw를 매일 쓰다 보면 체감되는 사실이 하나 있습니다. 문제의 대부분은 기능 부족이 아니라 &lt;strong&gt;운영 루틴의 부재&lt;/strong&gt;에서 생깁니다. 특히 최근처럼 릴리즈 속도가 빠르고(설정 키 정리, 보안 강화, 채널 동작 개선), 운영 옵션이 늘어나는 시기에는 “잘 되겠지” 방식이 가장 위험합니다. 그래서 실무에서 가장 효과적인 습관은 기능을 더 붙이는 것보다, &lt;strong&gt;변경 직후 점검 루틴을 짧고 고정된 형태로 반복&lt;/strong&gt;하는 것입니다.&lt;/p&gt;
+&lt;p&gt;제가 추천하는 기본 루틴은 네 단계입니다. 첫째, 설정 변경 전후에 &lt;code&gt;openclaw config validate --json&lt;/code&gt;으로 구조 오류를 먼저 잡습니다. 둘째, 게이트웨이 재기동 후 &lt;code&gt;/healthz&lt;/code&gt;와 &lt;code&gt;/readyz&lt;/code&gt;를 분리 확인해서 프로세스 생존과 실제 준비 상태를 각각 검증합니다. 셋째, &lt;code&gt;openclaw security audit&lt;/code&gt;로 노출 위험(인증/허용원점/권한 과다)을 확인합니다. 넷째, 필요하면 &lt;code&gt;openclaw doctor&lt;/code&gt;로 마이그레이션 누락이나 레거시 키를 정리합니다. 이 순서를 고정하면 장애 원인을 추적하는 시간이 눈에 띄게 줄어듭니다.&lt;/p&gt;</description></item></channel></rss>

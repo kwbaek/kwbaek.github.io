@@ -1,36 +1,14 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
-  <channel>
-    <title>Gemini on Kyungwook&#39;s Devlog</title>
-    <link>https://kwbaek.github.io/tags/gemini/</link>
-    <description>Recent content in Gemini on Kyungwook&#39;s Devlog</description>
-    <generator>Hugo -- 0.155.3</generator>
-    <language>ko-kr</language>
-    <lastBuildDate>Sun, 08 Mar 2026 21:30:00 +0900</lastBuildDate>
-    <atom:link href="https://kwbaek.github.io/tags/gemini/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>OpenClaw v2026.3.7: Context Engine 플러그인, ACP 바인딩 영속화, 그리고 주의할 Breaking Change</title>
-      <link>https://kwbaek.github.io/posts/2026-03-08-openclaw-v2026-3-7-context-engine-acp-binding/</link>
-      <pubDate>Sun, 08 Mar 2026 21:30:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/posts/2026-03-08-openclaw-v2026-3-7-context-engine-acp-binding/</guid>
-      <description>&lt;p&gt;오늘(2026-03-08) OpenClaw v2026.3.7이 출시됐다. 이번 릴리즈는 조용해 보이지만 몇 가지 중요한 변화가 포함돼 있다. 특히 &lt;strong&gt;Breaking Change가 하나&lt;/strong&gt; 있으므로 업데이트 전 꼭 확인하자.&lt;/p&gt;
-&lt;h2 id=&#34;-breaking-change-gatewayauthmode-명시-필수&#34;&gt;⚠️ Breaking Change: &lt;code&gt;gateway.auth.mode&lt;/code&gt; 명시 필수&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Gemini on Kyungwook's Devlog</title><link>https://kwbaek.github.io/tags/gemini/</link><description>Recent content in Gemini on Kyungwook's Devlog</description><generator>Hugo -- 0.155.3</generator><language>ko-kr</language><lastBuildDate>Sun, 08 Mar 2026 21:30:00 +0900</lastBuildDate><atom:link href="https://kwbaek.github.io/tags/gemini/index.xml" rel="self" type="application/rss+xml"/><item><title>OpenClaw v2026.3.7: Context Engine 플러그인, ACP 바인딩 영속화, 그리고 주의할 Breaking Change</title><link>https://kwbaek.github.io/posts/2026-03-08-openclaw-v2026-3-7-context-engine-acp-binding/</link><pubDate>Sun, 08 Mar 2026 21:30:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-03-08-openclaw-v2026-3-7-context-engine-acp-binding/</guid><description>&lt;p&gt;오늘(2026-03-08) OpenClaw v2026.3.7이 출시됐다. 이번 릴리즈는 조용해 보이지만 몇 가지 중요한 변화가 포함돼 있다. 특히 &lt;strong&gt;Breaking Change가 하나&lt;/strong&gt; 있으므로 업데이트 전 꼭 확인하자.&lt;/p&gt;
+&lt;h2 id="-breaking-change-gatewayauthmode-명시-필수"&gt;⚠️ Breaking Change: &lt;code&gt;gateway.auth.mode&lt;/code&gt; 명시 필수&lt;/h2&gt;
 &lt;p&gt;가장 먼저 확인해야 할 내용이다.&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;gateway.auth.token&lt;/code&gt;과 &lt;code&gt;gateway.auth.password&lt;/code&gt;를 &lt;strong&gt;둘 다 설정한 경우&lt;/strong&gt;, 이제 &lt;code&gt;gateway.auth.mode&lt;/code&gt;를 반드시 명시해야 한다.&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;gateway&lt;/span&gt;:
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;auth&lt;/span&gt;:
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;token&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;your-token&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;password&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;your-password&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;mode&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;token &lt;/span&gt; &lt;span style=&#34;color:#75715e&#34;&gt;# 또는 password — 이제 필수!&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;두 값이 모두 설정돼 있는데 &lt;code&gt;mode&lt;/code&gt;가 없으면 게이트웨이가 어떤 인증 방식을 써야 할지 모호해진다. 업그레이드 전 config를 확인하고 &lt;code&gt;mode&lt;/code&gt;를 명시해두자.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>2026년 2월 AI 업계 총정리: 모델 러시와 투자 열풍</title>
-      <link>https://kwbaek.github.io/posts/2026-02-20-ai-ml-february-rush/</link>
-      <pubDate>Fri, 20 Feb 2026 21:00:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/posts/2026-02-20-ai-ml-february-rush/</guid>
-      <description>&lt;p&gt;2026년 2월은 AI 업계 역사상 가장 뜨거운 달 중 하나로 기록될 것 같습니다. 거의 매일 새로운 모델이 출시되고, 수억에서 수백억 달러 규모의 투자가 쏟아지고 있습니다. 오늘 하루 동안만 해도 엄청난 소식들이 쏟아졌는데요, 주요 트렌드를 정리해봤습니다.&lt;/p&gt;
-&lt;h2 id=&#34;-claude-sonnet-46-전방위-업그레이드&#34;&gt;🚀 Claude Sonnet 4.6: 전방위 업그레이드&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-yaml" data-lang="yaml"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;gateway&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;auth&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;token&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;your-token&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;password&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;your-password&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;mode&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;token &lt;/span&gt; &lt;span style="color:#75715e"&gt;# 또는 password — 이제 필수!&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;두 값이 모두 설정돼 있는데 &lt;code&gt;mode&lt;/code&gt;가 없으면 게이트웨이가 어떤 인증 방식을 써야 할지 모호해진다. 업그레이드 전 config를 확인하고 &lt;code&gt;mode&lt;/code&gt;를 명시해두자.&lt;/p&gt;</description></item><item><title>2026년 2월 AI 업계 총정리: 모델 러시와 투자 열풍</title><link>https://kwbaek.github.io/posts/2026-02-20-ai-ml-february-rush/</link><pubDate>Fri, 20 Feb 2026 21:00:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-02-20-ai-ml-february-rush/</guid><description>&lt;p&gt;2026년 2월은 AI 업계 역사상 가장 뜨거운 달 중 하나로 기록될 것 같습니다. 거의 매일 새로운 모델이 출시되고, 수억에서 수백억 달러 규모의 투자가 쏟아지고 있습니다. 오늘 하루 동안만 해도 엄청난 소식들이 쏟아졌는데요, 주요 트렌드를 정리해봤습니다.&lt;/p&gt;
+&lt;h2 id="-claude-sonnet-46-전방위-업그레이드"&gt;🚀 Claude Sonnet 4.6: 전방위 업그레이드&lt;/h2&gt;
 &lt;p&gt;Anthropic이 &lt;strong&gt;Claude Sonnet 4.6&lt;/strong&gt;를 발표했습니다. 이번 업데이트는 단순한 버전업이 아니라 전방위적인 성능 향상을 이룬 풀 업그레이드입니다.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;주요 개선사항:&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
@@ -40,15 +18,8 @@
 &lt;li&gt;&lt;strong&gt;에이전트 계획(Agent Planning)&lt;/strong&gt; 능력 향상&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;지식 작업 효율성&lt;/strong&gt; 증대&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;특히 에이전트 기반 워크플로우와 복잡한 작업 처리에서 큰 개선을 보였다고 합니다. Free와 Pro 사용자 모두 기본 모델로 사용할 수 있으며, 현재 바로 사용 가능합니다.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>2026년 2월 AI 모델 러시: Gemini 3 Deep Think와 격화되는 경쟁</title>
-      <link>https://kwbaek.github.io/posts/2026-02-13-gemini-3-deep-think-ai-model-rush/</link>
-      <pubDate>Fri, 13 Feb 2026 21:00:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/posts/2026-02-13-gemini-3-deep-think-ai-model-rush/</guid>
-      <description>&lt;p&gt;2026년 2월, AI 업계는 그야말로 &lt;strong&gt;모델 러시(Model Rush)&lt;/strong&gt; 시대에 돌입했습니다. Google의 Gemini 3 Deep Think 출시를 시작으로, Anthropic의 Claude Opus 4.6, OpenAI의 GPT-5.3-Codex, 그리고 중국의 GLM-5까지 연이어 출시되며 전례 없는 경쟁이 펼쳐지고 있습니다.&lt;/p&gt;
-&lt;h2 id=&#34;-gemini-3-deep-think-과학연구-특화-추론-모델&#34;&gt;🔬 Gemini 3 Deep Think: 과학/연구 특화 추론 모델&lt;/h2&gt;
+&lt;p&gt;특히 에이전트 기반 워크플로우와 복잡한 작업 처리에서 큰 개선을 보였다고 합니다. Free와 Pro 사용자 모두 기본 모델로 사용할 수 있으며, 현재 바로 사용 가능합니다.&lt;/p&gt;</description></item><item><title>2026년 2월 AI 모델 러시: Gemini 3 Deep Think와 격화되는 경쟁</title><link>https://kwbaek.github.io/posts/2026-02-13-gemini-3-deep-think-ai-model-rush/</link><pubDate>Fri, 13 Feb 2026 21:00:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-02-13-gemini-3-deep-think-ai-model-rush/</guid><description>&lt;p&gt;2026년 2월, AI 업계는 그야말로 &lt;strong&gt;모델 러시(Model Rush)&lt;/strong&gt; 시대에 돌입했습니다. Google의 Gemini 3 Deep Think 출시를 시작으로, Anthropic의 Claude Opus 4.6, OpenAI의 GPT-5.3-Codex, 그리고 중국의 GLM-5까지 연이어 출시되며 전례 없는 경쟁이 펼쳐지고 있습니다.&lt;/p&gt;
+&lt;h2 id="-gemini-3-deep-think-과학연구-특화-추론-모델"&gt;🔬 Gemini 3 Deep Think: 과학/연구 특화 추론 모델&lt;/h2&gt;
 &lt;p&gt;Google이 2월 13일(한국 시간 기준) 공개한 &lt;strong&gt;Gemini 3 Deep Think&lt;/strong&gt;는 과학, 연구, 엔지니어링 분야에 특화된 고급 추론 모델입니다.&lt;/p&gt;
 &lt;p&gt;주요 특징:&lt;/p&gt;
 &lt;ul&gt;
@@ -56,7 +27,4 @@
 &lt;li&gt;&lt;strong&gt;Gemini 3 시리즈의 전략적 분화&lt;/strong&gt;: Flash(빠른 처리)와 Deep Think(고급 추론)로 이원화&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;전문 분야 특화 전략&lt;/strong&gt;: 범용 모델에서 벗어나 전문성 강화&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;a href=&#34;https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-deep-think/&#34;&gt;Google 공식 블로그&lt;/a&gt;에서는 &amp;ldquo;과학 연구를 가속화하는 특화된 추론 모드&amp;quot;라고 소개하고 있습니다.&lt;/p&gt;</description>
-    </item>
-  </channel>
-</rss>
+&lt;p&gt;&lt;a href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-deep-think/"&gt;Google 공식 블로그&lt;/a&gt;에서는 &amp;ldquo;과학 연구를 가속화하는 특화된 추론 모드&amp;quot;라고 소개하고 있습니다.&lt;/p&gt;</description></item></channel></rss>

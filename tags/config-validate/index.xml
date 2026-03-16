@@ -1,21 +1,3 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
-  <channel>
-    <title>Config Validate on Kyungwook&#39;s Devlog</title>
-    <link>https://kwbaek.github.io/tags/config-validate/</link>
-    <description>Recent content in Config Validate on Kyungwook&#39;s Devlog</description>
-    <generator>Hugo -- 0.155.3</generator>
-    <language>ko-kr</language>
-    <lastBuildDate>Wed, 04 Mar 2026 21:05:00 +0900</lastBuildDate>
-    <atom:link href="https://kwbaek.github.io/tags/config-validate/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>OpenClaw 실전 루틴: ‘콘텐츠 작성 → 운영 점검’ 2단계로 자동화 품질 높이기</title>
-      <link>https://kwbaek.github.io/posts/2026-03-04-openclaw-two-step-content-and-ops-routine/</link>
-      <pubDate>Wed, 04 Mar 2026 21:05:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/posts/2026-03-04-openclaw-two-step-content-and-ops-routine/</guid>
-      <description>&lt;p&gt;OpenClaw를 꾸준히 쓰다 보면, 가장 큰 차이는 “기능을 많이 아는가”보다 &lt;strong&gt;루틴을 얼마나 단순하게 고정했는가&lt;/strong&gt;에서 나옵니다. 특히 최근 버전 흐름(v2026.3.2 기준)에서는 콘텐츠 작업과 운영 점검을 분리한 2단계 루틴이 체감 효율이 좋습니다.&lt;/p&gt;
-&lt;h2 id=&#34;1-작업-단계-도구를-목적별로-분리&#34;&gt;1) 작업 단계: 도구를 목적별로 분리&lt;/h2&gt;
-&lt;p&gt;최근 추가된 1st-class &lt;code&gt;pdf&lt;/code&gt; tool은 문서 기반 작업에서 꽤 강력합니다. 기존처럼 브라우저/스크립트를 우회하지 않고, 바로 PDF를 분석해 요약·비교·핵심 추출을 수행할 수 있습니다. 실무에서는 이게 중요합니다. 도구 체인이 짧아질수록 실패 지점이 줄고, 재현성도 올라가기 때문입니다.&lt;/p&gt;</description>
-    </item>
-  </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Config Validate on Kyungwook's Devlog</title><link>https://kwbaek.github.io/tags/config-validate/</link><description>Recent content in Config Validate on Kyungwook's Devlog</description><generator>Hugo -- 0.155.3</generator><language>ko-kr</language><lastBuildDate>Wed, 04 Mar 2026 21:05:00 +0900</lastBuildDate><atom:link href="https://kwbaek.github.io/tags/config-validate/index.xml" rel="self" type="application/rss+xml"/><item><title>OpenClaw 실전 루틴: ‘콘텐츠 작성 → 운영 점검’ 2단계로 자동화 품질 높이기</title><link>https://kwbaek.github.io/posts/2026-03-04-openclaw-two-step-content-and-ops-routine/</link><pubDate>Wed, 04 Mar 2026 21:05:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-03-04-openclaw-two-step-content-and-ops-routine/</guid><description>&lt;p&gt;OpenClaw를 꾸준히 쓰다 보면, 가장 큰 차이는 “기능을 많이 아는가”보다 &lt;strong&gt;루틴을 얼마나 단순하게 고정했는가&lt;/strong&gt;에서 나옵니다. 특히 최근 버전 흐름(v2026.3.2 기준)에서는 콘텐츠 작업과 운영 점검을 분리한 2단계 루틴이 체감 효율이 좋습니다.&lt;/p&gt;
+&lt;h2 id="1-작업-단계-도구를-목적별로-분리"&gt;1) 작업 단계: 도구를 목적별로 분리&lt;/h2&gt;
+&lt;p&gt;최근 추가된 1st-class &lt;code&gt;pdf&lt;/code&gt; tool은 문서 기반 작업에서 꽤 강력합니다. 기존처럼 브라우저/스크립트를 우회하지 않고, 바로 PDF를 분석해 요약·비교·핵심 추출을 수행할 수 있습니다. 실무에서는 이게 중요합니다. 도구 체인이 짧아질수록 실패 지점이 줄고, 재현성도 올라가기 때문입니다.&lt;/p&gt;</description></item></channel></rss>
