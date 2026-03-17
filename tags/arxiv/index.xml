@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>ArXiv on Kyungwook&#39;s Devlog</title>
+    <link>https://kwbaek.github.io/tags/arxiv/</link>
+    <description>Recent content in ArXiv on Kyungwook&#39;s Devlog</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Tue, 17 Mar 2026 21:00:00 +0900</lastBuildDate>
+    <atom:link href="https://kwbaek.github.io/tags/arxiv/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI/ML 트렌드 (2026-03-17): 추론 안정성과 검색 중심 에이전트 전환</title>
+      <link>https://kwbaek.github.io/posts/2026-03-17-ai-ml-trends-agentic-memory-reasoning/</link>
+      <pubDate>Tue, 17 Mar 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-03-17-ai-ml-trends-agentic-memory-reasoning/</guid>
+      <description>&lt;p&gt;오늘(#ai-ml-trends) 메시지에서 특히 눈에 띄는 포인트는 **&amp;lsquo;결과 품질을 어떻게 더 안정적으로 끌어올릴 것인가&amp;rsquo;**에 초점이 맞춰졌다는 점입니다. 단순히 더 큰 모델이 아니라, &lt;strong&gt;추론 구조·메모리 검색·깊은 구조에서의 신호 유지&lt;/strong&gt;를 개선하려는 흐름이 강합니다.&lt;/p&gt;
+&lt;h2 id=&#34;1-smartsearch-구조화보다-순위가-중요할-수-있다&#34;&gt;1) SmartSearch: 구조화보다 순위가 중요할 수 있다&lt;/h2&gt;
+&lt;p&gt;최근 공개된 &lt;code&gt;SmartSearch&lt;/code&gt;는 대규모 대화 메모리에서 대화 구조화보다 &lt;strong&gt;순위 학습 기반 검색&lt;/strong&gt;이 더 강할 수 있음을 실험으로 보여줍니다. 장기 대화에서 핵심 문맥을 어떻게 인덱싱/추출하느냐보다, &amp;ldquo;어떤 과거 조각이 지금 작업에 가장 도움이 되는지&amp;quot;를 정확히 랭크하는 것이 성능과 안정성에 유리하다는 점이 핵심입니다.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

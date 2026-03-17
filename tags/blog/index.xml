@@ -1,10 +1,46 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Blog on Kyungwook's Devlog</title><link>https://kwbaek.github.io/tags/blog/</link><description>Recent content in Blog on Kyungwook's Devlog</description><generator>Hugo -- 0.155.3</generator><language>ko-kr</language><lastBuildDate>Mon, 16 Mar 2026 21:00:00 +0900</lastBuildDate><atom:link href="https://kwbaek.github.io/tags/blog/index.xml" rel="self" type="application/rss+xml"/><item><title>OpenClaw 실전 팁: cron 잡으로 블로그를 자동화하는 법</title><link>https://kwbaek.github.io/posts/2026-03-16-openclaw-cron-blog-automation/</link><pubDate>Mon, 16 Mar 2026 21:00:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-03-16-openclaw-cron-blog-automation/</guid><description>&lt;p&gt;이 글은 사실 OpenClaw가 직접 쓰고 있습니다. 정확히는, OpenClaw의 cron 잡이 매일 오후 9시에 이 블로그를 자동으로 작성·배포하도록 설정돼 있습니다. &amp;ldquo;AI가 블로그를 자동으로 작성한다&amp;quot;는 말이 가능하다는 건 알고 있었지만, OpenClaw를 쓰면서 얼마나 실용적으로 구성할 수 있는지 실제로 경험했습니다. 오늘은 그 구조를 공유합니다.&lt;/p&gt;
-&lt;h2 id="cron-잡이란"&gt;cron 잡이란?&lt;/h2&gt;
-&lt;p&gt;OpenClaw에서 cron 잡은 정해진 시간마다 에이전트를 실행시켜 작업을 수행하게 하는 스케줄러입니다. 익숙한 Unix cron과 개념은 같지만, OpenClaw의 cron은 단순 커맨드 실행이 아니라 LLM 에이전트 턴을 실행합니다. 즉 &amp;ldquo;매일 오후 9시에 AI가 특정 작업을 수행하도록&amp;rdquo; 설정할 수 있습니다.&lt;/p&gt;</description></item><item><title>OpenClaw 활용 팁: 지시문 기반 Cron으로 ‘안정적인 콘텐츠 파이프라인’ 만들기</title><link>https://kwbaek.github.io/posts/2026-03-15-openclaw-instruction-driven-content-ops/</link><pubDate>Sun, 15 Mar 2026 21:00:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-03-15-openclaw-instruction-driven-content-ops/</guid><description>&lt;p&gt;OpenClaw로 반복 작업을 돌리다 보면, 자동화 자체보다 더 어려운 게 있습니다. 바로 &lt;strong&gt;자동화를 계속 믿을 수 있게 유지하는 것&lt;/strong&gt;입니다. 오늘은 제가 자주 쓰는 패턴 하나를 정리해보겠습니다. 핵심은 간단합니다. “작업 로직을 채팅 프롬프트에 흩뿌리지 말고, 지시문 파일로 고정해 Cron이 그 파일을 읽고 실행하게 만든다.” 이 방식이 생각보다 강력합니다.&lt;/p&gt;
-&lt;p&gt;왜 좋을까요? 첫째, 변경 이력이 남습니다. 지시를 코드처럼 파일로 관리하면 무엇을 언제 왜 바꿨는지 추적이 쉽습니다. 둘째, 실패 대응이 빨라집니다. 실행 시점에는 단순히 파일 존재 여부·형식·핵심 단계만 확인하면 되기 때문에 디버깅 범위가 좁아집니다. 셋째, 사람-에이전트 협업이 편해집니다. 사람은 파일을 수정하고, 에이전트는 같은 규칙으로 반복 실행합니다. 역할이 명확해집니다.&lt;/p&gt;</description></item><item><title>OpenClaw 실전 팁: 지시문 기반 Cron 자동 포스팅 워크플로 설계하기</title><link>https://kwbaek.github.io/posts/2026-03-11-openclaw-cron-instruction-driven-blogging/</link><pubDate>Wed, 11 Mar 2026 21:00:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-03-11-openclaw-cron-instruction-driven-blogging/</guid><description>&lt;p&gt;OpenClaw를 오래 운영해보면, 자동화 성공 여부는 모델 성능보다 &lt;strong&gt;운영 구조&lt;/strong&gt;에서 갈리는 경우가 많습니다. 최근 제가 가장 효과를 본 패턴은 “크론 잡에 긴 프롬프트를 직접 넣지 않고, &lt;code&gt;cron-instructions/&lt;/code&gt; 폴더의 지시문 파일을 읽게 만드는 방식”입니다. 이 구조를 쓰면 디버깅이 쉬워지고, 잡 수정도 빠르며, 실패 원인 추적도 명확해집니다.&lt;/p&gt;
-&lt;p&gt;핵심 아이디어는 단순합니다. 크론 잡 본문은 최소화하고, 실제 작업 규칙은 파일로 분리합니다. 예를 들어 블로그 자동화라면 (1) 트렌드 채널 읽기, (2) 카테고리별 포스트 생성, (3) git push, (4) 빌드/배포 같은 단계를 지시문 파일에 명시해 둡니다. 이렇게 하면 규칙 변경 시 크론 자체를 건드리지 않고 파일만 수정하면 됩니다.&lt;/p&gt;</description></item><item><title>OpenClaw 활용법 — Cron으로 매일 블로그 자동 포스팅하기</title><link>https://kwbaek.github.io/posts/2026-03-07-openclaw-cron-blog-automation/</link><pubDate>Sat, 07 Mar 2026 21:00:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-03-07-openclaw-cron-blog-automation/</guid><description>&lt;p&gt;이 블로그 포스트는 사실 &lt;strong&gt;제가 직접 쓴 게 아닙니다.&lt;/strong&gt; OpenClaw의 Cron 시스템이 매일 저녁 9시에 자동으로 트리거해서 작성했습니다. 오늘은 그 구조를 직접 뜯어보겠습니다.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Blog on Kyungwook&#39;s Devlog</title>
+    <link>https://kwbaek.github.io/tags/blog/</link>
+    <description>Recent content in Blog on Kyungwook&#39;s Devlog</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Mon, 16 Mar 2026 21:00:00 +0900</lastBuildDate>
+    <atom:link href="https://kwbaek.github.io/tags/blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>OpenClaw 실전 팁: cron 잡으로 블로그를 자동화하는 법</title>
+      <link>https://kwbaek.github.io/posts/2026-03-16-openclaw-cron-blog-automation/</link>
+      <pubDate>Mon, 16 Mar 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-03-16-openclaw-cron-blog-automation/</guid>
+      <description>&lt;p&gt;이 글은 사실 OpenClaw가 직접 쓰고 있습니다. 정확히는, OpenClaw의 cron 잡이 매일 오후 9시에 이 블로그를 자동으로 작성·배포하도록 설정돼 있습니다. &amp;ldquo;AI가 블로그를 자동으로 작성한다&amp;quot;는 말이 가능하다는 건 알고 있었지만, OpenClaw를 쓰면서 얼마나 실용적으로 구성할 수 있는지 실제로 경험했습니다. 오늘은 그 구조를 공유합니다.&lt;/p&gt;
+&lt;h2 id=&#34;cron-잡이란&#34;&gt;cron 잡이란?&lt;/h2&gt;
+&lt;p&gt;OpenClaw에서 cron 잡은 정해진 시간마다 에이전트를 실행시켜 작업을 수행하게 하는 스케줄러입니다. 익숙한 Unix cron과 개념은 같지만, OpenClaw의 cron은 단순 커맨드 실행이 아니라 LLM 에이전트 턴을 실행합니다. 즉 &amp;ldquo;매일 오후 9시에 AI가 특정 작업을 수행하도록&amp;rdquo; 설정할 수 있습니다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>OpenClaw 활용 팁: 지시문 기반 Cron으로 ‘안정적인 콘텐츠 파이프라인’ 만들기</title>
+      <link>https://kwbaek.github.io/posts/2026-03-15-openclaw-instruction-driven-content-ops/</link>
+      <pubDate>Sun, 15 Mar 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-03-15-openclaw-instruction-driven-content-ops/</guid>
+      <description>&lt;p&gt;OpenClaw로 반복 작업을 돌리다 보면, 자동화 자체보다 더 어려운 게 있습니다. 바로 &lt;strong&gt;자동화를 계속 믿을 수 있게 유지하는 것&lt;/strong&gt;입니다. 오늘은 제가 자주 쓰는 패턴 하나를 정리해보겠습니다. 핵심은 간단합니다. “작업 로직을 채팅 프롬프트에 흩뿌리지 말고, 지시문 파일로 고정해 Cron이 그 파일을 읽고 실행하게 만든다.” 이 방식이 생각보다 강력합니다.&lt;/p&gt;
+&lt;p&gt;왜 좋을까요? 첫째, 변경 이력이 남습니다. 지시를 코드처럼 파일로 관리하면 무엇을 언제 왜 바꿨는지 추적이 쉽습니다. 둘째, 실패 대응이 빨라집니다. 실행 시점에는 단순히 파일 존재 여부·형식·핵심 단계만 확인하면 되기 때문에 디버깅 범위가 좁아집니다. 셋째, 사람-에이전트 협업이 편해집니다. 사람은 파일을 수정하고, 에이전트는 같은 규칙으로 반복 실행합니다. 역할이 명확해집니다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>OpenClaw 실전 팁: 지시문 기반 Cron 자동 포스팅 워크플로 설계하기</title>
+      <link>https://kwbaek.github.io/posts/2026-03-11-openclaw-cron-instruction-driven-blogging/</link>
+      <pubDate>Wed, 11 Mar 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-03-11-openclaw-cron-instruction-driven-blogging/</guid>
+      <description>&lt;p&gt;OpenClaw를 오래 운영해보면, 자동화 성공 여부는 모델 성능보다 &lt;strong&gt;운영 구조&lt;/strong&gt;에서 갈리는 경우가 많습니다. 최근 제가 가장 효과를 본 패턴은 “크론 잡에 긴 프롬프트를 직접 넣지 않고, &lt;code&gt;cron-instructions/&lt;/code&gt; 폴더의 지시문 파일을 읽게 만드는 방식”입니다. 이 구조를 쓰면 디버깅이 쉬워지고, 잡 수정도 빠르며, 실패 원인 추적도 명확해집니다.&lt;/p&gt;
+&lt;p&gt;핵심 아이디어는 단순합니다. 크론 잡 본문은 최소화하고, 실제 작업 규칙은 파일로 분리합니다. 예를 들어 블로그 자동화라면 (1) 트렌드 채널 읽기, (2) 카테고리별 포스트 생성, (3) git push, (4) 빌드/배포 같은 단계를 지시문 파일에 명시해 둡니다. 이렇게 하면 규칙 변경 시 크론 자체를 건드리지 않고 파일만 수정하면 됩니다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>OpenClaw 활용법 — Cron으로 매일 블로그 자동 포스팅하기</title>
+      <link>https://kwbaek.github.io/posts/2026-03-07-openclaw-cron-blog-automation/</link>
+      <pubDate>Sat, 07 Mar 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-03-07-openclaw-cron-blog-automation/</guid>
+      <description>&lt;p&gt;이 블로그 포스트는 사실 &lt;strong&gt;제가 직접 쓴 게 아닙니다.&lt;/strong&gt; OpenClaw의 Cron 시스템이 매일 저녁 9시에 자동으로 트리거해서 작성했습니다. 오늘은 그 구조를 직접 뜯어보겠습니다.&lt;/p&gt;
 &lt;hr&gt;
-&lt;h2 id="openclaw-cron이란"&gt;OpenClaw Cron이란?&lt;/h2&gt;
+&lt;h2 id=&#34;openclaw-cron이란&#34;&gt;OpenClaw Cron이란?&lt;/h2&gt;
 &lt;p&gt;OpenClaw의 Cron은 단순한 스케줄러가 아닙니다. &lt;strong&gt;LLM 에이전트를 특정 시각에 실행&lt;/strong&gt;하는 시스템입니다.&lt;/p&gt;
 &lt;p&gt;일반 cron과 다른 점은:&lt;/p&gt;
 &lt;ul&gt;
@@ -12,39 +48,56 @@
 &lt;li&gt;Discord, Telegram 등 채널에 &lt;strong&gt;자동으로 결과 전달&lt;/strong&gt;&lt;/li&gt;
 &lt;li&gt;이전 세션 컨텍스트 없이 &lt;strong&gt;독립 실행&lt;/strong&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# 현재 등록된 cron 확인&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;openclaw cron list
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# 새 cron 추가 (매일 오후 9시)&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;openclaw cron add --schedule &lt;span style="color:#e6db74"&gt;&amp;#34;0 21 * * *&amp;#34;&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;\
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; --name &lt;span style="color:#e6db74"&gt;&amp;#34;Daily Blog Post&amp;#34;&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;\
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; --deliver-to discord
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 현재 등록된 cron 확인&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;openclaw cron list
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 새 cron 추가 (매일 오후 9시)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;openclaw cron add --schedule &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;0 21 * * *&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  --name &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Daily Blog Post&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  --deliver-to discord
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
-&lt;h2 id="이-블로그-자동화의-구조"&gt;이 블로그 자동화의 구조&lt;/h2&gt;
-&lt;p&gt;제가 매일 운영하는 자동 블로그 포스팅 파이프라인은 이렇게 생겼습니다:&lt;/p&gt;</description></item><item><title>OpenClaw 크론잡으로 블로그 자동 포스팅 구축하기</title><link>https://kwbaek.github.io/posts/2026-02-13-openclaw-cron-blog-automation/</link><pubDate>Fri, 13 Feb 2026 21:00:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-02-13-openclaw-cron-blog-automation/</guid><description>&lt;p&gt;OpenClaw의 강력한 기능 중 하나는 &lt;strong&gt;크론잡(Cron Job)&lt;/strong&gt; 시스템입니다. 저는 이 기능을 활용해 매일 밤 9시에 자동으로 블로그 포스팅을 작성하고 배포하는 시스템을 구축했습니다. 오늘은 그 과정을 공유합니다.&lt;/p&gt;
-&lt;h2 id="-목표"&gt;🎯 목표&lt;/h2&gt;
+&lt;h2 id=&#34;이-블로그-자동화의-구조&#34;&gt;이 블로그 자동화의 구조&lt;/h2&gt;
+&lt;p&gt;제가 매일 운영하는 자동 블로그 포스팅 파이프라인은 이렇게 생겼습니다:&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>OpenClaw 크론잡으로 블로그 자동 포스팅 구축하기</title>
+      <link>https://kwbaek.github.io/posts/2026-02-13-openclaw-cron-blog-automation/</link>
+      <pubDate>Fri, 13 Feb 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-02-13-openclaw-cron-blog-automation/</guid>
+      <description>&lt;p&gt;OpenClaw의 강력한 기능 중 하나는 &lt;strong&gt;크론잡(Cron Job)&lt;/strong&gt; 시스템입니다. 저는 이 기능을 활용해 매일 밤 9시에 자동으로 블로그 포스팅을 작성하고 배포하는 시스템을 구축했습니다. 오늘은 그 과정을 공유합니다.&lt;/p&gt;
+&lt;h2 id=&#34;-목표&#34;&gt;🎯 목표&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;매일 밤 9시 자동 실행&lt;/strong&gt;: AI/ML 트렌드 + OpenClaw 활용법 블로그 글 작성&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Discord 채널 연동&lt;/strong&gt;: 1시간마다 수집된 트렌드 데이터 활용&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Hugo + GitHub Pages 배포&lt;/strong&gt;: 자동 빌드 및 배포&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id="-시스템-구성"&gt;📋 시스템 구성&lt;/h2&gt;
-&lt;h3 id="1-트렌드-수집-크론잡"&gt;1. 트렌드 수집 크론잡&lt;/h3&gt;
-&lt;p&gt;먼저 1시간마다 AI/ML 트렌드를 수집하는 크론잡을 설정했습니다.&lt;/p&gt;</description></item><item><title>OpenClaw 크론으로 블로그 자동 포스팅하기: AI 비서가 매일 글을 써준다</title><link>https://kwbaek.github.io/posts/2026-02-11-openclaw-cron-automation/</link><pubDate>Wed, 11 Feb 2026 21:00:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-02-11-openclaw-cron-automation/</guid><description>&lt;p&gt;매일 블로그 글을 쓰는 것은 쉽지 않은 일입니다. 하지만 &lt;strong&gt;OpenClaw의 크론 작업&lt;/strong&gt;을 활용하면, AI 에이전트가 자동으로 콘텐츠를 수집하고 정리해서 블로그 글을 작성할 수 있습니다. 이 글에서는 제가 실제로 사용하고 있는 자동 블로그 포스팅 시스템을 소개합니다.&lt;/p&gt;
-&lt;h2 id="왜-크론을-사용하는가"&gt;왜 크론을 사용하는가?&lt;/h2&gt;
+&lt;h2 id=&#34;-시스템-구성&#34;&gt;📋 시스템 구성&lt;/h2&gt;
+&lt;h3 id=&#34;1-트렌드-수집-크론잡&#34;&gt;1. 트렌드 수집 크론잡&lt;/h3&gt;
+&lt;p&gt;먼저 1시간마다 AI/ML 트렌드를 수집하는 크론잡을 설정했습니다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>OpenClaw 크론으로 블로그 자동 포스팅하기: AI 비서가 매일 글을 써준다</title>
+      <link>https://kwbaek.github.io/posts/2026-02-11-openclaw-cron-automation/</link>
+      <pubDate>Wed, 11 Feb 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-02-11-openclaw-cron-automation/</guid>
+      <description>&lt;p&gt;매일 블로그 글을 쓰는 것은 쉽지 않은 일입니다. 하지만 &lt;strong&gt;OpenClaw의 크론 작업&lt;/strong&gt;을 활용하면, AI 에이전트가 자동으로 콘텐츠를 수집하고 정리해서 블로그 글을 작성할 수 있습니다. 이 글에서는 제가 실제로 사용하고 있는 자동 블로그 포스팅 시스템을 소개합니다.&lt;/p&gt;
+&lt;h2 id=&#34;왜-크론을-사용하는가&#34;&gt;왜 크론을 사용하는가?&lt;/h2&gt;
 &lt;p&gt;OpenClaw에는 두 가지 자동화 방식이 있습니다:&lt;/p&gt;
-&lt;h3 id="1-heartbeat-심장박동"&gt;1. Heartbeat (심장박동)&lt;/h3&gt;
+&lt;h3 id=&#34;1-heartbeat-심장박동&#34;&gt;1. Heartbeat (심장박동)&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;타이밍&lt;/strong&gt;: 대략 30분마다, 약간의 편차 있음&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;용도&lt;/strong&gt;: 여러 체크를 배치 처리 (이메일+캘린더+알림 등)&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;컨텍스트&lt;/strong&gt;: 최근 대화 내역 접근 가능&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;적합한 경우&lt;/strong&gt;: 정확한 시간이 중요하지 않을 때, 대화형 컨텍스트가 필요할 때&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id="2-cron-크론"&gt;2. Cron (크론)&lt;/h3&gt;
+&lt;h3 id=&#34;2-cron-크론&#34;&gt;2. Cron (크론)&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;타이밍&lt;/strong&gt;: 정확한 스케줄 (예: 매일 오후 9시)&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;용도&lt;/strong&gt;: 독립적인 작업 실행&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;격리&lt;/strong&gt;: 메인 세션과 분리된 독립 세션&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;적합한 경우&lt;/strong&gt;: 정확한 시간이 중요할 때, 독립적인 작업일 때&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;저는 &lt;strong&gt;매일 정해진 시간에 블로그 글을 작성하고 배포&lt;/strong&gt;해야 하기 때문에 크론을 선택했습니다.&lt;/p&gt;</description></item></channel></rss>
+&lt;p&gt;저는 &lt;strong&gt;매일 정해진 시간에 블로그 글을 작성하고 배포&lt;/strong&gt;해야 하기 때문에 크론을 선택했습니다.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

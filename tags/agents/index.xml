@@ -1,21 +1,60 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Agents on Kyungwook's Devlog</title><link>https://kwbaek.github.io/tags/agents/</link><description>Recent content in Agents on Kyungwook's Devlog</description><generator>Hugo -- 0.155.3</generator><language>ko-kr</language><lastBuildDate>Mon, 16 Mar 2026 21:00:00 +0900</lastBuildDate><atom:link href="https://kwbaek.github.io/tags/agents/index.xml" rel="self" type="application/rss+xml"/><item><title>AI/ML 트렌드: Claude Sonnet 4.6 출시, 에이전트 메모리 혁신, 그리고 AI 거버넌스의 현실</title><link>https://kwbaek.github.io/posts/2026-03-16-ai-ml-trends-claude-sonnet46-agent-memory/</link><pubDate>Mon, 16 Mar 2026 21:00:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-03-16-ai-ml-trends-claude-sonnet46-agent-memory/</guid><description>&lt;p&gt;오늘 #ai-ml-trends 채널에서 주목할 만한 소식이 한꺼번에 쏟아졌습니다. 모델 업데이트, 에이전트 메모리 최적화, 그리고 AI 거버넌스를 둘러싼 논쟁까지 — 방향이 뚜렷합니다. AI가 &amp;ldquo;잘 만들어진 모델&amp;quot;에서 &amp;ldquo;실제 운영 가능한 시스템&amp;quot;으로 전환하는 속도가 빠릅니다.&lt;/p&gt;
-&lt;h2 id="claude-sonnet-46-1m-컨텍스트-베타와-함께-출시"&gt;Claude Sonnet 4.6, 1M 컨텍스트 베타와 함께 출시&lt;/h2&gt;
-&lt;p&gt;가장 큰 뉴스는 Anthropic의 Claude Sonnet 4.6입니다. 코딩·에이전트 플래닝·컴퓨터 사용(computer use)·장기 추론 등 전반을 업그레이드했으며, 1M 토큰 컨텍스트를 베타로 제공합니다. 가격은 Sonnet 4.5와 동일($3/$15 per 1M tokens)로 유지해, 고성능 모델로의 진입장벽을 낮추는 전략이 눈에 띕니다.&lt;/p&gt;</description></item><item><title>AI/ML 트렌드: 성능 경쟁 다음 단계 — 에이전트 안전성·거버넌스가 제품 경쟁력이다</title><link>https://kwbaek.github.io/posts/2026-03-15-ai-ml-trends-agent-safety-and-governance/</link><pubDate>Sun, 15 Mar 2026 21:00:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-03-15-ai-ml-trends-agent-safety-and-governance/</guid><description>&lt;p&gt;오늘 #ai-ml-trends 채널에서 가장 중요하게 보인 흐름은 명확했습니다. &lt;strong&gt;모델 자체 성능보다, 에이전트를 실제 환경에 안전하게 배치·운영하는 능력이 경쟁력을 좌우하기 시작했다&lt;/strong&gt;는 점입니다. 특히 오늘 올라온 이슈들을 같이 보면 방향이 더 선명해집니다. Perplexity의 에이전트 보안 정리 논문, Reasoning LLM-as-a-Judge 취약점 분석, 그리고 Anthropic의 기업 도입형 조인트벤처(JV) 논의까지 — 모두 같은 질문으로 수렴합니다. “좋은 모델을 만들었는가?”가 아니라 “그 모델을 통제 가능한 시스템으로 운영할 수 있는가?”입니다.&lt;/p&gt;
-&lt;p&gt;먼저 보안 측면입니다. 에이전트는 단순 챗봇과 달리 도구 호출, 장기 워크플로, 외부 시스템 연동이 기본이기 때문에 공격면이 훨씬 넓습니다. 간접 프롬프트 인젝션, confused deputy, 장기 실행 중 정책 이탈은 이제 이론이 아니라 운영 리스크입니다. 즉 방어 전략도 입력 필터 하나로 끝나지 않습니다. 샌드박스 실행, 권한 경계, 정책 강제, 감사 가능한 로깅까지 계층형으로 설계해야 실제 사고를 줄일 수 있습니다.&lt;/p&gt;</description></item><item><title>OpenClaw 운영 고도화: secrets 워크플로와 agents binding으로 자동화 신뢰성 끌어올리기</title><link>https://kwbaek.github.io/posts/2026-02-28-openclaw-secrets-and-bindings-ops-guide/</link><pubDate>Sat, 28 Feb 2026 21:05:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-02-28-openclaw-secrets-and-bindings-ops-guide/</guid><description>&lt;p&gt;이번 주 OpenClaw 운영에서 가장 실무적으로 도움이 된 변화는 **Secrets 워크플로 정식화(v2026.2.26)**와 &lt;strong&gt;Agents 라우팅 관리 CLI 추가&lt;/strong&gt;였습니다. 기능 자체는 화려하지 않지만, 실제로는 “돌아가던 자동화가 언제 깨지는지”를 크게 줄여주는 종류의 개선입니다.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Agents on Kyungwook&#39;s Devlog</title>
+    <link>https://kwbaek.github.io/tags/agents/</link>
+    <description>Recent content in Agents on Kyungwook&#39;s Devlog</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Mon, 16 Mar 2026 21:00:00 +0900</lastBuildDate>
+    <atom:link href="https://kwbaek.github.io/tags/agents/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI/ML 트렌드: Claude Sonnet 4.6 출시, 에이전트 메모리 혁신, 그리고 AI 거버넌스의 현실</title>
+      <link>https://kwbaek.github.io/posts/2026-03-16-ai-ml-trends-claude-sonnet46-agent-memory/</link>
+      <pubDate>Mon, 16 Mar 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-03-16-ai-ml-trends-claude-sonnet46-agent-memory/</guid>
+      <description>&lt;p&gt;오늘 #ai-ml-trends 채널에서 주목할 만한 소식이 한꺼번에 쏟아졌습니다. 모델 업데이트, 에이전트 메모리 최적화, 그리고 AI 거버넌스를 둘러싼 논쟁까지 — 방향이 뚜렷합니다. AI가 &amp;ldquo;잘 만들어진 모델&amp;quot;에서 &amp;ldquo;실제 운영 가능한 시스템&amp;quot;으로 전환하는 속도가 빠릅니다.&lt;/p&gt;
+&lt;h2 id=&#34;claude-sonnet-46-1m-컨텍스트-베타와-함께-출시&#34;&gt;Claude Sonnet 4.6, 1M 컨텍스트 베타와 함께 출시&lt;/h2&gt;
+&lt;p&gt;가장 큰 뉴스는 Anthropic의 Claude Sonnet 4.6입니다. 코딩·에이전트 플래닝·컴퓨터 사용(computer use)·장기 추론 등 전반을 업그레이드했으며, 1M 토큰 컨텍스트를 베타로 제공합니다. 가격은 Sonnet 4.5와 동일($3/$15 per 1M tokens)로 유지해, 고성능 모델로의 진입장벽을 낮추는 전략이 눈에 띕니다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>AI/ML 트렌드: 성능 경쟁 다음 단계 — 에이전트 안전성·거버넌스가 제품 경쟁력이다</title>
+      <link>https://kwbaek.github.io/posts/2026-03-15-ai-ml-trends-agent-safety-and-governance/</link>
+      <pubDate>Sun, 15 Mar 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-03-15-ai-ml-trends-agent-safety-and-governance/</guid>
+      <description>&lt;p&gt;오늘 #ai-ml-trends 채널에서 가장 중요하게 보인 흐름은 명확했습니다. &lt;strong&gt;모델 자체 성능보다, 에이전트를 실제 환경에 안전하게 배치·운영하는 능력이 경쟁력을 좌우하기 시작했다&lt;/strong&gt;는 점입니다. 특히 오늘 올라온 이슈들을 같이 보면 방향이 더 선명해집니다. Perplexity의 에이전트 보안 정리 논문, Reasoning LLM-as-a-Judge 취약점 분석, 그리고 Anthropic의 기업 도입형 조인트벤처(JV) 논의까지 — 모두 같은 질문으로 수렴합니다. “좋은 모델을 만들었는가?”가 아니라 “그 모델을 통제 가능한 시스템으로 운영할 수 있는가?”입니다.&lt;/p&gt;
+&lt;p&gt;먼저 보안 측면입니다. 에이전트는 단순 챗봇과 달리 도구 호출, 장기 워크플로, 외부 시스템 연동이 기본이기 때문에 공격면이 훨씬 넓습니다. 간접 프롬프트 인젝션, confused deputy, 장기 실행 중 정책 이탈은 이제 이론이 아니라 운영 리스크입니다. 즉 방어 전략도 입력 필터 하나로 끝나지 않습니다. 샌드박스 실행, 권한 경계, 정책 강제, 감사 가능한 로깅까지 계층형으로 설계해야 실제 사고를 줄일 수 있습니다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>OpenClaw 운영 고도화: secrets 워크플로와 agents binding으로 자동화 신뢰성 끌어올리기</title>
+      <link>https://kwbaek.github.io/posts/2026-02-28-openclaw-secrets-and-bindings-ops-guide/</link>
+      <pubDate>Sat, 28 Feb 2026 21:05:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-02-28-openclaw-secrets-and-bindings-ops-guide/</guid>
+      <description>&lt;p&gt;이번 주 OpenClaw 운영에서 가장 실무적으로 도움이 된 변화는 **Secrets 워크플로 정식화(v2026.2.26)**와 &lt;strong&gt;Agents 라우팅 관리 CLI 추가&lt;/strong&gt;였습니다. 기능 자체는 화려하지 않지만, 실제로는 “돌아가던 자동화가 언제 깨지는지”를 크게 줄여주는 종류의 개선입니다.&lt;/p&gt;
 &lt;p&gt;핵심은 두 가지입니다.&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;민감정보를 수동 편집/재시작 감각으로 다루지 않고, 감사-적용-리로드의 표준 절차로 관리할 수 있게 됨&lt;/li&gt;
 &lt;li&gt;어떤 에이전트가 어떤 채널/세션으로 발신할지 binding을 명시적으로 관리해 라우팅 드리프트를 줄일 수 있게 됨&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;실무에서 가장 중요한 건 일관성이라서, 저는 아래 순서를 기본 운영 루틴으로 고정해 두는 걸 추천드립니다.&lt;/p&gt;</description></item><item><title>OpenClaw 고급 활용법: Cron, Heartbeat, 그리고 서브에이전트 마스터하기</title><link>https://kwbaek.github.io/posts/2026-02-19-openclaw-advanced-tips/</link><pubDate>Thu, 19 Feb 2026 21:00:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-02-19-openclaw-advanced-tips/</guid><description>&lt;p&gt;OpenClaw를 단순한 AI 어시스턴트로 사용하고 계신가요? 이 강력한 플랫폼은 훨씬 더 많은 것을 할 수 있습니다. 이번 포스트에서는 OpenClaw의 고급 기능들을 활용하여 진정한 자동화와 자율성을 구현하는 방법을 다룹니다.&lt;/p&gt;
-&lt;h2 id="cron-스마트-스케줄링의-힘"&gt;Cron: 스마트 스케줄링의 힘&lt;/h2&gt;
+&lt;p&gt;실무에서 가장 중요한 건 일관성이라서, 저는 아래 순서를 기본 운영 루틴으로 고정해 두는 걸 추천드립니다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>OpenClaw 고급 활용법: Cron, Heartbeat, 그리고 서브에이전트 마스터하기</title>
+      <link>https://kwbaek.github.io/posts/2026-02-19-openclaw-advanced-tips/</link>
+      <pubDate>Thu, 19 Feb 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-02-19-openclaw-advanced-tips/</guid>
+      <description>&lt;p&gt;OpenClaw를 단순한 AI 어시스턴트로 사용하고 계신가요? 이 강력한 플랫폼은 훨씬 더 많은 것을 할 수 있습니다. 이번 포스트에서는 OpenClaw의 고급 기능들을 활용하여 진정한 자동화와 자율성을 구현하는 방법을 다룹니다.&lt;/p&gt;
+&lt;h2 id=&#34;cron-스마트-스케줄링의-힘&#34;&gt;Cron: 스마트 스케줄링의 힘&lt;/h2&gt;
 &lt;p&gt;OpenClaw의 cron 시스템은 단순한 작업 스케줄러가 아닙니다. AI 에이전트가 정해진 시간에 자율적으로 작업을 수행하고, 결과를 분석하고, 당신에게 보고하는 완전한 자동화 시스템입니다.&lt;/p&gt;
-&lt;h3 id="기본-cron-작업-생성"&gt;기본 cron 작업 생성&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# 매일 오전 9시에 이메일 체크&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;openclaw cron add &lt;span style="color:#ae81ff"&gt;\
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; --schedule &lt;span style="color:#e6db74"&gt;&amp;#34;0 9 * * *&amp;#34;&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;\
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; --task &lt;span style="color:#e6db74"&gt;&amp;#34;Check my Gmail inbox and summarize important unread emails&amp;#34;&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;\
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; --session isolated &lt;span style="color:#ae81ff"&gt;\
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; --delivery announce
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="webhook-통합-외부-시스템과-연동"&gt;Webhook 통합: 외부 시스템과 연동&lt;/h3&gt;
-&lt;p&gt;cron 작업 완료 시 외부 시스템에 알림을 보낼 수 있습니다:&lt;/p&gt;</description></item></channel></rss>
+&lt;h3 id=&#34;기본-cron-작업-생성&#34;&gt;기본 cron 작업 생성&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 매일 오전 9시에 이메일 체크&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;openclaw cron add &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  --schedule &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;0 9 * * *&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  --task &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Check my Gmail inbox and summarize important unread emails&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  --session isolated &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  --delivery announce
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;webhook-통합-외부-시스템과-연동&#34;&gt;Webhook 통합: 외부 시스템과 연동&lt;/h3&gt;
+&lt;p&gt;cron 작업 완료 시 외부 시스템에 알림을 보낼 수 있습니다:&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

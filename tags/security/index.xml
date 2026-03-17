@@ -1,14 +1,60 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Security on Kyungwook's Devlog</title><link>https://kwbaek.github.io/tags/security/</link><description>Recent content in Security on Kyungwook's Devlog</description><generator>Hugo -- 0.155.3</generator><language>ko-kr</language><lastBuildDate>Sun, 15 Mar 2026 21:00:00 +0900</lastBuildDate><atom:link href="https://kwbaek.github.io/tags/security/index.xml" rel="self" type="application/rss+xml"/><item><title>AI/ML 트렌드: 성능 경쟁 다음 단계 — 에이전트 안전성·거버넌스가 제품 경쟁력이다</title><link>https://kwbaek.github.io/posts/2026-03-15-ai-ml-trends-agent-safety-and-governance/</link><pubDate>Sun, 15 Mar 2026 21:00:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-03-15-ai-ml-trends-agent-safety-and-governance/</guid><description>&lt;p&gt;오늘 #ai-ml-trends 채널에서 가장 중요하게 보인 흐름은 명확했습니다. &lt;strong&gt;모델 자체 성능보다, 에이전트를 실제 환경에 안전하게 배치·운영하는 능력이 경쟁력을 좌우하기 시작했다&lt;/strong&gt;는 점입니다. 특히 오늘 올라온 이슈들을 같이 보면 방향이 더 선명해집니다. Perplexity의 에이전트 보안 정리 논문, Reasoning LLM-as-a-Judge 취약점 분석, 그리고 Anthropic의 기업 도입형 조인트벤처(JV) 논의까지 — 모두 같은 질문으로 수렴합니다. “좋은 모델을 만들었는가?”가 아니라 “그 모델을 통제 가능한 시스템으로 운영할 수 있는가?”입니다.&lt;/p&gt;
-&lt;p&gt;먼저 보안 측면입니다. 에이전트는 단순 챗봇과 달리 도구 호출, 장기 워크플로, 외부 시스템 연동이 기본이기 때문에 공격면이 훨씬 넓습니다. 간접 프롬프트 인젝션, confused deputy, 장기 실행 중 정책 이탈은 이제 이론이 아니라 운영 리스크입니다. 즉 방어 전략도 입력 필터 하나로 끝나지 않습니다. 샌드박스 실행, 권한 경계, 정책 강제, 감사 가능한 로깅까지 계층형으로 설계해야 실제 사고를 줄일 수 있습니다.&lt;/p&gt;</description></item><item><title>OpenClaw 운영 팁: 업데이트 많은 주간엔 ‘설정 검증 + 헬스체크’ 루틴을 고정하자</title><link>https://kwbaek.github.io/posts/2026-03-13-openclaw-config-health-routine/</link><pubDate>Fri, 13 Mar 2026 21:00:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-03-13-openclaw-config-health-routine/</guid><description>&lt;p&gt;OpenClaw를 매일 쓰다 보면 체감되는 사실이 하나 있습니다. 문제의 대부분은 기능 부족이 아니라 &lt;strong&gt;운영 루틴의 부재&lt;/strong&gt;에서 생깁니다. 특히 최근처럼 릴리즈 속도가 빠르고(설정 키 정리, 보안 강화, 채널 동작 개선), 운영 옵션이 늘어나는 시기에는 “잘 되겠지” 방식이 가장 위험합니다. 그래서 실무에서 가장 효과적인 습관은 기능을 더 붙이는 것보다, &lt;strong&gt;변경 직후 점검 루틴을 짧고 고정된 형태로 반복&lt;/strong&gt;하는 것입니다.&lt;/p&gt;
-&lt;p&gt;제가 추천하는 기본 루틴은 네 단계입니다. 첫째, 설정 변경 전후에 &lt;code&gt;openclaw config validate --json&lt;/code&gt;으로 구조 오류를 먼저 잡습니다. 둘째, 게이트웨이 재기동 후 &lt;code&gt;/healthz&lt;/code&gt;와 &lt;code&gt;/readyz&lt;/code&gt;를 분리 확인해서 프로세스 생존과 실제 준비 상태를 각각 검증합니다. 셋째, &lt;code&gt;openclaw security audit&lt;/code&gt;로 노출 위험(인증/허용원점/권한 과다)을 확인합니다. 넷째, 필요하면 &lt;code&gt;openclaw doctor&lt;/code&gt;로 마이그레이션 누락이나 레거시 키를 정리합니다. 이 순서를 고정하면 장애 원인을 추적하는 시간이 눈에 띄게 줄어듭니다.&lt;/p&gt;</description></item><item><title>OpenClaw 운영 메모: v2026.3.7 이후 꼭 챙길 4가지 (실전 체크리스트)</title><link>https://kwbaek.github.io/posts/2026-03-10-openclaw-v2026-3-7-operations-playbook/</link><pubDate>Tue, 10 Mar 2026 21:05:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-03-10-openclaw-v2026-3-7-operations-playbook/</guid><description>&lt;p&gt;OpenClaw를 계속 굴리다 보면 새 기능보다 더 중요한 게 있습니다. 바로 &amp;ldquo;이번 업데이트에서 운영 리스크가 어디로 이동했는지&amp;quot;를 빨리 잡는 것입니다. 최근 버전 흐름(v2026.3.7 기준)을 보면, 단순 기능 추가보다 &lt;strong&gt;보안 기본값, 라우팅 안정성, 운영 점검 루틴&lt;/strong&gt;이 점점 더 중요해지고 있습니다. 오늘은 실제로 바로 적용 가능한 포인트만 압축해서 정리합니다.&lt;/p&gt;
-&lt;h2 id="1-먼저-확인-auth-설정의-브레이킹-포인트"&gt;1) 먼저 확인: auth 설정의 브레이킹 포인트&lt;/h2&gt;
-&lt;p&gt;v2026.3.7에서 가장 먼저 체크할 건 gateway 인증 조합입니다. &lt;code&gt;gateway.auth.token&lt;/code&gt;과 &lt;code&gt;gateway.auth.password&lt;/code&gt;를 동시에 쓰는 환경이라면 &lt;code&gt;gateway.auth.mode&lt;/code&gt;를 반드시 명시해야 합니다. 이걸 놓치면 업데이트 직후 &amp;ldquo;왜 갑자기 인증이 꼬였지?&amp;rdquo; 같은 장애가 생기기 쉽습니다.&lt;/p&gt;</description></item><item><title>OpenClaw 실전 운영: Secrets + Security Audit 루틴만 고정해도 사고 확률이 급감한다</title><link>https://kwbaek.github.io/posts/2026-03-02-openclaw-secrets-security-audit-routine/</link><pubDate>Mon, 02 Mar 2026 21:03:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-03-02-openclaw-secrets-security-audit-routine/</guid><description>&lt;p&gt;OpenClaw를 매일 운영하다 보면, 새 기능보다 더 중요한 게 하나 있습니다. 바로 **운영 위생(operational hygiene)**입니다. 최근 버전들(특히 v2026.2.26 이후)에서 체감이 컸던 포인트는 &lt;code&gt;secrets&lt;/code&gt; 워크플로와 &lt;code&gt;security audit&lt;/code&gt; 체계가 훨씬 실무적으로 정리됐다는 점입니다. 결론부터 말하면, 아래 두 루틴을 고정하면 운영 사고 확률이 확실히 줄어듭니다.&lt;/p&gt;
-&lt;h2 id="1-secrets-루틴-설정을-감으로-만지지-말고-단계로-굴리기"&gt;1) Secrets 루틴: 설정을 ‘감’으로 만지지 말고 단계로 굴리기&lt;/h2&gt;
-&lt;p&gt;예전에는 토큰이나 키를 여기저기 흩어두고, 문제 나면 그때 수정하는 식으로 운영하기 쉬웠습니다. 그런데 이 방식은 팀 규모가 커질수록 반드시 사고가 납니다. OpenClaw는 이 문제를 다음 흐름으로 정리해줍니다.&lt;/p&gt;</description></item><item><title>OpenClaw 운영 팁: 매일 쓰는 실전 패턴 5가지 (cron, heartbeat, 보안, 배포)</title><link>https://kwbaek.github.io/posts/2026-02-26-openclaw-daily-ops-pattern/</link><pubDate>Thu, 26 Feb 2026 21:00:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-02-26-openclaw-daily-ops-pattern/</guid><description>&lt;p&gt;OpenClaw를 일정 기간 운영해보면, 기능 자체보다도 &lt;strong&gt;운영 패턴&lt;/strong&gt;이 성능과 안정성을 가릅니다. 오늘은 최근 업데이트 흐름(보안 강화, cron 정밀 제어, delivery 개선)을 바탕으로 실무에서 바로 쓰기 좋은 패턴을 정리해봅니다.&lt;/p&gt;
-&lt;h2 id="1-cron은-정확-시간-작업에만-쓰고-나머지는-heartbeat로-묶기"&gt;1) cron은 “정확 시간 작업”에만 쓰고, 나머지는 heartbeat로 묶기&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Security on Kyungwook&#39;s Devlog</title>
+    <link>https://kwbaek.github.io/tags/security/</link>
+    <description>Recent content in Security on Kyungwook&#39;s Devlog</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Sun, 15 Mar 2026 21:00:00 +0900</lastBuildDate>
+    <atom:link href="https://kwbaek.github.io/tags/security/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI/ML 트렌드: 성능 경쟁 다음 단계 — 에이전트 안전성·거버넌스가 제품 경쟁력이다</title>
+      <link>https://kwbaek.github.io/posts/2026-03-15-ai-ml-trends-agent-safety-and-governance/</link>
+      <pubDate>Sun, 15 Mar 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-03-15-ai-ml-trends-agent-safety-and-governance/</guid>
+      <description>&lt;p&gt;오늘 #ai-ml-trends 채널에서 가장 중요하게 보인 흐름은 명확했습니다. &lt;strong&gt;모델 자체 성능보다, 에이전트를 실제 환경에 안전하게 배치·운영하는 능력이 경쟁력을 좌우하기 시작했다&lt;/strong&gt;는 점입니다. 특히 오늘 올라온 이슈들을 같이 보면 방향이 더 선명해집니다. Perplexity의 에이전트 보안 정리 논문, Reasoning LLM-as-a-Judge 취약점 분석, 그리고 Anthropic의 기업 도입형 조인트벤처(JV) 논의까지 — 모두 같은 질문으로 수렴합니다. “좋은 모델을 만들었는가?”가 아니라 “그 모델을 통제 가능한 시스템으로 운영할 수 있는가?”입니다.&lt;/p&gt;
+&lt;p&gt;먼저 보안 측면입니다. 에이전트는 단순 챗봇과 달리 도구 호출, 장기 워크플로, 외부 시스템 연동이 기본이기 때문에 공격면이 훨씬 넓습니다. 간접 프롬프트 인젝션, confused deputy, 장기 실행 중 정책 이탈은 이제 이론이 아니라 운영 리스크입니다. 즉 방어 전략도 입력 필터 하나로 끝나지 않습니다. 샌드박스 실행, 권한 경계, 정책 강제, 감사 가능한 로깅까지 계층형으로 설계해야 실제 사고를 줄일 수 있습니다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>OpenClaw 운영 팁: 업데이트 많은 주간엔 ‘설정 검증 &#43; 헬스체크’ 루틴을 고정하자</title>
+      <link>https://kwbaek.github.io/posts/2026-03-13-openclaw-config-health-routine/</link>
+      <pubDate>Fri, 13 Mar 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-03-13-openclaw-config-health-routine/</guid>
+      <description>&lt;p&gt;OpenClaw를 매일 쓰다 보면 체감되는 사실이 하나 있습니다. 문제의 대부분은 기능 부족이 아니라 &lt;strong&gt;운영 루틴의 부재&lt;/strong&gt;에서 생깁니다. 특히 최근처럼 릴리즈 속도가 빠르고(설정 키 정리, 보안 강화, 채널 동작 개선), 운영 옵션이 늘어나는 시기에는 “잘 되겠지” 방식이 가장 위험합니다. 그래서 실무에서 가장 효과적인 습관은 기능을 더 붙이는 것보다, &lt;strong&gt;변경 직후 점검 루틴을 짧고 고정된 형태로 반복&lt;/strong&gt;하는 것입니다.&lt;/p&gt;
+&lt;p&gt;제가 추천하는 기본 루틴은 네 단계입니다. 첫째, 설정 변경 전후에 &lt;code&gt;openclaw config validate --json&lt;/code&gt;으로 구조 오류를 먼저 잡습니다. 둘째, 게이트웨이 재기동 후 &lt;code&gt;/healthz&lt;/code&gt;와 &lt;code&gt;/readyz&lt;/code&gt;를 분리 확인해서 프로세스 생존과 실제 준비 상태를 각각 검증합니다. 셋째, &lt;code&gt;openclaw security audit&lt;/code&gt;로 노출 위험(인증/허용원점/권한 과다)을 확인합니다. 넷째, 필요하면 &lt;code&gt;openclaw doctor&lt;/code&gt;로 마이그레이션 누락이나 레거시 키를 정리합니다. 이 순서를 고정하면 장애 원인을 추적하는 시간이 눈에 띄게 줄어듭니다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>OpenClaw 운영 메모: v2026.3.7 이후 꼭 챙길 4가지 (실전 체크리스트)</title>
+      <link>https://kwbaek.github.io/posts/2026-03-10-openclaw-v2026-3-7-operations-playbook/</link>
+      <pubDate>Tue, 10 Mar 2026 21:05:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-03-10-openclaw-v2026-3-7-operations-playbook/</guid>
+      <description>&lt;p&gt;OpenClaw를 계속 굴리다 보면 새 기능보다 더 중요한 게 있습니다. 바로 &amp;ldquo;이번 업데이트에서 운영 리스크가 어디로 이동했는지&amp;quot;를 빨리 잡는 것입니다. 최근 버전 흐름(v2026.3.7 기준)을 보면, 단순 기능 추가보다 &lt;strong&gt;보안 기본값, 라우팅 안정성, 운영 점검 루틴&lt;/strong&gt;이 점점 더 중요해지고 있습니다. 오늘은 실제로 바로 적용 가능한 포인트만 압축해서 정리합니다.&lt;/p&gt;
+&lt;h2 id=&#34;1-먼저-확인-auth-설정의-브레이킹-포인트&#34;&gt;1) 먼저 확인: auth 설정의 브레이킹 포인트&lt;/h2&gt;
+&lt;p&gt;v2026.3.7에서 가장 먼저 체크할 건 gateway 인증 조합입니다. &lt;code&gt;gateway.auth.token&lt;/code&gt;과 &lt;code&gt;gateway.auth.password&lt;/code&gt;를 동시에 쓰는 환경이라면 &lt;code&gt;gateway.auth.mode&lt;/code&gt;를 반드시 명시해야 합니다. 이걸 놓치면 업데이트 직후 &amp;ldquo;왜 갑자기 인증이 꼬였지?&amp;rdquo; 같은 장애가 생기기 쉽습니다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>OpenClaw 실전 운영: Secrets &#43; Security Audit 루틴만 고정해도 사고 확률이 급감한다</title>
+      <link>https://kwbaek.github.io/posts/2026-03-02-openclaw-secrets-security-audit-routine/</link>
+      <pubDate>Mon, 02 Mar 2026 21:03:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-03-02-openclaw-secrets-security-audit-routine/</guid>
+      <description>&lt;p&gt;OpenClaw를 매일 운영하다 보면, 새 기능보다 더 중요한 게 하나 있습니다. 바로 **운영 위생(operational hygiene)**입니다. 최근 버전들(특히 v2026.2.26 이후)에서 체감이 컸던 포인트는 &lt;code&gt;secrets&lt;/code&gt; 워크플로와 &lt;code&gt;security audit&lt;/code&gt; 체계가 훨씬 실무적으로 정리됐다는 점입니다. 결론부터 말하면, 아래 두 루틴을 고정하면 운영 사고 확률이 확실히 줄어듭니다.&lt;/p&gt;
+&lt;h2 id=&#34;1-secrets-루틴-설정을-감으로-만지지-말고-단계로-굴리기&#34;&gt;1) Secrets 루틴: 설정을 ‘감’으로 만지지 말고 단계로 굴리기&lt;/h2&gt;
+&lt;p&gt;예전에는 토큰이나 키를 여기저기 흩어두고, 문제 나면 그때 수정하는 식으로 운영하기 쉬웠습니다. 그런데 이 방식은 팀 규모가 커질수록 반드시 사고가 납니다. OpenClaw는 이 문제를 다음 흐름으로 정리해줍니다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>OpenClaw 운영 팁: 매일 쓰는 실전 패턴 5가지 (cron, heartbeat, 보안, 배포)</title>
+      <link>https://kwbaek.github.io/posts/2026-02-26-openclaw-daily-ops-pattern/</link>
+      <pubDate>Thu, 26 Feb 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-02-26-openclaw-daily-ops-pattern/</guid>
+      <description>&lt;p&gt;OpenClaw를 일정 기간 운영해보면, 기능 자체보다도 &lt;strong&gt;운영 패턴&lt;/strong&gt;이 성능과 안정성을 가릅니다. 오늘은 최근 업데이트 흐름(보안 강화, cron 정밀 제어, delivery 개선)을 바탕으로 실무에서 바로 쓰기 좋은 패턴을 정리해봅니다.&lt;/p&gt;
+&lt;h2 id=&#34;1-cron은-정확-시간-작업에만-쓰고-나머지는-heartbeat로-묶기&#34;&gt;1) cron은 “정확 시간 작업”에만 쓰고, 나머지는 heartbeat로 묶기&lt;/h2&gt;
 &lt;p&gt;많은 사용자가 모든 점검을 cron으로 쪼개는데, 이 방식은 잡 수가 늘수록 노이즈와 관리 부담이 급증합니다. 권장 방식은 다음과 같습니다.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;cron&lt;/strong&gt;: 정시성이 중요한 작업만 (&lt;code&gt;--exact&lt;/code&gt; 필요한 배치, 고정 알림)&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;heartbeat&lt;/strong&gt;: 이메일/캘린더/멘션/간단 상태점검 같은 느슨한 주기 작업 묶음&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;이렇게 분리하면 호출 비용과 중복 알림이 확 줄고, 점검 로직도 유지보수가 쉬워집니다.&lt;/p&gt;</description></item></channel></rss>
+&lt;p&gt;이렇게 분리하면 호출 비용과 중복 알림이 확 줄고, 점검 로직도 유지보수가 쉬워집니다.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

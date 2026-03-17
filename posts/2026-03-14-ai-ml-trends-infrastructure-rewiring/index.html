@@ -1,8 +1,321 @@
-<!doctype html><html lang=en dir=auto data-theme=auto><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=robots content="index, follow"><title>AI/ML 트렌드: 인프라 재편의 시작 — 모델 경쟁에서 ‘패키징·라우팅·규제’ 경쟁으로 | Kyungwook's Devlog</title><meta name=keywords content="AI,ML,Inference,Semiconductor,Packaging,Cloud"><meta name=description content="오늘 #ai-ml-trends 채널에서 가장 중요했던 흐름은 한 줄로 정리하면 이겁니다. AI 경쟁의 중심이 모델 성능 자체에서, 인프라 공급망과 추론 파이프라인 설계로 빠르게 이동하고 있다는 점입니다. 특히 세 가지 뉴스가 같은 날 묶여 등장한 게 강한 신호였습니다. 첫째, Amazon-Cerebras 협력으로 추론 파이프라인을 단계별로 분리(프리필/디코드 분담)하려는 시도. 둘째, Besi 인수 관심 보도처럼 첨단 패키징 장비가 전략 자산으로 재평가되는 움직임. 셋째, 미국 상무부의 AI 칩 수출 규정안 철회 보도로 확인된 정책 불확실성 확대입니다."><meta name=author content><link rel=canonical href=https://kwbaek.github.io/posts/2026-03-14-ai-ml-trends-infrastructure-rewiring/><link crossorigin=anonymous href=/assets/css/stylesheet.da3211e5ef867bf2b75fd5a6515cfed7195c011e8ab735694e203810a827097b.css integrity="sha256-2jIR5e+Ge/K3X9WmUVz+1xlcAR6KtzVpTiA4EKgnCXs=" rel="preload stylesheet" as=style><link rel=icon href=https://kwbaek.github.io/favicon.ico><link rel=icon type=image/png sizes=16x16 href=https://kwbaek.github.io/favicon-16x16.png><link rel=icon type=image/png sizes=32x32 href=https://kwbaek.github.io/favicon-32x32.png><link rel=apple-touch-icon href=https://kwbaek.github.io/apple-touch-icon.png><link rel=mask-icon href=https://kwbaek.github.io/safari-pinned-tab.svg><meta name=theme-color content="#2e2e33"><meta name=msapplication-TileColor content="#2e2e33"><link rel=alternate hreflang=en href=https://kwbaek.github.io/posts/2026-03-14-ai-ml-trends-infrastructure-rewiring/><noscript><style>#theme-toggle,.top-link{display:none}</style><style>@media(prefers-color-scheme:dark){:root{--theme:rgb(29, 30, 32);--entry:rgb(46, 46, 51);--primary:rgb(218, 218, 219);--secondary:rgb(155, 156, 157);--tertiary:rgb(65, 66, 68);--content:rgb(196, 196, 197);--code-block-bg:rgb(46, 46, 51);--code-bg:rgb(55, 56, 62);--border:rgb(51, 51, 51);color-scheme:dark}.list{background:var(--theme)}.toc{background:var(--entry)}}@media(prefers-color-scheme:light){.list::-webkit-scrollbar-thumb{border-color:var(--code-bg)}}</style></noscript><script>localStorage.getItem("pref-theme")==="dark"?document.querySelector("html").dataset.theme="dark":localStorage.getItem("pref-theme")==="light"?document.querySelector("html").dataset.theme="light":window.matchMedia("(prefers-color-scheme: dark)").matches?document.querySelector("html").dataset.theme="dark":document.querySelector("html").dataset.theme="light"</script><meta property="og:url" content="https://kwbaek.github.io/posts/2026-03-14-ai-ml-trends-infrastructure-rewiring/"><meta property="og:site_name" content="Kyungwook's Devlog"><meta property="og:title" content="AI/ML 트렌드: 인프라 재편의 시작 — 모델 경쟁에서 ‘패키징·라우팅·규제’ 경쟁으로"><meta property="og:description" content="오늘 #ai-ml-trends 채널에서 가장 중요했던 흐름은 한 줄로 정리하면 이겁니다. AI 경쟁의 중심이 모델 성능 자체에서, 인프라 공급망과 추론 파이프라인 설계로 빠르게 이동하고 있다는 점입니다. 특히 세 가지 뉴스가 같은 날 묶여 등장한 게 강한 신호였습니다. 첫째, Amazon-Cerebras 협력으로 추론 파이프라인을 단계별로 분리(프리필/디코드 분담)하려는 시도. 둘째, Besi 인수 관심 보도처럼 첨단 패키징 장비가 전략 자산으로 재평가되는 움직임. 셋째, 미국 상무부의 AI 칩 수출 규정안 철회 보도로 확인된 정책 불확실성 확대입니다."><meta property="og:locale" content="ko-kr"><meta property="og:type" content="article"><meta property="article:section" content="posts"><meta property="article:published_time" content="2026-03-14T21:00:00+09:00"><meta property="article:modified_time" content="2026-03-14T21:00:00+09:00"><meta property="article:tag" content="AI"><meta property="article:tag" content="ML"><meta property="article:tag" content="Inference"><meta property="article:tag" content="Semiconductor"><meta property="article:tag" content="Packaging"><meta property="article:tag" content="Cloud"><meta name=twitter:card content="summary"><meta name=twitter:title content="AI/ML 트렌드: 인프라 재편의 시작 — 모델 경쟁에서 ‘패키징·라우팅·규제’ 경쟁으로"><meta name=twitter:description content="오늘 #ai-ml-trends 채널에서 가장 중요했던 흐름은 한 줄로 정리하면 이겁니다. AI 경쟁의 중심이 모델 성능 자체에서, 인프라 공급망과 추론 파이프라인 설계로 빠르게 이동하고 있다는 점입니다. 특히 세 가지 뉴스가 같은 날 묶여 등장한 게 강한 신호였습니다. 첫째, Amazon-Cerebras 협력으로 추론 파이프라인을 단계별로 분리(프리필/디코드 분담)하려는 시도. 둘째, Besi 인수 관심 보도처럼 첨단 패키징 장비가 전략 자산으로 재평가되는 움직임. 셋째, 미국 상무부의 AI 칩 수출 규정안 철회 보도로 확인된 정책 불확실성 확대입니다."><script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Posts","item":"https://kwbaek.github.io/posts/"},{"@type":"ListItem","position":2,"name":"AI/ML 트렌드: 인프라 재편의 시작 — 모델 경쟁에서 ‘패키징·라우팅·규제’ 경쟁으로","item":"https://kwbaek.github.io/posts/2026-03-14-ai-ml-trends-infrastructure-rewiring/"}]}</script><script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"AI/ML 트렌드: 인프라 재편의 시작 — 모델 경쟁에서 ‘패키징·라우팅·규제’ 경쟁으로","name":"AI\/ML 트렌드: 인프라 재편의 시작 — 모델 경쟁에서 ‘패키징·라우팅·규제’ 경쟁으로","description":"오늘 #ai-ml-trends 채널에서 가장 중요했던 흐름은 한 줄로 정리하면 이겁니다. AI 경쟁의 중심이 모델 성능 자체에서, 인프라 공급망과 추론 파이프라인 설계로 빠르게 이동하고 있다는 점입니다. 특히 세 가지 뉴스가 같은 날 묶여 등장한 게 강한 신호였습니다. 첫째, Amazon-Cerebras 협력으로 추론 파이프라인을 단계별로 분리(프리필/디코드 분담)하려는 시도. 둘째, Besi 인수 관심 보도처럼 첨단 패키징 장비가 전략 자산으로 재평가되는 움직임. 셋째, 미국 상무부의 AI 칩 수출 규정안 철회 보도로 확인된 정책 불확실성 확대입니다.\n","keywords":["AI","ML","Inference","Semiconductor","Packaging","Cloud"],"articleBody":"오늘 #ai-ml-trends 채널에서 가장 중요했던 흐름은 한 줄로 정리하면 이겁니다. AI 경쟁의 중심이 모델 성능 자체에서, 인프라 공급망과 추론 파이프라인 설계로 빠르게 이동하고 있다는 점입니다. 특히 세 가지 뉴스가 같은 날 묶여 등장한 게 강한 신호였습니다. 첫째, Amazon-Cerebras 협력으로 추론 파이프라인을 단계별로 분리(프리필/디코드 분담)하려는 시도. 둘째, Besi 인수 관심 보도처럼 첨단 패키징 장비가 전략 자산으로 재평가되는 움직임. 셋째, 미국 상무부의 AI 칩 수출 규정안 철회 보도로 확인된 정책 불확실성 확대입니다.\n이 조합이 왜 중요할까요? 이제는 “누가 더 큰 모델을 만들었는가”만으로 승부가 안 나기 때문입니다. 기업 관점의 진짜 KPI는 점점 더 지연시간, 단위 추론비용, 공급 안정성, 규제 대응 속도로 이동하고 있습니다. 같은 모델이라도 어떤 칩 조합으로, 어떤 데이터센터에서, 어떤 스케줄링 전략으로 돌리느냐에 따라 원가와 사용자 경험이 완전히 달라집니다. 즉 모델은 제품의 일부이고, 승부는 시스템 전체에서 결정됩니다.\nAmazon-Cerebras 사례는 특히 의미가 큽니다. 단일 벤더·단일 칩에 올인하는 구조 대신, 추론 단계별로 최적 하드웨어를 붙여 성능/비용을 동시에 맞추려는 접근이기 때문입니다. 이건 단순 기술 실험이 아니라 멀티벤더 오퍼레이션 역량의 시작에 가깝습니다. 앞으로 엔터프라이즈 AI 팀의 핵심 역량은 모델 프롬프팅만이 아니라, 워크로드 분해와 라우팅 전략 설계가 될 가능성이 큽니다.\n패키징 이슈도 과소평가하면 안 됩니다. GPU 공급량만 보던 시기는 지나가고, 고대역 메모리 결합과 첨단 패키징 공정이 병목으로 떠오르고 있습니다. Besi 관련 뉴스는 이런 맥락에서 “후공정 기술도 AI 패권의 핵심”이라는 점을 다시 확인시킵니다. 소프트웨어 팀 입장에서도 무관하지 않습니다. 패키징 병목은 결국 리드타임과 단가로 번역되고, 그건 서비스 출시 일정과 마진 구조에 그대로 반영됩니다.\n규제 변수 역시 동시에 커지고 있습니다. 수출 규정의 변경·철회·재설계가 반복되면, 글로벌 서비스 운영팀은 기술 로드맵과 조달 로드맵을 분리해서 볼 수 없습니다. 2026년 AI 전략은 이제 “모델 선택”이 아니라 모델+하드웨어+정책을 통합한 포트폴리오 관리로 가고 있습니다.\n결론적으로, 오늘의 트렌드는 성능 경쟁의 끝이 아니라 경쟁 축의 이동입니다. 앞으로 잘하는 팀은 더 똑똑한 모델만 고르는 팀이 아니라, 불확실한 공급망과 규제 환경에서 안정적으로 서비스를 굴리는 팀이 될 겁니다.\n참고 이슈 (오늘 채널 기준) Amazon-Cerebras 협력: 추론 파이프라인 단계 분리 전략 (Reuters) Besi 인수 관심: 첨단 칩 패키징 병목의 전략 자산화 (Reuters) 미 상무부 AI 칩 수출 규정안 철회: 정책 불확실성 확대 (Reuters) ","wordCount":"321","inLanguage":"en","datePublished":"2026-03-14T21:00:00+09:00","dateModified":"2026-03-14T21:00:00+09:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://kwbaek.github.io/posts/2026-03-14-ai-ml-trends-infrastructure-rewiring/"},"publisher":{"@type":"Organization","name":"Kyungwook's Devlog","logo":{"@type":"ImageObject","url":"https://kwbaek.github.io/favicon.ico"}}}</script></head><body id=top><header class=header><nav class=nav><div class=logo><a href=https://kwbaek.github.io/ accesskey=h title="Kyungwook's Devlog (Alt + H)">Kyungwook's Devlog</a><div class=logo-switches><button id=theme-toggle accesskey=t title="(Alt + T)" aria-label="Toggle theme">
-<svg id="moon" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
-<svg id="sun" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button></div></div><ul id=menu><li><a href=https://kwbaek.github.io/categories/ title=categories><span>categories</span></a></li><li><a href=https://kwbaek.github.io/tags/ title=tags><span>tags</span></a></li><li><a href=https://kwbaek.github.io/ title="Kyungwook's Devlog"><span>Kyungwook's Devlog</span>&nbsp;
-<svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><path d="M15 3h6v6"/><path d="M10 14 21 3"/></svg></a></li></ul></nav></header><main class=main><article class=post-single><header class=post-header><h1 class="post-title entry-hint-parent">AI/ML 트렌드: 인프라 재편의 시작 — 모델 경쟁에서 ‘패키징·라우팅·규제’ 경쟁으로</h1><div class=post-meta><span title='2026-03-14 21:00:00 +0900 KST'>March 14, 2026</span></div></header><div class=post-content><p>오늘 #ai-ml-trends 채널에서 가장 중요했던 흐름은 한 줄로 정리하면 이겁니다. <strong>AI 경쟁의 중심이 모델 성능 자체에서, 인프라 공급망과 추론 파이프라인 설계로 빠르게 이동하고 있다</strong>는 점입니다. 특히 세 가지 뉴스가 같은 날 묶여 등장한 게 강한 신호였습니다. 첫째, Amazon-Cerebras 협력으로 추론 파이프라인을 단계별로 분리(프리필/디코드 분담)하려는 시도. 둘째, Besi 인수 관심 보도처럼 첨단 패키징 장비가 전략 자산으로 재평가되는 움직임. 셋째, 미국 상무부의 AI 칩 수출 규정안 철회 보도로 확인된 정책 불확실성 확대입니다.</p><p>이 조합이 왜 중요할까요? 이제는 “누가 더 큰 모델을 만들었는가”만으로 승부가 안 나기 때문입니다. 기업 관점의 진짜 KPI는 점점 더 <strong>지연시간, 단위 추론비용, 공급 안정성, 규제 대응 속도</strong>로 이동하고 있습니다. 같은 모델이라도 어떤 칩 조합으로, 어떤 데이터센터에서, 어떤 스케줄링 전략으로 돌리느냐에 따라 원가와 사용자 경험이 완전히 달라집니다. 즉 모델은 제품의 일부이고, 승부는 시스템 전체에서 결정됩니다.</p><p>Amazon-Cerebras 사례는 특히 의미가 큽니다. 단일 벤더·단일 칩에 올인하는 구조 대신, 추론 단계별로 최적 하드웨어를 붙여 성능/비용을 동시에 맞추려는 접근이기 때문입니다. 이건 단순 기술 실험이 아니라 멀티벤더 오퍼레이션 역량의 시작에 가깝습니다. 앞으로 엔터프라이즈 AI 팀의 핵심 역량은 모델 프롬프팅만이 아니라, <strong>워크로드 분해와 라우팅 전략 설계</strong>가 될 가능성이 큽니다.</p><p>패키징 이슈도 과소평가하면 안 됩니다. GPU 공급량만 보던 시기는 지나가고, 고대역 메모리 결합과 첨단 패키징 공정이 병목으로 떠오르고 있습니다. Besi 관련 뉴스는 이런 맥락에서 “후공정 기술도 AI 패권의 핵심”이라는 점을 다시 확인시킵니다. 소프트웨어 팀 입장에서도 무관하지 않습니다. 패키징 병목은 결국 리드타임과 단가로 번역되고, 그건 서비스 출시 일정과 마진 구조에 그대로 반영됩니다.</p><p>규제 변수 역시 동시에 커지고 있습니다. 수출 규정의 변경·철회·재설계가 반복되면, 글로벌 서비스 운영팀은 기술 로드맵과 조달 로드맵을 분리해서 볼 수 없습니다. 2026년 AI 전략은 이제 “모델 선택”이 아니라 <strong>모델+하드웨어+정책을 통합한 포트폴리오 관리</strong>로 가고 있습니다.</p><p>결론적으로, 오늘의 트렌드는 성능 경쟁의 끝이 아니라 경쟁 축의 이동입니다. 앞으로 잘하는 팀은 더 똑똑한 모델만 고르는 팀이 아니라, 불확실한 공급망과 규제 환경에서 안정적으로 서비스를 굴리는 팀이 될 겁니다.</p><h2 id=참고-이슈-오늘-채널-기준>참고 이슈 (오늘 채널 기준)<a hidden class=anchor aria-hidden=true href=#참고-이슈-오늘-채널-기준>#</a></h2><ul><li>Amazon-Cerebras 협력: 추론 파이프라인 단계 분리 전략 (Reuters)</li><li>Besi 인수 관심: 첨단 칩 패키징 병목의 전략 자산화 (Reuters)</li><li>미 상무부 AI 칩 수출 규정안 철회: 정책 불확실성 확대 (Reuters)</li></ul></div><footer class=post-footer><ul class=post-tags><li><a href=https://kwbaek.github.io/tags/ai/>AI</a></li><li><a href=https://kwbaek.github.io/tags/ml/>ML</a></li><li><a href=https://kwbaek.github.io/tags/inference/>Inference</a></li><li><a href=https://kwbaek.github.io/tags/semiconductor/>Semiconductor</a></li><li><a href=https://kwbaek.github.io/tags/packaging/>Packaging</a></li><li><a href=https://kwbaek.github.io/tags/cloud/>Cloud</a></li></ul></footer><script src=https://utteranc.es/client.js repo=kwbaek/blog-comments issue-term=pathname theme=github-light crossorigin=anonymous async></script></article></main><footer class=footer><span>&copy; 2026 <a href=https://kwbaek.github.io/>Kyungwook's Devlog</a></span> ·
-<span>Powered by
-<a href=https://gohugo.io/ rel="noopener noreferrer" target=_blank>Hugo</a> &
-<a href=https://github.com/adityatelange/hugo-PaperMod/ rel=noopener target=_blank>PaperMod</a></span></footer><a href=#top aria-label="go to top" title="Go to Top (Alt + G)" class=top-link id=top-link accesskey=g><svg viewBox="0 0 12 6" fill="currentColor"><path d="M12 6H0l6-6z"/></svg>
-</a><script>let menu=document.getElementById("menu");if(menu){const e=localStorage.getItem("menu-scroll-position");e&&(menu.scrollLeft=parseInt(e,10)),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)}}document.querySelectorAll('a[href^="#"]').forEach(e=>{e.addEventListener("click",function(e){e.preventDefault();var t=this.getAttribute("href").substr(1);window.matchMedia("(prefers-reduced-motion: reduce)").matches?document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView({behavior:"smooth"}),t==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${t}`)})})</script><script>var mybutton=document.getElementById("top-link");window.onscroll=function(){document.body.scrollTop>800||document.documentElement.scrollTop>800?(mybutton.style.visibility="visible",mybutton.style.opacity="1"):(mybutton.style.visibility="hidden",mybutton.style.opacity="0")}</script><script>document.getElementById("theme-toggle").addEventListener("click",()=>{const e=document.querySelector("html");e.dataset.theme==="dark"?(e.dataset.theme="light",localStorage.setItem("pref-theme","light")):(e.dataset.theme="dark",localStorage.setItem("pref-theme","dark"))})</script></body></html>
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>AI/ML 트렌드: 인프라 재편의 시작 — 모델 경쟁에서 ‘패키징·라우팅·규제’ 경쟁으로 | Kyungwook&#39;s Devlog</title>
+<meta name="keywords" content="AI, ML, Inference, Semiconductor, Packaging, Cloud">
+<meta name="description" content="오늘 #ai-ml-trends 채널에서 가장 중요했던 흐름은 한 줄로 정리하면 이겁니다. AI 경쟁의 중심이 모델 성능 자체에서, 인프라 공급망과 추론 파이프라인 설계로 빠르게 이동하고 있다는 점입니다. 특히 세 가지 뉴스가 같은 날 묶여 등장한 게 강한 신호였습니다. 첫째, Amazon-Cerebras 협력으로 추론 파이프라인을 단계별로 분리(프리필/디코드 분담)하려는 시도. 둘째, Besi 인수 관심 보도처럼 첨단 패키징 장비가 전략 자산으로 재평가되는 움직임. 셋째, 미국 상무부의 AI 칩 수출 규정안 철회 보도로 확인된 정책 불확실성 확대입니다.">
+<meta name="author" content="">
+<link rel="canonical" href="https://kwbaek.github.io/posts/2026-03-14-ai-ml-trends-infrastructure-rewiring/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.da3211e5ef867bf2b75fd5a6515cfed7195c011e8ab735694e203810a827097b.css" integrity="sha256-2jIR5e&#43;Ge/K3X9WmUVz&#43;1xlcAR6KtzVpTiA4EKgnCXs=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://kwbaek.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://kwbaek.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://kwbaek.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://kwbaek.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://kwbaek.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://kwbaek.github.io/posts/2026-03-14-ai-ml-trends-infrastructure-rewiring/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="https://kwbaek.github.io/posts/2026-03-14-ai-ml-trends-infrastructure-rewiring/">
+  <meta property="og:site_name" content="Kyungwook&#39;s Devlog">
+  <meta property="og:title" content="AI/ML 트렌드: 인프라 재편의 시작 — 모델 경쟁에서 ‘패키징·라우팅·규제’ 경쟁으로">
+  <meta property="og:description" content="오늘 #ai-ml-trends 채널에서 가장 중요했던 흐름은 한 줄로 정리하면 이겁니다. AI 경쟁의 중심이 모델 성능 자체에서, 인프라 공급망과 추론 파이프라인 설계로 빠르게 이동하고 있다는 점입니다. 특히 세 가지 뉴스가 같은 날 묶여 등장한 게 강한 신호였습니다. 첫째, Amazon-Cerebras 협력으로 추론 파이프라인을 단계별로 분리(프리필/디코드 분담)하려는 시도. 둘째, Besi 인수 관심 보도처럼 첨단 패키징 장비가 전략 자산으로 재평가되는 움직임. 셋째, 미국 상무부의 AI 칩 수출 규정안 철회 보도로 확인된 정책 불확실성 확대입니다.">
+  <meta property="og:locale" content="ko-kr">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2026-03-14T21:00:00+09:00">
+    <meta property="article:modified_time" content="2026-03-14T21:00:00+09:00">
+    <meta property="article:tag" content="AI">
+    <meta property="article:tag" content="ML">
+    <meta property="article:tag" content="Inference">
+    <meta property="article:tag" content="Semiconductor">
+    <meta property="article:tag" content="Packaging">
+    <meta property="article:tag" content="Cloud">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="AI/ML 트렌드: 인프라 재편의 시작 — 모델 경쟁에서 ‘패키징·라우팅·규제’ 경쟁으로">
+<meta name="twitter:description" content="오늘 #ai-ml-trends 채널에서 가장 중요했던 흐름은 한 줄로 정리하면 이겁니다. AI 경쟁의 중심이 모델 성능 자체에서, 인프라 공급망과 추론 파이프라인 설계로 빠르게 이동하고 있다는 점입니다. 특히 세 가지 뉴스가 같은 날 묶여 등장한 게 강한 신호였습니다. 첫째, Amazon-Cerebras 협력으로 추론 파이프라인을 단계별로 분리(프리필/디코드 분담)하려는 시도. 둘째, Besi 인수 관심 보도처럼 첨단 패키징 장비가 전략 자산으로 재평가되는 움직임. 셋째, 미국 상무부의 AI 칩 수출 규정안 철회 보도로 확인된 정책 불확실성 확대입니다.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://kwbaek.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "AI/ML 트렌드: 인프라 재편의 시작 — 모델 경쟁에서 ‘패키징·라우팅·규제’ 경쟁으로",
+      "item": "https://kwbaek.github.io/posts/2026-03-14-ai-ml-trends-infrastructure-rewiring/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "AI/ML 트렌드: 인프라 재편의 시작 — 모델 경쟁에서 ‘패키징·라우팅·규제’ 경쟁으로",
+  "name": "AI\/ML 트렌드: 인프라 재편의 시작 — 모델 경쟁에서 ‘패키징·라우팅·규제’ 경쟁으로",
+  "description": "오늘 #ai-ml-trends 채널에서 가장 중요했던 흐름은 한 줄로 정리하면 이겁니다. AI 경쟁의 중심이 모델 성능 자체에서, 인프라 공급망과 추론 파이프라인 설계로 빠르게 이동하고 있다는 점입니다. 특히 세 가지 뉴스가 같은 날 묶여 등장한 게 강한 신호였습니다. 첫째, Amazon-Cerebras 협력으로 추론 파이프라인을 단계별로 분리(프리필/디코드 분담)하려는 시도. 둘째, Besi 인수 관심 보도처럼 첨단 패키징 장비가 전략 자산으로 재평가되는 움직임. 셋째, 미국 상무부의 AI 칩 수출 규정안 철회 보도로 확인된 정책 불확실성 확대입니다.\n",
+  "keywords": [
+    "AI", "ML", "Inference", "Semiconductor", "Packaging", "Cloud"
+  ],
+  "articleBody": "오늘 #ai-ml-trends 채널에서 가장 중요했던 흐름은 한 줄로 정리하면 이겁니다. AI 경쟁의 중심이 모델 성능 자체에서, 인프라 공급망과 추론 파이프라인 설계로 빠르게 이동하고 있다는 점입니다. 특히 세 가지 뉴스가 같은 날 묶여 등장한 게 강한 신호였습니다. 첫째, Amazon-Cerebras 협력으로 추론 파이프라인을 단계별로 분리(프리필/디코드 분담)하려는 시도. 둘째, Besi 인수 관심 보도처럼 첨단 패키징 장비가 전략 자산으로 재평가되는 움직임. 셋째, 미국 상무부의 AI 칩 수출 규정안 철회 보도로 확인된 정책 불확실성 확대입니다.\n이 조합이 왜 중요할까요? 이제는 “누가 더 큰 모델을 만들었는가”만으로 승부가 안 나기 때문입니다. 기업 관점의 진짜 KPI는 점점 더 지연시간, 단위 추론비용, 공급 안정성, 규제 대응 속도로 이동하고 있습니다. 같은 모델이라도 어떤 칩 조합으로, 어떤 데이터센터에서, 어떤 스케줄링 전략으로 돌리느냐에 따라 원가와 사용자 경험이 완전히 달라집니다. 즉 모델은 제품의 일부이고, 승부는 시스템 전체에서 결정됩니다.\nAmazon-Cerebras 사례는 특히 의미가 큽니다. 단일 벤더·단일 칩에 올인하는 구조 대신, 추론 단계별로 최적 하드웨어를 붙여 성능/비용을 동시에 맞추려는 접근이기 때문입니다. 이건 단순 기술 실험이 아니라 멀티벤더 오퍼레이션 역량의 시작에 가깝습니다. 앞으로 엔터프라이즈 AI 팀의 핵심 역량은 모델 프롬프팅만이 아니라, 워크로드 분해와 라우팅 전략 설계가 될 가능성이 큽니다.\n패키징 이슈도 과소평가하면 안 됩니다. GPU 공급량만 보던 시기는 지나가고, 고대역 메모리 결합과 첨단 패키징 공정이 병목으로 떠오르고 있습니다. Besi 관련 뉴스는 이런 맥락에서 “후공정 기술도 AI 패권의 핵심”이라는 점을 다시 확인시킵니다. 소프트웨어 팀 입장에서도 무관하지 않습니다. 패키징 병목은 결국 리드타임과 단가로 번역되고, 그건 서비스 출시 일정과 마진 구조에 그대로 반영됩니다.\n규제 변수 역시 동시에 커지고 있습니다. 수출 규정의 변경·철회·재설계가 반복되면, 글로벌 서비스 운영팀은 기술 로드맵과 조달 로드맵을 분리해서 볼 수 없습니다. 2026년 AI 전략은 이제 “모델 선택”이 아니라 모델+하드웨어+정책을 통합한 포트폴리오 관리로 가고 있습니다.\n결론적으로, 오늘의 트렌드는 성능 경쟁의 끝이 아니라 경쟁 축의 이동입니다. 앞으로 잘하는 팀은 더 똑똑한 모델만 고르는 팀이 아니라, 불확실한 공급망과 규제 환경에서 안정적으로 서비스를 굴리는 팀이 될 겁니다.\n참고 이슈 (오늘 채널 기준) Amazon-Cerebras 협력: 추론 파이프라인 단계 분리 전략 (Reuters) Besi 인수 관심: 첨단 칩 패키징 병목의 전략 자산화 (Reuters) 미 상무부 AI 칩 수출 규정안 철회: 정책 불확실성 확대 (Reuters) ",
+  "wordCount" : "321",
+  "inLanguage": "en",
+  "datePublished": "2026-03-14T21:00:00+09:00",
+  "dateModified": "2026-03-14T21:00:00+09:00",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://kwbaek.github.io/posts/2026-03-14-ai-ml-trends-infrastructure-rewiring/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Kyungwook's Devlog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://kwbaek.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://kwbaek.github.io/" accesskey="h" title="Kyungwook&#39;s Devlog (Alt + H)">Kyungwook&#39;s Devlog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://kwbaek.github.io/categories/" title="categories">
+                    <span>categories</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kwbaek.github.io/tags/" title="tags">
+                    <span>tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kwbaek.github.io/" title="Kyungwook&#39;s Devlog">
+                    <span>Kyungwook&#39;s Devlog</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      AI/ML 트렌드: 인프라 재편의 시작 — 모델 경쟁에서 ‘패키징·라우팅·규제’ 경쟁으로
+    </h1>
+    <div class="post-meta"><span title='2026-03-14 21:00:00 +0900 KST'>March 14, 2026</span>
+
+</div>
+  </header> 
+  <div class="post-content"><p>오늘 #ai-ml-trends 채널에서 가장 중요했던 흐름은 한 줄로 정리하면 이겁니다. <strong>AI 경쟁의 중심이 모델 성능 자체에서, 인프라 공급망과 추론 파이프라인 설계로 빠르게 이동하고 있다</strong>는 점입니다. 특히 세 가지 뉴스가 같은 날 묶여 등장한 게 강한 신호였습니다. 첫째, Amazon-Cerebras 협력으로 추론 파이프라인을 단계별로 분리(프리필/디코드 분담)하려는 시도. 둘째, Besi 인수 관심 보도처럼 첨단 패키징 장비가 전략 자산으로 재평가되는 움직임. 셋째, 미국 상무부의 AI 칩 수출 규정안 철회 보도로 확인된 정책 불확실성 확대입니다.</p>
+<p>이 조합이 왜 중요할까요? 이제는 “누가 더 큰 모델을 만들었는가”만으로 승부가 안 나기 때문입니다. 기업 관점의 진짜 KPI는 점점 더 <strong>지연시간, 단위 추론비용, 공급 안정성, 규제 대응 속도</strong>로 이동하고 있습니다. 같은 모델이라도 어떤 칩 조합으로, 어떤 데이터센터에서, 어떤 스케줄링 전략으로 돌리느냐에 따라 원가와 사용자 경험이 완전히 달라집니다. 즉 모델은 제품의 일부이고, 승부는 시스템 전체에서 결정됩니다.</p>
+<p>Amazon-Cerebras 사례는 특히 의미가 큽니다. 단일 벤더·단일 칩에 올인하는 구조 대신, 추론 단계별로 최적 하드웨어를 붙여 성능/비용을 동시에 맞추려는 접근이기 때문입니다. 이건 단순 기술 실험이 아니라 멀티벤더 오퍼레이션 역량의 시작에 가깝습니다. 앞으로 엔터프라이즈 AI 팀의 핵심 역량은 모델 프롬프팅만이 아니라, <strong>워크로드 분해와 라우팅 전략 설계</strong>가 될 가능성이 큽니다.</p>
+<p>패키징 이슈도 과소평가하면 안 됩니다. GPU 공급량만 보던 시기는 지나가고, 고대역 메모리 결합과 첨단 패키징 공정이 병목으로 떠오르고 있습니다. Besi 관련 뉴스는 이런 맥락에서 “후공정 기술도 AI 패권의 핵심”이라는 점을 다시 확인시킵니다. 소프트웨어 팀 입장에서도 무관하지 않습니다. 패키징 병목은 결국 리드타임과 단가로 번역되고, 그건 서비스 출시 일정과 마진 구조에 그대로 반영됩니다.</p>
+<p>규제 변수 역시 동시에 커지고 있습니다. 수출 규정의 변경·철회·재설계가 반복되면, 글로벌 서비스 운영팀은 기술 로드맵과 조달 로드맵을 분리해서 볼 수 없습니다. 2026년 AI 전략은 이제 “모델 선택”이 아니라 <strong>모델+하드웨어+정책을 통합한 포트폴리오 관리</strong>로 가고 있습니다.</p>
+<p>결론적으로, 오늘의 트렌드는 성능 경쟁의 끝이 아니라 경쟁 축의 이동입니다. 앞으로 잘하는 팀은 더 똑똑한 모델만 고르는 팀이 아니라, 불확실한 공급망과 규제 환경에서 안정적으로 서비스를 굴리는 팀이 될 겁니다.</p>
+<h2 id="참고-이슈-오늘-채널-기준">참고 이슈 (오늘 채널 기준)<a hidden class="anchor" aria-hidden="true" href="#참고-이슈-오늘-채널-기준">#</a></h2>
+<ul>
+<li>Amazon-Cerebras 협력: 추론 파이프라인 단계 분리 전략 (Reuters)</li>
+<li>Besi 인수 관심: 첨단 칩 패키징 병목의 전략 자산화 (Reuters)</li>
+<li>미 상무부 AI 칩 수출 규정안 철회: 정책 불확실성 확대 (Reuters)</li>
+</ul>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://kwbaek.github.io/tags/ai/">AI</a></li>
+      <li><a href="https://kwbaek.github.io/tags/ml/">ML</a></li>
+      <li><a href="https://kwbaek.github.io/tags/inference/">Inference</a></li>
+      <li><a href="https://kwbaek.github.io/tags/semiconductor/">Semiconductor</a></li>
+      <li><a href="https://kwbaek.github.io/tags/packaging/">Packaging</a></li>
+      <li><a href="https://kwbaek.github.io/tags/cloud/">Cloud</a></li>
+    </ul>
+  </footer><script src="https://utteranc.es/client.js"
+        repo="kwbaek/blog-comments"
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://kwbaek.github.io/">Kyungwook&#39;s Devlog</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

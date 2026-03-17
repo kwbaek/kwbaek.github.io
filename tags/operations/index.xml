@@ -1,20 +1,94 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Operations on Kyungwook's Devlog</title><link>https://kwbaek.github.io/tags/operations/</link><description>Recent content in Operations on Kyungwook's Devlog</description><generator>Hugo -- 0.155.3</generator><language>ko-kr</language><lastBuildDate>Sun, 15 Mar 2026 21:00:00 +0900</lastBuildDate><atom:link href="https://kwbaek.github.io/tags/operations/index.xml" rel="self" type="application/rss+xml"/><item><title>OpenClaw 활용 팁: 지시문 기반 Cron으로 ‘안정적인 콘텐츠 파이프라인’ 만들기</title><link>https://kwbaek.github.io/posts/2026-03-15-openclaw-instruction-driven-content-ops/</link><pubDate>Sun, 15 Mar 2026 21:00:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-03-15-openclaw-instruction-driven-content-ops/</guid><description>&lt;p&gt;OpenClaw로 반복 작업을 돌리다 보면, 자동화 자체보다 더 어려운 게 있습니다. 바로 &lt;strong&gt;자동화를 계속 믿을 수 있게 유지하는 것&lt;/strong&gt;입니다. 오늘은 제가 자주 쓰는 패턴 하나를 정리해보겠습니다. 핵심은 간단합니다. “작업 로직을 채팅 프롬프트에 흩뿌리지 말고, 지시문 파일로 고정해 Cron이 그 파일을 읽고 실행하게 만든다.” 이 방식이 생각보다 강력합니다.&lt;/p&gt;
-&lt;p&gt;왜 좋을까요? 첫째, 변경 이력이 남습니다. 지시를 코드처럼 파일로 관리하면 무엇을 언제 왜 바꿨는지 추적이 쉽습니다. 둘째, 실패 대응이 빨라집니다. 실행 시점에는 단순히 파일 존재 여부·형식·핵심 단계만 확인하면 되기 때문에 디버깅 범위가 좁아집니다. 셋째, 사람-에이전트 협업이 편해집니다. 사람은 파일을 수정하고, 에이전트는 같은 규칙으로 반복 실행합니다. 역할이 명확해집니다.&lt;/p&gt;</description></item><item><title>OpenClaw 운영 팁: Cron과 Heartbeat를 섞어 쓸 때 자동화가 진짜 안정해진다</title><link>https://kwbaek.github.io/posts/2026-03-14-openclaw-cron-heartbeat-ops/</link><pubDate>Sat, 14 Mar 2026 21:00:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-03-14-openclaw-cron-heartbeat-ops/</guid><description>&lt;p&gt;OpenClaw를 계속 운영하다 보면 자동화 작업이 늘어나면서 비슷한 고민이 생깁니다. “이 작업을 cron으로 넣을까, heartbeat에서 처리할까?” 정답은 하나가 아니라 &lt;strong&gt;역할 분리&lt;/strong&gt;입니다. 실무에서 가장 안정적인 구조는 정확한 시각이 중요한 작업은 cron으로, 여러 점검을 묶어서 문맥 기반으로 판단해야 하는 작업은 heartbeat로 보내는 방식입니다.&lt;/p&gt;
-&lt;p&gt;예를 들어 “월요일 09:00 보고서 발송”, “20분 뒤 리마인드”처럼 시간 정확도가 중요한 일은 cron이 맞습니다. 반대로 “이메일/캘린더/알림을 묶어 확인하고, 급한 것만 알려주기” 같은 작업은 heartbeat가 더 효율적입니다. heartbeat는 최근 대화 컨텍스트를 활용해 노이즈를 줄일 수 있고, 여러 체크를 한 번에 처리해서 호출 비용도 아낄 수 있습니다. 즉 cron은 정밀 타이머, heartbeat는 맥락형 배치 처리에 가깝습니다.&lt;/p&gt;</description></item><item><title>AI/ML 트렌드: 에이전트 워크포스의 현실화 — 성능 경쟁에서 운영 설계 경쟁으로</title><link>https://kwbaek.github.io/posts/2026-03-13-ai-ml-trends/</link><pubDate>Fri, 13 Mar 2026 21:00:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-03-13-ai-ml-trends/</guid><description>&lt;p&gt;오늘 #ai-ml-trends 채널에서 가장 중요하게 보인 흐름은 **&amp;ldquo;AI 에이전트가 파일럿을 벗어나 실제 운영 인력(워크포스)으로 배치되기 시작했다&amp;rdquo;**는 점입니다. WSJ/Reuters 경유로 나온 FedEx의 AI agent workforce 도입 시그널은 단순한 기능 추가가 아니라, 물류·운영 업무 자체를 에이전트 중심으로 다시 설계하려는 움직임에 가깝습니다. 여기에 Meta 모델 출시 지연 뉴스(품질·안전·제품화 리스크), 프랑스 지방선거의 데이터센터 반대 이슈(전력·열·지역 수용성)가 같은 날 함께 포착됐다는 점이 특히 의미 있습니다. 즉, 2026년의 핵심은 “더 똑똑한 모델”보다 **“실제로 굴러가는 AI 운영체계”**입니다.&lt;/p&gt;</description></item><item><title>OpenClaw 운영 팁: 업데이트 많은 주간엔 ‘설정 검증 + 헬스체크’ 루틴을 고정하자</title><link>https://kwbaek.github.io/posts/2026-03-13-openclaw-config-health-routine/</link><pubDate>Fri, 13 Mar 2026 21:00:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-03-13-openclaw-config-health-routine/</guid><description>&lt;p&gt;OpenClaw를 매일 쓰다 보면 체감되는 사실이 하나 있습니다. 문제의 대부분은 기능 부족이 아니라 &lt;strong&gt;운영 루틴의 부재&lt;/strong&gt;에서 생깁니다. 특히 최근처럼 릴리즈 속도가 빠르고(설정 키 정리, 보안 강화, 채널 동작 개선), 운영 옵션이 늘어나는 시기에는 “잘 되겠지” 방식이 가장 위험합니다. 그래서 실무에서 가장 효과적인 습관은 기능을 더 붙이는 것보다, &lt;strong&gt;변경 직후 점검 루틴을 짧고 고정된 형태로 반복&lt;/strong&gt;하는 것입니다.&lt;/p&gt;
-&lt;p&gt;제가 추천하는 기본 루틴은 네 단계입니다. 첫째, 설정 변경 전후에 &lt;code&gt;openclaw config validate --json&lt;/code&gt;으로 구조 오류를 먼저 잡습니다. 둘째, 게이트웨이 재기동 후 &lt;code&gt;/healthz&lt;/code&gt;와 &lt;code&gt;/readyz&lt;/code&gt;를 분리 확인해서 프로세스 생존과 실제 준비 상태를 각각 검증합니다. 셋째, &lt;code&gt;openclaw security audit&lt;/code&gt;로 노출 위험(인증/허용원점/권한 과다)을 확인합니다. 넷째, 필요하면 &lt;code&gt;openclaw doctor&lt;/code&gt;로 마이그레이션 누락이나 레거시 키를 정리합니다. 이 순서를 고정하면 장애 원인을 추적하는 시간이 눈에 띄게 줄어듭니다.&lt;/p&gt;</description></item><item><title>OpenClaw 운영 팁: Heartbeat와 Cron을 분리하면 자동화 품질이 급상승한다</title><link>https://kwbaek.github.io/posts/2026-03-12-openclaw-two-track-ops-heartbeat-cron/</link><pubDate>Thu, 12 Mar 2026 21:00:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-03-12-openclaw-two-track-ops-heartbeat-cron/</guid><description>&lt;p&gt;OpenClaw를 꾸준히 돌리다 보면, 자동화가 흔들리는 가장 흔한 원인은 모델 성능이 아니라 &lt;strong&gt;스케줄 설계의 혼선&lt;/strong&gt;입니다. 특히 &amp;ldquo;모든 주기 작업을 cron으로 밀어 넣는 방식&amp;quot;은 초반엔 단순해 보이지만, 시간이 지나면 잡 개수가 늘고 디버깅이 어려워집니다. 최근 운영에서 가장 효과적이었던 패턴은 &lt;strong&gt;Heartbeat는 배치 점검용, Cron은 정시·원샷 작업용&lt;/strong&gt;으로 역할을 강하게 분리하는 방식입니다.&lt;/p&gt;
-&lt;p&gt;Heartbeat는 컨텍스트를 묶어 처리할 수 있다는 장점이 큽니다. 예를 들어 메일/캘린더/알림/날씨처럼 서로 연관된 점검은 heartbeat 한 번에 묶으면 API 호출과 토큰 사용량을 줄일 수 있고, &amp;ldquo;지금 정말 사용자에게 알려야 하나&amp;rdquo; 같은 판단도 더 자연스럽게 됩니다. 반대로 Cron은 9시 정각 보고, 20분 뒤 리마인드처럼 &lt;strong&gt;시간 정확도&lt;/strong&gt;가 중요한 작업에 적합합니다. 이 두 축을 섞지 않으면 운영 소음이 줄고, 실패 원인도 훨씬 명확해집니다.&lt;/p&gt;</description></item><item><title>OpenClaw 실전 팁: 지시문 기반 Cron 자동 포스팅 워크플로 설계하기</title><link>https://kwbaek.github.io/posts/2026-03-11-openclaw-cron-instruction-driven-blogging/</link><pubDate>Wed, 11 Mar 2026 21:00:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-03-11-openclaw-cron-instruction-driven-blogging/</guid><description>&lt;p&gt;OpenClaw를 오래 운영해보면, 자동화 성공 여부는 모델 성능보다 &lt;strong&gt;운영 구조&lt;/strong&gt;에서 갈리는 경우가 많습니다. 최근 제가 가장 효과를 본 패턴은 “크론 잡에 긴 프롬프트를 직접 넣지 않고, &lt;code&gt;cron-instructions/&lt;/code&gt; 폴더의 지시문 파일을 읽게 만드는 방식”입니다. 이 구조를 쓰면 디버깅이 쉬워지고, 잡 수정도 빠르며, 실패 원인 추적도 명확해집니다.&lt;/p&gt;
-&lt;p&gt;핵심 아이디어는 단순합니다. 크론 잡 본문은 최소화하고, 실제 작업 규칙은 파일로 분리합니다. 예를 들어 블로그 자동화라면 (1) 트렌드 채널 읽기, (2) 카테고리별 포스트 생성, (3) git push, (4) 빌드/배포 같은 단계를 지시문 파일에 명시해 둡니다. 이렇게 하면 규칙 변경 시 크론 자체를 건드리지 않고 파일만 수정하면 됩니다.&lt;/p&gt;</description></item><item><title>OpenClaw 운영 메모: v2026.3.7 이후 꼭 챙길 4가지 (실전 체크리스트)</title><link>https://kwbaek.github.io/posts/2026-03-10-openclaw-v2026-3-7-operations-playbook/</link><pubDate>Tue, 10 Mar 2026 21:05:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-03-10-openclaw-v2026-3-7-operations-playbook/</guid><description>&lt;p&gt;OpenClaw를 계속 굴리다 보면 새 기능보다 더 중요한 게 있습니다. 바로 &amp;ldquo;이번 업데이트에서 운영 리스크가 어디로 이동했는지&amp;quot;를 빨리 잡는 것입니다. 최근 버전 흐름(v2026.3.7 기준)을 보면, 단순 기능 추가보다 &lt;strong&gt;보안 기본값, 라우팅 안정성, 운영 점검 루틴&lt;/strong&gt;이 점점 더 중요해지고 있습니다. 오늘은 실제로 바로 적용 가능한 포인트만 압축해서 정리합니다.&lt;/p&gt;
-&lt;h2 id="1-먼저-확인-auth-설정의-브레이킹-포인트"&gt;1) 먼저 확인: auth 설정의 브레이킹 포인트&lt;/h2&gt;
-&lt;p&gt;v2026.3.7에서 가장 먼저 체크할 건 gateway 인증 조합입니다. &lt;code&gt;gateway.auth.token&lt;/code&gt;과 &lt;code&gt;gateway.auth.password&lt;/code&gt;를 동시에 쓰는 환경이라면 &lt;code&gt;gateway.auth.mode&lt;/code&gt;를 반드시 명시해야 합니다. 이걸 놓치면 업데이트 직후 &amp;ldquo;왜 갑자기 인증이 꼬였지?&amp;rdquo; 같은 장애가 생기기 쉽습니다.&lt;/p&gt;</description></item><item><title>OpenClaw 실전 루틴: ‘콘텐츠 작성 → 운영 점검’ 2단계로 자동화 품질 높이기</title><link>https://kwbaek.github.io/posts/2026-03-04-openclaw-two-step-content-and-ops-routine/</link><pubDate>Wed, 04 Mar 2026 21:05:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-03-04-openclaw-two-step-content-and-ops-routine/</guid><description>&lt;p&gt;OpenClaw를 꾸준히 쓰다 보면, 가장 큰 차이는 “기능을 많이 아는가”보다 &lt;strong&gt;루틴을 얼마나 단순하게 고정했는가&lt;/strong&gt;에서 나옵니다. 특히 최근 버전 흐름(v2026.3.2 기준)에서는 콘텐츠 작업과 운영 점검을 분리한 2단계 루틴이 체감 효율이 좋습니다.&lt;/p&gt;
-&lt;h2 id="1-작업-단계-도구를-목적별로-분리"&gt;1) 작업 단계: 도구를 목적별로 분리&lt;/h2&gt;
-&lt;p&gt;최근 추가된 1st-class &lt;code&gt;pdf&lt;/code&gt; tool은 문서 기반 작업에서 꽤 강력합니다. 기존처럼 브라우저/스크립트를 우회하지 않고, 바로 PDF를 분석해 요약·비교·핵심 추출을 수행할 수 있습니다. 실무에서는 이게 중요합니다. 도구 체인이 짧아질수록 실패 지점이 줄고, 재현성도 올라가기 때문입니다.&lt;/p&gt;</description></item><item><title>OpenClaw 운영 팁: 헬스 프로브 + 릴리즈 루틴으로 ‘고장 나기 전에’ 관리하기</title><link>https://kwbaek.github.io/posts/2026-03-03-openclaw-health-probe-and-release-ops/</link><pubDate>Tue, 03 Mar 2026 21:05:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-03-03-openclaw-health-probe-and-release-ops/</guid><description>&lt;p&gt;OpenClaw를 오래 안정적으로 굴리려면, 기능 추가보다 먼저 &lt;strong&gt;운영 루틴&lt;/strong&gt;을 고정하는 게 훨씬 효과적입니다. 최근 릴리즈 흐름(v2026.3.1 기준)에서 특히 실전 가치가 큰 포인트는 &lt;code&gt;health/ready&lt;/code&gt; 프로브와 보안 점검 루틴입니다.&lt;/p&gt;
-&lt;h2 id="1-살아있나를-감으로-보지-말고-엔드포인트로-확인"&gt;1) “살아있나?”를 감으로 보지 말고 엔드포인트로 확인&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Operations on Kyungwook&#39;s Devlog</title>
+    <link>https://kwbaek.github.io/tags/operations/</link>
+    <description>Recent content in Operations on Kyungwook&#39;s Devlog</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Sun, 15 Mar 2026 21:00:00 +0900</lastBuildDate>
+    <atom:link href="https://kwbaek.github.io/tags/operations/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>OpenClaw 활용 팁: 지시문 기반 Cron으로 ‘안정적인 콘텐츠 파이프라인’ 만들기</title>
+      <link>https://kwbaek.github.io/posts/2026-03-15-openclaw-instruction-driven-content-ops/</link>
+      <pubDate>Sun, 15 Mar 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-03-15-openclaw-instruction-driven-content-ops/</guid>
+      <description>&lt;p&gt;OpenClaw로 반복 작업을 돌리다 보면, 자동화 자체보다 더 어려운 게 있습니다. 바로 &lt;strong&gt;자동화를 계속 믿을 수 있게 유지하는 것&lt;/strong&gt;입니다. 오늘은 제가 자주 쓰는 패턴 하나를 정리해보겠습니다. 핵심은 간단합니다. “작업 로직을 채팅 프롬프트에 흩뿌리지 말고, 지시문 파일로 고정해 Cron이 그 파일을 읽고 실행하게 만든다.” 이 방식이 생각보다 강력합니다.&lt;/p&gt;
+&lt;p&gt;왜 좋을까요? 첫째, 변경 이력이 남습니다. 지시를 코드처럼 파일로 관리하면 무엇을 언제 왜 바꿨는지 추적이 쉽습니다. 둘째, 실패 대응이 빨라집니다. 실행 시점에는 단순히 파일 존재 여부·형식·핵심 단계만 확인하면 되기 때문에 디버깅 범위가 좁아집니다. 셋째, 사람-에이전트 협업이 편해집니다. 사람은 파일을 수정하고, 에이전트는 같은 규칙으로 반복 실행합니다. 역할이 명확해집니다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>OpenClaw 운영 팁: Cron과 Heartbeat를 섞어 쓸 때 자동화가 진짜 안정해진다</title>
+      <link>https://kwbaek.github.io/posts/2026-03-14-openclaw-cron-heartbeat-ops/</link>
+      <pubDate>Sat, 14 Mar 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-03-14-openclaw-cron-heartbeat-ops/</guid>
+      <description>&lt;p&gt;OpenClaw를 계속 운영하다 보면 자동화 작업이 늘어나면서 비슷한 고민이 생깁니다. “이 작업을 cron으로 넣을까, heartbeat에서 처리할까?” 정답은 하나가 아니라 &lt;strong&gt;역할 분리&lt;/strong&gt;입니다. 실무에서 가장 안정적인 구조는 정확한 시각이 중요한 작업은 cron으로, 여러 점검을 묶어서 문맥 기반으로 판단해야 하는 작업은 heartbeat로 보내는 방식입니다.&lt;/p&gt;
+&lt;p&gt;예를 들어 “월요일 09:00 보고서 발송”, “20분 뒤 리마인드”처럼 시간 정확도가 중요한 일은 cron이 맞습니다. 반대로 “이메일/캘린더/알림을 묶어 확인하고, 급한 것만 알려주기” 같은 작업은 heartbeat가 더 효율적입니다. heartbeat는 최근 대화 컨텍스트를 활용해 노이즈를 줄일 수 있고, 여러 체크를 한 번에 처리해서 호출 비용도 아낄 수 있습니다. 즉 cron은 정밀 타이머, heartbeat는 맥락형 배치 처리에 가깝습니다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>AI/ML 트렌드: 에이전트 워크포스의 현실화 — 성능 경쟁에서 운영 설계 경쟁으로</title>
+      <link>https://kwbaek.github.io/posts/2026-03-13-ai-ml-trends/</link>
+      <pubDate>Fri, 13 Mar 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-03-13-ai-ml-trends/</guid>
+      <description>&lt;p&gt;오늘 #ai-ml-trends 채널에서 가장 중요하게 보인 흐름은 **&amp;ldquo;AI 에이전트가 파일럿을 벗어나 실제 운영 인력(워크포스)으로 배치되기 시작했다&amp;rdquo;**는 점입니다. WSJ/Reuters 경유로 나온 FedEx의 AI agent workforce 도입 시그널은 단순한 기능 추가가 아니라, 물류·운영 업무 자체를 에이전트 중심으로 다시 설계하려는 움직임에 가깝습니다. 여기에 Meta 모델 출시 지연 뉴스(품질·안전·제품화 리스크), 프랑스 지방선거의 데이터센터 반대 이슈(전력·열·지역 수용성)가 같은 날 함께 포착됐다는 점이 특히 의미 있습니다. 즉, 2026년의 핵심은 “더 똑똑한 모델”보다 **“실제로 굴러가는 AI 운영체계”**입니다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>OpenClaw 운영 팁: 업데이트 많은 주간엔 ‘설정 검증 &#43; 헬스체크’ 루틴을 고정하자</title>
+      <link>https://kwbaek.github.io/posts/2026-03-13-openclaw-config-health-routine/</link>
+      <pubDate>Fri, 13 Mar 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-03-13-openclaw-config-health-routine/</guid>
+      <description>&lt;p&gt;OpenClaw를 매일 쓰다 보면 체감되는 사실이 하나 있습니다. 문제의 대부분은 기능 부족이 아니라 &lt;strong&gt;운영 루틴의 부재&lt;/strong&gt;에서 생깁니다. 특히 최근처럼 릴리즈 속도가 빠르고(설정 키 정리, 보안 강화, 채널 동작 개선), 운영 옵션이 늘어나는 시기에는 “잘 되겠지” 방식이 가장 위험합니다. 그래서 실무에서 가장 효과적인 습관은 기능을 더 붙이는 것보다, &lt;strong&gt;변경 직후 점검 루틴을 짧고 고정된 형태로 반복&lt;/strong&gt;하는 것입니다.&lt;/p&gt;
+&lt;p&gt;제가 추천하는 기본 루틴은 네 단계입니다. 첫째, 설정 변경 전후에 &lt;code&gt;openclaw config validate --json&lt;/code&gt;으로 구조 오류를 먼저 잡습니다. 둘째, 게이트웨이 재기동 후 &lt;code&gt;/healthz&lt;/code&gt;와 &lt;code&gt;/readyz&lt;/code&gt;를 분리 확인해서 프로세스 생존과 실제 준비 상태를 각각 검증합니다. 셋째, &lt;code&gt;openclaw security audit&lt;/code&gt;로 노출 위험(인증/허용원점/권한 과다)을 확인합니다. 넷째, 필요하면 &lt;code&gt;openclaw doctor&lt;/code&gt;로 마이그레이션 누락이나 레거시 키를 정리합니다. 이 순서를 고정하면 장애 원인을 추적하는 시간이 눈에 띄게 줄어듭니다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>OpenClaw 운영 팁: Heartbeat와 Cron을 분리하면 자동화 품질이 급상승한다</title>
+      <link>https://kwbaek.github.io/posts/2026-03-12-openclaw-two-track-ops-heartbeat-cron/</link>
+      <pubDate>Thu, 12 Mar 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-03-12-openclaw-two-track-ops-heartbeat-cron/</guid>
+      <description>&lt;p&gt;OpenClaw를 꾸준히 돌리다 보면, 자동화가 흔들리는 가장 흔한 원인은 모델 성능이 아니라 &lt;strong&gt;스케줄 설계의 혼선&lt;/strong&gt;입니다. 특히 &amp;ldquo;모든 주기 작업을 cron으로 밀어 넣는 방식&amp;quot;은 초반엔 단순해 보이지만, 시간이 지나면 잡 개수가 늘고 디버깅이 어려워집니다. 최근 운영에서 가장 효과적이었던 패턴은 &lt;strong&gt;Heartbeat는 배치 점검용, Cron은 정시·원샷 작업용&lt;/strong&gt;으로 역할을 강하게 분리하는 방식입니다.&lt;/p&gt;
+&lt;p&gt;Heartbeat는 컨텍스트를 묶어 처리할 수 있다는 장점이 큽니다. 예를 들어 메일/캘린더/알림/날씨처럼 서로 연관된 점검은 heartbeat 한 번에 묶으면 API 호출과 토큰 사용량을 줄일 수 있고, &amp;ldquo;지금 정말 사용자에게 알려야 하나&amp;rdquo; 같은 판단도 더 자연스럽게 됩니다. 반대로 Cron은 9시 정각 보고, 20분 뒤 리마인드처럼 &lt;strong&gt;시간 정확도&lt;/strong&gt;가 중요한 작업에 적합합니다. 이 두 축을 섞지 않으면 운영 소음이 줄고, 실패 원인도 훨씬 명확해집니다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>OpenClaw 실전 팁: 지시문 기반 Cron 자동 포스팅 워크플로 설계하기</title>
+      <link>https://kwbaek.github.io/posts/2026-03-11-openclaw-cron-instruction-driven-blogging/</link>
+      <pubDate>Wed, 11 Mar 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-03-11-openclaw-cron-instruction-driven-blogging/</guid>
+      <description>&lt;p&gt;OpenClaw를 오래 운영해보면, 자동화 성공 여부는 모델 성능보다 &lt;strong&gt;운영 구조&lt;/strong&gt;에서 갈리는 경우가 많습니다. 최근 제가 가장 효과를 본 패턴은 “크론 잡에 긴 프롬프트를 직접 넣지 않고, &lt;code&gt;cron-instructions/&lt;/code&gt; 폴더의 지시문 파일을 읽게 만드는 방식”입니다. 이 구조를 쓰면 디버깅이 쉬워지고, 잡 수정도 빠르며, 실패 원인 추적도 명확해집니다.&lt;/p&gt;
+&lt;p&gt;핵심 아이디어는 단순합니다. 크론 잡 본문은 최소화하고, 실제 작업 규칙은 파일로 분리합니다. 예를 들어 블로그 자동화라면 (1) 트렌드 채널 읽기, (2) 카테고리별 포스트 생성, (3) git push, (4) 빌드/배포 같은 단계를 지시문 파일에 명시해 둡니다. 이렇게 하면 규칙 변경 시 크론 자체를 건드리지 않고 파일만 수정하면 됩니다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>OpenClaw 운영 메모: v2026.3.7 이후 꼭 챙길 4가지 (실전 체크리스트)</title>
+      <link>https://kwbaek.github.io/posts/2026-03-10-openclaw-v2026-3-7-operations-playbook/</link>
+      <pubDate>Tue, 10 Mar 2026 21:05:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-03-10-openclaw-v2026-3-7-operations-playbook/</guid>
+      <description>&lt;p&gt;OpenClaw를 계속 굴리다 보면 새 기능보다 더 중요한 게 있습니다. 바로 &amp;ldquo;이번 업데이트에서 운영 리스크가 어디로 이동했는지&amp;quot;를 빨리 잡는 것입니다. 최근 버전 흐름(v2026.3.7 기준)을 보면, 단순 기능 추가보다 &lt;strong&gt;보안 기본값, 라우팅 안정성, 운영 점검 루틴&lt;/strong&gt;이 점점 더 중요해지고 있습니다. 오늘은 실제로 바로 적용 가능한 포인트만 압축해서 정리합니다.&lt;/p&gt;
+&lt;h2 id=&#34;1-먼저-확인-auth-설정의-브레이킹-포인트&#34;&gt;1) 먼저 확인: auth 설정의 브레이킹 포인트&lt;/h2&gt;
+&lt;p&gt;v2026.3.7에서 가장 먼저 체크할 건 gateway 인증 조합입니다. &lt;code&gt;gateway.auth.token&lt;/code&gt;과 &lt;code&gt;gateway.auth.password&lt;/code&gt;를 동시에 쓰는 환경이라면 &lt;code&gt;gateway.auth.mode&lt;/code&gt;를 반드시 명시해야 합니다. 이걸 놓치면 업데이트 직후 &amp;ldquo;왜 갑자기 인증이 꼬였지?&amp;rdquo; 같은 장애가 생기기 쉽습니다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>OpenClaw 실전 루틴: ‘콘텐츠 작성 → 운영 점검’ 2단계로 자동화 품질 높이기</title>
+      <link>https://kwbaek.github.io/posts/2026-03-04-openclaw-two-step-content-and-ops-routine/</link>
+      <pubDate>Wed, 04 Mar 2026 21:05:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-03-04-openclaw-two-step-content-and-ops-routine/</guid>
+      <description>&lt;p&gt;OpenClaw를 꾸준히 쓰다 보면, 가장 큰 차이는 “기능을 많이 아는가”보다 &lt;strong&gt;루틴을 얼마나 단순하게 고정했는가&lt;/strong&gt;에서 나옵니다. 특히 최근 버전 흐름(v2026.3.2 기준)에서는 콘텐츠 작업과 운영 점검을 분리한 2단계 루틴이 체감 효율이 좋습니다.&lt;/p&gt;
+&lt;h2 id=&#34;1-작업-단계-도구를-목적별로-분리&#34;&gt;1) 작업 단계: 도구를 목적별로 분리&lt;/h2&gt;
+&lt;p&gt;최근 추가된 1st-class &lt;code&gt;pdf&lt;/code&gt; tool은 문서 기반 작업에서 꽤 강력합니다. 기존처럼 브라우저/스크립트를 우회하지 않고, 바로 PDF를 분석해 요약·비교·핵심 추출을 수행할 수 있습니다. 실무에서는 이게 중요합니다. 도구 체인이 짧아질수록 실패 지점이 줄고, 재현성도 올라가기 때문입니다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>OpenClaw 운영 팁: 헬스 프로브 &#43; 릴리즈 루틴으로 ‘고장 나기 전에’ 관리하기</title>
+      <link>https://kwbaek.github.io/posts/2026-03-03-openclaw-health-probe-and-release-ops/</link>
+      <pubDate>Tue, 03 Mar 2026 21:05:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-03-03-openclaw-health-probe-and-release-ops/</guid>
+      <description>&lt;p&gt;OpenClaw를 오래 안정적으로 굴리려면, 기능 추가보다 먼저 &lt;strong&gt;운영 루틴&lt;/strong&gt;을 고정하는 게 훨씬 효과적입니다. 최근 릴리즈 흐름(v2026.3.1 기준)에서 특히 실전 가치가 큰 포인트는 &lt;code&gt;health/ready&lt;/code&gt; 프로브와 보안 점검 루틴입니다.&lt;/p&gt;
+&lt;h2 id=&#34;1-살아있나를-감으로-보지-말고-엔드포인트로-확인&#34;&gt;1) “살아있나?”를 감으로 보지 말고 엔드포인트로 확인&lt;/h2&gt;
 &lt;p&gt;게이트웨이 상태를 앱 체감으로 판단하면 늦습니다. 아래처럼 프로브를 습관화하면 장애를 훨씬 빨리 잡습니다.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;openclaw config file
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;curl -fsS http://127.0.0.1:18789/healthz
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;curl -fsS http://127.0.0.1:18789/readyz
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;openclaw config file
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;curl -fsS http://127.0.0.1:18789/healthz
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;curl -fsS http://127.0.0.1:18789/readyz
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
 &lt;li&gt;&lt;code&gt;healthz&lt;/code&gt;: 프로세스 생존 여부 확인&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;readyz&lt;/code&gt;: 실제 요청 처리 준비 상태 확인&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;둘을 분리해서 보면 “프로세스는 살아있지만 서비스는 준비 안 된 상태”를 빠르게 탐지할 수 있습니다.&lt;/p&gt;</description></item></channel></rss>
+&lt;p&gt;둘을 분리해서 보면 “프로세스는 살아있지만 서비스는 준비 안 된 상태”를 빠르게 탐지할 수 있습니다.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

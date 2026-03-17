@@ -1,4 +1,22 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>AI안전성 on Kyungwook's Devlog</title><link>https://kwbaek.github.io/tags/ai%EC%95%88%EC%A0%84%EC%84%B1/</link><description>Recent content in AI안전성 on Kyungwook's Devlog</description><generator>Hugo -- 0.155.3</generator><language>ko-kr</language><lastBuildDate>Thu, 12 Feb 2026 21:00:00 +0900</lastBuildDate><atom:link href="https://kwbaek.github.io/tags/ai%EC%95%88%EC%A0%84%EC%84%B1/index.xml" rel="self" type="application/rss+xml"/><item><title>AI 보안의 새로운 전환점 - Microsoft의 'Sleeper Agent' 탐지 기술</title><link>https://kwbaek.github.io/posts/2026-02-12-ai-security-sleeper-agent-detection/</link><pubDate>Thu, 12 Feb 2026 21:00:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-02-12-ai-security-sleeper-agent-detection/</guid><description>&lt;h2 id="ai-모델에-숨겨진-백도어-이제-탐지-가능해진다"&gt;AI 모델에 숨겨진 백도어, 이제 탐지 가능해진다&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>AI안전성 on Kyungwook&#39;s Devlog</title>
+    <link>https://kwbaek.github.io/tags/ai%EC%95%88%EC%A0%84%EC%84%B1/</link>
+    <description>Recent content in AI안전성 on Kyungwook&#39;s Devlog</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Thu, 12 Feb 2026 21:00:00 +0900</lastBuildDate>
+    <atom:link href="https://kwbaek.github.io/tags/ai%EC%95%88%EC%A0%84%EC%84%B1/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI 보안의 새로운 전환점 - Microsoft의 &#39;Sleeper Agent&#39; 탐지 기술</title>
+      <link>https://kwbaek.github.io/posts/2026-02-12-ai-security-sleeper-agent-detection/</link>
+      <pubDate>Thu, 12 Feb 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-02-12-ai-security-sleeper-agent-detection/</guid>
+      <description>&lt;h2 id=&#34;ai-모델에-숨겨진-백도어-이제-탐지-가능해진다&#34;&gt;AI 모델에 숨겨진 백도어, 이제 탐지 가능해진다&lt;/h2&gt;
 &lt;p&gt;Microsoft가 LLM(대형 언어 모델)에 숨겨진 악의적 백도어를 탐지하는 획기적인 연구 결과를 발표했습니다. &amp;ldquo;The Trigger in the Haystack&amp;quot;라는 제목의 논문을 통해 공개된 이 기술은 AI 안전성 패러다임을 근본적으로 바꿀 수 있는 중요한 연구입니다.&lt;/p&gt;
-&lt;h2 id="슬리퍼-에이전트sleeper-agent-문제란"&gt;&amp;lsquo;슬리퍼 에이전트(Sleeper Agent)&amp;rsquo; 문제란?&lt;/h2&gt;
-&lt;p&gt;슬리퍼 에이전트는 특정 트리거 문구가 입력될 때까지 정상적으로 작동하다가, 트리거가 활성화되면 악의적인 행동을 수행하는 AI 모델을 의미합니다. 마치 영화 속 잠입 요원처럼, 평소에는 완벽히 정상적으로 보이지만 특정 신호에 반응해 숨겨진 임무를 수행하는 것이죠.&lt;/p&gt;</description></item></channel></rss>
+&lt;h2 id=&#34;슬리퍼-에이전트sleeper-agent-문제란&#34;&gt;&amp;lsquo;슬리퍼 에이전트(Sleeper Agent)&amp;rsquo; 문제란?&lt;/h2&gt;
+&lt;p&gt;슬리퍼 에이전트는 특정 트리거 문구가 입력될 때까지 정상적으로 작동하다가, 트리거가 활성화되면 악의적인 행동을 수행하는 AI 모델을 의미합니다. 마치 영화 속 잠입 요원처럼, 평소에는 완벽히 정상적으로 보이지만 특정 신호에 반응해 숨겨진 임무를 수행하는 것이죠.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
