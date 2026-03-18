@@ -152,6 +152,38 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 업데이트 운영 체크리스트 (2026.2 버전 기준)
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>OpenClaw는 빠르게 진화하는 AI 에이전트 플랫폼입니다. 2주에 한 번꼴로 새 기능과 버그 수정이 나오는데, 업데이트 후 시스템이 제대로 동작하는지 확인하는 운영 체크리스트가 필요합니다.
+이번 글에서는 2026.2.13 업데이트를 기준으로 실전 검증 루틴을 정리해봤습니다.
+1단계: 업데이트 전 준비 현재 버전 확인 openclaw --version 예: 2026.2.9
+백업 (선택) 중요한 설정이 있다면 백업:
+cp ~/.openclaw/openclaw.json ~/.openclaw/openclaw.json.backup 2단계: 업데이트 실행 npm 글로벌 설치 (가장 흔한 방식) npm install -g openclaw@latest 소스 설치 (개발자) cd ~/openclaw git pull npm install openclaw update 3단계: 핵심 3종 체크 ⭐ 업데이트 후 반드시 실행해야 하는 3가지 명령:
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-02-15 21:00:00 +0900 KST'>February 15, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 업데이트 운영 체크리스트 (2026.2 버전 기준)" href="https://kwbaek.github.io/posts/2026-02-15-openclaw-update-checklist/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">2026년 2월, 중국 AI 모델 러시와 Gemini 3 Deep Think의 등장
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>🚀 2026년 2월, AI 업계에 무슨 일이? 2026년 2월은 AI 업계에 엄청난 변화가 일어나고 있는 달입니다. 특히 중국 AI 기업들의 공격적인 모델 출시와 Google, Anthropic의 신규 모델 발표가 동시에 터지면서 AI 모델 전쟁이 새로운 국면으로 접어들었습니다.
+🇨🇳 중국 AI 모델 러시: Alibaba, ByteDance, Zhipu의 동시다발 공세 이번 주 중국 AI 업계가 폭발적인 움직임을 보였습니다:
+Alibaba: RynnBrain (물리적 AI/로봇 특화) Kuaishou: Kling 3.0 ByteDance: Seedance 모델 Zhipu AI: GLM-5 (Agentic Engineering 돌파구) 특히 Zhipu AI의 주가는 30% 급등하며 시장의 뜨거운 반응을 얻었습니다. GLM-5는 에이전트 시스템에 특화된 모델로, 중국발 AI 모델이 글로벌 경쟁에서 본격적으로 주목받는 신호탄이 되었습니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-02-14 21:00:00 +0900 KST'>February 14, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to 2026년 2월, 중국 AI 모델 러시와 Gemini 3 Deep Think의 등장" href="https://kwbaek.github.io/posts/2026-02-14-ai-ml-trends-china-rush/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">OpenClaw로 AI 트렌드 자동 수집하기 - Camofox와 Discord 활용법
     </h2>
   </header>
@@ -269,37 +301,6 @@
   </div>
   <footer class="entry-footer"><span title='2026-02-10 21:00:00 +0900 KST'>February 10, 2026</span></footer>
   <a class="entry-link" aria-label="post link to AI 에이전트가 시스템을 만드는 시대: NVIDIA VibeTensor와 자기 학습의 진화" href="https://kwbaek.github.io/posts/2026-02-10-ai-agents-building-systems/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw Heartbeat 활용법: AI가 알아서 챙겨주는 똑똑한 비서 만들기
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>AI 비서가 내 일을 알아서 챙긴다면? OpenClaw의 Heartbeat 기능을 제대로 활용하면, AI 비서가 단순한 대화 상대를 넘어 진짜 일을 대신 처리해주는 존재로 진화합니다. 이 글에서는 Heartbeat를 실전에서 어떻게 활용할 수 있는지 소개합니다.
-Heartbeat란? Heartbeat는 주기적으로 AI가 깨어나 체크리스트를 수행하는 기능입니다. 사용자가 명령을 내리지 않아도, AI가 스스로 필요한 작업을 확인하고 보고합니다.
-기본 동작 방식:
-OpenClaw Gateway가 설정된 주기(기본 30분)마다 AI 세션에 heartbeat 메시지를 전송 AI가 HEARTBEAT.md 파일을 읽고 작성된 작업을 수행 특별한 일이 없으면 HEARTBEAT_OK 응답으로 조용히 넘어감 중요한 사항이 있으면 사용자에게 알림 실전 활용 예시 1. 이메일 모니터링 # HEARTBEAT.md ## 이메일 체크 (하루 3-4회) - Gmail 미읽은 메일 확인 - &#34;urgent&#34;, &#34;ASAP&#34;, &#34;중요&#34; 키워드 포함 메일은 즉시 알림 - 그 외 메일은 요약 정리 AI가 알아서 inbox를 스캔하고, 급한 메일만 골라서 알려줍니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-02-10 21:00:00 +0900 KST'>February 10, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw Heartbeat 활용법: AI가 알아서 챙겨주는 똑똑한 비서 만들기" href="https://kwbaek.github.io/posts/2026-02-10-openclaw-heartbeat-guide/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw 실전 활용: 에이전틱 워크플로우로 블로그 자동화하기
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>AI 에이전트가 단순한 챗봇을 넘어 실제 업무를 자동화하는 시대가 왔습니다. 이번 글에서는 제가 실제로 사용하고 있는 OpenClaw의 에이전틱 워크플로우를 소개합니다. 이 블로그 포스트 자체가 OpenClaw가 자동으로 작성하고 배포한 결과물입니다.
-OpenClaw란? OpenClaw는 개인용 AI 비서 프레임워크입니다. 단순 대화를 넘어 파일 시스템 접근, 웹 검색, Git 작업, 크론 작업, 브라우저 제어 등 실제 도구를 사용할 수 있는 에이전트를 실행할 수 있습니다. 텔레그램, 디스코드 등 메신저와 연동해 어디서든 에이전트와 소통할 수 있죠.
-자동 블로그 포스팅 워크플로우 현재 제 블로그는 다음과 같은 자동화 파이프라인으로 운영됩니다:
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-02-09 23:15:00 +0900 KST'>February 9, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw 실전 활용: 에이전틱 워크플로우로 블로그 자동화하기" href="https://kwbaek.github.io/posts/2026-02-09-openclaw-agentic-workflow-tips/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

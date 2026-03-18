@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Git on Kyungwook&#39;s Devlog</title>
+    <link>https://kwbaek.github.io/tags/git/</link>
+    <description>Recent content in Git on Kyungwook&#39;s Devlog</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Tue, 17 Mar 2026 21:05:00 +0900</lastBuildDate>
+    <atom:link href="https://kwbaek.github.io/tags/git/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>OpenClaw 운영 노트: 오늘의 실무 가치가 큰 업데이트/운영 팁</title>
+      <link>https://kwbaek.github.io/posts/2026-03-17-openclaw-todays-workflow-cron-automation-tips/</link>
+      <pubDate>Tue, 17 Mar 2026 21:05:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-03-17-openclaw-todays-workflow-cron-automation-tips/</guid>
+      <description>&lt;p&gt;최근 채널에서는 거시적인 산업 뉴스와 병행해 OpenClaw 운영 관점에서 바로 쓸 수 있는 시사점이 반복해서 보였습니다. 오늘은 사용자에게 가장 쓸모 있는 포인트를 세 가지만 정리합니다.&lt;/p&gt;
+&lt;h2 id=&#34;1-agent-운영-기능-추가보다-워크플로-신뢰성이-핵심&#34;&gt;1) Agent 운영: 기능 추가보다 워크플로 신뢰성이 핵심&lt;/h2&gt;
+&lt;p&gt;지난 며칠 간의 공지/체크리스트를 정리하면, 실무에서 OpenClaw의 안정적인 운영은 &lt;strong&gt;새 기능을 빠르게 쓰는 것보다 기본 루틴 유지&lt;/strong&gt;에서 출발합니다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;openclaw config validate --json&lt;/code&gt;로 설정 상태 점검&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;openclaw healthz&lt;/code&gt; / &lt;code&gt;openclaw status&lt;/code&gt;로 가동성 확인&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;openclaw security audit&lt;/code&gt;(필요 시 &lt;code&gt;--deep&lt;/code&gt;, &lt;code&gt;--fix&lt;/code&gt;)로 노출 위험 탐지&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;특히 크론/자동화 환경에서는 이 루틴을 습관으로 두면 &amp;ldquo;실행은 되는데 왜 안 보이나&amp;quot;를 크게 줄일 수 있습니다.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

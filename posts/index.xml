@@ -6,8 +6,40 @@
     <description>Recent content in Posts on Kyungwook&#39;s Devlog</description>
     <generator>Hugo -- 0.155.3</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Tue, 17 Mar 2026 21:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Wed, 18 Mar 2026 21:00:00 +0900</lastBuildDate>
     <atom:link href="https://kwbaek.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI/ML 트렌드 (2026-03-18): LLM 에이전트의 기억-보안 결합 점프</title>
+      <link>https://kwbaek.github.io/posts/2026-03-18-ai-ml-trends-3d-for-memory-and-agent-governance/</link>
+      <pubDate>Wed, 18 Mar 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-03-18-ai-ml-trends-3d-for-memory-and-agent-governance/</guid>
+      <description>&lt;p&gt;오늘 #ai-ml-trends 채널에서 눈여겨볼 만한 메시지는 한 가지 결이 뚜렷합니다. 최근의 AI/ML 연구는
+&amp;ldquo;더 큰 모델&amp;quot;을 넘어 **&amp;ldquo;에이전트가 오래, 안전하게, 효율적으로 동작하는 방법&amp;rdquo;**으로 이동하고 있다는 점입니다.
+아래 3개를 특히 중요하게 골랐습니다.&lt;/p&gt;
+&lt;h2 id=&#34;1-nextmem-잠재적factual-기억의-실전화&#34;&gt;1) NextMem: 잠재적(factual) 기억의 실전화&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;NextMem&lt;/code&gt;은 LLM 에이전트의 장기 사실기억 한계를 줄이기 위해 파라미터 기반 기억의 망각 문제와 텍스트 메모리의 비용/색인 문제를 동시에 다룹니다.&lt;/p&gt;
+&lt;p&gt;핵심은 두 단계입니다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;사실 정보를 텍스트로만 들고 다니는 방식보다 &lt;strong&gt;잠재 공간( latent )에 압축&lt;/strong&gt;해 복원력을 높이고,&lt;/li&gt;
+&lt;li&gt;반복 학습에서 손실이 누적되지 않게 &lt;strong&gt;점진 교체 학습&lt;/strong&gt;으로 복구력을 강화한다는 점입니다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;이 접근은 코드 어시스턴트, 리서치 에이전트처럼 대화가 길고 상태가 누적되는 시스템에서 특히 의미가 큽니다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>OpenClaw 운영 노트: 오늘의 실무 가치가 큰 업데이트/운영 팁</title>
+      <link>https://kwbaek.github.io/posts/2026-03-17-openclaw-todays-workflow-cron-automation-tips/</link>
+      <pubDate>Tue, 17 Mar 2026 21:05:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-03-17-openclaw-todays-workflow-cron-automation-tips/</guid>
+      <description>&lt;p&gt;최근 채널에서는 거시적인 산업 뉴스와 병행해 OpenClaw 운영 관점에서 바로 쓸 수 있는 시사점이 반복해서 보였습니다. 오늘은 사용자에게 가장 쓸모 있는 포인트를 세 가지만 정리합니다.&lt;/p&gt;
+&lt;h2 id=&#34;1-agent-운영-기능-추가보다-워크플로-신뢰성이-핵심&#34;&gt;1) Agent 운영: 기능 추가보다 워크플로 신뢰성이 핵심&lt;/h2&gt;
+&lt;p&gt;지난 며칠 간의 공지/체크리스트를 정리하면, 실무에서 OpenClaw의 안정적인 운영은 &lt;strong&gt;새 기능을 빠르게 쓰는 것보다 기본 루틴 유지&lt;/strong&gt;에서 출발합니다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;openclaw config validate --json&lt;/code&gt;로 설정 상태 점검&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;openclaw healthz&lt;/code&gt; / &lt;code&gt;openclaw status&lt;/code&gt;로 가동성 확인&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;openclaw security audit&lt;/code&gt;(필요 시 &lt;code&gt;--deep&lt;/code&gt;, &lt;code&gt;--fix&lt;/code&gt;)로 노출 위험 탐지&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;특히 크론/자동화 환경에서는 이 루틴을 습관으로 두면 &amp;ldquo;실행은 되는데 왜 안 보이나&amp;quot;를 크게 줄일 수 있습니다.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>AI/ML 트렌드 (2026-03-17): 추론 안정성과 검색 중심 에이전트 전환</title>
       <link>https://kwbaek.github.io/posts/2026-03-17-ai-ml-trends-agentic-memory-reasoning/</link>
