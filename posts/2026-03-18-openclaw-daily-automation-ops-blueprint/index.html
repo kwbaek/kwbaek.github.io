@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>OpenClaw 운영 브리프 (2026-03-18): 데일리 블로그/크론 운영의 안정성 패턴 | Kyungwook&#39;s Devlog</title>
+<meta name="keywords" content="OpenClaw, Cron, Health, Security, Automation, GitOps">
+<meta name="description" content="최근 며칠 동안 OpenClaw 운영 노트에서 반복되는 패턴은 딱 하나입니다.
+**&ldquo;새 기능을 쓰기보다, 운영 루틴을 안정화해서 실패 확률을 낮추는 것&rdquo;**이 자동화 성패를 가릅니다.
+오늘은 실무에서 바로 쓸 수 있는 체크리스트형 포인트를 정리합니다.
+1) 새 릴리스 대응은 3단계로 고정
+OpenClaw 버전이 바뀔 때마다 update --dry-run으로 영향도를 먼저 확인하고, config validate --json로 스키마/환경 일관성을 점검한 뒤에 재시작합니다.
+
+openclaw update --dry-run
+openclaw config validate --json
+openclaw gateway restart
+
+이 흐름은 새로운 기능을 빠르게 끌어들이는 데도, 장애 대응 시간을 줄이는 데도 모두 도움됩니다.">
+<meta name="author" content="">
+<link rel="canonical" href="https://kwbaek.github.io/posts/2026-03-18-openclaw-daily-automation-ops-blueprint/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.da3211e5ef867bf2b75fd5a6515cfed7195c011e8ab735694e203810a827097b.css" integrity="sha256-2jIR5e&#43;Ge/K3X9WmUVz&#43;1xlcAR6KtzVpTiA4EKgnCXs=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://kwbaek.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://kwbaek.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://kwbaek.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://kwbaek.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://kwbaek.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://kwbaek.github.io/posts/2026-03-18-openclaw-daily-automation-ops-blueprint/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="https://kwbaek.github.io/posts/2026-03-18-openclaw-daily-automation-ops-blueprint/">
+  <meta property="og:site_name" content="Kyungwook&#39;s Devlog">
+  <meta property="og:title" content="OpenClaw 운영 브리프 (2026-03-18): 데일리 블로그/크론 운영의 안정성 패턴">
+  <meta property="og:description" content="최근 며칠 동안 OpenClaw 운영 노트에서 반복되는 패턴은 딱 하나입니다. **“새 기능을 쓰기보다, 운영 루틴을 안정화해서 실패 확률을 낮추는 것”**이 자동화 성패를 가릅니다. 오늘은 실무에서 바로 쓸 수 있는 체크리스트형 포인트를 정리합니다.
+1) 새 릴리스 대응은 3단계로 고정 OpenClaw 버전이 바뀔 때마다 update --dry-run으로 영향도를 먼저 확인하고, config validate --json로 스키마/환경 일관성을 점검한 뒤에 재시작합니다.
+openclaw update --dry-run openclaw config validate --json openclaw gateway restart 이 흐름은 새로운 기능을 빠르게 끌어들이는 데도, 장애 대응 시간을 줄이는 데도 모두 도움됩니다.">
+  <meta property="og:locale" content="ko-kr">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2026-03-18T21:10:00+09:00">
+    <meta property="article:modified_time" content="2026-03-18T21:10:00+09:00">
+    <meta property="article:tag" content="Openclaw">
+    <meta property="article:tag" content="Cron">
+    <meta property="article:tag" content="Health">
+    <meta property="article:tag" content="Security">
+    <meta property="article:tag" content="Automation">
+    <meta property="article:tag" content="GitOps">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="OpenClaw 운영 브리프 (2026-03-18): 데일리 블로그/크론 운영의 안정성 패턴">
+<meta name="twitter:description" content="최근 며칠 동안 OpenClaw 운영 노트에서 반복되는 패턴은 딱 하나입니다.
+**&ldquo;새 기능을 쓰기보다, 운영 루틴을 안정화해서 실패 확률을 낮추는 것&rdquo;**이 자동화 성패를 가릅니다.
+오늘은 실무에서 바로 쓸 수 있는 체크리스트형 포인트를 정리합니다.
+1) 새 릴리스 대응은 3단계로 고정
+OpenClaw 버전이 바뀔 때마다 update --dry-run으로 영향도를 먼저 확인하고, config validate --json로 스키마/환경 일관성을 점검한 뒤에 재시작합니다.
+
+openclaw update --dry-run
+openclaw config validate --json
+openclaw gateway restart
+
+이 흐름은 새로운 기능을 빠르게 끌어들이는 데도, 장애 대응 시간을 줄이는 데도 모두 도움됩니다.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://kwbaek.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "OpenClaw 운영 브리프 (2026-03-18): 데일리 블로그/크론 운영의 안정성 패턴",
+      "item": "https://kwbaek.github.io/posts/2026-03-18-openclaw-daily-automation-ops-blueprint/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "OpenClaw 운영 브리프 (2026-03-18): 데일리 블로그/크론 운영의 안정성 패턴",
+  "name": "OpenClaw 운영 브리프 (2026-03-18): 데일리 블로그\/크론 운영의 안정성 패턴",
+  "description": "최근 며칠 동안 OpenClaw 운영 노트에서 반복되는 패턴은 딱 하나입니다. **\u0026ldquo;새 기능을 쓰기보다, 운영 루틴을 안정화해서 실패 확률을 낮추는 것\u0026rdquo;**이 자동화 성패를 가릅니다. 오늘은 실무에서 바로 쓸 수 있는 체크리스트형 포인트를 정리합니다.\n1) 새 릴리스 대응은 3단계로 고정 OpenClaw 버전이 바뀔 때마다 update --dry-run으로 영향도를 먼저 확인하고, config validate --json로 스키마/환경 일관성을 점검한 뒤에 재시작합니다.\nopenclaw update --dry-run openclaw config validate --json openclaw gateway restart 이 흐름은 새로운 기능을 빠르게 끌어들이는 데도, 장애 대응 시간을 줄이는 데도 모두 도움됩니다.\n",
+  "keywords": [
+    "OpenClaw", "Cron", "Health", "Security", "Automation", "GitOps"
+  ],
+  "articleBody": "최근 며칠 동안 OpenClaw 운영 노트에서 반복되는 패턴은 딱 하나입니다. **“새 기능을 쓰기보다, 운영 루틴을 안정화해서 실패 확률을 낮추는 것”**이 자동화 성패를 가릅니다. 오늘은 실무에서 바로 쓸 수 있는 체크리스트형 포인트를 정리합니다.\n1) 새 릴리스 대응은 3단계로 고정 OpenClaw 버전이 바뀔 때마다 update --dry-run으로 영향도를 먼저 확인하고, config validate --json로 스키마/환경 일관성을 점검한 뒤에 재시작합니다.\nopenclaw update --dry-run openclaw config validate --json openclaw gateway restart 이 흐름은 새로운 기능을 빠르게 끌어들이는 데도, 장애 대응 시간을 줄이는 데도 모두 도움됩니다.\n2) GitOps형 블로그 자동화에서 자주 빠지는 함정 크론/스크립트 기반 블로그 배포는 “파일 생성”보다 커밋/푸시 단계의 원자성이 중요합니다.\n권장 체크:\nhugo 빌드 실패 시 즉시 중단하고 변경분을 건드리지 않는다. blog 저장소와 public 저장소를 각각 커밋해 푸시한다. 메시지 템플릿을 통일해 “무엇이 바뀌었는지”가 로그로 남게 한다. 요약하면 content 커밋과 정적 산출물 커밋을 분리하면 롤백 시점을 정확히 분리할 수 있어 운영자가 훨씬 편합니다.\n3) 보안·권한은 월별이 아니라 주간 단위로 점검 최근 토큰 관리, 보안 헤더, 허브 라우팅이 계속 변경 포인트가 되고 있습니다.\nopenclaw security audit 수행 민감 설정은 cron.webhookToken, gateway.auth.token, gateway.auth.password를 섞어 쓰지 않고 분리 sessions_spawn/subagent/cron 등 고위험 실행 파이프라인은 결과 로그를 꼭 남김 특히 멀티 유저 환경이나 공유 토큰 체계가 있는 경우에는 작은 권한 분리 변경 하나가 큰 사고를 막는 스위치가 됩니다.\n4) heartbeat vs cron: 어느 걸 언제 쓰나 정밀 타이밍이 필요한 알림/한번만 실행 잡: cron + --exact 여러 체크를 한꺼번에, 타이밍이 살짝 미뤄져도 되는 루틴: heartbeat 오늘의 메시지처럼 데일리 콘텐츠 자동화는 cron이 맞고, 모니터링 번들(메일/캘린더/알림)는 heartbeat로 묶는 방식이 운영 비용을 줄입니다.\n5) 실무 추천 루틴(복붙용) 매일 새 작업 전 3줄만이라도 실행하세요.\nopenclaw config validate --json openclaw security audit curl -fsS http://127.0.0.1:18789/healthz 짧지만 이 세 가지는 배포 이후 이상징후를 빠르게 잡는 데 충분히 효율적입니다.\nOpenClaw는 기능이 꾸준히 추가되지만, 결국은 루틴의 단단함이 시스템 안정성을 만든다는 점이 바뀌지 않습니다.\n출처 OpenClaw 운영 메모(내부): TOOLS.md 최신 운영 리마인드 운영 안정성 업데이트: 2026.3.x 릴리즈노트/체크 루틴 cron 기반 자동화 실전 가이드: 기존 cron-instructions 운영 방식 ",
+  "wordCount" : "307",
+  "inLanguage": "en",
+  "datePublished": "2026-03-18T21:10:00+09:00",
+  "dateModified": "2026-03-18T21:10:00+09:00",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://kwbaek.github.io/posts/2026-03-18-openclaw-daily-automation-ops-blueprint/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Kyungwook's Devlog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://kwbaek.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://kwbaek.github.io/" accesskey="h" title="Kyungwook&#39;s Devlog (Alt + H)">Kyungwook&#39;s Devlog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://kwbaek.github.io/categories/" title="categories">
+                    <span>categories</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kwbaek.github.io/tags/" title="tags">
+                    <span>tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kwbaek.github.io/" title="Kyungwook&#39;s Devlog">
+                    <span>Kyungwook&#39;s Devlog</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      OpenClaw 운영 브리프 (2026-03-18): 데일리 블로그/크론 운영의 안정성 패턴
+    </h1>
+    <div class="post-meta"><span title='2026-03-18 21:10:00 +0900 KST'>March 18, 2026</span>
+
+</div>
+  </header> 
+  <div class="post-content"><p>최근 며칠 동안 OpenClaw 운영 노트에서 반복되는 패턴은 딱 하나입니다.
+**&ldquo;새 기능을 쓰기보다, 운영 루틴을 안정화해서 실패 확률을 낮추는 것&rdquo;**이 자동화 성패를 가릅니다.
+오늘은 실무에서 바로 쓸 수 있는 체크리스트형 포인트를 정리합니다.</p>
+<h2 id="1-새-릴리스-대응은-3단계로-고정">1) 새 릴리스 대응은 3단계로 고정<a hidden class="anchor" aria-hidden="true" href="#1-새-릴리스-대응은-3단계로-고정">#</a></h2>
+<p>OpenClaw 버전이 바뀔 때마다 <code>update --dry-run</code>으로 영향도를 먼저 확인하고, <code>config validate --json</code>로 스키마/환경 일관성을 점검한 뒤에 재시작합니다.</p>
+<ul>
+<li><code>openclaw update --dry-run</code></li>
+<li><code>openclaw config validate --json</code></li>
+<li><code>openclaw gateway restart</code></li>
+</ul>
+<p>이 흐름은 새로운 기능을 빠르게 끌어들이는 데도, 장애 대응 시간을 줄이는 데도 모두 도움됩니다.</p>
+<h2 id="2-gitops형-블로그-자동화에서-자주-빠지는-함정">2) GitOps형 블로그 자동화에서 자주 빠지는 함정<a hidden class="anchor" aria-hidden="true" href="#2-gitops형-블로그-자동화에서-자주-빠지는-함정">#</a></h2>
+<p>크론/스크립트 기반 블로그 배포는 “파일 생성”보다 <strong>커밋/푸시 단계의 원자성</strong>이 중요합니다.</p>
+<p>권장 체크:</p>
+<ul>
+<li><code>hugo</code> 빌드 실패 시 즉시 중단하고 변경분을 건드리지 않는다.</li>
+<li><code>blog</code> 저장소와 <code>public</code> 저장소를 각각 커밋해 푸시한다.</li>
+<li>메시지 템플릿을 통일해 “무엇이 바뀌었는지”가 로그로 남게 한다.</li>
+</ul>
+<p>요약하면 <code>content</code> 커밋과 정적 산출물 커밋을 분리하면 롤백 시점을 정확히 분리할 수 있어 운영자가 훨씬 편합니다.</p>
+<h2 id="3-보안권한은-월별이-아니라-주간-단위로-점검">3) 보안·권한은 월별이 아니라 주간 단위로 점검<a hidden class="anchor" aria-hidden="true" href="#3-보안권한은-월별이-아니라-주간-단위로-점검">#</a></h2>
+<p>최근 토큰 관리, 보안 헤더, 허브 라우팅이 계속 변경 포인트가 되고 있습니다.</p>
+<ul>
+<li><code>openclaw security audit</code> 수행</li>
+<li>민감 설정은 <code>cron.webhookToken</code>, <code>gateway.auth.token</code>, <code>gateway.auth.password</code>를 섞어 쓰지 않고 분리</li>
+<li><code>sessions_spawn</code>/<code>subagent</code>/<code>cron</code> 등 고위험 실행 파이프라인은 결과 로그를 꼭 남김</li>
+</ul>
+<p>특히 멀티 유저 환경이나 공유 토큰 체계가 있는 경우에는 <strong>작은 권한 분리 변경 하나가 큰 사고를 막는 스위치</strong>가 됩니다.</p>
+<h2 id="4-heartbeat-vs-cron-어느-걸-언제-쓰나">4) heartbeat vs cron: 어느 걸 언제 쓰나<a hidden class="anchor" aria-hidden="true" href="#4-heartbeat-vs-cron-어느-걸-언제-쓰나">#</a></h2>
+<ul>
+<li>정밀 타이밍이 필요한 알림/한번만 실행 잡: cron + <code>--exact</code></li>
+<li>여러 체크를 한꺼번에, 타이밍이 살짝 미뤄져도 되는 루틴: heartbeat</li>
+</ul>
+<p>오늘의 메시지처럼 데일리 콘텐츠 자동화는 cron이 맞고, 모니터링 번들(메일/캘린더/알림)는 heartbeat로 묶는 방식이 운영 비용을 줄입니다.</p>
+<h2 id="5-실무-추천-루틴복붙용">5) 실무 추천 루틴(복붙용)<a hidden class="anchor" aria-hidden="true" href="#5-실무-추천-루틴복붙용">#</a></h2>
+<p>매일 새 작업 전 3줄만이라도 실행하세요.</p>
+<ol>
+<li><code>openclaw config validate --json</code></li>
+<li><code>openclaw security audit</code></li>
+<li><code>curl -fsS http://127.0.0.1:18789/healthz</code></li>
+</ol>
+<p>짧지만 이 세 가지는 배포 이후 이상징후를 빠르게 잡는 데 충분히 효율적입니다.</p>
+<p>OpenClaw는 기능이 꾸준히 추가되지만, 결국은 <strong>루틴의 단단함이 시스템 안정성을 만든다</strong>는 점이 바뀌지 않습니다.</p>
+<h2 id="출처">출처<a hidden class="anchor" aria-hidden="true" href="#출처">#</a></h2>
+<ul>
+<li>OpenClaw 운영 메모(내부): TOOLS.md 최신 운영 리마인드</li>
+<li>운영 안정성 업데이트: 2026.3.x 릴리즈노트/체크 루틴</li>
+<li>cron 기반 자동화 실전 가이드: 기존 cron-instructions 운영 방식</li>
+</ul>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://kwbaek.github.io/tags/openclaw/">Openclaw</a></li>
+      <li><a href="https://kwbaek.github.io/tags/cron/">Cron</a></li>
+      <li><a href="https://kwbaek.github.io/tags/health/">Health</a></li>
+      <li><a href="https://kwbaek.github.io/tags/security/">Security</a></li>
+      <li><a href="https://kwbaek.github.io/tags/automation/">Automation</a></li>
+      <li><a href="https://kwbaek.github.io/tags/gitops/">GitOps</a></li>
+    </ul>
+  </footer><script src="https://utteranc.es/client.js"
+        repo="kwbaek/blog-comments"
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://kwbaek.github.io/">Kyungwook&#39;s Devlog</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
-<title>OpenClaw | Kyungwook&#39;s Devlog</title>
+<title>Openclaw | Kyungwook&#39;s Devlog</title>
 <meta name="keywords" content="">
 <meta name="description" content="">
 <meta name="author" content="">
@@ -73,11 +73,11 @@
 
 </script><meta property="og:url" content="https://kwbaek.github.io/tags/openclaw/">
   <meta property="og:site_name" content="Kyungwook&#39;s Devlog">
-  <meta property="og:title" content="OpenClaw">
+  <meta property="og:title" content="Openclaw">
   <meta property="og:locale" content="ko-kr">
   <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="OpenClaw">
+<meta name="twitter:title" content="Openclaw">
 <meta name="twitter:description" content="">
 
 </head>
@@ -137,9 +137,41 @@
 <main class="main"> 
 <header class="page-header">
   <h1>
-    OpenClaw
+    Openclaw
   </h1>
 </header>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw v2026.3.7: Context Engine 플러그인, ACP 바인딩 영속화, 그리고 주의할 Breaking Change
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘(2026-03-08) OpenClaw v2026.3.7이 출시됐다. 이번 릴리즈는 조용해 보이지만 몇 가지 중요한 변화가 포함돼 있다. 특히 Breaking Change가 하나 있으므로 업데이트 전 꼭 확인하자.
+⚠️ Breaking Change: gateway.auth.mode 명시 필수 가장 먼저 확인해야 할 내용이다.
+gateway.auth.token과 gateway.auth.password를 둘 다 설정한 경우, 이제 gateway.auth.mode를 반드시 명시해야 한다.
+gateway: auth: token: &#34;your-token&#34; password: &#34;your-password&#34; mode: token # 또는 password — 이제 필수! 두 값이 모두 설정돼 있는데 mode가 없으면 게이트웨이가 어떤 인증 방식을 써야 할지 모호해진다. 업그레이드 전 config를 확인하고 mode를 명시해두자.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-03-08 21:30:00 +0900 KST'>March 8, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw v2026.3.7: Context Engine 플러그인, ACP 바인딩 영속화, 그리고 주의할 Breaking Change" href="https://kwbaek.github.io/posts/2026-03-08-openclaw-v2026-3-7-context-engine-acp-binding/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 활용법 — Cron으로 매일 블로그 자동 포스팅하기
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>이 블로그 포스트는 사실 제가 직접 쓴 게 아닙니다. OpenClaw의 Cron 시스템이 매일 저녁 9시에 자동으로 트리거해서 작성했습니다. 오늘은 그 구조를 직접 뜯어보겠습니다.
+OpenClaw Cron이란? OpenClaw의 Cron은 단순한 스케줄러가 아닙니다. LLM 에이전트를 특정 시각에 실행하는 시스템입니다.
+일반 cron과 다른 점은:
+실행 결과가 텍스트가 아닌 에이전트의 행동 Discord, Telegram 등 채널에 자동으로 결과 전달 이전 세션 컨텍스트 없이 독립 실행 # 현재 등록된 cron 확인 openclaw cron list # 새 cron 추가 (매일 오후 9시) openclaw cron add --schedule &#34;0 21 * * *&#34; \ --name &#34;Daily Blog Post&#34; \ --deliver-to discord 이 블로그 자동화의 구조 제가 매일 운영하는 자동 블로그 포스팅 파이프라인은 이렇게 생겼습니다:
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-03-07 21:00:00 +0900 KST'>March 7, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 활용법 — Cron으로 매일 블로그 자동 포스팅하기" href="https://kwbaek.github.io/posts/2026-03-07-openclaw-cron-blog-automation/"></a>
+</article>
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
@@ -257,37 +289,6 @@ agents.defaults.heartbeat.directPolicy를 allow|block으로 명시해 DM/직접 
   </div>
   <footer class="entry-footer"><span title='2026-02-27 21:05:00 +0900 KST'>February 27, 2026</span></footer>
   <a class="entry-link" aria-label="post link to OpenClaw 실전 운영 팁: Heartbeat directPolicy로 소음 줄이고, 일일 자동화는 더 단단하게" href="https://kwbaek.github.io/posts/2026-02-27-openclaw-heartbeat-directpolicy-and-daily-ops/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw 운영 팁: 매일 쓰는 실전 패턴 5가지 (cron, heartbeat, 보안, 배포)
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>OpenClaw를 일정 기간 운영해보면, 기능 자체보다도 운영 패턴이 성능과 안정성을 가릅니다. 오늘은 최근 업데이트 흐름(보안 강화, cron 정밀 제어, delivery 개선)을 바탕으로 실무에서 바로 쓰기 좋은 패턴을 정리해봅니다.
-1) cron은 “정확 시간 작업”에만 쓰고, 나머지는 heartbeat로 묶기 많은 사용자가 모든 점검을 cron으로 쪼개는데, 이 방식은 잡 수가 늘수록 노이즈와 관리 부담이 급증합니다. 권장 방식은 다음과 같습니다.
-cron: 정시성이 중요한 작업만 (--exact 필요한 배치, 고정 알림) heartbeat: 이메일/캘린더/멘션/간단 상태점검 같은 느슨한 주기 작업 묶음 이렇게 분리하면 호출 비용과 중복 알림이 확 줄고, 점검 로직도 유지보수가 쉬워집니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-02-26 21:00:00 +0900 KST'>February 26, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw 운영 팁: 매일 쓰는 실전 패턴 5가지 (cron, heartbeat, 보안, 배포)" href="https://kwbaek.github.io/posts/2026-02-26-openclaw-daily-ops-pattern/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw 실전 운영법: Heartbeat &#43; Cron 2계층 자동화 패턴
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>OpenClaw를 오래 쓰다 보면 공통 문제가 하나 생깁니다. 처음에는 자동화가 편한데, 시간이 지나면 잡이 늘어나면서 알림 노이즈와 관리 복잡도가 같이 커집니다.
-이때 가장 효율이 좋았던 방식이 Heartbeat &#43; Cron 2계층 패턴입니다.
-핵심 아이디어는 간단합니다.
-Heartbeat: 대화 컨텍스트가 필요한 점검 작업(메일/캘린더/멘션/상태 확인)을 묶어서 처리 Cron: 정확한 시각이 중요한 작업(정시 리포트, 마감 알림, 배포 체크)을 분리 실행 1) Heartbeat는 “배치 점검 레이어”로 쓴다 Heartbeat는 1개 태스크를 정시에 수행하는 도구라기보다, 여러 점검 항목을 한 번에 처리하는 라우터로 보는 게 맞습니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-02-25 21:00:00 +0900 KST'>February 25, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw 실전 운영법: Heartbeat &#43; Cron 2계층 자동화 패턴" href="https://kwbaek.github.io/posts/2026-02-25-openclaw-two-tier-automation-guide/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

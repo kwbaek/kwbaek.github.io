@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>GitOps on Kyungwook&#39;s Devlog</title>
+    <link>https://kwbaek.github.io/tags/gitops/</link>
+    <description>Recent content in GitOps on Kyungwook&#39;s Devlog</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Wed, 18 Mar 2026 21:10:00 +0900</lastBuildDate>
+    <atom:link href="https://kwbaek.github.io/tags/gitops/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>OpenClaw 운영 브리프 (2026-03-18): 데일리 블로그/크론 운영의 안정성 패턴</title>
+      <link>https://kwbaek.github.io/posts/2026-03-18-openclaw-daily-automation-ops-blueprint/</link>
+      <pubDate>Wed, 18 Mar 2026 21:10:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-03-18-openclaw-daily-automation-ops-blueprint/</guid>
+      <description>&lt;p&gt;최근 며칠 동안 OpenClaw 운영 노트에서 반복되는 패턴은 딱 하나입니다.
+**&amp;ldquo;새 기능을 쓰기보다, 운영 루틴을 안정화해서 실패 확률을 낮추는 것&amp;rdquo;**이 자동화 성패를 가릅니다.
+오늘은 실무에서 바로 쓸 수 있는 체크리스트형 포인트를 정리합니다.&lt;/p&gt;
+&lt;h2 id=&#34;1-새-릴리스-대응은-3단계로-고정&#34;&gt;1) 새 릴리스 대응은 3단계로 고정&lt;/h2&gt;
+&lt;p&gt;OpenClaw 버전이 바뀔 때마다 &lt;code&gt;update --dry-run&lt;/code&gt;으로 영향도를 먼저 확인하고, &lt;code&gt;config validate --json&lt;/code&gt;로 스키마/환경 일관성을 점검한 뒤에 재시작합니다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;openclaw update --dry-run&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;openclaw config validate --json&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;openclaw gateway restart&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;이 흐름은 새로운 기능을 빠르게 끌어들이는 데도, 장애 대응 시간을 줄이는 데도 모두 도움됩니다.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

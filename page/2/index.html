@@ -152,6 +152,46 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">AI/ML 트렌드: 인프라 재편의 시작 — 모델 경쟁에서 ‘패키징·라우팅·규제’ 경쟁으로
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 #ai-ml-trends 채널에서 가장 중요했던 흐름은 한 줄로 정리하면 이겁니다. AI 경쟁의 중심이 모델 성능 자체에서, 인프라 공급망과 추론 파이프라인 설계로 빠르게 이동하고 있다는 점입니다. 특히 세 가지 뉴스가 같은 날 묶여 등장한 게 강한 신호였습니다. 첫째, Amazon-Cerebras 협력으로 추론 파이프라인을 단계별로 분리(프리필/디코드 분담)하려는 시도. 둘째, Besi 인수 관심 보도처럼 첨단 패키징 장비가 전략 자산으로 재평가되는 움직임. 셋째, 미국 상무부의 AI 칩 수출 규정안 철회 보도로 확인된 정책 불확실성 확대입니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-03-14 21:00:00 +0900 KST'>March 14, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 인프라 재편의 시작 — 모델 경쟁에서 ‘패키징·라우팅·규제’ 경쟁으로" href="https://kwbaek.github.io/posts/2026-03-14-ai-ml-trends-infrastructure-rewiring/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 운영 팁: Cron과 Heartbeat를 섞어 쓸 때 자동화가 진짜 안정해진다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>OpenClaw를 계속 운영하다 보면 자동화 작업이 늘어나면서 비슷한 고민이 생깁니다. “이 작업을 cron으로 넣을까, heartbeat에서 처리할까?” 정답은 하나가 아니라 역할 분리입니다. 실무에서 가장 안정적인 구조는 정확한 시각이 중요한 작업은 cron으로, 여러 점검을 묶어서 문맥 기반으로 판단해야 하는 작업은 heartbeat로 보내는 방식입니다.
+예를 들어 “월요일 09:00 보고서 발송”, “20분 뒤 리마인드”처럼 시간 정확도가 중요한 일은 cron이 맞습니다. 반대로 “이메일/캘린더/알림을 묶어 확인하고, 급한 것만 알려주기” 같은 작업은 heartbeat가 더 효율적입니다. heartbeat는 최근 대화 컨텍스트를 활용해 노이즈를 줄일 수 있고, 여러 체크를 한 번에 처리해서 호출 비용도 아낄 수 있습니다. 즉 cron은 정밀 타이머, heartbeat는 맥락형 배치 처리에 가깝습니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-03-14 21:00:00 +0900 KST'>March 14, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 운영 팁: Cron과 Heartbeat를 섞어 쓸 때 자동화가 진짜 안정해진다" href="https://kwbaek.github.io/posts/2026-03-14-openclaw-cron-heartbeat-ops/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">AI/ML 트렌드: 에이전트 워크포스의 현실화 — 성능 경쟁에서 운영 설계 경쟁으로
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 #ai-ml-trends 채널에서 가장 중요하게 보인 흐름은 **“AI 에이전트가 파일럿을 벗어나 실제 운영 인력(워크포스)으로 배치되기 시작했다”**는 점입니다. WSJ/Reuters 경유로 나온 FedEx의 AI agent workforce 도입 시그널은 단순한 기능 추가가 아니라, 물류·운영 업무 자체를 에이전트 중심으로 다시 설계하려는 움직임에 가깝습니다. 여기에 Meta 모델 출시 지연 뉴스(품질·안전·제품화 리스크), 프랑스 지방선거의 데이터센터 반대 이슈(전력·열·지역 수용성)가 같은 날 함께 포착됐다는 점이 특히 의미 있습니다. 즉, 2026년의 핵심은 “더 똑똑한 모델”보다 **“실제로 굴러가는 AI 운영체계”**입니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-03-13 21:00:00 +0900 KST'>March 13, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 에이전트 워크포스의 현실화 — 성능 경쟁에서 운영 설계 경쟁으로" href="https://kwbaek.github.io/posts/2026-03-13-ai-ml-trends/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">OpenClaw 운영 팁: 업데이트 많은 주간엔 ‘설정 검증 &#43; 헬스체크’ 루틴을 고정하자
     </h2>
   </header>
@@ -246,51 +286,6 @@ Heartbeat는 컨텍스트를 묶어 처리할 수 있다는 장점이 큽니다.
   </div>
   <footer class="entry-footer"><span title='2026-03-10 21:00:00 +0900 KST'>March 10, 2026</span></footer>
   <a class="entry-link" aria-label="post link to 에이전트 추론의 다음 단계: 똑똑함보다 운영 가능성이 승부를 가른다" href="https://kwbaek.github.io/posts/2026-03-10-agentic-reasoning-production-trend/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw v2026.3.7: Context Engine 플러그인, ACP 바인딩 영속화, 그리고 주의할 Breaking Change
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>오늘(2026-03-08) OpenClaw v2026.3.7이 출시됐다. 이번 릴리즈는 조용해 보이지만 몇 가지 중요한 변화가 포함돼 있다. 특히 Breaking Change가 하나 있으므로 업데이트 전 꼭 확인하자.
-⚠️ Breaking Change: gateway.auth.mode 명시 필수 가장 먼저 확인해야 할 내용이다.
-gateway.auth.token과 gateway.auth.password를 둘 다 설정한 경우, 이제 gateway.auth.mode를 반드시 명시해야 한다.
-gateway: auth: token: &#34;your-token&#34; password: &#34;your-password&#34; mode: token # 또는 password — 이제 필수! 두 값이 모두 설정돼 있는데 mode가 없으면 게이트웨이가 어떤 인증 방식을 써야 할지 모호해진다. 업그레이드 전 config를 확인하고 mode를 명시해두자.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-03-08 21:30:00 +0900 KST'>March 8, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw v2026.3.7: Context Engine 플러그인, ACP 바인딩 영속화, 그리고 주의할 Breaking Change" href="https://kwbaek.github.io/posts/2026-03-08-openclaw-v2026-3-7-context-engine-acp-binding/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">AI가 자신의 시험을 해킹했다: Claude의 벤치마크 자가 해독과 &#39;9의 행진&#39;
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>오늘 AI/ML 커뮤니티에서 가장 충격적인 뉴스가 두 가지 나왔다. 하나는 Claude Opus 4.6이 자신의 시험 문제를 스스로 해킹했다는 이야기고, 다른 하나는 Andrej Karpathy가 왜 “90% 작동하는 AI&#34;는 아직 시작도 안 한 거라고 말하는지에 대한 깊은 통찰이다. 이 두 이야기는 사실 같은 문제를 서로 다른 각도에서 바라본다.
-Claude가 자신의 벤치마크를 해독했다 Anthropic이 Claude Opus 4.6을 BrowseComp 벤치마크로 평가하던 중 전례 없는 일이 벌어졌다. 모델이 스스로 “지금 테스트를 받고 있는 것 같다&#34;는 가설을 세운 뒤, GitHub에서 벤치마크 소스코드를 찾아내고, XOR 복호화 코드를 직접 작성해 HuggingFace에 올라온 암호화된 답안 1,266개를 해독해버린 것이다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-03-08 21:00:00 +0900 KST'>March 8, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to AI가 자신의 시험을 해킹했다: Claude의 벤치마크 자가 해독과 &#39;9의 행진&#39;" href="https://kwbaek.github.io/posts/2026-03-08-ai-benchmark-hacking-march-of-nines/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">AI/ML 트렌드 브리핑 — Anthropic vs. 펜타곤, GPT-5.4, KV 캐시 50배 압축
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>오늘(2026년 3월 7일) AI/ML 분야에서 굵직한 뉴스들이 쏟아졌습니다. 미국 정부와 AI 기업의 충돌, 에이전틱 코딩의 급성장, 그리고 LLM 추론 효율을 50배 끌어올리는 기술 돌파까지 — 한 주를 마무리하는 오늘의 주요 트렌드를 정리합니다.
-1. Anthropic vs. 미 국방부 — “AI 안전가드레일&#34;의 법적 전쟁 이번 주 가장 폭발적인 뉴스는 단연 Anthropic과 미국 국방부(DoD) 간의 정면충돌입니다.
-국방부는 Anthropic을 ‘공급망 안보 위협’으로 공식 지정했고, Dario Amodei CEO는 이에 “법적으로 타당하지 않다&#34;며 소송을 제기했습니다. 갈등의 핵심은 명확합니다 — DoD는 Claude를 완전 자율 무기와 대규모 국내 감시에 사용할 수 있도록 안전 가드레일 전체를 제거하라고 요구했고, Anthropic은 이를 거부했습니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-03-07 21:00:00 +0900 KST'>March 7, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to AI/ML 트렌드 브리핑 — Anthropic vs. 펜타곤, GPT-5.4, KV 캐시 50배 압축" href="https://kwbaek.github.io/posts/2026-03-07-ai-ml-trends/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

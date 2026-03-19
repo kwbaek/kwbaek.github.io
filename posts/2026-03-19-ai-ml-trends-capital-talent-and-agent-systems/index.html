@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>AI/ML 트렌드: 자본·인재·에이전트 시스템이 동시에 재배치되는 날 | Kyungwook&#39;s Devlog</title>
+<meta name="keywords" content="AI, ML, DeepMind, Xiaomi, AgentFactory, MUD, Multi-Agent">
+<meta name="description" content="오늘 #ai-ml-trends 채널을 훑어보면, 단일 논문/단일 기업 뉴스보다 더 큰 구조적 흐름이 보입니다. 한 줄로 요약하면 AI 경쟁의 주전장이 모델 성능 자체에서, 인재·자본·운영 시스템까지 확장되고 있다는 점입니다.
+가장 상징적인 사례는 Reuters 보도로 확인된 인재 이동입니다. Bridgewater의 최고과학자 Jasjeet Sekhon이 Google DeepMind로 옮긴다는 소식은, 이제 금융권의 고급 AI 인재까지 빅테크 연구 조직으로 빨려 들어가는 국면임을 보여줍니다. 이건 단순 이직 뉴스가 아니라, 앞으로의 경쟁력이 “누가 더 좋은 아이디어를 먼저 내는가”를 넘어 “누가 더 빠르게 인재를 흡수하고 실행조직으로 전환하는가”로 이동한다는 신호입니다.">
+<meta name="author" content="">
+<link rel="canonical" href="https://kwbaek.github.io/posts/2026-03-19-ai-ml-trends-capital-talent-and-agent-systems/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.da3211e5ef867bf2b75fd5a6515cfed7195c011e8ab735694e203810a827097b.css" integrity="sha256-2jIR5e&#43;Ge/K3X9WmUVz&#43;1xlcAR6KtzVpTiA4EKgnCXs=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://kwbaek.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://kwbaek.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://kwbaek.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://kwbaek.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://kwbaek.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://kwbaek.github.io/posts/2026-03-19-ai-ml-trends-capital-talent-and-agent-systems/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="https://kwbaek.github.io/posts/2026-03-19-ai-ml-trends-capital-talent-and-agent-systems/">
+  <meta property="og:site_name" content="Kyungwook&#39;s Devlog">
+  <meta property="og:title" content="AI/ML 트렌드: 자본·인재·에이전트 시스템이 동시에 재배치되는 날">
+  <meta property="og:description" content="오늘 #ai-ml-trends 채널을 훑어보면, 단일 논문/단일 기업 뉴스보다 더 큰 구조적 흐름이 보입니다. 한 줄로 요약하면 AI 경쟁의 주전장이 모델 성능 자체에서, 인재·자본·운영 시스템까지 확장되고 있다는 점입니다.
+가장 상징적인 사례는 Reuters 보도로 확인된 인재 이동입니다. Bridgewater의 최고과학자 Jasjeet Sekhon이 Google DeepMind로 옮긴다는 소식은, 이제 금융권의 고급 AI 인재까지 빅테크 연구 조직으로 빨려 들어가는 국면임을 보여줍니다. 이건 단순 이직 뉴스가 아니라, 앞으로의 경쟁력이 “누가 더 좋은 아이디어를 먼저 내는가”를 넘어 “누가 더 빠르게 인재를 흡수하고 실행조직으로 전환하는가”로 이동한다는 신호입니다.">
+  <meta property="og:locale" content="ko-kr">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2026-03-19T21:00:00+09:00">
+    <meta property="article:modified_time" content="2026-03-19T21:00:00+09:00">
+    <meta property="article:tag" content="AI">
+    <meta property="article:tag" content="ML">
+    <meta property="article:tag" content="DeepMind">
+    <meta property="article:tag" content="Xiaomi">
+    <meta property="article:tag" content="AgentFactory">
+    <meta property="article:tag" content="MUD">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="AI/ML 트렌드: 자본·인재·에이전트 시스템이 동시에 재배치되는 날">
+<meta name="twitter:description" content="오늘 #ai-ml-trends 채널을 훑어보면, 단일 논문/단일 기업 뉴스보다 더 큰 구조적 흐름이 보입니다. 한 줄로 요약하면 AI 경쟁의 주전장이 모델 성능 자체에서, 인재·자본·운영 시스템까지 확장되고 있다는 점입니다.
+가장 상징적인 사례는 Reuters 보도로 확인된 인재 이동입니다. Bridgewater의 최고과학자 Jasjeet Sekhon이 Google DeepMind로 옮긴다는 소식은, 이제 금융권의 고급 AI 인재까지 빅테크 연구 조직으로 빨려 들어가는 국면임을 보여줍니다. 이건 단순 이직 뉴스가 아니라, 앞으로의 경쟁력이 “누가 더 좋은 아이디어를 먼저 내는가”를 넘어 “누가 더 빠르게 인재를 흡수하고 실행조직으로 전환하는가”로 이동한다는 신호입니다.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://kwbaek.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "AI/ML 트렌드: 자본·인재·에이전트 시스템이 동시에 재배치되는 날",
+      "item": "https://kwbaek.github.io/posts/2026-03-19-ai-ml-trends-capital-talent-and-agent-systems/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "AI/ML 트렌드: 자본·인재·에이전트 시스템이 동시에 재배치되는 날",
+  "name": "AI\/ML 트렌드: 자본·인재·에이전트 시스템이 동시에 재배치되는 날",
+  "description": "오늘 #ai-ml-trends 채널을 훑어보면, 단일 논문/단일 기업 뉴스보다 더 큰 구조적 흐름이 보입니다. 한 줄로 요약하면 AI 경쟁의 주전장이 모델 성능 자체에서, 인재·자본·운영 시스템까지 확장되고 있다는 점입니다.\n가장 상징적인 사례는 Reuters 보도로 확인된 인재 이동입니다. Bridgewater의 최고과학자 Jasjeet Sekhon이 Google DeepMind로 옮긴다는 소식은, 이제 금융권의 고급 AI 인재까지 빅테크 연구 조직으로 빨려 들어가는 국면임을 보여줍니다. 이건 단순 이직 뉴스가 아니라, 앞으로의 경쟁력이 “누가 더 좋은 아이디어를 먼저 내는가”를 넘어 “누가 더 빠르게 인재를 흡수하고 실행조직으로 전환하는가”로 이동한다는 신호입니다.\n",
+  "keywords": [
+    "AI", "ML", "DeepMind", "Xiaomi", "AgentFactory", "MUD", "Multi-Agent"
+  ],
+  "articleBody": "오늘 #ai-ml-trends 채널을 훑어보면, 단일 논문/단일 기업 뉴스보다 더 큰 구조적 흐름이 보입니다. 한 줄로 요약하면 AI 경쟁의 주전장이 모델 성능 자체에서, 인재·자본·운영 시스템까지 확장되고 있다는 점입니다.\n가장 상징적인 사례는 Reuters 보도로 확인된 인재 이동입니다. Bridgewater의 최고과학자 Jasjeet Sekhon이 Google DeepMind로 옮긴다는 소식은, 이제 금융권의 고급 AI 인재까지 빅테크 연구 조직으로 빨려 들어가는 국면임을 보여줍니다. 이건 단순 이직 뉴스가 아니라, 앞으로의 경쟁력이 “누가 더 좋은 아이디어를 먼저 내는가”를 넘어 “누가 더 빠르게 인재를 흡수하고 실행조직으로 전환하는가”로 이동한다는 신호입니다.\n동시에 모델 생태계 측면에서는 Xiaomi MiMo 팀의 내부 테스트 모델(MiMo-V2-Pro)이 빠르게 확산되는 장면이 눈에 띕니다. 1M 토큰 컨텍스트와 에이전트 지향 특성을 앞세운 이 흐름은, 모델이 더 똑똑해지는 것만큼 더 길게 기억하고 더 복잡한 워크플로를 감당하는 능력이 중요해졌음을 시사합니다. 결국 “좋은 답변”을 넘어 “긴 업무를 끝까지 수행하는 모델”이 다음 경쟁 기준이 되는 셈입니다.\n학술 트렌드에서도 같은 패턴이 반복됩니다. AgentFactory처럼 성공 절차를 실행 가능한 서브에이전트로 축적·재사용하는 접근은, 에이전트를 매번 새로 굴리는 대신 조직 지식처럼 성장시키는 방향을 보여줍니다. CARE, MUD 같은 효율화 연구는 추론/학습 비용을 줄이면서 성능을 보존하려는 압박을 반영합니다. 여기에 IndicSafe처럼 다국어 안전성 편차를 수치화한 연구까지 더해지면서, 이제 성능 평가는 정확도 한 줄이 아니라 안전·비용·재현성·운영성의 다축 평가로 바뀌고 있습니다.\n정리하면 오늘의 핵심은 세 가지입니다.\n인재 축: AI 리더급 인력이 산업 간 경계를 넘으며 재배치됨 모델 축: 긴 컨텍스트·에이전트 실행력 중심으로 경쟁 포인트 이동 운영 축: 메모리, 안전, 비용, 재사용성을 함께 최적화하는 시스템 설계가 필수화 앞으로 AI/ML 팀이 가져갈 실무 질문도 분명해집니다. “우리 모델이 얼마나 똑똑한가?”보다 먼저, “우리 조직이 얼마나 빨리 학습하고, 안전하게 배포하고, 비용을 통제하며, 경험을 재사용하는가?”를 물어야 합니다. 오늘 채널의 신호는 그 전환이 이미 시작됐다는 쪽에 가깝습니다.\n",
+  "wordCount" : "254",
+  "inLanguage": "en",
+  "datePublished": "2026-03-19T21:00:00+09:00",
+  "dateModified": "2026-03-19T21:00:00+09:00",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://kwbaek.github.io/posts/2026-03-19-ai-ml-trends-capital-talent-and-agent-systems/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Kyungwook's Devlog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://kwbaek.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://kwbaek.github.io/" accesskey="h" title="Kyungwook&#39;s Devlog (Alt + H)">Kyungwook&#39;s Devlog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://kwbaek.github.io/categories/" title="categories">
+                    <span>categories</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kwbaek.github.io/tags/" title="tags">
+                    <span>tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kwbaek.github.io/" title="Kyungwook&#39;s Devlog">
+                    <span>Kyungwook&#39;s Devlog</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      AI/ML 트렌드: 자본·인재·에이전트 시스템이 동시에 재배치되는 날
+    </h1>
+    <div class="post-meta"><span title='2026-03-19 21:00:00 +0900 KST'>March 19, 2026</span>
+
+</div>
+  </header> 
+  <div class="post-content"><p>오늘 #ai-ml-trends 채널을 훑어보면, 단일 논문/단일 기업 뉴스보다 더 큰 구조적 흐름이 보입니다. 한 줄로 요약하면 <strong>AI 경쟁의 주전장이 모델 성능 자체에서, 인재·자본·운영 시스템까지 확장</strong>되고 있다는 점입니다.</p>
+<p>가장 상징적인 사례는 Reuters 보도로 확인된 인재 이동입니다. Bridgewater의 최고과학자 Jasjeet Sekhon이 Google DeepMind로 옮긴다는 소식은, 이제 금융권의 고급 AI 인재까지 빅테크 연구 조직으로 빨려 들어가는 국면임을 보여줍니다. 이건 단순 이직 뉴스가 아니라, 앞으로의 경쟁력이 “누가 더 좋은 아이디어를 먼저 내는가”를 넘어 “누가 더 빠르게 인재를 흡수하고 실행조직으로 전환하는가”로 이동한다는 신호입니다.</p>
+<p>동시에 모델 생태계 측면에서는 Xiaomi MiMo 팀의 내부 테스트 모델(MiMo-V2-Pro)이 빠르게 확산되는 장면이 눈에 띕니다. 1M 토큰 컨텍스트와 에이전트 지향 특성을 앞세운 이 흐름은, 모델이 더 똑똑해지는 것만큼 <strong>더 길게 기억하고 더 복잡한 워크플로를 감당하는 능력</strong>이 중요해졌음을 시사합니다. 결국 “좋은 답변”을 넘어 “긴 업무를 끝까지 수행하는 모델”이 다음 경쟁 기준이 되는 셈입니다.</p>
+<p>학술 트렌드에서도 같은 패턴이 반복됩니다. AgentFactory처럼 성공 절차를 실행 가능한 서브에이전트로 축적·재사용하는 접근은, 에이전트를 매번 새로 굴리는 대신 조직 지식처럼 성장시키는 방향을 보여줍니다. CARE, MUD 같은 효율화 연구는 추론/학습 비용을 줄이면서 성능을 보존하려는 압박을 반영합니다. 여기에 IndicSafe처럼 다국어 안전성 편차를 수치화한 연구까지 더해지면서, 이제 성능 평가는 정확도 한 줄이 아니라 안전·비용·재현성·운영성의 다축 평가로 바뀌고 있습니다.</p>
+<p>정리하면 오늘의 핵심은 세 가지입니다.</p>
+<ul>
+<li><strong>인재 축:</strong> AI 리더급 인력이 산업 간 경계를 넘으며 재배치됨</li>
+<li><strong>모델 축:</strong> 긴 컨텍스트·에이전트 실행력 중심으로 경쟁 포인트 이동</li>
+<li><strong>운영 축:</strong> 메모리, 안전, 비용, 재사용성을 함께 최적화하는 시스템 설계가 필수화</li>
+</ul>
+<p>앞으로 AI/ML 팀이 가져갈 실무 질문도 분명해집니다. “우리 모델이 얼마나 똑똑한가?”보다 먼저, “우리 조직이 얼마나 빨리 학습하고, 안전하게 배포하고, 비용을 통제하며, 경험을 재사용하는가?”를 물어야 합니다. 오늘 채널의 신호는 그 전환이 이미 시작됐다는 쪽에 가깝습니다.</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://kwbaek.github.io/tags/ai/">AI</a></li>
+      <li><a href="https://kwbaek.github.io/tags/ml/">ML</a></li>
+      <li><a href="https://kwbaek.github.io/tags/deepmind/">DeepMind</a></li>
+      <li><a href="https://kwbaek.github.io/tags/xiaomi/">Xiaomi</a></li>
+      <li><a href="https://kwbaek.github.io/tags/agentfactory/">AgentFactory</a></li>
+      <li><a href="https://kwbaek.github.io/tags/mud/">MUD</a></li>
+      <li><a href="https://kwbaek.github.io/tags/multi-agent/">Multi-Agent</a></li>
+    </ul>
+  </footer><script src="https://utteranc.es/client.js"
+        repo="kwbaek/blog-comments"
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://kwbaek.github.io/">Kyungwook&#39;s Devlog</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

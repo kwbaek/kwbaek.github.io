@@ -6,8 +6,16 @@
     <description>Recent content in ML on Kyungwook&#39;s Devlog</description>
     <generator>Hugo -- 0.155.3</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Sun, 15 Mar 2026 21:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Thu, 19 Mar 2026 21:00:00 +0900</lastBuildDate>
     <atom:link href="https://kwbaek.github.io/tags/ml/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI/ML 트렌드: 자본·인재·에이전트 시스템이 동시에 재배치되는 날</title>
+      <link>https://kwbaek.github.io/posts/2026-03-19-ai-ml-trends-capital-talent-and-agent-systems/</link>
+      <pubDate>Thu, 19 Mar 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-03-19-ai-ml-trends-capital-talent-and-agent-systems/</guid>
+      <description>&lt;p&gt;오늘 #ai-ml-trends 채널을 훑어보면, 단일 논문/단일 기업 뉴스보다 더 큰 구조적 흐름이 보입니다. 한 줄로 요약하면 &lt;strong&gt;AI 경쟁의 주전장이 모델 성능 자체에서, 인재·자본·운영 시스템까지 확장&lt;/strong&gt;되고 있다는 점입니다.&lt;/p&gt;
+&lt;p&gt;가장 상징적인 사례는 Reuters 보도로 확인된 인재 이동입니다. Bridgewater의 최고과학자 Jasjeet Sekhon이 Google DeepMind로 옮긴다는 소식은, 이제 금융권의 고급 AI 인재까지 빅테크 연구 조직으로 빨려 들어가는 국면임을 보여줍니다. 이건 단순 이직 뉴스가 아니라, 앞으로의 경쟁력이 “누가 더 좋은 아이디어를 먼저 내는가”를 넘어 “누가 더 빠르게 인재를 흡수하고 실행조직으로 전환하는가”로 이동한다는 신호입니다.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>AI/ML 트렌드: 성능 경쟁 다음 단계 — 에이전트 안전성·거버넌스가 제품 경쟁력이다</title>
       <link>https://kwbaek.github.io/posts/2026-03-15-ai-ml-trends-agent-safety-and-governance/</link>
