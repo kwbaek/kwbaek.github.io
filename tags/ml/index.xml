@@ -6,8 +6,16 @@
     <description>Recent content in ML on Kyungwook&#39;s Devlog</description>
     <generator>Hugo -- 0.155.3</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Thu, 19 Mar 2026 21:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Fri, 20 Mar 2026 21:00:00 +0900</lastBuildDate>
     <atom:link href="https://kwbaek.github.io/tags/ml/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI/ML 트렌드: grounding·안전성·하드웨어 한계가 다시 기준이 된다</title>
+      <link>https://kwbaek.github.io/posts/2026-03-20-ai-ml-trends-grounding-safety-and-hardware-limits/</link>
+      <pubDate>Fri, 20 Mar 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-03-20-ai-ml-trends-grounding-safety-and-hardware-limits/</guid>
+      <description>&lt;p&gt;오늘 &lt;code&gt;#ai-ml-trends&lt;/code&gt;에서 가장 흥미로웠던 흐름은 화려한 모델 스케일 경쟁보다, &lt;strong&gt;AI 시스템이 실제 환경에서 얼마나 제대로 작동하느냐를 다시 정면으로 묻는 연구들이 늘고 있다는 점&lt;/strong&gt;이었습니다. 그중에서도 가장 인상적이었던 주제는 VLA(Vision-Language-Action) 모델의 내부 작동을 해부한 연구, &lt;strong&gt;&amp;ldquo;Not All Features Are Created Equal&amp;rdquo;&lt;/strong&gt; 입니다.&lt;/p&gt;
+&lt;p&gt;이 논문의 포인트는 생각보다 날카롭습니다. 우리는 보통 VLA를 보면 “시각·언어·행동이 잘 융합된 멀티모달 시스템”이라고 설명하지만, 실제로는 항상 그런 식으로 움직이지 않는다는 겁니다. 저자들은 대규모 rollout과 activation 분석을 통해, &lt;strong&gt;장면만으로 목표가 거의 결정되는 상황에서는 언어 입력이 거의 무시될 수 있다&lt;/strong&gt;고 보여줍니다. 반대로 같은 장면에서 여러 목표가 가능한 경우에만 언어 grounding이 본격적으로 중요해집니다.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>AI/ML 트렌드: 자본·인재·에이전트 시스템이 동시에 재배치되는 날</title>
       <link>https://kwbaek.github.io/posts/2026-03-19-ai-ml-trends-capital-talent-and-agent-systems/</link>

@@ -6,8 +6,17 @@
     <description>Recent content in Cron on Kyungwook&#39;s Devlog</description>
     <generator>Hugo -- 0.155.3</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Thu, 19 Mar 2026 21:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Fri, 20 Mar 2026 21:00:00 +0900</lastBuildDate>
     <atom:link href="https://kwbaek.github.io/tags/cron/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>OpenClaw 팁: 매일 도는 콘텐츠 자동화를 덜 피곤하게 운영하는 법</title>
+      <link>https://kwbaek.github.io/posts/2026-03-20-openclaw-operating-daily-content-systems-with-less-friction/</link>
+      <pubDate>Fri, 20 Mar 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-03-20-openclaw-operating-daily-content-systems-with-less-friction/</guid>
+      <description>&lt;p&gt;OpenClaw로 매일 콘텐츠를 자동 생성하다 보면, 의외로 가장 큰 문제는 “글을 잘 쓰느냐”가 아니라 &lt;strong&gt;매일 같은 작업이 덜 피곤하게, 덜 깨지게, 덜 지저분하게 돌아가느냐&lt;/strong&gt;입니다. 특히 Discord에서 트렌드를 읽고, 블로그 포스트를 만들고, Hugo를 빌드하고, 배포 저장소까지 밀어 올리는 흐름은 한 번은 쉽지만 매일 안정적으로 굴리려면 운영 감각이 필요합니다.&lt;/p&gt;
+&lt;p&gt;제가 요즘 중요하게 보는 원칙은 세 가지입니다. &lt;strong&gt;입력은 좁게, 출력은 명확하게, 실패는 짧게&lt;/strong&gt; 입니다.&lt;/p&gt;
+&lt;p&gt;먼저 입력은 좁게. 크론 작업이 길어질수록 실패 확률도 올라가고, 결과물 품질도 흔들립니다. 그래서 지시문 파일 하나에 “어느 채널을 읽고, 어떤 형식으로, 어디에 쓰고, 마지막에 무엇을 실행할지”를 최대한 구체적으로 적는 편이 좋습니다. OpenClaw의 instruction-file 패턴이 좋은 이유가 여기 있습니다. 작업이 사람 머릿속에 있지 않고 파일로 고정되니, 다음 실행도 재현 가능해집니다.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>OpenClaw 운영 노트: 기능 추가보다 중요한 건 운영 규율</title>
       <link>https://kwbaek.github.io/posts/2026-03-19-openclaw-from-feature-chasing-to-ops-discipline/</link>

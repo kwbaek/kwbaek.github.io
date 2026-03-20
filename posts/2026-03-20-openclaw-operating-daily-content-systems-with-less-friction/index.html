@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>OpenClaw 팁: 매일 도는 콘텐츠 자동화를 덜 피곤하게 운영하는 법 | Kyungwook&#39;s Devlog</title>
+<meta name="keywords" content="OpenClaw, Cron, Blog, Automation, Operations, Discord">
+<meta name="description" content="OpenClaw로 매일 콘텐츠를 자동 생성하다 보면, 의외로 가장 큰 문제는 “글을 잘 쓰느냐”가 아니라 매일 같은 작업이 덜 피곤하게, 덜 깨지게, 덜 지저분하게 돌아가느냐입니다. 특히 Discord에서 트렌드를 읽고, 블로그 포스트를 만들고, Hugo를 빌드하고, 배포 저장소까지 밀어 올리는 흐름은 한 번은 쉽지만 매일 안정적으로 굴리려면 운영 감각이 필요합니다.
+제가 요즘 중요하게 보는 원칙은 세 가지입니다. 입력은 좁게, 출력은 명확하게, 실패는 짧게 입니다.
+먼저 입력은 좁게. 크론 작업이 길어질수록 실패 확률도 올라가고, 결과물 품질도 흔들립니다. 그래서 지시문 파일 하나에 “어느 채널을 읽고, 어떤 형식으로, 어디에 쓰고, 마지막에 무엇을 실행할지”를 최대한 구체적으로 적는 편이 좋습니다. OpenClaw의 instruction-file 패턴이 좋은 이유가 여기 있습니다. 작업이 사람 머릿속에 있지 않고 파일로 고정되니, 다음 실행도 재현 가능해집니다.">
+<meta name="author" content="">
+<link rel="canonical" href="https://kwbaek.github.io/posts/2026-03-20-openclaw-operating-daily-content-systems-with-less-friction/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.da3211e5ef867bf2b75fd5a6515cfed7195c011e8ab735694e203810a827097b.css" integrity="sha256-2jIR5e&#43;Ge/K3X9WmUVz&#43;1xlcAR6KtzVpTiA4EKgnCXs=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://kwbaek.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://kwbaek.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://kwbaek.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://kwbaek.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://kwbaek.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://kwbaek.github.io/posts/2026-03-20-openclaw-operating-daily-content-systems-with-less-friction/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="https://kwbaek.github.io/posts/2026-03-20-openclaw-operating-daily-content-systems-with-less-friction/">
+  <meta property="og:site_name" content="Kyungwook&#39;s Devlog">
+  <meta property="og:title" content="OpenClaw 팁: 매일 도는 콘텐츠 자동화를 덜 피곤하게 운영하는 법">
+  <meta property="og:description" content="OpenClaw로 매일 콘텐츠를 자동 생성하다 보면, 의외로 가장 큰 문제는 “글을 잘 쓰느냐”가 아니라 매일 같은 작업이 덜 피곤하게, 덜 깨지게, 덜 지저분하게 돌아가느냐입니다. 특히 Discord에서 트렌드를 읽고, 블로그 포스트를 만들고, Hugo를 빌드하고, 배포 저장소까지 밀어 올리는 흐름은 한 번은 쉽지만 매일 안정적으로 굴리려면 운영 감각이 필요합니다.
+제가 요즘 중요하게 보는 원칙은 세 가지입니다. 입력은 좁게, 출력은 명확하게, 실패는 짧게 입니다.
+먼저 입력은 좁게. 크론 작업이 길어질수록 실패 확률도 올라가고, 결과물 품질도 흔들립니다. 그래서 지시문 파일 하나에 “어느 채널을 읽고, 어떤 형식으로, 어디에 쓰고, 마지막에 무엇을 실행할지”를 최대한 구체적으로 적는 편이 좋습니다. OpenClaw의 instruction-file 패턴이 좋은 이유가 여기 있습니다. 작업이 사람 머릿속에 있지 않고 파일로 고정되니, 다음 실행도 재현 가능해집니다.">
+  <meta property="og:locale" content="ko-kr">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2026-03-20T21:00:00+09:00">
+    <meta property="article:modified_time" content="2026-03-20T21:00:00+09:00">
+    <meta property="article:tag" content="OpenClaw">
+    <meta property="article:tag" content="Cron">
+    <meta property="article:tag" content="Blog">
+    <meta property="article:tag" content="Automation">
+    <meta property="article:tag" content="Operations">
+    <meta property="article:tag" content="Discord">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="OpenClaw 팁: 매일 도는 콘텐츠 자동화를 덜 피곤하게 운영하는 법">
+<meta name="twitter:description" content="OpenClaw로 매일 콘텐츠를 자동 생성하다 보면, 의외로 가장 큰 문제는 “글을 잘 쓰느냐”가 아니라 매일 같은 작업이 덜 피곤하게, 덜 깨지게, 덜 지저분하게 돌아가느냐입니다. 특히 Discord에서 트렌드를 읽고, 블로그 포스트를 만들고, Hugo를 빌드하고, 배포 저장소까지 밀어 올리는 흐름은 한 번은 쉽지만 매일 안정적으로 굴리려면 운영 감각이 필요합니다.
+제가 요즘 중요하게 보는 원칙은 세 가지입니다. 입력은 좁게, 출력은 명확하게, 실패는 짧게 입니다.
+먼저 입력은 좁게. 크론 작업이 길어질수록 실패 확률도 올라가고, 결과물 품질도 흔들립니다. 그래서 지시문 파일 하나에 “어느 채널을 읽고, 어떤 형식으로, 어디에 쓰고, 마지막에 무엇을 실행할지”를 최대한 구체적으로 적는 편이 좋습니다. OpenClaw의 instruction-file 패턴이 좋은 이유가 여기 있습니다. 작업이 사람 머릿속에 있지 않고 파일로 고정되니, 다음 실행도 재현 가능해집니다.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://kwbaek.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "OpenClaw 팁: 매일 도는 콘텐츠 자동화를 덜 피곤하게 운영하는 법",
+      "item": "https://kwbaek.github.io/posts/2026-03-20-openclaw-operating-daily-content-systems-with-less-friction/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "OpenClaw 팁: 매일 도는 콘텐츠 자동화를 덜 피곤하게 운영하는 법",
+  "name": "OpenClaw 팁: 매일 도는 콘텐츠 자동화를 덜 피곤하게 운영하는 법",
+  "description": "OpenClaw로 매일 콘텐츠를 자동 생성하다 보면, 의외로 가장 큰 문제는 “글을 잘 쓰느냐”가 아니라 매일 같은 작업이 덜 피곤하게, 덜 깨지게, 덜 지저분하게 돌아가느냐입니다. 특히 Discord에서 트렌드를 읽고, 블로그 포스트를 만들고, Hugo를 빌드하고, 배포 저장소까지 밀어 올리는 흐름은 한 번은 쉽지만 매일 안정적으로 굴리려면 운영 감각이 필요합니다.\n제가 요즘 중요하게 보는 원칙은 세 가지입니다. 입력은 좁게, 출력은 명확하게, 실패는 짧게 입니다.\n먼저 입력은 좁게. 크론 작업이 길어질수록 실패 확률도 올라가고, 결과물 품질도 흔들립니다. 그래서 지시문 파일 하나에 “어느 채널을 읽고, 어떤 형식으로, 어디에 쓰고, 마지막에 무엇을 실행할지”를 최대한 구체적으로 적는 편이 좋습니다. OpenClaw의 instruction-file 패턴이 좋은 이유가 여기 있습니다. 작업이 사람 머릿속에 있지 않고 파일로 고정되니, 다음 실행도 재현 가능해집니다.\n",
+  "keywords": [
+    "OpenClaw", "Cron", "Blog", "Automation", "Operations", "Discord"
+  ],
+  "articleBody": "OpenClaw로 매일 콘텐츠를 자동 생성하다 보면, 의외로 가장 큰 문제는 “글을 잘 쓰느냐”가 아니라 매일 같은 작업이 덜 피곤하게, 덜 깨지게, 덜 지저분하게 돌아가느냐입니다. 특히 Discord에서 트렌드를 읽고, 블로그 포스트를 만들고, Hugo를 빌드하고, 배포 저장소까지 밀어 올리는 흐름은 한 번은 쉽지만 매일 안정적으로 굴리려면 운영 감각이 필요합니다.\n제가 요즘 중요하게 보는 원칙은 세 가지입니다. 입력은 좁게, 출력은 명확하게, 실패는 짧게 입니다.\n먼저 입력은 좁게. 크론 작업이 길어질수록 실패 확률도 올라가고, 결과물 품질도 흔들립니다. 그래서 지시문 파일 하나에 “어느 채널을 읽고, 어떤 형식으로, 어디에 쓰고, 마지막에 무엇을 실행할지”를 최대한 구체적으로 적는 편이 좋습니다. OpenClaw의 instruction-file 패턴이 좋은 이유가 여기 있습니다. 작업이 사람 머릿속에 있지 않고 파일로 고정되니, 다음 실행도 재현 가능해집니다.\n두 번째는 출력 명확화입니다. 자동화된 글은 애매한 중간 상태를 가장 싫어합니다. 예를 들어 블로그 포스트는 파일명 규칙, front matter, 카테고리, 태그, 댓글 여부가 매번 일정해야 이후 빌드와 배포가 편해집니다. 이 부분을 느슨하게 두면 글 내용보다 메타데이터가 더 자주 문제를 일으킵니다. OpenClaw로 글을 쓰게 할 때도 “잘 써줘”보다 “파일 경로, 날짜, 카테고리, 최소 길이, 후속 git/hugo 절차” 를 함께 지정하는 게 훨씬 안정적입니다.\n세 번째는 실패를 짧게 만드는 겁니다. 좋은 자동화는 실패하지 않는 자동화가 아니라, 실패했을 때 원인을 한 줄로 말해주는 자동화에 가깝습니다. instruction file이 없으면 바로 보고하고 종료, 권한이 없으면 추측하지 말고 중단, 민감정보는 출력하지 않기 같은 규칙이 이 점에서 중요합니다. 디버깅 시간이 줄어들고, 운영자가 다음 액션을 바로 판단할 수 있습니다.\nOpenClaw를 이 흐름에 쓰면서 특히 괜찮다고 느끼는 점은, 채널 읽기·파일 쓰기·빌드·배포를 한 세션 안에서 연결하되 각 단계의 경계가 비교적 분명하다는 것입니다. Discord 메시지를 읽는 단계, Markdown 파일을 만드는 단계, Hugo 빌드를 수행하는 단계, Git으로 결과를 배포하는 단계가 분리되어 있으면 어디서 깨졌는지 찾기 쉽습니다. 반대로 이 경계가 섞이면 자동화는 금방 “가끔 되는 마법”이 됩니다.\n실무적으로 정리하면 이런 체크리스트가 꽤 유용합니다.\n지시문 파일은 경로와 종료 조건까지 포함해 짧고 명확하게 쓴다 출력 포맷은 front matter까지 고정한다 크론은 정확한 실행만 맡기고, 복잡한 탐색은 최소화한다 실패 메시지는 한 줄 원인 + 다음 액션 한 개로 끝낸다 민감정보와 로컬 경로는 로그/출력에서 철저히 숨긴다 결국 OpenClaw 자동화의 핵심은 “더 똑똑한 글쓰기”보다 더 예측 가능한 작업 흐름입니다. 매일 도는 시스템은 한 번의 번뜩임보다 반복 가능성이 중요합니다. 오늘의 결론을 한 줄로 줄이면 이렇습니다. 좋은 자동화는 화려한 프롬프트보다, 좁고 단단한 운영 규칙에서 나온다.\n",
+  "wordCount" : "354",
+  "inLanguage": "en",
+  "datePublished": "2026-03-20T21:00:00+09:00",
+  "dateModified": "2026-03-20T21:00:00+09:00",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://kwbaek.github.io/posts/2026-03-20-openclaw-operating-daily-content-systems-with-less-friction/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Kyungwook's Devlog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://kwbaek.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://kwbaek.github.io/" accesskey="h" title="Kyungwook&#39;s Devlog (Alt + H)">Kyungwook&#39;s Devlog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://kwbaek.github.io/categories/" title="categories">
+                    <span>categories</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kwbaek.github.io/tags/" title="tags">
+                    <span>tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kwbaek.github.io/" title="Kyungwook&#39;s Devlog">
+                    <span>Kyungwook&#39;s Devlog</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      OpenClaw 팁: 매일 도는 콘텐츠 자동화를 덜 피곤하게 운영하는 법
+    </h1>
+    <div class="post-meta"><span title='2026-03-20 21:00:00 +0900 KST'>March 20, 2026</span>
+
+</div>
+  </header> 
+  <div class="post-content"><p>OpenClaw로 매일 콘텐츠를 자동 생성하다 보면, 의외로 가장 큰 문제는 “글을 잘 쓰느냐”가 아니라 <strong>매일 같은 작업이 덜 피곤하게, 덜 깨지게, 덜 지저분하게 돌아가느냐</strong>입니다. 특히 Discord에서 트렌드를 읽고, 블로그 포스트를 만들고, Hugo를 빌드하고, 배포 저장소까지 밀어 올리는 흐름은 한 번은 쉽지만 매일 안정적으로 굴리려면 운영 감각이 필요합니다.</p>
+<p>제가 요즘 중요하게 보는 원칙은 세 가지입니다. <strong>입력은 좁게, 출력은 명확하게, 실패는 짧게</strong> 입니다.</p>
+<p>먼저 입력은 좁게. 크론 작업이 길어질수록 실패 확률도 올라가고, 결과물 품질도 흔들립니다. 그래서 지시문 파일 하나에 “어느 채널을 읽고, 어떤 형식으로, 어디에 쓰고, 마지막에 무엇을 실행할지”를 최대한 구체적으로 적는 편이 좋습니다. OpenClaw의 instruction-file 패턴이 좋은 이유가 여기 있습니다. 작업이 사람 머릿속에 있지 않고 파일로 고정되니, 다음 실행도 재현 가능해집니다.</p>
+<p>두 번째는 출력 명확화입니다. 자동화된 글은 애매한 중간 상태를 가장 싫어합니다. 예를 들어 블로그 포스트는 파일명 규칙, front matter, 카테고리, 태그, 댓글 여부가 매번 일정해야 이후 빌드와 배포가 편해집니다. 이 부분을 느슨하게 두면 글 내용보다 메타데이터가 더 자주 문제를 일으킵니다. OpenClaw로 글을 쓰게 할 때도 “잘 써줘”보다 <strong>&ldquo;파일 경로, 날짜, 카테고리, 최소 길이, 후속 git/hugo 절차&rdquo;</strong> 를 함께 지정하는 게 훨씬 안정적입니다.</p>
+<p>세 번째는 실패를 짧게 만드는 겁니다. 좋은 자동화는 실패하지 않는 자동화가 아니라, <strong>실패했을 때 원인을 한 줄로 말해주는 자동화</strong>에 가깝습니다. instruction file이 없으면 바로 보고하고 종료, 권한이 없으면 추측하지 말고 중단, 민감정보는 출력하지 않기 같은 규칙이 이 점에서 중요합니다. 디버깅 시간이 줄어들고, 운영자가 다음 액션을 바로 판단할 수 있습니다.</p>
+<p>OpenClaw를 이 흐름에 쓰면서 특히 괜찮다고 느끼는 점은, 채널 읽기·파일 쓰기·빌드·배포를 한 세션 안에서 연결하되 각 단계의 경계가 비교적 분명하다는 것입니다. Discord 메시지를 읽는 단계, Markdown 파일을 만드는 단계, Hugo 빌드를 수행하는 단계, Git으로 결과를 배포하는 단계가 분리되어 있으면 어디서 깨졌는지 찾기 쉽습니다. 반대로 이 경계가 섞이면 자동화는 금방 “가끔 되는 마법”이 됩니다.</p>
+<p>실무적으로 정리하면 이런 체크리스트가 꽤 유용합니다.</p>
+<ul>
+<li><strong>지시문 파일은 경로와 종료 조건까지 포함해 짧고 명확하게 쓴다</strong></li>
+<li><strong>출력 포맷은 front matter까지 고정한다</strong></li>
+<li><strong>크론은 정확한 실행만 맡기고, 복잡한 탐색은 최소화한다</strong></li>
+<li><strong>실패 메시지는 한 줄 원인 + 다음 액션 한 개로 끝낸다</strong></li>
+<li><strong>민감정보와 로컬 경로는 로그/출력에서 철저히 숨긴다</strong></li>
+</ul>
+<p>결국 OpenClaw 자동화의 핵심은 “더 똑똑한 글쓰기”보다 <strong>더 예측 가능한 작업 흐름</strong>입니다. 매일 도는 시스템은 한 번의 번뜩임보다 반복 가능성이 중요합니다. 오늘의 결론을 한 줄로 줄이면 이렇습니다. <strong>좋은 자동화는 화려한 프롬프트보다, 좁고 단단한 운영 규칙에서 나온다.</strong></p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://kwbaek.github.io/tags/openclaw/">OpenClaw</a></li>
+      <li><a href="https://kwbaek.github.io/tags/cron/">Cron</a></li>
+      <li><a href="https://kwbaek.github.io/tags/blog/">Blog</a></li>
+      <li><a href="https://kwbaek.github.io/tags/automation/">Automation</a></li>
+      <li><a href="https://kwbaek.github.io/tags/operations/">Operations</a></li>
+      <li><a href="https://kwbaek.github.io/tags/discord/">Discord</a></li>
+    </ul>
+  </footer><script src="https://utteranc.es/client.js"
+        repo="kwbaek/blog-comments"
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://kwbaek.github.io/">Kyungwook&#39;s Devlog</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>
