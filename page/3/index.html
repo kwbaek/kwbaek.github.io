@@ -152,6 +152,34 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">AI/ML 트렌드: 모델 경쟁에서 인프라 경쟁으로 — 메모리, 전력, 공급망이 승부를 가른다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 #ai-ml-trends에서 가장 강하게 보인 신호는 하나입니다. 이제 AI 경쟁의 중심이 모델 품질 자체에서 인프라 확보 능력으로 빠르게 이동하고 있다는 점입니다. 특히 AMD CEO의 방한 보도(삼성과 HBM 공급 협력 논의), Applied Materials-SK hynix/Micron의 차세대 메모리 공동개발, 그리고 미국 전력수요의 연속 최고치 전망(EIA)은 같은 문장을 다른 각도에서 반복합니다. “좋은 모델을 만드는 것”만으로는 부족하고, 그 모델을 지속적으로 돌릴 수 있는 메모리·전력·공급망이 있어야 실제 시장 지배력이 생긴다는 것입니다.
+많은 팀이 아직도 LLM 성능 벤치마크만 비교하지만, 현장에서 더 먼저 부딪히는 병목은 대개 인프라입니다. 추론량이 늘면 GPU만 필요한 것이 아닙니다. 고대역폭 메모리(HBM), 안정적인 전력 조달, 데이터센터 증설 리드타임, 네트워크/냉각 비용까지 전부 함께 움직입니다. 그래서 최근 뉴스 흐름은 ‘누가 더 똑똑한 모델을 내놨나’보다 ‘누가 더 오래, 더 싸게, 더 안정적으로 서비스하나’에 무게가 실리고 있습니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-03-11 21:00:00 +0900 KST'>March 11, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 모델 경쟁에서 인프라 경쟁으로 — 메모리, 전력, 공급망이 승부를 가른다" href="https://kwbaek.github.io/posts/2026-03-11-ai-infrastructure-memory-supply-chain/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 실전 팁: 지시문 기반 Cron 자동 포스팅 워크플로 설계하기
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>OpenClaw를 오래 운영해보면, 자동화 성공 여부는 모델 성능보다 운영 구조에서 갈리는 경우가 많습니다. 최근 제가 가장 효과를 본 패턴은 “크론 잡에 긴 프롬프트를 직접 넣지 않고, cron-instructions/ 폴더의 지시문 파일을 읽게 만드는 방식”입니다. 이 구조를 쓰면 디버깅이 쉬워지고, 잡 수정도 빠르며, 실패 원인 추적도 명확해집니다.
+핵심 아이디어는 단순합니다. 크론 잡 본문은 최소화하고, 실제 작업 규칙은 파일로 분리합니다. 예를 들어 블로그 자동화라면 (1) 트렌드 채널 읽기, (2) 카테고리별 포스트 생성, (3) git push, (4) 빌드/배포 같은 단계를 지시문 파일에 명시해 둡니다. 이렇게 하면 규칙 변경 시 크론 자체를 건드리지 않고 파일만 수정하면 됩니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-03-11 21:00:00 +0900 KST'>March 11, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 실전 팁: 지시문 기반 Cron 자동 포스팅 워크플로 설계하기" href="https://kwbaek.github.io/posts/2026-03-11-openclaw-cron-instruction-driven-blogging/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">OpenClaw 운영 메모: v2026.3.7 이후 꼭 챙길 4가지 (실전 체크리스트)
     </h2>
   </header>
@@ -267,35 +295,6 @@ Secrets 워크플로: audit → configure → apply → reload v2026.2.26부터 
   </div>
   <footer class="entry-footer"><span title='2026-03-06 21:00:00 +0900 KST'>March 6, 2026</span></footer>
   <a class="entry-link" aria-label="post link to OpenClaw v2026.3.2 실전 팁 — Secrets 워크플로와 스트리밍 설정 완전 정리" href="https://kwbaek.github.io/posts/2026-03-06-openclaw-secrets-and-streaming/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">AI/ML 트렌드 브리핑: 2026년 3월 5일 — 에이전트 시대의 본격화
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>오늘 하루 AI/ML 씬에서 쏟아진 뉴스를 추려봤다. 큰 그림으로 보면 한 가지 흐름이 선명하다 — AI가 더 이상 실험실 단계가 아닌, 실제 산업 현장과 경제 구조 자체를 재편하고 있다는 것.
-🏆 OpenAI, 연간 매출 250억 달러 돌파 ChatGPT 출시 약 2년 만에 OpenAI의 연간 환산 매출(ARR)이 250억 달러를 넘어섰다. AI 기업 중 역대 최단기 대규모 매출 달성이다. 구독·API·엔터프라이즈 계약이 고르게 성장하며 이뤄낸 결과로, 연내 IPO 밸류에이션에도 직접 영향을 줄 전망이다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-03-05 21:00:00 +0900 KST'>March 5, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to AI/ML 트렌드 브리핑: 2026년 3월 5일 — 에이전트 시대의 본격화" href="https://kwbaek.github.io/posts/2026-03-05-ai-ml-trends/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw v2026.3.2 업그레이드 가이드: SecretRef, pdf 도구, 그리고 운영 안정성
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>OpenClaw가 v2026.3.2로 업데이트되면서 일상적인 운영에 직접 영향을 주는 변화들이 꽤 있었다. 이번 포스트에서는 주요 변경 사항과 실제로 써먹을 수 있는 운영 팁을 정리해본다.
-🔑 SecretRef fail-fast 강화 — 미리 알고 쓰자 v2026.3.2의 가장 중요한 보안 변경 사항이다. active surface에서 unresolved secret ref는 이제 즉시 실패(fail-fast) 처리된다.
-이전에는 secret ref가 제대로 해석되지 않아도 빈 값이나 리터럴 문자열로 넘어가는 경우가 있었다. 이제는 그냥 바로 에러가 난다. 처음에는 불편하게 느껴질 수 있지만, 잘못된 설정이 조용히 운영되는 것보다 훨씬 낫다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-03-05 21:00:00 +0900 KST'>March 5, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw v2026.3.2 업그레이드 가이드: SecretRef, pdf 도구, 그리고 운영 안정성" href="https://kwbaek.github.io/posts/2026-03-05-openclaw-v2026-3-2-guide/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

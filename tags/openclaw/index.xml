@@ -6,8 +6,16 @@
     <description>Recent content in OpenClaw on Kyungwook&#39;s Devlog</description>
     <generator>Hugo -- 0.155.3</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Fri, 20 Mar 2026 21:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Sat, 21 Mar 2026 21:00:00 +0900</lastBuildDate>
     <atom:link href="https://kwbaek.github.io/tags/openclaw/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>OpenClaw 팁: 매일 도는 크론 작업은 instruction file부터 단단해야 한다</title>
+      <link>https://kwbaek.github.io/posts/2026-03-21-openclaw-use-instruction-files-to-stabilize-daily-cron-work/</link>
+      <pubDate>Sat, 21 Mar 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-03-21-openclaw-use-instruction-files-to-stabilize-daily-cron-work/</guid>
+      <description>&lt;p&gt;OpenClaw로 매일 반복 작업을 굴리다 보면, 모델 성능보다 더 중요하게 느껴지는 것이 하나 있습니다. 바로 &lt;strong&gt;작업의 시작점이 얼마나 명확하게 고정되어 있느냐&lt;/strong&gt;입니다. 특히 Discord 채널을 읽고, 내용을 선별하고, Markdown 파일을 만들고, Hugo를 빌드하고, 배포 저장소까지 업데이트하는 흐름은 단계가 많아서 작은 흔들림도 금방 전체 실패로 번집니다.&lt;/p&gt;
+&lt;p&gt;이럴 때 가장 효과적인 패턴이 바로 &lt;strong&gt;instruction file 기반 크론 작업&lt;/strong&gt;입니다. 즉 “오늘 뭘 해야 하는지”를 채팅 프롬프트 안에 흩뿌리지 말고, 별도 파일 하나에 작업 순서와 실패 규칙까지 명시해두는 방식입니다. 이 패턴의 장점은 단순합니다. 작업이 사람 기억이나 직전 대화 맥락에 덜 의존하게 되고, 매일 같은 작업을 해도 &lt;strong&gt;입력 조건이 일정하게 유지&lt;/strong&gt;됩니다.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>OpenClaw 팁: 매일 도는 콘텐츠 자동화를 덜 피곤하게 운영하는 법</title>
       <link>https://kwbaek.github.io/posts/2026-03-20-openclaw-operating-daily-content-systems-with-less-friction/</link>

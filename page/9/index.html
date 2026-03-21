@@ -152,6 +152,36 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 서브에이전트로 반복 작업 자동화하기
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>OpenClaw를 쓰면서 가장 생산성이 올라간 기능 중 하나가 바로 서브에이전트(Subagent) 시스템입니다. 이 글에서는 서브에이전트가 무엇인지, 어떻게 활용하면 좋은지 실제 경험을 바탕으로 공유합니다.
+서브에이전트란? 서브에이전트는 메인 에이전트가 특정 작업을 위해 독립적으로 생성하는 하위 에이전트입니다. 메인 에이전트와 별도의 세션에서 동작하며, 작업이 완료되면 결과를 메인 에이전트에게 보고합니다.
+핵심 특징:
+독립 실행: 메인 세션의 컨텍스트 윈도우를 소모하지 않음 작업 집중: 할당된 작업만 수행하고 종료 병렬 처리: 여러 서브에이전트를 동시에 띄울 수 있음 실제 활용 사례: 블로그 포스팅 자동화 이 블로그 포스트 자체가 서브에이전트로 작성되고 있습니다! 워크플로우는 다음과 같습니다:
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-02-09 23:00:00 +0900 KST'>February 9, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 서브에이전트로 반복 작업 자동화하기" href="https://kwbaek.github.io/posts/2026-02-09-openclaw-subagent-automation/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Install Kubeflow 15 16
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>기
+kubeflow 16 설치하기 개요 kubeflow 를 설치 시 쉽고 빠른 좋은 설치 방법이 있어 공유 합니다. 하기 참조 링크를 참고하여 kubeflow 설치 및 실행 방법에 대해 정리 한 문서 입니다. 설치전 기존 설치환경 초기화 kubernetes 초기화 기존에 쿠버네티스가 설치되어 있으면 기존 쿠버네티스를 삭제 및 초기화 하여 새로운 설치를 시도 합니다. 실행 스크립트 ## 쿠버네티스 초기화 sudo kubeadm reset y ## 쿠버네티스 &amp;&amp; 도커 기동 중지 sudo systemctl stop kubelet sudo systemctl stop docker ## 쿠버네티스 네트워크 설정( Cluster Network Interface ) 삭제 sudo ip link delete cni0 sudo ip link delete flannel.1 ## 쿠버네티스 관련 파일 삭제 sudo rm -rf /var/lib/cni/ sudo rm -rf /var/lib/kubelet/* sudo rm -rf /var/lib/etcd sudo rm -rf /run/flannel sudo rm -rf /etc/cni sudo rm -rf /etc/kubernetes sudo rm -rf ~/.kube ## 쿠버네티스 관련 패키지 삭제(Ubuntu) sudo apt-get purge kubeadm kubectl kubelet kubernetes-cni kube* -y sudo apt-get autoremove docker 초기화 실행 스크립트 sudo apt-get purge docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin docker-ce-rootless-extras sudo rm -rf /var/lib/docker sudo rm -rf /var/lib/containerd sudo apt-get purge nvidia-docker2 sudo apt-get purge nvidia-container-toolkit sudo apt autoremove kubeflow 설치 kubeflow 설치 스크립트 clone git clone https://github.com/myoh0623/kubeflow.git 1. install cudnn 실행 스크립트 cd kubeflow_tutorial/kubeflow/section1_install ./1_install_cudnn.sh 테스트 서버에 gpu 는 A100 이고 스크립트 에 있는 cuda 버전 이 낮아 최신 버전으로 변경하기 위해 다음과 같이 수정
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2023-02-09 16:11:40 +0900 KST'>February 9, 2023</span></footer>
+  <a class="entry-link" aria-label="post link to Install Kubeflow 15 16" href="https://kwbaek.github.io/posts/install-kubeflow-15-16/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">Ubuntu Install Oh My Zsh
     </h2>
   </header>

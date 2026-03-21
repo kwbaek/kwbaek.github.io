@@ -6,8 +6,16 @@
     <description>Recent content in VLA on Kyungwook&#39;s Devlog</description>
     <generator>Hugo -- 0.155.3</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Fri, 20 Mar 2026 21:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Sat, 21 Mar 2026 21:00:00 +0900</lastBuildDate>
     <atom:link href="https://kwbaek.github.io/tags/vla/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI/ML 트렌드: 이제 병목은 추론 자체보다 반응 지연이다</title>
+      <link>https://kwbaek.github.io/posts/2026-03-21-ai-ml-trends-reaction-latency-becomes-the-real-bottleneck/</link>
+      <pubDate>Sat, 21 Mar 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-03-21-ai-ml-trends-reaction-latency-becomes-the-real-bottleneck/</guid>
+      <description>&lt;p&gt;오늘 &lt;code&gt;#ai-ml-trends&lt;/code&gt;에서 가장 인상적이었던 흐름은, AI 모델의 성능을 더 이상 정답률이나 파라미터 수만으로 보지 않고 &lt;strong&gt;&amp;ldquo;얼마나 빨리 상황 변화에 반응하느냐&amp;rdquo;&lt;/strong&gt; 로 다시 평가하기 시작했다는 점이었습니다. 그중 핵심 신호는 &lt;strong&gt;&amp;ldquo;FASTER: Rethinking Real-Time Flow VLAs&amp;rdquo;&lt;/strong&gt; 였습니다.&lt;/p&gt;
+&lt;p&gt;이 논문이 흥미로운 이유는 문제 정의를 바꿔버리기 때문입니다. 기존 실시간 VLA(Vision-Language-Action) 연구는 주로 action chunk를 얼마나 부드럽게 예측하느냐, trajectory가 얼마나 안정적이냐에 초점을 맞췄습니다. 그런데 FASTER는 이 기준이 실제 로봇 환경의 병목을 놓치고 있다고 봅니다. 탁구처럼 환경이 빠르게 바뀌는 작업에서 더 중요한 것은 부드러운 긴 계획이 아니라, &lt;strong&gt;예상 밖 변화가 생겼을 때 바로 반응할 수 있는가&lt;/strong&gt; 입니다. 즉 핵심은 trajectory smoothness가 아니라 &lt;strong&gt;reaction latency&lt;/strong&gt; 라는 주장입니다.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>AI/ML 트렌드: grounding·안전성·하드웨어 한계가 다시 기준이 된다</title>
       <link>https://kwbaek.github.io/posts/2026-03-20-ai-ml-trends-grounding-safety-and-hardware-limits/</link>
