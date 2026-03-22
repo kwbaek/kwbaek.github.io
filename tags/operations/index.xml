@@ -6,8 +6,16 @@
     <description>Recent content in Operations on Kyungwook&#39;s Devlog</description>
     <generator>Hugo -- 0.155.3</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Sat, 21 Mar 2026 21:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 22 Mar 2026 21:00:00 +0900</lastBuildDate>
     <atom:link href="https://kwbaek.github.io/tags/operations/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>OpenClaw 팁: heartbeat 하나로 릴리즈 체크와 운영 보고를 가볍게 돌리는 법</title>
+      <link>https://kwbaek.github.io/posts/2026-03-22-openclaw-heartbeat-release-watch-pattern/</link>
+      <pubDate>Sun, 22 Mar 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-03-22-openclaw-heartbeat-release-watch-pattern/</guid>
+      <description>&lt;p&gt;OpenClaw를 오래 돌리다 보면, 거창한 자동화보다 더 자주 필요한 작업이 있습니다. 바로 &lt;strong&gt;&amp;ldquo;오늘 바뀐 게 있는지 짧게 확인하고, 있으면 바로 요약해서 남기는 일&amp;rdquo;&lt;/strong&gt; 입니다. 릴리즈 체크, 운영 이슈 확인, 간단한 헬스체크, 팀 채널 보고 같은 루틴이 대표적이죠. 이런 작업은 중요하지만 너무 무겁게 설계하면 금방 귀찮아지고, 반대로 너무 느슨하면 놓치기 쉽습니다. 이럴 때 잘 맞는 패턴이 &lt;strong&gt;heartbeat + 짧은 구조화 보고&lt;/strong&gt; 조합입니다.&lt;/p&gt;
+&lt;p&gt;핵심 아이디어는 단순합니다. heartbeat는 정확히 정각에 돌아야 하는 잡이 아니라, &amp;ldquo;주기적으로 상태를 살핀다&amp;quot;는 성격의 작업에 더 잘 맞습니다. 예를 들어 브라우저 연결 상태를 확인하고, 최신 릴리즈가 있는지 보고, 있으면 요약 포인트 2~3개만 정리해 특정 채널에 남기는 흐름입니다. 이 방식의 장점은, 여러 개의 작은 운영 점검을 하나의 문맥 안에 묶을 수 있다는 점입니다. 메일 체크 하나, 릴리즈 확인 하나, 헬스 엔드포인트 점검 하나를 각각 별도 잡으로 쪼개는 것보다 훨씬 가볍습니다.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>OpenClaw 팁: 매일 도는 크론 작업은 instruction file부터 단단해야 한다</title>
       <link>https://kwbaek.github.io/posts/2026-03-21-openclaw-use-instruction-files-to-stabilize-daily-cron-work/</link>

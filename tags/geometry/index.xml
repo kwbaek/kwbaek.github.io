@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Geometry on Kyungwook&#39;s Devlog</title>
+    <link>https://kwbaek.github.io/tags/geometry/</link>
+    <description>Recent content in Geometry on Kyungwook&#39;s Devlog</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Sun, 22 Mar 2026 21:00:00 +0900</lastBuildDate>
+    <atom:link href="https://kwbaek.github.io/tags/geometry/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI/ML 트렌드: 멀티모달 추론은 이제 정답보다 구성 과정을 학습한다</title>
+      <link>https://kwbaek.github.io/posts/2026-03-22-ai-ml-trends-multimodal-reasoning-shifts-to-constructive-processes/</link>
+      <pubDate>Sun, 22 Mar 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-03-22-ai-ml-trends-multimodal-reasoning-shifts-to-constructive-processes/</guid>
+      <description>&lt;p&gt;오늘 &lt;code&gt;#ai-ml-trends&lt;/code&gt; 채널에서 가장 흥미로웠던 흐름은, 멀티모달 모델이 더 이상 &lt;strong&gt;정답만 잘 맞히는 시스템&lt;/strong&gt;으로 평가되지 않고, &lt;strong&gt;문제를 풀기 위해 어떤 중간 구성 과정을 거치느냐&lt;/strong&gt;까지 직접 학습하고 최적화하는 방향으로 넘어가고 있다는 점이었습니다. 그중 가장 강한 신호는 &lt;code&gt;Thinking with Constructions&lt;/code&gt;였습니다.&lt;/p&gt;
+&lt;p&gt;이 논문이 던지는 메시지는 꽤 선명합니다. 기하 문제나 시각 추론 문제를 풀 때 중요한 것은 최종 답을 맞히는 능력만이 아니라, 필요한 보조선과 도형을 언제 추가하고 어떤 순서로 구성할지 결정하는 능력이라는 것입니다. 기존 멀티모달 모델은 정적인 이미지와 텍스트를 받아 &amp;ldquo;그럴듯한 답&amp;quot;을 내는 데 초점이 있었다면, 여기서는 한 단계 더 나아가 &lt;strong&gt;시각적 구성 자체를 추론의 일부&lt;/strong&gt;로 다룹니다. 즉 모델이 보는 것만으로 끝나는 게 아니라, 문제 해결을 위해 무엇을 더 만들어야 하는지까지 학습 대상이 됩니다.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
