@@ -143,6 +143,20 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 팁: 매일 쓰는 자동화일수록 새 기능보다 신뢰성 패치가 더 중요하다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 OpenClaw 쪽에서 눈에 들어온 포인트는 거창한 신기능보다도, 매일 돌려야 하는 자동화를 덜 불안하게 만들어주는 신뢰성 패치들이었습니다. 최신 릴리즈 v2026.3.13-1은 이름부터 약간 특이합니다. 이미 공개된 v2026.3.13 릴리즈 경로가 꼬여서 이를 복구하기 위한 recovery release였고, npm 버전은 그대로 두면서 GitHub 릴리즈 태그만 -1을 붙였습니다. 겉으로 보면 자잘한 운영 이슈처럼 보이지만, 실제로 이런 복구 감각이 있는 프로젝트가 장기 운영에는 훨씬 믿을 만합니다.
+이번 릴리즈에서 특히 실무적으로 중요해 보인 건 몇 가지였습니다. 첫째는 isolated cron nested lane deadlock 방지입니다. OpenClaw를 조금만 깊게 쓰기 시작하면 cron이 단순 알람이 아니라, 리서치, 요약, 보고, 파일 생성 같은 실제 작업 파이프라인으로 커집니다. 이때 isolated 실행 경로에서 교착 상태가 나면, 겉으로는 “아무 일도 안 일어난 조용한 실패&#34;처럼 보이기 쉽습니다. 그래서 이런 종류의 수정은 화려하진 않아도 운영 체감이 큽니다. 매일 밤 도는 잡일수록 실패 로그보다 “왜 결과가 안 나왔지?“가 더 무섭기 때문입니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-03-23 21:00:00 +0900 KST'>March 23, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 팁: 매일 쓰는 자동화일수록 새 기능보다 신뢰성 패치가 더 중요하다" href="https://kwbaek.github.io/posts/2026-03-23-openclaw-reliability-beats-feature-chasing-in-daily-ops/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">OpenClaw 운영 팁: Heartbeat와 Cron을 분리하면 자동화 품질이 급상승한다
     </h2>
   </header>

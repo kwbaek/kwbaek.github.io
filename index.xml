@@ -6,8 +6,24 @@
     <description>Recent content on Kyungwook&#39;s Devlog</description>
     <generator>Hugo -- 0.155.3</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Sun, 22 Mar 2026 21:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Mon, 23 Mar 2026 21:00:00 +0900</lastBuildDate>
     <atom:link href="https://kwbaek.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI/ML 트렌드: AGI 경쟁은 이제 점수보다 인지 프레임워크 설계로 간다</title>
+      <link>https://kwbaek.github.io/posts/2026-03-23-ai-ml-trends-from-benchmark-scores-to-cognitive-frameworks/</link>
+      <pubDate>Mon, 23 Mar 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-03-23-ai-ml-trends-from-benchmark-scores-to-cognitive-frameworks/</guid>
+      <description>&lt;p&gt;오늘 &lt;code&gt;#ai-ml-trends&lt;/code&gt; 채널에서 가장 인상적이었던 흐름은, AGI 논의가 더 이상 &amp;ldquo;누가 벤치마크 점수를 몇 점 더 올렸는가&amp;quot;에만 머물지 않고 &lt;strong&gt;무엇을 지능으로 볼 것인지, 그리고 그것을 어떤 축으로 측정할 것인지&lt;/strong&gt;를 다시 정의하는 단계로 넘어가고 있다는 점이었습니다. 그 신호를 가장 선명하게 보여준 것이 Google DeepMind의 &lt;code&gt;Measuring progress toward AGI: A cognitive framework&lt;/code&gt;였습니다.&lt;/p&gt;
+&lt;p&gt;이 글이 흥미로운 이유는 단순히 &amp;ldquo;새 벤치마크가 나왔다&amp;quot;는 수준이 아니기 때문입니다. 핵심은 AGI를 하나의 단일 점수나 마케팅 문구로 포장하지 않고, 지각, 기억, 추론, 메타인지, 집행 기능, 사회적 인지 같은 &lt;strong&gt;여러 인지 능력 축으로 분해해서 보자&lt;/strong&gt;는 제안에 있습니다. 이 관점은 꽤 중요합니다. 지금까지 AI 업계는 종종 특정 시험에서 잘 풀거나 특정 데모를 멋지게 보여주면 곧바로 &amp;ldquo;일반 지능에 가까워졌다&amp;quot;고 말하는 경향이 있었는데, 실제로는 언어 추론이 강한 모델과 장기 기억이 강한 모델, 계획 능력이 강한 모델은 서로 다른 강점과 약점을 가질 수 있습니다. 결국 중요한 것은 하나의 숫자가 아니라 &lt;strong&gt;어떤 종류의 지능이 어느 정도까지 구성되었는가&lt;/strong&gt;를 더 정밀하게 읽어내는 일입니다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>OpenClaw 팁: 매일 쓰는 자동화일수록 새 기능보다 신뢰성 패치가 더 중요하다</title>
+      <link>https://kwbaek.github.io/posts/2026-03-23-openclaw-reliability-beats-feature-chasing-in-daily-ops/</link>
+      <pubDate>Mon, 23 Mar 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-03-23-openclaw-reliability-beats-feature-chasing-in-daily-ops/</guid>
+      <description>&lt;p&gt;오늘 OpenClaw 쪽에서 눈에 들어온 포인트는 거창한 신기능보다도, &lt;strong&gt;매일 돌려야 하는 자동화를 덜 불안하게 만들어주는 신뢰성 패치들&lt;/strong&gt;이었습니다. 최신 릴리즈 &lt;code&gt;v2026.3.13-1&lt;/code&gt;은 이름부터 약간 특이합니다. 이미 공개된 &lt;code&gt;v2026.3.13&lt;/code&gt; 릴리즈 경로가 꼬여서 이를 복구하기 위한 recovery release였고, npm 버전은 그대로 두면서 GitHub 릴리즈 태그만 &lt;code&gt;-1&lt;/code&gt;을 붙였습니다. 겉으로 보면 자잘한 운영 이슈처럼 보이지만, 실제로 이런 복구 감각이 있는 프로젝트가 장기 운영에는 훨씬 믿을 만합니다.&lt;/p&gt;
+&lt;p&gt;이번 릴리즈에서 특히 실무적으로 중요해 보인 건 몇 가지였습니다. 첫째는 &lt;strong&gt;isolated cron nested lane deadlock 방지&lt;/strong&gt;입니다. OpenClaw를 조금만 깊게 쓰기 시작하면 cron이 단순 알람이 아니라, 리서치, 요약, 보고, 파일 생성 같은 실제 작업 파이프라인으로 커집니다. 이때 isolated 실행 경로에서 교착 상태가 나면, 겉으로는 &amp;ldquo;아무 일도 안 일어난 조용한 실패&amp;quot;처럼 보이기 쉽습니다. 그래서 이런 종류의 수정은 화려하진 않아도 운영 체감이 큽니다. 매일 밤 도는 잡일수록 실패 로그보다 &amp;ldquo;왜 결과가 안 나왔지?&amp;ldquo;가 더 무섭기 때문입니다.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>AI/ML 트렌드: 멀티모달 추론은 이제 정답보다 구성 과정을 학습한다</title>
       <link>https://kwbaek.github.io/posts/2026-03-22-ai-ml-trends-multimodal-reasoning-shifts-to-constructive-processes/</link>
