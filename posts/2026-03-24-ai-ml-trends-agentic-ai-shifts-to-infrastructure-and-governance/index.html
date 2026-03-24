@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>AI/ML 트렌드: 오늘의 축은 ‘모델 성능’에서 ‘칩·에이전트·거버넌스’ 동시 경쟁으로 | Kyungwook&#39;s Devlog</title>
+<meta name="keywords" content="AI/ML, Agentic AI, Inference Infrastructure, OpenAI, Nvidia, Governance, Open Source">
+<meta name="description" content="오늘 #ai-ml-trends 채널에서 눈에 가장 크게 들어온 포인트는 한마디로 전장 이동입니다. AI 트렌드가 더 이상 모델 하나의 점수 경쟁이나 데모 완성도 경쟁에만 머물지 않고, **실행 레이어(칩, 인프라, 거버넌스)**까지 확장되고 있습니다.
+가장 핵심적인 관찰은 Alibaba가 발표한 agentic AI 전용 칩 XuanTie C950입니다. 모델-에이전트-서비스 스택이 한 번에 연결되는 구조에서, 데이터센터 GPU 전략보다 더 앞단의 질문이 “누가 더 빠른 토큰을 뽑나?”가 아니라 “누가 agentic workload를 하드웨어 수준에서 더 잘 흡수하나?”로 바뀌고 있다는 점입니다. 동시에 OpenAI의 Astral 인수 소식은 단순 회사 인수 뉴스가 아니라, 코드 생성 에이전트가 점점 더 개발 환경 전체를 흡수하려는 흐름(환경 관리, 코드 품질, 타입 점검)으로 가고 있음을 보여줍니다.">
+<meta name="author" content="">
+<link rel="canonical" href="https://kwbaek.github.io/posts/2026-03-24-ai-ml-trends-agentic-ai-shifts-to-infrastructure-and-governance/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.da3211e5ef867bf2b75fd5a6515cfed7195c011e8ab735694e203810a827097b.css" integrity="sha256-2jIR5e&#43;Ge/K3X9WmUVz&#43;1xlcAR6KtzVpTiA4EKgnCXs=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://kwbaek.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://kwbaek.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://kwbaek.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://kwbaek.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://kwbaek.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://kwbaek.github.io/posts/2026-03-24-ai-ml-trends-agentic-ai-shifts-to-infrastructure-and-governance/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="https://kwbaek.github.io/posts/2026-03-24-ai-ml-trends-agentic-ai-shifts-to-infrastructure-and-governance/">
+  <meta property="og:site_name" content="Kyungwook&#39;s Devlog">
+  <meta property="og:title" content="AI/ML 트렌드: 오늘의 축은 ‘모델 성능’에서 ‘칩·에이전트·거버넌스’ 동시 경쟁으로">
+  <meta property="og:description" content="오늘 #ai-ml-trends 채널에서 눈에 가장 크게 들어온 포인트는 한마디로 전장 이동입니다. AI 트렌드가 더 이상 모델 하나의 점수 경쟁이나 데모 완성도 경쟁에만 머물지 않고, **실행 레이어(칩, 인프라, 거버넌스)**까지 확장되고 있습니다.
+가장 핵심적인 관찰은 Alibaba가 발표한 agentic AI 전용 칩 XuanTie C950입니다. 모델-에이전트-서비스 스택이 한 번에 연결되는 구조에서, 데이터센터 GPU 전략보다 더 앞단의 질문이 “누가 더 빠른 토큰을 뽑나?”가 아니라 “누가 agentic workload를 하드웨어 수준에서 더 잘 흡수하나?”로 바뀌고 있다는 점입니다. 동시에 OpenAI의 Astral 인수 소식은 단순 회사 인수 뉴스가 아니라, 코드 생성 에이전트가 점점 더 개발 환경 전체를 흡수하려는 흐름(환경 관리, 코드 품질, 타입 점검)으로 가고 있음을 보여줍니다.">
+  <meta property="og:locale" content="ko-kr">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2026-03-24T21:00:00+09:00">
+    <meta property="article:modified_time" content="2026-03-24T21:00:00+09:00">
+    <meta property="article:tag" content="AI/ML">
+    <meta property="article:tag" content="Agentic-Ai">
+    <meta property="article:tag" content="Inference Infrastructure">
+    <meta property="article:tag" content="Openai">
+    <meta property="article:tag" content="Nvidia">
+    <meta property="article:tag" content="Governance">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="AI/ML 트렌드: 오늘의 축은 ‘모델 성능’에서 ‘칩·에이전트·거버넌스’ 동시 경쟁으로">
+<meta name="twitter:description" content="오늘 #ai-ml-trends 채널에서 눈에 가장 크게 들어온 포인트는 한마디로 전장 이동입니다. AI 트렌드가 더 이상 모델 하나의 점수 경쟁이나 데모 완성도 경쟁에만 머물지 않고, **실행 레이어(칩, 인프라, 거버넌스)**까지 확장되고 있습니다.
+가장 핵심적인 관찰은 Alibaba가 발표한 agentic AI 전용 칩 XuanTie C950입니다. 모델-에이전트-서비스 스택이 한 번에 연결되는 구조에서, 데이터센터 GPU 전략보다 더 앞단의 질문이 “누가 더 빠른 토큰을 뽑나?”가 아니라 “누가 agentic workload를 하드웨어 수준에서 더 잘 흡수하나?”로 바뀌고 있다는 점입니다. 동시에 OpenAI의 Astral 인수 소식은 단순 회사 인수 뉴스가 아니라, 코드 생성 에이전트가 점점 더 개발 환경 전체를 흡수하려는 흐름(환경 관리, 코드 품질, 타입 점검)으로 가고 있음을 보여줍니다.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://kwbaek.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "AI/ML 트렌드: 오늘의 축은 ‘모델 성능’에서 ‘칩·에이전트·거버넌스’ 동시 경쟁으로",
+      "item": "https://kwbaek.github.io/posts/2026-03-24-ai-ml-trends-agentic-ai-shifts-to-infrastructure-and-governance/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "AI/ML 트렌드: 오늘의 축은 ‘모델 성능’에서 ‘칩·에이전트·거버넌스’ 동시 경쟁으로",
+  "name": "AI\/ML 트렌드: 오늘의 축은 ‘모델 성능’에서 ‘칩·에이전트·거버넌스’ 동시 경쟁으로",
+  "description": "오늘 #ai-ml-trends 채널에서 눈에 가장 크게 들어온 포인트는 한마디로 전장 이동입니다. AI 트렌드가 더 이상 모델 하나의 점수 경쟁이나 데모 완성도 경쟁에만 머물지 않고, **실행 레이어(칩, 인프라, 거버넌스)**까지 확장되고 있습니다.\n가장 핵심적인 관찰은 Alibaba가 발표한 agentic AI 전용 칩 XuanTie C950입니다. 모델-에이전트-서비스 스택이 한 번에 연결되는 구조에서, 데이터센터 GPU 전략보다 더 앞단의 질문이 “누가 더 빠른 토큰을 뽑나?”가 아니라 “누가 agentic workload를 하드웨어 수준에서 더 잘 흡수하나?”로 바뀌고 있다는 점입니다. 동시에 OpenAI의 Astral 인수 소식은 단순 회사 인수 뉴스가 아니라, 코드 생성 에이전트가 점점 더 개발 환경 전체를 흡수하려는 흐름(환경 관리, 코드 품질, 타입 점검)으로 가고 있음을 보여줍니다.\n",
+  "keywords": [
+    "AI/ML", "Agentic AI", "Inference Infrastructure", "OpenAI", "Nvidia", "Governance", "Open Source"
+  ],
+  "articleBody": "오늘 #ai-ml-trends 채널에서 눈에 가장 크게 들어온 포인트는 한마디로 전장 이동입니다. AI 트렌드가 더 이상 모델 하나의 점수 경쟁이나 데모 완성도 경쟁에만 머물지 않고, **실행 레이어(칩, 인프라, 거버넌스)**까지 확장되고 있습니다.\n가장 핵심적인 관찰은 Alibaba가 발표한 agentic AI 전용 칩 XuanTie C950입니다. 모델-에이전트-서비스 스택이 한 번에 연결되는 구조에서, 데이터센터 GPU 전략보다 더 앞단의 질문이 “누가 더 빠른 토큰을 뽑나?”가 아니라 “누가 agentic workload를 하드웨어 수준에서 더 잘 흡수하나?”로 바뀌고 있다는 점입니다. 동시에 OpenAI의 Astral 인수 소식은 단순 회사 인수 뉴스가 아니라, 코드 생성 에이전트가 점점 더 개발 환경 전체를 흡수하려는 흐름(환경 관리, 코드 품질, 타입 점검)으로 가고 있음을 보여줍니다.\n또 하나는 Nvidia 쪽입니다. GPU 리소스 할당을 CNCF/Kubernetes 생태계로 오픈 기여한다는 신호는 AI의 병목이 더 이상 모델 학습 시간만이 아니라 운영 오케스트레이션 전반으로 이동했음을 뜻합니다. “컨테이너 단위로 모델을 올린 뒤 잘 쓰는가”를 넘어서, 멀티테넌시·보안·쿼터·동적 스케줄링까지 본격 경쟁이 될 수밖에 없습니다. 이 부분은 오늘 본 Meta의 4세대 커스텀 AI 칩 로드맵과도 맞닿습니다. AI 하드웨어가 범용 GPU를 넘어서 특정 워크로드로 specialize 되면서, 생산비·지연·추론비 최적화가 더 정밀해집니다.\n정리하면 오늘 트렌드는 세 갈래로 정리됩니다.\n칩 경쟁의 재구성: 범용성보다 agentic/추론/미디어/서비스 오케스트레이션 성능에 최적화된 커스텀 스택이 늘어남 안전/신뢰성의 운영화: Palantir 핵심 군사 시스템 수용 같은 이슈는 AI가 더는 “연구 장난감”이 아니라 실제 공공 안전 체계 의존도가 높은 영역으로 들어감을 뜻함 평가 관점의 확장: ECB의 생산성 전망, Anthropic Institute 출범처럼 단일 점수 대신 정책·거버넌스·사회적 파급까지 다뤄지는 방식이 강화 요약하면, 오늘의 AI는 더 거칠게 요약하면 “좋은 모델보다 좋은 운영 시스템을 누가 빨리 갖추나”의 판으로 이동하고 있습니다. 앞으로는 모델이 똑똑한 것보다, 그 똑똑함을 어디까지 안전하고 일관되게 배치해 쓰는지가 시장 판도를 가를 가능성이 큽니다.\n",
+  "wordCount" : "252",
+  "inLanguage": "en",
+  "datePublished": "2026-03-24T21:00:00+09:00",
+  "dateModified": "2026-03-24T21:00:00+09:00",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://kwbaek.github.io/posts/2026-03-24-ai-ml-trends-agentic-ai-shifts-to-infrastructure-and-governance/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Kyungwook's Devlog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://kwbaek.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://kwbaek.github.io/" accesskey="h" title="Kyungwook&#39;s Devlog (Alt + H)">Kyungwook&#39;s Devlog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://kwbaek.github.io/categories/" title="categories">
+                    <span>categories</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kwbaek.github.io/tags/" title="tags">
+                    <span>tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kwbaek.github.io/" title="Kyungwook&#39;s Devlog">
+                    <span>Kyungwook&#39;s Devlog</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      AI/ML 트렌드: 오늘의 축은 ‘모델 성능’에서 ‘칩·에이전트·거버넌스’ 동시 경쟁으로
+    </h1>
+    <div class="post-meta"><span title='2026-03-24 21:00:00 +0900 KST'>March 24, 2026</span>
+
+</div>
+  </header> 
+  <div class="post-content"><p>오늘 <code>#ai-ml-trends</code> 채널에서 눈에 가장 크게 들어온 포인트는 한마디로 <strong>전장 이동</strong>입니다. AI 트렌드가 더 이상 모델 하나의 점수 경쟁이나 데모 완성도 경쟁에만 머물지 않고, **실행 레이어(칩, 인프라, 거버넌스)**까지 확장되고 있습니다.</p>
+<p>가장 핵심적인 관찰은 Alibaba가 발표한 <code>agentic AI</code> 전용 칩 <code>XuanTie C950</code>입니다. 모델-에이전트-서비스 스택이 한 번에 연결되는 구조에서, 데이터센터 GPU 전략보다 더 앞단의 질문이 “누가 더 빠른 토큰을 뽑나?”가 아니라 “누가 <code>agentic workload</code>를 하드웨어 수준에서 더 잘 흡수하나?”로 바뀌고 있다는 점입니다. 동시에 OpenAI의 Astral 인수 소식은 단순 회사 인수 뉴스가 아니라, 코드 생성 에이전트가 점점 더 <strong>개발 환경 전체</strong>를 흡수하려는 흐름(환경 관리, 코드 품질, 타입 점검)으로 가고 있음을 보여줍니다.</p>
+<p>또 하나는 Nvidia 쪽입니다. GPU 리소스 할당을 CNCF/Kubernetes 생태계로 오픈 기여한다는 신호는 AI의 병목이 더 이상 모델 학습 시간만이 아니라 <code>운영 오케스트레이션</code> 전반으로 이동했음을 뜻합니다. “컨테이너 단위로 모델을 올린 뒤 잘 쓰는가”를 넘어서, 멀티테넌시·보안·쿼터·동적 스케줄링까지 본격 경쟁이 될 수밖에 없습니다. 이 부분은 오늘 본 <code>Meta의 4세대 커스텀 AI 칩</code> 로드맵과도 맞닿습니다. AI 하드웨어가 범용 GPU를 넘어서 특정 워크로드로 specialize 되면서, 생산비·지연·추론비 최적화가 더 정밀해집니다.</p>
+<p>정리하면 오늘 트렌드는 세 갈래로 정리됩니다.</p>
+<ul>
+<li><strong>칩 경쟁의 재구성</strong>: 범용성보다 agentic/추론/미디어/서비스 오케스트레이션 성능에 최적화된 커스텀 스택이 늘어남</li>
+<li><strong>안전/신뢰성의 운영화</strong>: Palantir 핵심 군사 시스템 수용 같은 이슈는 AI가 더는 “연구 장난감”이 아니라 실제 공공 안전 체계 의존도가 높은 영역으로 들어감을 뜻함</li>
+<li><strong>평가 관점의 확장</strong>: ECB의 생산성 전망, Anthropic Institute 출범처럼 단일 점수 대신 정책·거버넌스·사회적 파급까지 다뤄지는 방식이 강화</li>
+</ul>
+<p>요약하면, 오늘의 AI는 더 거칠게 요약하면 “<strong>좋은 모델보다 좋은 운영 시스템을 누가 빨리 갖추나</strong>”의 판으로 이동하고 있습니다. 앞으로는 모델이 똑똑한 것보다, 그 똑똑함을 어디까지 안전하고 일관되게 배치해 쓰는지가 시장 판도를 가를 가능성이 큽니다.</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://kwbaek.github.io/tags/ai/ml/">AI/ML</a></li>
+      <li><a href="https://kwbaek.github.io/tags/agentic-ai/">Agentic-Ai</a></li>
+      <li><a href="https://kwbaek.github.io/tags/inference-infrastructure/">Inference Infrastructure</a></li>
+      <li><a href="https://kwbaek.github.io/tags/openai/">Openai</a></li>
+      <li><a href="https://kwbaek.github.io/tags/nvidia/">Nvidia</a></li>
+      <li><a href="https://kwbaek.github.io/tags/governance/">Governance</a></li>
+      <li><a href="https://kwbaek.github.io/tags/open-source/">Open Source</a></li>
+    </ul>
+  </footer><script src="https://utteranc.es/client.js"
+        repo="kwbaek/blog-comments"
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://kwbaek.github.io/">Kyungwook&#39;s Devlog</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

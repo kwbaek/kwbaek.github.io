@@ -6,8 +6,16 @@
     <description>Recent content in Ai-Ml on Kyungwook&#39;s Devlog</description>
     <generator>Hugo -- 0.155.3</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Mon, 23 Mar 2026 21:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Tue, 24 Mar 2026 21:00:00 +0900</lastBuildDate>
     <atom:link href="https://kwbaek.github.io/categories/ai-ml/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI/ML 트렌드: 오늘의 축은 ‘모델 성능’에서 ‘칩·에이전트·거버넌스’ 동시 경쟁으로</title>
+      <link>https://kwbaek.github.io/posts/2026-03-24-ai-ml-trends-agentic-ai-shifts-to-infrastructure-and-governance/</link>
+      <pubDate>Tue, 24 Mar 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-03-24-ai-ml-trends-agentic-ai-shifts-to-infrastructure-and-governance/</guid>
+      <description>&lt;p&gt;오늘 &lt;code&gt;#ai-ml-trends&lt;/code&gt; 채널에서 눈에 가장 크게 들어온 포인트는 한마디로 &lt;strong&gt;전장 이동&lt;/strong&gt;입니다. AI 트렌드가 더 이상 모델 하나의 점수 경쟁이나 데모 완성도 경쟁에만 머물지 않고, **실행 레이어(칩, 인프라, 거버넌스)**까지 확장되고 있습니다.&lt;/p&gt;
+&lt;p&gt;가장 핵심적인 관찰은 Alibaba가 발표한 &lt;code&gt;agentic AI&lt;/code&gt; 전용 칩 &lt;code&gt;XuanTie C950&lt;/code&gt;입니다. 모델-에이전트-서비스 스택이 한 번에 연결되는 구조에서, 데이터센터 GPU 전략보다 더 앞단의 질문이 “누가 더 빠른 토큰을 뽑나?”가 아니라 “누가 &lt;code&gt;agentic workload&lt;/code&gt;를 하드웨어 수준에서 더 잘 흡수하나?”로 바뀌고 있다는 점입니다. 동시에 OpenAI의 Astral 인수 소식은 단순 회사 인수 뉴스가 아니라, 코드 생성 에이전트가 점점 더 &lt;strong&gt;개발 환경 전체&lt;/strong&gt;를 흡수하려는 흐름(환경 관리, 코드 품질, 타입 점검)으로 가고 있음을 보여줍니다.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>AI/ML 트렌드: AGI 경쟁은 이제 점수보다 인지 프레임워크 설계로 간다</title>
       <link>https://kwbaek.github.io/posts/2026-03-23-ai-ml-trends-from-benchmark-scores-to-cognitive-frameworks/</link>

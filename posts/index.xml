@@ -6,8 +6,47 @@
     <description>Recent content in Posts on Kyungwook&#39;s Devlog</description>
     <generator>Hugo -- 0.155.3</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Mon, 23 Mar 2026 21:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Tue, 24 Mar 2026 21:00:00 +0900</lastBuildDate>
     <atom:link href="https://kwbaek.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI/ML 트렌드: 오늘의 축은 ‘모델 성능’에서 ‘칩·에이전트·거버넌스’ 동시 경쟁으로</title>
+      <link>https://kwbaek.github.io/posts/2026-03-24-ai-ml-trends-agentic-ai-shifts-to-infrastructure-and-governance/</link>
+      <pubDate>Tue, 24 Mar 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-03-24-ai-ml-trends-agentic-ai-shifts-to-infrastructure-and-governance/</guid>
+      <description>&lt;p&gt;오늘 &lt;code&gt;#ai-ml-trends&lt;/code&gt; 채널에서 눈에 가장 크게 들어온 포인트는 한마디로 &lt;strong&gt;전장 이동&lt;/strong&gt;입니다. AI 트렌드가 더 이상 모델 하나의 점수 경쟁이나 데모 완성도 경쟁에만 머물지 않고, **실행 레이어(칩, 인프라, 거버넌스)**까지 확장되고 있습니다.&lt;/p&gt;
+&lt;p&gt;가장 핵심적인 관찰은 Alibaba가 발표한 &lt;code&gt;agentic AI&lt;/code&gt; 전용 칩 &lt;code&gt;XuanTie C950&lt;/code&gt;입니다. 모델-에이전트-서비스 스택이 한 번에 연결되는 구조에서, 데이터센터 GPU 전략보다 더 앞단의 질문이 “누가 더 빠른 토큰을 뽑나?”가 아니라 “누가 &lt;code&gt;agentic workload&lt;/code&gt;를 하드웨어 수준에서 더 잘 흡수하나?”로 바뀌고 있다는 점입니다. 동시에 OpenAI의 Astral 인수 소식은 단순 회사 인수 뉴스가 아니라, 코드 생성 에이전트가 점점 더 &lt;strong&gt;개발 환경 전체&lt;/strong&gt;를 흡수하려는 흐름(환경 관리, 코드 품질, 타입 점검)으로 가고 있음을 보여줍니다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>OpenClaw 실전 운영 팁: 매일 블로그 자동화는 워크플로 안정성이 성패를 가른다</title>
+      <link>https://kwbaek.github.io/posts/2026-03-24-openclaw-practical-ops-for-todays-blog-automation/</link>
+      <pubDate>Tue, 24 Mar 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-03-24-openclaw-practical-ops-for-todays-blog-automation/</guid>
+      <description>&lt;p&gt;오늘은 수동으로 아이템을 고르는 글쓰기보다 &lt;code&gt;cron-instructions&lt;/code&gt; 기반 자동 퍼블리싱이 훨씬 핵심이 되는 날입니다. 특히 &lt;code&gt;#ai-ml-trends&lt;/code&gt;처럼 매일 정보가 들어오는 채널은 운영 루틴이 안 잡히면 금방 품질이 떨어집니다. 그래서 OpenClaw를 실제로 쓰는 관점에서 한 가지 분명한 결론이 나옵니다. &lt;strong&gt;좋은 기능 추가보다, 반복 작업이 망가졌을 때 회복되는가&lt;/strong&gt;가 더 중요하다는 겁니다.&lt;/p&gt;
+&lt;p&gt;우선 실무에서 바로 쓸 만한 체크포인트를 정리하면:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;지시문 파일 우선순위 고정&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;지시서가 여러 곳에 산재하면 판단 분산이 생깁니다. 작업 흐름을 한 파일(&lt;code&gt;cron-instructions/...&lt;/code&gt;)로 고정하고, 소스 채널은 읽기만 전담하게 두는 편이 안정적입니다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;채널 읽기 -&amp;gt; 선별 -&amp;gt; 포맷 변환을 분리&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;Discord 메시지는 원문은 빠르게 변합니다. OpenClaw에게 할 일은 “채널 수집”과 “블로그 포맷 변환”을 분리해 넘기는 것. 그래야 추후 규칙 변경(예: 카테고리, 글자 수)이 생겨도 충돌이 적습니다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Git/빌드/배포 실패를 같은 턴에서 처리&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;오늘처럼 매일 2개 포스트를 작성해 바로 push해야 하는 워크플로는 빌드 실패 지점(의존성, md front matter, 태그 누락) 하나만 있어도 루틴이 멈춥니다. 그래서 &lt;code&gt;hugo&lt;/code&gt; 실행 직전 점검 단계까지 자동화 스크립트에 넣는 게 좋습니다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;OpenClaw 운영 보안/설정 루틴과 같이 묶기&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;openclaw config validate&lt;/code&gt;와 &lt;code&gt;openclaw update --dry-run&lt;/code&gt;, healthz/health 체크를 블로그 주기와 분리하면 “오늘은 글은 잘 올라오는데 내일 갑자기 실패” 패턴을 줄일 수 있습니다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;오늘 같은 다중 생성 루틴에서는 &lt;strong&gt;콘텐츠 품질보다 안정성 우선순위&lt;/strong&gt;를 한 번에 바꾸는 게 오히려 효과가 큽니다. 특히 다음이 실무에서 체감됩니다:&lt;/p&gt;</description>
+    </item>
     <item>
       <title>AI/ML 트렌드: AGI 경쟁은 이제 점수보다 인지 프레임워크 설계로 간다</title>
       <link>https://kwbaek.github.io/posts/2026-03-23-ai-ml-trends-from-benchmark-scores-to-cognitive-frameworks/</link>
