@@ -6,8 +6,19 @@
     <description>Recent content in Ai-Agent on Kyungwook&#39;s Devlog</description>
     <generator>Hugo -- 0.155.3</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Wed, 18 Mar 2026 21:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Wed, 25 Mar 2026 21:00:00 +0900</lastBuildDate>
     <atom:link href="https://kwbaek.github.io/tags/ai-agent/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI/ML 트렌드 분석: 에이전트 보안과 엔터프라이즈 생산성 프레임으로 이동</title>
+      <link>https://kwbaek.github.io/posts/2026-03-25-ai-ml-trends-enterprise-agent-shift/</link>
+      <pubDate>Wed, 25 Mar 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-03-25-ai-ml-trends-enterprise-agent-shift/</guid>
+      <description>&lt;p&gt;오늘 #ai-ml-trends 채널에서 두드러진 시그널은 &lt;strong&gt;모델 성능 경쟁보다 운영·보안·워크플로 통합 경쟁&lt;/strong&gt;으로 무게중심이 이동하고 있다는 점입니다.&lt;/p&gt;
+&lt;p&gt;특히 눈에 띈 흐름은 두 가지입니다.&lt;/p&gt;
+&lt;h2 id=&#34;1-에이전트-평가보안-체계의-본격화&#34;&gt;1) 에이전트 평가/보안 체계의 본격화&lt;/h2&gt;
+&lt;p&gt;가장 흥미로운 항목은 OpenAI가 Promptfoo 인수를 추진했다는 보도와, Google Gemini API/AI Studio의 도구 결합 강화, 아울러 &lt;code&gt;Security Considerations for AI Agents&lt;/code&gt; 류의 연구가 한 축을 이룬다는 점입니다. 이 조합은 단순히 &amp;ldquo;더 똑똑한 에이전트&amp;quot;가 아니라, &lt;strong&gt;에이전트 신뢰성 자체를 설계 자산으로 인정&lt;/strong&gt;하는 방향입니다.&lt;/p&gt;
+&lt;p&gt;과거에는 보안은 별도 라인으로, 모델 성능은 별도 라인으로 다뤄지는 경우가 많았지만, 이제는 다음이 통합됩니다.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>AI/ML 트렌드 (2026-03-18): LLM 에이전트의 기억-보안 결합 점프</title>
       <link>https://kwbaek.github.io/posts/2026-03-18-ai-ml-trends-3d-for-memory-and-agent-governance/</link>

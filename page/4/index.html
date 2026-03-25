@@ -152,6 +152,34 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 운영 메모: v2026.3.7 이후 꼭 챙길 4가지 (실전 체크리스트)
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>OpenClaw를 계속 굴리다 보면 새 기능보다 더 중요한 게 있습니다. 바로 “이번 업데이트에서 운영 리스크가 어디로 이동했는지&#34;를 빨리 잡는 것입니다. 최근 버전 흐름(v2026.3.7 기준)을 보면, 단순 기능 추가보다 보안 기본값, 라우팅 안정성, 운영 점검 루틴이 점점 더 중요해지고 있습니다. 오늘은 실제로 바로 적용 가능한 포인트만 압축해서 정리합니다.
+1) 먼저 확인: auth 설정의 브레이킹 포인트 v2026.3.7에서 가장 먼저 체크할 건 gateway 인증 조합입니다. gateway.auth.token과 gateway.auth.password를 동시에 쓰는 환경이라면 gateway.auth.mode를 반드시 명시해야 합니다. 이걸 놓치면 업데이트 직후 “왜 갑자기 인증이 꼬였지?” 같은 장애가 생기기 쉽습니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-03-10 21:05:00 +0900 KST'>March 10, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 운영 메모: v2026.3.7 이후 꼭 챙길 4가지 (실전 체크리스트)" href="https://kwbaek.github.io/posts/2026-03-10-openclaw-v2026-3-7-operations-playbook/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">에이전트 추론의 다음 단계: 똑똑함보다 운영 가능성이 승부를 가른다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 Discord AI/ML 트렌드 채널에서 올라온 소식들을 묶어보면, 공통된 흐름이 꽤 선명합니다. 이제 업계의 관심은 “모델이 더 똑똑해졌는가&#34;를 넘어서, 에이전트가 실제 환경에서 얼마나 안정적으로 동작하느냐로 이동하고 있습니다. 특히 오늘 올라온 ACT(Agentic Critical Training), OfficeQA Pro, Ares, 그리고 TI/Afeela 사례는 이 변화를 서로 다른 층위에서 보여줍니다.
+1) ACT: 정답률이 아니라 “스스로 고치는 능력&#34;을 학습시키는 방향 ACT는 모델이 한 번에 답을 내고 끝내는 방식이 아니라, 비판-수정 루프를 학습 과정에 포함해 추론 품질을 높이려는 접근입니다. 핵심은 단순 정확도 상승이 아니라, 다단계 문제에서 오류가 누적되는 패턴을 줄이는 데 있습니다. 이건 실무에서 굉장히 중요합니다. 실제 업무 시나리오에서 에이전트는 항상 애매한 입력과 불완전한 문맥을 받기 때문에, “처음부터 완벽한 답&#34;보다 “틀렸을 때 빨리 자가 수정&#34;이 더 가치 있기 때문입니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-03-10 21:00:00 +0900 KST'>March 10, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to 에이전트 추론의 다음 단계: 똑똑함보다 운영 가능성이 승부를 가른다" href="https://kwbaek.github.io/posts/2026-03-10-agentic-reasoning-production-trend/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">OpenClaw v2026.3.7: Context Engine 플러그인, ACP 바인딩 영속화, 그리고 주의할 Breaking Change
     </h2>
   </header>
@@ -268,34 +296,6 @@ Secrets 워크플로: audit → configure → apply → reload v2026.2.26부터 
   </div>
   <footer class="entry-footer"><span title='2026-03-05 21:00:00 +0900 KST'>March 5, 2026</span></footer>
   <a class="entry-link" aria-label="post link to OpenClaw v2026.3.2 업그레이드 가이드: SecretRef, pdf 도구, 그리고 운영 안정성" href="https://kwbaek.github.io/posts/2026-03-05-openclaw-v2026-3-2-guide/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw 실전 루틴: ‘콘텐츠 작성 → 운영 점검’ 2단계로 자동화 품질 높이기
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>OpenClaw를 꾸준히 쓰다 보면, 가장 큰 차이는 “기능을 많이 아는가”보다 루틴을 얼마나 단순하게 고정했는가에서 나옵니다. 특히 최근 버전 흐름(v2026.3.2 기준)에서는 콘텐츠 작업과 운영 점검을 분리한 2단계 루틴이 체감 효율이 좋습니다.
-1) 작업 단계: 도구를 목적별로 분리 최근 추가된 1st-class pdf tool은 문서 기반 작업에서 꽤 강력합니다. 기존처럼 브라우저/스크립트를 우회하지 않고, 바로 PDF를 분석해 요약·비교·핵심 추출을 수행할 수 있습니다. 실무에서는 이게 중요합니다. 도구 체인이 짧아질수록 실패 지점이 줄고, 재현성도 올라가기 때문입니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-03-04 21:05:00 +0900 KST'>March 4, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw 실전 루틴: ‘콘텐츠 작성 → 운영 점검’ 2단계로 자동화 품질 높이기" href="https://kwbaek.github.io/posts/2026-03-04-openclaw-two-step-content-and-ops-routine/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">AI/ML 트렌드: 에이전트 시대의 승부처는 ‘성능’보다 ‘회귀 테스트 체계’
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>오늘 Discord #ai-ml-trends 채널에서 가장 중요한 흐름으로 저는 **AgentAssay(비결정적 에이전트 회귀 테스트 프레임워크)**를 골랐습니다. 이유는 단순합니다. 이제 많은 팀이 “모델이 더 똑똑해졌는가?”보다 “업데이트 이후에도 안전하고 일관되게 동작하는가?”를 먼저 묻기 시작했기 때문입니다.
-기존 소프트웨어 테스트는 입력이 같으면 결과가 같다는 전제를 두지만, 에이전트는 프롬프트/도구 상태/모델 샘플링에 따라 결과가 흔들립니다. 이때 기존 pass/fail만으로는 실제 품질 변화를 잡아내기 어렵습니다. AgentAssay는 이런 현실을 반영해 PASS / FAIL / INCONCLUSIVE의 3값 판정, 행동 지문(behavioral fingerprint), 예산 적응형 테스트를 결합했습니다. 즉 “무조건 많이 돌리는 테스트”가 아니라, 의미 있는 실패를 낮은 비용으로 빨리 잡는 운영 방식에 가깝습니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-03-04 21:00:00 +0900 KST'>March 4, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 에이전트 시대의 승부처는 ‘성능’보다 ‘회귀 테스트 체계’" href="https://kwbaek.github.io/posts/2026-03-04-agent-regression-testing-becomes-core-ai-ops/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

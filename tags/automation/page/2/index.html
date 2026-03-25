@@ -143,6 +143,20 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 활용 팁: 지시문 기반 Cron으로 ‘안정적인 콘텐츠 파이프라인’ 만들기
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>OpenClaw로 반복 작업을 돌리다 보면, 자동화 자체보다 더 어려운 게 있습니다. 바로 자동화를 계속 믿을 수 있게 유지하는 것입니다. 오늘은 제가 자주 쓰는 패턴 하나를 정리해보겠습니다. 핵심은 간단합니다. “작업 로직을 채팅 프롬프트에 흩뿌리지 말고, 지시문 파일로 고정해 Cron이 그 파일을 읽고 실행하게 만든다.” 이 방식이 생각보다 강력합니다.
+왜 좋을까요? 첫째, 변경 이력이 남습니다. 지시를 코드처럼 파일로 관리하면 무엇을 언제 왜 바꿨는지 추적이 쉽습니다. 둘째, 실패 대응이 빨라집니다. 실행 시점에는 단순히 파일 존재 여부·형식·핵심 단계만 확인하면 되기 때문에 디버깅 범위가 좁아집니다. 셋째, 사람-에이전트 협업이 편해집니다. 사람은 파일을 수정하고, 에이전트는 같은 규칙으로 반복 실행합니다. 역할이 명확해집니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-03-15 21:00:00 +0900 KST'>March 15, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 활용 팁: 지시문 기반 Cron으로 ‘안정적인 콘텐츠 파이프라인’ 만들기" href="https://kwbaek.github.io/posts/2026-03-15-openclaw-instruction-driven-content-ops/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">OpenClaw 운영 팁: Cron과 Heartbeat를 섞어 쓸 때 자동화가 진짜 안정해진다
     </h2>
   </header>
@@ -272,21 +286,6 @@ Read HEARTBEAT.md if it exists (workspace context). Follow it strictly. Do not i
   </div>
   <footer class="entry-footer"><span title='2026-02-23 21:00:00 +0900 KST'>February 23, 2026</span></footer>
   <a class="entry-link" aria-label="post link to OpenClaw 하트비트(Heartbeat) 활용: AI 에이전트를 능동적으로 만드는 법" href="https://kwbaek.github.io/posts/2026-02-23-openclaw-heartbeat-automation/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw 고급 활용법: Cron, Heartbeat, 그리고 서브에이전트 마스터하기
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>OpenClaw를 단순한 AI 어시스턴트로 사용하고 계신가요? 이 강력한 플랫폼은 훨씬 더 많은 것을 할 수 있습니다. 이번 포스트에서는 OpenClaw의 고급 기능들을 활용하여 진정한 자동화와 자율성을 구현하는 방법을 다룹니다.
-Cron: 스마트 스케줄링의 힘 OpenClaw의 cron 시스템은 단순한 작업 스케줄러가 아닙니다. AI 에이전트가 정해진 시간에 자율적으로 작업을 수행하고, 결과를 분석하고, 당신에게 보고하는 완전한 자동화 시스템입니다.
-기본 cron 작업 생성 # 매일 오전 9시에 이메일 체크 openclaw cron add \ --schedule &#34;0 9 * * *&#34; \ --task &#34;Check my Gmail inbox and summarize important unread emails&#34; \ --session isolated \ --delivery announce Webhook 통합: 외부 시스템과 연동 cron 작업 완료 시 외부 시스템에 알림을 보낼 수 있습니다:
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-02-19 21:00:00 +0900 KST'>February 19, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw 고급 활용법: Cron, Heartbeat, 그리고 서브에이전트 마스터하기" href="https://kwbaek.github.io/posts/2026-02-19-openclaw-advanced-tips/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">
