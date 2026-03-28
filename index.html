@@ -152,6 +152,34 @@
 
 <article class="first-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 팁: validate·health·cleanup으로 운영 기본기부터 자동화하기
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>OpenClaw를 한동안 굴려보면, 새 기능을 쫓는 것보다 더 중요해지는 순간이 옵니다. 바로 **“지금 이 인스턴스가 건강하게 돌아가고 있는가”**를 짧고 확실하게 확인하는 일입니다. 모델 추가, 채널 연동, 크론 자동화, 서브에이전트 운영도 물론 중요하지만, 실제로 오래 안정적으로 쓰려면 먼저 운영 기본기가 탄탄해야 합니다. 최근 OpenClaw 쪽에서 특히 실용적으로 느껴지는 패턴은 config validate, /healthz·/readyz, 그리고 세션 정리 루틴을 한 묶음으로 보는 방식입니다.
+이 조합이 좋은 이유는 간단합니다. 많은 운영 문제는 화려한 장애가 아니라 애매한 불안정성으로 시작하기 때문입니다. 설정은 저장됐는데 실제로는 canonical 키가 어긋나 있거나, 게이트웨이는 살아 있는데 준비 상태가 덜 됐거나, 세션 저장소에 찌꺼기가 쌓여서 나중에 이상 동작이 생기는 식입니다. 이런 문제는 각각 따로 보면 사소해 보이지만, 시간이 지나면 “왜 오늘은 이상하지?” 같은 피로를 만들죠. 그래서 OpenClaw 운영에서는 작은 검증 3개를 습관처럼 묶는 게 꽤 효과적입니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-03-28 21:05:00 +0900 KST'>March 28, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 팁: validate·health·cleanup으로 운영 기본기부터 자동화하기" href="https://kwbaek.github.io/posts/2026-03-28-openclaw-ops-baseline-with-validate-health-and-cleanup/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">AI/ML 트렌드: 딥페이크 전쟁의 핵심은 이제 모델보다 유통과 검증이다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 #ai-ml-trends 채널에서 가장 강하게 눈에 들어온 신호는 Reuters가 보도한 미국 중간선거 국면의 AI 딥페이크 확산이었습니다. 표면적으로는 또 하나의 “딥페이크가 위험하다&#34;는 뉴스처럼 보일 수 있지만, 조금만 더 들여다보면 포인트는 모델 품질 그 자체가 아닙니다. 진짜 핵심은 생성 능력의 고도화보다, 가짜 콘텐츠가 얼마나 빠르게 퍼지고 사람들이 얼마나 느리게 검증하는가 쪽으로 전장이 이동했다는 점입니다.
+예전에는 생성형 AI 리스크를 이야기할 때 주로 “영상이 얼마나 정교한가”, “목소리가 얼마나 자연스러운가”, “모델이 얼마나 쉽게 악용될 수 있는가&#34;에 초점이 맞춰졌습니다. 그런데 이제는 그 다음 단계가 더 중요해졌습니다. 실제 선거 국면에서는 콘텐츠 한 건이 완벽해서 문제가 되기보다, 짧은 시간 안에 대량으로 유통되고 정치적 맥락에 맞게 증폭되는 구조가 더 치명적입니다. 완성도가 100점이 아니어도, 타이밍과 플랫폼 구조가 맞으면 여론을 흔드는 데는 충분하다는 뜻입니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-03-28 21:00:00 +0900 KST'>March 28, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 딥페이크 전쟁의 핵심은 이제 모델보다 유통과 검증이다" href="https://kwbaek.github.io/posts/2026-03-28-ai-deepfakes-shift-the-battleground-from-models-to-distribution/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">AI/ML 트렌드 분석: 이제 경쟁력은 모델보다 운영 절차에 있다
     </h2>
   </header>
@@ -265,34 +293,6 @@
   </div>
   <footer class="entry-footer"><span title='2026-03-23 21:00:00 +0900 KST'>March 23, 2026</span></footer>
   <a class="entry-link" aria-label="post link to OpenClaw 팁: 매일 쓰는 자동화일수록 새 기능보다 신뢰성 패치가 더 중요하다" href="https://kwbaek.github.io/posts/2026-03-23-openclaw-reliability-beats-feature-chasing-in-daily-ops/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">AI/ML 트렌드: 멀티모달 추론은 이제 정답보다 구성 과정을 학습한다
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>오늘 #ai-ml-trends 채널에서 가장 흥미로웠던 흐름은, 멀티모달 모델이 더 이상 정답만 잘 맞히는 시스템으로 평가되지 않고, 문제를 풀기 위해 어떤 중간 구성 과정을 거치느냐까지 직접 학습하고 최적화하는 방향으로 넘어가고 있다는 점이었습니다. 그중 가장 강한 신호는 Thinking with Constructions였습니다.
-이 논문이 던지는 메시지는 꽤 선명합니다. 기하 문제나 시각 추론 문제를 풀 때 중요한 것은 최종 답을 맞히는 능력만이 아니라, 필요한 보조선과 도형을 언제 추가하고 어떤 순서로 구성할지 결정하는 능력이라는 것입니다. 기존 멀티모달 모델은 정적인 이미지와 텍스트를 받아 “그럴듯한 답&#34;을 내는 데 초점이 있었다면, 여기서는 한 단계 더 나아가 시각적 구성 자체를 추론의 일부로 다룹니다. 즉 모델이 보는 것만으로 끝나는 게 아니라, 문제 해결을 위해 무엇을 더 만들어야 하는지까지 학습 대상이 됩니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-03-22 21:00:00 +0900 KST'>March 22, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 멀티모달 추론은 이제 정답보다 구성 과정을 학습한다" href="https://kwbaek.github.io/posts/2026-03-22-ai-ml-trends-multimodal-reasoning-shifts-to-constructive-processes/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw 팁: heartbeat 하나로 릴리즈 체크와 운영 보고를 가볍게 돌리는 법
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>OpenClaw를 오래 돌리다 보면, 거창한 자동화보다 더 자주 필요한 작업이 있습니다. 바로 “오늘 바뀐 게 있는지 짧게 확인하고, 있으면 바로 요약해서 남기는 일” 입니다. 릴리즈 체크, 운영 이슈 확인, 간단한 헬스체크, 팀 채널 보고 같은 루틴이 대표적이죠. 이런 작업은 중요하지만 너무 무겁게 설계하면 금방 귀찮아지고, 반대로 너무 느슨하면 놓치기 쉽습니다. 이럴 때 잘 맞는 패턴이 heartbeat &#43; 짧은 구조화 보고 조합입니다.
-핵심 아이디어는 단순합니다. heartbeat는 정확히 정각에 돌아야 하는 잡이 아니라, “주기적으로 상태를 살핀다&#34;는 성격의 작업에 더 잘 맞습니다. 예를 들어 브라우저 연결 상태를 확인하고, 최신 릴리즈가 있는지 보고, 있으면 요약 포인트 2~3개만 정리해 특정 채널에 남기는 흐름입니다. 이 방식의 장점은, 여러 개의 작은 운영 점검을 하나의 문맥 안에 묶을 수 있다는 점입니다. 메일 체크 하나, 릴리즈 확인 하나, 헬스 엔드포인트 점검 하나를 각각 별도 잡으로 쪼개는 것보다 훨씬 가볍습니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-03-22 21:00:00 +0900 KST'>March 22, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw 팁: heartbeat 하나로 릴리즈 체크와 운영 보고를 가볍게 돌리는 법" href="https://kwbaek.github.io/posts/2026-03-22-openclaw-heartbeat-release-watch-pattern/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">
