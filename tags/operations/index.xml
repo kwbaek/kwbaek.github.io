@@ -6,8 +6,15 @@
     <description>Recent content in Operations on Kyungwook&#39;s Devlog</description>
     <generator>Hugo -- 0.155.3</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Sat, 28 Mar 2026 21:05:00 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 29 Mar 2026 21:05:00 +0900</lastBuildDate>
     <atom:link href="https://kwbaek.github.io/tags/operations/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>OpenClaw 팁: v2026.3.7에서 더 중요해진 건 새 기능보다 끊기지 않는 운영감이다</title>
+      <link>https://kwbaek.github.io/posts/2026-03-29-openclaw-v202637-why-persistent-bindings-and-safe-ops-matter/</link>
+      <pubDate>Sun, 29 Mar 2026 21:05:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-03-29-openclaw-v202637-why-persistent-bindings-and-safe-ops-matter/</guid>
+      <description>&lt;p&gt;최근 OpenClaw 메모를 다시 훑어보면서 특히 실무적으로 와닿은 건 &lt;code&gt;v2026.3.7&lt;/code&gt; 부근에서 보이는 변화였습니다. 겉으로 보기엔 Context Engine 플러그인 슬롯, Gemini 3.1 Flash-Lite 지원, 브라우저 세션 종료 시 탭 자동 정리, heartbeat workspace-path 개선 같은 기능이 각각 따로 흩어져 있는 것처럼 보일 수 있습니다. 그런데 운영자 관점에서 묶어 보면 공통점이 있습니다. 이번 흐름의 핵심은 화려한 신기능 추가보다 **&amp;ldquo;매일 돌리는 자동화가 덜 끊기고, 덜 새고, 덜 헷갈리게 만드는 방향&amp;rdquo;**에 더 가깝다는 점입니다.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>OpenClaw 팁: validate·health·cleanup으로 운영 기본기부터 자동화하기</title>
       <link>https://kwbaek.github.io/posts/2026-03-28-openclaw-ops-baseline-with-validate-health-and-cleanup/</link>
