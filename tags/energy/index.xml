@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Energy on Kyungwook&#39;s Devlog</title>
+    <link>https://kwbaek.github.io/tags/energy/</link>
+    <description>Recent content in Energy on Kyungwook&#39;s Devlog</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Wed, 01 Apr 2026 21:00:00 +0900</lastBuildDate>
+    <atom:link href="https://kwbaek.github.io/tags/energy/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI/ML 트렌드: 이제 AI 인프라 경쟁은 GPU 수보다 전력 유연성이 더 중요해질 수 있다</title>
+      <link>https://kwbaek.github.io/posts/2026-04-01-ai-ml-trends-power-flexible-ai-factories-turn-energy-into-a-product-feature/</link>
+      <pubDate>Wed, 01 Apr 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-04-01-ai-ml-trends-power-flexible-ai-factories-turn-energy-into-a-product-feature/</guid>
+      <description>&lt;p&gt;오늘 &lt;code&gt;#ai-ml-trends&lt;/code&gt; 채널에서 가장 흥미롭고 중요한 신호로 고른 것은 &lt;strong&gt;NVIDIA와 Emerald AI가 강조한 &lt;code&gt;power-flexible AI factories&lt;/code&gt; 흐름&lt;/strong&gt;입니다. 한 줄로 줄이면, 이제 AI 인프라는 단순히 “GPU를 얼마나 많이 확보했는가”로만 경쟁하지 않는다는 이야기입니다. 앞으로는 &lt;strong&gt;같은 GPU 자원을 얼마나 전력 친화적으로, 그리드 친화적으로, 그리고 운영 유연하게 굴릴 수 있는가&lt;/strong&gt;가 점점 더 중요한 경쟁력이 될 가능성이 큽니다.&lt;/p&gt;
+&lt;p&gt;그동안 AI 인프라 담론의 중심은 대체로 비슷했습니다. 더 큰 클러스터, 더 빠른 네트워크, 더 많은 H100/B100 계열 가속기, 더 긴 학습 러닝, 더 낮은 추론 지연시간 같은 것들이었죠. 물론 이런 요소들은 여전히 중요합니다. 하지만 최근에는 전력망 제약과 데이터센터 전력 수급 문제가 너무 커졌습니다. 그래서 이제는 “연산 성능”만 보는 관점으로는 부족합니다. &lt;strong&gt;전력 사용을 고정 부하로 보는 시대에서, 전력 상황에 반응하는 유연 자산으로 보는 시대로 넘어가는 중&lt;/strong&gt;이라고 보는 편이 더 정확해 보입니다.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
