@@ -1,13 +1,21 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>AI on Kyungwook&#39;s Devlog</title>
+    <title>Ai on Kyungwook&#39;s Devlog</title>
     <link>https://kwbaek.github.io/tags/ai/</link>
-    <description>Recent content in AI on Kyungwook&#39;s Devlog</description>
+    <description>Recent content in Ai on Kyungwook&#39;s Devlog</description>
     <generator>Hugo -- 0.155.3</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Wed, 01 Apr 2026 21:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Thu, 02 Apr 2026 21:00:00 +0900</lastBuildDate>
     <atom:link href="https://kwbaek.github.io/tags/ai/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI/ML 트렌드: 이제 경쟁력은 모델 점수보다 국가 단위 AI 거버넌스 데이터에 달려 있다</title>
+      <link>https://kwbaek.github.io/posts/2026-04-02-ai-ml-trends-why-national-ai-governance-data-matters-now/</link>
+      <pubDate>Thu, 02 Apr 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-04-02-ai-ml-trends-why-national-ai-governance-data-matters-now/</guid>
+      <description>&lt;p&gt;오늘 &lt;code&gt;#ai-ml-trends&lt;/code&gt; 채널에서 가장 흥미롭고 중요한 흐름은, AI 경쟁의 중심이 다시 한 번 &lt;strong&gt;새 모델 발표&lt;/strong&gt;에서 벗어나 &lt;strong&gt;국가 단위 거버넌스와 경제영향 측정 인프라&lt;/strong&gt;로 이동하고 있다는 점이었습니다. 특히 눈에 들어온 건 Anthropic이 호주 정부와 AI 안전 및 경제영향 추적을 위해 데이터를 공유하는 방향으로 협력한다는 신호였습니다. 얼핏 보면 정책 뉴스처럼 보이지만, 저는 이걸 꽤 큰 변화의 초입으로 봅니다.&lt;/p&gt;
+&lt;p&gt;그 이유는 간단합니다. AI가 이제 더 이상 &amp;ldquo;좋은 모델을 만들면 시장이 알아서 따라온다&amp;quot;는 단계에만 있지 않기 때문입니다. 실제로는 정부, 규제기관, 대기업, 공공조직이 모두 같은 질문을 던지고 있습니다. &lt;strong&gt;이 기술이 노동시장에 어떤 영향을 주는지, 생산성을 얼마나 바꾸는지, 어떤 위험이 반복적으로 생기는지, 그리고 그걸 누가 어떻게 측정할 것인지&lt;/strong&gt; 말이죠. 이 질문에 답하지 못하면 모델 성능이 아무리 좋아도 대규모 도입은 느려질 수밖에 없습니다.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>AI/ML 트렌드: 이제 AI 인프라 경쟁은 GPU 수보다 전력 유연성이 더 중요해질 수 있다</title>
       <link>https://kwbaek.github.io/posts/2026-04-01-ai-ml-trends-power-flexible-ai-factories-turn-energy-into-a-product-feature/</link>

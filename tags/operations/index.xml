@@ -6,8 +6,16 @@
     <description>Recent content in Operations on Kyungwook&#39;s Devlog</description>
     <generator>Hugo -- 0.155.3</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Sun, 29 Mar 2026 21:05:00 +0900</lastBuildDate>
+    <lastBuildDate>Wed, 01 Apr 2026 21:05:00 +0900</lastBuildDate>
     <atom:link href="https://kwbaek.github.io/tags/operations/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>OpenClaw 팁: PDF 도구와 validate·healthz 루틴을 같이 써야 자동화가 덜 불안해진다</title>
+      <link>https://kwbaek.github.io/posts/2026-04-01-openclaw-pdf-tool-and-validate-healthz-routine-make-daily-automation-safer/</link>
+      <pubDate>Wed, 01 Apr 2026 21:05:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-04-01-openclaw-pdf-tool-and-validate-healthz-routine-make-daily-automation-safer/</guid>
+      <description>&lt;p&gt;최근 OpenClaw 메모를 훑어보다가 실무적으로 특히 마음에 들었던 조합은 두 가지였습니다. 하나는 &lt;strong&gt;1st-class &lt;code&gt;pdf&lt;/code&gt; 도구 지원&lt;/strong&gt;이고, 다른 하나는 이미 기본 루틴처럼 자리 잡은 &lt;strong&gt;&lt;code&gt;config validate&lt;/code&gt; + &lt;code&gt;healthz&lt;/code&gt;/&lt;code&gt;readyz&lt;/code&gt; 점검 흐름&lt;/strong&gt;입니다. 따로 보면 하나는 기능 추가, 하나는 운영 체크처럼 보이지만, 같이 묶어 보면 꽤 중요한 메시지가 있습니다. OpenClaw가 점점 더 “할 수 있는 일이 많은 에이전트”를 넘어, &lt;strong&gt;매일 돌려도 덜 불안한 자동화 런타임&lt;/strong&gt; 쪽으로 정리되고 있다는 점입니다.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;pdf&lt;/code&gt; 도구가 왜 반가운가를 먼저 보면, 이전에는 PDF 처리 작업이 종종 우회 경로를 필요로 했습니다. 텍스트 추출을 따로 하거나, 스크린샷/이미지 변환을 섞거나, 모델별로 어떻게 넣을지 고민해야 하는 경우가 있었죠. 그런데 PDF가 1st-class 도구가 되면 사용 흐름이 훨씬 단순해집니다. 문서 분석, 리포트 요약, 계약서나 발표자료 검토처럼 &lt;strong&gt;실제 업무에서 자주 나오는 입력 형식&lt;/strong&gt;을 더 직접적으로 다룰 수 있기 때문입니다. 이건 사소한 편의 개선이 아니라, 자동화 설계 난도를 낮추는 변화에 가깝습니다.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>OpenClaw 팁: v2026.3.7에서 더 중요해진 건 새 기능보다 끊기지 않는 운영감이다</title>
       <link>https://kwbaek.github.io/posts/2026-03-29-openclaw-v202637-why-persistent-bindings-and-safe-ops-matter/</link>

@@ -143,6 +143,20 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 팁: PDF 도구와 validate·healthz 루틴을 같이 써야 자동화가 덜 불안해진다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>최근 OpenClaw 메모를 훑어보다가 실무적으로 특히 마음에 들었던 조합은 두 가지였습니다. 하나는 1st-class pdf 도구 지원이고, 다른 하나는 이미 기본 루틴처럼 자리 잡은 config validate &#43; healthz/readyz 점검 흐름입니다. 따로 보면 하나는 기능 추가, 하나는 운영 체크처럼 보이지만, 같이 묶어 보면 꽤 중요한 메시지가 있습니다. OpenClaw가 점점 더 “할 수 있는 일이 많은 에이전트”를 넘어, 매일 돌려도 덜 불안한 자동화 런타임 쪽으로 정리되고 있다는 점입니다.
+pdf 도구가 왜 반가운가를 먼저 보면, 이전에는 PDF 처리 작업이 종종 우회 경로를 필요로 했습니다. 텍스트 추출을 따로 하거나, 스크린샷/이미지 변환을 섞거나, 모델별로 어떻게 넣을지 고민해야 하는 경우가 있었죠. 그런데 PDF가 1st-class 도구가 되면 사용 흐름이 훨씬 단순해집니다. 문서 분석, 리포트 요약, 계약서나 발표자료 검토처럼 실제 업무에서 자주 나오는 입력 형식을 더 직접적으로 다룰 수 있기 때문입니다. 이건 사소한 편의 개선이 아니라, 자동화 설계 난도를 낮추는 변화에 가깝습니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-04-01 21:05:00 +0900 KST'>April 1, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 팁: PDF 도구와 validate·healthz 루틴을 같이 써야 자동화가 덜 불안해진다" href="https://kwbaek.github.io/posts/2026-04-01-openclaw-pdf-tool-and-validate-healthz-routine-make-daily-automation-safer/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">OpenClaw 팁: v2026.3.7에서 더 중요해진 건 새 기능보다 끊기지 않는 운영감이다
     </h2>
   </header>
@@ -268,21 +282,6 @@
   </div>
   <footer class="entry-footer"><span title='2026-03-20 21:00:00 +0900 KST'>March 20, 2026</span></footer>
   <a class="entry-link" aria-label="post link to OpenClaw 팁: 매일 도는 콘텐츠 자동화를 덜 피곤하게 운영하는 법" href="https://kwbaek.github.io/posts/2026-03-20-openclaw-operating-daily-content-systems-with-less-friction/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw 운영 노트: 기능 추가보다 중요한 건 운영 규율
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>OpenClaw를 매일 쓰다 보면, 새 기능을 따라가는 속도보다 더 중요한 게 있습니다. 바로 운영 규율(ops discipline) 입니다. 최근 업데이트 메모를 보면 모델/채널/cron/security 관련 기능이 거의 매일 추가되는데, 이 시기일수록 “무엇을 새로 켰는지”보다 “어떻게 안정적으로 굴리는지”가 성패를 가릅니다.
-제가 요즘 기준으로 잡는 핵심은 간단합니다. (1) 검증, (2) 최소권한, (3) 주기 점검, (4) 분리 운용 입니다.
-첫째, 검증입니다. 설정을 바꾼 뒤 바로 운영에 넣기보다 openclaw config validate --json과 health/ready 프로브를 통해 사전 확인하는 루틴이 중요합니다. 이 습관 하나로, 사소한 키 오타나 breaking 변경으로 인한 장애를 꽤 많이 줄일 수 있습니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-03-19 21:00:00 +0900 KST'>March 19, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw 운영 노트: 기능 추가보다 중요한 건 운영 규율" href="https://kwbaek.github.io/posts/2026-03-19-openclaw-from-feature-chasing-to-ops-discipline/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">
