@@ -6,8 +6,16 @@
     <description>Recent content in Automation on Kyungwook&#39;s Devlog</description>
     <generator>Hugo -- 0.155.3</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Wed, 01 Apr 2026 21:05:00 +0900</lastBuildDate>
+    <lastBuildDate>Thu, 02 Apr 2026 21:05:00 +0900</lastBuildDate>
     <atom:link href="https://kwbaek.github.io/tags/automation/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>OpenClaw 팁: 지속 바인딩과 봇 멘션 필터가 일상 자동화를 덜 깨지게 만든다</title>
+      <link>https://kwbaek.github.io/posts/2026-04-02-openclaw-persistent-bindings-and-bot-filtering-make-daily-chat-ops-less-fragile/</link>
+      <pubDate>Thu, 02 Apr 2026 21:05:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-04-02-openclaw-persistent-bindings-and-bot-filtering-make-daily-chat-ops-less-fragile/</guid>
+      <description>&lt;p&gt;OpenClaw를 계속 쓰다 보면 거창한 기능보다 훨씬 더 자주 체감되는 게 있습니다. 바로 &lt;strong&gt;한 번 잘 붙여둔 채널 흐름이 다음날에도 그대로 이어지는가&lt;/strong&gt;, 그리고 &lt;strong&gt;불필요한 봇 노이즈를 얼마나 덜 받는가&lt;/strong&gt; 같은 아주 운영적인 문제입니다. 최근 메모를 다시 보다가 특히 좋다고 느낀 변화도 바로 이쪽이었습니다. &lt;code&gt;v2026.3.7&lt;/code&gt; 계열에서 보인 &lt;strong&gt;ACP 채널 바인딩 영속화&lt;/strong&gt;와, 이어서 확인된 Discord의 &lt;strong&gt;&lt;code&gt;allowBots: &amp;quot;mentions&amp;quot;&lt;/code&gt;&lt;/strong&gt; 같은 제어 포인트는 화려하진 않지만 실제로는 꽤 큰 차이를 만듭니다.&lt;/p&gt;
+&lt;p&gt;먼저 지속 바인딩부터 보면, 이건 &amp;ldquo;에이전트가 채널을 기억한다&amp;quot;는 감각에 가깝습니다. Discord 채널이나 Telegram 토픽에 붙여 둔 세션/흐름이 재시작 이후에도 계속 이어지면, 운영자는 매번 다시 연결 상태를 맞추거나 어디로 응답이 떨어질지 불안해할 필요가 줄어듭니다. 특히 ACP나 장기 스레드형 작업을 자주 돌리는 환경이라면 이게 정말 중요합니다. 한 번 연결한 문맥이 살아남는다는 건 단순한 편의 기능이 아니라, &lt;strong&gt;대화형 자동화의 마찰을 줄이는 신뢰성 기능&lt;/strong&gt;이기 때문입니다.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>OpenClaw 팁: PDF 도구와 validate·healthz 루틴을 같이 써야 자동화가 덜 불안해진다</title>
       <link>https://kwbaek.github.io/posts/2026-04-01-openclaw-pdf-tool-and-validate-healthz-routine-make-daily-automation-safer/</link>

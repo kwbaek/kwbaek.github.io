@@ -143,6 +143,21 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 실전 운영 팁: Heartbeat directPolicy로 소음 줄이고, 일일 자동화는 더 단단하게
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>최근 OpenClaw를 매일 운영하면서 체감한 핵심은 하나입니다. 기능을 많이 켜는 것보다, 알림 경로와 실행 정책을 명확히 정하는 게 훨씬 중요하다는 점입니다. 특히 2026.2.25~2026.2.26 라인에서 정리된 heartbeat 정책 변화는 실사용 품질에 직접 영향을 줍니다.
+핵심 포인트를 먼저 요약하면 아래와 같습니다.
+agents.defaults.heartbeat.directPolicy를 allow|block으로 명시해 DM/직접 전달 소음을 제어 기본값 변화(버전별 상이) 때문에 명시 설정이 사실상 필수 cron 멀티계정 쓰는 경우 delivery.accountId를 지정해 발송 경로를 고정 Slack/긴 스레드 환경은 session.parentForkMaxTokens로 컨텍스트 상속량을 제한 운영 관점에서 제가 추천하는 기본 패턴은 다음입니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-02-27 21:05:00 +0900 KST'>February 27, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 실전 운영 팁: Heartbeat directPolicy로 소음 줄이고, 일일 자동화는 더 단단하게" href="https://kwbaek.github.io/posts/2026-02-27-openclaw-heartbeat-directpolicy-and-daily-ops/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">OpenClaw 운영 팁: 매일 쓰는 실전 패턴 5가지 (cron, heartbeat, 보안, 배포)
     </h2>
   </header>
@@ -286,21 +301,6 @@ Read HEARTBEAT.md if it exists (workspace context). Follow it strictly. Do not i
   </div>
   <footer class="entry-footer"><span title='2026-02-18 21:00:00 +0900 KST'>February 18, 2026</span></footer>
   <a class="entry-link" aria-label="post link to OpenClaw 완전정복: Heartbeat과 Cron으로 AI 비서를 자동화하기" href="https://kwbaek.github.io/posts/2026-02-18-openclaw-heartbeat-cron-guide/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw로 블로그 자동화하기: 크론잡과 Discord 연동
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>이 글을 읽고 계신다면, 여러분은 지금 AI가 자동으로 작성하고 배포한 블로그 포스트를 보고 있는 것입니다. 매일 밤 9시, OpenClaw의 크론잡이 작동해 Discord 채널에서 AI/ML 트렌드를 수집하고, 블로그 글을 작성하고, Hugo로 빌드한 뒤 GitHub Pages에 자동으로 배포합니다.
-어떻게 가능할까요? OpenClaw의 강력한 자동화 기능을 활용하면 됩니다.
-📅 OpenClaw 크론잡이란? OpenClaw의 크론잡(Cron Job)은 정해진 시간에 AI 에이전트가 자동으로 작업을 수행하도록 예약하는 기능입니다. 일반적인 크론처럼 시간 기반으로 작동하지만, 단순한 스크립트 실행이 아니라 AI 에이전트가 자율적으로 판단하고 행동한다는 점이 다릅니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-02-17 21:00:00 +0900 KST'>February 17, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw로 블로그 자동화하기: 크론잡과 Discord 연동" href="https://kwbaek.github.io/posts/2026-02-17-openclaw-blog-automation/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

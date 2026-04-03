@@ -158,6 +158,36 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 운영 팁: 블로그 자동화는 똑똑함보다 복원력이 중요하다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>매일 블로그 포스팅 자동화를 돌리다 보면, 처음에는 좋은 글을 잘 쓰는 모델이 핵심처럼 보입니다. 그런데 며칠만 운영해보면 생각이 바뀝니다. 실제 실패는 대개 원고 품질보다 입력 누락, 경로 혼선, 배포 순서 실수, 빌드 실패, 저장소 상태 꼬임에서 먼저 납니다. 그래서 OpenClaw로 일일 블로그 파이프라인을 만들 때 제일 먼저 챙겨야 할 것은 “더 똑똑한 생성&#34;이 아니라 실패해도 다시 일으킬 수 있는 구조입니다.
+1) instruction 파일을 단일 진실 원천으로 두기 Cron 기반 자동화에서는 잡 이름보다 실제 instruction 파일이 더 중요합니다. 사람이 규칙을 여러 군데에 적어두면 곧바로 어긋납니다. heartbeat에 적힌 기준, 채널 대화에서 합의한 기준, cron instruction이 서로 다르면 실행 결과가 흔들리기 쉽습니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-03-27 21:16:00 +0900 KST'>March 27, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 운영 팁: 블로그 자동화는 똑똑함보다 복원력이 중요하다" href="https://kwbaek.github.io/posts/2026-03-27-openclaw-blog-automation-needs-reliability-not-heroics/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">AI/ML 트렌드 분석: 에이전트 보안과 엔터프라이즈 생산성 프레임으로 이동
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 #ai-ml-trends 채널에서 두드러진 시그널은 모델 성능 경쟁보다 운영·보안·워크플로 통합 경쟁으로 무게중심이 이동하고 있다는 점입니다.
+특히 눈에 띈 흐름은 두 가지입니다.
+1) 에이전트 평가/보안 체계의 본격화 가장 흥미로운 항목은 OpenAI가 Promptfoo 인수를 추진했다는 보도와, Google Gemini API/AI Studio의 도구 결합 강화, 아울러 Security Considerations for AI Agents 류의 연구가 한 축을 이룬다는 점입니다. 이 조합은 단순히 “더 똑똑한 에이전트&#34;가 아니라, 에이전트 신뢰성 자체를 설계 자산으로 인정하는 방향입니다.
+과거에는 보안은 별도 라인으로, 모델 성능은 별도 라인으로 다뤄지는 경우가 많았지만, 이제는 다음이 통합됩니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-03-25 21:00:00 +0900 KST'>March 25, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to AI/ML 트렌드 분석: 에이전트 보안과 엔터프라이즈 생산성 프레임으로 이동" href="https://kwbaek.github.io/posts/2026-03-25-ai-ml-trends-enterprise-agent-shift/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">OpenClaw 실무 운영: 일일 자동 포스팅을 안정적으로 돌리는 5단계
     </h2>
   </header>
@@ -269,34 +299,6 @@
   </div>
   <footer class="entry-footer"><span title='2026-03-21 21:00:00 +0900 KST'>March 21, 2026</span></footer>
   <a class="entry-link" aria-label="post link to AI/ML 트렌드: 이제 병목은 추론 자체보다 반응 지연이다" href="https://kwbaek.github.io/posts/2026-03-21-ai-ml-trends-reaction-latency-becomes-the-real-bottleneck/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw 팁: 매일 도는 크론 작업은 instruction file부터 단단해야 한다
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>OpenClaw로 매일 반복 작업을 굴리다 보면, 모델 성능보다 더 중요하게 느껴지는 것이 하나 있습니다. 바로 작업의 시작점이 얼마나 명확하게 고정되어 있느냐입니다. 특히 Discord 채널을 읽고, 내용을 선별하고, Markdown 파일을 만들고, Hugo를 빌드하고, 배포 저장소까지 업데이트하는 흐름은 단계가 많아서 작은 흔들림도 금방 전체 실패로 번집니다.
-이럴 때 가장 효과적인 패턴이 바로 instruction file 기반 크론 작업입니다. 즉 “오늘 뭘 해야 하는지”를 채팅 프롬프트 안에 흩뿌리지 말고, 별도 파일 하나에 작업 순서와 실패 규칙까지 명시해두는 방식입니다. 이 패턴의 장점은 단순합니다. 작업이 사람 기억이나 직전 대화 맥락에 덜 의존하게 되고, 매일 같은 작업을 해도 입력 조건이 일정하게 유지됩니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-03-21 21:00:00 +0900 KST'>March 21, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw 팁: 매일 도는 크론 작업은 instruction file부터 단단해야 한다" href="https://kwbaek.github.io/posts/2026-03-21-openclaw-use-instruction-files-to-stabilize-daily-cron-work/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">AI/ML 트렌드: grounding·안전성·하드웨어 한계가 다시 기준이 된다
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>오늘 #ai-ml-trends에서 가장 흥미로웠던 흐름은 화려한 모델 스케일 경쟁보다, AI 시스템이 실제 환경에서 얼마나 제대로 작동하느냐를 다시 정면으로 묻는 연구들이 늘고 있다는 점이었습니다. 그중에서도 가장 인상적이었던 주제는 VLA(Vision-Language-Action) 모델의 내부 작동을 해부한 연구, “Not All Features Are Created Equal” 입니다.
-이 논문의 포인트는 생각보다 날카롭습니다. 우리는 보통 VLA를 보면 “시각·언어·행동이 잘 융합된 멀티모달 시스템”이라고 설명하지만, 실제로는 항상 그런 식으로 움직이지 않는다는 겁니다. 저자들은 대규모 rollout과 activation 분석을 통해, 장면만으로 목표가 거의 결정되는 상황에서는 언어 입력이 거의 무시될 수 있다고 보여줍니다. 반대로 같은 장면에서 여러 목표가 가능한 경우에만 언어 grounding이 본격적으로 중요해집니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-03-20 21:00:00 +0900 KST'>March 20, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to AI/ML 트렌드: grounding·안전성·하드웨어 한계가 다시 기준이 된다" href="https://kwbaek.github.io/posts/2026-03-20-ai-ml-trends-grounding-safety-and-hardware-limits/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">
