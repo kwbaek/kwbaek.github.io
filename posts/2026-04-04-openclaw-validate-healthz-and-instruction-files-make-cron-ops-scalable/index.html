@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>OpenClaw 팁: validate·healthz·instruction 파일이 cron 운영을 사람답게 만든다 | Kyungwook&#39;s Devlog</title>
+<meta name="keywords" content="OpenClaw, Cron, Operations, Health Check, Config Validate, Automation">
+<meta name="description" content="OpenClaw를 계속 굴리다 보면 점점 더 분명해지는 게 있습니다. 자동화의 품질은 멋진 프롬프트보다 운영 루틴의 단순함과 복구 가능성에서 갈리는 경우가 많다는 점입니다. 특히 cron 기반 작업은 더 그렇습니다. 한 번 잘 도는 것보다, 다음 날도 비슷하게 돌고, 실패했을 때 원인을 빨리 찾고, 수정했을 때 반영 경로가 명확한 구조가 훨씬 중요합니다. 최근 OpenClaw 운영 메모를 보면 저는 그 핵심이 세 가지라고 생각합니다. config validate, /healthz와 /readyz 같은 프로브, 그리고 작업별 instruction 파일입니다.">
+<meta name="author" content="">
+<link rel="canonical" href="https://kwbaek.github.io/posts/2026-04-04-openclaw-validate-healthz-and-instruction-files-make-cron-ops-scalable/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.da3211e5ef867bf2b75fd5a6515cfed7195c011e8ab735694e203810a827097b.css" integrity="sha256-2jIR5e&#43;Ge/K3X9WmUVz&#43;1xlcAR6KtzVpTiA4EKgnCXs=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://kwbaek.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://kwbaek.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://kwbaek.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://kwbaek.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://kwbaek.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://kwbaek.github.io/posts/2026-04-04-openclaw-validate-healthz-and-instruction-files-make-cron-ops-scalable/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="https://kwbaek.github.io/posts/2026-04-04-openclaw-validate-healthz-and-instruction-files-make-cron-ops-scalable/">
+  <meta property="og:site_name" content="Kyungwook&#39;s Devlog">
+  <meta property="og:title" content="OpenClaw 팁: validate·healthz·instruction 파일이 cron 운영을 사람답게 만든다">
+  <meta property="og:description" content="OpenClaw를 계속 굴리다 보면 점점 더 분명해지는 게 있습니다. 자동화의 품질은 멋진 프롬프트보다 운영 루틴의 단순함과 복구 가능성에서 갈리는 경우가 많다는 점입니다. 특히 cron 기반 작업은 더 그렇습니다. 한 번 잘 도는 것보다, 다음 날도 비슷하게 돌고, 실패했을 때 원인을 빨리 찾고, 수정했을 때 반영 경로가 명확한 구조가 훨씬 중요합니다. 최근 OpenClaw 운영 메모를 보면 저는 그 핵심이 세 가지라고 생각합니다. config validate, /healthz와 /readyz 같은 프로브, 그리고 작업별 instruction 파일입니다.">
+  <meta property="og:locale" content="ko-kr">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2026-04-04T21:05:00+09:00">
+    <meta property="article:modified_time" content="2026-04-04T21:05:00+09:00">
+    <meta property="article:tag" content="Openclaw">
+    <meta property="article:tag" content="Cron">
+    <meta property="article:tag" content="Operations">
+    <meta property="article:tag" content="Health Check">
+    <meta property="article:tag" content="Config Validate">
+    <meta property="article:tag" content="Automation">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="OpenClaw 팁: validate·healthz·instruction 파일이 cron 운영을 사람답게 만든다">
+<meta name="twitter:description" content="OpenClaw를 계속 굴리다 보면 점점 더 분명해지는 게 있습니다. 자동화의 품질은 멋진 프롬프트보다 운영 루틴의 단순함과 복구 가능성에서 갈리는 경우가 많다는 점입니다. 특히 cron 기반 작업은 더 그렇습니다. 한 번 잘 도는 것보다, 다음 날도 비슷하게 돌고, 실패했을 때 원인을 빨리 찾고, 수정했을 때 반영 경로가 명확한 구조가 훨씬 중요합니다. 최근 OpenClaw 운영 메모를 보면 저는 그 핵심이 세 가지라고 생각합니다. config validate, /healthz와 /readyz 같은 프로브, 그리고 작업별 instruction 파일입니다.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://kwbaek.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "OpenClaw 팁: validate·healthz·instruction 파일이 cron 운영을 사람답게 만든다",
+      "item": "https://kwbaek.github.io/posts/2026-04-04-openclaw-validate-healthz-and-instruction-files-make-cron-ops-scalable/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "OpenClaw 팁: validate·healthz·instruction 파일이 cron 운영을 사람답게 만든다",
+  "name": "OpenClaw 팁: validate·healthz·instruction 파일이 cron 운영을 사람답게 만든다",
+  "description": "OpenClaw를 계속 굴리다 보면 점점 더 분명해지는 게 있습니다. 자동화의 품질은 멋진 프롬프트보다 운영 루틴의 단순함과 복구 가능성에서 갈리는 경우가 많다는 점입니다. 특히 cron 기반 작업은 더 그렇습니다. 한 번 잘 도는 것보다, 다음 날도 비슷하게 돌고, 실패했을 때 원인을 빨리 찾고, 수정했을 때 반영 경로가 명확한 구조가 훨씬 중요합니다. 최근 OpenClaw 운영 메모를 보면 저는 그 핵심이 세 가지라고 생각합니다. config validate, /healthz와 /readyz 같은 프로브, 그리고 작업별 instruction 파일입니다.\n",
+  "keywords": [
+    "OpenClaw", "Cron", "Operations", "Health Check", "Config Validate", "Automation"
+  ],
+  "articleBody": "OpenClaw를 계속 굴리다 보면 점점 더 분명해지는 게 있습니다. 자동화의 품질은 멋진 프롬프트보다 운영 루틴의 단순함과 복구 가능성에서 갈리는 경우가 많다는 점입니다. 특히 cron 기반 작업은 더 그렇습니다. 한 번 잘 도는 것보다, 다음 날도 비슷하게 돌고, 실패했을 때 원인을 빨리 찾고, 수정했을 때 반영 경로가 명확한 구조가 훨씬 중요합니다. 최근 OpenClaw 운영 메모를 보면 저는 그 핵심이 세 가지라고 생각합니다. config validate, /healthz와 /readyz 같은 프로브, 그리고 작업별 instruction 파일입니다.\n먼저 config validate의 가치는 생각보다 큽니다. 많은 자동화 시스템에서 가장 짜증나는 실패는 “실행은 됐는데 사실 설정이 이미 삐끗해 있었다”는 종류입니다. 이런 문제는 대개 런타임에서 뒤늦게 터지고, 표면상 증상은 다른 곳처럼 보여서 디버깅 시간을 길게 잡아먹습니다. 반면 OpenClaw에서 설정 검증이 명시적인 1st-class 루틴으로 들어오면, 변경 직후에 구문 문제나 구조 문제를 먼저 좁힐 수 있습니다. 즉 validate는 단순한 편의 기능이 아니라, 작업 실패를 런타임이 아니라 사전 단계로 밀어내는 장치입니다.\n둘째로 /healthz와 /readyz는 운영 감각을 많이 바꿉니다. 예전엔 자동화가 멈췄을 때 “게이트웨이가 완전히 죽은 건지, 그냥 준비가 덜 된 건지, 특정 플러그인만 흔들린 건지”를 감으로 추정하는 경우가 많았습니다. 그런데 프로브가 분리되어 있으면 상태를 훨씬 빨리 읽을 수 있습니다. health는 살아 있는지, ready는 실제 요청을 받을 준비가 됐는지를 나눠 보게 해주기 때문입니다. 이 구분은 소소해 보여도 자동화 운영에선 매우 실용적입니다. cron이 실패했을 때도 단순 재시도보다 먼저 현재 게이트웨이가 준비 상태인지를 확인하는 습관이 생기기 때문입니다.\n셋째는 제가 요즘 특히 높게 보는 패턴인데, 바로 cron-instructions/ 같은 작업별 instruction 파일 분리입니다. 이 방식이 좋은 이유는 단순합니다. 작업 기준이 파일로 남아 있으면, 실행 단위와 운영 기준이 1:1로 대응됩니다. 어떤 채널을 읽는지, 어떤 산출물을 만드는지, 실패 시 어디에 어떻게 보고해야 하는지, 민감정보를 어떻게 다뤄야 하는지가 한 파일 안에 들어갑니다. 이렇게 되면 자동화는 세션 문맥에 의존하는 임시 대화가 아니라, 추적 가능하고 수정 가능한 운영 자산이 됩니다.\n특히 cron 작업은 사람 없이 돌아가는 시간이 길기 때문에, “나중에 봐도 이해되는 구조”가 중요합니다. 어제 왜 실패했는지, 오늘 왜 다른 결과가 나왔는지, 어떤 규칙이 바뀌었는지를 빨리 파악할 수 있어야 합니다. instruction 파일은 이 점에서 상당히 강력합니다. 숨은 프롬프트나 흩어진 메모보다, 작업별 명시 파일이 훨씬 덜 취약합니다. 오늘 같은 블로그 자동화 작업도 결국 안정성을 좌우한 건 모델의 창의성보다 입력 경로와 실패 규칙이 명확했는가였습니다.\n이 세 가지를 같이 보면 OpenClaw 운영의 좋은 습관이 하나로 이어집니다.\n설정을 바꾼다 config validate로 먼저 구조를 확인한다 게이트웨이는 /healthz, /readyz로 현재 상태를 확인한다 cron 작업은 instruction 파일에 입력·출력·실패 규칙을 남긴다 이 흐름의 장점은 화려하지 않지만 아주 큽니다. 자동화가 실패하더라도 어디서부터 봐야 할지 명확하고, 사람 손으로 고칠 때도 경로가 짧습니다. 운영에서 중요한 건 종종 “가장 똑똑한 시스템”이 아니라 가장 빨리 이해되고 가장 빨리 복구되는 시스템입니다. OpenClaw는 도구가 많고 유연해서 잘만 쓰면 강력하지만, 반대로 구조 없이 쓰면 금방 복잡해집니다. 그래서 저는 이런 운영 루틴이 사실상 성능 최적화만큼 중요하다고 봅니다.\n정리하면 OpenClaw cron 운영을 오래 가져가고 싶다면, 특별한 비법보다 기본기가 더 중요합니다.\nconfig validate로 문제를 미리 잡고 healthz/readyz로 현재 상태를 관찰하고 instruction 파일로 작업 기준을 눈에 보이게 남기는 것 이 세 가지만 지켜도 자동화는 훨씬 덜 불안해집니다. 결국 좋은 자동화는 영리한 한 방보다 명확한 기준, 작은 확인, 빠른 복구에서 나옵니다. OpenClaw도 예외는 아닙니다. 오히려 도구가 많은 시스템일수록 이 기본기가 더 큰 차이를 만듭니다.\n",
+  "wordCount" : "490",
+  "inLanguage": "en",
+  "datePublished": "2026-04-04T21:05:00+09:00",
+  "dateModified": "2026-04-04T21:05:00+09:00",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://kwbaek.github.io/posts/2026-04-04-openclaw-validate-healthz-and-instruction-files-make-cron-ops-scalable/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Kyungwook's Devlog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://kwbaek.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://kwbaek.github.io/" accesskey="h" title="Kyungwook&#39;s Devlog (Alt + H)">Kyungwook&#39;s Devlog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://kwbaek.github.io/categories/" title="categories">
+                    <span>categories</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kwbaek.github.io/tags/" title="tags">
+                    <span>tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kwbaek.github.io/" title="Kyungwook&#39;s Devlog">
+                    <span>Kyungwook&#39;s Devlog</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      OpenClaw 팁: validate·healthz·instruction 파일이 cron 운영을 사람답게 만든다
+    </h1>
+    <div class="post-meta"><span title='2026-04-04 21:05:00 +0900 KST'>April 4, 2026</span>
+
+</div>
+  </header> 
+  <div class="post-content"><p>OpenClaw를 계속 굴리다 보면 점점 더 분명해지는 게 있습니다. 자동화의 품질은 멋진 프롬프트보다 <strong>운영 루틴의 단순함과 복구 가능성</strong>에서 갈리는 경우가 많다는 점입니다. 특히 cron 기반 작업은 더 그렇습니다. 한 번 잘 도는 것보다, 다음 날도 비슷하게 돌고, 실패했을 때 원인을 빨리 찾고, 수정했을 때 반영 경로가 명확한 구조가 훨씬 중요합니다. 최근 OpenClaw 운영 메모를 보면 저는 그 핵심이 세 가지라고 생각합니다. <strong><code>config validate</code></strong>, <strong><code>/healthz</code>와 <code>/readyz</code> 같은 프로브</strong>, 그리고 <strong>작업별 instruction 파일</strong>입니다.</p>
+<p>먼저 <code>config validate</code>의 가치는 생각보다 큽니다. 많은 자동화 시스템에서 가장 짜증나는 실패는 “실행은 됐는데 사실 설정이 이미 삐끗해 있었다”는 종류입니다. 이런 문제는 대개 런타임에서 뒤늦게 터지고, 표면상 증상은 다른 곳처럼 보여서 디버깅 시간을 길게 잡아먹습니다. 반면 OpenClaw에서 설정 검증이 명시적인 1st-class 루틴으로 들어오면, 변경 직후에 구문 문제나 구조 문제를 먼저 좁힐 수 있습니다. 즉 validate는 단순한 편의 기능이 아니라, <strong>작업 실패를 런타임이 아니라 사전 단계로 밀어내는 장치</strong>입니다.</p>
+<p>둘째로 <code>/healthz</code>와 <code>/readyz</code>는 운영 감각을 많이 바꿉니다. 예전엔 자동화가 멈췄을 때 “게이트웨이가 완전히 죽은 건지, 그냥 준비가 덜 된 건지, 특정 플러그인만 흔들린 건지”를 감으로 추정하는 경우가 많았습니다. 그런데 프로브가 분리되어 있으면 상태를 훨씬 빨리 읽을 수 있습니다. health는 살아 있는지, ready는 실제 요청을 받을 준비가 됐는지를 나눠 보게 해주기 때문입니다. 이 구분은 소소해 보여도 자동화 운영에선 매우 실용적입니다. cron이 실패했을 때도 단순 재시도보다 먼저 <strong>현재 게이트웨이가 준비 상태인지</strong>를 확인하는 습관이 생기기 때문입니다.</p>
+<p>셋째는 제가 요즘 특히 높게 보는 패턴인데, 바로 <code>cron-instructions/</code> 같은 <strong>작업별 instruction 파일 분리</strong>입니다. 이 방식이 좋은 이유는 단순합니다. 작업 기준이 파일로 남아 있으면, 실행 단위와 운영 기준이 1:1로 대응됩니다. 어떤 채널을 읽는지, 어떤 산출물을 만드는지, 실패 시 어디에 어떻게 보고해야 하는지, 민감정보를 어떻게 다뤄야 하는지가 한 파일 안에 들어갑니다. 이렇게 되면 자동화는 세션 문맥에 의존하는 임시 대화가 아니라, <strong>추적 가능하고 수정 가능한 운영 자산</strong>이 됩니다.</p>
+<p>특히 cron 작업은 사람 없이 돌아가는 시간이 길기 때문에, “나중에 봐도 이해되는 구조”가 중요합니다. 어제 왜 실패했는지, 오늘 왜 다른 결과가 나왔는지, 어떤 규칙이 바뀌었는지를 빨리 파악할 수 있어야 합니다. instruction 파일은 이 점에서 상당히 강력합니다. 숨은 프롬프트나 흩어진 메모보다, 작업별 명시 파일이 훨씬 덜 취약합니다. 오늘 같은 블로그 자동화 작업도 결국 안정성을 좌우한 건 모델의 창의성보다 <strong>입력 경로와 실패 규칙이 명확했는가</strong>였습니다.</p>
+<p>이 세 가지를 같이 보면 OpenClaw 운영의 좋은 습관이 하나로 이어집니다.</p>
+<ul>
+<li>설정을 바꾼다</li>
+<li><code>config validate</code>로 먼저 구조를 확인한다</li>
+<li>게이트웨이는 <code>/healthz</code>, <code>/readyz</code>로 현재 상태를 확인한다</li>
+<li>cron 작업은 instruction 파일에 입력·출력·실패 규칙을 남긴다</li>
+</ul>
+<p>이 흐름의 장점은 화려하지 않지만 아주 큽니다. 자동화가 실패하더라도 어디서부터 봐야 할지 명확하고, 사람 손으로 고칠 때도 경로가 짧습니다. 운영에서 중요한 건 종종 “가장 똑똑한 시스템”이 아니라 <strong>가장 빨리 이해되고 가장 빨리 복구되는 시스템</strong>입니다. OpenClaw는 도구가 많고 유연해서 잘만 쓰면 강력하지만, 반대로 구조 없이 쓰면 금방 복잡해집니다. 그래서 저는 이런 운영 루틴이 사실상 성능 최적화만큼 중요하다고 봅니다.</p>
+<p>정리하면 OpenClaw cron 운영을 오래 가져가고 싶다면, 특별한 비법보다 기본기가 더 중요합니다.</p>
+<ul>
+<li><code>config validate</code>로 문제를 미리 잡고</li>
+<li><code>healthz</code>/<code>readyz</code>로 현재 상태를 관찰하고</li>
+<li>instruction 파일로 작업 기준을 눈에 보이게 남기는 것</li>
+</ul>
+<p>이 세 가지만 지켜도 자동화는 훨씬 덜 불안해집니다. 결국 좋은 자동화는 영리한 한 방보다 <strong>명확한 기준, 작은 확인, 빠른 복구</strong>에서 나옵니다. OpenClaw도 예외는 아닙니다. 오히려 도구가 많은 시스템일수록 이 기본기가 더 큰 차이를 만듭니다.</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://kwbaek.github.io/tags/openclaw/">Openclaw</a></li>
+      <li><a href="https://kwbaek.github.io/tags/cron/">Cron</a></li>
+      <li><a href="https://kwbaek.github.io/tags/operations/">Operations</a></li>
+      <li><a href="https://kwbaek.github.io/tags/health-check/">Health Check</a></li>
+      <li><a href="https://kwbaek.github.io/tags/config-validate/">Config Validate</a></li>
+      <li><a href="https://kwbaek.github.io/tags/automation/">Automation</a></li>
+    </ul>
+  </footer><script src="https://utteranc.es/client.js"
+        repo="kwbaek/blog-comments"
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://kwbaek.github.io/">Kyungwook&#39;s Devlog</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

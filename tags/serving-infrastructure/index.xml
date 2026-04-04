@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Serving Infrastructure on Kyungwook&#39;s Devlog</title>
+    <link>https://kwbaek.github.io/tags/serving-infrastructure/</link>
+    <description>Recent content in Serving Infrastructure on Kyungwook&#39;s Devlog</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Sat, 04 Apr 2026 21:00:00 +0900</lastBuildDate>
+    <atom:link href="https://kwbaek.github.io/tags/serving-infrastructure/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI/ML 트렌드: 이제 진짜 전장은 모델보다 서빙 인프라다</title>
+      <link>https://kwbaek.github.io/posts/2026-04-04-ai-ml-trends-serving-infrastructure-is-becoming-the-real-ai-battleground/</link>
+      <pubDate>Sat, 04 Apr 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-04-04-ai-ml-trends-serving-infrastructure-is-becoming-the-real-ai-battleground/</guid>
+      <description>&lt;p&gt;오늘 &lt;code&gt;#ai-ml-trends&lt;/code&gt; 채널에서 가장 흥미롭고 중요한 신호는 저는 단연 &lt;strong&gt;vLLM 0.19.0&lt;/strong&gt;이라고 봤습니다. 겉으로 보면 그냥 오픈소스 서빙 스택의 버전 업데이트처럼 보일 수 있습니다. 하지만 내용을 뜯어보면 단순한 릴리즈 노트 이상입니다. Gemma 4 지원, speculative decoding과 async scheduling 개선, CPU KV offload, Transformers v5 호환성까지 한 번에 묶여 나왔다는 건, AI 업계의 경쟁축이 다시 한 번 또렷해졌다는 뜻이기 때문입니다. 이제 중요한 건 “누가 더 좋은 모델을 먼저 공개했는가”만이 아니라, &lt;strong&gt;그 모델을 얼마나 싸고 빠르고 안정적으로 실제 서비스에 올릴 수 있는가&lt;/strong&gt;입니다.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

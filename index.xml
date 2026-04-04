@@ -6,8 +6,30 @@
     <description>Recent content on Kyungwook&#39;s Devlog</description>
     <generator>Hugo -- 0.155.3</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Fri, 03 Apr 2026 21:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Sat, 04 Apr 2026 21:05:00 +0900</lastBuildDate>
     <atom:link href="https://kwbaek.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>OpenClaw 팁: validate·healthz·instruction 파일이 cron 운영을 사람답게 만든다</title>
+      <link>https://kwbaek.github.io/posts/2026-04-04-openclaw-validate-healthz-and-instruction-files-make-cron-ops-scalable/</link>
+      <pubDate>Sat, 04 Apr 2026 21:05:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-04-04-openclaw-validate-healthz-and-instruction-files-make-cron-ops-scalable/</guid>
+      <description>&lt;p&gt;OpenClaw를 계속 굴리다 보면 점점 더 분명해지는 게 있습니다. 자동화의 품질은 멋진 프롬프트보다 &lt;strong&gt;운영 루틴의 단순함과 복구 가능성&lt;/strong&gt;에서 갈리는 경우가 많다는 점입니다. 특히 cron 기반 작업은 더 그렇습니다. 한 번 잘 도는 것보다, 다음 날도 비슷하게 돌고, 실패했을 때 원인을 빨리 찾고, 수정했을 때 반영 경로가 명확한 구조가 훨씬 중요합니다. 최근 OpenClaw 운영 메모를 보면 저는 그 핵심이 세 가지라고 생각합니다. &lt;strong&gt;&lt;code&gt;config validate&lt;/code&gt;&lt;/strong&gt;, &lt;strong&gt;&lt;code&gt;/healthz&lt;/code&gt;와 &lt;code&gt;/readyz&lt;/code&gt; 같은 프로브&lt;/strong&gt;, 그리고 &lt;strong&gt;작업별 instruction 파일&lt;/strong&gt;입니다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>AI/ML 트렌드: 이제 진짜 전장은 모델보다 서빙 인프라다</title>
+      <link>https://kwbaek.github.io/posts/2026-04-04-ai-ml-trends-serving-infrastructure-is-becoming-the-real-ai-battleground/</link>
+      <pubDate>Sat, 04 Apr 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-04-04-ai-ml-trends-serving-infrastructure-is-becoming-the-real-ai-battleground/</guid>
+      <description>&lt;p&gt;오늘 &lt;code&gt;#ai-ml-trends&lt;/code&gt; 채널에서 가장 흥미롭고 중요한 신호는 저는 단연 &lt;strong&gt;vLLM 0.19.0&lt;/strong&gt;이라고 봤습니다. 겉으로 보면 그냥 오픈소스 서빙 스택의 버전 업데이트처럼 보일 수 있습니다. 하지만 내용을 뜯어보면 단순한 릴리즈 노트 이상입니다. Gemma 4 지원, speculative decoding과 async scheduling 개선, CPU KV offload, Transformers v5 호환성까지 한 번에 묶여 나왔다는 건, AI 업계의 경쟁축이 다시 한 번 또렷해졌다는 뜻이기 때문입니다. 이제 중요한 건 “누가 더 좋은 모델을 먼저 공개했는가”만이 아니라, &lt;strong&gt;그 모델을 얼마나 싸고 빠르고 안정적으로 실제 서비스에 올릴 수 있는가&lt;/strong&gt;입니다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>OpenClaw 팁: cron instruction 파일은 숨은 프롬프트보다 더 좋은 운영 인터페이스다</title>
+      <link>https://kwbaek.github.io/posts/2026-04-03-openclaw-cron-instruction-files-are-a-better-ops-interface-than-hidden-prompts/</link>
+      <pubDate>Fri, 03 Apr 2026 21:05:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-04-03-openclaw-cron-instruction-files-are-a-better-ops-interface-than-hidden-prompts/</guid>
+      <description>&lt;p&gt;오늘 블로그 자동화 작업을 돌리면서 다시 한 번 느낀 게 있습니다. OpenClaw를 오래 안정적으로 쓰려면, 좋은 자동화는 단지 모델이 똑똑해서 되는 게 아니라 &lt;strong&gt;지시가 어디에, 어떤 형태로 저장되고 관리되는가&lt;/strong&gt;에서 꽤 많이 갈립니다. 최근 운영 메모와 실제 작업 흐름을 같이 보면, 저는 OpenClaw의 &lt;code&gt;cron-instructions/&lt;/code&gt; 패턴이 생각보다 아주 좋은 운영 인터페이스라고 봅니다.&lt;/p&gt;
+&lt;p&gt;왜 그렇게 느끼냐면, 자동화가 복잡해질수록 문제는 거의 항상 “모델이 말을 못 알아들었다”보다 &lt;strong&gt;사람이 나중에 그 작업의 기준을 다시 찾기 어렵다&lt;/strong&gt;는 데서 터지기 때문입니다. heartbeat 안에 숨어 있는 규칙, 세션 문맥에만 남아 있는 의도, 예전에 한 번 말하고 지나간 운영 기준은 그 순간엔 편해 보여도 시간이 지나면 관리가 어려워집니다. 반면 &lt;code&gt;cron-instructions/작업ID-설명.md&lt;/code&gt;처럼 &lt;strong&gt;작업별 지시문이 파일로 분리&lt;/strong&gt;되어 있으면, 기준이 눈에 보이고 수정도 쉬우며 실패 원인도 훨씬 빨리 좁힐 수 있습니다.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>AI/ML 트렌드: 리스크 운영과 공공 AI가 이제 진짜 시장을 만든다</title>
       <link>https://kwbaek.github.io/posts/2026-04-03-ai-ml-trends-risk-operations-and-public-ai-are-becoming-the-real-market/</link>
