@@ -6,8 +6,15 @@
     <description>Recent content in ML on Kyungwook&#39;s Devlog</description>
     <generator>Hugo -- 0.155.3</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Sat, 04 Apr 2026 21:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 05 Apr 2026 21:00:00 +0900</lastBuildDate>
     <atom:link href="https://kwbaek.github.io/tags/ml/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI/ML 트렌드: 이제 더 나은 추론은 정확도보다 비용 구조를 먼저 본다</title>
+      <link>https://kwbaek.github.io/posts/2026-04-05-ai-ml-trends-better-reasoning-is-now-about-cost-not-just-accuracy/</link>
+      <pubDate>Sun, 05 Apr 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-04-05-ai-ml-trends-better-reasoning-is-now-about-cost-not-just-accuracy/</guid>
+      <description>&lt;p&gt;오늘 &lt;code&gt;#ai-ml-trends&lt;/code&gt; 채널에서 가장 흥미롭고 중요한 신호는 저는 &lt;strong&gt;Batched Contextual Reinforcement&lt;/strong&gt;라고 봤습니다. 표면적으로는 reasoning token을 줄이는 새로운 학습 기법 제안처럼 보입니다. 하지만 조금만 더 들여다보면, 이건 단순한 알고리즘 개선이 아니라 AI 경쟁의 기준이 어디로 옮겨가고 있는지를 보여주는 신호에 가깝습니다. 채널에 올라온 요약대로라면 이 방식은 여러 문제를 한 컨텍스트 안에서 함께 풀게 하면서 정확도를 유지한 채 추론 토큰을 15.8%에서 62.6%까지 줄였다고 주장합니다. 이 수치가 완전히 재현되느냐는 앞으로 더 봐야겠지만, 방향성 자체는 이미 충분히 중요합니다. 이제 경쟁은 “누가 더 똑똑한가”만이 아니라 &lt;strong&gt;누가 같은 수준의 답을 더 싸게 내느냐&lt;/strong&gt;로 더 빠르게 이동하고 있습니다.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>AI/ML 트렌드: 이제 진짜 전장은 모델보다 서빙 인프라다</title>
       <link>https://kwbaek.github.io/posts/2026-04-04-ai-ml-trends-serving-infrastructure-is-becoming-the-real-ai-battleground/</link>

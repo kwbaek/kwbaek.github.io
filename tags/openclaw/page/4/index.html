@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
-<title>Openclaw | Kyungwook&#39;s Devlog</title>
+<title>OpenClaw | Kyungwook&#39;s Devlog</title>
 <meta name="keywords" content="">
 <meta name="description" content="">
 <meta name="author" content="">
@@ -73,11 +73,11 @@
 
 </script><meta property="og:url" content="https://kwbaek.github.io/tags/openclaw/">
   <meta property="og:site_name" content="Kyungwook&#39;s Devlog">
-  <meta property="og:title" content="Openclaw">
+  <meta property="og:title" content="OpenClaw">
   <meta property="og:locale" content="ko-kr">
   <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Openclaw">
+<meta name="twitter:title" content="OpenClaw">
 <meta name="twitter:description" content="">
 
 </head>
@@ -137,9 +137,23 @@
 <main class="main"> 
 <header class="page-header">
   <h1>
-    Openclaw
+    OpenClaw
   </h1>
 </header>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 실전 운영: Secrets &#43; Security Audit 루틴만 고정해도 사고 확률이 급감한다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>OpenClaw를 매일 운영하다 보면, 새 기능보다 더 중요한 게 하나 있습니다. 바로 **운영 위생(operational hygiene)**입니다. 최근 버전들(특히 v2026.2.26 이후)에서 체감이 컸던 포인트는 secrets 워크플로와 security audit 체계가 훨씬 실무적으로 정리됐다는 점입니다. 결론부터 말하면, 아래 두 루틴을 고정하면 운영 사고 확률이 확실히 줄어듭니다.
+1) Secrets 루틴: 설정을 ‘감’으로 만지지 말고 단계로 굴리기 예전에는 토큰이나 키를 여기저기 흩어두고, 문제 나면 그때 수정하는 식으로 운영하기 쉬웠습니다. 그런데 이 방식은 팀 규모가 커질수록 반드시 사고가 납니다. OpenClaw는 이 문제를 다음 흐름으로 정리해줍니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-03-02 21:03:00 +0900 KST'>March 2, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 실전 운영: Secrets &#43; Security Audit 루틴만 고정해도 사고 확률이 급감한다" href="https://kwbaek.github.io/posts/2026-03-02-openclaw-secrets-security-audit-routine/"></a>
+</article>
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
@@ -282,23 +296,6 @@ Read HEARTBEAT.md if it exists (workspace context). Follow it strictly. Do not i
   </div>
   <footer class="entry-footer"><span title='2026-02-21 21:00:00 +0900 KST'>February 21, 2026</span></footer>
   <a class="entry-link" aria-label="post link to OpenClaw 메모리 관리 마스터하기: 장기 기억과 일일 로그의 전략적 활용" href="https://kwbaek.github.io/posts/2026-02-21-openclaw-advanced-memory-management/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw 2월 중순 업데이트: Cron 안정화와 보안 강화
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>OpenClaw가 2월 중순 동안 여러 차례 중요한 업데이트를 진행했습니다. 특히 Cron 안정성 대폭 개선과 보안 강화에 초점을 맞춘 업데이트들이 많았는데요, 주요 내용을 정리해봤습니다.
-🔧 Cron 시스템 전면 개선 (2.12 업데이트) OpenClaw의 Cron 기능이 대폭 안정화되었습니다. 기존에 간헐적으로 발생하던 문제들이 대부분 해결되었습니다.
-주요 개선사항:
-중복 실행 방지 작업 누락 방지 재시작 후 오동작 수정 openclaw logs --local-time 로컬 타임존 지원 (운영 디버깅 편의성 향상) 운영 체크 루틴 (업데이트 후 권장):
-openclaw doctor openclaw gateway restart openclaw health Cron을 사용 중이라면 이번 업데이트는 필수입니다!
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-02-20 21:00:00 +0900 KST'>February 20, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw 2월 중순 업데이트: Cron 안정화와 보안 강화" href="https://kwbaek.github.io/posts/2026-02-20-openclaw-latest-updates/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

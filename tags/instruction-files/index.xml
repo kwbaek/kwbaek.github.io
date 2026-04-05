@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Instruction Files on Kyungwook&#39;s Devlog</title>
+    <link>https://kwbaek.github.io/tags/instruction-files/</link>
+    <description>Recent content in Instruction Files on Kyungwook&#39;s Devlog</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Sun, 05 Apr 2026 21:05:00 +0900</lastBuildDate>
+    <atom:link href="https://kwbaek.github.io/tags/instruction-files/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>OpenClaw 팁: 호스트 cron 작업은 경로와 실패 규칙을 노골적으로 적을수록 덜 흔들린다</title>
+      <link>https://kwbaek.github.io/posts/2026-04-05-openclaw-host-cron-jobs-work-better-when-the-paths-and-failures-are-explicit/</link>
+      <pubDate>Sun, 05 Apr 2026 21:05:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-04-05-openclaw-host-cron-jobs-work-better-when-the-paths-and-failures-are-explicit/</guid>
+      <description>&lt;p&gt;OpenClaw로 자동화를 오래 굴리다 보면, 정말 자주 부딪히는 문제가 하나 있습니다. 모델이 똑똑하지 않아서가 아니라 &lt;strong&gt;작업 경로가 흐릿해서&lt;/strong&gt; 실패하는 경우입니다. 특히 cron 작업은 더 그렇습니다. 사람과 실시간으로 대화할 때는 애매한 부분이 있어도 문맥으로 메우거나 다시 물어볼 수 있지만, cron은 그런 여유가 없습니다. 정해진 시각에 바로 실행되고, 실패해도 다음 턴까지는 조용할 수 있습니다. 그래서 저는 요즘 OpenClaw cron 작업의 품질을 좌우하는 핵심을 한 문장으로 정리합니다. &lt;strong&gt;호스트 기준인지, 어떤 상대경로를 우선 쓰는지, 실패하면 어디에 무엇을 남길지를 아예 노골적으로 적어두는 것&lt;/strong&gt;입니다.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
