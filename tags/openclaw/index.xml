@@ -1,13 +1,30 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Openclaw on Kyungwook&#39;s Devlog</title>
+    <title>OpenClaw on Kyungwook&#39;s Devlog</title>
     <link>https://kwbaek.github.io/tags/openclaw/</link>
-    <description>Recent content in Openclaw on Kyungwook&#39;s Devlog</description>
+    <description>Recent content in OpenClaw on Kyungwook&#39;s Devlog</description>
     <generator>Hugo -- 0.155.3</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Sun, 05 Apr 2026 21:05:00 +0900</lastBuildDate>
+    <lastBuildDate>Mon, 06 Apr 2026 21:34:00 +0900</lastBuildDate>
     <atom:link href="https://kwbaek.github.io/tags/openclaw/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>OpenClaw 실무 메모: 과금 유연화·vLLM 진화가 만드는 코딩 에이전트 운영 전략</title>
+      <link>https://kwbaek.github.io/posts/2026-04-06-openclaw-pricing-serving-and-ops-choices/</link>
+      <pubDate>Mon, 06 Apr 2026 21:34:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-04-06-openclaw-pricing-serving-and-ops-choices/</guid>
+      <description>&lt;p&gt;#ai-ml-trends 채널에서 오늘 가장 즉시 적용 가능한 OpenClaw 포인트는 두 가지입니다. 하나는 비용 구조, 하나는 서빙 체인입니다.&lt;/p&gt;
+&lt;p&gt;첫 번째는 OpenAI의 &lt;code&gt;Codex&lt;/code&gt; 팀용 과금 완화(토큰 기반 유연 과금)입니다. 이건 단순 가격 공지 같지만, 팀 운영 입장에선 꽤 다릅니다. 고정 좌석 비용이 부담이던 환경에서는 사용량이 작을 때 과금 손실이 컸고, 과금 변동성이 크면 팀이 에이전트 사용을 회피하기도 합니다. 사용량 기반으로 바뀌면 OpenClaw에서는 &lt;strong&gt;에이전트 사용을 ‘실험 구간/운영 구간’으로 나눠&lt;/strong&gt; 운영하기 쉬워집니다.&lt;/p&gt;
+&lt;p&gt;즉, 아이디어가 필요할 때는 짧게 강하게, 업무 피크 구간에서만 과감하게 뽑아 쓰고, 휴식 구간에서는 가볍게 돌아가도록 정책을 짜는 식입니다. 결과적으로 같은 작업도 월간 총비용을 더 안정적으로 통제할 수 있습니다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>OpenClaw 운영 팁: 가격 구조 변화와 추론 스택 변화가 가져온 코딩 에이전트 운영 포인트</title>
+      <link>https://kwbaek.github.io/posts/2026-04-06-openclaw-coding-agent-cost-and-ops-tuning/</link>
+      <pubDate>Mon, 06 Apr 2026 21:12:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-04-06-openclaw-coding-agent-cost-and-ops-tuning/</guid>
+      <description>&lt;p&gt;오늘 채널에서 가장 실무적인 신호는 모델 단독 이슈보다 &lt;strong&gt;운영 레버리지&lt;/strong&gt;였습니다. 하나는 OpenAI의 팀용 코딩 에이전트 과금 완화(usage 기반), 다른 하나는 vLLM 0.19.x 릴리즈의 서빙 개선입니다. 이 조합은 OpenClaw를 쓰는 팀에게 꽤 중요한 메시지로 읽힙니다.&lt;/p&gt;
+&lt;p&gt;첫째, &lt;code&gt;Codex 팀용 유연 과금&lt;/code&gt;은 소규모 팀이 에이전트 도입 장벽을 낮춥니다. 고정 좌석이 부담이던 운영에서는 “월구독만으로 쓰거나 안 쓰는” 구도를 자주 보이는데, 사용량 기반이면 실사용량이 적을 땐 가볍게 실험하고, 특정 주기엔 집중적으로 쓰는 방식으로 비용 최적화가 쉬워집니다. OpenClaw에서도 동일한 팀 운영 원리는 그대로 통합니다. 작업량이 들쭉날쭉한 채널·프로젝트라면 “항상 항상 풀타임 에이전트”보다, 이벤트가 큰 구간에 자원을 집중하는 편이 합리적입니다.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>OpenClaw 팁: 호스트 cron 작업은 경로와 실패 규칙을 노골적으로 적을수록 덜 흔들린다</title>
       <link>https://kwbaek.github.io/posts/2026-04-05-openclaw-host-cron-jobs-work-better-when-the-paths-and-failures-are-explicit/</link>

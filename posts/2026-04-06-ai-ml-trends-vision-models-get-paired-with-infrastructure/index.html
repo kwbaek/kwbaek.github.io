@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>AI/ML 트렌드: 멀티모달은 ‘쪼개어 보기’에서 ‘상호보완적으로 조합해 운영’으로 이동 | Kyungwook&#39;s Devlog</title>
+<meta name="keywords" content="AI, 멀티모달, VLM, Inference, 운영 효율">
+<meta name="description" content="#ai-ml-trends 채널의 4월 6일 메시지들을 보면, 오늘의 AI/ML 패턴은 “새로운 모델 공개”보다 어떻게 묶고, 계속 운영할지에 집중된다는 점이 분명해요.
+가장 눈에 띈 건 CoME-VL입니다. 단일 vision encoder 하나로는 놓치기 쉬운 표현을 보완형 인코더 조합으로 메우는 접근은 멀티모달 성능을 단순 scale-up으로만 끌어올리던 관성을 깬다는 점이 의미 있습니다. 즉, 더 큰 모델보다 상호보완적 표현 결합의 설계가 실무 성능에 직결될 수 있다는 뜻입니다.
+또 하나는 VOSR입니다. 텍스트 조건 기반 생성형 SR에서 벗어나 이미지 입력만으로 초해상도 복원에 집중한다는 건 아키텍처의 의도 자체가 바뀌는 신호예요. 데이터와 프롬프트 의존도를 낮추는 반면, 도메인 편차(센서/노이즈 패턴/압축 특성)에 대한 일반화는 추가 설계가 필요합니다. 결국 “비용 절감”과 “재현성”의 균형이 핵심입니다.">
+<meta name="author" content="">
+<link rel="canonical" href="https://kwbaek.github.io/posts/2026-04-06-ai-ml-trends-vision-models-get-paired-with-infrastructure/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.da3211e5ef867bf2b75fd5a6515cfed7195c011e8ab735694e203810a827097b.css" integrity="sha256-2jIR5e&#43;Ge/K3X9WmUVz&#43;1xlcAR6KtzVpTiA4EKgnCXs=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://kwbaek.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://kwbaek.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://kwbaek.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://kwbaek.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://kwbaek.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://kwbaek.github.io/posts/2026-04-06-ai-ml-trends-vision-models-get-paired-with-infrastructure/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="https://kwbaek.github.io/posts/2026-04-06-ai-ml-trends-vision-models-get-paired-with-infrastructure/">
+  <meta property="og:site_name" content="Kyungwook&#39;s Devlog">
+  <meta property="og:title" content="AI/ML 트렌드: 멀티모달은 ‘쪼개어 보기’에서 ‘상호보완적으로 조합해 운영’으로 이동">
+  <meta property="og:description" content="#ai-ml-trends 채널의 4월 6일 메시지들을 보면, 오늘의 AI/ML 패턴은 “새로운 모델 공개”보다 어떻게 묶고, 계속 운영할지에 집중된다는 점이 분명해요.
+가장 눈에 띈 건 CoME-VL입니다. 단일 vision encoder 하나로는 놓치기 쉬운 표현을 보완형 인코더 조합으로 메우는 접근은 멀티모달 성능을 단순 scale-up으로만 끌어올리던 관성을 깬다는 점이 의미 있습니다. 즉, 더 큰 모델보다 상호보완적 표현 결합의 설계가 실무 성능에 직결될 수 있다는 뜻입니다.
+또 하나는 VOSR입니다. 텍스트 조건 기반 생성형 SR에서 벗어나 이미지 입력만으로 초해상도 복원에 집중한다는 건 아키텍처의 의도 자체가 바뀌는 신호예요. 데이터와 프롬프트 의존도를 낮추는 반면, 도메인 편차(센서/노이즈 패턴/압축 특성)에 대한 일반화는 추가 설계가 필요합니다. 결국 “비용 절감”과 “재현성”의 균형이 핵심입니다.">
+  <meta property="og:locale" content="ko-kr">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2026-04-06T21:32:00+09:00">
+    <meta property="article:modified_time" content="2026-04-06T21:32:00+09:00">
+    <meta property="article:tag" content="Ai">
+    <meta property="article:tag" content="멀티모달">
+    <meta property="article:tag" content="VLM">
+    <meta property="article:tag" content="Inference">
+    <meta property="article:tag" content="운영 효율">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="AI/ML 트렌드: 멀티모달은 ‘쪼개어 보기’에서 ‘상호보완적으로 조합해 운영’으로 이동">
+<meta name="twitter:description" content="#ai-ml-trends 채널의 4월 6일 메시지들을 보면, 오늘의 AI/ML 패턴은 “새로운 모델 공개”보다 어떻게 묶고, 계속 운영할지에 집중된다는 점이 분명해요.
+가장 눈에 띈 건 CoME-VL입니다. 단일 vision encoder 하나로는 놓치기 쉬운 표현을 보완형 인코더 조합으로 메우는 접근은 멀티모달 성능을 단순 scale-up으로만 끌어올리던 관성을 깬다는 점이 의미 있습니다. 즉, 더 큰 모델보다 상호보완적 표현 결합의 설계가 실무 성능에 직결될 수 있다는 뜻입니다.
+또 하나는 VOSR입니다. 텍스트 조건 기반 생성형 SR에서 벗어나 이미지 입력만으로 초해상도 복원에 집중한다는 건 아키텍처의 의도 자체가 바뀌는 신호예요. 데이터와 프롬프트 의존도를 낮추는 반면, 도메인 편차(센서/노이즈 패턴/압축 특성)에 대한 일반화는 추가 설계가 필요합니다. 결국 “비용 절감”과 “재현성”의 균형이 핵심입니다.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://kwbaek.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "AI/ML 트렌드: 멀티모달은 ‘쪼개어 보기’에서 ‘상호보완적으로 조합해 운영’으로 이동",
+      "item": "https://kwbaek.github.io/posts/2026-04-06-ai-ml-trends-vision-models-get-paired-with-infrastructure/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "AI/ML 트렌드: 멀티모달은 ‘쪼개어 보기’에서 ‘상호보완적으로 조합해 운영’으로 이동",
+  "name": "AI\/ML 트렌드: 멀티모달은 ‘쪼개어 보기’에서 ‘상호보완적으로 조합해 운영’으로 이동",
+  "description": "#ai-ml-trends 채널의 4월 6일 메시지들을 보면, 오늘의 AI/ML 패턴은 “새로운 모델 공개”보다 어떻게 묶고, 계속 운영할지에 집중된다는 점이 분명해요.\n가장 눈에 띈 건 CoME-VL입니다. 단일 vision encoder 하나로는 놓치기 쉬운 표현을 보완형 인코더 조합으로 메우는 접근은 멀티모달 성능을 단순 scale-up으로만 끌어올리던 관성을 깬다는 점이 의미 있습니다. 즉, 더 큰 모델보다 상호보완적 표현 결합의 설계가 실무 성능에 직결될 수 있다는 뜻입니다.\n또 하나는 VOSR입니다. 텍스트 조건 기반 생성형 SR에서 벗어나 이미지 입력만으로 초해상도 복원에 집중한다는 건 아키텍처의 의도 자체가 바뀌는 신호예요. 데이터와 프롬프트 의존도를 낮추는 반면, 도메인 편차(센서/노이즈 패턴/압축 특성)에 대한 일반화는 추가 설계가 필요합니다. 결국 “비용 절감”과 “재현성”의 균형이 핵심입니다.\n",
+  "keywords": [
+    "AI", "멀티모달", "VLM", "Inference", "운영 효율"
+  ],
+  "articleBody": "#ai-ml-trends 채널의 4월 6일 메시지들을 보면, 오늘의 AI/ML 패턴은 “새로운 모델 공개”보다 어떻게 묶고, 계속 운영할지에 집중된다는 점이 분명해요.\n가장 눈에 띈 건 CoME-VL입니다. 단일 vision encoder 하나로는 놓치기 쉬운 표현을 보완형 인코더 조합으로 메우는 접근은 멀티모달 성능을 단순 scale-up으로만 끌어올리던 관성을 깬다는 점이 의미 있습니다. 즉, 더 큰 모델보다 상호보완적 표현 결합의 설계가 실무 성능에 직결될 수 있다는 뜻입니다.\n또 하나는 VOSR입니다. 텍스트 조건 기반 생성형 SR에서 벗어나 이미지 입력만으로 초해상도 복원에 집중한다는 건 아키텍처의 의도 자체가 바뀌는 신호예요. 데이터와 프롬프트 의존도를 낮추는 반면, 도메인 편차(센서/노이즈 패턴/압축 특성)에 대한 일반화는 추가 설계가 필요합니다. 결국 “비용 절감”과 “재현성”의 균형이 핵심입니다.\nHyperCT와 ProtoFlow류 메시지도 인상적입니다. 둘 다 모델 정확도보다 롱텀 운영성과 유지비를 짚고 있어요. 하나는 의료영상에서 다중 task를 저랭크 적응으로 하나의 프레임워크에 묶고, 다른 하나는 원격탐사에서 클래스 증가/환경 변화로 생기는 망각을 줄이려는 방향입니다. 즉 학습이 끝난 모델을 굴리는 시대가 아니라, 시간이 지남에 따라 성능이 무너지지 않게 관리하는 체계가 더 중요해졌습니다.\n무엇보다 중요한 건 여기에 vLLM 0.19 계열 개선 신호가 붙는다는 점입니다. 서빙 레이어에서 speculative decoding, 모달 결합 대응, 효율 튜닝이 붙으면 동일한 모델군도 채택 난이도가 급격히 달라집니다. 같은 논문을 쓰더라도 배포 비용과 응답 품질이 판가름하는 구도가 됩니다.\n결론은 간단합니다.\n멀티모달은 “더 큰 파라미터”보다 표현 조합 + 운영 유지비 절감 축으로 이동 텍스트 유도형 의존을 줄인 Vision-only 또는 특화 아키텍처가 현장 도메인에서 의미를 얻는 중 채택의 기준은 점수표보다 지속 운영성, drift 저항성, 추론 비용 구조 Open source 도구와 서빙 스택의 성숙도가 실제 경쟁력을 좌우 ",
+  "wordCount" : "232",
+  "inLanguage": "en",
+  "datePublished": "2026-04-06T21:32:00+09:00",
+  "dateModified": "2026-04-06T21:32:00+09:00",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://kwbaek.github.io/posts/2026-04-06-ai-ml-trends-vision-models-get-paired-with-infrastructure/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Kyungwook's Devlog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://kwbaek.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://kwbaek.github.io/" accesskey="h" title="Kyungwook&#39;s Devlog (Alt + H)">Kyungwook&#39;s Devlog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://kwbaek.github.io/categories/" title="categories">
+                    <span>categories</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kwbaek.github.io/tags/" title="tags">
+                    <span>tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kwbaek.github.io/" title="Kyungwook&#39;s Devlog">
+                    <span>Kyungwook&#39;s Devlog</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      AI/ML 트렌드: 멀티모달은 ‘쪼개어 보기’에서 ‘상호보완적으로 조합해 운영’으로 이동
+    </h1>
+    <div class="post-meta"><span title='2026-04-06 21:32:00 +0900 KST'>April 6, 2026</span>
+
+</div>
+  </header> 
+  <div class="post-content"><p><code>#ai-ml-trends</code> 채널의 4월 6일 메시지들을 보면, 오늘의 AI/ML 패턴은 “새로운 모델 공개”보다 <strong>어떻게 묶고, 계속 운영할지</strong>에 집중된다는 점이 분명해요.</p>
+<p>가장 눈에 띈 건 <code>CoME-VL</code>입니다. 단일 vision encoder 하나로는 놓치기 쉬운 표현을 보완형 인코더 조합으로 메우는 접근은 멀티모달 성능을 단순 scale-up으로만 끌어올리던 관성을 깬다는 점이 의미 있습니다. 즉, 더 큰 모델보다 <strong>상호보완적 표현 결합의 설계</strong>가 실무 성능에 직결될 수 있다는 뜻입니다.</p>
+<p>또 하나는 <code>VOSR</code>입니다. 텍스트 조건 기반 생성형 SR에서 벗어나 <strong>이미지 입력만으로 초해상도 복원</strong>에 집중한다는 건 아키텍처의 의도 자체가 바뀌는 신호예요. 데이터와 프롬프트 의존도를 낮추는 반면, 도메인 편차(센서/노이즈 패턴/압축 특성)에 대한 일반화는 추가 설계가 필요합니다. 결국 “비용 절감”과 “재현성”의 균형이 핵심입니다.</p>
+<p><code>HyperCT</code>와 <code>ProtoFlow</code>류 메시지도 인상적입니다. 둘 다 모델 정확도보다 <strong>롱텀 운영성과 유지비</strong>를 짚고 있어요. 하나는 의료영상에서 다중 task를 저랭크 적응으로 하나의 프레임워크에 묶고, 다른 하나는 원격탐사에서 클래스 증가/환경 변화로 생기는 망각을 줄이려는 방향입니다. 즉 학습이 끝난 모델을 굴리는 시대가 아니라, <strong>시간이 지남에 따라 성능이 무너지지 않게 관리하는 체계</strong>가 더 중요해졌습니다.</p>
+<p>무엇보다 중요한 건 여기에 <code>vLLM 0.19</code> 계열 개선 신호가 붙는다는 점입니다. 서빙 레이어에서 speculative decoding, 모달 결합 대응, 효율 튜닝이 붙으면 동일한 모델군도 채택 난이도가 급격히 달라집니다. 같은 논문을 쓰더라도 배포 비용과 응답 품질이 판가름하는 구도가 됩니다.</p>
+<p>결론은 간단합니다.</p>
+<ul>
+<li>멀티모달은 “더 큰 파라미터”보다 <strong>표현 조합 + 운영 유지비 절감</strong> 축으로 이동</li>
+<li>텍스트 유도형 의존을 줄인 Vision-only 또는 특화 아키텍처가 현장 도메인에서 의미를 얻는 중</li>
+<li>채택의 기준은 점수표보다 <strong>지속 운영성, drift 저항성, 추론 비용 구조</strong></li>
+<li>Open source 도구와 서빙 스택의 성숙도가 실제 경쟁력을 좌우</li>
+</ul>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://kwbaek.github.io/tags/ai/">Ai</a></li>
+      <li><a href="https://kwbaek.github.io/tags/%EB%A9%80%ED%8B%B0%EB%AA%A8%EB%8B%AC/">멀티모달</a></li>
+      <li><a href="https://kwbaek.github.io/tags/vlm/">VLM</a></li>
+      <li><a href="https://kwbaek.github.io/tags/inference/">Inference</a></li>
+      <li><a href="https://kwbaek.github.io/tags/%EC%9A%B4%EC%98%81-%ED%9A%A8%EC%9C%A8/">운영 효율</a></li>
+    </ul>
+  </footer><script src="https://utteranc.es/client.js"
+        repo="kwbaek/blog-comments"
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://kwbaek.github.io/">Kyungwook&#39;s Devlog</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

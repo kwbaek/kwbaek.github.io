@@ -143,6 +143,34 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 활용 팁: 지시문 기반 Cron으로 ‘안정적인 콘텐츠 파이프라인’ 만들기
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>OpenClaw로 반복 작업을 돌리다 보면, 자동화 자체보다 더 어려운 게 있습니다. 바로 자동화를 계속 믿을 수 있게 유지하는 것입니다. 오늘은 제가 자주 쓰는 패턴 하나를 정리해보겠습니다. 핵심은 간단합니다. “작업 로직을 채팅 프롬프트에 흩뿌리지 말고, 지시문 파일로 고정해 Cron이 그 파일을 읽고 실행하게 만든다.” 이 방식이 생각보다 강력합니다.
+왜 좋을까요? 첫째, 변경 이력이 남습니다. 지시를 코드처럼 파일로 관리하면 무엇을 언제 왜 바꿨는지 추적이 쉽습니다. 둘째, 실패 대응이 빨라집니다. 실행 시점에는 단순히 파일 존재 여부·형식·핵심 단계만 확인하면 되기 때문에 디버깅 범위가 좁아집니다. 셋째, 사람-에이전트 협업이 편해집니다. 사람은 파일을 수정하고, 에이전트는 같은 규칙으로 반복 실행합니다. 역할이 명확해집니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-03-15 21:00:00 +0900 KST'>March 15, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 활용 팁: 지시문 기반 Cron으로 ‘안정적인 콘텐츠 파이프라인’ 만들기" href="https://kwbaek.github.io/posts/2026-03-15-openclaw-instruction-driven-content-ops/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 운영 팁: Cron과 Heartbeat를 섞어 쓸 때 자동화가 진짜 안정해진다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>OpenClaw를 계속 운영하다 보면 자동화 작업이 늘어나면서 비슷한 고민이 생깁니다. “이 작업을 cron으로 넣을까, heartbeat에서 처리할까?” 정답은 하나가 아니라 역할 분리입니다. 실무에서 가장 안정적인 구조는 정확한 시각이 중요한 작업은 cron으로, 여러 점검을 묶어서 문맥 기반으로 판단해야 하는 작업은 heartbeat로 보내는 방식입니다.
+예를 들어 “월요일 09:00 보고서 발송”, “20분 뒤 리마인드”처럼 시간 정확도가 중요한 일은 cron이 맞습니다. 반대로 “이메일/캘린더/알림을 묶어 확인하고, 급한 것만 알려주기” 같은 작업은 heartbeat가 더 효율적입니다. heartbeat는 최근 대화 컨텍스트를 활용해 노이즈를 줄일 수 있고, 여러 체크를 한 번에 처리해서 호출 비용도 아낄 수 있습니다. 즉 cron은 정밀 타이머, heartbeat는 맥락형 배치 처리에 가깝습니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-03-14 21:00:00 +0900 KST'>March 14, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 운영 팁: Cron과 Heartbeat를 섞어 쓸 때 자동화가 진짜 안정해진다" href="https://kwbaek.github.io/posts/2026-03-14-openclaw-cron-heartbeat-ops/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">OpenClaw 운영 팁: 업데이트 많은 주간엔 ‘설정 검증 &#43; 헬스체크’ 루틴을 고정하자
     </h2>
   </header>
@@ -257,35 +285,6 @@ Secrets 워크플로: audit → configure → apply → reload v2026.2.26부터 
   </div>
   <footer class="entry-footer"><span title='2026-03-05 21:00:00 +0900 KST'>March 5, 2026</span></footer>
   <a class="entry-link" aria-label="post link to OpenClaw v2026.3.2 업그레이드 가이드: SecretRef, pdf 도구, 그리고 운영 안정성" href="https://kwbaek.github.io/posts/2026-03-05-openclaw-v2026-3-2-guide/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw 실전 루틴: ‘콘텐츠 작성 → 운영 점검’ 2단계로 자동화 품질 높이기
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>OpenClaw를 꾸준히 쓰다 보면, 가장 큰 차이는 “기능을 많이 아는가”보다 루틴을 얼마나 단순하게 고정했는가에서 나옵니다. 특히 최근 버전 흐름(v2026.3.2 기준)에서는 콘텐츠 작업과 운영 점검을 분리한 2단계 루틴이 체감 효율이 좋습니다.
-1) 작업 단계: 도구를 목적별로 분리 최근 추가된 1st-class pdf tool은 문서 기반 작업에서 꽤 강력합니다. 기존처럼 브라우저/스크립트를 우회하지 않고, 바로 PDF를 분석해 요약·비교·핵심 추출을 수행할 수 있습니다. 실무에서는 이게 중요합니다. 도구 체인이 짧아질수록 실패 지점이 줄고, 재현성도 올라가기 때문입니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-03-04 21:05:00 +0900 KST'>March 4, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw 실전 루틴: ‘콘텐츠 작성 → 운영 점검’ 2단계로 자동화 품질 높이기" href="https://kwbaek.github.io/posts/2026-03-04-openclaw-two-step-content-and-ops-routine/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw 운영 팁: 헬스 프로브 &#43; 릴리즈 루틴으로 ‘고장 나기 전에’ 관리하기
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>OpenClaw를 오래 안정적으로 굴리려면, 기능 추가보다 먼저 운영 루틴을 고정하는 게 훨씬 효과적입니다. 최근 릴리즈 흐름(v2026.3.1 기준)에서 특히 실전 가치가 큰 포인트는 health/ready 프로브와 보안 점검 루틴입니다.
-1) “살아있나?”를 감으로 보지 말고 엔드포인트로 확인 게이트웨이 상태를 앱 체감으로 판단하면 늦습니다. 아래처럼 프로브를 습관화하면 장애를 훨씬 빨리 잡습니다.
-openclaw config file curl -fsS http://127.0.0.1:18789/healthz curl -fsS http://127.0.0.1:18789/readyz healthz: 프로세스 생존 여부 확인 readyz: 실제 요청 처리 준비 상태 확인 둘을 분리해서 보면 “프로세스는 살아있지만 서비스는 준비 안 된 상태”를 빠르게 탐지할 수 있습니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-03-03 21:05:00 +0900 KST'>March 3, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw 운영 팁: 헬스 프로브 &#43; 릴리즈 루틴으로 ‘고장 나기 전에’ 관리하기" href="https://kwbaek.github.io/posts/2026-03-03-openclaw-health-probe-and-release-ops/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

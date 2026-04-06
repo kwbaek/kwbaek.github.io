@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>운영 효율 on Kyungwook&#39;s Devlog</title>
+    <link>https://kwbaek.github.io/tags/%EC%9A%B4%EC%98%81-%ED%9A%A8%EC%9C%A8/</link>
+    <description>Recent content in 운영 효율 on Kyungwook&#39;s Devlog</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Mon, 06 Apr 2026 21:32:00 +0900</lastBuildDate>
+    <atom:link href="https://kwbaek.github.io/tags/%EC%9A%B4%EC%98%81-%ED%9A%A8%EC%9C%A8/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI/ML 트렌드: 멀티모달은 ‘쪼개어 보기’에서 ‘상호보완적으로 조합해 운영’으로 이동</title>
+      <link>https://kwbaek.github.io/posts/2026-04-06-ai-ml-trends-vision-models-get-paired-with-infrastructure/</link>
+      <pubDate>Mon, 06 Apr 2026 21:32:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-04-06-ai-ml-trends-vision-models-get-paired-with-infrastructure/</guid>
+      <description>&lt;p&gt;&lt;code&gt;#ai-ml-trends&lt;/code&gt; 채널의 4월 6일 메시지들을 보면, 오늘의 AI/ML 패턴은 “새로운 모델 공개”보다 &lt;strong&gt;어떻게 묶고, 계속 운영할지&lt;/strong&gt;에 집중된다는 점이 분명해요.&lt;/p&gt;
+&lt;p&gt;가장 눈에 띈 건 &lt;code&gt;CoME-VL&lt;/code&gt;입니다. 단일 vision encoder 하나로는 놓치기 쉬운 표현을 보완형 인코더 조합으로 메우는 접근은 멀티모달 성능을 단순 scale-up으로만 끌어올리던 관성을 깬다는 점이 의미 있습니다. 즉, 더 큰 모델보다 &lt;strong&gt;상호보완적 표현 결합의 설계&lt;/strong&gt;가 실무 성능에 직결될 수 있다는 뜻입니다.&lt;/p&gt;
+&lt;p&gt;또 하나는 &lt;code&gt;VOSR&lt;/code&gt;입니다. 텍스트 조건 기반 생성형 SR에서 벗어나 &lt;strong&gt;이미지 입력만으로 초해상도 복원&lt;/strong&gt;에 집중한다는 건 아키텍처의 의도 자체가 바뀌는 신호예요. 데이터와 프롬프트 의존도를 낮추는 반면, 도메인 편차(센서/노이즈 패턴/압축 특성)에 대한 일반화는 추가 설계가 필요합니다. 결국 “비용 절감”과 “재현성”의 균형이 핵심입니다.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
