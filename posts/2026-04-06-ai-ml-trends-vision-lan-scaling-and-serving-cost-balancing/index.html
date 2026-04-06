@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>AI/ML 트렌드: 멀티모달은 ‘구조적 결합’과 ‘저비용 추론’으로 이동한다 | Kyungwook&#39;s Devlog</title>
+<meta name="keywords" content="AI, ML, VLM, Multi-Modal, Inference Efficiency, Open Source">
+<meta name="description" content="오늘 #ai-ml-trends 채널을 훑으면서 가장 선명하게 보인 건, 모델 크기 경쟁보다 어떻게 결합하고 얼마나 싸게 굴릴지라는 축으로 무게중심이 이동했다는 점입니다. 2026-04-06에 올라온 항목들 중 핵심은 세 개로 압축됩니다.
+첫 번째는 CoME-VL입니다. 제목 자체가 말하듯 보완형(Complementary) 방식으로 멀티인코더 비전-언어 구조를 키운다는 접근입니다. 핵심은 단순히 “또 다른 멀티모달 모델”이 아니라, 기존 비주얼 표현에서 잘 포착되지 않던 부분을 서로 다른 인코더가 보완적으로 채워 넣는 방향이라는 점입니다. 이는 성능의 절대값보다 아키텍처의 조합력이 중요해지는 시그널입니다. 실무에서는 결국 파이프라인의 실패 모드가 줄고, downstream task마다 튜닝 포인트를 더 정교하게 고를 수 있게 됩니다.">
+<meta name="author" content="">
+<link rel="canonical" href="https://kwbaek.github.io/posts/2026-04-06-ai-ml-trends-vision-lan-scaling-and-serving-cost-balancing/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.da3211e5ef867bf2b75fd5a6515cfed7195c011e8ab735694e203810a827097b.css" integrity="sha256-2jIR5e&#43;Ge/K3X9WmUVz&#43;1xlcAR6KtzVpTiA4EKgnCXs=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://kwbaek.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://kwbaek.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://kwbaek.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://kwbaek.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://kwbaek.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://kwbaek.github.io/posts/2026-04-06-ai-ml-trends-vision-lan-scaling-and-serving-cost-balancing/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="https://kwbaek.github.io/posts/2026-04-06-ai-ml-trends-vision-lan-scaling-and-serving-cost-balancing/">
+  <meta property="og:site_name" content="Kyungwook&#39;s Devlog">
+  <meta property="og:title" content="AI/ML 트렌드: 멀티모달은 ‘구조적 결합’과 ‘저비용 추론’으로 이동한다">
+  <meta property="og:description" content="오늘 #ai-ml-trends 채널을 훑으면서 가장 선명하게 보인 건, 모델 크기 경쟁보다 어떻게 결합하고 얼마나 싸게 굴릴지라는 축으로 무게중심이 이동했다는 점입니다. 2026-04-06에 올라온 항목들 중 핵심은 세 개로 압축됩니다.
+첫 번째는 CoME-VL입니다. 제목 자체가 말하듯 보완형(Complementary) 방식으로 멀티인코더 비전-언어 구조를 키운다는 접근입니다. 핵심은 단순히 “또 다른 멀티모달 모델”이 아니라, 기존 비주얼 표현에서 잘 포착되지 않던 부분을 서로 다른 인코더가 보완적으로 채워 넣는 방향이라는 점입니다. 이는 성능의 절대값보다 아키텍처의 조합력이 중요해지는 시그널입니다. 실무에서는 결국 파이프라인의 실패 모드가 줄고, downstream task마다 튜닝 포인트를 더 정교하게 고를 수 있게 됩니다.">
+  <meta property="og:locale" content="ko-kr">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2026-04-06T21:00:00+09:00">
+    <meta property="article:modified_time" content="2026-04-06T21:00:00+09:00">
+    <meta property="article:tag" content="AI">
+    <meta property="article:tag" content="ML">
+    <meta property="article:tag" content="VLM">
+    <meta property="article:tag" content="Multi-Modal">
+    <meta property="article:tag" content="Inference Efficiency">
+    <meta property="article:tag" content="Open Source">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="AI/ML 트렌드: 멀티모달은 ‘구조적 결합’과 ‘저비용 추론’으로 이동한다">
+<meta name="twitter:description" content="오늘 #ai-ml-trends 채널을 훑으면서 가장 선명하게 보인 건, 모델 크기 경쟁보다 어떻게 결합하고 얼마나 싸게 굴릴지라는 축으로 무게중심이 이동했다는 점입니다. 2026-04-06에 올라온 항목들 중 핵심은 세 개로 압축됩니다.
+첫 번째는 CoME-VL입니다. 제목 자체가 말하듯 보완형(Complementary) 방식으로 멀티인코더 비전-언어 구조를 키운다는 접근입니다. 핵심은 단순히 “또 다른 멀티모달 모델”이 아니라, 기존 비주얼 표현에서 잘 포착되지 않던 부분을 서로 다른 인코더가 보완적으로 채워 넣는 방향이라는 점입니다. 이는 성능의 절대값보다 아키텍처의 조합력이 중요해지는 시그널입니다. 실무에서는 결국 파이프라인의 실패 모드가 줄고, downstream task마다 튜닝 포인트를 더 정교하게 고를 수 있게 됩니다.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://kwbaek.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "AI/ML 트렌드: 멀티모달은 ‘구조적 결합’과 ‘저비용 추론’으로 이동한다",
+      "item": "https://kwbaek.github.io/posts/2026-04-06-ai-ml-trends-vision-lan-scaling-and-serving-cost-balancing/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "AI/ML 트렌드: 멀티모달은 ‘구조적 결합’과 ‘저비용 추론’으로 이동한다",
+  "name": "AI\/ML 트렌드: 멀티모달은 ‘구조적 결합’과 ‘저비용 추론’으로 이동한다",
+  "description": "오늘 #ai-ml-trends 채널을 훑으면서 가장 선명하게 보인 건, 모델 크기 경쟁보다 어떻게 결합하고 얼마나 싸게 굴릴지라는 축으로 무게중심이 이동했다는 점입니다. 2026-04-06에 올라온 항목들 중 핵심은 세 개로 압축됩니다.\n첫 번째는 CoME-VL입니다. 제목 자체가 말하듯 보완형(Complementary) 방식으로 멀티인코더 비전-언어 구조를 키운다는 접근입니다. 핵심은 단순히 “또 다른 멀티모달 모델”이 아니라, 기존 비주얼 표현에서 잘 포착되지 않던 부분을 서로 다른 인코더가 보완적으로 채워 넣는 방향이라는 점입니다. 이는 성능의 절대값보다 아키텍처의 조합력이 중요해지는 시그널입니다. 실무에서는 결국 파이프라인의 실패 모드가 줄고, downstream task마다 튜닝 포인트를 더 정교하게 고를 수 있게 됩니다.\n",
+  "keywords": [
+    "AI", "ML", "VLM", "Multi-Modal", "Inference Efficiency", "Open Source"
+  ],
+  "articleBody": "오늘 #ai-ml-trends 채널을 훑으면서 가장 선명하게 보인 건, 모델 크기 경쟁보다 어떻게 결합하고 얼마나 싸게 굴릴지라는 축으로 무게중심이 이동했다는 점입니다. 2026-04-06에 올라온 항목들 중 핵심은 세 개로 압축됩니다.\n첫 번째는 CoME-VL입니다. 제목 자체가 말하듯 보완형(Complementary) 방식으로 멀티인코더 비전-언어 구조를 키운다는 접근입니다. 핵심은 단순히 “또 다른 멀티모달 모델”이 아니라, 기존 비주얼 표현에서 잘 포착되지 않던 부분을 서로 다른 인코더가 보완적으로 채워 넣는 방향이라는 점입니다. 이는 성능의 절대값보다 아키텍처의 조합력이 중요해지는 시그널입니다. 실무에서는 결국 파이프라인의 실패 모드가 줄고, downstream task마다 튜닝 포인트를 더 정교하게 고를 수 있게 됩니다.\n두 번째는 VOSR. 텍스트 조건 없이 순수 비전 입력만으로 초해상도를 다루는 제안은, 지금까지 널리 써왔던 텍스트-투-이미지 계열 거푸집에서 벗어나려는 흐름을 보여줍니다. 장단점이 분명합니다. 대규모 텍스트 사전학습을 계속 밀어넣는 방식보다 도메인 제약을 줄이고 비용을 제어할 수 있지만, 데이터의 커버리지와 복원 품질 보존이 과제입니다. 그러나 엔터프라이즈에서 SR이 반복되어 등장하는 케이스가 많다는 점을 보면, 이 축은 실사용 ROI 관점에서 충분히 현실적인 경쟁 축입니다.\n세 번째는 ProtoFlow입니다. 원격탐사 분할 같은 장기 운영 환경에서는 새 모델이 나오면 끝이 아니라, 도메인 drift와 망각 관리가 실질적 장애물입니다. 클래스가 계속 늘어나거나 계절/센서가 바뀌는 환경에서 누적 오차를 제어해야 하는데, 이 부분이 해결되지 않으면 정확도는 쉽게 무너집니다. ProtoFlow류의 연구는 “한 번 학습하면 끝”이 아니라, 지속학습의 유지보수 비용을 낮추려는 방향으로 해석해야 합니다.\n또 하나 무시하기 어려운 건 vLLM 0.19.x 쪽 소식입니다. Gemma4 지원, speculative decoding 개선, 서버 효율화로 이어지는 서빙 스택 개선은 오늘의 AI 트렌드 맥락과 연결되어 있습니다. 모델을 얼마나 잘 만드는지보다, 그 모델을 실제로 어떻게 처리할지가 성능을 가릅니다. 특히 speculative decoding이나 배치/스케줄링 최적화가 붙으면, 같은 하드웨어에서 더 오래 안정적으로 운영하는 게 가능합니다.\n정리하면 오늘의 메시지가 말해 준 건 이렇습니다.\n멀티모달 경쟁은 한 번의 아키텍처 혁신이 아니라 보완 인코딩 + 장기 유지비 고려로 나뉜다. 텍스트 조건 의존성을 줄이는 흐름이 커지며, 일부 Vision-only 모델이 비용/레거시 의존도 감소에 유리해질 수 있다. 서빙/배포 스택은 더는 주변 기능이 아니다. vLLM 같은 인프라 레이어의 진화가 모델 채택 속도까지 바꾼다. 오늘부터는 “좋은 모델”보다 “좋은 지속 운영”이 AI/ML 트렌드 판가름의 기준으로 강하게 작동한다. 요약하자면, AI/ML은 더 크고 더 화려한 모델로 가는 데 그치지 않습니다. 표현력을 높이되 비용은 낮추고, 운영 안정성을 잃지 않는 길이 오늘의 트렌드를 움직이는 중심축으로 보였습니다.\n",
+  "wordCount" : "336",
+  "inLanguage": "en",
+  "datePublished": "2026-04-06T21:00:00+09:00",
+  "dateModified": "2026-04-06T21:00:00+09:00",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://kwbaek.github.io/posts/2026-04-06-ai-ml-trends-vision-lan-scaling-and-serving-cost-balancing/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Kyungwook's Devlog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://kwbaek.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://kwbaek.github.io/" accesskey="h" title="Kyungwook&#39;s Devlog (Alt + H)">Kyungwook&#39;s Devlog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://kwbaek.github.io/categories/" title="categories">
+                    <span>categories</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kwbaek.github.io/tags/" title="tags">
+                    <span>tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kwbaek.github.io/" title="Kyungwook&#39;s Devlog">
+                    <span>Kyungwook&#39;s Devlog</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      AI/ML 트렌드: 멀티모달은 ‘구조적 결합’과 ‘저비용 추론’으로 이동한다
+    </h1>
+    <div class="post-meta"><span title='2026-04-06 21:00:00 +0900 KST'>April 6, 2026</span>
+
+</div>
+  </header> 
+  <div class="post-content"><p>오늘 <code>#ai-ml-trends</code> 채널을 훑으면서 가장 선명하게 보인 건, <strong>모델 크기 경쟁</strong>보다 <strong>어떻게 결합하고 얼마나 싸게 굴릴지</strong>라는 축으로 무게중심이 이동했다는 점입니다. 2026-04-06에 올라온 항목들 중 핵심은 세 개로 압축됩니다.</p>
+<p>첫 번째는 <code>CoME-VL</code>입니다. 제목 자체가 말하듯 보완형(Complementary) 방식으로 멀티인코더 비전-언어 구조를 키운다는 접근입니다. 핵심은 단순히 “또 다른 멀티모달 모델”이 아니라, 기존 비주얼 표현에서 잘 포착되지 않던 부분을 서로 다른 인코더가 보완적으로 채워 넣는 방향이라는 점입니다. 이는 <strong>성능의 절대값보다 아키텍처의 조합력</strong>이 중요해지는 시그널입니다. 실무에서는 결국 파이프라인의 실패 모드가 줄고, downstream task마다 튜닝 포인트를 더 정교하게 고를 수 있게 됩니다.</p>
+<p>두 번째는 <code>VOSR</code>. 텍스트 조건 없이 순수 비전 입력만으로 초해상도를 다루는 제안은, 지금까지 널리 써왔던 텍스트-투-이미지 계열 거푸집에서 벗어나려는 흐름을 보여줍니다. 장단점이 분명합니다. 대규모 텍스트 사전학습을 계속 밀어넣는 방식보다 도메인 제약을 줄이고 비용을 제어할 수 있지만, 데이터의 커버리지와 복원 품질 보존이 과제입니다. 그러나 엔터프라이즈에서 SR이 반복되어 등장하는 케이스가 많다는 점을 보면, 이 축은 <strong>실사용 ROI 관점에서 충분히 현실적인 경쟁 축</strong>입니다.</p>
+<p>세 번째는 <code>ProtoFlow</code>입니다. 원격탐사 분할 같은 장기 운영 환경에서는 새 모델이 나오면 끝이 아니라, 도메인 drift와 망각 관리가 실질적 장애물입니다. 클래스가 계속 늘어나거나 계절/센서가 바뀌는 환경에서 누적 오차를 제어해야 하는데, 이 부분이 해결되지 않으면 정확도는 쉽게 무너집니다. <code>ProtoFlow</code>류의 연구는 “한 번 학습하면 끝”이 아니라, <strong>지속학습의 유지보수 비용을 낮추려는 방향</strong>으로 해석해야 합니다.</p>
+<p>또 하나 무시하기 어려운 건 vLLM 0.19.x 쪽 소식입니다. <code>Gemma4</code> 지원, speculative decoding 개선, 서버 효율화로 이어지는 서빙 스택 개선은 오늘의 AI 트렌드 맥락과 연결되어 있습니다. 모델을 얼마나 잘 만드는지보다, 그 모델을 실제로 어떻게 처리할지가 성능을 가릅니다. 특히 <code>speculative decoding</code>이나 배치/스케줄링 최적화가 붙으면, 같은 하드웨어에서 더 오래 안정적으로 운영하는 게 가능합니다.</p>
+<p>정리하면 오늘의 메시지가 말해 준 건 이렇습니다.</p>
+<ul>
+<li>멀티모달 경쟁은 한 번의 아키텍처 혁신이 아니라 <strong>보완 인코딩 + 장기 유지비 고려</strong>로 나뉜다.</li>
+<li>텍스트 조건 의존성을 줄이는 흐름이 커지며, 일부 Vision-only 모델이 <strong>비용/레거시 의존도 감소</strong>에 유리해질 수 있다.</li>
+<li>서빙/배포 스택은 더는 주변 기능이 아니다. vLLM 같은 인프라 레이어의 진화가 모델 채택 속도까지 바꾼다.</li>
+<li>오늘부터는 “좋은 모델”보다 “좋은 지속 운영”이 AI/ML 트렌드 판가름의 기준으로 강하게 작동한다.</li>
+</ul>
+<p>요약하자면, AI/ML은 더 크고 더 화려한 모델로 가는 데 그치지 않습니다. <strong>표현력을 높이되 비용은 낮추고, 운영 안정성을 잃지 않는 길</strong>이 오늘의 트렌드를 움직이는 중심축으로 보였습니다.</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://kwbaek.github.io/tags/ai/">AI</a></li>
+      <li><a href="https://kwbaek.github.io/tags/ml/">ML</a></li>
+      <li><a href="https://kwbaek.github.io/tags/vlm/">VLM</a></li>
+      <li><a href="https://kwbaek.github.io/tags/multi-modal/">Multi-Modal</a></li>
+      <li><a href="https://kwbaek.github.io/tags/inference-efficiency/">Inference Efficiency</a></li>
+      <li><a href="https://kwbaek.github.io/tags/open-source/">Open Source</a></li>
+    </ul>
+  </footer><script src="https://utteranc.es/client.js"
+        repo="kwbaek/blog-comments"
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://kwbaek.github.io/">Kyungwook&#39;s Devlog</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

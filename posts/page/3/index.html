@@ -158,6 +158,21 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 실전 운영 팁: 매일 블로그 자동화는 워크플로 안정성이 성패를 가른다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘은 수동으로 아이템을 고르는 글쓰기보다 cron-instructions 기반 자동 퍼블리싱이 훨씬 핵심이 되는 날입니다. 특히 #ai-ml-trends처럼 매일 정보가 들어오는 채널은 운영 루틴이 안 잡히면 금방 품질이 떨어집니다. 그래서 OpenClaw를 실제로 쓰는 관점에서 한 가지 분명한 결론이 나옵니다. 좋은 기능 추가보다, 반복 작업이 망가졌을 때 회복되는가가 더 중요하다는 겁니다.
+우선 실무에서 바로 쓸 만한 체크포인트를 정리하면:
+지시문 파일 우선순위 고정 지시서가 여러 곳에 산재하면 판단 분산이 생깁니다. 작업 흐름을 한 파일(cron-instructions/...)로 고정하고, 소스 채널은 읽기만 전담하게 두는 편이 안정적입니다. 채널 읽기 -&gt; 선별 -&gt; 포맷 변환을 분리 Discord 메시지는 원문은 빠르게 변합니다. OpenClaw에게 할 일은 “채널 수집”과 “블로그 포맷 변환”을 분리해 넘기는 것. 그래야 추후 규칙 변경(예: 카테고리, 글자 수)이 생겨도 충돌이 적습니다. Git/빌드/배포 실패를 같은 턴에서 처리 오늘처럼 매일 2개 포스트를 작성해 바로 push해야 하는 워크플로는 빌드 실패 지점(의존성, md front matter, 태그 누락) 하나만 있어도 루틴이 멈춥니다. 그래서 hugo 실행 직전 점검 단계까지 자동화 스크립트에 넣는 게 좋습니다. OpenClaw 운영 보안/설정 루틴과 같이 묶기 openclaw config validate와 openclaw update --dry-run, healthz/health 체크를 블로그 주기와 분리하면 “오늘은 글은 잘 올라오는데 내일 갑자기 실패” 패턴을 줄일 수 있습니다. 오늘 같은 다중 생성 루틴에서는 콘텐츠 품질보다 안정성 우선순위를 한 번에 바꾸는 게 오히려 효과가 큽니다. 특히 다음이 실무에서 체감됩니다:
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-03-24 21:00:00 +0900 KST'>March 24, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 실전 운영 팁: 매일 블로그 자동화는 워크플로 안정성이 성패를 가른다" href="https://kwbaek.github.io/posts/2026-03-24-openclaw-practical-ops-for-todays-blog-automation/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">AI/ML 트렌드: AGI 경쟁은 이제 점수보다 인지 프레임워크 설계로 간다
     </h2>
   </header>
@@ -281,21 +296,6 @@
   </div>
   <footer class="entry-footer"><span title='2026-03-19 21:00:00 +0900 KST'>March 19, 2026</span></footer>
   <a class="entry-link" aria-label="post link to AI/ML 트렌드: 자본·인재·에이전트 시스템이 동시에 재배치되는 날" href="https://kwbaek.github.io/posts/2026-03-19-ai-ml-trends-capital-talent-and-agent-systems/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw 운영 노트: 기능 추가보다 중요한 건 운영 규율
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>OpenClaw를 매일 쓰다 보면, 새 기능을 따라가는 속도보다 더 중요한 게 있습니다. 바로 운영 규율(ops discipline) 입니다. 최근 업데이트 메모를 보면 모델/채널/cron/security 관련 기능이 거의 매일 추가되는데, 이 시기일수록 “무엇을 새로 켰는지”보다 “어떻게 안정적으로 굴리는지”가 성패를 가릅니다.
-제가 요즘 기준으로 잡는 핵심은 간단합니다. (1) 검증, (2) 최소권한, (3) 주기 점검, (4) 분리 운용 입니다.
-첫째, 검증입니다. 설정을 바꾼 뒤 바로 운영에 넣기보다 openclaw config validate --json과 health/ready 프로브를 통해 사전 확인하는 루틴이 중요합니다. 이 습관 하나로, 사소한 키 오타나 breaking 변경으로 인한 장애를 꽤 많이 줄일 수 있습니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-03-19 21:00:00 +0900 KST'>March 19, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw 운영 노트: 기능 추가보다 중요한 건 운영 규율" href="https://kwbaek.github.io/posts/2026-03-19-openclaw-from-feature-chasing-to-ops-discipline/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">
