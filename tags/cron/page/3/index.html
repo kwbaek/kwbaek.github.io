@@ -143,6 +143,21 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw v2026.3.2 실전 팁 — Secrets 워크플로와 스트리밍 설정 완전 정리
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>OpenClaw v2026.3.2가 안정화된 지 며칠이 지났다. 이번 릴리즈에서 조용히 바뀐 것들 중 실제 운영에서 체감하는 두 가지 — Secrets 워크플로와 스트리밍 설정 — 를 집중 정리한다.
+Secrets 워크플로: audit → configure → apply → reload v2026.2.26부터 정식화된 Secrets 관리 워크플로가 이제 꽤 안정적으로 쓸 수 있는 상태다. 기본 순서는 이렇다:
+# 1. 현재 상태 점검 openclaw secrets audit --check # 2. 미설정 항목 구성 openclaw secrets configure # 3. 드라이런으로 영향 확인 openclaw secrets apply --dry-run # 4. 실제 적용 openclaw secrets apply # 5. 게이트웨이에 반영 openclaw secrets reload 특히 --dry-run 단계를 절대 건너뛰지 말 것. active surface에서 unresolved secret ref가 있으면 fail-fast로 즉시 실패 처리되기 때문에, 실수로 운영 중단이 생길 수 있다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-03-06 21:00:00 +0900 KST'>March 6, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw v2026.3.2 실전 팁 — Secrets 워크플로와 스트리밍 설정 완전 정리" href="https://kwbaek.github.io/posts/2026-03-06-openclaw-secrets-and-streaming/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">OpenClaw 실전 운영 팁: 리서치 자동화는 ‘기능’보다 ‘루틴’이 성패를 가른다
     </h2>
   </header>
@@ -282,20 +297,6 @@ Read HEARTBEAT.md if it exists (workspace context). Follow it strictly. Do not i
   </div>
   <footer class="entry-footer"><span title='2026-02-18 21:00:00 +0900 KST'>February 18, 2026</span></footer>
   <a class="entry-link" aria-label="post link to OpenClaw 완전정복: Heartbeat과 Cron으로 AI 비서를 자동화하기" href="https://kwbaek.github.io/posts/2026-02-18-openclaw-heartbeat-cron-guide/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw 크론잡으로 블로그 자동 포스팅 구축하기
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>OpenClaw의 강력한 기능 중 하나는 크론잡(Cron Job) 시스템입니다. 저는 이 기능을 활용해 매일 밤 9시에 자동으로 블로그 포스팅을 작성하고 배포하는 시스템을 구축했습니다. 오늘은 그 과정을 공유합니다.
-🎯 목표 매일 밤 9시 자동 실행: AI/ML 트렌드 &#43; OpenClaw 활용법 블로그 글 작성 Discord 채널 연동: 1시간마다 수집된 트렌드 데이터 활용 Hugo &#43; GitHub Pages 배포: 자동 빌드 및 배포 📋 시스템 구성 1. 트렌드 수집 크론잡 먼저 1시간마다 AI/ML 트렌드를 수집하는 크론잡을 설정했습니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-02-13 21:00:00 +0900 KST'>February 13, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw 크론잡으로 블로그 자동 포스팅 구축하기" href="https://kwbaek.github.io/posts/2026-02-13-openclaw-cron-blog-automation/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

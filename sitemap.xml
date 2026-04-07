@@ -42,18 +42,33 @@
     <lastmod>2026-04-07T21:00:00+09:00</lastmod>
   </url><url>
     <loc>https://kwbaek.github.io/tags/automation/</loc>
-    <lastmod>2026-04-06T21:34:00+09:00</lastmod>
+    <lastmod>2026-04-07T20:55:00+09:00</lastmod>
+  </url><url>
+    <loc>https://kwbaek.github.io/tags/blogging/</loc>
+    <lastmod>2026-04-07T20:55:00+09:00</lastmod>
+  </url><url>
+    <loc>https://kwbaek.github.io/tags/content-pipeline/</loc>
+    <lastmod>2026-04-07T20:55:00+09:00</lastmod>
+  </url><url>
+    <loc>https://kwbaek.github.io/tags/cron/</loc>
+    <lastmod>2026-04-07T20:55:00+09:00</lastmod>
+  </url><url>
+    <loc>https://kwbaek.github.io/categories/openclaw/</loc>
+    <lastmod>2026-04-07T20:55:00+09:00</lastmod>
+  </url><url>
+    <loc>https://kwbaek.github.io/tags/openclaw/</loc>
+    <lastmod>2026-04-07T20:55:00+09:00</lastmod>
+  </url><url>
+    <loc>https://kwbaek.github.io/posts/2026-04-07-openclaw-daily-blog-automation-works-best-when-one-run-produces-two-different-kinds-of-value/</loc>
+    <lastmod>2026-04-07T20:55:00+09:00</lastmod>
+  </url><url>
+    <loc>https://kwbaek.github.io/tags/operations/</loc>
+    <lastmod>2026-04-07T20:55:00+09:00</lastmod>
   </url><url>
     <loc>https://kwbaek.github.io/tags/coding-agent/</loc>
     <lastmod>2026-04-06T21:34:00+09:00</lastmod>
   </url><url>
     <loc>https://kwbaek.github.io/tags/cost-optimization/</loc>
-    <lastmod>2026-04-06T21:34:00+09:00</lastmod>
-  </url><url>
-    <loc>https://kwbaek.github.io/categories/openclaw/</loc>
-    <lastmod>2026-04-06T21:34:00+09:00</lastmod>
-  </url><url>
-    <loc>https://kwbaek.github.io/tags/openclaw/</loc>
     <lastmod>2026-04-06T21:34:00+09:00</lastmod>
   </url><url>
     <loc>https://kwbaek.github.io/posts/2026-04-06-openclaw-pricing-serving-and-ops-choices/</loc>
@@ -98,9 +113,6 @@
     <loc>https://kwbaek.github.io/tags/open-source/</loc>
     <lastmod>2026-04-06T21:00:00+09:00</lastmod>
   </url><url>
-    <loc>https://kwbaek.github.io/tags/cron/</loc>
-    <lastmod>2026-04-05T21:05:00+09:00</lastmod>
-  </url><url>
     <loc>https://kwbaek.github.io/tags/host-execution/</loc>
     <lastmod>2026-04-05T21:05:00+09:00</lastmod>
   </url><url>
@@ -108,9 +120,6 @@
     <lastmod>2026-04-05T21:05:00+09:00</lastmod>
   </url><url>
     <loc>https://kwbaek.github.io/posts/2026-04-05-openclaw-host-cron-jobs-work-better-when-the-paths-and-failures-are-explicit/</loc>
-    <lastmod>2026-04-05T21:05:00+09:00</lastmod>
-  </url><url>
-    <loc>https://kwbaek.github.io/tags/operations/</loc>
     <lastmod>2026-04-05T21:05:00+09:00</lastmod>
   </url><url>
     <loc>https://kwbaek.github.io/posts/2026-04-05-ai-ml-trends-better-reasoning-is-now-about-cost-not-just-accuracy/</loc>
@@ -659,10 +668,10 @@
     <loc>https://kwbaek.github.io/tags/agentassay/</loc>
     <lastmod>2026-03-04T21:00:00+09:00</lastmod>
   </url><url>
-    <loc>https://kwbaek.github.io/tags/ai-ops/</loc>
+    <loc>https://kwbaek.github.io/tags/ai-agents/</loc>
     <lastmod>2026-03-04T21:00:00+09:00</lastmod>
   </url><url>
-    <loc>https://kwbaek.github.io/tags/ai-agents/</loc>
+    <loc>https://kwbaek.github.io/tags/ai-ops/</loc>
     <lastmod>2026-03-04T21:00:00+09:00</lastmod>
   </url><url>
     <loc>https://kwbaek.github.io/posts/2026-03-04-agent-regression-testing-becomes-core-ai-ops/</loc>
