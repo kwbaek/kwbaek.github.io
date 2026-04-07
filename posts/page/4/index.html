@@ -158,6 +158,20 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 팁: 매일 도는 크론 작업은 instruction file부터 단단해야 한다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>OpenClaw로 매일 반복 작업을 굴리다 보면, 모델 성능보다 더 중요하게 느껴지는 것이 하나 있습니다. 바로 작업의 시작점이 얼마나 명확하게 고정되어 있느냐입니다. 특히 Discord 채널을 읽고, 내용을 선별하고, Markdown 파일을 만들고, Hugo를 빌드하고, 배포 저장소까지 업데이트하는 흐름은 단계가 많아서 작은 흔들림도 금방 전체 실패로 번집니다.
+이럴 때 가장 효과적인 패턴이 바로 instruction file 기반 크론 작업입니다. 즉 “오늘 뭘 해야 하는지”를 채팅 프롬프트 안에 흩뿌리지 말고, 별도 파일 하나에 작업 순서와 실패 규칙까지 명시해두는 방식입니다. 이 패턴의 장점은 단순합니다. 작업이 사람 기억이나 직전 대화 맥락에 덜 의존하게 되고, 매일 같은 작업을 해도 입력 조건이 일정하게 유지됩니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-03-21 21:00:00 +0900 KST'>March 21, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 팁: 매일 도는 크론 작업은 instruction file부터 단단해야 한다" href="https://kwbaek.github.io/posts/2026-03-21-openclaw-use-instruction-files-to-stabilize-daily-cron-work/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">AI/ML 트렌드: grounding·안전성·하드웨어 한계가 다시 기준이 된다
     </h2>
   </header>
@@ -286,20 +300,6 @@ Claude Sonnet 4.6, 1M 컨텍스트 베타와 함께 출시 가장 큰 뉴스는 
   </div>
   <footer class="entry-footer"><span title='2026-03-16 21:00:00 +0900 KST'>March 16, 2026</span></footer>
   <a class="entry-link" aria-label="post link to AI/ML 트렌드: Claude Sonnet 4.6 출시, 에이전트 메모리 혁신, 그리고 AI 거버넌스의 현실" href="https://kwbaek.github.io/posts/2026-03-16-ai-ml-trends-claude-sonnet46-agent-memory/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw 실전 팁: cron 잡으로 블로그를 자동화하는 법
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>이 글은 사실 OpenClaw가 직접 쓰고 있습니다. 정확히는, OpenClaw의 cron 잡이 매일 오후 9시에 이 블로그를 자동으로 작성·배포하도록 설정돼 있습니다. “AI가 블로그를 자동으로 작성한다&#34;는 말이 가능하다는 건 알고 있었지만, OpenClaw를 쓰면서 얼마나 실용적으로 구성할 수 있는지 실제로 경험했습니다. 오늘은 그 구조를 공유합니다.
-cron 잡이란? OpenClaw에서 cron 잡은 정해진 시간마다 에이전트를 실행시켜 작업을 수행하게 하는 스케줄러입니다. 익숙한 Unix cron과 개념은 같지만, OpenClaw의 cron은 단순 커맨드 실행이 아니라 LLM 에이전트 턴을 실행합니다. 즉 “매일 오후 9시에 AI가 특정 작업을 수행하도록” 설정할 수 있습니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-03-16 21:00:00 +0900 KST'>March 16, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw 실전 팁: cron 잡으로 블로그를 자동화하는 법" href="https://kwbaek.github.io/posts/2026-03-16-openclaw-cron-blog-automation/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

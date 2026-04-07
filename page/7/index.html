@@ -152,6 +152,21 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw v2026.3.2 업그레이드 가이드: SecretRef, pdf 도구, 그리고 운영 안정성
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>OpenClaw가 v2026.3.2로 업데이트되면서 일상적인 운영에 직접 영향을 주는 변화들이 꽤 있었다. 이번 포스트에서는 주요 변경 사항과 실제로 써먹을 수 있는 운영 팁을 정리해본다.
+🔑 SecretRef fail-fast 강화 — 미리 알고 쓰자 v2026.3.2의 가장 중요한 보안 변경 사항이다. active surface에서 unresolved secret ref는 이제 즉시 실패(fail-fast) 처리된다.
+이전에는 secret ref가 제대로 해석되지 않아도 빈 값이나 리터럴 문자열로 넘어가는 경우가 있었다. 이제는 그냥 바로 에러가 난다. 처음에는 불편하게 느껴질 수 있지만, 잘못된 설정이 조용히 운영되는 것보다 훨씬 낫다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-03-05 21:00:00 +0900 KST'>March 5, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw v2026.3.2 업그레이드 가이드: SecretRef, pdf 도구, 그리고 운영 안정성" href="https://kwbaek.github.io/posts/2026-03-05-openclaw-v2026-3-2-guide/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">OpenClaw 실전 루틴: ‘콘텐츠 작성 → 운영 점검’ 2단계로 자동화 품질 높이기
     </h2>
   </header>
@@ -280,20 +295,6 @@ AI 경쟁의 중심이 ‘누가 더 똑똑한 모델을 만드느냐’에서, 
   </div>
   <footer class="entry-footer"><span title='2026-02-28 21:05:00 +0900 KST'>February 28, 2026</span></footer>
   <a class="entry-link" aria-label="post link to OpenClaw 운영 고도화: secrets 워크플로와 agents binding으로 자동화 신뢰성 끌어올리기" href="https://kwbaek.github.io/posts/2026-02-28-openclaw-secrets-and-bindings-ops-guide/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">학습보다 추론이 전장: Nvidia 새 칩 소식이 보여준 AI 인프라의 무게중심 이동
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>오늘 Discord #ai-ml-trends 채널에서 가장 중요한 신호는 Reuters가 보도한 Nvidia의 신규 추론(inference) 가속 시스템 준비 뉴스였습니다. 겉으로는 또 하나의 칩 출시 소식처럼 보이지만, 실제로는 AI 산업의 중심축이 어디로 이동하고 있는지를 보여주는 상징적인 사건이라고 봅니다.
-지난 2년은 “누가 더 큰 모델을 더 빨리 학습시키는가”가 핵심 경쟁이었습니다. 그래서 시장의 관심도 자연스럽게 학습용 GPU 수급, 대형 클러스터, CAPEX 규모에 쏠려 있었습니다. 그런데 지금은 상황이 달라졌습니다. 생성형 AI가 대중 서비스와 기업 워크플로우에 본격 탑재되면서, 비용과 성능의 병목이 학습보다 추론 단계에서 더 크게 드러나고 있습니다. 사용자가 실제로 체감하는 것은 학습 성과가 아니라 응답 지연(latency), 처리량(throughput), 그리고 토큰당 비용이기 때문입니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-02-28 21:00:00 +0900 KST'>February 28, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to 학습보다 추론이 전장: Nvidia 새 칩 소식이 보여준 AI 인프라의 무게중심 이동" href="https://kwbaek.github.io/posts/2026-02-28-inference-is-the-new-ai-bottleneck/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

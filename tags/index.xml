@@ -6,8 +6,57 @@
     <description>Recent content in Tags on Kyungwook&#39;s Devlog</description>
     <generator>Hugo -- 0.155.3</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Mon, 06 Apr 2026 21:34:00 +0900</lastBuildDate>
+    <lastBuildDate>Tue, 07 Apr 2026 21:00:00 +0900</lastBuildDate>
     <atom:link href="https://kwbaek.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI</title>
+      <link>https://kwbaek.github.io/tags/ai/</link>
+      <pubDate>Tue, 07 Apr 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/tags/ai/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>AI Infrastructure</title>
+      <link>https://kwbaek.github.io/tags/ai-infrastructure/</link>
+      <pubDate>Tue, 07 Apr 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/tags/ai-infrastructure/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Broadcom</title>
+      <link>https://kwbaek.github.io/tags/broadcom/</link>
+      <pubDate>Tue, 07 Apr 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/tags/broadcom/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Chips</title>
+      <link>https://kwbaek.github.io/tags/chips/</link>
+      <pubDate>Tue, 07 Apr 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/tags/chips/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Google</title>
+      <link>https://kwbaek.github.io/tags/google/</link>
+      <pubDate>Tue, 07 Apr 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/tags/google/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>ML</title>
+      <link>https://kwbaek.github.io/tags/ml/</link>
+      <pubDate>Tue, 07 Apr 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/tags/ml/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Samsung</title>
+      <link>https://kwbaek.github.io/tags/samsung/</link>
+      <pubDate>Tue, 07 Apr 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/tags/samsung/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Automation</title>
       <link>https://kwbaek.github.io/tags/automation/</link>
@@ -30,7 +79,7 @@
       <description></description>
     </item>
     <item>
-      <title>OpenClaw</title>
+      <title>Openclaw</title>
       <link>https://kwbaek.github.io/tags/openclaw/</link>
       <pubDate>Mon, 06 Apr 2026 21:34:00 +0900</pubDate>
       <guid>https://kwbaek.github.io/tags/openclaw/</guid>
@@ -48,13 +97,6 @@
       <link>https://kwbaek.github.io/tags/%EC%9A%B4%EC%98%81-%ED%8C%81/</link>
       <pubDate>Mon, 06 Apr 2026 21:34:00 +0900</pubDate>
       <guid>https://kwbaek.github.io/tags/%EC%9A%B4%EC%98%81-%ED%8C%81/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Ai</title>
-      <link>https://kwbaek.github.io/tags/ai/</link>
-      <pubDate>Mon, 06 Apr 2026 21:32:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/tags/ai/</guid>
       <description></description>
     </item>
     <item>
@@ -97,13 +139,6 @@
       <link>https://kwbaek.github.io/tags/inference-efficiency/</link>
       <pubDate>Mon, 06 Apr 2026 21:00:00 +0900</pubDate>
       <guid>https://kwbaek.github.io/tags/inference-efficiency/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>ML</title>
-      <link>https://kwbaek.github.io/tags/ml/</link>
-      <pubDate>Mon, 06 Apr 2026 21:00:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/tags/ml/</guid>
       <description></description>
     </item>
     <item>
@@ -268,13 +303,6 @@
       <description></description>
     </item>
     <item>
-      <title>AI Infrastructure</title>
-      <link>https://kwbaek.github.io/tags/ai-infrastructure/</link>
-      <pubDate>Thu, 02 Apr 2026 21:00:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/tags/ai-infrastructure/</guid>
-      <description></description>
-    </item>
-    <item>
       <title>Anthropic</title>
       <link>https://kwbaek.github.io/tags/anthropic/</link>
       <pubDate>Thu, 02 Apr 2026 21:00:00 +0900</pubDate>
@@ -429,13 +457,6 @@
       <description></description>
     </item>
     <item>
-      <title>Google</title>
-      <link>https://kwbaek.github.io/tags/google/</link>
-      <pubDate>Fri, 27 Mar 2026 21:16:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/tags/google/</guid>
-      <description></description>
-    </item>
-    <item>
       <title>Hugo</title>
       <link>https://kwbaek.github.io/tags/hugo/</link>
       <pubDate>Fri, 27 Mar 2026 21:16:00 +0900</pubDate>
@@ -443,7 +464,7 @@
       <description></description>
     </item>
     <item>
-      <title>Openai</title>
+      <title>OpenAI</title>
       <link>https://kwbaek.github.io/tags/openai/</link>
       <pubDate>Fri, 27 Mar 2026 21:16:00 +0900</pubDate>
       <guid>https://kwbaek.github.io/tags/openai/</guid>
@@ -478,7 +499,7 @@
       <description></description>
     </item>
     <item>
-      <title>Agentic-Ai</title>
+      <title>Agentic AI</title>
       <link>https://kwbaek.github.io/tags/agentic-ai/</link>
       <pubDate>Tue, 24 Mar 2026 21:00:00 +0900</pubDate>
       <guid>https://kwbaek.github.io/tags/agentic-ai/</guid>
@@ -1724,7 +1745,7 @@
       <description></description>
     </item>
     <item>
-      <title>Vibetensor</title>
+      <title>VibeTensor</title>
       <link>https://kwbaek.github.io/tags/vibetensor/</link>
       <pubDate>Wed, 11 Feb 2026 21:00:00 +0900</pubDate>
       <guid>https://kwbaek.github.io/tags/vibetensor/</guid>
