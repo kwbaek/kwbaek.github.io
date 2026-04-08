@@ -6,8 +6,15 @@
     <description>Recent content in Ai on Kyungwook&#39;s Devlog</description>
     <generator>Hugo -- 0.155.3</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Tue, 07 Apr 2026 21:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Wed, 08 Apr 2026 21:00:00 +0900</lastBuildDate>
     <atom:link href="https://kwbaek.github.io/tags/ai/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI/ML 트렌드: AI는 이제 모델 경쟁보다 인프라와 보안 운영의 산업이 되고 있다</title>
+      <link>https://kwbaek.github.io/posts/2026-04-08-ai-ml-trends-ai-is-becoming-an-infrastructure-and-safety-discipline-not-just-a-model-race/</link>
+      <pubDate>Wed, 08 Apr 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-04-08-ai-ml-trends-ai-is-becoming-an-infrastructure-and-safety-discipline-not-just-a-model-race/</guid>
+      <description>&lt;p&gt;오늘 &lt;code&gt;#ai-ml-trends&lt;/code&gt; 채널에서 가장 중요하게 읽힌 신호는 단일 모델 발표가 아니었습니다. 오히려 저는 &lt;strong&gt;AI 산업의 무게중심이 점점 더 &lt;code&gt;좋은 모델&lt;/code&gt;에서 &lt;code&gt;안정적으로 굴러가는 인프라와 보안 운영&lt;/code&gt;으로 이동하고 있다는 점&lt;/strong&gt;이 더 선명했다고 봤습니다. 오늘 올라온 항목들을 보면 얼핏 서로 다른 이야기처럼 보입니다. Anthropic의 보안 협력, Samsung의 AI 메모리 수요 급증, Google-Broadcom의 커스텀 칩 로드맵, 그리고 Reuters Breakingviews가 던진 ‘7조 달러 현실’ 경고가 한날 한 채널에 같이 잡혔습니다. 그런데 이 네 가지를 묶어 보면 하나의 결론으로 수렴합니다. 이제 AI는 더 이상 모델 데모만으로 설명되는 시장이 아닙니다.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>AI/ML 트렌드: AI 경쟁의 무게중심은 모델 자랑보다 칩 통제력으로 이동 중이다</title>
       <link>https://kwbaek.github.io/posts/2026-04-07-ai-ml-trends-ai-competition-is-shifting-from-model-bragging-rights-to-chip-control/</link>

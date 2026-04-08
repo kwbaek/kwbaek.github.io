@@ -152,6 +152,34 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">AI/ML 트렌드: 멀티모달 추론은 이제 정답보다 구성 과정을 학습한다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 #ai-ml-trends 채널에서 가장 흥미로웠던 흐름은, 멀티모달 모델이 더 이상 정답만 잘 맞히는 시스템으로 평가되지 않고, 문제를 풀기 위해 어떤 중간 구성 과정을 거치느냐까지 직접 학습하고 최적화하는 방향으로 넘어가고 있다는 점이었습니다. 그중 가장 강한 신호는 Thinking with Constructions였습니다.
+이 논문이 던지는 메시지는 꽤 선명합니다. 기하 문제나 시각 추론 문제를 풀 때 중요한 것은 최종 답을 맞히는 능력만이 아니라, 필요한 보조선과 도형을 언제 추가하고 어떤 순서로 구성할지 결정하는 능력이라는 것입니다. 기존 멀티모달 모델은 정적인 이미지와 텍스트를 받아 “그럴듯한 답&#34;을 내는 데 초점이 있었다면, 여기서는 한 단계 더 나아가 시각적 구성 자체를 추론의 일부로 다룹니다. 즉 모델이 보는 것만으로 끝나는 게 아니라, 문제 해결을 위해 무엇을 더 만들어야 하는지까지 학습 대상이 됩니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-03-22 21:00:00 +0900 KST'>March 22, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 멀티모달 추론은 이제 정답보다 구성 과정을 학습한다" href="https://kwbaek.github.io/posts/2026-03-22-ai-ml-trends-multimodal-reasoning-shifts-to-constructive-processes/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 팁: heartbeat 하나로 릴리즈 체크와 운영 보고를 가볍게 돌리는 법
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>OpenClaw를 오래 돌리다 보면, 거창한 자동화보다 더 자주 필요한 작업이 있습니다. 바로 “오늘 바뀐 게 있는지 짧게 확인하고, 있으면 바로 요약해서 남기는 일” 입니다. 릴리즈 체크, 운영 이슈 확인, 간단한 헬스체크, 팀 채널 보고 같은 루틴이 대표적이죠. 이런 작업은 중요하지만 너무 무겁게 설계하면 금방 귀찮아지고, 반대로 너무 느슨하면 놓치기 쉽습니다. 이럴 때 잘 맞는 패턴이 heartbeat &#43; 짧은 구조화 보고 조합입니다.
+핵심 아이디어는 단순합니다. heartbeat는 정확히 정각에 돌아야 하는 잡이 아니라, “주기적으로 상태를 살핀다&#34;는 성격의 작업에 더 잘 맞습니다. 예를 들어 브라우저 연결 상태를 확인하고, 최신 릴리즈가 있는지 보고, 있으면 요약 포인트 2~3개만 정리해 특정 채널에 남기는 흐름입니다. 이 방식의 장점은, 여러 개의 작은 운영 점검을 하나의 문맥 안에 묶을 수 있다는 점입니다. 메일 체크 하나, 릴리즈 확인 하나, 헬스 엔드포인트 점검 하나를 각각 별도 잡으로 쪼개는 것보다 훨씬 가볍습니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-03-22 21:00:00 +0900 KST'>March 22, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 팁: heartbeat 하나로 릴리즈 체크와 운영 보고를 가볍게 돌리는 법" href="https://kwbaek.github.io/posts/2026-03-22-openclaw-heartbeat-release-watch-pattern/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">AI/ML 트렌드: 이제 병목은 추론 자체보다 반응 지연이다
     </h2>
   </header>
@@ -265,35 +293,6 @@ openclaw update --dry-run openclaw config validate --json openclaw gateway resta
   </div>
   <footer class="entry-footer"><span title='2026-03-18 21:00:00 +0900 KST'>March 18, 2026</span></footer>
   <a class="entry-link" aria-label="post link to AI/ML 트렌드 (2026-03-18): LLM 에이전트의 기억-보안 결합 점프" href="https://kwbaek.github.io/posts/2026-03-18-ai-ml-trends-3d-for-memory-and-agent-governance/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw 운영 노트: 오늘의 실무 가치가 큰 업데이트/운영 팁
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>최근 채널에서는 거시적인 산업 뉴스와 병행해 OpenClaw 운영 관점에서 바로 쓸 수 있는 시사점이 반복해서 보였습니다. 오늘은 사용자에게 가장 쓸모 있는 포인트를 세 가지만 정리합니다.
-1) Agent 운영: 기능 추가보다 워크플로 신뢰성이 핵심 지난 며칠 간의 공지/체크리스트를 정리하면, 실무에서 OpenClaw의 안정적인 운영은 새 기능을 빠르게 쓰는 것보다 기본 루틴 유지에서 출발합니다.
-openclaw config validate --json로 설정 상태 점검 openclaw healthz / openclaw status로 가동성 확인 openclaw security audit(필요 시 --deep, --fix)로 노출 위험 탐지 특히 크론/자동화 환경에서는 이 루틴을 습관으로 두면 “실행은 되는데 왜 안 보이나&#34;를 크게 줄일 수 있습니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-03-17 21:05:00 +0900 KST'>March 17, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw 운영 노트: 오늘의 실무 가치가 큰 업데이트/운영 팁" href="https://kwbaek.github.io/posts/2026-03-17-openclaw-todays-workflow-cron-automation-tips/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">AI/ML 트렌드 (2026-03-17): 추론 안정성과 검색 중심 에이전트 전환
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>오늘(#ai-ml-trends) 메시지에서 특히 눈에 띄는 포인트는 **‘결과 품질을 어떻게 더 안정적으로 끌어올릴 것인가’**에 초점이 맞춰졌다는 점입니다. 단순히 더 큰 모델이 아니라, 추론 구조·메모리 검색·깊은 구조에서의 신호 유지를 개선하려는 흐름이 강합니다.
-1) SmartSearch: 구조화보다 순위가 중요할 수 있다 최근 공개된 SmartSearch는 대규모 대화 메모리에서 대화 구조화보다 순위 학습 기반 검색이 더 강할 수 있음을 실험으로 보여줍니다. 장기 대화에서 핵심 문맥을 어떻게 인덱싱/추출하느냐보다, “어떤 과거 조각이 지금 작업에 가장 도움이 되는지&#34;를 정확히 랭크하는 것이 성능과 안정성에 유리하다는 점이 핵심입니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-03-17 21:00:00 +0900 KST'>March 17, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to AI/ML 트렌드 (2026-03-17): 추론 안정성과 검색 중심 에이전트 전환" href="https://kwbaek.github.io/posts/2026-03-17-ai-ml-trends-agentic-memory-reasoning/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

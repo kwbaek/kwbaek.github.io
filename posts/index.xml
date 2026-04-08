@@ -6,8 +6,23 @@
     <description>Recent content in Posts on Kyungwook&#39;s Devlog</description>
     <generator>Hugo -- 0.155.3</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Tue, 07 Apr 2026 21:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Wed, 08 Apr 2026 21:00:00 +0900</lastBuildDate>
     <atom:link href="https://kwbaek.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI/ML 트렌드: AI는 이제 모델 경쟁보다 인프라와 보안 운영의 산업이 되고 있다</title>
+      <link>https://kwbaek.github.io/posts/2026-04-08-ai-ml-trends-ai-is-becoming-an-infrastructure-and-safety-discipline-not-just-a-model-race/</link>
+      <pubDate>Wed, 08 Apr 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-04-08-ai-ml-trends-ai-is-becoming-an-infrastructure-and-safety-discipline-not-just-a-model-race/</guid>
+      <description>&lt;p&gt;오늘 &lt;code&gt;#ai-ml-trends&lt;/code&gt; 채널에서 가장 중요하게 읽힌 신호는 단일 모델 발표가 아니었습니다. 오히려 저는 &lt;strong&gt;AI 산업의 무게중심이 점점 더 &lt;code&gt;좋은 모델&lt;/code&gt;에서 &lt;code&gt;안정적으로 굴러가는 인프라와 보안 운영&lt;/code&gt;으로 이동하고 있다는 점&lt;/strong&gt;이 더 선명했다고 봤습니다. 오늘 올라온 항목들을 보면 얼핏 서로 다른 이야기처럼 보입니다. Anthropic의 보안 협력, Samsung의 AI 메모리 수요 급증, Google-Broadcom의 커스텀 칩 로드맵, 그리고 Reuters Breakingviews가 던진 ‘7조 달러 현실’ 경고가 한날 한 채널에 같이 잡혔습니다. 그런데 이 네 가지를 묶어 보면 하나의 결론으로 수렴합니다. 이제 AI는 더 이상 모델 데모만으로 설명되는 시장이 아닙니다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>OpenClaw 팁: Hugo 자동화는 콘텐츠 작성과 배포를 두 개의 릴리즈로 다룰 때 더 안전해진다</title>
+      <link>https://kwbaek.github.io/posts/2026-04-08-openclaw-hugo-automation-gets-safer-when-content-and-deployment-are-treated-as-two-separate-releases/</link>
+      <pubDate>Wed, 08 Apr 2026 20:55:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-04-08-openclaw-hugo-automation-gets-safer-when-content-and-deployment-are-treated-as-two-separate-releases/</guid>
+      <description>&lt;p&gt;오늘 OpenClaw로 블로그 자동화를 돌리면서 다시 확인한 건, Hugo 기반 블로그 자동화에서 제일 위험한 지점은 글을 쓰는 순간이 아니라 &lt;strong&gt;배포를 한 덩어리 작업처럼 착각하는 순간&lt;/strong&gt;이라는 점입니다. 겉으로 보면 단순합니다. 글 두 편 만들고, &lt;code&gt;git add/commit/push&lt;/code&gt; 하고, Hugo 빌드하고, &lt;code&gt;public/&lt;/code&gt;도 커밋하고 푸시하면 끝입니다. 그런데 실제 운영 관점에선 이 흐름이 하나의 작업이 아니라 &lt;strong&gt;성격이 다른 두 개의 릴리즈&lt;/strong&gt;에 가깝습니다.&lt;/p&gt;
+&lt;p&gt;첫 번째 릴리즈는 &lt;code&gt;content/&lt;/code&gt; 쪽입니다. 이건 사람이 읽는 원고, 메타데이터, 카테고리, 태그, 문서 구조 같은 &lt;strong&gt;소스 콘텐츠의 릴리즈&lt;/strong&gt;입니다. 두 번째 릴리즈는 &lt;code&gt;public/&lt;/code&gt; 쪽입니다. 이건 Hugo가 생성한 정적 파일, 즉 브라우저가 실제로 보게 되는 &lt;strong&gt;배포 산출물의 릴리즈&lt;/strong&gt;입니다. 둘은 연결돼 있지만 완전히 같은 건 아닙니다. 이걸 분리해서 생각하기 시작하면 OpenClaw 자동화가 훨씬 덜 깨지고, 실패했을 때도 복구가 쉬워집니다.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>AI/ML 트렌드: AI 경쟁의 무게중심은 모델 자랑보다 칩 통제력으로 이동 중이다</title>
       <link>https://kwbaek.github.io/posts/2026-04-07-ai-ml-trends-ai-competition-is-shifting-from-model-bragging-rights-to-chip-control/</link>
