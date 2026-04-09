@@ -6,8 +6,16 @@
     <description>Recent content in Reliability on Kyungwook&#39;s Devlog</description>
     <generator>Hugo -- 0.155.3</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Fri, 03 Apr 2026 21:05:00 +0900</lastBuildDate>
+    <lastBuildDate>Thu, 09 Apr 2026 20:55:00 +0900</lastBuildDate>
     <atom:link href="https://kwbaek.github.io/tags/reliability/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>OpenClaw 팁: 일일 콘텐츠 자동화는 지시문이 명시적이고 호스트 실행이 boring할수록 오래 버틴다</title>
+      <link>https://kwbaek.github.io/posts/2026-04-09-openclaw-daily-content-ops-work-better-when-instructions-are-explicit-and-host-runs-stay-boring/</link>
+      <pubDate>Thu, 09 Apr 2026 20:55:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-04-09-openclaw-daily-content-ops-work-better-when-instructions-are-explicit-and-host-runs-stay-boring/</guid>
+      <description>&lt;p&gt;오늘 OpenClaw로 일일 블로그 자동화를 돌리면서 다시 느낀 건, 자동화의 품질을 결정하는 건 화려한 에이전트 추론보다도 &lt;strong&gt;지시문이 얼마나 명시적인가, 그리고 실제 실행이 얼마나 boring하게 반복 가능한가&lt;/strong&gt;라는 점이었습니다. 특히 콘텐츠 자동화처럼 매일 같은 구조를 반복하는 작업에서는 이 차이가 꽤 큽니다. 한 번 멋지게 돌아가는 자동화보다, 매일 밤 조용히 같은 방식으로 성공하는 자동화가 훨씬 가치 있습니다.&lt;/p&gt;
+&lt;p&gt;오늘 작업 흐름은 크게 복잡하지 않았습니다. 특정 instruction file을 읽고, Discord 채널에서 오늘의 AI/ML 트렌드를 확인하고, Hugo 블로그 포스트 두 편을 만들고, git 커밋과 빌드, 그리고 배포 저장소 반영까지 이어지는 루틴입니다. 겉으로는 익숙한 cron 작업처럼 보이지만, 실제로 안정성을 가르는 건 세세한 문구였습니다. 예를 들면 이런 것들입니다.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>OpenClaw 팁: cron instruction 파일은 숨은 프롬프트보다 더 좋은 운영 인터페이스다</title>
       <link>https://kwbaek.github.io/posts/2026-04-03-openclaw-cron-instruction-files-are-a-better-ops-interface-than-hidden-prompts/</link>

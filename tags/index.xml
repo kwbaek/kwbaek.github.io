@@ -6,13 +6,97 @@
     <description>Recent content in Tags on Kyungwook&#39;s Devlog</description>
     <generator>Hugo -- 0.155.3</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Wed, 08 Apr 2026 21:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Thu, 09 Apr 2026 21:00:00 +0900</lastBuildDate>
     <atom:link href="https://kwbaek.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Ai</title>
+      <title>AI</title>
       <link>https://kwbaek.github.io/tags/ai/</link>
-      <pubDate>Wed, 08 Apr 2026 21:00:00 +0900</pubDate>
+      <pubDate>Thu, 09 Apr 2026 21:00:00 +0900</pubDate>
       <guid>https://kwbaek.github.io/tags/ai/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Enterprise AI</title>
+      <link>https://kwbaek.github.io/tags/enterprise-ai/</link>
+      <pubDate>Thu, 09 Apr 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/tags/enterprise-ai/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Gemma 4</title>
+      <link>https://kwbaek.github.io/tags/gemma-4/</link>
+      <pubDate>Thu, 09 Apr 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/tags/gemma-4/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>ML</title>
+      <link>https://kwbaek.github.io/tags/ml/</link>
+      <pubDate>Thu, 09 Apr 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/tags/ml/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>OpenAI</title>
+      <link>https://kwbaek.github.io/tags/openai/</link>
+      <pubDate>Thu, 09 Apr 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/tags/openai/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Transformers</title>
+      <link>https://kwbaek.github.io/tags/transformers/</link>
+      <pubDate>Thu, 09 Apr 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/tags/transformers/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>VLLM</title>
+      <link>https://kwbaek.github.io/tags/vllm/</link>
+      <pubDate>Thu, 09 Apr 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/tags/vllm/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Automation</title>
+      <link>https://kwbaek.github.io/tags/automation/</link>
+      <pubDate>Thu, 09 Apr 2026 20:55:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/tags/automation/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Cron</title>
+      <link>https://kwbaek.github.io/tags/cron/</link>
+      <pubDate>Thu, 09 Apr 2026 20:55:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/tags/cron/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Host Operations</title>
+      <link>https://kwbaek.github.io/tags/host-operations/</link>
+      <pubDate>Thu, 09 Apr 2026 20:55:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/tags/host-operations/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Hugo</title>
+      <link>https://kwbaek.github.io/tags/hugo/</link>
+      <pubDate>Thu, 09 Apr 2026 20:55:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/tags/hugo/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Openclaw</title>
+      <link>https://kwbaek.github.io/tags/openclaw/</link>
+      <pubDate>Thu, 09 Apr 2026 20:55:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/tags/openclaw/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Reliability</title>
+      <link>https://kwbaek.github.io/tags/reliability/</link>
+      <pubDate>Thu, 09 Apr 2026 20:55:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/tags/reliability/</guid>
       <description></description>
     </item>
     <item>
@@ -44,13 +128,6 @@
       <description></description>
     </item>
     <item>
-      <title>ML</title>
-      <link>https://kwbaek.github.io/tags/ml/</link>
-      <pubDate>Wed, 08 Apr 2026 21:00:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/tags/ml/</guid>
-      <description></description>
-    </item>
-    <item>
       <title>Safety</title>
       <link>https://kwbaek.github.io/tags/safety/</link>
       <pubDate>Wed, 08 Apr 2026 21:00:00 +0900</pubDate>
@@ -65,20 +142,6 @@
       <description></description>
     </item>
     <item>
-      <title>Automation</title>
-      <link>https://kwbaek.github.io/tags/automation/</link>
-      <pubDate>Wed, 08 Apr 2026 20:55:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/tags/automation/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Cron</title>
-      <link>https://kwbaek.github.io/tags/cron/</link>
-      <pubDate>Wed, 08 Apr 2026 20:55:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/tags/cron/</guid>
-      <description></description>
-    </item>
-    <item>
       <title>Deployment</title>
       <link>https://kwbaek.github.io/tags/deployment/</link>
       <pubDate>Wed, 08 Apr 2026 20:55:00 +0900</pubDate>
@@ -90,20 +153,6 @@
       <link>https://kwbaek.github.io/tags/git/</link>
       <pubDate>Wed, 08 Apr 2026 20:55:00 +0900</pubDate>
       <guid>https://kwbaek.github.io/tags/git/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Hugo</title>
-      <link>https://kwbaek.github.io/tags/hugo/</link>
-      <pubDate>Wed, 08 Apr 2026 20:55:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/tags/hugo/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Openclaw</title>
-      <link>https://kwbaek.github.io/tags/openclaw/</link>
-      <pubDate>Wed, 08 Apr 2026 20:55:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/tags/openclaw/</guid>
       <description></description>
     </item>
     <item>
@@ -146,13 +195,6 @@
       <link>https://kwbaek.github.io/tags/cost-optimization/</link>
       <pubDate>Mon, 06 Apr 2026 21:34:00 +0900</pubDate>
       <guid>https://kwbaek.github.io/tags/cost-optimization/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>VLLM</title>
-      <link>https://kwbaek.github.io/tags/vllm/</link>
-      <pubDate>Mon, 06 Apr 2026 21:34:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/tags/vllm/</guid>
       <description></description>
     </item>
     <item>
@@ -275,13 +317,6 @@
       <description></description>
     </item>
     <item>
-      <title>Gemma 4</title>
-      <link>https://kwbaek.github.io/tags/gemma-4/</link>
-      <pubDate>Sat, 04 Apr 2026 21:00:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/tags/gemma-4/</guid>
-      <description></description>
-    </item>
-    <item>
       <title>Serving Infrastructure</title>
       <link>https://kwbaek.github.io/tags/serving-infrastructure/</link>
       <pubDate>Sat, 04 Apr 2026 21:00:00 +0900</pubDate>
@@ -293,13 +328,6 @@
       <link>https://kwbaek.github.io/tags/prompt-design/</link>
       <pubDate>Fri, 03 Apr 2026 21:05:00 +0900</pubDate>
       <guid>https://kwbaek.github.io/tags/prompt-design/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Reliability</title>
-      <link>https://kwbaek.github.io/tags/reliability/</link>
-      <pubDate>Fri, 03 Apr 2026 21:05:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/tags/reliability/</guid>
       <description></description>
     </item>
     <item>
@@ -394,7 +422,7 @@
       <description></description>
     </item>
     <item>
-      <title>NVIDIA</title>
+      <title>Nvidia</title>
       <link>https://kwbaek.github.io/tags/nvidia/</link>
       <pubDate>Wed, 01 Apr 2026 21:00:00 +0900</pubDate>
       <guid>https://kwbaek.github.io/tags/nvidia/</guid>
@@ -485,17 +513,10 @@
       <description></description>
     </item>
     <item>
-      <title>AI Agent</title>
+      <title>Ai-Agent</title>
       <link>https://kwbaek.github.io/tags/ai-agent/</link>
       <pubDate>Fri, 27 Mar 2026 21:16:00 +0900</pubDate>
       <guid>https://kwbaek.github.io/tags/ai-agent/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Openai</title>
-      <link>https://kwbaek.github.io/tags/openai/</link>
-      <pubDate>Fri, 27 Mar 2026 21:16:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/tags/openai/</guid>
       <description></description>
     </item>
     <item>
@@ -825,13 +846,6 @@
       <link>https://kwbaek.github.io/tags/data-center/</link>
       <pubDate>Fri, 13 Mar 2026 21:00:00 +0900</pubDate>
       <guid>https://kwbaek.github.io/tags/data-center/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Enterprise AI</title>
-      <link>https://kwbaek.github.io/tags/enterprise-ai/</link>
-      <pubDate>Fri, 13 Mar 2026 21:00:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/tags/enterprise-ai/</guid>
       <description></description>
     </item>
     <item>

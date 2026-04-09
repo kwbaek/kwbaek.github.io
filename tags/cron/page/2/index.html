@@ -143,6 +143,20 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 팁: 매일 도는 크론 작업은 instruction file부터 단단해야 한다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>OpenClaw로 매일 반복 작업을 굴리다 보면, 모델 성능보다 더 중요하게 느껴지는 것이 하나 있습니다. 바로 작업의 시작점이 얼마나 명확하게 고정되어 있느냐입니다. 특히 Discord 채널을 읽고, 내용을 선별하고, Markdown 파일을 만들고, Hugo를 빌드하고, 배포 저장소까지 업데이트하는 흐름은 단계가 많아서 작은 흔들림도 금방 전체 실패로 번집니다.
+이럴 때 가장 효과적인 패턴이 바로 instruction file 기반 크론 작업입니다. 즉 “오늘 뭘 해야 하는지”를 채팅 프롬프트 안에 흩뿌리지 말고, 별도 파일 하나에 작업 순서와 실패 규칙까지 명시해두는 방식입니다. 이 패턴의 장점은 단순합니다. 작업이 사람 기억이나 직전 대화 맥락에 덜 의존하게 되고, 매일 같은 작업을 해도 입력 조건이 일정하게 유지됩니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-03-21 21:00:00 +0900 KST'>March 21, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 팁: 매일 도는 크론 작업은 instruction file부터 단단해야 한다" href="https://kwbaek.github.io/posts/2026-03-21-openclaw-use-instruction-files-to-stabilize-daily-cron-work/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">OpenClaw 팁: 매일 도는 콘텐츠 자동화를 덜 피곤하게 운영하는 법
     </h2>
   </header>
@@ -269,20 +283,6 @@ Heartbeat는 컨텍스트를 묶어 처리할 수 있다는 장점이 큽니다.
   </div>
   <footer class="entry-footer"><span title='2026-03-11 21:00:00 +0900 KST'>March 11, 2026</span></footer>
   <a class="entry-link" aria-label="post link to OpenClaw 실전 팁: 지시문 기반 Cron 자동 포스팅 워크플로 설계하기" href="https://kwbaek.github.io/posts/2026-03-11-openclaw-cron-instruction-driven-blogging/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw 운영 메모: v2026.3.7 이후 꼭 챙길 4가지 (실전 체크리스트)
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>OpenClaw를 계속 굴리다 보면 새 기능보다 더 중요한 게 있습니다. 바로 “이번 업데이트에서 운영 리스크가 어디로 이동했는지&#34;를 빨리 잡는 것입니다. 최근 버전 흐름(v2026.3.7 기준)을 보면, 단순 기능 추가보다 보안 기본값, 라우팅 안정성, 운영 점검 루틴이 점점 더 중요해지고 있습니다. 오늘은 실제로 바로 적용 가능한 포인트만 압축해서 정리합니다.
-1) 먼저 확인: auth 설정의 브레이킹 포인트 v2026.3.7에서 가장 먼저 체크할 건 gateway 인증 조합입니다. gateway.auth.token과 gateway.auth.password를 동시에 쓰는 환경이라면 gateway.auth.mode를 반드시 명시해야 합니다. 이걸 놓치면 업데이트 직후 “왜 갑자기 인증이 꼬였지?” 같은 장애가 생기기 쉽습니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-03-10 21:05:00 +0900 KST'>March 10, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw 운영 메모: v2026.3.7 이후 꼭 챙길 4가지 (실전 체크리스트)" href="https://kwbaek.github.io/posts/2026-03-10-openclaw-v2026-3-7-operations-playbook/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

@@ -6,8 +6,15 @@
     <description>Recent content in VLLM on Kyungwook&#39;s Devlog</description>
     <generator>Hugo -- 0.155.3</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Mon, 06 Apr 2026 21:34:00 +0900</lastBuildDate>
+    <lastBuildDate>Thu, 09 Apr 2026 21:00:00 +0900</lastBuildDate>
     <atom:link href="https://kwbaek.github.io/tags/vllm/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI/ML 트렌드: AI operating layer 경쟁과 서빙 스택 성숙이 진짜 승부처로 합쳐지고 있다</title>
+      <link>https://kwbaek.github.io/posts/2026-04-09-ai-ml-trends-ai-operating-layer-and-serving-stack-are-converging-into-the-real-battleground/</link>
+      <pubDate>Thu, 09 Apr 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-04-09-ai-ml-trends-ai-operating-layer-and-serving-stack-are-converging-into-the-real-battleground/</guid>
+      <description>&lt;p&gt;오늘 &lt;code&gt;#ai-ml-trends&lt;/code&gt; 채널에서 가장 흥미롭고 중요한 흐름을 하나만 고르라면, 저는 &lt;strong&gt;AI 경쟁의 무게중심이 &lt;code&gt;더 좋은 모델 하나&lt;/code&gt;에서 &lt;code&gt;회사 전체를 덮는 AI operating layer&lt;/code&gt;와 &lt;code&gt;그걸 실제로 굴려 주는 서빙 스택&lt;/code&gt;의 결합으로 이동하고 있다는 점&lt;/strong&gt;을 꼽겠습니다. 오늘 채널에는 OpenAI의 엔터프라이즈 전략 글, vLLM 0.19.0, Transformers 5.5.0, Gemma 4 생태계 확장 이야기가 한꺼번에 올라왔습니다. 얼핏 보면 서로 다른 층위의 뉴스처럼 보이지만, 실제로는 하나의 방향을 가리킵니다. 이제 기업은 단순히 “어떤 모델을 쓸까?”를 묻는 단계에서 벗어나, **“AI를 회사의 기본 운영층으로 어떻게 깔 것인가, 그리고 그걸 어떤 비용 구조로 안정적으로 서빙할 것인가”**를 묻고 있습니다.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>OpenClaw 실무 메모: 과금 유연화·vLLM 진화가 만드는 코딩 에이전트 운영 전략</title>
       <link>https://kwbaek.github.io/posts/2026-04-06-openclaw-pricing-serving-and-ops-choices/</link>
