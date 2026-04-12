@@ -6,8 +6,24 @@
     <description>Recent content in Cron on Kyungwook&#39;s Devlog</description>
     <generator>Hugo -- 0.155.3</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Thu, 09 Apr 2026 20:55:00 +0900</lastBuildDate>
+    <lastBuildDate>Sat, 11 Apr 2026 21:41:00 +0900</lastBuildDate>
     <atom:link href="https://kwbaek.github.io/tags/cron/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>OpenClaw에서 cron과 세션 워크플로를 제대로 쓰는 법</title>
+      <link>https://kwbaek.github.io/posts/2026-04-11-openclaw-cron-and-session-workflows-that-actually-scale/</link>
+      <pubDate>Sat, 11 Apr 2026 21:41:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-04-11-openclaw-cron-and-session-workflows-that-actually-scale/</guid>
+      <description>&lt;p&gt;OpenClaw를 조금만 오래 써보면 금방 느끼는 게 있습니다. 문제는 &amp;ldquo;도구가 많다&amp;quot;가 아니라, &lt;strong&gt;언제 cron을 쓰고 언제 세션을 분리하느냐&lt;/strong&gt;가 운영 품질을 크게 좌우한다는 점입니다. 처음에는 모든 작업을 한 세션에 몰아넣기 쉽지만, 그렇게 하면 문맥이 무거워지고 스케줄 작업과 실시간 대화가 서로 방해하기 시작합니다.&lt;/p&gt;
+&lt;h2 id=&#34;핵심-원칙-정확한-시각은-cron-긴-문맥-작업은-세션&#34;&gt;핵심 원칙: 정확한 시각은 cron, 긴 문맥 작업은 세션&lt;/h2&gt;
+&lt;p&gt;제가 가장 유용하다고 느끼는 기준은 이렇습니다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;정확한 시간 실행&lt;/strong&gt;이 필요하면 &lt;code&gt;cron&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;배치성 리서치/작성 작업&lt;/strong&gt;은 분리된 세션이나 isolated run&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;즉시성 있는 대화&lt;/strong&gt;는 현재 세션 유지&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;반복 점검&lt;/strong&gt;은 heartbeat 또는 cron 중 목적에 맞게 선택&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;예를 들어 &amp;ldquo;매일 밤 블로그 초안 쓰기&amp;rdquo; 같은 작업은 cron이 잘 맞습니다. 반대로 복잡한 구현, 디버깅, 장문 리서치처럼 중간 상태가 많은 일은 별도 세션으로 분리하는 편이 훨씬 안정적입니다.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>OpenClaw 팁: 일일 콘텐츠 자동화는 지시문이 명시적이고 호스트 실행이 boring할수록 오래 버틴다</title>
       <link>https://kwbaek.github.io/posts/2026-04-09-openclaw-daily-content-ops-work-better-when-instructions-are-explicit-and-host-runs-stay-boring/</link>

@@ -6,8 +6,16 @@
     <description>Recent content in Evaluation on Kyungwook&#39;s Devlog</description>
     <generator>Hugo -- 0.155.3</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Mon, 23 Mar 2026 21:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 12 Apr 2026 21:00:00 +0900</lastBuildDate>
     <atom:link href="https://kwbaek.github.io/tags/evaluation/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI/ML 트렌드: 에이전트 평가는 이제 모델 시험이 아니라 인프라 운영 discipline이 되고 있다</title>
+      <link>https://kwbaek.github.io/posts/2026-04-12-ai-ml-trends-agent-evals-are-becoming-an-infrastructure-discipline/</link>
+      <pubDate>Sun, 12 Apr 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-04-12-ai-ml-trends-agent-evals-are-becoming-an-infrastructure-discipline/</guid>
+      <description>&lt;p&gt;오늘 &lt;code&gt;#ai-ml-trends&lt;/code&gt; 채널에서 가장 중요하게 읽힌 신호는, Anthropic이 공개한 &lt;strong&gt;agentic coding eval에서 인프라 설정만으로 점수 차이가 최대 6%p까지 날 수 있다&lt;/strong&gt;는 이야기였습니다. 겉으로 보면 이건 평가 노이즈에 대한 기술 블로그처럼 보일 수 있습니다. 하지만 저는 이걸 훨씬 더 큰 흐름으로 봅니다. 이제 에이전트 경쟁은 단순히 “어떤 모델이 더 똑똑한가”를 겨루는 단계에서, &lt;strong&gt;어떤 실행 환경과 평가 설계를 갖췄을 때 실제 능력을 더 안정적으로 끌어내는가&lt;/strong&gt;를 겨루는 단계로 이동하고 있습니다.&lt;/p&gt;
+&lt;p&gt;이 변화가 중요한 이유는 간단합니다. 코딩 에이전트는 순수한 언어모델이 아니라, 런타임과 샌드박스와 도구 호출과 자원 제한 위에서 움직이는 시스템이기 때문입니다. 같은 모델이라도 CPU나 메모리 제한이 다르고, 파일 시스템 접근 방식이 다르고, 네트워크 허용 범위가 다르고, 타임아웃 정책이 다르면 결과는 쉽게 달라집니다. 다시 말해 에이전트 성능은 모델 파라미터 안에만 들어 있지 않습니다. &lt;strong&gt;모델 바깥의 운영 조건이 이미 성능의 일부&lt;/strong&gt;가 됐다는 뜻입니다.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>AI/ML 트렌드: AGI 경쟁은 이제 점수보다 인지 프레임워크 설계로 간다</title>
       <link>https://kwbaek.github.io/posts/2026-03-23-ai-ml-trends-from-benchmark-scores-to-cognitive-frameworks/</link>

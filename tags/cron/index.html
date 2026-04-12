@@ -143,6 +143,21 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw에서 cron과 세션 워크플로를 제대로 쓰는 법
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>OpenClaw를 조금만 오래 써보면 금방 느끼는 게 있습니다. 문제는 “도구가 많다&#34;가 아니라, 언제 cron을 쓰고 언제 세션을 분리하느냐가 운영 품질을 크게 좌우한다는 점입니다. 처음에는 모든 작업을 한 세션에 몰아넣기 쉽지만, 그렇게 하면 문맥이 무거워지고 스케줄 작업과 실시간 대화가 서로 방해하기 시작합니다.
+핵심 원칙: 정확한 시각은 cron, 긴 문맥 작업은 세션 제가 가장 유용하다고 느끼는 기준은 이렇습니다.
+정확한 시간 실행이 필요하면 cron 배치성 리서치/작성 작업은 분리된 세션이나 isolated run 즉시성 있는 대화는 현재 세션 유지 반복 점검은 heartbeat 또는 cron 중 목적에 맞게 선택 예를 들어 “매일 밤 블로그 초안 쓰기” 같은 작업은 cron이 잘 맞습니다. 반대로 복잡한 구현, 디버깅, 장문 리서치처럼 중간 상태가 많은 일은 별도 세션으로 분리하는 편이 훨씬 안정적입니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-04-11 21:41:00 +0900 KST'>April 11, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw에서 cron과 세션 워크플로를 제대로 쓰는 법" href="https://kwbaek.github.io/posts/2026-04-11-openclaw-cron-and-session-workflows-that-actually-scale/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">OpenClaw 팁: 일일 콘텐츠 자동화는 지시문이 명시적이고 호스트 실행이 boring할수록 오래 버틴다
     </h2>
   </header>
@@ -265,20 +280,6 @@
   </div>
   <footer class="entry-footer"><span title='2026-03-24 21:00:00 +0900 KST'>March 24, 2026</span></footer>
   <a class="entry-link" aria-label="post link to OpenClaw 실전 운영 팁: 매일 블로그 자동화는 워크플로 안정성이 성패를 가른다" href="https://kwbaek.github.io/posts/2026-03-24-openclaw-practical-ops-for-todays-blog-automation/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw 팁: 매일 쓰는 자동화일수록 새 기능보다 신뢰성 패치가 더 중요하다
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>오늘 OpenClaw 쪽에서 눈에 들어온 포인트는 거창한 신기능보다도, 매일 돌려야 하는 자동화를 덜 불안하게 만들어주는 신뢰성 패치들이었습니다. 최신 릴리즈 v2026.3.13-1은 이름부터 약간 특이합니다. 이미 공개된 v2026.3.13 릴리즈 경로가 꼬여서 이를 복구하기 위한 recovery release였고, npm 버전은 그대로 두면서 GitHub 릴리즈 태그만 -1을 붙였습니다. 겉으로 보면 자잘한 운영 이슈처럼 보이지만, 실제로 이런 복구 감각이 있는 프로젝트가 장기 운영에는 훨씬 믿을 만합니다.
-이번 릴리즈에서 특히 실무적으로 중요해 보인 건 몇 가지였습니다. 첫째는 isolated cron nested lane deadlock 방지입니다. OpenClaw를 조금만 깊게 쓰기 시작하면 cron이 단순 알람이 아니라, 리서치, 요약, 보고, 파일 생성 같은 실제 작업 파이프라인으로 커집니다. 이때 isolated 실행 경로에서 교착 상태가 나면, 겉으로는 “아무 일도 안 일어난 조용한 실패&#34;처럼 보이기 쉽습니다. 그래서 이런 종류의 수정은 화려하진 않아도 운영 체감이 큽니다. 매일 밤 도는 잡일수록 실패 로그보다 “왜 결과가 안 나왔지?“가 더 무섭기 때문입니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-03-23 21:00:00 +0900 KST'>March 23, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw 팁: 매일 쓰는 자동화일수록 새 기능보다 신뢰성 패치가 더 중요하다" href="https://kwbaek.github.io/posts/2026-03-23-openclaw-reliability-beats-feature-chasing-in-daily-ops/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

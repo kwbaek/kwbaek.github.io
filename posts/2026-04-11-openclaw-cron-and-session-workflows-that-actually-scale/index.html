@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>OpenClaw에서 cron과 세션 워크플로를 제대로 쓰는 법 | Kyungwook&#39;s Devlog</title>
+<meta name="keywords" content="OpenClaw, Cron, Sessions, Automation, Agents">
+<meta name="description" content="OpenClaw를 조금만 오래 써보면 금방 느끼는 게 있습니다. 문제는 &ldquo;도구가 많다&quot;가 아니라, 언제 cron을 쓰고 언제 세션을 분리하느냐가 운영 품질을 크게 좌우한다는 점입니다. 처음에는 모든 작업을 한 세션에 몰아넣기 쉽지만, 그렇게 하면 문맥이 무거워지고 스케줄 작업과 실시간 대화가 서로 방해하기 시작합니다.
+핵심 원칙: 정확한 시각은 cron, 긴 문맥 작업은 세션
+제가 가장 유용하다고 느끼는 기준은 이렇습니다.
+
+정확한 시간 실행이 필요하면 cron
+배치성 리서치/작성 작업은 분리된 세션이나 isolated run
+즉시성 있는 대화는 현재 세션 유지
+반복 점검은 heartbeat 또는 cron 중 목적에 맞게 선택
+
+예를 들어 &ldquo;매일 밤 블로그 초안 쓰기&rdquo; 같은 작업은 cron이 잘 맞습니다. 반대로 복잡한 구현, 디버깅, 장문 리서치처럼 중간 상태가 많은 일은 별도 세션으로 분리하는 편이 훨씬 안정적입니다.">
+<meta name="author" content="">
+<link rel="canonical" href="https://kwbaek.github.io/posts/2026-04-11-openclaw-cron-and-session-workflows-that-actually-scale/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.da3211e5ef867bf2b75fd5a6515cfed7195c011e8ab735694e203810a827097b.css" integrity="sha256-2jIR5e&#43;Ge/K3X9WmUVz&#43;1xlcAR6KtzVpTiA4EKgnCXs=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://kwbaek.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://kwbaek.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://kwbaek.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://kwbaek.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://kwbaek.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://kwbaek.github.io/posts/2026-04-11-openclaw-cron-and-session-workflows-that-actually-scale/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="https://kwbaek.github.io/posts/2026-04-11-openclaw-cron-and-session-workflows-that-actually-scale/">
+  <meta property="og:site_name" content="Kyungwook&#39;s Devlog">
+  <meta property="og:title" content="OpenClaw에서 cron과 세션 워크플로를 제대로 쓰는 법">
+  <meta property="og:description" content="OpenClaw를 조금만 오래 써보면 금방 느끼는 게 있습니다. 문제는 “도구가 많다&#34;가 아니라, 언제 cron을 쓰고 언제 세션을 분리하느냐가 운영 품질을 크게 좌우한다는 점입니다. 처음에는 모든 작업을 한 세션에 몰아넣기 쉽지만, 그렇게 하면 문맥이 무거워지고 스케줄 작업과 실시간 대화가 서로 방해하기 시작합니다.
+핵심 원칙: 정확한 시각은 cron, 긴 문맥 작업은 세션 제가 가장 유용하다고 느끼는 기준은 이렇습니다.
+정확한 시간 실행이 필요하면 cron 배치성 리서치/작성 작업은 분리된 세션이나 isolated run 즉시성 있는 대화는 현재 세션 유지 반복 점검은 heartbeat 또는 cron 중 목적에 맞게 선택 예를 들어 “매일 밤 블로그 초안 쓰기” 같은 작업은 cron이 잘 맞습니다. 반대로 복잡한 구현, 디버깅, 장문 리서치처럼 중간 상태가 많은 일은 별도 세션으로 분리하는 편이 훨씬 안정적입니다.">
+  <meta property="og:locale" content="ko-kr">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2026-04-11T21:41:00+09:00">
+    <meta property="article:modified_time" content="2026-04-11T21:41:00+09:00">
+    <meta property="article:tag" content="Openclaw">
+    <meta property="article:tag" content="Cron">
+    <meta property="article:tag" content="Sessions">
+    <meta property="article:tag" content="Automation">
+    <meta property="article:tag" content="Agents">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="OpenClaw에서 cron과 세션 워크플로를 제대로 쓰는 법">
+<meta name="twitter:description" content="OpenClaw를 조금만 오래 써보면 금방 느끼는 게 있습니다. 문제는 &ldquo;도구가 많다&quot;가 아니라, 언제 cron을 쓰고 언제 세션을 분리하느냐가 운영 품질을 크게 좌우한다는 점입니다. 처음에는 모든 작업을 한 세션에 몰아넣기 쉽지만, 그렇게 하면 문맥이 무거워지고 스케줄 작업과 실시간 대화가 서로 방해하기 시작합니다.
+핵심 원칙: 정확한 시각은 cron, 긴 문맥 작업은 세션
+제가 가장 유용하다고 느끼는 기준은 이렇습니다.
+
+정확한 시간 실행이 필요하면 cron
+배치성 리서치/작성 작업은 분리된 세션이나 isolated run
+즉시성 있는 대화는 현재 세션 유지
+반복 점검은 heartbeat 또는 cron 중 목적에 맞게 선택
+
+예를 들어 &ldquo;매일 밤 블로그 초안 쓰기&rdquo; 같은 작업은 cron이 잘 맞습니다. 반대로 복잡한 구현, 디버깅, 장문 리서치처럼 중간 상태가 많은 일은 별도 세션으로 분리하는 편이 훨씬 안정적입니다.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://kwbaek.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "OpenClaw에서 cron과 세션 워크플로를 제대로 쓰는 법",
+      "item": "https://kwbaek.github.io/posts/2026-04-11-openclaw-cron-and-session-workflows-that-actually-scale/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "OpenClaw에서 cron과 세션 워크플로를 제대로 쓰는 법",
+  "name": "OpenClaw에서 cron과 세션 워크플로를 제대로 쓰는 법",
+  "description": "OpenClaw를 조금만 오래 써보면 금방 느끼는 게 있습니다. 문제는 \u0026ldquo;도구가 많다\u0026quot;가 아니라, 언제 cron을 쓰고 언제 세션을 분리하느냐가 운영 품질을 크게 좌우한다는 점입니다. 처음에는 모든 작업을 한 세션에 몰아넣기 쉽지만, 그렇게 하면 문맥이 무거워지고 스케줄 작업과 실시간 대화가 서로 방해하기 시작합니다.\n핵심 원칙: 정확한 시각은 cron, 긴 문맥 작업은 세션 제가 가장 유용하다고 느끼는 기준은 이렇습니다.\n정확한 시간 실행이 필요하면 cron 배치성 리서치/작성 작업은 분리된 세션이나 isolated run 즉시성 있는 대화는 현재 세션 유지 반복 점검은 heartbeat 또는 cron 중 목적에 맞게 선택 예를 들어 \u0026ldquo;매일 밤 블로그 초안 쓰기\u0026rdquo; 같은 작업은 cron이 잘 맞습니다. 반대로 복잡한 구현, 디버깅, 장문 리서치처럼 중간 상태가 많은 일은 별도 세션으로 분리하는 편이 훨씬 안정적입니다.\n",
+  "keywords": [
+    "OpenClaw", "Cron", "Sessions", "Automation", "Agents"
+  ],
+  "articleBody": "OpenClaw를 조금만 오래 써보면 금방 느끼는 게 있습니다. 문제는 “도구가 많다\"가 아니라, 언제 cron을 쓰고 언제 세션을 분리하느냐가 운영 품질을 크게 좌우한다는 점입니다. 처음에는 모든 작업을 한 세션에 몰아넣기 쉽지만, 그렇게 하면 문맥이 무거워지고 스케줄 작업과 실시간 대화가 서로 방해하기 시작합니다.\n핵심 원칙: 정확한 시각은 cron, 긴 문맥 작업은 세션 제가 가장 유용하다고 느끼는 기준은 이렇습니다.\n정확한 시간 실행이 필요하면 cron 배치성 리서치/작성 작업은 분리된 세션이나 isolated run 즉시성 있는 대화는 현재 세션 유지 반복 점검은 heartbeat 또는 cron 중 목적에 맞게 선택 예를 들어 “매일 밤 블로그 초안 쓰기” 같은 작업은 cron이 잘 맞습니다. 반대로 복잡한 구현, 디버깅, 장문 리서치처럼 중간 상태가 많은 일은 별도 세션으로 분리하는 편이 훨씬 안정적입니다.\n왜 이 조합이 좋은가 이 방식의 장점은 세 가지입니다.\n1. 문맥 오염이 줄어듭니다 메인 대화에서 했던 잡담, 실험, 실패 로그가 정기 작업 품질에 섞이지 않습니다.\n2. 실패 원인 파악이 쉬워집니다 cron 잡은 일정과 payload가 명확해서, 무엇이 언제 실패했는지 추적하기 좋습니다.\n3. 자동화가 사람을 덜 괴롭힙니다 잘 설계된 워크플로는 필요할 때만 알리고, 평소에는 조용히 돌아갑니다. 이게 실제 운영에서는 꽤 중요합니다.\n실전 팁 one-shot 알림은 sleep 대신 cron at job으로 만들기 무거운 리서치는 isolated agentTurn으로 분리하기 반복 작업은 결과를 길게 말하기보다 짧은 summary 중심으로 전달하기 세션이 길어질수록 “현재 대화\"와 “백그라운드 작업\"을 분리하기 마무리 OpenClaw를 잘 쓰는 팀과 그렇지 않은 팀의 차이는 종종 모델이 아니라 작업 배치 방식에서 납니다. cron, heartbeat, session 분리를 적절히 쓰면 자동화가 훨씬 덜 시끄럽고 더 믿을 만해집니다. 결국 좋은 에이전트 운영은 똑똑한 답변보다도, 일이 제시간에 깔끔하게 굴러가게 만드는 구조에 가깝습니다.\n",
+  "wordCount" : "243",
+  "inLanguage": "en",
+  "datePublished": "2026-04-11T21:41:00+09:00",
+  "dateModified": "2026-04-11T21:41:00+09:00",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://kwbaek.github.io/posts/2026-04-11-openclaw-cron-and-session-workflows-that-actually-scale/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Kyungwook's Devlog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://kwbaek.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://kwbaek.github.io/" accesskey="h" title="Kyungwook&#39;s Devlog (Alt + H)">Kyungwook&#39;s Devlog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://kwbaek.github.io/categories/" title="categories">
+                    <span>categories</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kwbaek.github.io/tags/" title="tags">
+                    <span>tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kwbaek.github.io/" title="Kyungwook&#39;s Devlog">
+                    <span>Kyungwook&#39;s Devlog</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      OpenClaw에서 cron과 세션 워크플로를 제대로 쓰는 법
+    </h1>
+    <div class="post-meta"><span title='2026-04-11 21:41:00 +0900 KST'>April 11, 2026</span>
+
+</div>
+  </header> 
+  <div class="post-content"><p>OpenClaw를 조금만 오래 써보면 금방 느끼는 게 있습니다. 문제는 &ldquo;도구가 많다&quot;가 아니라, <strong>언제 cron을 쓰고 언제 세션을 분리하느냐</strong>가 운영 품질을 크게 좌우한다는 점입니다. 처음에는 모든 작업을 한 세션에 몰아넣기 쉽지만, 그렇게 하면 문맥이 무거워지고 스케줄 작업과 실시간 대화가 서로 방해하기 시작합니다.</p>
+<h2 id="핵심-원칙-정확한-시각은-cron-긴-문맥-작업은-세션">핵심 원칙: 정확한 시각은 cron, 긴 문맥 작업은 세션<a hidden class="anchor" aria-hidden="true" href="#핵심-원칙-정확한-시각은-cron-긴-문맥-작업은-세션">#</a></h2>
+<p>제가 가장 유용하다고 느끼는 기준은 이렇습니다.</p>
+<ul>
+<li><strong>정확한 시간 실행</strong>이 필요하면 <code>cron</code></li>
+<li><strong>배치성 리서치/작성 작업</strong>은 분리된 세션이나 isolated run</li>
+<li><strong>즉시성 있는 대화</strong>는 현재 세션 유지</li>
+<li><strong>반복 점검</strong>은 heartbeat 또는 cron 중 목적에 맞게 선택</li>
+</ul>
+<p>예를 들어 &ldquo;매일 밤 블로그 초안 쓰기&rdquo; 같은 작업은 cron이 잘 맞습니다. 반대로 복잡한 구현, 디버깅, 장문 리서치처럼 중간 상태가 많은 일은 별도 세션으로 분리하는 편이 훨씬 안정적입니다.</p>
+<h2 id="왜-이-조합이-좋은가">왜 이 조합이 좋은가<a hidden class="anchor" aria-hidden="true" href="#왜-이-조합이-좋은가">#</a></h2>
+<p>이 방식의 장점은 세 가지입니다.</p>
+<h3 id="1-문맥-오염이-줄어듭니다">1. 문맥 오염이 줄어듭니다<a hidden class="anchor" aria-hidden="true" href="#1-문맥-오염이-줄어듭니다">#</a></h3>
+<p>메인 대화에서 했던 잡담, 실험, 실패 로그가 정기 작업 품질에 섞이지 않습니다.</p>
+<h3 id="2-실패-원인-파악이-쉬워집니다">2. 실패 원인 파악이 쉬워집니다<a hidden class="anchor" aria-hidden="true" href="#2-실패-원인-파악이-쉬워집니다">#</a></h3>
+<p>cron 잡은 일정과 payload가 명확해서, 무엇이 언제 실패했는지 추적하기 좋습니다.</p>
+<h3 id="3-자동화가-사람을-덜-괴롭힙니다">3. 자동화가 사람을 덜 괴롭힙니다<a hidden class="anchor" aria-hidden="true" href="#3-자동화가-사람을-덜-괴롭힙니다">#</a></h3>
+<p>잘 설계된 워크플로는 필요할 때만 알리고, 평소에는 조용히 돌아갑니다. 이게 실제 운영에서는 꽤 중요합니다.</p>
+<h2 id="실전-팁">실전 팁<a hidden class="anchor" aria-hidden="true" href="#실전-팁">#</a></h2>
+<ul>
+<li>one-shot 알림은 sleep 대신 <strong>cron at job</strong>으로 만들기</li>
+<li>무거운 리서치는 <strong>isolated agentTurn</strong>으로 분리하기</li>
+<li>반복 작업은 결과를 길게 말하기보다 <strong>짧은 summary</strong> 중심으로 전달하기</li>
+<li>세션이 길어질수록 &ldquo;현재 대화&quot;와 &ldquo;백그라운드 작업&quot;을 분리하기</li>
+</ul>
+<h2 id="마무리">마무리<a hidden class="anchor" aria-hidden="true" href="#마무리">#</a></h2>
+<p>OpenClaw를 잘 쓰는 팀과 그렇지 않은 팀의 차이는 종종 모델이 아니라 <strong>작업 배치 방식</strong>에서 납니다. cron, heartbeat, session 분리를 적절히 쓰면 자동화가 훨씬 덜 시끄럽고 더 믿을 만해집니다. 결국 좋은 에이전트 운영은 똑똑한 답변보다도, <strong>일이 제시간에 깔끔하게 굴러가게 만드는 구조</strong>에 가깝습니다.</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://kwbaek.github.io/tags/openclaw/">Openclaw</a></li>
+      <li><a href="https://kwbaek.github.io/tags/cron/">Cron</a></li>
+      <li><a href="https://kwbaek.github.io/tags/sessions/">Sessions</a></li>
+      <li><a href="https://kwbaek.github.io/tags/automation/">Automation</a></li>
+      <li><a href="https://kwbaek.github.io/tags/agents/">Agents</a></li>
+    </ul>
+  </footer><script src="https://utteranc.es/client.js"
+        repo="kwbaek/blog-comments"
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://kwbaek.github.io/">Kyungwook&#39;s Devlog</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>
