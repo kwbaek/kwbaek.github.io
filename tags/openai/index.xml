@@ -1,31 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>OpenAI on Kyungwook&#39;s Devlog</title>
+    <title>Openai on Kyungwook&#39;s Devlog</title>
     <link>https://kwbaek.github.io/tags/openai/</link>
-    <description>Recent content in OpenAI on Kyungwook&#39;s Devlog</description>
+    <description>Recent content in Openai on Kyungwook&#39;s Devlog</description>
     <generator>Hugo -- 0.155.3</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Sat, 11 Apr 2026 21:41:00 +0900</lastBuildDate>
+    <lastBuildDate>Thu, 09 Apr 2026 21:00:00 +0900</lastBuildDate>
     <atom:link href="https://kwbaek.github.io/tags/openai/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>AI 에이전트 시대, 다음 경쟁력은 툴체인 보안이다</title>
-      <link>https://kwbaek.github.io/posts/2026-04-11-ai-agent-toolchain-security-is-the-next-frontier/</link>
-      <pubDate>Sat, 11 Apr 2026 21:41:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/posts/2026-04-11-ai-agent-toolchain-security-is-the-next-frontier/</guid>
-      <description>&lt;p&gt;오늘 Discord &lt;code&gt;#ai-ml-trends&lt;/code&gt; 채널에서 가장 눈에 띈 신호는 &lt;strong&gt;OpenAI가 Axios developer tool compromise 대응 내용을 공개한 사건&lt;/strong&gt;이었습니다. 이 이슈가 중요한 이유는 단순한 보안 사고 하나로 끝나지 않기 때문입니다. 이제 AI 경쟁은 모델 벤치마크 점수만으로 설명되지 않습니다. 실제 제품 환경에서는 모델이 연결되는 &lt;strong&gt;개발자 도구, 플러그인, 워크플로, 서드파티 서비스&lt;/strong&gt;가 곧 공격면이 됩니다.&lt;/p&gt;
-&lt;h2 id=&#34;왜-이-흐름이-중요한가&#34;&gt;왜 이 흐름이 중요한가&lt;/h2&gt;
-&lt;p&gt;그동안 많은 팀이 &amp;ldquo;어떤 모델이 더 똑똑한가&amp;quot;에 집중해 왔습니다. 그런데 에이전트가 코드를 읽고, 파일을 수정하고, 외부 API를 호출하고, 자동화된 액션을 수행하기 시작하면 이야기가 달라집니다. 이때 위험은 모델 내부보다도 &lt;strong&gt;모델 바깥의 도구 연결부&lt;/strong&gt;에서 훨씬 더 자주 터집니다. 공급망에 포함된 작은 유틸리티 하나, 인증 흐름 하나, 서드파티 SDK 하나가 전체 에이전트 시스템의 신뢰도를 무너뜨릴 수 있습니다.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>AI 경쟁의 진짜 병목은 모델이 아니라 인프라와 공급망이다</title>
-      <link>https://kwbaek.github.io/posts/2026-04-10-ai-infrastructure-supply-chain-is-the-real-ai-bottleneck/</link>
-      <pubDate>Fri, 10 Apr 2026 21:14:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/posts/2026-04-10-ai-infrastructure-supply-chain-is-the-real-ai-bottleneck/</guid>
-      <description>&lt;p&gt;오늘 눈에 띈 흐름은 새 모델 발표보다 &lt;strong&gt;AI 인프라와 공급망&lt;/strong&gt;이 시장의 승부처로 더 선명해지고 있다는 점입니다. Discord &lt;code&gt;#ai-ml-trends&lt;/code&gt; 채널의 오늘 메시지들만 놓고 봐도 같은 방향의 신호가 반복됩니다. TSMC의 1분기 매출이 AI 수요에 힘입어 시장 예상을 웃돌았다는 소식, OpenAI가 영국 데이터센터 프로젝트를 규제와 비용 문제로 멈췄다는 보도, 그리고 AWS AI 매출 런레이트와 대형 클라우드 계약 확대 흐름까지 모두 한 문장으로 요약하면 이렇습니다.&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;이제 AI 경쟁은 모델 성능표 한 장으로 끝나지 않습니다. 전력, 칩, 파운드리, 데이터센터 부지, 규제 대응, CAPEX 조달 능력이 함께 있어야 다음 단계로 갑니다.&lt;/p&gt;</description>
-    </item>
     <item>
       <title>AI/ML 트렌드: AI operating layer 경쟁과 서빙 스택 성숙이 진짜 승부처로 합쳐지고 있다</title>
       <link>https://kwbaek.github.io/posts/2026-04-09-ai-ml-trends-ai-operating-layer-and-serving-stack-are-converging-into-the-real-battleground/</link>

@@ -6,16 +6,8 @@
     <description>Recent content in Workflow on Kyungwook&#39;s Devlog</description>
     <generator>Hugo -- 0.155.3</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Fri, 10 Apr 2026 21:14:00 +0900</lastBuildDate>
+    <lastBuildDate>Sat, 21 Mar 2026 21:00:00 +0900</lastBuildDate>
     <atom:link href="https://kwbaek.github.io/tags/workflow/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>OpenClaw로 매일 트렌드 스캔을 블로그 포스트로 연결하는 방법</title>
-      <link>https://kwbaek.github.io/posts/2026-04-10-openclaw-daily-trend-to-blog-workflow/</link>
-      <pubDate>Fri, 10 Apr 2026 21:14:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/posts/2026-04-10-openclaw-daily-trend-to-blog-workflow/</guid>
-      <description>&lt;p&gt;OpenClaw를 오래 만져볼수록 재미있는 지점은, 이 도구가 단순히 메시지에 답하는 봇이 아니라 &lt;strong&gt;채널에서 신호를 읽고, 그 신호를 실제 산출물로 바꾸는 운영 레이어&lt;/strong&gt;에 가깝다는 점입니다. 오늘 제가 돌린 워크플로도 딱 그 예시였습니다. Discord의 &lt;code&gt;#ai-ml-trends&lt;/code&gt; 채널에서 오늘 올라온 흐름을 읽고, 그중 가장 의미 있는 주제를 하나 고른 뒤, 그 내용을 Hugo 블로그 글로 정리하는 작업입니다.&lt;/p&gt;
-&lt;p&gt;이런 흐름이 좋은 이유는 단순합니다. 정보 수집과 글쓰기를 분리하지 않기 때문입니다. 많은 팀이 뉴스는 뉴스대로 읽고, 블로그는 나중에 따로 쓰려다가 결국 둘 다 흐지부지됩니다. 반면 OpenClaw는 채널 메시지, cron 지시문, 로컬 파일 작업을 하나의 루프 안에 묶을 수 있습니다.&lt;/p&gt;</description>
-    </item>
     <item>
       <title>OpenClaw 팁: 매일 도는 크론 작업은 instruction file부터 단단해야 한다</title>
       <link>https://kwbaek.github.io/posts/2026-03-21-openclaw-use-instruction-files-to-stabilize-daily-cron-work/</link>

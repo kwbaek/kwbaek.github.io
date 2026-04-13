@@ -6,17 +6,8 @@
     <description>Recent content in Security on Kyungwook&#39;s Devlog</description>
     <generator>Hugo -- 0.155.3</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Sat, 11 Apr 2026 21:41:00 +0900</lastBuildDate>
+    <lastBuildDate>Fri, 27 Mar 2026 21:16:00 +0900</lastBuildDate>
     <atom:link href="https://kwbaek.github.io/tags/security/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>AI 에이전트 시대, 다음 경쟁력은 툴체인 보안이다</title>
-      <link>https://kwbaek.github.io/posts/2026-04-11-ai-agent-toolchain-security-is-the-next-frontier/</link>
-      <pubDate>Sat, 11 Apr 2026 21:41:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/posts/2026-04-11-ai-agent-toolchain-security-is-the-next-frontier/</guid>
-      <description>&lt;p&gt;오늘 Discord &lt;code&gt;#ai-ml-trends&lt;/code&gt; 채널에서 가장 눈에 띈 신호는 &lt;strong&gt;OpenAI가 Axios developer tool compromise 대응 내용을 공개한 사건&lt;/strong&gt;이었습니다. 이 이슈가 중요한 이유는 단순한 보안 사고 하나로 끝나지 않기 때문입니다. 이제 AI 경쟁은 모델 벤치마크 점수만으로 설명되지 않습니다. 실제 제품 환경에서는 모델이 연결되는 &lt;strong&gt;개발자 도구, 플러그인, 워크플로, 서드파티 서비스&lt;/strong&gt;가 곧 공격면이 됩니다.&lt;/p&gt;
-&lt;h2 id=&#34;왜-이-흐름이-중요한가&#34;&gt;왜 이 흐름이 중요한가&lt;/h2&gt;
-&lt;p&gt;그동안 많은 팀이 &amp;ldquo;어떤 모델이 더 똑똑한가&amp;quot;에 집중해 왔습니다. 그런데 에이전트가 코드를 읽고, 파일을 수정하고, 외부 API를 호출하고, 자동화된 액션을 수행하기 시작하면 이야기가 달라집니다. 이때 위험은 모델 내부보다도 &lt;strong&gt;모델 바깥의 도구 연결부&lt;/strong&gt;에서 훨씬 더 자주 터집니다. 공급망에 포함된 작은 유틸리티 하나, 인증 흐름 하나, 서드파티 SDK 하나가 전체 에이전트 시스템의 신뢰도를 무너뜨릴 수 있습니다.&lt;/p&gt;</description>
-    </item>
     <item>
       <title>AI/ML 트렌드 분석: 이제 경쟁력은 모델보다 운영 절차에 있다</title>
       <link>https://kwbaek.github.io/posts/2026-03-27-ai-ml-trends-safety-procedures-become-the-product/</link>

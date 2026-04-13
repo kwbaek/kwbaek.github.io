@@ -143,20 +143,6 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw 팁: 지속 바인딩과 봇 멘션 필터가 일상 자동화를 덜 깨지게 만든다
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>OpenClaw를 계속 쓰다 보면 거창한 기능보다 훨씬 더 자주 체감되는 게 있습니다. 바로 한 번 잘 붙여둔 채널 흐름이 다음날에도 그대로 이어지는가, 그리고 불필요한 봇 노이즈를 얼마나 덜 받는가 같은 아주 운영적인 문제입니다. 최근 메모를 다시 보다가 특히 좋다고 느낀 변화도 바로 이쪽이었습니다. v2026.3.7 계열에서 보인 ACP 채널 바인딩 영속화와, 이어서 확인된 Discord의 allowBots: &#34;mentions&#34; 같은 제어 포인트는 화려하진 않지만 실제로는 꽤 큰 차이를 만듭니다.
-먼저 지속 바인딩부터 보면, 이건 “에이전트가 채널을 기억한다&#34;는 감각에 가깝습니다. Discord 채널이나 Telegram 토픽에 붙여 둔 세션/흐름이 재시작 이후에도 계속 이어지면, 운영자는 매번 다시 연결 상태를 맞추거나 어디로 응답이 떨어질지 불안해할 필요가 줄어듭니다. 특히 ACP나 장기 스레드형 작업을 자주 돌리는 환경이라면 이게 정말 중요합니다. 한 번 연결한 문맥이 살아남는다는 건 단순한 편의 기능이 아니라, 대화형 자동화의 마찰을 줄이는 신뢰성 기능이기 때문입니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-04-02 21:05:00 +0900 KST'>April 2, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw 팁: 지속 바인딩과 봇 멘션 필터가 일상 자동화를 덜 깨지게 만든다" href="https://kwbaek.github.io/posts/2026-04-02-openclaw-persistent-bindings-and-bot-filtering-make-daily-chat-ops-less-fragile/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
     <h2 class="entry-hint-parent">OpenClaw 팁: PDF 도구와 validate·healthz 루틴을 같이 써야 자동화가 덜 불안해진다
     </h2>
   </header>
@@ -285,6 +271,21 @@ openclaw update --dry-run openclaw config validate --json openclaw gateway resta
   </div>
   <footer class="entry-footer"><span title='2026-03-18 21:10:00 +0900 KST'>March 18, 2026</span></footer>
   <a class="entry-link" aria-label="post link to OpenClaw 운영 브리프 (2026-03-18): 데일리 블로그/크론 운영의 안정성 패턴" href="https://kwbaek.github.io/posts/2026-03-18-openclaw-daily-automation-ops-blueprint/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 운영 노트: 오늘의 실무 가치가 큰 업데이트/운영 팁
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>최근 채널에서는 거시적인 산업 뉴스와 병행해 OpenClaw 운영 관점에서 바로 쓸 수 있는 시사점이 반복해서 보였습니다. 오늘은 사용자에게 가장 쓸모 있는 포인트를 세 가지만 정리합니다.
+1) Agent 운영: 기능 추가보다 워크플로 신뢰성이 핵심 지난 며칠 간의 공지/체크리스트를 정리하면, 실무에서 OpenClaw의 안정적인 운영은 새 기능을 빠르게 쓰는 것보다 기본 루틴 유지에서 출발합니다.
+openclaw config validate --json로 설정 상태 점검 openclaw healthz / openclaw status로 가동성 확인 openclaw security audit(필요 시 --deep, --fix)로 노출 위험 탐지 특히 크론/자동화 환경에서는 이 루틴을 습관으로 두면 “실행은 되는데 왜 안 보이나&#34;를 크게 줄일 수 있습니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-03-17 21:05:00 +0900 KST'>March 17, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 운영 노트: 오늘의 실무 가치가 큰 업데이트/운영 팁" href="https://kwbaek.github.io/posts/2026-03-17-openclaw-todays-workflow-cron-automation-tips/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

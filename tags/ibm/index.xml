@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>IBM on Kyungwook&#39;s Devlog</title>
+    <link>https://kwbaek.github.io/tags/ibm/</link>
+    <description>Recent content in IBM on Kyungwook&#39;s Devlog</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Mon, 13 Apr 2026 21:00:00 +0900</lastBuildDate>
+    <atom:link href="https://kwbaek.github.io/tags/ibm/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI/ML 트렌드: 에이전트 메모리는 더 긴 히스토리보다 실패를 어떻게 교정하느냐로 이동 중이다</title>
+      <link>https://kwbaek.github.io/posts/2026-04-13-ai-ml-trends-agent-memory-is-shifting-from-more-context-to-better-correction/</link>
+      <pubDate>Mon, 13 Apr 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-04-13-ai-ml-trends-agent-memory-is-shifting-from-more-context-to-better-correction/</guid>
+      <description>&lt;p&gt;오늘 &lt;code&gt;#ai-ml-trends&lt;/code&gt; 채널에서 가장 흥미로웠던 신호는 IBM Research의 &lt;code&gt;ALTK-Evolve: On-the-Job Learning for AI Agents&lt;/code&gt;와, 이어서 언급된 &lt;strong&gt;교정 메모리(corrective memory)&lt;/strong&gt; 흐름이었습니다. 핵심은 단순합니다. 에이전트 성능을 올리는 방법이 더 긴 대화 히스토리를 계속 들고 가는 쪽이 아니라, &lt;strong&gt;과거 실패에서 무엇을 배워 다음 행동만 바로잡을지 구조화하는 메모리 설계&lt;/strong&gt; 쪽으로 이동하고 있다는 점입니다.&lt;/p&gt;
+&lt;p&gt;이 변화가 중요한 이유는 에이전트의 실제 실패 방식이 일반 챗봇과 다르기 때문입니다. 에이전트는 긴 작업을 하다가 실수합니다. 잘못된 파일을 수정하거나, 쓸데없는 도구를 호출하거나, 이미 실패한 전략을 반복합니다. 이때 전체 로그를 끝까지 다시 넣는 방식은 얼핏 풍부해 보이지만, 실제로는 잡음도 같이 늘립니다. 컨텍스트 창이 커져도 에이전트가 &lt;strong&gt;무엇이 실패 원인이었는지 정확히 추려내지 못하면&lt;/strong&gt;, 긴 히스토리는 기억이 아니라 부담이 되기 쉽습니다.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
