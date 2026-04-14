@@ -143,6 +143,34 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">AI/ML 트렌드: 멀티모달 추론은 이제 정답보다 구성 과정을 학습한다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 #ai-ml-trends 채널에서 가장 흥미로웠던 흐름은, 멀티모달 모델이 더 이상 정답만 잘 맞히는 시스템으로 평가되지 않고, 문제를 풀기 위해 어떤 중간 구성 과정을 거치느냐까지 직접 학습하고 최적화하는 방향으로 넘어가고 있다는 점이었습니다. 그중 가장 강한 신호는 Thinking with Constructions였습니다.
+이 논문이 던지는 메시지는 꽤 선명합니다. 기하 문제나 시각 추론 문제를 풀 때 중요한 것은 최종 답을 맞히는 능력만이 아니라, 필요한 보조선과 도형을 언제 추가하고 어떤 순서로 구성할지 결정하는 능력이라는 것입니다. 기존 멀티모달 모델은 정적인 이미지와 텍스트를 받아 “그럴듯한 답&#34;을 내는 데 초점이 있었다면, 여기서는 한 단계 더 나아가 시각적 구성 자체를 추론의 일부로 다룹니다. 즉 모델이 보는 것만으로 끝나는 게 아니라, 문제 해결을 위해 무엇을 더 만들어야 하는지까지 학습 대상이 됩니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-03-22 21:00:00 +0900 KST'>March 22, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 멀티모달 추론은 이제 정답보다 구성 과정을 학습한다" href="https://kwbaek.github.io/posts/2026-03-22-ai-ml-trends-multimodal-reasoning-shifts-to-constructive-processes/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">AI/ML 트렌드: 이제 병목은 추론 자체보다 반응 지연이다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 #ai-ml-trends에서 가장 인상적이었던 흐름은, AI 모델의 성능을 더 이상 정답률이나 파라미터 수만으로 보지 않고 “얼마나 빨리 상황 변화에 반응하느냐” 로 다시 평가하기 시작했다는 점이었습니다. 그중 핵심 신호는 “FASTER: Rethinking Real-Time Flow VLAs” 였습니다.
+이 논문이 흥미로운 이유는 문제 정의를 바꿔버리기 때문입니다. 기존 실시간 VLA(Vision-Language-Action) 연구는 주로 action chunk를 얼마나 부드럽게 예측하느냐, trajectory가 얼마나 안정적이냐에 초점을 맞췄습니다. 그런데 FASTER는 이 기준이 실제 로봇 환경의 병목을 놓치고 있다고 봅니다. 탁구처럼 환경이 빠르게 바뀌는 작업에서 더 중요한 것은 부드러운 긴 계획이 아니라, 예상 밖 변화가 생겼을 때 바로 반응할 수 있는가 입니다. 즉 핵심은 trajectory smoothness가 아니라 reaction latency 라는 주장입니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-03-21 21:00:00 +0900 KST'>March 21, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 이제 병목은 추론 자체보다 반응 지연이다" href="https://kwbaek.github.io/posts/2026-03-21-ai-ml-trends-reaction-latency-becomes-the-real-bottleneck/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">AI/ML 트렌드: grounding·안전성·하드웨어 한계가 다시 기준이 된다
     </h2>
   </header>
@@ -251,34 +279,6 @@ Claude Sonnet 4.6, 1M 컨텍스트 베타와 함께 출시 가장 큰 뉴스는 
   </div>
   <footer class="entry-footer"><span title='2026-03-13 21:00:00 +0900 KST'>March 13, 2026</span></footer>
   <a class="entry-link" aria-label="post link to AI/ML 트렌드: 에이전트 워크포스의 현실화 — 성능 경쟁에서 운영 설계 경쟁으로" href="https://kwbaek.github.io/posts/2026-03-13-ai-ml-trends/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">AI/ML 트렌드: AI vs AI 시대 개막 — 성능보다 운영 거버넌스가 경쟁력이 된다
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>오늘 #ai-ml-trends 채널에서 가장 흥미롭고 중요한 흐름은 **“AI를 누가 더 잘 만들었는가&#34;보다 “AI를 누가 더 안전하게 운영하는가”**로 승부축이 이동하고 있다는 점입니다. 특히 Reuters의 미국 의료 청구 이슈(병원의 AI 코딩 vs 보험사의 AI 심사), Atos의 Sovereign Agentic Studios 발표, 그리고 엔터프라이즈 SaaS 기업들의 반격 논리는 서로 다른 시장처럼 보이지만 사실 같은 방향을 가리킵니다. 이제 AI는 단일 모델 성능 경쟁이 아니라, 운영 체계·거버넌스·데이터 통제권을 포함한 시스템 경쟁으로 들어섰습니다.
-의료 영역 사례는 이 변화를 가장 날카롭게 보여줍니다. 병원은 AI로 청구 정확도와 보상액을 높이고, 보험사는 AI로 과잉 청구를 탐지합니다. 즉 양측 모두 자동화를 도입하면서, 생산성은 오르지만 갈등도 함께 구조화됩니다. 여기서 핵심은 “누가 더 큰 모델을 쓰나&#34;가 아니라, 누가 더 검증 가능한 규칙과 책임 구조를 갖추었나입니다. 결국 AI가 도입될수록 분쟁이 줄어드는 것이 아니라, 분쟁의 성격이 더 정교해지고 빠르게 전개될 수 있습니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-03-12 21:00:00 +0900 KST'>March 12, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to AI/ML 트렌드: AI vs AI 시대 개막 — 성능보다 운영 거버넌스가 경쟁력이 된다" href="https://kwbaek.github.io/posts/2026-03-12-ai-agentic-governance-and-ai-vs-ai/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">AI/ML 트렌드: 모델 경쟁에서 인프라 경쟁으로 — 메모리, 전력, 공급망이 승부를 가른다
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>오늘 #ai-ml-trends에서 가장 강하게 보인 신호는 하나입니다. 이제 AI 경쟁의 중심이 모델 품질 자체에서 인프라 확보 능력으로 빠르게 이동하고 있다는 점입니다. 특히 AMD CEO의 방한 보도(삼성과 HBM 공급 협력 논의), Applied Materials-SK hynix/Micron의 차세대 메모리 공동개발, 그리고 미국 전력수요의 연속 최고치 전망(EIA)은 같은 문장을 다른 각도에서 반복합니다. “좋은 모델을 만드는 것”만으로는 부족하고, 그 모델을 지속적으로 돌릴 수 있는 메모리·전력·공급망이 있어야 실제 시장 지배력이 생긴다는 것입니다.
-많은 팀이 아직도 LLM 성능 벤치마크만 비교하지만, 현장에서 더 먼저 부딪히는 병목은 대개 인프라입니다. 추론량이 늘면 GPU만 필요한 것이 아닙니다. 고대역폭 메모리(HBM), 안정적인 전력 조달, 데이터센터 증설 리드타임, 네트워크/냉각 비용까지 전부 함께 움직입니다. 그래서 최근 뉴스 흐름은 ‘누가 더 똑똑한 모델을 내놨나’보다 ‘누가 더 오래, 더 싸게, 더 안정적으로 서비스하나’에 무게가 실리고 있습니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-03-11 21:00:00 +0900 KST'>March 11, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 모델 경쟁에서 인프라 경쟁으로 — 메모리, 전력, 공급망이 승부를 가른다" href="https://kwbaek.github.io/posts/2026-03-11-ai-infrastructure-memory-supply-chain/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

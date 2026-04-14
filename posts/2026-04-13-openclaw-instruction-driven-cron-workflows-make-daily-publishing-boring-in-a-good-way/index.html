@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>OpenClaw 팁: instruction file 기반 cron 워크플로는 일일 퍼블리싱을 좋은 의미로 boring하게 만든다 | Kyungwook&#39;s Devlog</title>
+<meta name="keywords" content="OpenClaw, Cron, Automation, Hugo, Discord, Publishing, Workflow">
+<meta name="description" content="매일 반복되는 콘텐츠 작업을 OpenClaw로 굴리다 보면, 결국 중요한 건 모델의 화려함보다 실행 인터페이스가 얼마나 명확한가라는 점을 자주 느끼게 됩니다. 오늘처럼 cron이 특정 instruction file을 읽고, Discord 채널에서 신호를 고르고, Hugo 포스트를 만들고, 빌드와 배포까지 이어지는 루틴에서는 특히 그렇습니다. 잘 설계된 자동화는 눈에 띄지 않아야 합니다. 즉, 매번 설명이 필요하지 않고, 같은 규칙으로 조용히 돌아가야 합니다.
+제가 요즘 OpenClaw 워크플로에서 특히 좋다고 느끼는 패턴은 instruction file 기반 cron입니다. 작업의 입력, 산출물 형식, 실패 시 행동, 후속 빌드 단계가 한 파일에 모여 있으면 에이전트가 추측할 여지가 줄어듭니다. 이건 별것 아닌 것처럼 보여도 실무에서는 꽤 큽니다. 자동화가 흔들리는 가장 흔한 이유는 모델이 멍청해서가 아니라, 해야 할 일의 경계가 흐리기 때문입니다.">
+<meta name="author" content="">
+<link rel="canonical" href="https://kwbaek.github.io/posts/2026-04-13-openclaw-instruction-driven-cron-workflows-make-daily-publishing-boring-in-a-good-way/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.da3211e5ef867bf2b75fd5a6515cfed7195c011e8ab735694e203810a827097b.css" integrity="sha256-2jIR5e&#43;Ge/K3X9WmUVz&#43;1xlcAR6KtzVpTiA4EKgnCXs=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://kwbaek.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://kwbaek.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://kwbaek.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://kwbaek.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://kwbaek.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://kwbaek.github.io/posts/2026-04-13-openclaw-instruction-driven-cron-workflows-make-daily-publishing-boring-in-a-good-way/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="https://kwbaek.github.io/posts/2026-04-13-openclaw-instruction-driven-cron-workflows-make-daily-publishing-boring-in-a-good-way/">
+  <meta property="og:site_name" content="Kyungwook&#39;s Devlog">
+  <meta property="og:title" content="OpenClaw 팁: instruction file 기반 cron 워크플로는 일일 퍼블리싱을 좋은 의미로 boring하게 만든다">
+  <meta property="og:description" content="매일 반복되는 콘텐츠 작업을 OpenClaw로 굴리다 보면, 결국 중요한 건 모델의 화려함보다 실행 인터페이스가 얼마나 명확한가라는 점을 자주 느끼게 됩니다. 오늘처럼 cron이 특정 instruction file을 읽고, Discord 채널에서 신호를 고르고, Hugo 포스트를 만들고, 빌드와 배포까지 이어지는 루틴에서는 특히 그렇습니다. 잘 설계된 자동화는 눈에 띄지 않아야 합니다. 즉, 매번 설명이 필요하지 않고, 같은 규칙으로 조용히 돌아가야 합니다.
+제가 요즘 OpenClaw 워크플로에서 특히 좋다고 느끼는 패턴은 instruction file 기반 cron입니다. 작업의 입력, 산출물 형식, 실패 시 행동, 후속 빌드 단계가 한 파일에 모여 있으면 에이전트가 추측할 여지가 줄어듭니다. 이건 별것 아닌 것처럼 보여도 실무에서는 꽤 큽니다. 자동화가 흔들리는 가장 흔한 이유는 모델이 멍청해서가 아니라, 해야 할 일의 경계가 흐리기 때문입니다.">
+  <meta property="og:locale" content="ko-kr">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2026-04-13T21:05:00+09:00">
+    <meta property="article:modified_time" content="2026-04-13T21:05:00+09:00">
+    <meta property="article:tag" content="Openclaw">
+    <meta property="article:tag" content="Cron">
+    <meta property="article:tag" content="Automation">
+    <meta property="article:tag" content="Hugo">
+    <meta property="article:tag" content="Discord">
+    <meta property="article:tag" content="Publishing">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="OpenClaw 팁: instruction file 기반 cron 워크플로는 일일 퍼블리싱을 좋은 의미로 boring하게 만든다">
+<meta name="twitter:description" content="매일 반복되는 콘텐츠 작업을 OpenClaw로 굴리다 보면, 결국 중요한 건 모델의 화려함보다 실행 인터페이스가 얼마나 명확한가라는 점을 자주 느끼게 됩니다. 오늘처럼 cron이 특정 instruction file을 읽고, Discord 채널에서 신호를 고르고, Hugo 포스트를 만들고, 빌드와 배포까지 이어지는 루틴에서는 특히 그렇습니다. 잘 설계된 자동화는 눈에 띄지 않아야 합니다. 즉, 매번 설명이 필요하지 않고, 같은 규칙으로 조용히 돌아가야 합니다.
+제가 요즘 OpenClaw 워크플로에서 특히 좋다고 느끼는 패턴은 instruction file 기반 cron입니다. 작업의 입력, 산출물 형식, 실패 시 행동, 후속 빌드 단계가 한 파일에 모여 있으면 에이전트가 추측할 여지가 줄어듭니다. 이건 별것 아닌 것처럼 보여도 실무에서는 꽤 큽니다. 자동화가 흔들리는 가장 흔한 이유는 모델이 멍청해서가 아니라, 해야 할 일의 경계가 흐리기 때문입니다.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://kwbaek.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "OpenClaw 팁: instruction file 기반 cron 워크플로는 일일 퍼블리싱을 좋은 의미로 boring하게 만든다",
+      "item": "https://kwbaek.github.io/posts/2026-04-13-openclaw-instruction-driven-cron-workflows-make-daily-publishing-boring-in-a-good-way/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "OpenClaw 팁: instruction file 기반 cron 워크플로는 일일 퍼블리싱을 좋은 의미로 boring하게 만든다",
+  "name": "OpenClaw 팁: instruction file 기반 cron 워크플로는 일일 퍼블리싱을 좋은 의미로 boring하게 만든다",
+  "description": "매일 반복되는 콘텐츠 작업을 OpenClaw로 굴리다 보면, 결국 중요한 건 모델의 화려함보다 실행 인터페이스가 얼마나 명확한가라는 점을 자주 느끼게 됩니다. 오늘처럼 cron이 특정 instruction file을 읽고, Discord 채널에서 신호를 고르고, Hugo 포스트를 만들고, 빌드와 배포까지 이어지는 루틴에서는 특히 그렇습니다. 잘 설계된 자동화는 눈에 띄지 않아야 합니다. 즉, 매번 설명이 필요하지 않고, 같은 규칙으로 조용히 돌아가야 합니다.\n제가 요즘 OpenClaw 워크플로에서 특히 좋다고 느끼는 패턴은 instruction file 기반 cron입니다. 작업의 입력, 산출물 형식, 실패 시 행동, 후속 빌드 단계가 한 파일에 모여 있으면 에이전트가 추측할 여지가 줄어듭니다. 이건 별것 아닌 것처럼 보여도 실무에서는 꽤 큽니다. 자동화가 흔들리는 가장 흔한 이유는 모델이 멍청해서가 아니라, 해야 할 일의 경계가 흐리기 때문입니다.\n",
+  "keywords": [
+    "OpenClaw", "Cron", "Automation", "Hugo", "Discord", "Publishing", "Workflow"
+  ],
+  "articleBody": "매일 반복되는 콘텐츠 작업을 OpenClaw로 굴리다 보면, 결국 중요한 건 모델의 화려함보다 실행 인터페이스가 얼마나 명확한가라는 점을 자주 느끼게 됩니다. 오늘처럼 cron이 특정 instruction file을 읽고, Discord 채널에서 신호를 고르고, Hugo 포스트를 만들고, 빌드와 배포까지 이어지는 루틴에서는 특히 그렇습니다. 잘 설계된 자동화는 눈에 띄지 않아야 합니다. 즉, 매번 설명이 필요하지 않고, 같은 규칙으로 조용히 돌아가야 합니다.\n제가 요즘 OpenClaw 워크플로에서 특히 좋다고 느끼는 패턴은 instruction file 기반 cron입니다. 작업의 입력, 산출물 형식, 실패 시 행동, 후속 빌드 단계가 한 파일에 모여 있으면 에이전트가 추측할 여지가 줄어듭니다. 이건 별것 아닌 것처럼 보여도 실무에서는 꽤 큽니다. 자동화가 흔들리는 가장 흔한 이유는 모델이 멍청해서가 아니라, 해야 할 일의 경계가 흐리기 때문입니다.\n예를 들어 매일 블로그 포스트를 만든다고 할 때 필요한 건 생각보다 많습니다.\n어떤 채널이나 소스를 읽을지 어떤 기준으로 핵심 신호를 고를지 파일 경로와 front matter 형식이 무엇인지 커밋, 빌드, 배포 순서가 어떻게 되는지 중간 실패 시 어디까지 진행하고 어떻게 보고할지 이걸 채팅 문맥에만 의존하면 같은 자동화라도 실행마다 흔들립니다. 하지만 instruction file에 적어두면, cron은 단순한 스케줄러가 아니라 재현 가능한 편집 파이프라인의 시작점이 됩니다. OpenClaw가 여기서 좋은 이유는, 파일 읽기와 메시지 읽기와 로컬 작업을 같은 실행 흐름 안에서 연결할 수 있기 때문입니다. 채널에서 얻은 해석이 바로 글의 초점으로 이어지고, 그 글이 곧바로 실제 사이트 배포까지 이어집니다.\n저는 이 구조가 “에이전트 자동화는 창의적일수록 좋다”는 오해를 꽤 잘 깨 준다고 봅니다. 실제로 반복 작업에서 더 중요한 건 창의성보다 예측 가능성입니다. 제목과 본문 해석은 어느 정도 유연해도 괜찮지만, 경로 규칙과 빌드 절차와 보고 방식은 boring할수록 좋습니다. boring하다는 건 재미없다는 뜻이 아니라, 운영자가 믿을 수 있다는 뜻에 가깝습니다.\n이 패턴은 OpenClaw의 다른 자동화에도 그대로 확장됩니다. 일일 보고, 리서치 요약, 알림 라우팅, 저장소 점검 같은 작업도 마찬가지입니다. 에이전트에게 “대충 이 방향으로 해줘”라고 던지는 대신, instruction file 하나로 입력과 출력 규약을 붙여 두면 훨씬 덜 흔들립니다. 특히 cron과 결합하면 더 좋습니다. 정해진 시각에 정해진 파일을 읽고, 같은 규칙으로 처리하고, 실패하면 같은 형식으로 드러나기 때문입니다.\n실전 팁으로 정리하면 이렇습니다.\n1. 반복 작업일수록 지시를 파일로 고정합니다 채팅에만 남겨 두면 요구사항이 흐려집니다. 파일이 있으면 바뀐 규칙도 추적하기 쉽습니다.\n2. 콘텐츠 생성과 배포를 같은 루프로 묶습니다 초안만 만들고 끝내면 누락이 생기기 쉽습니다. 가능하면 작성, 커밋, 빌드, 배포까지 한 번에 처리하는 편이 낫습니다.\n3. 실패 규칙을 먼저 적습니다 파일이 없을 때, 빌드가 깨질 때, 외부 읽기가 막힐 때 무엇을 할지 미리 적어두면 자동화가 훨씬 덜 불안합니다.\n4. 경로와 형식은 boring하게 유지합니다 슬러그, 카테고리, 시간대, 출력 위치 같은 규칙이 고정될수록 나중에 유지보수가 쉬워집니다.\n결국 OpenClaw 자동화의 좋은 상태는 “와, 똑똑하다”보다 “아, 이번에도 같은 방식으로 잘 끝났네”에 더 가깝습니다. 저는 그 점에서 instruction file 기반 cron 워크플로가 꽤 강력하다고 봅니다. 에이전트의 판단이 필요한 부분은 남겨 두고, 운영에서 흔들리면 안 되는 부분은 파일 규약으로 고정하는 방식이기 때문입니다. 그렇게 설계하면 일일 퍼블리싱은 덜 요란해지고, 대신 훨씬 더 믿을 만해집니다. 그리고 반복 작업에서는 그게 거의 항상 이깁니다.\n",
+  "wordCount" : "447",
+  "inLanguage": "en",
+  "datePublished": "2026-04-13T21:05:00+09:00",
+  "dateModified": "2026-04-13T21:05:00+09:00",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://kwbaek.github.io/posts/2026-04-13-openclaw-instruction-driven-cron-workflows-make-daily-publishing-boring-in-a-good-way/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Kyungwook's Devlog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://kwbaek.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://kwbaek.github.io/" accesskey="h" title="Kyungwook&#39;s Devlog (Alt + H)">Kyungwook&#39;s Devlog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://kwbaek.github.io/categories/" title="categories">
+                    <span>categories</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kwbaek.github.io/tags/" title="tags">
+                    <span>tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kwbaek.github.io/" title="Kyungwook&#39;s Devlog">
+                    <span>Kyungwook&#39;s Devlog</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      OpenClaw 팁: instruction file 기반 cron 워크플로는 일일 퍼블리싱을 좋은 의미로 boring하게 만든다
+    </h1>
+    <div class="post-meta"><span title='2026-04-13 21:05:00 +0900 KST'>April 13, 2026</span>
+
+</div>
+  </header> 
+  <div class="post-content"><p>매일 반복되는 콘텐츠 작업을 OpenClaw로 굴리다 보면, 결국 중요한 건 모델의 화려함보다 <strong>실행 인터페이스가 얼마나 명확한가</strong>라는 점을 자주 느끼게 됩니다. 오늘처럼 <code>cron</code>이 특정 instruction file을 읽고, Discord 채널에서 신호를 고르고, Hugo 포스트를 만들고, 빌드와 배포까지 이어지는 루틴에서는 특히 그렇습니다. 잘 설계된 자동화는 눈에 띄지 않아야 합니다. 즉, 매번 설명이 필요하지 않고, 같은 규칙으로 조용히 돌아가야 합니다.</p>
+<p>제가 요즘 OpenClaw 워크플로에서 특히 좋다고 느끼는 패턴은 <strong>instruction file 기반 cron</strong>입니다. 작업의 입력, 산출물 형식, 실패 시 행동, 후속 빌드 단계가 한 파일에 모여 있으면 에이전트가 추측할 여지가 줄어듭니다. 이건 별것 아닌 것처럼 보여도 실무에서는 꽤 큽니다. 자동화가 흔들리는 가장 흔한 이유는 모델이 멍청해서가 아니라, <strong>해야 할 일의 경계가 흐리기 때문</strong>입니다.</p>
+<p>예를 들어 매일 블로그 포스트를 만든다고 할 때 필요한 건 생각보다 많습니다.</p>
+<ul>
+<li>어떤 채널이나 소스를 읽을지</li>
+<li>어떤 기준으로 핵심 신호를 고를지</li>
+<li>파일 경로와 front matter 형식이 무엇인지</li>
+<li>커밋, 빌드, 배포 순서가 어떻게 되는지</li>
+<li>중간 실패 시 어디까지 진행하고 어떻게 보고할지</li>
+</ul>
+<p>이걸 채팅 문맥에만 의존하면 같은 자동화라도 실행마다 흔들립니다. 하지만 instruction file에 적어두면, cron은 단순한 스케줄러가 아니라 <strong>재현 가능한 편집 파이프라인의 시작점</strong>이 됩니다. OpenClaw가 여기서 좋은 이유는, 파일 읽기와 메시지 읽기와 로컬 작업을 같은 실행 흐름 안에서 연결할 수 있기 때문입니다. 채널에서 얻은 해석이 바로 글의 초점으로 이어지고, 그 글이 곧바로 실제 사이트 배포까지 이어집니다.</p>
+<p>저는 이 구조가 “에이전트 자동화는 창의적일수록 좋다”는 오해를 꽤 잘 깨 준다고 봅니다. 실제로 반복 작업에서 더 중요한 건 창의성보다 <strong>예측 가능성</strong>입니다. 제목과 본문 해석은 어느 정도 유연해도 괜찮지만, 경로 규칙과 빌드 절차와 보고 방식은 boring할수록 좋습니다. boring하다는 건 재미없다는 뜻이 아니라, 운영자가 믿을 수 있다는 뜻에 가깝습니다.</p>
+<p>이 패턴은 OpenClaw의 다른 자동화에도 그대로 확장됩니다. 일일 보고, 리서치 요약, 알림 라우팅, 저장소 점검 같은 작업도 마찬가지입니다. 에이전트에게 “대충 이 방향으로 해줘”라고 던지는 대신, instruction file 하나로 입력과 출력 규약을 붙여 두면 훨씬 덜 흔들립니다. 특히 cron과 결합하면 더 좋습니다. 정해진 시각에 정해진 파일을 읽고, 같은 규칙으로 처리하고, 실패하면 같은 형식으로 드러나기 때문입니다.</p>
+<p>실전 팁으로 정리하면 이렇습니다.</p>
+<h3 id="1-반복-작업일수록-지시를-파일로-고정합니다">1. 반복 작업일수록 지시를 파일로 고정합니다<a hidden class="anchor" aria-hidden="true" href="#1-반복-작업일수록-지시를-파일로-고정합니다">#</a></h3>
+<p>채팅에만 남겨 두면 요구사항이 흐려집니다. 파일이 있으면 바뀐 규칙도 추적하기 쉽습니다.</p>
+<h3 id="2-콘텐츠-생성과-배포를-같은-루프로-묶습니다">2. 콘텐츠 생성과 배포를 같은 루프로 묶습니다<a hidden class="anchor" aria-hidden="true" href="#2-콘텐츠-생성과-배포를-같은-루프로-묶습니다">#</a></h3>
+<p>초안만 만들고 끝내면 누락이 생기기 쉽습니다. 가능하면 작성, 커밋, 빌드, 배포까지 한 번에 처리하는 편이 낫습니다.</p>
+<h3 id="3-실패-규칙을-먼저-적습니다">3. 실패 규칙을 먼저 적습니다<a hidden class="anchor" aria-hidden="true" href="#3-실패-규칙을-먼저-적습니다">#</a></h3>
+<p>파일이 없을 때, 빌드가 깨질 때, 외부 읽기가 막힐 때 무엇을 할지 미리 적어두면 자동화가 훨씬 덜 불안합니다.</p>
+<h3 id="4-경로와-형식은-boring하게-유지합니다">4. 경로와 형식은 boring하게 유지합니다<a hidden class="anchor" aria-hidden="true" href="#4-경로와-형식은-boring하게-유지합니다">#</a></h3>
+<p>슬러그, 카테고리, 시간대, 출력 위치 같은 규칙이 고정될수록 나중에 유지보수가 쉬워집니다.</p>
+<p>결국 OpenClaw 자동화의 좋은 상태는 “와, 똑똑하다”보다 “아, 이번에도 같은 방식으로 잘 끝났네”에 더 가깝습니다. 저는 그 점에서 instruction file 기반 cron 워크플로가 꽤 강력하다고 봅니다. <strong>에이전트의 판단이 필요한 부분은 남겨 두고, 운영에서 흔들리면 안 되는 부분은 파일 규약으로 고정하는 방식</strong>이기 때문입니다. 그렇게 설계하면 일일 퍼블리싱은 덜 요란해지고, 대신 훨씬 더 믿을 만해집니다. 그리고 반복 작업에서는 그게 거의 항상 이깁니다.</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://kwbaek.github.io/tags/openclaw/">Openclaw</a></li>
+      <li><a href="https://kwbaek.github.io/tags/cron/">Cron</a></li>
+      <li><a href="https://kwbaek.github.io/tags/automation/">Automation</a></li>
+      <li><a href="https://kwbaek.github.io/tags/hugo/">Hugo</a></li>
+      <li><a href="https://kwbaek.github.io/tags/discord/">Discord</a></li>
+      <li><a href="https://kwbaek.github.io/tags/publishing/">Publishing</a></li>
+      <li><a href="https://kwbaek.github.io/tags/workflow/">Workflow</a></li>
+    </ul>
+  </footer><script src="https://utteranc.es/client.js"
+        repo="kwbaek/blog-comments"
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://kwbaek.github.io/">Kyungwook&#39;s Devlog</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

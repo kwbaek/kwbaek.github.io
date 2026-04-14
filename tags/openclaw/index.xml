@@ -6,8 +6,16 @@
     <description>Recent content in Openclaw on Kyungwook&#39;s Devlog</description>
     <generator>Hugo -- 0.155.3</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Sun, 12 Apr 2026 21:05:00 +0900</lastBuildDate>
+    <lastBuildDate>Mon, 13 Apr 2026 21:05:00 +0900</lastBuildDate>
     <atom:link href="https://kwbaek.github.io/tags/openclaw/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>OpenClaw 팁: instruction file 기반 cron 워크플로는 일일 퍼블리싱을 좋은 의미로 boring하게 만든다</title>
+      <link>https://kwbaek.github.io/posts/2026-04-13-openclaw-instruction-driven-cron-workflows-make-daily-publishing-boring-in-a-good-way/</link>
+      <pubDate>Mon, 13 Apr 2026 21:05:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-04-13-openclaw-instruction-driven-cron-workflows-make-daily-publishing-boring-in-a-good-way/</guid>
+      <description>&lt;p&gt;매일 반복되는 콘텐츠 작업을 OpenClaw로 굴리다 보면, 결국 중요한 건 모델의 화려함보다 &lt;strong&gt;실행 인터페이스가 얼마나 명확한가&lt;/strong&gt;라는 점을 자주 느끼게 됩니다. 오늘처럼 &lt;code&gt;cron&lt;/code&gt;이 특정 instruction file을 읽고, Discord 채널에서 신호를 고르고, Hugo 포스트를 만들고, 빌드와 배포까지 이어지는 루틴에서는 특히 그렇습니다. 잘 설계된 자동화는 눈에 띄지 않아야 합니다. 즉, 매번 설명이 필요하지 않고, 같은 규칙으로 조용히 돌아가야 합니다.&lt;/p&gt;
+&lt;p&gt;제가 요즘 OpenClaw 워크플로에서 특히 좋다고 느끼는 패턴은 &lt;strong&gt;instruction file 기반 cron&lt;/strong&gt;입니다. 작업의 입력, 산출물 형식, 실패 시 행동, 후속 빌드 단계가 한 파일에 모여 있으면 에이전트가 추측할 여지가 줄어듭니다. 이건 별것 아닌 것처럼 보여도 실무에서는 꽤 큽니다. 자동화가 흔들리는 가장 흔한 이유는 모델이 멍청해서가 아니라, &lt;strong&gt;해야 할 일의 경계가 흐리기 때문&lt;/strong&gt;입니다.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>OpenClaw 팁: 일일 블로그 자동화는 리서치와 퍼블리싱이 한 흐름으로 붙어 있을 때 더 좋아진다</title>
       <link>https://kwbaek.github.io/posts/2026-04-12-openclaw-daily-blog-automation-gets-better-when-research-and-publishing-stay-coupled/</link>
@@ -15,6 +23,30 @@
       <guid>https://kwbaek.github.io/posts/2026-04-12-openclaw-daily-blog-automation-gets-better-when-research-and-publishing-stay-coupled/</guid>
       <description>&lt;p&gt;오늘처럼 OpenClaw로 매일 블로그 포스팅을 만드는 작업을 돌리다 보면, 결국 중요한 건 거창한 생성 능력보다 &lt;strong&gt;리서치, 글쓰기, 배포가 하나의 연속된 흐름으로 잘 붙어 있느냐&lt;/strong&gt;라는 점이라는 걸 다시 느끼게 됩니다. 특히 &lt;code&gt;Discord 채널 읽기 → 핵심 트렌드 선별 → Hugo 포스트 작성 → git 커밋 → hugo 빌드 → public 배포&lt;/code&gt;처럼 끝이 분명한 루틴에서는, 각 단계를 따로 최적화하는 것보다 &lt;strong&gt;중간 맥락이 끊기지 않게 유지하는 설계&lt;/strong&gt;가 훨씬 중요합니다.&lt;/p&gt;
 &lt;p&gt;왜 이게 중요할까요. 자동화는 보통 두 종류의 실패를 냅니다. 하나는 기술적 실패입니다. 파일이 없거나, 경로가 틀리거나, 빌드가 깨지는 경우죠. 다른 하나는 더 흔하지만 덜 눈에 띄는 실패인데, &lt;strong&gt;앞 단계에서 얻은 맥락이 뒤 단계로 자연스럽게 이어지지 않는 실패&lt;/strong&gt;입니다. 예를 들어 트렌드는 잘 골랐는데 글이 엉뚱한 방향으로 가거나, 글은 괜찮은데 파일명과 카테고리 체계가 흔들리거나, 콘텐츠는 좋은데 배포 루틴이 들쑥날쑥하면 전체 자동화 품질은 금방 떨어집니다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>OpenClaw에서 cron과 세션 워크플로를 제대로 쓰는 법</title>
+      <link>https://kwbaek.github.io/posts/2026-04-11-openclaw-cron-and-session-workflows-that-actually-scale/</link>
+      <pubDate>Sat, 11 Apr 2026 21:41:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-04-11-openclaw-cron-and-session-workflows-that-actually-scale/</guid>
+      <description>&lt;p&gt;OpenClaw를 조금만 오래 써보면 금방 느끼는 게 있습니다. 문제는 &amp;ldquo;도구가 많다&amp;quot;가 아니라, &lt;strong&gt;언제 cron을 쓰고 언제 세션을 분리하느냐&lt;/strong&gt;가 운영 품질을 크게 좌우한다는 점입니다. 처음에는 모든 작업을 한 세션에 몰아넣기 쉽지만, 그렇게 하면 문맥이 무거워지고 스케줄 작업과 실시간 대화가 서로 방해하기 시작합니다.&lt;/p&gt;
+&lt;h2 id=&#34;핵심-원칙-정확한-시각은-cron-긴-문맥-작업은-세션&#34;&gt;핵심 원칙: 정확한 시각은 cron, 긴 문맥 작업은 세션&lt;/h2&gt;
+&lt;p&gt;제가 가장 유용하다고 느끼는 기준은 이렇습니다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;정확한 시간 실행&lt;/strong&gt;이 필요하면 &lt;code&gt;cron&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;배치성 리서치/작성 작업&lt;/strong&gt;은 분리된 세션이나 isolated run&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;즉시성 있는 대화&lt;/strong&gt;는 현재 세션 유지&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;반복 점검&lt;/strong&gt;은 heartbeat 또는 cron 중 목적에 맞게 선택&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;예를 들어 &amp;ldquo;매일 밤 블로그 초안 쓰기&amp;rdquo; 같은 작업은 cron이 잘 맞습니다. 반대로 복잡한 구현, 디버깅, 장문 리서치처럼 중간 상태가 많은 일은 별도 세션으로 분리하는 편이 훨씬 안정적입니다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>OpenClaw로 매일 트렌드 스캔을 블로그 포스트로 연결하는 방법</title>
+      <link>https://kwbaek.github.io/posts/2026-04-10-openclaw-daily-trend-to-blog-workflow/</link>
+      <pubDate>Fri, 10 Apr 2026 21:14:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-04-10-openclaw-daily-trend-to-blog-workflow/</guid>
+      <description>&lt;p&gt;OpenClaw를 오래 만져볼수록 재미있는 지점은, 이 도구가 단순히 메시지에 답하는 봇이 아니라 &lt;strong&gt;채널에서 신호를 읽고, 그 신호를 실제 산출물로 바꾸는 운영 레이어&lt;/strong&gt;에 가깝다는 점입니다. 오늘 제가 돌린 워크플로도 딱 그 예시였습니다. Discord의 &lt;code&gt;#ai-ml-trends&lt;/code&gt; 채널에서 오늘 올라온 흐름을 읽고, 그중 가장 의미 있는 주제를 하나 고른 뒤, 그 내용을 Hugo 블로그 글로 정리하는 작업입니다.&lt;/p&gt;
+&lt;p&gt;이런 흐름이 좋은 이유는 단순합니다. 정보 수집과 글쓰기를 분리하지 않기 때문입니다. 많은 팀이 뉴스는 뉴스대로 읽고, 블로그는 나중에 따로 쓰려다가 결국 둘 다 흐지부지됩니다. 반면 OpenClaw는 채널 메시지, cron 지시문, 로컬 파일 작업을 하나의 루프 안에 묶을 수 있습니다.&lt;/p&gt;</description>
     </item>
     <item>
       <title>OpenClaw 팁: 일일 콘텐츠 자동화는 지시문이 명시적이고 호스트 실행이 boring할수록 오래 버틴다</title>

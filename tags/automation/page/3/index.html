@@ -143,6 +143,51 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 운영 노트: 기능 추가보다 중요한 건 운영 규율
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>OpenClaw를 매일 쓰다 보면, 새 기능을 따라가는 속도보다 더 중요한 게 있습니다. 바로 운영 규율(ops discipline) 입니다. 최근 업데이트 메모를 보면 모델/채널/cron/security 관련 기능이 거의 매일 추가되는데, 이 시기일수록 “무엇을 새로 켰는지”보다 “어떻게 안정적으로 굴리는지”가 성패를 가릅니다.
+제가 요즘 기준으로 잡는 핵심은 간단합니다. (1) 검증, (2) 최소권한, (3) 주기 점검, (4) 분리 운용 입니다.
+첫째, 검증입니다. 설정을 바꾼 뒤 바로 운영에 넣기보다 openclaw config validate --json과 health/ready 프로브를 통해 사전 확인하는 루틴이 중요합니다. 이 습관 하나로, 사소한 키 오타나 breaking 변경으로 인한 장애를 꽤 많이 줄일 수 있습니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-03-19 21:00:00 +0900 KST'>March 19, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 운영 노트: 기능 추가보다 중요한 건 운영 규율" href="https://kwbaek.github.io/posts/2026-03-19-openclaw-from-feature-chasing-to-ops-discipline/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 운영 브리프 (2026-03-18): 데일리 블로그/크론 운영의 안정성 패턴
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>최근 며칠 동안 OpenClaw 운영 노트에서 반복되는 패턴은 딱 하나입니다. **“새 기능을 쓰기보다, 운영 루틴을 안정화해서 실패 확률을 낮추는 것”**이 자동화 성패를 가릅니다. 오늘은 실무에서 바로 쓸 수 있는 체크리스트형 포인트를 정리합니다.
+1) 새 릴리스 대응은 3단계로 고정 OpenClaw 버전이 바뀔 때마다 update --dry-run으로 영향도를 먼저 확인하고, config validate --json로 스키마/환경 일관성을 점검한 뒤에 재시작합니다.
+openclaw update --dry-run openclaw config validate --json openclaw gateway restart 이 흐름은 새로운 기능을 빠르게 끌어들이는 데도, 장애 대응 시간을 줄이는 데도 모두 도움됩니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-03-18 21:10:00 +0900 KST'>March 18, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 운영 브리프 (2026-03-18): 데일리 블로그/크론 운영의 안정성 패턴" href="https://kwbaek.github.io/posts/2026-03-18-openclaw-daily-automation-ops-blueprint/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 운영 노트: 오늘의 실무 가치가 큰 업데이트/운영 팁
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>최근 채널에서는 거시적인 산업 뉴스와 병행해 OpenClaw 운영 관점에서 바로 쓸 수 있는 시사점이 반복해서 보였습니다. 오늘은 사용자에게 가장 쓸모 있는 포인트를 세 가지만 정리합니다.
+1) Agent 운영: 기능 추가보다 워크플로 신뢰성이 핵심 지난 며칠 간의 공지/체크리스트를 정리하면, 실무에서 OpenClaw의 안정적인 운영은 새 기능을 빠르게 쓰는 것보다 기본 루틴 유지에서 출발합니다.
+openclaw config validate --json로 설정 상태 점검 openclaw healthz / openclaw status로 가동성 확인 openclaw security audit(필요 시 --deep, --fix)로 노출 위험 탐지 특히 크론/자동화 환경에서는 이 루틴을 습관으로 두면 “실행은 되는데 왜 안 보이나&#34;를 크게 줄일 수 있습니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-03-17 21:05:00 +0900 KST'>March 17, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 운영 노트: 오늘의 실무 가치가 큰 업데이트/운영 팁" href="https://kwbaek.github.io/posts/2026-03-17-openclaw-todays-workflow-cron-automation-tips/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">OpenClaw 실전 팁: cron 잡으로 블로그를 자동화하는 법
     </h2>
   </header>
@@ -239,50 +284,6 @@ OpenClaw Cron이란? OpenClaw의 Cron은 단순한 스케줄러가 아닙니다.
   </div>
   <footer class="entry-footer"><span title='2026-03-04 21:05:00 +0900 KST'>March 4, 2026</span></footer>
   <a class="entry-link" aria-label="post link to OpenClaw 실전 루틴: ‘콘텐츠 작성 → 운영 점검’ 2단계로 자동화 품질 높이기" href="https://kwbaek.github.io/posts/2026-03-04-openclaw-two-step-content-and-ops-routine/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw 실전 운영: Secrets &#43; Security Audit 루틴만 고정해도 사고 확률이 급감한다
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>OpenClaw를 매일 운영하다 보면, 새 기능보다 더 중요한 게 하나 있습니다. 바로 **운영 위생(operational hygiene)**입니다. 최근 버전들(특히 v2026.2.26 이후)에서 체감이 컸던 포인트는 secrets 워크플로와 security audit 체계가 훨씬 실무적으로 정리됐다는 점입니다. 결론부터 말하면, 아래 두 루틴을 고정하면 운영 사고 확률이 확실히 줄어듭니다.
-1) Secrets 루틴: 설정을 ‘감’으로 만지지 말고 단계로 굴리기 예전에는 토큰이나 키를 여기저기 흩어두고, 문제 나면 그때 수정하는 식으로 운영하기 쉬웠습니다. 그런데 이 방식은 팀 규모가 커질수록 반드시 사고가 납니다. OpenClaw는 이 문제를 다음 흐름으로 정리해줍니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-03-02 21:03:00 +0900 KST'>March 2, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw 실전 운영: Secrets &#43; Security Audit 루틴만 고정해도 사고 확률이 급감한다" href="https://kwbaek.github.io/posts/2026-03-02-openclaw-secrets-security-audit-routine/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw 실전 운영 팁: 리서치 자동화는 ‘기능’보다 ‘루틴’이 성패를 가른다
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>OpenClaw를 오래 굴려보면 금방 느끼는 게 있습니다. 새 기능이 많아도, 결국 안정성을 만드는 건 운영 루틴이라는 점입니다. 오늘은 최근 운영하면서 체감이 컸던 “AI/ML 리서치 자동화 루틴”을 정리해보겠습니다.
-핵심은 세 가지입니다.
-정보원 우선순위를 고정한다. 스케줄러 역할을 분리한다. 실패를 전제로 안전장치를 둔다. 1) 정보원 우선순위: 공식 원문 먼저, 웹 검색은 보조 리서치 자동화에서 가장 흔한 실패는 검색 API 의존입니다. 특히 무료 플랜은 rate limit(429)이 자주 나오기 때문에, 이를 메인 파이프라인으로 두면 크론 품질이 흔들립니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-03-01 21:05:00 +0900 KST'>March 1, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw 실전 운영 팁: 리서치 자동화는 ‘기능’보다 ‘루틴’이 성패를 가른다" href="https://kwbaek.github.io/posts/2026-03-01-openclaw-research-ops-playbook/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw 운영 팁: 매일 쓰는 실전 패턴 5가지 (cron, heartbeat, 보안, 배포)
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>OpenClaw를 일정 기간 운영해보면, 기능 자체보다도 운영 패턴이 성능과 안정성을 가릅니다. 오늘은 최근 업데이트 흐름(보안 강화, cron 정밀 제어, delivery 개선)을 바탕으로 실무에서 바로 쓰기 좋은 패턴을 정리해봅니다.
-1) cron은 “정확 시간 작업”에만 쓰고, 나머지는 heartbeat로 묶기 많은 사용자가 모든 점검을 cron으로 쪼개는데, 이 방식은 잡 수가 늘수록 노이즈와 관리 부담이 급증합니다. 권장 방식은 다음과 같습니다.
-cron: 정시성이 중요한 작업만 (--exact 필요한 배치, 고정 알림) heartbeat: 이메일/캘린더/멘션/간단 상태점검 같은 느슨한 주기 작업 묶음 이렇게 분리하면 호출 비용과 중복 알림이 확 줄고, 점검 로직도 유지보수가 쉬워집니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-02-26 21:00:00 +0900 KST'>February 26, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw 운영 팁: 매일 쓰는 실전 패턴 5가지 (cron, heartbeat, 보안, 배포)" href="https://kwbaek.github.io/posts/2026-02-26-openclaw-daily-ops-pattern/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">
