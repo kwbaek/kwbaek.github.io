@@ -158,6 +158,48 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">AI/ML 트렌드: 에이전트 경쟁의 중심이 모델에서 실행 인프라로 이동하고 있다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 #ai-ml-trends 채널을 훑으면서 가장 강하게 남은 흐름은 하나였습니다. 이제 에이전트 경쟁의 핵심이 단순히 “어느 모델이 더 똑똑한가”가 아니라, 그 모델을 어떤 실행 환경 위에서 얼마나 안정적으로 굴릴 수 있는가로 빠르게 이동하고 있다는 점입니다. 오늘 올라온 OpenAI Agents SDK 확장 소식, IBM VAKRA 같은 엔터프라이즈형 평가축, 그리고 WebXSkill처럼 웹 에이전트의 재사용 가능한 스킬 라이브러리를 강조하는 연구가 서로 다른 출처처럼 보이지만, 사실은 같은 방향을 가리킵니다.
+예전에는 에이전트 데모가 주로 모델의 추론력에 초점이 맞춰져 있었습니다. 프롬프트를 잘 쓰면 몇 단계 정도는 그럴듯하게 이어졌고, 화면에서는 꽤 멋져 보였습니다. 그런데 실무에 가까워질수록 병목은 전혀 다른 곳에서 터집니다. 파일을 어떻게 다루는지, 툴 호출이 실패했을 때 어떻게 복구하는지, 긴 작업을 어떻게 추적하는지, 권한 경계를 어떻게 나누는지, 그리고 여러 단계의 작업을 재사용 가능한 단위로 어떻게 남기는지가 훨씬 중요해집니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-04-16 21:22:00 +0900 KST'>April 16, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 에이전트 경쟁의 중심이 모델에서 실행 인프라로 이동하고 있다" href="https://kwbaek.github.io/posts/2026-04-16-ai-ml-trends-the-agent-race-is-moving-from-models-to-execution-infrastructure/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 팁: health check와 config validate를 기본 운영 루프에 넣어두면 훨씬 덜 흔들린다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>OpenClaw를 한동안 굴려보면 금방 느끼게 됩니다. 실제 운영에서 문제를 만드는 건 대개 거대한 버그보다, 사소한 설정 어긋남과 조용한 상태 이상입니다. 모델은 멀쩡한데 특정 채널만 응답이 흔들리거나, cron은 살아 있는데 실제 전달이 빠지거나, 업데이트 뒤에 설정 키 하나가 미묘하게 바뀌어 이상 동작이 생기는 식입니다. 그래서 저는 요즘 OpenClaw 운영 팁을 하나만 꼽으라면, 새 기능 자체보다 config validate와 health endpoint를 기본 루프로 습관화하라고 말하고 싶습니다.
+이게 왜 중요하냐면 OpenClaw는 점점 더 많은 기능을 품고 있기 때문입니다. 채널 연동, cron, subagent, ACP, secrets, 보안 옵션, 세션 관리까지 다 붙기 시작하면 시스템은 강해지지만 동시에 설정 표면도 넓어집니다. 이런 상태에서는 “문제가 생기면 그때 본다”보다, 문제가 커지기 전에 작게 확인하는 루틴이 훨씬 낫습니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-04-14 21:35:00 +0900 KST'>April 14, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 팁: health check와 config validate를 기본 운영 루프에 넣어두면 훨씬 덜 흔들린다" href="https://kwbaek.github.io/posts/2026-04-14-openclaw-health-checks-and-config-validation-should-be-part-of-your-default-ops-loop/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">AI/ML 트렌드: 신약개발에서 AI는 이제 데모가 아니라 운영 레이어가 되고 있다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 #ai-ml-trends 채널에서 가장 눈에 들어온 신호는 Novo Nordisk와 OpenAI 협력 소식이었습니다. 표면적으로는 또 하나의 대형 파트너십처럼 보일 수 있지만, 저는 이 뉴스를 조금 다르게 봤습니다. 이제 생성형 AI의 경쟁 포인트가 “무엇을 예쁘게 생성하느냐”보다, 도메인 특화 조직의 실제 운영 병목을 얼마나 깊게 파고드느냐로 빠르게 이동하고 있다는 신호이기 때문입니다. 신약개발은 그중에서도 가장 까다로운 영역 중 하나입니다.
+제약 산업의 R&amp;D는 원래 느리고 비쌉니다. 후보 물질 탐색, 실험 설계, 문헌 검토, 실패 가설 정리, 규제 문서화까지 거의 모든 단계가 긴 시간과 높은 비용을 요구합니다. 그래서 AI가 여기에 들어간다는 말은 단순히 “챗봇을 붙였다”는 뜻이 아닙니다. 오히려 중요한 포인트는 AI가 과학자의 생각을 대신하는지가 아니라, 과학자가 더 빨리 가설을 세우고 더 적은 시행착오로 다음 실험을 결정하게 만드는지에 있습니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-04-14 21:30:00 +0900 KST'>April 14, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 신약개발에서 AI는 이제 데모가 아니라 운영 레이어가 되고 있다" href="https://kwbaek.github.io/posts/2026-04-14-ai-ml-trends-ai-drug-discovery-is-becoming-a-real-operating-layer/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">OpenClaw 팁: instruction file 기반 cron 워크플로는 일일 퍼블리싱을 좋은 의미로 boring하게 만든다
     </h2>
   </header>
@@ -253,47 +295,6 @@
   </div>
   <footer class="entry-footer"><span title='2026-04-10 21:14:00 +0900 KST'>April 10, 2026</span></footer>
   <a class="entry-link" aria-label="post link to AI 경쟁의 진짜 병목은 모델이 아니라 인프라와 공급망이다" href="https://kwbaek.github.io/posts/2026-04-10-ai-infrastructure-supply-chain-is-the-real-ai-bottleneck/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw로 매일 트렌드 스캔을 블로그 포스트로 연결하는 방법
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>OpenClaw를 오래 만져볼수록 재미있는 지점은, 이 도구가 단순히 메시지에 답하는 봇이 아니라 채널에서 신호를 읽고, 그 신호를 실제 산출물로 바꾸는 운영 레이어에 가깝다는 점입니다. 오늘 제가 돌린 워크플로도 딱 그 예시였습니다. Discord의 #ai-ml-trends 채널에서 오늘 올라온 흐름을 읽고, 그중 가장 의미 있는 주제를 하나 고른 뒤, 그 내용을 Hugo 블로그 글로 정리하는 작업입니다.
-이런 흐름이 좋은 이유는 단순합니다. 정보 수집과 글쓰기를 분리하지 않기 때문입니다. 많은 팀이 뉴스는 뉴스대로 읽고, 블로그는 나중에 따로 쓰려다가 결국 둘 다 흐지부지됩니다. 반면 OpenClaw는 채널 메시지, cron 지시문, 로컬 파일 작업을 하나의 루프 안에 묶을 수 있습니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-04-10 21:14:00 +0900 KST'>April 10, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw로 매일 트렌드 스캔을 블로그 포스트로 연결하는 방법" href="https://kwbaek.github.io/posts/2026-04-10-openclaw-daily-trend-to-blog-workflow/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">AI/ML 트렌드: AI operating layer 경쟁과 서빙 스택 성숙이 진짜 승부처로 합쳐지고 있다
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>오늘 #ai-ml-trends 채널에서 가장 흥미롭고 중요한 흐름을 하나만 고르라면, 저는 AI 경쟁의 무게중심이 더 좋은 모델 하나에서 회사 전체를 덮는 AI operating layer와 그걸 실제로 굴려 주는 서빙 스택의 결합으로 이동하고 있다는 점을 꼽겠습니다. 오늘 채널에는 OpenAI의 엔터프라이즈 전략 글, vLLM 0.19.0, Transformers 5.5.0, Gemma 4 생태계 확장 이야기가 한꺼번에 올라왔습니다. 얼핏 보면 서로 다른 층위의 뉴스처럼 보이지만, 실제로는 하나의 방향을 가리킵니다. 이제 기업은 단순히 “어떤 모델을 쓸까?”를 묻는 단계에서 벗어나, **“AI를 회사의 기본 운영층으로 어떻게 깔 것인가, 그리고 그걸 어떤 비용 구조로 안정적으로 서빙할 것인가”**를 묻고 있습니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-04-09 21:00:00 +0900 KST'>April 9, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to AI/ML 트렌드: AI operating layer 경쟁과 서빙 스택 성숙이 진짜 승부처로 합쳐지고 있다" href="https://kwbaek.github.io/posts/2026-04-09-ai-ml-trends-ai-operating-layer-and-serving-stack-are-converging-into-the-real-battleground/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw 팁: 일일 콘텐츠 자동화는 지시문이 명시적이고 호스트 실행이 boring할수록 오래 버틴다
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>오늘 OpenClaw로 일일 블로그 자동화를 돌리면서 다시 느낀 건, 자동화의 품질을 결정하는 건 화려한 에이전트 추론보다도 지시문이 얼마나 명시적인가, 그리고 실제 실행이 얼마나 boring하게 반복 가능한가라는 점이었습니다. 특히 콘텐츠 자동화처럼 매일 같은 구조를 반복하는 작업에서는 이 차이가 꽤 큽니다. 한 번 멋지게 돌아가는 자동화보다, 매일 밤 조용히 같은 방식으로 성공하는 자동화가 훨씬 가치 있습니다.
-오늘 작업 흐름은 크게 복잡하지 않았습니다. 특정 instruction file을 읽고, Discord 채널에서 오늘의 AI/ML 트렌드를 확인하고, Hugo 블로그 포스트 두 편을 만들고, git 커밋과 빌드, 그리고 배포 저장소 반영까지 이어지는 루틴입니다. 겉으로는 익숙한 cron 작업처럼 보이지만, 실제로 안정성을 가르는 건 세세한 문구였습니다. 예를 들면 이런 것들입니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-04-09 20:55:00 +0900 KST'>April 9, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw 팁: 일일 콘텐츠 자동화는 지시문이 명시적이고 호스트 실행이 boring할수록 오래 버틴다" href="https://kwbaek.github.io/posts/2026-04-09-openclaw-daily-content-ops-work-better-when-instructions-are-explicit-and-host-runs-stay-boring/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

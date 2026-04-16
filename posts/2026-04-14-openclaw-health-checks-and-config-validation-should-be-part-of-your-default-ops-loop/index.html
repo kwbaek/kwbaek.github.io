@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>OpenClaw 팁: health check와 config validate를 기본 운영 루프에 넣어두면 훨씬 덜 흔들린다 | Kyungwook&#39;s Devlog</title>
+<meta name="keywords" content="OpenClaw, Operations, Health Check, Config, Validation, Security, Automation">
+<meta name="description" content="OpenClaw를 한동안 굴려보면 금방 느끼게 됩니다. 실제 운영에서 문제를 만드는 건 대개 거대한 버그보다, 사소한 설정 어긋남과 조용한 상태 이상입니다. 모델은 멀쩡한데 특정 채널만 응답이 흔들리거나, cron은 살아 있는데 실제 전달이 빠지거나, 업데이트 뒤에 설정 키 하나가 미묘하게 바뀌어 이상 동작이 생기는 식입니다. 그래서 저는 요즘 OpenClaw 운영 팁을 하나만 꼽으라면, 새 기능 자체보다 config validate와 health endpoint를 기본 루프로 습관화하라고 말하고 싶습니다.
+이게 왜 중요하냐면 OpenClaw는 점점 더 많은 기능을 품고 있기 때문입니다. 채널 연동, cron, subagent, ACP, secrets, 보안 옵션, 세션 관리까지 다 붙기 시작하면 시스템은 강해지지만 동시에 설정 표면도 넓어집니다. 이런 상태에서는 “문제가 생기면 그때 본다”보다, 문제가 커지기 전에 작게 확인하는 루틴이 훨씬 낫습니다.">
+<meta name="author" content="">
+<link rel="canonical" href="https://kwbaek.github.io/posts/2026-04-14-openclaw-health-checks-and-config-validation-should-be-part-of-your-default-ops-loop/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.da3211e5ef867bf2b75fd5a6515cfed7195c011e8ab735694e203810a827097b.css" integrity="sha256-2jIR5e&#43;Ge/K3X9WmUVz&#43;1xlcAR6KtzVpTiA4EKgnCXs=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://kwbaek.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://kwbaek.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://kwbaek.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://kwbaek.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://kwbaek.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://kwbaek.github.io/posts/2026-04-14-openclaw-health-checks-and-config-validation-should-be-part-of-your-default-ops-loop/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="https://kwbaek.github.io/posts/2026-04-14-openclaw-health-checks-and-config-validation-should-be-part-of-your-default-ops-loop/">
+  <meta property="og:site_name" content="Kyungwook&#39;s Devlog">
+  <meta property="og:title" content="OpenClaw 팁: health check와 config validate를 기본 운영 루프에 넣어두면 훨씬 덜 흔들린다">
+  <meta property="og:description" content="OpenClaw를 한동안 굴려보면 금방 느끼게 됩니다. 실제 운영에서 문제를 만드는 건 대개 거대한 버그보다, 사소한 설정 어긋남과 조용한 상태 이상입니다. 모델은 멀쩡한데 특정 채널만 응답이 흔들리거나, cron은 살아 있는데 실제 전달이 빠지거나, 업데이트 뒤에 설정 키 하나가 미묘하게 바뀌어 이상 동작이 생기는 식입니다. 그래서 저는 요즘 OpenClaw 운영 팁을 하나만 꼽으라면, 새 기능 자체보다 config validate와 health endpoint를 기본 루프로 습관화하라고 말하고 싶습니다.
+이게 왜 중요하냐면 OpenClaw는 점점 더 많은 기능을 품고 있기 때문입니다. 채널 연동, cron, subagent, ACP, secrets, 보안 옵션, 세션 관리까지 다 붙기 시작하면 시스템은 강해지지만 동시에 설정 표면도 넓어집니다. 이런 상태에서는 “문제가 생기면 그때 본다”보다, 문제가 커지기 전에 작게 확인하는 루틴이 훨씬 낫습니다.">
+  <meta property="og:locale" content="ko-kr">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2026-04-14T21:35:00+09:00">
+    <meta property="article:modified_time" content="2026-04-14T21:35:00+09:00">
+    <meta property="article:tag" content="Openclaw">
+    <meta property="article:tag" content="Operations">
+    <meta property="article:tag" content="Health Check">
+    <meta property="article:tag" content="Config">
+    <meta property="article:tag" content="Validation">
+    <meta property="article:tag" content="Security">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="OpenClaw 팁: health check와 config validate를 기본 운영 루프에 넣어두면 훨씬 덜 흔들린다">
+<meta name="twitter:description" content="OpenClaw를 한동안 굴려보면 금방 느끼게 됩니다. 실제 운영에서 문제를 만드는 건 대개 거대한 버그보다, 사소한 설정 어긋남과 조용한 상태 이상입니다. 모델은 멀쩡한데 특정 채널만 응답이 흔들리거나, cron은 살아 있는데 실제 전달이 빠지거나, 업데이트 뒤에 설정 키 하나가 미묘하게 바뀌어 이상 동작이 생기는 식입니다. 그래서 저는 요즘 OpenClaw 운영 팁을 하나만 꼽으라면, 새 기능 자체보다 config validate와 health endpoint를 기본 루프로 습관화하라고 말하고 싶습니다.
+이게 왜 중요하냐면 OpenClaw는 점점 더 많은 기능을 품고 있기 때문입니다. 채널 연동, cron, subagent, ACP, secrets, 보안 옵션, 세션 관리까지 다 붙기 시작하면 시스템은 강해지지만 동시에 설정 표면도 넓어집니다. 이런 상태에서는 “문제가 생기면 그때 본다”보다, 문제가 커지기 전에 작게 확인하는 루틴이 훨씬 낫습니다.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://kwbaek.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "OpenClaw 팁: health check와 config validate를 기본 운영 루프에 넣어두면 훨씬 덜 흔들린다",
+      "item": "https://kwbaek.github.io/posts/2026-04-14-openclaw-health-checks-and-config-validation-should-be-part-of-your-default-ops-loop/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "OpenClaw 팁: health check와 config validate를 기본 운영 루프에 넣어두면 훨씬 덜 흔들린다",
+  "name": "OpenClaw 팁: health check와 config validate를 기본 운영 루프에 넣어두면 훨씬 덜 흔들린다",
+  "description": "OpenClaw를 한동안 굴려보면 금방 느끼게 됩니다. 실제 운영에서 문제를 만드는 건 대개 거대한 버그보다, 사소한 설정 어긋남과 조용한 상태 이상입니다. 모델은 멀쩡한데 특정 채널만 응답이 흔들리거나, cron은 살아 있는데 실제 전달이 빠지거나, 업데이트 뒤에 설정 키 하나가 미묘하게 바뀌어 이상 동작이 생기는 식입니다. 그래서 저는 요즘 OpenClaw 운영 팁을 하나만 꼽으라면, 새 기능 자체보다 config validate와 health endpoint를 기본 루프로 습관화하라고 말하고 싶습니다.\n이게 왜 중요하냐면 OpenClaw는 점점 더 많은 기능을 품고 있기 때문입니다. 채널 연동, cron, subagent, ACP, secrets, 보안 옵션, 세션 관리까지 다 붙기 시작하면 시스템은 강해지지만 동시에 설정 표면도 넓어집니다. 이런 상태에서는 “문제가 생기면 그때 본다”보다, 문제가 커지기 전에 작게 확인하는 루틴이 훨씬 낫습니다.\n",
+  "keywords": [
+    "OpenClaw", "Operations", "Health Check", "Config", "Validation", "Security", "Automation"
+  ],
+  "articleBody": "OpenClaw를 한동안 굴려보면 금방 느끼게 됩니다. 실제 운영에서 문제를 만드는 건 대개 거대한 버그보다, 사소한 설정 어긋남과 조용한 상태 이상입니다. 모델은 멀쩡한데 특정 채널만 응답이 흔들리거나, cron은 살아 있는데 실제 전달이 빠지거나, 업데이트 뒤에 설정 키 하나가 미묘하게 바뀌어 이상 동작이 생기는 식입니다. 그래서 저는 요즘 OpenClaw 운영 팁을 하나만 꼽으라면, 새 기능 자체보다 config validate와 health endpoint를 기본 루프로 습관화하라고 말하고 싶습니다.\n이게 왜 중요하냐면 OpenClaw는 점점 더 많은 기능을 품고 있기 때문입니다. 채널 연동, cron, subagent, ACP, secrets, 보안 옵션, 세션 관리까지 다 붙기 시작하면 시스템은 강해지지만 동시에 설정 표면도 넓어집니다. 이런 상태에서는 “문제가 생기면 그때 본다”보다, 문제가 커지기 전에 작게 확인하는 루틴이 훨씬 낫습니다.\n가장 기본은 두 가지입니다.\n1. config validate 설정 파일은 사람이 읽기엔 그럴듯해 보여도, 실제로는 deprecated 키나 타입 불일치, 누락된 필수 조합 때문에 런타임에서만 삐걱거릴 수 있습니다. config validate를 먼저 돌리면 적어도 “지금 이 설정이 문법과 스키마 차원에서 안전한가”를 빠르게 걸러낼 수 있습니다. 특히 업데이트 직후나 보안 설정을 만졌을 때 체감 차이가 큽니다.\n2. health / ready 체크 OpenClaw는 떠 있는 것처럼 보여도 실제로는 준비가 덜 된 상태일 수 있습니다. 프로세스가 살아 있다는 것과, 메시지를 받을 준비가 끝났는지, 백그라운드 큐가 정상인지, 서비스가 실제로 응답 가능한지는 다른 문제입니다. 그래서 health endpoint를 같이 보는 게 좋습니다. 단순하지만 운영에서는 이런 얕은 체크가 꽤 많은 사고를 막아 줍니다.\n제가 이 루틴을 좋아하는 이유는 “고장 난 뒤 디버깅”보다 훨씬 덜 피곤하기 때문입니다. 예를 들어 이런 상황을 떠올려 볼 수 있습니다.\n업데이트 후 스트리밍 관련 키가 canonical 형식으로 바뀌었는데 예전 키가 남아 있음 gateway.auth 조합이 바뀌면서 의도와 다른 인증 모드가 적용됨 secrets 참조가 하나 풀리지 않았는데 평소엔 티가 안 나다가 특정 surface에서만 실패함 health는 살아 있지만 ready가 아니어서 실제 메시지 처리엔 지연이 생김 이런 문제는 전부 “심각한 장애”가 되기 전에 작은 신호를 줍니다. 다만 그 신호를 안 보면 그냥 지나갑니다. 그래서 저는 OpenClaw 운영을 자동화할수록 오히려 더 기본적인 체크가 중요하다고 봅니다. 화려한 워크플로를 더 붙이기 전에, 내가 지금 믿고 있는 상태가 실제로도 건강한지를 확인하는 편이 훨씬 이득입니다.\n실무적으로는 아래 같은 루프가 꽤 괜찮습니다.\n설정을 바꾼다 config validate로 구조를 먼저 확인한다 gateway를 반영하거나 재시작한다 health와 ready를 확인한다 그다음에 cron, 채널, 세션 같은 상위 기능을 테스트한다 포인트는 순서입니다. 많은 사람이 문제를 위에서부터 확인합니다. “왜 Discord 응답이 안 오지?” 같은 식이죠. 그런데 사실 더 빠른 방법은 아래에서부터 보는 겁니다. 설정이 맞는지, 프로세스가 건강한지, 준비 상태가 끝났는지부터 보면 원인을 훨씬 빨리 좁힐 수 있습니다.\nOpenClaw는 기능이 많아질수록 재밌어지지만, 동시에 운영 습관이 중요해지는 도구이기도 합니다. 저는 그래서 health check와 config validate를 단순한 진단 명령이 아니라, OpenClaw를 오래 안정적으로 쓰기 위한 최소한의 안전벨트라고 생각합니다. 멋진 자동화를 만들고 나서 흔들리는 것보다, 조금 boring하더라도 먼저 검증하고 확인하는 편이 결국 덜 고생합니다. 운영은 대개 화려함보다 안정성이 이기니까요.\n",
+  "wordCount" : "428",
+  "inLanguage": "en",
+  "datePublished": "2026-04-14T21:35:00+09:00",
+  "dateModified": "2026-04-14T21:35:00+09:00",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://kwbaek.github.io/posts/2026-04-14-openclaw-health-checks-and-config-validation-should-be-part-of-your-default-ops-loop/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Kyungwook's Devlog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://kwbaek.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://kwbaek.github.io/" accesskey="h" title="Kyungwook&#39;s Devlog (Alt + H)">Kyungwook&#39;s Devlog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://kwbaek.github.io/categories/" title="categories">
+                    <span>categories</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kwbaek.github.io/tags/" title="tags">
+                    <span>tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kwbaek.github.io/" title="Kyungwook&#39;s Devlog">
+                    <span>Kyungwook&#39;s Devlog</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      OpenClaw 팁: health check와 config validate를 기본 운영 루프에 넣어두면 훨씬 덜 흔들린다
+    </h1>
+    <div class="post-meta"><span title='2026-04-14 21:35:00 +0900 KST'>April 14, 2026</span>
+
+</div>
+  </header> 
+  <div class="post-content"><p>OpenClaw를 한동안 굴려보면 금방 느끼게 됩니다. 실제 운영에서 문제를 만드는 건 대개 거대한 버그보다, <strong>사소한 설정 어긋남과 조용한 상태 이상</strong>입니다. 모델은 멀쩡한데 특정 채널만 응답이 흔들리거나, cron은 살아 있는데 실제 전달이 빠지거나, 업데이트 뒤에 설정 키 하나가 미묘하게 바뀌어 이상 동작이 생기는 식입니다. 그래서 저는 요즘 OpenClaw 운영 팁을 하나만 꼽으라면, 새 기능 자체보다 <strong><code>config validate</code>와 health endpoint를 기본 루프로 습관화하라</strong>고 말하고 싶습니다.</p>
+<p>이게 왜 중요하냐면 OpenClaw는 점점 더 많은 기능을 품고 있기 때문입니다. 채널 연동, cron, subagent, ACP, secrets, 보안 옵션, 세션 관리까지 다 붙기 시작하면 시스템은 강해지지만 동시에 설정 표면도 넓어집니다. 이런 상태에서는 “문제가 생기면 그때 본다”보다, <strong>문제가 커지기 전에 작게 확인하는 루틴</strong>이 훨씬 낫습니다.</p>
+<p>가장 기본은 두 가지입니다.</p>
+<h3 id="1-config-validate">1. <code>config validate</code><a hidden class="anchor" aria-hidden="true" href="#1-config-validate">#</a></h3>
+<p>설정 파일은 사람이 읽기엔 그럴듯해 보여도, 실제로는 deprecated 키나 타입 불일치, 누락된 필수 조합 때문에 런타임에서만 삐걱거릴 수 있습니다. <code>config validate</code>를 먼저 돌리면 적어도 “지금 이 설정이 문법과 스키마 차원에서 안전한가”를 빠르게 걸러낼 수 있습니다. 특히 업데이트 직후나 보안 설정을 만졌을 때 체감 차이가 큽니다.</p>
+<h3 id="2-health--ready-체크">2. health / ready 체크<a hidden class="anchor" aria-hidden="true" href="#2-health--ready-체크">#</a></h3>
+<p>OpenClaw는 떠 있는 것처럼 보여도 실제로는 준비가 덜 된 상태일 수 있습니다. 프로세스가 살아 있다는 것과, <strong>메시지를 받을 준비가 끝났는지</strong>, <strong>백그라운드 큐가 정상인지</strong>, <strong>서비스가 실제로 응답 가능한지</strong>는 다른 문제입니다. 그래서 health endpoint를 같이 보는 게 좋습니다. 단순하지만 운영에서는 이런 얕은 체크가 꽤 많은 사고를 막아 줍니다.</p>
+<p>제가 이 루틴을 좋아하는 이유는 “고장 난 뒤 디버깅”보다 훨씬 덜 피곤하기 때문입니다. 예를 들어 이런 상황을 떠올려 볼 수 있습니다.</p>
+<ul>
+<li>업데이트 후 스트리밍 관련 키가 canonical 형식으로 바뀌었는데 예전 키가 남아 있음</li>
+<li><code>gateway.auth</code> 조합이 바뀌면서 의도와 다른 인증 모드가 적용됨</li>
+<li>secrets 참조가 하나 풀리지 않았는데 평소엔 티가 안 나다가 특정 surface에서만 실패함</li>
+<li>health는 살아 있지만 ready가 아니어서 실제 메시지 처리엔 지연이 생김</li>
+</ul>
+<p>이런 문제는 전부 “심각한 장애”가 되기 전에 작은 신호를 줍니다. 다만 그 신호를 안 보면 그냥 지나갑니다. 그래서 저는 OpenClaw 운영을 자동화할수록 오히려 더 기본적인 체크가 중요하다고 봅니다. 화려한 워크플로를 더 붙이기 전에, <strong>내가 지금 믿고 있는 상태가 실제로도 건강한지</strong>를 확인하는 편이 훨씬 이득입니다.</p>
+<p>실무적으로는 아래 같은 루프가 꽤 괜찮습니다.</p>
+<ul>
+<li>설정을 바꾼다</li>
+<li><code>config validate</code>로 구조를 먼저 확인한다</li>
+<li>gateway를 반영하거나 재시작한다</li>
+<li>health와 ready를 확인한다</li>
+<li>그다음에 cron, 채널, 세션 같은 상위 기능을 테스트한다</li>
+</ul>
+<p>포인트는 순서입니다. 많은 사람이 문제를 위에서부터 확인합니다. “왜 Discord 응답이 안 오지?” 같은 식이죠. 그런데 사실 더 빠른 방법은 아래에서부터 보는 겁니다. 설정이 맞는지, 프로세스가 건강한지, 준비 상태가 끝났는지부터 보면 원인을 훨씬 빨리 좁힐 수 있습니다.</p>
+<p>OpenClaw는 기능이 많아질수록 재밌어지지만, 동시에 운영 습관이 중요해지는 도구이기도 합니다. 저는 그래서 health check와 config validate를 단순한 진단 명령이 아니라, <strong>OpenClaw를 오래 안정적으로 쓰기 위한 최소한의 안전벨트</strong>라고 생각합니다. 멋진 자동화를 만들고 나서 흔들리는 것보다, 조금 boring하더라도 먼저 검증하고 확인하는 편이 결국 덜 고생합니다. 운영은 대개 화려함보다 안정성이 이기니까요.</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://kwbaek.github.io/tags/openclaw/">Openclaw</a></li>
+      <li><a href="https://kwbaek.github.io/tags/operations/">Operations</a></li>
+      <li><a href="https://kwbaek.github.io/tags/health-check/">Health Check</a></li>
+      <li><a href="https://kwbaek.github.io/tags/config/">Config</a></li>
+      <li><a href="https://kwbaek.github.io/tags/validation/">Validation</a></li>
+      <li><a href="https://kwbaek.github.io/tags/security/">Security</a></li>
+      <li><a href="https://kwbaek.github.io/tags/automation/">Automation</a></li>
+    </ul>
+  </footer><script src="https://utteranc.es/client.js"
+        repo="kwbaek/blog-comments"
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://kwbaek.github.io/">Kyungwook&#39;s Devlog</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

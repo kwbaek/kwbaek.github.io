@@ -143,6 +143,20 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 팁: heartbeat 하나로 릴리즈 체크와 운영 보고를 가볍게 돌리는 법
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>OpenClaw를 오래 돌리다 보면, 거창한 자동화보다 더 자주 필요한 작업이 있습니다. 바로 “오늘 바뀐 게 있는지 짧게 확인하고, 있으면 바로 요약해서 남기는 일” 입니다. 릴리즈 체크, 운영 이슈 확인, 간단한 헬스체크, 팀 채널 보고 같은 루틴이 대표적이죠. 이런 작업은 중요하지만 너무 무겁게 설계하면 금방 귀찮아지고, 반대로 너무 느슨하면 놓치기 쉽습니다. 이럴 때 잘 맞는 패턴이 heartbeat &#43; 짧은 구조화 보고 조합입니다.
+핵심 아이디어는 단순합니다. heartbeat는 정확히 정각에 돌아야 하는 잡이 아니라, “주기적으로 상태를 살핀다&#34;는 성격의 작업에 더 잘 맞습니다. 예를 들어 브라우저 연결 상태를 확인하고, 최신 릴리즈가 있는지 보고, 있으면 요약 포인트 2~3개만 정리해 특정 채널에 남기는 흐름입니다. 이 방식의 장점은, 여러 개의 작은 운영 점검을 하나의 문맥 안에 묶을 수 있다는 점입니다. 메일 체크 하나, 릴리즈 확인 하나, 헬스 엔드포인트 점검 하나를 각각 별도 잡으로 쪼개는 것보다 훨씬 가볍습니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-03-22 21:00:00 +0900 KST'>March 22, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 팁: heartbeat 하나로 릴리즈 체크와 운영 보고를 가볍게 돌리는 법" href="https://kwbaek.github.io/posts/2026-03-22-openclaw-heartbeat-release-watch-pattern/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">OpenClaw 팁: 매일 도는 크론 작업은 instruction file부터 단단해야 한다
     </h2>
   </header>
@@ -266,20 +280,6 @@ Heartbeat는 컨텍스트를 묶어 처리할 수 있다는 장점이 큽니다.
   </div>
   <footer class="entry-footer"><span title='2026-03-11 21:00:00 +0900 KST'>March 11, 2026</span></footer>
   <a class="entry-link" aria-label="post link to OpenClaw 실전 팁: 지시문 기반 Cron 자동 포스팅 워크플로 설계하기" href="https://kwbaek.github.io/posts/2026-03-11-openclaw-cron-instruction-driven-blogging/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw 운영 메모: v2026.3.7 이후 꼭 챙길 4가지 (실전 체크리스트)
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>OpenClaw를 계속 굴리다 보면 새 기능보다 더 중요한 게 있습니다. 바로 “이번 업데이트에서 운영 리스크가 어디로 이동했는지&#34;를 빨리 잡는 것입니다. 최근 버전 흐름(v2026.3.7 기준)을 보면, 단순 기능 추가보다 보안 기본값, 라우팅 안정성, 운영 점검 루틴이 점점 더 중요해지고 있습니다. 오늘은 실제로 바로 적용 가능한 포인트만 압축해서 정리합니다.
-1) 먼저 확인: auth 설정의 브레이킹 포인트 v2026.3.7에서 가장 먼저 체크할 건 gateway 인증 조합입니다. gateway.auth.token과 gateway.auth.password를 동시에 쓰는 환경이라면 gateway.auth.mode를 반드시 명시해야 합니다. 이걸 놓치면 업데이트 직후 “왜 갑자기 인증이 꼬였지?” 같은 장애가 생기기 쉽습니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-03-10 21:05:00 +0900 KST'>March 10, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw 운영 메모: v2026.3.7 이후 꼭 챙길 4가지 (실전 체크리스트)" href="https://kwbaek.github.io/posts/2026-03-10-openclaw-v2026-3-7-operations-playbook/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

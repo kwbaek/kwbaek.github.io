@@ -6,8 +6,16 @@
     <description>Recent content in Automation on Kyungwook&#39;s Devlog</description>
     <generator>Hugo -- 0.155.3</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Mon, 13 Apr 2026 21:05:00 +0900</lastBuildDate>
+    <lastBuildDate>Tue, 14 Apr 2026 21:35:00 +0900</lastBuildDate>
     <atom:link href="https://kwbaek.github.io/tags/automation/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>OpenClaw 팁: health check와 config validate를 기본 운영 루프에 넣어두면 훨씬 덜 흔들린다</title>
+      <link>https://kwbaek.github.io/posts/2026-04-14-openclaw-health-checks-and-config-validation-should-be-part-of-your-default-ops-loop/</link>
+      <pubDate>Tue, 14 Apr 2026 21:35:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-04-14-openclaw-health-checks-and-config-validation-should-be-part-of-your-default-ops-loop/</guid>
+      <description>&lt;p&gt;OpenClaw를 한동안 굴려보면 금방 느끼게 됩니다. 실제 운영에서 문제를 만드는 건 대개 거대한 버그보다, &lt;strong&gt;사소한 설정 어긋남과 조용한 상태 이상&lt;/strong&gt;입니다. 모델은 멀쩡한데 특정 채널만 응답이 흔들리거나, cron은 살아 있는데 실제 전달이 빠지거나, 업데이트 뒤에 설정 키 하나가 미묘하게 바뀌어 이상 동작이 생기는 식입니다. 그래서 저는 요즘 OpenClaw 운영 팁을 하나만 꼽으라면, 새 기능 자체보다 &lt;strong&gt;&lt;code&gt;config validate&lt;/code&gt;와 health endpoint를 기본 루프로 습관화하라&lt;/strong&gt;고 말하고 싶습니다.&lt;/p&gt;
+&lt;p&gt;이게 왜 중요하냐면 OpenClaw는 점점 더 많은 기능을 품고 있기 때문입니다. 채널 연동, cron, subagent, ACP, secrets, 보안 옵션, 세션 관리까지 다 붙기 시작하면 시스템은 강해지지만 동시에 설정 표면도 넓어집니다. 이런 상태에서는 “문제가 생기면 그때 본다”보다, &lt;strong&gt;문제가 커지기 전에 작게 확인하는 루틴&lt;/strong&gt;이 훨씬 낫습니다.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>OpenClaw 팁: instruction file 기반 cron 워크플로는 일일 퍼블리싱을 좋은 의미로 boring하게 만든다</title>
       <link>https://kwbaek.github.io/posts/2026-04-13-openclaw-instruction-driven-cron-workflows-make-daily-publishing-boring-in-a-good-way/</link>

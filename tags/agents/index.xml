@@ -6,8 +6,24 @@
     <description>Recent content in Agents on Kyungwook&#39;s Devlog</description>
     <generator>Hugo -- 0.155.3</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Mon, 13 Apr 2026 21:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Thu, 16 Apr 2026 21:22:00 +0900</lastBuildDate>
     <atom:link href="https://kwbaek.github.io/tags/agents/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI/ML 트렌드: 에이전트 경쟁의 중심이 모델에서 실행 인프라로 이동하고 있다</title>
+      <link>https://kwbaek.github.io/posts/2026-04-16-ai-ml-trends-the-agent-race-is-moving-from-models-to-execution-infrastructure/</link>
+      <pubDate>Thu, 16 Apr 2026 21:22:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-04-16-ai-ml-trends-the-agent-race-is-moving-from-models-to-execution-infrastructure/</guid>
+      <description>&lt;p&gt;오늘 &lt;code&gt;#ai-ml-trends&lt;/code&gt; 채널을 훑으면서 가장 강하게 남은 흐름은 하나였습니다. 이제 에이전트 경쟁의 핵심이 단순히 “어느 모델이 더 똑똑한가”가 아니라, &lt;strong&gt;그 모델을 어떤 실행 환경 위에서 얼마나 안정적으로 굴릴 수 있는가&lt;/strong&gt;로 빠르게 이동하고 있다는 점입니다. 오늘 올라온 &lt;code&gt;OpenAI Agents SDK&lt;/code&gt; 확장 소식, &lt;code&gt;IBM VAKRA&lt;/code&gt; 같은 엔터프라이즈형 평가축, 그리고 &lt;code&gt;WebXSkill&lt;/code&gt;처럼 웹 에이전트의 재사용 가능한 스킬 라이브러리를 강조하는 연구가 서로 다른 출처처럼 보이지만, 사실은 같은 방향을 가리킵니다.&lt;/p&gt;
+&lt;p&gt;예전에는 에이전트 데모가 주로 모델의 추론력에 초점이 맞춰져 있었습니다. 프롬프트를 잘 쓰면 몇 단계 정도는 그럴듯하게 이어졌고, 화면에서는 꽤 멋져 보였습니다. 그런데 실무에 가까워질수록 병목은 전혀 다른 곳에서 터집니다. 파일을 어떻게 다루는지, 툴 호출이 실패했을 때 어떻게 복구하는지, 긴 작업을 어떻게 추적하는지, 권한 경계를 어떻게 나누는지, 그리고 여러 단계의 작업을 재사용 가능한 단위로 어떻게 남기는지가 훨씬 중요해집니다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>AI/ML 트렌드: 신약개발에서 AI는 이제 데모가 아니라 운영 레이어가 되고 있다</title>
+      <link>https://kwbaek.github.io/posts/2026-04-14-ai-ml-trends-ai-drug-discovery-is-becoming-a-real-operating-layer/</link>
+      <pubDate>Tue, 14 Apr 2026 21:30:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-04-14-ai-ml-trends-ai-drug-discovery-is-becoming-a-real-operating-layer/</guid>
+      <description>&lt;p&gt;오늘 &lt;code&gt;#ai-ml-trends&lt;/code&gt; 채널에서 가장 눈에 들어온 신호는 &lt;strong&gt;Novo Nordisk와 OpenAI 협력 소식&lt;/strong&gt;이었습니다. 표면적으로는 또 하나의 대형 파트너십처럼 보일 수 있지만, 저는 이 뉴스를 조금 다르게 봤습니다. 이제 생성형 AI의 경쟁 포인트가 “무엇을 예쁘게 생성하느냐”보다, &lt;strong&gt;도메인 특화 조직의 실제 운영 병목을 얼마나 깊게 파고드느냐&lt;/strong&gt;로 빠르게 이동하고 있다는 신호이기 때문입니다. 신약개발은 그중에서도 가장 까다로운 영역 중 하나입니다.&lt;/p&gt;
+&lt;p&gt;제약 산업의 R&amp;amp;D는 원래 느리고 비쌉니다. 후보 물질 탐색, 실험 설계, 문헌 검토, 실패 가설 정리, 규제 문서화까지 거의 모든 단계가 긴 시간과 높은 비용을 요구합니다. 그래서 AI가 여기에 들어간다는 말은 단순히 “챗봇을 붙였다”는 뜻이 아닙니다. 오히려 중요한 포인트는 AI가 &lt;strong&gt;과학자의 생각을 대신하는지&lt;/strong&gt;가 아니라, &lt;strong&gt;과학자가 더 빨리 가설을 세우고 더 적은 시행착오로 다음 실험을 결정하게 만드는지&lt;/strong&gt;에 있습니다.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>AI/ML 트렌드: 에이전트 메모리는 더 긴 히스토리보다 실패를 어떻게 교정하느냐로 이동 중이다</title>
       <link>https://kwbaek.github.io/posts/2026-04-13-ai-ml-trends-agent-memory-is-shifting-from-more-context-to-better-correction/</link>
