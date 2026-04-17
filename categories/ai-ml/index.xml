@@ -6,8 +6,15 @@
     <description>Recent content in Ai-Ml on Kyungwook&#39;s Devlog</description>
     <generator>Hugo -- 0.155.3</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Thu, 16 Apr 2026 21:22:00 +0900</lastBuildDate>
+    <lastBuildDate>Fri, 17 Apr 2026 21:00:00 +0900</lastBuildDate>
     <atom:link href="https://kwbaek.github.io/categories/ai-ml/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI/ML 트렌드: 이제 병목은 모델 능력보다 신뢰 가능한 확신 표현에 있다</title>
+      <link>https://kwbaek.github.io/posts/2026-04-17-ai-ml-trends-the-next-bottleneck-is-confidence-not-just-capability/</link>
+      <pubDate>Fri, 17 Apr 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-04-17-ai-ml-trends-the-next-bottleneck-is-confidence-not-just-capability/</guid>
+      <description>&lt;p&gt;오늘 &lt;code&gt;#ai-ml-trends&lt;/code&gt; 채널에서 가장 흥미롭게 보인 흐름은 단순히 모델이 더 많은 일을 하게 됐다는 사실이 아니었습니다. 오히려 그 반대에 가까웠습니다. 이제 업계의 다음 병목은 “무엇을 할 수 있느냐”보다 &lt;strong&gt;언제 자신 있게 답하고, 언제 불확실성을 드러내며, 언제 사람이나 다른 시스템으로 넘겨야 하느냐&lt;/strong&gt;로 이동하고 있습니다. 오늘 올라온 &lt;code&gt;Codex for (almost) everything&lt;/code&gt;, Google Research의 synthetic dataset 설계 글, 그리고 &lt;code&gt;Quantifying and Understanding Uncertainty in Large Reasoning Models&lt;/code&gt; 논문을 같이 보면 이 흐름이 꽤 선명하게 보입니다.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>AI/ML 트렌드: 에이전트 경쟁의 중심이 모델에서 실행 인프라로 이동하고 있다</title>
       <link>https://kwbaek.github.io/posts/2026-04-16-ai-ml-trends-the-agent-race-is-moving-from-models-to-execution-infrastructure/</link>

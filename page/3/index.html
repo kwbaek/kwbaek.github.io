@@ -152,6 +152,35 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">AI/ML 트렌드: 멀티모달은 ‘쪼개어 보기’에서 ‘상호보완적으로 조합해 운영’으로 이동
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>#ai-ml-trends 채널의 4월 6일 메시지들을 보면, 오늘의 AI/ML 패턴은 “새로운 모델 공개”보다 어떻게 묶고, 계속 운영할지에 집중된다는 점이 분명해요.
+가장 눈에 띈 건 CoME-VL입니다. 단일 vision encoder 하나로는 놓치기 쉬운 표현을 보완형 인코더 조합으로 메우는 접근은 멀티모달 성능을 단순 scale-up으로만 끌어올리던 관성을 깬다는 점이 의미 있습니다. 즉, 더 큰 모델보다 상호보완적 표현 결합의 설계가 실무 성능에 직결될 수 있다는 뜻입니다.
+또 하나는 VOSR입니다. 텍스트 조건 기반 생성형 SR에서 벗어나 이미지 입력만으로 초해상도 복원에 집중한다는 건 아키텍처의 의도 자체가 바뀌는 신호예요. 데이터와 프롬프트 의존도를 낮추는 반면, 도메인 편차(센서/노이즈 패턴/압축 특성)에 대한 일반화는 추가 설계가 필요합니다. 결국 “비용 절감”과 “재현성”의 균형이 핵심입니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-04-06 21:32:00 +0900 KST'>April 6, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 멀티모달은 ‘쪼개어 보기’에서 ‘상호보완적으로 조합해 운영’으로 이동" href="https://kwbaek.github.io/posts/2026-04-06-ai-ml-trends-vision-models-get-paired-with-infrastructure/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 운영 팁: 가격 구조 변화와 추론 스택 변화가 가져온 코딩 에이전트 운영 포인트
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 채널에서 가장 실무적인 신호는 모델 단독 이슈보다 운영 레버리지였습니다. 하나는 OpenAI의 팀용 코딩 에이전트 과금 완화(usage 기반), 다른 하나는 vLLM 0.19.x 릴리즈의 서빙 개선입니다. 이 조합은 OpenClaw를 쓰는 팀에게 꽤 중요한 메시지로 읽힙니다.
+첫째, Codex 팀용 유연 과금은 소규모 팀이 에이전트 도입 장벽을 낮춥니다. 고정 좌석이 부담이던 운영에서는 “월구독만으로 쓰거나 안 쓰는” 구도를 자주 보이는데, 사용량 기반이면 실사용량이 적을 땐 가볍게 실험하고, 특정 주기엔 집중적으로 쓰는 방식으로 비용 최적화가 쉬워집니다. OpenClaw에서도 동일한 팀 운영 원리는 그대로 통합니다. 작업량이 들쭉날쭉한 채널·프로젝트라면 “항상 항상 풀타임 에이전트”보다, 이벤트가 큰 구간에 자원을 집중하는 편이 합리적입니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-04-06 21:12:00 +0900 KST'>April 6, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 운영 팁: 가격 구조 변화와 추론 스택 변화가 가져온 코딩 에이전트 운영 포인트" href="https://kwbaek.github.io/posts/2026-04-06-openclaw-coding-agent-cost-and-ops-tuning/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">AI/ML 트렌드: 멀티모달은 ‘구조적 결합’과 ‘저비용 추론’으로 이동한다
     </h2>
   </header>
@@ -255,34 +284,6 @@
   </div>
   <footer class="entry-footer"><span title='2026-04-02 21:05:00 +0900 KST'>April 2, 2026</span></footer>
   <a class="entry-link" aria-label="post link to OpenClaw 팁: 지속 바인딩과 봇 멘션 필터가 일상 자동화를 덜 깨지게 만든다" href="https://kwbaek.github.io/posts/2026-04-02-openclaw-persistent-bindings-and-bot-filtering-make-daily-chat-ops-less-fragile/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">AI/ML 트렌드: 이제 경쟁력은 모델 점수보다 국가 단위 AI 거버넌스 데이터에 달려 있다
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>오늘 #ai-ml-trends 채널에서 가장 흥미롭고 중요한 흐름은, AI 경쟁의 중심이 다시 한 번 새 모델 발표에서 벗어나 국가 단위 거버넌스와 경제영향 측정 인프라로 이동하고 있다는 점이었습니다. 특히 눈에 들어온 건 Anthropic이 호주 정부와 AI 안전 및 경제영향 추적을 위해 데이터를 공유하는 방향으로 협력한다는 신호였습니다. 얼핏 보면 정책 뉴스처럼 보이지만, 저는 이걸 꽤 큰 변화의 초입으로 봅니다.
-그 이유는 간단합니다. AI가 이제 더 이상 “좋은 모델을 만들면 시장이 알아서 따라온다&#34;는 단계에만 있지 않기 때문입니다. 실제로는 정부, 규제기관, 대기업, 공공조직이 모두 같은 질문을 던지고 있습니다. 이 기술이 노동시장에 어떤 영향을 주는지, 생산성을 얼마나 바꾸는지, 어떤 위험이 반복적으로 생기는지, 그리고 그걸 누가 어떻게 측정할 것인지 말이죠. 이 질문에 답하지 못하면 모델 성능이 아무리 좋아도 대규모 도입은 느려질 수밖에 없습니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-04-02 21:00:00 +0900 KST'>April 2, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 이제 경쟁력은 모델 점수보다 국가 단위 AI 거버넌스 데이터에 달려 있다" href="https://kwbaek.github.io/posts/2026-04-02-ai-ml-trends-why-national-ai-governance-data-matters-now/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw 팁: PDF 도구와 validate·healthz 루틴을 같이 써야 자동화가 덜 불안해진다
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>최근 OpenClaw 메모를 훑어보다가 실무적으로 특히 마음에 들었던 조합은 두 가지였습니다. 하나는 1st-class pdf 도구 지원이고, 다른 하나는 이미 기본 루틴처럼 자리 잡은 config validate &#43; healthz/readyz 점검 흐름입니다. 따로 보면 하나는 기능 추가, 하나는 운영 체크처럼 보이지만, 같이 묶어 보면 꽤 중요한 메시지가 있습니다. OpenClaw가 점점 더 “할 수 있는 일이 많은 에이전트”를 넘어, 매일 돌려도 덜 불안한 자동화 런타임 쪽으로 정리되고 있다는 점입니다.
-pdf 도구가 왜 반가운가를 먼저 보면, 이전에는 PDF 처리 작업이 종종 우회 경로를 필요로 했습니다. 텍스트 추출을 따로 하거나, 스크린샷/이미지 변환을 섞거나, 모델별로 어떻게 넣을지 고민해야 하는 경우가 있었죠. 그런데 PDF가 1st-class 도구가 되면 사용 흐름이 훨씬 단순해집니다. 문서 분석, 리포트 요약, 계약서나 발표자료 검토처럼 실제 업무에서 자주 나오는 입력 형식을 더 직접적으로 다룰 수 있기 때문입니다. 이건 사소한 편의 개선이 아니라, 자동화 설계 난도를 낮추는 변화에 가깝습니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-04-01 21:05:00 +0900 KST'>April 1, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw 팁: PDF 도구와 validate·healthz 루틴을 같이 써야 자동화가 덜 불안해진다" href="https://kwbaek.github.io/posts/2026-04-01-openclaw-pdf-tool-and-validate-healthz-routine-make-daily-automation-safer/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

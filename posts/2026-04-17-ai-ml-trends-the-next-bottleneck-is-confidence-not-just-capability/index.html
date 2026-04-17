@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>AI/ML 트렌드: 이제 병목은 모델 능력보다 신뢰 가능한 확신 표현에 있다 | Kyungwook&#39;s Devlog</title>
+<meta name="keywords" content="AI, ML, Reasoning Models, OpenAI, Google Research, Uncertainty, Agents">
+<meta name="description" content="오늘 #ai-ml-trends 채널에서 가장 흥미롭게 보인 흐름은 단순히 모델이 더 많은 일을 하게 됐다는 사실이 아니었습니다. 오히려 그 반대에 가까웠습니다. 이제 업계의 다음 병목은 “무엇을 할 수 있느냐”보다 언제 자신 있게 답하고, 언제 불확실성을 드러내며, 언제 사람이나 다른 시스템으로 넘겨야 하느냐로 이동하고 있습니다. 오늘 올라온 Codex for (almost) everything, Google Research의 synthetic dataset 설계 글, 그리고 Quantifying and Understanding Uncertainty in Large Reasoning Models 논문을 같이 보면 이 흐름이 꽤 선명하게 보입니다.">
+<meta name="author" content="">
+<link rel="canonical" href="https://kwbaek.github.io/posts/2026-04-17-ai-ml-trends-the-next-bottleneck-is-confidence-not-just-capability/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.da3211e5ef867bf2b75fd5a6515cfed7195c011e8ab735694e203810a827097b.css" integrity="sha256-2jIR5e&#43;Ge/K3X9WmUVz&#43;1xlcAR6KtzVpTiA4EKgnCXs=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://kwbaek.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://kwbaek.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://kwbaek.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://kwbaek.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://kwbaek.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://kwbaek.github.io/posts/2026-04-17-ai-ml-trends-the-next-bottleneck-is-confidence-not-just-capability/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="https://kwbaek.github.io/posts/2026-04-17-ai-ml-trends-the-next-bottleneck-is-confidence-not-just-capability/">
+  <meta property="og:site_name" content="Kyungwook&#39;s Devlog">
+  <meta property="og:title" content="AI/ML 트렌드: 이제 병목은 모델 능력보다 신뢰 가능한 확신 표현에 있다">
+  <meta property="og:description" content="오늘 #ai-ml-trends 채널에서 가장 흥미롭게 보인 흐름은 단순히 모델이 더 많은 일을 하게 됐다는 사실이 아니었습니다. 오히려 그 반대에 가까웠습니다. 이제 업계의 다음 병목은 “무엇을 할 수 있느냐”보다 언제 자신 있게 답하고, 언제 불확실성을 드러내며, 언제 사람이나 다른 시스템으로 넘겨야 하느냐로 이동하고 있습니다. 오늘 올라온 Codex for (almost) everything, Google Research의 synthetic dataset 설계 글, 그리고 Quantifying and Understanding Uncertainty in Large Reasoning Models 논문을 같이 보면 이 흐름이 꽤 선명하게 보입니다.">
+  <meta property="og:locale" content="ko-kr">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2026-04-17T21:00:00+09:00">
+    <meta property="article:modified_time" content="2026-04-17T21:00:00+09:00">
+    <meta property="article:tag" content="AI">
+    <meta property="article:tag" content="Ml">
+    <meta property="article:tag" content="Reasoning Models">
+    <meta property="article:tag" content="Openai">
+    <meta property="article:tag" content="Google Research">
+    <meta property="article:tag" content="Uncertainty">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="AI/ML 트렌드: 이제 병목은 모델 능력보다 신뢰 가능한 확신 표현에 있다">
+<meta name="twitter:description" content="오늘 #ai-ml-trends 채널에서 가장 흥미롭게 보인 흐름은 단순히 모델이 더 많은 일을 하게 됐다는 사실이 아니었습니다. 오히려 그 반대에 가까웠습니다. 이제 업계의 다음 병목은 “무엇을 할 수 있느냐”보다 언제 자신 있게 답하고, 언제 불확실성을 드러내며, 언제 사람이나 다른 시스템으로 넘겨야 하느냐로 이동하고 있습니다. 오늘 올라온 Codex for (almost) everything, Google Research의 synthetic dataset 설계 글, 그리고 Quantifying and Understanding Uncertainty in Large Reasoning Models 논문을 같이 보면 이 흐름이 꽤 선명하게 보입니다.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://kwbaek.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "AI/ML 트렌드: 이제 병목은 모델 능력보다 신뢰 가능한 확신 표현에 있다",
+      "item": "https://kwbaek.github.io/posts/2026-04-17-ai-ml-trends-the-next-bottleneck-is-confidence-not-just-capability/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "AI/ML 트렌드: 이제 병목은 모델 능력보다 신뢰 가능한 확신 표현에 있다",
+  "name": "AI\/ML 트렌드: 이제 병목은 모델 능력보다 신뢰 가능한 확신 표현에 있다",
+  "description": "오늘 #ai-ml-trends 채널에서 가장 흥미롭게 보인 흐름은 단순히 모델이 더 많은 일을 하게 됐다는 사실이 아니었습니다. 오히려 그 반대에 가까웠습니다. 이제 업계의 다음 병목은 “무엇을 할 수 있느냐”보다 언제 자신 있게 답하고, 언제 불확실성을 드러내며, 언제 사람이나 다른 시스템으로 넘겨야 하느냐로 이동하고 있습니다. 오늘 올라온 Codex for (almost) everything, Google Research의 synthetic dataset 설계 글, 그리고 Quantifying and Understanding Uncertainty in Large Reasoning Models 논문을 같이 보면 이 흐름이 꽤 선명하게 보입니다.\n",
+  "keywords": [
+    "AI", "ML", "Reasoning Models", "OpenAI", "Google Research", "Uncertainty", "Agents"
+  ],
+  "articleBody": "오늘 #ai-ml-trends 채널에서 가장 흥미롭게 보인 흐름은 단순히 모델이 더 많은 일을 하게 됐다는 사실이 아니었습니다. 오히려 그 반대에 가까웠습니다. 이제 업계의 다음 병목은 “무엇을 할 수 있느냐”보다 언제 자신 있게 답하고, 언제 불확실성을 드러내며, 언제 사람이나 다른 시스템으로 넘겨야 하느냐로 이동하고 있습니다. 오늘 올라온 Codex for (almost) everything, Google Research의 synthetic dataset 설계 글, 그리고 Quantifying and Understanding Uncertainty in Large Reasoning Models 논문을 같이 보면 이 흐름이 꽤 선명하게 보입니다.\n먼저 OpenAI의 Codex for (almost) everything은 이름부터 상징적입니다. 코딩 보조를 넘어서 더 넓은 업무 표면으로 들어가겠다는 선언에 가깝습니다. 이런 확장은 분명 인상적이지만, 동시에 더 무거운 질문을 던집니다. 에이전트가 맡는 일이 넓어질수록 중요한 것은 “가끔 멋지게 맞히는 능력”이 아니라, 자기 한계를 얼마나 잘 표현하느냐입니다. 코드 한 줄 추천에서는 어설픈 자신감이 좀 덜 치명적일 수 있지만, 장기 작업 실행이나 여러 단계 판단에서는 과한 확신이 비용을 훨씬 크게 키웁니다.\n여기에 Google Research의 synthetic dataset 설계 흐름이 묘하게 연결됩니다. 이 글이 중요한 이유는 데이터 생성이 단순한 양 채우기가 아니라, 실제 의사결정 구조를 얼마나 잘 반영하느냐가 성능을 좌우한다는 점을 다시 보여주기 때문입니다. 다시 말해 앞으로 좋은 모델은 그냥 인터넷 텍스트를 많이 먹은 모델이 아니라, 현실의 판단 장면을 얼마나 잘 시뮬레이션해 본 모델인가에 더 가까워질 수 있습니다. 그리고 그런 판단 장면에는 정답 자체만큼이나 불확실성, 보류, 추가 탐색, 에스컬레이션 같은 행동이 포함됩니다.\n오늘의 논문 Quantifying and Understanding Uncertainty in Large Reasoning Models는 이 문제를 더 직접적으로 찌릅니다. reasoning trace가 길고 정답률이 높아 보여도, 실제 배치 환경에서는 모델이 자기 불확실성을 어떻게 드러내는지가 더 중요할 수 있다는 점입니다. 저는 이게 앞으로 실전 AI 도입에서 매우 큰 차이를 만들 거라고 봅니다. 지금까지는 많은 팀이 “정답률이 몇 퍼센트 올라갔는가”에 집중했다면, 이제는 “이 답을 어느 수준까지 믿어도 되는가”를 관리하는 단계로 넘어갈 가능성이 큽니다.\n이 변화는 꽤 현실적입니다.\n고객지원 에이전트라면, 확신이 낮을 때 사람 상담사로 넘기는 기준이 중요해집니다. 코딩 에이전트라면, 수정은 가능하지만 배포는 보류해야 하는 순간을 구분해야 합니다. 연구 보조 에이전트라면, 답을 꾸미기보다 근거 부족을 명시하는 편이 더 값질 수 있습니다. 즉, 다음 경쟁축은 더 큰 모델, 더 긴 컨텍스트, 더 많은 툴 호출만이 아닙니다. 신뢰 가능한 확신 표현과 불확실성 운영이 제품 경쟁력의 일부가 되기 시작하고 있습니다.\n저는 이 방향이 오히려 반갑습니다. 이유는 간단합니다. 실무에서 사람들은 완벽한 AI보다, 믿을 수 있는 AI를 더 원하기 때문입니다. 잘 모를 때 모른다고 말하고, 애매할 때 추가 확인을 제안하고, 위험할 때 멈추는 시스템이 실제 조직에서는 훨씬 오래 살아남습니다. 오늘의 흐름은 AI/ML 업계가 조금씩 그 현실적인 방향으로 움직이고 있다는 신호처럼 보였습니다. 다음 세대의 강한 모델은 더 똑똑한 모델일 뿐 아니라, 자기 확신을 더 잘 관리하는 모델이어야 할 겁니다.\n",
+  "wordCount" : "402",
+  "inLanguage": "en",
+  "datePublished": "2026-04-17T21:00:00+09:00",
+  "dateModified": "2026-04-17T21:00:00+09:00",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://kwbaek.github.io/posts/2026-04-17-ai-ml-trends-the-next-bottleneck-is-confidence-not-just-capability/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Kyungwook's Devlog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://kwbaek.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://kwbaek.github.io/" accesskey="h" title="Kyungwook&#39;s Devlog (Alt + H)">Kyungwook&#39;s Devlog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://kwbaek.github.io/categories/" title="categories">
+                    <span>categories</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kwbaek.github.io/tags/" title="tags">
+                    <span>tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kwbaek.github.io/" title="Kyungwook&#39;s Devlog">
+                    <span>Kyungwook&#39;s Devlog</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      AI/ML 트렌드: 이제 병목은 모델 능력보다 신뢰 가능한 확신 표현에 있다
+    </h1>
+    <div class="post-meta"><span title='2026-04-17 21:00:00 +0900 KST'>April 17, 2026</span>
+
+</div>
+  </header> 
+  <div class="post-content"><p>오늘 <code>#ai-ml-trends</code> 채널에서 가장 흥미롭게 보인 흐름은 단순히 모델이 더 많은 일을 하게 됐다는 사실이 아니었습니다. 오히려 그 반대에 가까웠습니다. 이제 업계의 다음 병목은 “무엇을 할 수 있느냐”보다 <strong>언제 자신 있게 답하고, 언제 불확실성을 드러내며, 언제 사람이나 다른 시스템으로 넘겨야 하느냐</strong>로 이동하고 있습니다. 오늘 올라온 <code>Codex for (almost) everything</code>, Google Research의 synthetic dataset 설계 글, 그리고 <code>Quantifying and Understanding Uncertainty in Large Reasoning Models</code> 논문을 같이 보면 이 흐름이 꽤 선명하게 보입니다.</p>
+<p>먼저 OpenAI의 <code>Codex for (almost) everything</code>은 이름부터 상징적입니다. 코딩 보조를 넘어서 더 넓은 업무 표면으로 들어가겠다는 선언에 가깝습니다. 이런 확장은 분명 인상적이지만, 동시에 더 무거운 질문을 던집니다. 에이전트가 맡는 일이 넓어질수록 중요한 것은 “가끔 멋지게 맞히는 능력”이 아니라, <strong>자기 한계를 얼마나 잘 표현하느냐</strong>입니다. 코드 한 줄 추천에서는 어설픈 자신감이 좀 덜 치명적일 수 있지만, 장기 작업 실행이나 여러 단계 판단에서는 과한 확신이 비용을 훨씬 크게 키웁니다.</p>
+<p>여기에 Google Research의 synthetic dataset 설계 흐름이 묘하게 연결됩니다. 이 글이 중요한 이유는 데이터 생성이 단순한 양 채우기가 아니라, 실제 의사결정 구조를 얼마나 잘 반영하느냐가 성능을 좌우한다는 점을 다시 보여주기 때문입니다. 다시 말해 앞으로 좋은 모델은 그냥 인터넷 텍스트를 많이 먹은 모델이 아니라, <strong>현실의 판단 장면을 얼마나 잘 시뮬레이션해 본 모델인가</strong>에 더 가까워질 수 있습니다. 그리고 그런 판단 장면에는 정답 자체만큼이나 불확실성, 보류, 추가 탐색, 에스컬레이션 같은 행동이 포함됩니다.</p>
+<p>오늘의 논문 <code>Quantifying and Understanding Uncertainty in Large Reasoning Models</code>는 이 문제를 더 직접적으로 찌릅니다. reasoning trace가 길고 정답률이 높아 보여도, 실제 배치 환경에서는 모델이 자기 불확실성을 어떻게 드러내는지가 더 중요할 수 있다는 점입니다. 저는 이게 앞으로 실전 AI 도입에서 매우 큰 차이를 만들 거라고 봅니다. 지금까지는 많은 팀이 “정답률이 몇 퍼센트 올라갔는가”에 집중했다면, 이제는 “이 답을 어느 수준까지 믿어도 되는가”를 관리하는 단계로 넘어갈 가능성이 큽니다.</p>
+<p>이 변화는 꽤 현실적입니다.</p>
+<ul>
+<li>고객지원 에이전트라면, 확신이 낮을 때 사람 상담사로 넘기는 기준이 중요해집니다.</li>
+<li>코딩 에이전트라면, 수정은 가능하지만 배포는 보류해야 하는 순간을 구분해야 합니다.</li>
+<li>연구 보조 에이전트라면, 답을 꾸미기보다 근거 부족을 명시하는 편이 더 값질 수 있습니다.</li>
+</ul>
+<p>즉, 다음 경쟁축은 더 큰 모델, 더 긴 컨텍스트, 더 많은 툴 호출만이 아닙니다. <strong>신뢰 가능한 확신 표현과 불확실성 운영</strong>이 제품 경쟁력의 일부가 되기 시작하고 있습니다.</p>
+<p>저는 이 방향이 오히려 반갑습니다. 이유는 간단합니다. 실무에서 사람들은 완벽한 AI보다, 믿을 수 있는 AI를 더 원하기 때문입니다. 잘 모를 때 모른다고 말하고, 애매할 때 추가 확인을 제안하고, 위험할 때 멈추는 시스템이 실제 조직에서는 훨씬 오래 살아남습니다. 오늘의 흐름은 AI/ML 업계가 조금씩 그 현실적인 방향으로 움직이고 있다는 신호처럼 보였습니다. 다음 세대의 강한 모델은 더 똑똑한 모델일 뿐 아니라, <strong>자기 확신을 더 잘 관리하는 모델</strong>이어야 할 겁니다.</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://kwbaek.github.io/tags/ai/">AI</a></li>
+      <li><a href="https://kwbaek.github.io/tags/ml/">Ml</a></li>
+      <li><a href="https://kwbaek.github.io/tags/reasoning-models/">Reasoning Models</a></li>
+      <li><a href="https://kwbaek.github.io/tags/openai/">Openai</a></li>
+      <li><a href="https://kwbaek.github.io/tags/google-research/">Google Research</a></li>
+      <li><a href="https://kwbaek.github.io/tags/uncertainty/">Uncertainty</a></li>
+      <li><a href="https://kwbaek.github.io/tags/agents/">Agents</a></li>
+    </ul>
+  </footer><script src="https://utteranc.es/client.js"
+        repo="kwbaek/blog-comments"
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://kwbaek.github.io/">Kyungwook&#39;s Devlog</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

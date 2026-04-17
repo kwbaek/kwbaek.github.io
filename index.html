@@ -152,6 +152,33 @@
 
 <article class="first-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">AI/ML 트렌드: 이제 병목은 모델 능력보다 신뢰 가능한 확신 표현에 있다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 #ai-ml-trends 채널에서 가장 흥미롭게 보인 흐름은 단순히 모델이 더 많은 일을 하게 됐다는 사실이 아니었습니다. 오히려 그 반대에 가까웠습니다. 이제 업계의 다음 병목은 “무엇을 할 수 있느냐”보다 언제 자신 있게 답하고, 언제 불확실성을 드러내며, 언제 사람이나 다른 시스템으로 넘겨야 하느냐로 이동하고 있습니다. 오늘 올라온 Codex for (almost) everything, Google Research의 synthetic dataset 설계 글, 그리고 Quantifying and Understanding Uncertainty in Large Reasoning Models 논문을 같이 보면 이 흐름이 꽤 선명하게 보입니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-04-17 21:00:00 +0900 KST'>April 17, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 이제 병목은 모델 능력보다 신뢰 가능한 확신 표현에 있다" href="https://kwbaek.github.io/posts/2026-04-17-ai-ml-trends-the-next-bottleneck-is-confidence-not-just-capability/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 팁: 일일 블로그 워크플로를 에이전트 실행처럼 구조화하면 훨씬 덜 흔들린다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>요즘 OpenClaw로 반복 작업을 굴리면서 더 확신하게 된 게 있습니다. 일일 블로그 자동화는 그냥 “글 써서 배포하기”가 아니라, 사실상 작은 에이전트 실행 하나를 안정적으로 끝내는 문제에 가깝습니다. 주제 선별, 중복 회피, 포맷 맞추기, 파일 생성, git 반영, 빌드, 배포까지 이어지는 흐름은 겉보기에 단순해 보여도 단계가 꽤 많고, 중간 어디서든 쉽게 흔들릴 수 있습니다. 그래서 이 작업을 잘 굴리려면 글쓰기 감각만큼이나 워크플로 구조화가 중요합니다.
+제가 OpenClaw에서 특히 유용하다고 느끼는 점은, 이런 반복 작업을 자연스럽게 단계별 실행으로 다룰 수 있다는 것입니다. 예를 들어 일일 블로그 루틴을 생각해 보면 실제로는 다음 같은 순서가 필요합니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-04-16 21:27:00 +0900 KST'>April 16, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 팁: 일일 블로그 워크플로를 에이전트 실행처럼 구조화하면 훨씬 덜 흔들린다" href="https://kwbaek.github.io/posts/2026-04-16-openclaw-openclaw-gets-more-useful-when-your-daily-blog-workflow-is-structured-like-an-agent-run/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">AI/ML 트렌드: 에이전트 경쟁의 중심이 모델에서 실행 인프라로 이동하고 있다
     </h2>
   </header>
@@ -260,35 +287,6 @@
   </div>
   <footer class="entry-footer"><span title='2026-04-11 21:41:00 +0900 KST'>April 11, 2026</span></footer>
   <a class="entry-link" aria-label="post link to AI 에이전트 시대, 다음 경쟁력은 툴체인 보안이다" href="https://kwbaek.github.io/posts/2026-04-11-ai-agent-toolchain-security-is-the-next-frontier/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw에서 cron과 세션 워크플로를 제대로 쓰는 법
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>OpenClaw를 조금만 오래 써보면 금방 느끼는 게 있습니다. 문제는 “도구가 많다&#34;가 아니라, 언제 cron을 쓰고 언제 세션을 분리하느냐가 운영 품질을 크게 좌우한다는 점입니다. 처음에는 모든 작업을 한 세션에 몰아넣기 쉽지만, 그렇게 하면 문맥이 무거워지고 스케줄 작업과 실시간 대화가 서로 방해하기 시작합니다.
-핵심 원칙: 정확한 시각은 cron, 긴 문맥 작업은 세션 제가 가장 유용하다고 느끼는 기준은 이렇습니다.
-정확한 시간 실행이 필요하면 cron 배치성 리서치/작성 작업은 분리된 세션이나 isolated run 즉시성 있는 대화는 현재 세션 유지 반복 점검은 heartbeat 또는 cron 중 목적에 맞게 선택 예를 들어 “매일 밤 블로그 초안 쓰기” 같은 작업은 cron이 잘 맞습니다. 반대로 복잡한 구현, 디버깅, 장문 리서치처럼 중간 상태가 많은 일은 별도 세션으로 분리하는 편이 훨씬 안정적입니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-04-11 21:41:00 +0900 KST'>April 11, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw에서 cron과 세션 워크플로를 제대로 쓰는 법" href="https://kwbaek.github.io/posts/2026-04-11-openclaw-cron-and-session-workflows-that-actually-scale/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">AI 경쟁의 진짜 병목은 모델이 아니라 인프라와 공급망이다
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>오늘 눈에 띈 흐름은 새 모델 발표보다 AI 인프라와 공급망이 시장의 승부처로 더 선명해지고 있다는 점입니다. Discord #ai-ml-trends 채널의 오늘 메시지들만 놓고 봐도 같은 방향의 신호가 반복됩니다. TSMC의 1분기 매출이 AI 수요에 힘입어 시장 예상을 웃돌았다는 소식, OpenAI가 영국 데이터센터 프로젝트를 규제와 비용 문제로 멈췄다는 보도, 그리고 AWS AI 매출 런레이트와 대형 클라우드 계약 확대 흐름까지 모두 한 문장으로 요약하면 이렇습니다.
-이제 AI 경쟁은 모델 성능표 한 장으로 끝나지 않습니다. 전력, 칩, 파운드리, 데이터센터 부지, 규제 대응, CAPEX 조달 능력이 함께 있어야 다음 단계로 갑니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-04-10 21:14:00 +0900 KST'>April 10, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to AI 경쟁의 진짜 병목은 모델이 아니라 인프라와 공급망이다" href="https://kwbaek.github.io/posts/2026-04-10-ai-infrastructure-supply-chain-is-the-real-ai-bottleneck/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

@@ -6,8 +6,16 @@
     <description>Recent content in Openclaw on Kyungwook&#39;s Devlog</description>
     <generator>Hugo -- 0.155.3</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Tue, 14 Apr 2026 21:35:00 +0900</lastBuildDate>
+    <lastBuildDate>Thu, 16 Apr 2026 21:27:00 +0900</lastBuildDate>
     <atom:link href="https://kwbaek.github.io/categories/openclaw/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>OpenClaw 팁: 일일 블로그 워크플로를 에이전트 실행처럼 구조화하면 훨씬 덜 흔들린다</title>
+      <link>https://kwbaek.github.io/posts/2026-04-16-openclaw-openclaw-gets-more-useful-when-your-daily-blog-workflow-is-structured-like-an-agent-run/</link>
+      <pubDate>Thu, 16 Apr 2026 21:27:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-04-16-openclaw-openclaw-gets-more-useful-when-your-daily-blog-workflow-is-structured-like-an-agent-run/</guid>
+      <description>&lt;p&gt;요즘 OpenClaw로 반복 작업을 굴리면서 더 확신하게 된 게 있습니다. 일일 블로그 자동화는 그냥 “글 써서 배포하기”가 아니라, 사실상 &lt;strong&gt;작은 에이전트 실행 하나를 안정적으로 끝내는 문제&lt;/strong&gt;에 가깝습니다. 주제 선별, 중복 회피, 포맷 맞추기, 파일 생성, git 반영, 빌드, 배포까지 이어지는 흐름은 겉보기에 단순해 보여도 단계가 꽤 많고, 중간 어디서든 쉽게 흔들릴 수 있습니다. 그래서 이 작업을 잘 굴리려면 글쓰기 감각만큼이나 &lt;strong&gt;워크플로 구조화&lt;/strong&gt;가 중요합니다.&lt;/p&gt;
+&lt;p&gt;제가 OpenClaw에서 특히 유용하다고 느끼는 점은, 이런 반복 작업을 자연스럽게 단계별 실행으로 다룰 수 있다는 것입니다. 예를 들어 일일 블로그 루틴을 생각해 보면 실제로는 다음 같은 순서가 필요합니다.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>OpenClaw 팁: health check와 config validate를 기본 운영 루프에 넣어두면 훨씬 덜 흔들린다</title>
       <link>https://kwbaek.github.io/posts/2026-04-14-openclaw-health-checks-and-config-validation-should-be-part-of-your-default-ops-loop/</link>

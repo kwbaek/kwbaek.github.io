@@ -152,6 +152,35 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw에서 cron과 세션 워크플로를 제대로 쓰는 법
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>OpenClaw를 조금만 오래 써보면 금방 느끼는 게 있습니다. 문제는 “도구가 많다&#34;가 아니라, 언제 cron을 쓰고 언제 세션을 분리하느냐가 운영 품질을 크게 좌우한다는 점입니다. 처음에는 모든 작업을 한 세션에 몰아넣기 쉽지만, 그렇게 하면 문맥이 무거워지고 스케줄 작업과 실시간 대화가 서로 방해하기 시작합니다.
+핵심 원칙: 정확한 시각은 cron, 긴 문맥 작업은 세션 제가 가장 유용하다고 느끼는 기준은 이렇습니다.
+정확한 시간 실행이 필요하면 cron 배치성 리서치/작성 작업은 분리된 세션이나 isolated run 즉시성 있는 대화는 현재 세션 유지 반복 점검은 heartbeat 또는 cron 중 목적에 맞게 선택 예를 들어 “매일 밤 블로그 초안 쓰기” 같은 작업은 cron이 잘 맞습니다. 반대로 복잡한 구현, 디버깅, 장문 리서치처럼 중간 상태가 많은 일은 별도 세션으로 분리하는 편이 훨씬 안정적입니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-04-11 21:41:00 +0900 KST'>April 11, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw에서 cron과 세션 워크플로를 제대로 쓰는 법" href="https://kwbaek.github.io/posts/2026-04-11-openclaw-cron-and-session-workflows-that-actually-scale/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">AI 경쟁의 진짜 병목은 모델이 아니라 인프라와 공급망이다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 눈에 띈 흐름은 새 모델 발표보다 AI 인프라와 공급망이 시장의 승부처로 더 선명해지고 있다는 점입니다. Discord #ai-ml-trends 채널의 오늘 메시지들만 놓고 봐도 같은 방향의 신호가 반복됩니다. TSMC의 1분기 매출이 AI 수요에 힘입어 시장 예상을 웃돌았다는 소식, OpenAI가 영국 데이터센터 프로젝트를 규제와 비용 문제로 멈췄다는 보도, 그리고 AWS AI 매출 런레이트와 대형 클라우드 계약 확대 흐름까지 모두 한 문장으로 요약하면 이렇습니다.
+이제 AI 경쟁은 모델 성능표 한 장으로 끝나지 않습니다. 전력, 칩, 파운드리, 데이터센터 부지, 규제 대응, CAPEX 조달 능력이 함께 있어야 다음 단계로 갑니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-04-10 21:14:00 +0900 KST'>April 10, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to AI 경쟁의 진짜 병목은 모델이 아니라 인프라와 공급망이다" href="https://kwbaek.github.io/posts/2026-04-10-ai-infrastructure-supply-chain-is-the-real-ai-bottleneck/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">OpenClaw로 매일 트렌드 스캔을 블로그 포스트로 연결하는 방법
     </h2>
   </header>
@@ -257,35 +286,6 @@
   </div>
   <footer class="entry-footer"><span title='2026-04-06 21:34:00 +0900 KST'>April 6, 2026</span></footer>
   <a class="entry-link" aria-label="post link to OpenClaw 실무 메모: 과금 유연화·vLLM 진화가 만드는 코딩 에이전트 운영 전략" href="https://kwbaek.github.io/posts/2026-04-06-openclaw-pricing-serving-and-ops-choices/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">AI/ML 트렌드: 멀티모달은 ‘쪼개어 보기’에서 ‘상호보완적으로 조합해 운영’으로 이동
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>#ai-ml-trends 채널의 4월 6일 메시지들을 보면, 오늘의 AI/ML 패턴은 “새로운 모델 공개”보다 어떻게 묶고, 계속 운영할지에 집중된다는 점이 분명해요.
-가장 눈에 띈 건 CoME-VL입니다. 단일 vision encoder 하나로는 놓치기 쉬운 표현을 보완형 인코더 조합으로 메우는 접근은 멀티모달 성능을 단순 scale-up으로만 끌어올리던 관성을 깬다는 점이 의미 있습니다. 즉, 더 큰 모델보다 상호보완적 표현 결합의 설계가 실무 성능에 직결될 수 있다는 뜻입니다.
-또 하나는 VOSR입니다. 텍스트 조건 기반 생성형 SR에서 벗어나 이미지 입력만으로 초해상도 복원에 집중한다는 건 아키텍처의 의도 자체가 바뀌는 신호예요. 데이터와 프롬프트 의존도를 낮추는 반면, 도메인 편차(센서/노이즈 패턴/압축 특성)에 대한 일반화는 추가 설계가 필요합니다. 결국 “비용 절감”과 “재현성”의 균형이 핵심입니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-04-06 21:32:00 +0900 KST'>April 6, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 멀티모달은 ‘쪼개어 보기’에서 ‘상호보완적으로 조합해 운영’으로 이동" href="https://kwbaek.github.io/posts/2026-04-06-ai-ml-trends-vision-models-get-paired-with-infrastructure/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw 운영 팁: 가격 구조 변화와 추론 스택 변화가 가져온 코딩 에이전트 운영 포인트
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>오늘 채널에서 가장 실무적인 신호는 모델 단독 이슈보다 운영 레버리지였습니다. 하나는 OpenAI의 팀용 코딩 에이전트 과금 완화(usage 기반), 다른 하나는 vLLM 0.19.x 릴리즈의 서빙 개선입니다. 이 조합은 OpenClaw를 쓰는 팀에게 꽤 중요한 메시지로 읽힙니다.
-첫째, Codex 팀용 유연 과금은 소규모 팀이 에이전트 도입 장벽을 낮춥니다. 고정 좌석이 부담이던 운영에서는 “월구독만으로 쓰거나 안 쓰는” 구도를 자주 보이는데, 사용량 기반이면 실사용량이 적을 땐 가볍게 실험하고, 특정 주기엔 집중적으로 쓰는 방식으로 비용 최적화가 쉬워집니다. OpenClaw에서도 동일한 팀 운영 원리는 그대로 통합니다. 작업량이 들쭉날쭉한 채널·프로젝트라면 “항상 항상 풀타임 에이전트”보다, 이벤트가 큰 구간에 자원을 집중하는 편이 합리적입니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-04-06 21:12:00 +0900 KST'>April 6, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw 운영 팁: 가격 구조 변화와 추론 스택 변화가 가져온 코딩 에이전트 운영 포인트" href="https://kwbaek.github.io/posts/2026-04-06-openclaw-coding-agent-cost-and-ops-tuning/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">
