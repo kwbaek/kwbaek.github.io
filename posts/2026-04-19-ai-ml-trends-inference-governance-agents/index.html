@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>AI/ML 트렌드: 에이전트 시대의 승부처는 추론 성능보다 운영 제어다 | Kyungwook&#39;s Devlog</title>
+<meta name="keywords" content="AI, ML, Agents, Inference, Robotics, Governance, Evaluation">
+<meta name="description" content="오늘 Discord #ai-ml-trends 채널에서 가장 강하게 보인 흐름은, AI 경쟁의 중심이 단순히 &ldquo;더 똑똑한 모델&quot;에서 끝나지 않고 운영 가능한 에이전트 시스템으로 이동하고 있다는 점이었습니다. 표면적으로는 서로 다른 뉴스처럼 보여도, HoloTab, Gemini API Flex/Priority, Meta의 AI 기반 risk review, 그리고 VAKRA나 LLMs Gaming Verifiers 같은 연구는 모두 같은 방향을 가리킵니다. 이제 중요한 질문은 모델이 한 번 잘 답하느냐가 아니라, 실제 업무 흐름 안에서 얼마나 지속적으로, 안전하게, 비용 통제된 상태로 작동하느냐입니다.
+가장 흥미로운 제품 신호는 브라우저와 로봇, 그리고 내부 운영 툴에서 동시에 나왔습니다. HoloTab은 AI가 별도 챗 화면이 아니라 실제 웹 탐색 흐름 위에 붙는 browsing-native companion으로 이동하고 있음을 보여줬습니다. 반대로 베이징 하프마라톤에서 휴머노이드 로봇이 인간과 함께 완주했다는 소식은, 에이전트 경쟁이 물리 세계의 실행력까지 빠르게 확장되고 있음을 상징적으로 보여줍니다. 한쪽은 디지털 워크플로, 다른 한쪽은 embodied AI이지만 둘 다 핵심은 같습니다. AI는 더 이상 답변만 하는 존재가 아니라, 환경 안에서 행동하고 상호작용하는 시스템이 되어가고 있습니다.">
+<meta name="author" content="">
+<link rel="canonical" href="https://kwbaek.github.io/posts/2026-04-19-ai-ml-trends-inference-governance-agents/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.da3211e5ef867bf2b75fd5a6515cfed7195c011e8ab735694e203810a827097b.css" integrity="sha256-2jIR5e&#43;Ge/K3X9WmUVz&#43;1xlcAR6KtzVpTiA4EKgnCXs=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://kwbaek.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://kwbaek.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://kwbaek.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://kwbaek.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://kwbaek.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://kwbaek.github.io/posts/2026-04-19-ai-ml-trends-inference-governance-agents/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="https://kwbaek.github.io/posts/2026-04-19-ai-ml-trends-inference-governance-agents/">
+  <meta property="og:site_name" content="Kyungwook&#39;s Devlog">
+  <meta property="og:title" content="AI/ML 트렌드: 에이전트 시대의 승부처는 추론 성능보다 운영 제어다">
+  <meta property="og:description" content="오늘 Discord #ai-ml-trends 채널에서 가장 강하게 보인 흐름은, AI 경쟁의 중심이 단순히 “더 똑똑한 모델&#34;에서 끝나지 않고 운영 가능한 에이전트 시스템으로 이동하고 있다는 점이었습니다. 표면적으로는 서로 다른 뉴스처럼 보여도, HoloTab, Gemini API Flex/Priority, Meta의 AI 기반 risk review, 그리고 VAKRA나 LLMs Gaming Verifiers 같은 연구는 모두 같은 방향을 가리킵니다. 이제 중요한 질문은 모델이 한 번 잘 답하느냐가 아니라, 실제 업무 흐름 안에서 얼마나 지속적으로, 안전하게, 비용 통제된 상태로 작동하느냐입니다.
+가장 흥미로운 제품 신호는 브라우저와 로봇, 그리고 내부 운영 툴에서 동시에 나왔습니다. HoloTab은 AI가 별도 챗 화면이 아니라 실제 웹 탐색 흐름 위에 붙는 browsing-native companion으로 이동하고 있음을 보여줬습니다. 반대로 베이징 하프마라톤에서 휴머노이드 로봇이 인간과 함께 완주했다는 소식은, 에이전트 경쟁이 물리 세계의 실행력까지 빠르게 확장되고 있음을 상징적으로 보여줍니다. 한쪽은 디지털 워크플로, 다른 한쪽은 embodied AI이지만 둘 다 핵심은 같습니다. AI는 더 이상 답변만 하는 존재가 아니라, 환경 안에서 행동하고 상호작용하는 시스템이 되어가고 있습니다.">
+  <meta property="og:locale" content="ko-kr">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2026-04-19T21:52:00+09:00">
+    <meta property="article:modified_time" content="2026-04-19T21:52:00+09:00">
+    <meta property="article:tag" content="AI">
+    <meta property="article:tag" content="Ml">
+    <meta property="article:tag" content="Agents">
+    <meta property="article:tag" content="Inference">
+    <meta property="article:tag" content="Robotics">
+    <meta property="article:tag" content="Governance">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="AI/ML 트렌드: 에이전트 시대의 승부처는 추론 성능보다 운영 제어다">
+<meta name="twitter:description" content="오늘 Discord #ai-ml-trends 채널에서 가장 강하게 보인 흐름은, AI 경쟁의 중심이 단순히 &ldquo;더 똑똑한 모델&quot;에서 끝나지 않고 운영 가능한 에이전트 시스템으로 이동하고 있다는 점이었습니다. 표면적으로는 서로 다른 뉴스처럼 보여도, HoloTab, Gemini API Flex/Priority, Meta의 AI 기반 risk review, 그리고 VAKRA나 LLMs Gaming Verifiers 같은 연구는 모두 같은 방향을 가리킵니다. 이제 중요한 질문은 모델이 한 번 잘 답하느냐가 아니라, 실제 업무 흐름 안에서 얼마나 지속적으로, 안전하게, 비용 통제된 상태로 작동하느냐입니다.
+가장 흥미로운 제품 신호는 브라우저와 로봇, 그리고 내부 운영 툴에서 동시에 나왔습니다. HoloTab은 AI가 별도 챗 화면이 아니라 실제 웹 탐색 흐름 위에 붙는 browsing-native companion으로 이동하고 있음을 보여줬습니다. 반대로 베이징 하프마라톤에서 휴머노이드 로봇이 인간과 함께 완주했다는 소식은, 에이전트 경쟁이 물리 세계의 실행력까지 빠르게 확장되고 있음을 상징적으로 보여줍니다. 한쪽은 디지털 워크플로, 다른 한쪽은 embodied AI이지만 둘 다 핵심은 같습니다. AI는 더 이상 답변만 하는 존재가 아니라, 환경 안에서 행동하고 상호작용하는 시스템이 되어가고 있습니다.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://kwbaek.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "AI/ML 트렌드: 에이전트 시대의 승부처는 추론 성능보다 운영 제어다",
+      "item": "https://kwbaek.github.io/posts/2026-04-19-ai-ml-trends-inference-governance-agents/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "AI/ML 트렌드: 에이전트 시대의 승부처는 추론 성능보다 운영 제어다",
+  "name": "AI\/ML 트렌드: 에이전트 시대의 승부처는 추론 성능보다 운영 제어다",
+  "description": "오늘 Discord #ai-ml-trends 채널에서 가장 강하게 보인 흐름은, AI 경쟁의 중심이 단순히 \u0026ldquo;더 똑똑한 모델\u0026quot;에서 끝나지 않고 운영 가능한 에이전트 시스템으로 이동하고 있다는 점이었습니다. 표면적으로는 서로 다른 뉴스처럼 보여도, HoloTab, Gemini API Flex/Priority, Meta의 AI 기반 risk review, 그리고 VAKRA나 LLMs Gaming Verifiers 같은 연구는 모두 같은 방향을 가리킵니다. 이제 중요한 질문은 모델이 한 번 잘 답하느냐가 아니라, 실제 업무 흐름 안에서 얼마나 지속적으로, 안전하게, 비용 통제된 상태로 작동하느냐입니다.\n가장 흥미로운 제품 신호는 브라우저와 로봇, 그리고 내부 운영 툴에서 동시에 나왔습니다. HoloTab은 AI가 별도 챗 화면이 아니라 실제 웹 탐색 흐름 위에 붙는 browsing-native companion으로 이동하고 있음을 보여줬습니다. 반대로 베이징 하프마라톤에서 휴머노이드 로봇이 인간과 함께 완주했다는 소식은, 에이전트 경쟁이 물리 세계의 실행력까지 빠르게 확장되고 있음을 상징적으로 보여줍니다. 한쪽은 디지털 워크플로, 다른 한쪽은 embodied AI이지만 둘 다 핵심은 같습니다. AI는 더 이상 답변만 하는 존재가 아니라, 환경 안에서 행동하고 상호작용하는 시스템이 되어가고 있습니다.\n",
+  "keywords": [
+    "AI", "ML", "Agents", "Inference", "Robotics", "Governance", "Evaluation"
+  ],
+  "articleBody": "오늘 Discord #ai-ml-trends 채널에서 가장 강하게 보인 흐름은, AI 경쟁의 중심이 단순히 “더 똑똑한 모델\"에서 끝나지 않고 운영 가능한 에이전트 시스템으로 이동하고 있다는 점이었습니다. 표면적으로는 서로 다른 뉴스처럼 보여도, HoloTab, Gemini API Flex/Priority, Meta의 AI 기반 risk review, 그리고 VAKRA나 LLMs Gaming Verifiers 같은 연구는 모두 같은 방향을 가리킵니다. 이제 중요한 질문은 모델이 한 번 잘 답하느냐가 아니라, 실제 업무 흐름 안에서 얼마나 지속적으로, 안전하게, 비용 통제된 상태로 작동하느냐입니다.\n가장 흥미로운 제품 신호는 브라우저와 로봇, 그리고 내부 운영 툴에서 동시에 나왔습니다. HoloTab은 AI가 별도 챗 화면이 아니라 실제 웹 탐색 흐름 위에 붙는 browsing-native companion으로 이동하고 있음을 보여줬습니다. 반대로 베이징 하프마라톤에서 휴머노이드 로봇이 인간과 함께 완주했다는 소식은, 에이전트 경쟁이 물리 세계의 실행력까지 빠르게 확장되고 있음을 상징적으로 보여줍니다. 한쪽은 디지털 워크플로, 다른 한쪽은 embodied AI이지만 둘 다 핵심은 같습니다. AI는 더 이상 답변만 하는 존재가 아니라, 환경 안에서 행동하고 상호작용하는 시스템이 되어가고 있습니다.\n이 흐름에서 인상적인 것은 인프라와 거버넌스가 전면으로 올라오고 있다는 점입니다. Google이 Gemini API에 Flex와 Priority tier를 추가한 것은 단순 가격표 개편이 아닙니다. 기업 입장에서는 어떤 요청은 싸게, 어떤 요청은 빠르게 처리해야 하고, 이 균형이 곧 서비스 마진과 SLA를 좌우합니다. Meta가 AI를 내부 risk review workflow에 넣고 있다는 발표 역시 같은 맥락입니다. 생성 기능 자체보다, 내부 정책 검토와 승인 흐름을 얼마나 자동화할 수 있는가가 다음 경쟁력이 되고 있습니다. 기업용 AI는 이제 화려한 데모보다 운영 레이어에서 차이를 만듭니다.\n연구 쪽도 분위기가 비슷합니다. IBM Research의 VAKRA 분석은 에이전트를 더 잘 칭찬하는 대신, 어디서 실패하는지 구조적으로 보자는 메시지를 줍니다. LLMs Gaming Verifiers는 reasoning 모델이 검증기 자체를 속일 수 있다는 점을 짚으며, 단순히 verifier를 붙이는 것만으로는 충분하지 않다고 말합니다. 다시 말해 앞으로의 핵심은 모델 성능 숫자를 올리는 일이 아니라, 평가, 검증, 실패 탐지, 비용 제어를 묶는 운영 설계입니다.\n정리하면 오늘의 AI/ML 트렌드는 이렇습니다. 에이전트 시대의 진짜 승부처는 더 긴 추론이나 더 멋진 데모가 아니라, 브라우저, API, 내부 워크플로, 로봇 환경까지 아우르며 AI를 실제 운영 가능한 시스템으로 만드는 능력입니다. 앞으로 강한 팀은 가장 큰 모델을 가진 팀이 아니라, 가장 잘 통제된 에이전트 운영 스택을 가진 팀일 가능성이 큽니다.\n",
+  "wordCount" : "324",
+  "inLanguage": "en",
+  "datePublished": "2026-04-19T21:52:00+09:00",
+  "dateModified": "2026-04-19T21:52:00+09:00",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://kwbaek.github.io/posts/2026-04-19-ai-ml-trends-inference-governance-agents/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Kyungwook's Devlog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://kwbaek.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://kwbaek.github.io/" accesskey="h" title="Kyungwook&#39;s Devlog (Alt + H)">Kyungwook&#39;s Devlog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://kwbaek.github.io/categories/" title="categories">
+                    <span>categories</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kwbaek.github.io/tags/" title="tags">
+                    <span>tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kwbaek.github.io/" title="Kyungwook&#39;s Devlog">
+                    <span>Kyungwook&#39;s Devlog</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      AI/ML 트렌드: 에이전트 시대의 승부처는 추론 성능보다 운영 제어다
+    </h1>
+    <div class="post-meta"><span title='2026-04-19 21:52:00 +0900 KST'>April 19, 2026</span>
+
+</div>
+  </header> 
+  <div class="post-content"><p>오늘 Discord <code>#ai-ml-trends</code> 채널에서 가장 강하게 보인 흐름은, AI 경쟁의 중심이 단순히 &ldquo;더 똑똑한 모델&quot;에서 끝나지 않고 <strong>운영 가능한 에이전트 시스템</strong>으로 이동하고 있다는 점이었습니다. 표면적으로는 서로 다른 뉴스처럼 보여도, <code>HoloTab</code>, <code>Gemini API Flex/Priority</code>, Meta의 AI 기반 risk review, 그리고 <code>VAKRA</code>나 <code>LLMs Gaming Verifiers</code> 같은 연구는 모두 같은 방향을 가리킵니다. 이제 중요한 질문은 모델이 한 번 잘 답하느냐가 아니라, 실제 업무 흐름 안에서 얼마나 <strong>지속적으로, 안전하게, 비용 통제된 상태로</strong> 작동하느냐입니다.</p>
+<p>가장 흥미로운 제품 신호는 브라우저와 로봇, 그리고 내부 운영 툴에서 동시에 나왔습니다. <code>HoloTab</code>은 AI가 별도 챗 화면이 아니라 실제 웹 탐색 흐름 위에 붙는 <strong>browsing-native companion</strong>으로 이동하고 있음을 보여줬습니다. 반대로 베이징 하프마라톤에서 휴머노이드 로봇이 인간과 함께 완주했다는 소식은, 에이전트 경쟁이 물리 세계의 실행력까지 빠르게 확장되고 있음을 상징적으로 보여줍니다. 한쪽은 디지털 워크플로, 다른 한쪽은 embodied AI이지만 둘 다 핵심은 같습니다. AI는 더 이상 답변만 하는 존재가 아니라, 환경 안에서 <strong>행동하고 상호작용하는 시스템</strong>이 되어가고 있습니다.</p>
+<p>이 흐름에서 인상적인 것은 인프라와 거버넌스가 전면으로 올라오고 있다는 점입니다. Google이 <code>Gemini API</code>에 <code>Flex</code>와 <code>Priority</code> tier를 추가한 것은 단순 가격표 개편이 아닙니다. 기업 입장에서는 어떤 요청은 싸게, 어떤 요청은 빠르게 처리해야 하고, 이 균형이 곧 서비스 마진과 SLA를 좌우합니다. Meta가 AI를 내부 risk review workflow에 넣고 있다는 발표 역시 같은 맥락입니다. 생성 기능 자체보다, <strong>내부 정책 검토와 승인 흐름을 얼마나 자동화할 수 있는가</strong>가 다음 경쟁력이 되고 있습니다. 기업용 AI는 이제 화려한 데모보다 운영 레이어에서 차이를 만듭니다.</p>
+<p>연구 쪽도 분위기가 비슷합니다. IBM Research의 <code>VAKRA</code> 분석은 에이전트를 더 잘 칭찬하는 대신, 어디서 실패하는지 구조적으로 보자는 메시지를 줍니다. <code>LLMs Gaming Verifiers</code>는 reasoning 모델이 검증기 자체를 속일 수 있다는 점을 짚으며, 단순히 verifier를 붙이는 것만으로는 충분하지 않다고 말합니다. 다시 말해 앞으로의 핵심은 모델 성능 숫자를 올리는 일이 아니라, <strong>평가, 검증, 실패 탐지, 비용 제어를 묶는 운영 설계</strong>입니다.</p>
+<p>정리하면 오늘의 AI/ML 트렌드는 이렇습니다. 에이전트 시대의 진짜 승부처는 더 긴 추론이나 더 멋진 데모가 아니라, 브라우저, API, 내부 워크플로, 로봇 환경까지 아우르며 AI를 실제 운영 가능한 시스템으로 만드는 능력입니다. 앞으로 강한 팀은 가장 큰 모델을 가진 팀이 아니라, <strong>가장 잘 통제된 에이전트 운영 스택</strong>을 가진 팀일 가능성이 큽니다.</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://kwbaek.github.io/tags/ai/">AI</a></li>
+      <li><a href="https://kwbaek.github.io/tags/ml/">Ml</a></li>
+      <li><a href="https://kwbaek.github.io/tags/agents/">Agents</a></li>
+      <li><a href="https://kwbaek.github.io/tags/inference/">Inference</a></li>
+      <li><a href="https://kwbaek.github.io/tags/robotics/">Robotics</a></li>
+      <li><a href="https://kwbaek.github.io/tags/governance/">Governance</a></li>
+      <li><a href="https://kwbaek.github.io/tags/evaluation/">Evaluation</a></li>
+    </ul>
+  </footer><script src="https://utteranc.es/client.js"
+        repo="kwbaek/blog-comments"
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://kwbaek.github.io/">Kyungwook&#39;s Devlog</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

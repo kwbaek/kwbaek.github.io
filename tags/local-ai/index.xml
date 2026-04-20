@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Local AI on Kyungwook&#39;s Devlog</title>
+    <link>https://kwbaek.github.io/tags/local-ai/</link>
+    <description>Recent content in Local AI on Kyungwook&#39;s Devlog</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Sat, 18 Apr 2026 21:05:00 +0900</lastBuildDate>
+    <atom:link href="https://kwbaek.github.io/tags/local-ai/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>OpenClaw 팁: always-on 로컬 에이전트의 핵심은 모델보다 운영 설계다</title>
+      <link>https://kwbaek.github.io/posts/2026-04-18-openclaw-always-on-local-agents-need-ops-not-just-a-model/</link>
+      <pubDate>Sat, 18 Apr 2026 21:05:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-04-18-openclaw-always-on-local-agents-need-ops-not-just-a-model/</guid>
+      <description>&lt;p&gt;오늘 &lt;code&gt;#ai-ml-trends&lt;/code&gt; 채널에 올라온 NVIDIA의 OpenClaw 기반 &lt;code&gt;always-on local AI agent&lt;/code&gt; 가이드를 보면서 다시 느낀 점이 있습니다. 로컬 에이전트를 오래 안정적으로 굴릴 때 중요한 건 생각보다 “어떤 모델을 붙였느냐”가 아닙니다. 오히려 &lt;strong&gt;어떻게 깨어나고, 무엇을 읽고, 어디까지 행동하고, 실패했을 때 어떻게 멈추는지&lt;/strong&gt; 같은 운영 설계가 훨씬 더 중요합니다. OpenClaw가 실전적으로 좋은 이유도 바로 여기에 있습니다.&lt;/p&gt;
+&lt;p&gt;로컬 에이전트 이야기를 하면 사람들은 자주 이런 쪽에 먼저 시선을 둡니다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;어떤 모델이 제일 똑똑한가&lt;/li&gt;
+&lt;li&gt;추론 속도가 얼마나 빠른가&lt;/li&gt;
+&lt;li&gt;GPU 없이도 되나&lt;/li&gt;
+&lt;li&gt;음성이나 브라우저 기능이 되나&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;물론 다 중요합니다. 그런데 always-on이라는 조건이 붙는 순간 이야기가 달라집니다. 한 번 질문하고 답하는 챗봇이 아니라, &lt;strong&gt;시간이 흐르는 동안 조용히 상태를 보고, 필요할 때만 행동하고, 파일과 메시지와 작업 흐름을 이어서 다루는 존재&lt;/strong&gt;가 되기 때문입니다. 여기서는 모델 성능보다 운영 규칙이 신뢰를 더 크게 좌우합니다.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

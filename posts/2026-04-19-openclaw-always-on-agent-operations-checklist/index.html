@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>OpenClaw 팁: 항상 켜진 에이전트를 오래 굴릴수록 중요한 운영 체크리스트 | Kyungwook&#39;s Devlog</title>
+<meta name="keywords" content="OpenClaw, Agents, Operations, Security, Heartbeat, Cron">
+<meta name="description" content="OpenClaw를 잠깐 데모용으로 쓸 때와, 실제로 하루 종일 켜두는 always-on agent로 운영할 때는 완전히 다른 문제가 보입니다. 처음에는 모델 선택이나 프롬프트가 제일 중요해 보이지만, 며칠만 지나도 진짜 차이는 운영에서 납니다. 알림이 너무 많지는 않은지, heartbeat가 조용할 때도 실제로 유용한 일을 하는지, cron과 수동 세션이 서로 충돌하지 않는지, 업데이트 후 설정이 깨지지 않았는지 같은 문제들입니다. 최근 OpenClaw 흐름을 보면 이런 운영성 강화가 계속 중심으로 올라오고 있습니다.
+제가 특히 중요하게 보는 첫 번째 체크포인트는 상태 확인 루틴 고정입니다. OpenClaw는 기능이 빠르게 늘어나는 만큼, 업데이트 직후에 짧은 운영 점검을 습관처럼 돌리는 편이 안전합니다. 최근 메모들에서도 반복해서 등장한 기본 루틴은 대체로 비슷합니다. 설정 검증, health/ready 확인, 보안 점검입니다. 이 세 가지만 꾸준히 해도 &ldquo;왜 갑자기 이상하지?&rdquo; 같은 상황을 훨씬 빨리 잡을 수 있습니다. 늘 켜진 에이전트는 똑똑함보다 관측 가능성이 먼저입니다.">
+<meta name="author" content="">
+<link rel="canonical" href="https://kwbaek.github.io/posts/2026-04-19-openclaw-always-on-agent-operations-checklist/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.da3211e5ef867bf2b75fd5a6515cfed7195c011e8ab735694e203810a827097b.css" integrity="sha256-2jIR5e&#43;Ge/K3X9WmUVz&#43;1xlcAR6KtzVpTiA4EKgnCXs=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://kwbaek.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://kwbaek.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://kwbaek.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://kwbaek.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://kwbaek.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://kwbaek.github.io/posts/2026-04-19-openclaw-always-on-agent-operations-checklist/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="https://kwbaek.github.io/posts/2026-04-19-openclaw-always-on-agent-operations-checklist/">
+  <meta property="og:site_name" content="Kyungwook&#39;s Devlog">
+  <meta property="og:title" content="OpenClaw 팁: 항상 켜진 에이전트를 오래 굴릴수록 중요한 운영 체크리스트">
+  <meta property="og:description" content="OpenClaw를 잠깐 데모용으로 쓸 때와, 실제로 하루 종일 켜두는 always-on agent로 운영할 때는 완전히 다른 문제가 보입니다. 처음에는 모델 선택이나 프롬프트가 제일 중요해 보이지만, 며칠만 지나도 진짜 차이는 운영에서 납니다. 알림이 너무 많지는 않은지, heartbeat가 조용할 때도 실제로 유용한 일을 하는지, cron과 수동 세션이 서로 충돌하지 않는지, 업데이트 후 설정이 깨지지 않았는지 같은 문제들입니다. 최근 OpenClaw 흐름을 보면 이런 운영성 강화가 계속 중심으로 올라오고 있습니다.
+제가 특히 중요하게 보는 첫 번째 체크포인트는 상태 확인 루틴 고정입니다. OpenClaw는 기능이 빠르게 늘어나는 만큼, 업데이트 직후에 짧은 운영 점검을 습관처럼 돌리는 편이 안전합니다. 최근 메모들에서도 반복해서 등장한 기본 루틴은 대체로 비슷합니다. 설정 검증, health/ready 확인, 보안 점검입니다. 이 세 가지만 꾸준히 해도 “왜 갑자기 이상하지?” 같은 상황을 훨씬 빨리 잡을 수 있습니다. 늘 켜진 에이전트는 똑똑함보다 관측 가능성이 먼저입니다.">
+  <meta property="og:locale" content="ko-kr">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2026-04-19T21:52:00+09:00">
+    <meta property="article:modified_time" content="2026-04-19T21:52:00+09:00">
+    <meta property="article:tag" content="Openclaw">
+    <meta property="article:tag" content="Agents">
+    <meta property="article:tag" content="Operations">
+    <meta property="article:tag" content="Security">
+    <meta property="article:tag" content="Heartbeat">
+    <meta property="article:tag" content="Cron">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="OpenClaw 팁: 항상 켜진 에이전트를 오래 굴릴수록 중요한 운영 체크리스트">
+<meta name="twitter:description" content="OpenClaw를 잠깐 데모용으로 쓸 때와, 실제로 하루 종일 켜두는 always-on agent로 운영할 때는 완전히 다른 문제가 보입니다. 처음에는 모델 선택이나 프롬프트가 제일 중요해 보이지만, 며칠만 지나도 진짜 차이는 운영에서 납니다. 알림이 너무 많지는 않은지, heartbeat가 조용할 때도 실제로 유용한 일을 하는지, cron과 수동 세션이 서로 충돌하지 않는지, 업데이트 후 설정이 깨지지 않았는지 같은 문제들입니다. 최근 OpenClaw 흐름을 보면 이런 운영성 강화가 계속 중심으로 올라오고 있습니다.
+제가 특히 중요하게 보는 첫 번째 체크포인트는 상태 확인 루틴 고정입니다. OpenClaw는 기능이 빠르게 늘어나는 만큼, 업데이트 직후에 짧은 운영 점검을 습관처럼 돌리는 편이 안전합니다. 최근 메모들에서도 반복해서 등장한 기본 루틴은 대체로 비슷합니다. 설정 검증, health/ready 확인, 보안 점검입니다. 이 세 가지만 꾸준히 해도 &ldquo;왜 갑자기 이상하지?&rdquo; 같은 상황을 훨씬 빨리 잡을 수 있습니다. 늘 켜진 에이전트는 똑똑함보다 관측 가능성이 먼저입니다.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://kwbaek.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "OpenClaw 팁: 항상 켜진 에이전트를 오래 굴릴수록 중요한 운영 체크리스트",
+      "item": "https://kwbaek.github.io/posts/2026-04-19-openclaw-always-on-agent-operations-checklist/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "OpenClaw 팁: 항상 켜진 에이전트를 오래 굴릴수록 중요한 운영 체크리스트",
+  "name": "OpenClaw 팁: 항상 켜진 에이전트를 오래 굴릴수록 중요한 운영 체크리스트",
+  "description": "OpenClaw를 잠깐 데모용으로 쓸 때와, 실제로 하루 종일 켜두는 always-on agent로 운영할 때는 완전히 다른 문제가 보입니다. 처음에는 모델 선택이나 프롬프트가 제일 중요해 보이지만, 며칠만 지나도 진짜 차이는 운영에서 납니다. 알림이 너무 많지는 않은지, heartbeat가 조용할 때도 실제로 유용한 일을 하는지, cron과 수동 세션이 서로 충돌하지 않는지, 업데이트 후 설정이 깨지지 않았는지 같은 문제들입니다. 최근 OpenClaw 흐름을 보면 이런 운영성 강화가 계속 중심으로 올라오고 있습니다.\n제가 특히 중요하게 보는 첫 번째 체크포인트는 상태 확인 루틴 고정입니다. OpenClaw는 기능이 빠르게 늘어나는 만큼, 업데이트 직후에 짧은 운영 점검을 습관처럼 돌리는 편이 안전합니다. 최근 메모들에서도 반복해서 등장한 기본 루틴은 대체로 비슷합니다. 설정 검증, health/ready 확인, 보안 점검입니다. 이 세 가지만 꾸준히 해도 \u0026ldquo;왜 갑자기 이상하지?\u0026rdquo; 같은 상황을 훨씬 빨리 잡을 수 있습니다. 늘 켜진 에이전트는 똑똑함보다 관측 가능성이 먼저입니다.\n",
+  "keywords": [
+    "OpenClaw", "Agents", "Operations", "Security", "Heartbeat", "Cron"
+  ],
+  "articleBody": "OpenClaw를 잠깐 데모용으로 쓸 때와, 실제로 하루 종일 켜두는 always-on agent로 운영할 때는 완전히 다른 문제가 보입니다. 처음에는 모델 선택이나 프롬프트가 제일 중요해 보이지만, 며칠만 지나도 진짜 차이는 운영에서 납니다. 알림이 너무 많지는 않은지, heartbeat가 조용할 때도 실제로 유용한 일을 하는지, cron과 수동 세션이 서로 충돌하지 않는지, 업데이트 후 설정이 깨지지 않았는지 같은 문제들입니다. 최근 OpenClaw 흐름을 보면 이런 운영성 강화가 계속 중심으로 올라오고 있습니다.\n제가 특히 중요하게 보는 첫 번째 체크포인트는 상태 확인 루틴 고정입니다. OpenClaw는 기능이 빠르게 늘어나는 만큼, 업데이트 직후에 짧은 운영 점검을 습관처럼 돌리는 편이 안전합니다. 최근 메모들에서도 반복해서 등장한 기본 루틴은 대체로 비슷합니다. 설정 검증, health/ready 확인, 보안 점검입니다. 이 세 가지만 꾸준히 해도 “왜 갑자기 이상하지?” 같은 상황을 훨씬 빨리 잡을 수 있습니다. 늘 켜진 에이전트는 똑똑함보다 관측 가능성이 먼저입니다.\n두 번째는 heartbeat와 cron의 역할 분리입니다. heartbeat는 약간 유동적인 주기로 메일, 캘린더, 멘션, 프로젝트 상태를 묶어 보는 데 강합니다. 반면 cron은 정시 배달, 독립 실행, 실패 알림처럼 정확성이 필요한 작업에 더 잘 맞습니다. 이 구분이 흐려지면 에이전트가 괜히 시끄럽거나, 반대로 중요한 일을 놓칩니다. 실무적으로는 heartbeat에는 “배치형 확인과 조용한 진전\"을 맡기고, cron에는 “정확한 시각의 발송과 리포트 생성\"을 맡기는 편이 가장 안정적입니다.\n세 번째는 보안과 라우팅 설정을 명시적으로 유지하는 것입니다. OpenClaw는 채널, 계정, delivery 정책, direct policy, secrets 분리 등 운영자가 건드릴 수 있는 레버가 꽤 많습니다. 기본값이 바뀌는 릴리즈도 있기 때문에, DM 허용 여부나 채널 기본 계정, webhook 토큰 분리 같은 항목은 명시적으로 적어 두는 편이 안전합니다. 특히 외부 메시징이나 webhook 연동이 있는 에이전트라면, “지금도 예전과 같은 기본값일 것\"이라고 가정하는 순간 사고가 납니다.\n마지막으로, 항상 켜진 에이전트에서 가장 과소평가되는 요소는 메모리 관리와 세션 정리입니다. daily memory, long-term memory, sessions cleanup, transcript 정합성 같은 유지보수 작업은 눈에 잘 안 띄지만 효과가 큽니다. 에이전트가 계속 일을 잘하려면 맥락이 축적되어야 하고, 동시에 오래된 찌꺼기는 정리되어야 합니다. 결국 좋은 OpenClaw 운영은 더 많은 자동화를 넣는 일이 아니라, 자동화가 오래 버틸 수 있는 구조를 만드는 일에 가깝습니다.\n한 줄로 정리하면 이렇습니다. OpenClaw를 진짜 유용한 비서로 만들고 싶다면, 프롬프트보다 먼저 운영 루틴, 역할 분리, 보안 명시화, 메모리 유지보수를 챙기세요. 오래 가는 에이전트는 화려한 한 번의 응답보다, 조용히 안정적으로 계속 일하는 구조에서 나옵니다.\n",
+  "wordCount" : "341",
+  "inLanguage": "en",
+  "datePublished": "2026-04-19T21:52:00+09:00",
+  "dateModified": "2026-04-19T21:52:00+09:00",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://kwbaek.github.io/posts/2026-04-19-openclaw-always-on-agent-operations-checklist/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Kyungwook's Devlog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://kwbaek.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://kwbaek.github.io/" accesskey="h" title="Kyungwook&#39;s Devlog (Alt + H)">Kyungwook&#39;s Devlog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://kwbaek.github.io/categories/" title="categories">
+                    <span>categories</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kwbaek.github.io/tags/" title="tags">
+                    <span>tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kwbaek.github.io/" title="Kyungwook&#39;s Devlog">
+                    <span>Kyungwook&#39;s Devlog</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      OpenClaw 팁: 항상 켜진 에이전트를 오래 굴릴수록 중요한 운영 체크리스트
+    </h1>
+    <div class="post-meta"><span title='2026-04-19 21:52:00 +0900 KST'>April 19, 2026</span>
+
+</div>
+  </header> 
+  <div class="post-content"><p>OpenClaw를 잠깐 데모용으로 쓸 때와, 실제로 하루 종일 켜두는 <strong>always-on agent</strong>로 운영할 때는 완전히 다른 문제가 보입니다. 처음에는 모델 선택이나 프롬프트가 제일 중요해 보이지만, 며칠만 지나도 진짜 차이는 운영에서 납니다. 알림이 너무 많지는 않은지, heartbeat가 조용할 때도 실제로 유용한 일을 하는지, cron과 수동 세션이 서로 충돌하지 않는지, 업데이트 후 설정이 깨지지 않았는지 같은 문제들입니다. 최근 OpenClaw 흐름을 보면 이런 운영성 강화가 계속 중심으로 올라오고 있습니다.</p>
+<p>제가 특히 중요하게 보는 첫 번째 체크포인트는 <strong>상태 확인 루틴 고정</strong>입니다. OpenClaw는 기능이 빠르게 늘어나는 만큼, 업데이트 직후에 짧은 운영 점검을 습관처럼 돌리는 편이 안전합니다. 최근 메모들에서도 반복해서 등장한 기본 루틴은 대체로 비슷합니다. 설정 검증, health/ready 확인, 보안 점검입니다. 이 세 가지만 꾸준히 해도 &ldquo;왜 갑자기 이상하지?&rdquo; 같은 상황을 훨씬 빨리 잡을 수 있습니다. 늘 켜진 에이전트는 똑똑함보다 <strong>관측 가능성</strong>이 먼저입니다.</p>
+<p>두 번째는 <strong>heartbeat와 cron의 역할 분리</strong>입니다. heartbeat는 약간 유동적인 주기로 메일, 캘린더, 멘션, 프로젝트 상태를 묶어 보는 데 강합니다. 반면 cron은 정시 배달, 독립 실행, 실패 알림처럼 정확성이 필요한 작업에 더 잘 맞습니다. 이 구분이 흐려지면 에이전트가 괜히 시끄럽거나, 반대로 중요한 일을 놓칩니다. 실무적으로는 heartbeat에는 &ldquo;배치형 확인과 조용한 진전&quot;을 맡기고, cron에는 &ldquo;정확한 시각의 발송과 리포트 생성&quot;을 맡기는 편이 가장 안정적입니다.</p>
+<p>세 번째는 <strong>보안과 라우팅 설정을 명시적으로 유지하는 것</strong>입니다. OpenClaw는 채널, 계정, delivery 정책, direct policy, secrets 분리 등 운영자가 건드릴 수 있는 레버가 꽤 많습니다. 기본값이 바뀌는 릴리즈도 있기 때문에, DM 허용 여부나 채널 기본 계정, webhook 토큰 분리 같은 항목은 명시적으로 적어 두는 편이 안전합니다. 특히 외부 메시징이나 webhook 연동이 있는 에이전트라면, &ldquo;지금도 예전과 같은 기본값일 것&quot;이라고 가정하는 순간 사고가 납니다.</p>
+<p>마지막으로, 항상 켜진 에이전트에서 가장 과소평가되는 요소는 <strong>메모리 관리와 세션 정리</strong>입니다. daily memory, long-term memory, sessions cleanup, transcript 정합성 같은 유지보수 작업은 눈에 잘 안 띄지만 효과가 큽니다. 에이전트가 계속 일을 잘하려면 맥락이 축적되어야 하고, 동시에 오래된 찌꺼기는 정리되어야 합니다. 결국 좋은 OpenClaw 운영은 더 많은 자동화를 넣는 일이 아니라, 자동화가 오래 버틸 수 있는 구조를 만드는 일에 가깝습니다.</p>
+<p>한 줄로 정리하면 이렇습니다. OpenClaw를 진짜 유용한 비서로 만들고 싶다면, 프롬프트보다 먼저 <strong>운영 루틴, 역할 분리, 보안 명시화, 메모리 유지보수</strong>를 챙기세요. 오래 가는 에이전트는 화려한 한 번의 응답보다, 조용히 안정적으로 계속 일하는 구조에서 나옵니다.</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://kwbaek.github.io/tags/openclaw/">Openclaw</a></li>
+      <li><a href="https://kwbaek.github.io/tags/agents/">Agents</a></li>
+      <li><a href="https://kwbaek.github.io/tags/operations/">Operations</a></li>
+      <li><a href="https://kwbaek.github.io/tags/security/">Security</a></li>
+      <li><a href="https://kwbaek.github.io/tags/heartbeat/">Heartbeat</a></li>
+      <li><a href="https://kwbaek.github.io/tags/cron/">Cron</a></li>
+    </ul>
+  </footer><script src="https://utteranc.es/client.js"
+        repo="kwbaek/blog-comments"
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://kwbaek.github.io/">Kyungwook&#39;s Devlog</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

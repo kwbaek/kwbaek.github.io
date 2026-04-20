@@ -6,8 +6,62 @@
     <description>Recent content on Kyungwook&#39;s Devlog</description>
     <generator>Hugo -- 0.155.3</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Fri, 17 Apr 2026 21:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Mon, 20 Apr 2026 21:00:00 +0900</lastBuildDate>
     <atom:link href="https://kwbaek.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI/ML 트렌드: 다음 에이전트 병목은 더 긴 추론이 아니라 조정과 근거 거버넌스다</title>
+      <link>https://kwbaek.github.io/posts/2026-04-20-ai-ml-trends-the-next-agent-bottleneck-is-coordination-and-evidence-governance/</link>
+      <pubDate>Mon, 20 Apr 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-04-20-ai-ml-trends-the-next-agent-bottleneck-is-coordination-and-evidence-governance/</guid>
+      <description>&lt;p&gt;오늘 Discord &lt;code&gt;#ai-ml-trends&lt;/code&gt; 채널에서 가장 흥미롭고 중요하게 보인 흐름은, 에이전트 경쟁의 중심이 다시 한 번 이동하고 있다는 점입니다. 예전에는 더 큰 모델, 더 긴 context, 더 많은 reasoning token이 핵심처럼 보였지만, 오늘 올라온 &lt;code&gt;LACE&lt;/code&gt;, &lt;code&gt;DeepER-Med&lt;/code&gt;, 그리고 unsafe behavior distillation 연구를 함께 보면 이제 진짜 병목은 &lt;strong&gt;추론량 자체보다 추론을 어떻게 조정하고 검증하느냐&lt;/strong&gt; 쪽으로 옮겨가고 있습니다. 한마디로 말하면, 앞으로 강한 에이전트는 혼자 오래 생각하는 모델이 아니라, 여러 추론 경로를 잘 협업시키고 근거를 투명하게 다루는 시스템일 가능성이 큽니다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>AI/ML 트렌드: 에이전트 시대의 승부처는 추론 성능보다 운영 제어다</title>
+      <link>https://kwbaek.github.io/posts/2026-04-19-ai-ml-trends-inference-governance-agents/</link>
+      <pubDate>Sun, 19 Apr 2026 21:52:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-04-19-ai-ml-trends-inference-governance-agents/</guid>
+      <description>&lt;p&gt;오늘 Discord &lt;code&gt;#ai-ml-trends&lt;/code&gt; 채널에서 가장 강하게 보인 흐름은, AI 경쟁의 중심이 단순히 &amp;ldquo;더 똑똑한 모델&amp;quot;에서 끝나지 않고 &lt;strong&gt;운영 가능한 에이전트 시스템&lt;/strong&gt;으로 이동하고 있다는 점이었습니다. 표면적으로는 서로 다른 뉴스처럼 보여도, &lt;code&gt;HoloTab&lt;/code&gt;, &lt;code&gt;Gemini API Flex/Priority&lt;/code&gt;, Meta의 AI 기반 risk review, 그리고 &lt;code&gt;VAKRA&lt;/code&gt;나 &lt;code&gt;LLMs Gaming Verifiers&lt;/code&gt; 같은 연구는 모두 같은 방향을 가리킵니다. 이제 중요한 질문은 모델이 한 번 잘 답하느냐가 아니라, 실제 업무 흐름 안에서 얼마나 &lt;strong&gt;지속적으로, 안전하게, 비용 통제된 상태로&lt;/strong&gt; 작동하느냐입니다.&lt;/p&gt;
+&lt;p&gt;가장 흥미로운 제품 신호는 브라우저와 로봇, 그리고 내부 운영 툴에서 동시에 나왔습니다. &lt;code&gt;HoloTab&lt;/code&gt;은 AI가 별도 챗 화면이 아니라 실제 웹 탐색 흐름 위에 붙는 &lt;strong&gt;browsing-native companion&lt;/strong&gt;으로 이동하고 있음을 보여줬습니다. 반대로 베이징 하프마라톤에서 휴머노이드 로봇이 인간과 함께 완주했다는 소식은, 에이전트 경쟁이 물리 세계의 실행력까지 빠르게 확장되고 있음을 상징적으로 보여줍니다. 한쪽은 디지털 워크플로, 다른 한쪽은 embodied AI이지만 둘 다 핵심은 같습니다. AI는 더 이상 답변만 하는 존재가 아니라, 환경 안에서 &lt;strong&gt;행동하고 상호작용하는 시스템&lt;/strong&gt;이 되어가고 있습니다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>OpenClaw 팁: 항상 켜진 에이전트를 오래 굴릴수록 중요한 운영 체크리스트</title>
+      <link>https://kwbaek.github.io/posts/2026-04-19-openclaw-always-on-agent-operations-checklist/</link>
+      <pubDate>Sun, 19 Apr 2026 21:52:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-04-19-openclaw-always-on-agent-operations-checklist/</guid>
+      <description>&lt;p&gt;OpenClaw를 잠깐 데모용으로 쓸 때와, 실제로 하루 종일 켜두는 &lt;strong&gt;always-on agent&lt;/strong&gt;로 운영할 때는 완전히 다른 문제가 보입니다. 처음에는 모델 선택이나 프롬프트가 제일 중요해 보이지만, 며칠만 지나도 진짜 차이는 운영에서 납니다. 알림이 너무 많지는 않은지, heartbeat가 조용할 때도 실제로 유용한 일을 하는지, cron과 수동 세션이 서로 충돌하지 않는지, 업데이트 후 설정이 깨지지 않았는지 같은 문제들입니다. 최근 OpenClaw 흐름을 보면 이런 운영성 강화가 계속 중심으로 올라오고 있습니다.&lt;/p&gt;
+&lt;p&gt;제가 특히 중요하게 보는 첫 번째 체크포인트는 &lt;strong&gt;상태 확인 루틴 고정&lt;/strong&gt;입니다. OpenClaw는 기능이 빠르게 늘어나는 만큼, 업데이트 직후에 짧은 운영 점검을 습관처럼 돌리는 편이 안전합니다. 최근 메모들에서도 반복해서 등장한 기본 루틴은 대체로 비슷합니다. 설정 검증, health/ready 확인, 보안 점검입니다. 이 세 가지만 꾸준히 해도 &amp;ldquo;왜 갑자기 이상하지?&amp;rdquo; 같은 상황을 훨씬 빨리 잡을 수 있습니다. 늘 켜진 에이전트는 똑똑함보다 &lt;strong&gt;관측 가능성&lt;/strong&gt;이 먼저입니다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>OpenClaw 팁: always-on 로컬 에이전트의 핵심은 모델보다 운영 설계다</title>
+      <link>https://kwbaek.github.io/posts/2026-04-18-openclaw-always-on-local-agents-need-ops-not-just-a-model/</link>
+      <pubDate>Sat, 18 Apr 2026 21:05:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-04-18-openclaw-always-on-local-agents-need-ops-not-just-a-model/</guid>
+      <description>&lt;p&gt;오늘 &lt;code&gt;#ai-ml-trends&lt;/code&gt; 채널에 올라온 NVIDIA의 OpenClaw 기반 &lt;code&gt;always-on local AI agent&lt;/code&gt; 가이드를 보면서 다시 느낀 점이 있습니다. 로컬 에이전트를 오래 안정적으로 굴릴 때 중요한 건 생각보다 “어떤 모델을 붙였느냐”가 아닙니다. 오히려 &lt;strong&gt;어떻게 깨어나고, 무엇을 읽고, 어디까지 행동하고, 실패했을 때 어떻게 멈추는지&lt;/strong&gt; 같은 운영 설계가 훨씬 더 중요합니다. OpenClaw가 실전적으로 좋은 이유도 바로 여기에 있습니다.&lt;/p&gt;
+&lt;p&gt;로컬 에이전트 이야기를 하면 사람들은 자주 이런 쪽에 먼저 시선을 둡니다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;어떤 모델이 제일 똑똑한가&lt;/li&gt;
+&lt;li&gt;추론 속도가 얼마나 빠른가&lt;/li&gt;
+&lt;li&gt;GPU 없이도 되나&lt;/li&gt;
+&lt;li&gt;음성이나 브라우저 기능이 되나&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;물론 다 중요합니다. 그런데 always-on이라는 조건이 붙는 순간 이야기가 달라집니다. 한 번 질문하고 답하는 챗봇이 아니라, &lt;strong&gt;시간이 흐르는 동안 조용히 상태를 보고, 필요할 때만 행동하고, 파일과 메시지와 작업 흐름을 이어서 다루는 존재&lt;/strong&gt;가 되기 때문입니다. 여기서는 모델 성능보다 운영 규칙이 신뢰를 더 크게 좌우합니다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>AI/ML 트렌드: 이제 진짜 제품 경쟁력은 모델 답변보다 confidence layer에서 갈린다</title>
+      <link>https://kwbaek.github.io/posts/2026-04-18-ai-ml-trends-why-confidence-layer-is-becoming-the-real-product/</link>
+      <pubDate>Sat, 18 Apr 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-04-18-ai-ml-trends-why-confidence-layer-is-becoming-the-real-product/</guid>
+      <description>&lt;p&gt;오늘 &lt;code&gt;#ai-ml-trends&lt;/code&gt; 채널에서 가장 중요하게 읽힌 신호는, &lt;strong&gt;LLM-as-judge 신뢰도를 conformal prediction set과 transitivity violation으로 진단하자&lt;/strong&gt;는 연구였습니다. 얼핏 보면 이건 평가 방법론 하나가 더 추가된 이야기처럼 보일 수 있습니다. 그런데 저는 이 흐름이 꽤 크다고 봅니다. 지금 AI 시장은 더 똑똑한 답을 내는 모델 경쟁에서 끝나지 않고, &lt;strong&gt;언제 그 답을 믿어도 되는지까지 함께 제품화하는 경쟁&lt;/strong&gt;으로 옮겨가고 있기 때문입니다.&lt;/p&gt;
+&lt;p&gt;그동안 많은 팀이 LLM을 judge, reviewer, ranker, critic처럼 사용해 왔습니다. 모델이 다른 모델의 답을 채점하고, 두 응답 중 누가 더 좋은지 고르고, 생성 결과를 자동 심사하는 식입니다. 이 방식은 엄청 편리합니다. 사람 평가보다 빠르고 싸고, 대규모 자동화에도 잘 맞습니다. 문제는 여기서 자주 생깁니다. judge 역할의 모델이 그럴듯한 점수를 내놓더라도, &lt;strong&gt;그 점수 자체의 신뢰도는 따로 측정하지 않는 경우가 많다&lt;/strong&gt;는 점입니다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>OpenClaw 팁: 콘텐츠 레포와 배포 레포를 나누면 자동 발행이 훨씬 덜 무너진다</title>
+      <link>https://kwbaek.github.io/posts/2026-04-17-openclaw-two-repos-one-workflow-how-to-publish-more-safely/</link>
+      <pubDate>Fri, 17 Apr 2026 21:05:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-04-17-openclaw-two-repos-one-workflow-how-to-publish-more-safely/</guid>
+      <description>&lt;p&gt;OpenClaw로 반복 발행 작업을 굴릴수록 더 확실해지는 운영 원칙이 하나 있습니다. 블로그 자동화는 “글을 쓰고 끝”이 아니라, 사실상 &lt;strong&gt;콘텐츠 생성과 배포 산출물 관리라는 서로 다른 두 가지 책임&lt;/strong&gt;을 함께 다루는 일입니다. 이 둘을 한 덩어리로 취급하면 처음엔 편해 보여도, 조금만 작업이 쌓이면 금방 어디서 깨졌는지 추적하기 어려워집니다. 반대로 콘텐츠 레포와 &lt;code&gt;public/&lt;/code&gt; 배포 레포를 명확히 나누면, OpenClaw 같은 에이전트형 워크플로에서 실패 지점을 훨씬 더 또렷하게 관리할 수 있습니다.&lt;/p&gt;
+&lt;p&gt;이 구조가 특히 좋은 이유는 문제를 단계별로 끊어 볼 수 있기 때문입니다. 예를 들어 일일 블로그 포스팅 자동화를 생각해 보면 실제로는 아래 세 단계가 따로 존재합니다.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>AI/ML 트렌드: 이제 병목은 모델 능력보다 신뢰 가능한 확신 표현에 있다</title>
       <link>https://kwbaek.github.io/posts/2026-04-17-ai-ml-trends-the-next-bottleneck-is-confidence-not-just-capability/</link>

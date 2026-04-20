@@ -158,6 +158,90 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">AI/ML 트렌드: 신약개발에서 AI는 이제 데모가 아니라 운영 레이어가 되고 있다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 #ai-ml-trends 채널에서 가장 눈에 들어온 신호는 Novo Nordisk와 OpenAI 협력 소식이었습니다. 표면적으로는 또 하나의 대형 파트너십처럼 보일 수 있지만, 저는 이 뉴스를 조금 다르게 봤습니다. 이제 생성형 AI의 경쟁 포인트가 “무엇을 예쁘게 생성하느냐”보다, 도메인 특화 조직의 실제 운영 병목을 얼마나 깊게 파고드느냐로 빠르게 이동하고 있다는 신호이기 때문입니다. 신약개발은 그중에서도 가장 까다로운 영역 중 하나입니다.
+제약 산업의 R&amp;D는 원래 느리고 비쌉니다. 후보 물질 탐색, 실험 설계, 문헌 검토, 실패 가설 정리, 규제 문서화까지 거의 모든 단계가 긴 시간과 높은 비용을 요구합니다. 그래서 AI가 여기에 들어간다는 말은 단순히 “챗봇을 붙였다”는 뜻이 아닙니다. 오히려 중요한 포인트는 AI가 과학자의 생각을 대신하는지가 아니라, 과학자가 더 빨리 가설을 세우고 더 적은 시행착오로 다음 실험을 결정하게 만드는지에 있습니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-04-14 21:30:00 +0900 KST'>April 14, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 신약개발에서 AI는 이제 데모가 아니라 운영 레이어가 되고 있다" href="https://kwbaek.github.io/posts/2026-04-14-ai-ml-trends-ai-drug-discovery-is-becoming-a-real-operating-layer/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 팁: instruction file 기반 cron 워크플로는 일일 퍼블리싱을 좋은 의미로 boring하게 만든다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>매일 반복되는 콘텐츠 작업을 OpenClaw로 굴리다 보면, 결국 중요한 건 모델의 화려함보다 실행 인터페이스가 얼마나 명확한가라는 점을 자주 느끼게 됩니다. 오늘처럼 cron이 특정 instruction file을 읽고, Discord 채널에서 신호를 고르고, Hugo 포스트를 만들고, 빌드와 배포까지 이어지는 루틴에서는 특히 그렇습니다. 잘 설계된 자동화는 눈에 띄지 않아야 합니다. 즉, 매번 설명이 필요하지 않고, 같은 규칙으로 조용히 돌아가야 합니다.
+제가 요즘 OpenClaw 워크플로에서 특히 좋다고 느끼는 패턴은 instruction file 기반 cron입니다. 작업의 입력, 산출물 형식, 실패 시 행동, 후속 빌드 단계가 한 파일에 모여 있으면 에이전트가 추측할 여지가 줄어듭니다. 이건 별것 아닌 것처럼 보여도 실무에서는 꽤 큽니다. 자동화가 흔들리는 가장 흔한 이유는 모델이 멍청해서가 아니라, 해야 할 일의 경계가 흐리기 때문입니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-04-13 21:05:00 +0900 KST'>April 13, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 팁: instruction file 기반 cron 워크플로는 일일 퍼블리싱을 좋은 의미로 boring하게 만든다" href="https://kwbaek.github.io/posts/2026-04-13-openclaw-instruction-driven-cron-workflows-make-daily-publishing-boring-in-a-good-way/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">AI/ML 트렌드: 에이전트 메모리는 더 긴 히스토리보다 실패를 어떻게 교정하느냐로 이동 중이다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 #ai-ml-trends 채널에서 가장 흥미로웠던 신호는 IBM Research의 ALTK-Evolve: On-the-Job Learning for AI Agents와, 이어서 언급된 교정 메모리(corrective memory) 흐름이었습니다. 핵심은 단순합니다. 에이전트 성능을 올리는 방법이 더 긴 대화 히스토리를 계속 들고 가는 쪽이 아니라, 과거 실패에서 무엇을 배워 다음 행동만 바로잡을지 구조화하는 메모리 설계 쪽으로 이동하고 있다는 점입니다.
+이 변화가 중요한 이유는 에이전트의 실제 실패 방식이 일반 챗봇과 다르기 때문입니다. 에이전트는 긴 작업을 하다가 실수합니다. 잘못된 파일을 수정하거나, 쓸데없는 도구를 호출하거나, 이미 실패한 전략을 반복합니다. 이때 전체 로그를 끝까지 다시 넣는 방식은 얼핏 풍부해 보이지만, 실제로는 잡음도 같이 늘립니다. 컨텍스트 창이 커져도 에이전트가 무엇이 실패 원인이었는지 정확히 추려내지 못하면, 긴 히스토리는 기억이 아니라 부담이 되기 쉽습니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-04-13 21:00:00 +0900 KST'>April 13, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 에이전트 메모리는 더 긴 히스토리보다 실패를 어떻게 교정하느냐로 이동 중이다" href="https://kwbaek.github.io/posts/2026-04-13-ai-ml-trends-agent-memory-is-shifting-from-more-context-to-better-correction/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 팁: 일일 블로그 자동화는 리서치와 퍼블리싱이 한 흐름으로 붙어 있을 때 더 좋아진다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘처럼 OpenClaw로 매일 블로그 포스팅을 만드는 작업을 돌리다 보면, 결국 중요한 건 거창한 생성 능력보다 리서치, 글쓰기, 배포가 하나의 연속된 흐름으로 잘 붙어 있느냐라는 점이라는 걸 다시 느끼게 됩니다. 특히 Discord 채널 읽기 → 핵심 트렌드 선별 → Hugo 포스트 작성 → git 커밋 → hugo 빌드 → public 배포처럼 끝이 분명한 루틴에서는, 각 단계를 따로 최적화하는 것보다 중간 맥락이 끊기지 않게 유지하는 설계가 훨씬 중요합니다.
+왜 이게 중요할까요. 자동화는 보통 두 종류의 실패를 냅니다. 하나는 기술적 실패입니다. 파일이 없거나, 경로가 틀리거나, 빌드가 깨지는 경우죠. 다른 하나는 더 흔하지만 덜 눈에 띄는 실패인데, 앞 단계에서 얻은 맥락이 뒤 단계로 자연스럽게 이어지지 않는 실패입니다. 예를 들어 트렌드는 잘 골랐는데 글이 엉뚱한 방향으로 가거나, 글은 괜찮은데 파일명과 카테고리 체계가 흔들리거나, 콘텐츠는 좋은데 배포 루틴이 들쑥날쑥하면 전체 자동화 품질은 금방 떨어집니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-04-12 21:05:00 +0900 KST'>April 12, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 팁: 일일 블로그 자동화는 리서치와 퍼블리싱이 한 흐름으로 붙어 있을 때 더 좋아진다" href="https://kwbaek.github.io/posts/2026-04-12-openclaw-daily-blog-automation-gets-better-when-research-and-publishing-stay-coupled/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">AI/ML 트렌드: 에이전트 평가는 이제 모델 시험이 아니라 인프라 운영 discipline이 되고 있다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 #ai-ml-trends 채널에서 가장 중요하게 읽힌 신호는, Anthropic이 공개한 agentic coding eval에서 인프라 설정만으로 점수 차이가 최대 6%p까지 날 수 있다는 이야기였습니다. 겉으로 보면 이건 평가 노이즈에 대한 기술 블로그처럼 보일 수 있습니다. 하지만 저는 이걸 훨씬 더 큰 흐름으로 봅니다. 이제 에이전트 경쟁은 단순히 “어떤 모델이 더 똑똑한가”를 겨루는 단계에서, 어떤 실행 환경과 평가 설계를 갖췄을 때 실제 능력을 더 안정적으로 끌어내는가를 겨루는 단계로 이동하고 있습니다.
+이 변화가 중요한 이유는 간단합니다. 코딩 에이전트는 순수한 언어모델이 아니라, 런타임과 샌드박스와 도구 호출과 자원 제한 위에서 움직이는 시스템이기 때문입니다. 같은 모델이라도 CPU나 메모리 제한이 다르고, 파일 시스템 접근 방식이 다르고, 네트워크 허용 범위가 다르고, 타임아웃 정책이 다르면 결과는 쉽게 달라집니다. 다시 말해 에이전트 성능은 모델 파라미터 안에만 들어 있지 않습니다. 모델 바깥의 운영 조건이 이미 성능의 일부가 됐다는 뜻입니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-04-12 21:00:00 +0900 KST'>April 12, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 에이전트 평가는 이제 모델 시험이 아니라 인프라 운영 discipline이 되고 있다" href="https://kwbaek.github.io/posts/2026-04-12-ai-ml-trends-agent-evals-are-becoming-an-infrastructure-discipline/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">AI 에이전트 시대, 다음 경쟁력은 툴체인 보안이다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 Discord #ai-ml-trends 채널에서 가장 눈에 띈 신호는 OpenAI가 Axios developer tool compromise 대응 내용을 공개한 사건이었습니다. 이 이슈가 중요한 이유는 단순한 보안 사고 하나로 끝나지 않기 때문입니다. 이제 AI 경쟁은 모델 벤치마크 점수만으로 설명되지 않습니다. 실제 제품 환경에서는 모델이 연결되는 개발자 도구, 플러그인, 워크플로, 서드파티 서비스가 곧 공격면이 됩니다.
+왜 이 흐름이 중요한가 그동안 많은 팀이 “어떤 모델이 더 똑똑한가&#34;에 집중해 왔습니다. 그런데 에이전트가 코드를 읽고, 파일을 수정하고, 외부 API를 호출하고, 자동화된 액션을 수행하기 시작하면 이야기가 달라집니다. 이때 위험은 모델 내부보다도 모델 바깥의 도구 연결부에서 훨씬 더 자주 터집니다. 공급망에 포함된 작은 유틸리티 하나, 인증 흐름 하나, 서드파티 SDK 하나가 전체 에이전트 시스템의 신뢰도를 무너뜨릴 수 있습니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-04-11 21:41:00 +0900 KST'>April 11, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to AI 에이전트 시대, 다음 경쟁력은 툴체인 보안이다" href="https://kwbaek.github.io/posts/2026-04-11-ai-agent-toolchain-security-is-the-next-frontier/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">OpenClaw에서 cron과 세션 워크플로를 제대로 쓰는 법
     </h2>
   </header>
@@ -210,88 +294,6 @@
   </div>
   <footer class="entry-footer"><span title='2026-04-09 21:00:00 +0900 KST'>April 9, 2026</span></footer>
   <a class="entry-link" aria-label="post link to AI/ML 트렌드: AI operating layer 경쟁과 서빙 스택 성숙이 진짜 승부처로 합쳐지고 있다" href="https://kwbaek.github.io/posts/2026-04-09-ai-ml-trends-ai-operating-layer-and-serving-stack-are-converging-into-the-real-battleground/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw 팁: 일일 콘텐츠 자동화는 지시문이 명시적이고 호스트 실행이 boring할수록 오래 버틴다
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>오늘 OpenClaw로 일일 블로그 자동화를 돌리면서 다시 느낀 건, 자동화의 품질을 결정하는 건 화려한 에이전트 추론보다도 지시문이 얼마나 명시적인가, 그리고 실제 실행이 얼마나 boring하게 반복 가능한가라는 점이었습니다. 특히 콘텐츠 자동화처럼 매일 같은 구조를 반복하는 작업에서는 이 차이가 꽤 큽니다. 한 번 멋지게 돌아가는 자동화보다, 매일 밤 조용히 같은 방식으로 성공하는 자동화가 훨씬 가치 있습니다.
-오늘 작업 흐름은 크게 복잡하지 않았습니다. 특정 instruction file을 읽고, Discord 채널에서 오늘의 AI/ML 트렌드를 확인하고, Hugo 블로그 포스트 두 편을 만들고, git 커밋과 빌드, 그리고 배포 저장소 반영까지 이어지는 루틴입니다. 겉으로는 익숙한 cron 작업처럼 보이지만, 실제로 안정성을 가르는 건 세세한 문구였습니다. 예를 들면 이런 것들입니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-04-09 20:55:00 +0900 KST'>April 9, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw 팁: 일일 콘텐츠 자동화는 지시문이 명시적이고 호스트 실행이 boring할수록 오래 버틴다" href="https://kwbaek.github.io/posts/2026-04-09-openclaw-daily-content-ops-work-better-when-instructions-are-explicit-and-host-runs-stay-boring/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">AI/ML 트렌드: AI는 이제 모델 경쟁보다 인프라와 보안 운영의 산업이 되고 있다
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>오늘 #ai-ml-trends 채널에서 가장 중요하게 읽힌 신호는 단일 모델 발표가 아니었습니다. 오히려 저는 AI 산업의 무게중심이 점점 더 좋은 모델에서 안정적으로 굴러가는 인프라와 보안 운영으로 이동하고 있다는 점이 더 선명했다고 봤습니다. 오늘 올라온 항목들을 보면 얼핏 서로 다른 이야기처럼 보입니다. Anthropic의 보안 협력, Samsung의 AI 메모리 수요 급증, Google-Broadcom의 커스텀 칩 로드맵, 그리고 Reuters Breakingviews가 던진 ‘7조 달러 현실’ 경고가 한날 한 채널에 같이 잡혔습니다. 그런데 이 네 가지를 묶어 보면 하나의 결론으로 수렴합니다. 이제 AI는 더 이상 모델 데모만으로 설명되는 시장이 아닙니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-04-08 21:00:00 +0900 KST'>April 8, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to AI/ML 트렌드: AI는 이제 모델 경쟁보다 인프라와 보안 운영의 산업이 되고 있다" href="https://kwbaek.github.io/posts/2026-04-08-ai-ml-trends-ai-is-becoming-an-infrastructure-and-safety-discipline-not-just-a-model-race/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw 팁: Hugo 자동화는 콘텐츠 작성과 배포를 두 개의 릴리즈로 다룰 때 더 안전해진다
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>오늘 OpenClaw로 블로그 자동화를 돌리면서 다시 확인한 건, Hugo 기반 블로그 자동화에서 제일 위험한 지점은 글을 쓰는 순간이 아니라 배포를 한 덩어리 작업처럼 착각하는 순간이라는 점입니다. 겉으로 보면 단순합니다. 글 두 편 만들고, git add/commit/push 하고, Hugo 빌드하고, public/도 커밋하고 푸시하면 끝입니다. 그런데 실제 운영 관점에선 이 흐름이 하나의 작업이 아니라 성격이 다른 두 개의 릴리즈에 가깝습니다.
-첫 번째 릴리즈는 content/ 쪽입니다. 이건 사람이 읽는 원고, 메타데이터, 카테고리, 태그, 문서 구조 같은 소스 콘텐츠의 릴리즈입니다. 두 번째 릴리즈는 public/ 쪽입니다. 이건 Hugo가 생성한 정적 파일, 즉 브라우저가 실제로 보게 되는 배포 산출물의 릴리즈입니다. 둘은 연결돼 있지만 완전히 같은 건 아닙니다. 이걸 분리해서 생각하기 시작하면 OpenClaw 자동화가 훨씬 덜 깨지고, 실패했을 때도 복구가 쉬워집니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-04-08 20:55:00 +0900 KST'>April 8, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw 팁: Hugo 자동화는 콘텐츠 작성과 배포를 두 개의 릴리즈로 다룰 때 더 안전해진다" href="https://kwbaek.github.io/posts/2026-04-08-openclaw-hugo-automation-gets-safer-when-content-and-deployment-are-treated-as-two-separate-releases/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">AI/ML 트렌드: AI 경쟁의 무게중심은 모델 자랑보다 칩 통제력으로 이동 중이다
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>오늘 #ai-ml-trends 채널에서 가장 흥미롭고 중요한 신호는 저는 AI 경쟁의 핵심이 모델 발표에서 칩과 인프라 통제력으로 더 분명하게 이동하고 있다는 점이라고 봤습니다. 그 흐름을 가장 잘 보여준 건 두 가지였습니다. 하나는 Reuters 기준으로 삼성전자가 AI 메모리 수요 덕분에 1분기 이익이 크게 뛰어오를 전망이라는 소식이고, 다른 하나는 Broadcom이 Google의 커스텀 AI 칩 장기 개발 계약을 이어간다는 보도입니다. 얼핏 보면 하나는 실적 뉴스, 다른 하나는 공급 계약 뉴스처럼 보일 수 있습니다. 하지만 둘을 같이 놓고 보면, 지금 시장이 무엇을 진짜 중요하게 보는지 꽤 선명해집니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-04-07 21:00:00 +0900 KST'>April 7, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to AI/ML 트렌드: AI 경쟁의 무게중심은 모델 자랑보다 칩 통제력으로 이동 중이다" href="https://kwbaek.github.io/posts/2026-04-07-ai-ml-trends-ai-competition-is-shifting-from-model-bragging-rights-to-chip-control/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw 팁: 매일 블로그 자동화는 한 번 돌 때 두 종류의 가치를 만들어야 오래 간다
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>오늘 블로그 자동화 작업을 돌리면서 다시 느낀 건, OpenClaw로 매일 콘텐츠 파이프라인을 돌릴 때 제일 중요한 건 단순히 “글을 자동으로 하나 올린다”가 아니라는 점입니다. 진짜 오래 가는 자동화는 한 번 실행할 때 서로 다른 종류의 가치 두 개를 동시에 만들어내는 구조를 가집니다. 오늘 지시문도 딱 그 방향이었습니다. 하나는 #ai-ml-trends 채널에서 오늘의 신호를 읽고 AI/ML 트렌드 글을 쓰는 일, 다른 하나는 그 작업 경험이나 OpenClaw 자체의 활용 패턴을 바탕으로 OpenClaw 운영 글을 별도로 쓰는 일이었습니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-04-07 20:55:00 +0900 KST'>April 7, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw 팁: 매일 블로그 자동화는 한 번 돌 때 두 종류의 가치를 만들어야 오래 간다" href="https://kwbaek.github.io/posts/2026-04-07-openclaw-daily-blog-automation-works-best-when-one-run-produces-two-different-kinds-of-value/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw 실무 메모: 과금 유연화·vLLM 진화가 만드는 코딩 에이전트 운영 전략
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>#ai-ml-trends 채널에서 오늘 가장 즉시 적용 가능한 OpenClaw 포인트는 두 가지입니다. 하나는 비용 구조, 하나는 서빙 체인입니다.
-첫 번째는 OpenAI의 Codex 팀용 과금 완화(토큰 기반 유연 과금)입니다. 이건 단순 가격 공지 같지만, 팀 운영 입장에선 꽤 다릅니다. 고정 좌석 비용이 부담이던 환경에서는 사용량이 작을 때 과금 손실이 컸고, 과금 변동성이 크면 팀이 에이전트 사용을 회피하기도 합니다. 사용량 기반으로 바뀌면 OpenClaw에서는 에이전트 사용을 ‘실험 구간/운영 구간’으로 나눠 운영하기 쉬워집니다.
-즉, 아이디어가 필요할 때는 짧게 강하게, 업무 피크 구간에서만 과감하게 뽑아 쓰고, 휴식 구간에서는 가볍게 돌아가도록 정책을 짜는 식입니다. 결과적으로 같은 작업도 월간 총비용을 더 안정적으로 통제할 수 있습니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-04-06 21:34:00 +0900 KST'>April 6, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw 실무 메모: 과금 유연화·vLLM 진화가 만드는 코딩 에이전트 운영 전략" href="https://kwbaek.github.io/posts/2026-04-06-openclaw-pricing-serving-and-ops-choices/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

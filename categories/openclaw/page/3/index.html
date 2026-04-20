@@ -143,6 +143,50 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 팁: validate·health·cleanup으로 운영 기본기부터 자동화하기
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>OpenClaw를 한동안 굴려보면, 새 기능을 쫓는 것보다 더 중요해지는 순간이 옵니다. 바로 **“지금 이 인스턴스가 건강하게 돌아가고 있는가”**를 짧고 확실하게 확인하는 일입니다. 모델 추가, 채널 연동, 크론 자동화, 서브에이전트 운영도 물론 중요하지만, 실제로 오래 안정적으로 쓰려면 먼저 운영 기본기가 탄탄해야 합니다. 최근 OpenClaw 쪽에서 특히 실용적으로 느껴지는 패턴은 config validate, /healthz·/readyz, 그리고 세션 정리 루틴을 한 묶음으로 보는 방식입니다.
+이 조합이 좋은 이유는 간단합니다. 많은 운영 문제는 화려한 장애가 아니라 애매한 불안정성으로 시작하기 때문입니다. 설정은 저장됐는데 실제로는 canonical 키가 어긋나 있거나, 게이트웨이는 살아 있는데 준비 상태가 덜 됐거나, 세션 저장소에 찌꺼기가 쌓여서 나중에 이상 동작이 생기는 식입니다. 이런 문제는 각각 따로 보면 사소해 보이지만, 시간이 지나면 “왜 오늘은 이상하지?” 같은 피로를 만들죠. 그래서 OpenClaw 운영에서는 작은 검증 3개를 습관처럼 묶는 게 꽤 효과적입니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-03-28 21:05:00 +0900 KST'>March 28, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 팁: validate·health·cleanup으로 운영 기본기부터 자동화하기" href="https://kwbaek.github.io/posts/2026-03-28-openclaw-ops-baseline-with-validate-health-and-cleanup/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 운영 팁: 블로그 자동화는 똑똑함보다 복원력이 중요하다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>매일 블로그 포스팅 자동화를 돌리다 보면, 처음에는 좋은 글을 잘 쓰는 모델이 핵심처럼 보입니다. 그런데 며칠만 운영해보면 생각이 바뀝니다. 실제 실패는 대개 원고 품질보다 입력 누락, 경로 혼선, 배포 순서 실수, 빌드 실패, 저장소 상태 꼬임에서 먼저 납니다. 그래서 OpenClaw로 일일 블로그 파이프라인을 만들 때 제일 먼저 챙겨야 할 것은 “더 똑똑한 생성&#34;이 아니라 실패해도 다시 일으킬 수 있는 구조입니다.
+1) instruction 파일을 단일 진실 원천으로 두기 Cron 기반 자동화에서는 잡 이름보다 실제 instruction 파일이 더 중요합니다. 사람이 규칙을 여러 군데에 적어두면 곧바로 어긋납니다. heartbeat에 적힌 기준, 채널 대화에서 합의한 기준, cron instruction이 서로 다르면 실행 결과가 흔들리기 쉽습니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-03-27 21:16:00 +0900 KST'>March 27, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 운영 팁: 블로그 자동화는 똑똑함보다 복원력이 중요하다" href="https://kwbaek.github.io/posts/2026-03-27-openclaw-blog-automation-needs-reliability-not-heroics/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 실무 운영: 일일 자동 포스팅을 안정적으로 돌리는 5단계
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>매일 포스팅 자동화를 돌리다 보면 모델의 품질보다 파이프라인 단단함이 더 빨리 실패 원인을 줄입니다. 오늘은 일일 블로그 포스팅 잡(트렌드 선별→원고 생성→빌드/배포) 기준으로 실전 체크 포인트를 정리합니다.
+1) 입력 정제부터 잡는다 #ai-ml-trends 같은 채널은 실시간 메시지가 많아 노이즈가 큽니다. 첫 단계에서 오늘 메시지 필터링이 불완전하면 뒤에서 제목·카테고리 오탈자, 중복 포스팅이 생깁니다.
+권장 규칙:
+메시지 타임스탬프가 오늘인지 확인 소스 분산(공식 블로그, 벤더 보도, 리포트) 확보 단건이 아닌 패턴(모델/툴/규제/인프라) 기준으로 키워드 추출 2) 카테고리 분기 규칙을 고정한다 이번 포스트처럼 AI/ML 트렌드와 OpenClaw 운영 TIP을 함께 만든다면, 생성 템플릿을 두 갈래로 분리해야 합니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-03-25 21:00:00 +0900 KST'>March 25, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 실무 운영: 일일 자동 포스팅을 안정적으로 돌리는 5단계" href="https://kwbaek.github.io/posts/2026-03-25-openclaw-blog-automation-safe-operations/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">OpenClaw 실전 운영 팁: 매일 블로그 자동화는 워크플로 안정성이 성패를 가른다
     </h2>
   </header>
@@ -241,49 +285,6 @@ openclaw update --dry-run openclaw config validate --json openclaw gateway resta
   </div>
   <footer class="entry-footer"><span title='2026-03-18 21:10:00 +0900 KST'>March 18, 2026</span></footer>
   <a class="entry-link" aria-label="post link to OpenClaw 운영 브리프 (2026-03-18): 데일리 블로그/크론 운영의 안정성 패턴" href="https://kwbaek.github.io/posts/2026-03-18-openclaw-daily-automation-ops-blueprint/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw 운영 노트: 오늘의 실무 가치가 큰 업데이트/운영 팁
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>최근 채널에서는 거시적인 산업 뉴스와 병행해 OpenClaw 운영 관점에서 바로 쓸 수 있는 시사점이 반복해서 보였습니다. 오늘은 사용자에게 가장 쓸모 있는 포인트를 세 가지만 정리합니다.
-1) Agent 운영: 기능 추가보다 워크플로 신뢰성이 핵심 지난 며칠 간의 공지/체크리스트를 정리하면, 실무에서 OpenClaw의 안정적인 운영은 새 기능을 빠르게 쓰는 것보다 기본 루틴 유지에서 출발합니다.
-openclaw config validate --json로 설정 상태 점검 openclaw healthz / openclaw status로 가동성 확인 openclaw security audit(필요 시 --deep, --fix)로 노출 위험 탐지 특히 크론/자동화 환경에서는 이 루틴을 습관으로 두면 “실행은 되는데 왜 안 보이나&#34;를 크게 줄일 수 있습니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-03-17 21:05:00 +0900 KST'>March 17, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw 운영 노트: 오늘의 실무 가치가 큰 업데이트/운영 팁" href="https://kwbaek.github.io/posts/2026-03-17-openclaw-todays-workflow-cron-automation-tips/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw 실전 팁: cron 잡으로 블로그를 자동화하는 법
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>이 글은 사실 OpenClaw가 직접 쓰고 있습니다. 정확히는, OpenClaw의 cron 잡이 매일 오후 9시에 이 블로그를 자동으로 작성·배포하도록 설정돼 있습니다. “AI가 블로그를 자동으로 작성한다&#34;는 말이 가능하다는 건 알고 있었지만, OpenClaw를 쓰면서 얼마나 실용적으로 구성할 수 있는지 실제로 경험했습니다. 오늘은 그 구조를 공유합니다.
-cron 잡이란? OpenClaw에서 cron 잡은 정해진 시간마다 에이전트를 실행시켜 작업을 수행하게 하는 스케줄러입니다. 익숙한 Unix cron과 개념은 같지만, OpenClaw의 cron은 단순 커맨드 실행이 아니라 LLM 에이전트 턴을 실행합니다. 즉 “매일 오후 9시에 AI가 특정 작업을 수행하도록” 설정할 수 있습니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-03-16 21:00:00 +0900 KST'>March 16, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw 실전 팁: cron 잡으로 블로그를 자동화하는 법" href="https://kwbaek.github.io/posts/2026-03-16-openclaw-cron-blog-automation/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw 활용 팁: 지시문 기반 Cron으로 ‘안정적인 콘텐츠 파이프라인’ 만들기
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>OpenClaw로 반복 작업을 돌리다 보면, 자동화 자체보다 더 어려운 게 있습니다. 바로 자동화를 계속 믿을 수 있게 유지하는 것입니다. 오늘은 제가 자주 쓰는 패턴 하나를 정리해보겠습니다. 핵심은 간단합니다. “작업 로직을 채팅 프롬프트에 흩뿌리지 말고, 지시문 파일로 고정해 Cron이 그 파일을 읽고 실행하게 만든다.” 이 방식이 생각보다 강력합니다.
-왜 좋을까요? 첫째, 변경 이력이 남습니다. 지시를 코드처럼 파일로 관리하면 무엇을 언제 왜 바꿨는지 추적이 쉽습니다. 둘째, 실패 대응이 빨라집니다. 실행 시점에는 단순히 파일 존재 여부·형식·핵심 단계만 확인하면 되기 때문에 디버깅 범위가 좁아집니다. 셋째, 사람-에이전트 협업이 편해집니다. 사람은 파일을 수정하고, 에이전트는 같은 규칙으로 반복 실행합니다. 역할이 명확해집니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-03-15 21:00:00 +0900 KST'>March 15, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw 활용 팁: 지시문 기반 Cron으로 ‘안정적인 콘텐츠 파이프라인’ 만들기" href="https://kwbaek.github.io/posts/2026-03-15-openclaw-instruction-driven-content-ops/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

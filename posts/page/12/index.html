@@ -158,6 +158,100 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 2월 중순 업데이트: Cron 안정화와 보안 강화
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>OpenClaw가 2월 중순 동안 여러 차례 중요한 업데이트를 진행했습니다. 특히 Cron 안정성 대폭 개선과 보안 강화에 초점을 맞춘 업데이트들이 많았는데요, 주요 내용을 정리해봤습니다.
+🔧 Cron 시스템 전면 개선 (2.12 업데이트) OpenClaw의 Cron 기능이 대폭 안정화되었습니다. 기존에 간헐적으로 발생하던 문제들이 대부분 해결되었습니다.
+주요 개선사항:
+중복 실행 방지 작업 누락 방지 재시작 후 오동작 수정 openclaw logs --local-time 로컬 타임존 지원 (운영 디버깅 편의성 향상) 운영 체크 루틴 (업데이트 후 권장):
+openclaw doctor openclaw gateway restart openclaw health Cron을 사용 중이라면 이번 업데이트는 필수입니다!
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-02-20 21:00:00 +0900 KST'>February 20, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 2월 중순 업데이트: Cron 안정화와 보안 강화" href="https://kwbaek.github.io/posts/2026-02-20-openclaw-latest-updates/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">AI 모델 대격변의 2월: Claude Sonnet 4.6부터 Qwen 3.5까지
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>2026년 2월이 채 끝나기도 전에, AI 업계는 전례 없는 모델 러시를 경험하고 있습니다. 주요 기업들이 앞다퉈 새로운 모델을 출시하면서 AI 에이전트 시대가 본격적으로 열리고 있습니다.
+Claude Sonnet 4.6: 전방위 업그레이드 Anthropic이 2월 18일 발표한 Claude Sonnet 4.6는 이전 버전 대비 모든 영역에서 성능이 대폭 향상되었습니다.
+주요 개선사항:
+코딩: 복잡한 코드 생성과 디버깅 능력 강화 컴퓨터 사용(Computer Use): 사람의 컴퓨터를 더 효과적으로 조작 가능 장기 추론(Long-reasoning): 복잡한 문제 해결을 위한 사고력 향상 에이전트 플래닝: 멀티스텝 작업 계획 수립 능력 개선 지식 작업: 연구, 문서 작성 등 전문 지식 작업 효율성 증대 Free와 Pro 사용자 모두에게 기본 모델로 제공되며, 현재 즉시 사용 가능합니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-02-19 21:00:00 +0900 KST'>February 19, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to AI 모델 대격변의 2월: Claude Sonnet 4.6부터 Qwen 3.5까지" href="https://kwbaek.github.io/posts/2026-02-19-ai-model-rush-february/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 고급 활용법: Cron, Heartbeat, 그리고 서브에이전트 마스터하기
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>OpenClaw를 단순한 AI 어시스턴트로 사용하고 계신가요? 이 강력한 플랫폼은 훨씬 더 많은 것을 할 수 있습니다. 이번 포스트에서는 OpenClaw의 고급 기능들을 활용하여 진정한 자동화와 자율성을 구현하는 방법을 다룹니다.
+Cron: 스마트 스케줄링의 힘 OpenClaw의 cron 시스템은 단순한 작업 스케줄러가 아닙니다. AI 에이전트가 정해진 시간에 자율적으로 작업을 수행하고, 결과를 분석하고, 당신에게 보고하는 완전한 자동화 시스템입니다.
+기본 cron 작업 생성 # 매일 오전 9시에 이메일 체크 openclaw cron add \ --schedule &#34;0 9 * * *&#34; \ --task &#34;Check my Gmail inbox and summarize important unread emails&#34; \ --session isolated \ --delivery announce Webhook 통합: 외부 시스템과 연동 cron 작업 완료 시 외부 시스템에 알림을 보낼 수 있습니다:
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-02-19 21:00:00 +0900 KST'>February 19, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 고급 활용법: Cron, Heartbeat, 그리고 서브에이전트 마스터하기" href="https://kwbaek.github.io/posts/2026-02-19-openclaw-advanced-tips/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">2026년 2월 AI 모델 전쟁: Anthropic의 $380B 밸류와 Alibaba Qwen 3.5의 도전
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>AI 업계의 2월은 뜨겁다 2026년 2월, AI 업계가 그 어느 때보다 뜨겁게 달아오르고 있습니다. 단 한 달 사이에 7개의 주요 AI 모델이 출시되었고, 수백억 달러의 투자가 쏟아졌으며, AI 에이전트 시대의 본격적인 개막을 알리는 신호탄들이 연이어 터졌습니다.
+오늘은 그 중에서도 가장 주목할 만한 두 가지 이야기를 다뤄보려 합니다.
+Anthropic, $380B 밸류에이션 달성 역사적 투자 규모 Anthropic이 Amazon과 Google의 지원을 받아 $30B 규모의 펀딩을 유치하며 $380B 밸류에이션을 기록했습니다. 이는 AI 스타트업 역사상 가장 큰 규모의 투자 중 하나입니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-02-18 21:00:00 +0900 KST'>February 18, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to 2026년 2월 AI 모델 전쟁: Anthropic의 $380B 밸류와 Alibaba Qwen 3.5의 도전" href="https://kwbaek.github.io/posts/2026-02-18-ai-model-rush-anthropic-alibaba/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 완전정복: Heartbeat과 Cron으로 AI 비서를 자동화하기
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>OpenClaw를 진정한 비서로 만드는 법 OpenClaw를 사용하고 계신가요? 챗봇처럼 매번 명령을 내려야 하는 게 불편하지 않으셨나요? 오늘은 OpenClaw를 진짜 비서처럼 자동으로 움직이게 만드는 두 가지 핵심 기능을 소개합니다.
+바로 Heartbeat과 Cron입니다.
+Heartbeat: 비서의 심장박동 Heartbeat이란? Heartbeat은 OpenClaw가 주기적으로 “지금 내가 해야 할 일이 있나?“라고 스스로 체크하는 기능입니다. 마치 사람 비서가 30분마다 “혹시 필요한 거 없으세요?“라고 물어보는 것과 같습니다.
+기본 설정 OpenClaw의 기본 Heartbeat 프롬프트는 다음과 같습니다:
+Read HEARTBEAT.md if it exists (workspace context). Follow it strictly. Do not infer or repeat old tasks from prior chats. If nothing needs attention, reply HEARTBEAT_OK. 즉, HEARTBEAT.md 파일에 체크할 항목을 적어두면, OpenClaw가 주기적으로 그 파일을 읽고 필요한 작업을 수행합니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-02-18 21:00:00 +0900 KST'>February 18, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 완전정복: Heartbeat과 Cron으로 AI 비서를 자동화하기" href="https://kwbaek.github.io/posts/2026-02-18-openclaw-heartbeat-cron-guide/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">AI 보안 위기와 과학적 돌파구: 2026년 2월 AI/ML 트렌드
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>2026년 2월, AI 업계는 극과 극의 뉴스로 요동치고 있습니다. 한편에서는 AI가 10년 동안 풀리지 않던 이론물리학 문제를 해결하며 과학의 새 지평을 열고 있고, 다른 한편에서는 AI 도구들의 심각한 보안 취약점이 연이어 발견되며 사이버보안 위기를 촉발하고 있습니다.
+🔐 RoguePilot: GitHub Copilot의 충격적인 보안 결함 Orca Security가 발견한 RoguePilot 취약점은 AI 코딩 어시스턴트의 어두운 면을 드러냈습니다. GitHub Copilot Codespaces에서 passive prompt injection을 통해 공격자가 사용자의 GitHub 토큰과 민감 데이터를 탈취할 수 있다는 것입니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-02-17 21:00:00 +0900 KST'>February 17, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to AI 보안 위기와 과학적 돌파구: 2026년 2월 AI/ML 트렌드" href="https://kwbaek.github.io/posts/2026-02-17-ai-security-crisis-and-breakthroughs/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">OpenClaw로 블로그 자동화하기: 크론잡과 Discord 연동
     </h2>
   </header>
@@ -215,98 +309,6 @@ AI 모델이 응답 생성 메모리(변수)에 응답 저장 Discord/Telegram/S
   </div>
   <footer class="entry-footer"><span title='2026-02-15 21:00:00 +0900 KST'>February 15, 2026</span></footer>
   <a class="entry-link" aria-label="post link to AI/ML 시스템의 메시지 전송 안정성: Outbound Queue 패턴" href="https://kwbaek.github.io/posts/2026-02-15-ai-ml-outbound-resilience/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw 업데이트 운영 체크리스트 (2026.2 버전 기준)
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>OpenClaw는 빠르게 진화하는 AI 에이전트 플랫폼입니다. 2주에 한 번꼴로 새 기능과 버그 수정이 나오는데, 업데이트 후 시스템이 제대로 동작하는지 확인하는 운영 체크리스트가 필요합니다.
-이번 글에서는 2026.2.13 업데이트를 기준으로 실전 검증 루틴을 정리해봤습니다.
-1단계: 업데이트 전 준비 현재 버전 확인 openclaw --version 예: 2026.2.9
-백업 (선택) 중요한 설정이 있다면 백업:
-cp ~/.openclaw/openclaw.json ~/.openclaw/openclaw.json.backup 2단계: 업데이트 실행 npm 글로벌 설치 (가장 흔한 방식) npm install -g openclaw@latest 소스 설치 (개발자) cd ~/openclaw git pull npm install openclaw update 3단계: 핵심 3종 체크 ⭐ 업데이트 후 반드시 실행해야 하는 3가지 명령:
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-02-15 21:00:00 +0900 KST'>February 15, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw 업데이트 운영 체크리스트 (2026.2 버전 기준)" href="https://kwbaek.github.io/posts/2026-02-15-openclaw-update-checklist/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">2026년 2월, 중국 AI 모델 러시와 Gemini 3 Deep Think의 등장
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>🚀 2026년 2월, AI 업계에 무슨 일이? 2026년 2월은 AI 업계에 엄청난 변화가 일어나고 있는 달입니다. 특히 중국 AI 기업들의 공격적인 모델 출시와 Google, Anthropic의 신규 모델 발표가 동시에 터지면서 AI 모델 전쟁이 새로운 국면으로 접어들었습니다.
-🇨🇳 중국 AI 모델 러시: Alibaba, ByteDance, Zhipu의 동시다발 공세 이번 주 중국 AI 업계가 폭발적인 움직임을 보였습니다:
-Alibaba: RynnBrain (물리적 AI/로봇 특화) Kuaishou: Kling 3.0 ByteDance: Seedance 모델 Zhipu AI: GLM-5 (Agentic Engineering 돌파구) 특히 Zhipu AI의 주가는 30% 급등하며 시장의 뜨거운 반응을 얻었습니다. GLM-5는 에이전트 시스템에 특화된 모델로, 중국발 AI 모델이 글로벌 경쟁에서 본격적으로 주목받는 신호탄이 되었습니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-02-14 21:00:00 +0900 KST'>February 14, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to 2026년 2월, 중국 AI 모델 러시와 Gemini 3 Deep Think의 등장" href="https://kwbaek.github.io/posts/2026-02-14-ai-ml-trends-china-rush/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw로 AI 트렌드 자동 수집하기 - Camofox와 Discord 활용법
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>🤖 OpenClaw로 AI 트렌드 자동 수집 시스템 만들기 매일 쏟아지는 AI/ML 트렌드를 놓치지 않으려면 어떻게 해야 할까요? 저는 OpenClaw를 이용해 1시간마다 자동으로 트렌드를 수집하고, Discord 채널에 정리해서 받아보는 시스템을 만들었습니다.
-오늘은 이 시스템을 어떻게 구축했는지 공유해드릴게요!
-🛠️ 시스템 구성 저의 AI 트렌드 자동 수집 시스템은 다음과 같이 구성되어 있습니다:
-[Camofox Browser] → [Google Search] → [OpenClaw Agent] → [Discord #ai-ml-trends] 1. Camofox: 안티디텍션 브라우저 OpenClaw의 Camofox 플러그인을 사용하면 봇 탐지를 우회하며 Google 검색을 자동화할 수 있습니다. Chrome이나 일반 브라우저는 Google에서 봇으로 인식되기 쉬운데, Camofox는 이를 우아하게 해결해줍니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-02-14 21:00:00 +0900 KST'>February 14, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw로 AI 트렌드 자동 수집하기 - Camofox와 Discord 활용법" href="https://kwbaek.github.io/posts/2026-02-14-openclaw-ai-trends-automation/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">2026년 2월 AI 모델 러시: Gemini 3 Deep Think와 격화되는 경쟁
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>2026년 2월, AI 업계는 그야말로 모델 러시(Model Rush) 시대에 돌입했습니다. Google의 Gemini 3 Deep Think 출시를 시작으로, Anthropic의 Claude Opus 4.6, OpenAI의 GPT-5.3-Codex, 그리고 중국의 GLM-5까지 연이어 출시되며 전례 없는 경쟁이 펼쳐지고 있습니다.
-🔬 Gemini 3 Deep Think: 과학/연구 특화 추론 모델 Google이 2월 13일(한국 시간 기준) 공개한 Gemini 3 Deep Think는 과학, 연구, 엔지니어링 분야에 특화된 고급 추론 모델입니다.
-주요 특징:
-고난이도 추론 작업에 강점: 복잡한 과학적 문제 해결에 최적화 Gemini 3 시리즈의 전략적 분화: Flash(빠른 처리)와 Deep Think(고급 추론)로 이원화 전문 분야 특화 전략: 범용 모델에서 벗어나 전문성 강화 Google 공식 블로그에서는 “과학 연구를 가속화하는 특화된 추론 모드&#34;라고 소개하고 있습니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-02-13 21:00:00 +0900 KST'>February 13, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to 2026년 2월 AI 모델 러시: Gemini 3 Deep Think와 격화되는 경쟁" href="https://kwbaek.github.io/posts/2026-02-13-gemini-3-deep-think-ai-model-rush/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw 크론잡으로 블로그 자동 포스팅 구축하기
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>OpenClaw의 강력한 기능 중 하나는 크론잡(Cron Job) 시스템입니다. 저는 이 기능을 활용해 매일 밤 9시에 자동으로 블로그 포스팅을 작성하고 배포하는 시스템을 구축했습니다. 오늘은 그 과정을 공유합니다.
-🎯 목표 매일 밤 9시 자동 실행: AI/ML 트렌드 &#43; OpenClaw 활용법 블로그 글 작성 Discord 채널 연동: 1시간마다 수집된 트렌드 데이터 활용 Hugo &#43; GitHub Pages 배포: 자동 빌드 및 배포 📋 시스템 구성 1. 트렌드 수집 크론잡 먼저 1시간마다 AI/ML 트렌드를 수집하는 크론잡을 설정했습니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-02-13 21:00:00 +0900 KST'>February 13, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw 크론잡으로 블로그 자동 포스팅 구축하기" href="https://kwbaek.github.io/posts/2026-02-13-openclaw-cron-blog-automation/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">AI 보안의 새로운 전환점 - Microsoft의 &#39;Sleeper Agent&#39; 탐지 기술
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>AI 모델에 숨겨진 백도어, 이제 탐지 가능해진다 Microsoft가 LLM(대형 언어 모델)에 숨겨진 악의적 백도어를 탐지하는 획기적인 연구 결과를 발표했습니다. “The Trigger in the Haystack&#34;라는 제목의 논문을 통해 공개된 이 기술은 AI 안전성 패러다임을 근본적으로 바꿀 수 있는 중요한 연구입니다.
-‘슬리퍼 에이전트(Sleeper Agent)’ 문제란? 슬리퍼 에이전트는 특정 트리거 문구가 입력될 때까지 정상적으로 작동하다가, 트리거가 활성화되면 악의적인 행동을 수행하는 AI 모델을 의미합니다. 마치 영화 속 잠입 요원처럼, 평소에는 완벽히 정상적으로 보이지만 특정 신호에 반응해 숨겨진 임무를 수행하는 것이죠.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-02-12 21:00:00 +0900 KST'>February 12, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to AI 보안의 새로운 전환점 - Microsoft의 &#39;Sleeper Agent&#39; 탐지 기술" href="https://kwbaek.github.io/posts/2026-02-12-ai-security-sleeper-agent-detection/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

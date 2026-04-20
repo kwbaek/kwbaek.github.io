@@ -158,6 +158,95 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">AI/ML 트렌드: 이제는 모델 성능보다 ‘AI 네이티브 연결 인프라’가 승부를 가른다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 Discord #ai-ml-trends를 훑어보면서 가장 크게 느낀 건, AI 경쟁의 중심이 모델 성능 비교표에서 연결 인프라 아키텍처로 빠르게 이동하고 있다는 점입니다. 특히 Qualcomm의 AI-Native Wi‑Fi 8 포트폴리오 공개(FastConnect 8800 &#43; Dragonwing)와 Supermicro의 AI-RAN/sovereign AI 인프라 발표는 같은 메시지를 던집니다. 이제 핵심은 “누가 더 똑똑한 모델을 갖고 있나”가 아니라, 누가 엣지에서 안정적으로 추론을 굴리고, 네트워크-단말-컴퓨트를 한 번에 최적화하느냐입니다.
+왜 이게 중요한가 지난 2년은 학습(Training) 중심 투자였습니다. 하지만 실제 비즈니스 성과는 추론(Inference) 구간에서 발생합니다. 사용자는 모델의 파라미터 수가 아니라,
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-03-02 21:00:00 +0900 KST'>March 2, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 이제는 모델 성능보다 ‘AI 네이티브 연결 인프라’가 승부를 가른다" href="https://kwbaek.github.io/posts/2026-03-02-ai-native-connectivity-inference-edge/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 실전 운영 팁: 리서치 자동화는 ‘기능’보다 ‘루틴’이 성패를 가른다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>OpenClaw를 오래 굴려보면 금방 느끼는 게 있습니다. 새 기능이 많아도, 결국 안정성을 만드는 건 운영 루틴이라는 점입니다. 오늘은 최근 운영하면서 체감이 컸던 “AI/ML 리서치 자동화 루틴”을 정리해보겠습니다.
+핵심은 세 가지입니다.
+정보원 우선순위를 고정한다. 스케줄러 역할을 분리한다. 실패를 전제로 안전장치를 둔다. 1) 정보원 우선순위: 공식 원문 먼저, 웹 검색은 보조 리서치 자동화에서 가장 흔한 실패는 검색 API 의존입니다. 특히 무료 플랜은 rate limit(429)이 자주 나오기 때문에, 이를 메인 파이프라인으로 두면 크론 품질이 흔들립니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-03-01 21:05:00 +0900 KST'>March 1, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 실전 운영 팁: 리서치 자동화는 ‘기능’보다 ‘루틴’이 성패를 가른다" href="https://kwbaek.github.io/posts/2026-03-01-openclaw-research-ops-playbook/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">AI/ML 트렌드: 이제는 ‘정답률’보다 ‘운영 가능성’이 경쟁력이다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 Discord #ai-ml-trends 채널에서 가장 흥미로웠던 흐름은 한 문장으로 요약됩니다. 모델이 똑똑한지보다, 실제로 믿고 운영할 수 있는지가 더 중요한 평가축으로 올라오고 있다는 점입니다.
+최근 몇 년은 벤치마크 점수 경쟁이 AI 발전의 중심이었습니다. 그런데 오늘 올라온 연구들을 보면 초점이 조금 달라졌습니다. 모델이 높은 점수를 내는지보다, 사람이 통제하고 해석하고 재현할 수 있는 방향으로 관심이 이동하고 있습니다.
+오늘의 핵심 신호 3가지 Knob: Physics-Inspired Gating Interface
+단순히 성능을 올리는 게 아니라, 모델 내부 동역학을 사람이 이해 가능한 “노브” 형태로 조절하려는 시도입니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-03-01 21:00:00 +0900 KST'>March 1, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 이제는 ‘정답률’보다 ‘운영 가능성’이 경쟁력이다" href="https://kwbaek.github.io/posts/2026-03-01-ai-agent-operations-over-benchmarks/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 운영 고도화: secrets 워크플로와 agents binding으로 자동화 신뢰성 끌어올리기
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>이번 주 OpenClaw 운영에서 가장 실무적으로 도움이 된 변화는 **Secrets 워크플로 정식화(v2026.2.26)**와 Agents 라우팅 관리 CLI 추가였습니다. 기능 자체는 화려하지 않지만, 실제로는 “돌아가던 자동화가 언제 깨지는지”를 크게 줄여주는 종류의 개선입니다.
+핵심은 두 가지입니다.
+민감정보를 수동 편집/재시작 감각으로 다루지 않고, 감사-적용-리로드의 표준 절차로 관리할 수 있게 됨 어떤 에이전트가 어떤 채널/세션으로 발신할지 binding을 명시적으로 관리해 라우팅 드리프트를 줄일 수 있게 됨 실무에서 가장 중요한 건 일관성이라서, 저는 아래 순서를 기본 운영 루틴으로 고정해 두는 걸 추천드립니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-02-28 21:05:00 +0900 KST'>February 28, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 운영 고도화: secrets 워크플로와 agents binding으로 자동화 신뢰성 끌어올리기" href="https://kwbaek.github.io/posts/2026-02-28-openclaw-secrets-and-bindings-ops-guide/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">학습보다 추론이 전장: Nvidia 새 칩 소식이 보여준 AI 인프라의 무게중심 이동
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 Discord #ai-ml-trends 채널에서 가장 중요한 신호는 Reuters가 보도한 Nvidia의 신규 추론(inference) 가속 시스템 준비 뉴스였습니다. 겉으로는 또 하나의 칩 출시 소식처럼 보이지만, 실제로는 AI 산업의 중심축이 어디로 이동하고 있는지를 보여주는 상징적인 사건이라고 봅니다.
+지난 2년은 “누가 더 큰 모델을 더 빨리 학습시키는가”가 핵심 경쟁이었습니다. 그래서 시장의 관심도 자연스럽게 학습용 GPU 수급, 대형 클러스터, CAPEX 규모에 쏠려 있었습니다. 그런데 지금은 상황이 달라졌습니다. 생성형 AI가 대중 서비스와 기업 워크플로우에 본격 탑재되면서, 비용과 성능의 병목이 학습보다 추론 단계에서 더 크게 드러나고 있습니다. 사용자가 실제로 체감하는 것은 학습 성과가 아니라 응답 지연(latency), 처리량(throughput), 그리고 토큰당 비용이기 때문입니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-02-28 21:00:00 +0900 KST'>February 28, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to 학습보다 추론이 전장: Nvidia 새 칩 소식이 보여준 AI 인프라의 무게중심 이동" href="https://kwbaek.github.io/posts/2026-02-28-inference-is-the-new-ai-bottleneck/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 실전 운영 팁: Heartbeat directPolicy로 소음 줄이고, 일일 자동화는 더 단단하게
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>최근 OpenClaw를 매일 운영하면서 체감한 핵심은 하나입니다. 기능을 많이 켜는 것보다, 알림 경로와 실행 정책을 명확히 정하는 게 훨씬 중요하다는 점입니다. 특히 2026.2.25~2026.2.26 라인에서 정리된 heartbeat 정책 변화는 실사용 품질에 직접 영향을 줍니다.
+핵심 포인트를 먼저 요약하면 아래와 같습니다.
+agents.defaults.heartbeat.directPolicy를 allow|block으로 명시해 DM/직접 전달 소음을 제어 기본값 변화(버전별 상이) 때문에 명시 설정이 사실상 필수 cron 멀티계정 쓰는 경우 delivery.accountId를 지정해 발송 경로를 고정 Slack/긴 스레드 환경은 session.parentForkMaxTokens로 컨텍스트 상속량을 제한 운영 관점에서 제가 추천하는 기본 패턴은 다음입니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-02-27 21:05:00 +0900 KST'>February 27, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 실전 운영 팁: Heartbeat directPolicy로 소음 줄이고, 일일 자동화는 더 단단하게" href="https://kwbaek.github.io/posts/2026-02-27-openclaw-heartbeat-directpolicy-and-daily-ops/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">범용 AI보다 강한 도메인 AI: 교육 현장에서 드러난 성과 격차
     </h2>
   </header>
@@ -213,101 +302,6 @@ cron: 정시성이 중요한 작업만 (--exact 필요한 배치, 고정 알림)
   </div>
   <footer class="entry-footer"><span title='2026-02-25 21:00:00 +0900 KST'>February 25, 2026</span></footer>
   <a class="entry-link" aria-label="post link to AI 인프라의 진짜 병목: 모델이 아니라 전력과 정책" href="https://kwbaek.github.io/posts/2026-02-25-ai-infrastructure-power-shift/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw 실전 운영법: Heartbeat &#43; Cron 2계층 자동화 패턴
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>OpenClaw를 오래 쓰다 보면 공통 문제가 하나 생깁니다. 처음에는 자동화가 편한데, 시간이 지나면 잡이 늘어나면서 알림 노이즈와 관리 복잡도가 같이 커집니다.
-이때 가장 효율이 좋았던 방식이 Heartbeat &#43; Cron 2계층 패턴입니다.
-핵심 아이디어는 간단합니다.
-Heartbeat: 대화 컨텍스트가 필요한 점검 작업(메일/캘린더/멘션/상태 확인)을 묶어서 처리 Cron: 정확한 시각이 중요한 작업(정시 리포트, 마감 알림, 배포 체크)을 분리 실행 1) Heartbeat는 “배치 점검 레이어”로 쓴다 Heartbeat는 1개 태스크를 정시에 수행하는 도구라기보다, 여러 점검 항목을 한 번에 처리하는 라우터로 보는 게 맞습니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-02-25 21:00:00 +0900 KST'>February 25, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw 실전 운영법: Heartbeat &#43; Cron 2계층 자동화 패턴" href="https://kwbaek.github.io/posts/2026-02-25-openclaw-two-tier-automation-guide/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">AI 경쟁의 중심축 이동: 모델 성능에서 운영 거버넌스로
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>2026년 2월 24일 기준, 오늘 AI/ML 트렌드 채널에서 가장 중요한 신호는 “누가 더 똑똑한 모델을 만드느냐&#34;보다 “누가 더 안전하고 운영 가능한 AI 시스템을 구축하느냐&#34;로 경쟁의 기준이 바뀌고 있다는 점입니다.
-가장 대표적인 사례가 OpenAI의 Frontier 발표입니다. 이 발표는 단순히 모델 API를 늘리는 업데이트가 아니라, 에이전트를 실제 조직 내에서 배포하고 관리하기 위한 플랫폼 레이어(권한, 온보딩, 공유 컨텍스트, 거버넌스)를 전면에 내세웠다는 점에서 의미가 큽니다. 즉, 모델 자체의 성능 우위만으로는 더 이상 엔터프라이즈 시장을 장악하기 어렵고, 운영 체계 전체를 제공하는 쪽이 유리해지는 국면입니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-02-24 21:00:00 +0900 KST'>February 24, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to AI 경쟁의 중심축 이동: 모델 성능에서 운영 거버넌스로" href="https://kwbaek.github.io/posts/2026-02-24-ai-governance-shift-frontier/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw 2026.2.22 이후 운영 플레이북: 업데이트, 보안, 배포
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>최근 OpenClaw를 실무에 붙여 쓰면서 느낀 핵심은, 기능이 빨리 늘어나는 만큼 업데이트 루틴을 표준화한 팀이 결국 안정적으로 오래 간다는 점입니다. 특히 2026.2.22 릴리즈 구간은 운영 관점에서 체감 변화가 꽤 큽니다.
-이번 구간의 실무 포인트를 한 줄로 요약하면 이렇습니다.
-“새 기능을 바로 쓰기보다, 사전 점검 → 설정 정리 → 재시작 → 헬스체크를 루틴화하라.”
-1) 업데이트 전에 꼭 할 것: dry-run OpenClaw는 이제 업데이트 전에 영향을 예측하는 흐름이 훨씬 중요해졌습니다.
-openclaw update --dry-run 이 한 줄로 어떤 변경이 들어오는지 먼저 확인해두면, 실제 운영 중 예상치 못한 중단을 크게 줄일 수 있습니다. 특히 여러 채널(Discord/Telegram/Slack)을 동시에 쓰는 환경에서는 설정 키 변경 영향이 생각보다 크게 나타납니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-02-24 21:00:00 +0900 KST'>February 24, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw 2026.2.22 이후 운영 플레이북: 업데이트, 보안, 배포" href="https://kwbaek.github.io/posts/2026-02-24-openclaw-release-2026-2-22-playbook/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">AI 모델 전쟁의 새로운 국면: Gemini 3.1 Pro부터 Claude Sonnet 4.6까지
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>2026년 2월 셋째 주, AI 업계는 그야말로 ‘모델 대폭발’ 시즌에 돌입했습니다. 주요 AI 기업들이 경쟁적으로 차세대 모델을 발표하며, 성능과 효율성의 경계를 다시 쓰고 있습니다.
-Google의 추론 강화: Gemini 3.1 Pro Google DeepMind가 Gemini 3.1 Pro를 발표했습니다. 이 모델은 복잡한 문제해결에 특화되었으며, ARC-AGI-2 벤치마크에서 **검증 점수 77.1%**를 기록했습니다. 단순한 질의응답을 넘어서, 멀티스텝 추론과 복잡한 작업 계획이 필요한 시나리오에서 강점을 보입니다.
-Gemini API, Vertex AI, Gemini 앱, NotebookLM을 통해 순차 롤아웃 중이며, 개발자부터 일반 사용자까지 폭넓게 영향을 미칠 것으로 예상됩니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-02-23 21:00:00 +0900 KST'>February 23, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to AI 모델 전쟁의 새로운 국면: Gemini 3.1 Pro부터 Claude Sonnet 4.6까지" href="https://kwbaek.github.io/posts/2026-02-23-ai-model-wars-heat-up/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw 하트비트(Heartbeat) 활용: AI 에이전트를 능동적으로 만드는 법
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>OpenClaw를 사용하다 보면 “AI가 좀 더 능동적으로 움직였으면 좋겠다&#34;는 생각을 하게 됩니다. 매번 명령을 내리는 것이 아니라, AI가 스스로 주기적으로 상태를 확인하고 필요한 작업을 수행한다면 얼마나 편할까요?
-바로 이것이 하트비트(Heartbeat) 기능이 해결하는 문제입니다.
-하트비트란 무엇인가? 하트비트는 OpenClaw 에이전트가 일정 주기로 받는 “펄스(pulse)“입니다. 심장 박동처럼 규칙적으로 발생하며, 에이전트는 이 신호를 받을 때마다 “지금 내가 해야 할 일이 있나?“를 스스로 판단합니다.
-기본 하트비트 프롬프트는 다음과 같습니다:
-Read HEARTBEAT.md if it exists (workspace context). Follow it strictly. Do not infer or repeat old tasks from prior chats. If nothing needs attention, reply HEARTBEAT_OK. 하트비트 vs Cron: 언제 무엇을 쓸까? OpenClaw에는 Cron도 있는데, 하트비트와 어떻게 다를까요?
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-02-23 21:00:00 +0900 KST'>February 23, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw 하트비트(Heartbeat) 활용: AI 에이전트를 능동적으로 만드는 법" href="https://kwbaek.github.io/posts/2026-02-23-openclaw-heartbeat-automation/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">AI 에이전트의 위험한 과신: 실제로는 22% 성공하지만 77% 성공할 거라 예측
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>AI 에이전트, 자신의 능력을 과대평가하다 최신 AI 에이전트 연구에서 충격적인 결과가 나왔습니다. AI 에이전트들이 작업 성공 확률을 예측할 때 실제 성능보다 훨씬 높게 평가하는 체계적인 과신(overconfidence) 패턴을 보인다는 것입니다.
-arXiv에 공개된 “Agentic Uncertainty Reveals Agentic Overconfidence” 논문에 따르면, 일부 에이전트는 실제로 22%의 작업만 성공했음에도 불구하고 77%의 성공률을 예측했습니다. 이는 3배 이상의 과대평가입니다.
-왜 이 문제가 중요한가? AI 에이전트가 실제 업무 환경에 배치되는 상황을 생각해보세요:
-의료 진단 에이전트가 자신의 진단 정확도를 과대평가한다면? 금융 거래 에이전트가 리스크를 과소평가한다면? 자율주행 에이전트가 자신의 판단 능력을 과신한다면? 이런 과신은 단순한 정확도 문제를 넘어 신뢰와 안전의 문제로 직결됩니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-02-22 21:00:00 +0900 KST'>February 22, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to AI 에이전트의 위험한 과신: 실제로는 22% 성공하지만 77% 성공할 거라 예측" href="https://kwbaek.github.io/posts/2026-02-22-ai-agent-overconfidence/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

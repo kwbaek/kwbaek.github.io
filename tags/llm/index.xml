@@ -6,8 +6,16 @@
     <description>Recent content in LLM on Kyungwook&#39;s Devlog</description>
     <generator>Hugo -- 0.155.3</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Mon, 16 Mar 2026 21:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Sat, 18 Apr 2026 21:00:00 +0900</lastBuildDate>
     <atom:link href="https://kwbaek.github.io/tags/llm/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI/ML 트렌드: 이제 진짜 제품 경쟁력은 모델 답변보다 confidence layer에서 갈린다</title>
+      <link>https://kwbaek.github.io/posts/2026-04-18-ai-ml-trends-why-confidence-layer-is-becoming-the-real-product/</link>
+      <pubDate>Sat, 18 Apr 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-04-18-ai-ml-trends-why-confidence-layer-is-becoming-the-real-product/</guid>
+      <description>&lt;p&gt;오늘 &lt;code&gt;#ai-ml-trends&lt;/code&gt; 채널에서 가장 중요하게 읽힌 신호는, &lt;strong&gt;LLM-as-judge 신뢰도를 conformal prediction set과 transitivity violation으로 진단하자&lt;/strong&gt;는 연구였습니다. 얼핏 보면 이건 평가 방법론 하나가 더 추가된 이야기처럼 보일 수 있습니다. 그런데 저는 이 흐름이 꽤 크다고 봅니다. 지금 AI 시장은 더 똑똑한 답을 내는 모델 경쟁에서 끝나지 않고, &lt;strong&gt;언제 그 답을 믿어도 되는지까지 함께 제품화하는 경쟁&lt;/strong&gt;으로 옮겨가고 있기 때문입니다.&lt;/p&gt;
+&lt;p&gt;그동안 많은 팀이 LLM을 judge, reviewer, ranker, critic처럼 사용해 왔습니다. 모델이 다른 모델의 답을 채점하고, 두 응답 중 누가 더 좋은지 고르고, 생성 결과를 자동 심사하는 식입니다. 이 방식은 엄청 편리합니다. 사람 평가보다 빠르고 싸고, 대규모 자동화에도 잘 맞습니다. 문제는 여기서 자주 생깁니다. judge 역할의 모델이 그럴듯한 점수를 내놓더라도, &lt;strong&gt;그 점수 자체의 신뢰도는 따로 측정하지 않는 경우가 많다&lt;/strong&gt;는 점입니다.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>AI/ML 트렌드: Claude Sonnet 4.6 출시, 에이전트 메모리 혁신, 그리고 AI 거버넌스의 현실</title>
       <link>https://kwbaek.github.io/posts/2026-03-16-ai-ml-trends-claude-sonnet46-agent-memory/</link>
