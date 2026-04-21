@@ -143,6 +143,20 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 팁: heartbeat와 cron은 비슷해 보여도 다른 일을 맡겨야 한다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>OpenClaw를 조금만 오래 써보면 금방 느끼게 됩니다. heartbeat와 cron은 둘 다 주기적으로 뭔가를 하게 만든다는 점에서는 비슷하지만, 실제로는 같은 도구가 아닙니다. 이 둘을 같은 방식으로 쓰기 시작하면 에이전트가 쓸데없이 시끄러워지거나, 반대로 중요한 일을 놓치기 쉽습니다. 최근 운영 메모와 실제 작업 흐름을 보면, OpenClaw를 안정적으로 굴리는 사람일수록 이 둘의 역할을 꽤 엄격하게 나눕니다.
+제가 가장 추천하는 기준은 간단합니다. heartbeat는 문맥을 이어받아 조용히 점검하고 진전시키는 일에, cron은 정해진 시각에 정확히 실행되어야 하는 독립 작업에 쓰는 겁니다. 예를 들어 메일, 캘린더, 멘션, 프로젝트 상태를 한 번에 묶어 보는 작업은 heartbeat에 잘 맞습니다. 최근 대화 맥락을 보고, 꼭 말해야 할 때만 말하고, 별일 없으면 조용히 지나갈 수 있기 때문입니다. 반대로 매일 아침 리포트를 보내거나, 특정 시각에 블로그 글을 생성하거나, 실패 시 별도 알림이 필요한 작업은 cron이 훨씬 적합합니다. 이런 일은 “대충 비슷한 시간”이 아니라 정확한 실행 보장이 더 중요하기 때문입니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-04-20 21:05:00 +0900 KST'>April 20, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 팁: heartbeat와 cron은 비슷해 보여도 다른 일을 맡겨야 한다" href="https://kwbaek.github.io/posts/2026-04-20-openclaw-heartbeat-and-cron-should-do-different-jobs/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">OpenClaw 팁: 항상 켜진 에이전트를 오래 굴릴수록 중요한 운영 체크리스트
     </h2>
   </header>
@@ -268,21 +282,6 @@ OpenClaw Cron이란? OpenClaw의 Cron은 단순한 스케줄러가 아닙니다.
   </div>
   <footer class="entry-footer"><span title='2026-03-07 21:00:00 +0900 KST'>March 7, 2026</span></footer>
   <a class="entry-link" aria-label="post link to OpenClaw 활용법 — Cron으로 매일 블로그 자동 포스팅하기" href="https://kwbaek.github.io/posts/2026-03-07-openclaw-cron-blog-automation/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw 실전 운영 팁: 리서치 자동화는 ‘기능’보다 ‘루틴’이 성패를 가른다
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>OpenClaw를 오래 굴려보면 금방 느끼는 게 있습니다. 새 기능이 많아도, 결국 안정성을 만드는 건 운영 루틴이라는 점입니다. 오늘은 최근 운영하면서 체감이 컸던 “AI/ML 리서치 자동화 루틴”을 정리해보겠습니다.
-핵심은 세 가지입니다.
-정보원 우선순위를 고정한다. 스케줄러 역할을 분리한다. 실패를 전제로 안전장치를 둔다. 1) 정보원 우선순위: 공식 원문 먼저, 웹 검색은 보조 리서치 자동화에서 가장 흔한 실패는 검색 API 의존입니다. 특히 무료 플랜은 rate limit(429)이 자주 나오기 때문에, 이를 메인 파이프라인으로 두면 크론 품질이 흔들립니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-03-01 21:05:00 +0900 KST'>March 1, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw 실전 운영 팁: 리서치 자동화는 ‘기능’보다 ‘루틴’이 성패를 가른다" href="https://kwbaek.github.io/posts/2026-03-01-openclaw-research-ops-playbook/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

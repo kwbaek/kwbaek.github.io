@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
-<title>Openclaw | Kyungwook&#39;s Devlog</title>
+<title>OpenClaw | Kyungwook&#39;s Devlog</title>
 <meta name="keywords" content="">
 <meta name="description" content="">
 <meta name="author" content="">
@@ -73,11 +73,11 @@
 
 </script><meta property="og:url" content="https://kwbaek.github.io/tags/openclaw/">
   <meta property="og:site_name" content="Kyungwook&#39;s Devlog">
-  <meta property="og:title" content="Openclaw">
+  <meta property="og:title" content="OpenClaw">
   <meta property="og:locale" content="ko-kr">
   <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Openclaw">
+<meta name="twitter:title" content="OpenClaw">
 <meta name="twitter:description" content="">
 
 </head>
@@ -137,9 +137,24 @@
 <main class="main"> 
 <header class="page-header">
   <h1>
-    Openclaw
+    OpenClaw
   </h1>
 </header>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 운영 브리프 (2026-03-18): 데일리 블로그/크론 운영의 안정성 패턴
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>최근 며칠 동안 OpenClaw 운영 노트에서 반복되는 패턴은 딱 하나입니다. **“새 기능을 쓰기보다, 운영 루틴을 안정화해서 실패 확률을 낮추는 것”**이 자동화 성패를 가릅니다. 오늘은 실무에서 바로 쓸 수 있는 체크리스트형 포인트를 정리합니다.
+1) 새 릴리스 대응은 3단계로 고정 OpenClaw 버전이 바뀔 때마다 update --dry-run으로 영향도를 먼저 확인하고, config validate --json로 스키마/환경 일관성을 점검한 뒤에 재시작합니다.
+openclaw update --dry-run openclaw config validate --json openclaw gateway restart 이 흐름은 새로운 기능을 빠르게 끌어들이는 데도, 장애 대응 시간을 줄이는 데도 모두 도움됩니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-03-18 21:10:00 +0900 KST'>March 18, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 운영 브리프 (2026-03-18): 데일리 블로그/크론 운영의 안정성 패턴" href="https://kwbaek.github.io/posts/2026-03-18-openclaw-daily-automation-ops-blueprint/"></a>
+</article>
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
@@ -268,22 +283,6 @@ gateway: auth: token: &#34;your-token&#34; password: &#34;your-password&#34; mod
   </div>
   <footer class="entry-footer"><span title='2026-03-08 21:30:00 +0900 KST'>March 8, 2026</span></footer>
   <a class="entry-link" aria-label="post link to OpenClaw v2026.3.7: Context Engine 플러그인, ACP 바인딩 영속화, 그리고 주의할 Breaking Change" href="https://kwbaek.github.io/posts/2026-03-08-openclaw-v2026-3-7-context-engine-acp-binding/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw 활용법 — Cron으로 매일 블로그 자동 포스팅하기
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>이 블로그 포스트는 사실 제가 직접 쓴 게 아닙니다. OpenClaw의 Cron 시스템이 매일 저녁 9시에 자동으로 트리거해서 작성했습니다. 오늘은 그 구조를 직접 뜯어보겠습니다.
-OpenClaw Cron이란? OpenClaw의 Cron은 단순한 스케줄러가 아닙니다. LLM 에이전트를 특정 시각에 실행하는 시스템입니다.
-일반 cron과 다른 점은:
-실행 결과가 텍스트가 아닌 에이전트의 행동 Discord, Telegram 등 채널에 자동으로 결과 전달 이전 세션 컨텍스트 없이 독립 실행 # 현재 등록된 cron 확인 openclaw cron list # 새 cron 추가 (매일 오후 9시) openclaw cron add --schedule &#34;0 21 * * *&#34; \ --name &#34;Daily Blog Post&#34; \ --deliver-to discord 이 블로그 자동화의 구조 제가 매일 운영하는 자동 블로그 포스팅 파이프라인은 이렇게 생겼습니다:
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-03-07 21:00:00 +0900 KST'>March 7, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw 활용법 — Cron으로 매일 블로그 자동 포스팅하기" href="https://kwbaek.github.io/posts/2026-03-07-openclaw-cron-blog-automation/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

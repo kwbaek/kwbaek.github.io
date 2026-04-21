@@ -152,6 +152,33 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw로 매일 트렌드 스캔을 블로그 포스트로 연결하는 방법
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>OpenClaw를 오래 만져볼수록 재미있는 지점은, 이 도구가 단순히 메시지에 답하는 봇이 아니라 채널에서 신호를 읽고, 그 신호를 실제 산출물로 바꾸는 운영 레이어에 가깝다는 점입니다. 오늘 제가 돌린 워크플로도 딱 그 예시였습니다. Discord의 #ai-ml-trends 채널에서 오늘 올라온 흐름을 읽고, 그중 가장 의미 있는 주제를 하나 고른 뒤, 그 내용을 Hugo 블로그 글로 정리하는 작업입니다.
+이런 흐름이 좋은 이유는 단순합니다. 정보 수집과 글쓰기를 분리하지 않기 때문입니다. 많은 팀이 뉴스는 뉴스대로 읽고, 블로그는 나중에 따로 쓰려다가 결국 둘 다 흐지부지됩니다. 반면 OpenClaw는 채널 메시지, cron 지시문, 로컬 파일 작업을 하나의 루프 안에 묶을 수 있습니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-04-10 21:14:00 +0900 KST'>April 10, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw로 매일 트렌드 스캔을 블로그 포스트로 연결하는 방법" href="https://kwbaek.github.io/posts/2026-04-10-openclaw-daily-trend-to-blog-workflow/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">AI/ML 트렌드: AI operating layer 경쟁과 서빙 스택 성숙이 진짜 승부처로 합쳐지고 있다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 #ai-ml-trends 채널에서 가장 흥미롭고 중요한 흐름을 하나만 고르라면, 저는 AI 경쟁의 무게중심이 더 좋은 모델 하나에서 회사 전체를 덮는 AI operating layer와 그걸 실제로 굴려 주는 서빙 스택의 결합으로 이동하고 있다는 점을 꼽겠습니다. 오늘 채널에는 OpenAI의 엔터프라이즈 전략 글, vLLM 0.19.0, Transformers 5.5.0, Gemma 4 생태계 확장 이야기가 한꺼번에 올라왔습니다. 얼핏 보면 서로 다른 층위의 뉴스처럼 보이지만, 실제로는 하나의 방향을 가리킵니다. 이제 기업은 단순히 “어떤 모델을 쓸까?”를 묻는 단계에서 벗어나, **“AI를 회사의 기본 운영층으로 어떻게 깔 것인가, 그리고 그걸 어떤 비용 구조로 안정적으로 서빙할 것인가”**를 묻고 있습니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-04-09 21:00:00 +0900 KST'>April 9, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to AI/ML 트렌드: AI operating layer 경쟁과 서빙 스택 성숙이 진짜 승부처로 합쳐지고 있다" href="https://kwbaek.github.io/posts/2026-04-09-ai-ml-trends-ai-operating-layer-and-serving-stack-are-converging-into-the-real-battleground/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">OpenClaw 팁: 일일 콘텐츠 자동화는 지시문이 명시적이고 호스트 실행이 boring할수록 오래 버틴다
     </h2>
   </header>
@@ -259,33 +286,6 @@
   </div>
   <footer class="entry-footer"><span title='2026-04-06 21:12:00 +0900 KST'>April 6, 2026</span></footer>
   <a class="entry-link" aria-label="post link to OpenClaw 운영 팁: 가격 구조 변화와 추론 스택 변화가 가져온 코딩 에이전트 운영 포인트" href="https://kwbaek.github.io/posts/2026-04-06-openclaw-coding-agent-cost-and-ops-tuning/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">AI/ML 트렌드: 멀티모달은 ‘구조적 결합’과 ‘저비용 추론’으로 이동한다
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>오늘 #ai-ml-trends 채널을 훑으면서 가장 선명하게 보인 건, 모델 크기 경쟁보다 어떻게 결합하고 얼마나 싸게 굴릴지라는 축으로 무게중심이 이동했다는 점입니다. 2026-04-06에 올라온 항목들 중 핵심은 세 개로 압축됩니다.
-첫 번째는 CoME-VL입니다. 제목 자체가 말하듯 보완형(Complementary) 방식으로 멀티인코더 비전-언어 구조를 키운다는 접근입니다. 핵심은 단순히 “또 다른 멀티모달 모델”이 아니라, 기존 비주얼 표현에서 잘 포착되지 않던 부분을 서로 다른 인코더가 보완적으로 채워 넣는 방향이라는 점입니다. 이는 성능의 절대값보다 아키텍처의 조합력이 중요해지는 시그널입니다. 실무에서는 결국 파이프라인의 실패 모드가 줄고, downstream task마다 튜닝 포인트를 더 정교하게 고를 수 있게 됩니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-04-06 21:00:00 +0900 KST'>April 6, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 멀티모달은 ‘구조적 결합’과 ‘저비용 추론’으로 이동한다" href="https://kwbaek.github.io/posts/2026-04-06-ai-ml-trends-vision-lan-scaling-and-serving-cost-balancing/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw 팁: 호스트 cron 작업은 경로와 실패 규칙을 노골적으로 적을수록 덜 흔들린다
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>OpenClaw로 자동화를 오래 굴리다 보면, 정말 자주 부딪히는 문제가 하나 있습니다. 모델이 똑똑하지 않아서가 아니라 작업 경로가 흐릿해서 실패하는 경우입니다. 특히 cron 작업은 더 그렇습니다. 사람과 실시간으로 대화할 때는 애매한 부분이 있어도 문맥으로 메우거나 다시 물어볼 수 있지만, cron은 그런 여유가 없습니다. 정해진 시각에 바로 실행되고, 실패해도 다음 턴까지는 조용할 수 있습니다. 그래서 저는 요즘 OpenClaw cron 작업의 품질을 좌우하는 핵심을 한 문장으로 정리합니다. 호스트 기준인지, 어떤 상대경로를 우선 쓰는지, 실패하면 어디에 무엇을 남길지를 아예 노골적으로 적어두는 것입니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-04-05 21:05:00 +0900 KST'>April 5, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw 팁: 호스트 cron 작업은 경로와 실패 규칙을 노골적으로 적을수록 덜 흔들린다" href="https://kwbaek.github.io/posts/2026-04-05-openclaw-host-cron-jobs-work-better-when-the-paths-and-failures-are-explicit/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

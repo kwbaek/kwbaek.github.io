@@ -143,6 +143,20 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 팁: heartbeat와 cron은 비슷해 보여도 다른 일을 맡겨야 한다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>OpenClaw를 조금만 오래 써보면 금방 느끼게 됩니다. heartbeat와 cron은 둘 다 주기적으로 뭔가를 하게 만든다는 점에서는 비슷하지만, 실제로는 같은 도구가 아닙니다. 이 둘을 같은 방식으로 쓰기 시작하면 에이전트가 쓸데없이 시끄러워지거나, 반대로 중요한 일을 놓치기 쉽습니다. 최근 운영 메모와 실제 작업 흐름을 보면, OpenClaw를 안정적으로 굴리는 사람일수록 이 둘의 역할을 꽤 엄격하게 나눕니다.
+제가 가장 추천하는 기준은 간단합니다. heartbeat는 문맥을 이어받아 조용히 점검하고 진전시키는 일에, cron은 정해진 시각에 정확히 실행되어야 하는 독립 작업에 쓰는 겁니다. 예를 들어 메일, 캘린더, 멘션, 프로젝트 상태를 한 번에 묶어 보는 작업은 heartbeat에 잘 맞습니다. 최근 대화 맥락을 보고, 꼭 말해야 할 때만 말하고, 별일 없으면 조용히 지나갈 수 있기 때문입니다. 반대로 매일 아침 리포트를 보내거나, 특정 시각에 블로그 글을 생성하거나, 실패 시 별도 알림이 필요한 작업은 cron이 훨씬 적합합니다. 이런 일은 “대충 비슷한 시간”이 아니라 정확한 실행 보장이 더 중요하기 때문입니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-04-20 21:05:00 +0900 KST'>April 20, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 팁: heartbeat와 cron은 비슷해 보여도 다른 일을 맡겨야 한다" href="https://kwbaek.github.io/posts/2026-04-20-openclaw-heartbeat-and-cron-should-do-different-jobs/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">OpenClaw 팁: 항상 켜진 에이전트를 오래 굴릴수록 중요한 운영 체크리스트
     </h2>
   </header>
@@ -265,19 +279,6 @@
   </div>
   <footer class="entry-footer"><span title='2026-04-07 20:55:00 +0900 KST'>April 7, 2026</span></footer>
   <a class="entry-link" aria-label="post link to OpenClaw 팁: 매일 블로그 자동화는 한 번 돌 때 두 종류의 가치를 만들어야 오래 간다" href="https://kwbaek.github.io/posts/2026-04-07-openclaw-daily-blog-automation-works-best-when-one-run-produces-two-different-kinds-of-value/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw 팁: 호스트 cron 작업은 경로와 실패 규칙을 노골적으로 적을수록 덜 흔들린다
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>OpenClaw로 자동화를 오래 굴리다 보면, 정말 자주 부딪히는 문제가 하나 있습니다. 모델이 똑똑하지 않아서가 아니라 작업 경로가 흐릿해서 실패하는 경우입니다. 특히 cron 작업은 더 그렇습니다. 사람과 실시간으로 대화할 때는 애매한 부분이 있어도 문맥으로 메우거나 다시 물어볼 수 있지만, cron은 그런 여유가 없습니다. 정해진 시각에 바로 실행되고, 실패해도 다음 턴까지는 조용할 수 있습니다. 그래서 저는 요즘 OpenClaw cron 작업의 품질을 좌우하는 핵심을 한 문장으로 정리합니다. 호스트 기준인지, 어떤 상대경로를 우선 쓰는지, 실패하면 어디에 무엇을 남길지를 아예 노골적으로 적어두는 것입니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-04-05 21:05:00 +0900 KST'>April 5, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw 팁: 호스트 cron 작업은 경로와 실패 규칙을 노골적으로 적을수록 덜 흔들린다" href="https://kwbaek.github.io/posts/2026-04-05-openclaw-host-cron-jobs-work-better-when-the-paths-and-failures-are-explicit/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

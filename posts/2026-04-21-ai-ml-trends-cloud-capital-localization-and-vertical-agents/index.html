@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>AI/ML 트렌드: 오늘 에이전트 경쟁은 클라우드 자본, 현지화, 버티컬 실행력으로 갈라진다 | Kyungwook&#39;s Devlog</title>
+<meta name="keywords" content="AI, ML, Agents, Cloud, Localization, Healthcare, Enterprise">
+<meta name="description" content="오늘 Discord #ai-ml-trends 채널에서 가장 중요하게 보인 흐름은, 에이전트 경쟁의 기준이 다시 한 번 더 현실적인 운영 레이어로 이동하고 있다는 점입니다. 오늘 올라온 신호들을 같이 보면 승부가 단순히 “누가 더 똑똑한 모델을 만들었나”에서 끝나지 않습니다. 이제는 누가 더 큰 클라우드 자본과 배포 계약을 묶어두는지, 누가 더 잘 현지화된 데이터를 설계하는지, 그리고 누가 고신뢰 버티컬 워크플로를 실제 업무에 맞게 제품화하는지가 점점 더 중요해지고 있습니다.
+가장 강한 신호는 Reuters가 전한 Amazon과 Anthropic의 대형 클라우드 계약이었습니다. 이 소식이 중요한 이유는 프런티어 AI 경쟁이 모델 성능 비교를 넘어, 장기 컴퓨트와 유통 채널, 고객 접점을 누가 더 깊게 선점하느냐는 구조전으로 옮겨가고 있기 때문입니다. 거대한 모델을 만드는 것만으로는 충분하지 않고, 그 모델이 실제로 배포될 클라우드 인프라와 매출 엔진이 함께 묶여야 합니다. 앞으로는 “좋은 모델 회사”보다 “자본, 컴퓨트, 유통이 결합된 AI 운영체계”가 더 강해질 가능성이 큽니다.">
+<meta name="author" content="">
+<link rel="canonical" href="https://kwbaek.github.io/posts/2026-04-21-ai-ml-trends-cloud-capital-localization-and-vertical-agents/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.da3211e5ef867bf2b75fd5a6515cfed7195c011e8ab735694e203810a827097b.css" integrity="sha256-2jIR5e&#43;Ge/K3X9WmUVz&#43;1xlcAR6KtzVpTiA4EKgnCXs=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://kwbaek.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://kwbaek.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://kwbaek.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://kwbaek.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://kwbaek.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://kwbaek.github.io/posts/2026-04-21-ai-ml-trends-cloud-capital-localization-and-vertical-agents/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="https://kwbaek.github.io/posts/2026-04-21-ai-ml-trends-cloud-capital-localization-and-vertical-agents/">
+  <meta property="og:site_name" content="Kyungwook&#39;s Devlog">
+  <meta property="og:title" content="AI/ML 트렌드: 오늘 에이전트 경쟁은 클라우드 자본, 현지화, 버티컬 실행력으로 갈라진다">
+  <meta property="og:description" content="오늘 Discord #ai-ml-trends 채널에서 가장 중요하게 보인 흐름은, 에이전트 경쟁의 기준이 다시 한 번 더 현실적인 운영 레이어로 이동하고 있다는 점입니다. 오늘 올라온 신호들을 같이 보면 승부가 단순히 “누가 더 똑똑한 모델을 만들었나”에서 끝나지 않습니다. 이제는 누가 더 큰 클라우드 자본과 배포 계약을 묶어두는지, 누가 더 잘 현지화된 데이터를 설계하는지, 그리고 누가 고신뢰 버티컬 워크플로를 실제 업무에 맞게 제품화하는지가 점점 더 중요해지고 있습니다.
+가장 강한 신호는 Reuters가 전한 Amazon과 Anthropic의 대형 클라우드 계약이었습니다. 이 소식이 중요한 이유는 프런티어 AI 경쟁이 모델 성능 비교를 넘어, 장기 컴퓨트와 유통 채널, 고객 접점을 누가 더 깊게 선점하느냐는 구조전으로 옮겨가고 있기 때문입니다. 거대한 모델을 만드는 것만으로는 충분하지 않고, 그 모델이 실제로 배포될 클라우드 인프라와 매출 엔진이 함께 묶여야 합니다. 앞으로는 “좋은 모델 회사”보다 “자본, 컴퓨트, 유통이 결합된 AI 운영체계”가 더 강해질 가능성이 큽니다.">
+  <meta property="og:locale" content="ko-kr">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2026-04-21T21:00:00+09:00">
+    <meta property="article:modified_time" content="2026-04-21T21:00:00+09:00">
+    <meta property="article:tag" content="Ai">
+    <meta property="article:tag" content="Ml">
+    <meta property="article:tag" content="Agents">
+    <meta property="article:tag" content="Cloud">
+    <meta property="article:tag" content="Localization">
+    <meta property="article:tag" content="Healthcare">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="AI/ML 트렌드: 오늘 에이전트 경쟁은 클라우드 자본, 현지화, 버티컬 실행력으로 갈라진다">
+<meta name="twitter:description" content="오늘 Discord #ai-ml-trends 채널에서 가장 중요하게 보인 흐름은, 에이전트 경쟁의 기준이 다시 한 번 더 현실적인 운영 레이어로 이동하고 있다는 점입니다. 오늘 올라온 신호들을 같이 보면 승부가 단순히 “누가 더 똑똑한 모델을 만들었나”에서 끝나지 않습니다. 이제는 누가 더 큰 클라우드 자본과 배포 계약을 묶어두는지, 누가 더 잘 현지화된 데이터를 설계하는지, 그리고 누가 고신뢰 버티컬 워크플로를 실제 업무에 맞게 제품화하는지가 점점 더 중요해지고 있습니다.
+가장 강한 신호는 Reuters가 전한 Amazon과 Anthropic의 대형 클라우드 계약이었습니다. 이 소식이 중요한 이유는 프런티어 AI 경쟁이 모델 성능 비교를 넘어, 장기 컴퓨트와 유통 채널, 고객 접점을 누가 더 깊게 선점하느냐는 구조전으로 옮겨가고 있기 때문입니다. 거대한 모델을 만드는 것만으로는 충분하지 않고, 그 모델이 실제로 배포될 클라우드 인프라와 매출 엔진이 함께 묶여야 합니다. 앞으로는 “좋은 모델 회사”보다 “자본, 컴퓨트, 유통이 결합된 AI 운영체계”가 더 강해질 가능성이 큽니다.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://kwbaek.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "AI/ML 트렌드: 오늘 에이전트 경쟁은 클라우드 자본, 현지화, 버티컬 실행력으로 갈라진다",
+      "item": "https://kwbaek.github.io/posts/2026-04-21-ai-ml-trends-cloud-capital-localization-and-vertical-agents/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "AI/ML 트렌드: 오늘 에이전트 경쟁은 클라우드 자본, 현지화, 버티컬 실행력으로 갈라진다",
+  "name": "AI\/ML 트렌드: 오늘 에이전트 경쟁은 클라우드 자본, 현지화, 버티컬 실행력으로 갈라진다",
+  "description": "오늘 Discord #ai-ml-trends 채널에서 가장 중요하게 보인 흐름은, 에이전트 경쟁의 기준이 다시 한 번 더 현실적인 운영 레이어로 이동하고 있다는 점입니다. 오늘 올라온 신호들을 같이 보면 승부가 단순히 “누가 더 똑똑한 모델을 만들었나”에서 끝나지 않습니다. 이제는 누가 더 큰 클라우드 자본과 배포 계약을 묶어두는지, 누가 더 잘 현지화된 데이터를 설계하는지, 그리고 누가 고신뢰 버티컬 워크플로를 실제 업무에 맞게 제품화하는지가 점점 더 중요해지고 있습니다.\n가장 강한 신호는 Reuters가 전한 Amazon과 Anthropic의 대형 클라우드 계약이었습니다. 이 소식이 중요한 이유는 프런티어 AI 경쟁이 모델 성능 비교를 넘어, 장기 컴퓨트와 유통 채널, 고객 접점을 누가 더 깊게 선점하느냐는 구조전으로 옮겨가고 있기 때문입니다. 거대한 모델을 만드는 것만으로는 충분하지 않고, 그 모델이 실제로 배포될 클라우드 인프라와 매출 엔진이 함께 묶여야 합니다. 앞으로는 “좋은 모델 회사”보다 “자본, 컴퓨트, 유통이 결합된 AI 운영체계”가 더 강해질 가능성이 큽니다.\n",
+  "keywords": [
+    "AI", "ML", "Agents", "Cloud", "Localization", "Healthcare", "Enterprise"
+  ],
+  "articleBody": "오늘 Discord #ai-ml-trends 채널에서 가장 중요하게 보인 흐름은, 에이전트 경쟁의 기준이 다시 한 번 더 현실적인 운영 레이어로 이동하고 있다는 점입니다. 오늘 올라온 신호들을 같이 보면 승부가 단순히 “누가 더 똑똑한 모델을 만들었나”에서 끝나지 않습니다. 이제는 누가 더 큰 클라우드 자본과 배포 계약을 묶어두는지, 누가 더 잘 현지화된 데이터를 설계하는지, 그리고 누가 고신뢰 버티컬 워크플로를 실제 업무에 맞게 제품화하는지가 점점 더 중요해지고 있습니다.\n가장 강한 신호는 Reuters가 전한 Amazon과 Anthropic의 대형 클라우드 계약이었습니다. 이 소식이 중요한 이유는 프런티어 AI 경쟁이 모델 성능 비교를 넘어, 장기 컴퓨트와 유통 채널, 고객 접점을 누가 더 깊게 선점하느냐는 구조전으로 옮겨가고 있기 때문입니다. 거대한 모델을 만드는 것만으로는 충분하지 않고, 그 모델이 실제로 배포될 클라우드 인프라와 매출 엔진이 함께 묶여야 합니다. 앞으로는 “좋은 모델 회사”보다 “자본, 컴퓨트, 유통이 결합된 AI 운영체계”가 더 강해질 가능성이 큽니다.\n두 번째로 흥미로웠던 흐름은 한국 인구통계 기반 synthetic persona로 Korean AI agent를 grounding하는 접근이었습니다. 이건 현지화가 단순 번역 품질의 문제가 아니라는 걸 잘 보여줍니다. 에이전트가 특정 시장에서 실제로 쓸 만해지려면, 그 사회의 언어 습관, 연령대 분포, 생활 맥락, 기대 행동까지 반영한 데이터 설계가 필요합니다. 범용 모델이 아무리 좋아도 지역 현실을 모르면 실제 사용자 경험은 금방 어색해집니다. 결국 다음 경쟁은 더 큰 모델이 아니라, 더 정교한 grounding과 더 좋은 운영 데이터 설계가 좌우할 수 있습니다.\n세 번째 축은 버티컬 에이전트의 실전화입니다. Boehringer Ingelheim의 런던 AI 연구 센터 출범과 RadAgent 같은 의료형 tool-using agent 연구를 같이 보면, 이제 에이전트는 범용 비서에서 끝나지 않고 제약 연구, 영상 판독, 고신뢰 해석 같은 전문 워크플로 안으로 깊게 들어가고 있습니다. 여기서 중요한 건 화려한 데모가 아니라, 단계별 해석과 도구 사용, 검토 가능성, 책임 있는 배치입니다. 의료나 제약처럼 실수 비용이 큰 영역에서는 fluent한 답변보다 감사 가능하고 재현 가능한 실행 흐름이 훨씬 중요합니다.\n오늘의 결론은 꽤 분명합니다. AI/ML 시장의 다음 승부는 더 긴 reasoning token만으로 정해지지 않습니다. 앞으로 강한 플레이어는 클라우드 자본과 배포권을 묶고, 지역별 grounding을 정교하게 만들고, 의료나 제약 같은 버티컬 워크플로에 맞는 실행 신뢰성을 확보하는 쪽에서 앞서갈 것입니다. 이제 에이전트 경쟁은 모델 데모의 시대를 지나, 인프라, 현지화, 버티컬 운영의 시대로 들어가고 있습니다.\n",
+  "wordCount" : "325",
+  "inLanguage": "en",
+  "datePublished": "2026-04-21T21:00:00+09:00",
+  "dateModified": "2026-04-21T21:00:00+09:00",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://kwbaek.github.io/posts/2026-04-21-ai-ml-trends-cloud-capital-localization-and-vertical-agents/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Kyungwook's Devlog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://kwbaek.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://kwbaek.github.io/" accesskey="h" title="Kyungwook&#39;s Devlog (Alt + H)">Kyungwook&#39;s Devlog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://kwbaek.github.io/categories/" title="categories">
+                    <span>categories</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kwbaek.github.io/tags/" title="tags">
+                    <span>tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kwbaek.github.io/" title="Kyungwook&#39;s Devlog">
+                    <span>Kyungwook&#39;s Devlog</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      AI/ML 트렌드: 오늘 에이전트 경쟁은 클라우드 자본, 현지화, 버티컬 실행력으로 갈라진다
+    </h1>
+    <div class="post-meta"><span title='2026-04-21 21:00:00 +0900 KST'>April 21, 2026</span>
+
+</div>
+  </header> 
+  <div class="post-content"><p>오늘 Discord <code>#ai-ml-trends</code> 채널에서 가장 중요하게 보인 흐름은, 에이전트 경쟁의 기준이 다시 한 번 더 현실적인 운영 레이어로 이동하고 있다는 점입니다. 오늘 올라온 신호들을 같이 보면 승부가 단순히 “누가 더 똑똑한 모델을 만들었나”에서 끝나지 않습니다. 이제는 <strong>누가 더 큰 클라우드 자본과 배포 계약을 묶어두는지</strong>, <strong>누가 더 잘 현지화된 데이터를 설계하는지</strong>, 그리고 <strong>누가 고신뢰 버티컬 워크플로를 실제 업무에 맞게 제품화하는지</strong>가 점점 더 중요해지고 있습니다.</p>
+<p>가장 강한 신호는 Reuters가 전한 <strong>Amazon과 Anthropic의 대형 클라우드 계약</strong>이었습니다. 이 소식이 중요한 이유는 프런티어 AI 경쟁이 모델 성능 비교를 넘어, 장기 컴퓨트와 유통 채널, 고객 접점을 누가 더 깊게 선점하느냐는 구조전으로 옮겨가고 있기 때문입니다. 거대한 모델을 만드는 것만으로는 충분하지 않고, 그 모델이 실제로 배포될 클라우드 인프라와 매출 엔진이 함께 묶여야 합니다. 앞으로는 “좋은 모델 회사”보다 “자본, 컴퓨트, 유통이 결합된 AI 운영체계”가 더 강해질 가능성이 큽니다.</p>
+<p>두 번째로 흥미로웠던 흐름은 <strong>한국 인구통계 기반 synthetic persona로 Korean AI agent를 grounding</strong>하는 접근이었습니다. 이건 현지화가 단순 번역 품질의 문제가 아니라는 걸 잘 보여줍니다. 에이전트가 특정 시장에서 실제로 쓸 만해지려면, 그 사회의 언어 습관, 연령대 분포, 생활 맥락, 기대 행동까지 반영한 데이터 설계가 필요합니다. 범용 모델이 아무리 좋아도 지역 현실을 모르면 실제 사용자 경험은 금방 어색해집니다. 결국 다음 경쟁은 더 큰 모델이 아니라, <strong>더 정교한 grounding과 더 좋은 운영 데이터 설계</strong>가 좌우할 수 있습니다.</p>
+<p>세 번째 축은 <strong>버티컬 에이전트의 실전화</strong>입니다. Boehringer Ingelheim의 런던 AI 연구 센터 출범과 <code>RadAgent</code> 같은 의료형 tool-using agent 연구를 같이 보면, 이제 에이전트는 범용 비서에서 끝나지 않고 제약 연구, 영상 판독, 고신뢰 해석 같은 전문 워크플로 안으로 깊게 들어가고 있습니다. 여기서 중요한 건 화려한 데모가 아니라, 단계별 해석과 도구 사용, 검토 가능성, 책임 있는 배치입니다. 의료나 제약처럼 실수 비용이 큰 영역에서는 fluent한 답변보다 <strong>감사 가능하고 재현 가능한 실행 흐름</strong>이 훨씬 중요합니다.</p>
+<p>오늘의 결론은 꽤 분명합니다. AI/ML 시장의 다음 승부는 더 긴 reasoning token만으로 정해지지 않습니다. 앞으로 강한 플레이어는 클라우드 자본과 배포권을 묶고, 지역별 grounding을 정교하게 만들고, 의료나 제약 같은 버티컬 워크플로에 맞는 실행 신뢰성을 확보하는 쪽에서 앞서갈 것입니다. 이제 에이전트 경쟁은 모델 데모의 시대를 지나, <strong>인프라, 현지화, 버티컬 운영</strong>의 시대로 들어가고 있습니다.</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://kwbaek.github.io/tags/ai/">Ai</a></li>
+      <li><a href="https://kwbaek.github.io/tags/ml/">Ml</a></li>
+      <li><a href="https://kwbaek.github.io/tags/agents/">Agents</a></li>
+      <li><a href="https://kwbaek.github.io/tags/cloud/">Cloud</a></li>
+      <li><a href="https://kwbaek.github.io/tags/localization/">Localization</a></li>
+      <li><a href="https://kwbaek.github.io/tags/healthcare/">Healthcare</a></li>
+      <li><a href="https://kwbaek.github.io/tags/enterprise/">Enterprise</a></li>
+    </ul>
+  </footer><script src="https://utteranc.es/client.js"
+        repo="kwbaek/blog-comments"
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://kwbaek.github.io/">Kyungwook&#39;s Devlog</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>
