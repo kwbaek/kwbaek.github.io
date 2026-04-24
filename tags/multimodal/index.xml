@@ -6,8 +6,15 @@
     <description>Recent content in Multimodal on Kyungwook&#39;s Devlog</description>
     <generator>Hugo -- 0.155.3</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Sun, 22 Mar 2026 21:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Wed, 22 Apr 2026 21:00:00 +0900</lastBuildDate>
     <atom:link href="https://kwbaek.github.io/tags/multimodal/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI/ML 트렌드: 엔터프라이즈 에이전트 확산 뒤에서 진짜 차이를 만드는 것은 평가, 메모리, 멀티모달 워크플로다</title>
+      <link>https://kwbaek.github.io/posts/2026-04-22-ai-ml-trends-enterprise-agents-expand-while-evaluation-and-memory-become-the-real-stack/</link>
+      <pubDate>Wed, 22 Apr 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-04-22-ai-ml-trends-enterprise-agents-expand-while-evaluation-and-memory-become-the-real-stack/</guid>
+      <description>&lt;p&gt;오늘 Discord &lt;code&gt;#ai-ml-trends&lt;/code&gt; 채널에서 가장 흥미롭게 보인 흐름은, 에이전트 시장이 더 넓게 퍼지는 속도만큼이나 그 뒤를 받치는 &lt;strong&gt;운영 스택의 세부 요소&lt;/strong&gt;가 중요해지고 있다는 점이었습니다. 표면적으로는 OpenAI의 엔터프라이즈용 Codex 확장, Anthropic의 &lt;code&gt;Claude Design&lt;/code&gt;, &lt;code&gt;Mem0&lt;/code&gt;, &lt;code&gt;QIMMA&lt;/code&gt;, &lt;code&gt;SafetyALFRED&lt;/code&gt;, 그리고 &lt;code&gt;A-MAR&lt;/code&gt; 같은 연구가 서로 다른 뉴스처럼 보입니다. 하지만 같이 놓고 보면 한 방향이 선명합니다. 이제 경쟁은 “누가 더 똑똑한 모델을 보여주느냐”보다, &lt;strong&gt;누가 더 잘 배포하고, 더 잘 기억하고, 더 잘 평가하고, 더 넓은 업무 형태로 붙일 수 있느냐&lt;/strong&gt;로 이동하고 있습니다.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>AI/ML 트렌드: 멀티모달 추론은 이제 정답보다 구성 과정을 학습한다</title>
       <link>https://kwbaek.github.io/posts/2026-03-22-ai-ml-trends-multimodal-reasoning-shifts-to-constructive-processes/</link>

@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>AI/ML 트렌드: 엔터프라이즈 에이전트 확산 뒤에서 진짜 차이를 만드는 것은 평가, 메모리, 멀티모달 워크플로다 | Kyungwook&#39;s Devlog</title>
+<meta name="keywords" content="AI, ML, Agents, Enterprise, Evaluation, Memory, Multimodal">
+<meta name="description" content="오늘 Discord #ai-ml-trends 채널에서 가장 흥미롭게 보인 흐름은, 에이전트 시장이 더 넓게 퍼지는 속도만큼이나 그 뒤를 받치는 운영 스택의 세부 요소가 중요해지고 있다는 점이었습니다. 표면적으로는 OpenAI의 엔터프라이즈용 Codex 확장, Anthropic의 Claude Design, Mem0, QIMMA, SafetyALFRED, 그리고 A-MAR 같은 연구가 서로 다른 뉴스처럼 보입니다. 하지만 같이 놓고 보면 한 방향이 선명합니다. 이제 경쟁은 “누가 더 똑똑한 모델을 보여주느냐”보다, 누가 더 잘 배포하고, 더 잘 기억하고, 더 잘 평가하고, 더 넓은 업무 형태로 붙일 수 있느냐로 이동하고 있습니다.">
+<meta name="author" content="">
+<link rel="canonical" href="https://kwbaek.github.io/posts/2026-04-22-ai-ml-trends-enterprise-agents-expand-while-evaluation-and-memory-become-the-real-stack/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.da3211e5ef867bf2b75fd5a6515cfed7195c011e8ab735694e203810a827097b.css" integrity="sha256-2jIR5e&#43;Ge/K3X9WmUVz&#43;1xlcAR6KtzVpTiA4EKgnCXs=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://kwbaek.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://kwbaek.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://kwbaek.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://kwbaek.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://kwbaek.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://kwbaek.github.io/posts/2026-04-22-ai-ml-trends-enterprise-agents-expand-while-evaluation-and-memory-become-the-real-stack/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="https://kwbaek.github.io/posts/2026-04-22-ai-ml-trends-enterprise-agents-expand-while-evaluation-and-memory-become-the-real-stack/">
+  <meta property="og:site_name" content="Kyungwook&#39;s Devlog">
+  <meta property="og:title" content="AI/ML 트렌드: 엔터프라이즈 에이전트 확산 뒤에서 진짜 차이를 만드는 것은 평가, 메모리, 멀티모달 워크플로다">
+  <meta property="og:description" content="오늘 Discord #ai-ml-trends 채널에서 가장 흥미롭게 보인 흐름은, 에이전트 시장이 더 넓게 퍼지는 속도만큼이나 그 뒤를 받치는 운영 스택의 세부 요소가 중요해지고 있다는 점이었습니다. 표면적으로는 OpenAI의 엔터프라이즈용 Codex 확장, Anthropic의 Claude Design, Mem0, QIMMA, SafetyALFRED, 그리고 A-MAR 같은 연구가 서로 다른 뉴스처럼 보입니다. 하지만 같이 놓고 보면 한 방향이 선명합니다. 이제 경쟁은 “누가 더 똑똑한 모델을 보여주느냐”보다, 누가 더 잘 배포하고, 더 잘 기억하고, 더 잘 평가하고, 더 넓은 업무 형태로 붙일 수 있느냐로 이동하고 있습니다.">
+  <meta property="og:locale" content="ko-kr">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2026-04-22T21:00:00+09:00">
+    <meta property="article:modified_time" content="2026-04-22T21:00:00+09:00">
+    <meta property="article:tag" content="Ai">
+    <meta property="article:tag" content="Ml">
+    <meta property="article:tag" content="Agents">
+    <meta property="article:tag" content="Enterprise">
+    <meta property="article:tag" content="Evaluation">
+    <meta property="article:tag" content="Memory">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="AI/ML 트렌드: 엔터프라이즈 에이전트 확산 뒤에서 진짜 차이를 만드는 것은 평가, 메모리, 멀티모달 워크플로다">
+<meta name="twitter:description" content="오늘 Discord #ai-ml-trends 채널에서 가장 흥미롭게 보인 흐름은, 에이전트 시장이 더 넓게 퍼지는 속도만큼이나 그 뒤를 받치는 운영 스택의 세부 요소가 중요해지고 있다는 점이었습니다. 표면적으로는 OpenAI의 엔터프라이즈용 Codex 확장, Anthropic의 Claude Design, Mem0, QIMMA, SafetyALFRED, 그리고 A-MAR 같은 연구가 서로 다른 뉴스처럼 보입니다. 하지만 같이 놓고 보면 한 방향이 선명합니다. 이제 경쟁은 “누가 더 똑똑한 모델을 보여주느냐”보다, 누가 더 잘 배포하고, 더 잘 기억하고, 더 잘 평가하고, 더 넓은 업무 형태로 붙일 수 있느냐로 이동하고 있습니다.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://kwbaek.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "AI/ML 트렌드: 엔터프라이즈 에이전트 확산 뒤에서 진짜 차이를 만드는 것은 평가, 메모리, 멀티모달 워크플로다",
+      "item": "https://kwbaek.github.io/posts/2026-04-22-ai-ml-trends-enterprise-agents-expand-while-evaluation-and-memory-become-the-real-stack/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "AI/ML 트렌드: 엔터프라이즈 에이전트 확산 뒤에서 진짜 차이를 만드는 것은 평가, 메모리, 멀티모달 워크플로다",
+  "name": "AI\/ML 트렌드: 엔터프라이즈 에이전트 확산 뒤에서 진짜 차이를 만드는 것은 평가, 메모리, 멀티모달 워크플로다",
+  "description": "오늘 Discord #ai-ml-trends 채널에서 가장 흥미롭게 보인 흐름은, 에이전트 시장이 더 넓게 퍼지는 속도만큼이나 그 뒤를 받치는 운영 스택의 세부 요소가 중요해지고 있다는 점이었습니다. 표면적으로는 OpenAI의 엔터프라이즈용 Codex 확장, Anthropic의 Claude Design, Mem0, QIMMA, SafetyALFRED, 그리고 A-MAR 같은 연구가 서로 다른 뉴스처럼 보입니다. 하지만 같이 놓고 보면 한 방향이 선명합니다. 이제 경쟁은 “누가 더 똑똑한 모델을 보여주느냐”보다, 누가 더 잘 배포하고, 더 잘 기억하고, 더 잘 평가하고, 더 넓은 업무 형태로 붙일 수 있느냐로 이동하고 있습니다.\n",
+  "keywords": [
+    "AI", "ML", "Agents", "Enterprise", "Evaluation", "Memory", "Multimodal"
+  ],
+  "articleBody": "오늘 Discord #ai-ml-trends 채널에서 가장 흥미롭게 보인 흐름은, 에이전트 시장이 더 넓게 퍼지는 속도만큼이나 그 뒤를 받치는 운영 스택의 세부 요소가 중요해지고 있다는 점이었습니다. 표면적으로는 OpenAI의 엔터프라이즈용 Codex 확장, Anthropic의 Claude Design, Mem0, QIMMA, SafetyALFRED, 그리고 A-MAR 같은 연구가 서로 다른 뉴스처럼 보입니다. 하지만 같이 놓고 보면 한 방향이 선명합니다. 이제 경쟁은 “누가 더 똑똑한 모델을 보여주느냐”보다, 누가 더 잘 배포하고, 더 잘 기억하고, 더 잘 평가하고, 더 넓은 업무 형태로 붙일 수 있느냐로 이동하고 있습니다.\n가장 직접적인 사업 신호는 OpenAI의 Codex 엔터프라이즈 확장이었습니다. 이 움직임은 코딩 보조가 더 이상 개인 생산성 기능에 머물지 않고, 기업 단위 배포와 운영 통합의 문제로 넘어갔다는 뜻입니다. Accenture, PwC, Infosys 같은 파트너를 끼고 확장한다는 건 모델 성능만으로는 부족하고, 권한 관리, 보안, 팀별 도입 흐름, 비용 정산까지 포함한 배포 체계가 함께 팔리고 있다는 의미이기도 합니다. 에이전트 시장은 점점 “좋은 데모”보다 도입 가능한 운영 패키지를 가진 쪽이 유리해질 가능성이 큽니다.\n여기에 **Anthropic의 Claude Design**이 붙으면서 범위는 더 넓어졌습니다. 이제 에이전트는 문서 작성이나 코드 생성에만 머무르지 않고, 디자인, 슬라이드, 원페이저 같은 시각적 산출물까지 하나의 멀티모달 생산 체인으로 흡수하려고 합니다. 이건 단순한 기능 추가가 아니라, 기업 안에서 AI가 연결될 수 있는 업무 종류가 훨씬 늘어난다는 뜻입니다. 앞으로는 “어떤 모델이 더 잘 답하나”보다, 어떤 도구 체인이 더 많은 팀의 실제 일을 끌어안느냐가 더 큰 차별점이 될 수 있습니다.\n하지만 확산만으로 끝나지 않습니다. 오늘 나온 Mem0와 QIMMA, SafetyALFRED는 왜 운영 스택이 중요해지는지를 잘 보여줍니다. Mem0는 에이전트의 다음 병목이 긴 컨텍스트 자체가 아니라, 장기 기억을 얼마나 저렴하고 안정적으로 유지·검색·갱신하느냐는 문제라는 점을 드러냅니다. QIMMA는 영어권 평균 점수보다, 특정 언어권과 문화권에서 실제 품질을 정교하게 평가하는 infrastructure가 중요해지고 있음을 보여줍니다. SafetyALFRED는 embodied planning에서 task success보다 위험 회피와 행동 안전성이 더 중요한 기준이 되고 있음을 선명하게 만듭니다. 즉, 에이전트가 커질수록 핵심은 모델보다 메모리 구조, 평가 체계, 안전 절차가 됩니다.\nA-MAR 같은 멀티모달 검색 연구도 같은 흐름에 있습니다. 이미지와 문화적 맥락, 의미 단서를 단계적으로 해석하는 agent-based retrieval은 앞으로 디자인 자산 탐색, IP 보호, 추천 시스템, 브랜드 운영 같은 실무 영역으로 자연스럽게 이어질 수 있습니다. 결국 멀티모달은 보기 좋은 데모가 아니라, 실제 자산과 문서를 더 잘 찾고 분류하고 설명하는 업무 레이어가 되어가고 있습니다.\n정리하면 오늘의 AI/ML 트렌드는 꽤 분명합니다. 엔터프라이즈 에이전트 확산은 계속되겠지만, 진짜 승부는 그 뒤에서 어떤 팀이 더 좋은 메모리 아키텍처를 갖고 있는지, 더 촘촘한 평가와 안전 기준을 갖고 있는지, 더 넓은 멀티모달 워크플로를 실제 조직에 붙일 수 있는지에서 갈릴 것입니다. 이제 에이전트 경쟁은 모델 발표의 시대를 지나, 배포, 평가, 기억, 멀티모달 운영의 시대로 들어가고 있습니다.\n",
+  "wordCount" : "391",
+  "inLanguage": "en",
+  "datePublished": "2026-04-22T21:00:00+09:00",
+  "dateModified": "2026-04-22T21:00:00+09:00",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://kwbaek.github.io/posts/2026-04-22-ai-ml-trends-enterprise-agents-expand-while-evaluation-and-memory-become-the-real-stack/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Kyungwook's Devlog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://kwbaek.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://kwbaek.github.io/" accesskey="h" title="Kyungwook&#39;s Devlog (Alt + H)">Kyungwook&#39;s Devlog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://kwbaek.github.io/categories/" title="categories">
+                    <span>categories</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kwbaek.github.io/tags/" title="tags">
+                    <span>tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kwbaek.github.io/" title="Kyungwook&#39;s Devlog">
+                    <span>Kyungwook&#39;s Devlog</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      AI/ML 트렌드: 엔터프라이즈 에이전트 확산 뒤에서 진짜 차이를 만드는 것은 평가, 메모리, 멀티모달 워크플로다
+    </h1>
+    <div class="post-meta"><span title='2026-04-22 21:00:00 +0900 KST'>April 22, 2026</span>
+
+</div>
+  </header> 
+  <div class="post-content"><p>오늘 Discord <code>#ai-ml-trends</code> 채널에서 가장 흥미롭게 보인 흐름은, 에이전트 시장이 더 넓게 퍼지는 속도만큼이나 그 뒤를 받치는 <strong>운영 스택의 세부 요소</strong>가 중요해지고 있다는 점이었습니다. 표면적으로는 OpenAI의 엔터프라이즈용 Codex 확장, Anthropic의 <code>Claude Design</code>, <code>Mem0</code>, <code>QIMMA</code>, <code>SafetyALFRED</code>, 그리고 <code>A-MAR</code> 같은 연구가 서로 다른 뉴스처럼 보입니다. 하지만 같이 놓고 보면 한 방향이 선명합니다. 이제 경쟁은 “누가 더 똑똑한 모델을 보여주느냐”보다, <strong>누가 더 잘 배포하고, 더 잘 기억하고, 더 잘 평가하고, 더 넓은 업무 형태로 붙일 수 있느냐</strong>로 이동하고 있습니다.</p>
+<p>가장 직접적인 사업 신호는 <strong>OpenAI의 Codex 엔터프라이즈 확장</strong>이었습니다. 이 움직임은 코딩 보조가 더 이상 개인 생산성 기능에 머물지 않고, 기업 단위 배포와 운영 통합의 문제로 넘어갔다는 뜻입니다. Accenture, PwC, Infosys 같은 파트너를 끼고 확장한다는 건 모델 성능만으로는 부족하고, 권한 관리, 보안, 팀별 도입 흐름, 비용 정산까지 포함한 배포 체계가 함께 팔리고 있다는 의미이기도 합니다. 에이전트 시장은 점점 “좋은 데모”보다 <strong>도입 가능한 운영 패키지</strong>를 가진 쪽이 유리해질 가능성이 큽니다.</p>
+<p>여기에 **Anthropic의 <code>Claude Design</code>**이 붙으면서 범위는 더 넓어졌습니다. 이제 에이전트는 문서 작성이나 코드 생성에만 머무르지 않고, 디자인, 슬라이드, 원페이저 같은 시각적 산출물까지 하나의 멀티모달 생산 체인으로 흡수하려고 합니다. 이건 단순한 기능 추가가 아니라, 기업 안에서 AI가 연결될 수 있는 업무 종류가 훨씬 늘어난다는 뜻입니다. 앞으로는 “어떤 모델이 더 잘 답하나”보다, <strong>어떤 도구 체인이 더 많은 팀의 실제 일을 끌어안느냐</strong>가 더 큰 차별점이 될 수 있습니다.</p>
+<p>하지만 확산만으로 끝나지 않습니다. 오늘 나온 <code>Mem0</code>와 <code>QIMMA</code>, <code>SafetyALFRED</code>는 왜 운영 스택이 중요해지는지를 잘 보여줍니다. <code>Mem0</code>는 에이전트의 다음 병목이 긴 컨텍스트 자체가 아니라, 장기 기억을 얼마나 저렴하고 안정적으로 유지·검색·갱신하느냐는 문제라는 점을 드러냅니다. <code>QIMMA</code>는 영어권 평균 점수보다, 특정 언어권과 문화권에서 실제 품질을 정교하게 평가하는 infrastructure가 중요해지고 있음을 보여줍니다. <code>SafetyALFRED</code>는 embodied planning에서 task success보다 위험 회피와 행동 안전성이 더 중요한 기준이 되고 있음을 선명하게 만듭니다. 즉, 에이전트가 커질수록 핵심은 모델보다 <strong>메모리 구조, 평가 체계, 안전 절차</strong>가 됩니다.</p>
+<p><code>A-MAR</code> 같은 멀티모달 검색 연구도 같은 흐름에 있습니다. 이미지와 문화적 맥락, 의미 단서를 단계적으로 해석하는 agent-based retrieval은 앞으로 디자인 자산 탐색, IP 보호, 추천 시스템, 브랜드 운영 같은 실무 영역으로 자연스럽게 이어질 수 있습니다. 결국 멀티모달은 보기 좋은 데모가 아니라, 실제 자산과 문서를 더 잘 찾고 분류하고 설명하는 <strong>업무 레이어</strong>가 되어가고 있습니다.</p>
+<p>정리하면 오늘의 AI/ML 트렌드는 꽤 분명합니다. 엔터프라이즈 에이전트 확산은 계속되겠지만, 진짜 승부는 그 뒤에서 어떤 팀이 더 좋은 메모리 아키텍처를 갖고 있는지, 더 촘촘한 평가와 안전 기준을 갖고 있는지, 더 넓은 멀티모달 워크플로를 실제 조직에 붙일 수 있는지에서 갈릴 것입니다. 이제 에이전트 경쟁은 모델 발표의 시대를 지나, <strong>배포, 평가, 기억, 멀티모달 운영</strong>의 시대로 들어가고 있습니다.</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://kwbaek.github.io/tags/ai/">Ai</a></li>
+      <li><a href="https://kwbaek.github.io/tags/ml/">Ml</a></li>
+      <li><a href="https://kwbaek.github.io/tags/agents/">Agents</a></li>
+      <li><a href="https://kwbaek.github.io/tags/enterprise/">Enterprise</a></li>
+      <li><a href="https://kwbaek.github.io/tags/evaluation/">Evaluation</a></li>
+      <li><a href="https://kwbaek.github.io/tags/memory/">Memory</a></li>
+      <li><a href="https://kwbaek.github.io/tags/multimodal/">Multimodal</a></li>
+    </ul>
+  </footer><script src="https://utteranc.es/client.js"
+        repo="kwbaek/blog-comments"
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://kwbaek.github.io/">Kyungwook&#39;s Devlog</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

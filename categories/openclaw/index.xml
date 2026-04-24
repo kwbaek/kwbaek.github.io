@@ -6,8 +6,32 @@
     <description>Recent content in Openclaw on Kyungwook&#39;s Devlog</description>
     <generator>Hugo -- 0.155.3</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Mon, 20 Apr 2026 21:05:00 +0900</lastBuildDate>
+    <lastBuildDate>Thu, 23 Apr 2026 21:05:00 +0900</lastBuildDate>
     <atom:link href="https://kwbaek.github.io/categories/openclaw/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>OpenClaw 팁: 글 작성과 배포를 두 단계 릴리즈로 나누면 자동화가 훨씬 믿을 만해진다</title>
+      <link>https://kwbaek.github.io/posts/2026-04-23-openclaw-two-stage-publishing-keeps-automation-trustworthy/</link>
+      <pubDate>Thu, 23 Apr 2026 21:05:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-04-23-openclaw-two-stage-publishing-keeps-automation-trustworthy/</guid>
+      <description>&lt;p&gt;OpenClaw로 블로그 자동화를 굴릴 때 제가 점점 더 강하게 느끼는 원칙이 하나 있습니다. &lt;strong&gt;콘텐츠 작성과 사이트 배포를 한 덩어리로 취급하지 않는 편이 훨씬 안전하다&lt;/strong&gt;는 점입니다. 얼핏 보면 글을 만들고 바로 빌드해서 퍼블릭 저장소까지 밀어 넣는 것이 가장 효율적으로 보입니다. 하지만 실제 운영에서는 이 둘을 분리해 생각해야 사고가 줄어듭니다. 글 작성은 편집 작업이고, 배포는 릴리즈 작업이기 때문입니다.&lt;/p&gt;
+&lt;p&gt;특히 OpenClaw의 cron 기반 워크플로에서는 이 차이가 더 중요합니다. cron은 정해진 시각에 실행되는 만큼, 매번 같은 품질로 반복 가능해야 합니다. 그런데 자동 글쓰기와 정적 사이트 배포는 실패 양상이 다릅니다. 글 작성 단계에서는 제목, front matter, 카테고리, 태그, 본문 구조처럼 콘텐츠 품질이 중요합니다. 반면 배포 단계에서는 Hugo 빌드 성공 여부, 생성 결과 차이, &lt;code&gt;public/&lt;/code&gt; 반영 상태, Git 커밋 순서처럼 릴리즈 무결성이 중요합니다. 이 둘을 한 번에 뭉개면 어디서 문제가 났는지 찾기 어려워지고, 실패 복구도 훨씬 불편해집니다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>OpenClaw 팁: 크론 작업은 호스트 명령보다 내장 도구 중심으로 설계할수록 덜 깨진다</title>
+      <link>https://kwbaek.github.io/posts/2026-04-22-openclaw-cron-jobs-get-more-reliable-when-built-around-first-class-tools/</link>
+      <pubDate>Wed, 22 Apr 2026 21:05:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-04-22-openclaw-cron-jobs-get-more-reliable-when-built-around-first-class-tools/</guid>
+      <description>&lt;p&gt;OpenClaw로 매일 도는 작업을 만들다 보면 금방 체감하는 게 있습니다. 똑같이 자동화처럼 보여도, &lt;strong&gt;호스트 셸 명령을 길게 이어붙여 돌리는 방식&lt;/strong&gt;과 &lt;strong&gt;OpenClaw의 내장 도구를 중심으로 설계하는 방식&lt;/strong&gt;은 안정성이 꽤 다릅니다. 특히 크론처럼 반복 실행되는 작업에서는 이 차이가 더 크게 드러납니다. 제 경험상 잘 버티는 워크플로는 대체로 후자입니다.&lt;/p&gt;
+&lt;p&gt;이유는 단순합니다. 내장 도구는 애초에 에이전트가 현재 세션 문맥 안에서 다루도록 설계되어 있습니다. 파일을 읽고 쓰는 일은 &lt;code&gt;read&lt;/code&gt;와 &lt;code&gt;write&lt;/code&gt;, 다른 세션 확인은 &lt;code&gt;sessions_*&lt;/code&gt;, 웹 확인은 브라우저 계열 도구, 상태 파악은 &lt;code&gt;session_status&lt;/code&gt;처럼 &lt;strong&gt;행동 단위가 비교적 또렷하게 나뉘어&lt;/strong&gt; 있습니다. 반대로 호스트 명령은 한 줄 안에 너무 많은 전제를 묶기 쉽습니다. 현재 작업 디렉터리, 셸 차이, 설치 여부, 인자 quoting, 출력 형식, 승인 경로, 실패 코드 해석 같은 것들이 한꺼번에 섞입니다. 한 번은 편할 수 있어도, 매일 도는 잡에서는 이런 작은 불확실성이 결국 누적됩니다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>OpenClaw 팁: 승인 마찰을 줄이려면 반복 작업을 스크립트로 고정하는 편이 낫다</title>
+      <link>https://kwbaek.github.io/posts/2026-04-21-openclaw-reduce-approval-friction-by-scriptifying-repeatable-ops/</link>
+      <pubDate>Tue, 21 Apr 2026 21:05:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-04-21-openclaw-reduce-approval-friction-by-scriptifying-repeatable-ops/</guid>
+      <description>&lt;p&gt;OpenClaw를 계속 운영하다 보면 꽤 빨리 부딪히는 문제가 있습니다. 위험한 자동화를 허용하고 싶지는 않은데, 그렇다고 매번 비슷한 점검 명령을 다시 쓰고 다시 승인받는 흐름도 점점 피곤해진다는 점입니다. 여기서 가장 실용적인 해법은 blanket auto-approval이 아닙니다. 제가 보기엔 더 나은 방향은 &lt;strong&gt;반복적으로 실행하는 안전한 운영 작업을 작은 스크립트로 고정해 두는 것&lt;/strong&gt;입니다.&lt;/p&gt;
+&lt;p&gt;이 방식이 좋은 이유는 단순합니다. 첫째, 사람이 매번 ad-hoc으로 명령을 길게 치지 않아도 됩니다. 둘째, 에이전트도 같은 종류의 점검을 할 때마다 조금씩 다른 명령을 만들지 않아도 됩니다. 셋째, 무엇보다 안전 경계가 더 또렷해집니다. 예를 들어 Camofox 상태 점검, 복구 루틴, OpenClaw health 확인처럼 자주 반복되는 작업은 &lt;code&gt;scripts/&lt;/code&gt; 아래에 목적이 분명한 스크립트로 묶어두면 승인도 더 이해하기 쉬워지고, 실패 원인도 추적하기 쉬워집니다.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>OpenClaw 팁: heartbeat와 cron은 비슷해 보여도 다른 일을 맡겨야 한다</title>
       <link>https://kwbaek.github.io/posts/2026-04-20-openclaw-heartbeat-and-cron-should-do-different-jobs/</link>

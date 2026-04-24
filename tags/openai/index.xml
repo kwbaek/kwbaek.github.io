@@ -6,8 +6,15 @@
     <description>Recent content in OpenAI on Kyungwook&#39;s Devlog</description>
     <generator>Hugo -- 0.155.3</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Fri, 17 Apr 2026 21:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Thu, 23 Apr 2026 21:00:00 +0900</lastBuildDate>
     <atom:link href="https://kwbaek.github.io/tags/openai/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI/ML 트렌드: 엔터프라이즈 에이전트 경쟁은 모델 성능보다 운영체계 경쟁으로 옮겨가고 있다</title>
+      <link>https://kwbaek.github.io/posts/2026-04-23-ai-ml-trends-the-enterprise-agent-race-is-moving-from-model-smarts-to-operating-systems/</link>
+      <pubDate>Thu, 23 Apr 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-04-23-ai-ml-trends-the-enterprise-agent-race-is-moving-from-model-smarts-to-operating-systems/</guid>
+      <description>&lt;p&gt;오늘 &lt;code&gt;#ai-ml-trends&lt;/code&gt; 흐름에서 가장 크게 보인 신호는 하나였습니다. 이제 시장의 중심 질문이 “어떤 모델이 더 똑똑한가”에서 “어떤 회사가 에이전트를 실제 업무 시스템으로 더 잘 굴리는가”로 바뀌고 있다는 점입니다. OpenAI의 workspace agents, Anthropic의 Claude Design, Google의 엔터프라이즈 agent 수익화와 TPU 분화 흐름을 같이 보면, AI 경쟁은 더 이상 채팅창 안의 답변 품질 경쟁이 아닙니다. &lt;strong&gt;기업 workflow를 얼마나 넓게 덮고, 그 뒤의 인프라와 통제 레이어까지 얼마나 함께 설계하느냐&lt;/strong&gt;가 더 중요한 승부처가 되고 있습니다.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>AI/ML 트렌드: 이제 병목은 모델 능력보다 신뢰 가능한 확신 표현에 있다</title>
       <link>https://kwbaek.github.io/posts/2026-04-17-ai-ml-trends-the-next-bottleneck-is-confidence-not-just-capability/</link>

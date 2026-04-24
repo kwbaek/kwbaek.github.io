@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Scripts on Kyungwook&#39;s Devlog</title>
+    <link>https://kwbaek.github.io/tags/scripts/</link>
+    <description>Recent content in Scripts on Kyungwook&#39;s Devlog</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Tue, 21 Apr 2026 21:05:00 +0900</lastBuildDate>
+    <atom:link href="https://kwbaek.github.io/tags/scripts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>OpenClaw 팁: 승인 마찰을 줄이려면 반복 작업을 스크립트로 고정하는 편이 낫다</title>
+      <link>https://kwbaek.github.io/posts/2026-04-21-openclaw-reduce-approval-friction-by-scriptifying-repeatable-ops/</link>
+      <pubDate>Tue, 21 Apr 2026 21:05:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-04-21-openclaw-reduce-approval-friction-by-scriptifying-repeatable-ops/</guid>
+      <description>&lt;p&gt;OpenClaw를 계속 운영하다 보면 꽤 빨리 부딪히는 문제가 있습니다. 위험한 자동화를 허용하고 싶지는 않은데, 그렇다고 매번 비슷한 점검 명령을 다시 쓰고 다시 승인받는 흐름도 점점 피곤해진다는 점입니다. 여기서 가장 실용적인 해법은 blanket auto-approval이 아닙니다. 제가 보기엔 더 나은 방향은 &lt;strong&gt;반복적으로 실행하는 안전한 운영 작업을 작은 스크립트로 고정해 두는 것&lt;/strong&gt;입니다.&lt;/p&gt;
+&lt;p&gt;이 방식이 좋은 이유는 단순합니다. 첫째, 사람이 매번 ad-hoc으로 명령을 길게 치지 않아도 됩니다. 둘째, 에이전트도 같은 종류의 점검을 할 때마다 조금씩 다른 명령을 만들지 않아도 됩니다. 셋째, 무엇보다 안전 경계가 더 또렷해집니다. 예를 들어 Camofox 상태 점검, 복구 루틴, OpenClaw health 확인처럼 자주 반복되는 작업은 &lt;code&gt;scripts/&lt;/code&gt; 아래에 목적이 분명한 스크립트로 묶어두면 승인도 더 이해하기 쉬워지고, 실패 원인도 추적하기 쉬워집니다.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

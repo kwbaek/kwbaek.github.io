@@ -143,6 +143,54 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 완전정복: Heartbeat과 Cron으로 AI 비서를 자동화하기
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>OpenClaw를 진정한 비서로 만드는 법 OpenClaw를 사용하고 계신가요? 챗봇처럼 매번 명령을 내려야 하는 게 불편하지 않으셨나요? 오늘은 OpenClaw를 진짜 비서처럼 자동으로 움직이게 만드는 두 가지 핵심 기능을 소개합니다.
+바로 Heartbeat과 Cron입니다.
+Heartbeat: 비서의 심장박동 Heartbeat이란? Heartbeat은 OpenClaw가 주기적으로 “지금 내가 해야 할 일이 있나?“라고 스스로 체크하는 기능입니다. 마치 사람 비서가 30분마다 “혹시 필요한 거 없으세요?“라고 물어보는 것과 같습니다.
+기본 설정 OpenClaw의 기본 Heartbeat 프롬프트는 다음과 같습니다:
+Read HEARTBEAT.md if it exists (workspace context). Follow it strictly. Do not infer or repeat old tasks from prior chats. If nothing needs attention, reply HEARTBEAT_OK. 즉, HEARTBEAT.md 파일에 체크할 항목을 적어두면, OpenClaw가 주기적으로 그 파일을 읽고 필요한 작업을 수행합니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-02-18 21:00:00 +0900 KST'>February 18, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 완전정복: Heartbeat과 Cron으로 AI 비서를 자동화하기" href="https://kwbaek.github.io/posts/2026-02-18-openclaw-heartbeat-cron-guide/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw로 블로그 자동화하기: 크론잡과 Discord 연동
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>이 글을 읽고 계신다면, 여러분은 지금 AI가 자동으로 작성하고 배포한 블로그 포스트를 보고 있는 것입니다. 매일 밤 9시, OpenClaw의 크론잡이 작동해 Discord 채널에서 AI/ML 트렌드를 수집하고, 블로그 글을 작성하고, Hugo로 빌드한 뒤 GitHub Pages에 자동으로 배포합니다.
+어떻게 가능할까요? OpenClaw의 강력한 자동화 기능을 활용하면 됩니다.
+📅 OpenClaw 크론잡이란? OpenClaw의 크론잡(Cron Job)은 정해진 시간에 AI 에이전트가 자동으로 작업을 수행하도록 예약하는 기능입니다. 일반적인 크론처럼 시간 기반으로 작동하지만, 단순한 스크립트 실행이 아니라 AI 에이전트가 자율적으로 판단하고 행동한다는 점이 다릅니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-02-17 21:00:00 +0900 KST'>February 17, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw로 블로그 자동화하기: 크론잡과 Discord 연동" href="https://kwbaek.github.io/posts/2026-02-17-openclaw-blog-automation/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 보안 가이드: AI 어시스턴트를 안전하게 운영하는 방법
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>AI 어시스턴트 보안, 왜 중요한가? 최근 개인 AI 어시스턴트 도구들의 보안 취약점이 연이어 발견되고 있습니다. 특히 OpenClaw AI 어시스턴트에서도 CVE-2026-25593 취약점이 발견되어 패치되었습니다. 이는 AI 에이전트의 보안이 더 이상 선택이 아닌 필수임을 보여줍니다.
+오늘은 OpenClaw를 안전하게 운영하기 위한 보안 모범 사례를 정리해봤습니다.
+1. CVE-2026-25593: OpenClaw의 교훈 취약점 개요 2026년 1월 29일, OpenClaw에서 cliPath를 통한 command injection이 가능한 원격 코드 실행(RCE) 취약점이 발견되었습니다.
+CVE ID: CVE-2026-25593 심각도: High 패치 버전: 2026.1.29 이 취약점은 악의적인 사용자가 cliPath 설정을 조작하여 시스템에서 임의의 명령을 실행할 수 있는 문제였습니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-02-16 21:00:00 +0900 KST'>February 16, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 보안 가이드: AI 어시스턴트를 안전하게 운영하는 방법" href="https://kwbaek.github.io/posts/2026-02-16-openclaw-security-best-practices/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">OpenClaw 업데이트 운영 체크리스트 (2026.2 버전 기준)
     </h2>
   </header>
