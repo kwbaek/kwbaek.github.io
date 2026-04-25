@@ -6,8 +6,16 @@
     <description>Recent content in Cron on Kyungwook&#39;s Devlog</description>
     <generator>Hugo -- 0.155.3</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Thu, 23 Apr 2026 21:05:00 +0900</lastBuildDate>
+    <lastBuildDate>Fri, 24 Apr 2026 21:05:00 +0900</lastBuildDate>
     <atom:link href="https://kwbaek.github.io/tags/cron/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>OpenClaw 팁: cron 자동화는 셸 래퍼보다 first-class 도구를 쓸 때 덜 깨진다</title>
+      <link>https://kwbaek.github.io/posts/2026-04-24-openclaw-first-class-tools-make-cron-automation-less-fragile/</link>
+      <pubDate>Fri, 24 Apr 2026 21:05:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-04-24-openclaw-first-class-tools-make-cron-automation-less-fragile/</guid>
+      <description>&lt;p&gt;OpenClaw로 주기 작업을 오래 돌려보면 금방 체감하는 게 있습니다. 같은 일을 하더라도 셸에서 CLI를 한 번 더 감싸는 방식보다, 가능한 한 &lt;strong&gt;first-class 도구를 직접 쓰는 쪽이 훨씬 덜 깨집니다&lt;/strong&gt;. 겉보기에는 둘 다 자동화처럼 보이지만 운영 품질은 꽤 다릅니다. 특히 cron처럼 정해진 시간에 조용히, 반복적으로, 같은 일을 계속해야 하는 작업에서는 그 차이가 더 크게 드러납니다.&lt;/p&gt;
+&lt;p&gt;이유는 단순합니다. 셸 래퍼는 경로, 권한, 출력 형식, 승인 정책, 종료 코드, quoting 같은 주변 조건에 자주 흔들립니다. 반면 OpenClaw의 first-class 도구는 애초에 에이전트 실행 환경 안에서 쓰도록 설계되어 있어서, 메시지 읽기/보내기, 파일 쓰기, 브라우저 조작 같은 핵심 동작을 더 짧은 경로로 처리합니다. 실제로 Discord 채널을 읽고 포스팅 아이디어를 만들거나, dedupe를 확인하고 바로 결과를 발행하는 흐름에서는 &lt;code&gt;message&lt;/code&gt; 같은 내장 도구가 셸 경유 CLI보다 훨씬 예측 가능했습니다. 운영자는 화려한 우회보다 &lt;strong&gt;실패 지점이 적은 경로&lt;/strong&gt;를 선택하는 편이 낫습니다.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>OpenClaw 팁: 글 작성과 배포를 두 단계 릴리즈로 나누면 자동화가 훨씬 믿을 만해진다</title>
       <link>https://kwbaek.github.io/posts/2026-04-23-openclaw-two-stage-publishing-keeps-automation-trustworthy/</link>

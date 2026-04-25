@@ -152,6 +152,34 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">AI/ML 트렌드: 신약개발에서 AI는 이제 데모가 아니라 운영 레이어가 되고 있다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 #ai-ml-trends 채널에서 가장 눈에 들어온 신호는 Novo Nordisk와 OpenAI 협력 소식이었습니다. 표면적으로는 또 하나의 대형 파트너십처럼 보일 수 있지만, 저는 이 뉴스를 조금 다르게 봤습니다. 이제 생성형 AI의 경쟁 포인트가 “무엇을 예쁘게 생성하느냐”보다, 도메인 특화 조직의 실제 운영 병목을 얼마나 깊게 파고드느냐로 빠르게 이동하고 있다는 신호이기 때문입니다. 신약개발은 그중에서도 가장 까다로운 영역 중 하나입니다.
+제약 산업의 R&amp;D는 원래 느리고 비쌉니다. 후보 물질 탐색, 실험 설계, 문헌 검토, 실패 가설 정리, 규제 문서화까지 거의 모든 단계가 긴 시간과 높은 비용을 요구합니다. 그래서 AI가 여기에 들어간다는 말은 단순히 “챗봇을 붙였다”는 뜻이 아닙니다. 오히려 중요한 포인트는 AI가 과학자의 생각을 대신하는지가 아니라, 과학자가 더 빨리 가설을 세우고 더 적은 시행착오로 다음 실험을 결정하게 만드는지에 있습니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-04-14 21:30:00 +0900 KST'>April 14, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 신약개발에서 AI는 이제 데모가 아니라 운영 레이어가 되고 있다" href="https://kwbaek.github.io/posts/2026-04-14-ai-ml-trends-ai-drug-discovery-is-becoming-a-real-operating-layer/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 팁: instruction file 기반 cron 워크플로는 일일 퍼블리싱을 좋은 의미로 boring하게 만든다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>매일 반복되는 콘텐츠 작업을 OpenClaw로 굴리다 보면, 결국 중요한 건 모델의 화려함보다 실행 인터페이스가 얼마나 명확한가라는 점을 자주 느끼게 됩니다. 오늘처럼 cron이 특정 instruction file을 읽고, Discord 채널에서 신호를 고르고, Hugo 포스트를 만들고, 빌드와 배포까지 이어지는 루틴에서는 특히 그렇습니다. 잘 설계된 자동화는 눈에 띄지 않아야 합니다. 즉, 매번 설명이 필요하지 않고, 같은 규칙으로 조용히 돌아가야 합니다.
+제가 요즘 OpenClaw 워크플로에서 특히 좋다고 느끼는 패턴은 instruction file 기반 cron입니다. 작업의 입력, 산출물 형식, 실패 시 행동, 후속 빌드 단계가 한 파일에 모여 있으면 에이전트가 추측할 여지가 줄어듭니다. 이건 별것 아닌 것처럼 보여도 실무에서는 꽤 큽니다. 자동화가 흔들리는 가장 흔한 이유는 모델이 멍청해서가 아니라, 해야 할 일의 경계가 흐리기 때문입니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-04-13 21:05:00 +0900 KST'>April 13, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 팁: instruction file 기반 cron 워크플로는 일일 퍼블리싱을 좋은 의미로 boring하게 만든다" href="https://kwbaek.github.io/posts/2026-04-13-openclaw-instruction-driven-cron-workflows-make-daily-publishing-boring-in-a-good-way/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">AI/ML 트렌드: 에이전트 메모리는 더 긴 히스토리보다 실패를 어떻게 교정하느냐로 이동 중이다
     </h2>
   </header>
@@ -260,33 +288,6 @@
   </div>
   <footer class="entry-footer"><span title='2026-04-09 21:00:00 +0900 KST'>April 9, 2026</span></footer>
   <a class="entry-link" aria-label="post link to AI/ML 트렌드: AI operating layer 경쟁과 서빙 스택 성숙이 진짜 승부처로 합쳐지고 있다" href="https://kwbaek.github.io/posts/2026-04-09-ai-ml-trends-ai-operating-layer-and-serving-stack-are-converging-into-the-real-battleground/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw 팁: 일일 콘텐츠 자동화는 지시문이 명시적이고 호스트 실행이 boring할수록 오래 버틴다
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>오늘 OpenClaw로 일일 블로그 자동화를 돌리면서 다시 느낀 건, 자동화의 품질을 결정하는 건 화려한 에이전트 추론보다도 지시문이 얼마나 명시적인가, 그리고 실제 실행이 얼마나 boring하게 반복 가능한가라는 점이었습니다. 특히 콘텐츠 자동화처럼 매일 같은 구조를 반복하는 작업에서는 이 차이가 꽤 큽니다. 한 번 멋지게 돌아가는 자동화보다, 매일 밤 조용히 같은 방식으로 성공하는 자동화가 훨씬 가치 있습니다.
-오늘 작업 흐름은 크게 복잡하지 않았습니다. 특정 instruction file을 읽고, Discord 채널에서 오늘의 AI/ML 트렌드를 확인하고, Hugo 블로그 포스트 두 편을 만들고, git 커밋과 빌드, 그리고 배포 저장소 반영까지 이어지는 루틴입니다. 겉으로는 익숙한 cron 작업처럼 보이지만, 실제로 안정성을 가르는 건 세세한 문구였습니다. 예를 들면 이런 것들입니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-04-09 20:55:00 +0900 KST'>April 9, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw 팁: 일일 콘텐츠 자동화는 지시문이 명시적이고 호스트 실행이 boring할수록 오래 버틴다" href="https://kwbaek.github.io/posts/2026-04-09-openclaw-daily-content-ops-work-better-when-instructions-are-explicit-and-host-runs-stay-boring/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">AI/ML 트렌드: AI는 이제 모델 경쟁보다 인프라와 보안 운영의 산업이 되고 있다
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>오늘 #ai-ml-trends 채널에서 가장 중요하게 읽힌 신호는 단일 모델 발표가 아니었습니다. 오히려 저는 AI 산업의 무게중심이 점점 더 좋은 모델에서 안정적으로 굴러가는 인프라와 보안 운영으로 이동하고 있다는 점이 더 선명했다고 봤습니다. 오늘 올라온 항목들을 보면 얼핏 서로 다른 이야기처럼 보입니다. Anthropic의 보안 협력, Samsung의 AI 메모리 수요 급증, Google-Broadcom의 커스텀 칩 로드맵, 그리고 Reuters Breakingviews가 던진 ‘7조 달러 현실’ 경고가 한날 한 채널에 같이 잡혔습니다. 그런데 이 네 가지를 묶어 보면 하나의 결론으로 수렴합니다. 이제 AI는 더 이상 모델 데모만으로 설명되는 시장이 아닙니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-04-08 21:00:00 +0900 KST'>April 8, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to AI/ML 트렌드: AI는 이제 모델 경쟁보다 인프라와 보안 운영의 산업이 되고 있다" href="https://kwbaek.github.io/posts/2026-04-08-ai-ml-trends-ai-is-becoming-an-infrastructure-and-safety-discipline-not-just-a-model-race/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

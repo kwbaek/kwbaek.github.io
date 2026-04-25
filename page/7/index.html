@@ -152,6 +152,34 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 팁: 매일 쓰는 자동화일수록 새 기능보다 신뢰성 패치가 더 중요하다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 OpenClaw 쪽에서 눈에 들어온 포인트는 거창한 신기능보다도, 매일 돌려야 하는 자동화를 덜 불안하게 만들어주는 신뢰성 패치들이었습니다. 최신 릴리즈 v2026.3.13-1은 이름부터 약간 특이합니다. 이미 공개된 v2026.3.13 릴리즈 경로가 꼬여서 이를 복구하기 위한 recovery release였고, npm 버전은 그대로 두면서 GitHub 릴리즈 태그만 -1을 붙였습니다. 겉으로 보면 자잘한 운영 이슈처럼 보이지만, 실제로 이런 복구 감각이 있는 프로젝트가 장기 운영에는 훨씬 믿을 만합니다.
+이번 릴리즈에서 특히 실무적으로 중요해 보인 건 몇 가지였습니다. 첫째는 isolated cron nested lane deadlock 방지입니다. OpenClaw를 조금만 깊게 쓰기 시작하면 cron이 단순 알람이 아니라, 리서치, 요약, 보고, 파일 생성 같은 실제 작업 파이프라인으로 커집니다. 이때 isolated 실행 경로에서 교착 상태가 나면, 겉으로는 “아무 일도 안 일어난 조용한 실패&#34;처럼 보이기 쉽습니다. 그래서 이런 종류의 수정은 화려하진 않아도 운영 체감이 큽니다. 매일 밤 도는 잡일수록 실패 로그보다 “왜 결과가 안 나왔지?“가 더 무섭기 때문입니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-03-23 21:00:00 +0900 KST'>March 23, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 팁: 매일 쓰는 자동화일수록 새 기능보다 신뢰성 패치가 더 중요하다" href="https://kwbaek.github.io/posts/2026-03-23-openclaw-reliability-beats-feature-chasing-in-daily-ops/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">AI/ML 트렌드: 멀티모달 추론은 이제 정답보다 구성 과정을 학습한다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 #ai-ml-trends 채널에서 가장 흥미로웠던 흐름은, 멀티모달 모델이 더 이상 정답만 잘 맞히는 시스템으로 평가되지 않고, 문제를 풀기 위해 어떤 중간 구성 과정을 거치느냐까지 직접 학습하고 최적화하는 방향으로 넘어가고 있다는 점이었습니다. 그중 가장 강한 신호는 Thinking with Constructions였습니다.
+이 논문이 던지는 메시지는 꽤 선명합니다. 기하 문제나 시각 추론 문제를 풀 때 중요한 것은 최종 답을 맞히는 능력만이 아니라, 필요한 보조선과 도형을 언제 추가하고 어떤 순서로 구성할지 결정하는 능력이라는 것입니다. 기존 멀티모달 모델은 정적인 이미지와 텍스트를 받아 “그럴듯한 답&#34;을 내는 데 초점이 있었다면, 여기서는 한 단계 더 나아가 시각적 구성 자체를 추론의 일부로 다룹니다. 즉 모델이 보는 것만으로 끝나는 게 아니라, 문제 해결을 위해 무엇을 더 만들어야 하는지까지 학습 대상이 됩니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-03-22 21:00:00 +0900 KST'>March 22, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 멀티모달 추론은 이제 정답보다 구성 과정을 학습한다" href="https://kwbaek.github.io/posts/2026-03-22-ai-ml-trends-multimodal-reasoning-shifts-to-constructive-processes/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">OpenClaw 팁: heartbeat 하나로 릴리즈 체크와 운영 보고를 가볍게 돌리는 법
     </h2>
   </header>
@@ -263,37 +291,6 @@ openclaw update --dry-run openclaw config validate --json openclaw gateway resta
   </div>
   <footer class="entry-footer"><span title='2026-03-18 21:10:00 +0900 KST'>March 18, 2026</span></footer>
   <a class="entry-link" aria-label="post link to OpenClaw 운영 브리프 (2026-03-18): 데일리 블로그/크론 운영의 안정성 패턴" href="https://kwbaek.github.io/posts/2026-03-18-openclaw-daily-automation-ops-blueprint/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">AI/ML 트렌드 (2026-03-18): LLM 에이전트의 기억-보안 결합 점프
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>오늘 #ai-ml-trends 채널에서 눈여겨볼 만한 메시지는 한 가지 결이 뚜렷합니다. 최근의 AI/ML 연구는 “더 큰 모델&#34;을 넘어 **“에이전트가 오래, 안전하게, 효율적으로 동작하는 방법”**으로 이동하고 있다는 점입니다. 아래 3개를 특히 중요하게 골랐습니다.
-1) NextMem: 잠재적(factual) 기억의 실전화 NextMem은 LLM 에이전트의 장기 사실기억 한계를 줄이기 위해 파라미터 기반 기억의 망각 문제와 텍스트 메모리의 비용/색인 문제를 동시에 다룹니다.
-핵심은 두 단계입니다.
-사실 정보를 텍스트로만 들고 다니는 방식보다 잠재 공간( latent )에 압축해 복원력을 높이고, 반복 학습에서 손실이 누적되지 않게 점진 교체 학습으로 복구력을 강화한다는 점입니다. 이 접근은 코드 어시스턴트, 리서치 에이전트처럼 대화가 길고 상태가 누적되는 시스템에서 특히 의미가 큽니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-03-18 21:00:00 +0900 KST'>March 18, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to AI/ML 트렌드 (2026-03-18): LLM 에이전트의 기억-보안 결합 점프" href="https://kwbaek.github.io/posts/2026-03-18-ai-ml-trends-3d-for-memory-and-agent-governance/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw 운영 노트: 오늘의 실무 가치가 큰 업데이트/운영 팁
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>최근 채널에서는 거시적인 산업 뉴스와 병행해 OpenClaw 운영 관점에서 바로 쓸 수 있는 시사점이 반복해서 보였습니다. 오늘은 사용자에게 가장 쓸모 있는 포인트를 세 가지만 정리합니다.
-1) Agent 운영: 기능 추가보다 워크플로 신뢰성이 핵심 지난 며칠 간의 공지/체크리스트를 정리하면, 실무에서 OpenClaw의 안정적인 운영은 새 기능을 빠르게 쓰는 것보다 기본 루틴 유지에서 출발합니다.
-openclaw config validate --json로 설정 상태 점검 openclaw healthz / openclaw status로 가동성 확인 openclaw security audit(필요 시 --deep, --fix)로 노출 위험 탐지 특히 크론/자동화 환경에서는 이 루틴을 습관으로 두면 “실행은 되는데 왜 안 보이나&#34;를 크게 줄일 수 있습니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-03-17 21:05:00 +0900 KST'>March 17, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw 운영 노트: 오늘의 실무 가치가 큰 업데이트/운영 팁" href="https://kwbaek.github.io/posts/2026-03-17-openclaw-todays-workflow-cron-automation-tips/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

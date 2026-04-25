@@ -6,8 +6,15 @@
     <description>Recent content in Evaluation on Kyungwook&#39;s Devlog</description>
     <generator>Hugo -- 0.155.3</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Fri, 24 Apr 2026 21:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Sat, 25 Apr 2026 21:00:00 +0900</lastBuildDate>
     <atom:link href="https://kwbaek.github.io/tags/evaluation/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI/ML 트렌드: AI 경쟁은 이제 모델 데모보다 운영·근거·배포의 싸움이 되고 있다</title>
+      <link>https://kwbaek.github.io/posts/2026-04-25-ai-ml-trends-the-ai-race-is-becoming-an-operations-and-evidence-race/</link>
+      <pubDate>Sat, 25 Apr 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-04-25-ai-ml-trends-the-ai-race-is-becoming-an-operations-and-evidence-race/</guid>
+      <description>&lt;p&gt;오늘 Discord &lt;code&gt;#ai-ml-trends&lt;/code&gt;를 훑으며 가장 강하게 느낀 건, AI 시장의 승부처가 다시 한 번 이동하고 있다는 점입니다. 겉으로는 여전히 새 모델, 새 칩, 새 로봇, 새 기능이 쏟아지지만, 그 아래에서 더 중요한 흐름은 &lt;strong&gt;누가 더 믿을 수 있게 운영하고, 더 값싸게 배포하고, 더 분명한 근거를 붙일 수 있느냐&lt;/strong&gt;로 중심이 옮겨가고 있다는 것입니다. Google의 Anthropic 대규모 투자 약정과 Oracle용 데이터센터 초대형 조달은 컴퓨트와 전력, 자본이 여전히 AI 경쟁의 바닥을 결정한다는 사실을 보여줬고, DeepSeek 관련 외교적 경고와 &lt;code&gt;DAVinCI&lt;/code&gt; 같은 검증 프레임워크, &lt;code&gt;Time, Causality, and Observability Failures in Distributed AI Inference Systems&lt;/code&gt; 같은 연구는 그 위에서 실제 조직이 마주하는 병목이 모델 IQ 하나가 아니라는 점을 더 선명하게 드러냈습니다.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>AI/ML 트렌드: 다음 엔터프라이즈 에이전트 승부처는 디버깅 가능성과 보안 대응력이다</title>
       <link>https://kwbaek.github.io/posts/2026-04-24-ai-ml-trends-the-next-enterprise-agent-battleground-is-debuggability-and-security/</link>

@@ -143,6 +143,35 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 운영 노트: 기능 추가보다 중요한 건 운영 규율
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>OpenClaw를 매일 쓰다 보면, 새 기능을 따라가는 속도보다 더 중요한 게 있습니다. 바로 운영 규율(ops discipline) 입니다. 최근 업데이트 메모를 보면 모델/채널/cron/security 관련 기능이 거의 매일 추가되는데, 이 시기일수록 “무엇을 새로 켰는지”보다 “어떻게 안정적으로 굴리는지”가 성패를 가릅니다.
+제가 요즘 기준으로 잡는 핵심은 간단합니다. (1) 검증, (2) 최소권한, (3) 주기 점검, (4) 분리 운용 입니다.
+첫째, 검증입니다. 설정을 바꾼 뒤 바로 운영에 넣기보다 openclaw config validate --json과 health/ready 프로브를 통해 사전 확인하는 루틴이 중요합니다. 이 습관 하나로, 사소한 키 오타나 breaking 변경으로 인한 장애를 꽤 많이 줄일 수 있습니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-03-19 21:00:00 +0900 KST'>March 19, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 운영 노트: 기능 추가보다 중요한 건 운영 규율" href="https://kwbaek.github.io/posts/2026-03-19-openclaw-from-feature-chasing-to-ops-discipline/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 활용 팁: 지시문 기반 Cron으로 ‘안정적인 콘텐츠 파이프라인’ 만들기
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>OpenClaw로 반복 작업을 돌리다 보면, 자동화 자체보다 더 어려운 게 있습니다. 바로 자동화를 계속 믿을 수 있게 유지하는 것입니다. 오늘은 제가 자주 쓰는 패턴 하나를 정리해보겠습니다. 핵심은 간단합니다. “작업 로직을 채팅 프롬프트에 흩뿌리지 말고, 지시문 파일로 고정해 Cron이 그 파일을 읽고 실행하게 만든다.” 이 방식이 생각보다 강력합니다.
+왜 좋을까요? 첫째, 변경 이력이 남습니다. 지시를 코드처럼 파일로 관리하면 무엇을 언제 왜 바꿨는지 추적이 쉽습니다. 둘째, 실패 대응이 빨라집니다. 실행 시점에는 단순히 파일 존재 여부·형식·핵심 단계만 확인하면 되기 때문에 디버깅 범위가 좁아집니다. 셋째, 사람-에이전트 협업이 편해집니다. 사람은 파일을 수정하고, 에이전트는 같은 규칙으로 반복 실행합니다. 역할이 명확해집니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-03-15 21:00:00 +0900 KST'>March 15, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 활용 팁: 지시문 기반 Cron으로 ‘안정적인 콘텐츠 파이프라인’ 만들기" href="https://kwbaek.github.io/posts/2026-03-15-openclaw-instruction-driven-content-ops/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">OpenClaw 운영 팁: Cron과 Heartbeat를 섞어 쓸 때 자동화가 진짜 안정해진다
     </h2>
   </header>

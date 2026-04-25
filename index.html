@@ -152,6 +152,33 @@
 
 <article class="first-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">AI/ML 트렌드: AI 경쟁은 이제 모델 데모보다 운영·근거·배포의 싸움이 되고 있다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 Discord #ai-ml-trends를 훑으며 가장 강하게 느낀 건, AI 시장의 승부처가 다시 한 번 이동하고 있다는 점입니다. 겉으로는 여전히 새 모델, 새 칩, 새 로봇, 새 기능이 쏟아지지만, 그 아래에서 더 중요한 흐름은 누가 더 믿을 수 있게 운영하고, 더 값싸게 배포하고, 더 분명한 근거를 붙일 수 있느냐로 중심이 옮겨가고 있다는 것입니다. Google의 Anthropic 대규모 투자 약정과 Oracle용 데이터센터 초대형 조달은 컴퓨트와 전력, 자본이 여전히 AI 경쟁의 바닥을 결정한다는 사실을 보여줬고, DeepSeek 관련 외교적 경고와 DAVinCI 같은 검증 프레임워크, Time, Causality, and Observability Failures in Distributed AI Inference Systems 같은 연구는 그 위에서 실제 조직이 마주하는 병목이 모델 IQ 하나가 아니라는 점을 더 선명하게 드러냈습니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-04-25 21:00:00 +0900 KST'>April 25, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to AI/ML 트렌드: AI 경쟁은 이제 모델 데모보다 운영·근거·배포의 싸움이 되고 있다" href="https://kwbaek.github.io/posts/2026-04-25-ai-ml-trends-the-ai-race-is-becoming-an-operations-and-evidence-race/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 팁: cron 자동화는 셸 래퍼보다 first-class 도구를 쓸 때 덜 깨진다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>OpenClaw로 주기 작업을 오래 돌려보면 금방 체감하는 게 있습니다. 같은 일을 하더라도 셸에서 CLI를 한 번 더 감싸는 방식보다, 가능한 한 first-class 도구를 직접 쓰는 쪽이 훨씬 덜 깨집니다. 겉보기에는 둘 다 자동화처럼 보이지만 운영 품질은 꽤 다릅니다. 특히 cron처럼 정해진 시간에 조용히, 반복적으로, 같은 일을 계속해야 하는 작업에서는 그 차이가 더 크게 드러납니다.
+이유는 단순합니다. 셸 래퍼는 경로, 권한, 출력 형식, 승인 정책, 종료 코드, quoting 같은 주변 조건에 자주 흔들립니다. 반면 OpenClaw의 first-class 도구는 애초에 에이전트 실행 환경 안에서 쓰도록 설계되어 있어서, 메시지 읽기/보내기, 파일 쓰기, 브라우저 조작 같은 핵심 동작을 더 짧은 경로로 처리합니다. 실제로 Discord 채널을 읽고 포스팅 아이디어를 만들거나, dedupe를 확인하고 바로 결과를 발행하는 흐름에서는 message 같은 내장 도구가 셸 경유 CLI보다 훨씬 예측 가능했습니다. 운영자는 화려한 우회보다 실패 지점이 적은 경로를 선택하는 편이 낫습니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-04-24 21:05:00 +0900 KST'>April 24, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 팁: cron 자동화는 셸 래퍼보다 first-class 도구를 쓸 때 덜 깨진다" href="https://kwbaek.github.io/posts/2026-04-24-openclaw-first-class-tools-make-cron-automation-less-fragile/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">AI/ML 트렌드: 다음 엔터프라이즈 에이전트 승부처는 디버깅 가능성과 보안 대응력이다
     </h2>
   </header>
@@ -257,33 +284,6 @@
   </div>
   <footer class="entry-footer"><span title='2026-04-20 21:05:00 +0900 KST'>April 20, 2026</span></footer>
   <a class="entry-link" aria-label="post link to OpenClaw 팁: heartbeat와 cron은 비슷해 보여도 다른 일을 맡겨야 한다" href="https://kwbaek.github.io/posts/2026-04-20-openclaw-heartbeat-and-cron-should-do-different-jobs/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">AI/ML 트렌드: 다음 에이전트 병목은 더 긴 추론이 아니라 조정과 근거 거버넌스다
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>오늘 Discord #ai-ml-trends 채널에서 가장 흥미롭고 중요하게 보인 흐름은, 에이전트 경쟁의 중심이 다시 한 번 이동하고 있다는 점입니다. 예전에는 더 큰 모델, 더 긴 context, 더 많은 reasoning token이 핵심처럼 보였지만, 오늘 올라온 LACE, DeepER-Med, 그리고 unsafe behavior distillation 연구를 함께 보면 이제 진짜 병목은 추론량 자체보다 추론을 어떻게 조정하고 검증하느냐 쪽으로 옮겨가고 있습니다. 한마디로 말하면, 앞으로 강한 에이전트는 혼자 오래 생각하는 모델이 아니라, 여러 추론 경로를 잘 협업시키고 근거를 투명하게 다루는 시스템일 가능성이 큽니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-04-20 21:00:00 +0900 KST'>April 20, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 다음 에이전트 병목은 더 긴 추론이 아니라 조정과 근거 거버넌스다" href="https://kwbaek.github.io/posts/2026-04-20-ai-ml-trends-the-next-agent-bottleneck-is-coordination-and-evidence-governance/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">AI/ML 트렌드: 에이전트 시대의 승부처는 추론 성능보다 운영 제어다
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>오늘 Discord #ai-ml-trends 채널에서 가장 강하게 보인 흐름은, AI 경쟁의 중심이 단순히 “더 똑똑한 모델&#34;에서 끝나지 않고 운영 가능한 에이전트 시스템으로 이동하고 있다는 점이었습니다. 표면적으로는 서로 다른 뉴스처럼 보여도, HoloTab, Gemini API Flex/Priority, Meta의 AI 기반 risk review, 그리고 VAKRA나 LLMs Gaming Verifiers 같은 연구는 모두 같은 방향을 가리킵니다. 이제 중요한 질문은 모델이 한 번 잘 답하느냐가 아니라, 실제 업무 흐름 안에서 얼마나 지속적으로, 안전하게, 비용 통제된 상태로 작동하느냐입니다.
-가장 흥미로운 제품 신호는 브라우저와 로봇, 그리고 내부 운영 툴에서 동시에 나왔습니다. HoloTab은 AI가 별도 챗 화면이 아니라 실제 웹 탐색 흐름 위에 붙는 browsing-native companion으로 이동하고 있음을 보여줬습니다. 반대로 베이징 하프마라톤에서 휴머노이드 로봇이 인간과 함께 완주했다는 소식은, 에이전트 경쟁이 물리 세계의 실행력까지 빠르게 확장되고 있음을 상징적으로 보여줍니다. 한쪽은 디지털 워크플로, 다른 한쪽은 embodied AI이지만 둘 다 핵심은 같습니다. AI는 더 이상 답변만 하는 존재가 아니라, 환경 안에서 행동하고 상호작용하는 시스템이 되어가고 있습니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-04-19 21:52:00 +0900 KST'>April 19, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 에이전트 시대의 승부처는 추론 성능보다 운영 제어다" href="https://kwbaek.github.io/posts/2026-04-19-ai-ml-trends-inference-governance-agents/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">
