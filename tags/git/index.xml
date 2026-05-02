@@ -1,11 +1,69 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Git on Kyungwook's Devlog</title><link>https://kwbaek.github.io/tags/git/</link><description>Recent content in Git on Kyungwook's Devlog</description><generator>Hugo -- 0.155.3</generator><language>ko-kr</language><lastBuildDate>Thu, 23 Apr 2026 21:05:00 +0900</lastBuildDate><atom:link href="https://kwbaek.github.io/tags/git/index.xml" rel="self" type="application/rss+xml"/><item><title>OpenClaw 팁: 글 작성과 배포를 두 단계 릴리즈로 나누면 자동화가 훨씬 믿을 만해진다</title><link>https://kwbaek.github.io/posts/2026-04-23-openclaw-two-stage-publishing-keeps-automation-trustworthy/</link><pubDate>Thu, 23 Apr 2026 21:05:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-04-23-openclaw-two-stage-publishing-keeps-automation-trustworthy/</guid><description>&lt;p&gt;OpenClaw로 블로그 자동화를 굴릴 때 제가 점점 더 강하게 느끼는 원칙이 하나 있습니다. &lt;strong&gt;콘텐츠 작성과 사이트 배포를 한 덩어리로 취급하지 않는 편이 훨씬 안전하다&lt;/strong&gt;는 점입니다. 얼핏 보면 글을 만들고 바로 빌드해서 퍼블릭 저장소까지 밀어 넣는 것이 가장 효율적으로 보입니다. 하지만 실제 운영에서는 이 둘을 분리해 생각해야 사고가 줄어듭니다. 글 작성은 편집 작업이고, 배포는 릴리즈 작업이기 때문입니다.&lt;/p&gt;
-&lt;p&gt;특히 OpenClaw의 cron 기반 워크플로에서는 이 차이가 더 중요합니다. cron은 정해진 시각에 실행되는 만큼, 매번 같은 품질로 반복 가능해야 합니다. 그런데 자동 글쓰기와 정적 사이트 배포는 실패 양상이 다릅니다. 글 작성 단계에서는 제목, front matter, 카테고리, 태그, 본문 구조처럼 콘텐츠 품질이 중요합니다. 반면 배포 단계에서는 Hugo 빌드 성공 여부, 생성 결과 차이, &lt;code&gt;public/&lt;/code&gt; 반영 상태, Git 커밋 순서처럼 릴리즈 무결성이 중요합니다. 이 둘을 한 번에 뭉개면 어디서 문제가 났는지 찾기 어려워지고, 실패 복구도 훨씬 불편해집니다.&lt;/p&gt;</description></item><item><title>OpenClaw 팁: 콘텐츠 레포와 배포 레포를 나누면 자동 발행이 훨씬 덜 무너진다</title><link>https://kwbaek.github.io/posts/2026-04-17-openclaw-two-repos-one-workflow-how-to-publish-more-safely/</link><pubDate>Fri, 17 Apr 2026 21:05:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-04-17-openclaw-two-repos-one-workflow-how-to-publish-more-safely/</guid><description>&lt;p&gt;OpenClaw로 반복 발행 작업을 굴릴수록 더 확실해지는 운영 원칙이 하나 있습니다. 블로그 자동화는 “글을 쓰고 끝”이 아니라, 사실상 &lt;strong&gt;콘텐츠 생성과 배포 산출물 관리라는 서로 다른 두 가지 책임&lt;/strong&gt;을 함께 다루는 일입니다. 이 둘을 한 덩어리로 취급하면 처음엔 편해 보여도, 조금만 작업이 쌓이면 금방 어디서 깨졌는지 추적하기 어려워집니다. 반대로 콘텐츠 레포와 &lt;code&gt;public/&lt;/code&gt; 배포 레포를 명확히 나누면, OpenClaw 같은 에이전트형 워크플로에서 실패 지점을 훨씬 더 또렷하게 관리할 수 있습니다.&lt;/p&gt;
-&lt;p&gt;이 구조가 특히 좋은 이유는 문제를 단계별로 끊어 볼 수 있기 때문입니다. 예를 들어 일일 블로그 포스팅 자동화를 생각해 보면 실제로는 아래 세 단계가 따로 존재합니다.&lt;/p&gt;</description></item><item><title>OpenClaw 팁: 일일 블로그 자동화는 리서치와 퍼블리싱이 한 흐름으로 붙어 있을 때 더 좋아진다</title><link>https://kwbaek.github.io/posts/2026-04-12-openclaw-daily-blog-automation-gets-better-when-research-and-publishing-stay-coupled/</link><pubDate>Sun, 12 Apr 2026 21:05:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-04-12-openclaw-daily-blog-automation-gets-better-when-research-and-publishing-stay-coupled/</guid><description>&lt;p&gt;오늘처럼 OpenClaw로 매일 블로그 포스팅을 만드는 작업을 돌리다 보면, 결국 중요한 건 거창한 생성 능력보다 &lt;strong&gt;리서치, 글쓰기, 배포가 하나의 연속된 흐름으로 잘 붙어 있느냐&lt;/strong&gt;라는 점이라는 걸 다시 느끼게 됩니다. 특히 &lt;code&gt;Discord 채널 읽기 → 핵심 트렌드 선별 → Hugo 포스트 작성 → git 커밋 → hugo 빌드 → public 배포&lt;/code&gt;처럼 끝이 분명한 루틴에서는, 각 단계를 따로 최적화하는 것보다 &lt;strong&gt;중간 맥락이 끊기지 않게 유지하는 설계&lt;/strong&gt;가 훨씬 중요합니다.&lt;/p&gt;
-&lt;p&gt;왜 이게 중요할까요. 자동화는 보통 두 종류의 실패를 냅니다. 하나는 기술적 실패입니다. 파일이 없거나, 경로가 틀리거나, 빌드가 깨지는 경우죠. 다른 하나는 더 흔하지만 덜 눈에 띄는 실패인데, &lt;strong&gt;앞 단계에서 얻은 맥락이 뒤 단계로 자연스럽게 이어지지 않는 실패&lt;/strong&gt;입니다. 예를 들어 트렌드는 잘 골랐는데 글이 엉뚱한 방향으로 가거나, 글은 괜찮은데 파일명과 카테고리 체계가 흔들리거나, 콘텐츠는 좋은데 배포 루틴이 들쑥날쑥하면 전체 자동화 품질은 금방 떨어집니다.&lt;/p&gt;</description></item><item><title>OpenClaw 팁: Hugo 자동화는 콘텐츠 작성과 배포를 두 개의 릴리즈로 다룰 때 더 안전해진다</title><link>https://kwbaek.github.io/posts/2026-04-08-openclaw-hugo-automation-gets-safer-when-content-and-deployment-are-treated-as-two-separate-releases/</link><pubDate>Wed, 08 Apr 2026 20:55:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-04-08-openclaw-hugo-automation-gets-safer-when-content-and-deployment-are-treated-as-two-separate-releases/</guid><description>&lt;p&gt;오늘 OpenClaw로 블로그 자동화를 돌리면서 다시 확인한 건, Hugo 기반 블로그 자동화에서 제일 위험한 지점은 글을 쓰는 순간이 아니라 &lt;strong&gt;배포를 한 덩어리 작업처럼 착각하는 순간&lt;/strong&gt;이라는 점입니다. 겉으로 보면 단순합니다. 글 두 편 만들고, &lt;code&gt;git add/commit/push&lt;/code&gt; 하고, Hugo 빌드하고, &lt;code&gt;public/&lt;/code&gt;도 커밋하고 푸시하면 끝입니다. 그런데 실제 운영 관점에선 이 흐름이 하나의 작업이 아니라 &lt;strong&gt;성격이 다른 두 개의 릴리즈&lt;/strong&gt;에 가깝습니다.&lt;/p&gt;
-&lt;p&gt;첫 번째 릴리즈는 &lt;code&gt;content/&lt;/code&gt; 쪽입니다. 이건 사람이 읽는 원고, 메타데이터, 카테고리, 태그, 문서 구조 같은 &lt;strong&gt;소스 콘텐츠의 릴리즈&lt;/strong&gt;입니다. 두 번째 릴리즈는 &lt;code&gt;public/&lt;/code&gt; 쪽입니다. 이건 Hugo가 생성한 정적 파일, 즉 브라우저가 실제로 보게 되는 &lt;strong&gt;배포 산출물의 릴리즈&lt;/strong&gt;입니다. 둘은 연결돼 있지만 완전히 같은 건 아닙니다. 이걸 분리해서 생각하기 시작하면 OpenClaw 자동화가 훨씬 덜 깨지고, 실패했을 때도 복구가 쉬워집니다.&lt;/p&gt;</description></item><item><title>OpenClaw 운영 팁: 블로그 자동화는 똑똑함보다 복원력이 중요하다</title><link>https://kwbaek.github.io/posts/2026-03-27-openclaw-blog-automation-needs-reliability-not-heroics/</link><pubDate>Fri, 27 Mar 2026 21:16:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-03-27-openclaw-blog-automation-needs-reliability-not-heroics/</guid><description>&lt;p&gt;매일 블로그 포스팅 자동화를 돌리다 보면, 처음에는 좋은 글을 잘 쓰는 모델이 핵심처럼 보입니다. 그런데 며칠만 운영해보면 생각이 바뀝니다. 실제 실패는 대개 원고 품질보다 &lt;strong&gt;입력 누락, 경로 혼선, 배포 순서 실수, 빌드 실패, 저장소 상태 꼬임&lt;/strong&gt;에서 먼저 납니다. 그래서 OpenClaw로 일일 블로그 파이프라인을 만들 때 제일 먼저 챙겨야 할 것은 &amp;ldquo;더 똑똑한 생성&amp;quot;이 아니라 &lt;strong&gt;실패해도 다시 일으킬 수 있는 구조&lt;/strong&gt;입니다.&lt;/p&gt;
-&lt;h2 id="1-instruction-파일을-단일-진실-원천으로-두기"&gt;1) instruction 파일을 단일 진실 원천으로 두기&lt;/h2&gt;
-&lt;p&gt;Cron 기반 자동화에서는 잡 이름보다 실제 instruction 파일이 더 중요합니다. 사람이 규칙을 여러 군데에 적어두면 곧바로 어긋납니다. heartbeat에 적힌 기준, 채널 대화에서 합의한 기준, cron instruction이 서로 다르면 실행 결과가 흔들리기 쉽습니다.&lt;/p&gt;</description></item><item><title>OpenClaw 실무 운영: 일일 자동 포스팅을 안정적으로 돌리는 5단계</title><link>https://kwbaek.github.io/posts/2026-03-25-openclaw-blog-automation-safe-operations/</link><pubDate>Wed, 25 Mar 2026 21:00:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-03-25-openclaw-blog-automation-safe-operations/</guid><description>&lt;p&gt;매일 포스팅 자동화를 돌리다 보면 모델의 품질보다 &lt;strong&gt;파이프라인 단단함&lt;/strong&gt;이 더 빨리 실패 원인을 줄입니다. 오늘은 일일 블로그 포스팅 잡(트렌드 선별→원고 생성→빌드/배포) 기준으로 실전 체크 포인트를 정리합니다.&lt;/p&gt;
-&lt;h2 id="1-입력-정제부터-잡는다"&gt;1) 입력 정제부터 잡는다&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Git on Kyungwook&#39;s Devlog</title>
+    <link>https://kwbaek.github.io/tags/git/</link>
+    <description>Recent content in Git on Kyungwook&#39;s Devlog</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Sat, 02 May 2026 21:00:00 +0900</lastBuildDate>
+    <atom:link href="https://kwbaek.github.io/tags/git/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>OpenClaw 팁: cron 자동화는 성공 경로보다 복구 경로를 먼저 설계하자</title>
+      <link>https://kwbaek.github.io/posts/2026-05-02-openclaw-design-cron-jobs-for-recovery-not-just-success/</link>
+      <pubDate>Sat, 02 May 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-05-02-openclaw-design-cron-jobs-for-recovery-not-just-success/</guid>
+      <description>&lt;p&gt;OpenClaw로 매일 돌아가는 자동화를 만들 때 가장 흔한 실수는 “성공하면 무엇을 할지”만 자세히 적고, 실패했을 때 어디서 멈춰야 하는지를 흐릿하게 두는 것입니다. 블로그 발행 cron만 봐도 단계가 꽤 많습니다. Discord 채널을 읽고, 트렌드를 선별하고, Hugo 글을 만들고, source repo에 커밋하고, 빌드하고, &lt;code&gt;public/&lt;/code&gt; 배포 repo를 다시 커밋하고 push해야 합니다. 이 전체를 하나의 덩어리로 보면 실패 원인을 찾기 어렵습니다. 반대로 단계별 산출물과 검증 지점을 나누면 자동화가 훨씬 운영하기 쉬워집니다.&lt;/p&gt;
+&lt;p&gt;첫 번째 원칙은 입력, 작성, 배포를 분리하는 것입니다. 예를 들어 &lt;code&gt;#ai-ml-trends&lt;/code&gt; 같은 Discord 채널은 하루 동안 축적된 관찰 로그입니다. cron은 그 로그를 읽어 오늘의 핵심 주장을 뽑고, &lt;code&gt;content/posts/YYYY-MM-DD-slug.md&lt;/code&gt; 같은 명확한 파일 산출물로 남깁니다. 여기까지가 작성 단계입니다. 이 시점에서 파일이 존재하고 front matter가 올바르면, 적어도 콘텐츠 생성은 성공한 것입니다. 빌드나 push가 나중에 실패해도 글 자체를 잃지 않습니다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>OpenClaw 팁: 글 작성과 배포를 두 단계 릴리즈로 나누면 자동화가 훨씬 믿을 만해진다</title>
+      <link>https://kwbaek.github.io/posts/2026-04-23-openclaw-two-stage-publishing-keeps-automation-trustworthy/</link>
+      <pubDate>Thu, 23 Apr 2026 21:05:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-04-23-openclaw-two-stage-publishing-keeps-automation-trustworthy/</guid>
+      <description>&lt;p&gt;OpenClaw로 블로그 자동화를 굴릴 때 제가 점점 더 강하게 느끼는 원칙이 하나 있습니다. &lt;strong&gt;콘텐츠 작성과 사이트 배포를 한 덩어리로 취급하지 않는 편이 훨씬 안전하다&lt;/strong&gt;는 점입니다. 얼핏 보면 글을 만들고 바로 빌드해서 퍼블릭 저장소까지 밀어 넣는 것이 가장 효율적으로 보입니다. 하지만 실제 운영에서는 이 둘을 분리해 생각해야 사고가 줄어듭니다. 글 작성은 편집 작업이고, 배포는 릴리즈 작업이기 때문입니다.&lt;/p&gt;
+&lt;p&gt;특히 OpenClaw의 cron 기반 워크플로에서는 이 차이가 더 중요합니다. cron은 정해진 시각에 실행되는 만큼, 매번 같은 품질로 반복 가능해야 합니다. 그런데 자동 글쓰기와 정적 사이트 배포는 실패 양상이 다릅니다. 글 작성 단계에서는 제목, front matter, 카테고리, 태그, 본문 구조처럼 콘텐츠 품질이 중요합니다. 반면 배포 단계에서는 Hugo 빌드 성공 여부, 생성 결과 차이, &lt;code&gt;public/&lt;/code&gt; 반영 상태, Git 커밋 순서처럼 릴리즈 무결성이 중요합니다. 이 둘을 한 번에 뭉개면 어디서 문제가 났는지 찾기 어려워지고, 실패 복구도 훨씬 불편해집니다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>OpenClaw 팁: 콘텐츠 레포와 배포 레포를 나누면 자동 발행이 훨씬 덜 무너진다</title>
+      <link>https://kwbaek.github.io/posts/2026-04-17-openclaw-two-repos-one-workflow-how-to-publish-more-safely/</link>
+      <pubDate>Fri, 17 Apr 2026 21:05:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-04-17-openclaw-two-repos-one-workflow-how-to-publish-more-safely/</guid>
+      <description>&lt;p&gt;OpenClaw로 반복 발행 작업을 굴릴수록 더 확실해지는 운영 원칙이 하나 있습니다. 블로그 자동화는 “글을 쓰고 끝”이 아니라, 사실상 &lt;strong&gt;콘텐츠 생성과 배포 산출물 관리라는 서로 다른 두 가지 책임&lt;/strong&gt;을 함께 다루는 일입니다. 이 둘을 한 덩어리로 취급하면 처음엔 편해 보여도, 조금만 작업이 쌓이면 금방 어디서 깨졌는지 추적하기 어려워집니다. 반대로 콘텐츠 레포와 &lt;code&gt;public/&lt;/code&gt; 배포 레포를 명확히 나누면, OpenClaw 같은 에이전트형 워크플로에서 실패 지점을 훨씬 더 또렷하게 관리할 수 있습니다.&lt;/p&gt;
+&lt;p&gt;이 구조가 특히 좋은 이유는 문제를 단계별로 끊어 볼 수 있기 때문입니다. 예를 들어 일일 블로그 포스팅 자동화를 생각해 보면 실제로는 아래 세 단계가 따로 존재합니다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>OpenClaw 팁: 일일 블로그 자동화는 리서치와 퍼블리싱이 한 흐름으로 붙어 있을 때 더 좋아진다</title>
+      <link>https://kwbaek.github.io/posts/2026-04-12-openclaw-daily-blog-automation-gets-better-when-research-and-publishing-stay-coupled/</link>
+      <pubDate>Sun, 12 Apr 2026 21:05:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-04-12-openclaw-daily-blog-automation-gets-better-when-research-and-publishing-stay-coupled/</guid>
+      <description>&lt;p&gt;오늘처럼 OpenClaw로 매일 블로그 포스팅을 만드는 작업을 돌리다 보면, 결국 중요한 건 거창한 생성 능력보다 &lt;strong&gt;리서치, 글쓰기, 배포가 하나의 연속된 흐름으로 잘 붙어 있느냐&lt;/strong&gt;라는 점이라는 걸 다시 느끼게 됩니다. 특히 &lt;code&gt;Discord 채널 읽기 → 핵심 트렌드 선별 → Hugo 포스트 작성 → git 커밋 → hugo 빌드 → public 배포&lt;/code&gt;처럼 끝이 분명한 루틴에서는, 각 단계를 따로 최적화하는 것보다 &lt;strong&gt;중간 맥락이 끊기지 않게 유지하는 설계&lt;/strong&gt;가 훨씬 중요합니다.&lt;/p&gt;
+&lt;p&gt;왜 이게 중요할까요. 자동화는 보통 두 종류의 실패를 냅니다. 하나는 기술적 실패입니다. 파일이 없거나, 경로가 틀리거나, 빌드가 깨지는 경우죠. 다른 하나는 더 흔하지만 덜 눈에 띄는 실패인데, &lt;strong&gt;앞 단계에서 얻은 맥락이 뒤 단계로 자연스럽게 이어지지 않는 실패&lt;/strong&gt;입니다. 예를 들어 트렌드는 잘 골랐는데 글이 엉뚱한 방향으로 가거나, 글은 괜찮은데 파일명과 카테고리 체계가 흔들리거나, 콘텐츠는 좋은데 배포 루틴이 들쑥날쑥하면 전체 자동화 품질은 금방 떨어집니다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>OpenClaw 팁: Hugo 자동화는 콘텐츠 작성과 배포를 두 개의 릴리즈로 다룰 때 더 안전해진다</title>
+      <link>https://kwbaek.github.io/posts/2026-04-08-openclaw-hugo-automation-gets-safer-when-content-and-deployment-are-treated-as-two-separate-releases/</link>
+      <pubDate>Wed, 08 Apr 2026 20:55:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-04-08-openclaw-hugo-automation-gets-safer-when-content-and-deployment-are-treated-as-two-separate-releases/</guid>
+      <description>&lt;p&gt;오늘 OpenClaw로 블로그 자동화를 돌리면서 다시 확인한 건, Hugo 기반 블로그 자동화에서 제일 위험한 지점은 글을 쓰는 순간이 아니라 &lt;strong&gt;배포를 한 덩어리 작업처럼 착각하는 순간&lt;/strong&gt;이라는 점입니다. 겉으로 보면 단순합니다. 글 두 편 만들고, &lt;code&gt;git add/commit/push&lt;/code&gt; 하고, Hugo 빌드하고, &lt;code&gt;public/&lt;/code&gt;도 커밋하고 푸시하면 끝입니다. 그런데 실제 운영 관점에선 이 흐름이 하나의 작업이 아니라 &lt;strong&gt;성격이 다른 두 개의 릴리즈&lt;/strong&gt;에 가깝습니다.&lt;/p&gt;
+&lt;p&gt;첫 번째 릴리즈는 &lt;code&gt;content/&lt;/code&gt; 쪽입니다. 이건 사람이 읽는 원고, 메타데이터, 카테고리, 태그, 문서 구조 같은 &lt;strong&gt;소스 콘텐츠의 릴리즈&lt;/strong&gt;입니다. 두 번째 릴리즈는 &lt;code&gt;public/&lt;/code&gt; 쪽입니다. 이건 Hugo가 생성한 정적 파일, 즉 브라우저가 실제로 보게 되는 &lt;strong&gt;배포 산출물의 릴리즈&lt;/strong&gt;입니다. 둘은 연결돼 있지만 완전히 같은 건 아닙니다. 이걸 분리해서 생각하기 시작하면 OpenClaw 자동화가 훨씬 덜 깨지고, 실패했을 때도 복구가 쉬워집니다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>OpenClaw 운영 팁: 블로그 자동화는 똑똑함보다 복원력이 중요하다</title>
+      <link>https://kwbaek.github.io/posts/2026-03-27-openclaw-blog-automation-needs-reliability-not-heroics/</link>
+      <pubDate>Fri, 27 Mar 2026 21:16:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-03-27-openclaw-blog-automation-needs-reliability-not-heroics/</guid>
+      <description>&lt;p&gt;매일 블로그 포스팅 자동화를 돌리다 보면, 처음에는 좋은 글을 잘 쓰는 모델이 핵심처럼 보입니다. 그런데 며칠만 운영해보면 생각이 바뀝니다. 실제 실패는 대개 원고 품질보다 &lt;strong&gt;입력 누락, 경로 혼선, 배포 순서 실수, 빌드 실패, 저장소 상태 꼬임&lt;/strong&gt;에서 먼저 납니다. 그래서 OpenClaw로 일일 블로그 파이프라인을 만들 때 제일 먼저 챙겨야 할 것은 &amp;ldquo;더 똑똑한 생성&amp;quot;이 아니라 &lt;strong&gt;실패해도 다시 일으킬 수 있는 구조&lt;/strong&gt;입니다.&lt;/p&gt;
+&lt;h2 id=&#34;1-instruction-파일을-단일-진실-원천으로-두기&#34;&gt;1) instruction 파일을 단일 진실 원천으로 두기&lt;/h2&gt;
+&lt;p&gt;Cron 기반 자동화에서는 잡 이름보다 실제 instruction 파일이 더 중요합니다. 사람이 규칙을 여러 군데에 적어두면 곧바로 어긋납니다. heartbeat에 적힌 기준, 채널 대화에서 합의한 기준, cron instruction이 서로 다르면 실행 결과가 흔들리기 쉽습니다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>OpenClaw 실무 운영: 일일 자동 포스팅을 안정적으로 돌리는 5단계</title>
+      <link>https://kwbaek.github.io/posts/2026-03-25-openclaw-blog-automation-safe-operations/</link>
+      <pubDate>Wed, 25 Mar 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-03-25-openclaw-blog-automation-safe-operations/</guid>
+      <description>&lt;p&gt;매일 포스팅 자동화를 돌리다 보면 모델의 품질보다 &lt;strong&gt;파이프라인 단단함&lt;/strong&gt;이 더 빨리 실패 원인을 줄입니다. 오늘은 일일 블로그 포스팅 잡(트렌드 선별→원고 생성→빌드/배포) 기준으로 실전 체크 포인트를 정리합니다.&lt;/p&gt;
+&lt;h2 id=&#34;1-입력-정제부터-잡는다&#34;&gt;1) 입력 정제부터 잡는다&lt;/h2&gt;
 &lt;p&gt;&lt;code&gt;#ai-ml-trends&lt;/code&gt; 같은 채널은 실시간 메시지가 많아 노이즈가 큽니다. 첫 단계에서 오늘 메시지 필터링이 불완전하면 뒤에서 제목·카테고리 오탈자, 중복 포스팅이 생깁니다.&lt;/p&gt;
 &lt;p&gt;권장 규칙:&lt;/p&gt;
 &lt;ul&gt;
@@ -13,13 +71,23 @@
 &lt;li&gt;소스 분산(공식 블로그, 벤더 보도, 리포트) 확보&lt;/li&gt;
 &lt;li&gt;단건이 아닌 패턴(모델/툴/규제/인프라) 기준으로 키워드 추출&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id="2-카테고리-분기-규칙을-고정한다"&gt;2) 카테고리 분기 규칙을 고정한다&lt;/h2&gt;
-&lt;p&gt;이번 포스트처럼 AI/ML 트렌드와 OpenClaw 운영 TIP을 함께 만든다면, 생성 템플릿을 두 갈래로 분리해야 합니다.&lt;/p&gt;</description></item><item><title>OpenClaw 운영 노트: 오늘의 실무 가치가 큰 업데이트/운영 팁</title><link>https://kwbaek.github.io/posts/2026-03-17-openclaw-todays-workflow-cron-automation-tips/</link><pubDate>Tue, 17 Mar 2026 21:05:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-03-17-openclaw-todays-workflow-cron-automation-tips/</guid><description>&lt;p&gt;최근 채널에서는 거시적인 산업 뉴스와 병행해 OpenClaw 운영 관점에서 바로 쓸 수 있는 시사점이 반복해서 보였습니다. 오늘은 사용자에게 가장 쓸모 있는 포인트를 세 가지만 정리합니다.&lt;/p&gt;
-&lt;h2 id="1-agent-운영-기능-추가보다-워크플로-신뢰성이-핵심"&gt;1) Agent 운영: 기능 추가보다 워크플로 신뢰성이 핵심&lt;/h2&gt;
+&lt;h2 id=&#34;2-카테고리-분기-규칙을-고정한다&#34;&gt;2) 카테고리 분기 규칙을 고정한다&lt;/h2&gt;
+&lt;p&gt;이번 포스트처럼 AI/ML 트렌드와 OpenClaw 운영 TIP을 함께 만든다면, 생성 템플릿을 두 갈래로 분리해야 합니다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>OpenClaw 운영 노트: 오늘의 실무 가치가 큰 업데이트/운영 팁</title>
+      <link>https://kwbaek.github.io/posts/2026-03-17-openclaw-todays-workflow-cron-automation-tips/</link>
+      <pubDate>Tue, 17 Mar 2026 21:05:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-03-17-openclaw-todays-workflow-cron-automation-tips/</guid>
+      <description>&lt;p&gt;최근 채널에서는 거시적인 산업 뉴스와 병행해 OpenClaw 운영 관점에서 바로 쓸 수 있는 시사점이 반복해서 보였습니다. 오늘은 사용자에게 가장 쓸모 있는 포인트를 세 가지만 정리합니다.&lt;/p&gt;
+&lt;h2 id=&#34;1-agent-운영-기능-추가보다-워크플로-신뢰성이-핵심&#34;&gt;1) Agent 운영: 기능 추가보다 워크플로 신뢰성이 핵심&lt;/h2&gt;
 &lt;p&gt;지난 며칠 간의 공지/체크리스트를 정리하면, 실무에서 OpenClaw의 안정적인 운영은 &lt;strong&gt;새 기능을 빠르게 쓰는 것보다 기본 루틴 유지&lt;/strong&gt;에서 출발합니다.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;openclaw config validate --json&lt;/code&gt;로 설정 상태 점검&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;openclaw healthz&lt;/code&gt; / &lt;code&gt;openclaw status&lt;/code&gt;로 가동성 확인&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;openclaw security audit&lt;/code&gt;(필요 시 &lt;code&gt;--deep&lt;/code&gt;, &lt;code&gt;--fix&lt;/code&gt;)로 노출 위험 탐지&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;특히 크론/자동화 환경에서는 이 루틴을 습관으로 두면 &amp;ldquo;실행은 되는데 왜 안 보이나&amp;quot;를 크게 줄일 수 있습니다.&lt;/p&gt;</description></item></channel></rss>
+&lt;p&gt;특히 크론/자동화 환경에서는 이 루틴을 습관으로 두면 &amp;ldquo;실행은 되는데 왜 안 보이나&amp;quot;를 크게 줄일 수 있습니다.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
