@@ -1,20 +1,2 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
-  <channel>
-    <title>Runtime on Kyungwook&#39;s Devlog</title>
-    <link>https://kwbaek.github.io/tags/runtime/</link>
-    <description>Recent content in Runtime on Kyungwook&#39;s Devlog</description>
-    <generator>Hugo -- 0.155.3</generator>
-    <language>ko-kr</language>
-    <lastBuildDate>Wed, 29 Apr 2026 13:22:00 +0900</lastBuildDate>
-    <atom:link href="https://kwbaek.github.io/tags/runtime/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>AI/ML 트렌드: 에이전트 플랫폼 전쟁은 이제 모델보다 거버넌스·런타임·리스크 관리 싸움이다</title>
-      <link>https://kwbaek.github.io/posts/2026-04-29-ai-ml-trends-the-agent-platform-war-is-now-about-governance-runtime-and-risk/</link>
-      <pubDate>Wed, 29 Apr 2026 13:22:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/posts/2026-04-29-ai-ml-trends-the-agent-platform-war-is-now-about-governance-runtime-and-risk/</guid>
-      <description>&lt;p&gt;오늘 &lt;code&gt;#ai-ml-trends&lt;/code&gt; 채널에서 가장 중요하게 보인 흐름은, AI 경쟁의 중심이 더 이상 “누가 더 강한 모델을 냈는가”에 머물지 않는다는 점이었습니다. 최근 올라온 OpenAI &lt;code&gt;Symphony&lt;/code&gt;, Google Cloud Next의 장기 실행 에이전트 플랫폼, 그리고 싱가포르 은행권의 frontier AI 위협 모니터링 소식은 서로 다른 이야기처럼 보여도 사실 한 방향을 가리킵니다. &lt;strong&gt;이제 시장의 진짜 승부처는 모델 자체보다 에이전트를 어떤 운영체계 위에서, 어떤 통제 장치와 함께, 얼마나 오래 안전하게 굴릴 수 있느냐&lt;/strong&gt;입니다.&lt;/p&gt;
-&lt;p&gt;OpenAI의 &lt;code&gt;Symphony&lt;/code&gt;는 특히 상징적입니다. 코딩 에이전트의 경쟁력이 더 이상 “채팅창에서 코드 몇 줄 잘 쓰는가”에 있지 않고, 이슈 트래커와 작업 보드를 중심으로 여러 작업을 끊기지 않게 오케스트레이션하는 데 있다는 점을 드러냈습니다. 반대로 Google Cloud는 장기 실행 에이전트와 엔터프라이즈 플랫폼을 묶어, 개발·배포·거버넌스를 한 번에 제공하는 방향을 밀고 있습니다. 이건 단순 기능 추가가 아니라, 에이전트가 기업 업무 안으로 들어오려면 &lt;strong&gt;런타임, 권한, 승인, 관측성, 장애 복구&lt;/strong&gt;가 함께 제품화되어야 한다는 뜻입니다.&lt;/p&gt;</description>
-    </item>
-  </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Runtime on Kyungwook's Devlog</title><link>https://kwbaek.github.io/tags/runtime/</link><description>Recent content in Runtime on Kyungwook's Devlog</description><generator>Hugo -- 0.155.3</generator><language>ko-kr</language><lastBuildDate>Wed, 29 Apr 2026 13:22:00 +0900</lastBuildDate><atom:link href="https://kwbaek.github.io/tags/runtime/index.xml" rel="self" type="application/rss+xml"/><item><title>AI/ML 트렌드: 에이전트 플랫폼 전쟁은 이제 모델보다 거버넌스·런타임·리스크 관리 싸움이다</title><link>https://kwbaek.github.io/posts/2026-04-29-ai-ml-trends-the-agent-platform-war-is-now-about-governance-runtime-and-risk/</link><pubDate>Wed, 29 Apr 2026 13:22:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-04-29-ai-ml-trends-the-agent-platform-war-is-now-about-governance-runtime-and-risk/</guid><description>&lt;p&gt;오늘 &lt;code&gt;#ai-ml-trends&lt;/code&gt; 채널에서 가장 중요하게 보인 흐름은, AI 경쟁의 중심이 더 이상 “누가 더 강한 모델을 냈는가”에 머물지 않는다는 점이었습니다. 최근 올라온 OpenAI &lt;code&gt;Symphony&lt;/code&gt;, Google Cloud Next의 장기 실행 에이전트 플랫폼, 그리고 싱가포르 은행권의 frontier AI 위협 모니터링 소식은 서로 다른 이야기처럼 보여도 사실 한 방향을 가리킵니다. &lt;strong&gt;이제 시장의 진짜 승부처는 모델 자체보다 에이전트를 어떤 운영체계 위에서, 어떤 통제 장치와 함께, 얼마나 오래 안전하게 굴릴 수 있느냐&lt;/strong&gt;입니다.&lt;/p&gt;
+&lt;p&gt;OpenAI의 &lt;code&gt;Symphony&lt;/code&gt;는 특히 상징적입니다. 코딩 에이전트의 경쟁력이 더 이상 “채팅창에서 코드 몇 줄 잘 쓰는가”에 있지 않고, 이슈 트래커와 작업 보드를 중심으로 여러 작업을 끊기지 않게 오케스트레이션하는 데 있다는 점을 드러냈습니다. 반대로 Google Cloud는 장기 실행 에이전트와 엔터프라이즈 플랫폼을 묶어, 개발·배포·거버넌스를 한 번에 제공하는 방향을 밀고 있습니다. 이건 단순 기능 추가가 아니라, 에이전트가 기업 업무 안으로 들어오려면 &lt;strong&gt;런타임, 권한, 승인, 관측성, 장애 복구&lt;/strong&gt;가 함께 제품화되어야 한다는 뜻입니다.&lt;/p&gt;</description></item></channel></rss>
