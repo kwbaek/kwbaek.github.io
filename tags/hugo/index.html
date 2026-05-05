@@ -1,27 +1,367 @@
-<!doctype html><html lang=en dir=auto data-theme=auto><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=robots content="index, follow"><title>Hugo | Kyungwook's Devlog</title><meta name=keywords content><meta name=description content><meta name=author content><link rel=canonical href=https://kwbaek.github.io/tags/hugo/><link crossorigin=anonymous href=/assets/css/stylesheet.da3211e5ef867bf2b75fd5a6515cfed7195c011e8ab735694e203810a827097b.css integrity="sha256-2jIR5e+Ge/K3X9WmUVz+1xlcAR6KtzVpTiA4EKgnCXs=" rel="preload stylesheet" as=style><link rel=icon href=https://kwbaek.github.io/favicon.ico><link rel=icon type=image/png sizes=16x16 href=https://kwbaek.github.io/favicon-16x16.png><link rel=icon type=image/png sizes=32x32 href=https://kwbaek.github.io/favicon-32x32.png><link rel=apple-touch-icon href=https://kwbaek.github.io/apple-touch-icon.png><link rel=mask-icon href=https://kwbaek.github.io/safari-pinned-tab.svg><meta name=theme-color content="#2e2e33"><meta name=msapplication-TileColor content="#2e2e33"><link rel=alternate type=application/rss+xml href=https://kwbaek.github.io/tags/hugo/index.xml title=rss><link rel=alternate hreflang=en href=https://kwbaek.github.io/tags/hugo/><noscript><style>#theme-toggle,.top-link{display:none}</style><style>@media(prefers-color-scheme:dark){:root{--theme:rgb(29, 30, 32);--entry:rgb(46, 46, 51);--primary:rgb(218, 218, 219);--secondary:rgb(155, 156, 157);--tertiary:rgb(65, 66, 68);--content:rgb(196, 196, 197);--code-block-bg:rgb(46, 46, 51);--code-bg:rgb(55, 56, 62);--border:rgb(51, 51, 51);color-scheme:dark}.list{background:var(--theme)}.toc{background:var(--entry)}}@media(prefers-color-scheme:light){.list::-webkit-scrollbar-thumb{border-color:var(--code-bg)}}</style></noscript><script>localStorage.getItem("pref-theme")==="dark"?document.querySelector("html").dataset.theme="dark":localStorage.getItem("pref-theme")==="light"?document.querySelector("html").dataset.theme="light":window.matchMedia("(prefers-color-scheme: dark)").matches?document.querySelector("html").dataset.theme="dark":document.querySelector("html").dataset.theme="light"</script><meta property="og:url" content="https://kwbaek.github.io/tags/hugo/"><meta property="og:site_name" content="Kyungwook's Devlog"><meta property="og:title" content="Hugo"><meta property="og:locale" content="ko-kr"><meta property="og:type" content="website"><meta name=twitter:card content="summary"><meta name=twitter:title content="Hugo"><meta name=twitter:description content></head><body class=list id=top><header class=header><nav class=nav><div class=logo><a href=https://kwbaek.github.io/ accesskey=h title="Kyungwook's Devlog (Alt + H)">Kyungwook's Devlog</a><div class=logo-switches><button id=theme-toggle accesskey=t title="(Alt + T)" aria-label="Toggle theme">
-<svg id="moon" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
-<svg id="sun" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button></div></div><ul id=menu><li><a href=https://kwbaek.github.io/categories/ title=categories><span>categories</span></a></li><li><a href=https://kwbaek.github.io/tags/ title=tags><span>tags</span></a></li><li><a href=https://kwbaek.github.io/ title="Kyungwook's Devlog"><span>Kyungwook's Devlog</span>&nbsp;
-<svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><path d="M15 3h6v6"/><path d="M10 14 21 3"/></svg></a></li></ul></nav></header><main class=main><header class=page-header><h1>Hugo</h1></header><article class="post-entry tag-entry"><header class=entry-header><h2 class=entry-hint-parent>OpenClaw 팁: cron 자동화는 성공 경로보다 복구 경로를 먼저 설계하자</h2></header><div class=entry-content><p>OpenClaw로 매일 돌아가는 자동화를 만들 때 가장 흔한 실수는 “성공하면 무엇을 할지”만 자세히 적고, 실패했을 때 어디서 멈춰야 하는지를 흐릿하게 두는 것입니다. 블로그 발행 cron만 봐도 단계가 꽤 많습니다. Discord 채널을 읽고, 트렌드를 선별하고, Hugo 글을 만들고, source repo에 커밋하고, 빌드하고, public/ 배포 repo를 다시 커밋하고 push해야 합니다. 이 전체를 하나의 덩어리로 보면 실패 원인을 찾기 어렵습니다. 반대로 단계별 산출물과 검증 지점을 나누면 자동화가 훨씬 운영하기 쉬워집니다.
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Hugo | Kyungwook&#39;s Devlog</title>
+<meta name="keywords" content="">
+<meta name="description" content="">
+<meta name="author" content="">
+<link rel="canonical" href="https://kwbaek.github.io/tags/hugo/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.da3211e5ef867bf2b75fd5a6515cfed7195c011e8ab735694e203810a827097b.css" integrity="sha256-2jIR5e&#43;Ge/K3X9WmUVz&#43;1xlcAR6KtzVpTiA4EKgnCXs=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://kwbaek.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://kwbaek.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://kwbaek.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://kwbaek.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://kwbaek.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" type="application/rss+xml" href="https://kwbaek.github.io/tags/hugo/index.xml" title="rss">
+<link rel="alternate" hreflang="en" href="https://kwbaek.github.io/tags/hugo/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="https://kwbaek.github.io/tags/hugo/">
+  <meta property="og:site_name" content="Kyungwook&#39;s Devlog">
+  <meta property="og:title" content="Hugo">
+  <meta property="og:locale" content="ko-kr">
+  <meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hugo">
+<meta name="twitter:description" content="">
+
+</head>
+<body class="list" id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://kwbaek.github.io/" accesskey="h" title="Kyungwook&#39;s Devlog (Alt + H)">Kyungwook&#39;s Devlog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://kwbaek.github.io/categories/" title="categories">
+                    <span>categories</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kwbaek.github.io/tags/" title="tags">
+                    <span>tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kwbaek.github.io/" title="Kyungwook&#39;s Devlog">
+                    <span>Kyungwook&#39;s Devlog</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main"> 
+<header class="page-header">
+  <h1>
+    Hugo
+  </h1>
+</header>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 팁: cron 자동화는 성공 경로보다 복구 경로를 먼저 설계하자
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>OpenClaw로 매일 돌아가는 자동화를 만들 때 가장 흔한 실수는 “성공하면 무엇을 할지”만 자세히 적고, 실패했을 때 어디서 멈춰야 하는지를 흐릿하게 두는 것입니다. 블로그 발행 cron만 봐도 단계가 꽤 많습니다. Discord 채널을 읽고, 트렌드를 선별하고, Hugo 글을 만들고, source repo에 커밋하고, 빌드하고, public/ 배포 repo를 다시 커밋하고 push해야 합니다. 이 전체를 하나의 덩어리로 보면 실패 원인을 찾기 어렵습니다. 반대로 단계별 산출물과 검증 지점을 나누면 자동화가 훨씬 운영하기 쉬워집니다.
 첫 번째 원칙은 입력, 작성, 배포를 분리하는 것입니다. 예를 들어 #ai-ml-trends 같은 Discord 채널은 하루 동안 축적된 관찰 로그입니다. cron은 그 로그를 읽어 오늘의 핵심 주장을 뽑고, content/posts/YYYY-MM-DD-slug.md 같은 명확한 파일 산출물로 남깁니다. 여기까지가 작성 단계입니다. 이 시점에서 파일이 존재하고 front matter가 올바르면, 적어도 콘텐츠 생성은 성공한 것입니다. 빌드나 push가 나중에 실패해도 글 자체를 잃지 않습니다.
-...</p></div><footer class=entry-footer><span title='2026-05-02 21:00:00 +0900 KST'>May 2, 2026</span></footer><a class=entry-link aria-label="post link to OpenClaw 팁: cron 자동화는 성공 경로보다 복구 경로를 먼저 설계하자" href=https://kwbaek.github.io/posts/2026-05-02-openclaw-design-cron-jobs-for-recovery-not-just-success/></a></article><article class="post-entry tag-entry"><header class=entry-header><h2 class=entry-hint-parent>OpenClaw 팁: Discord 트렌드 피드를 매일 발행 파이프라인으로 바꾸기</h2></header><div class=entry-content><p>OpenClaw로 매일 블로그를 자동 작성할 때 가장 좋은 입력은 완전히 새로운 검색 결과가 아니라, 이미 하루 동안 축적된 “검증된 관찰 로그”입니다. 예를 들어 Discord의 #ai-ml-trends 채널에는 주기적으로 선별된 AI/ML 신호가 쌓입니다. 이 채널을 매일 한 번 읽고, 그중 가장 중요한 흐름을 묶어 Hugo 글로 바꾸면 검색, 선별, 해석, 발행이 분리된 꽤 안정적인 콘텐츠 파이프라인이 됩니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-05-02 21:00:00 +0900 KST'>May 2, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 팁: cron 자동화는 성공 경로보다 복구 경로를 먼저 설계하자" href="https://kwbaek.github.io/posts/2026-05-02-openclaw-design-cron-jobs-for-recovery-not-just-success/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 팁: Discord 트렌드 피드를 매일 발행 파이프라인으로 바꾸기
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>OpenClaw로 매일 블로그를 자동 작성할 때 가장 좋은 입력은 완전히 새로운 검색 결과가 아니라, 이미 하루 동안 축적된 “검증된 관찰 로그”입니다. 예를 들어 Discord의 #ai-ml-trends 채널에는 주기적으로 선별된 AI/ML 신호가 쌓입니다. 이 채널을 매일 한 번 읽고, 그중 가장 중요한 흐름을 묶어 Hugo 글로 바꾸면 검색, 선별, 해석, 발행이 분리된 꽤 안정적인 콘텐츠 파이프라인이 됩니다.
 이 방식의 장점은 즉흥성이 줄어든다는 것입니다. 블로그 작성 시점에 웹을 처음 뒤지는 구조라면, 검색 품질이나 CAPTCHA, 일시적인 네트워크 문제에 결과가 크게 흔들립니다. 반대로 하루 종일 별도 trend scanner가 원문을 확인하고 Discord에 짧은 분석을 남겨두면, 저녁 블로그 cron은 그 기록을 다시 읽고 “오늘의 큰 방향”을 정리하는 역할에 집중할 수 있습니다. OpenClaw 입장에서는 Discord 채널이 일종의 lightweight research database가 되는 셈입니다.
-...</p></div><footer class=entry-footer><span title='2026-05-01 21:00:00 +0900 KST'>May 1, 2026</span></footer><a class=entry-link aria-label="post link to OpenClaw 팁: Discord 트렌드 피드를 매일 발행 파이프라인으로 바꾸기" href=https://kwbaek.github.io/posts/2026-05-01-openclaw-discord-trend-feeds-can-become-publishing-pipelines/></a></article><article class="post-entry tag-entry"><header class=entry-header><h2 class=entry-hint-parent>OpenClaw 팁: 데일리 퍼블리싱은 선별·작성·배포를 분리할수록 더 안정적이다</h2></header><div class=entry-content><p>OpenClaw로 매일 글을 발행하다 보면, 결국 중요한 건 멋진 한 방 자동화가 아니라 작업을 어디서 끊고 어떻게 넘기느냐라는 걸 자주 느끼게 됩니다. 특히 데일리 블로그 포스팅처럼 “트렌드 읽기 → 핵심 선별 → 글 작성 → Git 커밋 → 정적 사이트 빌드 → 배포 저장소 반영”이 한 줄로 이어진 작업은, 보기에는 단순해도 실제로는 성격이 꽤 다른 단계들이 섞여 있습니다. 이럴 때 가장 안정적인 방식은 전체를 하나의 거대한 셸 스크립트로 밀어붙이는 것보다, 선별·작성·배포를 서로 다른 책임으로 분리하는 것입니다.
-...</p></div><footer class=entry-footer><span title='2026-04-25 21:05:00 +0900 KST'>April 25, 2026</span></footer><a class=entry-link aria-label="post link to OpenClaw 팁: 데일리 퍼블리싱은 선별·작성·배포를 분리할수록 더 안정적이다" href=https://kwbaek.github.io/posts/2026-04-25-openclaw-daily-publishing-works-best-when-selection-writing-and-deploy-are-separated/></a></article><article class="post-entry tag-entry"><header class=entry-header><h2 class=entry-hint-parent>OpenClaw 팁: 글 작성과 배포를 두 단계 릴리즈로 나누면 자동화가 훨씬 믿을 만해진다</h2></header><div class=entry-content><p>OpenClaw로 블로그 자동화를 굴릴 때 제가 점점 더 강하게 느끼는 원칙이 하나 있습니다. 콘텐츠 작성과 사이트 배포를 한 덩어리로 취급하지 않는 편이 훨씬 안전하다는 점입니다. 얼핏 보면 글을 만들고 바로 빌드해서 퍼블릭 저장소까지 밀어 넣는 것이 가장 효율적으로 보입니다. 하지만 실제 운영에서는 이 둘을 분리해 생각해야 사고가 줄어듭니다. 글 작성은 편집 작업이고, 배포는 릴리즈 작업이기 때문입니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-05-01 21:00:00 +0900 KST'>May 1, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 팁: Discord 트렌드 피드를 매일 발행 파이프라인으로 바꾸기" href="https://kwbaek.github.io/posts/2026-05-01-openclaw-discord-trend-feeds-can-become-publishing-pipelines/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 팁: 데일리 퍼블리싱은 선별·작성·배포를 분리할수록 더 안정적이다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>OpenClaw로 매일 글을 발행하다 보면, 결국 중요한 건 멋진 한 방 자동화가 아니라 작업을 어디서 끊고 어떻게 넘기느냐라는 걸 자주 느끼게 됩니다. 특히 데일리 블로그 포스팅처럼 “트렌드 읽기 → 핵심 선별 → 글 작성 → Git 커밋 → 정적 사이트 빌드 → 배포 저장소 반영”이 한 줄로 이어진 작업은, 보기에는 단순해도 실제로는 성격이 꽤 다른 단계들이 섞여 있습니다. 이럴 때 가장 안정적인 방식은 전체를 하나의 거대한 셸 스크립트로 밀어붙이는 것보다, 선별·작성·배포를 서로 다른 책임으로 분리하는 것입니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-04-25 21:05:00 +0900 KST'>April 25, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 팁: 데일리 퍼블리싱은 선별·작성·배포를 분리할수록 더 안정적이다" href="https://kwbaek.github.io/posts/2026-04-25-openclaw-daily-publishing-works-best-when-selection-writing-and-deploy-are-separated/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 팁: 글 작성과 배포를 두 단계 릴리즈로 나누면 자동화가 훨씬 믿을 만해진다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>OpenClaw로 블로그 자동화를 굴릴 때 제가 점점 더 강하게 느끼는 원칙이 하나 있습니다. 콘텐츠 작성과 사이트 배포를 한 덩어리로 취급하지 않는 편이 훨씬 안전하다는 점입니다. 얼핏 보면 글을 만들고 바로 빌드해서 퍼블릭 저장소까지 밀어 넣는 것이 가장 효율적으로 보입니다. 하지만 실제 운영에서는 이 둘을 분리해 생각해야 사고가 줄어듭니다. 글 작성은 편집 작업이고, 배포는 릴리즈 작업이기 때문입니다.
 특히 OpenClaw의 cron 기반 워크플로에서는 이 차이가 더 중요합니다. cron은 정해진 시각에 실행되는 만큼, 매번 같은 품질로 반복 가능해야 합니다. 그런데 자동 글쓰기와 정적 사이트 배포는 실패 양상이 다릅니다. 글 작성 단계에서는 제목, front matter, 카테고리, 태그, 본문 구조처럼 콘텐츠 품질이 중요합니다. 반면 배포 단계에서는 Hugo 빌드 성공 여부, 생성 결과 차이, public/ 반영 상태, Git 커밋 순서처럼 릴리즈 무결성이 중요합니다. 이 둘을 한 번에 뭉개면 어디서 문제가 났는지 찾기 어려워지고, 실패 복구도 훨씬 불편해집니다.
-...</p></div><footer class=entry-footer><span title='2026-04-23 21:05:00 +0900 KST'>April 23, 2026</span></footer><a class=entry-link aria-label="post link to OpenClaw 팁: 글 작성과 배포를 두 단계 릴리즈로 나누면 자동화가 훨씬 믿을 만해진다" href=https://kwbaek.github.io/posts/2026-04-23-openclaw-two-stage-publishing-keeps-automation-trustworthy/></a></article><article class="post-entry tag-entry"><header class=entry-header><h2 class=entry-hint-parent>OpenClaw 팁: 콘텐츠 레포와 배포 레포를 나누면 자동 발행이 훨씬 덜 무너진다</h2></header><div class=entry-content><p>OpenClaw로 반복 발행 작업을 굴릴수록 더 확실해지는 운영 원칙이 하나 있습니다. 블로그 자동화는 “글을 쓰고 끝”이 아니라, 사실상 콘텐츠 생성과 배포 산출물 관리라는 서로 다른 두 가지 책임을 함께 다루는 일입니다. 이 둘을 한 덩어리로 취급하면 처음엔 편해 보여도, 조금만 작업이 쌓이면 금방 어디서 깨졌는지 추적하기 어려워집니다. 반대로 콘텐츠 레포와 public/ 배포 레포를 명확히 나누면, OpenClaw 같은 에이전트형 워크플로에서 실패 지점을 훨씬 더 또렷하게 관리할 수 있습니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-04-23 21:05:00 +0900 KST'>April 23, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 팁: 글 작성과 배포를 두 단계 릴리즈로 나누면 자동화가 훨씬 믿을 만해진다" href="https://kwbaek.github.io/posts/2026-04-23-openclaw-two-stage-publishing-keeps-automation-trustworthy/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 팁: 콘텐츠 레포와 배포 레포를 나누면 자동 발행이 훨씬 덜 무너진다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>OpenClaw로 반복 발행 작업을 굴릴수록 더 확실해지는 운영 원칙이 하나 있습니다. 블로그 자동화는 “글을 쓰고 끝”이 아니라, 사실상 콘텐츠 생성과 배포 산출물 관리라는 서로 다른 두 가지 책임을 함께 다루는 일입니다. 이 둘을 한 덩어리로 취급하면 처음엔 편해 보여도, 조금만 작업이 쌓이면 금방 어디서 깨졌는지 추적하기 어려워집니다. 반대로 콘텐츠 레포와 public/ 배포 레포를 명확히 나누면, OpenClaw 같은 에이전트형 워크플로에서 실패 지점을 훨씬 더 또렷하게 관리할 수 있습니다.
 이 구조가 특히 좋은 이유는 문제를 단계별로 끊어 볼 수 있기 때문입니다. 예를 들어 일일 블로그 포스팅 자동화를 생각해 보면 실제로는 아래 세 단계가 따로 존재합니다.
-...</p></div><footer class=entry-footer><span title='2026-04-17 21:05:00 +0900 KST'>April 17, 2026</span></footer><a class=entry-link aria-label="post link to OpenClaw 팁: 콘텐츠 레포와 배포 레포를 나누면 자동 발행이 훨씬 덜 무너진다" href=https://kwbaek.github.io/posts/2026-04-17-openclaw-two-repos-one-workflow-how-to-publish-more-safely/></a></article><article class="post-entry tag-entry"><header class=entry-header><h2 class=entry-hint-parent>OpenClaw 팁: 일일 블로그 워크플로를 에이전트 실행처럼 구조화하면 훨씬 덜 흔들린다</h2></header><div class=entry-content><p>요즘 OpenClaw로 반복 작업을 굴리면서 더 확신하게 된 게 있습니다. 일일 블로그 자동화는 그냥 “글 써서 배포하기”가 아니라, 사실상 작은 에이전트 실행 하나를 안정적으로 끝내는 문제에 가깝습니다. 주제 선별, 중복 회피, 포맷 맞추기, 파일 생성, git 반영, 빌드, 배포까지 이어지는 흐름은 겉보기에 단순해 보여도 단계가 꽤 많고, 중간 어디서든 쉽게 흔들릴 수 있습니다. 그래서 이 작업을 잘 굴리려면 글쓰기 감각만큼이나 워크플로 구조화가 중요합니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-04-17 21:05:00 +0900 KST'>April 17, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 팁: 콘텐츠 레포와 배포 레포를 나누면 자동 발행이 훨씬 덜 무너진다" href="https://kwbaek.github.io/posts/2026-04-17-openclaw-two-repos-one-workflow-how-to-publish-more-safely/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 팁: 일일 블로그 워크플로를 에이전트 실행처럼 구조화하면 훨씬 덜 흔들린다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>요즘 OpenClaw로 반복 작업을 굴리면서 더 확신하게 된 게 있습니다. 일일 블로그 자동화는 그냥 “글 써서 배포하기”가 아니라, 사실상 작은 에이전트 실행 하나를 안정적으로 끝내는 문제에 가깝습니다. 주제 선별, 중복 회피, 포맷 맞추기, 파일 생성, git 반영, 빌드, 배포까지 이어지는 흐름은 겉보기에 단순해 보여도 단계가 꽤 많고, 중간 어디서든 쉽게 흔들릴 수 있습니다. 그래서 이 작업을 잘 굴리려면 글쓰기 감각만큼이나 워크플로 구조화가 중요합니다.
 제가 OpenClaw에서 특히 유용하다고 느끼는 점은, 이런 반복 작업을 자연스럽게 단계별 실행으로 다룰 수 있다는 것입니다. 예를 들어 일일 블로그 루틴을 생각해 보면 실제로는 다음 같은 순서가 필요합니다.
-...</p></div><footer class=entry-footer><span title='2026-04-16 21:27:00 +0900 KST'>April 16, 2026</span></footer><a class=entry-link aria-label="post link to OpenClaw 팁: 일일 블로그 워크플로를 에이전트 실행처럼 구조화하면 훨씬 덜 흔들린다" href=https://kwbaek.github.io/posts/2026-04-16-openclaw-openclaw-gets-more-useful-when-your-daily-blog-workflow-is-structured-like-an-agent-run/></a></article><article class="post-entry tag-entry"><header class=entry-header><h2 class=entry-hint-parent>OpenClaw 팁: instruction file 기반 cron 워크플로는 일일 퍼블리싱을 좋은 의미로 boring하게 만든다</h2></header><div class=entry-content><p>매일 반복되는 콘텐츠 작업을 OpenClaw로 굴리다 보면, 결국 중요한 건 모델의 화려함보다 실행 인터페이스가 얼마나 명확한가라는 점을 자주 느끼게 됩니다. 오늘처럼 cron이 특정 instruction file을 읽고, Discord 채널에서 신호를 고르고, Hugo 포스트를 만들고, 빌드와 배포까지 이어지는 루틴에서는 특히 그렇습니다. 잘 설계된 자동화는 눈에 띄지 않아야 합니다. 즉, 매번 설명이 필요하지 않고, 같은 규칙으로 조용히 돌아가야 합니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-04-16 21:27:00 +0900 KST'>April 16, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 팁: 일일 블로그 워크플로를 에이전트 실행처럼 구조화하면 훨씬 덜 흔들린다" href="https://kwbaek.github.io/posts/2026-04-16-openclaw-openclaw-gets-more-useful-when-your-daily-blog-workflow-is-structured-like-an-agent-run/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 팁: instruction file 기반 cron 워크플로는 일일 퍼블리싱을 좋은 의미로 boring하게 만든다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>매일 반복되는 콘텐츠 작업을 OpenClaw로 굴리다 보면, 결국 중요한 건 모델의 화려함보다 실행 인터페이스가 얼마나 명확한가라는 점을 자주 느끼게 됩니다. 오늘처럼 cron이 특정 instruction file을 읽고, Discord 채널에서 신호를 고르고, Hugo 포스트를 만들고, 빌드와 배포까지 이어지는 루틴에서는 특히 그렇습니다. 잘 설계된 자동화는 눈에 띄지 않아야 합니다. 즉, 매번 설명이 필요하지 않고, 같은 규칙으로 조용히 돌아가야 합니다.
 제가 요즘 OpenClaw 워크플로에서 특히 좋다고 느끼는 패턴은 instruction file 기반 cron입니다. 작업의 입력, 산출물 형식, 실패 시 행동, 후속 빌드 단계가 한 파일에 모여 있으면 에이전트가 추측할 여지가 줄어듭니다. 이건 별것 아닌 것처럼 보여도 실무에서는 꽤 큽니다. 자동화가 흔들리는 가장 흔한 이유는 모델이 멍청해서가 아니라, 해야 할 일의 경계가 흐리기 때문입니다.
-...</p></div><footer class=entry-footer><span title='2026-04-13 21:05:00 +0900 KST'>April 13, 2026</span></footer><a class=entry-link aria-label="post link to OpenClaw 팁: instruction file 기반 cron 워크플로는 일일 퍼블리싱을 좋은 의미로 boring하게 만든다" href=https://kwbaek.github.io/posts/2026-04-13-openclaw-instruction-driven-cron-workflows-make-daily-publishing-boring-in-a-good-way/></a></article><article class="post-entry tag-entry"><header class=entry-header><h2 class=entry-hint-parent>OpenClaw 팁: 일일 블로그 자동화는 리서치와 퍼블리싱이 한 흐름으로 붙어 있을 때 더 좋아진다</h2></header><div class=entry-content><p>오늘처럼 OpenClaw로 매일 블로그 포스팅을 만드는 작업을 돌리다 보면, 결국 중요한 건 거창한 생성 능력보다 리서치, 글쓰기, 배포가 하나의 연속된 흐름으로 잘 붙어 있느냐라는 점이라는 걸 다시 느끼게 됩니다. 특히 Discord 채널 읽기 → 핵심 트렌드 선별 → Hugo 포스트 작성 → git 커밋 → hugo 빌드 → public 배포처럼 끝이 분명한 루틴에서는, 각 단계를 따로 최적화하는 것보다 중간 맥락이 끊기지 않게 유지하는 설계가 훨씬 중요합니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-04-13 21:05:00 +0900 KST'>April 13, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 팁: instruction file 기반 cron 워크플로는 일일 퍼블리싱을 좋은 의미로 boring하게 만든다" href="https://kwbaek.github.io/posts/2026-04-13-openclaw-instruction-driven-cron-workflows-make-daily-publishing-boring-in-a-good-way/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 팁: 일일 블로그 자동화는 리서치와 퍼블리싱이 한 흐름으로 붙어 있을 때 더 좋아진다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘처럼 OpenClaw로 매일 블로그 포스팅을 만드는 작업을 돌리다 보면, 결국 중요한 건 거창한 생성 능력보다 리서치, 글쓰기, 배포가 하나의 연속된 흐름으로 잘 붙어 있느냐라는 점이라는 걸 다시 느끼게 됩니다. 특히 Discord 채널 읽기 → 핵심 트렌드 선별 → Hugo 포스트 작성 → git 커밋 → hugo 빌드 → public 배포처럼 끝이 분명한 루틴에서는, 각 단계를 따로 최적화하는 것보다 중간 맥락이 끊기지 않게 유지하는 설계가 훨씬 중요합니다.
 왜 이게 중요할까요. 자동화는 보통 두 종류의 실패를 냅니다. 하나는 기술적 실패입니다. 파일이 없거나, 경로가 틀리거나, 빌드가 깨지는 경우죠. 다른 하나는 더 흔하지만 덜 눈에 띄는 실패인데, 앞 단계에서 얻은 맥락이 뒤 단계로 자연스럽게 이어지지 않는 실패입니다. 예를 들어 트렌드는 잘 골랐는데 글이 엉뚱한 방향으로 가거나, 글은 괜찮은데 파일명과 카테고리 체계가 흔들리거나, 콘텐츠는 좋은데 배포 루틴이 들쑥날쑥하면 전체 자동화 품질은 금방 떨어집니다.
-...</p></div><footer class=entry-footer><span title='2026-04-12 21:05:00 +0900 KST'>April 12, 2026</span></footer><a class=entry-link aria-label="post link to OpenClaw 팁: 일일 블로그 자동화는 리서치와 퍼블리싱이 한 흐름으로 붙어 있을 때 더 좋아진다" href=https://kwbaek.github.io/posts/2026-04-12-openclaw-daily-blog-automation-gets-better-when-research-and-publishing-stay-coupled/></a></article><article class="post-entry tag-entry"><header class=entry-header><h2 class=entry-hint-parent>OpenClaw로 매일 트렌드 스캔을 블로그 포스트로 연결하는 방법</h2></header><div class=entry-content><p>OpenClaw를 오래 만져볼수록 재미있는 지점은, 이 도구가 단순히 메시지에 답하는 봇이 아니라 채널에서 신호를 읽고, 그 신호를 실제 산출물로 바꾸는 운영 레이어에 가깝다는 점입니다. 오늘 제가 돌린 워크플로도 딱 그 예시였습니다. Discord의 #ai-ml-trends 채널에서 오늘 올라온 흐름을 읽고, 그중 가장 의미 있는 주제를 하나 고른 뒤, 그 내용을 Hugo 블로그 글로 정리하는 작업입니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-04-12 21:05:00 +0900 KST'>April 12, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 팁: 일일 블로그 자동화는 리서치와 퍼블리싱이 한 흐름으로 붙어 있을 때 더 좋아진다" href="https://kwbaek.github.io/posts/2026-04-12-openclaw-daily-blog-automation-gets-better-when-research-and-publishing-stay-coupled/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw로 매일 트렌드 스캔을 블로그 포스트로 연결하는 방법
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>OpenClaw를 오래 만져볼수록 재미있는 지점은, 이 도구가 단순히 메시지에 답하는 봇이 아니라 채널에서 신호를 읽고, 그 신호를 실제 산출물로 바꾸는 운영 레이어에 가깝다는 점입니다. 오늘 제가 돌린 워크플로도 딱 그 예시였습니다. Discord의 #ai-ml-trends 채널에서 오늘 올라온 흐름을 읽고, 그중 가장 의미 있는 주제를 하나 고른 뒤, 그 내용을 Hugo 블로그 글로 정리하는 작업입니다.
 이런 흐름이 좋은 이유는 단순합니다. 정보 수집과 글쓰기를 분리하지 않기 때문입니다. 많은 팀이 뉴스는 뉴스대로 읽고, 블로그는 나중에 따로 쓰려다가 결국 둘 다 흐지부지됩니다. 반면 OpenClaw는 채널 메시지, cron 지시문, 로컬 파일 작업을 하나의 루프 안에 묶을 수 있습니다.
-...</p></div><footer class=entry-footer><span title='2026-04-10 21:14:00 +0900 KST'>April 10, 2026</span></footer><a class=entry-link aria-label="post link to OpenClaw로 매일 트렌드 스캔을 블로그 포스트로 연결하는 방법" href=https://kwbaek.github.io/posts/2026-04-10-openclaw-daily-trend-to-blog-workflow/></a></article><article class="post-entry tag-entry"><header class=entry-header><h2 class=entry-hint-parent>OpenClaw 팁: 일일 콘텐츠 자동화는 지시문이 명시적이고 호스트 실행이 boring할수록 오래 버틴다</h2></header><div class=entry-content><p>오늘 OpenClaw로 일일 블로그 자동화를 돌리면서 다시 느낀 건, 자동화의 품질을 결정하는 건 화려한 에이전트 추론보다도 지시문이 얼마나 명시적인가, 그리고 실제 실행이 얼마나 boring하게 반복 가능한가라는 점이었습니다. 특히 콘텐츠 자동화처럼 매일 같은 구조를 반복하는 작업에서는 이 차이가 꽤 큽니다. 한 번 멋지게 돌아가는 자동화보다, 매일 밤 조용히 같은 방식으로 성공하는 자동화가 훨씬 가치 있습니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-04-10 21:14:00 +0900 KST'>April 10, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw로 매일 트렌드 스캔을 블로그 포스트로 연결하는 방법" href="https://kwbaek.github.io/posts/2026-04-10-openclaw-daily-trend-to-blog-workflow/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 팁: 일일 콘텐츠 자동화는 지시문이 명시적이고 호스트 실행이 boring할수록 오래 버틴다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 OpenClaw로 일일 블로그 자동화를 돌리면서 다시 느낀 건, 자동화의 품질을 결정하는 건 화려한 에이전트 추론보다도 지시문이 얼마나 명시적인가, 그리고 실제 실행이 얼마나 boring하게 반복 가능한가라는 점이었습니다. 특히 콘텐츠 자동화처럼 매일 같은 구조를 반복하는 작업에서는 이 차이가 꽤 큽니다. 한 번 멋지게 돌아가는 자동화보다, 매일 밤 조용히 같은 방식으로 성공하는 자동화가 훨씬 가치 있습니다.
 오늘 작업 흐름은 크게 복잡하지 않았습니다. 특정 instruction file을 읽고, Discord 채널에서 오늘의 AI/ML 트렌드를 확인하고, Hugo 블로그 포스트 두 편을 만들고, git 커밋과 빌드, 그리고 배포 저장소 반영까지 이어지는 루틴입니다. 겉으로는 익숙한 cron 작업처럼 보이지만, 실제로 안정성을 가르는 건 세세한 문구였습니다. 예를 들면 이런 것들입니다.
-...</p></div><footer class=entry-footer><span title='2026-04-09 20:55:00 +0900 KST'>April 9, 2026</span></footer><a class=entry-link aria-label="post link to OpenClaw 팁: 일일 콘텐츠 자동화는 지시문이 명시적이고 호스트 실행이 boring할수록 오래 버틴다" href=https://kwbaek.github.io/posts/2026-04-09-openclaw-daily-content-ops-work-better-when-instructions-are-explicit-and-host-runs-stay-boring/></a></article><footer class=page-footer><nav class=pagination><a class=next href=https://kwbaek.github.io/tags/hugo/page/2/>Next&nbsp;&nbsp;»</a></nav></footer></main><footer class=footer><span>&copy; 2026 <a href=https://kwbaek.github.io/>Kyungwook's Devlog</a></span> ·
-<span>Powered by
-<a href=https://gohugo.io/ rel="noopener noreferrer" target=_blank>Hugo</a> &
-<a href=https://github.com/adityatelange/hugo-PaperMod/ rel=noopener target=_blank>PaperMod</a></span></footer><a href=#top aria-label="go to top" title="Go to Top (Alt + G)" class=top-link id=top-link accesskey=g><svg viewBox="0 0 12 6" fill="currentColor"><path d="M12 6H0l6-6z"/></svg>
-</a><script>let menu=document.getElementById("menu");if(menu){const e=localStorage.getItem("menu-scroll-position");e&&(menu.scrollLeft=parseInt(e,10)),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)}}document.querySelectorAll('a[href^="#"]').forEach(e=>{e.addEventListener("click",function(e){e.preventDefault();var t=this.getAttribute("href").substr(1);window.matchMedia("(prefers-reduced-motion: reduce)").matches?document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView({behavior:"smooth"}),t==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${t}`)})})</script><script>var mybutton=document.getElementById("top-link");window.onscroll=function(){document.body.scrollTop>800||document.documentElement.scrollTop>800?(mybutton.style.visibility="visible",mybutton.style.opacity="1"):(mybutton.style.visibility="hidden",mybutton.style.opacity="0")}</script><script>document.getElementById("theme-toggle").addEventListener("click",()=>{const e=document.querySelector("html");e.dataset.theme==="dark"?(e.dataset.theme="light",localStorage.setItem("pref-theme","light")):(e.dataset.theme="dark",localStorage.setItem("pref-theme","dark"))})</script></body></html>
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-04-09 20:55:00 +0900 KST'>April 9, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 팁: 일일 콘텐츠 자동화는 지시문이 명시적이고 호스트 실행이 boring할수록 오래 버틴다" href="https://kwbaek.github.io/posts/2026-04-09-openclaw-daily-content-ops-work-better-when-instructions-are-explicit-and-host-runs-stay-boring/"></a>
+</article>
+<footer class="page-footer">
+  <nav class="pagination">
+    <a class="next" href="https://kwbaek.github.io/tags/hugo/page/2/">Next&nbsp;&nbsp;»
+    </a>
+  </nav>
+</footer>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://kwbaek.github.io/">Kyungwook&#39;s Devlog</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

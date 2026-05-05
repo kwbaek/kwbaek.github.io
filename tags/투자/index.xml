@@ -1,12 +1,34 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>투자 on Kyungwook's Devlog</title><link>https://kwbaek.github.io/tags/%ED%88%AC%EC%9E%90/</link><description>Recent content in 투자 on Kyungwook's Devlog</description><generator>Hugo -- 0.155.3</generator><language>ko-kr</language><lastBuildDate>Wed, 25 Feb 2026 21:00:00 +0900</lastBuildDate><atom:link href="https://kwbaek.github.io/tags/%ED%88%AC%EC%9E%90/index.xml" rel="self" type="application/rss+xml"/><item><title>AI 인프라의 진짜 병목: 모델이 아니라 전력과 정책</title><link>https://kwbaek.github.io/posts/2026-02-25-ai-infrastructure-power-shift/</link><pubDate>Wed, 25 Feb 2026 21:00:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-02-25-ai-infrastructure-power-shift/</guid><description>&lt;p&gt;오늘 Discord &lt;code&gt;#ai-ml-trends&lt;/code&gt; 채널을 보면, 가장 큰 흐름은 논문 하나의 성능 경쟁이 아니라 &lt;strong&gt;AI 인프라의 병목이 계산 자원에서 전력·정책·공급망으로 이동하고 있다는 점&lt;/strong&gt;입니다.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>투자 on Kyungwook&#39;s Devlog</title>
+    <link>https://kwbaek.github.io/tags/%ED%88%AC%EC%9E%90/</link>
+    <description>Recent content in 투자 on Kyungwook&#39;s Devlog</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Wed, 25 Feb 2026 21:00:00 +0900</lastBuildDate>
+    <atom:link href="https://kwbaek.github.io/tags/%ED%88%AC%EC%9E%90/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI 인프라의 진짜 병목: 모델이 아니라 전력과 정책</title>
+      <link>https://kwbaek.github.io/posts/2026-02-25-ai-infrastructure-power-shift/</link>
+      <pubDate>Wed, 25 Feb 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-02-25-ai-infrastructure-power-shift/</guid>
+      <description>&lt;p&gt;오늘 Discord &lt;code&gt;#ai-ml-trends&lt;/code&gt; 채널을 보면, 가장 큰 흐름은 논문 하나의 성능 경쟁이 아니라 &lt;strong&gt;AI 인프라의 병목이 계산 자원에서 전력·정책·공급망으로 이동하고 있다는 점&lt;/strong&gt;입니다.&lt;/p&gt;
 &lt;p&gt;특히 인상적이었던 신호는 세 가지입니다.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;미국에서 빅테크에 데이터센터 전력을 자체 조달하라는 압박이 공개적으로 등장했다는 점&lt;/li&gt;
 &lt;li&gt;유럽 클린에너지 관련 종목이 AI 전력 수요 기대와 정책 리스크 사이에서 큰 변동성을 보인다는 점&lt;/li&gt;
 &lt;li&gt;Alcoa 같은 전통 산업 자산이 데이터센터 부지/전력 인프라 관점에서 재평가되고 있다는 점&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;이 세 가지를 합치면 메시지는 명확합니다. 이제 AI 경쟁은 “누가 더 좋은 모델을 만들었는가”에 더해, &lt;strong&gt;누가 더 안정적으로 전력·부지·규제 조건을 확보했는가&lt;/strong&gt;의 싸움이 됐습니다.&lt;/p&gt;</description></item><item><title>2026년 2월 AI 업계 총정리: 모델 러시와 투자 열풍</title><link>https://kwbaek.github.io/posts/2026-02-20-ai-ml-february-rush/</link><pubDate>Fri, 20 Feb 2026 21:00:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-02-20-ai-ml-february-rush/</guid><description>&lt;p&gt;2026년 2월은 AI 업계 역사상 가장 뜨거운 달 중 하나로 기록될 것 같습니다. 거의 매일 새로운 모델이 출시되고, 수억에서 수백억 달러 규모의 투자가 쏟아지고 있습니다. 오늘 하루 동안만 해도 엄청난 소식들이 쏟아졌는데요, 주요 트렌드를 정리해봤습니다.&lt;/p&gt;
-&lt;h2 id="-claude-sonnet-46-전방위-업그레이드"&gt;🚀 Claude Sonnet 4.6: 전방위 업그레이드&lt;/h2&gt;
+&lt;p&gt;이 세 가지를 합치면 메시지는 명확합니다. 이제 AI 경쟁은 “누가 더 좋은 모델을 만들었는가”에 더해, &lt;strong&gt;누가 더 안정적으로 전력·부지·규제 조건을 확보했는가&lt;/strong&gt;의 싸움이 됐습니다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>2026년 2월 AI 업계 총정리: 모델 러시와 투자 열풍</title>
+      <link>https://kwbaek.github.io/posts/2026-02-20-ai-ml-february-rush/</link>
+      <pubDate>Fri, 20 Feb 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-02-20-ai-ml-february-rush/</guid>
+      <description>&lt;p&gt;2026년 2월은 AI 업계 역사상 가장 뜨거운 달 중 하나로 기록될 것 같습니다. 거의 매일 새로운 모델이 출시되고, 수억에서 수백억 달러 규모의 투자가 쏟아지고 있습니다. 오늘 하루 동안만 해도 엄청난 소식들이 쏟아졌는데요, 주요 트렌드를 정리해봤습니다.&lt;/p&gt;
+&lt;h2 id=&#34;-claude-sonnet-46-전방위-업그레이드&#34;&gt;🚀 Claude Sonnet 4.6: 전방위 업그레이드&lt;/h2&gt;
 &lt;p&gt;Anthropic이 &lt;strong&gt;Claude Sonnet 4.6&lt;/strong&gt;를 발표했습니다. 이번 업데이트는 단순한 버전업이 아니라 전방위적인 성능 향상을 이룬 풀 업그레이드입니다.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;주요 개선사항:&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
@@ -16,9 +38,19 @@
 &lt;li&gt;&lt;strong&gt;에이전트 계획(Agent Planning)&lt;/strong&gt; 능력 향상&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;지식 작업 효율성&lt;/strong&gt; 증대&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;특히 에이전트 기반 워크플로우와 복잡한 작업 처리에서 큰 개선을 보였다고 합니다. Free와 Pro 사용자 모두 기본 모델로 사용할 수 있으며, 현재 바로 사용 가능합니다.&lt;/p&gt;</description></item><item><title>2026년 2월 AI 모델 전쟁: Anthropic의 $380B 밸류와 Alibaba Qwen 3.5의 도전</title><link>https://kwbaek.github.io/posts/2026-02-18-ai-model-rush-anthropic-alibaba/</link><pubDate>Wed, 18 Feb 2026 21:00:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-02-18-ai-model-rush-anthropic-alibaba/</guid><description>&lt;h2 id="ai-업계의-2월은-뜨겁다"&gt;AI 업계의 2월은 뜨겁다&lt;/h2&gt;
+&lt;p&gt;특히 에이전트 기반 워크플로우와 복잡한 작업 처리에서 큰 개선을 보였다고 합니다. Free와 Pro 사용자 모두 기본 모델로 사용할 수 있으며, 현재 바로 사용 가능합니다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>2026년 2월 AI 모델 전쟁: Anthropic의 $380B 밸류와 Alibaba Qwen 3.5의 도전</title>
+      <link>https://kwbaek.github.io/posts/2026-02-18-ai-model-rush-anthropic-alibaba/</link>
+      <pubDate>Wed, 18 Feb 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-02-18-ai-model-rush-anthropic-alibaba/</guid>
+      <description>&lt;h2 id=&#34;ai-업계의-2월은-뜨겁다&#34;&gt;AI 업계의 2월은 뜨겁다&lt;/h2&gt;
 &lt;p&gt;2026년 2월, AI 업계가 그 어느 때보다 뜨겁게 달아오르고 있습니다. 단 한 달 사이에 &lt;strong&gt;7개의 주요 AI 모델&lt;/strong&gt;이 출시되었고, 수백억 달러의 투자가 쏟아졌으며, AI 에이전트 시대의 본격적인 개막을 알리는 신호탄들이 연이어 터졌습니다.&lt;/p&gt;
 &lt;p&gt;오늘은 그 중에서도 가장 주목할 만한 두 가지 이야기를 다뤄보려 합니다.&lt;/p&gt;
-&lt;h2 id="anthropic-380b-밸류에이션-달성"&gt;Anthropic, $380B 밸류에이션 달성&lt;/h2&gt;
-&lt;h3 id="역사적-투자-규모"&gt;역사적 투자 규모&lt;/h3&gt;
-&lt;p&gt;Anthropic이 Amazon과 Google의 지원을 받아 &lt;strong&gt;$30B 규모의 펀딩&lt;/strong&gt;을 유치하며 &lt;strong&gt;$380B 밸류에이션&lt;/strong&gt;을 기록했습니다. 이는 AI 스타트업 역사상 가장 큰 규모의 투자 중 하나입니다.&lt;/p&gt;</description></item></channel></rss>
+&lt;h2 id=&#34;anthropic-380b-밸류에이션-달성&#34;&gt;Anthropic, $380B 밸류에이션 달성&lt;/h2&gt;
+&lt;h3 id=&#34;역사적-투자-규모&#34;&gt;역사적 투자 규모&lt;/h3&gt;
+&lt;p&gt;Anthropic이 Amazon과 Google의 지원을 받아 &lt;strong&gt;$30B 규모의 펀딩&lt;/strong&gt;을 유치하며 &lt;strong&gt;$380B 밸류에이션&lt;/strong&gt;을 기록했습니다. 이는 AI 스타트업 역사상 가장 큰 규모의 투자 중 하나입니다.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
