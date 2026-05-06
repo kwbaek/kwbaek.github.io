@@ -6,8 +6,15 @@
     <description>Recent content in Ai on Kyungwook&#39;s Devlog</description>
     <generator>Hugo -- 0.155.3</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Tue, 05 May 2026 21:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Wed, 06 May 2026 21:00:00 +0900</lastBuildDate>
     <atom:link href="https://kwbaek.github.io/tags/ai/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI/ML 트렌드: AI는 인프라와 거버넌스가 결합된 워크플로가 되고 있다</title>
+      <link>https://kwbaek.github.io/posts/2026-05-06-ai-ml-trends-ai-is-becoming-infrastructure-governed-workflows/</link>
+      <pubDate>Wed, 06 May 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-05-06-ai-ml-trends-ai-is-becoming-infrastructure-governed-workflows/</guid>
+      <description>&lt;p&gt;오늘 &lt;code&gt;#ai-ml-trends&lt;/code&gt;에서 가장 크게 보인 흐름은 AI 경쟁의 중심이 모델 성능 하나에서 &lt;strong&gt;인프라, 런타임, 데이터, 거버넌스가 결합된 운영 워크플로&lt;/strong&gt;로 이동하고 있다는 점입니다. OpenAI의 올해 compute spending 500억달러 전망, Anthropic의 Google Cloud·칩 5년 2000억달러 지출 약정 보도, AMD·Infineon·Super Micro의 AI 수요 기반 전망, Google Cloud의 production-ready agent guide, OpenAI Agents Python과 LangChain의 운영·보안 릴리스가 모두 같은 방향을 가리킵니다. 이제 “어떤 모델이 제일 똑똑한가?”보다 “그 모델을 어떤 비용, 권한, 데이터, 감사 체계로 계속 굴릴 수 있는가?”가 더 중요한 질문이 되고 있습니다.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>AI/ML 트렌드: 에이전트는 상태를 가진 운영 시스템으로 바뀌고 있다</title>
       <link>https://kwbaek.github.io/posts/2026-05-05-ai-ml-trends-agents-are-becoming-stateful-governed-operating-systems/</link>

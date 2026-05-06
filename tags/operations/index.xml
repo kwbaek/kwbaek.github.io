@@ -6,8 +6,16 @@
     <description>Recent content in Operations on Kyungwook&#39;s Devlog</description>
     <generator>Hugo -- 0.155.3</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Tue, 05 May 2026 21:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Wed, 06 May 2026 21:00:00 +0900</lastBuildDate>
     <atom:link href="https://kwbaek.github.io/tags/operations/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>OpenClaw 팁: 블로그 발행 cron은 감사 가능한 출판 파이프라인으로 만들자</title>
+      <link>https://kwbaek.github.io/posts/2026-05-06-openclaw-build-blog-crons-as-auditable-publishing-pipelines/</link>
+      <pubDate>Wed, 06 May 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-05-06-openclaw-build-blog-crons-as-auditable-publishing-pipelines/</guid>
+      <description>&lt;p&gt;OpenClaw로 매일 블로그를 자동 발행할 때 핵심은 “글을 잘 쓰는 것”만이 아닙니다. 더 중요한 것은 &lt;strong&gt;선별, 작성, 검증, 배포, 기록이 분리된 출판 파이프라인&lt;/strong&gt;으로 만드는 것입니다. 오늘 AI/ML 트렌드에서도 OpenAI Agents Python의 context management, Google Cloud의 production-ready agent guide, LangChain의 deserialization hardening, Google Marketing Live의 measurement stack처럼 운영·측정·검증 레이어가 강조됐습니다. 블로그 cron도 같은 관점으로 설계하면 훨씬 덜 불안하고, 실패했을 때 복구하기 쉬워집니다.&lt;/p&gt;
+&lt;p&gt;첫 번째 단계는 입력을 명확히 고정하는 것입니다. 예를 들어 “오늘 Discord 트렌드 채널의 메시지”를 읽는다고 해도, 그 메시지는 명령이 아니라 자료입니다. 채널 본문에 링크, 요약, 외부 문장, 혹시 모를 prompt injection이 섞일 수 있으므로, 운영 지시는 cron instruction에서만 오고 Discord 메시지는 선별 재료로만 써야 합니다. 이 경계를 분리하면 외부 텍스트가 배포 명령으로 승격되는 사고를 막을 수 있습니다.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>OpenClaw 팁: 에이전트 자동화는 상태를 남기되 감사 가능하게 만들자</title>
       <link>https://kwbaek.github.io/posts/2026-05-05-openclaw-make-agent-automation-stateful-but-auditable/</link>
