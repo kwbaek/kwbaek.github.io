@@ -1,124 +1,25 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
-  <channel>
-    <title>Discord on Kyungwook&#39;s Devlog</title>
-    <link>https://kwbaek.github.io/tags/discord/</link>
-    <description>Recent content in Discord on Kyungwook&#39;s Devlog</description>
-    <generator>Hugo -- 0.155.3</generator>
-    <language>ko-kr</language>
-    <lastBuildDate>Fri, 08 May 2026 21:00:00 +0900</lastBuildDate>
-    <atom:link href="https://kwbaek.github.io/tags/discord/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>OpenClaw 팁: 실제 운영 에이전트에는 before-tool gate가 필요하다</title>
-      <link>https://kwbaek.github.io/posts/2026-05-08-openclaw-use-before-tool-gates-for-real-agent-ops/</link>
-      <pubDate>Fri, 08 May 2026 21:00:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/posts/2026-05-08-openclaw-use-before-tool-gates-for-real-agent-ops/</guid>
-      <description>&lt;p&gt;OpenClaw를 개인 비서, Discord 운영 봇, 리포트 작성기, 블로그 발행 cron처럼 실제 작업에 붙이면 가장 먼저 체감하는 사실이 있습니다. 문제는 모델이 글을 못 쓰는 것이 아니라, &lt;strong&gt;모델이 도구를 너무 쉽게 실제 세계에 연결할 수 있다는 점&lt;/strong&gt;입니다. 메시지 전송, 파일 수정, git push, 브라우저 접근, 메모리 조회, 외부 API 호출은 모두 작은 부작용을 남깁니다. 그래서 OpenClaw 운영에서는 “좋은 프롬프트”만큼이나 “도구 호출 직전의 권한 확인”이 중요합니다.&lt;/p&gt;
-&lt;p&gt;OpenClaw 2026.5.7 릴리스에서 눈에 띄는 흐름도 이쪽입니다. owner enforcement, global memory admin scope, before-tool-call authorization, Discord target parsing hardening 같은 항목은 화려한 기능 추가라기보다 운영 안전성의 기본기를 다지는 변화입니다. 개인 AI assistant가 오래 켜져 있고 여러 채널을 읽고 쓰는 환경에서는 누가 요청했는지, 어떤 메모리에 접근하는지, 어느 채널로 보내는지, 어떤 도구가 실행 직전인지가 모두 보안 경계가 됩니다.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>OpenClaw 팁: Discord 트렌드 피드를 매일 발행 파이프라인으로 바꾸기</title>
-      <link>https://kwbaek.github.io/posts/2026-05-01-openclaw-discord-trend-feeds-can-become-publishing-pipelines/</link>
-      <pubDate>Fri, 01 May 2026 21:00:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/posts/2026-05-01-openclaw-discord-trend-feeds-can-become-publishing-pipelines/</guid>
-      <description>&lt;p&gt;OpenClaw로 매일 블로그를 자동 작성할 때 가장 좋은 입력은 완전히 새로운 검색 결과가 아니라, 이미 하루 동안 축적된 “검증된 관찰 로그”입니다. 예를 들어 Discord의 &lt;code&gt;#ai-ml-trends&lt;/code&gt; 채널에는 주기적으로 선별된 AI/ML 신호가 쌓입니다. 이 채널을 매일 한 번 읽고, 그중 가장 중요한 흐름을 묶어 Hugo 글로 바꾸면 검색, 선별, 해석, 발행이 분리된 꽤 안정적인 콘텐츠 파이프라인이 됩니다.&lt;/p&gt;
-&lt;p&gt;이 방식의 장점은 즉흥성이 줄어든다는 것입니다. 블로그 작성 시점에 웹을 처음 뒤지는 구조라면, 검색 품질이나 CAPTCHA, 일시적인 네트워크 문제에 결과가 크게 흔들립니다. 반대로 하루 종일 별도 trend scanner가 원문을 확인하고 Discord에 짧은 분석을 남겨두면, 저녁 블로그 cron은 그 기록을 다시 읽고 “오늘의 큰 방향”을 정리하는 역할에 집중할 수 있습니다. OpenClaw 입장에서는 Discord 채널이 일종의 lightweight research database가 되는 셈입니다.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>OpenClaw 팁: cron 자동화는 셸 래퍼보다 first-class 도구를 쓸 때 덜 깨진다</title>
-      <link>https://kwbaek.github.io/posts/2026-04-24-openclaw-first-class-tools-make-cron-automation-less-fragile/</link>
-      <pubDate>Fri, 24 Apr 2026 21:05:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/posts/2026-04-24-openclaw-first-class-tools-make-cron-automation-less-fragile/</guid>
-      <description>&lt;p&gt;OpenClaw로 주기 작업을 오래 돌려보면 금방 체감하는 게 있습니다. 같은 일을 하더라도 셸에서 CLI를 한 번 더 감싸는 방식보다, 가능한 한 &lt;strong&gt;first-class 도구를 직접 쓰는 쪽이 훨씬 덜 깨집니다&lt;/strong&gt;. 겉보기에는 둘 다 자동화처럼 보이지만 운영 품질은 꽤 다릅니다. 특히 cron처럼 정해진 시간에 조용히, 반복적으로, 같은 일을 계속해야 하는 작업에서는 그 차이가 더 크게 드러납니다.&lt;/p&gt;
-&lt;p&gt;이유는 단순합니다. 셸 래퍼는 경로, 권한, 출력 형식, 승인 정책, 종료 코드, quoting 같은 주변 조건에 자주 흔들립니다. 반면 OpenClaw의 first-class 도구는 애초에 에이전트 실행 환경 안에서 쓰도록 설계되어 있어서, 메시지 읽기/보내기, 파일 쓰기, 브라우저 조작 같은 핵심 동작을 더 짧은 경로로 처리합니다. 실제로 Discord 채널을 읽고 포스팅 아이디어를 만들거나, dedupe를 확인하고 바로 결과를 발행하는 흐름에서는 &lt;code&gt;message&lt;/code&gt; 같은 내장 도구가 셸 경유 CLI보다 훨씬 예측 가능했습니다. 운영자는 화려한 우회보다 &lt;strong&gt;실패 지점이 적은 경로&lt;/strong&gt;를 선택하는 편이 낫습니다.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>OpenClaw 팁: instruction file 기반 cron 워크플로는 일일 퍼블리싱을 좋은 의미로 boring하게 만든다</title>
-      <link>https://kwbaek.github.io/posts/2026-04-13-openclaw-instruction-driven-cron-workflows-make-daily-publishing-boring-in-a-good-way/</link>
-      <pubDate>Mon, 13 Apr 2026 21:05:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/posts/2026-04-13-openclaw-instruction-driven-cron-workflows-make-daily-publishing-boring-in-a-good-way/</guid>
-      <description>&lt;p&gt;매일 반복되는 콘텐츠 작업을 OpenClaw로 굴리다 보면, 결국 중요한 건 모델의 화려함보다 &lt;strong&gt;실행 인터페이스가 얼마나 명확한가&lt;/strong&gt;라는 점을 자주 느끼게 됩니다. 오늘처럼 &lt;code&gt;cron&lt;/code&gt;이 특정 instruction file을 읽고, Discord 채널에서 신호를 고르고, Hugo 포스트를 만들고, 빌드와 배포까지 이어지는 루틴에서는 특히 그렇습니다. 잘 설계된 자동화는 눈에 띄지 않아야 합니다. 즉, 매번 설명이 필요하지 않고, 같은 규칙으로 조용히 돌아가야 합니다.&lt;/p&gt;
-&lt;p&gt;제가 요즘 OpenClaw 워크플로에서 특히 좋다고 느끼는 패턴은 &lt;strong&gt;instruction file 기반 cron&lt;/strong&gt;입니다. 작업의 입력, 산출물 형식, 실패 시 행동, 후속 빌드 단계가 한 파일에 모여 있으면 에이전트가 추측할 여지가 줄어듭니다. 이건 별것 아닌 것처럼 보여도 실무에서는 꽤 큽니다. 자동화가 흔들리는 가장 흔한 이유는 모델이 멍청해서가 아니라, &lt;strong&gt;해야 할 일의 경계가 흐리기 때문&lt;/strong&gt;입니다.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>OpenClaw 팁: 일일 블로그 자동화는 리서치와 퍼블리싱이 한 흐름으로 붙어 있을 때 더 좋아진다</title>
-      <link>https://kwbaek.github.io/posts/2026-04-12-openclaw-daily-blog-automation-gets-better-when-research-and-publishing-stay-coupled/</link>
-      <pubDate>Sun, 12 Apr 2026 21:05:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/posts/2026-04-12-openclaw-daily-blog-automation-gets-better-when-research-and-publishing-stay-coupled/</guid>
-      <description>&lt;p&gt;오늘처럼 OpenClaw로 매일 블로그 포스팅을 만드는 작업을 돌리다 보면, 결국 중요한 건 거창한 생성 능력보다 &lt;strong&gt;리서치, 글쓰기, 배포가 하나의 연속된 흐름으로 잘 붙어 있느냐&lt;/strong&gt;라는 점이라는 걸 다시 느끼게 됩니다. 특히 &lt;code&gt;Discord 채널 읽기 → 핵심 트렌드 선별 → Hugo 포스트 작성 → git 커밋 → hugo 빌드 → public 배포&lt;/code&gt;처럼 끝이 분명한 루틴에서는, 각 단계를 따로 최적화하는 것보다 &lt;strong&gt;중간 맥락이 끊기지 않게 유지하는 설계&lt;/strong&gt;가 훨씬 중요합니다.&lt;/p&gt;
-&lt;p&gt;왜 이게 중요할까요. 자동화는 보통 두 종류의 실패를 냅니다. 하나는 기술적 실패입니다. 파일이 없거나, 경로가 틀리거나, 빌드가 깨지는 경우죠. 다른 하나는 더 흔하지만 덜 눈에 띄는 실패인데, &lt;strong&gt;앞 단계에서 얻은 맥락이 뒤 단계로 자연스럽게 이어지지 않는 실패&lt;/strong&gt;입니다. 예를 들어 트렌드는 잘 골랐는데 글이 엉뚱한 방향으로 가거나, 글은 괜찮은데 파일명과 카테고리 체계가 흔들리거나, 콘텐츠는 좋은데 배포 루틴이 들쑥날쑥하면 전체 자동화 품질은 금방 떨어집니다.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>OpenClaw로 매일 트렌드 스캔을 블로그 포스트로 연결하는 방법</title>
-      <link>https://kwbaek.github.io/posts/2026-04-10-openclaw-daily-trend-to-blog-workflow/</link>
-      <pubDate>Fri, 10 Apr 2026 21:14:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/posts/2026-04-10-openclaw-daily-trend-to-blog-workflow/</guid>
-      <description>&lt;p&gt;OpenClaw를 오래 만져볼수록 재미있는 지점은, 이 도구가 단순히 메시지에 답하는 봇이 아니라 &lt;strong&gt;채널에서 신호를 읽고, 그 신호를 실제 산출물로 바꾸는 운영 레이어&lt;/strong&gt;에 가깝다는 점입니다. 오늘 제가 돌린 워크플로도 딱 그 예시였습니다. Discord의 &lt;code&gt;#ai-ml-trends&lt;/code&gt; 채널에서 오늘 올라온 흐름을 읽고, 그중 가장 의미 있는 주제를 하나 고른 뒤, 그 내용을 Hugo 블로그 글로 정리하는 작업입니다.&lt;/p&gt;
-&lt;p&gt;이런 흐름이 좋은 이유는 단순합니다. 정보 수집과 글쓰기를 분리하지 않기 때문입니다. 많은 팀이 뉴스는 뉴스대로 읽고, 블로그는 나중에 따로 쓰려다가 결국 둘 다 흐지부지됩니다. 반면 OpenClaw는 채널 메시지, cron 지시문, 로컬 파일 작업을 하나의 루프 안에 묶을 수 있습니다.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>OpenClaw 팁: 지속 바인딩과 봇 멘션 필터가 일상 자동화를 덜 깨지게 만든다</title>
-      <link>https://kwbaek.github.io/posts/2026-04-02-openclaw-persistent-bindings-and-bot-filtering-make-daily-chat-ops-less-fragile/</link>
-      <pubDate>Thu, 02 Apr 2026 21:05:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/posts/2026-04-02-openclaw-persistent-bindings-and-bot-filtering-make-daily-chat-ops-less-fragile/</guid>
-      <description>&lt;p&gt;OpenClaw를 계속 쓰다 보면 거창한 기능보다 훨씬 더 자주 체감되는 게 있습니다. 바로 &lt;strong&gt;한 번 잘 붙여둔 채널 흐름이 다음날에도 그대로 이어지는가&lt;/strong&gt;, 그리고 &lt;strong&gt;불필요한 봇 노이즈를 얼마나 덜 받는가&lt;/strong&gt; 같은 아주 운영적인 문제입니다. 최근 메모를 다시 보다가 특히 좋다고 느낀 변화도 바로 이쪽이었습니다. &lt;code&gt;v2026.3.7&lt;/code&gt; 계열에서 보인 &lt;strong&gt;ACP 채널 바인딩 영속화&lt;/strong&gt;와, 이어서 확인된 Discord의 &lt;strong&gt;&lt;code&gt;allowBots: &amp;quot;mentions&amp;quot;&lt;/code&gt;&lt;/strong&gt; 같은 제어 포인트는 화려하진 않지만 실제로는 꽤 큰 차이를 만듭니다.&lt;/p&gt;
-&lt;p&gt;먼저 지속 바인딩부터 보면, 이건 &amp;ldquo;에이전트가 채널을 기억한다&amp;quot;는 감각에 가깝습니다. Discord 채널이나 Telegram 토픽에 붙여 둔 세션/흐름이 재시작 이후에도 계속 이어지면, 운영자는 매번 다시 연결 상태를 맞추거나 어디로 응답이 떨어질지 불안해할 필요가 줄어듭니다. 특히 ACP나 장기 스레드형 작업을 자주 돌리는 환경이라면 이게 정말 중요합니다. 한 번 연결한 문맥이 살아남는다는 건 단순한 편의 기능이 아니라, &lt;strong&gt;대화형 자동화의 마찰을 줄이는 신뢰성 기능&lt;/strong&gt;이기 때문입니다.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>OpenClaw 팁: v2026.3.7에서 더 중요해진 건 새 기능보다 끊기지 않는 운영감이다</title>
-      <link>https://kwbaek.github.io/posts/2026-03-29-openclaw-v202637-why-persistent-bindings-and-safe-ops-matter/</link>
-      <pubDate>Sun, 29 Mar 2026 21:05:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/posts/2026-03-29-openclaw-v202637-why-persistent-bindings-and-safe-ops-matter/</guid>
-      <description>&lt;p&gt;최근 OpenClaw 메모를 다시 훑어보면서 특히 실무적으로 와닿은 건 &lt;code&gt;v2026.3.7&lt;/code&gt; 부근에서 보이는 변화였습니다. 겉으로 보기엔 Context Engine 플러그인 슬롯, Gemini 3.1 Flash-Lite 지원, 브라우저 세션 종료 시 탭 자동 정리, heartbeat workspace-path 개선 같은 기능이 각각 따로 흩어져 있는 것처럼 보일 수 있습니다. 그런데 운영자 관점에서 묶어 보면 공통점이 있습니다. 이번 흐름의 핵심은 화려한 신기능 추가보다 **&amp;ldquo;매일 돌리는 자동화가 덜 끊기고, 덜 새고, 덜 헷갈리게 만드는 방향&amp;rdquo;**에 더 가깝다는 점입니다.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>OpenClaw 팁: heartbeat 하나로 릴리즈 체크와 운영 보고를 가볍게 돌리는 법</title>
-      <link>https://kwbaek.github.io/posts/2026-03-22-openclaw-heartbeat-release-watch-pattern/</link>
-      <pubDate>Sun, 22 Mar 2026 21:00:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/posts/2026-03-22-openclaw-heartbeat-release-watch-pattern/</guid>
-      <description>&lt;p&gt;OpenClaw를 오래 돌리다 보면, 거창한 자동화보다 더 자주 필요한 작업이 있습니다. 바로 &lt;strong&gt;&amp;ldquo;오늘 바뀐 게 있는지 짧게 확인하고, 있으면 바로 요약해서 남기는 일&amp;rdquo;&lt;/strong&gt; 입니다. 릴리즈 체크, 운영 이슈 확인, 간단한 헬스체크, 팀 채널 보고 같은 루틴이 대표적이죠. 이런 작업은 중요하지만 너무 무겁게 설계하면 금방 귀찮아지고, 반대로 너무 느슨하면 놓치기 쉽습니다. 이럴 때 잘 맞는 패턴이 &lt;strong&gt;heartbeat + 짧은 구조화 보고&lt;/strong&gt; 조합입니다.&lt;/p&gt;
-&lt;p&gt;핵심 아이디어는 단순합니다. heartbeat는 정확히 정각에 돌아야 하는 잡이 아니라, &amp;ldquo;주기적으로 상태를 살핀다&amp;quot;는 성격의 작업에 더 잘 맞습니다. 예를 들어 브라우저 연결 상태를 확인하고, 최신 릴리즈가 있는지 보고, 있으면 요약 포인트 2~3개만 정리해 특정 채널에 남기는 흐름입니다. 이 방식의 장점은, 여러 개의 작은 운영 점검을 하나의 문맥 안에 묶을 수 있다는 점입니다. 메일 체크 하나, 릴리즈 확인 하나, 헬스 엔드포인트 점검 하나를 각각 별도 잡으로 쪼개는 것보다 훨씬 가볍습니다.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>OpenClaw 팁: 매일 도는 콘텐츠 자동화를 덜 피곤하게 운영하는 법</title>
-      <link>https://kwbaek.github.io/posts/2026-03-20-openclaw-operating-daily-content-systems-with-less-friction/</link>
-      <pubDate>Fri, 20 Mar 2026 21:00:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/posts/2026-03-20-openclaw-operating-daily-content-systems-with-less-friction/</guid>
-      <description>&lt;p&gt;OpenClaw로 매일 콘텐츠를 자동 생성하다 보면, 의외로 가장 큰 문제는 “글을 잘 쓰느냐”가 아니라 &lt;strong&gt;매일 같은 작업이 덜 피곤하게, 덜 깨지게, 덜 지저분하게 돌아가느냐&lt;/strong&gt;입니다. 특히 Discord에서 트렌드를 읽고, 블로그 포스트를 만들고, Hugo를 빌드하고, 배포 저장소까지 밀어 올리는 흐름은 한 번은 쉽지만 매일 안정적으로 굴리려면 운영 감각이 필요합니다.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Discord on Kyungwook's Devlog</title><link>https://kwbaek.github.io/tags/discord/</link><description>Recent content in Discord on Kyungwook's Devlog</description><generator>Hugo -- 0.155.3</generator><language>ko-kr</language><lastBuildDate>Fri, 08 May 2026 21:00:00 +0900</lastBuildDate><atom:link href="https://kwbaek.github.io/tags/discord/index.xml" rel="self" type="application/rss+xml"/><item><title>OpenClaw 팁: 실제 운영 에이전트에는 before-tool gate가 필요하다</title><link>https://kwbaek.github.io/posts/2026-05-08-openclaw-use-before-tool-gates-for-real-agent-ops/</link><pubDate>Fri, 08 May 2026 21:00:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-05-08-openclaw-use-before-tool-gates-for-real-agent-ops/</guid><description>&lt;p&gt;OpenClaw를 개인 비서, Discord 운영 봇, 리포트 작성기, 블로그 발행 cron처럼 실제 작업에 붙이면 가장 먼저 체감하는 사실이 있습니다. 문제는 모델이 글을 못 쓰는 것이 아니라, &lt;strong&gt;모델이 도구를 너무 쉽게 실제 세계에 연결할 수 있다는 점&lt;/strong&gt;입니다. 메시지 전송, 파일 수정, git push, 브라우저 접근, 메모리 조회, 외부 API 호출은 모두 작은 부작용을 남깁니다. 그래서 OpenClaw 운영에서는 “좋은 프롬프트”만큼이나 “도구 호출 직전의 권한 확인”이 중요합니다.&lt;/p&gt;
+&lt;p&gt;OpenClaw 2026.5.7 릴리스에서 눈에 띄는 흐름도 이쪽입니다. owner enforcement, global memory admin scope, before-tool-call authorization, Discord target parsing hardening 같은 항목은 화려한 기능 추가라기보다 운영 안전성의 기본기를 다지는 변화입니다. 개인 AI assistant가 오래 켜져 있고 여러 채널을 읽고 쓰는 환경에서는 누가 요청했는지, 어떤 메모리에 접근하는지, 어느 채널로 보내는지, 어떤 도구가 실행 직전인지가 모두 보안 경계가 됩니다.&lt;/p&gt;</description></item><item><title>OpenClaw 팁: Discord 트렌드 피드를 매일 발행 파이프라인으로 바꾸기</title><link>https://kwbaek.github.io/posts/2026-05-01-openclaw-discord-trend-feeds-can-become-publishing-pipelines/</link><pubDate>Fri, 01 May 2026 21:00:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-05-01-openclaw-discord-trend-feeds-can-become-publishing-pipelines/</guid><description>&lt;p&gt;OpenClaw로 매일 블로그를 자동 작성할 때 가장 좋은 입력은 완전히 새로운 검색 결과가 아니라, 이미 하루 동안 축적된 “검증된 관찰 로그”입니다. 예를 들어 Discord의 &lt;code&gt;#ai-ml-trends&lt;/code&gt; 채널에는 주기적으로 선별된 AI/ML 신호가 쌓입니다. 이 채널을 매일 한 번 읽고, 그중 가장 중요한 흐름을 묶어 Hugo 글로 바꾸면 검색, 선별, 해석, 발행이 분리된 꽤 안정적인 콘텐츠 파이프라인이 됩니다.&lt;/p&gt;
+&lt;p&gt;이 방식의 장점은 즉흥성이 줄어든다는 것입니다. 블로그 작성 시점에 웹을 처음 뒤지는 구조라면, 검색 품질이나 CAPTCHA, 일시적인 네트워크 문제에 결과가 크게 흔들립니다. 반대로 하루 종일 별도 trend scanner가 원문을 확인하고 Discord에 짧은 분석을 남겨두면, 저녁 블로그 cron은 그 기록을 다시 읽고 “오늘의 큰 방향”을 정리하는 역할에 집중할 수 있습니다. OpenClaw 입장에서는 Discord 채널이 일종의 lightweight research database가 되는 셈입니다.&lt;/p&gt;</description></item><item><title>OpenClaw 팁: cron 자동화는 셸 래퍼보다 first-class 도구를 쓸 때 덜 깨진다</title><link>https://kwbaek.github.io/posts/2026-04-24-openclaw-first-class-tools-make-cron-automation-less-fragile/</link><pubDate>Fri, 24 Apr 2026 21:05:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-04-24-openclaw-first-class-tools-make-cron-automation-less-fragile/</guid><description>&lt;p&gt;OpenClaw로 주기 작업을 오래 돌려보면 금방 체감하는 게 있습니다. 같은 일을 하더라도 셸에서 CLI를 한 번 더 감싸는 방식보다, 가능한 한 &lt;strong&gt;first-class 도구를 직접 쓰는 쪽이 훨씬 덜 깨집니다&lt;/strong&gt;. 겉보기에는 둘 다 자동화처럼 보이지만 운영 품질은 꽤 다릅니다. 특히 cron처럼 정해진 시간에 조용히, 반복적으로, 같은 일을 계속해야 하는 작업에서는 그 차이가 더 크게 드러납니다.&lt;/p&gt;
+&lt;p&gt;이유는 단순합니다. 셸 래퍼는 경로, 권한, 출력 형식, 승인 정책, 종료 코드, quoting 같은 주변 조건에 자주 흔들립니다. 반면 OpenClaw의 first-class 도구는 애초에 에이전트 실행 환경 안에서 쓰도록 설계되어 있어서, 메시지 읽기/보내기, 파일 쓰기, 브라우저 조작 같은 핵심 동작을 더 짧은 경로로 처리합니다. 실제로 Discord 채널을 읽고 포스팅 아이디어를 만들거나, dedupe를 확인하고 바로 결과를 발행하는 흐름에서는 &lt;code&gt;message&lt;/code&gt; 같은 내장 도구가 셸 경유 CLI보다 훨씬 예측 가능했습니다. 운영자는 화려한 우회보다 &lt;strong&gt;실패 지점이 적은 경로&lt;/strong&gt;를 선택하는 편이 낫습니다.&lt;/p&gt;</description></item><item><title>OpenClaw 팁: instruction file 기반 cron 워크플로는 일일 퍼블리싱을 좋은 의미로 boring하게 만든다</title><link>https://kwbaek.github.io/posts/2026-04-13-openclaw-instruction-driven-cron-workflows-make-daily-publishing-boring-in-a-good-way/</link><pubDate>Mon, 13 Apr 2026 21:05:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-04-13-openclaw-instruction-driven-cron-workflows-make-daily-publishing-boring-in-a-good-way/</guid><description>&lt;p&gt;매일 반복되는 콘텐츠 작업을 OpenClaw로 굴리다 보면, 결국 중요한 건 모델의 화려함보다 &lt;strong&gt;실행 인터페이스가 얼마나 명확한가&lt;/strong&gt;라는 점을 자주 느끼게 됩니다. 오늘처럼 &lt;code&gt;cron&lt;/code&gt;이 특정 instruction file을 읽고, Discord 채널에서 신호를 고르고, Hugo 포스트를 만들고, 빌드와 배포까지 이어지는 루틴에서는 특히 그렇습니다. 잘 설계된 자동화는 눈에 띄지 않아야 합니다. 즉, 매번 설명이 필요하지 않고, 같은 규칙으로 조용히 돌아가야 합니다.&lt;/p&gt;
+&lt;p&gt;제가 요즘 OpenClaw 워크플로에서 특히 좋다고 느끼는 패턴은 &lt;strong&gt;instruction file 기반 cron&lt;/strong&gt;입니다. 작업의 입력, 산출물 형식, 실패 시 행동, 후속 빌드 단계가 한 파일에 모여 있으면 에이전트가 추측할 여지가 줄어듭니다. 이건 별것 아닌 것처럼 보여도 실무에서는 꽤 큽니다. 자동화가 흔들리는 가장 흔한 이유는 모델이 멍청해서가 아니라, &lt;strong&gt;해야 할 일의 경계가 흐리기 때문&lt;/strong&gt;입니다.&lt;/p&gt;</description></item><item><title>OpenClaw 팁: 일일 블로그 자동화는 리서치와 퍼블리싱이 한 흐름으로 붙어 있을 때 더 좋아진다</title><link>https://kwbaek.github.io/posts/2026-04-12-openclaw-daily-blog-automation-gets-better-when-research-and-publishing-stay-coupled/</link><pubDate>Sun, 12 Apr 2026 21:05:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-04-12-openclaw-daily-blog-automation-gets-better-when-research-and-publishing-stay-coupled/</guid><description>&lt;p&gt;오늘처럼 OpenClaw로 매일 블로그 포스팅을 만드는 작업을 돌리다 보면, 결국 중요한 건 거창한 생성 능력보다 &lt;strong&gt;리서치, 글쓰기, 배포가 하나의 연속된 흐름으로 잘 붙어 있느냐&lt;/strong&gt;라는 점이라는 걸 다시 느끼게 됩니다. 특히 &lt;code&gt;Discord 채널 읽기 → 핵심 트렌드 선별 → Hugo 포스트 작성 → git 커밋 → hugo 빌드 → public 배포&lt;/code&gt;처럼 끝이 분명한 루틴에서는, 각 단계를 따로 최적화하는 것보다 &lt;strong&gt;중간 맥락이 끊기지 않게 유지하는 설계&lt;/strong&gt;가 훨씬 중요합니다.&lt;/p&gt;
+&lt;p&gt;왜 이게 중요할까요. 자동화는 보통 두 종류의 실패를 냅니다. 하나는 기술적 실패입니다. 파일이 없거나, 경로가 틀리거나, 빌드가 깨지는 경우죠. 다른 하나는 더 흔하지만 덜 눈에 띄는 실패인데, &lt;strong&gt;앞 단계에서 얻은 맥락이 뒤 단계로 자연스럽게 이어지지 않는 실패&lt;/strong&gt;입니다. 예를 들어 트렌드는 잘 골랐는데 글이 엉뚱한 방향으로 가거나, 글은 괜찮은데 파일명과 카테고리 체계가 흔들리거나, 콘텐츠는 좋은데 배포 루틴이 들쑥날쑥하면 전체 자동화 품질은 금방 떨어집니다.&lt;/p&gt;</description></item><item><title>OpenClaw로 매일 트렌드 스캔을 블로그 포스트로 연결하는 방법</title><link>https://kwbaek.github.io/posts/2026-04-10-openclaw-daily-trend-to-blog-workflow/</link><pubDate>Fri, 10 Apr 2026 21:14:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-04-10-openclaw-daily-trend-to-blog-workflow/</guid><description>&lt;p&gt;OpenClaw를 오래 만져볼수록 재미있는 지점은, 이 도구가 단순히 메시지에 답하는 봇이 아니라 &lt;strong&gt;채널에서 신호를 읽고, 그 신호를 실제 산출물로 바꾸는 운영 레이어&lt;/strong&gt;에 가깝다는 점입니다. 오늘 제가 돌린 워크플로도 딱 그 예시였습니다. Discord의 &lt;code&gt;#ai-ml-trends&lt;/code&gt; 채널에서 오늘 올라온 흐름을 읽고, 그중 가장 의미 있는 주제를 하나 고른 뒤, 그 내용을 Hugo 블로그 글로 정리하는 작업입니다.&lt;/p&gt;
+&lt;p&gt;이런 흐름이 좋은 이유는 단순합니다. 정보 수집과 글쓰기를 분리하지 않기 때문입니다. 많은 팀이 뉴스는 뉴스대로 읽고, 블로그는 나중에 따로 쓰려다가 결국 둘 다 흐지부지됩니다. 반면 OpenClaw는 채널 메시지, cron 지시문, 로컬 파일 작업을 하나의 루프 안에 묶을 수 있습니다.&lt;/p&gt;</description></item><item><title>OpenClaw 팁: 지속 바인딩과 봇 멘션 필터가 일상 자동화를 덜 깨지게 만든다</title><link>https://kwbaek.github.io/posts/2026-04-02-openclaw-persistent-bindings-and-bot-filtering-make-daily-chat-ops-less-fragile/</link><pubDate>Thu, 02 Apr 2026 21:05:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-04-02-openclaw-persistent-bindings-and-bot-filtering-make-daily-chat-ops-less-fragile/</guid><description>&lt;p&gt;OpenClaw를 계속 쓰다 보면 거창한 기능보다 훨씬 더 자주 체감되는 게 있습니다. 바로 &lt;strong&gt;한 번 잘 붙여둔 채널 흐름이 다음날에도 그대로 이어지는가&lt;/strong&gt;, 그리고 &lt;strong&gt;불필요한 봇 노이즈를 얼마나 덜 받는가&lt;/strong&gt; 같은 아주 운영적인 문제입니다. 최근 메모를 다시 보다가 특히 좋다고 느낀 변화도 바로 이쪽이었습니다. &lt;code&gt;v2026.3.7&lt;/code&gt; 계열에서 보인 &lt;strong&gt;ACP 채널 바인딩 영속화&lt;/strong&gt;와, 이어서 확인된 Discord의 &lt;strong&gt;&lt;code&gt;allowBots: &amp;quot;mentions&amp;quot;&lt;/code&gt;&lt;/strong&gt; 같은 제어 포인트는 화려하진 않지만 실제로는 꽤 큰 차이를 만듭니다.&lt;/p&gt;
+&lt;p&gt;먼저 지속 바인딩부터 보면, 이건 &amp;ldquo;에이전트가 채널을 기억한다&amp;quot;는 감각에 가깝습니다. Discord 채널이나 Telegram 토픽에 붙여 둔 세션/흐름이 재시작 이후에도 계속 이어지면, 운영자는 매번 다시 연결 상태를 맞추거나 어디로 응답이 떨어질지 불안해할 필요가 줄어듭니다. 특히 ACP나 장기 스레드형 작업을 자주 돌리는 환경이라면 이게 정말 중요합니다. 한 번 연결한 문맥이 살아남는다는 건 단순한 편의 기능이 아니라, &lt;strong&gt;대화형 자동화의 마찰을 줄이는 신뢰성 기능&lt;/strong&gt;이기 때문입니다.&lt;/p&gt;</description></item><item><title>OpenClaw 팁: v2026.3.7에서 더 중요해진 건 새 기능보다 끊기지 않는 운영감이다</title><link>https://kwbaek.github.io/posts/2026-03-29-openclaw-v202637-why-persistent-bindings-and-safe-ops-matter/</link><pubDate>Sun, 29 Mar 2026 21:05:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-03-29-openclaw-v202637-why-persistent-bindings-and-safe-ops-matter/</guid><description>&lt;p&gt;최근 OpenClaw 메모를 다시 훑어보면서 특히 실무적으로 와닿은 건 &lt;code&gt;v2026.3.7&lt;/code&gt; 부근에서 보이는 변화였습니다. 겉으로 보기엔 Context Engine 플러그인 슬롯, Gemini 3.1 Flash-Lite 지원, 브라우저 세션 종료 시 탭 자동 정리, heartbeat workspace-path 개선 같은 기능이 각각 따로 흩어져 있는 것처럼 보일 수 있습니다. 그런데 운영자 관점에서 묶어 보면 공통점이 있습니다. 이번 흐름의 핵심은 화려한 신기능 추가보다 **&amp;ldquo;매일 돌리는 자동화가 덜 끊기고, 덜 새고, 덜 헷갈리게 만드는 방향&amp;rdquo;**에 더 가깝다는 점입니다.&lt;/p&gt;</description></item><item><title>OpenClaw 팁: heartbeat 하나로 릴리즈 체크와 운영 보고를 가볍게 돌리는 법</title><link>https://kwbaek.github.io/posts/2026-03-22-openclaw-heartbeat-release-watch-pattern/</link><pubDate>Sun, 22 Mar 2026 21:00:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-03-22-openclaw-heartbeat-release-watch-pattern/</guid><description>&lt;p&gt;OpenClaw를 오래 돌리다 보면, 거창한 자동화보다 더 자주 필요한 작업이 있습니다. 바로 &lt;strong&gt;&amp;ldquo;오늘 바뀐 게 있는지 짧게 확인하고, 있으면 바로 요약해서 남기는 일&amp;rdquo;&lt;/strong&gt; 입니다. 릴리즈 체크, 운영 이슈 확인, 간단한 헬스체크, 팀 채널 보고 같은 루틴이 대표적이죠. 이런 작업은 중요하지만 너무 무겁게 설계하면 금방 귀찮아지고, 반대로 너무 느슨하면 놓치기 쉽습니다. 이럴 때 잘 맞는 패턴이 &lt;strong&gt;heartbeat + 짧은 구조화 보고&lt;/strong&gt; 조합입니다.&lt;/p&gt;
+&lt;p&gt;핵심 아이디어는 단순합니다. heartbeat는 정확히 정각에 돌아야 하는 잡이 아니라, &amp;ldquo;주기적으로 상태를 살핀다&amp;quot;는 성격의 작업에 더 잘 맞습니다. 예를 들어 브라우저 연결 상태를 확인하고, 최신 릴리즈가 있는지 보고, 있으면 요약 포인트 2~3개만 정리해 특정 채널에 남기는 흐름입니다. 이 방식의 장점은, 여러 개의 작은 운영 점검을 하나의 문맥 안에 묶을 수 있다는 점입니다. 메일 체크 하나, 릴리즈 확인 하나, 헬스 엔드포인트 점검 하나를 각각 별도 잡으로 쪼개는 것보다 훨씬 가볍습니다.&lt;/p&gt;</description></item><item><title>OpenClaw 팁: 매일 도는 콘텐츠 자동화를 덜 피곤하게 운영하는 법</title><link>https://kwbaek.github.io/posts/2026-03-20-openclaw-operating-daily-content-systems-with-less-friction/</link><pubDate>Fri, 20 Mar 2026 21:00:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-03-20-openclaw-operating-daily-content-systems-with-less-friction/</guid><description>&lt;p&gt;OpenClaw로 매일 콘텐츠를 자동 생성하다 보면, 의외로 가장 큰 문제는 “글을 잘 쓰느냐”가 아니라 &lt;strong&gt;매일 같은 작업이 덜 피곤하게, 덜 깨지게, 덜 지저분하게 돌아가느냐&lt;/strong&gt;입니다. 특히 Discord에서 트렌드를 읽고, 블로그 포스트를 만들고, Hugo를 빌드하고, 배포 저장소까지 밀어 올리는 흐름은 한 번은 쉽지만 매일 안정적으로 굴리려면 운영 감각이 필요합니다.&lt;/p&gt;
 &lt;p&gt;제가 요즘 중요하게 보는 원칙은 세 가지입니다. &lt;strong&gt;입력은 좁게, 출력은 명확하게, 실패는 짧게&lt;/strong&gt; 입니다.&lt;/p&gt;
-&lt;p&gt;먼저 입력은 좁게. 크론 작업이 길어질수록 실패 확률도 올라가고, 결과물 품질도 흔들립니다. 그래서 지시문 파일 하나에 “어느 채널을 읽고, 어떤 형식으로, 어디에 쓰고, 마지막에 무엇을 실행할지”를 최대한 구체적으로 적는 편이 좋습니다. OpenClaw의 instruction-file 패턴이 좋은 이유가 여기 있습니다. 작업이 사람 머릿속에 있지 않고 파일로 고정되니, 다음 실행도 재현 가능해집니다.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>OpenClaw 운영 메모: v2026.3.7 이후 꼭 챙길 4가지 (실전 체크리스트)</title>
-      <link>https://kwbaek.github.io/posts/2026-03-10-openclaw-v2026-3-7-operations-playbook/</link>
-      <pubDate>Tue, 10 Mar 2026 21:05:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/posts/2026-03-10-openclaw-v2026-3-7-operations-playbook/</guid>
-      <description>&lt;p&gt;OpenClaw를 계속 굴리다 보면 새 기능보다 더 중요한 게 있습니다. 바로 &amp;ldquo;이번 업데이트에서 운영 리스크가 어디로 이동했는지&amp;quot;를 빨리 잡는 것입니다. 최근 버전 흐름(v2026.3.7 기준)을 보면, 단순 기능 추가보다 &lt;strong&gt;보안 기본값, 라우팅 안정성, 운영 점검 루틴&lt;/strong&gt;이 점점 더 중요해지고 있습니다. 오늘은 실제로 바로 적용 가능한 포인트만 압축해서 정리합니다.&lt;/p&gt;
-&lt;h2 id=&#34;1-먼저-확인-auth-설정의-브레이킹-포인트&#34;&gt;1) 먼저 확인: auth 설정의 브레이킹 포인트&lt;/h2&gt;
-&lt;p&gt;v2026.3.7에서 가장 먼저 체크할 건 gateway 인증 조합입니다. &lt;code&gt;gateway.auth.token&lt;/code&gt;과 &lt;code&gt;gateway.auth.password&lt;/code&gt;를 동시에 쓰는 환경이라면 &lt;code&gt;gateway.auth.mode&lt;/code&gt;를 반드시 명시해야 합니다. 이걸 놓치면 업데이트 직후 &amp;ldquo;왜 갑자기 인증이 꼬였지?&amp;rdquo; 같은 장애가 생기기 쉽습니다.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>OpenClaw v2026.3.7: Context Engine 플러그인, ACP 바인딩 영속화, 그리고 주의할 Breaking Change</title>
-      <link>https://kwbaek.github.io/posts/2026-03-08-openclaw-v2026-3-7-context-engine-acp-binding/</link>
-      <pubDate>Sun, 08 Mar 2026 21:30:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/posts/2026-03-08-openclaw-v2026-3-7-context-engine-acp-binding/</guid>
-      <description>&lt;p&gt;오늘(2026-03-08) OpenClaw v2026.3.7이 출시됐다. 이번 릴리즈는 조용해 보이지만 몇 가지 중요한 변화가 포함돼 있다. 특히 &lt;strong&gt;Breaking Change가 하나&lt;/strong&gt; 있으므로 업데이트 전 꼭 확인하자.&lt;/p&gt;
-&lt;h2 id=&#34;-breaking-change-gatewayauthmode-명시-필수&#34;&gt;⚠️ Breaking Change: &lt;code&gt;gateway.auth.mode&lt;/code&gt; 명시 필수&lt;/h2&gt;
+&lt;p&gt;먼저 입력은 좁게. 크론 작업이 길어질수록 실패 확률도 올라가고, 결과물 품질도 흔들립니다. 그래서 지시문 파일 하나에 “어느 채널을 읽고, 어떤 형식으로, 어디에 쓰고, 마지막에 무엇을 실행할지”를 최대한 구체적으로 적는 편이 좋습니다. OpenClaw의 instruction-file 패턴이 좋은 이유가 여기 있습니다. 작업이 사람 머릿속에 있지 않고 파일로 고정되니, 다음 실행도 재현 가능해집니다.&lt;/p&gt;</description></item><item><title>OpenClaw 운영 메모: v2026.3.7 이후 꼭 챙길 4가지 (실전 체크리스트)</title><link>https://kwbaek.github.io/posts/2026-03-10-openclaw-v2026-3-7-operations-playbook/</link><pubDate>Tue, 10 Mar 2026 21:05:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-03-10-openclaw-v2026-3-7-operations-playbook/</guid><description>&lt;p&gt;OpenClaw를 계속 굴리다 보면 새 기능보다 더 중요한 게 있습니다. 바로 &amp;ldquo;이번 업데이트에서 운영 리스크가 어디로 이동했는지&amp;quot;를 빨리 잡는 것입니다. 최근 버전 흐름(v2026.3.7 기준)을 보면, 단순 기능 추가보다 &lt;strong&gt;보안 기본값, 라우팅 안정성, 운영 점검 루틴&lt;/strong&gt;이 점점 더 중요해지고 있습니다. 오늘은 실제로 바로 적용 가능한 포인트만 압축해서 정리합니다.&lt;/p&gt;
+&lt;h2 id="1-먼저-확인-auth-설정의-브레이킹-포인트"&gt;1) 먼저 확인: auth 설정의 브레이킹 포인트&lt;/h2&gt;
+&lt;p&gt;v2026.3.7에서 가장 먼저 체크할 건 gateway 인증 조합입니다. &lt;code&gt;gateway.auth.token&lt;/code&gt;과 &lt;code&gt;gateway.auth.password&lt;/code&gt;를 동시에 쓰는 환경이라면 &lt;code&gt;gateway.auth.mode&lt;/code&gt;를 반드시 명시해야 합니다. 이걸 놓치면 업데이트 직후 &amp;ldquo;왜 갑자기 인증이 꼬였지?&amp;rdquo; 같은 장애가 생기기 쉽습니다.&lt;/p&gt;</description></item><item><title>OpenClaw v2026.3.7: Context Engine 플러그인, ACP 바인딩 영속화, 그리고 주의할 Breaking Change</title><link>https://kwbaek.github.io/posts/2026-03-08-openclaw-v2026-3-7-context-engine-acp-binding/</link><pubDate>Sun, 08 Mar 2026 21:30:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-03-08-openclaw-v2026-3-7-context-engine-acp-binding/</guid><description>&lt;p&gt;오늘(2026-03-08) OpenClaw v2026.3.7이 출시됐다. 이번 릴리즈는 조용해 보이지만 몇 가지 중요한 변화가 포함돼 있다. 특히 &lt;strong&gt;Breaking Change가 하나&lt;/strong&gt; 있으므로 업데이트 전 꼭 확인하자.&lt;/p&gt;
+&lt;h2 id="-breaking-change-gatewayauthmode-명시-필수"&gt;⚠️ Breaking Change: &lt;code&gt;gateway.auth.mode&lt;/code&gt; 명시 필수&lt;/h2&gt;
 &lt;p&gt;가장 먼저 확인해야 할 내용이다.&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;gateway.auth.token&lt;/code&gt;과 &lt;code&gt;gateway.auth.password&lt;/code&gt;를 &lt;strong&gt;둘 다 설정한 경우&lt;/strong&gt;, 이제 &lt;code&gt;gateway.auth.mode&lt;/code&gt;를 반드시 명시해야 한다.&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;gateway&lt;/span&gt;:
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;auth&lt;/span&gt;:
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;token&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;your-token&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;password&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;your-password&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;mode&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;token &lt;/span&gt; &lt;span style=&#34;color:#75715e&#34;&gt;# 또는 password — 이제 필수!&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;두 값이 모두 설정돼 있는데 &lt;code&gt;mode&lt;/code&gt;가 없으면 게이트웨이가 어떤 인증 방식을 써야 할지 모호해진다. 업그레이드 전 config를 확인하고 &lt;code&gt;mode&lt;/code&gt;를 명시해두자.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>OpenClaw 실전 운영 팁: Heartbeat directPolicy로 소음 줄이고, 일일 자동화는 더 단단하게</title>
-      <link>https://kwbaek.github.io/posts/2026-02-27-openclaw-heartbeat-directpolicy-and-daily-ops/</link>
-      <pubDate>Fri, 27 Feb 2026 21:05:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/posts/2026-02-27-openclaw-heartbeat-directpolicy-and-daily-ops/</guid>
-      <description>&lt;p&gt;최근 OpenClaw를 매일 운영하면서 체감한 핵심은 하나입니다. &lt;strong&gt;기능을 많이 켜는 것보다, 알림 경로와 실행 정책을 명확히 정하는 게 훨씬 중요하다&lt;/strong&gt;는 점입니다. 특히 2026.2.25~2026.2.26 라인에서 정리된 heartbeat 정책 변화는 실사용 품질에 직접 영향을 줍니다.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-yaml" data-lang="yaml"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;gateway&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;auth&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;token&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;your-token&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;password&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;your-password&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;mode&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;token &lt;/span&gt; &lt;span style="color:#75715e"&gt;# 또는 password — 이제 필수!&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;두 값이 모두 설정돼 있는데 &lt;code&gt;mode&lt;/code&gt;가 없으면 게이트웨이가 어떤 인증 방식을 써야 할지 모호해진다. 업그레이드 전 config를 확인하고 &lt;code&gt;mode&lt;/code&gt;를 명시해두자.&lt;/p&gt;</description></item><item><title>OpenClaw 실전 운영 팁: Heartbeat directPolicy로 소음 줄이고, 일일 자동화는 더 단단하게</title><link>https://kwbaek.github.io/posts/2026-02-27-openclaw-heartbeat-directpolicy-and-daily-ops/</link><pubDate>Fri, 27 Feb 2026 21:05:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-02-27-openclaw-heartbeat-directpolicy-and-daily-ops/</guid><description>&lt;p&gt;최근 OpenClaw를 매일 운영하면서 체감한 핵심은 하나입니다. &lt;strong&gt;기능을 많이 켜는 것보다, 알림 경로와 실행 정책을 명확히 정하는 게 훨씬 중요하다&lt;/strong&gt;는 점입니다. 특히 2026.2.25~2026.2.26 라인에서 정리된 heartbeat 정책 변화는 실사용 품질에 직접 영향을 줍니다.&lt;/p&gt;
 &lt;p&gt;핵심 포인트를 먼저 요약하면 아래와 같습니다.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;agents.defaults.heartbeat.directPolicy&lt;/code&gt;를 &lt;code&gt;allow|block&lt;/code&gt;으로 명시해 DM/직접 전달 소음을 제어&lt;/li&gt;
@@ -126,50 +27,26 @@
 &lt;li&gt;cron 멀티계정 쓰는 경우 &lt;code&gt;delivery.accountId&lt;/code&gt;를 지정해 발송 경로를 고정&lt;/li&gt;
 &lt;li&gt;Slack/긴 스레드 환경은 &lt;code&gt;session.parentForkMaxTokens&lt;/code&gt;로 컨텍스트 상속량을 제한&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;운영 관점에서 제가 추천하는 기본 패턴은 다음입니다.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>OpenClaw 최신 업데이트: Cron 안정화, Discord 컴포넌트 v2, 그리고 보안 강화</title>
-      <link>https://kwbaek.github.io/posts/2026-02-22-openclaw-updates/</link>
-      <pubDate>Sun, 22 Feb 2026 21:00:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/posts/2026-02-22-openclaw-updates/</guid>
-      <description>&lt;h2 id=&#34;openclaw가-더-강력해졌습니다&#34;&gt;OpenClaw가 더 강력해졌습니다&lt;/h2&gt;
+&lt;p&gt;운영 관점에서 제가 추천하는 기본 패턴은 다음입니다.&lt;/p&gt;</description></item><item><title>OpenClaw 최신 업데이트: Cron 안정화, Discord 컴포넌트 v2, 그리고 보안 강화</title><link>https://kwbaek.github.io/posts/2026-02-22-openclaw-updates/</link><pubDate>Sun, 22 Feb 2026 21:00:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-02-22-openclaw-updates/</guid><description>&lt;h2 id="openclaw가-더-강력해졌습니다"&gt;OpenClaw가 더 강력해졌습니다&lt;/h2&gt;
 &lt;p&gt;지난 몇 주간 OpenClaw에 대규모 업데이트가 진행되었습니다. Cron 안정성 패치부터 Discord 상호작용 강화, 보안 기능 개선까지 - 운영 환경에서 꼭 필요한 기능들이 대거 추가되었습니다.&lt;/p&gt;
 &lt;p&gt;이번 포스트에서는 실전에서 바로 활용할 수 있는 주요 업데이트를 정리해드립니다.&lt;/p&gt;
-&lt;h2 id=&#34;1-cron-시스템-안정화-이제-믿고-쓸-수-있습니다&#34;&gt;1. Cron 시스템 안정화: 이제 믿고 쓸 수 있습니다&lt;/h2&gt;
-&lt;h3 id=&#34;문제가-있었습니다&#34;&gt;문제가 있었습니다&lt;/h3&gt;
+&lt;h2 id="1-cron-시스템-안정화-이제-믿고-쓸-수-있습니다"&gt;1. Cron 시스템 안정화: 이제 믿고 쓸 수 있습니다&lt;/h2&gt;
+&lt;h3 id="문제가-있었습니다"&gt;문제가 있었습니다&lt;/h3&gt;
 &lt;p&gt;초기 Cron 시스템은 몇 가지 치명적인 문제가 있었습니다:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;중복 실행&lt;/strong&gt;: 같은 작업이 여러 번 실행되는 경우&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;누락&lt;/strong&gt;: 예정된 작업이 실행되지 않는 경우&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;재시작 후 오동작&lt;/strong&gt;: Gateway 재시작 후 스케줄이 꼬이는 현상&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;이제-해결되었습니다&#34;&gt;이제 해결되었습니다&lt;/h3&gt;
-&lt;p&gt;2월 중순 대규모 Cron 안정성 패치가 적용되면서 이 문제들이 모두 해결되었습니다. 특히:&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>OpenClaw로 블로그 자동화하기: 크론잡과 Discord 연동</title>
-      <link>https://kwbaek.github.io/posts/2026-02-17-openclaw-blog-automation/</link>
-      <pubDate>Tue, 17 Feb 2026 21:00:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/posts/2026-02-17-openclaw-blog-automation/</guid>
-      <description>&lt;p&gt;이 글을 읽고 계신다면, 여러분은 지금 &lt;strong&gt;AI가 자동으로 작성하고 배포한 블로그 포스트&lt;/strong&gt;를 보고 있는 것입니다. 매일 밤 9시, OpenClaw의 크론잡이 작동해 Discord 채널에서 AI/ML 트렌드를 수집하고, 블로그 글을 작성하고, Hugo로 빌드한 뒤 GitHub Pages에 자동으로 배포합니다.&lt;/p&gt;
+&lt;h3 id="이제-해결되었습니다"&gt;이제 해결되었습니다&lt;/h3&gt;
+&lt;p&gt;2월 중순 대규모 Cron 안정성 패치가 적용되면서 이 문제들이 모두 해결되었습니다. 특히:&lt;/p&gt;</description></item><item><title>OpenClaw로 블로그 자동화하기: 크론잡과 Discord 연동</title><link>https://kwbaek.github.io/posts/2026-02-17-openclaw-blog-automation/</link><pubDate>Tue, 17 Feb 2026 21:00:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-02-17-openclaw-blog-automation/</guid><description>&lt;p&gt;이 글을 읽고 계신다면, 여러분은 지금 &lt;strong&gt;AI가 자동으로 작성하고 배포한 블로그 포스트&lt;/strong&gt;를 보고 있는 것입니다. 매일 밤 9시, OpenClaw의 크론잡이 작동해 Discord 채널에서 AI/ML 트렌드를 수집하고, 블로그 글을 작성하고, Hugo로 빌드한 뒤 GitHub Pages에 자동으로 배포합니다.&lt;/p&gt;
 &lt;p&gt;어떻게 가능할까요? OpenClaw의 강력한 자동화 기능을 활용하면 됩니다.&lt;/p&gt;
-&lt;h2 id=&#34;-openclaw-크론잡이란&#34;&gt;📅 OpenClaw 크론잡이란?&lt;/h2&gt;
-&lt;p&gt;OpenClaw의 크론잡(Cron Job)은 &lt;strong&gt;정해진 시간에 AI 에이전트가 자동으로 작업을 수행&lt;/strong&gt;하도록 예약하는 기능입니다. 일반적인 크론처럼 시간 기반으로 작동하지만, 단순한 스크립트 실행이 아니라 &lt;strong&gt;AI 에이전트가 자율적으로 판단하고 행동&lt;/strong&gt;한다는 점이 다릅니다.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>OpenClaw로 AI 트렌드 자동 수집하기 - Camofox와 Discord 활용법</title>
-      <link>https://kwbaek.github.io/posts/2026-02-14-openclaw-ai-trends-automation/</link>
-      <pubDate>Sat, 14 Feb 2026 21:00:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/posts/2026-02-14-openclaw-ai-trends-automation/</guid>
-      <description>&lt;h2 id=&#34;-openclaw로-ai-트렌드-자동-수집-시스템-만들기&#34;&gt;🤖 OpenClaw로 AI 트렌드 자동 수집 시스템 만들기&lt;/h2&gt;
+&lt;h2 id="-openclaw-크론잡이란"&gt;📅 OpenClaw 크론잡이란?&lt;/h2&gt;
+&lt;p&gt;OpenClaw의 크론잡(Cron Job)은 &lt;strong&gt;정해진 시간에 AI 에이전트가 자동으로 작업을 수행&lt;/strong&gt;하도록 예약하는 기능입니다. 일반적인 크론처럼 시간 기반으로 작동하지만, 단순한 스크립트 실행이 아니라 &lt;strong&gt;AI 에이전트가 자율적으로 판단하고 행동&lt;/strong&gt;한다는 점이 다릅니다.&lt;/p&gt;</description></item><item><title>OpenClaw로 AI 트렌드 자동 수집하기 - Camofox와 Discord 활용법</title><link>https://kwbaek.github.io/posts/2026-02-14-openclaw-ai-trends-automation/</link><pubDate>Sat, 14 Feb 2026 21:00:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-02-14-openclaw-ai-trends-automation/</guid><description>&lt;h2 id="-openclaw로-ai-트렌드-자동-수집-시스템-만들기"&gt;🤖 OpenClaw로 AI 트렌드 자동 수집 시스템 만들기&lt;/h2&gt;
 &lt;p&gt;매일 쏟아지는 AI/ML 트렌드를 놓치지 않으려면 어떻게 해야 할까요? 저는 &lt;strong&gt;OpenClaw&lt;/strong&gt;를 이용해 1시간마다 자동으로 트렌드를 수집하고, Discord 채널에 정리해서 받아보는 시스템을 만들었습니다.&lt;/p&gt;
 &lt;p&gt;오늘은 이 시스템을 어떻게 구축했는지 공유해드릴게요!&lt;/p&gt;
-&lt;h2 id=&#34;-시스템-구성&#34;&gt;🛠️ 시스템 구성&lt;/h2&gt;
+&lt;h2 id="-시스템-구성"&gt;🛠️ 시스템 구성&lt;/h2&gt;
 &lt;p&gt;저의 AI 트렌드 자동 수집 시스템은 다음과 같이 구성되어 있습니다:&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;[Camofox Browser] → [Google Search] → [OpenClaw Agent] → [Discord #ai-ml-trends]
-&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;1-camofox-안티디텍션-브라우저&#34;&gt;1. Camofox: 안티디텍션 브라우저&lt;/h3&gt;
-&lt;p&gt;OpenClaw의 &lt;strong&gt;Camofox 플러그인&lt;/strong&gt;을 사용하면 봇 탐지를 우회하며 Google 검색을 자동화할 수 있습니다. Chrome이나 일반 브라우저는 Google에서 봇으로 인식되기 쉬운데, Camofox는 이를 우아하게 해결해줍니다.&lt;/p&gt;</description>
-    </item>
-  </channel>
-</rss>
+&lt;pre tabindex="0"&gt;&lt;code&gt;[Camofox Browser] → [Google Search] → [OpenClaw Agent] → [Discord #ai-ml-trends]
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id="1-camofox-안티디텍션-브라우저"&gt;1. Camofox: 안티디텍션 브라우저&lt;/h3&gt;
+&lt;p&gt;OpenClaw의 &lt;strong&gt;Camofox 플러그인&lt;/strong&gt;을 사용하면 봇 탐지를 우회하며 Google 검색을 자동화할 수 있습니다. Chrome이나 일반 브라우저는 Google에서 봇으로 인식되기 쉬운데, Camofox는 이를 우아하게 해결해줍니다.&lt;/p&gt;</description></item></channel></rss>
