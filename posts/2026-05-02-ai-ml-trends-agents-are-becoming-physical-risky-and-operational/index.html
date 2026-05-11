@@ -1,11 +1,319 @@
-<!doctype html><html lang=en dir=auto data-theme=auto><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=robots content="index, follow"><title>AI/ML 트렌드: 에이전트는 더 물리적이고, 더 위험하고, 더 운영형이 되고 있다 | Kyungwook's Devlog</title><meta name=keywords content="AI,ML,Agents,Robotics,Evaluation,Security,Infrastructure"><meta name=description content="오늘 #ai-ml-trends에서 가장 눈에 띈 흐름은 에이전트 AI가 챗봇이나 코드 생성기를 넘어 물리 세계, 장기 실행 워크플로, 보안 운영으로 빠르게 내려오고 있다는 점입니다. Meta의 humanoid AI 강화를 위한 robotics 스타트업 인수, NVIDIA의 DeepSeek V4 배포 가이드, Crab 같은 agent sandbox checkpoint 연구, Exploration Hacking과 FlashRT 같은 post-training·red-teaming 연구가 모두 같은 방향을 가리킵니다. 이제 중요한 질문은 “모델이 똑똑한가?”보다 “이 시스템을 오래, 싸게, 안전하게 굴릴 수 있는가?”에 가까워졌습니다.
-첫 번째 축은 physical AI입니다. Meta가 humanoid AI 역량을 위해 로봇 AI 회사를 인수한 것은 로봇이 더 이상 별도 산업의 실험실 프로젝트만은 아니라는 신호입니다. VLM, long-context agent, world model, reinforcement learning이 서로 붙으면서 AI는 화면 안의 조언자가 아니라 센서와 액추에이터를 가진 작업자로 확장되고 있습니다. 이는 모델 경쟁의 기준도 바꿉니다. 자연어 답변 품질만으로는 부족하고, 실제 환경에서 실패를 감지하고, 복구하고, 안전 경계를 지키는 능력이 중요해집니다."><meta name=author content><link rel=canonical href=https://kwbaek.github.io/posts/2026-05-02-ai-ml-trends-agents-are-becoming-physical-risky-and-operational/><link crossorigin=anonymous href=/assets/css/stylesheet.da3211e5ef867bf2b75fd5a6515cfed7195c011e8ab735694e203810a827097b.css integrity="sha256-2jIR5e+Ge/K3X9WmUVz+1xlcAR6KtzVpTiA4EKgnCXs=" rel="preload stylesheet" as=style><link rel=icon href=https://kwbaek.github.io/favicon.ico><link rel=icon type=image/png sizes=16x16 href=https://kwbaek.github.io/favicon-16x16.png><link rel=icon type=image/png sizes=32x32 href=https://kwbaek.github.io/favicon-32x32.png><link rel=apple-touch-icon href=https://kwbaek.github.io/apple-touch-icon.png><link rel=mask-icon href=https://kwbaek.github.io/safari-pinned-tab.svg><meta name=theme-color content="#2e2e33"><meta name=msapplication-TileColor content="#2e2e33"><link rel=alternate hreflang=en href=https://kwbaek.github.io/posts/2026-05-02-ai-ml-trends-agents-are-becoming-physical-risky-and-operational/><noscript><style>#theme-toggle,.top-link{display:none}</style><style>@media(prefers-color-scheme:dark){:root{--theme:rgb(29, 30, 32);--entry:rgb(46, 46, 51);--primary:rgb(218, 218, 219);--secondary:rgb(155, 156, 157);--tertiary:rgb(65, 66, 68);--content:rgb(196, 196, 197);--code-block-bg:rgb(46, 46, 51);--code-bg:rgb(55, 56, 62);--border:rgb(51, 51, 51);color-scheme:dark}.list{background:var(--theme)}.toc{background:var(--entry)}}@media(prefers-color-scheme:light){.list::-webkit-scrollbar-thumb{border-color:var(--code-bg)}}</style></noscript><script>localStorage.getItem("pref-theme")==="dark"?document.querySelector("html").dataset.theme="dark":localStorage.getItem("pref-theme")==="light"?document.querySelector("html").dataset.theme="light":window.matchMedia("(prefers-color-scheme: dark)").matches?document.querySelector("html").dataset.theme="dark":document.querySelector("html").dataset.theme="light"</script><meta property="og:url" content="https://kwbaek.github.io/posts/2026-05-02-ai-ml-trends-agents-are-becoming-physical-risky-and-operational/"><meta property="og:site_name" content="Kyungwook's Devlog"><meta property="og:title" content="AI/ML 트렌드: 에이전트는 더 물리적이고, 더 위험하고, 더 운영형이 되고 있다"><meta property="og:description" content="오늘 #ai-ml-trends에서 가장 눈에 띈 흐름은 에이전트 AI가 챗봇이나 코드 생성기를 넘어 물리 세계, 장기 실행 워크플로, 보안 운영으로 빠르게 내려오고 있다는 점입니다. Meta의 humanoid AI 강화를 위한 robotics 스타트업 인수, NVIDIA의 DeepSeek V4 배포 가이드, Crab 같은 agent sandbox checkpoint 연구, Exploration Hacking과 FlashRT 같은 post-training·red-teaming 연구가 모두 같은 방향을 가리킵니다. 이제 중요한 질문은 “모델이 똑똑한가?”보다 “이 시스템을 오래, 싸게, 안전하게 굴릴 수 있는가?”에 가까워졌습니다.
-첫 번째 축은 physical AI입니다. Meta가 humanoid AI 역량을 위해 로봇 AI 회사를 인수한 것은 로봇이 더 이상 별도 산업의 실험실 프로젝트만은 아니라는 신호입니다. VLM, long-context agent, world model, reinforcement learning이 서로 붙으면서 AI는 화면 안의 조언자가 아니라 센서와 액추에이터를 가진 작업자로 확장되고 있습니다. 이는 모델 경쟁의 기준도 바꿉니다. 자연어 답변 품질만으로는 부족하고, 실제 환경에서 실패를 감지하고, 복구하고, 안전 경계를 지키는 능력이 중요해집니다."><meta property="og:locale" content="ko-kr"><meta property="og:type" content="article"><meta property="article:section" content="posts"><meta property="article:published_time" content="2026-05-02T21:00:00+09:00"><meta property="article:modified_time" content="2026-05-02T21:00:00+09:00"><meta property="article:tag" content="AI"><meta property="article:tag" content="ML"><meta property="article:tag" content="Agents"><meta property="article:tag" content="Robotics"><meta property="article:tag" content="Evaluation"><meta property="article:tag" content="Security"><meta name=twitter:card content="summary"><meta name=twitter:title content="AI/ML 트렌드: 에이전트는 더 물리적이고, 더 위험하고, 더 운영형이 되고 있다"><meta name=twitter:description content="오늘 #ai-ml-trends에서 가장 눈에 띈 흐름은 에이전트 AI가 챗봇이나 코드 생성기를 넘어 물리 세계, 장기 실행 워크플로, 보안 운영으로 빠르게 내려오고 있다는 점입니다. Meta의 humanoid AI 강화를 위한 robotics 스타트업 인수, NVIDIA의 DeepSeek V4 배포 가이드, Crab 같은 agent sandbox checkpoint 연구, Exploration Hacking과 FlashRT 같은 post-training·red-teaming 연구가 모두 같은 방향을 가리킵니다. 이제 중요한 질문은 “모델이 똑똑한가?”보다 “이 시스템을 오래, 싸게, 안전하게 굴릴 수 있는가?”에 가까워졌습니다.
-첫 번째 축은 physical AI입니다. Meta가 humanoid AI 역량을 위해 로봇 AI 회사를 인수한 것은 로봇이 더 이상 별도 산업의 실험실 프로젝트만은 아니라는 신호입니다. VLM, long-context agent, world model, reinforcement learning이 서로 붙으면서 AI는 화면 안의 조언자가 아니라 센서와 액추에이터를 가진 작업자로 확장되고 있습니다. 이는 모델 경쟁의 기준도 바꿉니다. 자연어 답변 품질만으로는 부족하고, 실제 환경에서 실패를 감지하고, 복구하고, 안전 경계를 지키는 능력이 중요해집니다."><script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Posts","item":"https://kwbaek.github.io/posts/"},{"@type":"ListItem","position":2,"name":"AI/ML 트렌드: 에이전트는 더 물리적이고, 더 위험하고, 더 운영형이 되고 있다","item":"https://kwbaek.github.io/posts/2026-05-02-ai-ml-trends-agents-are-becoming-physical-risky-and-operational/"}]}</script><script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"AI/ML 트렌드: 에이전트는 더 물리적이고, 더 위험하고, 더 운영형이 되고 있다","name":"AI\/ML 트렌드: 에이전트는 더 물리적이고, 더 위험하고, 더 운영형이 되고 있다","description":"오늘 #ai-ml-trends에서 가장 눈에 띈 흐름은 에이전트 AI가 챗봇이나 코드 생성기를 넘어 물리 세계, 장기 실행 워크플로, 보안 운영으로 빠르게 내려오고 있다는 점입니다. Meta의 humanoid AI 강화를 위한 robotics 스타트업 인수, NVIDIA의 DeepSeek V4 배포 가이드, Crab 같은 agent sandbox checkpoint 연구, Exploration Hacking과 FlashRT 같은 post-training·red-teaming 연구가 모두 같은 방향을 가리킵니다. 이제 중요한 질문은 “모델이 똑똑한가?”보다 “이 시스템을 오래, 싸게, 안전하게 굴릴 수 있는가?”에 가까워졌습니다.\n첫 번째 축은 physical AI입니다. Meta가 humanoid AI 역량을 위해 로봇 AI 회사를 인수한 것은 로봇이 더 이상 별도 산업의 실험실 프로젝트만은 아니라는 신호입니다. VLM, long-context agent, world model, reinforcement learning이 서로 붙으면서 AI는 화면 안의 조언자가 아니라 센서와 액추에이터를 가진 작업자로 확장되고 있습니다. 이는 모델 경쟁의 기준도 바꿉니다. 자연어 답변 품질만으로는 부족하고, 실제 환경에서 실패를 감지하고, 복구하고, 안전 경계를 지키는 능력이 중요해집니다.\n","keywords":["AI","ML","Agents","Robotics","Evaluation","Security","Infrastructure"],"articleBody":"오늘 #ai-ml-trends에서 가장 눈에 띈 흐름은 에이전트 AI가 챗봇이나 코드 생성기를 넘어 물리 세계, 장기 실행 워크플로, 보안 운영으로 빠르게 내려오고 있다는 점입니다. Meta의 humanoid AI 강화를 위한 robotics 스타트업 인수, NVIDIA의 DeepSeek V4 배포 가이드, Crab 같은 agent sandbox checkpoint 연구, Exploration Hacking과 FlashRT 같은 post-training·red-teaming 연구가 모두 같은 방향을 가리킵니다. 이제 중요한 질문은 “모델이 똑똑한가?”보다 “이 시스템을 오래, 싸게, 안전하게 굴릴 수 있는가?”에 가까워졌습니다.\n첫 번째 축은 physical AI입니다. Meta가 humanoid AI 역량을 위해 로봇 AI 회사를 인수한 것은 로봇이 더 이상 별도 산업의 실험실 프로젝트만은 아니라는 신호입니다. VLM, long-context agent, world model, reinforcement learning이 서로 붙으면서 AI는 화면 안의 조언자가 아니라 센서와 액추에이터를 가진 작업자로 확장되고 있습니다. 이는 모델 경쟁의 기준도 바꿉니다. 자연어 답변 품질만으로는 부족하고, 실제 환경에서 실패를 감지하고, 복구하고, 안전 경계를 지키는 능력이 중요해집니다.\n두 번째 축은 운영 인프라입니다. NVIDIA가 DeepSeek V4를 Blackwell, NIM, vLLM, SGLang 엔드포인트로 배포하는 가이드를 공개한 것은 장문맥 모델 경쟁이 모델 카드에서 끝나지 않는다는 점을 보여줍니다. 1M 컨텍스트와 대형 MoE 모델을 실제 서비스로 굴리려면 KV cache, throughput, self-hosting recipe, 엔드포인트 선택이 곧 제품 경쟁력입니다. AI 인프라는 이제 “어떤 모델을 쓸까”의 문제가 아니라 “어떤 배포 스택으로 비용과 지연을 통제할까”의 문제입니다.\n세 번째 축은 에이전트 런타임의 복구 가능성입니다. Crab은 tool turn의 OS-visible side effect를 eBPF로 분류해 불필요한 checkpoint를 줄이는 semantics-aware checkpoint/restore runtime을 제안합니다. 장기 실행 에이전트에서는 중간 실패가 예외가 아니라 정상 상태입니다. 파일을 만들고, API를 호출하고, 여러 도구를 넘나드는 에이전트를 운영하려면 “실패했을 때 어디까지 되돌릴 수 있는가”가 핵심 기능이 됩니다. 이는 서버의 트랜잭션 로그나 데이터베이스 복구 개념이 개인·업무 에이전트 런타임으로 내려오는 흐름입니다.\n네 번째 축은 평가와 보안입니다. Exploration Hacking은 LLM이 RL post-training 과정에서 보상 신호를 회피하거나 조작하는 행동을 학습할 수 있는지 묻습니다. FlashRT는 prompt injection과 knowledge corruption을 더 싸고 빠르게 red-team하려는 시도입니다. AEGIS는 AI 생성 학술 이미지 forensic benchmark를 제안해 과학 이미지 위·변조 탐지를 전문 영역으로 끌어올립니다. 공통점은 분명합니다. 모델 안전은 출시 전 점검표가 아니라, 매 릴리즈마다 반복해야 하는 운영형 eval이 되고 있습니다.\n그래서 오늘의 결론은 꽤 실용적입니다. AI/ML의 다음 경쟁력은 모델 성능, 로봇/도구 실행, 배포 인프라, 복구 가능한 런타임, 지속적인 red-teaming이 한 묶음으로 통합되는 곳에서 나올 가능성이 큽니다. 에이전트가 물리 세계와 기업 시스템 안으로 들어갈수록 “똑똑함”은 필요조건일 뿐입니다. 진짜 차이는 실패를 줄이고, 실패를 빨리 발견하고, 실패 이후에도 다시 안전하게 이어갈 수 있는 운영 능력에서 갈릴 것입니다.\n","wordCount":"364","inLanguage":"en","datePublished":"2026-05-02T21:00:00+09:00","dateModified":"2026-05-02T21:00:00+09:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://kwbaek.github.io/posts/2026-05-02-ai-ml-trends-agents-are-becoming-physical-risky-and-operational/"},"publisher":{"@type":"Organization","name":"Kyungwook's Devlog","logo":{"@type":"ImageObject","url":"https://kwbaek.github.io/favicon.ico"}}}</script></head><body id=top><header class=header><nav class=nav><div class=logo><a href=https://kwbaek.github.io/ accesskey=h title="Kyungwook's Devlog (Alt + H)">Kyungwook's Devlog</a><div class=logo-switches><button id=theme-toggle accesskey=t title="(Alt + T)" aria-label="Toggle theme">
-<svg id="moon" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
-<svg id="sun" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button></div></div><ul id=menu><li><a href=https://kwbaek.github.io/categories/ title=categories><span>categories</span></a></li><li><a href=https://kwbaek.github.io/tags/ title=tags><span>tags</span></a></li><li><a href=https://kwbaek.github.io/ title="Kyungwook's Devlog"><span>Kyungwook's Devlog</span>&nbsp;
-<svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><path d="M15 3h6v6"/><path d="M10 14 21 3"/></svg></a></li></ul></nav></header><main class=main><article class=post-single><header class=post-header><h1 class="post-title entry-hint-parent">AI/ML 트렌드: 에이전트는 더 물리적이고, 더 위험하고, 더 운영형이 되고 있다</h1><div class=post-meta><span title='2026-05-02 21:00:00 +0900 KST'>May 2, 2026</span></div></header><div class=post-content><p>오늘 <code>#ai-ml-trends</code>에서 가장 눈에 띈 흐름은 에이전트 AI가 챗봇이나 코드 생성기를 넘어 <strong>물리 세계, 장기 실행 워크플로, 보안 운영</strong>으로 빠르게 내려오고 있다는 점입니다. Meta의 humanoid AI 강화를 위한 robotics 스타트업 인수, NVIDIA의 DeepSeek V4 배포 가이드, <code>Crab</code> 같은 agent sandbox checkpoint 연구, <code>Exploration Hacking</code>과 <code>FlashRT</code> 같은 post-training·red-teaming 연구가 모두 같은 방향을 가리킵니다. 이제 중요한 질문은 “모델이 똑똑한가?”보다 “이 시스템을 오래, 싸게, 안전하게 굴릴 수 있는가?”에 가까워졌습니다.</p><p>첫 번째 축은 physical AI입니다. Meta가 humanoid AI 역량을 위해 로봇 AI 회사를 인수한 것은 로봇이 더 이상 별도 산업의 실험실 프로젝트만은 아니라는 신호입니다. VLM, long-context agent, world model, reinforcement learning이 서로 붙으면서 AI는 화면 안의 조언자가 아니라 센서와 액추에이터를 가진 작업자로 확장되고 있습니다. 이는 모델 경쟁의 기준도 바꿉니다. 자연어 답변 품질만으로는 부족하고, 실제 환경에서 실패를 감지하고, 복구하고, 안전 경계를 지키는 능력이 중요해집니다.</p><p>두 번째 축은 운영 인프라입니다. NVIDIA가 DeepSeek V4를 Blackwell, NIM, vLLM, SGLang 엔드포인트로 배포하는 가이드를 공개한 것은 장문맥 모델 경쟁이 모델 카드에서 끝나지 않는다는 점을 보여줍니다. 1M 컨텍스트와 대형 MoE 모델을 실제 서비스로 굴리려면 KV cache, throughput, self-hosting recipe, 엔드포인트 선택이 곧 제품 경쟁력입니다. AI 인프라는 이제 “어떤 모델을 쓸까”의 문제가 아니라 “어떤 배포 스택으로 비용과 지연을 통제할까”의 문제입니다.</p><p>세 번째 축은 에이전트 런타임의 복구 가능성입니다. <code>Crab</code>은 tool turn의 OS-visible side effect를 eBPF로 분류해 불필요한 checkpoint를 줄이는 semantics-aware checkpoint/restore runtime을 제안합니다. 장기 실행 에이전트에서는 중간 실패가 예외가 아니라 정상 상태입니다. 파일을 만들고, API를 호출하고, 여러 도구를 넘나드는 에이전트를 운영하려면 “실패했을 때 어디까지 되돌릴 수 있는가”가 핵심 기능이 됩니다. 이는 서버의 트랜잭션 로그나 데이터베이스 복구 개념이 개인·업무 에이전트 런타임으로 내려오는 흐름입니다.</p><p>네 번째 축은 평가와 보안입니다. <code>Exploration Hacking</code>은 LLM이 RL post-training 과정에서 보상 신호를 회피하거나 조작하는 행동을 학습할 수 있는지 묻습니다. <code>FlashRT</code>는 prompt injection과 knowledge corruption을 더 싸고 빠르게 red-team하려는 시도입니다. <code>AEGIS</code>는 AI 생성 학술 이미지 forensic benchmark를 제안해 과학 이미지 위·변조 탐지를 전문 영역으로 끌어올립니다. 공통점은 분명합니다. 모델 안전은 출시 전 점검표가 아니라, 매 릴리즈마다 반복해야 하는 운영형 eval이 되고 있습니다.</p><p>그래서 오늘의 결론은 꽤 실용적입니다. AI/ML의 다음 경쟁력은 모델 성능, 로봇/도구 실행, 배포 인프라, 복구 가능한 런타임, 지속적인 red-teaming이 한 묶음으로 통합되는 곳에서 나올 가능성이 큽니다. 에이전트가 물리 세계와 기업 시스템 안으로 들어갈수록 “똑똑함”은 필요조건일 뿐입니다. 진짜 차이는 실패를 줄이고, 실패를 빨리 발견하고, 실패 이후에도 다시 안전하게 이어갈 수 있는 운영 능력에서 갈릴 것입니다.</p></div><footer class=post-footer><ul class=post-tags><li><a href=https://kwbaek.github.io/tags/ai/>AI</a></li><li><a href=https://kwbaek.github.io/tags/ml/>ML</a></li><li><a href=https://kwbaek.github.io/tags/agents/>Agents</a></li><li><a href=https://kwbaek.github.io/tags/robotics/>Robotics</a></li><li><a href=https://kwbaek.github.io/tags/evaluation/>Evaluation</a></li><li><a href=https://kwbaek.github.io/tags/security/>Security</a></li><li><a href=https://kwbaek.github.io/tags/infrastructure/>Infrastructure</a></li></ul></footer><script src=https://utteranc.es/client.js repo=kwbaek/blog-comments issue-term=pathname theme=github-light crossorigin=anonymous async></script></article></main><footer class=footer><span>&copy; 2026 <a href=https://kwbaek.github.io/>Kyungwook's Devlog</a></span> ·
-<span>Powered by
-<a href=https://gohugo.io/ rel="noopener noreferrer" target=_blank>Hugo</a> &
-<a href=https://github.com/adityatelange/hugo-PaperMod/ rel=noopener target=_blank>PaperMod</a></span></footer><a href=#top aria-label="go to top" title="Go to Top (Alt + G)" class=top-link id=top-link accesskey=g><svg viewBox="0 0 12 6" fill="currentColor"><path d="M12 6H0l6-6z"/></svg>
-</a><script>let menu=document.getElementById("menu");if(menu){const e=localStorage.getItem("menu-scroll-position");e&&(menu.scrollLeft=parseInt(e,10)),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)}}document.querySelectorAll('a[href^="#"]').forEach(e=>{e.addEventListener("click",function(e){e.preventDefault();var t=this.getAttribute("href").substr(1);window.matchMedia("(prefers-reduced-motion: reduce)").matches?document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView({behavior:"smooth"}),t==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${t}`)})})</script><script>var mybutton=document.getElementById("top-link");window.onscroll=function(){document.body.scrollTop>800||document.documentElement.scrollTop>800?(mybutton.style.visibility="visible",mybutton.style.opacity="1"):(mybutton.style.visibility="hidden",mybutton.style.opacity="0")}</script><script>document.getElementById("theme-toggle").addEventListener("click",()=>{const e=document.querySelector("html");e.dataset.theme==="dark"?(e.dataset.theme="light",localStorage.setItem("pref-theme","light")):(e.dataset.theme="dark",localStorage.setItem("pref-theme","dark"))})</script></body></html>
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>AI/ML 트렌드: 에이전트는 더 물리적이고, 더 위험하고, 더 운영형이 되고 있다 | Kyungwook&#39;s Devlog</title>
+<meta name="keywords" content="AI, ML, Agents, Robotics, Evaluation, Security, Infrastructure">
+<meta name="description" content="오늘 #ai-ml-trends에서 가장 눈에 띈 흐름은 에이전트 AI가 챗봇이나 코드 생성기를 넘어 물리 세계, 장기 실행 워크플로, 보안 운영으로 빠르게 내려오고 있다는 점입니다. Meta의 humanoid AI 강화를 위한 robotics 스타트업 인수, NVIDIA의 DeepSeek V4 배포 가이드, Crab 같은 agent sandbox checkpoint 연구, Exploration Hacking과 FlashRT 같은 post-training·red-teaming 연구가 모두 같은 방향을 가리킵니다. 이제 중요한 질문은 “모델이 똑똑한가?”보다 “이 시스템을 오래, 싸게, 안전하게 굴릴 수 있는가?”에 가까워졌습니다.
+첫 번째 축은 physical AI입니다. Meta가 humanoid AI 역량을 위해 로봇 AI 회사를 인수한 것은 로봇이 더 이상 별도 산업의 실험실 프로젝트만은 아니라는 신호입니다. VLM, long-context agent, world model, reinforcement learning이 서로 붙으면서 AI는 화면 안의 조언자가 아니라 센서와 액추에이터를 가진 작업자로 확장되고 있습니다. 이는 모델 경쟁의 기준도 바꿉니다. 자연어 답변 품질만으로는 부족하고, 실제 환경에서 실패를 감지하고, 복구하고, 안전 경계를 지키는 능력이 중요해집니다.">
+<meta name="author" content="">
+<link rel="canonical" href="https://kwbaek.github.io/posts/2026-05-02-ai-ml-trends-agents-are-becoming-physical-risky-and-operational/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.da3211e5ef867bf2b75fd5a6515cfed7195c011e8ab735694e203810a827097b.css" integrity="sha256-2jIR5e&#43;Ge/K3X9WmUVz&#43;1xlcAR6KtzVpTiA4EKgnCXs=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://kwbaek.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://kwbaek.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://kwbaek.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://kwbaek.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://kwbaek.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://kwbaek.github.io/posts/2026-05-02-ai-ml-trends-agents-are-becoming-physical-risky-and-operational/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="https://kwbaek.github.io/posts/2026-05-02-ai-ml-trends-agents-are-becoming-physical-risky-and-operational/">
+  <meta property="og:site_name" content="Kyungwook&#39;s Devlog">
+  <meta property="og:title" content="AI/ML 트렌드: 에이전트는 더 물리적이고, 더 위험하고, 더 운영형이 되고 있다">
+  <meta property="og:description" content="오늘 #ai-ml-trends에서 가장 눈에 띈 흐름은 에이전트 AI가 챗봇이나 코드 생성기를 넘어 물리 세계, 장기 실행 워크플로, 보안 운영으로 빠르게 내려오고 있다는 점입니다. Meta의 humanoid AI 강화를 위한 robotics 스타트업 인수, NVIDIA의 DeepSeek V4 배포 가이드, Crab 같은 agent sandbox checkpoint 연구, Exploration Hacking과 FlashRT 같은 post-training·red-teaming 연구가 모두 같은 방향을 가리킵니다. 이제 중요한 질문은 “모델이 똑똑한가?”보다 “이 시스템을 오래, 싸게, 안전하게 굴릴 수 있는가?”에 가까워졌습니다.
+첫 번째 축은 physical AI입니다. Meta가 humanoid AI 역량을 위해 로봇 AI 회사를 인수한 것은 로봇이 더 이상 별도 산업의 실험실 프로젝트만은 아니라는 신호입니다. VLM, long-context agent, world model, reinforcement learning이 서로 붙으면서 AI는 화면 안의 조언자가 아니라 센서와 액추에이터를 가진 작업자로 확장되고 있습니다. 이는 모델 경쟁의 기준도 바꿉니다. 자연어 답변 품질만으로는 부족하고, 실제 환경에서 실패를 감지하고, 복구하고, 안전 경계를 지키는 능력이 중요해집니다.">
+  <meta property="og:locale" content="ko-kr">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2026-05-02T21:00:00+09:00">
+    <meta property="article:modified_time" content="2026-05-02T21:00:00+09:00">
+    <meta property="article:tag" content="AI">
+    <meta property="article:tag" content="ML">
+    <meta property="article:tag" content="Agents">
+    <meta property="article:tag" content="Robotics">
+    <meta property="article:tag" content="Evaluation">
+    <meta property="article:tag" content="Security">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="AI/ML 트렌드: 에이전트는 더 물리적이고, 더 위험하고, 더 운영형이 되고 있다">
+<meta name="twitter:description" content="오늘 #ai-ml-trends에서 가장 눈에 띈 흐름은 에이전트 AI가 챗봇이나 코드 생성기를 넘어 물리 세계, 장기 실행 워크플로, 보안 운영으로 빠르게 내려오고 있다는 점입니다. Meta의 humanoid AI 강화를 위한 robotics 스타트업 인수, NVIDIA의 DeepSeek V4 배포 가이드, Crab 같은 agent sandbox checkpoint 연구, Exploration Hacking과 FlashRT 같은 post-training·red-teaming 연구가 모두 같은 방향을 가리킵니다. 이제 중요한 질문은 “모델이 똑똑한가?”보다 “이 시스템을 오래, 싸게, 안전하게 굴릴 수 있는가?”에 가까워졌습니다.
+첫 번째 축은 physical AI입니다. Meta가 humanoid AI 역량을 위해 로봇 AI 회사를 인수한 것은 로봇이 더 이상 별도 산업의 실험실 프로젝트만은 아니라는 신호입니다. VLM, long-context agent, world model, reinforcement learning이 서로 붙으면서 AI는 화면 안의 조언자가 아니라 센서와 액추에이터를 가진 작업자로 확장되고 있습니다. 이는 모델 경쟁의 기준도 바꿉니다. 자연어 답변 품질만으로는 부족하고, 실제 환경에서 실패를 감지하고, 복구하고, 안전 경계를 지키는 능력이 중요해집니다.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://kwbaek.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "AI/ML 트렌드: 에이전트는 더 물리적이고, 더 위험하고, 더 운영형이 되고 있다",
+      "item": "https://kwbaek.github.io/posts/2026-05-02-ai-ml-trends-agents-are-becoming-physical-risky-and-operational/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "AI/ML 트렌드: 에이전트는 더 물리적이고, 더 위험하고, 더 운영형이 되고 있다",
+  "name": "AI\/ML 트렌드: 에이전트는 더 물리적이고, 더 위험하고, 더 운영형이 되고 있다",
+  "description": "오늘 #ai-ml-trends에서 가장 눈에 띈 흐름은 에이전트 AI가 챗봇이나 코드 생성기를 넘어 물리 세계, 장기 실행 워크플로, 보안 운영으로 빠르게 내려오고 있다는 점입니다. Meta의 humanoid AI 강화를 위한 robotics 스타트업 인수, NVIDIA의 DeepSeek V4 배포 가이드, Crab 같은 agent sandbox checkpoint 연구, Exploration Hacking과 FlashRT 같은 post-training·red-teaming 연구가 모두 같은 방향을 가리킵니다. 이제 중요한 질문은 “모델이 똑똑한가?”보다 “이 시스템을 오래, 싸게, 안전하게 굴릴 수 있는가?”에 가까워졌습니다.\n첫 번째 축은 physical AI입니다. Meta가 humanoid AI 역량을 위해 로봇 AI 회사를 인수한 것은 로봇이 더 이상 별도 산업의 실험실 프로젝트만은 아니라는 신호입니다. VLM, long-context agent, world model, reinforcement learning이 서로 붙으면서 AI는 화면 안의 조언자가 아니라 센서와 액추에이터를 가진 작업자로 확장되고 있습니다. 이는 모델 경쟁의 기준도 바꿉니다. 자연어 답변 품질만으로는 부족하고, 실제 환경에서 실패를 감지하고, 복구하고, 안전 경계를 지키는 능력이 중요해집니다.\n",
+  "keywords": [
+    "AI", "ML", "Agents", "Robotics", "Evaluation", "Security", "Infrastructure"
+  ],
+  "articleBody": "오늘 #ai-ml-trends에서 가장 눈에 띈 흐름은 에이전트 AI가 챗봇이나 코드 생성기를 넘어 물리 세계, 장기 실행 워크플로, 보안 운영으로 빠르게 내려오고 있다는 점입니다. Meta의 humanoid AI 강화를 위한 robotics 스타트업 인수, NVIDIA의 DeepSeek V4 배포 가이드, Crab 같은 agent sandbox checkpoint 연구, Exploration Hacking과 FlashRT 같은 post-training·red-teaming 연구가 모두 같은 방향을 가리킵니다. 이제 중요한 질문은 “모델이 똑똑한가?”보다 “이 시스템을 오래, 싸게, 안전하게 굴릴 수 있는가?”에 가까워졌습니다.\n첫 번째 축은 physical AI입니다. Meta가 humanoid AI 역량을 위해 로봇 AI 회사를 인수한 것은 로봇이 더 이상 별도 산업의 실험실 프로젝트만은 아니라는 신호입니다. VLM, long-context agent, world model, reinforcement learning이 서로 붙으면서 AI는 화면 안의 조언자가 아니라 센서와 액추에이터를 가진 작업자로 확장되고 있습니다. 이는 모델 경쟁의 기준도 바꿉니다. 자연어 답변 품질만으로는 부족하고, 실제 환경에서 실패를 감지하고, 복구하고, 안전 경계를 지키는 능력이 중요해집니다.\n두 번째 축은 운영 인프라입니다. NVIDIA가 DeepSeek V4를 Blackwell, NIM, vLLM, SGLang 엔드포인트로 배포하는 가이드를 공개한 것은 장문맥 모델 경쟁이 모델 카드에서 끝나지 않는다는 점을 보여줍니다. 1M 컨텍스트와 대형 MoE 모델을 실제 서비스로 굴리려면 KV cache, throughput, self-hosting recipe, 엔드포인트 선택이 곧 제품 경쟁력입니다. AI 인프라는 이제 “어떤 모델을 쓸까”의 문제가 아니라 “어떤 배포 스택으로 비용과 지연을 통제할까”의 문제입니다.\n세 번째 축은 에이전트 런타임의 복구 가능성입니다. Crab은 tool turn의 OS-visible side effect를 eBPF로 분류해 불필요한 checkpoint를 줄이는 semantics-aware checkpoint/restore runtime을 제안합니다. 장기 실행 에이전트에서는 중간 실패가 예외가 아니라 정상 상태입니다. 파일을 만들고, API를 호출하고, 여러 도구를 넘나드는 에이전트를 운영하려면 “실패했을 때 어디까지 되돌릴 수 있는가”가 핵심 기능이 됩니다. 이는 서버의 트랜잭션 로그나 데이터베이스 복구 개념이 개인·업무 에이전트 런타임으로 내려오는 흐름입니다.\n네 번째 축은 평가와 보안입니다. Exploration Hacking은 LLM이 RL post-training 과정에서 보상 신호를 회피하거나 조작하는 행동을 학습할 수 있는지 묻습니다. FlashRT는 prompt injection과 knowledge corruption을 더 싸고 빠르게 red-team하려는 시도입니다. AEGIS는 AI 생성 학술 이미지 forensic benchmark를 제안해 과학 이미지 위·변조 탐지를 전문 영역으로 끌어올립니다. 공통점은 분명합니다. 모델 안전은 출시 전 점검표가 아니라, 매 릴리즈마다 반복해야 하는 운영형 eval이 되고 있습니다.\n그래서 오늘의 결론은 꽤 실용적입니다. AI/ML의 다음 경쟁력은 모델 성능, 로봇/도구 실행, 배포 인프라, 복구 가능한 런타임, 지속적인 red-teaming이 한 묶음으로 통합되는 곳에서 나올 가능성이 큽니다. 에이전트가 물리 세계와 기업 시스템 안으로 들어갈수록 “똑똑함”은 필요조건일 뿐입니다. 진짜 차이는 실패를 줄이고, 실패를 빨리 발견하고, 실패 이후에도 다시 안전하게 이어갈 수 있는 운영 능력에서 갈릴 것입니다.\n",
+  "wordCount" : "364",
+  "inLanguage": "en",
+  "datePublished": "2026-05-02T21:00:00+09:00",
+  "dateModified": "2026-05-02T21:00:00+09:00",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://kwbaek.github.io/posts/2026-05-02-ai-ml-trends-agents-are-becoming-physical-risky-and-operational/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Kyungwook's Devlog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://kwbaek.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://kwbaek.github.io/" accesskey="h" title="Kyungwook&#39;s Devlog (Alt + H)">Kyungwook&#39;s Devlog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://kwbaek.github.io/categories/" title="categories">
+                    <span>categories</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kwbaek.github.io/tags/" title="tags">
+                    <span>tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kwbaek.github.io/" title="Kyungwook&#39;s Devlog">
+                    <span>Kyungwook&#39;s Devlog</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      AI/ML 트렌드: 에이전트는 더 물리적이고, 더 위험하고, 더 운영형이 되고 있다
+    </h1>
+    <div class="post-meta"><span title='2026-05-02 21:00:00 +0900 KST'>May 2, 2026</span>
+
+</div>
+  </header> 
+  <div class="post-content"><p>오늘 <code>#ai-ml-trends</code>에서 가장 눈에 띈 흐름은 에이전트 AI가 챗봇이나 코드 생성기를 넘어 <strong>물리 세계, 장기 실행 워크플로, 보안 운영</strong>으로 빠르게 내려오고 있다는 점입니다. Meta의 humanoid AI 강화를 위한 robotics 스타트업 인수, NVIDIA의 DeepSeek V4 배포 가이드, <code>Crab</code> 같은 agent sandbox checkpoint 연구, <code>Exploration Hacking</code>과 <code>FlashRT</code> 같은 post-training·red-teaming 연구가 모두 같은 방향을 가리킵니다. 이제 중요한 질문은 “모델이 똑똑한가?”보다 “이 시스템을 오래, 싸게, 안전하게 굴릴 수 있는가?”에 가까워졌습니다.</p>
+<p>첫 번째 축은 physical AI입니다. Meta가 humanoid AI 역량을 위해 로봇 AI 회사를 인수한 것은 로봇이 더 이상 별도 산업의 실험실 프로젝트만은 아니라는 신호입니다. VLM, long-context agent, world model, reinforcement learning이 서로 붙으면서 AI는 화면 안의 조언자가 아니라 센서와 액추에이터를 가진 작업자로 확장되고 있습니다. 이는 모델 경쟁의 기준도 바꿉니다. 자연어 답변 품질만으로는 부족하고, 실제 환경에서 실패를 감지하고, 복구하고, 안전 경계를 지키는 능력이 중요해집니다.</p>
+<p>두 번째 축은 운영 인프라입니다. NVIDIA가 DeepSeek V4를 Blackwell, NIM, vLLM, SGLang 엔드포인트로 배포하는 가이드를 공개한 것은 장문맥 모델 경쟁이 모델 카드에서 끝나지 않는다는 점을 보여줍니다. 1M 컨텍스트와 대형 MoE 모델을 실제 서비스로 굴리려면 KV cache, throughput, self-hosting recipe, 엔드포인트 선택이 곧 제품 경쟁력입니다. AI 인프라는 이제 “어떤 모델을 쓸까”의 문제가 아니라 “어떤 배포 스택으로 비용과 지연을 통제할까”의 문제입니다.</p>
+<p>세 번째 축은 에이전트 런타임의 복구 가능성입니다. <code>Crab</code>은 tool turn의 OS-visible side effect를 eBPF로 분류해 불필요한 checkpoint를 줄이는 semantics-aware checkpoint/restore runtime을 제안합니다. 장기 실행 에이전트에서는 중간 실패가 예외가 아니라 정상 상태입니다. 파일을 만들고, API를 호출하고, 여러 도구를 넘나드는 에이전트를 운영하려면 “실패했을 때 어디까지 되돌릴 수 있는가”가 핵심 기능이 됩니다. 이는 서버의 트랜잭션 로그나 데이터베이스 복구 개념이 개인·업무 에이전트 런타임으로 내려오는 흐름입니다.</p>
+<p>네 번째 축은 평가와 보안입니다. <code>Exploration Hacking</code>은 LLM이 RL post-training 과정에서 보상 신호를 회피하거나 조작하는 행동을 학습할 수 있는지 묻습니다. <code>FlashRT</code>는 prompt injection과 knowledge corruption을 더 싸고 빠르게 red-team하려는 시도입니다. <code>AEGIS</code>는 AI 생성 학술 이미지 forensic benchmark를 제안해 과학 이미지 위·변조 탐지를 전문 영역으로 끌어올립니다. 공통점은 분명합니다. 모델 안전은 출시 전 점검표가 아니라, 매 릴리즈마다 반복해야 하는 운영형 eval이 되고 있습니다.</p>
+<p>그래서 오늘의 결론은 꽤 실용적입니다. AI/ML의 다음 경쟁력은 모델 성능, 로봇/도구 실행, 배포 인프라, 복구 가능한 런타임, 지속적인 red-teaming이 한 묶음으로 통합되는 곳에서 나올 가능성이 큽니다. 에이전트가 물리 세계와 기업 시스템 안으로 들어갈수록 “똑똑함”은 필요조건일 뿐입니다. 진짜 차이는 실패를 줄이고, 실패를 빨리 발견하고, 실패 이후에도 다시 안전하게 이어갈 수 있는 운영 능력에서 갈릴 것입니다.</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://kwbaek.github.io/tags/ai/">AI</a></li>
+      <li><a href="https://kwbaek.github.io/tags/ml/">ML</a></li>
+      <li><a href="https://kwbaek.github.io/tags/agents/">Agents</a></li>
+      <li><a href="https://kwbaek.github.io/tags/robotics/">Robotics</a></li>
+      <li><a href="https://kwbaek.github.io/tags/evaluation/">Evaluation</a></li>
+      <li><a href="https://kwbaek.github.io/tags/security/">Security</a></li>
+      <li><a href="https://kwbaek.github.io/tags/infrastructure/">Infrastructure</a></li>
+    </ul>
+  </footer><script src="https://utteranc.es/client.js"
+        repo="kwbaek/blog-comments"
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://kwbaek.github.io/">Kyungwook&#39;s Devlog</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

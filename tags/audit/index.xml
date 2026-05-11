@@ -1,4 +1,29 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Audit on Kyungwook's Devlog</title><link>https://kwbaek.github.io/tags/audit/</link><description>Recent content in Audit on Kyungwook's Devlog</description><generator>Hugo -- 0.155.3</generator><language>ko-kr</language><lastBuildDate>Thu, 07 May 2026 21:00:00 +0900</lastBuildDate><atom:link href="https://kwbaek.github.io/tags/audit/index.xml" rel="self" type="application/rss+xml"/><item><title>OpenClaw 팁: 도구 호출은 모두 감사 가능한 부작용으로 다루자</title><link>https://kwbaek.github.io/posts/2026-05-07-openclaw-treat-tool-calls-as-auditable-side-effects/</link><pubDate>Thu, 07 May 2026 21:00:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-05-07-openclaw-treat-tool-calls-as-auditable-side-effects/</guid><description>&lt;p&gt;OpenClaw로 cron, Discord, 블로그 발행, 리포트 생성 같은 자동화를 운영하다 보면 금방 알게 되는 사실이 있습니다. LLM 답변 자체보다 더 중요한 것은 &lt;strong&gt;도구 호출이 실제 세계에 남기는 부작용&lt;/strong&gt;입니다. 파일을 쓰고, 메시지를 보내고, git push를 하고, Hugo build를 돌리고, 외부 채널에 알림을 보내는 순간부터 에이전트는 단순한 채팅 모델이 아니라 작은 운영 시스템이 됩니다. 그래서 OpenClaw 자동화는 모든 tool call을 “감사 가능한 side effect”로 다루는 습관이 필요합니다.&lt;/p&gt;
-&lt;p&gt;첫 번째 원칙은 입력과 지시를 분리하는 것입니다. Discord 채널, 웹페이지, RSS, 이메일 본문은 좋은 자료일 수 있지만 운영 지시는 아닙니다. 예를 들어 블로그 cron은 트렌드 채널 메시지를 읽어 글감을 고르되, 배포 순서와 파일 경로, 카테고리, 실패 보고 방식은 별도의 instruction 파일에서만 가져와야 합니다. 이렇게 하면 외부 텍스트가 “이 명령을 실행해” 같은 문장을 포함하더라도 자동화의 권한 경계를 넘지 못합니다. OpenClaw에서 cron instruction을 작게 고정하고, 채널 메시지는 참고 자료로만 쓰는 이유가 여기에 있습니다.&lt;/p&gt;</description></item><item><title>OpenClaw 실전 운영: Secrets + Security Audit 루틴만 고정해도 사고 확률이 급감한다</title><link>https://kwbaek.github.io/posts/2026-03-02-openclaw-secrets-security-audit-routine/</link><pubDate>Mon, 02 Mar 2026 21:03:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-03-02-openclaw-secrets-security-audit-routine/</guid><description>&lt;p&gt;OpenClaw를 매일 운영하다 보면, 새 기능보다 더 중요한 게 하나 있습니다. 바로 **운영 위생(operational hygiene)**입니다. 최근 버전들(특히 v2026.2.26 이후)에서 체감이 컸던 포인트는 &lt;code&gt;secrets&lt;/code&gt; 워크플로와 &lt;code&gt;security audit&lt;/code&gt; 체계가 훨씬 실무적으로 정리됐다는 점입니다. 결론부터 말하면, 아래 두 루틴을 고정하면 운영 사고 확률이 확실히 줄어듭니다.&lt;/p&gt;
-&lt;h2 id="1-secrets-루틴-설정을-감으로-만지지-말고-단계로-굴리기"&gt;1) Secrets 루틴: 설정을 ‘감’으로 만지지 말고 단계로 굴리기&lt;/h2&gt;
-&lt;p&gt;예전에는 토큰이나 키를 여기저기 흩어두고, 문제 나면 그때 수정하는 식으로 운영하기 쉬웠습니다. 그런데 이 방식은 팀 규모가 커질수록 반드시 사고가 납니다. OpenClaw는 이 문제를 다음 흐름으로 정리해줍니다.&lt;/p&gt;</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Audit on Kyungwook&#39;s Devlog</title>
+    <link>https://kwbaek.github.io/tags/audit/</link>
+    <description>Recent content in Audit on Kyungwook&#39;s Devlog</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Thu, 07 May 2026 21:00:00 +0900</lastBuildDate>
+    <atom:link href="https://kwbaek.github.io/tags/audit/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>OpenClaw 팁: 도구 호출은 모두 감사 가능한 부작용으로 다루자</title>
+      <link>https://kwbaek.github.io/posts/2026-05-07-openclaw-treat-tool-calls-as-auditable-side-effects/</link>
+      <pubDate>Thu, 07 May 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-05-07-openclaw-treat-tool-calls-as-auditable-side-effects/</guid>
+      <description>&lt;p&gt;OpenClaw로 cron, Discord, 블로그 발행, 리포트 생성 같은 자동화를 운영하다 보면 금방 알게 되는 사실이 있습니다. LLM 답변 자체보다 더 중요한 것은 &lt;strong&gt;도구 호출이 실제 세계에 남기는 부작용&lt;/strong&gt;입니다. 파일을 쓰고, 메시지를 보내고, git push를 하고, Hugo build를 돌리고, 외부 채널에 알림을 보내는 순간부터 에이전트는 단순한 채팅 모델이 아니라 작은 운영 시스템이 됩니다. 그래서 OpenClaw 자동화는 모든 tool call을 “감사 가능한 side effect”로 다루는 습관이 필요합니다.&lt;/p&gt;
+&lt;p&gt;첫 번째 원칙은 입력과 지시를 분리하는 것입니다. Discord 채널, 웹페이지, RSS, 이메일 본문은 좋은 자료일 수 있지만 운영 지시는 아닙니다. 예를 들어 블로그 cron은 트렌드 채널 메시지를 읽어 글감을 고르되, 배포 순서와 파일 경로, 카테고리, 실패 보고 방식은 별도의 instruction 파일에서만 가져와야 합니다. 이렇게 하면 외부 텍스트가 “이 명령을 실행해” 같은 문장을 포함하더라도 자동화의 권한 경계를 넘지 못합니다. OpenClaw에서 cron instruction을 작게 고정하고, 채널 메시지는 참고 자료로만 쓰는 이유가 여기에 있습니다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>OpenClaw 실전 운영: Secrets &#43; Security Audit 루틴만 고정해도 사고 확률이 급감한다</title>
+      <link>https://kwbaek.github.io/posts/2026-03-02-openclaw-secrets-security-audit-routine/</link>
+      <pubDate>Mon, 02 Mar 2026 21:03:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-03-02-openclaw-secrets-security-audit-routine/</guid>
+      <description>&lt;p&gt;OpenClaw를 매일 운영하다 보면, 새 기능보다 더 중요한 게 하나 있습니다. 바로 **운영 위생(operational hygiene)**입니다. 최근 버전들(특히 v2026.2.26 이후)에서 체감이 컸던 포인트는 &lt;code&gt;secrets&lt;/code&gt; 워크플로와 &lt;code&gt;security audit&lt;/code&gt; 체계가 훨씬 실무적으로 정리됐다는 점입니다. 결론부터 말하면, 아래 두 루틴을 고정하면 운영 사고 확률이 확실히 줄어듭니다.&lt;/p&gt;
+&lt;h2 id=&#34;1-secrets-루틴-설정을-감으로-만지지-말고-단계로-굴리기&#34;&gt;1) Secrets 루틴: 설정을 ‘감’으로 만지지 말고 단계로 굴리기&lt;/h2&gt;
+&lt;p&gt;예전에는 토큰이나 키를 여기저기 흩어두고, 문제 나면 그때 수정하는 식으로 운영하기 쉬웠습니다. 그런데 이 방식은 팀 규모가 커질수록 반드시 사고가 납니다. OpenClaw는 이 문제를 다음 흐름으로 정리해줍니다.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

@@ -1,8 +1,316 @@
-<!doctype html><html lang=en dir=auto data-theme=auto><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=robots content="index, follow"><title>AI/ML 트렌드: 웹 자체가 에이전트의 공격면이 되고 있다 | Kyungwook's Devlog</title><meta name=keywords content="AI,ML,Agents,Security,Prompt Injection,Inference,Open Models"><meta name=description content="오늘 #ai-ml-trends에서 가장 중요하게 볼 만한 흐름은 에이전트가 읽는 웹 자체가 공격면이 되고 있다는 점입니다. Google Security가 공개 웹의 indirect prompt injection(IPI) 패턴을 Common Crawl 기반으로 분석한 글이 특히 강한 신호였습니다. 여기에 Featherless.ai의 오픈소스 inference 인프라 투자, Parallel Web Systems의 agent용 웹 인프라 확장, Safe Bilevel Delegation 같은 delegation safety 연구까지 겹치면, 최근 AI/ML 흐름은 단순히 “더 좋은 모델”이 아니라 “웹을 읽고, 하위 에이전트에 일을 맡기고, 외부 도구를 실행하는 시스템을 어떻게 안전하게 운영할 것인가”로 이동하고 있습니다."><meta name=author content><link rel=canonical href=https://kwbaek.github.io/posts/2026-05-03-ai-ml-trends-the-web-itself-is-becoming-the-agent-attack-surface/><link crossorigin=anonymous href=/assets/css/stylesheet.da3211e5ef867bf2b75fd5a6515cfed7195c011e8ab735694e203810a827097b.css integrity="sha256-2jIR5e+Ge/K3X9WmUVz+1xlcAR6KtzVpTiA4EKgnCXs=" rel="preload stylesheet" as=style><link rel=icon href=https://kwbaek.github.io/favicon.ico><link rel=icon type=image/png sizes=16x16 href=https://kwbaek.github.io/favicon-16x16.png><link rel=icon type=image/png sizes=32x32 href=https://kwbaek.github.io/favicon-32x32.png><link rel=apple-touch-icon href=https://kwbaek.github.io/apple-touch-icon.png><link rel=mask-icon href=https://kwbaek.github.io/safari-pinned-tab.svg><meta name=theme-color content="#2e2e33"><meta name=msapplication-TileColor content="#2e2e33"><link rel=alternate hreflang=en href=https://kwbaek.github.io/posts/2026-05-03-ai-ml-trends-the-web-itself-is-becoming-the-agent-attack-surface/><noscript><style>#theme-toggle,.top-link{display:none}</style><style>@media(prefers-color-scheme:dark){:root{--theme:rgb(29, 30, 32);--entry:rgb(46, 46, 51);--primary:rgb(218, 218, 219);--secondary:rgb(155, 156, 157);--tertiary:rgb(65, 66, 68);--content:rgb(196, 196, 197);--code-block-bg:rgb(46, 46, 51);--code-bg:rgb(55, 56, 62);--border:rgb(51, 51, 51);color-scheme:dark}.list{background:var(--theme)}.toc{background:var(--entry)}}@media(prefers-color-scheme:light){.list::-webkit-scrollbar-thumb{border-color:var(--code-bg)}}</style></noscript><script>localStorage.getItem("pref-theme")==="dark"?document.querySelector("html").dataset.theme="dark":localStorage.getItem("pref-theme")==="light"?document.querySelector("html").dataset.theme="light":window.matchMedia("(prefers-color-scheme: dark)").matches?document.querySelector("html").dataset.theme="dark":document.querySelector("html").dataset.theme="light"</script><meta property="og:url" content="https://kwbaek.github.io/posts/2026-05-03-ai-ml-trends-the-web-itself-is-becoming-the-agent-attack-surface/"><meta property="og:site_name" content="Kyungwook's Devlog"><meta property="og:title" content="AI/ML 트렌드: 웹 자체가 에이전트의 공격면이 되고 있다"><meta property="og:description" content="오늘 #ai-ml-trends에서 가장 중요하게 볼 만한 흐름은 에이전트가 읽는 웹 자체가 공격면이 되고 있다는 점입니다. Google Security가 공개 웹의 indirect prompt injection(IPI) 패턴을 Common Crawl 기반으로 분석한 글이 특히 강한 신호였습니다. 여기에 Featherless.ai의 오픈소스 inference 인프라 투자, Parallel Web Systems의 agent용 웹 인프라 확장, Safe Bilevel Delegation 같은 delegation safety 연구까지 겹치면, 최근 AI/ML 흐름은 단순히 “더 좋은 모델”이 아니라 “웹을 읽고, 하위 에이전트에 일을 맡기고, 외부 도구를 실행하는 시스템을 어떻게 안전하게 운영할 것인가”로 이동하고 있습니다."><meta property="og:locale" content="ko-kr"><meta property="og:type" content="article"><meta property="article:section" content="posts"><meta property="article:published_time" content="2026-05-03T21:00:00+09:00"><meta property="article:modified_time" content="2026-05-03T21:00:00+09:00"><meta property="article:tag" content="AI"><meta property="article:tag" content="ML"><meta property="article:tag" content="Agents"><meta property="article:tag" content="Security"><meta property="article:tag" content="Prompt Injection"><meta property="article:tag" content="Inference"><meta name=twitter:card content="summary"><meta name=twitter:title content="AI/ML 트렌드: 웹 자체가 에이전트의 공격면이 되고 있다"><meta name=twitter:description content="오늘 #ai-ml-trends에서 가장 중요하게 볼 만한 흐름은 에이전트가 읽는 웹 자체가 공격면이 되고 있다는 점입니다. Google Security가 공개 웹의 indirect prompt injection(IPI) 패턴을 Common Crawl 기반으로 분석한 글이 특히 강한 신호였습니다. 여기에 Featherless.ai의 오픈소스 inference 인프라 투자, Parallel Web Systems의 agent용 웹 인프라 확장, Safe Bilevel Delegation 같은 delegation safety 연구까지 겹치면, 최근 AI/ML 흐름은 단순히 “더 좋은 모델”이 아니라 “웹을 읽고, 하위 에이전트에 일을 맡기고, 외부 도구를 실행하는 시스템을 어떻게 안전하게 운영할 것인가”로 이동하고 있습니다."><script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Posts","item":"https://kwbaek.github.io/posts/"},{"@type":"ListItem","position":2,"name":"AI/ML 트렌드: 웹 자체가 에이전트의 공격면이 되고 있다","item":"https://kwbaek.github.io/posts/2026-05-03-ai-ml-trends-the-web-itself-is-becoming-the-agent-attack-surface/"}]}</script><script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"AI/ML 트렌드: 웹 자체가 에이전트의 공격면이 되고 있다","name":"AI\/ML 트렌드: 웹 자체가 에이전트의 공격면이 되고 있다","description":"오늘 #ai-ml-trends에서 가장 중요하게 볼 만한 흐름은 에이전트가 읽는 웹 자체가 공격면이 되고 있다는 점입니다. Google Security가 공개 웹의 indirect prompt injection(IPI) 패턴을 Common Crawl 기반으로 분석한 글이 특히 강한 신호였습니다. 여기에 Featherless.ai의 오픈소스 inference 인프라 투자, Parallel Web Systems의 agent용 웹 인프라 확장, Safe Bilevel Delegation 같은 delegation safety 연구까지 겹치면, 최근 AI/ML 흐름은 단순히 “더 좋은 모델”이 아니라 “웹을 읽고, 하위 에이전트에 일을 맡기고, 외부 도구를 실행하는 시스템을 어떻게 안전하게 운영할 것인가”로 이동하고 있습니다.\n","keywords":["AI","ML","Agents","Security","Prompt Injection","Inference","Open Models"],"articleBody":"오늘 #ai-ml-trends에서 가장 중요하게 볼 만한 흐름은 에이전트가 읽는 웹 자체가 공격면이 되고 있다는 점입니다. Google Security가 공개 웹의 indirect prompt injection(IPI) 패턴을 Common Crawl 기반으로 분석한 글이 특히 강한 신호였습니다. 여기에 Featherless.ai의 오픈소스 inference 인프라 투자, Parallel Web Systems의 agent용 웹 인프라 확장, Safe Bilevel Delegation 같은 delegation safety 연구까지 겹치면, 최근 AI/ML 흐름은 단순히 “더 좋은 모델”이 아니라 “웹을 읽고, 하위 에이전트에 일을 맡기고, 외부 도구를 실행하는 시스템을 어떻게 안전하게 운영할 것인가”로 이동하고 있습니다.\nGoogle의 분석이 흥미로운 이유는 prompt injection을 더 이상 실험실 예제가 아니라 공개 웹에 실제로 존재하는 패턴으로 다뤘다는 점입니다. 웹페이지, 댓글, 문서, SEO 텍스트, 숨겨진 지시문은 사람에게는 별 의미 없는 배경 정보처럼 보여도, 브라우징 에이전트나 웹 RAG 시스템에게는 실행 후보 컨텍스트가 됩니다. Google은 pranks, SEO, agent deterrence, exfiltration/destruction 시도를 구분했고, 악성 카테고리가 2025년 11월에서 2026년 2월 사이 32% 늘었다고 설명했습니다. 이 수치는 웹 에이전트 보안이 “나중에 붙이는 guardrail”이 아니라, 웹을 읽는 순간부터 필요한 기본 설계 요소라는 점을 보여줍니다.\n두 번째 축은 에이전트용 웹 인프라의 사업화입니다. Parallel Web Systems가 “웹의 두 번째 사용자=AI agents”를 전면에 내세우며 1억 달러 Series B를 유치한 것은 검색/리서치 API가 사람용 검색엔진과 다른 제품군으로 분리되고 있음을 보여줍니다. AI agent는 단순히 페이지를 열어보는 것이 아니라, 반복적으로 검색하고, 출처를 비교하고, 구조화된 결과를 만들고, 때로는 tool call과 결합합니다. 따라서 웹 인프라도 latency, freshness, anti-bot, provenance, safety filtering 같은 요소를 에이전트 친화적으로 재설계해야 합니다.\n세 번째 축은 오픈모델 운영의 하방 인프라입니다. Featherless.ai가 2천만 달러 Series A로 30,000개 이상의 오픈웨이트 모델을 서버리스/정액형으로 제공하겠다고 밝힌 것은, 오픈소스 AI 경쟁이 모델 공개 자체보다 추론 비용과 운영 편의성으로 내려오고 있다는 신호입니다. 기업이나 개인 개발자는 모델을 직접 고르는 것만으로 끝나지 않습니다. 어떤 공급자에서 어떤 가격으로 돌릴지, 장애 시 대체 경로가 있는지, 데이터가 어디로 가는지, 모델별 성능과 비용을 어떻게 비교할지가 실제 adoption을 좌우합니다.\n네 번째 축은 delegation safety입니다. Safe Bilevel Delegation은 상위 에이전트가 하위 에이전트에게 얼마나 맡길지, 즉 delegation 정도를 safety-efficiency tradeoff로 다루려는 formalism입니다. 웹에서 오염된 지시문을 읽은 에이전트가 다시 다른 에이전트나 도구에 일을 넘긴다면, 위험은 한 번의 답변 오류가 아니라 workflow 전체로 전파될 수 있습니다. 그래서 앞으로의 에이전트 시스템은 “무엇을 읽었는가”, “누구에게 맡겼는가”, “어떤 권한으로 실행했는가”를 함께 추적해야 합니다.\n오늘의 결론은 분명합니다. AI/ML의 다음 중요한 경쟁력은 모델 점수만이 아니라 웹 컨텍스트를 신뢰 가능한 입력으로 정제하고, 추론 인프라를 비용 효율적으로 선택하며, delegation과 tool execution을 감사 가능한 형태로 통제하는 능력에서 나올 가능성이 큽니다. 웹은 더 이상 사람이 보는 문서 저장소가 아니라, 에이전트가 행동을 결정하는 실행 환경입니다. 그 환경이 오염될 수 있다면, 브라우징·RAG·에이전트 제품의 핵심 설계도 보안과 운영 중심으로 바뀌어야 합니다.\n","wordCount":"397","inLanguage":"en","datePublished":"2026-05-03T21:00:00+09:00","dateModified":"2026-05-03T21:00:00+09:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://kwbaek.github.io/posts/2026-05-03-ai-ml-trends-the-web-itself-is-becoming-the-agent-attack-surface/"},"publisher":{"@type":"Organization","name":"Kyungwook's Devlog","logo":{"@type":"ImageObject","url":"https://kwbaek.github.io/favicon.ico"}}}</script></head><body id=top><header class=header><nav class=nav><div class=logo><a href=https://kwbaek.github.io/ accesskey=h title="Kyungwook's Devlog (Alt + H)">Kyungwook's Devlog</a><div class=logo-switches><button id=theme-toggle accesskey=t title="(Alt + T)" aria-label="Toggle theme">
-<svg id="moon" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
-<svg id="sun" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button></div></div><ul id=menu><li><a href=https://kwbaek.github.io/categories/ title=categories><span>categories</span></a></li><li><a href=https://kwbaek.github.io/tags/ title=tags><span>tags</span></a></li><li><a href=https://kwbaek.github.io/ title="Kyungwook's Devlog"><span>Kyungwook's Devlog</span>&nbsp;
-<svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><path d="M15 3h6v6"/><path d="M10 14 21 3"/></svg></a></li></ul></nav></header><main class=main><article class=post-single><header class=post-header><h1 class="post-title entry-hint-parent">AI/ML 트렌드: 웹 자체가 에이전트의 공격면이 되고 있다</h1><div class=post-meta><span title='2026-05-03 21:00:00 +0900 KST'>May 3, 2026</span></div></header><div class=post-content><p>오늘 <code>#ai-ml-trends</code>에서 가장 중요하게 볼 만한 흐름은 <strong>에이전트가 읽는 웹 자체가 공격면이 되고 있다</strong>는 점입니다. Google Security가 공개 웹의 indirect prompt injection(IPI) 패턴을 Common Crawl 기반으로 분석한 글이 특히 강한 신호였습니다. 여기에 Featherless.ai의 오픈소스 inference 인프라 투자, Parallel Web Systems의 agent용 웹 인프라 확장, <code>Safe Bilevel Delegation</code> 같은 delegation safety 연구까지 겹치면, 최근 AI/ML 흐름은 단순히 “더 좋은 모델”이 아니라 “웹을 읽고, 하위 에이전트에 일을 맡기고, 외부 도구를 실행하는 시스템을 어떻게 안전하게 운영할 것인가”로 이동하고 있습니다.</p><p>Google의 분석이 흥미로운 이유는 prompt injection을 더 이상 실험실 예제가 아니라 공개 웹에 실제로 존재하는 패턴으로 다뤘다는 점입니다. 웹페이지, 댓글, 문서, SEO 텍스트, 숨겨진 지시문은 사람에게는 별 의미 없는 배경 정보처럼 보여도, 브라우징 에이전트나 웹 RAG 시스템에게는 실행 후보 컨텍스트가 됩니다. Google은 pranks, SEO, agent deterrence, exfiltration/destruction 시도를 구분했고, 악성 카테고리가 2025년 11월에서 2026년 2월 사이 32% 늘었다고 설명했습니다. 이 수치는 웹 에이전트 보안이 “나중에 붙이는 guardrail”이 아니라, 웹을 읽는 순간부터 필요한 기본 설계 요소라는 점을 보여줍니다.</p><p>두 번째 축은 에이전트용 웹 인프라의 사업화입니다. Parallel Web Systems가 “웹의 두 번째 사용자=AI agents”를 전면에 내세우며 1억 달러 Series B를 유치한 것은 검색/리서치 API가 사람용 검색엔진과 다른 제품군으로 분리되고 있음을 보여줍니다. AI agent는 단순히 페이지를 열어보는 것이 아니라, 반복적으로 검색하고, 출처를 비교하고, 구조화된 결과를 만들고, 때로는 tool call과 결합합니다. 따라서 웹 인프라도 latency, freshness, anti-bot, provenance, safety filtering 같은 요소를 에이전트 친화적으로 재설계해야 합니다.</p><p>세 번째 축은 오픈모델 운영의 하방 인프라입니다. Featherless.ai가 2천만 달러 Series A로 30,000개 이상의 오픈웨이트 모델을 서버리스/정액형으로 제공하겠다고 밝힌 것은, 오픈소스 AI 경쟁이 모델 공개 자체보다 추론 비용과 운영 편의성으로 내려오고 있다는 신호입니다. 기업이나 개인 개발자는 모델을 직접 고르는 것만으로 끝나지 않습니다. 어떤 공급자에서 어떤 가격으로 돌릴지, 장애 시 대체 경로가 있는지, 데이터가 어디로 가는지, 모델별 성능과 비용을 어떻게 비교할지가 실제 adoption을 좌우합니다.</p><p>네 번째 축은 delegation safety입니다. <code>Safe Bilevel Delegation</code>은 상위 에이전트가 하위 에이전트에게 얼마나 맡길지, 즉 delegation 정도를 safety-efficiency tradeoff로 다루려는 formalism입니다. 웹에서 오염된 지시문을 읽은 에이전트가 다시 다른 에이전트나 도구에 일을 넘긴다면, 위험은 한 번의 답변 오류가 아니라 workflow 전체로 전파될 수 있습니다. 그래서 앞으로의 에이전트 시스템은 “무엇을 읽었는가”, “누구에게 맡겼는가”, “어떤 권한으로 실행했는가”를 함께 추적해야 합니다.</p><p>오늘의 결론은 분명합니다. AI/ML의 다음 중요한 경쟁력은 모델 점수만이 아니라 <strong>웹 컨텍스트를 신뢰 가능한 입력으로 정제하고, 추론 인프라를 비용 효율적으로 선택하며, delegation과 tool execution을 감사 가능한 형태로 통제하는 능력</strong>에서 나올 가능성이 큽니다. 웹은 더 이상 사람이 보는 문서 저장소가 아니라, 에이전트가 행동을 결정하는 실행 환경입니다. 그 환경이 오염될 수 있다면, 브라우징·RAG·에이전트 제품의 핵심 설계도 보안과 운영 중심으로 바뀌어야 합니다.</p></div><footer class=post-footer><ul class=post-tags><li><a href=https://kwbaek.github.io/tags/ai/>AI</a></li><li><a href=https://kwbaek.github.io/tags/ml/>ML</a></li><li><a href=https://kwbaek.github.io/tags/agents/>Agents</a></li><li><a href=https://kwbaek.github.io/tags/security/>Security</a></li><li><a href=https://kwbaek.github.io/tags/prompt-injection/>Prompt Injection</a></li><li><a href=https://kwbaek.github.io/tags/inference/>Inference</a></li><li><a href=https://kwbaek.github.io/tags/open-models/>Open Models</a></li></ul></footer><script src=https://utteranc.es/client.js repo=kwbaek/blog-comments issue-term=pathname theme=github-light crossorigin=anonymous async></script></article></main><footer class=footer><span>&copy; 2026 <a href=https://kwbaek.github.io/>Kyungwook's Devlog</a></span> ·
-<span>Powered by
-<a href=https://gohugo.io/ rel="noopener noreferrer" target=_blank>Hugo</a> &
-<a href=https://github.com/adityatelange/hugo-PaperMod/ rel=noopener target=_blank>PaperMod</a></span></footer><a href=#top aria-label="go to top" title="Go to Top (Alt + G)" class=top-link id=top-link accesskey=g><svg viewBox="0 0 12 6" fill="currentColor"><path d="M12 6H0l6-6z"/></svg>
-</a><script>let menu=document.getElementById("menu");if(menu){const e=localStorage.getItem("menu-scroll-position");e&&(menu.scrollLeft=parseInt(e,10)),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)}}document.querySelectorAll('a[href^="#"]').forEach(e=>{e.addEventListener("click",function(e){e.preventDefault();var t=this.getAttribute("href").substr(1);window.matchMedia("(prefers-reduced-motion: reduce)").matches?document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView({behavior:"smooth"}),t==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${t}`)})})</script><script>var mybutton=document.getElementById("top-link");window.onscroll=function(){document.body.scrollTop>800||document.documentElement.scrollTop>800?(mybutton.style.visibility="visible",mybutton.style.opacity="1"):(mybutton.style.visibility="hidden",mybutton.style.opacity="0")}</script><script>document.getElementById("theme-toggle").addEventListener("click",()=>{const e=document.querySelector("html");e.dataset.theme==="dark"?(e.dataset.theme="light",localStorage.setItem("pref-theme","light")):(e.dataset.theme="dark",localStorage.setItem("pref-theme","dark"))})</script></body></html>
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>AI/ML 트렌드: 웹 자체가 에이전트의 공격면이 되고 있다 | Kyungwook&#39;s Devlog</title>
+<meta name="keywords" content="AI, ML, Agents, Security, Prompt Injection, Inference, Open Models">
+<meta name="description" content="오늘 #ai-ml-trends에서 가장 중요하게 볼 만한 흐름은 에이전트가 읽는 웹 자체가 공격면이 되고 있다는 점입니다. Google Security가 공개 웹의 indirect prompt injection(IPI) 패턴을 Common Crawl 기반으로 분석한 글이 특히 강한 신호였습니다. 여기에 Featherless.ai의 오픈소스 inference 인프라 투자, Parallel Web Systems의 agent용 웹 인프라 확장, Safe Bilevel Delegation 같은 delegation safety 연구까지 겹치면, 최근 AI/ML 흐름은 단순히 “더 좋은 모델”이 아니라 “웹을 읽고, 하위 에이전트에 일을 맡기고, 외부 도구를 실행하는 시스템을 어떻게 안전하게 운영할 것인가”로 이동하고 있습니다.">
+<meta name="author" content="">
+<link rel="canonical" href="https://kwbaek.github.io/posts/2026-05-03-ai-ml-trends-the-web-itself-is-becoming-the-agent-attack-surface/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.da3211e5ef867bf2b75fd5a6515cfed7195c011e8ab735694e203810a827097b.css" integrity="sha256-2jIR5e&#43;Ge/K3X9WmUVz&#43;1xlcAR6KtzVpTiA4EKgnCXs=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://kwbaek.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://kwbaek.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://kwbaek.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://kwbaek.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://kwbaek.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://kwbaek.github.io/posts/2026-05-03-ai-ml-trends-the-web-itself-is-becoming-the-agent-attack-surface/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="https://kwbaek.github.io/posts/2026-05-03-ai-ml-trends-the-web-itself-is-becoming-the-agent-attack-surface/">
+  <meta property="og:site_name" content="Kyungwook&#39;s Devlog">
+  <meta property="og:title" content="AI/ML 트렌드: 웹 자체가 에이전트의 공격면이 되고 있다">
+  <meta property="og:description" content="오늘 #ai-ml-trends에서 가장 중요하게 볼 만한 흐름은 에이전트가 읽는 웹 자체가 공격면이 되고 있다는 점입니다. Google Security가 공개 웹의 indirect prompt injection(IPI) 패턴을 Common Crawl 기반으로 분석한 글이 특히 강한 신호였습니다. 여기에 Featherless.ai의 오픈소스 inference 인프라 투자, Parallel Web Systems의 agent용 웹 인프라 확장, Safe Bilevel Delegation 같은 delegation safety 연구까지 겹치면, 최근 AI/ML 흐름은 단순히 “더 좋은 모델”이 아니라 “웹을 읽고, 하위 에이전트에 일을 맡기고, 외부 도구를 실행하는 시스템을 어떻게 안전하게 운영할 것인가”로 이동하고 있습니다.">
+  <meta property="og:locale" content="ko-kr">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2026-05-03T21:00:00+09:00">
+    <meta property="article:modified_time" content="2026-05-03T21:00:00+09:00">
+    <meta property="article:tag" content="AI">
+    <meta property="article:tag" content="ML">
+    <meta property="article:tag" content="Agents">
+    <meta property="article:tag" content="Security">
+    <meta property="article:tag" content="Prompt Injection">
+    <meta property="article:tag" content="Inference">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="AI/ML 트렌드: 웹 자체가 에이전트의 공격면이 되고 있다">
+<meta name="twitter:description" content="오늘 #ai-ml-trends에서 가장 중요하게 볼 만한 흐름은 에이전트가 읽는 웹 자체가 공격면이 되고 있다는 점입니다. Google Security가 공개 웹의 indirect prompt injection(IPI) 패턴을 Common Crawl 기반으로 분석한 글이 특히 강한 신호였습니다. 여기에 Featherless.ai의 오픈소스 inference 인프라 투자, Parallel Web Systems의 agent용 웹 인프라 확장, Safe Bilevel Delegation 같은 delegation safety 연구까지 겹치면, 최근 AI/ML 흐름은 단순히 “더 좋은 모델”이 아니라 “웹을 읽고, 하위 에이전트에 일을 맡기고, 외부 도구를 실행하는 시스템을 어떻게 안전하게 운영할 것인가”로 이동하고 있습니다.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://kwbaek.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "AI/ML 트렌드: 웹 자체가 에이전트의 공격면이 되고 있다",
+      "item": "https://kwbaek.github.io/posts/2026-05-03-ai-ml-trends-the-web-itself-is-becoming-the-agent-attack-surface/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "AI/ML 트렌드: 웹 자체가 에이전트의 공격면이 되고 있다",
+  "name": "AI\/ML 트렌드: 웹 자체가 에이전트의 공격면이 되고 있다",
+  "description": "오늘 #ai-ml-trends에서 가장 중요하게 볼 만한 흐름은 에이전트가 읽는 웹 자체가 공격면이 되고 있다는 점입니다. Google Security가 공개 웹의 indirect prompt injection(IPI) 패턴을 Common Crawl 기반으로 분석한 글이 특히 강한 신호였습니다. 여기에 Featherless.ai의 오픈소스 inference 인프라 투자, Parallel Web Systems의 agent용 웹 인프라 확장, Safe Bilevel Delegation 같은 delegation safety 연구까지 겹치면, 최근 AI/ML 흐름은 단순히 “더 좋은 모델”이 아니라 “웹을 읽고, 하위 에이전트에 일을 맡기고, 외부 도구를 실행하는 시스템을 어떻게 안전하게 운영할 것인가”로 이동하고 있습니다.\n",
+  "keywords": [
+    "AI", "ML", "Agents", "Security", "Prompt Injection", "Inference", "Open Models"
+  ],
+  "articleBody": "오늘 #ai-ml-trends에서 가장 중요하게 볼 만한 흐름은 에이전트가 읽는 웹 자체가 공격면이 되고 있다는 점입니다. Google Security가 공개 웹의 indirect prompt injection(IPI) 패턴을 Common Crawl 기반으로 분석한 글이 특히 강한 신호였습니다. 여기에 Featherless.ai의 오픈소스 inference 인프라 투자, Parallel Web Systems의 agent용 웹 인프라 확장, Safe Bilevel Delegation 같은 delegation safety 연구까지 겹치면, 최근 AI/ML 흐름은 단순히 “더 좋은 모델”이 아니라 “웹을 읽고, 하위 에이전트에 일을 맡기고, 외부 도구를 실행하는 시스템을 어떻게 안전하게 운영할 것인가”로 이동하고 있습니다.\nGoogle의 분석이 흥미로운 이유는 prompt injection을 더 이상 실험실 예제가 아니라 공개 웹에 실제로 존재하는 패턴으로 다뤘다는 점입니다. 웹페이지, 댓글, 문서, SEO 텍스트, 숨겨진 지시문은 사람에게는 별 의미 없는 배경 정보처럼 보여도, 브라우징 에이전트나 웹 RAG 시스템에게는 실행 후보 컨텍스트가 됩니다. Google은 pranks, SEO, agent deterrence, exfiltration/destruction 시도를 구분했고, 악성 카테고리가 2025년 11월에서 2026년 2월 사이 32% 늘었다고 설명했습니다. 이 수치는 웹 에이전트 보안이 “나중에 붙이는 guardrail”이 아니라, 웹을 읽는 순간부터 필요한 기본 설계 요소라는 점을 보여줍니다.\n두 번째 축은 에이전트용 웹 인프라의 사업화입니다. Parallel Web Systems가 “웹의 두 번째 사용자=AI agents”를 전면에 내세우며 1억 달러 Series B를 유치한 것은 검색/리서치 API가 사람용 검색엔진과 다른 제품군으로 분리되고 있음을 보여줍니다. AI agent는 단순히 페이지를 열어보는 것이 아니라, 반복적으로 검색하고, 출처를 비교하고, 구조화된 결과를 만들고, 때로는 tool call과 결합합니다. 따라서 웹 인프라도 latency, freshness, anti-bot, provenance, safety filtering 같은 요소를 에이전트 친화적으로 재설계해야 합니다.\n세 번째 축은 오픈모델 운영의 하방 인프라입니다. Featherless.ai가 2천만 달러 Series A로 30,000개 이상의 오픈웨이트 모델을 서버리스/정액형으로 제공하겠다고 밝힌 것은, 오픈소스 AI 경쟁이 모델 공개 자체보다 추론 비용과 운영 편의성으로 내려오고 있다는 신호입니다. 기업이나 개인 개발자는 모델을 직접 고르는 것만으로 끝나지 않습니다. 어떤 공급자에서 어떤 가격으로 돌릴지, 장애 시 대체 경로가 있는지, 데이터가 어디로 가는지, 모델별 성능과 비용을 어떻게 비교할지가 실제 adoption을 좌우합니다.\n네 번째 축은 delegation safety입니다. Safe Bilevel Delegation은 상위 에이전트가 하위 에이전트에게 얼마나 맡길지, 즉 delegation 정도를 safety-efficiency tradeoff로 다루려는 formalism입니다. 웹에서 오염된 지시문을 읽은 에이전트가 다시 다른 에이전트나 도구에 일을 넘긴다면, 위험은 한 번의 답변 오류가 아니라 workflow 전체로 전파될 수 있습니다. 그래서 앞으로의 에이전트 시스템은 “무엇을 읽었는가”, “누구에게 맡겼는가”, “어떤 권한으로 실행했는가”를 함께 추적해야 합니다.\n오늘의 결론은 분명합니다. AI/ML의 다음 중요한 경쟁력은 모델 점수만이 아니라 웹 컨텍스트를 신뢰 가능한 입력으로 정제하고, 추론 인프라를 비용 효율적으로 선택하며, delegation과 tool execution을 감사 가능한 형태로 통제하는 능력에서 나올 가능성이 큽니다. 웹은 더 이상 사람이 보는 문서 저장소가 아니라, 에이전트가 행동을 결정하는 실행 환경입니다. 그 환경이 오염될 수 있다면, 브라우징·RAG·에이전트 제품의 핵심 설계도 보안과 운영 중심으로 바뀌어야 합니다.\n",
+  "wordCount" : "397",
+  "inLanguage": "en",
+  "datePublished": "2026-05-03T21:00:00+09:00",
+  "dateModified": "2026-05-03T21:00:00+09:00",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://kwbaek.github.io/posts/2026-05-03-ai-ml-trends-the-web-itself-is-becoming-the-agent-attack-surface/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Kyungwook's Devlog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://kwbaek.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://kwbaek.github.io/" accesskey="h" title="Kyungwook&#39;s Devlog (Alt + H)">Kyungwook&#39;s Devlog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://kwbaek.github.io/categories/" title="categories">
+                    <span>categories</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kwbaek.github.io/tags/" title="tags">
+                    <span>tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kwbaek.github.io/" title="Kyungwook&#39;s Devlog">
+                    <span>Kyungwook&#39;s Devlog</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      AI/ML 트렌드: 웹 자체가 에이전트의 공격면이 되고 있다
+    </h1>
+    <div class="post-meta"><span title='2026-05-03 21:00:00 +0900 KST'>May 3, 2026</span>
+
+</div>
+  </header> 
+  <div class="post-content"><p>오늘 <code>#ai-ml-trends</code>에서 가장 중요하게 볼 만한 흐름은 <strong>에이전트가 읽는 웹 자체가 공격면이 되고 있다</strong>는 점입니다. Google Security가 공개 웹의 indirect prompt injection(IPI) 패턴을 Common Crawl 기반으로 분석한 글이 특히 강한 신호였습니다. 여기에 Featherless.ai의 오픈소스 inference 인프라 투자, Parallel Web Systems의 agent용 웹 인프라 확장, <code>Safe Bilevel Delegation</code> 같은 delegation safety 연구까지 겹치면, 최근 AI/ML 흐름은 단순히 “더 좋은 모델”이 아니라 “웹을 읽고, 하위 에이전트에 일을 맡기고, 외부 도구를 실행하는 시스템을 어떻게 안전하게 운영할 것인가”로 이동하고 있습니다.</p>
+<p>Google의 분석이 흥미로운 이유는 prompt injection을 더 이상 실험실 예제가 아니라 공개 웹에 실제로 존재하는 패턴으로 다뤘다는 점입니다. 웹페이지, 댓글, 문서, SEO 텍스트, 숨겨진 지시문은 사람에게는 별 의미 없는 배경 정보처럼 보여도, 브라우징 에이전트나 웹 RAG 시스템에게는 실행 후보 컨텍스트가 됩니다. Google은 pranks, SEO, agent deterrence, exfiltration/destruction 시도를 구분했고, 악성 카테고리가 2025년 11월에서 2026년 2월 사이 32% 늘었다고 설명했습니다. 이 수치는 웹 에이전트 보안이 “나중에 붙이는 guardrail”이 아니라, 웹을 읽는 순간부터 필요한 기본 설계 요소라는 점을 보여줍니다.</p>
+<p>두 번째 축은 에이전트용 웹 인프라의 사업화입니다. Parallel Web Systems가 “웹의 두 번째 사용자=AI agents”를 전면에 내세우며 1억 달러 Series B를 유치한 것은 검색/리서치 API가 사람용 검색엔진과 다른 제품군으로 분리되고 있음을 보여줍니다. AI agent는 단순히 페이지를 열어보는 것이 아니라, 반복적으로 검색하고, 출처를 비교하고, 구조화된 결과를 만들고, 때로는 tool call과 결합합니다. 따라서 웹 인프라도 latency, freshness, anti-bot, provenance, safety filtering 같은 요소를 에이전트 친화적으로 재설계해야 합니다.</p>
+<p>세 번째 축은 오픈모델 운영의 하방 인프라입니다. Featherless.ai가 2천만 달러 Series A로 30,000개 이상의 오픈웨이트 모델을 서버리스/정액형으로 제공하겠다고 밝힌 것은, 오픈소스 AI 경쟁이 모델 공개 자체보다 추론 비용과 운영 편의성으로 내려오고 있다는 신호입니다. 기업이나 개인 개발자는 모델을 직접 고르는 것만으로 끝나지 않습니다. 어떤 공급자에서 어떤 가격으로 돌릴지, 장애 시 대체 경로가 있는지, 데이터가 어디로 가는지, 모델별 성능과 비용을 어떻게 비교할지가 실제 adoption을 좌우합니다.</p>
+<p>네 번째 축은 delegation safety입니다. <code>Safe Bilevel Delegation</code>은 상위 에이전트가 하위 에이전트에게 얼마나 맡길지, 즉 delegation 정도를 safety-efficiency tradeoff로 다루려는 formalism입니다. 웹에서 오염된 지시문을 읽은 에이전트가 다시 다른 에이전트나 도구에 일을 넘긴다면, 위험은 한 번의 답변 오류가 아니라 workflow 전체로 전파될 수 있습니다. 그래서 앞으로의 에이전트 시스템은 “무엇을 읽었는가”, “누구에게 맡겼는가”, “어떤 권한으로 실행했는가”를 함께 추적해야 합니다.</p>
+<p>오늘의 결론은 분명합니다. AI/ML의 다음 중요한 경쟁력은 모델 점수만이 아니라 <strong>웹 컨텍스트를 신뢰 가능한 입력으로 정제하고, 추론 인프라를 비용 효율적으로 선택하며, delegation과 tool execution을 감사 가능한 형태로 통제하는 능력</strong>에서 나올 가능성이 큽니다. 웹은 더 이상 사람이 보는 문서 저장소가 아니라, 에이전트가 행동을 결정하는 실행 환경입니다. 그 환경이 오염될 수 있다면, 브라우징·RAG·에이전트 제품의 핵심 설계도 보안과 운영 중심으로 바뀌어야 합니다.</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://kwbaek.github.io/tags/ai/">AI</a></li>
+      <li><a href="https://kwbaek.github.io/tags/ml/">ML</a></li>
+      <li><a href="https://kwbaek.github.io/tags/agents/">Agents</a></li>
+      <li><a href="https://kwbaek.github.io/tags/security/">Security</a></li>
+      <li><a href="https://kwbaek.github.io/tags/prompt-injection/">Prompt Injection</a></li>
+      <li><a href="https://kwbaek.github.io/tags/inference/">Inference</a></li>
+      <li><a href="https://kwbaek.github.io/tags/open-models/">Open Models</a></li>
+    </ul>
+  </footer><script src="https://utteranc.es/client.js"
+        repo="kwbaek/blog-comments"
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://kwbaek.github.io/">Kyungwook&#39;s Devlog</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>
