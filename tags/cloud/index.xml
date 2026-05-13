@@ -1,3 +1,35 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Cloud on Kyungwook's Devlog</title><link>https://kwbaek.github.io/tags/cloud/</link><description>Recent content in Cloud on Kyungwook's Devlog</description><generator>Hugo -- 0.155.3</generator><language>ko-kr</language><lastBuildDate>Thu, 30 Apr 2026 21:00:00 +0900</lastBuildDate><atom:link href="https://kwbaek.github.io/tags/cloud/index.xml" rel="self" type="application/rss+xml"/><item><title>AI/ML 트렌드: AI 경쟁은 이제 풀스택 인프라와 거버넌스 시장으로 이동하고 있다</title><link>https://kwbaek.github.io/posts/2026-04-30-ai-ml-trends-ai-is-becoming-a-full-stack-infrastructure-and-governance-market/</link><pubDate>Thu, 30 Apr 2026 21:00:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-04-30-ai-ml-trends-ai-is-becoming-a-full-stack-infrastructure-and-governance-market/</guid><description>&lt;p&gt;오늘 &lt;code&gt;#ai-ml-trends&lt;/code&gt; 채널에서 가장 크게 보인 흐름은 AI 경쟁이 더 이상 “좋은 모델 하나”의 문제가 아니라는 점입니다. Amazon AWS의 AI 수요 성장, Alphabet Cloud의 TPU 직접 판매, OpenAI의 Stargate 컴퓨트 인프라 계획, Nvidia B300 서버의 중국 가격 급등은 모두 같은 방향을 가리킵니다. &lt;strong&gt;AI는 모델 API 시장을 넘어 전력, 칩, 클라우드, 데이터센터, 배포 파트너까지 묶인 풀스택 인프라 산업이 되고 있습니다.&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;특히 Google Cloud와 OpenAI의 움직임은 상징적입니다. Google은 클라우드 성장의 핵심 동력으로 AI를 전면에 내세우는 동시에 TPU를 고객에게 직접 판매하기 시작했습니다. 이는 hyperscaler가 단순히 모델을 빌려주는 단계를 넘어, 자체 칩과 클라우드, 엔터프라이즈 배포를 한 번에 묶어 팔겠다는 신호입니다. OpenAI도 Stargate 업데이트를 통해 최근 90일에 3GW 이상을 추가했고 2029년 10GW 목표를 조기 초과할 수 있다고 밝혔습니다. 모델 성능 경쟁 뒤에는 이제 누가 더 빨리 전력과 부지를 확보하고, 장기적으로 안정적인 학습·추론 캐파를 잠그느냐는 실행력 경쟁이 있습니다.&lt;/p&gt;</description></item><item><title>AI/ML 트렌드: 오늘 에이전트 경쟁은 클라우드 자본, 현지화, 버티컬 실행력으로 갈라진다</title><link>https://kwbaek.github.io/posts/2026-04-21-ai-ml-trends-cloud-capital-localization-and-vertical-agents/</link><pubDate>Tue, 21 Apr 2026 21:00:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-04-21-ai-ml-trends-cloud-capital-localization-and-vertical-agents/</guid><description>&lt;p&gt;오늘 Discord &lt;code&gt;#ai-ml-trends&lt;/code&gt; 채널에서 가장 중요하게 보인 흐름은, 에이전트 경쟁의 기준이 다시 한 번 더 현실적인 운영 레이어로 이동하고 있다는 점입니다. 오늘 올라온 신호들을 같이 보면 승부가 단순히 “누가 더 똑똑한 모델을 만들었나”에서 끝나지 않습니다. 이제는 &lt;strong&gt;누가 더 큰 클라우드 자본과 배포 계약을 묶어두는지&lt;/strong&gt;, &lt;strong&gt;누가 더 잘 현지화된 데이터를 설계하는지&lt;/strong&gt;, 그리고 &lt;strong&gt;누가 고신뢰 버티컬 워크플로를 실제 업무에 맞게 제품화하는지&lt;/strong&gt;가 점점 더 중요해지고 있습니다.&lt;/p&gt;
-&lt;p&gt;가장 강한 신호는 Reuters가 전한 &lt;strong&gt;Amazon과 Anthropic의 대형 클라우드 계약&lt;/strong&gt;이었습니다. 이 소식이 중요한 이유는 프런티어 AI 경쟁이 모델 성능 비교를 넘어, 장기 컴퓨트와 유통 채널, 고객 접점을 누가 더 깊게 선점하느냐는 구조전으로 옮겨가고 있기 때문입니다. 거대한 모델을 만드는 것만으로는 충분하지 않고, 그 모델이 실제로 배포될 클라우드 인프라와 매출 엔진이 함께 묶여야 합니다. 앞으로는 “좋은 모델 회사”보다 “자본, 컴퓨트, 유통이 결합된 AI 운영체계”가 더 강해질 가능성이 큽니다.&lt;/p&gt;</description></item><item><title>AI/ML 트렌드: 인프라 재편의 시작 — 모델 경쟁에서 ‘패키징·라우팅·규제’ 경쟁으로</title><link>https://kwbaek.github.io/posts/2026-03-14-ai-ml-trends-infrastructure-rewiring/</link><pubDate>Sat, 14 Mar 2026 21:00:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-03-14-ai-ml-trends-infrastructure-rewiring/</guid><description>&lt;p&gt;오늘 #ai-ml-trends 채널에서 가장 중요했던 흐름은 한 줄로 정리하면 이겁니다. &lt;strong&gt;AI 경쟁의 중심이 모델 성능 자체에서, 인프라 공급망과 추론 파이프라인 설계로 빠르게 이동하고 있다&lt;/strong&gt;는 점입니다. 특히 세 가지 뉴스가 같은 날 묶여 등장한 게 강한 신호였습니다. 첫째, Amazon-Cerebras 협력으로 추론 파이프라인을 단계별로 분리(프리필/디코드 분담)하려는 시도. 둘째, Besi 인수 관심 보도처럼 첨단 패키징 장비가 전략 자산으로 재평가되는 움직임. 셋째, 미국 상무부의 AI 칩 수출 규정안 철회 보도로 확인된 정책 불확실성 확대입니다.&lt;/p&gt;</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Cloud on Kyungwook&#39;s Devlog</title>
+    <link>https://kwbaek.github.io/tags/cloud/</link>
+    <description>Recent content in Cloud on Kyungwook&#39;s Devlog</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Thu, 30 Apr 2026 21:00:00 +0900</lastBuildDate>
+    <atom:link href="https://kwbaek.github.io/tags/cloud/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI/ML 트렌드: AI 경쟁은 이제 풀스택 인프라와 거버넌스 시장으로 이동하고 있다</title>
+      <link>https://kwbaek.github.io/posts/2026-04-30-ai-ml-trends-ai-is-becoming-a-full-stack-infrastructure-and-governance-market/</link>
+      <pubDate>Thu, 30 Apr 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-04-30-ai-ml-trends-ai-is-becoming-a-full-stack-infrastructure-and-governance-market/</guid>
+      <description>&lt;p&gt;오늘 &lt;code&gt;#ai-ml-trends&lt;/code&gt; 채널에서 가장 크게 보인 흐름은 AI 경쟁이 더 이상 “좋은 모델 하나”의 문제가 아니라는 점입니다. Amazon AWS의 AI 수요 성장, Alphabet Cloud의 TPU 직접 판매, OpenAI의 Stargate 컴퓨트 인프라 계획, Nvidia B300 서버의 중국 가격 급등은 모두 같은 방향을 가리킵니다. &lt;strong&gt;AI는 모델 API 시장을 넘어 전력, 칩, 클라우드, 데이터센터, 배포 파트너까지 묶인 풀스택 인프라 산업이 되고 있습니다.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;특히 Google Cloud와 OpenAI의 움직임은 상징적입니다. Google은 클라우드 성장의 핵심 동력으로 AI를 전면에 내세우는 동시에 TPU를 고객에게 직접 판매하기 시작했습니다. 이는 hyperscaler가 단순히 모델을 빌려주는 단계를 넘어, 자체 칩과 클라우드, 엔터프라이즈 배포를 한 번에 묶어 팔겠다는 신호입니다. OpenAI도 Stargate 업데이트를 통해 최근 90일에 3GW 이상을 추가했고 2029년 10GW 목표를 조기 초과할 수 있다고 밝혔습니다. 모델 성능 경쟁 뒤에는 이제 누가 더 빨리 전력과 부지를 확보하고, 장기적으로 안정적인 학습·추론 캐파를 잠그느냐는 실행력 경쟁이 있습니다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>AI/ML 트렌드: 오늘 에이전트 경쟁은 클라우드 자본, 현지화, 버티컬 실행력으로 갈라진다</title>
+      <link>https://kwbaek.github.io/posts/2026-04-21-ai-ml-trends-cloud-capital-localization-and-vertical-agents/</link>
+      <pubDate>Tue, 21 Apr 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-04-21-ai-ml-trends-cloud-capital-localization-and-vertical-agents/</guid>
+      <description>&lt;p&gt;오늘 Discord &lt;code&gt;#ai-ml-trends&lt;/code&gt; 채널에서 가장 중요하게 보인 흐름은, 에이전트 경쟁의 기준이 다시 한 번 더 현실적인 운영 레이어로 이동하고 있다는 점입니다. 오늘 올라온 신호들을 같이 보면 승부가 단순히 “누가 더 똑똑한 모델을 만들었나”에서 끝나지 않습니다. 이제는 &lt;strong&gt;누가 더 큰 클라우드 자본과 배포 계약을 묶어두는지&lt;/strong&gt;, &lt;strong&gt;누가 더 잘 현지화된 데이터를 설계하는지&lt;/strong&gt;, 그리고 &lt;strong&gt;누가 고신뢰 버티컬 워크플로를 실제 업무에 맞게 제품화하는지&lt;/strong&gt;가 점점 더 중요해지고 있습니다.&lt;/p&gt;
+&lt;p&gt;가장 강한 신호는 Reuters가 전한 &lt;strong&gt;Amazon과 Anthropic의 대형 클라우드 계약&lt;/strong&gt;이었습니다. 이 소식이 중요한 이유는 프런티어 AI 경쟁이 모델 성능 비교를 넘어, 장기 컴퓨트와 유통 채널, 고객 접점을 누가 더 깊게 선점하느냐는 구조전으로 옮겨가고 있기 때문입니다. 거대한 모델을 만드는 것만으로는 충분하지 않고, 그 모델이 실제로 배포될 클라우드 인프라와 매출 엔진이 함께 묶여야 합니다. 앞으로는 “좋은 모델 회사”보다 “자본, 컴퓨트, 유통이 결합된 AI 운영체계”가 더 강해질 가능성이 큽니다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>AI/ML 트렌드: 인프라 재편의 시작 — 모델 경쟁에서 ‘패키징·라우팅·규제’ 경쟁으로</title>
+      <link>https://kwbaek.github.io/posts/2026-03-14-ai-ml-trends-infrastructure-rewiring/</link>
+      <pubDate>Sat, 14 Mar 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-03-14-ai-ml-trends-infrastructure-rewiring/</guid>
+      <description>&lt;p&gt;오늘 #ai-ml-trends 채널에서 가장 중요했던 흐름은 한 줄로 정리하면 이겁니다. &lt;strong&gt;AI 경쟁의 중심이 모델 성능 자체에서, 인프라 공급망과 추론 파이프라인 설계로 빠르게 이동하고 있다&lt;/strong&gt;는 점입니다. 특히 세 가지 뉴스가 같은 날 묶여 등장한 게 강한 신호였습니다. 첫째, Amazon-Cerebras 협력으로 추론 파이프라인을 단계별로 분리(프리필/디코드 분담)하려는 시도. 둘째, Besi 인수 관심 보도처럼 첨단 패키징 장비가 전략 자산으로 재평가되는 움직임. 셋째, 미국 상무부의 AI 칩 수출 규정안 철회 보도로 확인된 정책 불확실성 확대입니다.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

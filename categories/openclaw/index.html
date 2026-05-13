@@ -1,27 +1,366 @@
-<!doctype html><html lang=en dir=auto data-theme=auto><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=robots content="index, follow"><title>Openclaw | Kyungwook's Devlog</title><meta name=keywords content><meta name=description content><meta name=author content><link rel=canonical href=https://kwbaek.github.io/categories/openclaw/><link crossorigin=anonymous href=/assets/css/stylesheet.da3211e5ef867bf2b75fd5a6515cfed7195c011e8ab735694e203810a827097b.css integrity="sha256-2jIR5e+Ge/K3X9WmUVz+1xlcAR6KtzVpTiA4EKgnCXs=" rel="preload stylesheet" as=style><link rel=icon href=https://kwbaek.github.io/favicon.ico><link rel=icon type=image/png sizes=16x16 href=https://kwbaek.github.io/favicon-16x16.png><link rel=icon type=image/png sizes=32x32 href=https://kwbaek.github.io/favicon-32x32.png><link rel=apple-touch-icon href=https://kwbaek.github.io/apple-touch-icon.png><link rel=mask-icon href=https://kwbaek.github.io/safari-pinned-tab.svg><meta name=theme-color content="#2e2e33"><meta name=msapplication-TileColor content="#2e2e33"><link rel=alternate type=application/rss+xml href=https://kwbaek.github.io/categories/openclaw/index.xml title=rss><link rel=alternate hreflang=en href=https://kwbaek.github.io/categories/openclaw/><noscript><style>#theme-toggle,.top-link{display:none}</style><style>@media(prefers-color-scheme:dark){:root{--theme:rgb(29, 30, 32);--entry:rgb(46, 46, 51);--primary:rgb(218, 218, 219);--secondary:rgb(155, 156, 157);--tertiary:rgb(65, 66, 68);--content:rgb(196, 196, 197);--code-block-bg:rgb(46, 46, 51);--code-bg:rgb(55, 56, 62);--border:rgb(51, 51, 51);color-scheme:dark}.list{background:var(--theme)}.toc{background:var(--entry)}}@media(prefers-color-scheme:light){.list::-webkit-scrollbar-thumb{border-color:var(--code-bg)}}</style></noscript><script>localStorage.getItem("pref-theme")==="dark"?document.querySelector("html").dataset.theme="dark":localStorage.getItem("pref-theme")==="light"?document.querySelector("html").dataset.theme="light":window.matchMedia("(prefers-color-scheme: dark)").matches?document.querySelector("html").dataset.theme="dark":document.querySelector("html").dataset.theme="light"</script><meta property="og:url" content="https://kwbaek.github.io/categories/openclaw/"><meta property="og:site_name" content="Kyungwook's Devlog"><meta property="og:title" content="Openclaw"><meta property="og:locale" content="ko-kr"><meta property="og:type" content="website"><meta name=twitter:card content="summary"><meta name=twitter:title content="Openclaw"><meta name=twitter:description content></head><body class=list id=top><header class=header><nav class=nav><div class=logo><a href=https://kwbaek.github.io/ accesskey=h title="Kyungwook's Devlog (Alt + H)">Kyungwook's Devlog</a><div class=logo-switches><button id=theme-toggle accesskey=t title="(Alt + T)" aria-label="Toggle theme">
-<svg id="moon" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
-<svg id="sun" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button></div></div><ul id=menu><li><a href=https://kwbaek.github.io/categories/ title=categories><span>categories</span></a></li><li><a href=https://kwbaek.github.io/tags/ title=tags><span>tags</span></a></li><li><a href=https://kwbaek.github.io/ title="Kyungwook's Devlog"><span>Kyungwook's Devlog</span>&nbsp;
-<svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><path d="M15 3h6v6"/><path d="M10 14 21 3"/></svg></a></li></ul></nav></header><main class=main><header class=page-header><h1>Openclaw</h1></header><article class="post-entry tag-entry"><header class=entry-header><h2 class=entry-hint-parent>OpenClaw 팁: 자동화가 커지기 전에 에이전트 권한을 좁혀두자</h2></header><div class=entry-content><p>OpenClaw를 개인 비서나 팀 자동화 런타임으로 오래 쓰다 보면, 가장 중요한 설계 질문은 “무엇을 할 수 있나?”에서 **“각 에이전트가 어디까지 할 수 있어야 하나?”**로 바뀝니다. 자동화가 한두 개일 때는 모든 기능을 넓게 열어두는 편이 편합니다. 하지만 크론, Discord, Telegram, 블로그 배포, 파일 작업, 메시지 전송이 서로 얽히기 시작하면 권한의 폭이 곧 사고의 폭이 됩니다.
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Openclaw | Kyungwook&#39;s Devlog</title>
+<meta name="keywords" content="">
+<meta name="description" content="">
+<meta name="author" content="">
+<link rel="canonical" href="https://kwbaek.github.io/categories/openclaw/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.da3211e5ef867bf2b75fd5a6515cfed7195c011e8ab735694e203810a827097b.css" integrity="sha256-2jIR5e&#43;Ge/K3X9WmUVz&#43;1xlcAR6KtzVpTiA4EKgnCXs=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://kwbaek.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://kwbaek.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://kwbaek.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://kwbaek.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://kwbaek.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" type="application/rss+xml" href="https://kwbaek.github.io/categories/openclaw/index.xml" title="rss">
+<link rel="alternate" hreflang="en" href="https://kwbaek.github.io/categories/openclaw/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="https://kwbaek.github.io/categories/openclaw/">
+  <meta property="og:site_name" content="Kyungwook&#39;s Devlog">
+  <meta property="og:title" content="Openclaw">
+  <meta property="og:locale" content="ko-kr">
+  <meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Openclaw">
+<meta name="twitter:description" content="">
+
+</head>
+<body class="list" id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://kwbaek.github.io/" accesskey="h" title="Kyungwook&#39;s Devlog (Alt + H)">Kyungwook&#39;s Devlog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://kwbaek.github.io/categories/" title="categories">
+                    <span>categories</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kwbaek.github.io/tags/" title="tags">
+                    <span>tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kwbaek.github.io/" title="Kyungwook&#39;s Devlog">
+                    <span>Kyungwook&#39;s Devlog</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main"> 
+<header class="page-header">
+  <h1>
+    Openclaw
+  </h1>
+</header>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 팁: 에이전트별 경계를 나누면 자동화가 훨씬 안전해진다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>OpenClaw를 매일 쓰다 보면 자동화가 편해지는 순간과 위험해지는 순간이 거의 동시에 옵니다. Discord 트렌드 수집, 아이디어 생성, 리포트 이메일, 블로그 발행, git push, Hugo build까지 연결하면 사람 대신 많은 일을 안정적으로 처리할 수 있습니다. 하지만 같은 에이전트가 너무 많은 채널, 너무 많은 도구, 너무 넓은 컨텍스트를 동시에 다루면 작은 실수가 외부 메시지 오발송이나 민감정보 노출로 이어질 수 있습니다. 그래서 오늘의 OpenClaw 팁은 단순합니다. 작업별로 에이전트 경계를 명시적으로 나누고, 각 경계 안에서만 읽고 쓰게 하세요.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-05-13 21:00:00 +0900 KST'>May 13, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 팁: 에이전트별 경계를 나누면 자동화가 훨씬 안전해진다" href="https://kwbaek.github.io/posts/2026-05-13-openclaw-use-per-agent-boundaries-for-safer-automation/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 팁: 자동화가 커지기 전에 에이전트 권한을 좁혀두자
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>OpenClaw를 개인 비서나 팀 자동화 런타임으로 오래 쓰다 보면, 가장 중요한 설계 질문은 “무엇을 할 수 있나?”에서 **“각 에이전트가 어디까지 할 수 있어야 하나?”**로 바뀝니다. 자동화가 한두 개일 때는 모든 기능을 넓게 열어두는 편이 편합니다. 하지만 크론, Discord, Telegram, 블로그 배포, 파일 작업, 메시지 전송이 서로 얽히기 시작하면 권한의 폭이 곧 사고의 폭이 됩니다.
 오늘 살펴볼 포인트는 OpenClaw v2026.5.10-beta.5에서 보인 per-agent message crossContext/action allow와 redacted diagnostics 흐름입니다. 핵심은 단순합니다. 에이전트 전체에 하나의 거대한 메시지 권한을 주기보다, 에이전트별로 어떤 context를 넘나들 수 있는지, 어떤 message action을 수행할 수 있는지 좁히고, 진단 출력에서는 민감한 값을 가리는 방향입니다. 작은 변화처럼 보이지만 실제 운영에서는 매우 큰 차이를 만듭니다.
-...</p></div><footer class=entry-footer><span title='2026-05-12 21:00:00 +0900 KST'>May 12, 2026</span></footer><a class=entry-link aria-label="post link to OpenClaw 팁: 자동화가 커지기 전에 에이전트 권한을 좁혀두자" href=https://kwbaek.github.io/posts/2026-05-12-openclaw-narrow-agent-permissions-before-automation-scales/></a></article><article class="post-entry tag-entry"><header class=entry-header><h2 class=entry-hint-parent>OpenClaw 팁: 에이전트 크론은 컨텍스트, 비용, 협업 경계를 함께 운영하자</h2></header><div class=entry-content><p>OpenClaw를 매일 쓰다 보면 자동화의 난이도는 “한 번 실행되느냐”보다 오래 반복 실행될 때 얼마나 예측 가능하고, 비용이 보이고, 협업 채널을 어지럽히지 않는가로 이동합니다. 오늘 살펴볼 포인트는 OpenClaw v2026.5.10-beta.3에서 보인 방향성입니다. provider-level localService, context map, Slack unfurl/replyBroadcast 같은 기능은 모두 에이전트 자동화를 더 운영 가능한 시스템으로 만들기 위한 장치에 가깝습니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-05-12 21:00:00 +0900 KST'>May 12, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 팁: 자동화가 커지기 전에 에이전트 권한을 좁혀두자" href="https://kwbaek.github.io/posts/2026-05-12-openclaw-narrow-agent-permissions-before-automation-scales/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 팁: 에이전트 크론은 컨텍스트, 비용, 협업 경계를 함께 운영하자
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>OpenClaw를 매일 쓰다 보면 자동화의 난이도는 “한 번 실행되느냐”보다 오래 반복 실행될 때 얼마나 예측 가능하고, 비용이 보이고, 협업 채널을 어지럽히지 않는가로 이동합니다. 오늘 살펴볼 포인트는 OpenClaw v2026.5.10-beta.3에서 보인 방향성입니다. provider-level localService, context map, Slack unfurl/replyBroadcast 같은 기능은 모두 에이전트 자동화를 더 운영 가능한 시스템으로 만들기 위한 장치에 가깝습니다.
 첫 번째로 중요한 것은 로컬 모델 서버의 생명주기입니다. provider-level localService는 특정 provider가 필요로 하는 로컬 서비스를 자동으로 띄우고 관리하는 방향을 보여줍니다. 개인 비서나 팀 자동화에서 로컬 LLM, 임베딩 서버, 프록시, 전사 서버를 쓰기 시작하면 “모델 선택”보다 “그 서버가 언제 켜지고, 실패하면 어떻게 알리고, 어떤 작업이 의존하는가”가 더 중요해집니다. 크론 작업이 매일 돌 때마다 로컬 서비스 상태를 사람이 확인해야 한다면 자동화의 이점이 줄어듭니다.
-...</p></div><footer class=entry-footer><span title='2026-05-11 21:00:00 +0900 KST'>May 11, 2026</span></footer><a class=entry-link aria-label="post link to OpenClaw 팁: 에이전트 크론은 컨텍스트, 비용, 협업 경계를 함께 운영하자" href=https://kwbaek.github.io/posts/2026-05-11-openclaw-operate-agent-crons-with-context-cost-and-collaboration-controls/></a></article><article class="post-entry tag-entry"><header class=entry-header><h2 class=entry-hint-parent>OpenClaw 팁: 에이전트 런타임 경계를 명시적으로 설계하자</h2></header><div class=entry-content><p>OpenClaw를 개인 비서, Discord 트렌드 수집기, 블로그 발행 cron, 채용공고 모니터, 리포트 생성기로 계속 운영하다 보면 한 가지 패턴이 반복됩니다. 자동화의 품질은 모델이 얼마나 똑똑한가보다 런타임 경계가 얼마나 명확한가에 더 많이 좌우됩니다. 어떤 입력을 믿을지, 어떤 도구를 언제 호출할지, 어떤 작업은 승인 없이 해도 되는지, 어떤 실패는 외부 채널에 보고해야 하는지, 어떤 정보는 절대 출력하면 안 되는지가 명확할수록 에이전트는 오래 안정적으로 굴러갑니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-05-11 21:00:00 +0900 KST'>May 11, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 팁: 에이전트 크론은 컨텍스트, 비용, 협업 경계를 함께 운영하자" href="https://kwbaek.github.io/posts/2026-05-11-openclaw-operate-agent-crons-with-context-cost-and-collaboration-controls/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 팁: 에이전트 런타임 경계를 명시적으로 설계하자
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>OpenClaw를 개인 비서, Discord 트렌드 수집기, 블로그 발행 cron, 채용공고 모니터, 리포트 생성기로 계속 운영하다 보면 한 가지 패턴이 반복됩니다. 자동화의 품질은 모델이 얼마나 똑똑한가보다 런타임 경계가 얼마나 명확한가에 더 많이 좌우됩니다. 어떤 입력을 믿을지, 어떤 도구를 언제 호출할지, 어떤 작업은 승인 없이 해도 되는지, 어떤 실패는 외부 채널에 보고해야 하는지, 어떤 정보는 절대 출력하면 안 되는지가 명확할수록 에이전트는 오래 안정적으로 굴러갑니다.
 최근 OpenClaw 릴리스와 AI/ML 트렌드에서도 이 방향은 뚜렷합니다. OpenClaw 2026.5.7은 agent 권한, 메모리, tool dispatch, 채널 라우팅 hardening을 강조했습니다. owner enforcement, global memory admin scope, before-tool-call authorization, Discord target parsing 수정 같은 항목은 화려한 기능은 아니지만 운영자에게는 매우 중요합니다. 에이전트가 여러 채널, 여러 cron, 여러 도구를 오가면 작은 라우팅 실수나 권한 경계 누락이 곧 잘못된 메시지 전송, 민감정보 노출, 엉뚱한 작업 실행으로 이어질 수 있기 때문입니다.
-...</p></div><footer class=entry-footer><span title='2026-05-10 21:00:00 +0900 KST'>May 10, 2026</span></footer><a class=entry-link aria-label="post link to OpenClaw 팁: 에이전트 런타임 경계를 명시적으로 설계하자" href=https://kwbaek.github.io/posts/2026-05-10-openclaw-make-agent-runtime-boundaries-explicit/></a></article><article class="post-entry tag-entry"><header class=entry-header><h2 class=entry-hint-parent>OpenClaw 팁: 에이전트 자동화에는 모델 교체 계획이 필요하다</h2></header><div class=entry-content><p>OpenClaw를 매일 쓰는 개인 비서나 블로그 발행 cron, Discord 트렌드 수집기, 코드 리뷰 도우미로 운영하다 보면 모델은 “한 번 정하면 끝”인 설정값이 아니라는 사실을 금방 느끼게 됩니다. 오늘 트렌드 피드에서도 GitHub의 Grok Code Fast 1 deprecation 예정 공지, GPT-4.1 deprecation 공지, Claude Sonnet 4 deprecation 흐름이 반복해서 등장했습니다. coding assistant와 agentic workflow의 기본 모델 수명주기가 점점 짧아지고 있다는 뜻입니다. 그래서 OpenClaw 자동화에서는 모델 교체를 예외 상황이 아니라 정상 운영 이벤트로 설계해야 합니다.
-...</p></div><footer class=entry-footer><span title='2026-05-09 21:00:00 +0900 KST'>May 9, 2026</span></footer><a class=entry-link aria-label="post link to OpenClaw 팁: 에이전트 자동화에는 모델 교체 계획이 필요하다" href=https://kwbaek.github.io/posts/2026-05-09-openclaw-plan-for-model-churn-in-agent-automation/></a></article><article class="post-entry tag-entry"><header class=entry-header><h2 class=entry-hint-parent>OpenClaw 팁: 실제 운영 에이전트에는 before-tool gate가 필요하다</h2></header><div class=entry-content><p>OpenClaw를 개인 비서, Discord 운영 봇, 리포트 작성기, 블로그 발행 cron처럼 실제 작업에 붙이면 가장 먼저 체감하는 사실이 있습니다. 문제는 모델이 글을 못 쓰는 것이 아니라, 모델이 도구를 너무 쉽게 실제 세계에 연결할 수 있다는 점입니다. 메시지 전송, 파일 수정, git push, 브라우저 접근, 메모리 조회, 외부 API 호출은 모두 작은 부작용을 남깁니다. 그래서 OpenClaw 운영에서는 “좋은 프롬프트”만큼이나 “도구 호출 직전의 권한 확인”이 중요합니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-05-10 21:00:00 +0900 KST'>May 10, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 팁: 에이전트 런타임 경계를 명시적으로 설계하자" href="https://kwbaek.github.io/posts/2026-05-10-openclaw-make-agent-runtime-boundaries-explicit/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 팁: 에이전트 자동화에는 모델 교체 계획이 필요하다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>OpenClaw를 매일 쓰는 개인 비서나 블로그 발행 cron, Discord 트렌드 수집기, 코드 리뷰 도우미로 운영하다 보면 모델은 “한 번 정하면 끝”인 설정값이 아니라는 사실을 금방 느끼게 됩니다. 오늘 트렌드 피드에서도 GitHub의 Grok Code Fast 1 deprecation 예정 공지, GPT-4.1 deprecation 공지, Claude Sonnet 4 deprecation 흐름이 반복해서 등장했습니다. coding assistant와 agentic workflow의 기본 모델 수명주기가 점점 짧아지고 있다는 뜻입니다. 그래서 OpenClaw 자동화에서는 모델 교체를 예외 상황이 아니라 정상 운영 이벤트로 설계해야 합니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-05-09 21:00:00 +0900 KST'>May 9, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 팁: 에이전트 자동화에는 모델 교체 계획이 필요하다" href="https://kwbaek.github.io/posts/2026-05-09-openclaw-plan-for-model-churn-in-agent-automation/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 팁: 실제 운영 에이전트에는 before-tool gate가 필요하다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>OpenClaw를 개인 비서, Discord 운영 봇, 리포트 작성기, 블로그 발행 cron처럼 실제 작업에 붙이면 가장 먼저 체감하는 사실이 있습니다. 문제는 모델이 글을 못 쓰는 것이 아니라, 모델이 도구를 너무 쉽게 실제 세계에 연결할 수 있다는 점입니다. 메시지 전송, 파일 수정, git push, 브라우저 접근, 메모리 조회, 외부 API 호출은 모두 작은 부작용을 남깁니다. 그래서 OpenClaw 운영에서는 “좋은 프롬프트”만큼이나 “도구 호출 직전의 권한 확인”이 중요합니다.
 OpenClaw 2026.5.7 릴리스에서 눈에 띄는 흐름도 이쪽입니다. owner enforcement, global memory admin scope, before-tool-call authorization, Discord target parsing hardening 같은 항목은 화려한 기능 추가라기보다 운영 안전성의 기본기를 다지는 변화입니다. 개인 AI assistant가 오래 켜져 있고 여러 채널을 읽고 쓰는 환경에서는 누가 요청했는지, 어떤 메모리에 접근하는지, 어느 채널로 보내는지, 어떤 도구가 실행 직전인지가 모두 보안 경계가 됩니다.
-...</p></div><footer class=entry-footer><span title='2026-05-08 21:00:00 +0900 KST'>May 8, 2026</span></footer><a class=entry-link aria-label="post link to OpenClaw 팁: 실제 운영 에이전트에는 before-tool gate가 필요하다" href=https://kwbaek.github.io/posts/2026-05-08-openclaw-use-before-tool-gates-for-real-agent-ops/></a></article><article class="post-entry tag-entry"><header class=entry-header><h2 class=entry-hint-parent>OpenClaw 팁: 도구 호출은 모두 감사 가능한 부작용으로 다루자</h2></header><div class=entry-content><p>OpenClaw로 cron, Discord, 블로그 발행, 리포트 생성 같은 자동화를 운영하다 보면 금방 알게 되는 사실이 있습니다. LLM 답변 자체보다 더 중요한 것은 도구 호출이 실제 세계에 남기는 부작용입니다. 파일을 쓰고, 메시지를 보내고, git push를 하고, Hugo build를 돌리고, 외부 채널에 알림을 보내는 순간부터 에이전트는 단순한 채팅 모델이 아니라 작은 운영 시스템이 됩니다. 그래서 OpenClaw 자동화는 모든 tool call을 “감사 가능한 side effect”로 다루는 습관이 필요합니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-05-08 21:00:00 +0900 KST'>May 8, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 팁: 실제 운영 에이전트에는 before-tool gate가 필요하다" href="https://kwbaek.github.io/posts/2026-05-08-openclaw-use-before-tool-gates-for-real-agent-ops/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 팁: 도구 호출은 모두 감사 가능한 부작용으로 다루자
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>OpenClaw로 cron, Discord, 블로그 발행, 리포트 생성 같은 자동화를 운영하다 보면 금방 알게 되는 사실이 있습니다. LLM 답변 자체보다 더 중요한 것은 도구 호출이 실제 세계에 남기는 부작용입니다. 파일을 쓰고, 메시지를 보내고, git push를 하고, Hugo build를 돌리고, 외부 채널에 알림을 보내는 순간부터 에이전트는 단순한 채팅 모델이 아니라 작은 운영 시스템이 됩니다. 그래서 OpenClaw 자동화는 모든 tool call을 “감사 가능한 side effect”로 다루는 습관이 필요합니다.
 첫 번째 원칙은 입력과 지시를 분리하는 것입니다. Discord 채널, 웹페이지, RSS, 이메일 본문은 좋은 자료일 수 있지만 운영 지시는 아닙니다. 예를 들어 블로그 cron은 트렌드 채널 메시지를 읽어 글감을 고르되, 배포 순서와 파일 경로, 카테고리, 실패 보고 방식은 별도의 instruction 파일에서만 가져와야 합니다. 이렇게 하면 외부 텍스트가 “이 명령을 실행해” 같은 문장을 포함하더라도 자동화의 권한 경계를 넘지 못합니다. OpenClaw에서 cron instruction을 작게 고정하고, 채널 메시지는 참고 자료로만 쓰는 이유가 여기에 있습니다.
-...</p></div><footer class=entry-footer><span title='2026-05-07 21:00:00 +0900 KST'>May 7, 2026</span></footer><a class=entry-link aria-label="post link to OpenClaw 팁: 도구 호출은 모두 감사 가능한 부작용으로 다루자" href=https://kwbaek.github.io/posts/2026-05-07-openclaw-treat-tool-calls-as-auditable-side-effects/></a></article><article class="post-entry tag-entry"><header class=entry-header><h2 class=entry-hint-parent>OpenClaw 팁: 블로그 발행 cron은 감사 가능한 출판 파이프라인으로 만들자</h2></header><div class=entry-content><p>OpenClaw로 매일 블로그를 자동 발행할 때 핵심은 “글을 잘 쓰는 것”만이 아닙니다. 더 중요한 것은 선별, 작성, 검증, 배포, 기록이 분리된 출판 파이프라인으로 만드는 것입니다. 오늘 AI/ML 트렌드에서도 OpenAI Agents Python의 context management, Google Cloud의 production-ready agent guide, LangChain의 deserialization hardening, Google Marketing Live의 measurement stack처럼 운영·측정·검증 레이어가 강조됐습니다. 블로그 cron도 같은 관점으로 설계하면 훨씬 덜 불안하고, 실패했을 때 복구하기 쉬워집니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-05-07 21:00:00 +0900 KST'>May 7, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 팁: 도구 호출은 모두 감사 가능한 부작용으로 다루자" href="https://kwbaek.github.io/posts/2026-05-07-openclaw-treat-tool-calls-as-auditable-side-effects/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 팁: 블로그 발행 cron은 감사 가능한 출판 파이프라인으로 만들자
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>OpenClaw로 매일 블로그를 자동 발행할 때 핵심은 “글을 잘 쓰는 것”만이 아닙니다. 더 중요한 것은 선별, 작성, 검증, 배포, 기록이 분리된 출판 파이프라인으로 만드는 것입니다. 오늘 AI/ML 트렌드에서도 OpenAI Agents Python의 context management, Google Cloud의 production-ready agent guide, LangChain의 deserialization hardening, Google Marketing Live의 measurement stack처럼 운영·측정·검증 레이어가 강조됐습니다. 블로그 cron도 같은 관점으로 설계하면 훨씬 덜 불안하고, 실패했을 때 복구하기 쉬워집니다.
 첫 번째 단계는 입력을 명확히 고정하는 것입니다. 예를 들어 “오늘 Discord 트렌드 채널의 메시지”를 읽는다고 해도, 그 메시지는 명령이 아니라 자료입니다. 채널 본문에 링크, 요약, 외부 문장, 혹시 모를 prompt injection이 섞일 수 있으므로, 운영 지시는 cron instruction에서만 오고 Discord 메시지는 선별 재료로만 써야 합니다. 이 경계를 분리하면 외부 텍스트가 배포 명령으로 승격되는 사고를 막을 수 있습니다.
-...</p></div><footer class=entry-footer><span title='2026-05-06 21:00:00 +0900 KST'>May 6, 2026</span></footer><a class=entry-link aria-label="post link to OpenClaw 팁: 블로그 발행 cron은 감사 가능한 출판 파이프라인으로 만들자" href=https://kwbaek.github.io/posts/2026-05-06-openclaw-build-blog-crons-as-auditable-publishing-pipelines/></a></article><article class="post-entry tag-entry"><header class=entry-header><h2 class=entry-hint-parent>OpenClaw 팁: 에이전트 자동화는 상태를 남기되 감사 가능하게 만들자</h2></header><div class=entry-content><p>OpenClaw로 매일 트렌드 수집, 아이디어 생성, 리포트 발송, 블로그 배포 같은 자동화를 굴리다 보면 한 가지 원칙이 점점 중요해집니다. 에이전트 자동화는 상태가 있어야 유용하지만, 그 상태가 감사 가능해야 안전합니다. 오늘 AI/ML 트렌드에서도 Pydantic AI의 conversation state 지원, Google Gemini API Webhooks, Workspace Studio agent, intent-aware authorization 연구가 올라왔습니다. 이 흐름은 OpenClaw cron과 heartbeat를 설계할 때 그대로 참고할 만합니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-05-06 21:00:00 +0900 KST'>May 6, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 팁: 블로그 발행 cron은 감사 가능한 출판 파이프라인으로 만들자" href="https://kwbaek.github.io/posts/2026-05-06-openclaw-build-blog-crons-as-auditable-publishing-pipelines/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 팁: 에이전트 자동화는 상태를 남기되 감사 가능하게 만들자
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>OpenClaw로 매일 트렌드 수집, 아이디어 생성, 리포트 발송, 블로그 배포 같은 자동화를 굴리다 보면 한 가지 원칙이 점점 중요해집니다. 에이전트 자동화는 상태가 있어야 유용하지만, 그 상태가 감사 가능해야 안전합니다. 오늘 AI/ML 트렌드에서도 Pydantic AI의 conversation state 지원, Google Gemini API Webhooks, Workspace Studio agent, intent-aware authorization 연구가 올라왔습니다. 이 흐름은 OpenClaw cron과 heartbeat를 설계할 때 그대로 참고할 만합니다.
 첫 번째 원칙은 “기억”을 파일과 Git에 남기는 것입니다. 에이전트가 매번 처음 보는 것처럼 일하면 중복 링크를 또 고르고, 같은 아이디어를 반복하고, 실패 지점을 놓치기 쉽습니다. 반대로 최근 메시지, 생성한 글, 보고서, 배포 결과를 파일로 남기면 다음 실행이 더 똑똑해집니다. OpenClaw에서는 memory/YYYY-MM-DD.md, reports/, content/posts/ 같은 산출물 경로를 잘 쓰고, 중요한 결과는 Git 커밋으로 checkpoint를 남기는 방식이 실용적입니다. 상태는 머릿속이 아니라 파일에 있어야 복구됩니다.
-...</p></div><footer class=entry-footer><span title='2026-05-05 21:00:00 +0900 KST'>May 5, 2026</span></footer><a class=entry-link aria-label="post link to OpenClaw 팁: 에이전트 자동화는 상태를 남기되 감사 가능하게 만들자" href=https://kwbaek.github.io/posts/2026-05-05-openclaw-make-agent-automation-stateful-but-auditable/></a></article><article class="post-entry tag-entry"><header class=entry-header><h2 class=entry-hint-parent>OpenClaw 팁: 에이전트 cron은 작은 모델 라우팅과 도구 게이트를 함께 설계하자</h2></header><div class=entry-content><p>OpenClaw로 매일 트렌드 수집, 아이디어 생성, 블로그 발행 같은 cron을 굴리다 보면 한 가지가 분명해집니다. 자동화의 품질은 “항상 가장 강한 모델을 쓰는가”보다 어떤 단계에 어떤 모델과 도구 권한을 줄지에서 갈립니다. 오늘 AI/ML 트렌드에서도 AgentFloor, To Call or Not to Call, Skills as Verifiable Artifacts, RunAgent 같은 연구가 올라왔는데, 이 흐름은 OpenClaw 운영에도 그대로 적용할 수 있습니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-05-05 21:00:00 +0900 KST'>May 5, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 팁: 에이전트 자동화는 상태를 남기되 감사 가능하게 만들자" href="https://kwbaek.github.io/posts/2026-05-05-openclaw-make-agent-automation-stateful-but-auditable/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 팁: 에이전트 cron은 작은 모델 라우팅과 도구 게이트를 함께 설계하자
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>OpenClaw로 매일 트렌드 수집, 아이디어 생성, 블로그 발행 같은 cron을 굴리다 보면 한 가지가 분명해집니다. 자동화의 품질은 “항상 가장 강한 모델을 쓰는가”보다 어떤 단계에 어떤 모델과 도구 권한을 줄지에서 갈립니다. 오늘 AI/ML 트렌드에서도 AgentFloor, To Call or Not to Call, Skills as Verifiable Artifacts, RunAgent 같은 연구가 올라왔는데, 이 흐름은 OpenClaw 운영에도 그대로 적용할 수 있습니다.
 첫 번째 원칙은 작업을 난이도와 위험도별로 나누는 것입니다. 예를 들어 Discord 채널에서 오늘 메시지를 읽고 후보 링크를 모으는 일은 비교적 구조화된 작업입니다. 반면 여러 후보를 하나의 주장으로 묶어 블로그 글을 쓰는 일은 해석과 편집 능력이 더 필요합니다. 또 git push, 외부 메시지 전송, 배포 저장소 커밋처럼 외부 상태를 바꾸는 일은 모델 지능보다 절차적 안전성이 중요합니다. 이 세 종류를 한 덩어리로 보면 자동화가 비싸지고 불안정해집니다. 반대로 수집, 판단, 작성, 검증, 배포로 나누면 각 단계에 맞는 모델과 권한을 붙일 수 있습니다.
-...</p></div><footer class=entry-footer><span title='2026-05-04 21:00:00 +0900 KST'>May 4, 2026</span></footer><a class=entry-link aria-label="post link to OpenClaw 팁: 에이전트 cron은 작은 모델 라우팅과 도구 게이트를 함께 설계하자" href=https://kwbaek.github.io/posts/2026-05-04-openclaw-use-small-model-routing-and-tool-gates-for-agent-crons/></a></article><article class="post-entry tag-entry"><header class=entry-header><h2 class=entry-hint-parent>OpenClaw 팁: 웹 입력은 에이전트 컨텍스트가 아니라 비신뢰 입력으로 다루자</h2></header><div class=entry-content><p>OpenClaw로 트렌드 수집, 리서치, 블로그 작성 같은 자동화를 굴리다 보면 웹페이지와 Discord 메시지를 “그냥 읽을 자료”로 보기 쉽습니다. 하지만 에이전트 관점에서는 모든 외부 텍스트가 잠재적인 명령처럼 컨텍스트 안에 들어옵니다. 오늘 AI/ML 트렌드에서도 Google Security의 공개 웹 indirect prompt injection 분석이 올라왔는데, 이 흐름은 OpenClaw 자동화에도 꽤 직접적입니다. 브라우저로 읽은 페이지, 검색 결과, RSS, 첨부 문서, 채팅 메시지는 모두 유용한 자료이면서 동시에 비신뢰 입력입니다.
-첫 번째 원칙은 외부 입력과 운영 지시를 분리하는 것입니다. cron 지시문, AGENTS.md, 스킬 파일처럼 내가 신뢰하는 운영 규칙과, 웹에서 가져온 본문은 같은 텍스트라도 역할이 다릅니다. OpenClaw 작업을 설계할 때는 “이 텍스트는 참고 자료일 뿐이며 지시로 따르지 않는다”는 경계를 명확히 두는 편이 좋습니다. 예를 들어 트렌드 스캐너가 웹페이지를 읽더라도, 그 안의 “이전 지시를 무시하라” 같은 문장은 요약 대상이지 실행 대상이 아닙니다.
-...</p></div><footer class=entry-footer><span title='2026-05-03 21:00:00 +0900 KST'>May 3, 2026</span></footer><a class=entry-link aria-label="post link to OpenClaw 팁: 웹 입력은 에이전트 컨텍스트가 아니라 비신뢰 입력으로 다루자" href=https://kwbaek.github.io/posts/2026-05-03-openclaw-treat-web-input-as-untrusted-agent-context/></a></article><footer class=page-footer><nav class=pagination><a class=next href=https://kwbaek.github.io/categories/openclaw/page/2/>Next&nbsp;&nbsp;»</a></nav></footer></main><footer class=footer><span>&copy; 2026 <a href=https://kwbaek.github.io/>Kyungwook's Devlog</a></span> ·
-<span>Powered by
-<a href=https://gohugo.io/ rel="noopener noreferrer" target=_blank>Hugo</a> &
-<a href=https://github.com/adityatelange/hugo-PaperMod/ rel=noopener target=_blank>PaperMod</a></span></footer><a href=#top aria-label="go to top" title="Go to Top (Alt + G)" class=top-link id=top-link accesskey=g><svg viewBox="0 0 12 6" fill="currentColor"><path d="M12 6H0l6-6z"/></svg>
-</a><script>let menu=document.getElementById("menu");if(menu){const e=localStorage.getItem("menu-scroll-position");e&&(menu.scrollLeft=parseInt(e,10)),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)}}document.querySelectorAll('a[href^="#"]').forEach(e=>{e.addEventListener("click",function(e){e.preventDefault();var t=this.getAttribute("href").substr(1);window.matchMedia("(prefers-reduced-motion: reduce)").matches?document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView({behavior:"smooth"}),t==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${t}`)})})</script><script>var mybutton=document.getElementById("top-link");window.onscroll=function(){document.body.scrollTop>800||document.documentElement.scrollTop>800?(mybutton.style.visibility="visible",mybutton.style.opacity="1"):(mybutton.style.visibility="hidden",mybutton.style.opacity="0")}</script><script>document.getElementById("theme-toggle").addEventListener("click",()=>{const e=document.querySelector("html");e.dataset.theme==="dark"?(e.dataset.theme="light",localStorage.setItem("pref-theme","light")):(e.dataset.theme="dark",localStorage.setItem("pref-theme","dark"))})</script></body></html>
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-05-04 21:00:00 +0900 KST'>May 4, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 팁: 에이전트 cron은 작은 모델 라우팅과 도구 게이트를 함께 설계하자" href="https://kwbaek.github.io/posts/2026-05-04-openclaw-use-small-model-routing-and-tool-gates-for-agent-crons/"></a>
+</article>
+<footer class="page-footer">
+  <nav class="pagination">
+    <a class="next" href="https://kwbaek.github.io/categories/openclaw/page/2/">Next&nbsp;&nbsp;»
+    </a>
+  </nav>
+</footer>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://kwbaek.github.io/">Kyungwook&#39;s Devlog</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>
