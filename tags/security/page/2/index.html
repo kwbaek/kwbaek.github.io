@@ -143,6 +143,19 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">AI/ML 트렌드: 에이전트는 상태를 가진 운영 시스템으로 바뀌고 있다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 #ai-ml-trends에서 가장 흥미로운 흐름은 에이전트 AI가 단순한 “질문-응답 모델”에서 상태를 기억하고, 도구를 실행하고, 권한을 통제받는 운영 시스템으로 바뀌고 있다는 점입니다. Pydantic AI의 OpenAI Conversations API state 지원, Google Workspace Studio agent와 교육용 Gemini 확대, OpenAI의 low-latency voice AI 아키텍처, NVIDIA Nemotron 3 Nano Omni, 그리고 zero-trust agent authorization 연구가 모두 같은 방향을 가리킵니다. 이제 중요한 질문은 “모델이 답을 잘하나?”보다 “이 에이전트가 어떤 상태로, 어떤 권한으로, 어떤 비용 구조에서 오래 일할 수 있나?”에 가깝습니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-05-05 21:00:00 +0900 KST'>May 5, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 에이전트는 상태를 가진 운영 시스템으로 바뀌고 있다" href="https://kwbaek.github.io/posts/2026-05-05-ai-ml-trends-agents-are-becoming-stateful-governed-operating-systems/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">OpenClaw 팁: 에이전트 자동화는 상태를 남기되 감사 가능하게 만들자
     </h2>
   </header>
@@ -264,20 +277,6 @@
   </div>
   <footer class="entry-footer"><span title='2026-04-18 21:05:00 +0900 KST'>April 18, 2026</span></footer>
   <a class="entry-link" aria-label="post link to OpenClaw 팁: always-on 로컬 에이전트의 핵심은 모델보다 운영 설계다" href="https://kwbaek.github.io/posts/2026-04-18-openclaw-always-on-local-agents-need-ops-not-just-a-model/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw 팁: health check와 config validate를 기본 운영 루프에 넣어두면 훨씬 덜 흔들린다
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>OpenClaw를 한동안 굴려보면 금방 느끼게 됩니다. 실제 운영에서 문제를 만드는 건 대개 거대한 버그보다, 사소한 설정 어긋남과 조용한 상태 이상입니다. 모델은 멀쩡한데 특정 채널만 응답이 흔들리거나, cron은 살아 있는데 실제 전달이 빠지거나, 업데이트 뒤에 설정 키 하나가 미묘하게 바뀌어 이상 동작이 생기는 식입니다. 그래서 저는 요즘 OpenClaw 운영 팁을 하나만 꼽으라면, 새 기능 자체보다 config validate와 health endpoint를 기본 루프로 습관화하라고 말하고 싶습니다.
-이게 왜 중요하냐면 OpenClaw는 점점 더 많은 기능을 품고 있기 때문입니다. 채널 연동, cron, subagent, ACP, secrets, 보안 옵션, 세션 관리까지 다 붙기 시작하면 시스템은 강해지지만 동시에 설정 표면도 넓어집니다. 이런 상태에서는 “문제가 생기면 그때 본다”보다, 문제가 커지기 전에 작게 확인하는 루틴이 훨씬 낫습니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-04-14 21:35:00 +0900 KST'>April 14, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw 팁: health check와 config validate를 기본 운영 루프에 넣어두면 훨씬 덜 흔들린다" href="https://kwbaek.github.io/posts/2026-04-14-openclaw-health-checks-and-config-validation-should-be-part-of-your-default-ops-loop/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

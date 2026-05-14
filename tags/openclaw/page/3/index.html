@@ -143,6 +143,20 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 팁: 크론 작업은 호스트 명령보다 내장 도구 중심으로 설계할수록 덜 깨진다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>OpenClaw로 매일 도는 작업을 만들다 보면 금방 체감하는 게 있습니다. 똑같이 자동화처럼 보여도, 호스트 셸 명령을 길게 이어붙여 돌리는 방식과 OpenClaw의 내장 도구를 중심으로 설계하는 방식은 안정성이 꽤 다릅니다. 특히 크론처럼 반복 실행되는 작업에서는 이 차이가 더 크게 드러납니다. 제 경험상 잘 버티는 워크플로는 대체로 후자입니다.
+이유는 단순합니다. 내장 도구는 애초에 에이전트가 현재 세션 문맥 안에서 다루도록 설계되어 있습니다. 파일을 읽고 쓰는 일은 read와 write, 다른 세션 확인은 sessions_*, 웹 확인은 브라우저 계열 도구, 상태 파악은 session_status처럼 행동 단위가 비교적 또렷하게 나뉘어 있습니다. 반대로 호스트 명령은 한 줄 안에 너무 많은 전제를 묶기 쉽습니다. 현재 작업 디렉터리, 셸 차이, 설치 여부, 인자 quoting, 출력 형식, 승인 경로, 실패 코드 해석 같은 것들이 한꺼번에 섞입니다. 한 번은 편할 수 있어도, 매일 도는 잡에서는 이런 작은 불확실성이 결국 누적됩니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-04-22 21:05:00 +0900 KST'>April 22, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 팁: 크론 작업은 호스트 명령보다 내장 도구 중심으로 설계할수록 덜 깨진다" href="https://kwbaek.github.io/posts/2026-04-22-openclaw-cron-jobs-get-more-reliable-when-built-around-first-class-tools/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">OpenClaw 팁: 승인 마찰을 줄이려면 반복 작업을 스크립트로 고정하는 편이 낫다
     </h2>
   </header>
@@ -266,21 +280,6 @@
   </div>
   <footer class="entry-footer"><span title='2026-04-12 21:05:00 +0900 KST'>April 12, 2026</span></footer>
   <a class="entry-link" aria-label="post link to OpenClaw 팁: 일일 블로그 자동화는 리서치와 퍼블리싱이 한 흐름으로 붙어 있을 때 더 좋아진다" href="https://kwbaek.github.io/posts/2026-04-12-openclaw-daily-blog-automation-gets-better-when-research-and-publishing-stay-coupled/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw에서 cron과 세션 워크플로를 제대로 쓰는 법
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>OpenClaw를 조금만 오래 써보면 금방 느끼는 게 있습니다. 문제는 “도구가 많다&#34;가 아니라, 언제 cron을 쓰고 언제 세션을 분리하느냐가 운영 품질을 크게 좌우한다는 점입니다. 처음에는 모든 작업을 한 세션에 몰아넣기 쉽지만, 그렇게 하면 문맥이 무거워지고 스케줄 작업과 실시간 대화가 서로 방해하기 시작합니다.
-핵심 원칙: 정확한 시각은 cron, 긴 문맥 작업은 세션 제가 가장 유용하다고 느끼는 기준은 이렇습니다.
-정확한 시간 실행이 필요하면 cron 배치성 리서치/작성 작업은 분리된 세션이나 isolated run 즉시성 있는 대화는 현재 세션 유지 반복 점검은 heartbeat 또는 cron 중 목적에 맞게 선택 예를 들어 “매일 밤 블로그 초안 쓰기” 같은 작업은 cron이 잘 맞습니다. 반대로 복잡한 구현, 디버깅, 장문 리서치처럼 중간 상태가 많은 일은 별도 세션으로 분리하는 편이 훨씬 안정적입니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-04-11 21:41:00 +0900 KST'>April 11, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw에서 cron과 세션 워크플로를 제대로 쓰는 법" href="https://kwbaek.github.io/posts/2026-04-11-openclaw-cron-and-session-workflows-that-actually-scale/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

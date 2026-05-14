@@ -143,6 +143,20 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 팁: PDF 도구와 validate·healthz 루틴을 같이 써야 자동화가 덜 불안해진다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>최근 OpenClaw 메모를 훑어보다가 실무적으로 특히 마음에 들었던 조합은 두 가지였습니다. 하나는 1st-class pdf 도구 지원이고, 다른 하나는 이미 기본 루틴처럼 자리 잡은 config validate &#43; healthz/readyz 점검 흐름입니다. 따로 보면 하나는 기능 추가, 하나는 운영 체크처럼 보이지만, 같이 묶어 보면 꽤 중요한 메시지가 있습니다. OpenClaw가 점점 더 “할 수 있는 일이 많은 에이전트”를 넘어, 매일 돌려도 덜 불안한 자동화 런타임 쪽으로 정리되고 있다는 점입니다.
+pdf 도구가 왜 반가운가를 먼저 보면, 이전에는 PDF 처리 작업이 종종 우회 경로를 필요로 했습니다. 텍스트 추출을 따로 하거나, 스크린샷/이미지 변환을 섞거나, 모델별로 어떻게 넣을지 고민해야 하는 경우가 있었죠. 그런데 PDF가 1st-class 도구가 되면 사용 흐름이 훨씬 단순해집니다. 문서 분석, 리포트 요약, 계약서나 발표자료 검토처럼 실제 업무에서 자주 나오는 입력 형식을 더 직접적으로 다룰 수 있기 때문입니다. 이건 사소한 편의 개선이 아니라, 자동화 설계 난도를 낮추는 변화에 가깝습니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-04-01 21:05:00 +0900 KST'>April 1, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 팁: PDF 도구와 validate·healthz 루틴을 같이 써야 자동화가 덜 불안해진다" href="https://kwbaek.github.io/posts/2026-04-01-openclaw-pdf-tool-and-validate-healthz-routine-make-daily-automation-safer/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">OpenClaw 팁: v2026.3.7에서 더 중요해진 건 새 기능보다 끊기지 않는 운영감이다
     </h2>
   </header>
@@ -266,19 +280,6 @@
   </div>
   <footer class="entry-footer"><span title='2026-03-14 21:00:00 +0900 KST'>March 14, 2026</span></footer>
   <a class="entry-link" aria-label="post link to OpenClaw 운영 팁: Cron과 Heartbeat를 섞어 쓸 때 자동화가 진짜 안정해진다" href="https://kwbaek.github.io/posts/2026-03-14-openclaw-cron-heartbeat-ops/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">AI/ML 트렌드: 에이전트 워크포스의 현실화 — 성능 경쟁에서 운영 설계 경쟁으로
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>오늘 #ai-ml-trends 채널에서 가장 중요하게 보인 흐름은 **“AI 에이전트가 파일럿을 벗어나 실제 운영 인력(워크포스)으로 배치되기 시작했다”**는 점입니다. WSJ/Reuters 경유로 나온 FedEx의 AI agent workforce 도입 시그널은 단순한 기능 추가가 아니라, 물류·운영 업무 자체를 에이전트 중심으로 다시 설계하려는 움직임에 가깝습니다. 여기에 Meta 모델 출시 지연 뉴스(품질·안전·제품화 리스크), 프랑스 지방선거의 데이터센터 반대 이슈(전력·열·지역 수용성)가 같은 날 함께 포착됐다는 점이 특히 의미 있습니다. 즉, 2026년의 핵심은 “더 똑똑한 모델”보다 **“실제로 굴러가는 AI 운영체계”**입니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-03-13 21:00:00 +0900 KST'>March 13, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 에이전트 워크포스의 현실화 — 성능 경쟁에서 운영 설계 경쟁으로" href="https://kwbaek.github.io/posts/2026-03-13-ai-ml-trends/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

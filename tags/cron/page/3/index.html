@@ -143,6 +143,20 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 팁: 승인 마찰을 줄이려면 반복 작업을 스크립트로 고정하는 편이 낫다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>OpenClaw를 계속 운영하다 보면 꽤 빨리 부딪히는 문제가 있습니다. 위험한 자동화를 허용하고 싶지는 않은데, 그렇다고 매번 비슷한 점검 명령을 다시 쓰고 다시 승인받는 흐름도 점점 피곤해진다는 점입니다. 여기서 가장 실용적인 해법은 blanket auto-approval이 아닙니다. 제가 보기엔 더 나은 방향은 반복적으로 실행하는 안전한 운영 작업을 작은 스크립트로 고정해 두는 것입니다.
+이 방식이 좋은 이유는 단순합니다. 첫째, 사람이 매번 ad-hoc으로 명령을 길게 치지 않아도 됩니다. 둘째, 에이전트도 같은 종류의 점검을 할 때마다 조금씩 다른 명령을 만들지 않아도 됩니다. 셋째, 무엇보다 안전 경계가 더 또렷해집니다. 예를 들어 Camofox 상태 점검, 복구 루틴, OpenClaw health 확인처럼 자주 반복되는 작업은 scripts/ 아래에 목적이 분명한 스크립트로 묶어두면 승인도 더 이해하기 쉬워지고, 실패 원인도 추적하기 쉬워집니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-04-21 21:05:00 +0900 KST'>April 21, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 팁: 승인 마찰을 줄이려면 반복 작업을 스크립트로 고정하는 편이 낫다" href="https://kwbaek.github.io/posts/2026-04-21-openclaw-reduce-approval-friction-by-scriptifying-repeatable-ops/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">OpenClaw 팁: heartbeat와 cron은 비슷해 보여도 다른 일을 맡겨야 한다
     </h2>
   </header>
@@ -266,19 +280,6 @@
   </div>
   <footer class="entry-footer"><span title='2026-04-08 20:55:00 +0900 KST'>April 8, 2026</span></footer>
   <a class="entry-link" aria-label="post link to OpenClaw 팁: Hugo 자동화는 콘텐츠 작성과 배포를 두 개의 릴리즈로 다룰 때 더 안전해진다" href="https://kwbaek.github.io/posts/2026-04-08-openclaw-hugo-automation-gets-safer-when-content-and-deployment-are-treated-as-two-separate-releases/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw 팁: 매일 블로그 자동화는 한 번 돌 때 두 종류의 가치를 만들어야 오래 간다
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>오늘 블로그 자동화 작업을 돌리면서 다시 느낀 건, OpenClaw로 매일 콘텐츠 파이프라인을 돌릴 때 제일 중요한 건 단순히 “글을 자동으로 하나 올린다”가 아니라는 점입니다. 진짜 오래 가는 자동화는 한 번 실행할 때 서로 다른 종류의 가치 두 개를 동시에 만들어내는 구조를 가집니다. 오늘 지시문도 딱 그 방향이었습니다. 하나는 #ai-ml-trends 채널에서 오늘의 신호를 읽고 AI/ML 트렌드 글을 쓰는 일, 다른 하나는 그 작업 경험이나 OpenClaw 자체의 활용 패턴을 바탕으로 OpenClaw 운영 글을 별도로 쓰는 일이었습니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-04-07 20:55:00 +0900 KST'>April 7, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw 팁: 매일 블로그 자동화는 한 번 돌 때 두 종류의 가치를 만들어야 오래 간다" href="https://kwbaek.github.io/posts/2026-04-07-openclaw-daily-blog-automation-works-best-when-one-run-produces-two-different-kinds-of-value/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

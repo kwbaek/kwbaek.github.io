@@ -143,6 +143,20 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 팁: 블로그 자동화 cron은 작은 릴리스 파이프라인처럼 운영하기
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>OpenClaw로 매일 블로그를 자동 발행하면 편합니다. Discord에서 트렌드를 읽고, Hugo 포스트를 만들고, git commit과 push를 한 뒤, 다시 Hugo build와 public 배포까지 이어갈 수 있습니다. 하지만 이 흐름은 단순한 글쓰기 자동화가 아니라 사실상 작은 릴리스 파이프라인입니다. 그래서 오늘의 OpenClaw 팁은 명확합니다. 블로그 cron을 “글 생성 작업”이 아니라 “검증 가능한 배포 작업”으로 설계하세요.
+첫 번째 원칙은 입력을 좁히는 것입니다. 블로그 포스트 생성에는 오늘의 트렌드 메시지, 기존 포스트 스타일, Hugo front matter 규칙 정도면 충분합니다. 불필요한 개인 메모리, 토큰, 세션키, 로컬 절대경로, 다른 프로젝트 로그를 섞으면 모델이 헷갈릴 뿐 아니라 실패 보고에서 민감정보가 새어 나갈 위험도 커집니다. OpenClaw cron instruction에 “민감정보 출력 금지”, “실패 시 원인 1줄과 다음 액션 1개만 보고” 같은 규칙을 넣는 이유가 여기에 있습니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-05-14 21:00:00 +0900 KST'>May 14, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 팁: 블로그 자동화 cron은 작은 릴리스 파이프라인처럼 운영하기" href="https://kwbaek.github.io/posts/2026-05-14-openclaw-run-blog-crons-like-a-release-pipeline/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">OpenClaw 팁: 블로그 발행 cron은 감사 가능한 출판 파이프라인으로 만들자
     </h2>
   </header>
@@ -268,21 +282,12 @@
   <footer class="entry-footer"><span title='2026-03-25 21:00:00 +0900 KST'>March 25, 2026</span></footer>
   <a class="entry-link" aria-label="post link to OpenClaw 실무 운영: 일일 자동 포스팅을 안정적으로 돌리는 5단계" href="https://kwbaek.github.io/posts/2026-03-25-openclaw-blog-automation-safe-operations/"></a>
 </article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw 운영 노트: 오늘의 실무 가치가 큰 업데이트/운영 팁
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>최근 채널에서는 거시적인 산업 뉴스와 병행해 OpenClaw 운영 관점에서 바로 쓸 수 있는 시사점이 반복해서 보였습니다. 오늘은 사용자에게 가장 쓸모 있는 포인트를 세 가지만 정리합니다.
-1) Agent 운영: 기능 추가보다 워크플로 신뢰성이 핵심 지난 며칠 간의 공지/체크리스트를 정리하면, 실무에서 OpenClaw의 안정적인 운영은 새 기능을 빠르게 쓰는 것보다 기본 루틴 유지에서 출발합니다.
-openclaw config validate --json로 설정 상태 점검 openclaw healthz / openclaw status로 가동성 확인 openclaw security audit(필요 시 --deep, --fix)로 노출 위험 탐지 특히 크론/자동화 환경에서는 이 루틴을 습관으로 두면 “실행은 되는데 왜 안 보이나&#34;를 크게 줄일 수 있습니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-03-17 21:05:00 +0900 KST'>March 17, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw 운영 노트: 오늘의 실무 가치가 큰 업데이트/운영 팁" href="https://kwbaek.github.io/posts/2026-03-17-openclaw-todays-workflow-cron-automation-tips/"></a>
-</article>
+<footer class="page-footer">
+  <nav class="pagination">
+    <a class="next" href="https://kwbaek.github.io/tags/git/page/2/">Next&nbsp;&nbsp;»
+    </a>
+  </nav>
+</footer>
     </main>
     
 <footer class="footer">

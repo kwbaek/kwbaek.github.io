@@ -143,6 +143,20 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 팁: 블로그 자동화 cron은 작은 릴리스 파이프라인처럼 운영하기
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>OpenClaw로 매일 블로그를 자동 발행하면 편합니다. Discord에서 트렌드를 읽고, Hugo 포스트를 만들고, git commit과 push를 한 뒤, 다시 Hugo build와 public 배포까지 이어갈 수 있습니다. 하지만 이 흐름은 단순한 글쓰기 자동화가 아니라 사실상 작은 릴리스 파이프라인입니다. 그래서 오늘의 OpenClaw 팁은 명확합니다. 블로그 cron을 “글 생성 작업”이 아니라 “검증 가능한 배포 작업”으로 설계하세요.
+첫 번째 원칙은 입력을 좁히는 것입니다. 블로그 포스트 생성에는 오늘의 트렌드 메시지, 기존 포스트 스타일, Hugo front matter 규칙 정도면 충분합니다. 불필요한 개인 메모리, 토큰, 세션키, 로컬 절대경로, 다른 프로젝트 로그를 섞으면 모델이 헷갈릴 뿐 아니라 실패 보고에서 민감정보가 새어 나갈 위험도 커집니다. OpenClaw cron instruction에 “민감정보 출력 금지”, “실패 시 원인 1줄과 다음 액션 1개만 보고” 같은 규칙을 넣는 이유가 여기에 있습니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-05-14 21:00:00 +0900 KST'>May 14, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 팁: 블로그 자동화 cron은 작은 릴리스 파이프라인처럼 운영하기" href="https://kwbaek.github.io/posts/2026-05-14-openclaw-run-blog-crons-like-a-release-pipeline/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">OpenClaw 팁: 에이전트별 경계를 나누면 자동화가 훨씬 안전해진다
     </h2>
   </header>
@@ -263,20 +277,6 @@ OpenClaw 2026.5.7 릴리스에서 눈에 띄는 흐름도 이쪽입니다. owner
   </div>
   <footer class="entry-footer"><span title='2026-05-05 21:00:00 +0900 KST'>May 5, 2026</span></footer>
   <a class="entry-link" aria-label="post link to OpenClaw 팁: 에이전트 자동화는 상태를 남기되 감사 가능하게 만들자" href="https://kwbaek.github.io/posts/2026-05-05-openclaw-make-agent-automation-stateful-but-auditable/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw 팁: 에이전트 cron은 작은 모델 라우팅과 도구 게이트를 함께 설계하자
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>OpenClaw로 매일 트렌드 수집, 아이디어 생성, 블로그 발행 같은 cron을 굴리다 보면 한 가지가 분명해집니다. 자동화의 품질은 “항상 가장 강한 모델을 쓰는가”보다 어떤 단계에 어떤 모델과 도구 권한을 줄지에서 갈립니다. 오늘 AI/ML 트렌드에서도 AgentFloor, To Call or Not to Call, Skills as Verifiable Artifacts, RunAgent 같은 연구가 올라왔는데, 이 흐름은 OpenClaw 운영에도 그대로 적용할 수 있습니다.
-첫 번째 원칙은 작업을 난이도와 위험도별로 나누는 것입니다. 예를 들어 Discord 채널에서 오늘 메시지를 읽고 후보 링크를 모으는 일은 비교적 구조화된 작업입니다. 반면 여러 후보를 하나의 주장으로 묶어 블로그 글을 쓰는 일은 해석과 편집 능력이 더 필요합니다. 또 git push, 외부 메시지 전송, 배포 저장소 커밋처럼 외부 상태를 바꾸는 일은 모델 지능보다 절차적 안전성이 중요합니다. 이 세 종류를 한 덩어리로 보면 자동화가 비싸지고 불안정해집니다. 반대로 수집, 판단, 작성, 검증, 배포로 나누면 각 단계에 맞는 모델과 권한을 붙일 수 있습니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-05-04 21:00:00 +0900 KST'>May 4, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw 팁: 에이전트 cron은 작은 모델 라우팅과 도구 게이트를 함께 설계하자" href="https://kwbaek.github.io/posts/2026-05-04-openclaw-use-small-model-routing-and-tool-gates-for-agent-crons/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>AI/ML 트렌드: AI 인프라는 이제 통제면 경쟁이 되고 있다 | Kyungwook&#39;s Devlog</title>
+<meta name="keywords" content="AI, ML, Infrastructure, Agents, Security, Governance, Semiconductors, Runtime">
+<meta name="description" content="오늘 AI/ML 트렌드에서 가장 강하게 보인 흐름은 AI 경쟁의 중심이 모델 발표에서 인프라와 통제면(control plane)으로 이동하고 있다는 점입니다. 하루 동안 나온 소식만 봐도 GPU 수출 허가, AI 서버 수요, 반도체 시장 전망, agent 보안 스펙, workflow runtime 안정성, voice agent 평가, 장기 에이전트 학습까지 서로 다른 층위가 하나의 방향을 가리킵니다. AI는 더 이상 “좋은 모델을 하나 고르는 일”이 아니라, 모델을 안전하게 연결하고, 배포하고, 감시하고, 비용과 권한을 관리하는 운영 체계가 되고 있습니다.">
+<meta name="author" content="">
+<link rel="canonical" href="https://kwbaek.github.io/posts/2026-05-14-ai-ml-trends-ai-infrastructure-is-becoming-a-control-plane/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.da3211e5ef867bf2b75fd5a6515cfed7195c011e8ab735694e203810a827097b.css" integrity="sha256-2jIR5e&#43;Ge/K3X9WmUVz&#43;1xlcAR6KtzVpTiA4EKgnCXs=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://kwbaek.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://kwbaek.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://kwbaek.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://kwbaek.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://kwbaek.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://kwbaek.github.io/posts/2026-05-14-ai-ml-trends-ai-infrastructure-is-becoming-a-control-plane/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="https://kwbaek.github.io/posts/2026-05-14-ai-ml-trends-ai-infrastructure-is-becoming-a-control-plane/">
+  <meta property="og:site_name" content="Kyungwook&#39;s Devlog">
+  <meta property="og:title" content="AI/ML 트렌드: AI 인프라는 이제 통제면 경쟁이 되고 있다">
+  <meta property="og:description" content="오늘 AI/ML 트렌드에서 가장 강하게 보인 흐름은 AI 경쟁의 중심이 모델 발표에서 인프라와 통제면(control plane)으로 이동하고 있다는 점입니다. 하루 동안 나온 소식만 봐도 GPU 수출 허가, AI 서버 수요, 반도체 시장 전망, agent 보안 스펙, workflow runtime 안정성, voice agent 평가, 장기 에이전트 학습까지 서로 다른 층위가 하나의 방향을 가리킵니다. AI는 더 이상 “좋은 모델을 하나 고르는 일”이 아니라, 모델을 안전하게 연결하고, 배포하고, 감시하고, 비용과 권한을 관리하는 운영 체계가 되고 있습니다.">
+  <meta property="og:locale" content="ko-kr">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2026-05-14T21:00:00+09:00">
+    <meta property="article:modified_time" content="2026-05-14T21:00:00+09:00">
+    <meta property="article:tag" content="Ai">
+    <meta property="article:tag" content="Ml">
+    <meta property="article:tag" content="Infrastructure">
+    <meta property="article:tag" content="Agents">
+    <meta property="article:tag" content="Security">
+    <meta property="article:tag" content="Governance">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="AI/ML 트렌드: AI 인프라는 이제 통제면 경쟁이 되고 있다">
+<meta name="twitter:description" content="오늘 AI/ML 트렌드에서 가장 강하게 보인 흐름은 AI 경쟁의 중심이 모델 발표에서 인프라와 통제면(control plane)으로 이동하고 있다는 점입니다. 하루 동안 나온 소식만 봐도 GPU 수출 허가, AI 서버 수요, 반도체 시장 전망, agent 보안 스펙, workflow runtime 안정성, voice agent 평가, 장기 에이전트 학습까지 서로 다른 층위가 하나의 방향을 가리킵니다. AI는 더 이상 “좋은 모델을 하나 고르는 일”이 아니라, 모델을 안전하게 연결하고, 배포하고, 감시하고, 비용과 권한을 관리하는 운영 체계가 되고 있습니다.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://kwbaek.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "AI/ML 트렌드: AI 인프라는 이제 통제면 경쟁이 되고 있다",
+      "item": "https://kwbaek.github.io/posts/2026-05-14-ai-ml-trends-ai-infrastructure-is-becoming-a-control-plane/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "AI/ML 트렌드: AI 인프라는 이제 통제면 경쟁이 되고 있다",
+  "name": "AI\/ML 트렌드: AI 인프라는 이제 통제면 경쟁이 되고 있다",
+  "description": "오늘 AI/ML 트렌드에서 가장 강하게 보인 흐름은 AI 경쟁의 중심이 모델 발표에서 인프라와 통제면(control plane)으로 이동하고 있다는 점입니다. 하루 동안 나온 소식만 봐도 GPU 수출 허가, AI 서버 수요, 반도체 시장 전망, agent 보안 스펙, workflow runtime 안정성, voice agent 평가, 장기 에이전트 학습까지 서로 다른 층위가 하나의 방향을 가리킵니다. AI는 더 이상 “좋은 모델을 하나 고르는 일”이 아니라, 모델을 안전하게 연결하고, 배포하고, 감시하고, 비용과 권한을 관리하는 운영 체계가 되고 있습니다.\n",
+  "keywords": [
+    "AI", "ML", "Infrastructure", "Agents", "Security", "Governance", "Semiconductors", "Runtime"
+  ],
+  "articleBody": "오늘 AI/ML 트렌드에서 가장 강하게 보인 흐름은 AI 경쟁의 중심이 모델 발표에서 인프라와 통제면(control plane)으로 이동하고 있다는 점입니다. 하루 동안 나온 소식만 봐도 GPU 수출 허가, AI 서버 수요, 반도체 시장 전망, agent 보안 스펙, workflow runtime 안정성, voice agent 평가, 장기 에이전트 학습까지 서로 다른 층위가 하나의 방향을 가리킵니다. AI는 더 이상 “좋은 모델을 하나 고르는 일”이 아니라, 모델을 안전하게 연결하고, 배포하고, 감시하고, 비용과 권한을 관리하는 운영 체계가 되고 있습니다.\n가장 큰 시장 신호는 반도체와 공급망 쪽입니다. Reuters는 미국이 중국 10개 기업에 Nvidia H200 칩 판매를 허가했다는 소식을 전했고, Foxconn은 AI 수요 덕분에 1분기 순이익이 19% 증가했다고 보도됐습니다. TSMC는 AI가 이끄는 글로벌 칩 시장이 2030년 1.5조 달러에 이를 수 있다고 전망했습니다. 이는 AI 인프라 사이클이 단순히 GPU 가격이나 특정 기업의 실적을 넘어, foundry, packaging, 메모리, 서버 조립, 전력, 정책 허가까지 연결된 장기 산업 재편이라는 뜻입니다.\n동시에 기업용 AI는 보안 통제면을 요구하고 있습니다. AWS와 Cisco는 MCP/A2A agent deployment를 위한 AI Defense scaling 가이드를 공개했습니다. 핵심은 agent 보안이 더 이상 prompt guardrail 하나로 끝나지 않는다는 점입니다. MCP 서버, A2A 연결, tool 호출, 권한 집행, 감사 로그, 정책 엔진이 함께 움직여야 합니다. Cisco의 agentic AI security spec 흐름도 같은 맥락입니다. 에이전트가 실제 업무 시스템을 건드리기 시작하면 “모델이 안전한가?”보다 “이 agent가 어떤 권한으로 무엇을 호출했고, 누가 검증했는가?”가 더 중요해집니다.\n런타임 업데이트들도 이 흐름을 잘 보여줍니다. n8n 2.21.2는 expression engine과 workflow runtime 안정성을 고쳤고, llama.cpp는 SYCL multi-GPU RAM exhaustion 같은 낮은 레벨 문제를 다뤘습니다. Ollama는 Codex app integration과 MLX memory trace logging을 추가했고, Pydantic AI는 provider migration warning과 하위호환 경계를 정리했습니다. 이런 변화는 화려한 데모는 아니지만 실제 운영에서는 매우 중요합니다. AI 자동화가 자주 실패하는 지점은 모델의 지능 부족보다 expression edge case, 메모리 압박, provider semantics, trace 부족, 업그레이드 호환성일 때가 많기 때문입니다.\n연구 쪽에서도 평가와 운영의 질문이 커지고 있습니다. EVA-Bench는 voice agent를 ASR/TTS 개별 점수가 아니라 end-to-end task 성공과 대화 흐름, tool 사용까지 함께 평가하려고 합니다. Revisiting DAgger는 장기 LLM agent가 초반 실수로 전체 trajectory를 망치는 문제를 다시 다룹니다. long-context VLM 연구는 128K+ 시각·문서 맥락을 안정적으로 학습하는 방향을 제시합니다. 결국 에이전트 시대의 평가 기준은 “한 번 잘 대답했는가”가 아니라 “긴 작업을 끝까지 안전하게 수행했는가”로 바뀌고 있습니다.\n규제와 소비자 보호도 운영 문제로 내려오고 있습니다. Bloomberg Law는 미국 주 단위 AI companion 규제 흐름을 다뤘고, OpenAI는 GPT-5.5 Cyber 접근을 trusted access 방식으로 확장한다고 밝혔습니다. AI companion은 정서적 의존과 미성년자 보호를 다뤄야 하고, cyber-capable model은 신뢰 기반 접근권과 사용자 검증, 사용 로그가 필요합니다. 다시 말해 AI 제품의 경쟁력은 모델 성능뿐 아니라 접근권 설계와 책임 있는 운영 정책에서 갈립니다.\n오늘의 결론은 명확합니다. 2026년의 AI/ML 트렌드는 “더 큰 모델”보다 AI 인프라를 어떻게 통제 가능한 시스템으로 만들 것인가에 더 가까워지고 있습니다. GPU와 전력, 모델과 tool, agent와 workflow, 보안과 규제, 평가와 감사가 하나의 운영면으로 묶이고 있습니다. 앞으로 강한 팀은 모델 API를 빨리 붙이는 팀이 아니라, AI가 어떤 권한으로 움직이고 무엇을 바꾸며 실패했을 때 어떻게 멈추는지 설명할 수 있는 팀일 것입니다.\n참고 링크:\nAWS·Cisco AI Defense for MCP/A2A: https://aws.amazon.com/blogs/machine-learning/securing-ai-agents-how-aws-and-cisco-ai-defense-scale-mcp-and-a2a-deployments/ OpenAI GPT-5.5 Cyber trusted access: https://openai.com/index/scaling-trusted-access-for-cyber-with-gpt-5-5-and-gpt-5-5-cyber/ OpenAI Codex Windows sandbox: https://openai.com/index/building-a-safe-effective-sandbox-to-enable-codex-on-windows/ n8n 2.21.2: https://github.com/n8n-io/n8n/releases/tag/n8n%402.21.2 llama.cpp b9145: https://github.com/ggml-org/llama.cpp/releases/tag/b9145 EVA-Bench: https://huggingface.co/papers/2605.13841 Revisiting DAgger for LLM-Agents: https://huggingface.co/papers/2605.12913 ",
+  "wordCount" : "491",
+  "inLanguage": "en",
+  "datePublished": "2026-05-14T21:00:00+09:00",
+  "dateModified": "2026-05-14T21:00:00+09:00",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://kwbaek.github.io/posts/2026-05-14-ai-ml-trends-ai-infrastructure-is-becoming-a-control-plane/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Kyungwook's Devlog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://kwbaek.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://kwbaek.github.io/" accesskey="h" title="Kyungwook&#39;s Devlog (Alt + H)">Kyungwook&#39;s Devlog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://kwbaek.github.io/categories/" title="categories">
+                    <span>categories</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kwbaek.github.io/tags/" title="tags">
+                    <span>tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kwbaek.github.io/" title="Kyungwook&#39;s Devlog">
+                    <span>Kyungwook&#39;s Devlog</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      AI/ML 트렌드: AI 인프라는 이제 통제면 경쟁이 되고 있다
+    </h1>
+    <div class="post-meta"><span title='2026-05-14 21:00:00 +0900 KST'>May 14, 2026</span>
+
+</div>
+  </header> 
+  <div class="post-content"><p>오늘 AI/ML 트렌드에서 가장 강하게 보인 흐름은 <strong>AI 경쟁의 중심이 모델 발표에서 인프라와 통제면(control plane)으로 이동하고 있다</strong>는 점입니다. 하루 동안 나온 소식만 봐도 GPU 수출 허가, AI 서버 수요, 반도체 시장 전망, agent 보안 스펙, workflow runtime 안정성, voice agent 평가, 장기 에이전트 학습까지 서로 다른 층위가 하나의 방향을 가리킵니다. AI는 더 이상 “좋은 모델을 하나 고르는 일”이 아니라, 모델을 안전하게 연결하고, 배포하고, 감시하고, 비용과 권한을 관리하는 운영 체계가 되고 있습니다.</p>
+<p>가장 큰 시장 신호는 반도체와 공급망 쪽입니다. Reuters는 미국이 중국 10개 기업에 Nvidia H200 칩 판매를 허가했다는 소식을 전했고, Foxconn은 AI 수요 덕분에 1분기 순이익이 19% 증가했다고 보도됐습니다. TSMC는 AI가 이끄는 글로벌 칩 시장이 2030년 1.5조 달러에 이를 수 있다고 전망했습니다. 이는 AI 인프라 사이클이 단순히 GPU 가격이나 특정 기업의 실적을 넘어, foundry, packaging, 메모리, 서버 조립, 전력, 정책 허가까지 연결된 장기 산업 재편이라는 뜻입니다.</p>
+<p>동시에 기업용 AI는 보안 통제면을 요구하고 있습니다. AWS와 Cisco는 MCP/A2A agent deployment를 위한 AI Defense scaling 가이드를 공개했습니다. 핵심은 agent 보안이 더 이상 prompt guardrail 하나로 끝나지 않는다는 점입니다. MCP 서버, A2A 연결, tool 호출, 권한 집행, 감사 로그, 정책 엔진이 함께 움직여야 합니다. Cisco의 agentic AI security spec 흐름도 같은 맥락입니다. 에이전트가 실제 업무 시스템을 건드리기 시작하면 “모델이 안전한가?”보다 “이 agent가 어떤 권한으로 무엇을 호출했고, 누가 검증했는가?”가 더 중요해집니다.</p>
+<p>런타임 업데이트들도 이 흐름을 잘 보여줍니다. n8n 2.21.2는 expression engine과 workflow runtime 안정성을 고쳤고, llama.cpp는 SYCL multi-GPU RAM exhaustion 같은 낮은 레벨 문제를 다뤘습니다. Ollama는 Codex app integration과 MLX memory trace logging을 추가했고, Pydantic AI는 provider migration warning과 하위호환 경계를 정리했습니다. 이런 변화는 화려한 데모는 아니지만 실제 운영에서는 매우 중요합니다. AI 자동화가 자주 실패하는 지점은 모델의 지능 부족보다 expression edge case, 메모리 압박, provider semantics, trace 부족, 업그레이드 호환성일 때가 많기 때문입니다.</p>
+<p>연구 쪽에서도 평가와 운영의 질문이 커지고 있습니다. EVA-Bench는 voice agent를 ASR/TTS 개별 점수가 아니라 end-to-end task 성공과 대화 흐름, tool 사용까지 함께 평가하려고 합니다. Revisiting DAgger는 장기 LLM agent가 초반 실수로 전체 trajectory를 망치는 문제를 다시 다룹니다. long-context VLM 연구는 128K+ 시각·문서 맥락을 안정적으로 학습하는 방향을 제시합니다. 결국 에이전트 시대의 평가 기준은 “한 번 잘 대답했는가”가 아니라 “긴 작업을 끝까지 안전하게 수행했는가”로 바뀌고 있습니다.</p>
+<p>규제와 소비자 보호도 운영 문제로 내려오고 있습니다. Bloomberg Law는 미국 주 단위 AI companion 규제 흐름을 다뤘고, OpenAI는 GPT-5.5 Cyber 접근을 trusted access 방식으로 확장한다고 밝혔습니다. AI companion은 정서적 의존과 미성년자 보호를 다뤄야 하고, cyber-capable model은 신뢰 기반 접근권과 사용자 검증, 사용 로그가 필요합니다. 다시 말해 AI 제품의 경쟁력은 모델 성능뿐 아니라 접근권 설계와 책임 있는 운영 정책에서 갈립니다.</p>
+<p>오늘의 결론은 명확합니다. 2026년의 AI/ML 트렌드는 “더 큰 모델”보다 <strong>AI 인프라를 어떻게 통제 가능한 시스템으로 만들 것인가</strong>에 더 가까워지고 있습니다. GPU와 전력, 모델과 tool, agent와 workflow, 보안과 규제, 평가와 감사가 하나의 운영면으로 묶이고 있습니다. 앞으로 강한 팀은 모델 API를 빨리 붙이는 팀이 아니라, AI가 어떤 권한으로 움직이고 무엇을 바꾸며 실패했을 때 어떻게 멈추는지 설명할 수 있는 팀일 것입니다.</p>
+<p>참고 링크:</p>
+<ul>
+<li>AWS·Cisco AI Defense for MCP/A2A: <a href="https://aws.amazon.com/blogs/machine-learning/securing-ai-agents-how-aws-and-cisco-ai-defense-scale-mcp-and-a2a-deployments/">https://aws.amazon.com/blogs/machine-learning/securing-ai-agents-how-aws-and-cisco-ai-defense-scale-mcp-and-a2a-deployments/</a></li>
+<li>OpenAI GPT-5.5 Cyber trusted access: <a href="https://openai.com/index/scaling-trusted-access-for-cyber-with-gpt-5-5-and-gpt-5-5-cyber/">https://openai.com/index/scaling-trusted-access-for-cyber-with-gpt-5-5-and-gpt-5-5-cyber/</a></li>
+<li>OpenAI Codex Windows sandbox: <a href="https://openai.com/index/building-a-safe-effective-sandbox-to-enable-codex-on-windows/">https://openai.com/index/building-a-safe-effective-sandbox-to-enable-codex-on-windows/</a></li>
+<li>n8n 2.21.2: <a href="https://github.com/n8n-io/n8n/releases/tag/n8n%402.21.2">https://github.com/n8n-io/n8n/releases/tag/n8n%402.21.2</a></li>
+<li>llama.cpp b9145: <a href="https://github.com/ggml-org/llama.cpp/releases/tag/b9145">https://github.com/ggml-org/llama.cpp/releases/tag/b9145</a></li>
+<li>EVA-Bench: <a href="https://huggingface.co/papers/2605.13841">https://huggingface.co/papers/2605.13841</a></li>
+<li>Revisiting DAgger for LLM-Agents: <a href="https://huggingface.co/papers/2605.12913">https://huggingface.co/papers/2605.12913</a></li>
+</ul>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://kwbaek.github.io/tags/ai/">Ai</a></li>
+      <li><a href="https://kwbaek.github.io/tags/ml/">Ml</a></li>
+      <li><a href="https://kwbaek.github.io/tags/infrastructure/">Infrastructure</a></li>
+      <li><a href="https://kwbaek.github.io/tags/agents/">Agents</a></li>
+      <li><a href="https://kwbaek.github.io/tags/security/">Security</a></li>
+      <li><a href="https://kwbaek.github.io/tags/governance/">Governance</a></li>
+      <li><a href="https://kwbaek.github.io/tags/semiconductors/">Semiconductors</a></li>
+      <li><a href="https://kwbaek.github.io/tags/runtime/">Runtime</a></li>
+    </ul>
+  </footer><script src="https://utteranc.es/client.js"
+        repo="kwbaek/blog-comments"
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://kwbaek.github.io/">Kyungwook&#39;s Devlog</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>
