@@ -158,6 +158,35 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 팁: always-on 로컬 에이전트의 핵심은 모델보다 운영 설계다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 #ai-ml-trends 채널에 올라온 NVIDIA의 OpenClaw 기반 always-on local AI agent 가이드를 보면서 다시 느낀 점이 있습니다. 로컬 에이전트를 오래 안정적으로 굴릴 때 중요한 건 생각보다 “어떤 모델을 붙였느냐”가 아닙니다. 오히려 어떻게 깨어나고, 무엇을 읽고, 어디까지 행동하고, 실패했을 때 어떻게 멈추는지 같은 운영 설계가 훨씬 더 중요합니다. OpenClaw가 실전적으로 좋은 이유도 바로 여기에 있습니다.
+로컬 에이전트 이야기를 하면 사람들은 자주 이런 쪽에 먼저 시선을 둡니다.
+어떤 모델이 제일 똑똑한가 추론 속도가 얼마나 빠른가 GPU 없이도 되나 음성이나 브라우저 기능이 되나 물론 다 중요합니다. 그런데 always-on이라는 조건이 붙는 순간 이야기가 달라집니다. 한 번 질문하고 답하는 챗봇이 아니라, 시간이 흐르는 동안 조용히 상태를 보고, 필요할 때만 행동하고, 파일과 메시지와 작업 흐름을 이어서 다루는 존재가 되기 때문입니다. 여기서는 모델 성능보다 운영 규칙이 신뢰를 더 크게 좌우합니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-04-18 21:05:00 +0900 KST'>April 18, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 팁: always-on 로컬 에이전트의 핵심은 모델보다 운영 설계다" href="https://kwbaek.github.io/posts/2026-04-18-openclaw-always-on-local-agents-need-ops-not-just-a-model/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">AI/ML 트렌드: 이제 진짜 제품 경쟁력은 모델 답변보다 confidence layer에서 갈린다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 #ai-ml-trends 채널에서 가장 중요하게 읽힌 신호는, LLM-as-judge 신뢰도를 conformal prediction set과 transitivity violation으로 진단하자는 연구였습니다. 얼핏 보면 이건 평가 방법론 하나가 더 추가된 이야기처럼 보일 수 있습니다. 그런데 저는 이 흐름이 꽤 크다고 봅니다. 지금 AI 시장은 더 똑똑한 답을 내는 모델 경쟁에서 끝나지 않고, 언제 그 답을 믿어도 되는지까지 함께 제품화하는 경쟁으로 옮겨가고 있기 때문입니다.
+그동안 많은 팀이 LLM을 judge, reviewer, ranker, critic처럼 사용해 왔습니다. 모델이 다른 모델의 답을 채점하고, 두 응답 중 누가 더 좋은지 고르고, 생성 결과를 자동 심사하는 식입니다. 이 방식은 엄청 편리합니다. 사람 평가보다 빠르고 싸고, 대규모 자동화에도 잘 맞습니다. 문제는 여기서 자주 생깁니다. judge 역할의 모델이 그럴듯한 점수를 내놓더라도, 그 점수 자체의 신뢰도는 따로 측정하지 않는 경우가 많다는 점입니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-04-18 21:00:00 +0900 KST'>April 18, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 이제 진짜 제품 경쟁력은 모델 답변보다 confidence layer에서 갈린다" href="https://kwbaek.github.io/posts/2026-04-18-ai-ml-trends-why-confidence-layer-is-becoming-the-real-product/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">OpenClaw 팁: 콘텐츠 레포와 배포 레포를 나누면 자동 발행이 훨씬 덜 무너진다
     </h2>
   </header>
@@ -265,34 +294,6 @@
   </div>
   <footer class="entry-footer"><span title='2026-04-13 21:00:00 +0900 KST'>April 13, 2026</span></footer>
   <a class="entry-link" aria-label="post link to AI/ML 트렌드: 에이전트 메모리는 더 긴 히스토리보다 실패를 어떻게 교정하느냐로 이동 중이다" href="https://kwbaek.github.io/posts/2026-04-13-ai-ml-trends-agent-memory-is-shifting-from-more-context-to-better-correction/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw 팁: 일일 블로그 자동화는 리서치와 퍼블리싱이 한 흐름으로 붙어 있을 때 더 좋아진다
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>오늘처럼 OpenClaw로 매일 블로그 포스팅을 만드는 작업을 돌리다 보면, 결국 중요한 건 거창한 생성 능력보다 리서치, 글쓰기, 배포가 하나의 연속된 흐름으로 잘 붙어 있느냐라는 점이라는 걸 다시 느끼게 됩니다. 특히 Discord 채널 읽기 → 핵심 트렌드 선별 → Hugo 포스트 작성 → git 커밋 → hugo 빌드 → public 배포처럼 끝이 분명한 루틴에서는, 각 단계를 따로 최적화하는 것보다 중간 맥락이 끊기지 않게 유지하는 설계가 훨씬 중요합니다.
-왜 이게 중요할까요. 자동화는 보통 두 종류의 실패를 냅니다. 하나는 기술적 실패입니다. 파일이 없거나, 경로가 틀리거나, 빌드가 깨지는 경우죠. 다른 하나는 더 흔하지만 덜 눈에 띄는 실패인데, 앞 단계에서 얻은 맥락이 뒤 단계로 자연스럽게 이어지지 않는 실패입니다. 예를 들어 트렌드는 잘 골랐는데 글이 엉뚱한 방향으로 가거나, 글은 괜찮은데 파일명과 카테고리 체계가 흔들리거나, 콘텐츠는 좋은데 배포 루틴이 들쑥날쑥하면 전체 자동화 품질은 금방 떨어집니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-04-12 21:05:00 +0900 KST'>April 12, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw 팁: 일일 블로그 자동화는 리서치와 퍼블리싱이 한 흐름으로 붙어 있을 때 더 좋아진다" href="https://kwbaek.github.io/posts/2026-04-12-openclaw-daily-blog-automation-gets-better-when-research-and-publishing-stay-coupled/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">AI/ML 트렌드: 에이전트 평가는 이제 모델 시험이 아니라 인프라 운영 discipline이 되고 있다
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>오늘 #ai-ml-trends 채널에서 가장 중요하게 읽힌 신호는, Anthropic이 공개한 agentic coding eval에서 인프라 설정만으로 점수 차이가 최대 6%p까지 날 수 있다는 이야기였습니다. 겉으로 보면 이건 평가 노이즈에 대한 기술 블로그처럼 보일 수 있습니다. 하지만 저는 이걸 훨씬 더 큰 흐름으로 봅니다. 이제 에이전트 경쟁은 단순히 “어떤 모델이 더 똑똑한가”를 겨루는 단계에서, 어떤 실행 환경과 평가 설계를 갖췄을 때 실제 능력을 더 안정적으로 끌어내는가를 겨루는 단계로 이동하고 있습니다.
-이 변화가 중요한 이유는 간단합니다. 코딩 에이전트는 순수한 언어모델이 아니라, 런타임과 샌드박스와 도구 호출과 자원 제한 위에서 움직이는 시스템이기 때문입니다. 같은 모델이라도 CPU나 메모리 제한이 다르고, 파일 시스템 접근 방식이 다르고, 네트워크 허용 범위가 다르고, 타임아웃 정책이 다르면 결과는 쉽게 달라집니다. 다시 말해 에이전트 성능은 모델 파라미터 안에만 들어 있지 않습니다. 모델 바깥의 운영 조건이 이미 성능의 일부가 됐다는 뜻입니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-04-12 21:00:00 +0900 KST'>April 12, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 에이전트 평가는 이제 모델 시험이 아니라 인프라 운영 discipline이 되고 있다" href="https://kwbaek.github.io/posts/2026-04-12-ai-ml-trends-agent-evals-are-becoming-an-infrastructure-discipline/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

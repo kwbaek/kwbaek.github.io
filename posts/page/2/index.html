@@ -158,6 +158,33 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">AI/ML 트렌드: AI 경쟁은 모델 성능에서 런타임 통제로 이동 중
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 AI/ML 트렌드에서 가장 선명한 흐름은 AI 경쟁의 중심이 모델 능력 자체에서 그 모델을 실행하고 통제하는 런타임 레이어로 내려가고 있다는 점입니다. vLLM, llama.cpp, Ollama, Transformers 같은 서빙·로컬 런타임 업데이트부터 Claude Code, opencode, Zed 같은 개발자 도구, 그리고 FAA·Taobao·financial agents 같은 산업 적용 사례까지 모두 같은 방향을 가리킵니다. 이제 중요한 질문은 “어떤 모델이 제일 똑똑한가?”만이 아닙니다. “그 모델을 어떤 환경에서, 어떤 권한으로, 얼마나 안정적으로, 얼마나 검증 가능하게 실행할 수 있는가?”가 더 실전적인 경쟁력이 되고 있습니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-05-10 21:00:00 +0900 KST'>May 10, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to AI/ML 트렌드: AI 경쟁은 모델 성능에서 런타임 통제로 이동 중" href="https://kwbaek.github.io/posts/2026-05-10-ai-ml-trends-ai-is-moving-from-model-capability-to-runtime-control/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 팁: 에이전트 런타임 경계를 명시적으로 설계하자
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>OpenClaw를 개인 비서, Discord 트렌드 수집기, 블로그 발행 cron, 채용공고 모니터, 리포트 생성기로 계속 운영하다 보면 한 가지 패턴이 반복됩니다. 자동화의 품질은 모델이 얼마나 똑똑한가보다 런타임 경계가 얼마나 명확한가에 더 많이 좌우됩니다. 어떤 입력을 믿을지, 어떤 도구를 언제 호출할지, 어떤 작업은 승인 없이 해도 되는지, 어떤 실패는 외부 채널에 보고해야 하는지, 어떤 정보는 절대 출력하면 안 되는지가 명확할수록 에이전트는 오래 안정적으로 굴러갑니다.
+최근 OpenClaw 릴리스와 AI/ML 트렌드에서도 이 방향은 뚜렷합니다. OpenClaw 2026.5.7은 agent 권한, 메모리, tool dispatch, 채널 라우팅 hardening을 강조했습니다. owner enforcement, global memory admin scope, before-tool-call authorization, Discord target parsing 수정 같은 항목은 화려한 기능은 아니지만 운영자에게는 매우 중요합니다. 에이전트가 여러 채널, 여러 cron, 여러 도구를 오가면 작은 라우팅 실수나 권한 경계 누락이 곧 잘못된 메시지 전송, 민감정보 노출, 엉뚱한 작업 실행으로 이어질 수 있기 때문입니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-05-10 21:00:00 +0900 KST'>May 10, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 팁: 에이전트 런타임 경계를 명시적으로 설계하자" href="https://kwbaek.github.io/posts/2026-05-10-openclaw-make-agent-runtime-boundaries-explicit/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">AI/ML 트렌드: AI 에이전트는 운영 인프라와 거버넌스로 이동 중
     </h2>
   </header>
@@ -262,33 +289,6 @@ OpenClaw 2026.5.7 릴리스에서 눈에 띄는 흐름도 이쪽입니다. owner
   </div>
   <footer class="entry-footer"><span title='2026-05-06 21:00:00 +0900 KST'>May 6, 2026</span></footer>
   <a class="entry-link" aria-label="post link to OpenClaw 팁: 블로그 발행 cron은 감사 가능한 출판 파이프라인으로 만들자" href="https://kwbaek.github.io/posts/2026-05-06-openclaw-build-blog-crons-as-auditable-publishing-pipelines/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">AI/ML 트렌드: 에이전트는 상태를 가진 운영 시스템으로 바뀌고 있다
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>오늘 #ai-ml-trends에서 가장 흥미로운 흐름은 에이전트 AI가 단순한 “질문-응답 모델”에서 상태를 기억하고, 도구를 실행하고, 권한을 통제받는 운영 시스템으로 바뀌고 있다는 점입니다. Pydantic AI의 OpenAI Conversations API state 지원, Google Workspace Studio agent와 교육용 Gemini 확대, OpenAI의 low-latency voice AI 아키텍처, NVIDIA Nemotron 3 Nano Omni, 그리고 zero-trust agent authorization 연구가 모두 같은 방향을 가리킵니다. 이제 중요한 질문은 “모델이 답을 잘하나?”보다 “이 에이전트가 어떤 상태로, 어떤 권한으로, 어떤 비용 구조에서 오래 일할 수 있나?”에 가깝습니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-05-05 21:00:00 +0900 KST'>May 5, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 에이전트는 상태를 가진 운영 시스템으로 바뀌고 있다" href="https://kwbaek.github.io/posts/2026-05-05-ai-ml-trends-agents-are-becoming-stateful-governed-operating-systems/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw 팁: 에이전트 자동화는 상태를 남기되 감사 가능하게 만들자
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>OpenClaw로 매일 트렌드 수집, 아이디어 생성, 리포트 발송, 블로그 배포 같은 자동화를 굴리다 보면 한 가지 원칙이 점점 중요해집니다. 에이전트 자동화는 상태가 있어야 유용하지만, 그 상태가 감사 가능해야 안전합니다. 오늘 AI/ML 트렌드에서도 Pydantic AI의 conversation state 지원, Google Gemini API Webhooks, Workspace Studio agent, intent-aware authorization 연구가 올라왔습니다. 이 흐름은 OpenClaw cron과 heartbeat를 설계할 때 그대로 참고할 만합니다.
-첫 번째 원칙은 “기억”을 파일과 Git에 남기는 것입니다. 에이전트가 매번 처음 보는 것처럼 일하면 중복 링크를 또 고르고, 같은 아이디어를 반복하고, 실패 지점을 놓치기 쉽습니다. 반대로 최근 메시지, 생성한 글, 보고서, 배포 결과를 파일로 남기면 다음 실행이 더 똑똑해집니다. OpenClaw에서는 memory/YYYY-MM-DD.md, reports/, content/posts/ 같은 산출물 경로를 잘 쓰고, 중요한 결과는 Git 커밋으로 checkpoint를 남기는 방식이 실용적입니다. 상태는 머릿속이 아니라 파일에 있어야 복구됩니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-05-05 21:00:00 +0900 KST'>May 5, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw 팁: 에이전트 자동화는 상태를 남기되 감사 가능하게 만들자" href="https://kwbaek.github.io/posts/2026-05-05-openclaw-make-agent-automation-stateful-but-auditable/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

@@ -143,6 +143,20 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 팁: 크론 작업은 호스트 명령보다 내장 도구 중심으로 설계할수록 덜 깨진다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>OpenClaw로 매일 도는 작업을 만들다 보면 금방 체감하는 게 있습니다. 똑같이 자동화처럼 보여도, 호스트 셸 명령을 길게 이어붙여 돌리는 방식과 OpenClaw의 내장 도구를 중심으로 설계하는 방식은 안정성이 꽤 다릅니다. 특히 크론처럼 반복 실행되는 작업에서는 이 차이가 더 크게 드러납니다. 제 경험상 잘 버티는 워크플로는 대체로 후자입니다.
+이유는 단순합니다. 내장 도구는 애초에 에이전트가 현재 세션 문맥 안에서 다루도록 설계되어 있습니다. 파일을 읽고 쓰는 일은 read와 write, 다른 세션 확인은 sessions_*, 웹 확인은 브라우저 계열 도구, 상태 파악은 session_status처럼 행동 단위가 비교적 또렷하게 나뉘어 있습니다. 반대로 호스트 명령은 한 줄 안에 너무 많은 전제를 묶기 쉽습니다. 현재 작업 디렉터리, 셸 차이, 설치 여부, 인자 quoting, 출력 형식, 승인 경로, 실패 코드 해석 같은 것들이 한꺼번에 섞입니다. 한 번은 편할 수 있어도, 매일 도는 잡에서는 이런 작은 불확실성이 결국 누적됩니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-04-22 21:05:00 +0900 KST'>April 22, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 팁: 크론 작업은 호스트 명령보다 내장 도구 중심으로 설계할수록 덜 깨진다" href="https://kwbaek.github.io/posts/2026-04-22-openclaw-cron-jobs-get-more-reliable-when-built-around-first-class-tools/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">OpenClaw 팁: 승인 마찰을 줄이려면 반복 작업을 스크립트로 고정하는 편이 낫다
     </h2>
   </header>
@@ -266,20 +280,6 @@
   </div>
   <footer class="entry-footer"><span title='2026-04-09 20:55:00 +0900 KST'>April 9, 2026</span></footer>
   <a class="entry-link" aria-label="post link to OpenClaw 팁: 일일 콘텐츠 자동화는 지시문이 명시적이고 호스트 실행이 boring할수록 오래 버틴다" href="https://kwbaek.github.io/posts/2026-04-09-openclaw-daily-content-ops-work-better-when-instructions-are-explicit-and-host-runs-stay-boring/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw 팁: Hugo 자동화는 콘텐츠 작성과 배포를 두 개의 릴리즈로 다룰 때 더 안전해진다
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>오늘 OpenClaw로 블로그 자동화를 돌리면서 다시 확인한 건, Hugo 기반 블로그 자동화에서 제일 위험한 지점은 글을 쓰는 순간이 아니라 배포를 한 덩어리 작업처럼 착각하는 순간이라는 점입니다. 겉으로 보면 단순합니다. 글 두 편 만들고, git add/commit/push 하고, Hugo 빌드하고, public/도 커밋하고 푸시하면 끝입니다. 그런데 실제 운영 관점에선 이 흐름이 하나의 작업이 아니라 성격이 다른 두 개의 릴리즈에 가깝습니다.
-첫 번째 릴리즈는 content/ 쪽입니다. 이건 사람이 읽는 원고, 메타데이터, 카테고리, 태그, 문서 구조 같은 소스 콘텐츠의 릴리즈입니다. 두 번째 릴리즈는 public/ 쪽입니다. 이건 Hugo가 생성한 정적 파일, 즉 브라우저가 실제로 보게 되는 배포 산출물의 릴리즈입니다. 둘은 연결돼 있지만 완전히 같은 건 아닙니다. 이걸 분리해서 생각하기 시작하면 OpenClaw 자동화가 훨씬 덜 깨지고, 실패했을 때도 복구가 쉬워집니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-04-08 20:55:00 +0900 KST'>April 8, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw 팁: Hugo 자동화는 콘텐츠 작성과 배포를 두 개의 릴리즈로 다룰 때 더 안전해진다" href="https://kwbaek.github.io/posts/2026-04-08-openclaw-hugo-automation-gets-safer-when-content-and-deployment-are-treated-as-two-separate-releases/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">
