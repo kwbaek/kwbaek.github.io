@@ -143,6 +143,20 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 팁: 크론 자동화에는 명시적인 신뢰 경계를 붙이기
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>OpenClaw로 매일 트렌드를 수집하고 블로그를 배포하다 보면 자동화의 편리함보다 먼저 챙겨야 할 것이 있습니다. 바로 신뢰 경계입니다. 크론은 사람이 매번 지켜보지 않아도 실행되기 때문에, 한 번 잘못 설계하면 같은 실수가 반복됩니다. 그래서 OpenClaw 자동화는 “무엇을 할지”뿐 아니라 “어디까지 할 수 있고, 무엇을 출력하지 않으며, 실패하면 어디에 보고할지”를 지시문에 명확히 써두는 편이 좋습니다.
+가장 기본은 입력 경계입니다. 예를 들어 블로그 크론은 Discord 트렌드 채널의 오늘 메시지를 읽고, 그중 공개 가능한 AI/ML 흐름만 골라 글로 만듭니다. 이때 채널 ID, 메시지 ID, 내부 실행 로그, 세션키, 토큰, 로컬 절대경로는 글의 재료가 아닙니다. 독자에게 필요한 것은 공개 가능한 출처, 해석, 시사점입니다. OpenClaw가 다양한 메시지와 파일을 읽을 수 있다는 사실은 강점이지만, 그만큼 출력 경계를 좁히는 습관이 중요합니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-05-16 21:00:00 +0900 KST'>May 16, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 팁: 크론 자동화에는 명시적인 신뢰 경계를 붙이기" href="https://kwbaek.github.io/posts/2026-05-16-openclaw-run-crons-with-explicit-trust-boundaries/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">OpenClaw 팁: Discord 트렌드 채널을 블로그 편집 입력으로 쓰기
     </h2>
   </header>
@@ -264,20 +278,6 @@ OpenClaw 2026.5.7 릴리스에서 눈에 띄는 흐름도 이쪽입니다. owner
   </div>
   <footer class="entry-footer"><span title='2026-04-12 21:05:00 +0900 KST'>April 12, 2026</span></footer>
   <a class="entry-link" aria-label="post link to OpenClaw 팁: 일일 블로그 자동화는 리서치와 퍼블리싱이 한 흐름으로 붙어 있을 때 더 좋아진다" href="https://kwbaek.github.io/posts/2026-04-12-openclaw-daily-blog-automation-gets-better-when-research-and-publishing-stay-coupled/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw로 매일 트렌드 스캔을 블로그 포스트로 연결하는 방법
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>OpenClaw를 오래 만져볼수록 재미있는 지점은, 이 도구가 단순히 메시지에 답하는 봇이 아니라 채널에서 신호를 읽고, 그 신호를 실제 산출물로 바꾸는 운영 레이어에 가깝다는 점입니다. 오늘 제가 돌린 워크플로도 딱 그 예시였습니다. Discord의 #ai-ml-trends 채널에서 오늘 올라온 흐름을 읽고, 그중 가장 의미 있는 주제를 하나 고른 뒤, 그 내용을 Hugo 블로그 글로 정리하는 작업입니다.
-이런 흐름이 좋은 이유는 단순합니다. 정보 수집과 글쓰기를 분리하지 않기 때문입니다. 많은 팀이 뉴스는 뉴스대로 읽고, 블로그는 나중에 따로 쓰려다가 결국 둘 다 흐지부지됩니다. 반면 OpenClaw는 채널 메시지, cron 지시문, 로컬 파일 작업을 하나의 루프 안에 묶을 수 있습니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-04-10 21:14:00 +0900 KST'>April 10, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw로 매일 트렌드 스캔을 블로그 포스트로 연결하는 방법" href="https://kwbaek.github.io/posts/2026-04-10-openclaw-daily-trend-to-blog-workflow/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

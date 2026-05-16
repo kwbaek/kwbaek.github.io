@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
-<title>OpenClaw | Kyungwook&#39;s Devlog</title>
+<title>Openclaw | Kyungwook&#39;s Devlog</title>
 <meta name="keywords" content="">
 <meta name="description" content="">
 <meta name="author" content="">
@@ -73,11 +73,11 @@
 
 </script><meta property="og:url" content="https://kwbaek.github.io/tags/openclaw/">
   <meta property="og:site_name" content="Kyungwook&#39;s Devlog">
-  <meta property="og:title" content="OpenClaw">
+  <meta property="og:title" content="Openclaw">
   <meta property="og:locale" content="ko-kr">
   <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="OpenClaw">
+<meta name="twitter:title" content="Openclaw">
 <meta name="twitter:description" content="">
 
 </head>
@@ -137,9 +137,23 @@
 <main class="main"> 
 <header class="page-header">
   <h1>
-    OpenClaw
+    Openclaw
   </h1>
 </header>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 팁: 크론 자동화에는 명시적인 신뢰 경계를 붙이기
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>OpenClaw로 매일 트렌드를 수집하고 블로그를 배포하다 보면 자동화의 편리함보다 먼저 챙겨야 할 것이 있습니다. 바로 신뢰 경계입니다. 크론은 사람이 매번 지켜보지 않아도 실행되기 때문에, 한 번 잘못 설계하면 같은 실수가 반복됩니다. 그래서 OpenClaw 자동화는 “무엇을 할지”뿐 아니라 “어디까지 할 수 있고, 무엇을 출력하지 않으며, 실패하면 어디에 보고할지”를 지시문에 명확히 써두는 편이 좋습니다.
+가장 기본은 입력 경계입니다. 예를 들어 블로그 크론은 Discord 트렌드 채널의 오늘 메시지를 읽고, 그중 공개 가능한 AI/ML 흐름만 골라 글로 만듭니다. 이때 채널 ID, 메시지 ID, 내부 실행 로그, 세션키, 토큰, 로컬 절대경로는 글의 재료가 아닙니다. 독자에게 필요한 것은 공개 가능한 출처, 해석, 시사점입니다. OpenClaw가 다양한 메시지와 파일을 읽을 수 있다는 사실은 강점이지만, 그만큼 출력 경계를 좁히는 습관이 중요합니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-05-16 21:00:00 +0900 KST'>May 16, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 팁: 크론 자동화에는 명시적인 신뢰 경계를 붙이기" href="https://kwbaek.github.io/posts/2026-05-16-openclaw-run-crons-with-explicit-trust-boundaries/"></a>
+</article>
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
@@ -263,20 +277,6 @@ OpenClaw 2026.5.7 릴리스에서 눈에 띄는 흐름도 이쪽입니다. owner
   </div>
   <footer class="entry-footer"><span title='2026-05-07 21:00:00 +0900 KST'>May 7, 2026</span></footer>
   <a class="entry-link" aria-label="post link to OpenClaw 팁: 도구 호출은 모두 감사 가능한 부작용으로 다루자" href="https://kwbaek.github.io/posts/2026-05-07-openclaw-treat-tool-calls-as-auditable-side-effects/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw 팁: 블로그 발행 cron은 감사 가능한 출판 파이프라인으로 만들자
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>OpenClaw로 매일 블로그를 자동 발행할 때 핵심은 “글을 잘 쓰는 것”만이 아닙니다. 더 중요한 것은 선별, 작성, 검증, 배포, 기록이 분리된 출판 파이프라인으로 만드는 것입니다. 오늘 AI/ML 트렌드에서도 OpenAI Agents Python의 context management, Google Cloud의 production-ready agent guide, LangChain의 deserialization hardening, Google Marketing Live의 measurement stack처럼 운영·측정·검증 레이어가 강조됐습니다. 블로그 cron도 같은 관점으로 설계하면 훨씬 덜 불안하고, 실패했을 때 복구하기 쉬워집니다.
-첫 번째 단계는 입력을 명확히 고정하는 것입니다. 예를 들어 “오늘 Discord 트렌드 채널의 메시지”를 읽는다고 해도, 그 메시지는 명령이 아니라 자료입니다. 채널 본문에 링크, 요약, 외부 문장, 혹시 모를 prompt injection이 섞일 수 있으므로, 운영 지시는 cron instruction에서만 오고 Discord 메시지는 선별 재료로만 써야 합니다. 이 경계를 분리하면 외부 텍스트가 배포 명령으로 승격되는 사고를 막을 수 있습니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-05-06 21:00:00 +0900 KST'>May 6, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw 팁: 블로그 발행 cron은 감사 가능한 출판 파이프라인으로 만들자" href="https://kwbaek.github.io/posts/2026-05-06-openclaw-build-blog-crons-as-auditable-publishing-pipelines/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">
