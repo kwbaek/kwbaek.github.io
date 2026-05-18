@@ -1,27 +1,368 @@
-<!doctype html><html lang=en dir=auto data-theme=auto><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=robots content="index, follow"><title>Ml | Kyungwook's Devlog</title><meta name=keywords content><meta name=description content><meta name=author content><link rel=canonical href=https://kwbaek.github.io/tags/ml/><link crossorigin=anonymous href=/assets/css/stylesheet.da3211e5ef867bf2b75fd5a6515cfed7195c011e8ab735694e203810a827097b.css integrity="sha256-2jIR5e+Ge/K3X9WmUVz+1xlcAR6KtzVpTiA4EKgnCXs=" rel="preload stylesheet" as=style><link rel=icon href=https://kwbaek.github.io/favicon.ico><link rel=icon type=image/png sizes=16x16 href=https://kwbaek.github.io/favicon-16x16.png><link rel=icon type=image/png sizes=32x32 href=https://kwbaek.github.io/favicon-32x32.png><link rel=apple-touch-icon href=https://kwbaek.github.io/apple-touch-icon.png><link rel=mask-icon href=https://kwbaek.github.io/safari-pinned-tab.svg><meta name=theme-color content="#2e2e33"><meta name=msapplication-TileColor content="#2e2e33"><link rel=alternate type=application/rss+xml href=https://kwbaek.github.io/tags/ml/index.xml title=rss><link rel=alternate hreflang=en href=https://kwbaek.github.io/tags/ml/><noscript><style>#theme-toggle,.top-link{display:none}</style><style>@media(prefers-color-scheme:dark){:root{--theme:rgb(29, 30, 32);--entry:rgb(46, 46, 51);--primary:rgb(218, 218, 219);--secondary:rgb(155, 156, 157);--tertiary:rgb(65, 66, 68);--content:rgb(196, 196, 197);--code-block-bg:rgb(46, 46, 51);--code-bg:rgb(55, 56, 62);--border:rgb(51, 51, 51);color-scheme:dark}.list{background:var(--theme)}.toc{background:var(--entry)}}@media(prefers-color-scheme:light){.list::-webkit-scrollbar-thumb{border-color:var(--code-bg)}}</style></noscript><script>localStorage.getItem("pref-theme")==="dark"?document.querySelector("html").dataset.theme="dark":localStorage.getItem("pref-theme")==="light"?document.querySelector("html").dataset.theme="light":window.matchMedia("(prefers-color-scheme: dark)").matches?document.querySelector("html").dataset.theme="dark":document.querySelector("html").dataset.theme="light"</script><meta property="og:url" content="https://kwbaek.github.io/tags/ml/"><meta property="og:site_name" content="Kyungwook's Devlog"><meta property="og:title" content="Ml"><meta property="og:locale" content="ko-kr"><meta property="og:type" content="website"><meta name=twitter:card content="summary"><meta name=twitter:title content="Ml"><meta name=twitter:description content></head><body class=list id=top><header class=header><nav class=nav><div class=logo><a href=https://kwbaek.github.io/ accesskey=h title="Kyungwook's Devlog (Alt + H)">Kyungwook's Devlog</a><div class=logo-switches><button id=theme-toggle accesskey=t title="(Alt + T)" aria-label="Toggle theme">
-<svg id="moon" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
-<svg id="sun" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button></div></div><ul id=menu><li><a href=https://kwbaek.github.io/categories/ title=categories><span>categories</span></a></li><li><a href=https://kwbaek.github.io/tags/ title=tags><span>tags</span></a></li><li><a href=https://kwbaek.github.io/ title="Kyungwook's Devlog"><span>Kyungwook's Devlog</span>&nbsp;
-<svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><path d="M15 3h6v6"/><path d="M10 14 21 3"/></svg></a></li></ul></nav></header><main class=main><header class=page-header><h1>Ml</h1></header><article class="post-entry tag-entry"><header class=entry-header><h2 class=entry-hint-parent>AI/ML 트렌드: 이제 진짜 전장은 모델보다 서빙 인프라다</h2></header><div class=entry-content><p>오늘 #ai-ml-trends 채널에서 가장 흥미롭고 중요한 신호는 저는 단연 vLLM 0.19.0이라고 봤습니다. 겉으로 보면 그냥 오픈소스 서빙 스택의 버전 업데이트처럼 보일 수 있습니다. 하지만 내용을 뜯어보면 단순한 릴리즈 노트 이상입니다. Gemma 4 지원, speculative decoding과 async scheduling 개선, CPU KV offload, Transformers v5 호환성까지 한 번에 묶여 나왔다는 건, AI 업계의 경쟁축이 다시 한 번 또렷해졌다는 뜻이기 때문입니다. 이제 중요한 건 “누가 더 좋은 모델을 먼저 공개했는가”만이 아니라, 그 모델을 얼마나 싸고 빠르고 안정적으로 실제 서비스에 올릴 수 있는가입니다.
-...</p></div><footer class=entry-footer><span title='2026-04-04 21:00:00 +0900 KST'>April 4, 2026</span></footer><a class=entry-link aria-label="post link to AI/ML 트렌드: 이제 진짜 전장은 모델보다 서빙 인프라다" href=https://kwbaek.github.io/posts/2026-04-04-ai-ml-trends-serving-infrastructure-is-becoming-the-real-ai-battleground/></a></article><article class="post-entry tag-entry"><header class=entry-header><h2 class=entry-hint-parent>AI/ML 트렌드: 리스크 운영과 공공 AI가 이제 진짜 시장을 만든다</h2></header><div class=entry-content><p>오늘 #ai-ml-trends 채널에서 가장 인상적이었던 흐름은, AI 업계의 무게중심이 또 한 번 새 frontier 모델 발표가 아니라 리스크 운영 서비스, 공공 예측 AI, 노동시장 전환 설계 쪽으로 이동하고 있다는 점이었습니다. 특히 눈에 띈 건 세 가지였습니다. OpenAI·Anthropic 주변의 위기 대응 파트너가 극단주의 대응 같은 고위험 영역으로 전문화되고 있다는 신호, 미국 공공부문이 AI를 노동·접근성 정책과 함께 묶기 시작했다는 흐름, 그리고 USGS가 90일 가뭄 예측용 AI 도구를 내놓았다는 점입니다. 서로 다른 뉴스처럼 보이지만, 저는 이 셋이 사실상 같은 이야기를 하고 있다고 봅니다.
-...</p></div><footer class=entry-footer><span title='2026-04-03 21:00:00 +0900 KST'>April 3, 2026</span></footer><a class=entry-link aria-label="post link to AI/ML 트렌드: 리스크 운영과 공공 AI가 이제 진짜 시장을 만든다" href=https://kwbaek.github.io/posts/2026-04-03-ai-ml-trends-risk-operations-and-public-ai-are-becoming-the-real-market/></a></article><article class="post-entry tag-entry"><header class=entry-header><h2 class=entry-hint-parent>AI/ML 트렌드: 이제 경쟁력은 모델 점수보다 국가 단위 AI 거버넌스 데이터에 달려 있다</h2></header><div class=entry-content><p>오늘 #ai-ml-trends 채널에서 가장 흥미롭고 중요한 흐름은, AI 경쟁의 중심이 다시 한 번 새 모델 발표에서 벗어나 국가 단위 거버넌스와 경제영향 측정 인프라로 이동하고 있다는 점이었습니다. 특히 눈에 들어온 건 Anthropic이 호주 정부와 AI 안전 및 경제영향 추적을 위해 데이터를 공유하는 방향으로 협력한다는 신호였습니다. 얼핏 보면 정책 뉴스처럼 보이지만, 저는 이걸 꽤 큰 변화의 초입으로 봅니다.
-그 이유는 간단합니다. AI가 이제 더 이상 “좋은 모델을 만들면 시장이 알아서 따라온다"는 단계에만 있지 않기 때문입니다. 실제로는 정부, 규제기관, 대기업, 공공조직이 모두 같은 질문을 던지고 있습니다. 이 기술이 노동시장에 어떤 영향을 주는지, 생산성을 얼마나 바꾸는지, 어떤 위험이 반복적으로 생기는지, 그리고 그걸 누가 어떻게 측정할 것인지 말이죠. 이 질문에 답하지 못하면 모델 성능이 아무리 좋아도 대규모 도입은 느려질 수밖에 없습니다.
-...</p></div><footer class=entry-footer><span title='2026-04-02 21:00:00 +0900 KST'>April 2, 2026</span></footer><a class=entry-link aria-label="post link to AI/ML 트렌드: 이제 경쟁력은 모델 점수보다 국가 단위 AI 거버넌스 데이터에 달려 있다" href=https://kwbaek.github.io/posts/2026-04-02-ai-ml-trends-why-national-ai-governance-data-matters-now/></a></article><article class="post-entry tag-entry"><header class=entry-header><h2 class=entry-hint-parent>AI/ML 트렌드: 이제 AI 인프라 경쟁은 GPU 수보다 전력 유연성이 더 중요해질 수 있다</h2></header><div class=entry-content><p>오늘 #ai-ml-trends 채널에서 가장 흥미롭고 중요한 신호로 고른 것은 NVIDIA와 Emerald AI가 강조한 power-flexible AI factories 흐름입니다. 한 줄로 줄이면, 이제 AI 인프라는 단순히 “GPU를 얼마나 많이 확보했는가”로만 경쟁하지 않는다는 이야기입니다. 앞으로는 같은 GPU 자원을 얼마나 전력 친화적으로, 그리드 친화적으로, 그리고 운영 유연하게 굴릴 수 있는가가 점점 더 중요한 경쟁력이 될 가능성이 큽니다.
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Ml | Kyungwook&#39;s Devlog</title>
+<meta name="keywords" content="">
+<meta name="description" content="">
+<meta name="author" content="">
+<link rel="canonical" href="https://kwbaek.github.io/tags/ml/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.da3211e5ef867bf2b75fd5a6515cfed7195c011e8ab735694e203810a827097b.css" integrity="sha256-2jIR5e&#43;Ge/K3X9WmUVz&#43;1xlcAR6KtzVpTiA4EKgnCXs=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://kwbaek.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://kwbaek.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://kwbaek.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://kwbaek.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://kwbaek.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" type="application/rss+xml" href="https://kwbaek.github.io/tags/ml/index.xml" title="rss">
+<link rel="alternate" hreflang="en" href="https://kwbaek.github.io/tags/ml/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="https://kwbaek.github.io/tags/ml/">
+  <meta property="og:site_name" content="Kyungwook&#39;s Devlog">
+  <meta property="og:title" content="Ml">
+  <meta property="og:locale" content="ko-kr">
+  <meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Ml">
+<meta name="twitter:description" content="">
+
+</head>
+<body class="list" id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://kwbaek.github.io/" accesskey="h" title="Kyungwook&#39;s Devlog (Alt + H)">Kyungwook&#39;s Devlog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://kwbaek.github.io/categories/" title="categories">
+                    <span>categories</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kwbaek.github.io/tags/" title="tags">
+                    <span>tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kwbaek.github.io/" title="Kyungwook&#39;s Devlog">
+                    <span>Kyungwook&#39;s Devlog</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main"> 
+<header class="page-header">
+  <h1>
+    Ml
+  </h1>
+</header>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">AI/ML 트렌드: 이제 더 나은 추론은 정확도보다 비용 구조를 먼저 본다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 #ai-ml-trends 채널에서 가장 흥미롭고 중요한 신호는 저는 Batched Contextual Reinforcement라고 봤습니다. 표면적으로는 reasoning token을 줄이는 새로운 학습 기법 제안처럼 보입니다. 하지만 조금만 더 들여다보면, 이건 단순한 알고리즘 개선이 아니라 AI 경쟁의 기준이 어디로 옮겨가고 있는지를 보여주는 신호에 가깝습니다. 채널에 올라온 요약대로라면 이 방식은 여러 문제를 한 컨텍스트 안에서 함께 풀게 하면서 정확도를 유지한 채 추론 토큰을 15.8%에서 62.6%까지 줄였다고 주장합니다. 이 수치가 완전히 재현되느냐는 앞으로 더 봐야겠지만, 방향성 자체는 이미 충분히 중요합니다. 이제 경쟁은 “누가 더 똑똑한가”만이 아니라 누가 같은 수준의 답을 더 싸게 내느냐로 더 빠르게 이동하고 있습니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-04-05 21:00:00 +0900 KST'>April 5, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 이제 더 나은 추론은 정확도보다 비용 구조를 먼저 본다" href="https://kwbaek.github.io/posts/2026-04-05-ai-ml-trends-better-reasoning-is-now-about-cost-not-just-accuracy/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">AI/ML 트렌드: 이제 진짜 전장은 모델보다 서빙 인프라다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 #ai-ml-trends 채널에서 가장 흥미롭고 중요한 신호는 저는 단연 vLLM 0.19.0이라고 봤습니다. 겉으로 보면 그냥 오픈소스 서빙 스택의 버전 업데이트처럼 보일 수 있습니다. 하지만 내용을 뜯어보면 단순한 릴리즈 노트 이상입니다. Gemma 4 지원, speculative decoding과 async scheduling 개선, CPU KV offload, Transformers v5 호환성까지 한 번에 묶여 나왔다는 건, AI 업계의 경쟁축이 다시 한 번 또렷해졌다는 뜻이기 때문입니다. 이제 중요한 건 “누가 더 좋은 모델을 먼저 공개했는가”만이 아니라, 그 모델을 얼마나 싸고 빠르고 안정적으로 실제 서비스에 올릴 수 있는가입니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-04-04 21:00:00 +0900 KST'>April 4, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 이제 진짜 전장은 모델보다 서빙 인프라다" href="https://kwbaek.github.io/posts/2026-04-04-ai-ml-trends-serving-infrastructure-is-becoming-the-real-ai-battleground/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">AI/ML 트렌드: 리스크 운영과 공공 AI가 이제 진짜 시장을 만든다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 #ai-ml-trends 채널에서 가장 인상적이었던 흐름은, AI 업계의 무게중심이 또 한 번 새 frontier 모델 발표가 아니라 리스크 운영 서비스, 공공 예측 AI, 노동시장 전환 설계 쪽으로 이동하고 있다는 점이었습니다. 특히 눈에 띈 건 세 가지였습니다. OpenAI·Anthropic 주변의 위기 대응 파트너가 극단주의 대응 같은 고위험 영역으로 전문화되고 있다는 신호, 미국 공공부문이 AI를 노동·접근성 정책과 함께 묶기 시작했다는 흐름, 그리고 USGS가 90일 가뭄 예측용 AI 도구를 내놓았다는 점입니다. 서로 다른 뉴스처럼 보이지만, 저는 이 셋이 사실상 같은 이야기를 하고 있다고 봅니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-04-03 21:00:00 +0900 KST'>April 3, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 리스크 운영과 공공 AI가 이제 진짜 시장을 만든다" href="https://kwbaek.github.io/posts/2026-04-03-ai-ml-trends-risk-operations-and-public-ai-are-becoming-the-real-market/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">AI/ML 트렌드: 이제 경쟁력은 모델 점수보다 국가 단위 AI 거버넌스 데이터에 달려 있다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 #ai-ml-trends 채널에서 가장 흥미롭고 중요한 흐름은, AI 경쟁의 중심이 다시 한 번 새 모델 발표에서 벗어나 국가 단위 거버넌스와 경제영향 측정 인프라로 이동하고 있다는 점이었습니다. 특히 눈에 들어온 건 Anthropic이 호주 정부와 AI 안전 및 경제영향 추적을 위해 데이터를 공유하는 방향으로 협력한다는 신호였습니다. 얼핏 보면 정책 뉴스처럼 보이지만, 저는 이걸 꽤 큰 변화의 초입으로 봅니다.
+그 이유는 간단합니다. AI가 이제 더 이상 “좋은 모델을 만들면 시장이 알아서 따라온다&#34;는 단계에만 있지 않기 때문입니다. 실제로는 정부, 규제기관, 대기업, 공공조직이 모두 같은 질문을 던지고 있습니다. 이 기술이 노동시장에 어떤 영향을 주는지, 생산성을 얼마나 바꾸는지, 어떤 위험이 반복적으로 생기는지, 그리고 그걸 누가 어떻게 측정할 것인지 말이죠. 이 질문에 답하지 못하면 모델 성능이 아무리 좋아도 대규모 도입은 느려질 수밖에 없습니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-04-02 21:00:00 +0900 KST'>April 2, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 이제 경쟁력은 모델 점수보다 국가 단위 AI 거버넌스 데이터에 달려 있다" href="https://kwbaek.github.io/posts/2026-04-02-ai-ml-trends-why-national-ai-governance-data-matters-now/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">AI/ML 트렌드: 이제 AI 인프라 경쟁은 GPU 수보다 전력 유연성이 더 중요해질 수 있다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 #ai-ml-trends 채널에서 가장 흥미롭고 중요한 신호로 고른 것은 NVIDIA와 Emerald AI가 강조한 power-flexible AI factories 흐름입니다. 한 줄로 줄이면, 이제 AI 인프라는 단순히 “GPU를 얼마나 많이 확보했는가”로만 경쟁하지 않는다는 이야기입니다. 앞으로는 같은 GPU 자원을 얼마나 전력 친화적으로, 그리드 친화적으로, 그리고 운영 유연하게 굴릴 수 있는가가 점점 더 중요한 경쟁력이 될 가능성이 큽니다.
 그동안 AI 인프라 담론의 중심은 대체로 비슷했습니다. 더 큰 클러스터, 더 빠른 네트워크, 더 많은 H100/B100 계열 가속기, 더 긴 학습 러닝, 더 낮은 추론 지연시간 같은 것들이었죠. 물론 이런 요소들은 여전히 중요합니다. 하지만 최근에는 전력망 제약과 데이터센터 전력 수급 문제가 너무 커졌습니다. 그래서 이제는 “연산 성능”만 보는 관점으로는 부족합니다. 전력 사용을 고정 부하로 보는 시대에서, 전력 상황에 반응하는 유연 자산으로 보는 시대로 넘어가는 중이라고 보는 편이 더 정확해 보입니다.
-...</p></div><footer class=entry-footer><span title='2026-04-01 21:00:00 +0900 KST'>April 1, 2026</span></footer><a class=entry-link aria-label="post link to AI/ML 트렌드: 이제 AI 인프라 경쟁은 GPU 수보다 전력 유연성이 더 중요해질 수 있다" href=https://kwbaek.github.io/posts/2026-04-01-ai-ml-trends-power-flexible-ai-factories-turn-energy-into-a-product-feature/></a></article><article class="post-entry tag-entry"><header class=entry-header><h2 class=entry-hint-parent>AI/ML 트렌드: 엔터프라이즈 음성 에이전트의 승부처는 자연스러움보다 거버넌스다</h2></header><div class=entry-content><p>오늘 #ai-ml-trends 채널에서 가장 흥미롭게 읽힌 신호는 IBM과 ElevenLabs가 watsonx Orchestrate에 엔터프라이즈 음성 기능을 결합한다는 소식이었습니다. 겉으로만 보면 또 하나의 음성 AI 협업처럼 보일 수 있습니다. 하지만 이건 단순히 “목소리가 더 자연스러워졌다” 수준의 이야기가 아닙니다. 오히려 지금 시장이 어디로 이동하고 있는지를 꽤 또렷하게 보여주는 사례에 가깝습니다. 핵심은 AI 에이전트 경쟁이 텍스트 기반 챗 인터페이스를 넘어, 음성 중심의 업무 인터페이스로 확장되고 있다는 점입니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-04-01 21:00:00 +0900 KST'>April 1, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 이제 AI 인프라 경쟁은 GPU 수보다 전력 유연성이 더 중요해질 수 있다" href="https://kwbaek.github.io/posts/2026-04-01-ai-ml-trends-power-flexible-ai-factories-turn-energy-into-a-product-feature/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">AI/ML 트렌드: 엔터프라이즈 음성 에이전트의 승부처는 자연스러움보다 거버넌스다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 #ai-ml-trends 채널에서 가장 흥미롭게 읽힌 신호는 IBM과 ElevenLabs가 watsonx Orchestrate에 엔터프라이즈 음성 기능을 결합한다는 소식이었습니다. 겉으로만 보면 또 하나의 음성 AI 협업처럼 보일 수 있습니다. 하지만 이건 단순히 “목소리가 더 자연스러워졌다” 수준의 이야기가 아닙니다. 오히려 지금 시장이 어디로 이동하고 있는지를 꽤 또렷하게 보여주는 사례에 가깝습니다. 핵심은 AI 에이전트 경쟁이 텍스트 기반 챗 인터페이스를 넘어, 음성 중심의 업무 인터페이스로 확장되고 있다는 점입니다.
 그동안 많은 생성형 AI 제품은 텍스트 박스를 중심으로 진화했습니다. 사용자는 프롬프트를 치고, 모델은 답을 돌려주고, 그 위에 툴 호출이나 워크플로 자동화가 붙는 구조였죠. 그런데 실제 기업 환경에서는 이 방식이 늘 최적은 아닙니다. 콜센터, 보험 상담, 병원 안내, 공공 민원, 현장 서비스 같은 영역에서는 키보드보다 말로 묻고 말로 응답받는 인터페이스가 훨씬 자연스럽습니다. 특히 여러 언어와 지역 억양을 다뤄야 하는 조직일수록, 텍스트 정확도만이 아니라 음성 품질과 응답 일관성이 경쟁력이 됩니다.
-...</p></div><footer class=entry-footer><span title='2026-03-29 21:00:00 +0900 KST'>March 29, 2026</span></footer><a class=entry-link aria-label="post link to AI/ML 트렌드: 엔터프라이즈 음성 에이전트의 승부처는 자연스러움보다 거버넌스다" href=https://kwbaek.github.io/posts/2026-03-29-ai-ml-trends-voice-first-enterprise-agents-need-governance-not-just-naturalness/></a></article><article class="post-entry tag-entry"><header class=entry-header><h2 class=entry-hint-parent>AI/ML 트렌드: 딥페이크 전쟁의 핵심은 이제 모델보다 유통과 검증이다</h2></header><div class=entry-content><p>오늘 #ai-ml-trends 채널에서 가장 강하게 눈에 들어온 신호는 Reuters가 보도한 미국 중간선거 국면의 AI 딥페이크 확산이었습니다. 표면적으로는 또 하나의 “딥페이크가 위험하다"는 뉴스처럼 보일 수 있지만, 조금만 더 들여다보면 포인트는 모델 품질 그 자체가 아닙니다. 진짜 핵심은 생성 능력의 고도화보다, 가짜 콘텐츠가 얼마나 빠르게 퍼지고 사람들이 얼마나 느리게 검증하는가 쪽으로 전장이 이동했다는 점입니다.
-예전에는 생성형 AI 리스크를 이야기할 때 주로 “영상이 얼마나 정교한가”, “목소리가 얼마나 자연스러운가”, “모델이 얼마나 쉽게 악용될 수 있는가"에 초점이 맞춰졌습니다. 그런데 이제는 그 다음 단계가 더 중요해졌습니다. 실제 선거 국면에서는 콘텐츠 한 건이 완벽해서 문제가 되기보다, 짧은 시간 안에 대량으로 유통되고 정치적 맥락에 맞게 증폭되는 구조가 더 치명적입니다. 완성도가 100점이 아니어도, 타이밍과 플랫폼 구조가 맞으면 여론을 흔드는 데는 충분하다는 뜻입니다.
-...</p></div><footer class=entry-footer><span title='2026-03-28 21:00:00 +0900 KST'>March 28, 2026</span></footer><a class=entry-link aria-label="post link to AI/ML 트렌드: 딥페이크 전쟁의 핵심은 이제 모델보다 유통과 검증이다" href=https://kwbaek.github.io/posts/2026-03-28-ai-deepfakes-shift-the-battleground-from-models-to-distribution/></a></article><article class="post-entry tag-entry"><header class=entry-header><h2 class=entry-hint-parent>AI/ML 트렌드: AGI 경쟁은 이제 점수보다 인지 프레임워크 설계로 간다</h2></header><div class=entry-content><p>오늘 #ai-ml-trends 채널에서 가장 인상적이었던 흐름은, AGI 논의가 더 이상 “누가 벤치마크 점수를 몇 점 더 올렸는가"에만 머물지 않고 무엇을 지능으로 볼 것인지, 그리고 그것을 어떤 축으로 측정할 것인지를 다시 정의하는 단계로 넘어가고 있다는 점이었습니다. 그 신호를 가장 선명하게 보여준 것이 Google DeepMind의 Measuring progress toward AGI: A cognitive framework였습니다.
-이 글이 흥미로운 이유는 단순히 “새 벤치마크가 나왔다"는 수준이 아니기 때문입니다. 핵심은 AGI를 하나의 단일 점수나 마케팅 문구로 포장하지 않고, 지각, 기억, 추론, 메타인지, 집행 기능, 사회적 인지 같은 여러 인지 능력 축으로 분해해서 보자는 제안에 있습니다. 이 관점은 꽤 중요합니다. 지금까지 AI 업계는 종종 특정 시험에서 잘 풀거나 특정 데모를 멋지게 보여주면 곧바로 “일반 지능에 가까워졌다"고 말하는 경향이 있었는데, 실제로는 언어 추론이 강한 모델과 장기 기억이 강한 모델, 계획 능력이 강한 모델은 서로 다른 강점과 약점을 가질 수 있습니다. 결국 중요한 것은 하나의 숫자가 아니라 어떤 종류의 지능이 어느 정도까지 구성되었는가를 더 정밀하게 읽어내는 일입니다.
-...</p></div><footer class=entry-footer><span title='2026-03-23 21:00:00 +0900 KST'>March 23, 2026</span></footer><a class=entry-link aria-label="post link to AI/ML 트렌드: AGI 경쟁은 이제 점수보다 인지 프레임워크 설계로 간다" href=https://kwbaek.github.io/posts/2026-03-23-ai-ml-trends-from-benchmark-scores-to-cognitive-frameworks/></a></article><article class="post-entry tag-entry"><header class=entry-header><h2 class=entry-hint-parent>AI/ML 트렌드: 멀티모달 추론은 이제 정답보다 구성 과정을 학습한다</h2></header><div class=entry-content><p>오늘 #ai-ml-trends 채널에서 가장 흥미로웠던 흐름은, 멀티모달 모델이 더 이상 정답만 잘 맞히는 시스템으로 평가되지 않고, 문제를 풀기 위해 어떤 중간 구성 과정을 거치느냐까지 직접 학습하고 최적화하는 방향으로 넘어가고 있다는 점이었습니다. 그중 가장 강한 신호는 Thinking with Constructions였습니다.
-이 논문이 던지는 메시지는 꽤 선명합니다. 기하 문제나 시각 추론 문제를 풀 때 중요한 것은 최종 답을 맞히는 능력만이 아니라, 필요한 보조선과 도형을 언제 추가하고 어떤 순서로 구성할지 결정하는 능력이라는 것입니다. 기존 멀티모달 모델은 정적인 이미지와 텍스트를 받아 “그럴듯한 답"을 내는 데 초점이 있었다면, 여기서는 한 단계 더 나아가 시각적 구성 자체를 추론의 일부로 다룹니다. 즉 모델이 보는 것만으로 끝나는 게 아니라, 문제 해결을 위해 무엇을 더 만들어야 하는지까지 학습 대상이 됩니다.
-...</p></div><footer class=entry-footer><span title='2026-03-22 21:00:00 +0900 KST'>March 22, 2026</span></footer><a class=entry-link aria-label="post link to AI/ML 트렌드: 멀티모달 추론은 이제 정답보다 구성 과정을 학습한다" href=https://kwbaek.github.io/posts/2026-03-22-ai-ml-trends-multimodal-reasoning-shifts-to-constructive-processes/></a></article><article class="post-entry tag-entry"><header class=entry-header><h2 class=entry-hint-parent>AI/ML 트렌드: 이제 병목은 추론 자체보다 반응 지연이다</h2></header><div class=entry-content><p>오늘 #ai-ml-trends에서 가장 인상적이었던 흐름은, AI 모델의 성능을 더 이상 정답률이나 파라미터 수만으로 보지 않고 “얼마나 빨리 상황 변화에 반응하느냐” 로 다시 평가하기 시작했다는 점이었습니다. 그중 핵심 신호는 “FASTER: Rethinking Real-Time Flow VLAs” 였습니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-03-29 21:00:00 +0900 KST'>March 29, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 엔터프라이즈 음성 에이전트의 승부처는 자연스러움보다 거버넌스다" href="https://kwbaek.github.io/posts/2026-03-29-ai-ml-trends-voice-first-enterprise-agents-need-governance-not-just-naturalness/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">AI/ML 트렌드: 딥페이크 전쟁의 핵심은 이제 모델보다 유통과 검증이다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 #ai-ml-trends 채널에서 가장 강하게 눈에 들어온 신호는 Reuters가 보도한 미국 중간선거 국면의 AI 딥페이크 확산이었습니다. 표면적으로는 또 하나의 “딥페이크가 위험하다&#34;는 뉴스처럼 보일 수 있지만, 조금만 더 들여다보면 포인트는 모델 품질 그 자체가 아닙니다. 진짜 핵심은 생성 능력의 고도화보다, 가짜 콘텐츠가 얼마나 빠르게 퍼지고 사람들이 얼마나 느리게 검증하는가 쪽으로 전장이 이동했다는 점입니다.
+예전에는 생성형 AI 리스크를 이야기할 때 주로 “영상이 얼마나 정교한가”, “목소리가 얼마나 자연스러운가”, “모델이 얼마나 쉽게 악용될 수 있는가&#34;에 초점이 맞춰졌습니다. 그런데 이제는 그 다음 단계가 더 중요해졌습니다. 실제 선거 국면에서는 콘텐츠 한 건이 완벽해서 문제가 되기보다, 짧은 시간 안에 대량으로 유통되고 정치적 맥락에 맞게 증폭되는 구조가 더 치명적입니다. 완성도가 100점이 아니어도, 타이밍과 플랫폼 구조가 맞으면 여론을 흔드는 데는 충분하다는 뜻입니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-03-28 21:00:00 +0900 KST'>March 28, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 딥페이크 전쟁의 핵심은 이제 모델보다 유통과 검증이다" href="https://kwbaek.github.io/posts/2026-03-28-ai-deepfakes-shift-the-battleground-from-models-to-distribution/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">AI/ML 트렌드: AGI 경쟁은 이제 점수보다 인지 프레임워크 설계로 간다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 #ai-ml-trends 채널에서 가장 인상적이었던 흐름은, AGI 논의가 더 이상 “누가 벤치마크 점수를 몇 점 더 올렸는가&#34;에만 머물지 않고 무엇을 지능으로 볼 것인지, 그리고 그것을 어떤 축으로 측정할 것인지를 다시 정의하는 단계로 넘어가고 있다는 점이었습니다. 그 신호를 가장 선명하게 보여준 것이 Google DeepMind의 Measuring progress toward AGI: A cognitive framework였습니다.
+이 글이 흥미로운 이유는 단순히 “새 벤치마크가 나왔다&#34;는 수준이 아니기 때문입니다. 핵심은 AGI를 하나의 단일 점수나 마케팅 문구로 포장하지 않고, 지각, 기억, 추론, 메타인지, 집행 기능, 사회적 인지 같은 여러 인지 능력 축으로 분해해서 보자는 제안에 있습니다. 이 관점은 꽤 중요합니다. 지금까지 AI 업계는 종종 특정 시험에서 잘 풀거나 특정 데모를 멋지게 보여주면 곧바로 “일반 지능에 가까워졌다&#34;고 말하는 경향이 있었는데, 실제로는 언어 추론이 강한 모델과 장기 기억이 강한 모델, 계획 능력이 강한 모델은 서로 다른 강점과 약점을 가질 수 있습니다. 결국 중요한 것은 하나의 숫자가 아니라 어떤 종류의 지능이 어느 정도까지 구성되었는가를 더 정밀하게 읽어내는 일입니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-03-23 21:00:00 +0900 KST'>March 23, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to AI/ML 트렌드: AGI 경쟁은 이제 점수보다 인지 프레임워크 설계로 간다" href="https://kwbaek.github.io/posts/2026-03-23-ai-ml-trends-from-benchmark-scores-to-cognitive-frameworks/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">AI/ML 트렌드: 멀티모달 추론은 이제 정답보다 구성 과정을 학습한다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 #ai-ml-trends 채널에서 가장 흥미로웠던 흐름은, 멀티모달 모델이 더 이상 정답만 잘 맞히는 시스템으로 평가되지 않고, 문제를 풀기 위해 어떤 중간 구성 과정을 거치느냐까지 직접 학습하고 최적화하는 방향으로 넘어가고 있다는 점이었습니다. 그중 가장 강한 신호는 Thinking with Constructions였습니다.
+이 논문이 던지는 메시지는 꽤 선명합니다. 기하 문제나 시각 추론 문제를 풀 때 중요한 것은 최종 답을 맞히는 능력만이 아니라, 필요한 보조선과 도형을 언제 추가하고 어떤 순서로 구성할지 결정하는 능력이라는 것입니다. 기존 멀티모달 모델은 정적인 이미지와 텍스트를 받아 “그럴듯한 답&#34;을 내는 데 초점이 있었다면, 여기서는 한 단계 더 나아가 시각적 구성 자체를 추론의 일부로 다룹니다. 즉 모델이 보는 것만으로 끝나는 게 아니라, 문제 해결을 위해 무엇을 더 만들어야 하는지까지 학습 대상이 됩니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-03-22 21:00:00 +0900 KST'>March 22, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 멀티모달 추론은 이제 정답보다 구성 과정을 학습한다" href="https://kwbaek.github.io/posts/2026-03-22-ai-ml-trends-multimodal-reasoning-shifts-to-constructive-processes/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">AI/ML 트렌드: 이제 병목은 추론 자체보다 반응 지연이다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 #ai-ml-trends에서 가장 인상적이었던 흐름은, AI 모델의 성능을 더 이상 정답률이나 파라미터 수만으로 보지 않고 “얼마나 빨리 상황 변화에 반응하느냐” 로 다시 평가하기 시작했다는 점이었습니다. 그중 핵심 신호는 “FASTER: Rethinking Real-Time Flow VLAs” 였습니다.
 이 논문이 흥미로운 이유는 문제 정의를 바꿔버리기 때문입니다. 기존 실시간 VLA(Vision-Language-Action) 연구는 주로 action chunk를 얼마나 부드럽게 예측하느냐, trajectory가 얼마나 안정적이냐에 초점을 맞췄습니다. 그런데 FASTER는 이 기준이 실제 로봇 환경의 병목을 놓치고 있다고 봅니다. 탁구처럼 환경이 빠르게 바뀌는 작업에서 더 중요한 것은 부드러운 긴 계획이 아니라, 예상 밖 변화가 생겼을 때 바로 반응할 수 있는가 입니다. 즉 핵심은 trajectory smoothness가 아니라 reaction latency 라는 주장입니다.
-...</p></div><footer class=entry-footer><span title='2026-03-21 21:00:00 +0900 KST'>March 21, 2026</span></footer><a class=entry-link aria-label="post link to AI/ML 트렌드: 이제 병목은 추론 자체보다 반응 지연이다" href=https://kwbaek.github.io/posts/2026-03-21-ai-ml-trends-reaction-latency-becomes-the-real-bottleneck/></a></article><article class="post-entry tag-entry"><header class=entry-header><h2 class=entry-hint-parent>AI/ML 트렌드: grounding·안전성·하드웨어 한계가 다시 기준이 된다</h2></header><div class=entry-content><p>오늘 #ai-ml-trends에서 가장 흥미로웠던 흐름은 화려한 모델 스케일 경쟁보다, AI 시스템이 실제 환경에서 얼마나 제대로 작동하느냐를 다시 정면으로 묻는 연구들이 늘고 있다는 점이었습니다. 그중에서도 가장 인상적이었던 주제는 VLA(Vision-Language-Action) 모델의 내부 작동을 해부한 연구, “Not All Features Are Created Equal” 입니다.
-이 논문의 포인트는 생각보다 날카롭습니다. 우리는 보통 VLA를 보면 “시각·언어·행동이 잘 융합된 멀티모달 시스템”이라고 설명하지만, 실제로는 항상 그런 식으로 움직이지 않는다는 겁니다. 저자들은 대규모 rollout과 activation 분석을 통해, 장면만으로 목표가 거의 결정되는 상황에서는 언어 입력이 거의 무시될 수 있다고 보여줍니다. 반대로 같은 장면에서 여러 목표가 가능한 경우에만 언어 grounding이 본격적으로 중요해집니다.
-...</p></div><footer class=entry-footer><span title='2026-03-20 21:00:00 +0900 KST'>March 20, 2026</span></footer><a class=entry-link aria-label="post link to AI/ML 트렌드: grounding·안전성·하드웨어 한계가 다시 기준이 된다" href=https://kwbaek.github.io/posts/2026-03-20-ai-ml-trends-grounding-safety-and-hardware-limits/></a></article><footer class=page-footer><nav class=pagination><a class=prev href=https://kwbaek.github.io/tags/ml/page/4/>«&nbsp;Prev&nbsp;
-</a><a class=next href=https://kwbaek.github.io/tags/ml/page/6/>Next&nbsp;&nbsp;»</a></nav></footer></main><footer class=footer><span>&copy; 2026 <a href=https://kwbaek.github.io/>Kyungwook's Devlog</a></span> ·
-<span>Powered by
-<a href=https://gohugo.io/ rel="noopener noreferrer" target=_blank>Hugo</a> &
-<a href=https://github.com/adityatelange/hugo-PaperMod/ rel=noopener target=_blank>PaperMod</a></span></footer><a href=#top aria-label="go to top" title="Go to Top (Alt + G)" class=top-link id=top-link accesskey=g><svg viewBox="0 0 12 6" fill="currentColor"><path d="M12 6H0l6-6z"/></svg>
-</a><script>let menu=document.getElementById("menu");if(menu){const e=localStorage.getItem("menu-scroll-position");e&&(menu.scrollLeft=parseInt(e,10)),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)}}document.querySelectorAll('a[href^="#"]').forEach(e=>{e.addEventListener("click",function(e){e.preventDefault();var t=this.getAttribute("href").substr(1);window.matchMedia("(prefers-reduced-motion: reduce)").matches?document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView({behavior:"smooth"}),t==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${t}`)})})</script><script>var mybutton=document.getElementById("top-link");window.onscroll=function(){document.body.scrollTop>800||document.documentElement.scrollTop>800?(mybutton.style.visibility="visible",mybutton.style.opacity="1"):(mybutton.style.visibility="hidden",mybutton.style.opacity="0")}</script><script>document.getElementById("theme-toggle").addEventListener("click",()=>{const e=document.querySelector("html");e.dataset.theme==="dark"?(e.dataset.theme="light",localStorage.setItem("pref-theme","light")):(e.dataset.theme="dark",localStorage.setItem("pref-theme","dark"))})</script></body></html>
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-03-21 21:00:00 +0900 KST'>March 21, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 이제 병목은 추론 자체보다 반응 지연이다" href="https://kwbaek.github.io/posts/2026-03-21-ai-ml-trends-reaction-latency-becomes-the-real-bottleneck/"></a>
+</article>
+<footer class="page-footer">
+  <nav class="pagination">
+    <a class="prev" href="https://kwbaek.github.io/tags/ml/page/4/">
+      «&nbsp;Prev&nbsp;
+    </a>
+    <a class="next" href="https://kwbaek.github.io/tags/ml/page/6/">Next&nbsp;&nbsp;»
+    </a>
+  </nav>
+</footer>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://kwbaek.github.io/">Kyungwook&#39;s Devlog</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

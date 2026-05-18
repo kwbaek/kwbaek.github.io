@@ -1,10 +1,60 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Google on Kyungwook's Devlog</title><link>https://kwbaek.github.io/tags/google/</link><description>Recent content in Google on Kyungwook's Devlog</description><generator>Hugo -- 0.155.3</generator><language>ko-kr</language><lastBuildDate>Thu, 23 Apr 2026 21:00:00 +0900</lastBuildDate><atom:link href="https://kwbaek.github.io/tags/google/index.xml" rel="self" type="application/rss+xml"/><item><title>AI/ML 트렌드: 엔터프라이즈 에이전트 경쟁은 모델 성능보다 운영체계 경쟁으로 옮겨가고 있다</title><link>https://kwbaek.github.io/posts/2026-04-23-ai-ml-trends-the-enterprise-agent-race-is-moving-from-model-smarts-to-operating-systems/</link><pubDate>Thu, 23 Apr 2026 21:00:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-04-23-ai-ml-trends-the-enterprise-agent-race-is-moving-from-model-smarts-to-operating-systems/</guid><description>&lt;p&gt;오늘 &lt;code&gt;#ai-ml-trends&lt;/code&gt; 흐름에서 가장 크게 보인 신호는 하나였습니다. 이제 시장의 중심 질문이 “어떤 모델이 더 똑똑한가”에서 “어떤 회사가 에이전트를 실제 업무 시스템으로 더 잘 굴리는가”로 바뀌고 있다는 점입니다. OpenAI의 workspace agents, Anthropic의 Claude Design, Google의 엔터프라이즈 agent 수익화와 TPU 분화 흐름을 같이 보면, AI 경쟁은 더 이상 채팅창 안의 답변 품질 경쟁이 아닙니다. &lt;strong&gt;기업 workflow를 얼마나 넓게 덮고, 그 뒤의 인프라와 통제 레이어까지 얼마나 함께 설계하느냐&lt;/strong&gt;가 더 중요한 승부처가 되고 있습니다.&lt;/p&gt;</description></item><item><title>AI/ML 트렌드: AI는 이제 모델 경쟁보다 인프라와 보안 운영의 산업이 되고 있다</title><link>https://kwbaek.github.io/posts/2026-04-08-ai-ml-trends-ai-is-becoming-an-infrastructure-and-safety-discipline-not-just-a-model-race/</link><pubDate>Wed, 08 Apr 2026 21:00:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-04-08-ai-ml-trends-ai-is-becoming-an-infrastructure-and-safety-discipline-not-just-a-model-race/</guid><description>&lt;p&gt;오늘 &lt;code&gt;#ai-ml-trends&lt;/code&gt; 채널에서 가장 중요하게 읽힌 신호는 단일 모델 발표가 아니었습니다. 오히려 저는 &lt;strong&gt;AI 산업의 무게중심이 점점 더 &lt;code&gt;좋은 모델&lt;/code&gt;에서 &lt;code&gt;안정적으로 굴러가는 인프라와 보안 운영&lt;/code&gt;으로 이동하고 있다는 점&lt;/strong&gt;이 더 선명했다고 봤습니다. 오늘 올라온 항목들을 보면 얼핏 서로 다른 이야기처럼 보입니다. Anthropic의 보안 협력, Samsung의 AI 메모리 수요 급증, Google-Broadcom의 커스텀 칩 로드맵, 그리고 Reuters Breakingviews가 던진 ‘7조 달러 현실’ 경고가 한날 한 채널에 같이 잡혔습니다. 그런데 이 네 가지를 묶어 보면 하나의 결론으로 수렴합니다. 이제 AI는 더 이상 모델 데모만으로 설명되는 시장이 아닙니다.&lt;/p&gt;</description></item><item><title>AI/ML 트렌드: AI 경쟁의 무게중심은 모델 자랑보다 칩 통제력으로 이동 중이다</title><link>https://kwbaek.github.io/posts/2026-04-07-ai-ml-trends-ai-competition-is-shifting-from-model-bragging-rights-to-chip-control/</link><pubDate>Tue, 07 Apr 2026 21:00:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-04-07-ai-ml-trends-ai-competition-is-shifting-from-model-bragging-rights-to-chip-control/</guid><description>&lt;p&gt;오늘 &lt;code&gt;#ai-ml-trends&lt;/code&gt; 채널에서 가장 흥미롭고 중요한 신호는 저는 &lt;strong&gt;AI 경쟁의 핵심이 모델 발표에서 칩과 인프라 통제력으로 더 분명하게 이동하고 있다는 점&lt;/strong&gt;이라고 봤습니다. 그 흐름을 가장 잘 보여준 건 두 가지였습니다. 하나는 Reuters 기준으로 &lt;strong&gt;삼성전자가 AI 메모리 수요 덕분에 1분기 이익이 크게 뛰어오를 전망&lt;/strong&gt;이라는 소식이고, 다른 하나는 &lt;strong&gt;Broadcom이 Google의 커스텀 AI 칩 장기 개발 계약을 이어간다&lt;/strong&gt;는 보도입니다. 얼핏 보면 하나는 실적 뉴스, 다른 하나는 공급 계약 뉴스처럼 보일 수 있습니다. 하지만 둘을 같이 놓고 보면, 지금 시장이 무엇을 진짜 중요하게 보는지 꽤 선명해집니다.&lt;/p&gt;</description></item><item><title>AI/ML 트렌드 분석: 이제 경쟁력은 모델보다 운영 절차에 있다</title><link>https://kwbaek.github.io/posts/2026-03-27-ai-ml-trends-safety-procedures-become-the-product/</link><pubDate>Fri, 27 Mar 2026 21:16:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-03-27-ai-ml-trends-safety-procedures-become-the-product/</guid><description>&lt;p&gt;오늘 &lt;code&gt;#ai-ml-trends&lt;/code&gt; 채널에서 가장 흥미롭게 보인 흐름은, AI 산업의 무게중심이 다시 한 번 &lt;strong&gt;모델 스펙 경쟁에서 운영 절차와 배치 구조&lt;/strong&gt; 쪽으로 이동하고 있다는 점입니다. 성능이 높은 모델을 갖고 있다는 사실만으로는 차별화가 어려워졌고, 이제는 그 모델을 &lt;strong&gt;어떻게 안전하게 배포하고, 어떤 워크플로에 얹고, 어떤 조직 구조 속에서 실행하느냐&lt;/strong&gt;가 더 중요한 신호로 읽힙니다.&lt;/p&gt;
-&lt;h2 id="1-openai의-safety-bug-bounty가-보여주는-변화"&gt;1) OpenAI의 Safety Bug Bounty가 보여주는 변화&lt;/h2&gt;
-&lt;p&gt;오늘 메시지 중 가장 상징적인 항목은 OpenAI의 &lt;strong&gt;Safety Bug Bounty&lt;/strong&gt; 공개였습니다. 특히 에이전트 기반 프롬프트 인젝션, 데이터 유출, 플랫폼 무결성 우회 같은 이슈를 별도 범주로 받는다는 점이 중요합니다.&lt;/p&gt;</description></item><item><title>AI 모델 전쟁의 새로운 국면: Gemini 3.1 Pro부터 Claude Sonnet 4.6까지</title><link>https://kwbaek.github.io/posts/2026-02-23-ai-model-wars-heat-up/</link><pubDate>Mon, 23 Feb 2026 21:00:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-02-23-ai-model-wars-heat-up/</guid><description>&lt;p&gt;2026년 2월 셋째 주, AI 업계는 그야말로 &amp;lsquo;모델 대폭발&amp;rsquo; 시즌에 돌입했습니다. 주요 AI 기업들이 경쟁적으로 차세대 모델을 발표하며, 성능과 효율성의 경계를 다시 쓰고 있습니다.&lt;/p&gt;
-&lt;h2 id="google의-추론-강화-gemini-31-pro"&gt;Google의 추론 강화: Gemini 3.1 Pro&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Google on Kyungwook&#39;s Devlog</title>
+    <link>https://kwbaek.github.io/tags/google/</link>
+    <description>Recent content in Google on Kyungwook&#39;s Devlog</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Thu, 23 Apr 2026 21:00:00 +0900</lastBuildDate>
+    <atom:link href="https://kwbaek.github.io/tags/google/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI/ML 트렌드: 엔터프라이즈 에이전트 경쟁은 모델 성능보다 운영체계 경쟁으로 옮겨가고 있다</title>
+      <link>https://kwbaek.github.io/posts/2026-04-23-ai-ml-trends-the-enterprise-agent-race-is-moving-from-model-smarts-to-operating-systems/</link>
+      <pubDate>Thu, 23 Apr 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-04-23-ai-ml-trends-the-enterprise-agent-race-is-moving-from-model-smarts-to-operating-systems/</guid>
+      <description>&lt;p&gt;오늘 &lt;code&gt;#ai-ml-trends&lt;/code&gt; 흐름에서 가장 크게 보인 신호는 하나였습니다. 이제 시장의 중심 질문이 “어떤 모델이 더 똑똑한가”에서 “어떤 회사가 에이전트를 실제 업무 시스템으로 더 잘 굴리는가”로 바뀌고 있다는 점입니다. OpenAI의 workspace agents, Anthropic의 Claude Design, Google의 엔터프라이즈 agent 수익화와 TPU 분화 흐름을 같이 보면, AI 경쟁은 더 이상 채팅창 안의 답변 품질 경쟁이 아닙니다. &lt;strong&gt;기업 workflow를 얼마나 넓게 덮고, 그 뒤의 인프라와 통제 레이어까지 얼마나 함께 설계하느냐&lt;/strong&gt;가 더 중요한 승부처가 되고 있습니다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>AI/ML 트렌드: AI는 이제 모델 경쟁보다 인프라와 보안 운영의 산업이 되고 있다</title>
+      <link>https://kwbaek.github.io/posts/2026-04-08-ai-ml-trends-ai-is-becoming-an-infrastructure-and-safety-discipline-not-just-a-model-race/</link>
+      <pubDate>Wed, 08 Apr 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-04-08-ai-ml-trends-ai-is-becoming-an-infrastructure-and-safety-discipline-not-just-a-model-race/</guid>
+      <description>&lt;p&gt;오늘 &lt;code&gt;#ai-ml-trends&lt;/code&gt; 채널에서 가장 중요하게 읽힌 신호는 단일 모델 발표가 아니었습니다. 오히려 저는 &lt;strong&gt;AI 산업의 무게중심이 점점 더 &lt;code&gt;좋은 모델&lt;/code&gt;에서 &lt;code&gt;안정적으로 굴러가는 인프라와 보안 운영&lt;/code&gt;으로 이동하고 있다는 점&lt;/strong&gt;이 더 선명했다고 봤습니다. 오늘 올라온 항목들을 보면 얼핏 서로 다른 이야기처럼 보입니다. Anthropic의 보안 협력, Samsung의 AI 메모리 수요 급증, Google-Broadcom의 커스텀 칩 로드맵, 그리고 Reuters Breakingviews가 던진 ‘7조 달러 현실’ 경고가 한날 한 채널에 같이 잡혔습니다. 그런데 이 네 가지를 묶어 보면 하나의 결론으로 수렴합니다. 이제 AI는 더 이상 모델 데모만으로 설명되는 시장이 아닙니다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>AI/ML 트렌드: AI 경쟁의 무게중심은 모델 자랑보다 칩 통제력으로 이동 중이다</title>
+      <link>https://kwbaek.github.io/posts/2026-04-07-ai-ml-trends-ai-competition-is-shifting-from-model-bragging-rights-to-chip-control/</link>
+      <pubDate>Tue, 07 Apr 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-04-07-ai-ml-trends-ai-competition-is-shifting-from-model-bragging-rights-to-chip-control/</guid>
+      <description>&lt;p&gt;오늘 &lt;code&gt;#ai-ml-trends&lt;/code&gt; 채널에서 가장 흥미롭고 중요한 신호는 저는 &lt;strong&gt;AI 경쟁의 핵심이 모델 발표에서 칩과 인프라 통제력으로 더 분명하게 이동하고 있다는 점&lt;/strong&gt;이라고 봤습니다. 그 흐름을 가장 잘 보여준 건 두 가지였습니다. 하나는 Reuters 기준으로 &lt;strong&gt;삼성전자가 AI 메모리 수요 덕분에 1분기 이익이 크게 뛰어오를 전망&lt;/strong&gt;이라는 소식이고, 다른 하나는 &lt;strong&gt;Broadcom이 Google의 커스텀 AI 칩 장기 개발 계약을 이어간다&lt;/strong&gt;는 보도입니다. 얼핏 보면 하나는 실적 뉴스, 다른 하나는 공급 계약 뉴스처럼 보일 수 있습니다. 하지만 둘을 같이 놓고 보면, 지금 시장이 무엇을 진짜 중요하게 보는지 꽤 선명해집니다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>AI/ML 트렌드 분석: 이제 경쟁력은 모델보다 운영 절차에 있다</title>
+      <link>https://kwbaek.github.io/posts/2026-03-27-ai-ml-trends-safety-procedures-become-the-product/</link>
+      <pubDate>Fri, 27 Mar 2026 21:16:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-03-27-ai-ml-trends-safety-procedures-become-the-product/</guid>
+      <description>&lt;p&gt;오늘 &lt;code&gt;#ai-ml-trends&lt;/code&gt; 채널에서 가장 흥미롭게 보인 흐름은, AI 산업의 무게중심이 다시 한 번 &lt;strong&gt;모델 스펙 경쟁에서 운영 절차와 배치 구조&lt;/strong&gt; 쪽으로 이동하고 있다는 점입니다. 성능이 높은 모델을 갖고 있다는 사실만으로는 차별화가 어려워졌고, 이제는 그 모델을 &lt;strong&gt;어떻게 안전하게 배포하고, 어떤 워크플로에 얹고, 어떤 조직 구조 속에서 실행하느냐&lt;/strong&gt;가 더 중요한 신호로 읽힙니다.&lt;/p&gt;
+&lt;h2 id=&#34;1-openai의-safety-bug-bounty가-보여주는-변화&#34;&gt;1) OpenAI의 Safety Bug Bounty가 보여주는 변화&lt;/h2&gt;
+&lt;p&gt;오늘 메시지 중 가장 상징적인 항목은 OpenAI의 &lt;strong&gt;Safety Bug Bounty&lt;/strong&gt; 공개였습니다. 특히 에이전트 기반 프롬프트 인젝션, 데이터 유출, 플랫폼 무결성 우회 같은 이슈를 별도 범주로 받는다는 점이 중요합니다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>AI 모델 전쟁의 새로운 국면: Gemini 3.1 Pro부터 Claude Sonnet 4.6까지</title>
+      <link>https://kwbaek.github.io/posts/2026-02-23-ai-model-wars-heat-up/</link>
+      <pubDate>Mon, 23 Feb 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-02-23-ai-model-wars-heat-up/</guid>
+      <description>&lt;p&gt;2026년 2월 셋째 주, AI 업계는 그야말로 &amp;lsquo;모델 대폭발&amp;rsquo; 시즌에 돌입했습니다. 주요 AI 기업들이 경쟁적으로 차세대 모델을 발표하며, 성능과 효율성의 경계를 다시 쓰고 있습니다.&lt;/p&gt;
+&lt;h2 id=&#34;google의-추론-강화-gemini-31-pro&#34;&gt;Google의 추론 강화: Gemini 3.1 Pro&lt;/h2&gt;
 &lt;p&gt;Google DeepMind가 &lt;strong&gt;Gemini 3.1 Pro&lt;/strong&gt;를 발표했습니다. 이 모델은 복잡한 문제해결에 특화되었으며, ARC-AGI-2 벤치마크에서 **검증 점수 77.1%**를 기록했습니다. 단순한 질의응답을 넘어서, 멀티스텝 추론과 복잡한 작업 계획이 필요한 시나리오에서 강점을 보입니다.&lt;/p&gt;
-&lt;p&gt;Gemini API, Vertex AI, Gemini 앱, NotebookLM을 통해 순차 롤아웃 중이며, 개발자부터 일반 사용자까지 폭넓게 영향을 미칠 것으로 예상됩니다.&lt;/p&gt;</description></item><item><title>2026년 2월 AI 모델 러시: Gemini 3 Deep Think와 격화되는 경쟁</title><link>https://kwbaek.github.io/posts/2026-02-13-gemini-3-deep-think-ai-model-rush/</link><pubDate>Fri, 13 Feb 2026 21:00:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-02-13-gemini-3-deep-think-ai-model-rush/</guid><description>&lt;p&gt;2026년 2월, AI 업계는 그야말로 &lt;strong&gt;모델 러시(Model Rush)&lt;/strong&gt; 시대에 돌입했습니다. Google의 Gemini 3 Deep Think 출시를 시작으로, Anthropic의 Claude Opus 4.6, OpenAI의 GPT-5.3-Codex, 그리고 중국의 GLM-5까지 연이어 출시되며 전례 없는 경쟁이 펼쳐지고 있습니다.&lt;/p&gt;
-&lt;h2 id="-gemini-3-deep-think-과학연구-특화-추론-모델"&gt;🔬 Gemini 3 Deep Think: 과학/연구 특화 추론 모델&lt;/h2&gt;
+&lt;p&gt;Gemini API, Vertex AI, Gemini 앱, NotebookLM을 통해 순차 롤아웃 중이며, 개발자부터 일반 사용자까지 폭넓게 영향을 미칠 것으로 예상됩니다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>2026년 2월 AI 모델 러시: Gemini 3 Deep Think와 격화되는 경쟁</title>
+      <link>https://kwbaek.github.io/posts/2026-02-13-gemini-3-deep-think-ai-model-rush/</link>
+      <pubDate>Fri, 13 Feb 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-02-13-gemini-3-deep-think-ai-model-rush/</guid>
+      <description>&lt;p&gt;2026년 2월, AI 업계는 그야말로 &lt;strong&gt;모델 러시(Model Rush)&lt;/strong&gt; 시대에 돌입했습니다. Google의 Gemini 3 Deep Think 출시를 시작으로, Anthropic의 Claude Opus 4.6, OpenAI의 GPT-5.3-Codex, 그리고 중국의 GLM-5까지 연이어 출시되며 전례 없는 경쟁이 펼쳐지고 있습니다.&lt;/p&gt;
+&lt;h2 id=&#34;-gemini-3-deep-think-과학연구-특화-추론-모델&#34;&gt;🔬 Gemini 3 Deep Think: 과학/연구 특화 추론 모델&lt;/h2&gt;
 &lt;p&gt;Google이 2월 13일(한국 시간 기준) 공개한 &lt;strong&gt;Gemini 3 Deep Think&lt;/strong&gt;는 과학, 연구, 엔지니어링 분야에 특화된 고급 추론 모델입니다.&lt;/p&gt;
 &lt;p&gt;주요 특징:&lt;/p&gt;
 &lt;ul&gt;
@@ -12,4 +62,7 @@
 &lt;li&gt;&lt;strong&gt;Gemini 3 시리즈의 전략적 분화&lt;/strong&gt;: Flash(빠른 처리)와 Deep Think(고급 추론)로 이원화&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;전문 분야 특화 전략&lt;/strong&gt;: 범용 모델에서 벗어나 전문성 강화&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;a href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-deep-think/"&gt;Google 공식 블로그&lt;/a&gt;에서는 &amp;ldquo;과학 연구를 가속화하는 특화된 추론 모드&amp;quot;라고 소개하고 있습니다.&lt;/p&gt;</description></item></channel></rss>
+&lt;p&gt;&lt;a href=&#34;https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-deep-think/&#34;&gt;Google 공식 블로그&lt;/a&gt;에서는 &amp;ldquo;과학 연구를 가속화하는 특화된 추론 모드&amp;quot;라고 소개하고 있습니다.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

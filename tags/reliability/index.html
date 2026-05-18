@@ -1,27 +1,367 @@
-<!doctype html><html lang=en dir=auto data-theme=auto><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=robots content="index, follow"><title>Reliability | Kyungwook's Devlog</title><meta name=keywords content><meta name=description content><meta name=author content><link rel=canonical href=https://kwbaek.github.io/tags/reliability/><link crossorigin=anonymous href=/assets/css/stylesheet.da3211e5ef867bf2b75fd5a6515cfed7195c011e8ab735694e203810a827097b.css integrity="sha256-2jIR5e+Ge/K3X9WmUVz+1xlcAR6KtzVpTiA4EKgnCXs=" rel="preload stylesheet" as=style><link rel=icon href=https://kwbaek.github.io/favicon.ico><link rel=icon type=image/png sizes=16x16 href=https://kwbaek.github.io/favicon-16x16.png><link rel=icon type=image/png sizes=32x32 href=https://kwbaek.github.io/favicon-32x32.png><link rel=apple-touch-icon href=https://kwbaek.github.io/apple-touch-icon.png><link rel=mask-icon href=https://kwbaek.github.io/safari-pinned-tab.svg><meta name=theme-color content="#2e2e33"><meta name=msapplication-TileColor content="#2e2e33"><link rel=alternate type=application/rss+xml href=https://kwbaek.github.io/tags/reliability/index.xml title=rss><link rel=alternate hreflang=en href=https://kwbaek.github.io/tags/reliability/><noscript><style>#theme-toggle,.top-link{display:none}</style><style>@media(prefers-color-scheme:dark){:root{--theme:rgb(29, 30, 32);--entry:rgb(46, 46, 51);--primary:rgb(218, 218, 219);--secondary:rgb(155, 156, 157);--tertiary:rgb(65, 66, 68);--content:rgb(196, 196, 197);--code-block-bg:rgb(46, 46, 51);--code-bg:rgb(55, 56, 62);--border:rgb(51, 51, 51);color-scheme:dark}.list{background:var(--theme)}.toc{background:var(--entry)}}@media(prefers-color-scheme:light){.list::-webkit-scrollbar-thumb{border-color:var(--code-bg)}}</style></noscript><script>localStorage.getItem("pref-theme")==="dark"?document.querySelector("html").dataset.theme="dark":localStorage.getItem("pref-theme")==="light"?document.querySelector("html").dataset.theme="light":window.matchMedia("(prefers-color-scheme: dark)").matches?document.querySelector("html").dataset.theme="dark":document.querySelector("html").dataset.theme="light"</script><meta property="og:url" content="https://kwbaek.github.io/tags/reliability/"><meta property="og:site_name" content="Kyungwook's Devlog"><meta property="og:title" content="Reliability"><meta property="og:locale" content="ko-kr"><meta property="og:type" content="website"><meta name=twitter:card content="summary"><meta name=twitter:title content="Reliability"><meta name=twitter:description content></head><body class=list id=top><header class=header><nav class=nav><div class=logo><a href=https://kwbaek.github.io/ accesskey=h title="Kyungwook's Devlog (Alt + H)">Kyungwook's Devlog</a><div class=logo-switches><button id=theme-toggle accesskey=t title="(Alt + T)" aria-label="Toggle theme">
-<svg id="moon" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
-<svg id="sun" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button></div></div><ul id=menu><li><a href=https://kwbaek.github.io/categories/ title=categories><span>categories</span></a></li><li><a href=https://kwbaek.github.io/tags/ title=tags><span>tags</span></a></li><li><a href=https://kwbaek.github.io/ title="Kyungwook's Devlog"><span>Kyungwook's Devlog</span>&nbsp;
-<svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><path d="M15 3h6v6"/><path d="M10 14 21 3"/></svg></a></li></ul></nav></header><main class=main><header class=page-header><h1>Reliability</h1></header><article class="post-entry tag-entry"><header class=entry-header><h2 class=entry-hint-parent>OpenClaw 팁: cron 작업은 작은 운영 제품처럼 다루는 게 좋다</h2></header><div class=entry-content><p>OpenClaw로 매일 블로그를 쓰고 배포하는 흐름을 굴려보면, cron 작업은 단순한 “예약 프롬프트”가 아니라 작은 운영 제품에 가깝다는 생각이 듭니다. 한 번 실행해서 글을 만드는 것만 보면 쉬워 보이지만, 실제로는 입력 확인, 근거 수집, 작성, Git 반영, 빌드, 배포, 실패 보고까지 이어지는 작은 파이프라인입니다. 이 파이프라인을 안정적으로 만들려면 프롬프트를 잘 쓰는 것만으로는 부족하고, 작업 지시문 자체를 runbook처럼 관리해야 합니다.
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Reliability | Kyungwook&#39;s Devlog</title>
+<meta name="keywords" content="">
+<meta name="description" content="">
+<meta name="author" content="">
+<link rel="canonical" href="https://kwbaek.github.io/tags/reliability/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.da3211e5ef867bf2b75fd5a6515cfed7195c011e8ab735694e203810a827097b.css" integrity="sha256-2jIR5e&#43;Ge/K3X9WmUVz&#43;1xlcAR6KtzVpTiA4EKgnCXs=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://kwbaek.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://kwbaek.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://kwbaek.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://kwbaek.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://kwbaek.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" type="application/rss+xml" href="https://kwbaek.github.io/tags/reliability/index.xml" title="rss">
+<link rel="alternate" hreflang="en" href="https://kwbaek.github.io/tags/reliability/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="https://kwbaek.github.io/tags/reliability/">
+  <meta property="og:site_name" content="Kyungwook&#39;s Devlog">
+  <meta property="og:title" content="Reliability">
+  <meta property="og:locale" content="ko-kr">
+  <meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Reliability">
+<meta name="twitter:description" content="">
+
+</head>
+<body class="list" id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://kwbaek.github.io/" accesskey="h" title="Kyungwook&#39;s Devlog (Alt + H)">Kyungwook&#39;s Devlog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://kwbaek.github.io/categories/" title="categories">
+                    <span>categories</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kwbaek.github.io/tags/" title="tags">
+                    <span>tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kwbaek.github.io/" title="Kyungwook&#39;s Devlog">
+                    <span>Kyungwook&#39;s Devlog</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main"> 
+<header class="page-header">
+  <h1>
+    Reliability
+  </h1>
+</header>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 팁: cron 작업은 작은 운영 제품처럼 다루는 게 좋다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>OpenClaw로 매일 블로그를 쓰고 배포하는 흐름을 굴려보면, cron 작업은 단순한 “예약 프롬프트”가 아니라 작은 운영 제품에 가깝다는 생각이 듭니다. 한 번 실행해서 글을 만드는 것만 보면 쉬워 보이지만, 실제로는 입력 확인, 근거 수집, 작성, Git 반영, 빌드, 배포, 실패 보고까지 이어지는 작은 파이프라인입니다. 이 파이프라인을 안정적으로 만들려면 프롬프트를 잘 쓰는 것만으로는 부족하고, 작업 지시문 자체를 runbook처럼 관리해야 합니다.
 제가 가장 유용하다고 느끼는 방식은 cron instruction 파일을 최대한 명확하게 두는 것입니다. 예를 들어 “어느 Discord 채널을 읽을지”, “어떤 카테고리로 글을 만들지”, “Hugo front matter에 무엇을 넣을지”, “소스 저장소와 배포 저장소를 어떤 순서로 커밋할지”를 모두 적어두면 실행 때마다 모델이 불필요한 판단을 덜 하게 됩니다. 이건 창의성을 죽이는 게 아니라, 창의성이 필요한 부분과 반복 가능한 운영 부분을 분리하는 일입니다.
-...</p></div><footer class=entry-footer><span title='2026-04-30 21:05:00 +0900 KST'>April 30, 2026</span></footer><a class=entry-link aria-label="post link to OpenClaw 팁: cron 작업은 작은 운영 제품처럼 다루는 게 좋다" href=https://kwbaek.github.io/posts/2026-04-30-openclaw-treat-cron-jobs-like-small-operational-products/></a></article><article class="post-entry tag-entry"><header class=entry-header><h2 class=entry-hint-parent>OpenClaw 팁: always-on 워크플로에서 신뢰성은 부가 기능이 아니라 핵심 기능이다</h2></header><div class=entry-content><p>OpenClaw를 계속 써볼수록 더 분명해지는 게 있습니다. always-on 에이전트에서 중요한 건 한 번 멋지게 답하는 능력이 아니라, 조용히 오래 돌아가면서도 덜 깨지는 운영 신뢰성입니다. 최근 OpenClaw 업데이트 흐름을 보면 이 점이 꽤 잘 보입니다. cron delivery와 라우팅 안정화, heartbeat/tool-loop의 run scope 보정, browser plugin 자동 기동과 startup 경량화 같은 변화는 얼핏 보면 화려하지 않습니다. 하지만 실제 운영에선 이런 종류의 개선이 훨씬 큽니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-04-30 21:05:00 +0900 KST'>April 30, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 팁: cron 작업은 작은 운영 제품처럼 다루는 게 좋다" href="https://kwbaek.github.io/posts/2026-04-30-openclaw-treat-cron-jobs-like-small-operational-products/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 팁: always-on 워크플로에서 신뢰성은 부가 기능이 아니라 핵심 기능이다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>OpenClaw를 계속 써볼수록 더 분명해지는 게 있습니다. always-on 에이전트에서 중요한 건 한 번 멋지게 답하는 능력이 아니라, 조용히 오래 돌아가면서도 덜 깨지는 운영 신뢰성입니다. 최근 OpenClaw 업데이트 흐름을 보면 이 점이 꽤 잘 보입니다. cron delivery와 라우팅 안정화, heartbeat/tool-loop의 run scope 보정, browser plugin 자동 기동과 startup 경량화 같은 변화는 얼핏 보면 화려하지 않습니다. 하지만 실제 운영에선 이런 종류의 개선이 훨씬 큽니다.
 이유는 단순합니다. 자동화는 대부분 “정답을 한 번 잘 만드는 문제”가 아니라 “같은 일을 100번 했을 때도 엇나가지 않는 문제”이기 때문입니다. 예를 들어 매일 글을 쓰고 배포하는 작업을 생각해 보면, 필요한 것은 대단한 창의성보다도 메시지 읽기 → 글 작성 → Git 반영 → 빌드 → 배포라는 순서를 안정적으로 이어가는 능력입니다. 중간에 채널 전달이 흔들리거나, heartbeat가 엉뚱한 범위를 다시 잡거나, 브라우저 초기화가 자주 삐끗하면 자동화는 금방 피곤한 시스템이 됩니다.
-...</p></div><footer class=entry-footer><span title='2026-04-29 13:27:00 +0900 KST'>April 29, 2026</span></footer><a class=entry-link aria-label="post link to OpenClaw 팁: always-on 워크플로에서 신뢰성은 부가 기능이 아니라 핵심 기능이다" href=https://kwbaek.github.io/posts/2026-04-29-openclaw-reliability-is-a-feature-for-always-on-agent-workflows/></a></article><article class="post-entry tag-entry"><header class=entry-header><h2 class=entry-hint-parent>OpenClaw 팁: 크론 작업은 호스트 명령보다 내장 도구 중심으로 설계할수록 덜 깨진다</h2></header><div class=entry-content><p>OpenClaw로 매일 도는 작업을 만들다 보면 금방 체감하는 게 있습니다. 똑같이 자동화처럼 보여도, 호스트 셸 명령을 길게 이어붙여 돌리는 방식과 OpenClaw의 내장 도구를 중심으로 설계하는 방식은 안정성이 꽤 다릅니다. 특히 크론처럼 반복 실행되는 작업에서는 이 차이가 더 크게 드러납니다. 제 경험상 잘 버티는 워크플로는 대체로 후자입니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-04-29 13:27:00 +0900 KST'>April 29, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 팁: always-on 워크플로에서 신뢰성은 부가 기능이 아니라 핵심 기능이다" href="https://kwbaek.github.io/posts/2026-04-29-openclaw-reliability-is-a-feature-for-always-on-agent-workflows/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 팁: 크론 작업은 호스트 명령보다 내장 도구 중심으로 설계할수록 덜 깨진다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>OpenClaw로 매일 도는 작업을 만들다 보면 금방 체감하는 게 있습니다. 똑같이 자동화처럼 보여도, 호스트 셸 명령을 길게 이어붙여 돌리는 방식과 OpenClaw의 내장 도구를 중심으로 설계하는 방식은 안정성이 꽤 다릅니다. 특히 크론처럼 반복 실행되는 작업에서는 이 차이가 더 크게 드러납니다. 제 경험상 잘 버티는 워크플로는 대체로 후자입니다.
 이유는 단순합니다. 내장 도구는 애초에 에이전트가 현재 세션 문맥 안에서 다루도록 설계되어 있습니다. 파일을 읽고 쓰는 일은 read와 write, 다른 세션 확인은 sessions_*, 웹 확인은 브라우저 계열 도구, 상태 파악은 session_status처럼 행동 단위가 비교적 또렷하게 나뉘어 있습니다. 반대로 호스트 명령은 한 줄 안에 너무 많은 전제를 묶기 쉽습니다. 현재 작업 디렉터리, 셸 차이, 설치 여부, 인자 quoting, 출력 형식, 승인 경로, 실패 코드 해석 같은 것들이 한꺼번에 섞입니다. 한 번은 편할 수 있어도, 매일 도는 잡에서는 이런 작은 불확실성이 결국 누적됩니다.
-...</p></div><footer class=entry-footer><span title='2026-04-22 21:05:00 +0900 KST'>April 22, 2026</span></footer><a class=entry-link aria-label="post link to OpenClaw 팁: 크론 작업은 호스트 명령보다 내장 도구 중심으로 설계할수록 덜 깨진다" href=https://kwbaek.github.io/posts/2026-04-22-openclaw-cron-jobs-get-more-reliable-when-built-around-first-class-tools/></a></article><article class="post-entry tag-entry"><header class=entry-header><h2 class=entry-hint-parent>AI/ML 트렌드: 이제 진짜 제품 경쟁력은 모델 답변보다 confidence layer에서 갈린다</h2></header><div class=entry-content><p>오늘 #ai-ml-trends 채널에서 가장 중요하게 읽힌 신호는, LLM-as-judge 신뢰도를 conformal prediction set과 transitivity violation으로 진단하자는 연구였습니다. 얼핏 보면 이건 평가 방법론 하나가 더 추가된 이야기처럼 보일 수 있습니다. 그런데 저는 이 흐름이 꽤 크다고 봅니다. 지금 AI 시장은 더 똑똑한 답을 내는 모델 경쟁에서 끝나지 않고, 언제 그 답을 믿어도 되는지까지 함께 제품화하는 경쟁으로 옮겨가고 있기 때문입니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-04-22 21:05:00 +0900 KST'>April 22, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 팁: 크론 작업은 호스트 명령보다 내장 도구 중심으로 설계할수록 덜 깨진다" href="https://kwbaek.github.io/posts/2026-04-22-openclaw-cron-jobs-get-more-reliable-when-built-around-first-class-tools/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">AI/ML 트렌드: 이제 진짜 제품 경쟁력은 모델 답변보다 confidence layer에서 갈린다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 #ai-ml-trends 채널에서 가장 중요하게 읽힌 신호는, LLM-as-judge 신뢰도를 conformal prediction set과 transitivity violation으로 진단하자는 연구였습니다. 얼핏 보면 이건 평가 방법론 하나가 더 추가된 이야기처럼 보일 수 있습니다. 그런데 저는 이 흐름이 꽤 크다고 봅니다. 지금 AI 시장은 더 똑똑한 답을 내는 모델 경쟁에서 끝나지 않고, 언제 그 답을 믿어도 되는지까지 함께 제품화하는 경쟁으로 옮겨가고 있기 때문입니다.
 그동안 많은 팀이 LLM을 judge, reviewer, ranker, critic처럼 사용해 왔습니다. 모델이 다른 모델의 답을 채점하고, 두 응답 중 누가 더 좋은지 고르고, 생성 결과를 자동 심사하는 식입니다. 이 방식은 엄청 편리합니다. 사람 평가보다 빠르고 싸고, 대규모 자동화에도 잘 맞습니다. 문제는 여기서 자주 생깁니다. judge 역할의 모델이 그럴듯한 점수를 내놓더라도, 그 점수 자체의 신뢰도는 따로 측정하지 않는 경우가 많다는 점입니다.
-...</p></div><footer class=entry-footer><span title='2026-04-18 21:00:00 +0900 KST'>April 18, 2026</span></footer><a class=entry-link aria-label="post link to AI/ML 트렌드: 이제 진짜 제품 경쟁력은 모델 답변보다 confidence layer에서 갈린다" href=https://kwbaek.github.io/posts/2026-04-18-ai-ml-trends-why-confidence-layer-is-becoming-the-real-product/></a></article><article class="post-entry tag-entry"><header class=entry-header><h2 class=entry-hint-parent>OpenClaw 팁: 일일 콘텐츠 자동화는 지시문이 명시적이고 호스트 실행이 boring할수록 오래 버틴다</h2></header><div class=entry-content><p>오늘 OpenClaw로 일일 블로그 자동화를 돌리면서 다시 느낀 건, 자동화의 품질을 결정하는 건 화려한 에이전트 추론보다도 지시문이 얼마나 명시적인가, 그리고 실제 실행이 얼마나 boring하게 반복 가능한가라는 점이었습니다. 특히 콘텐츠 자동화처럼 매일 같은 구조를 반복하는 작업에서는 이 차이가 꽤 큽니다. 한 번 멋지게 돌아가는 자동화보다, 매일 밤 조용히 같은 방식으로 성공하는 자동화가 훨씬 가치 있습니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-04-18 21:00:00 +0900 KST'>April 18, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 이제 진짜 제품 경쟁력은 모델 답변보다 confidence layer에서 갈린다" href="https://kwbaek.github.io/posts/2026-04-18-ai-ml-trends-why-confidence-layer-is-becoming-the-real-product/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 팁: 일일 콘텐츠 자동화는 지시문이 명시적이고 호스트 실행이 boring할수록 오래 버틴다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 OpenClaw로 일일 블로그 자동화를 돌리면서 다시 느낀 건, 자동화의 품질을 결정하는 건 화려한 에이전트 추론보다도 지시문이 얼마나 명시적인가, 그리고 실제 실행이 얼마나 boring하게 반복 가능한가라는 점이었습니다. 특히 콘텐츠 자동화처럼 매일 같은 구조를 반복하는 작업에서는 이 차이가 꽤 큽니다. 한 번 멋지게 돌아가는 자동화보다, 매일 밤 조용히 같은 방식으로 성공하는 자동화가 훨씬 가치 있습니다.
 오늘 작업 흐름은 크게 복잡하지 않았습니다. 특정 instruction file을 읽고, Discord 채널에서 오늘의 AI/ML 트렌드를 확인하고, Hugo 블로그 포스트 두 편을 만들고, git 커밋과 빌드, 그리고 배포 저장소 반영까지 이어지는 루틴입니다. 겉으로는 익숙한 cron 작업처럼 보이지만, 실제로 안정성을 가르는 건 세세한 문구였습니다. 예를 들면 이런 것들입니다.
-...</p></div><footer class=entry-footer><span title='2026-04-09 20:55:00 +0900 KST'>April 9, 2026</span></footer><a class=entry-link aria-label="post link to OpenClaw 팁: 일일 콘텐츠 자동화는 지시문이 명시적이고 호스트 실행이 boring할수록 오래 버틴다" href=https://kwbaek.github.io/posts/2026-04-09-openclaw-daily-content-ops-work-better-when-instructions-are-explicit-and-host-runs-stay-boring/></a></article><article class="post-entry tag-entry"><header class=entry-header><h2 class=entry-hint-parent>OpenClaw 팁: cron instruction 파일은 숨은 프롬프트보다 더 좋은 운영 인터페이스다</h2></header><div class=entry-content><p>오늘 블로그 자동화 작업을 돌리면서 다시 한 번 느낀 게 있습니다. OpenClaw를 오래 안정적으로 쓰려면, 좋은 자동화는 단지 모델이 똑똑해서 되는 게 아니라 지시가 어디에, 어떤 형태로 저장되고 관리되는가에서 꽤 많이 갈립니다. 최근 운영 메모와 실제 작업 흐름을 같이 보면, 저는 OpenClaw의 cron-instructions/ 패턴이 생각보다 아주 좋은 운영 인터페이스라고 봅니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-04-09 20:55:00 +0900 KST'>April 9, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 팁: 일일 콘텐츠 자동화는 지시문이 명시적이고 호스트 실행이 boring할수록 오래 버틴다" href="https://kwbaek.github.io/posts/2026-04-09-openclaw-daily-content-ops-work-better-when-instructions-are-explicit-and-host-runs-stay-boring/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 팁: cron instruction 파일은 숨은 프롬프트보다 더 좋은 운영 인터페이스다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 블로그 자동화 작업을 돌리면서 다시 한 번 느낀 게 있습니다. OpenClaw를 오래 안정적으로 쓰려면, 좋은 자동화는 단지 모델이 똑똑해서 되는 게 아니라 지시가 어디에, 어떤 형태로 저장되고 관리되는가에서 꽤 많이 갈립니다. 최근 운영 메모와 실제 작업 흐름을 같이 보면, 저는 OpenClaw의 cron-instructions/ 패턴이 생각보다 아주 좋은 운영 인터페이스라고 봅니다.
 왜 그렇게 느끼냐면, 자동화가 복잡해질수록 문제는 거의 항상 “모델이 말을 못 알아들었다”보다 사람이 나중에 그 작업의 기준을 다시 찾기 어렵다는 데서 터지기 때문입니다. heartbeat 안에 숨어 있는 규칙, 세션 문맥에만 남아 있는 의도, 예전에 한 번 말하고 지나간 운영 기준은 그 순간엔 편해 보여도 시간이 지나면 관리가 어려워집니다. 반면 cron-instructions/작업ID-설명.md처럼 작업별 지시문이 파일로 분리되어 있으면, 기준이 눈에 보이고 수정도 쉬우며 실패 원인도 훨씬 빨리 좁힐 수 있습니다.
-...</p></div><footer class=entry-footer><span title='2026-04-03 21:05:00 +0900 KST'>April 3, 2026</span></footer><a class=entry-link aria-label="post link to OpenClaw 팁: cron instruction 파일은 숨은 프롬프트보다 더 좋은 운영 인터페이스다" href=https://kwbaek.github.io/posts/2026-04-03-openclaw-cron-instruction-files-are-a-better-ops-interface-than-hidden-prompts/></a></article><article class="post-entry tag-entry"><header class=entry-header><h2 class=entry-hint-parent>OpenClaw 팁: v2026.3.7에서 더 중요해진 건 새 기능보다 끊기지 않는 운영감이다</h2></header><div class=entry-content><p>최근 OpenClaw 메모를 다시 훑어보면서 특히 실무적으로 와닿은 건 v2026.3.7 부근에서 보이는 변화였습니다. 겉으로 보기엔 Context Engine 플러그인 슬롯, Gemini 3.1 Flash-Lite 지원, 브라우저 세션 종료 시 탭 자동 정리, heartbeat workspace-path 개선 같은 기능이 각각 따로 흩어져 있는 것처럼 보일 수 있습니다. 그런데 운영자 관점에서 묶어 보면 공통점이 있습니다. 이번 흐름의 핵심은 화려한 신기능 추가보다 **“매일 돌리는 자동화가 덜 끊기고, 덜 새고, 덜 헷갈리게 만드는 방향”**에 더 가깝다는 점입니다.
-...</p></div><footer class=entry-footer><span title='2026-03-29 21:05:00 +0900 KST'>March 29, 2026</span></footer><a class=entry-link aria-label="post link to OpenClaw 팁: v2026.3.7에서 더 중요해진 건 새 기능보다 끊기지 않는 운영감이다" href=https://kwbaek.github.io/posts/2026-03-29-openclaw-v202637-why-persistent-bindings-and-safe-ops-matter/></a></article><article class="post-entry tag-entry"><header class=entry-header><h2 class=entry-hint-parent>OpenClaw 운영 팁: 블로그 자동화는 똑똑함보다 복원력이 중요하다</h2></header><div class=entry-content><p>매일 블로그 포스팅 자동화를 돌리다 보면, 처음에는 좋은 글을 잘 쓰는 모델이 핵심처럼 보입니다. 그런데 며칠만 운영해보면 생각이 바뀝니다. 실제 실패는 대개 원고 품질보다 입력 누락, 경로 혼선, 배포 순서 실수, 빌드 실패, 저장소 상태 꼬임에서 먼저 납니다. 그래서 OpenClaw로 일일 블로그 파이프라인을 만들 때 제일 먼저 챙겨야 할 것은 “더 똑똑한 생성"이 아니라 실패해도 다시 일으킬 수 있는 구조입니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-04-03 21:05:00 +0900 KST'>April 3, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 팁: cron instruction 파일은 숨은 프롬프트보다 더 좋은 운영 인터페이스다" href="https://kwbaek.github.io/posts/2026-04-03-openclaw-cron-instruction-files-are-a-better-ops-interface-than-hidden-prompts/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 팁: v2026.3.7에서 더 중요해진 건 새 기능보다 끊기지 않는 운영감이다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>최근 OpenClaw 메모를 다시 훑어보면서 특히 실무적으로 와닿은 건 v2026.3.7 부근에서 보이는 변화였습니다. 겉으로 보기엔 Context Engine 플러그인 슬롯, Gemini 3.1 Flash-Lite 지원, 브라우저 세션 종료 시 탭 자동 정리, heartbeat workspace-path 개선 같은 기능이 각각 따로 흩어져 있는 것처럼 보일 수 있습니다. 그런데 운영자 관점에서 묶어 보면 공통점이 있습니다. 이번 흐름의 핵심은 화려한 신기능 추가보다 **“매일 돌리는 자동화가 덜 끊기고, 덜 새고, 덜 헷갈리게 만드는 방향”**에 더 가깝다는 점입니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-03-29 21:05:00 +0900 KST'>March 29, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 팁: v2026.3.7에서 더 중요해진 건 새 기능보다 끊기지 않는 운영감이다" href="https://kwbaek.github.io/posts/2026-03-29-openclaw-v202637-why-persistent-bindings-and-safe-ops-matter/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 운영 팁: 블로그 자동화는 똑똑함보다 복원력이 중요하다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>매일 블로그 포스팅 자동화를 돌리다 보면, 처음에는 좋은 글을 잘 쓰는 모델이 핵심처럼 보입니다. 그런데 며칠만 운영해보면 생각이 바뀝니다. 실제 실패는 대개 원고 품질보다 입력 누락, 경로 혼선, 배포 순서 실수, 빌드 실패, 저장소 상태 꼬임에서 먼저 납니다. 그래서 OpenClaw로 일일 블로그 파이프라인을 만들 때 제일 먼저 챙겨야 할 것은 “더 똑똑한 생성&#34;이 아니라 실패해도 다시 일으킬 수 있는 구조입니다.
 1) instruction 파일을 단일 진실 원천으로 두기 Cron 기반 자동화에서는 잡 이름보다 실제 instruction 파일이 더 중요합니다. 사람이 규칙을 여러 군데에 적어두면 곧바로 어긋납니다. heartbeat에 적힌 기준, 채널 대화에서 합의한 기준, cron instruction이 서로 다르면 실행 결과가 흔들리기 쉽습니다.
-...</p></div><footer class=entry-footer><span title='2026-03-27 21:16:00 +0900 KST'>March 27, 2026</span></footer><a class=entry-link aria-label="post link to OpenClaw 운영 팁: 블로그 자동화는 똑똑함보다 복원력이 중요하다" href=https://kwbaek.github.io/posts/2026-03-27-openclaw-blog-automation-needs-reliability-not-heroics/></a></article><article class="post-entry tag-entry"><header class=entry-header><h2 class=entry-hint-parent>OpenClaw 팁: 매일 쓰는 자동화일수록 새 기능보다 신뢰성 패치가 더 중요하다</h2></header><div class=entry-content><p>오늘 OpenClaw 쪽에서 눈에 들어온 포인트는 거창한 신기능보다도, 매일 돌려야 하는 자동화를 덜 불안하게 만들어주는 신뢰성 패치들이었습니다. 최신 릴리즈 v2026.3.13-1은 이름부터 약간 특이합니다. 이미 공개된 v2026.3.13 릴리즈 경로가 꼬여서 이를 복구하기 위한 recovery release였고, npm 버전은 그대로 두면서 GitHub 릴리즈 태그만 -1을 붙였습니다. 겉으로 보면 자잘한 운영 이슈처럼 보이지만, 실제로 이런 복구 감각이 있는 프로젝트가 장기 운영에는 훨씬 믿을 만합니다.
-이번 릴리즈에서 특히 실무적으로 중요해 보인 건 몇 가지였습니다. 첫째는 isolated cron nested lane deadlock 방지입니다. OpenClaw를 조금만 깊게 쓰기 시작하면 cron이 단순 알람이 아니라, 리서치, 요약, 보고, 파일 생성 같은 실제 작업 파이프라인으로 커집니다. 이때 isolated 실행 경로에서 교착 상태가 나면, 겉으로는 “아무 일도 안 일어난 조용한 실패"처럼 보이기 쉽습니다. 그래서 이런 종류의 수정은 화려하진 않아도 운영 체감이 큽니다. 매일 밤 도는 잡일수록 실패 로그보다 “왜 결과가 안 나왔지?“가 더 무섭기 때문입니다.
-...</p></div><footer class=entry-footer><span title='2026-03-23 21:00:00 +0900 KST'>March 23, 2026</span></footer><a class=entry-link aria-label="post link to OpenClaw 팁: 매일 쓰는 자동화일수록 새 기능보다 신뢰성 패치가 더 중요하다" href=https://kwbaek.github.io/posts/2026-03-23-openclaw-reliability-beats-feature-chasing-in-daily-ops/></a></article><article class="post-entry tag-entry"><header class=entry-header><h2 class=entry-hint-parent>OpenClaw 운영 팁: Heartbeat와 Cron을 분리하면 자동화 품질이 급상승한다</h2></header><div class=entry-content><p>OpenClaw를 꾸준히 돌리다 보면, 자동화가 흔들리는 가장 흔한 원인은 모델 성능이 아니라 스케줄 설계의 혼선입니다. 특히 “모든 주기 작업을 cron으로 밀어 넣는 방식"은 초반엔 단순해 보이지만, 시간이 지나면 잡 개수가 늘고 디버깅이 어려워집니다. 최근 운영에서 가장 효과적이었던 패턴은 Heartbeat는 배치 점검용, Cron은 정시·원샷 작업용으로 역할을 강하게 분리하는 방식입니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-03-27 21:16:00 +0900 KST'>March 27, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 운영 팁: 블로그 자동화는 똑똑함보다 복원력이 중요하다" href="https://kwbaek.github.io/posts/2026-03-27-openclaw-blog-automation-needs-reliability-not-heroics/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 팁: 매일 쓰는 자동화일수록 새 기능보다 신뢰성 패치가 더 중요하다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 OpenClaw 쪽에서 눈에 들어온 포인트는 거창한 신기능보다도, 매일 돌려야 하는 자동화를 덜 불안하게 만들어주는 신뢰성 패치들이었습니다. 최신 릴리즈 v2026.3.13-1은 이름부터 약간 특이합니다. 이미 공개된 v2026.3.13 릴리즈 경로가 꼬여서 이를 복구하기 위한 recovery release였고, npm 버전은 그대로 두면서 GitHub 릴리즈 태그만 -1을 붙였습니다. 겉으로 보면 자잘한 운영 이슈처럼 보이지만, 실제로 이런 복구 감각이 있는 프로젝트가 장기 운영에는 훨씬 믿을 만합니다.
+이번 릴리즈에서 특히 실무적으로 중요해 보인 건 몇 가지였습니다. 첫째는 isolated cron nested lane deadlock 방지입니다. OpenClaw를 조금만 깊게 쓰기 시작하면 cron이 단순 알람이 아니라, 리서치, 요약, 보고, 파일 생성 같은 실제 작업 파이프라인으로 커집니다. 이때 isolated 실행 경로에서 교착 상태가 나면, 겉으로는 “아무 일도 안 일어난 조용한 실패&#34;처럼 보이기 쉽습니다. 그래서 이런 종류의 수정은 화려하진 않아도 운영 체감이 큽니다. 매일 밤 도는 잡일수록 실패 로그보다 “왜 결과가 안 나왔지?“가 더 무섭기 때문입니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-03-23 21:00:00 +0900 KST'>March 23, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 팁: 매일 쓰는 자동화일수록 새 기능보다 신뢰성 패치가 더 중요하다" href="https://kwbaek.github.io/posts/2026-03-23-openclaw-reliability-beats-feature-chasing-in-daily-ops/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 운영 팁: Heartbeat와 Cron을 분리하면 자동화 품질이 급상승한다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>OpenClaw를 꾸준히 돌리다 보면, 자동화가 흔들리는 가장 흔한 원인은 모델 성능이 아니라 스케줄 설계의 혼선입니다. 특히 “모든 주기 작업을 cron으로 밀어 넣는 방식&#34;은 초반엔 단순해 보이지만, 시간이 지나면 잡 개수가 늘고 디버깅이 어려워집니다. 최근 운영에서 가장 효과적이었던 패턴은 Heartbeat는 배치 점검용, Cron은 정시·원샷 작업용으로 역할을 강하게 분리하는 방식입니다.
 Heartbeat는 컨텍스트를 묶어 처리할 수 있다는 장점이 큽니다. 예를 들어 메일/캘린더/알림/날씨처럼 서로 연관된 점검은 heartbeat 한 번에 묶으면 API 호출과 토큰 사용량을 줄일 수 있고, “지금 정말 사용자에게 알려야 하나” 같은 판단도 더 자연스럽게 됩니다. 반대로 Cron은 9시 정각 보고, 20분 뒤 리마인드처럼 시간 정확도가 중요한 작업에 적합합니다. 이 두 축을 섞지 않으면 운영 소음이 줄고, 실패 원인도 훨씬 명확해집니다.
-...</p></div><footer class=entry-footer><span title='2026-03-12 21:00:00 +0900 KST'>March 12, 2026</span></footer><a class=entry-link aria-label="post link to OpenClaw 운영 팁: Heartbeat와 Cron을 분리하면 자동화 품질이 급상승한다" href=https://kwbaek.github.io/posts/2026-03-12-openclaw-two-track-ops-heartbeat-cron/></a></article><footer class=page-footer><nav class=pagination><a class=next href=https://kwbaek.github.io/tags/reliability/page/2/>Next&nbsp;&nbsp;»</a></nav></footer></main><footer class=footer><span>&copy; 2026 <a href=https://kwbaek.github.io/>Kyungwook's Devlog</a></span> ·
-<span>Powered by
-<a href=https://gohugo.io/ rel="noopener noreferrer" target=_blank>Hugo</a> &
-<a href=https://github.com/adityatelange/hugo-PaperMod/ rel=noopener target=_blank>PaperMod</a></span></footer><a href=#top aria-label="go to top" title="Go to Top (Alt + G)" class=top-link id=top-link accesskey=g><svg viewBox="0 0 12 6" fill="currentColor"><path d="M12 6H0l6-6z"/></svg>
-</a><script>let menu=document.getElementById("menu");if(menu){const e=localStorage.getItem("menu-scroll-position");e&&(menu.scrollLeft=parseInt(e,10)),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)}}document.querySelectorAll('a[href^="#"]').forEach(e=>{e.addEventListener("click",function(e){e.preventDefault();var t=this.getAttribute("href").substr(1);window.matchMedia("(prefers-reduced-motion: reduce)").matches?document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView({behavior:"smooth"}),t==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${t}`)})})</script><script>var mybutton=document.getElementById("top-link");window.onscroll=function(){document.body.scrollTop>800||document.documentElement.scrollTop>800?(mybutton.style.visibility="visible",mybutton.style.opacity="1"):(mybutton.style.visibility="hidden",mybutton.style.opacity="0")}</script><script>document.getElementById("theme-toggle").addEventListener("click",()=>{const e=document.querySelector("html");e.dataset.theme==="dark"?(e.dataset.theme="light",localStorage.setItem("pref-theme","light")):(e.dataset.theme="dark",localStorage.setItem("pref-theme","dark"))})</script></body></html>
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-03-12 21:00:00 +0900 KST'>March 12, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 운영 팁: Heartbeat와 Cron을 분리하면 자동화 품질이 급상승한다" href="https://kwbaek.github.io/posts/2026-03-12-openclaw-two-track-ops-heartbeat-cron/"></a>
+</article>
+<footer class="page-footer">
+  <nav class="pagination">
+    <a class="next" href="https://kwbaek.github.io/tags/reliability/page/2/">Next&nbsp;&nbsp;»
+    </a>
+  </nav>
+</footer>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://kwbaek.github.io/">Kyungwook&#39;s Devlog</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>
