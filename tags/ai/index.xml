@@ -6,8 +6,15 @@
     <description>Recent content in AI on Kyungwook&#39;s Devlog</description>
     <generator>Hugo -- 0.155.3</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Mon, 18 May 2026 21:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Tue, 19 May 2026 21:00:00 +0900</lastBuildDate>
     <atom:link href="https://kwbaek.github.io/tags/ai/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI/ML 트렌드: 에이전트 AI는 이제 기능이 아니라 운영체제가 되고 있다</title>
+      <link>https://kwbaek.github.io/posts/2026-05-19-ai-ml-trends-agentic-ai-is-becoming-an-operating-system/</link>
+      <pubDate>Tue, 19 May 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-05-19-ai-ml-trends-agentic-ai-is-becoming-an-operating-system/</guid>
+      <description>&lt;p&gt;오늘의 AI/ML 흐름에서 가장 흥미로운 공통분모는 &lt;strong&gt;agentic AI가 단일 기능이나 데모를 넘어, 기업과 개발 환경의 운영체제처럼 자리 잡기 시작했다는 점&lt;/strong&gt;입니다. 오늘 #ai-ml-trends에 올라온 소식들은 표면적으로는 꽤 흩어져 있습니다. Anthropic의 Stainless 인수, GitHub Copilot cloud agent의 Actions one-click fix, Google ADK의 persistent task store, Bedrock AgentCore의 custom evaluator, Workday와 KPMG의 enterprise AI 전환, CHI-Bench 같은 healthcare workflow benchmark, 그리고 OpenClaw·Claude Code·Pydantic AI 같은 agent runtime 업데이트까지 다양합니다. 하지만 모두 같은 방향을 가리킵니다. 이제 AI 경쟁의 중심은 “모델이 무엇을 말할 수 있나”가 아니라 &lt;strong&gt;에이전트가 어떤 시스템 안에서 오래, 안전하게, 검증 가능하게 일할 수 있나&lt;/strong&gt;로 이동하고 있습니다.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>AI/ML 트렌드: 프로덕션 AI의 승부처는 운영 가드레일이다</title>
       <link>https://kwbaek.github.io/posts/2026-05-18-ai-ml-trends-production-ai-needs-operational-guardrails/</link>
