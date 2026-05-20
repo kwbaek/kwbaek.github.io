@@ -1,27 +1,2 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
-  <channel>
-    <title>RAG on Kyungwook&#39;s Devlog</title>
-    <link>https://kwbaek.github.io/tags/rag/</link>
-    <description>Recent content in RAG on Kyungwook&#39;s Devlog</description>
-    <generator>Hugo -- 0.155.3</generator>
-    <language>ko-kr</language>
-    <lastBuildDate>Mon, 18 May 2026 21:00:00 +0900</lastBuildDate>
-    <atom:link href="https://kwbaek.github.io/tags/rag/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>AI/ML 트렌드: 프로덕션 AI의 승부처는 운영 가드레일이다</title>
-      <link>https://kwbaek.github.io/posts/2026-05-18-ai-ml-trends-production-ai-needs-operational-guardrails/</link>
-      <pubDate>Mon, 18 May 2026 21:00:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/posts/2026-05-18-ai-ml-trends-production-ai-needs-operational-guardrails/</guid>
-      <description>&lt;p&gt;오늘 AI/ML 트렌드에서 가장 흥미로운 흐름은 &lt;strong&gt;AI가 데모를 넘어 실제 업무와 인프라에 들어갈수록, 모델 성능보다 운영 가드레일이 더 큰 차별점이 되고 있다&lt;/strong&gt;는 점입니다. 하루 동안 올라온 소식은 AI cloud surprise bill, Amazon Quick knowledge base의 민감 문서 접근 제한, Anthropic cyber AI의 금융감독기구 브리핑, OpenAI의 ChatGPT와 Codex 제품팀 통합, Meta 광고 자동화의 운영 난제, document VQA evidence attribution 연구까지 다양했습니다. 하지만 모두 같은 질문으로 모입니다. “AI가 실제로 돈을 쓰고, 문서를 읽고, 코드를 고치고, 보안 리스크를 다룰 때 누가 어떻게 통제할 것인가?”&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>AI/ML 트렌드: AI 스택은 챗봇에서 운영 표면으로 이동하고 있다</title>
-      <link>https://kwbaek.github.io/posts/2026-05-12-ai-ml-trends-the-ai-stack-is-moving-from-chatbots-to-operating-surfaces/</link>
-      <pubDate>Tue, 12 May 2026 21:00:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/posts/2026-05-12-ai-ml-trends-the-ai-stack-is-moving-from-chatbots-to-operating-surfaces/</guid>
-      <description>&lt;p&gt;오늘 AI/ML 트렌드에서 가장 선명한 흐름은 &lt;strong&gt;AI가 챗봇이나 단일 모델 기능에서 벗어나, 실제 업무와 산업 시스템을 움직이는 운영 표면으로 내려가고 있다&lt;/strong&gt;는 점입니다. 하루 동안 나온 소식들을 묶어보면, 경쟁의 질문은 더 이상 “어떤 모델이 더 똑똑한가?”에 머물지 않습니다. 이제는 “그 모델이 어떤 데이터와 도구를 보고, 어떤 권한으로 행동하며, 어떤 인프라 위에서 감시되고, 어떤 법적·경제적 책임을 남기는가?”가 핵심이 되고 있습니다.&lt;/p&gt;
-&lt;p&gt;가장 먼저 눈에 띄는 것은 enterprise deployment의 성숙입니다. OpenAI의 ChatGPT adoption broadened 분석은 AI 사용이 일부 early adopter의 실험을 넘어 더 넓은 사용자와 업무 패턴으로 확산되고 있음을 보여줍니다. 동시에 Capgemini가 OpenAI Deployment Company에 투자했다는 소식은 frontier AI 상업화가 API 판매만으로 끝나지 않는다는 점을 잘 드러냅니다. 기업은 모델을 사는 것이 아니라 use-case 선정, 데이터 연결, 운영 전환, 직원 채택, 리스크 관리까지 묶인 배포 역량을 삽니다.&lt;/p&gt;</description>
-    </item>
-  </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>RAG on Kyungwook's Devlog</title><link>https://kwbaek.github.io/tags/rag/</link><description>Recent content in RAG on Kyungwook's Devlog</description><generator>Hugo -- 0.155.3</generator><language>ko-kr</language><lastBuildDate>Mon, 18 May 2026 21:00:00 +0900</lastBuildDate><atom:link href="https://kwbaek.github.io/tags/rag/index.xml" rel="self" type="application/rss+xml"/><item><title>AI/ML 트렌드: 프로덕션 AI의 승부처는 운영 가드레일이다</title><link>https://kwbaek.github.io/posts/2026-05-18-ai-ml-trends-production-ai-needs-operational-guardrails/</link><pubDate>Mon, 18 May 2026 21:00:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-05-18-ai-ml-trends-production-ai-needs-operational-guardrails/</guid><description>&lt;p&gt;오늘 AI/ML 트렌드에서 가장 흥미로운 흐름은 &lt;strong&gt;AI가 데모를 넘어 실제 업무와 인프라에 들어갈수록, 모델 성능보다 운영 가드레일이 더 큰 차별점이 되고 있다&lt;/strong&gt;는 점입니다. 하루 동안 올라온 소식은 AI cloud surprise bill, Amazon Quick knowledge base의 민감 문서 접근 제한, Anthropic cyber AI의 금융감독기구 브리핑, OpenAI의 ChatGPT와 Codex 제품팀 통합, Meta 광고 자동화의 운영 난제, document VQA evidence attribution 연구까지 다양했습니다. 하지만 모두 같은 질문으로 모입니다. “AI가 실제로 돈을 쓰고, 문서를 읽고, 코드를 고치고, 보안 리스크를 다룰 때 누가 어떻게 통제할 것인가?”&lt;/p&gt;</description></item><item><title>AI/ML 트렌드: AI 스택은 챗봇에서 운영 표면으로 이동하고 있다</title><link>https://kwbaek.github.io/posts/2026-05-12-ai-ml-trends-the-ai-stack-is-moving-from-chatbots-to-operating-surfaces/</link><pubDate>Tue, 12 May 2026 21:00:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-05-12-ai-ml-trends-the-ai-stack-is-moving-from-chatbots-to-operating-surfaces/</guid><description>&lt;p&gt;오늘 AI/ML 트렌드에서 가장 선명한 흐름은 &lt;strong&gt;AI가 챗봇이나 단일 모델 기능에서 벗어나, 실제 업무와 산업 시스템을 움직이는 운영 표면으로 내려가고 있다&lt;/strong&gt;는 점입니다. 하루 동안 나온 소식들을 묶어보면, 경쟁의 질문은 더 이상 “어떤 모델이 더 똑똑한가?”에 머물지 않습니다. 이제는 “그 모델이 어떤 데이터와 도구를 보고, 어떤 권한으로 행동하며, 어떤 인프라 위에서 감시되고, 어떤 법적·경제적 책임을 남기는가?”가 핵심이 되고 있습니다.&lt;/p&gt;
+&lt;p&gt;가장 먼저 눈에 띄는 것은 enterprise deployment의 성숙입니다. OpenAI의 ChatGPT adoption broadened 분석은 AI 사용이 일부 early adopter의 실험을 넘어 더 넓은 사용자와 업무 패턴으로 확산되고 있음을 보여줍니다. 동시에 Capgemini가 OpenAI Deployment Company에 투자했다는 소식은 frontier AI 상업화가 API 판매만으로 끝나지 않는다는 점을 잘 드러냅니다. 기업은 모델을 사는 것이 아니라 use-case 선정, 데이터 연결, 운영 전환, 직원 채택, 리스크 관리까지 묶인 배포 역량을 삽니다.&lt;/p&gt;</description></item></channel></rss>
