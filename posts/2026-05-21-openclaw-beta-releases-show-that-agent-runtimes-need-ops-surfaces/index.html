@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>OpenClaw 팁: 에이전트 런타임은 기능보다 운영 표면이 중요해진다 | Kyungwook&#39;s Devlog</title>
+<meta name="keywords" content="OpenClaw, Agents, Runtime, Operations, Reliability, Browser, Skills">
+<meta name="description" content="OpenClaw를 daily workflow에 붙여서 쓰다 보면, 가장 고마운 개선은 꼭 화려한 기능이 아닙니다. 오히려 재시작이 왜 느렸는지 추적할 수 있고, 브라우저가 막혔을 때 상태를 더 잘 다루고, skill 설치와 배포 경로가 정리되고, 모바일·데스크톱 설정 UX가 덜 거칠어지는 변화가 실제 생산성을 크게 올립니다. 최근 v2026.5.19-beta.1, v2026.5.19-beta.2, v2026.5.20-beta.1 흐름에서 보이는 핵심도 바로 이것입니다. 개인 agent runtime은 모델 호출기가 아니라 작은 운영체제처럼 다뤄져야 한다는 방향입니다.
+첫 번째로 볼 부분은 startup과 readiness입니다. 에이전트를 하루에 한 번만 수동 실행한다면 부팅 로그가 조금 부족해도 큰 문제가 아닙니다. 하지만 cron, heartbeat, Discord/Telegram 채널, browser task, subagent가 얽히면 이야기가 달라집니다. gateway startup tracing이나 sidecar startup 관련 개선은 “왜 지금 응답이 늦었는가”, “어느 plugin이 준비되지 않았는가”, “재시작 후 어떤 surface가 살아났는가”를 확인하는 데 중요합니다. 항상 켜져 있는 agent에서는 빠른 답변보다 예측 가능한 준비 상태가 먼저입니다.">
+<meta name="author" content="">
+<link rel="canonical" href="https://kwbaek.github.io/posts/2026-05-21-openclaw-beta-releases-show-that-agent-runtimes-need-ops-surfaces/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.da3211e5ef867bf2b75fd5a6515cfed7195c011e8ab735694e203810a827097b.css" integrity="sha256-2jIR5e&#43;Ge/K3X9WmUVz&#43;1xlcAR6KtzVpTiA4EKgnCXs=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://kwbaek.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://kwbaek.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://kwbaek.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://kwbaek.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://kwbaek.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://kwbaek.github.io/posts/2026-05-21-openclaw-beta-releases-show-that-agent-runtimes-need-ops-surfaces/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="https://kwbaek.github.io/posts/2026-05-21-openclaw-beta-releases-show-that-agent-runtimes-need-ops-surfaces/">
+  <meta property="og:site_name" content="Kyungwook&#39;s Devlog">
+  <meta property="og:title" content="OpenClaw 팁: 에이전트 런타임은 기능보다 운영 표면이 중요해진다">
+  <meta property="og:description" content="OpenClaw를 daily workflow에 붙여서 쓰다 보면, 가장 고마운 개선은 꼭 화려한 기능이 아닙니다. 오히려 재시작이 왜 느렸는지 추적할 수 있고, 브라우저가 막혔을 때 상태를 더 잘 다루고, skill 설치와 배포 경로가 정리되고, 모바일·데스크톱 설정 UX가 덜 거칠어지는 변화가 실제 생산성을 크게 올립니다. 최근 v2026.5.19-beta.1, v2026.5.19-beta.2, v2026.5.20-beta.1 흐름에서 보이는 핵심도 바로 이것입니다. 개인 agent runtime은 모델 호출기가 아니라 작은 운영체제처럼 다뤄져야 한다는 방향입니다.
+첫 번째로 볼 부분은 startup과 readiness입니다. 에이전트를 하루에 한 번만 수동 실행한다면 부팅 로그가 조금 부족해도 큰 문제가 아닙니다. 하지만 cron, heartbeat, Discord/Telegram 채널, browser task, subagent가 얽히면 이야기가 달라집니다. gateway startup tracing이나 sidecar startup 관련 개선은 “왜 지금 응답이 늦었는가”, “어느 plugin이 준비되지 않았는가”, “재시작 후 어떤 surface가 살아났는가”를 확인하는 데 중요합니다. 항상 켜져 있는 agent에서는 빠른 답변보다 예측 가능한 준비 상태가 먼저입니다.">
+  <meta property="og:locale" content="ko-kr">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2026-05-21T21:00:00+09:00">
+    <meta property="article:modified_time" content="2026-05-21T21:00:00+09:00">
+    <meta property="article:tag" content="Openclaw">
+    <meta property="article:tag" content="Agents">
+    <meta property="article:tag" content="Runtime">
+    <meta property="article:tag" content="Operations">
+    <meta property="article:tag" content="Reliability">
+    <meta property="article:tag" content="Browser">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="OpenClaw 팁: 에이전트 런타임은 기능보다 운영 표면이 중요해진다">
+<meta name="twitter:description" content="OpenClaw를 daily workflow에 붙여서 쓰다 보면, 가장 고마운 개선은 꼭 화려한 기능이 아닙니다. 오히려 재시작이 왜 느렸는지 추적할 수 있고, 브라우저가 막혔을 때 상태를 더 잘 다루고, skill 설치와 배포 경로가 정리되고, 모바일·데스크톱 설정 UX가 덜 거칠어지는 변화가 실제 생산성을 크게 올립니다. 최근 v2026.5.19-beta.1, v2026.5.19-beta.2, v2026.5.20-beta.1 흐름에서 보이는 핵심도 바로 이것입니다. 개인 agent runtime은 모델 호출기가 아니라 작은 운영체제처럼 다뤄져야 한다는 방향입니다.
+첫 번째로 볼 부분은 startup과 readiness입니다. 에이전트를 하루에 한 번만 수동 실행한다면 부팅 로그가 조금 부족해도 큰 문제가 아닙니다. 하지만 cron, heartbeat, Discord/Telegram 채널, browser task, subagent가 얽히면 이야기가 달라집니다. gateway startup tracing이나 sidecar startup 관련 개선은 “왜 지금 응답이 늦었는가”, “어느 plugin이 준비되지 않았는가”, “재시작 후 어떤 surface가 살아났는가”를 확인하는 데 중요합니다. 항상 켜져 있는 agent에서는 빠른 답변보다 예측 가능한 준비 상태가 먼저입니다.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://kwbaek.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "OpenClaw 팁: 에이전트 런타임은 기능보다 운영 표면이 중요해진다",
+      "item": "https://kwbaek.github.io/posts/2026-05-21-openclaw-beta-releases-show-that-agent-runtimes-need-ops-surfaces/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "OpenClaw 팁: 에이전트 런타임은 기능보다 운영 표면이 중요해진다",
+  "name": "OpenClaw 팁: 에이전트 런타임은 기능보다 운영 표면이 중요해진다",
+  "description": "OpenClaw를 daily workflow에 붙여서 쓰다 보면, 가장 고마운 개선은 꼭 화려한 기능이 아닙니다. 오히려 재시작이 왜 느렸는지 추적할 수 있고, 브라우저가 막혔을 때 상태를 더 잘 다루고, skill 설치와 배포 경로가 정리되고, 모바일·데스크톱 설정 UX가 덜 거칠어지는 변화가 실제 생산성을 크게 올립니다. 최근 v2026.5.19-beta.1, v2026.5.19-beta.2, v2026.5.20-beta.1 흐름에서 보이는 핵심도 바로 이것입니다. 개인 agent runtime은 모델 호출기가 아니라 작은 운영체제처럼 다뤄져야 한다는 방향입니다.\n첫 번째로 볼 부분은 startup과 readiness입니다. 에이전트를 하루에 한 번만 수동 실행한다면 부팅 로그가 조금 부족해도 큰 문제가 아닙니다. 하지만 cron, heartbeat, Discord/Telegram 채널, browser task, subagent가 얽히면 이야기가 달라집니다. gateway startup tracing이나 sidecar startup 관련 개선은 “왜 지금 응답이 늦었는가”, “어느 plugin이 준비되지 않았는가”, “재시작 후 어떤 surface가 살아났는가”를 확인하는 데 중요합니다. 항상 켜져 있는 agent에서는 빠른 답변보다 예측 가능한 준비 상태가 먼저입니다.\n",
+  "keywords": [
+    "OpenClaw", "Agents", "Runtime", "Operations", "Reliability", "Browser", "Skills"
+  ],
+  "articleBody": "OpenClaw를 daily workflow에 붙여서 쓰다 보면, 가장 고마운 개선은 꼭 화려한 기능이 아닙니다. 오히려 재시작이 왜 느렸는지 추적할 수 있고, 브라우저가 막혔을 때 상태를 더 잘 다루고, skill 설치와 배포 경로가 정리되고, 모바일·데스크톱 설정 UX가 덜 거칠어지는 변화가 실제 생산성을 크게 올립니다. 최근 v2026.5.19-beta.1, v2026.5.19-beta.2, v2026.5.20-beta.1 흐름에서 보이는 핵심도 바로 이것입니다. 개인 agent runtime은 모델 호출기가 아니라 작은 운영체제처럼 다뤄져야 한다는 방향입니다.\n첫 번째로 볼 부분은 startup과 readiness입니다. 에이전트를 하루에 한 번만 수동 실행한다면 부팅 로그가 조금 부족해도 큰 문제가 아닙니다. 하지만 cron, heartbeat, Discord/Telegram 채널, browser task, subagent가 얽히면 이야기가 달라집니다. gateway startup tracing이나 sidecar startup 관련 개선은 “왜 지금 응답이 늦었는가”, “어느 plugin이 준비되지 않았는가”, “재시작 후 어떤 surface가 살아났는가”를 확인하는 데 중요합니다. 항상 켜져 있는 agent에서는 빠른 답변보다 예측 가능한 준비 상태가 먼저입니다.\n두 번째는 skill과 capability 관리입니다. OpenClaw가 global skill install이나 공유 skill 배포 흐름을 보강하는 것은 단순한 편의 기능 이상입니다. agent가 할 수 있는 일이 많아질수록 “어떤 capability가 설치되어 있고, 어느 경로로 업데이트되며, 어떤 작업에서 호출되는가”가 운영 리스크가 됩니다. 오늘 AI/ML 트렌드에서도 NVIDIA Verified Agent Skills나 skill governance 연구가 계속 언급되는 이유가 여기에 있습니다. skill은 prompt 조각이 아니라 실행 가능한 능력 단위이기 때문에 provenance, versioning, rollback, 최소권한 원칙이 필요합니다.\n세 번째는 browser와 채널 운영입니다. 브라우저 자동화는 실제 업무 자동화에서 강력하지만, modal, blocked state, login flow, page readiness처럼 모델이 추론만으로 해결하기 어려운 상태 문제가 많습니다. OpenClaw가 browser modal handling이나 Mac settings UX, QR login flow 같은 주변 표면을 다듬는 것은 agent가 현실 세계의 거친 UI와 더 오래 버티게 만드는 작업입니다. 좋은 agent runtime은 “브라우저를 쓸 수 있다”에서 끝나지 않고, 브라우저가 실패했을 때 그 실패를 관찰하고 복구할 수 있어야 합니다.\n실전 운영 팁은 간단합니다. OpenClaw를 자동화에 붙일 때는 새 기능을 켜기 전에 세 가지를 먼저 정해두면 좋습니다. 첫째, cron과 heartbeat의 역할을 나누세요. 정시성이 중요하면 cron, 느슨한 점검과 묶음 확인은 heartbeat가 낫습니다. 둘째, release 업데이트 뒤에는 작은 smoke test를 고정하세요. 예를 들어 상태 확인, 메시지 읽기, 간단한 파일 생성, Hugo build 같은 실제 workflow의 최소 경로를 확인합니다. 셋째, skill과 외부 tool은 한꺼번에 많이 늘리지 말고, 설치 이유와 rollback 방법을 남겨두세요.\n결국 OpenClaw의 장점은 “모든 것을 대신 해주는 마법”이 아니라, 개인 agent를 실제 운영 가능한 시스템으로 키울 수 있게 해주는 구조에 있습니다. 모델은 계속 바뀌고, agent framework도 빠르게 업데이트됩니다. 그럴수록 중요한 것은 더 많은 기능을 켜는 속도가 아니라, 기능이 실패했을 때 어디서 멈췄는지 알고 다시 굴릴 수 있는 능력입니다. 최근 beta 릴리즈들이 보여주는 방향은 꽤 건강합니다. OpenClaw는 점점 더 똑똑한 assistant라기보다, 더 믿고 오래 맡길 수 있는 agent runtime 쪽으로 진화하고 있습니다.\n참고 링크:\nOpenClaw v2026.5.19-beta.1: https://github.com/openclaw/openclaw/releases/tag/v2026.5.19-beta.1 OpenClaw v2026.5.19-beta.2: https://github.com/openclaw/openclaw/releases/tag/v2026.5.19-beta.2 OpenClaw v2026.5.20-beta.1: https://github.com/openclaw/openclaw/releases/tag/v2026.5.20-beta.1 ",
+  "wordCount" : "414",
+  "inLanguage": "en",
+  "datePublished": "2026-05-21T21:00:00+09:00",
+  "dateModified": "2026-05-21T21:00:00+09:00",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://kwbaek.github.io/posts/2026-05-21-openclaw-beta-releases-show-that-agent-runtimes-need-ops-surfaces/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Kyungwook's Devlog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://kwbaek.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://kwbaek.github.io/" accesskey="h" title="Kyungwook&#39;s Devlog (Alt + H)">Kyungwook&#39;s Devlog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://kwbaek.github.io/categories/" title="categories">
+                    <span>categories</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kwbaek.github.io/tags/" title="tags">
+                    <span>tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kwbaek.github.io/" title="Kyungwook&#39;s Devlog">
+                    <span>Kyungwook&#39;s Devlog</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      OpenClaw 팁: 에이전트 런타임은 기능보다 운영 표면이 중요해진다
+    </h1>
+    <div class="post-meta"><span title='2026-05-21 21:00:00 +0900 KST'>May 21, 2026</span>
+
+</div>
+  </header> 
+  <div class="post-content"><p>OpenClaw를 daily workflow에 붙여서 쓰다 보면, 가장 고마운 개선은 꼭 화려한 기능이 아닙니다. 오히려 재시작이 왜 느렸는지 추적할 수 있고, 브라우저가 막혔을 때 상태를 더 잘 다루고, skill 설치와 배포 경로가 정리되고, 모바일·데스크톱 설정 UX가 덜 거칠어지는 변화가 실제 생산성을 크게 올립니다. 최근 <code>v2026.5.19-beta.1</code>, <code>v2026.5.19-beta.2</code>, <code>v2026.5.20-beta.1</code> 흐름에서 보이는 핵심도 바로 이것입니다. <strong>개인 agent runtime은 모델 호출기가 아니라 작은 운영체제처럼 다뤄져야 한다</strong>는 방향입니다.</p>
+<p>첫 번째로 볼 부분은 startup과 readiness입니다. 에이전트를 하루에 한 번만 수동 실행한다면 부팅 로그가 조금 부족해도 큰 문제가 아닙니다. 하지만 cron, heartbeat, Discord/Telegram 채널, browser task, subagent가 얽히면 이야기가 달라집니다. gateway startup tracing이나 sidecar startup 관련 개선은 “왜 지금 응답이 늦었는가”, “어느 plugin이 준비되지 않았는가”, “재시작 후 어떤 surface가 살아났는가”를 확인하는 데 중요합니다. 항상 켜져 있는 agent에서는 빠른 답변보다 예측 가능한 준비 상태가 먼저입니다.</p>
+<p>두 번째는 skill과 capability 관리입니다. OpenClaw가 global skill install이나 공유 skill 배포 흐름을 보강하는 것은 단순한 편의 기능 이상입니다. agent가 할 수 있는 일이 많아질수록 “어떤 capability가 설치되어 있고, 어느 경로로 업데이트되며, 어떤 작업에서 호출되는가”가 운영 리스크가 됩니다. 오늘 AI/ML 트렌드에서도 NVIDIA Verified Agent Skills나 skill governance 연구가 계속 언급되는 이유가 여기에 있습니다. skill은 prompt 조각이 아니라 실행 가능한 능력 단위이기 때문에 provenance, versioning, rollback, 최소권한 원칙이 필요합니다.</p>
+<p>세 번째는 browser와 채널 운영입니다. 브라우저 자동화는 실제 업무 자동화에서 강력하지만, modal, blocked state, login flow, page readiness처럼 모델이 추론만으로 해결하기 어려운 상태 문제가 많습니다. OpenClaw가 browser modal handling이나 Mac settings UX, QR login flow 같은 주변 표면을 다듬는 것은 agent가 현실 세계의 거친 UI와 더 오래 버티게 만드는 작업입니다. 좋은 agent runtime은 “브라우저를 쓸 수 있다”에서 끝나지 않고, 브라우저가 실패했을 때 그 실패를 관찰하고 복구할 수 있어야 합니다.</p>
+<p>실전 운영 팁은 간단합니다. OpenClaw를 자동화에 붙일 때는 새 기능을 켜기 전에 세 가지를 먼저 정해두면 좋습니다. 첫째, cron과 heartbeat의 역할을 나누세요. 정시성이 중요하면 cron, 느슨한 점검과 묶음 확인은 heartbeat가 낫습니다. 둘째, release 업데이트 뒤에는 작은 smoke test를 고정하세요. 예를 들어 상태 확인, 메시지 읽기, 간단한 파일 생성, Hugo build 같은 실제 workflow의 최소 경로를 확인합니다. 셋째, skill과 외부 tool은 한꺼번에 많이 늘리지 말고, 설치 이유와 rollback 방법을 남겨두세요.</p>
+<p>결국 OpenClaw의 장점은 “모든 것을 대신 해주는 마법”이 아니라, 개인 agent를 실제 운영 가능한 시스템으로 키울 수 있게 해주는 구조에 있습니다. 모델은 계속 바뀌고, agent framework도 빠르게 업데이트됩니다. 그럴수록 중요한 것은 더 많은 기능을 켜는 속도가 아니라, 기능이 실패했을 때 어디서 멈췄는지 알고 다시 굴릴 수 있는 능력입니다. 최근 beta 릴리즈들이 보여주는 방향은 꽤 건강합니다. OpenClaw는 점점 더 똑똑한 assistant라기보다, 더 믿고 오래 맡길 수 있는 agent runtime 쪽으로 진화하고 있습니다.</p>
+<p>참고 링크:</p>
+<ul>
+<li>OpenClaw v2026.5.19-beta.1: <a href="https://github.com/openclaw/openclaw/releases/tag/v2026.5.19-beta.1">https://github.com/openclaw/openclaw/releases/tag/v2026.5.19-beta.1</a></li>
+<li>OpenClaw v2026.5.19-beta.2: <a href="https://github.com/openclaw/openclaw/releases/tag/v2026.5.19-beta.2">https://github.com/openclaw/openclaw/releases/tag/v2026.5.19-beta.2</a></li>
+<li>OpenClaw v2026.5.20-beta.1: <a href="https://github.com/openclaw/openclaw/releases/tag/v2026.5.20-beta.1">https://github.com/openclaw/openclaw/releases/tag/v2026.5.20-beta.1</a></li>
+</ul>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://kwbaek.github.io/tags/openclaw/">Openclaw</a></li>
+      <li><a href="https://kwbaek.github.io/tags/agents/">Agents</a></li>
+      <li><a href="https://kwbaek.github.io/tags/runtime/">Runtime</a></li>
+      <li><a href="https://kwbaek.github.io/tags/operations/">Operations</a></li>
+      <li><a href="https://kwbaek.github.io/tags/reliability/">Reliability</a></li>
+      <li><a href="https://kwbaek.github.io/tags/browser/">Browser</a></li>
+      <li><a href="https://kwbaek.github.io/tags/skills/">Skills</a></li>
+    </ul>
+  </footer><script src="https://utteranc.es/client.js"
+        repo="kwbaek/blog-comments"
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://kwbaek.github.io/">Kyungwook&#39;s Devlog</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

@@ -1,3 +1,28 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Verification on Kyungwook's Devlog</title><link>https://kwbaek.github.io/tags/verification/</link><description>Recent content in Verification on Kyungwook's Devlog</description><generator>Hugo -- 0.155.3</generator><language>ko-kr</language><lastBuildDate>Mon, 18 May 2026 21:00:00 +0900</lastBuildDate><atom:link href="https://kwbaek.github.io/tags/verification/index.xml" rel="self" type="application/rss+xml"/><item><title>OpenClaw 팁: 블로그 크론에 작은 검증 게이트 붙이기</title><link>https://kwbaek.github.io/posts/2026-05-18-openclaw-build-blog-crons-with-small-verification-gates/</link><pubDate>Mon, 18 May 2026 21:00:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-05-18-openclaw-build-blog-crons-with-small-verification-gates/</guid><description>&lt;p&gt;OpenClaw로 매일 블로그를 자동 작성한다면, 가장 중요한 습관은 &lt;strong&gt;큰 자동화를 한 번에 믿지 말고 작은 검증 게이트로 나누는 것&lt;/strong&gt;입니다. Discord 트렌드 채널을 읽고, 글을 쓰고, Hugo content repository에 commit하고, build를 실행하고, public 폴더를 배포하는 흐름은 겉보기에는 단순합니다. 하지만 실제로는 입력 선별, 파일 생성, front matter 검증, git 상태 확인, 정적 사이트 빌드, 배포 repository 갱신이 이어지는 작은 release pipeline입니다.&lt;/p&gt;
-&lt;p&gt;첫 번째 게이트는 입력 확인입니다. 오늘 메시지를 읽는 크론이라면 먼저 대상 채널의 최근 메시지에서 오늘 날짜 범위에 해당하는 항목만 골라야 합니다. 오래된 메시지까지 섞이면 글이 풍부해 보일 수는 있지만, “오늘의 트렌드”라는 편집 기준이 흐려집니다. OpenClaw에서는 Discord 채널을 단순 로그가 아니라 편집 데스크처럼 쓰는 편이 좋습니다. 하루 동안 이미 선별된 링크와 요약이 쌓여 있으므로, 블로그 크론은 다시 웹 전체를 뒤지기보다 그중 가장 중요한 thesis를 뽑는 데 집중할 수 있습니다.&lt;/p&gt;</description></item><item><title>AI/ML 트렌드: 딥페이크 전쟁의 핵심은 이제 모델보다 유통과 검증이다</title><link>https://kwbaek.github.io/posts/2026-03-28-ai-deepfakes-shift-the-battleground-from-models-to-distribution/</link><pubDate>Sat, 28 Mar 2026 21:00:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-03-28-ai-deepfakes-shift-the-battleground-from-models-to-distribution/</guid><description>&lt;p&gt;오늘 &lt;code&gt;#ai-ml-trends&lt;/code&gt; 채널에서 가장 강하게 눈에 들어온 신호는 Reuters가 보도한 &lt;strong&gt;미국 중간선거 국면의 AI 딥페이크 확산&lt;/strong&gt;이었습니다. 표면적으로는 또 하나의 &amp;ldquo;딥페이크가 위험하다&amp;quot;는 뉴스처럼 보일 수 있지만, 조금만 더 들여다보면 포인트는 모델 품질 그 자체가 아닙니다. 진짜 핵심은 &lt;strong&gt;생성 능력의 고도화보다, 가짜 콘텐츠가 얼마나 빠르게 퍼지고 사람들이 얼마나 느리게 검증하는가&lt;/strong&gt; 쪽으로 전장이 이동했다는 점입니다.&lt;/p&gt;
-&lt;p&gt;예전에는 생성형 AI 리스크를 이야기할 때 주로 &amp;ldquo;영상이 얼마나 정교한가&amp;rdquo;, &amp;ldquo;목소리가 얼마나 자연스러운가&amp;rdquo;, &amp;ldquo;모델이 얼마나 쉽게 악용될 수 있는가&amp;quot;에 초점이 맞춰졌습니다. 그런데 이제는 그 다음 단계가 더 중요해졌습니다. 실제 선거 국면에서는 콘텐츠 한 건이 완벽해서 문제가 되기보다, &lt;strong&gt;짧은 시간 안에 대량으로 유통되고 정치적 맥락에 맞게 증폭되는 구조&lt;/strong&gt;가 더 치명적입니다. 완성도가 100점이 아니어도, 타이밍과 플랫폼 구조가 맞으면 여론을 흔드는 데는 충분하다는 뜻입니다.&lt;/p&gt;</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Verification on Kyungwook&#39;s Devlog</title>
+    <link>https://kwbaek.github.io/tags/verification/</link>
+    <description>Recent content in Verification on Kyungwook&#39;s Devlog</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Mon, 18 May 2026 21:00:00 +0900</lastBuildDate>
+    <atom:link href="https://kwbaek.github.io/tags/verification/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>OpenClaw 팁: 블로그 크론에 작은 검증 게이트 붙이기</title>
+      <link>https://kwbaek.github.io/posts/2026-05-18-openclaw-build-blog-crons-with-small-verification-gates/</link>
+      <pubDate>Mon, 18 May 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-05-18-openclaw-build-blog-crons-with-small-verification-gates/</guid>
+      <description>&lt;p&gt;OpenClaw로 매일 블로그를 자동 작성한다면, 가장 중요한 습관은 &lt;strong&gt;큰 자동화를 한 번에 믿지 말고 작은 검증 게이트로 나누는 것&lt;/strong&gt;입니다. Discord 트렌드 채널을 읽고, 글을 쓰고, Hugo content repository에 commit하고, build를 실행하고, public 폴더를 배포하는 흐름은 겉보기에는 단순합니다. 하지만 실제로는 입력 선별, 파일 생성, front matter 검증, git 상태 확인, 정적 사이트 빌드, 배포 repository 갱신이 이어지는 작은 release pipeline입니다.&lt;/p&gt;
+&lt;p&gt;첫 번째 게이트는 입력 확인입니다. 오늘 메시지를 읽는 크론이라면 먼저 대상 채널의 최근 메시지에서 오늘 날짜 범위에 해당하는 항목만 골라야 합니다. 오래된 메시지까지 섞이면 글이 풍부해 보일 수는 있지만, “오늘의 트렌드”라는 편집 기준이 흐려집니다. OpenClaw에서는 Discord 채널을 단순 로그가 아니라 편집 데스크처럼 쓰는 편이 좋습니다. 하루 동안 이미 선별된 링크와 요약이 쌓여 있으므로, 블로그 크론은 다시 웹 전체를 뒤지기보다 그중 가장 중요한 thesis를 뽑는 데 집중할 수 있습니다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>AI/ML 트렌드: 딥페이크 전쟁의 핵심은 이제 모델보다 유통과 검증이다</title>
+      <link>https://kwbaek.github.io/posts/2026-03-28-ai-deepfakes-shift-the-battleground-from-models-to-distribution/</link>
+      <pubDate>Sat, 28 Mar 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-03-28-ai-deepfakes-shift-the-battleground-from-models-to-distribution/</guid>
+      <description>&lt;p&gt;오늘 &lt;code&gt;#ai-ml-trends&lt;/code&gt; 채널에서 가장 강하게 눈에 들어온 신호는 Reuters가 보도한 &lt;strong&gt;미국 중간선거 국면의 AI 딥페이크 확산&lt;/strong&gt;이었습니다. 표면적으로는 또 하나의 &amp;ldquo;딥페이크가 위험하다&amp;quot;는 뉴스처럼 보일 수 있지만, 조금만 더 들여다보면 포인트는 모델 품질 그 자체가 아닙니다. 진짜 핵심은 &lt;strong&gt;생성 능력의 고도화보다, 가짜 콘텐츠가 얼마나 빠르게 퍼지고 사람들이 얼마나 느리게 검증하는가&lt;/strong&gt; 쪽으로 전장이 이동했다는 점입니다.&lt;/p&gt;
+&lt;p&gt;예전에는 생성형 AI 리스크를 이야기할 때 주로 &amp;ldquo;영상이 얼마나 정교한가&amp;rdquo;, &amp;ldquo;목소리가 얼마나 자연스러운가&amp;rdquo;, &amp;ldquo;모델이 얼마나 쉽게 악용될 수 있는가&amp;quot;에 초점이 맞춰졌습니다. 그런데 이제는 그 다음 단계가 더 중요해졌습니다. 실제 선거 국면에서는 콘텐츠 한 건이 완벽해서 문제가 되기보다, &lt;strong&gt;짧은 시간 안에 대량으로 유통되고 정치적 맥락에 맞게 증폭되는 구조&lt;/strong&gt;가 더 치명적입니다. 완성도가 100점이 아니어도, 타이밍과 플랫폼 구조가 맞으면 여론을 흔드는 데는 충분하다는 뜻입니다.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

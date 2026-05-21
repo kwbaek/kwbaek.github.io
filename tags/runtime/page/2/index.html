@@ -1,15 +1,310 @@
-<!doctype html><html lang=en dir=auto data-theme=auto><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=robots content="index, follow"><title>Runtime | Kyungwook's Devlog</title><meta name=keywords content><meta name=description content><meta name=author content><link rel=canonical href=https://kwbaek.github.io/tags/runtime/><link crossorigin=anonymous href=/assets/css/stylesheet.da3211e5ef867bf2b75fd5a6515cfed7195c011e8ab735694e203810a827097b.css integrity="sha256-2jIR5e+Ge/K3X9WmUVz+1xlcAR6KtzVpTiA4EKgnCXs=" rel="preload stylesheet" as=style><link rel=icon href=https://kwbaek.github.io/favicon.ico><link rel=icon type=image/png sizes=16x16 href=https://kwbaek.github.io/favicon-16x16.png><link rel=icon type=image/png sizes=32x32 href=https://kwbaek.github.io/favicon-32x32.png><link rel=apple-touch-icon href=https://kwbaek.github.io/apple-touch-icon.png><link rel=mask-icon href=https://kwbaek.github.io/safari-pinned-tab.svg><meta name=theme-color content="#2e2e33"><meta name=msapplication-TileColor content="#2e2e33"><link rel=alternate type=application/rss+xml href=https://kwbaek.github.io/tags/runtime/index.xml title=rss><link rel=alternate hreflang=en href=https://kwbaek.github.io/tags/runtime/><noscript><style>#theme-toggle,.top-link{display:none}</style><style>@media(prefers-color-scheme:dark){:root{--theme:rgb(29, 30, 32);--entry:rgb(46, 46, 51);--primary:rgb(218, 218, 219);--secondary:rgb(155, 156, 157);--tertiary:rgb(65, 66, 68);--content:rgb(196, 196, 197);--code-block-bg:rgb(46, 46, 51);--code-bg:rgb(55, 56, 62);--border:rgb(51, 51, 51);color-scheme:dark}.list{background:var(--theme)}.toc{background:var(--entry)}}@media(prefers-color-scheme:light){.list::-webkit-scrollbar-thumb{border-color:var(--code-bg)}}</style></noscript><script>localStorage.getItem("pref-theme")==="dark"?document.querySelector("html").dataset.theme="dark":localStorage.getItem("pref-theme")==="light"?document.querySelector("html").dataset.theme="light":window.matchMedia("(prefers-color-scheme: dark)").matches?document.querySelector("html").dataset.theme="dark":document.querySelector("html").dataset.theme="light"</script><meta property="og:url" content="https://kwbaek.github.io/tags/runtime/"><meta property="og:site_name" content="Kyungwook's Devlog"><meta property="og:title" content="Runtime"><meta property="og:locale" content="ko-kr"><meta property="og:type" content="website"><meta name=twitter:card content="summary"><meta name=twitter:title content="Runtime"><meta name=twitter:description content></head><body class=list id=top><header class=header><nav class=nav><div class=logo><a href=https://kwbaek.github.io/ accesskey=h title="Kyungwook's Devlog (Alt + H)">Kyungwook's Devlog</a><div class=logo-switches><button id=theme-toggle accesskey=t title="(Alt + T)" aria-label="Toggle theme">
-<svg id="moon" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
-<svg id="sun" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button></div></div><ul id=menu><li><a href=https://kwbaek.github.io/categories/ title=categories><span>categories</span></a></li><li><a href=https://kwbaek.github.io/tags/ title=tags><span>tags</span></a></li><li><a href=https://kwbaek.github.io/ title="Kyungwook's Devlog"><span>Kyungwook's Devlog</span>&nbsp;
-<svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><path d="M15 3h6v6"/><path d="M10 14 21 3"/></svg></a></li></ul></nav></header><main class=main><header class=page-header><h1>Runtime</h1></header><article class="post-entry tag-entry"><header class=entry-header><h2 class=entry-hint-parent>AI/ML 트렌드: 에이전트 안전은 이제 런타임 안으로 들어가고 있다</h2></header><div class=entry-content><p>오늘 AI/ML 흐름에서 가장 흥미로운 축은 에이전트 안전과 운영 신뢰성이 모델 바깥의 부가 기능이 아니라 런타임 자체의 책임으로 이동하고 있다는 점입니다. 하루 동안 나온 신호를 묶어보면, physical AI, agent runtime, AI 인프라, 정책 리스크가 따로 움직이는 것처럼 보이지만 실제로는 하나의 질문으로 수렴합니다. “AI가 실제 세계의 도구와 시스템을 만질 때, 누가 어떤 의미의 행동을 허용하고 기록하고 중단할 것인가?”
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Runtime | Kyungwook&#39;s Devlog</title>
+<meta name="keywords" content="">
+<meta name="description" content="">
+<meta name="author" content="">
+<link rel="canonical" href="https://kwbaek.github.io/tags/runtime/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.da3211e5ef867bf2b75fd5a6515cfed7195c011e8ab735694e203810a827097b.css" integrity="sha256-2jIR5e&#43;Ge/K3X9WmUVz&#43;1xlcAR6KtzVpTiA4EKgnCXs=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://kwbaek.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://kwbaek.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://kwbaek.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://kwbaek.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://kwbaek.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" type="application/rss+xml" href="https://kwbaek.github.io/tags/runtime/index.xml" title="rss">
+<link rel="alternate" hreflang="en" href="https://kwbaek.github.io/tags/runtime/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="https://kwbaek.github.io/tags/runtime/">
+  <meta property="og:site_name" content="Kyungwook&#39;s Devlog">
+  <meta property="og:title" content="Runtime">
+  <meta property="og:locale" content="ko-kr">
+  <meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Runtime">
+<meta name="twitter:description" content="">
+
+</head>
+<body class="list" id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://kwbaek.github.io/" accesskey="h" title="Kyungwook&#39;s Devlog (Alt + H)">Kyungwook&#39;s Devlog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://kwbaek.github.io/categories/" title="categories">
+                    <span>categories</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kwbaek.github.io/tags/" title="tags">
+                    <span>tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kwbaek.github.io/" title="Kyungwook&#39;s Devlog">
+                    <span>Kyungwook&#39;s Devlog</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main"> 
+<header class="page-header">
+  <h1>
+    Runtime
+  </h1>
+</header>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">AI/ML 트렌드: AI 에이전트는 운영 인프라와 거버넌스로 이동 중
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 AI/ML 흐름에서 가장 흥미로운 공통분모는 에이전트와 생성형 AI가 기능 경쟁을 넘어 운영 인프라, 권한, 보안, 측정 지표의 문제로 내려오고 있다는 점입니다. 하루 동안 나온 소식은 Anthropic의 agent alignment 연구, OpenAI Codex Security, GitHub Copilot cloud agent의 secrets/variables 개선, Copilot code review usage metrics, Open WebUI의 보안·멀티워커 개선, NVIDIA의 AI cluster scheduling과 supply-chain optimization, AI 데이터센터 전력·칩 공급망 이슈까지 넓게 퍼져 있었습니다. 하지만 모두 같은 방향을 가리킵니다. 이제 질문은 “AI가 무엇을 할 수 있나?”가 아니라 “AI가 실제 조직 안에서 어떻게 안전하게 실행되고, 측정되고, 유지보수되는가?”입니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-05-09 21:00:00 +0900 KST'>May 9, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to AI/ML 트렌드: AI 에이전트는 운영 인프라와 거버넌스로 이동 중" href="https://kwbaek.github.io/posts/2026-05-09-ai-ml-trends-ai-agents-are-becoming-governed-operational-infrastructure/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">AI/ML 트렌드: AI는 브라우저와 런타임 안으로 내려오고 있다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 AI/ML 트렌드에서 가장 중요한 신호는 AI가 별도 앱이나 API 호출을 넘어 브라우저, 에이전트 런타임, 조직 운영, 인프라 계약 안으로 깊게 들어가고 있다는 점입니다. 하루 동안 나온 소식은 매우 넓어 보였습니다. Chrome built-in AI, OpenClaw hardening, Microsoft Agent Framework의 정보흐름 제어, OpenAI Agents SDK 업데이트, AI chip 공급망 조사, 중앙은행의 AI 공격 방어 연구, AI-first 구조조정까지 한꺼번에 등장했습니다. 하지만 이 흐름을 묶으면 하나의 질문으로 정리됩니다. “AI를 어디에 붙일 것인가?”가 아니라 “AI가 이미 들어간 실행 환경을 어떻게 통제하고 검증할 것인가?”입니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-05-08 21:00:00 +0900 KST'>May 8, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to AI/ML 트렌드: AI는 브라우저와 런타임 안으로 내려오고 있다" href="https://kwbaek.github.io/posts/2026-05-08-ai-ml-trends-ai-is-moving-into-the-runtime-and-browser/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">AI/ML 트렌드: 에이전트 안전은 이제 런타임 안으로 들어가고 있다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 AI/ML 흐름에서 가장 흥미로운 축은 에이전트 안전과 운영 신뢰성이 모델 바깥의 부가 기능이 아니라 런타임 자체의 책임으로 이동하고 있다는 점입니다. 하루 동안 나온 신호를 묶어보면, physical AI, agent runtime, AI 인프라, 정책 리스크가 따로 움직이는 것처럼 보이지만 실제로는 하나의 질문으로 수렴합니다. “AI가 실제 세계의 도구와 시스템을 만질 때, 누가 어떤 의미의 행동을 허용하고 기록하고 중단할 것인가?”
 가장 직접적인 신호는 AgentTrust와 DTap 같은 연구입니다. AgentTrust는 파일, 쉘, HTTP, 데이터베이스 같은 도구 호출을 실행 전에 의미 단위로 평가하고 차단하는 runtime safety layer를 제안합니다. 기존 sandbox가 프로세스 격리나 네트워크 제한에 가까웠다면, 이제는 “이 tool call이 실제로 어떤 업무 행위인가?”를 판단하는 방향으로 확장됩니다. DTap 역시 API key 유출, 데이터 삭제, 무단 거래 같은 장기 action risk를 interactive red-teaming 환경에서 평가합니다. 에이전트 보안 평가는 단일 prompt에 대한 답변 검사가 아니라, 여러 단계의 계획과 실행이 누적될 때 생기는 위험을 봐야 합니다.
-...</p></div><footer class=entry-footer><span title='2026-05-07 21:00:00 +0900 KST'>May 7, 2026</span></footer><a class=entry-link aria-label="post link to AI/ML 트렌드: 에이전트 안전은 이제 런타임 안으로 들어가고 있다" href=https://kwbaek.github.io/posts/2026-05-07-ai-ml-trends-agent-safety-is-moving-into-the-runtime/></a></article><article class="post-entry tag-entry"><header class=entry-header><h2 class=entry-hint-parent>OpenClaw 팁: 도구 호출은 모두 감사 가능한 부작용으로 다루자</h2></header><div class=entry-content><p>OpenClaw로 cron, Discord, 블로그 발행, 리포트 생성 같은 자동화를 운영하다 보면 금방 알게 되는 사실이 있습니다. LLM 답변 자체보다 더 중요한 것은 도구 호출이 실제 세계에 남기는 부작용입니다. 파일을 쓰고, 메시지를 보내고, git push를 하고, Hugo build를 돌리고, 외부 채널에 알림을 보내는 순간부터 에이전트는 단순한 채팅 모델이 아니라 작은 운영 시스템이 됩니다. 그래서 OpenClaw 자동화는 모든 tool call을 “감사 가능한 side effect”로 다루는 습관이 필요합니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-05-07 21:00:00 +0900 KST'>May 7, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 에이전트 안전은 이제 런타임 안으로 들어가고 있다" href="https://kwbaek.github.io/posts/2026-05-07-ai-ml-trends-agent-safety-is-moving-into-the-runtime/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 팁: 도구 호출은 모두 감사 가능한 부작용으로 다루자
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>OpenClaw로 cron, Discord, 블로그 발행, 리포트 생성 같은 자동화를 운영하다 보면 금방 알게 되는 사실이 있습니다. LLM 답변 자체보다 더 중요한 것은 도구 호출이 실제 세계에 남기는 부작용입니다. 파일을 쓰고, 메시지를 보내고, git push를 하고, Hugo build를 돌리고, 외부 채널에 알림을 보내는 순간부터 에이전트는 단순한 채팅 모델이 아니라 작은 운영 시스템이 됩니다. 그래서 OpenClaw 자동화는 모든 tool call을 “감사 가능한 side effect”로 다루는 습관이 필요합니다.
 첫 번째 원칙은 입력과 지시를 분리하는 것입니다. Discord 채널, 웹페이지, RSS, 이메일 본문은 좋은 자료일 수 있지만 운영 지시는 아닙니다. 예를 들어 블로그 cron은 트렌드 채널 메시지를 읽어 글감을 고르되, 배포 순서와 파일 경로, 카테고리, 실패 보고 방식은 별도의 instruction 파일에서만 가져와야 합니다. 이렇게 하면 외부 텍스트가 “이 명령을 실행해” 같은 문장을 포함하더라도 자동화의 권한 경계를 넘지 못합니다. OpenClaw에서 cron instruction을 작게 고정하고, 채널 메시지는 참고 자료로만 쓰는 이유가 여기에 있습니다.
-...</p></div><footer class=entry-footer><span title='2026-05-07 21:00:00 +0900 KST'>May 7, 2026</span></footer><a class=entry-link aria-label="post link to OpenClaw 팁: 도구 호출은 모두 감사 가능한 부작용으로 다루자" href=https://kwbaek.github.io/posts/2026-05-07-openclaw-treat-tool-calls-as-auditable-side-effects/></a></article><article class="post-entry tag-entry"><header class=entry-header><h2 class=entry-hint-parent>AI/ML 트렌드: AI는 인프라와 거버넌스가 결합된 워크플로가 되고 있다</h2></header><div class=entry-content><p>오늘 #ai-ml-trends에서 가장 크게 보인 흐름은 AI 경쟁의 중심이 모델 성능 하나에서 인프라, 런타임, 데이터, 거버넌스가 결합된 운영 워크플로로 이동하고 있다는 점입니다. OpenAI의 올해 compute spending 500억달러 전망, Anthropic의 Google Cloud·칩 5년 2000억달러 지출 약정 보도, AMD·Infineon·Super Micro의 AI 수요 기반 전망, Google Cloud의 production-ready agent guide, OpenAI Agents Python과 LangChain의 운영·보안 릴리스가 모두 같은 방향을 가리킵니다. 이제 “어떤 모델이 제일 똑똑한가?”보다 “그 모델을 어떤 비용, 권한, 데이터, 감사 체계로 계속 굴릴 수 있는가?”가 더 중요한 질문이 되고 있습니다.
-...</p></div><footer class=entry-footer><span title='2026-05-06 21:00:00 +0900 KST'>May 6, 2026</span></footer><a class=entry-link aria-label="post link to AI/ML 트렌드: AI는 인프라와 거버넌스가 결합된 워크플로가 되고 있다" href=https://kwbaek.github.io/posts/2026-05-06-ai-ml-trends-ai-is-becoming-infrastructure-governed-workflows/></a></article><article class="post-entry tag-entry"><header class=entry-header><h2 class=entry-hint-parent>AI/ML 트렌드: 에이전트 플랫폼 전쟁은 이제 모델보다 거버넌스·런타임·리스크 관리 싸움이다</h2></header><div class=entry-content><p>오늘 #ai-ml-trends 채널에서 가장 중요하게 보인 흐름은, AI 경쟁의 중심이 더 이상 “누가 더 강한 모델을 냈는가”에 머물지 않는다는 점이었습니다. 최근 올라온 OpenAI Symphony, Google Cloud Next의 장기 실행 에이전트 플랫폼, 그리고 싱가포르 은행권의 frontier AI 위협 모니터링 소식은 서로 다른 이야기처럼 보여도 사실 한 방향을 가리킵니다. 이제 시장의 진짜 승부처는 모델 자체보다 에이전트를 어떤 운영체계 위에서, 어떤 통제 장치와 함께, 얼마나 오래 안전하게 굴릴 수 있느냐입니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-05-07 21:00:00 +0900 KST'>May 7, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 팁: 도구 호출은 모두 감사 가능한 부작용으로 다루자" href="https://kwbaek.github.io/posts/2026-05-07-openclaw-treat-tool-calls-as-auditable-side-effects/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">AI/ML 트렌드: AI는 인프라와 거버넌스가 결합된 워크플로가 되고 있다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 #ai-ml-trends에서 가장 크게 보인 흐름은 AI 경쟁의 중심이 모델 성능 하나에서 인프라, 런타임, 데이터, 거버넌스가 결합된 운영 워크플로로 이동하고 있다는 점입니다. OpenAI의 올해 compute spending 500억달러 전망, Anthropic의 Google Cloud·칩 5년 2000억달러 지출 약정 보도, AMD·Infineon·Super Micro의 AI 수요 기반 전망, Google Cloud의 production-ready agent guide, OpenAI Agents Python과 LangChain의 운영·보안 릴리스가 모두 같은 방향을 가리킵니다. 이제 “어떤 모델이 제일 똑똑한가?”보다 “그 모델을 어떤 비용, 권한, 데이터, 감사 체계로 계속 굴릴 수 있는가?”가 더 중요한 질문이 되고 있습니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-05-06 21:00:00 +0900 KST'>May 6, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to AI/ML 트렌드: AI는 인프라와 거버넌스가 결합된 워크플로가 되고 있다" href="https://kwbaek.github.io/posts/2026-05-06-ai-ml-trends-ai-is-becoming-infrastructure-governed-workflows/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">AI/ML 트렌드: 에이전트 플랫폼 전쟁은 이제 모델보다 거버넌스·런타임·리스크 관리 싸움이다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 #ai-ml-trends 채널에서 가장 중요하게 보인 흐름은, AI 경쟁의 중심이 더 이상 “누가 더 강한 모델을 냈는가”에 머물지 않는다는 점이었습니다. 최근 올라온 OpenAI Symphony, Google Cloud Next의 장기 실행 에이전트 플랫폼, 그리고 싱가포르 은행권의 frontier AI 위협 모니터링 소식은 서로 다른 이야기처럼 보여도 사실 한 방향을 가리킵니다. 이제 시장의 진짜 승부처는 모델 자체보다 에이전트를 어떤 운영체계 위에서, 어떤 통제 장치와 함께, 얼마나 오래 안전하게 굴릴 수 있느냐입니다.
 OpenAI의 Symphony는 특히 상징적입니다. 코딩 에이전트의 경쟁력이 더 이상 “채팅창에서 코드 몇 줄 잘 쓰는가”에 있지 않고, 이슈 트래커와 작업 보드를 중심으로 여러 작업을 끊기지 않게 오케스트레이션하는 데 있다는 점을 드러냈습니다. 반대로 Google Cloud는 장기 실행 에이전트와 엔터프라이즈 플랫폼을 묶어, 개발·배포·거버넌스를 한 번에 제공하는 방향을 밀고 있습니다. 이건 단순 기능 추가가 아니라, 에이전트가 기업 업무 안으로 들어오려면 런타임, 권한, 승인, 관측성, 장애 복구가 함께 제품화되어야 한다는 뜻입니다.
-...</p></div><footer class=entry-footer><span title='2026-04-29 13:22:00 +0900 KST'>April 29, 2026</span></footer><a class=entry-link aria-label="post link to AI/ML 트렌드: 에이전트 플랫폼 전쟁은 이제 모델보다 거버넌스·런타임·리스크 관리 싸움이다" href=https://kwbaek.github.io/posts/2026-04-29-ai-ml-trends-the-agent-platform-war-is-now-about-governance-runtime-and-risk/></a></article><footer class=page-footer><nav class=pagination><a class=prev href=https://kwbaek.github.io/tags/runtime/>«&nbsp;Prev&nbsp;</a></nav></footer></main><footer class=footer><span>&copy; 2026 <a href=https://kwbaek.github.io/>Kyungwook's Devlog</a></span> ·
-<span>Powered by
-<a href=https://gohugo.io/ rel="noopener noreferrer" target=_blank>Hugo</a> &
-<a href=https://github.com/adityatelange/hugo-PaperMod/ rel=noopener target=_blank>PaperMod</a></span></footer><a href=#top aria-label="go to top" title="Go to Top (Alt + G)" class=top-link id=top-link accesskey=g><svg viewBox="0 0 12 6" fill="currentColor"><path d="M12 6H0l6-6z"/></svg>
-</a><script>let menu=document.getElementById("menu");if(menu){const e=localStorage.getItem("menu-scroll-position");e&&(menu.scrollLeft=parseInt(e,10)),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)}}document.querySelectorAll('a[href^="#"]').forEach(e=>{e.addEventListener("click",function(e){e.preventDefault();var t=this.getAttribute("href").substr(1);window.matchMedia("(prefers-reduced-motion: reduce)").matches?document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView({behavior:"smooth"}),t==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${t}`)})})</script><script>var mybutton=document.getElementById("top-link");window.onscroll=function(){document.body.scrollTop>800||document.documentElement.scrollTop>800?(mybutton.style.visibility="visible",mybutton.style.opacity="1"):(mybutton.style.visibility="hidden",mybutton.style.opacity="0")}</script><script>document.getElementById("theme-toggle").addEventListener("click",()=>{const e=document.querySelector("html");e.dataset.theme==="dark"?(e.dataset.theme="light",localStorage.setItem("pref-theme","light")):(e.dataset.theme="dark",localStorage.setItem("pref-theme","dark"))})</script></body></html>
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-04-29 13:22:00 +0900 KST'>April 29, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 에이전트 플랫폼 전쟁은 이제 모델보다 거버넌스·런타임·리스크 관리 싸움이다" href="https://kwbaek.github.io/posts/2026-04-29-ai-ml-trends-the-agent-platform-war-is-now-about-governance-runtime-and-risk/"></a>
+</article>
+<footer class="page-footer">
+  <nav class="pagination">
+    <a class="prev" href="https://kwbaek.github.io/tags/runtime/">
+      «&nbsp;Prev&nbsp;
+    </a>
+  </nav>
+</footer>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://kwbaek.github.io/">Kyungwook&#39;s Devlog</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>
