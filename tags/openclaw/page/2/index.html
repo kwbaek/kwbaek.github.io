@@ -143,6 +143,20 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 팁: 자동화가 커지기 전에 에이전트 권한을 좁혀두자
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>OpenClaw를 개인 비서나 팀 자동화 런타임으로 오래 쓰다 보면, 가장 중요한 설계 질문은 “무엇을 할 수 있나?”에서 **“각 에이전트가 어디까지 할 수 있어야 하나?”**로 바뀝니다. 자동화가 한두 개일 때는 모든 기능을 넓게 열어두는 편이 편합니다. 하지만 크론, Discord, Telegram, 블로그 배포, 파일 작업, 메시지 전송이 서로 얽히기 시작하면 권한의 폭이 곧 사고의 폭이 됩니다.
+오늘 살펴볼 포인트는 OpenClaw v2026.5.10-beta.5에서 보인 per-agent message crossContext/action allow와 redacted diagnostics 흐름입니다. 핵심은 단순합니다. 에이전트 전체에 하나의 거대한 메시지 권한을 주기보다, 에이전트별로 어떤 context를 넘나들 수 있는지, 어떤 message action을 수행할 수 있는지 좁히고, 진단 출력에서는 민감한 값을 가리는 방향입니다. 작은 변화처럼 보이지만 실제 운영에서는 매우 큰 차이를 만듭니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-05-12 21:00:00 +0900 KST'>May 12, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 팁: 자동화가 커지기 전에 에이전트 권한을 좁혀두자" href="https://kwbaek.github.io/posts/2026-05-12-openclaw-narrow-agent-permissions-before-automation-scales/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">OpenClaw 팁: 에이전트 크론은 컨텍스트, 비용, 협업 경계를 함께 운영하자
     </h2>
   </header>
@@ -264,20 +278,6 @@ OpenClaw 2026.5.7 릴리스에서 눈에 띄는 흐름도 이쪽입니다. owner
   </div>
   <footer class="entry-footer"><span title='2026-05-03 21:00:00 +0900 KST'>May 3, 2026</span></footer>
   <a class="entry-link" aria-label="post link to OpenClaw 팁: 웹 입력은 에이전트 컨텍스트가 아니라 비신뢰 입력으로 다루자" href="https://kwbaek.github.io/posts/2026-05-03-openclaw-treat-web-input-as-untrusted-agent-context/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw 팁: cron 자동화는 성공 경로보다 복구 경로를 먼저 설계하자
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>OpenClaw로 매일 돌아가는 자동화를 만들 때 가장 흔한 실수는 “성공하면 무엇을 할지”만 자세히 적고, 실패했을 때 어디서 멈춰야 하는지를 흐릿하게 두는 것입니다. 블로그 발행 cron만 봐도 단계가 꽤 많습니다. Discord 채널을 읽고, 트렌드를 선별하고, Hugo 글을 만들고, source repo에 커밋하고, 빌드하고, public/ 배포 repo를 다시 커밋하고 push해야 합니다. 이 전체를 하나의 덩어리로 보면 실패 원인을 찾기 어렵습니다. 반대로 단계별 산출물과 검증 지점을 나누면 자동화가 훨씬 운영하기 쉬워집니다.
-첫 번째 원칙은 입력, 작성, 배포를 분리하는 것입니다. 예를 들어 #ai-ml-trends 같은 Discord 채널은 하루 동안 축적된 관찰 로그입니다. cron은 그 로그를 읽어 오늘의 핵심 주장을 뽑고, content/posts/YYYY-MM-DD-slug.md 같은 명확한 파일 산출물로 남깁니다. 여기까지가 작성 단계입니다. 이 시점에서 파일이 존재하고 front matter가 올바르면, 적어도 콘텐츠 생성은 성공한 것입니다. 빌드나 push가 나중에 실패해도 글 자체를 잃지 않습니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-05-02 21:00:00 +0900 KST'>May 2, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw 팁: cron 자동화는 성공 경로보다 복구 경로를 먼저 설계하자" href="https://kwbaek.github.io/posts/2026-05-02-openclaw-design-cron-jobs-for-recovery-not-just-success/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

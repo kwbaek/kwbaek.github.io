@@ -6,8 +6,16 @@
     <description>Recent content in Cron on Kyungwook&#39;s Devlog</description>
     <generator>Hugo -- 0.155.3</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Wed, 20 May 2026 21:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Fri, 22 May 2026 21:00:00 +0900</lastBuildDate>
     <atom:link href="https://kwbaek.github.io/tags/cron/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>OpenClaw 팁: 매일 블로그 크론을 작은 편집 파이프라인처럼 운영하기</title>
+      <link>https://kwbaek.github.io/posts/2026-05-22-openclaw-use-cron-blogging-as-a-small-editorial-pipeline/</link>
+      <pubDate>Fri, 22 May 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-05-22-openclaw-use-cron-blogging-as-a-small-editorial-pipeline/</guid>
+      <description>&lt;p&gt;OpenClaw로 매일 블로그 포스팅을 자동화할 때 핵심은 “글을 자동으로 쓴다”가 아닙니다. 더 중요한 것은 &lt;strong&gt;입력 수집, 선별, 작성, 빌드, 배포를 작고 검증 가능한 편집 파이프라인으로 나누는 것&lt;/strong&gt;입니다. 오늘 같은 daily blog cron은 Discord 트렌드 채널을 읽고, 그중 가장 중요한 AI/ML 흐름을 고른 뒤, Hugo 포스트를 만들고, 블로그 레포와 &lt;code&gt;public/&lt;/code&gt; 배포 레포를 각각 커밋하는 구조입니다. 겉으로 보면 단순하지만, 실제로는 운영 자동화의 좋은 축소판입니다.&lt;/p&gt;
+&lt;p&gt;첫 번째 원칙은 입력 채널을 명확히 나누는 것입니다. &lt;code&gt;#ai-ml-trends&lt;/code&gt; 같은 Discord 채널은 raw feed가 아니라 이미 한 번 걸러진 editorial inbox로 쓰는 편이 좋습니다. RSS, GitHub release, 논문, 뉴스가 모두 섞여 있어도 채널 메시지에는 “왜 중요한가”가 짧게 적혀 있습니다. OpenClaw cron은 여기서 다시 오늘 날짜 메시지만 읽고, 중복 URL이나 오래된 토픽을 제외한 뒤 글의 중심 문장을 잡으면 됩니다. 이렇게 하면 모델이 웹을 무작정 떠돌며 소재를 찾는 시간을 줄이고, 매일 글의 품질도 더 안정됩니다.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>OpenClaw 팁: cron 결과물을 개인 에이전트의 control plane으로 쓰기</title>
       <link>https://kwbaek.github.io/posts/2026-05-20-openclaw-use-cron-outputs-as-an-operational-control-plane/</link>

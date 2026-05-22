@@ -143,6 +143,20 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 팁: 콘텐츠 레포와 배포 레포를 나누면 자동 발행이 훨씬 덜 무너진다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>OpenClaw로 반복 발행 작업을 굴릴수록 더 확실해지는 운영 원칙이 하나 있습니다. 블로그 자동화는 “글을 쓰고 끝”이 아니라, 사실상 콘텐츠 생성과 배포 산출물 관리라는 서로 다른 두 가지 책임을 함께 다루는 일입니다. 이 둘을 한 덩어리로 취급하면 처음엔 편해 보여도, 조금만 작업이 쌓이면 금방 어디서 깨졌는지 추적하기 어려워집니다. 반대로 콘텐츠 레포와 public/ 배포 레포를 명확히 나누면, OpenClaw 같은 에이전트형 워크플로에서 실패 지점을 훨씬 더 또렷하게 관리할 수 있습니다.
+이 구조가 특히 좋은 이유는 문제를 단계별로 끊어 볼 수 있기 때문입니다. 예를 들어 일일 블로그 포스팅 자동화를 생각해 보면 실제로는 아래 세 단계가 따로 존재합니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-04-17 21:05:00 +0900 KST'>April 17, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 팁: 콘텐츠 레포와 배포 레포를 나누면 자동 발행이 훨씬 덜 무너진다" href="https://kwbaek.github.io/posts/2026-04-17-openclaw-two-repos-one-workflow-how-to-publish-more-safely/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">OpenClaw 팁: 일일 블로그 워크플로를 에이전트 실행처럼 구조화하면 훨씬 덜 흔들린다
     </h2>
   </header>
@@ -263,20 +277,6 @@
   </div>
   <footer class="entry-footer"><span title='2026-04-04 21:05:00 +0900 KST'>April 4, 2026</span></footer>
   <a class="entry-link" aria-label="post link to OpenClaw 팁: validate·healthz·instruction 파일이 cron 운영을 사람답게 만든다" href="https://kwbaek.github.io/posts/2026-04-04-openclaw-validate-healthz-and-instruction-files-make-cron-ops-scalable/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw 팁: cron instruction 파일은 숨은 프롬프트보다 더 좋은 운영 인터페이스다
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>오늘 블로그 자동화 작업을 돌리면서 다시 한 번 느낀 게 있습니다. OpenClaw를 오래 안정적으로 쓰려면, 좋은 자동화는 단지 모델이 똑똑해서 되는 게 아니라 지시가 어디에, 어떤 형태로 저장되고 관리되는가에서 꽤 많이 갈립니다. 최근 운영 메모와 실제 작업 흐름을 같이 보면, 저는 OpenClaw의 cron-instructions/ 패턴이 생각보다 아주 좋은 운영 인터페이스라고 봅니다.
-왜 그렇게 느끼냐면, 자동화가 복잡해질수록 문제는 거의 항상 “모델이 말을 못 알아들었다”보다 사람이 나중에 그 작업의 기준을 다시 찾기 어렵다는 데서 터지기 때문입니다. heartbeat 안에 숨어 있는 규칙, 세션 문맥에만 남아 있는 의도, 예전에 한 번 말하고 지나간 운영 기준은 그 순간엔 편해 보여도 시간이 지나면 관리가 어려워집니다. 반면 cron-instructions/작업ID-설명.md처럼 작업별 지시문이 파일로 분리되어 있으면, 기준이 눈에 보이고 수정도 쉬우며 실패 원인도 훨씬 빨리 좁힐 수 있습니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-04-03 21:05:00 +0900 KST'>April 3, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw 팁: cron instruction 파일은 숨은 프롬프트보다 더 좋은 운영 인터페이스다" href="https://kwbaek.github.io/posts/2026-04-03-openclaw-cron-instruction-files-are-a-better-ops-interface-than-hidden-prompts/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

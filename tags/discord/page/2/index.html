@@ -143,6 +143,20 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 팁: cron 자동화는 셸 래퍼보다 first-class 도구를 쓸 때 덜 깨진다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>OpenClaw로 주기 작업을 오래 돌려보면 금방 체감하는 게 있습니다. 같은 일을 하더라도 셸에서 CLI를 한 번 더 감싸는 방식보다, 가능한 한 first-class 도구를 직접 쓰는 쪽이 훨씬 덜 깨집니다. 겉보기에는 둘 다 자동화처럼 보이지만 운영 품질은 꽤 다릅니다. 특히 cron처럼 정해진 시간에 조용히, 반복적으로, 같은 일을 계속해야 하는 작업에서는 그 차이가 더 크게 드러납니다.
+이유는 단순합니다. 셸 래퍼는 경로, 권한, 출력 형식, 승인 정책, 종료 코드, quoting 같은 주변 조건에 자주 흔들립니다. 반면 OpenClaw의 first-class 도구는 애초에 에이전트 실행 환경 안에서 쓰도록 설계되어 있어서, 메시지 읽기/보내기, 파일 쓰기, 브라우저 조작 같은 핵심 동작을 더 짧은 경로로 처리합니다. 실제로 Discord 채널을 읽고 포스팅 아이디어를 만들거나, dedupe를 확인하고 바로 결과를 발행하는 흐름에서는 message 같은 내장 도구가 셸 경유 CLI보다 훨씬 예측 가능했습니다. 운영자는 화려한 우회보다 실패 지점이 적은 경로를 선택하는 편이 낫습니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-04-24 21:05:00 +0900 KST'>April 24, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 팁: cron 자동화는 셸 래퍼보다 first-class 도구를 쓸 때 덜 깨진다" href="https://kwbaek.github.io/posts/2026-04-24-openclaw-first-class-tools-make-cron-automation-less-fragile/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">OpenClaw 팁: instruction file 기반 cron 워크플로는 일일 퍼블리싱을 좋은 의미로 boring하게 만든다
     </h2>
   </header>
@@ -267,21 +281,6 @@ gateway: auth: token: &#34;your-token&#34; password: &#34;your-password&#34; mod
   </div>
   <footer class="entry-footer"><span title='2026-03-08 21:30:00 +0900 KST'>March 8, 2026</span></footer>
   <a class="entry-link" aria-label="post link to OpenClaw v2026.3.7: Context Engine 플러그인, ACP 바인딩 영속화, 그리고 주의할 Breaking Change" href="https://kwbaek.github.io/posts/2026-03-08-openclaw-v2026-3-7-context-engine-acp-binding/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw 실전 운영 팁: Heartbeat directPolicy로 소음 줄이고, 일일 자동화는 더 단단하게
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>최근 OpenClaw를 매일 운영하면서 체감한 핵심은 하나입니다. 기능을 많이 켜는 것보다, 알림 경로와 실행 정책을 명확히 정하는 게 훨씬 중요하다는 점입니다. 특히 2026.2.25~2026.2.26 라인에서 정리된 heartbeat 정책 변화는 실사용 품질에 직접 영향을 줍니다.
-핵심 포인트를 먼저 요약하면 아래와 같습니다.
-agents.defaults.heartbeat.directPolicy를 allow|block으로 명시해 DM/직접 전달 소음을 제어 기본값 변화(버전별 상이) 때문에 명시 설정이 사실상 필수 cron 멀티계정 쓰는 경우 delivery.accountId를 지정해 발송 경로를 고정 Slack/긴 스레드 환경은 session.parentForkMaxTokens로 컨텍스트 상속량을 제한 운영 관점에서 제가 추천하는 기본 패턴은 다음입니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-02-27 21:05:00 +0900 KST'>February 27, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw 실전 운영 팁: Heartbeat directPolicy로 소음 줄이고, 일일 자동화는 더 단단하게" href="https://kwbaek.github.io/posts/2026-02-27-openclaw-heartbeat-directpolicy-and-daily-ops/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">
