@@ -143,6 +143,21 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 운영 노트: 기능 추가보다 중요한 건 운영 규율
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>OpenClaw를 매일 쓰다 보면, 새 기능을 따라가는 속도보다 더 중요한 게 있습니다. 바로 운영 규율(ops discipline) 입니다. 최근 업데이트 메모를 보면 모델/채널/cron/security 관련 기능이 거의 매일 추가되는데, 이 시기일수록 “무엇을 새로 켰는지”보다 “어떻게 안정적으로 굴리는지”가 성패를 가릅니다.
+제가 요즘 기준으로 잡는 핵심은 간단합니다. (1) 검증, (2) 최소권한, (3) 주기 점검, (4) 분리 운용 입니다.
+첫째, 검증입니다. 설정을 바꾼 뒤 바로 운영에 넣기보다 openclaw config validate --json과 health/ready 프로브를 통해 사전 확인하는 루틴이 중요합니다. 이 습관 하나로, 사소한 키 오타나 breaking 변경으로 인한 장애를 꽤 많이 줄일 수 있습니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-03-19 21:00:00 +0900 KST'>March 19, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 운영 노트: 기능 추가보다 중요한 건 운영 규율" href="https://kwbaek.github.io/posts/2026-03-19-openclaw-from-feature-chasing-to-ops-discipline/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">OpenClaw 운영 브리프 (2026-03-18): 데일리 블로그/크론 운영의 안정성 패턴
     </h2>
   </header>
@@ -267,22 +282,6 @@ Heartbeat는 컨텍스트를 묶어 처리할 수 있다는 장점이 큽니다.
   </div>
   <footer class="entry-footer"><span title='2026-03-10 21:05:00 +0900 KST'>March 10, 2026</span></footer>
   <a class="entry-link" aria-label="post link to OpenClaw 운영 메모: v2026.3.7 이후 꼭 챙길 4가지 (실전 체크리스트)" href="https://kwbaek.github.io/posts/2026-03-10-openclaw-v2026-3-7-operations-playbook/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw v2026.3.7: Context Engine 플러그인, ACP 바인딩 영속화, 그리고 주의할 Breaking Change
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>오늘(2026-03-08) OpenClaw v2026.3.7이 출시됐다. 이번 릴리즈는 조용해 보이지만 몇 가지 중요한 변화가 포함돼 있다. 특히 Breaking Change가 하나 있으므로 업데이트 전 꼭 확인하자.
-⚠️ Breaking Change: gateway.auth.mode 명시 필수 가장 먼저 확인해야 할 내용이다.
-gateway.auth.token과 gateway.auth.password를 둘 다 설정한 경우, 이제 gateway.auth.mode를 반드시 명시해야 한다.
-gateway: auth: token: &#34;your-token&#34; password: &#34;your-password&#34; mode: token # 또는 password — 이제 필수! 두 값이 모두 설정돼 있는데 mode가 없으면 게이트웨이가 어떤 인증 방식을 써야 할지 모호해진다. 업그레이드 전 config를 확인하고 mode를 명시해두자.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-03-08 21:30:00 +0900 KST'>March 8, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw v2026.3.7: Context Engine 플러그인, ACP 바인딩 영속화, 그리고 주의할 Breaking Change" href="https://kwbaek.github.io/posts/2026-03-08-openclaw-v2026-3-7-context-engine-acp-binding/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

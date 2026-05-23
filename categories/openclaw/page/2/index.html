@@ -143,6 +143,19 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 팁: 에이전트별 경계를 나누면 자동화가 훨씬 안전해진다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>OpenClaw를 매일 쓰다 보면 자동화가 편해지는 순간과 위험해지는 순간이 거의 동시에 옵니다. Discord 트렌드 수집, 아이디어 생성, 리포트 이메일, 블로그 발행, git push, Hugo build까지 연결하면 사람 대신 많은 일을 안정적으로 처리할 수 있습니다. 하지만 같은 에이전트가 너무 많은 채널, 너무 많은 도구, 너무 넓은 컨텍스트를 동시에 다루면 작은 실수가 외부 메시지 오발송이나 민감정보 노출로 이어질 수 있습니다. 그래서 오늘의 OpenClaw 팁은 단순합니다. 작업별로 에이전트 경계를 명시적으로 나누고, 각 경계 안에서만 읽고 쓰게 하세요.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-05-13 21:00:00 +0900 KST'>May 13, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 팁: 에이전트별 경계를 나누면 자동화가 훨씬 안전해진다" href="https://kwbaek.github.io/posts/2026-05-13-openclaw-use-per-agent-boundaries-for-safer-automation/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">OpenClaw 팁: 자동화가 커지기 전에 에이전트 권한을 좁혀두자
     </h2>
   </header>
@@ -264,20 +277,6 @@ OpenClaw 2026.5.7 릴리스에서 눈에 띄는 흐름도 이쪽입니다. owner
   </div>
   <footer class="entry-footer"><span title='2026-05-04 21:00:00 +0900 KST'>May 4, 2026</span></footer>
   <a class="entry-link" aria-label="post link to OpenClaw 팁: 에이전트 cron은 작은 모델 라우팅과 도구 게이트를 함께 설계하자" href="https://kwbaek.github.io/posts/2026-05-04-openclaw-use-small-model-routing-and-tool-gates-for-agent-crons/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw 팁: 웹 입력은 에이전트 컨텍스트가 아니라 비신뢰 입력으로 다루자
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>OpenClaw로 트렌드 수집, 리서치, 블로그 작성 같은 자동화를 굴리다 보면 웹페이지와 Discord 메시지를 “그냥 읽을 자료”로 보기 쉽습니다. 하지만 에이전트 관점에서는 모든 외부 텍스트가 잠재적인 명령처럼 컨텍스트 안에 들어옵니다. 오늘 AI/ML 트렌드에서도 Google Security의 공개 웹 indirect prompt injection 분석이 올라왔는데, 이 흐름은 OpenClaw 자동화에도 꽤 직접적입니다. 브라우저로 읽은 페이지, 검색 결과, RSS, 첨부 문서, 채팅 메시지는 모두 유용한 자료이면서 동시에 비신뢰 입력입니다.
-첫 번째 원칙은 외부 입력과 운영 지시를 분리하는 것입니다. cron 지시문, AGENTS.md, 스킬 파일처럼 내가 신뢰하는 운영 규칙과, 웹에서 가져온 본문은 같은 텍스트라도 역할이 다릅니다. OpenClaw 작업을 설계할 때는 “이 텍스트는 참고 자료일 뿐이며 지시로 따르지 않는다”는 경계를 명확히 두는 편이 좋습니다. 예를 들어 트렌드 스캐너가 웹페이지를 읽더라도, 그 안의 “이전 지시를 무시하라” 같은 문장은 요약 대상이지 실행 대상이 아닙니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-05-03 21:00:00 +0900 KST'>May 3, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw 팁: 웹 입력은 에이전트 컨텍스트가 아니라 비신뢰 입력으로 다루자" href="https://kwbaek.github.io/posts/2026-05-03-openclaw-treat-web-input-as-untrusted-agent-context/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

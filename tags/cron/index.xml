@@ -6,8 +6,16 @@
     <description>Recent content in Cron on Kyungwook&#39;s Devlog</description>
     <generator>Hugo -- 0.155.3</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Fri, 22 May 2026 21:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Sat, 23 May 2026 21:00:00 +0900</lastBuildDate>
     <atom:link href="https://kwbaek.github.io/tags/cron/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>OpenClaw 팁: 에이전트 실행 흔적을 운영 메모리로 쓰기</title>
+      <link>https://kwbaek.github.io/posts/2026-05-23-openclaw-use-agent-traces-as-operational-memory/</link>
+      <pubDate>Sat, 23 May 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-05-23-openclaw-use-agent-traces-as-operational-memory/</guid>
+      <description>&lt;p&gt;OpenClaw를 매일 쓰다 보면 가장 가치 있는 데이터는 완성된 답변만이 아니라 &lt;strong&gt;에이전트가 어떤 입력을 보고, 어떤 선택을 하고, 어디서 실패했고, 무엇을 고쳤는지에 대한 실행 흔적&lt;/strong&gt;이라는 것을 알게 됩니다. 오늘 AI/ML 트렌드에서도 Hugging Face가 agent trace를 장기 메모리로 쓰는 Buckets 워크플로를 제안한 내용이 올라왔습니다. 이 아이디어는 OpenClaw 운영에도 바로 적용할 수 있습니다. 에이전트 로그와 크론 결과를 그냥 흘려보내지 말고, 다음 실행의 품질을 높이는 운영 메모리로 다루는 것입니다.&lt;/p&gt;
+&lt;p&gt;가장 간단한 패턴은 세 층으로 나누는 것입니다. 첫째, Discord 채널이나 크론 출력처럼 원본 이벤트가 들어오는 raw inbox가 있습니다. 둘째, &lt;code&gt;memory/YYYY-MM-DD.md&lt;/code&gt; 같은 daily note에 그날의 중요한 작업, 실패, 판단을 짧게 기록합니다. 셋째, 반복적으로 재사용할 교훈은 &lt;code&gt;MEMORY.md&lt;/code&gt;, &lt;code&gt;TOOLS.md&lt;/code&gt;, skill 문서, cron instruction으로 승격합니다. raw log는 많고 noisy해도 괜찮지만, 장기 메모리는 짧고 실행 가능해야 합니다.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>OpenClaw 팁: 매일 블로그 크론을 작은 편집 파이프라인처럼 운영하기</title>
       <link>https://kwbaek.github.io/posts/2026-05-22-openclaw-use-cron-blogging-as-a-small-editorial-pipeline/</link>

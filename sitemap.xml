@@ -3,30 +3,75 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://kwbaek.github.io/tags/agents/</loc>
-    <lastmod>2026-05-22T21:00:00+09:00</lastmod>
+    <lastmod>2026-05-23T21:00:00+09:00</lastmod>
   </url><url>
     <loc>https://kwbaek.github.io/tags/ai/</loc>
-    <lastmod>2026-05-22T21:00:00+09:00</lastmod>
+    <lastmod>2026-05-23T21:00:00+09:00</lastmod>
+  </url><url>
+    <loc>https://kwbaek.github.io/tags/ai-safety/</loc>
+    <lastmod>2026-05-23T21:00:00+09:00</lastmod>
   </url><url>
     <loc>https://kwbaek.github.io/categories/ai-ml/</loc>
-    <lastmod>2026-05-22T21:00:00+09:00</lastmod>
+    <lastmod>2026-05-23T21:00:00+09:00</lastmod>
+  </url><url>
+    <loc>https://kwbaek.github.io/posts/2026-05-23-ai-ml-trends-frontier-ai-is-becoming-operational-infrastructure/</loc>
+    <lastmod>2026-05-23T21:00:00+09:00</lastmod>
+  </url><url>
+    <loc>https://kwbaek.github.io/tags/automation/</loc>
+    <lastmod>2026-05-23T21:00:00+09:00</lastmod>
+  </url><url>
+    <loc>https://kwbaek.github.io/categories/</loc>
+    <lastmod>2026-05-23T21:00:00+09:00</lastmod>
+  </url><url>
+    <loc>https://kwbaek.github.io/tags/cron/</loc>
+    <lastmod>2026-05-23T21:00:00+09:00</lastmod>
+  </url><url>
+    <loc>https://kwbaek.github.io/tags/discord/</loc>
+    <lastmod>2026-05-23T21:00:00+09:00</lastmod>
+  </url><url>
+    <loc>https://kwbaek.github.io/tags/governance/</loc>
+    <lastmod>2026-05-23T21:00:00+09:00</lastmod>
+  </url><url>
+    <loc>https://kwbaek.github.io/tags/infrastructure/</loc>
+    <lastmod>2026-05-23T21:00:00+09:00</lastmod>
+  </url><url>
+    <loc>https://kwbaek.github.io/</loc>
+    <lastmod>2026-05-23T21:00:00+09:00</lastmod>
+  </url><url>
+    <loc>https://kwbaek.github.io/tags/memory/</loc>
+    <lastmod>2026-05-23T21:00:00+09:00</lastmod>
+  </url><url>
+    <loc>https://kwbaek.github.io/tags/ml/</loc>
+    <lastmod>2026-05-23T21:00:00+09:00</lastmod>
+  </url><url>
+    <loc>https://kwbaek.github.io/tags/multimodal/</loc>
+    <lastmod>2026-05-23T21:00:00+09:00</lastmod>
+  </url><url>
+    <loc>https://kwbaek.github.io/tags/open-models/</loc>
+    <lastmod>2026-05-23T21:00:00+09:00</lastmod>
+  </url><url>
+    <loc>https://kwbaek.github.io/categories/openclaw/</loc>
+    <lastmod>2026-05-23T21:00:00+09:00</lastmod>
+  </url><url>
+    <loc>https://kwbaek.github.io/tags/openclaw/</loc>
+    <lastmod>2026-05-23T21:00:00+09:00</lastmod>
+  </url><url>
+    <loc>https://kwbaek.github.io/posts/2026-05-23-openclaw-use-agent-traces-as-operational-memory/</loc>
+    <lastmod>2026-05-23T21:00:00+09:00</lastmod>
+  </url><url>
+    <loc>https://kwbaek.github.io/tags/operations/</loc>
+    <lastmod>2026-05-23T21:00:00+09:00</lastmod>
+  </url><url>
+    <loc>https://kwbaek.github.io/posts/</loc>
+    <lastmod>2026-05-23T21:00:00+09:00</lastmod>
+  </url><url>
+    <loc>https://kwbaek.github.io/tags/</loc>
+    <lastmod>2026-05-23T21:00:00+09:00</lastmod>
   </url><url>
     <loc>https://kwbaek.github.io/posts/2026-05-22-ai-ml-trends-runtime-economics-and-agent-orchestration/</loc>
     <lastmod>2026-05-22T21:00:00+09:00</lastmod>
   </url><url>
-    <loc>https://kwbaek.github.io/tags/automation/</loc>
-    <lastmod>2026-05-22T21:00:00+09:00</lastmod>
-  </url><url>
     <loc>https://kwbaek.github.io/tags/blog/</loc>
-    <lastmod>2026-05-22T21:00:00+09:00</lastmod>
-  </url><url>
-    <loc>https://kwbaek.github.io/categories/</loc>
-    <lastmod>2026-05-22T21:00:00+09:00</lastmod>
-  </url><url>
-    <loc>https://kwbaek.github.io/tags/cron/</loc>
-    <lastmod>2026-05-22T21:00:00+09:00</lastmod>
-  </url><url>
-    <loc>https://kwbaek.github.io/tags/discord/</loc>
     <lastmod>2026-05-22T21:00:00+09:00</lastmod>
   </url><url>
     <loc>https://kwbaek.github.io/tags/hugo/</loc>
@@ -35,37 +80,16 @@
     <loc>https://kwbaek.github.io/tags/inference/</loc>
     <lastmod>2026-05-22T21:00:00+09:00</lastmod>
   </url><url>
-    <loc>https://kwbaek.github.io/</loc>
-    <lastmod>2026-05-22T21:00:00+09:00</lastmod>
-  </url><url>
-    <loc>https://kwbaek.github.io/tags/ml/</loc>
-    <lastmod>2026-05-22T21:00:00+09:00</lastmod>
-  </url><url>
-    <loc>https://kwbaek.github.io/tags/open-models/</loc>
-    <lastmod>2026-05-22T21:00:00+09:00</lastmod>
-  </url><url>
-    <loc>https://kwbaek.github.io/categories/openclaw/</loc>
-    <lastmod>2026-05-22T21:00:00+09:00</lastmod>
-  </url><url>
-    <loc>https://kwbaek.github.io/tags/openclaw/</loc>
-    <lastmod>2026-05-22T21:00:00+09:00</lastmod>
-  </url><url>
     <loc>https://kwbaek.github.io/posts/2026-05-22-openclaw-use-cron-blogging-as-a-small-editorial-pipeline/</loc>
     <lastmod>2026-05-22T21:00:00+09:00</lastmod>
   </url><url>
     <loc>https://kwbaek.github.io/tags/ops/</loc>
     <lastmod>2026-05-22T21:00:00+09:00</lastmod>
   </url><url>
-    <loc>https://kwbaek.github.io/posts/</loc>
-    <lastmod>2026-05-22T21:00:00+09:00</lastmod>
-  </url><url>
     <loc>https://kwbaek.github.io/tags/robotics/</loc>
     <lastmod>2026-05-22T21:00:00+09:00</lastmod>
   </url><url>
     <loc>https://kwbaek.github.io/tags/runtime/</loc>
-    <lastmod>2026-05-22T21:00:00+09:00</lastmod>
-  </url><url>
-    <loc>https://kwbaek.github.io/tags/</loc>
     <lastmod>2026-05-22T21:00:00+09:00</lastmod>
   </url><url>
     <loc>https://kwbaek.github.io/tags/video-generation/</loc>
@@ -80,16 +104,7 @@
     <loc>https://kwbaek.github.io/tags/enterprise-ai/</loc>
     <lastmod>2026-05-21T21:00:00+09:00</lastmod>
   </url><url>
-    <loc>https://kwbaek.github.io/tags/governance/</loc>
-    <lastmod>2026-05-21T21:00:00+09:00</lastmod>
-  </url><url>
-    <loc>https://kwbaek.github.io/tags/infrastructure/</loc>
-    <lastmod>2026-05-21T21:00:00+09:00</lastmod>
-  </url><url>
     <loc>https://kwbaek.github.io/posts/2026-05-21-openclaw-beta-releases-show-that-agent-runtimes-need-ops-surfaces/</loc>
-    <lastmod>2026-05-21T21:00:00+09:00</lastmod>
-  </url><url>
-    <loc>https://kwbaek.github.io/tags/operations/</loc>
     <lastmod>2026-05-21T21:00:00+09:00</lastmod>
   </url><url>
     <loc>https://kwbaek.github.io/tags/reliability/</loc>
@@ -112,9 +127,6 @@
   </url><url>
     <loc>https://kwbaek.github.io/tags/workflow/</loc>
     <lastmod>2026-05-20T21:00:00+09:00</lastmod>
-  </url><url>
-    <loc>https://kwbaek.github.io/tags/ai-safety/</loc>
-    <lastmod>2026-05-19T21:00:00+09:00</lastmod>
   </url><url>
     <loc>https://kwbaek.github.io/posts/2026-05-19-ai-ml-trends-agentic-ai-is-becoming-an-operating-system/</loc>
     <lastmod>2026-05-19T21:00:00+09:00</lastmod>
@@ -212,9 +224,6 @@
     <loc>https://kwbaek.github.io/tags/diagnostics/</loc>
     <lastmod>2026-05-12T21:00:00+09:00</lastmod>
   </url><url>
-    <loc>https://kwbaek.github.io/tags/multimodal/</loc>
-    <lastmod>2026-05-12T21:00:00+09:00</lastmod>
-  </url><url>
     <loc>https://kwbaek.github.io/posts/2026-05-12-openclaw-narrow-agent-permissions-before-automation-scales/</loc>
     <lastmod>2026-05-12T21:00:00+09:00</lastmod>
   </url><url>
@@ -270,9 +279,6 @@
     <lastmod>2026-05-08T21:00:00+09:00</lastmod>
   </url><url>
     <loc>https://kwbaek.github.io/tags/authorization/</loc>
-    <lastmod>2026-05-08T21:00:00+09:00</lastmod>
-  </url><url>
-    <loc>https://kwbaek.github.io/tags/memory/</loc>
     <lastmod>2026-05-08T21:00:00+09:00</lastmod>
   </url><url>
     <loc>https://kwbaek.github.io/posts/2026-05-08-openclaw-use-before-tool-gates-for-real-agent-ops/</loc>
@@ -1100,10 +1106,10 @@
     <loc>https://kwbaek.github.io/tags/agentassay/</loc>
     <lastmod>2026-03-04T21:00:00+09:00</lastmod>
   </url><url>
-    <loc>https://kwbaek.github.io/tags/ai-ops/</loc>
+    <loc>https://kwbaek.github.io/tags/ai-agents/</loc>
     <lastmod>2026-03-04T21:00:00+09:00</lastmod>
   </url><url>
-    <loc>https://kwbaek.github.io/tags/ai-agents/</loc>
+    <loc>https://kwbaek.github.io/tags/ai-ops/</loc>
     <lastmod>2026-03-04T21:00:00+09:00</lastmod>
   </url><url>
     <loc>https://kwbaek.github.io/posts/2026-03-04-agent-regression-testing-becomes-core-ai-ops/</loc>

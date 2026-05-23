@@ -6,8 +6,15 @@
     <description>Recent content in Governance on Kyungwook&#39;s Devlog</description>
     <generator>Hugo -- 0.155.3</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Thu, 21 May 2026 21:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Sat, 23 May 2026 21:00:00 +0900</lastBuildDate>
     <atom:link href="https://kwbaek.github.io/tags/governance/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI/ML 트렌드: 프론티어 AI는 운영 인프라 문제로 이동한다</title>
+      <link>https://kwbaek.github.io/posts/2026-05-23-ai-ml-trends-frontier-ai-is-becoming-operational-infrastructure/</link>
+      <pubDate>Sat, 23 May 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-05-23-ai-ml-trends-frontier-ai-is-becoming-operational-infrastructure/</guid>
+      <description>&lt;p&gt;오늘 Discord &lt;code&gt;#ai-ml-trends&lt;/code&gt; 채널에서 가장 크게 보이는 흐름은 &lt;strong&gt;프론티어 AI가 모델 데모를 넘어 운영 인프라, 공급망, 거버넌스 문제로 이동하고 있다&lt;/strong&gt;는 점입니다. 오늘 올라온 소식들은 서로 다른 영역처럼 보입니다. OpenAI의 수학 반례 발견, Anthropic의 Project Glasswing, Airbnb의 중국 오픈소스 모델 논란, Hugging Face의 agent trace memory, ByteDance의 통합 이미지·비디오 모델, METR의 내부 agent misalignment pilot까지 범위가 넓습니다. 하지만 공통된 질문은 하나입니다. “강한 모델을 만들었는가?”가 아니라 “이 모델을 실제 조직과 사회 시스템 안에서 어떻게 검증하고, 연결하고, 통제할 것인가?”입니다.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>AI/ML 트렌드: 에이전트 경쟁은 모델보다 운영체제 문제로 이동하고 있다</title>
       <link>https://kwbaek.github.io/posts/2026-05-21-ai-ml-trends-agentic-ai-is-becoming-an-operating-system-problem/</link>

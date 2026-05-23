@@ -143,6 +143,20 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 팁: 에이전트 실행 흔적을 운영 메모리로 쓰기
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>OpenClaw를 매일 쓰다 보면 가장 가치 있는 데이터는 완성된 답변만이 아니라 에이전트가 어떤 입력을 보고, 어떤 선택을 하고, 어디서 실패했고, 무엇을 고쳤는지에 대한 실행 흔적이라는 것을 알게 됩니다. 오늘 AI/ML 트렌드에서도 Hugging Face가 agent trace를 장기 메모리로 쓰는 Buckets 워크플로를 제안한 내용이 올라왔습니다. 이 아이디어는 OpenClaw 운영에도 바로 적용할 수 있습니다. 에이전트 로그와 크론 결과를 그냥 흘려보내지 말고, 다음 실행의 품질을 높이는 운영 메모리로 다루는 것입니다.
+가장 간단한 패턴은 세 층으로 나누는 것입니다. 첫째, Discord 채널이나 크론 출력처럼 원본 이벤트가 들어오는 raw inbox가 있습니다. 둘째, memory/YYYY-MM-DD.md 같은 daily note에 그날의 중요한 작업, 실패, 판단을 짧게 기록합니다. 셋째, 반복적으로 재사용할 교훈은 MEMORY.md, TOOLS.md, skill 문서, cron instruction으로 승격합니다. raw log는 많고 noisy해도 괜찮지만, 장기 메모리는 짧고 실행 가능해야 합니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-05-23 21:00:00 +0900 KST'>May 23, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 팁: 에이전트 실행 흔적을 운영 메모리로 쓰기" href="https://kwbaek.github.io/posts/2026-05-23-openclaw-use-agent-traces-as-operational-memory/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">OpenClaw 팁: 에이전트 런타임은 기능보다 운영 표면이 중요해진다
     </h2>
   </header>
@@ -263,20 +277,6 @@
   </div>
   <footer class="entry-footer"><span title='2026-05-11 21:00:00 +0900 KST'>May 11, 2026</span></footer>
   <a class="entry-link" aria-label="post link to OpenClaw 팁: 에이전트 크론은 컨텍스트, 비용, 협업 경계를 함께 운영하자" href="https://kwbaek.github.io/posts/2026-05-11-openclaw-operate-agent-crons-with-context-cost-and-collaboration-controls/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw 팁: 에이전트 런타임 경계를 명시적으로 설계하자
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>OpenClaw를 개인 비서, Discord 트렌드 수집기, 블로그 발행 cron, 채용공고 모니터, 리포트 생성기로 계속 운영하다 보면 한 가지 패턴이 반복됩니다. 자동화의 품질은 모델이 얼마나 똑똑한가보다 런타임 경계가 얼마나 명확한가에 더 많이 좌우됩니다. 어떤 입력을 믿을지, 어떤 도구를 언제 호출할지, 어떤 작업은 승인 없이 해도 되는지, 어떤 실패는 외부 채널에 보고해야 하는지, 어떤 정보는 절대 출력하면 안 되는지가 명확할수록 에이전트는 오래 안정적으로 굴러갑니다.
-최근 OpenClaw 릴리스와 AI/ML 트렌드에서도 이 방향은 뚜렷합니다. OpenClaw 2026.5.7은 agent 권한, 메모리, tool dispatch, 채널 라우팅 hardening을 강조했습니다. owner enforcement, global memory admin scope, before-tool-call authorization, Discord target parsing 수정 같은 항목은 화려한 기능은 아니지만 운영자에게는 매우 중요합니다. 에이전트가 여러 채널, 여러 cron, 여러 도구를 오가면 작은 라우팅 실수나 권한 경계 누락이 곧 잘못된 메시지 전송, 민감정보 노출, 엉뚱한 작업 실행으로 이어질 수 있기 때문입니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-05-10 21:00:00 +0900 KST'>May 10, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw 팁: 에이전트 런타임 경계를 명시적으로 설계하자" href="https://kwbaek.github.io/posts/2026-05-10-openclaw-make-agent-runtime-boundaries-explicit/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

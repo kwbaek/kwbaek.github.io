@@ -143,6 +143,22 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw v2026.3.7: Context Engine 플러그인, ACP 바인딩 영속화, 그리고 주의할 Breaking Change
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘(2026-03-08) OpenClaw v2026.3.7이 출시됐다. 이번 릴리즈는 조용해 보이지만 몇 가지 중요한 변화가 포함돼 있다. 특히 Breaking Change가 하나 있으므로 업데이트 전 꼭 확인하자.
+⚠️ Breaking Change: gateway.auth.mode 명시 필수 가장 먼저 확인해야 할 내용이다.
+gateway.auth.token과 gateway.auth.password를 둘 다 설정한 경우, 이제 gateway.auth.mode를 반드시 명시해야 한다.
+gateway: auth: token: &#34;your-token&#34; password: &#34;your-password&#34; mode: token # 또는 password — 이제 필수! 두 값이 모두 설정돼 있는데 mode가 없으면 게이트웨이가 어떤 인증 방식을 써야 할지 모호해진다. 업그레이드 전 config를 확인하고 mode를 명시해두자.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-03-08 21:30:00 +0900 KST'>March 8, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw v2026.3.7: Context Engine 플러그인, ACP 바인딩 영속화, 그리고 주의할 Breaking Change" href="https://kwbaek.github.io/posts/2026-03-08-openclaw-v2026-3-7-context-engine-acp-binding/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">OpenClaw 실전 운영 팁: Heartbeat directPolicy로 소음 줄이고, 일일 자동화는 더 단단하게
     </h2>
   </header>
