@@ -143,6 +143,20 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 팁: 실제 운영 에이전트에는 before-tool gate가 필요하다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>OpenClaw를 개인 비서, Discord 운영 봇, 리포트 작성기, 블로그 발행 cron처럼 실제 작업에 붙이면 가장 먼저 체감하는 사실이 있습니다. 문제는 모델이 글을 못 쓰는 것이 아니라, 모델이 도구를 너무 쉽게 실제 세계에 연결할 수 있다는 점입니다. 메시지 전송, 파일 수정, git push, 브라우저 접근, 메모리 조회, 외부 API 호출은 모두 작은 부작용을 남깁니다. 그래서 OpenClaw 운영에서는 “좋은 프롬프트”만큼이나 “도구 호출 직전의 권한 확인”이 중요합니다.
+OpenClaw 2026.5.7 릴리스에서 눈에 띄는 흐름도 이쪽입니다. owner enforcement, global memory admin scope, before-tool-call authorization, Discord target parsing hardening 같은 항목은 화려한 기능 추가라기보다 운영 안전성의 기본기를 다지는 변화입니다. 개인 AI assistant가 오래 켜져 있고 여러 채널을 읽고 쓰는 환경에서는 누가 요청했는지, 어떤 메모리에 접근하는지, 어느 채널로 보내는지, 어떤 도구가 실행 직전인지가 모두 보안 경계가 됩니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-05-08 21:00:00 +0900 KST'>May 8, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 팁: 실제 운영 에이전트에는 before-tool gate가 필요하다" href="https://kwbaek.github.io/posts/2026-05-08-openclaw-use-before-tool-gates-for-real-agent-ops/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">OpenClaw 팁: Discord 트렌드 피드를 매일 발행 파이프라인으로 바꾸기
     </h2>
   </header>
@@ -265,20 +279,6 @@
   </div>
   <footer class="entry-footer"><span title='2026-03-20 21:00:00 +0900 KST'>March 20, 2026</span></footer>
   <a class="entry-link" aria-label="post link to OpenClaw 팁: 매일 도는 콘텐츠 자동화를 덜 피곤하게 운영하는 법" href="https://kwbaek.github.io/posts/2026-03-20-openclaw-operating-daily-content-systems-with-less-friction/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw 운영 메모: v2026.3.7 이후 꼭 챙길 4가지 (실전 체크리스트)
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>OpenClaw를 계속 굴리다 보면 새 기능보다 더 중요한 게 있습니다. 바로 “이번 업데이트에서 운영 리스크가 어디로 이동했는지&#34;를 빨리 잡는 것입니다. 최근 버전 흐름(v2026.3.7 기준)을 보면, 단순 기능 추가보다 보안 기본값, 라우팅 안정성, 운영 점검 루틴이 점점 더 중요해지고 있습니다. 오늘은 실제로 바로 적용 가능한 포인트만 압축해서 정리합니다.
-1) 먼저 확인: auth 설정의 브레이킹 포인트 v2026.3.7에서 가장 먼저 체크할 건 gateway 인증 조합입니다. gateway.auth.token과 gateway.auth.password를 동시에 쓰는 환경이라면 gateway.auth.mode를 반드시 명시해야 합니다. 이걸 놓치면 업데이트 직후 “왜 갑자기 인증이 꼬였지?” 같은 장애가 생기기 쉽습니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-03-10 21:05:00 +0900 KST'>March 10, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw 운영 메모: v2026.3.7 이후 꼭 챙길 4가지 (실전 체크리스트)" href="https://kwbaek.github.io/posts/2026-03-10-openclaw-v2026-3-7-operations-playbook/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

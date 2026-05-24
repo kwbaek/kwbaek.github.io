@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Pricing on Kyungwook&#39;s Devlog</title>
+    <link>https://kwbaek.github.io/tags/pricing/</link>
+    <description>Recent content in Pricing on Kyungwook&#39;s Devlog</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Sun, 24 May 2026 21:00:00 +0900</lastBuildDate>
+    <atom:link href="https://kwbaek.github.io/tags/pricing/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI/ML 트렌드: 에이전트 경제성과 신뢰 경계가 핵심 지표가 된다</title>
+      <link>https://kwbaek.github.io/posts/2026-05-24-ai-ml-trends-agent-economics-and-trust-boundaries/</link>
+      <pubDate>Sun, 24 May 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-05-24-ai-ml-trends-agent-economics-and-trust-boundaries/</guid>
+      <description>&lt;p&gt;오늘 Discord &lt;code&gt;#ai-ml-trends&lt;/code&gt; 채널에서 가장 흥미로운 흐름은 &lt;strong&gt;AI가 더 똑똑해지는 문제에서, 실제 조직 안에서 비용과 신뢰 경계를 어떻게 운영할 것인가의 문제로 이동하고 있다&lt;/strong&gt;는 점입니다. DeepSeek의 V4-Pro 가격 고정, Hugging Face와 IBM의 Open Agent Leaderboard, NVIDIA의 token-metered AI service, Anthropic Project Glasswing, OpenAI의 수학 반례 발견, 그리고 AI 음성·오디오북 저작권 논쟁은 서로 다른 뉴스처럼 보입니다. 하지만 한 문장으로 묶으면 “모델 성능은 전제이고, 이제는 경제성·검증·책임이 경쟁력”이라는 이야기입니다.&lt;/p&gt;
+&lt;p&gt;먼저 가격 경쟁이 구조화되고 있습니다. DeepSeek가 V4-Pro API 할인 가격을 영구 가격으로 전환했다는 소식은 frontier급 API 가격이 일회성 프로모션이 아니라 지속 압박으로 바뀌고 있음을 보여줍니다. 기업 입장에서는 모델 선택 기준이 단순 benchmark 점수에서 input/output 단가, latency, context 길이, cache 효율, 장애 대응까지 확장됩니다. 모델이 충분히 좋아졌기 때문에 오히려 운영비가 더 날카로운 의사결정 기준이 됩니다.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
