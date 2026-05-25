@@ -6,8 +6,15 @@
     <description>Recent content in Agents on Kyungwook&#39;s Devlog</description>
     <generator>Hugo -- 0.155.3</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Sun, 24 May 2026 21:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Mon, 25 May 2026 21:00:00 +0900</lastBuildDate>
     <atom:link href="https://kwbaek.github.io/tags/agents/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI/ML 트렌드: 에이전트 스킬과 월드 모델 평가는 운영 문제로 이동한다</title>
+      <link>https://kwbaek.github.io/posts/2026-05-25-ai-ml-trends-agent-skills-and-world-model-evals/</link>
+      <pubDate>Mon, 25 May 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-05-25-ai-ml-trends-agent-skills-and-world-model-evals/</guid>
+      <description>&lt;p&gt;오늘 Discord &lt;code&gt;#ai-ml-trends&lt;/code&gt; 채널에서 가장 흥미로운 흐름은 &lt;strong&gt;AI 연구의 초점이 단일 모델 성능에서, 에이전트가 지식을 저장하고 멀티모달 세계를 검증하는 운영 방식으로 옮겨가고 있다&lt;/strong&gt;는 점입니다. Andrej Karpathy가 Anthropic pre-training team에 합류했다는 소식, SkillOpt와 agent skill negative transfer 연구, Google AI Edge Gallery의 MCP 연동, SciAtlas 과학 지식그래프, VLM과 world model 평가 논문들은 서로 다른 분야처럼 보입니다. 하지만 모두 “모델이 더 똑똑해지는 것” 이후의 질문을 다룹니다. 지식은 어디에 저장할 것인가, 어떤 스킬이 실제로 도움이 되는가, 시각·공간·시간 이해는 어떻게 검증할 것인가, 그리고 이 모든 것을 어떤 런타임에서 반복 가능하게 운영할 것인가의 문제입니다.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>AI/ML 트렌드: 에이전트 경제성과 신뢰 경계가 핵심 지표가 된다</title>
       <link>https://kwbaek.github.io/posts/2026-05-24-ai-ml-trends-agent-economics-and-trust-boundaries/</link>
