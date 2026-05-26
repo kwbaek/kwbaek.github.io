@@ -158,6 +158,37 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">AI 경쟁의 중심축 이동: 모델 성능에서 운영 거버넌스로
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>2026년 2월 24일 기준, 오늘 AI/ML 트렌드 채널에서 가장 중요한 신호는 “누가 더 똑똑한 모델을 만드느냐&#34;보다 “누가 더 안전하고 운영 가능한 AI 시스템을 구축하느냐&#34;로 경쟁의 기준이 바뀌고 있다는 점입니다.
+가장 대표적인 사례가 OpenAI의 Frontier 발표입니다. 이 발표는 단순히 모델 API를 늘리는 업데이트가 아니라, 에이전트를 실제 조직 내에서 배포하고 관리하기 위한 플랫폼 레이어(권한, 온보딩, 공유 컨텍스트, 거버넌스)를 전면에 내세웠다는 점에서 의미가 큽니다. 즉, 모델 자체의 성능 우위만으로는 더 이상 엔터프라이즈 시장을 장악하기 어렵고, 운영 체계 전체를 제공하는 쪽이 유리해지는 국면입니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-02-24 21:00:00 +0900 KST'>February 24, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to AI 경쟁의 중심축 이동: 모델 성능에서 운영 거버넌스로" href="https://kwbaek.github.io/posts/2026-02-24-ai-governance-shift-frontier/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 2026.2.22 이후 운영 플레이북: 업데이트, 보안, 배포
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>최근 OpenClaw를 실무에 붙여 쓰면서 느낀 핵심은, 기능이 빨리 늘어나는 만큼 업데이트 루틴을 표준화한 팀이 결국 안정적으로 오래 간다는 점입니다. 특히 2026.2.22 릴리즈 구간은 운영 관점에서 체감 변화가 꽤 큽니다.
+이번 구간의 실무 포인트를 한 줄로 요약하면 이렇습니다.
+“새 기능을 바로 쓰기보다, 사전 점검 → 설정 정리 → 재시작 → 헬스체크를 루틴화하라.”
+1) 업데이트 전에 꼭 할 것: dry-run OpenClaw는 이제 업데이트 전에 영향을 예측하는 흐름이 훨씬 중요해졌습니다.
+openclaw update --dry-run 이 한 줄로 어떤 변경이 들어오는지 먼저 확인해두면, 실제 운영 중 예상치 못한 중단을 크게 줄일 수 있습니다. 특히 여러 채널(Discord/Telegram/Slack)을 동시에 쓰는 환경에서는 설정 키 변경 영향이 생각보다 크게 나타납니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-02-24 21:00:00 +0900 KST'>February 24, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 2026.2.22 이후 운영 플레이북: 업데이트, 보안, 배포" href="https://kwbaek.github.io/posts/2026-02-24-openclaw-release-2026-2-22-playbook/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">AI 모델 전쟁의 새로운 국면: Gemini 3.1 Pro부터 Claude Sonnet 4.6까지
     </h2>
   </header>
@@ -283,37 +314,6 @@ openclaw doctor openclaw gateway restart openclaw health Cron을 사용 중이�
   </div>
   <footer class="entry-footer"><span title='2026-02-20 21:00:00 +0900 KST'>February 20, 2026</span></footer>
   <a class="entry-link" aria-label="post link to OpenClaw 2월 중순 업데이트: Cron 안정화와 보안 강화" href="https://kwbaek.github.io/posts/2026-02-20-openclaw-latest-updates/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">AI 모델 대격변의 2월: Claude Sonnet 4.6부터 Qwen 3.5까지
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>2026년 2월이 채 끝나기도 전에, AI 업계는 전례 없는 모델 러시를 경험하고 있습니다. 주요 기업들이 앞다퉈 새로운 모델을 출시하면서 AI 에이전트 시대가 본격적으로 열리고 있습니다.
-Claude Sonnet 4.6: 전방위 업그레이드 Anthropic이 2월 18일 발표한 Claude Sonnet 4.6는 이전 버전 대비 모든 영역에서 성능이 대폭 향상되었습니다.
-주요 개선사항:
-코딩: 복잡한 코드 생성과 디버깅 능력 강화 컴퓨터 사용(Computer Use): 사람의 컴퓨터를 더 효과적으로 조작 가능 장기 추론(Long-reasoning): 복잡한 문제 해결을 위한 사고력 향상 에이전트 플래닝: 멀티스텝 작업 계획 수립 능력 개선 지식 작업: 연구, 문서 작성 등 전문 지식 작업 효율성 증대 Free와 Pro 사용자 모두에게 기본 모델로 제공되며, 현재 즉시 사용 가능합니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-02-19 21:00:00 +0900 KST'>February 19, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to AI 모델 대격변의 2월: Claude Sonnet 4.6부터 Qwen 3.5까지" href="https://kwbaek.github.io/posts/2026-02-19-ai-model-rush-february/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw 고급 활용법: Cron, Heartbeat, 그리고 서브에이전트 마스터하기
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>OpenClaw를 단순한 AI 어시스턴트로 사용하고 계신가요? 이 강력한 플랫폼은 훨씬 더 많은 것을 할 수 있습니다. 이번 포스트에서는 OpenClaw의 고급 기능들을 활용하여 진정한 자동화와 자율성을 구현하는 방법을 다룹니다.
-Cron: 스마트 스케줄링의 힘 OpenClaw의 cron 시스템은 단순한 작업 스케줄러가 아닙니다. AI 에이전트가 정해진 시간에 자율적으로 작업을 수행하고, 결과를 분석하고, 당신에게 보고하는 완전한 자동화 시스템입니다.
-기본 cron 작업 생성 # 매일 오전 9시에 이메일 체크 openclaw cron add \ --schedule &#34;0 9 * * *&#34; \ --task &#34;Check my Gmail inbox and summarize important unread emails&#34; \ --session isolated \ --delivery announce Webhook 통합: 외부 시스템과 연동 cron 작업 완료 시 외부 시스템에 알림을 보낼 수 있습니다:
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-02-19 21:00:00 +0900 KST'>February 19, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw 고급 활용법: Cron, Heartbeat, 그리고 서브에이전트 마스터하기" href="https://kwbaek.github.io/posts/2026-02-19-openclaw-advanced-tips/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

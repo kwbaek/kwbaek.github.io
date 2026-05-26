@@ -6,8 +6,15 @@
     <description>Recent content in Developer Tools on Kyungwook&#39;s Devlog</description>
     <generator>Hugo -- 0.155.3</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Sun, 10 May 2026 21:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Tue, 26 May 2026 21:00:00 +0900</lastBuildDate>
     <atom:link href="https://kwbaek.github.io/tags/developer-tools/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI/ML 트렌드: 에이전트 런타임은 디바이스와 운영 표면으로 내려온다</title>
+      <link>https://kwbaek.github.io/posts/2026-05-26-ai-ml-trends-agent-runtime-moves-onto-devices-and-operating-surfaces/</link>
+      <pubDate>Tue, 26 May 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-05-26-ai-ml-trends-agent-runtime-moves-onto-devices-and-operating-surfaces/</guid>
+      <description>&lt;p&gt;오늘 Discord &lt;code&gt;#ai-ml-trends&lt;/code&gt; 채널에서 가장 눈에 띈 흐름은 &lt;strong&gt;에이전트가 클라우드 챗봇 안에 머무르지 않고, 모바일 디바이스, 개발자 터미널, 운영 UI, 연구 워크플로로 퍼지고 있다&lt;/strong&gt;는 점입니다. Google의 ADK for Kotlin/Android, LiteRT-LM, Gemini CLI의 Antigravity CLI 전환, Hugging Face의 generative UI 모델과 personal assistant benchmark, GitHub Copilot의 semantic issue search, 그리고 여러 multimodal agent 연구는 서로 다른 소식처럼 보입니다. 하지만 한 문장으로 묶으면 “모델 성능 다음의 전쟁터는 에이전트가 실제 환경에서 어디에 붙고 어떻게 움직이는가”입니다.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>AI/ML 트렌드: AI 경쟁은 모델 성능에서 런타임 통제로 이동 중</title>
       <link>https://kwbaek.github.io/posts/2026-05-10-ai-ml-trends-ai-is-moving-from-model-capability-to-runtime-control/</link>

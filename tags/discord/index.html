@@ -143,6 +143,20 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 팁: 크론을 타이머가 아니라 편집 오퍼레이터처럼 쓰기
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>OpenClaw에서 매일 블로그 포스팅을 돌릴 때 cron은 단순한 타이머가 아닙니다. 정해진 시간에 모델을 깨우는 장치만으로 보면 반쪽입니다. 더 유용한 관점은 cron을 입력 채널을 읽고, 기준에 따라 선별하고, 산출물을 만들고, 배포까지 마무리하는 작은 편집 오퍼레이터로 보는 것입니다. 특히 Discord 트렌드 채널과 Hugo 블로그를 연결하면 이 차이가 크게 납니다.
+오늘 작업 흐름은 좋은 예입니다. #ai-ml-trends 채널에는 하루 동안 여러 스캐너 메시지가 쌓입니다. 각 메시지는 링크만 던지는 것이 아니라, 왜 중요한지 짧은 해석을 붙입니다. 저녁 cron은 이 메시지를 읽고, 그날 가장 반복적으로 나타난 흐름을 뽑습니다. 오늘은 on-device agent, Android/Kotlin agent framework, semantic issue search, generative UI, always-on personal assistant benchmark, multimodal world model이 반복적으로 등장했습니다. cron이 해야 할 일은 이 링크를 모두 나열하는 것이 아니라, “에이전트 런타임이 실제 디바이스와 운영 표면으로 내려온다”는 중심 문장으로 묶는 것입니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-05-26 21:00:00 +0900 KST'>May 26, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 팁: 크론을 타이머가 아니라 편집 오퍼레이터처럼 쓰기" href="https://kwbaek.github.io/posts/2026-05-26-openclaw-use-cron-as-an-editorial-operator-not-just-a-timer/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">OpenClaw 팁: Discord 트렌드 채널을 개인 편집 데스크처럼 쓰기
     </h2>
   </header>
@@ -264,20 +278,6 @@
   </div>
   <footer class="entry-footer"><span title='2026-05-12 21:00:00 +0900 KST'>May 12, 2026</span></footer>
   <a class="entry-link" aria-label="post link to OpenClaw 팁: 자동화가 커지기 전에 에이전트 권한을 좁혀두자" href="https://kwbaek.github.io/posts/2026-05-12-openclaw-narrow-agent-permissions-before-automation-scales/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw 팁: 에이전트 크론은 컨텍스트, 비용, 협업 경계를 함께 운영하자
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>OpenClaw를 매일 쓰다 보면 자동화의 난이도는 “한 번 실행되느냐”보다 오래 반복 실행될 때 얼마나 예측 가능하고, 비용이 보이고, 협업 채널을 어지럽히지 않는가로 이동합니다. 오늘 살펴볼 포인트는 OpenClaw v2026.5.10-beta.3에서 보인 방향성입니다. provider-level localService, context map, Slack unfurl/replyBroadcast 같은 기능은 모두 에이전트 자동화를 더 운영 가능한 시스템으로 만들기 위한 장치에 가깝습니다.
-첫 번째로 중요한 것은 로컬 모델 서버의 생명주기입니다. provider-level localService는 특정 provider가 필요로 하는 로컬 서비스를 자동으로 띄우고 관리하는 방향을 보여줍니다. 개인 비서나 팀 자동화에서 로컬 LLM, 임베딩 서버, 프록시, 전사 서버를 쓰기 시작하면 “모델 선택”보다 “그 서버가 언제 켜지고, 실패하면 어떻게 알리고, 어떤 작업이 의존하는가”가 더 중요해집니다. 크론 작업이 매일 돌 때마다 로컬 서비스 상태를 사람이 확인해야 한다면 자동화의 이점이 줄어듭니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-05-11 21:00:00 +0900 KST'>May 11, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw 팁: 에이전트 크론은 컨텍스트, 비용, 협업 경계를 함께 운영하자" href="https://kwbaek.github.io/posts/2026-05-11-openclaw-operate-agent-crons-with-context-cost-and-collaboration-controls/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">
