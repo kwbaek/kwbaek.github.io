@@ -143,6 +143,19 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 팁: 데일리 퍼블리싱은 선별·작성·배포를 분리할수록 더 안정적이다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>OpenClaw로 매일 글을 발행하다 보면, 결국 중요한 건 멋진 한 방 자동화가 아니라 작업을 어디서 끊고 어떻게 넘기느냐라는 걸 자주 느끼게 됩니다. 특히 데일리 블로그 포스팅처럼 “트렌드 읽기 → 핵심 선별 → 글 작성 → Git 커밋 → 정적 사이트 빌드 → 배포 저장소 반영”이 한 줄로 이어진 작업은, 보기에는 단순해도 실제로는 성격이 꽤 다른 단계들이 섞여 있습니다. 이럴 때 가장 안정적인 방식은 전체를 하나의 거대한 셸 스크립트로 밀어붙이는 것보다, 선별·작성·배포를 서로 다른 책임으로 분리하는 것입니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-04-25 21:05:00 +0900 KST'>April 25, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 팁: 데일리 퍼블리싱은 선별·작성·배포를 분리할수록 더 안정적이다" href="https://kwbaek.github.io/posts/2026-04-25-openclaw-daily-publishing-works-best-when-selection-writing-and-deploy-are-separated/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">OpenClaw 팁: cron 자동화는 셸 래퍼보다 first-class 도구를 쓸 때 덜 깨진다
     </h2>
   </header>
@@ -266,20 +279,6 @@
   </div>
   <footer class="entry-footer"><span title='2026-04-16 21:27:00 +0900 KST'>April 16, 2026</span></footer>
   <a class="entry-link" aria-label="post link to OpenClaw 팁: 일일 블로그 워크플로를 에이전트 실행처럼 구조화하면 훨씬 덜 흔들린다" href="https://kwbaek.github.io/posts/2026-04-16-openclaw-openclaw-gets-more-useful-when-your-daily-blog-workflow-is-structured-like-an-agent-run/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw 팁: health check와 config validate를 기본 운영 루프에 넣어두면 훨씬 덜 흔들린다
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>OpenClaw를 한동안 굴려보면 금방 느끼게 됩니다. 실제 운영에서 문제를 만드는 건 대개 거대한 버그보다, 사소한 설정 어긋남과 조용한 상태 이상입니다. 모델은 멀쩡한데 특정 채널만 응답이 흔들리거나, cron은 살아 있는데 실제 전달이 빠지거나, 업데이트 뒤에 설정 키 하나가 미묘하게 바뀌어 이상 동작이 생기는 식입니다. 그래서 저는 요즘 OpenClaw 운영 팁을 하나만 꼽으라면, 새 기능 자체보다 config validate와 health endpoint를 기본 루프로 습관화하라고 말하고 싶습니다.
-이게 왜 중요하냐면 OpenClaw는 점점 더 많은 기능을 품고 있기 때문입니다. 채널 연동, cron, subagent, ACP, secrets, 보안 옵션, 세션 관리까지 다 붙기 시작하면 시스템은 강해지지만 동시에 설정 표면도 넓어집니다. 이런 상태에서는 “문제가 생기면 그때 본다”보다, 문제가 커지기 전에 작게 확인하는 루틴이 훨씬 낫습니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-04-14 21:35:00 +0900 KST'>April 14, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw 팁: health check와 config validate를 기본 운영 루프에 넣어두면 훨씬 덜 흔들린다" href="https://kwbaek.github.io/posts/2026-04-14-openclaw-health-checks-and-config-validation-should-be-part-of-your-default-ops-loop/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

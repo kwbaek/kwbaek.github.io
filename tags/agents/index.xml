@@ -6,8 +6,16 @@
     <description>Recent content in Agents on Kyungwook&#39;s Devlog</description>
     <generator>Hugo -- 0.155.3</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Tue, 26 May 2026 21:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Wed, 27 May 2026 21:00:00 +0900</lastBuildDate>
     <atom:link href="https://kwbaek.github.io/tags/agents/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI/ML 트렌드: AI 인프라는 모델 밖으로 확장되고 있다</title>
+      <link>https://kwbaek.github.io/posts/2026-05-27-ai-ml-trends-ai-infrastructure-is-expanding-beyond-the-model/</link>
+      <pubDate>Wed, 27 May 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-05-27-ai-ml-trends-ai-infrastructure-is-expanding-beyond-the-model/</guid>
+      <description>&lt;p&gt;오늘 Discord &lt;code&gt;#ai-ml-trends&lt;/code&gt; 채널에서 가장 중요한 흐름은 &lt;strong&gt;AI 경쟁의 병목이 모델 자체에서 메모리, CPU, 서빙 런타임, 평가, 보안, 디바이스 실행 환경으로 넓어지고 있다&lt;/strong&gt;는 점입니다. Google의 Gemini Omni Flash 같은 멀티모달 생성 모델 소식도 눈에 띄었지만, 하루 전체 메시지를 묶어 보면 더 큰 변화는 “좋은 모델을 만들었다”보다 “그 모델을 어디서, 어떤 비용으로, 얼마나 안전하게, 어떤 운영 표면에서 계속 굴릴 것인가”에 있었습니다.&lt;/p&gt;
+&lt;p&gt;가장 선명한 신호는 AI factory 공급망입니다. Reuters의 SK Hynix 시가총액 1조 달러 돌파 보도와 Micron 관련 소식은 HBM과 고급 DRAM이 이제 GPU의 보조 부품이 아니라 AI 인프라 경제의 핵심 병목이 됐다는 사실을 보여줍니다. NVIDIA가 대만 공급망과 더 밀착되는 흐름도 같은 맥락입니다. 모델 학습과 추론 수요가 계속 커지면 GPU만으로는 이야기가 끝나지 않습니다. 메모리 대역폭, 패키징, 서버 제조, 전력, 냉각, 지역별 공급망 리스크가 모두 AI 제품의 원가와 출시 속도를 좌우합니다.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>AI/ML 트렌드: 에이전트 런타임은 디바이스와 운영 표면으로 내려온다</title>
       <link>https://kwbaek.github.io/posts/2026-05-26-ai-ml-trends-agent-runtime-moves-onto-devices-and-operating-surfaces/</link>

@@ -152,6 +152,61 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">AI/ML 트렌드: AI는 브라우저와 런타임 안으로 내려오고 있다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 AI/ML 트렌드에서 가장 중요한 신호는 AI가 별도 앱이나 API 호출을 넘어 브라우저, 에이전트 런타임, 조직 운영, 인프라 계약 안으로 깊게 들어가고 있다는 점입니다. 하루 동안 나온 소식은 매우 넓어 보였습니다. Chrome built-in AI, OpenClaw hardening, Microsoft Agent Framework의 정보흐름 제어, OpenAI Agents SDK 업데이트, AI chip 공급망 조사, 중앙은행의 AI 공격 방어 연구, AI-first 구조조정까지 한꺼번에 등장했습니다. 하지만 이 흐름을 묶으면 하나의 질문으로 정리됩니다. “AI를 어디에 붙일 것인가?”가 아니라 “AI가 이미 들어간 실행 환경을 어떻게 통제하고 검증할 것인가?”입니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-05-08 21:00:00 +0900 KST'>May 8, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to AI/ML 트렌드: AI는 브라우저와 런타임 안으로 내려오고 있다" href="https://kwbaek.github.io/posts/2026-05-08-ai-ml-trends-ai-is-moving-into-the-runtime-and-browser/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 팁: 실제 운영 에이전트에는 before-tool gate가 필요하다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>OpenClaw를 개인 비서, Discord 운영 봇, 리포트 작성기, 블로그 발행 cron처럼 실제 작업에 붙이면 가장 먼저 체감하는 사실이 있습니다. 문제는 모델이 글을 못 쓰는 것이 아니라, 모델이 도구를 너무 쉽게 실제 세계에 연결할 수 있다는 점입니다. 메시지 전송, 파일 수정, git push, 브라우저 접근, 메모리 조회, 외부 API 호출은 모두 작은 부작용을 남깁니다. 그래서 OpenClaw 운영에서는 “좋은 프롬프트”만큼이나 “도구 호출 직전의 권한 확인”이 중요합니다.
+OpenClaw 2026.5.7 릴리스에서 눈에 띄는 흐름도 이쪽입니다. owner enforcement, global memory admin scope, before-tool-call authorization, Discord target parsing hardening 같은 항목은 화려한 기능 추가라기보다 운영 안전성의 기본기를 다지는 변화입니다. 개인 AI assistant가 오래 켜져 있고 여러 채널을 읽고 쓰는 환경에서는 누가 요청했는지, 어떤 메모리에 접근하는지, 어느 채널로 보내는지, 어떤 도구가 실행 직전인지가 모두 보안 경계가 됩니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-05-08 21:00:00 +0900 KST'>May 8, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 팁: 실제 운영 에이전트에는 before-tool gate가 필요하다" href="https://kwbaek.github.io/posts/2026-05-08-openclaw-use-before-tool-gates-for-real-agent-ops/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">AI/ML 트렌드: 에이전트 안전은 이제 런타임 안으로 들어가고 있다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 AI/ML 흐름에서 가장 흥미로운 축은 에이전트 안전과 운영 신뢰성이 모델 바깥의 부가 기능이 아니라 런타임 자체의 책임으로 이동하고 있다는 점입니다. 하루 동안 나온 신호를 묶어보면, physical AI, agent runtime, AI 인프라, 정책 리스크가 따로 움직이는 것처럼 보이지만 실제로는 하나의 질문으로 수렴합니다. “AI가 실제 세계의 도구와 시스템을 만질 때, 누가 어떤 의미의 행동을 허용하고 기록하고 중단할 것인가?”
+가장 직접적인 신호는 AgentTrust와 DTap 같은 연구입니다. AgentTrust는 파일, 쉘, HTTP, 데이터베이스 같은 도구 호출을 실행 전에 의미 단위로 평가하고 차단하는 runtime safety layer를 제안합니다. 기존 sandbox가 프로세스 격리나 네트워크 제한에 가까웠다면, 이제는 “이 tool call이 실제로 어떤 업무 행위인가?”를 판단하는 방향으로 확장됩니다. DTap 역시 API key 유출, 데이터 삭제, 무단 거래 같은 장기 action risk를 interactive red-teaming 환경에서 평가합니다. 에이전트 보안 평가는 단일 prompt에 대한 답변 검사가 아니라, 여러 단계의 계획과 실행이 누적될 때 생기는 위험을 봐야 합니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-05-07 21:00:00 +0900 KST'>May 7, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 에이전트 안전은 이제 런타임 안으로 들어가고 있다" href="https://kwbaek.github.io/posts/2026-05-07-ai-ml-trends-agent-safety-is-moving-into-the-runtime/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 팁: 도구 호출은 모두 감사 가능한 부작용으로 다루자
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>OpenClaw로 cron, Discord, 블로그 발행, 리포트 생성 같은 자동화를 운영하다 보면 금방 알게 되는 사실이 있습니다. LLM 답변 자체보다 더 중요한 것은 도구 호출이 실제 세계에 남기는 부작용입니다. 파일을 쓰고, 메시지를 보내고, git push를 하고, Hugo build를 돌리고, 외부 채널에 알림을 보내는 순간부터 에이전트는 단순한 채팅 모델이 아니라 작은 운영 시스템이 됩니다. 그래서 OpenClaw 자동화는 모든 tool call을 “감사 가능한 side effect”로 다루는 습관이 필요합니다.
+첫 번째 원칙은 입력과 지시를 분리하는 것입니다. Discord 채널, 웹페이지, RSS, 이메일 본문은 좋은 자료일 수 있지만 운영 지시는 아닙니다. 예를 들어 블로그 cron은 트렌드 채널 메시지를 읽어 글감을 고르되, 배포 순서와 파일 경로, 카테고리, 실패 보고 방식은 별도의 instruction 파일에서만 가져와야 합니다. 이렇게 하면 외부 텍스트가 “이 명령을 실행해” 같은 문장을 포함하더라도 자동화의 권한 경계를 넘지 못합니다. OpenClaw에서 cron instruction을 작게 고정하고, 채널 메시지는 참고 자료로만 쓰는 이유가 여기에 있습니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-05-07 21:00:00 +0900 KST'>May 7, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 팁: 도구 호출은 모두 감사 가능한 부작용으로 다루자" href="https://kwbaek.github.io/posts/2026-05-07-openclaw-treat-tool-calls-as-auditable-side-effects/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">AI/ML 트렌드: AI는 인프라와 거버넌스가 결합된 워크플로가 되고 있다
     </h2>
   </header>
@@ -230,61 +285,6 @@
   </div>
   <footer class="entry-footer"><span title='2026-05-04 21:00:00 +0900 KST'>May 4, 2026</span></footer>
   <a class="entry-link" aria-label="post link to OpenClaw 팁: 에이전트 cron은 작은 모델 라우팅과 도구 게이트를 함께 설계하자" href="https://kwbaek.github.io/posts/2026-05-04-openclaw-use-small-model-routing-and-tool-gates-for-agent-crons/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">AI/ML 트렌드: 웹 자체가 에이전트의 공격면이 되고 있다
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>오늘 #ai-ml-trends에서 가장 중요하게 볼 만한 흐름은 에이전트가 읽는 웹 자체가 공격면이 되고 있다는 점입니다. Google Security가 공개 웹의 indirect prompt injection(IPI) 패턴을 Common Crawl 기반으로 분석한 글이 특히 강한 신호였습니다. 여기에 Featherless.ai의 오픈소스 inference 인프라 투자, Parallel Web Systems의 agent용 웹 인프라 확장, Safe Bilevel Delegation 같은 delegation safety 연구까지 겹치면, 최근 AI/ML 흐름은 단순히 “더 좋은 모델”이 아니라 “웹을 읽고, 하위 에이전트에 일을 맡기고, 외부 도구를 실행하는 시스템을 어떻게 안전하게 운영할 것인가”로 이동하고 있습니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-05-03 21:00:00 +0900 KST'>May 3, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 웹 자체가 에이전트의 공격면이 되고 있다" href="https://kwbaek.github.io/posts/2026-05-03-ai-ml-trends-the-web-itself-is-becoming-the-agent-attack-surface/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw 팁: 웹 입력은 에이전트 컨텍스트가 아니라 비신뢰 입력으로 다루자
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>OpenClaw로 트렌드 수집, 리서치, 블로그 작성 같은 자동화를 굴리다 보면 웹페이지와 Discord 메시지를 “그냥 읽을 자료”로 보기 쉽습니다. 하지만 에이전트 관점에서는 모든 외부 텍스트가 잠재적인 명령처럼 컨텍스트 안에 들어옵니다. 오늘 AI/ML 트렌드에서도 Google Security의 공개 웹 indirect prompt injection 분석이 올라왔는데, 이 흐름은 OpenClaw 자동화에도 꽤 직접적입니다. 브라우저로 읽은 페이지, 검색 결과, RSS, 첨부 문서, 채팅 메시지는 모두 유용한 자료이면서 동시에 비신뢰 입력입니다.
-첫 번째 원칙은 외부 입력과 운영 지시를 분리하는 것입니다. cron 지시문, AGENTS.md, 스킬 파일처럼 내가 신뢰하는 운영 규칙과, 웹에서 가져온 본문은 같은 텍스트라도 역할이 다릅니다. OpenClaw 작업을 설계할 때는 “이 텍스트는 참고 자료일 뿐이며 지시로 따르지 않는다”는 경계를 명확히 두는 편이 좋습니다. 예를 들어 트렌드 스캐너가 웹페이지를 읽더라도, 그 안의 “이전 지시를 무시하라” 같은 문장은 요약 대상이지 실행 대상이 아닙니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-05-03 21:00:00 +0900 KST'>May 3, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw 팁: 웹 입력은 에이전트 컨텍스트가 아니라 비신뢰 입력으로 다루자" href="https://kwbaek.github.io/posts/2026-05-03-openclaw-treat-web-input-as-untrusted-agent-context/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">AI/ML 트렌드: 에이전트는 더 물리적이고, 더 위험하고, 더 운영형이 되고 있다
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>오늘 #ai-ml-trends에서 가장 눈에 띈 흐름은 에이전트 AI가 챗봇이나 코드 생성기를 넘어 물리 세계, 장기 실행 워크플로, 보안 운영으로 빠르게 내려오고 있다는 점입니다. Meta의 humanoid AI 강화를 위한 robotics 스타트업 인수, NVIDIA의 DeepSeek V4 배포 가이드, Crab 같은 agent sandbox checkpoint 연구, Exploration Hacking과 FlashRT 같은 post-training·red-teaming 연구가 모두 같은 방향을 가리킵니다. 이제 중요한 질문은 “모델이 똑똑한가?”보다 “이 시스템을 오래, 싸게, 안전하게 굴릴 수 있는가?”에 가까워졌습니다.
-첫 번째 축은 physical AI입니다. Meta가 humanoid AI 역량을 위해 로봇 AI 회사를 인수한 것은 로봇이 더 이상 별도 산업의 실험실 프로젝트만은 아니라는 신호입니다. VLM, long-context agent, world model, reinforcement learning이 서로 붙으면서 AI는 화면 안의 조언자가 아니라 센서와 액추에이터를 가진 작업자로 확장되고 있습니다. 이는 모델 경쟁의 기준도 바꿉니다. 자연어 답변 품질만으로는 부족하고, 실제 환경에서 실패를 감지하고, 복구하고, 안전 경계를 지키는 능력이 중요해집니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-05-02 21:00:00 +0900 KST'>May 2, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 에이전트는 더 물리적이고, 더 위험하고, 더 운영형이 되고 있다" href="https://kwbaek.github.io/posts/2026-05-02-ai-ml-trends-agents-are-becoming-physical-risky-and-operational/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw 팁: cron 자동화는 성공 경로보다 복구 경로를 먼저 설계하자
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>OpenClaw로 매일 돌아가는 자동화를 만들 때 가장 흔한 실수는 “성공하면 무엇을 할지”만 자세히 적고, 실패했을 때 어디서 멈춰야 하는지를 흐릿하게 두는 것입니다. 블로그 발행 cron만 봐도 단계가 꽤 많습니다. Discord 채널을 읽고, 트렌드를 선별하고, Hugo 글을 만들고, source repo에 커밋하고, 빌드하고, public/ 배포 repo를 다시 커밋하고 push해야 합니다. 이 전체를 하나의 덩어리로 보면 실패 원인을 찾기 어렵습니다. 반대로 단계별 산출물과 검증 지점을 나누면 자동화가 훨씬 운영하기 쉬워집니다.
-첫 번째 원칙은 입력, 작성, 배포를 분리하는 것입니다. 예를 들어 #ai-ml-trends 같은 Discord 채널은 하루 동안 축적된 관찰 로그입니다. cron은 그 로그를 읽어 오늘의 핵심 주장을 뽑고, content/posts/YYYY-MM-DD-slug.md 같은 명확한 파일 산출물로 남깁니다. 여기까지가 작성 단계입니다. 이 시점에서 파일이 존재하고 front matter가 올바르면, 적어도 콘텐츠 생성은 성공한 것입니다. 빌드나 push가 나중에 실패해도 글 자체를 잃지 않습니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-05-02 21:00:00 +0900 KST'>May 2, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw 팁: cron 자동화는 성공 경로보다 복구 경로를 먼저 설계하자" href="https://kwbaek.github.io/posts/2026-05-02-openclaw-design-cron-jobs-for-recovery-not-just-success/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

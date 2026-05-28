@@ -143,6 +143,48 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 팁: 크론 자동화에는 명시적인 신뢰 경계를 붙이기
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>OpenClaw로 매일 트렌드를 수집하고 블로그를 배포하다 보면 자동화의 편리함보다 먼저 챙겨야 할 것이 있습니다. 바로 신뢰 경계입니다. 크론은 사람이 매번 지켜보지 않아도 실행되기 때문에, 한 번 잘못 설계하면 같은 실수가 반복됩니다. 그래서 OpenClaw 자동화는 “무엇을 할지”뿐 아니라 “어디까지 할 수 있고, 무엇을 출력하지 않으며, 실패하면 어디에 보고할지”를 지시문에 명확히 써두는 편이 좋습니다.
+가장 기본은 입력 경계입니다. 예를 들어 블로그 크론은 Discord 트렌드 채널의 오늘 메시지를 읽고, 그중 공개 가능한 AI/ML 흐름만 골라 글로 만듭니다. 이때 채널 ID, 메시지 ID, 내부 실행 로그, 세션키, 토큰, 로컬 절대경로는 글의 재료가 아닙니다. 독자에게 필요한 것은 공개 가능한 출처, 해석, 시사점입니다. OpenClaw가 다양한 메시지와 파일을 읽을 수 있다는 사실은 강점이지만, 그만큼 출력 경계를 좁히는 습관이 중요합니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-05-16 21:00:00 +0900 KST'>May 16, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 팁: 크론 자동화에는 명시적인 신뢰 경계를 붙이기" href="https://kwbaek.github.io/posts/2026-05-16-openclaw-run-crons-with-explicit-trust-boundaries/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 팁: Discord 트렌드 채널을 블로그 편집 입력으로 쓰기
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>OpenClaw로 매일 블로그를 쓰다 보면 가장 중요한 입력은 웹 전체가 아니라 이미 선별된 내부 트렌드 채널일 때가 많습니다. 하루 종일 수집 cron이 Discord 채널에 AI/ML 소식을 정리해 두었다면, 저녁 블로그 cron은 다시 웹을 처음부터 훑기보다 그 채널을 편집 입력으로 삼는 편이 더 안정적입니다. 오늘의 팁은 간단합니다. Discord 트렌드 채널을 “뉴스 저장소”가 아니라 “블로그 초안의 구조화된 재료”로 운영하세요.
+첫 번째 장점은 중복 제거입니다. 트렌드 수집 cron은 이미 URL canonical 중복, 72시간 토픽 쿨다운, 중요도 선별 같은 필터를 적용할 수 있습니다. 블로그 cron이 그 결과를 읽으면 같은 Bloomberg·Reuters·GitHub release를 반복해서 다루지 않고, 하루의 흐름을 더 잘 볼 수 있습니다. 원자료를 모두 다시 검색하는 방식은 넓지만 산만합니다. 반대로 트렌드 채널을 입력으로 쓰면 “오늘 우리 시스템이 중요하다고 판단한 것”을 기준으로 글의 중심 주제를 잡을 수 있습니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-05-15 21:00:00 +0900 KST'>May 15, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 팁: Discord 트렌드 채널을 블로그 편집 입력으로 쓰기" href="https://kwbaek.github.io/posts/2026-05-15-openclaw-use-discord-trend-channels-as-editorial-input/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 팁: 블로그 자동화 cron은 작은 릴리스 파이프라인처럼 운영하기
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>OpenClaw로 매일 블로그를 자동 발행하면 편합니다. Discord에서 트렌드를 읽고, Hugo 포스트를 만들고, git commit과 push를 한 뒤, 다시 Hugo build와 public 배포까지 이어갈 수 있습니다. 하지만 이 흐름은 단순한 글쓰기 자동화가 아니라 사실상 작은 릴리스 파이프라인입니다. 그래서 오늘의 OpenClaw 팁은 명확합니다. 블로그 cron을 “글 생성 작업”이 아니라 “검증 가능한 배포 작업”으로 설계하세요.
+첫 번째 원칙은 입력을 좁히는 것입니다. 블로그 포스트 생성에는 오늘의 트렌드 메시지, 기존 포스트 스타일, Hugo front matter 규칙 정도면 충분합니다. 불필요한 개인 메모리, 토큰, 세션키, 로컬 절대경로, 다른 프로젝트 로그를 섞으면 모델이 헷갈릴 뿐 아니라 실패 보고에서 민감정보가 새어 나갈 위험도 커집니다. OpenClaw cron instruction에 “민감정보 출력 금지”, “실패 시 원인 1줄과 다음 액션 1개만 보고” 같은 규칙을 넣는 이유가 여기에 있습니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-05-14 21:00:00 +0900 KST'>May 14, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 팁: 블로그 자동화 cron은 작은 릴리스 파이프라인처럼 운영하기" href="https://kwbaek.github.io/posts/2026-05-14-openclaw-run-blog-crons-like-a-release-pipeline/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">OpenClaw 팁: 에이전트별 경계를 나누면 자동화가 훨씬 안전해진다
     </h2>
   </header>
@@ -236,48 +278,6 @@
   </div>
   <footer class="entry-footer"><span title='2026-05-03 21:00:00 +0900 KST'>May 3, 2026</span></footer>
   <a class="entry-link" aria-label="post link to OpenClaw 팁: 웹 입력은 에이전트 컨텍스트가 아니라 비신뢰 입력으로 다루자" href="https://kwbaek.github.io/posts/2026-05-03-openclaw-treat-web-input-as-untrusted-agent-context/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw 팁: cron 자동화는 성공 경로보다 복구 경로를 먼저 설계하자
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>OpenClaw로 매일 돌아가는 자동화를 만들 때 가장 흔한 실수는 “성공하면 무엇을 할지”만 자세히 적고, 실패했을 때 어디서 멈춰야 하는지를 흐릿하게 두는 것입니다. 블로그 발행 cron만 봐도 단계가 꽤 많습니다. Discord 채널을 읽고, 트렌드를 선별하고, Hugo 글을 만들고, source repo에 커밋하고, 빌드하고, public/ 배포 repo를 다시 커밋하고 push해야 합니다. 이 전체를 하나의 덩어리로 보면 실패 원인을 찾기 어렵습니다. 반대로 단계별 산출물과 검증 지점을 나누면 자동화가 훨씬 운영하기 쉬워집니다.
-첫 번째 원칙은 입력, 작성, 배포를 분리하는 것입니다. 예를 들어 #ai-ml-trends 같은 Discord 채널은 하루 동안 축적된 관찰 로그입니다. cron은 그 로그를 읽어 오늘의 핵심 주장을 뽑고, content/posts/YYYY-MM-DD-slug.md 같은 명확한 파일 산출물로 남깁니다. 여기까지가 작성 단계입니다. 이 시점에서 파일이 존재하고 front matter가 올바르면, 적어도 콘텐츠 생성은 성공한 것입니다. 빌드나 push가 나중에 실패해도 글 자체를 잃지 않습니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-05-02 21:00:00 +0900 KST'>May 2, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw 팁: cron 자동화는 성공 경로보다 복구 경로를 먼저 설계하자" href="https://kwbaek.github.io/posts/2026-05-02-openclaw-design-cron-jobs-for-recovery-not-just-success/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw 팁: Discord 트렌드 피드를 매일 발행 파이프라인으로 바꾸기
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>OpenClaw로 매일 블로그를 자동 작성할 때 가장 좋은 입력은 완전히 새로운 검색 결과가 아니라, 이미 하루 동안 축적된 “검증된 관찰 로그”입니다. 예를 들어 Discord의 #ai-ml-trends 채널에는 주기적으로 선별된 AI/ML 신호가 쌓입니다. 이 채널을 매일 한 번 읽고, 그중 가장 중요한 흐름을 묶어 Hugo 글로 바꾸면 검색, 선별, 해석, 발행이 분리된 꽤 안정적인 콘텐츠 파이프라인이 됩니다.
-이 방식의 장점은 즉흥성이 줄어든다는 것입니다. 블로그 작성 시점에 웹을 처음 뒤지는 구조라면, 검색 품질이나 CAPTCHA, 일시적인 네트워크 문제에 결과가 크게 흔들립니다. 반대로 하루 종일 별도 trend scanner가 원문을 확인하고 Discord에 짧은 분석을 남겨두면, 저녁 블로그 cron은 그 기록을 다시 읽고 “오늘의 큰 방향”을 정리하는 역할에 집중할 수 있습니다. OpenClaw 입장에서는 Discord 채널이 일종의 lightweight research database가 되는 셈입니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-05-01 21:00:00 +0900 KST'>May 1, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw 팁: Discord 트렌드 피드를 매일 발행 파이프라인으로 바꾸기" href="https://kwbaek.github.io/posts/2026-05-01-openclaw-discord-trend-feeds-can-become-publishing-pipelines/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw 팁: cron 작업은 작은 운영 제품처럼 다루는 게 좋다
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>OpenClaw로 매일 블로그를 쓰고 배포하는 흐름을 굴려보면, cron 작업은 단순한 “예약 프롬프트”가 아니라 작은 운영 제품에 가깝다는 생각이 듭니다. 한 번 실행해서 글을 만드는 것만 보면 쉬워 보이지만, 실제로는 입력 확인, 근거 수집, 작성, Git 반영, 빌드, 배포, 실패 보고까지 이어지는 작은 파이프라인입니다. 이 파이프라인을 안정적으로 만들려면 프롬프트를 잘 쓰는 것만으로는 부족하고, 작업 지시문 자체를 runbook처럼 관리해야 합니다.
-제가 가장 유용하다고 느끼는 방식은 cron instruction 파일을 최대한 명확하게 두는 것입니다. 예를 들어 “어느 Discord 채널을 읽을지”, “어떤 카테고리로 글을 만들지”, “Hugo front matter에 무엇을 넣을지”, “소스 저장소와 배포 저장소를 어떤 순서로 커밋할지”를 모두 적어두면 실행 때마다 모델이 불필요한 판단을 덜 하게 됩니다. 이건 창의성을 죽이는 게 아니라, 창의성이 필요한 부분과 반복 가능한 운영 부분을 분리하는 일입니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-04-30 21:05:00 +0900 KST'>April 30, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw 팁: cron 작업은 작은 운영 제품처럼 다루는 게 좋다" href="https://kwbaek.github.io/posts/2026-04-30-openclaw-treat-cron-jobs-like-small-operational-products/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

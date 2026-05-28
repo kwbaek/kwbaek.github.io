@@ -143,6 +143,20 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 운영 팁: 업데이트 많은 주간엔 ‘설정 검증 &#43; 헬스체크’ 루틴을 고정하자
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>OpenClaw를 매일 쓰다 보면 체감되는 사실이 하나 있습니다. 문제의 대부분은 기능 부족이 아니라 운영 루틴의 부재에서 생깁니다. 특히 최근처럼 릴리즈 속도가 빠르고(설정 키 정리, 보안 강화, 채널 동작 개선), 운영 옵션이 늘어나는 시기에는 “잘 되겠지” 방식이 가장 위험합니다. 그래서 실무에서 가장 효과적인 습관은 기능을 더 붙이는 것보다, 변경 직후 점검 루틴을 짧고 고정된 형태로 반복하는 것입니다.
+제가 추천하는 기본 루틴은 네 단계입니다. 첫째, 설정 변경 전후에 openclaw config validate --json으로 구조 오류를 먼저 잡습니다. 둘째, 게이트웨이 재기동 후 /healthz와 /readyz를 분리 확인해서 프로세스 생존과 실제 준비 상태를 각각 검증합니다. 셋째, openclaw security audit로 노출 위험(인증/허용원점/권한 과다)을 확인합니다. 넷째, 필요하면 openclaw doctor로 마이그레이션 누락이나 레거시 키를 정리합니다. 이 순서를 고정하면 장애 원인을 추적하는 시간이 눈에 띄게 줄어듭니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-03-13 21:00:00 +0900 KST'>March 13, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 운영 팁: 업데이트 많은 주간엔 ‘설정 검증 &#43; 헬스체크’ 루틴을 고정하자" href="https://kwbaek.github.io/posts/2026-03-13-openclaw-config-health-routine/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">OpenClaw 운영 팁: Heartbeat와 Cron을 분리하면 자동화 품질이 급상승한다
     </h2>
   </header>
@@ -272,20 +286,6 @@ openclaw config file curl -fsS http://127.0.0.1:18789/healthz curl -fsS http://1
   </div>
   <footer class="entry-footer"><span title='2026-03-03 21:05:00 +0900 KST'>March 3, 2026</span></footer>
   <a class="entry-link" aria-label="post link to OpenClaw 운영 팁: 헬스 프로브 &#43; 릴리즈 루틴으로 ‘고장 나기 전에’ 관리하기" href="https://kwbaek.github.io/posts/2026-03-03-openclaw-health-probe-and-release-ops/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw 실전 운영: Secrets &#43; Security Audit 루틴만 고정해도 사고 확률이 급감한다
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>OpenClaw를 매일 운영하다 보면, 새 기능보다 더 중요한 게 하나 있습니다. 바로 **운영 위생(operational hygiene)**입니다. 최근 버전들(특히 v2026.2.26 이후)에서 체감이 컸던 포인트는 secrets 워크플로와 security audit 체계가 훨씬 실무적으로 정리됐다는 점입니다. 결론부터 말하면, 아래 두 루틴을 고정하면 운영 사고 확률이 확실히 줄어듭니다.
-1) Secrets 루틴: 설정을 ‘감’으로 만지지 말고 단계로 굴리기 예전에는 토큰이나 키를 여기저기 흩어두고, 문제 나면 그때 수정하는 식으로 운영하기 쉬웠습니다. 그런데 이 방식은 팀 규모가 커질수록 반드시 사고가 납니다. OpenClaw는 이 문제를 다음 흐름으로 정리해줍니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-03-02 21:03:00 +0900 KST'>March 2, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw 실전 운영: Secrets &#43; Security Audit 루틴만 고정해도 사고 확률이 급감한다" href="https://kwbaek.github.io/posts/2026-03-02-openclaw-secrets-security-audit-routine/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">
