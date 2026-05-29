@@ -6,8 +6,24 @@
     <description>Recent content in Agent on Kyungwook&#39;s Devlog</description>
     <generator>Hugo -- 0.155.3</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Tue, 17 Mar 2026 21:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Fri, 29 May 2026 21:00:00 +0900</lastBuildDate>
     <atom:link href="https://kwbaek.github.io/tags/agent/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI/ML 트렌드: 에이전트 메모리는 이제 증거 엔지니어링이 되고 있다</title>
+      <link>https://kwbaek.github.io/posts/2026-05-29-ai-ml-trends-agent-memory-is-becoming-evidence-engineering/</link>
+      <pubDate>Fri, 29 May 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-05-29-ai-ml-trends-agent-memory-is-becoming-evidence-engineering/</guid>
+      <description>&lt;p&gt;오늘 &lt;code&gt;#ai-ml-trends&lt;/code&gt; 채널에서 가장 흥미로운 흐름은 &lt;strong&gt;AI 에이전트의 다음 병목이 단순한 컨텍스트 길이가 아니라, 어떤 증거를 어떤 구조로 기억하고 다시 꺼내는가&lt;/strong&gt;로 이동하고 있다는 점입니다. OpenAI의 Rosalind Biodefense, NVIDIA의 deep research skill, Hugging Face의 &lt;code&gt;torch.profiler&lt;/code&gt; 가이드, S3Mem 논문, Micro-Macro Retrieval 논문은 서로 다른 층위의 소식처럼 보이지만 한 가지 질문으로 연결됩니다. “AI가 길고 복잡한 작업을 맡으려면 결과를 그럴듯하게 말하는 것보다, 근거를 안정적으로 보존하고 검증하며 재사용하는 체계가 필요하지 않은가?”&lt;/p&gt;
+&lt;p&gt;OpenAI의 Rosalind Biodefense는 이 질문을 가장 민감한 영역에서 보여줍니다. 생물안보처럼 사회적 리스크가 큰 분야에서 AI를 쓴다는 것은 모델이 정답을 많이 맞히는 문제를 넘어섭니다. 어떤 자료를 근거로 판단했는지, 어느 단계에서 전문가 검토가 필요한지, 위험한 오용 가능성을 어떻게 줄일지까지 함께 설계해야 합니다. 즉 고위험 AI는 “지식이 많다”보다 “증거와 책임의 경로가 남는다”가 더 중요해집니다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Hermes/리오 팁: 에이전트 메모리는 검색보다 구조가 먼저다</title>
+      <link>https://kwbaek.github.io/posts/2026-05-29-hermes-rio-agent-memory-needs-structure-before-search/</link>
+      <pubDate>Fri, 29 May 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-05-29-hermes-rio-agent-memory-needs-structure-before-search/</guid>
+      <description>&lt;p&gt;Hermes/리오를 매일 쓰다 보면 “나중에 다시 찾을 수 있게 저장하자”는 생각으로 모든 것을 로그나 검색 가능한 파일에 넣고 싶어집니다. 하지만 실제로 오래 살아남는 에이전트 워크플로우는 단순 저장보다 &lt;strong&gt;구조화된 기억&lt;/strong&gt;에 가깝습니다. 오늘 AI/ML 트렌드에서 S3Mem, Micro-Macro Retrieval, deep research skill 같은 흐름이 나온 것도 같은 이유입니다. 에이전트가 긴 작업을 잘하려면 정보를 많이 갖는 것보다, 필요한 순간에 근거가 끊기지 않게 꺼낼 수 있어야 합니다.&lt;/p&gt;
+&lt;p&gt;가장 쉬운 실수는 모든 입력을 “나중에 검색하면 되겠지”라고 생각하는 것입니다. Discord 트렌드 채널, 이메일, 회의 메모, 크론 실행 로그, 블로그 초안이 전부 한 덩어리 텍스트로 쌓이면 검색 결과는 많아지지만 판단은 어려워집니다. 같은 키워드가 여러 맥락에서 반복되고, 오래된 정보와 최신 정보가 섞이며, 링크만 있고 왜 중요했는지는 사라집니다. 이 상태에서 에이전트는 검색은 많이 하지만 결론은 얕아지는 RAG 함정에 빠지기 쉽습니다.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>AI/ML 트렌드 (2026-03-17): 추론 안정성과 검색 중심 에이전트 전환</title>
       <link>https://kwbaek.github.io/posts/2026-03-17-ai-ml-trends-agentic-memory-reasoning/</link>
