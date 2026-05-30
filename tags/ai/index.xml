@@ -1,13 +1,21 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>AI on Kyungwook&#39;s Devlog</title>
+    <title>Ai on Kyungwook&#39;s Devlog</title>
     <link>https://kwbaek.github.io/tags/ai/</link>
-    <description>Recent content in AI on Kyungwook&#39;s Devlog</description>
+    <description>Recent content in Ai on Kyungwook&#39;s Devlog</description>
     <generator>Hugo -- 0.155.3</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Fri, 29 May 2026 21:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Sat, 30 May 2026 21:00:00 +0900</lastBuildDate>
     <atom:link href="https://kwbaek.github.io/tags/ai/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI/ML 트렌드: 장기 실행 에이전트의 경쟁력은 런타임 신뢰 경계에서 갈린다</title>
+      <link>https://kwbaek.github.io/posts/2026-05-30-ai-ml-trends-long-horizon-agents-need-runtime-trust-boundaries/</link>
+      <pubDate>Sat, 30 May 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-05-30-ai-ml-trends-long-horizon-agents-need-runtime-trust-boundaries/</guid>
+      <description>&lt;p&gt;오늘 &lt;code&gt;#ai-ml-trends&lt;/code&gt; 흐름에서 가장 흥미로운 조합은 Mistral의 &lt;strong&gt;Vibe&lt;/strong&gt; 발표와 Sysdig의 &lt;strong&gt;LLM을 활용한 공격 시나리오 분석&lt;/strong&gt;입니다. 하나는 장기 실행 생산성·코딩 에이전트가 본격적인 제품 표면으로 올라오고 있음을 보여주고, 다른 하나는 같은 종류의 agentic capability가 공격자에게도 얼마나 유용한 도구가 될 수 있는지를 보여줍니다. 즉 2026년 AI/ML 경쟁의 핵심은 “에이전트가 일을 끝까지 할 수 있는가”뿐 아니라, &lt;strong&gt;그 에이전트가 어떤 권한과 증거, 승인 경계 안에서 움직이는가&lt;/strong&gt;로 이동하고 있습니다.&lt;/p&gt;
+&lt;p&gt;Mistral의 Vibe는 Le Chat을 업무와 코드 전반을 다루는 unified agent로 확장하는 방향입니다. Work Mode는 여러 단계의 업무를 계획하고, 도구를 고르고, 진행 상황을 보여주며, 사용자의 승인을 받아 작업을 이어갑니다. Code Mode와 VS Code 확장은 웹·IDE·백그라운드 작업을 연결해 코딩 에이전트를 제품 경험 안으로 밀어 넣습니다. 여기서 중요한 점은 모델 하나의 성능보다 “대화, 설정, 계획, 도구 연결, 코드 작업”이 하나의 런타임으로 묶인다는 것입니다. 에이전트는 이제 챗봇이 아니라 작은 업무 실행 환경이 되고 있습니다.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>AI/ML 트렌드: 에이전트 메모리는 이제 증거 엔지니어링이 되고 있다</title>
       <link>https://kwbaek.github.io/posts/2026-05-29-ai-ml-trends-agent-memory-is-becoming-evidence-engineering/</link>

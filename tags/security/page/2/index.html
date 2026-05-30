@@ -143,6 +143,34 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">AI/ML 트렌드: AI 스택은 챗봇에서 운영 표면으로 이동하고 있다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 AI/ML 트렌드에서 가장 선명한 흐름은 AI가 챗봇이나 단일 모델 기능에서 벗어나, 실제 업무와 산업 시스템을 움직이는 운영 표면으로 내려가고 있다는 점입니다. 하루 동안 나온 소식들을 묶어보면, 경쟁의 질문은 더 이상 “어떤 모델이 더 똑똑한가?”에 머물지 않습니다. 이제는 “그 모델이 어떤 데이터와 도구를 보고, 어떤 권한으로 행동하며, 어떤 인프라 위에서 감시되고, 어떤 법적·경제적 책임을 남기는가?”가 핵심이 되고 있습니다.
+가장 먼저 눈에 띄는 것은 enterprise deployment의 성숙입니다. OpenAI의 ChatGPT adoption broadened 분석은 AI 사용이 일부 early adopter의 실험을 넘어 더 넓은 사용자와 업무 패턴으로 확산되고 있음을 보여줍니다. 동시에 Capgemini가 OpenAI Deployment Company에 투자했다는 소식은 frontier AI 상업화가 API 판매만으로 끝나지 않는다는 점을 잘 드러냅니다. 기업은 모델을 사는 것이 아니라 use-case 선정, 데이터 연결, 운영 전환, 직원 채택, 리스크 관리까지 묶인 배포 역량을 삽니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-05-12 21:00:00 +0900 KST'>May 12, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to AI/ML 트렌드: AI 스택은 챗봇에서 운영 표면으로 이동하고 있다" href="https://kwbaek.github.io/posts/2026-05-12-ai-ml-trends-the-ai-stack-is-moving-from-chatbots-to-operating-surfaces/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 팁: 자동화가 커지기 전에 에이전트 권한을 좁혀두자
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>OpenClaw를 개인 비서나 팀 자동화 런타임으로 오래 쓰다 보면, 가장 중요한 설계 질문은 “무엇을 할 수 있나?”에서 **“각 에이전트가 어디까지 할 수 있어야 하나?”**로 바뀝니다. 자동화가 한두 개일 때는 모든 기능을 넓게 열어두는 편이 편합니다. 하지만 크론, Discord, Telegram, 블로그 배포, 파일 작업, 메시지 전송이 서로 얽히기 시작하면 권한의 폭이 곧 사고의 폭이 됩니다.
+오늘 살펴볼 포인트는 OpenClaw v2026.5.10-beta.5에서 보인 per-agent message crossContext/action allow와 redacted diagnostics 흐름입니다. 핵심은 단순합니다. 에이전트 전체에 하나의 거대한 메시지 권한을 주기보다, 에이전트별로 어떤 context를 넘나들 수 있는지, 어떤 message action을 수행할 수 있는지 좁히고, 진단 출력에서는 민감한 값을 가리는 방향입니다. 작은 변화처럼 보이지만 실제 운영에서는 매우 큰 차이를 만듭니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-05-12 21:00:00 +0900 KST'>May 12, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 팁: 자동화가 커지기 전에 에이전트 권한을 좁혀두자" href="https://kwbaek.github.io/posts/2026-05-12-openclaw-narrow-agent-permissions-before-automation-scales/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">OpenClaw 팁: 에이전트 런타임 경계를 명시적으로 설계하자
     </h2>
   </header>
@@ -248,33 +276,6 @@ OpenClaw 2026.5.7 릴리스에서 눈에 띄는 흐름도 이쪽입니다. owner
   </div>
   <footer class="entry-footer"><span title='2026-05-04 21:00:00 +0900 KST'>May 4, 2026</span></footer>
   <a class="entry-link" aria-label="post link to AI/ML 트렌드: 에이전트 인프라는 모델 선택에서 런타임 경제성으로 이동 중이다" href="https://kwbaek.github.io/posts/2026-05-04-ai-ml-trends-agent-infrastructure-is-moving-from-model-choice-to-runtime-economics/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw 팁: 에이전트 cron은 작은 모델 라우팅과 도구 게이트를 함께 설계하자
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>OpenClaw로 매일 트렌드 수집, 아이디어 생성, 블로그 발행 같은 cron을 굴리다 보면 한 가지가 분명해집니다. 자동화의 품질은 “항상 가장 강한 모델을 쓰는가”보다 어떤 단계에 어떤 모델과 도구 권한을 줄지에서 갈립니다. 오늘 AI/ML 트렌드에서도 AgentFloor, To Call or Not to Call, Skills as Verifiable Artifacts, RunAgent 같은 연구가 올라왔는데, 이 흐름은 OpenClaw 운영에도 그대로 적용할 수 있습니다.
-첫 번째 원칙은 작업을 난이도와 위험도별로 나누는 것입니다. 예를 들어 Discord 채널에서 오늘 메시지를 읽고 후보 링크를 모으는 일은 비교적 구조화된 작업입니다. 반면 여러 후보를 하나의 주장으로 묶어 블로그 글을 쓰는 일은 해석과 편집 능력이 더 필요합니다. 또 git push, 외부 메시지 전송, 배포 저장소 커밋처럼 외부 상태를 바꾸는 일은 모델 지능보다 절차적 안전성이 중요합니다. 이 세 종류를 한 덩어리로 보면 자동화가 비싸지고 불안정해집니다. 반대로 수집, 판단, 작성, 검증, 배포로 나누면 각 단계에 맞는 모델과 권한을 붙일 수 있습니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-05-04 21:00:00 +0900 KST'>May 4, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw 팁: 에이전트 cron은 작은 모델 라우팅과 도구 게이트를 함께 설계하자" href="https://kwbaek.github.io/posts/2026-05-04-openclaw-use-small-model-routing-and-tool-gates-for-agent-crons/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">AI/ML 트렌드: 웹 자체가 에이전트의 공격면이 되고 있다
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>오늘 #ai-ml-trends에서 가장 중요하게 볼 만한 흐름은 에이전트가 읽는 웹 자체가 공격면이 되고 있다는 점입니다. Google Security가 공개 웹의 indirect prompt injection(IPI) 패턴을 Common Crawl 기반으로 분석한 글이 특히 강한 신호였습니다. 여기에 Featherless.ai의 오픈소스 inference 인프라 투자, Parallel Web Systems의 agent용 웹 인프라 확장, Safe Bilevel Delegation 같은 delegation safety 연구까지 겹치면, 최근 AI/ML 흐름은 단순히 “더 좋은 모델”이 아니라 “웹을 읽고, 하위 에이전트에 일을 맡기고, 외부 도구를 실행하는 시스템을 어떻게 안전하게 운영할 것인가”로 이동하고 있습니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-05-03 21:00:00 +0900 KST'>May 3, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 웹 자체가 에이전트의 공격면이 되고 있다" href="https://kwbaek.github.io/posts/2026-05-03-ai-ml-trends-the-web-itself-is-becoming-the-agent-attack-surface/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

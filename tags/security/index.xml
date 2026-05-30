@@ -6,8 +6,24 @@
     <description>Recent content in Security on Kyungwook&#39;s Devlog</description>
     <generator>Hugo -- 0.155.3</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Sun, 24 May 2026 21:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Sat, 30 May 2026 21:00:00 +0900</lastBuildDate>
     <atom:link href="https://kwbaek.github.io/tags/security/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI/ML 트렌드: 장기 실행 에이전트의 경쟁력은 런타임 신뢰 경계에서 갈린다</title>
+      <link>https://kwbaek.github.io/posts/2026-05-30-ai-ml-trends-long-horizon-agents-need-runtime-trust-boundaries/</link>
+      <pubDate>Sat, 30 May 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-05-30-ai-ml-trends-long-horizon-agents-need-runtime-trust-boundaries/</guid>
+      <description>&lt;p&gt;오늘 &lt;code&gt;#ai-ml-trends&lt;/code&gt; 흐름에서 가장 흥미로운 조합은 Mistral의 &lt;strong&gt;Vibe&lt;/strong&gt; 발표와 Sysdig의 &lt;strong&gt;LLM을 활용한 공격 시나리오 분석&lt;/strong&gt;입니다. 하나는 장기 실행 생산성·코딩 에이전트가 본격적인 제품 표면으로 올라오고 있음을 보여주고, 다른 하나는 같은 종류의 agentic capability가 공격자에게도 얼마나 유용한 도구가 될 수 있는지를 보여줍니다. 즉 2026년 AI/ML 경쟁의 핵심은 “에이전트가 일을 끝까지 할 수 있는가”뿐 아니라, &lt;strong&gt;그 에이전트가 어떤 권한과 증거, 승인 경계 안에서 움직이는가&lt;/strong&gt;로 이동하고 있습니다.&lt;/p&gt;
+&lt;p&gt;Mistral의 Vibe는 Le Chat을 업무와 코드 전반을 다루는 unified agent로 확장하는 방향입니다. Work Mode는 여러 단계의 업무를 계획하고, 도구를 고르고, 진행 상황을 보여주며, 사용자의 승인을 받아 작업을 이어갑니다. Code Mode와 VS Code 확장은 웹·IDE·백그라운드 작업을 연결해 코딩 에이전트를 제품 경험 안으로 밀어 넣습니다. 여기서 중요한 점은 모델 하나의 성능보다 “대화, 설정, 계획, 도구 연결, 코드 작업”이 하나의 런타임으로 묶인다는 것입니다. 에이전트는 이제 챗봇이 아니라 작은 업무 실행 환경이 되고 있습니다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Hermes/리오 팁: 에이전트 자동화에는 실행 전 검문소가 필요하다</title>
+      <link>https://kwbaek.github.io/posts/2026-05-30-hermes-rio-automation-needs-preflight-checkpoints/</link>
+      <pubDate>Sat, 30 May 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-05-30-hermes-rio-automation-needs-preflight-checkpoints/</guid>
+      <description>&lt;p&gt;Hermes/리오로 매일 블로그를 쓰고, 리포트를 만들고, 파일을 정리하고, 빌드까지 자동화하다 보면 가장 유혹적인 설계는 “가능하면 끝까지 자동으로 실행하게 만들자”입니다. 하지만 에이전트 자동화가 강력해질수록 더 중요한 것은 완전 자동화가 아니라 &lt;strong&gt;실행 전 검문소&lt;/strong&gt;입니다. 오늘 AI/ML 트렌드에서 Mistral Vibe 같은 장기 실행 에이전트와 LLM을 활용한 공격 사례가 동시에 보인 것도 같은 메시지를 줍니다. 에이전트가 일을 잘하게 되는 만큼, 어디서 멈추고 확인해야 하는지도 명확해야 합니다.&lt;/p&gt;
+&lt;p&gt;Hermes/리오 작업을 설계할 때는 먼저 행동을 세 등급으로 나누는 편이 좋습니다. 첫째, 읽기와 분석입니다. 파일을 읽고, 최근 글을 확인하고, 보고서를 요약하고, 후보를 고르는 일은 비교적 안전합니다. 둘째, 내부 쓰기입니다. 초안 작성, 로컬 파일 생성, 상태 파일 업데이트처럼 되돌릴 수 있는 작업은 자동화해도 됩니다. 셋째, 외부 부작용입니다. 이메일 발송, 공개 게시, git push, 배포, 서비스 재시작, 결제, 주문 같은 일은 별도 검문소가 필요합니다. 이 구분이 없으면 에이전트는 “편리한 비서”에서 “왜 그런 행동을 했는지 추적하기 어려운 프로세스”가 됩니다.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>AI/ML 트렌드: 에이전트 경제성과 신뢰 경계가 핵심 지표가 된다</title>
       <link>https://kwbaek.github.io/posts/2026-05-24-ai-ml-trends-agent-economics-and-trust-boundaries/</link>

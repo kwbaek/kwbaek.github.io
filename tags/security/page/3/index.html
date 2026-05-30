@@ -143,6 +143,33 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 팁: 에이전트 cron은 작은 모델 라우팅과 도구 게이트를 함께 설계하자
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>OpenClaw로 매일 트렌드 수집, 아이디어 생성, 블로그 발행 같은 cron을 굴리다 보면 한 가지가 분명해집니다. 자동화의 품질은 “항상 가장 강한 모델을 쓰는가”보다 어떤 단계에 어떤 모델과 도구 권한을 줄지에서 갈립니다. 오늘 AI/ML 트렌드에서도 AgentFloor, To Call or Not to Call, Skills as Verifiable Artifacts, RunAgent 같은 연구가 올라왔는데, 이 흐름은 OpenClaw 운영에도 그대로 적용할 수 있습니다.
+첫 번째 원칙은 작업을 난이도와 위험도별로 나누는 것입니다. 예를 들어 Discord 채널에서 오늘 메시지를 읽고 후보 링크를 모으는 일은 비교적 구조화된 작업입니다. 반면 여러 후보를 하나의 주장으로 묶어 블로그 글을 쓰는 일은 해석과 편집 능력이 더 필요합니다. 또 git push, 외부 메시지 전송, 배포 저장소 커밋처럼 외부 상태를 바꾸는 일은 모델 지능보다 절차적 안전성이 중요합니다. 이 세 종류를 한 덩어리로 보면 자동화가 비싸지고 불안정해집니다. 반대로 수집, 판단, 작성, 검증, 배포로 나누면 각 단계에 맞는 모델과 권한을 붙일 수 있습니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-05-04 21:00:00 +0900 KST'>May 4, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 팁: 에이전트 cron은 작은 모델 라우팅과 도구 게이트를 함께 설계하자" href="https://kwbaek.github.io/posts/2026-05-04-openclaw-use-small-model-routing-and-tool-gates-for-agent-crons/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">AI/ML 트렌드: 웹 자체가 에이전트의 공격면이 되고 있다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 #ai-ml-trends에서 가장 중요하게 볼 만한 흐름은 에이전트가 읽는 웹 자체가 공격면이 되고 있다는 점입니다. Google Security가 공개 웹의 indirect prompt injection(IPI) 패턴을 Common Crawl 기반으로 분석한 글이 특히 강한 신호였습니다. 여기에 Featherless.ai의 오픈소스 inference 인프라 투자, Parallel Web Systems의 agent용 웹 인프라 확장, Safe Bilevel Delegation 같은 delegation safety 연구까지 겹치면, 최근 AI/ML 흐름은 단순히 “더 좋은 모델”이 아니라 “웹을 읽고, 하위 에이전트에 일을 맡기고, 외부 도구를 실행하는 시스템을 어떻게 안전하게 운영할 것인가”로 이동하고 있습니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-05-03 21:00:00 +0900 KST'>May 3, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 웹 자체가 에이전트의 공격면이 되고 있다" href="https://kwbaek.github.io/posts/2026-05-03-ai-ml-trends-the-web-itself-is-becoming-the-agent-attack-surface/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">OpenClaw 팁: 웹 입력은 에이전트 컨텍스트가 아니라 비신뢰 입력으로 다루자
     </h2>
   </header>
@@ -251,37 +278,6 @@
   </div>
   <footer class="entry-footer"><span title='2026-03-27 21:16:00 +0900 KST'>March 27, 2026</span></footer>
   <a class="entry-link" aria-label="post link to AI/ML 트렌드 분석: 이제 경쟁력은 모델보다 운영 절차에 있다" href="https://kwbaek.github.io/posts/2026-03-27-ai-ml-trends-safety-procedures-become-the-product/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">AI/ML 트렌드 분석: 에이전트 보안과 엔터프라이즈 생산성 프레임으로 이동
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>오늘 #ai-ml-trends 채널에서 두드러진 시그널은 모델 성능 경쟁보다 운영·보안·워크플로 통합 경쟁으로 무게중심이 이동하고 있다는 점입니다.
-특히 눈에 띈 흐름은 두 가지입니다.
-1) 에이전트 평가/보안 체계의 본격화 가장 흥미로운 항목은 OpenAI가 Promptfoo 인수를 추진했다는 보도와, Google Gemini API/AI Studio의 도구 결합 강화, 아울러 Security Considerations for AI Agents 류의 연구가 한 축을 이룬다는 점입니다. 이 조합은 단순히 “더 똑똑한 에이전트&#34;가 아니라, 에이전트 신뢰성 자체를 설계 자산으로 인정하는 방향입니다.
-과거에는 보안은 별도 라인으로, 모델 성능은 별도 라인으로 다뤄지는 경우가 많았지만, 이제는 다음이 통합됩니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-03-25 21:00:00 +0900 KST'>March 25, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to AI/ML 트렌드 분석: 에이전트 보안과 엔터프라이즈 생산성 프레임으로 이동" href="https://kwbaek.github.io/posts/2026-03-25-ai-ml-trends-enterprise-agent-shift/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw 운영 노트: 기능 추가보다 중요한 건 운영 규율
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>OpenClaw를 매일 쓰다 보면, 새 기능을 따라가는 속도보다 더 중요한 게 있습니다. 바로 운영 규율(ops discipline) 입니다. 최근 업데이트 메모를 보면 모델/채널/cron/security 관련 기능이 거의 매일 추가되는데, 이 시기일수록 “무엇을 새로 켰는지”보다 “어떻게 안정적으로 굴리는지”가 성패를 가릅니다.
-제가 요즘 기준으로 잡는 핵심은 간단합니다. (1) 검증, (2) 최소권한, (3) 주기 점검, (4) 분리 운용 입니다.
-첫째, 검증입니다. 설정을 바꾼 뒤 바로 운영에 넣기보다 openclaw config validate --json과 health/ready 프로브를 통해 사전 확인하는 루틴이 중요합니다. 이 습관 하나로, 사소한 키 오타나 breaking 변경으로 인한 장애를 꽤 많이 줄일 수 있습니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-03-19 21:00:00 +0900 KST'>March 19, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw 운영 노트: 기능 추가보다 중요한 건 운영 규율" href="https://kwbaek.github.io/posts/2026-03-19-openclaw-from-feature-chasing-to-ops-discipline/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">
