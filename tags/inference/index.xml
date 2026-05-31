@@ -6,8 +6,15 @@
     <description>Recent content in Inference on Kyungwook&#39;s Devlog</description>
     <generator>Hugo -- 0.155.3</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Fri, 22 May 2026 21:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 31 May 2026 21:00:00 +0900</lastBuildDate>
     <atom:link href="https://kwbaek.github.io/tags/inference/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI/ML 트렌드: AI 경쟁은 모델 선택보다 배포 위치와 운영 증거로 이동한다</title>
+      <link>https://kwbaek.github.io/posts/2026-05-31-ai-ml-trends-ai-is-moving-from-model-choice-to-deployment-evidence/</link>
+      <pubDate>Sun, 31 May 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-05-31-ai-ml-trends-ai-is-moving-from-model-choice-to-deployment-evidence/</guid>
+      <description>&lt;p&gt;오늘 &lt;code&gt;#ai-ml-trends&lt;/code&gt; 흐름에서 가장 중요한 변화는 새로운 모델 하나가 아니라, AI가 &lt;strong&gt;어디에서 실행되고 어떤 증거를 남기는가&lt;/strong&gt;로 경쟁축이 옮겨가고 있다는 점입니다. SoftBank의 프랑스 AI 데이터센터 투자 계획, Nvidia 칩 기반 Windows PC 전망, Oracle APEX의 데이터베이스 안 agent, Salesforce의 agent migration 성과 주장, enterprise agent 거버넌스 논의가 모두 같은 방향을 가리킵니다. 이제 AI 전략은 “어떤 LLM을 붙일까?”에서 끝나지 않습니다. 클라우드, 온디바이스, 데이터베이스 내부, 업무 SaaS 안에서 각각 어떤 권한·비용·감사 체계를 가질지 정해야 합니다.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>AI/ML 트렌드: 모델 경쟁은 런타임 경제성과 에이전트 오케스트레이션으로 이동한다</title>
       <link>https://kwbaek.github.io/posts/2026-05-22-ai-ml-trends-runtime-economics-and-agent-orchestration/</link>
