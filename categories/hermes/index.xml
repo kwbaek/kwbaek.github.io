@@ -6,8 +6,16 @@
     <description>Recent content in Hermes on Kyungwook&#39;s Devlog</description>
     <generator>Hugo -- 0.155.3</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Sun, 31 May 2026 21:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Mon, 01 Jun 2026 21:00:00 +0900</lastBuildDate>
     <atom:link href="https://kwbaek.github.io/categories/hermes/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hermes/리오 팁: 크론 자동화를 작은 AI Factory처럼 운영하기</title>
+      <link>https://kwbaek.github.io/posts/2026-06-01-hermes-rio-run-cron-like-a-small-ai-factory/</link>
+      <pubDate>Mon, 01 Jun 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-06-01-hermes-rio-run-cron-like-a-small-ai-factory/</guid>
+      <description>&lt;p&gt;오늘 AI/ML 트렌드에서 NVIDIA의 AI factory 운영 소프트웨어와 칩 단 보안 발표가 눈에 띄었습니다. 흥미로운 점은 이 원칙이 대형 GPU 클러스터에만 해당하지 않는다는 것입니다. Hermes/리오로 매일 리포트, 블로그, 트렌드 스캔, 개인 업무 자동화를 돌릴 때도 같은 사고방식이 필요합니다. 크론 하나는 작아 보이지만, 여러 개가 쌓이면 결국 개인용 AI factory가 됩니다.&lt;/p&gt;
+&lt;p&gt;작은 AI factory의 첫 번째 원칙은 &lt;strong&gt;입력 라인 관리&lt;/strong&gt;입니다. 어떤 크론이 어떤 채널, 리포트, 캐시, 파일을 읽는지 명확해야 합니다. 1순위 입력이 막혔을 때 어떤 폴백을 쓸지, 폴백 자료는 얼마나 최신이어야 하는지, 중복 검사는 무엇으로 할지 정해두면 자동화가 흔들리지 않습니다. “오늘 Discord를 못 읽었으니 아무 말이나 쓰자”가 아니라, “최신 스캐너 캐시와 아침 리포트를 쓰되 최근 발행 글과 겹치지 않게 쓰자”가 되어야 합니다.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Hermes/리오 팁: 자동화 크론에는 입력 폴백과 공개 출력 경계가 필요하다</title>
       <link>https://kwbaek.github.io/posts/2026-05-31-hermes-rio-cron-needs-input-fallback-and-public-boundaries/</link>

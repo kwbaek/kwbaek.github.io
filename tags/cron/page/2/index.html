@@ -143,6 +143,20 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 팁: cron 결과물을 개인 에이전트의 control plane으로 쓰기
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>OpenClaw를 개인 비서형 agent로 오래 쓰다 보면 cron의 의미가 조금 달라집니다. 처음에는 “정해진 시간에 자동 실행되는 작업” 정도로 보이지만, 실제로는 개인 agent 운영의 작은 control plane이 됩니다. 매일 트렌드를 읽고, 블로그를 쓰고, 빌드하고, 배포하고, 실패하면 어디서 막혔는지 남기는 과정 자체가 에이전트의 운영 면을 만듭니다.
+오늘처럼 Discord #ai-ml-trends 채널을 읽어 블로그 글을 만드는 작업을 예로 들어보면 구조가 분명합니다. 입력은 채널 메시지입니다. 처리 단계는 트렌드 선별, 글 작성, Hugo front matter 생성, 파일 저장, git commit, hugo build, public 배포입니다. 출력은 블로그 글과 배포 커밋입니다. 이 흐름에서 중요한 것은 모델이 글을 잘 쓰는 것만이 아닙니다. 어떤 채널을 읽었는지, 오늘 메시지만 봤는지, 파일명이 규칙을 지켰는지, 빌드가 통과했는지, public 폴더가 실제 배포 repo인지 확인하는 작은 gate들이 더 중요합니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-05-20 21:00:00 +0900 KST'>May 20, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 팁: cron 결과물을 개인 에이전트의 control plane으로 쓰기" href="https://kwbaek.github.io/posts/2026-05-20-openclaw-use-cron-outputs-as-an-operational-control-plane/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">OpenClaw 팁: 에이전트 운영에서 startup trace와 skill 관리가 중요한 이유
     </h2>
   </header>
@@ -264,20 +278,6 @@
   </div>
   <footer class="entry-footer"><span title='2026-05-11 21:00:00 +0900 KST'>May 11, 2026</span></footer>
   <a class="entry-link" aria-label="post link to OpenClaw 팁: 에이전트 크론은 컨텍스트, 비용, 협업 경계를 함께 운영하자" href="https://kwbaek.github.io/posts/2026-05-11-openclaw-operate-agent-crons-with-context-cost-and-collaboration-controls/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw 팁: 에이전트 런타임 경계를 명시적으로 설계하자
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>OpenClaw를 개인 비서, Discord 트렌드 수집기, 블로그 발행 cron, 채용공고 모니터, 리포트 생성기로 계속 운영하다 보면 한 가지 패턴이 반복됩니다. 자동화의 품질은 모델이 얼마나 똑똑한가보다 런타임 경계가 얼마나 명확한가에 더 많이 좌우됩니다. 어떤 입력을 믿을지, 어떤 도구를 언제 호출할지, 어떤 작업은 승인 없이 해도 되는지, 어떤 실패는 외부 채널에 보고해야 하는지, 어떤 정보는 절대 출력하면 안 되는지가 명확할수록 에이전트는 오래 안정적으로 굴러갑니다.
-최근 OpenClaw 릴리스와 AI/ML 트렌드에서도 이 방향은 뚜렷합니다. OpenClaw 2026.5.7은 agent 권한, 메모리, tool dispatch, 채널 라우팅 hardening을 강조했습니다. owner enforcement, global memory admin scope, before-tool-call authorization, Discord target parsing 수정 같은 항목은 화려한 기능은 아니지만 운영자에게는 매우 중요합니다. 에이전트가 여러 채널, 여러 cron, 여러 도구를 오가면 작은 라우팅 실수나 권한 경계 누락이 곧 잘못된 메시지 전송, 민감정보 노출, 엉뚱한 작업 실행으로 이어질 수 있기 때문입니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-05-10 21:00:00 +0900 KST'>May 10, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw 팁: 에이전트 런타임 경계를 명시적으로 설계하자" href="https://kwbaek.github.io/posts/2026-05-10-openclaw-make-agent-runtime-boundaries-explicit/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">
