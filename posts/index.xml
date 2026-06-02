@@ -6,8 +6,24 @@
     <description>Recent content in Posts on Kyungwook&#39;s Devlog</description>
     <generator>Hugo -- 0.155.3</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Mon, 01 Jun 2026 21:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Tue, 02 Jun 2026 21:00:00 +0900</lastBuildDate>
     <atom:link href="https://kwbaek.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI/ML 트렌드: 챗봇 다음 단계는 Evidence-aware Agent다</title>
+      <link>https://kwbaek.github.io/posts/2026-06-02-ai-ml-trends-from-chatbots-to-evidence-aware-agents/</link>
+      <pubDate>Tue, 02 Jun 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-06-02-ai-ml-trends-from-chatbots-to-evidence-aware-agents/</guid>
+      <description>&lt;p&gt;오늘 &lt;code&gt;#ai-ml-trends&lt;/code&gt; 흐름에서 가장 흥미로운 신호는 WHO의 “AI와 evidence-informed health policy” 토론문과 Tencent의 WeChat AI agent 출시 준비 보도가 같은 방향을 가리킨다는 점입니다. 하나는 의료·공공정책처럼 책임이 큰 영역이고, 다른 하나는 메신저·커머스·생활 플랫폼이 결합된 슈퍼앱입니다. 겉으로는 전혀 다른 뉴스처럼 보이지만, 둘 다 AI가 단순 대화창을 넘어 &lt;strong&gt;결정 과정 안으로 들어가는 순간 무엇이 필요해지는가&lt;/strong&gt;를 보여줍니다.&lt;/p&gt;
+&lt;p&gt;WHO 논의의 핵심은 AI가 정책 담당자에게 더 빠른 요약을 제공하는 수준에서 멈추지 않는다는 데 있습니다. 근거 기반 정책에서는 어떤 연구가 선택됐는지, 근거의 품질은 어떤지, 편향 가능성은 어디에 있는지, 반대 근거는 무엇인지가 중요합니다. 모델이 그 과정을 검은상자처럼 압축해버리면 속도는 빨라질 수 있지만 책임은 흐려집니다. 의료·공공정책 AI는 답을 잘 내는 도구가 아니라, 판단에 쓰인 근거와 불확실성을 함께 노출하는 &lt;strong&gt;evidence interface&lt;/strong&gt;가 되어야 합니다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Hermes/리오 팁: 자동화 결과에 근거 레이어 붙이기</title>
+      <link>https://kwbaek.github.io/posts/2026-06-02-hermes-rio-add-an-evidence-layer-to-automation/</link>
+      <pubDate>Tue, 02 Jun 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-06-02-hermes-rio-add-an-evidence-layer-to-automation/</guid>
+      <description>&lt;p&gt;오늘 AI/ML 트렌드에서 WHO의 evidence-informed health policy 논의와 WeChat AI agent 보도가 같이 눈에 들어왔습니다. 두 뉴스가 Hermes/리오 운영에 주는 힌트는 분명합니다. agent가 더 많은 일을 대신할수록 결과물만 잘 만드는 것으로는 부족하고, 그 결과가 어디에서 왔는지와 어떤 판단으로 선택됐는지를 보여주는 &lt;strong&gt;근거 레이어&lt;/strong&gt;가 필요합니다.&lt;/p&gt;
+&lt;p&gt;Hermes/리오 크론을 예로 들면, 매일 리포트나 블로그 글을 자동으로 생성하는 작업은 단순히 “파일을 만들었다”에서 끝나지 않습니다. 좋은 자동화는 어떤 입력을 읽었는지, 어떤 입력이 막혔을 때 어떤 폴백을 썼는지, 최근 글과 중복되는 논지를 어떻게 피했는지, 최종 산출물에 민감한 정보가 섞이지 않았는지까지 확인해야 합니다. 이 과정을 내부적으로는 실행 로그로 남기고, 사용자에게는 필요한 만큼만 간결하게 보고하는 구조가 안전합니다.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>AI/ML 트렌드: AI Factory는 이제 데이터센터가 아니라 운영체제가 된다</title>
       <link>https://kwbaek.github.io/posts/2026-06-01-ai-ml-trends-ai-factory-is-becoming-an-operating-system/</link>
