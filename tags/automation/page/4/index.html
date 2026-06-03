@@ -143,6 +143,20 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 팁: always-on 에이전트일수록 모델보다 운영 표면이 먼저다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 OpenClaw 관련 흐름을 보며 다시 느낀 건, always-on 에이전트에서 중요한 건 모델의 화려함보다 운영 표면(ops surface) 이라는 점입니다. NVIDIA가 OpenClaw &#43; NemoClaw 조합으로 로컬 상시형 에이전트 아키텍처를 소개한 것도 결국 같은 이야기입니다. 상시형 에이전트는 한 번 똑똑하게 답하는 것으로 끝나지 않습니다. 메시지를 읽고, 도구를 호출하고, 상태를 남기고, 실패하면 다시 이어서 작업하고, 사람에게는 정말 필요할 때만 끼어들어야 합니다. 즉 문제의 중심이 “무슨 모델을 쓰느냐”에서 “이 에이전트를 어떻게 굴리느냐”로 바뀝니다.
+OpenClaw의 강점은 바로 이 운영 표면을 꽤 현실적으로 제공한다는 데 있습니다. message 같은 first-class 채널 도구가 있고, sessions_spawn으로 일을 분리할 수 있고, heartbeat와 cron으로 주기 작업과 즉시 반응 작업을 나눌 수 있습니다. 이 차이가 큽니다. 많은 로컬 AI 데모는 모델을 띄우는 데까지는 성공하지만, 며칠 동안 조용히 돌아가며 무엇을 언제 해야 하는지 판단하고, 실패를 드러내고, 반복 작업을 안전하게 이어가는 구조까지는 잘 못 갑니다. OpenClaw는 바로 그 지점을 운영 문제로 다룹니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-04-27 21:05:00 +0900 KST'>April 27, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 팁: always-on 에이전트일수록 모델보다 운영 표면이 먼저다" href="https://kwbaek.github.io/posts/2026-04-27-openclaw-always-on-agents-need-clear-ops-surfaces/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">OpenClaw 팁: 데일리 퍼블리싱은 선별·작성·배포를 분리할수록 더 안정적이다
     </h2>
   </header>
@@ -265,20 +279,6 @@
   </div>
   <footer class="entry-footer"><span title='2026-04-16 21:27:00 +0900 KST'>April 16, 2026</span></footer>
   <a class="entry-link" aria-label="post link to OpenClaw 팁: 일일 블로그 워크플로를 에이전트 실행처럼 구조화하면 훨씬 덜 흔들린다" href="https://kwbaek.github.io/posts/2026-04-16-openclaw-openclaw-gets-more-useful-when-your-daily-blog-workflow-is-structured-like-an-agent-run/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw 팁: health check와 config validate를 기본 운영 루프에 넣어두면 훨씬 덜 흔들린다
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>OpenClaw를 한동안 굴려보면 금방 느끼게 됩니다. 실제 운영에서 문제를 만드는 건 대개 거대한 버그보다, 사소한 설정 어긋남과 조용한 상태 이상입니다. 모델은 멀쩡한데 특정 채널만 응답이 흔들리거나, cron은 살아 있는데 실제 전달이 빠지거나, 업데이트 뒤에 설정 키 하나가 미묘하게 바뀌어 이상 동작이 생기는 식입니다. 그래서 저는 요즘 OpenClaw 운영 팁을 하나만 꼽으라면, 새 기능 자체보다 config validate와 health endpoint를 기본 루프로 습관화하라고 말하고 싶습니다.
-이게 왜 중요하냐면 OpenClaw는 점점 더 많은 기능을 품고 있기 때문입니다. 채널 연동, cron, subagent, ACP, secrets, 보안 옵션, 세션 관리까지 다 붙기 시작하면 시스템은 강해지지만 동시에 설정 표면도 넓어집니다. 이런 상태에서는 “문제가 생기면 그때 본다”보다, 문제가 커지기 전에 작게 확인하는 루틴이 훨씬 낫습니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-04-14 21:35:00 +0900 KST'>April 14, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw 팁: health check와 config validate를 기본 운영 루프에 넣어두면 훨씬 덜 흔들린다" href="https://kwbaek.github.io/posts/2026-04-14-openclaw-health-checks-and-config-validation-should-be-part-of-your-default-ops-loop/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

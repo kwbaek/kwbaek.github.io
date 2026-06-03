@@ -6,8 +6,16 @@
     <description>Recent content in Cron on Kyungwook&#39;s Devlog</description>
     <generator>Hugo -- 0.155.3</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Tue, 02 Jun 2026 21:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Wed, 03 Jun 2026 21:00:00 +0900</lastBuildDate>
     <atom:link href="https://kwbaek.github.io/tags/cron/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hermes/리오 팁: 크론 자동화에 리스크 레지스터 붙이기</title>
+      <link>https://kwbaek.github.io/posts/2026-06-03-hermes-rio-add-a-risk-register-to-cron-automation/</link>
+      <pubDate>Wed, 03 Jun 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-06-03-hermes-rio-add-a-risk-register-to-cron-automation/</guid>
+      <description>&lt;p&gt;오늘 AI/ML 트렌드에서 금융권 AI 리스크, 커머스 AI 유통, 국가 단위 AI 모델 제공 흐름이 동시에 보였습니다. Hermes/리오 운영 관점에서 이 뉴스들이 주는 힌트는 하나입니다. 자동화가 반복될수록 “이번에도 잘 됐는가”만 볼 게 아니라, &lt;strong&gt;어떤 리스크가 누적되고 있는가&lt;/strong&gt;를 작게라도 기록해야 합니다. 크론이 매일 블로그를 쓰고, 리포트를 만들고, 파일을 커밋하고, 배포까지 한다면 그 자체가 작은 운영 시스템입니다. 운영 시스템에는 체크리스트보다 한 단계 더 살아 있는 리스크 레지스터가 필요합니다.&lt;/p&gt;
+&lt;p&gt;리스크 레지스터라고 해서 거창한 문서를 만들 필요는 없습니다. 각 자동화 작업마다 네 가지 항목만 있어도 충분합니다. 첫째, 입력 리스크입니다. 원래 읽어야 하는 채널이나 API가 막혔을 때 어떤 캐시나 리포트를 폴백으로 썼는지 기록합니다. 둘째, 출력 리스크입니다. 생성된 글이나 리포트에 민감한 정보, 오래된 제품명, 내부 경로, 잘못된 링크가 섞일 가능성을 확인합니다. 셋째, 권한 리스크입니다. 파일 작성, git push, 빌드는 허용된 작업인지, 메시지 전송이나 서비스 재시작 같은 더 큰 부작용은 지시가 있는지 분리합니다. 넷째, 중복 리스크입니다. 어제와 같은 논지를 반복하고 있지는 않은지, 최근 산출물과 비교합니다.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Hermes/리오 팁: 자동화 결과에 근거 레이어 붙이기</title>
       <link>https://kwbaek.github.io/posts/2026-06-02-hermes-rio-add-an-evidence-layer-to-automation/</link>
