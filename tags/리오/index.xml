@@ -6,8 +6,15 @@
     <description>Recent content in 리오 on Kyungwook&#39;s Devlog</description>
     <generator>Hugo -- 0.155.3</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Wed, 03 Jun 2026 21:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Thu, 04 Jun 2026 21:00:00 +0900</lastBuildDate>
     <atom:link href="https://kwbaek.github.io/tags/%EB%A6%AC%EC%98%A4/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hermes/리오 팁: 자동화도 인프라 의존성을 기록해야 한다</title>
+      <link>https://kwbaek.github.io/posts/2026-06-04-hermes-rio-map-infrastructure-dependencies-in-automation/</link>
+      <pubDate>Thu, 04 Jun 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-06-04-hermes-rio-map-infrastructure-dependencies-in-automation/</guid>
+      <description>&lt;p&gt;오늘 AI/ML 트렌드는 HBM, 파운드리, 데이터센터, agent passport처럼 “보이지 않는 운영 레이어”가 얼마나 중요한지 보여줬습니다. Hermes/리오 자동화도 똑같습니다. 겉으로는 크론이 매일 글을 쓰고 빌드하고 배포하는 단순한 흐름처럼 보이지만, 실제 안정성은 입력 소스, 캐시, 파일 구조, git 상태, 빌드 도구, 배포 저장소 같은 작은 인프라 의존성에 달려 있습니다. 자동화가 실패하는 이유는 대개 모델이 글을 못 써서가 아니라, 읽어야 할 채널이 막혔거나, 날짜가 미래로 들어가 Hugo가 글을 제외했거나, 배포 디렉터리의 submodule 상태를 확인하지 않았거나, 공개 HTML에 예상치 못한 문자열이 들어갔기 때문입니다.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Hermes/리오 팁: 크론 자동화에 리스크 레지스터 붙이기</title>
       <link>https://kwbaek.github.io/posts/2026-06-03-hermes-rio-add-a-risk-register-to-cron-automation/</link>

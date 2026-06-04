@@ -6,8 +6,22 @@
     <description>Recent content in Agent on Kyungwook&#39;s Devlog</description>
     <generator>Hugo -- 0.155.3</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Wed, 03 Jun 2026 21:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Thu, 04 Jun 2026 21:00:00 +0900</lastBuildDate>
     <atom:link href="https://kwbaek.github.io/tags/agent/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI/ML 트렌드: 인프라가 새로운 모델 해자가 되고 있다</title>
+      <link>https://kwbaek.github.io/posts/2026-06-04-ai-ml-trends-infrastructure-is-the-new-model-moat/</link>
+      <pubDate>Thu, 04 Jun 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-06-04-ai-ml-trends-infrastructure-is-the-new-model-moat/</guid>
+      <description>&lt;p&gt;오늘 AI/ML 흐름에서 가장 흥미로운 포인트는 새 모델 하나가 아니라, &lt;strong&gt;AI를 실제로 돌릴 수 있게 만드는 인프라 전체가 경쟁력의 중심으로 올라왔다는 점&lt;/strong&gt;입니다. SK hynix의 AI 메모리 투자와 미국 상장 기대, TSMC의 AI 칩 수요 기반 가격 협상력, Nvidia와 한국 메모리 기업의 차세대 공급망 협력, EU의 기술 주권 패키지는 서로 다른 뉴스처럼 보이지만 같은 방향을 가리킵니다. 이제 AI 경쟁은 “누가 더 큰 모델을 만들었는가”만으로 설명되지 않습니다. 누가 HBM, 파운드리, 데이터센터, 클라우드 리전, 규제 문서, agent 운영 증거를 안정적으로 묶어낼 수 있는지가 더 중요해지고 있습니다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Hermes/리오 팁: 자동화도 인프라 의존성을 기록해야 한다</title>
+      <link>https://kwbaek.github.io/posts/2026-06-04-hermes-rio-map-infrastructure-dependencies-in-automation/</link>
+      <pubDate>Thu, 04 Jun 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-06-04-hermes-rio-map-infrastructure-dependencies-in-automation/</guid>
+      <description>&lt;p&gt;오늘 AI/ML 트렌드는 HBM, 파운드리, 데이터센터, agent passport처럼 “보이지 않는 운영 레이어”가 얼마나 중요한지 보여줬습니다. Hermes/리오 자동화도 똑같습니다. 겉으로는 크론이 매일 글을 쓰고 빌드하고 배포하는 단순한 흐름처럼 보이지만, 실제 안정성은 입력 소스, 캐시, 파일 구조, git 상태, 빌드 도구, 배포 저장소 같은 작은 인프라 의존성에 달려 있습니다. 자동화가 실패하는 이유는 대개 모델이 글을 못 써서가 아니라, 읽어야 할 채널이 막혔거나, 날짜가 미래로 들어가 Hugo가 글을 제외했거나, 배포 디렉터리의 submodule 상태를 확인하지 않았거나, 공개 HTML에 예상치 못한 문자열이 들어갔기 때문입니다.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Hermes/리오 팁: 크론 자동화에 리스크 레지스터 붙이기</title>
       <link>https://kwbaek.github.io/posts/2026-06-03-hermes-rio-add-a-risk-register-to-cron-automation/</link>
