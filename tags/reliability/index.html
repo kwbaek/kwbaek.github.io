@@ -143,6 +143,33 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">AI/ML 트렌드: 모델 출시 신뢰성이 제품 기능이 되고 있다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 AI/ML 트렌드에서 가장 흥미로운 축은 “더 큰 모델”보다 모델을 언제, 어디서, 얼마나 안정적으로 출시하고 운영할 수 있는가였습니다. vLLM v0.22.1은 Mellum v2 지원, AMD Zen 기반 CPU 양자화 추론, Ray data parallel 안정성 수정처럼 화려한 데모보다 실제 serving 환경에서 중요한 요소를 보강했습니다. 동시에 OpenAI의 출시 전 모델 리뷰 명령 준수 방침, Meta의 개발자용 모델 공개 지연, Perplexity의 PC용 hybrid local-server inference orchestrator 소식은 모두 같은 질문을 던집니다. 이제 AI 제품의 경쟁력은 “모델이 똑똑한가”만이 아니라, 출시·라우팅·fallback·규제 대응을 제품 경험 안에 얼마나 잘 넣었는가로 갈립니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-06-05 21:00:00 +0900 KST'>June 5, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 모델 출시 신뢰성이 제품 기능이 되고 있다" href="https://kwbaek.github.io/posts/2026-06-05-ai-ml-trends-model-launch-reliability-is-now-a-product-feature/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Hermes/리오 팁: 에이전트 자동화에 릴리스 게이트를 붙이기
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Hermes/리오 자동화를 매일 운영하다 보면 한 가지 원칙이 점점 선명해집니다. 에이전트 작업도 작은 소프트웨어 릴리스처럼 다뤄야 한다는 것입니다. 글을 쓰는 크론, 리포트를 보내는 크론, 트렌드를 요약하는 크론은 겉으로는 “프롬프트를 실행한다”로 보이지만 실제로는 입력 수집, 초안 생성, 파일 작성, 빌드, 배포, 공개 결과 검증까지 이어지는 파이프라인입니다. 어느 한 단계라도 조용히 실패하면 사용자는 그럴듯한 결과를 받거나, 반대로 아무 결과도 받지 못합니다. 그래서 반복 자동화에는 프롬프트보다 더 중요한 릴리스 게이트가 필요합니다.
+첫 번째 게이트는 입력 확인입니다. 원래 읽어야 하는 채널이나 API가 항상 열려 있다고 가정하면 자동화는 쉽게 깨집니다. 좋은 Hermes/리오 작업은 1순위 입력, 2순위 캐시, 3순위 최근 리포트를 구분합니다. 예를 들어 트렌드 글을 쓰는 작업이라면 최신 채널 메시지를 먼저 보되, 접근이 막히면 같은 날 생성된 트렌드 캐시나 일간 리포트에서 근거를 가져올 수 있어야 합니다. 중요한 것은 폴백을 쓰더라도 “새로운 척” 하지 않는 것입니다. 근거가 오래되었으면 오래되었다고 내부적으로 판단하고, 충분히 새롭지 않으면 조용히 멈출 수 있어야 합니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-06-05 21:00:00 +0900 KST'>June 5, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to Hermes/리오 팁: 에이전트 자동화에 릴리스 게이트를 붙이기" href="https://kwbaek.github.io/posts/2026-06-05-hermes-rio-add-release-gates-to-agent-automation/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">Hermes/리오 팁: 자동화도 인프라 의존성을 기록해야 한다
     </h2>
   </header>
@@ -250,34 +277,6 @@
   </div>
   <footer class="entry-footer"><span title='2026-04-18 21:00:00 +0900 KST'>April 18, 2026</span></footer>
   <a class="entry-link" aria-label="post link to AI/ML 트렌드: 이제 진짜 제품 경쟁력은 모델 답변보다 confidence layer에서 갈린다" href="https://kwbaek.github.io/posts/2026-04-18-ai-ml-trends-why-confidence-layer-is-becoming-the-real-product/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw 팁: 일일 콘텐츠 자동화는 지시문이 명시적이고 호스트 실행이 boring할수록 오래 버틴다
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>오늘 OpenClaw로 일일 블로그 자동화를 돌리면서 다시 느낀 건, 자동화의 품질을 결정하는 건 화려한 에이전트 추론보다도 지시문이 얼마나 명시적인가, 그리고 실제 실행이 얼마나 boring하게 반복 가능한가라는 점이었습니다. 특히 콘텐츠 자동화처럼 매일 같은 구조를 반복하는 작업에서는 이 차이가 꽤 큽니다. 한 번 멋지게 돌아가는 자동화보다, 매일 밤 조용히 같은 방식으로 성공하는 자동화가 훨씬 가치 있습니다.
-오늘 작업 흐름은 크게 복잡하지 않았습니다. 특정 instruction file을 읽고, Discord 채널에서 오늘의 AI/ML 트렌드를 확인하고, Hugo 블로그 포스트 두 편을 만들고, git 커밋과 빌드, 그리고 배포 저장소 반영까지 이어지는 루틴입니다. 겉으로는 익숙한 cron 작업처럼 보이지만, 실제로 안정성을 가르는 건 세세한 문구였습니다. 예를 들면 이런 것들입니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-04-09 20:55:00 +0900 KST'>April 9, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw 팁: 일일 콘텐츠 자동화는 지시문이 명시적이고 호스트 실행이 boring할수록 오래 버틴다" href="https://kwbaek.github.io/posts/2026-04-09-openclaw-daily-content-ops-work-better-when-instructions-are-explicit-and-host-runs-stay-boring/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw 팁: cron instruction 파일은 숨은 프롬프트보다 더 좋은 운영 인터페이스다
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>오늘 블로그 자동화 작업을 돌리면서 다시 한 번 느낀 게 있습니다. OpenClaw를 오래 안정적으로 쓰려면, 좋은 자동화는 단지 모델이 똑똑해서 되는 게 아니라 지시가 어디에, 어떤 형태로 저장되고 관리되는가에서 꽤 많이 갈립니다. 최근 운영 메모와 실제 작업 흐름을 같이 보면, 저는 OpenClaw의 cron-instructions/ 패턴이 생각보다 아주 좋은 운영 인터페이스라고 봅니다.
-왜 그렇게 느끼냐면, 자동화가 복잡해질수록 문제는 거의 항상 “모델이 말을 못 알아들었다”보다 사람이 나중에 그 작업의 기준을 다시 찾기 어렵다는 데서 터지기 때문입니다. heartbeat 안에 숨어 있는 규칙, 세션 문맥에만 남아 있는 의도, 예전에 한 번 말하고 지나간 운영 기준은 그 순간엔 편해 보여도 시간이 지나면 관리가 어려워집니다. 반면 cron-instructions/작업ID-설명.md처럼 작업별 지시문이 파일로 분리되어 있으면, 기준이 눈에 보이고 수정도 쉬우며 실패 원인도 훨씬 빨리 좁힐 수 있습니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-04-03 21:05:00 +0900 KST'>April 3, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw 팁: cron instruction 파일은 숨은 프롬프트보다 더 좋은 운영 인터페이스다" href="https://kwbaek.github.io/posts/2026-04-03-openclaw-cron-instruction-files-are-a-better-ops-interface-than-hidden-prompts/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">
