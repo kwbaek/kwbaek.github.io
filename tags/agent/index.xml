@@ -6,8 +6,22 @@
     <description>Recent content in Agent on Kyungwook&#39;s Devlog</description>
     <generator>Hugo -- 0.155.3</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Fri, 05 Jun 2026 21:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Sat, 06 Jun 2026 21:00:00 +0900</lastBuildDate>
     <atom:link href="https://kwbaek.github.io/tags/agent/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI/ML 트렌드: 에이전트에는 컨텍스트 창보다 월드 모델이 필요하다</title>
+      <link>https://kwbaek.github.io/posts/2026-06-06-ai-ml-trends-agents-need-world-models-not-just-context-windows/</link>
+      <pubDate>Sat, 06 Jun 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-06-06-ai-ml-trends-agents-need-world-models-not-just-context-windows/</guid>
+      <description>&lt;p&gt;오늘 AI/ML 트렌드에서 가장 흥미로운 변화는 &lt;strong&gt;에이전트가 더 긴 컨텍스트를 읽는 수준을 넘어, 업무 세계를 구조화해서 이해해야 한다&lt;/strong&gt;는 신호였습니다. Hugging Face에 올라온 Blackstone Graph는 법률·규제 데이터를 agent-facing world model로 만들겠다는 시도입니다. 단순히 문서를 벡터 검색하는 RAG가 아니라, 조항·사건·관계·근거를 에이전트가 질의 가능한 스키마로 바꾸려는 방향입니다. 같은 날 RTX PRO 6000 Blackwell과 GH200의 Qwen3.5 SFT 벤치마크, Karpathy nanochat을 Ascend NPU로 옮긴 Nanochat-Ascend 사례도 나왔습니다. 이 셋을 함께 보면, AI 경쟁은 “어떤 모델을 쓰는가”보다 &lt;strong&gt;모델이 어떤 지식 구조와 어떤 실행 환경 위에서 안정적으로 일하는가&lt;/strong&gt;로 이동하고 있습니다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Hermes/리오 팁: 자동화에 작은 월드 모델을 붙이기</title>
+      <link>https://kwbaek.github.io/posts/2026-06-06-hermes-rio-add-a-small-world-model-to-automation/</link>
+      <pubDate>Sat, 06 Jun 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-06-06-hermes-rio-add-a-small-world-model-to-automation/</guid>
+      <description>&lt;p&gt;Hermes/리오를 매일 쓰다 보면 자동화의 품질을 가르는 기준이 “프롬프트를 얼마나 잘 썼는가”만은 아니라는 걸 자주 느낍니다. 반복 작업이 안정적으로 좋아지려면 에이전트가 매번 처음부터 추론하는 대신, 자기 작업 세계를 작게라도 구조화해서 들고 있어야 합니다. 나는 이것을 자동화용 &lt;strong&gt;작은 월드 모델&lt;/strong&gt;이라고 부르고 싶습니다. 거창한 그래프 데이터베이스가 아니어도 됩니다. 입력 소스가 어디에 있고, 어떤 출력 형식이 필요한지, 최근에 무엇을 했는지, 어떤 표현은 쓰면 안 되는지, 실패하면 어떤 폴백을 써야 하는지를 파일과 링크로 정리해 두는 것만으로도 크론의 품질은 크게 달라집니다.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Hermes/리오 팁: 에이전트 자동화에 릴리스 게이트를 붙이기</title>
       <link>https://kwbaek.github.io/posts/2026-06-05-hermes-rio-add-release-gates-to-agent-automation/</link>

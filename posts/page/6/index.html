@@ -158,6 +158,34 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">AI/ML 트렌드: AI 스택은 챗봇에서 운영 표면으로 이동하고 있다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 AI/ML 트렌드에서 가장 선명한 흐름은 AI가 챗봇이나 단일 모델 기능에서 벗어나, 실제 업무와 산업 시스템을 움직이는 운영 표면으로 내려가고 있다는 점입니다. 하루 동안 나온 소식들을 묶어보면, 경쟁의 질문은 더 이상 “어떤 모델이 더 똑똑한가?”에 머물지 않습니다. 이제는 “그 모델이 어떤 데이터와 도구를 보고, 어떤 권한으로 행동하며, 어떤 인프라 위에서 감시되고, 어떤 법적·경제적 책임을 남기는가?”가 핵심이 되고 있습니다.
+가장 먼저 눈에 띄는 것은 enterprise deployment의 성숙입니다. OpenAI의 ChatGPT adoption broadened 분석은 AI 사용이 일부 early adopter의 실험을 넘어 더 넓은 사용자와 업무 패턴으로 확산되고 있음을 보여줍니다. 동시에 Capgemini가 OpenAI Deployment Company에 투자했다는 소식은 frontier AI 상업화가 API 판매만으로 끝나지 않는다는 점을 잘 드러냅니다. 기업은 모델을 사는 것이 아니라 use-case 선정, 데이터 연결, 운영 전환, 직원 채택, 리스크 관리까지 묶인 배포 역량을 삽니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-05-12 21:00:00 +0900 KST'>May 12, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to AI/ML 트렌드: AI 스택은 챗봇에서 운영 표면으로 이동하고 있다" href="https://kwbaek.github.io/posts/2026-05-12-ai-ml-trends-the-ai-stack-is-moving-from-chatbots-to-operating-surfaces/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 팁: 자동화가 커지기 전에 에이전트 권한을 좁혀두자
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>OpenClaw를 개인 비서나 팀 자동화 런타임으로 오래 쓰다 보면, 가장 중요한 설계 질문은 “무엇을 할 수 있나?”에서 **“각 에이전트가 어디까지 할 수 있어야 하나?”**로 바뀝니다. 자동화가 한두 개일 때는 모든 기능을 넓게 열어두는 편이 편합니다. 하지만 크론, Discord, Telegram, 블로그 배포, 파일 작업, 메시지 전송이 서로 얽히기 시작하면 권한의 폭이 곧 사고의 폭이 됩니다.
+오늘 살펴볼 포인트는 OpenClaw v2026.5.10-beta.5에서 보인 per-agent message crossContext/action allow와 redacted diagnostics 흐름입니다. 핵심은 단순합니다. 에이전트 전체에 하나의 거대한 메시지 권한을 주기보다, 에이전트별로 어떤 context를 넘나들 수 있는지, 어떤 message action을 수행할 수 있는지 좁히고, 진단 출력에서는 민감한 값을 가리는 방향입니다. 작은 변화처럼 보이지만 실제 운영에서는 매우 큰 차이를 만듭니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-05-12 21:00:00 +0900 KST'>May 12, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 팁: 자동화가 커지기 전에 에이전트 권한을 좁혀두자" href="https://kwbaek.github.io/posts/2026-05-12-openclaw-narrow-agent-permissions-before-automation-scales/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">AI/ML 트렌드: AI는 정책, 자본, 런타임 인프라의 문제가 되고 있다
     </h2>
   </header>
@@ -262,34 +290,6 @@ OpenClaw 2026.5.7 릴리스에서 눈에 띄는 흐름도 이쪽입니다. owner
   </div>
   <footer class="entry-footer"><span title='2026-05-08 21:00:00 +0900 KST'>May 8, 2026</span></footer>
   <a class="entry-link" aria-label="post link to OpenClaw 팁: 실제 운영 에이전트에는 before-tool gate가 필요하다" href="https://kwbaek.github.io/posts/2026-05-08-openclaw-use-before-tool-gates-for-real-agent-ops/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">AI/ML 트렌드: 에이전트 안전은 이제 런타임 안으로 들어가고 있다
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>오늘 AI/ML 흐름에서 가장 흥미로운 축은 에이전트 안전과 운영 신뢰성이 모델 바깥의 부가 기능이 아니라 런타임 자체의 책임으로 이동하고 있다는 점입니다. 하루 동안 나온 신호를 묶어보면, physical AI, agent runtime, AI 인프라, 정책 리스크가 따로 움직이는 것처럼 보이지만 실제로는 하나의 질문으로 수렴합니다. “AI가 실제 세계의 도구와 시스템을 만질 때, 누가 어떤 의미의 행동을 허용하고 기록하고 중단할 것인가?”
-가장 직접적인 신호는 AgentTrust와 DTap 같은 연구입니다. AgentTrust는 파일, 쉘, HTTP, 데이터베이스 같은 도구 호출을 실행 전에 의미 단위로 평가하고 차단하는 runtime safety layer를 제안합니다. 기존 sandbox가 프로세스 격리나 네트워크 제한에 가까웠다면, 이제는 “이 tool call이 실제로 어떤 업무 행위인가?”를 판단하는 방향으로 확장됩니다. DTap 역시 API key 유출, 데이터 삭제, 무단 거래 같은 장기 action risk를 interactive red-teaming 환경에서 평가합니다. 에이전트 보안 평가는 단일 prompt에 대한 답변 검사가 아니라, 여러 단계의 계획과 실행이 누적될 때 생기는 위험을 봐야 합니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-05-07 21:00:00 +0900 KST'>May 7, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 에이전트 안전은 이제 런타임 안으로 들어가고 있다" href="https://kwbaek.github.io/posts/2026-05-07-ai-ml-trends-agent-safety-is-moving-into-the-runtime/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw 팁: 도구 호출은 모두 감사 가능한 부작용으로 다루자
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>OpenClaw로 cron, Discord, 블로그 발행, 리포트 생성 같은 자동화를 운영하다 보면 금방 알게 되는 사실이 있습니다. LLM 답변 자체보다 더 중요한 것은 도구 호출이 실제 세계에 남기는 부작용입니다. 파일을 쓰고, 메시지를 보내고, git push를 하고, Hugo build를 돌리고, 외부 채널에 알림을 보내는 순간부터 에이전트는 단순한 채팅 모델이 아니라 작은 운영 시스템이 됩니다. 그래서 OpenClaw 자동화는 모든 tool call을 “감사 가능한 side effect”로 다루는 습관이 필요합니다.
-첫 번째 원칙은 입력과 지시를 분리하는 것입니다. Discord 채널, 웹페이지, RSS, 이메일 본문은 좋은 자료일 수 있지만 운영 지시는 아닙니다. 예를 들어 블로그 cron은 트렌드 채널 메시지를 읽어 글감을 고르되, 배포 순서와 파일 경로, 카테고리, 실패 보고 방식은 별도의 instruction 파일에서만 가져와야 합니다. 이렇게 하면 외부 텍스트가 “이 명령을 실행해” 같은 문장을 포함하더라도 자동화의 권한 경계를 넘지 못합니다. OpenClaw에서 cron instruction을 작게 고정하고, 채널 메시지는 참고 자료로만 쓰는 이유가 여기에 있습니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-05-07 21:00:00 +0900 KST'>May 7, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw 팁: 도구 호출은 모두 감사 가능한 부작용으로 다루자" href="https://kwbaek.github.io/posts/2026-05-07-openclaw-treat-tool-calls-as-auditable-side-effects/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">
