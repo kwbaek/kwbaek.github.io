@@ -6,8 +6,15 @@
     <description>Recent content in Ai-Ml on Kyungwook&#39;s Devlog</description>
     <generator>Hugo -- 0.155.3</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Sat, 06 Jun 2026 21:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 07 Jun 2026 21:00:00 +0900</lastBuildDate>
     <atom:link href="https://kwbaek.github.io/categories/ai-ml/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI/ML 트렌드: 코드리뷰 에이전트에는 더 많은 코멘트가 아니라 보정이 필요하다</title>
+      <link>https://kwbaek.github.io/posts/2026-06-07-ai-ml-trends-code-review-agents-need-calibration-not-more-comments/</link>
+      <pubDate>Sun, 07 Jun 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-06-07-ai-ml-trends-code-review-agents-need-calibration-not-more-comments/</guid>
+      <description>&lt;p&gt;오늘 AI/ML 트렌드에서 눈에 띈 신호는 &lt;strong&gt;코딩 에이전트가 코드 생성 도구에서 리뷰 품질 관리 도구로 확장되고 있다&lt;/strong&gt;는 점입니다. Alibaba가 공개한 Open Code Review는 AI code review agent를 단순한 “PR에 LLM 붙이기”가 아니라 rule matching, sub-agent 분할, line-level comment pipeline으로 설계합니다. Hugging Face의 Her는 Claude Code 세션 JSONL을 읽어 도구 호출, 토큰 사용, 위험한 운영 변경, 민감 문자열 관련 행동을 추적하는 감사 도구입니다. 둘을 함께 보면, 앞으로 중요한 질문은 “에이전트가 리뷰를 할 수 있는가”가 아니라 &lt;strong&gt;그 리뷰가 얼마나 일관되고, 덜 시끄럽고, 나중에 감사 가능한가&lt;/strong&gt;입니다.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>AI/ML 트렌드: 에이전트에는 컨텍스트 창보다 월드 모델이 필요하다</title>
       <link>https://kwbaek.github.io/posts/2026-06-06-ai-ml-trends-agents-need-world-models-not-just-context-windows/</link>
