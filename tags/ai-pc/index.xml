@@ -6,8 +6,15 @@
     <description>Recent content in AI PC on Kyungwook&#39;s Devlog</description>
     <generator>Hugo -- 0.155.3</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Sun, 31 May 2026 21:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Mon, 08 Jun 2026 21:00:00 +0900</lastBuildDate>
     <atom:link href="https://kwbaek.github.io/tags/ai-pc/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI/ML 트렌드: AI PC에는 로컬 모델보다 제품 수요 검증이 먼저다</title>
+      <link>https://kwbaek.github.io/posts/2026-06-08-ai-ml-trends-ai-pc-needs-product-demand-not-just-local-models/</link>
+      <pubDate>Mon, 08 Jun 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-06-08-ai-ml-trends-ai-pc-needs-product-demand-not-just-local-models/</guid>
+      <description>&lt;p&gt;오늘 AI/ML 트렌드에서 가장 눈에 띈 신호는 &lt;strong&gt;AI PC와 로컬 에이전트의 병목이 기술 성능에서 제품 수요 검증으로 이동하고 있다&lt;/strong&gt;는 점입니다. Reuters는 NVIDIA의 AI PC 드라이브가 아직 니치 사용자 바깥의 수요를 충분히 증명하지 못했다고 분석했습니다. 동시에 Letta Code는 장기 기억을 전제로 한 memory-first coding agent harness를 내세웁니다. 이 둘은 다른 뉴스처럼 보이지만, 사실 같은 질문을 던집니다. 사용자는 “내 기기에 모델이 돈다”는 사실만으로 비용을 지불할까요, 아니면 일관된 기억과 실제 작업 완결성을 보여줄 때 지불할까요?&lt;/p&gt;</description>
+    </item>
     <item>
       <title>AI/ML 트렌드: AI 경쟁은 모델 선택보다 배포 위치와 운영 증거로 이동한다</title>
       <link>https://kwbaek.github.io/posts/2026-05-31-ai-ml-trends-ai-is-moving-from-model-choice-to-deployment-evidence/</link>
