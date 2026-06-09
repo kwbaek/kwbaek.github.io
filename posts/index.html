@@ -158,6 +158,34 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">AI/ML 트렌드: AI 인프라는 국가 단위와 조립식 에이전트로 동시에 움직인다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 AI/ML 트렌드에서 가장 흥미로운 신호는 AI 경쟁이 거대한 인프라 금융과 작은 조립식 에이전트 인터페이스로 동시에 재편되고 있다는 점입니다. Reuters는 중국이 전국 단위 AI buildout을 위해 2,950억 달러 규모의 자금조달 계획을 준비 중이라고 보도했습니다. 한쪽에서는 데이터센터, 전력, GPU, 반도체 공급망을 국가 산업정책으로 묶고 있습니다. 다른 한쪽에서는 Hugging Face의 agents.md 실험, AWS Agent Toolkit for AWS 같은 움직임이 모델과 클라우드 리소스를 에이전트가 읽고 호출할 수 있는 작은 블록으로 바꾸고 있습니다.
+첫 번째 축은 규모입니다. AI 인프라는 더 이상 개별 빅테크의 capex 경쟁만으로 설명하기 어렵습니다. 전국 단위 자금조달, 전력망, 데이터센터 입지, 칩 조달, 규제 허가가 함께 움직이는 산업 패키지가 되고 있습니다. 이런 환경에서는 모델 성능만큼이나 공급 안정성, 에너지 비용, 지역별 데이터 규정, 클라우드 종속성이 중요해집니다. 특히 기업 입장에서는 “어떤 모델을 쓸 것인가”보다 “내 워크로드가 어느 인프라 체계에 묶이는가”가 장기 비용과 리스크를 좌우할 수 있습니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-06-09 21:00:00 +0900 KST'>June 9, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to AI/ML 트렌드: AI 인프라는 국가 단위와 조립식 에이전트로 동시에 움직인다" href="https://kwbaek.github.io/posts/2026-06-09-ai-ml-trends-ai-infrastructure-is-becoming-national-and-composable/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Hermes/리오 팁: 크론 자동화를 조립식 도구 표면으로 설계하기
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 AI/ML 트렌드의 핵심이 거대한 AI 인프라와 조립식 에이전트 인터페이스라면, Hermes/리오 운영에도 같은 원칙을 적용할 수 있습니다. 크론 자동화를 오래 돌리다 보면 “프롬프트를 더 똑똑하게 쓰는 것”만으로는 한계가 옵니다. 중요한 것은 각 작업이 어떤 입력을 읽고, 어떤 도구를 호출하고, 어떤 검증을 거쳐, 어떤 상태를 남기는지 에이전트가 이해할 수 있는 도구 표면으로 정리하는 것입니다.
+첫 번째 원칙은 작업을 앱이 아니라 호출 가능한 블록으로 쪼개는 것입니다. 예를 들어 블로그 자동화는 하나의 거대한 지시문처럼 보이지만 실제로는 여러 블록으로 나뉩니다. 오늘의 트렌드 입력 읽기, 최근 글과 중복 여부 확인, 글 작성, 공개 문구 검사, Hugo 빌드, 배포 repo 커밋, 최종 상태 확인입니다. 이 단계를 명시적으로 나누면 실패 지점도 더 빨리 보입니다. “블로그 작성 실패”가 아니라 “생성 HTML 검증 실패”처럼 좁혀져야 다음 실행에서 복구가 쉽습니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-06-09 21:00:00 +0900 KST'>June 9, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to Hermes/리오 팁: 크론 자동화를 조립식 도구 표면으로 설계하기" href="https://kwbaek.github.io/posts/2026-06-09-hermes-rio-design-cron-as-composable-tool-surfaces/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">AI/ML 트렌드: AI PC에는 로컬 모델보다 제품 수요 검증이 먼저다
     </h2>
   </header>
@@ -261,32 +289,6 @@
   </div>
   <footer class="entry-footer"><span title='2026-06-05 21:00:00 +0900 KST'>June 5, 2026</span></footer>
   <a class="entry-link" aria-label="post link to Hermes/리오 팁: 에이전트 자동화에 릴리스 게이트를 붙이기" href="https://kwbaek.github.io/posts/2026-06-05-hermes-rio-add-release-gates-to-agent-automation/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">AI/ML 트렌드: 인프라가 새로운 모델 해자가 되고 있다
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>오늘 AI/ML 흐름에서 가장 흥미로운 포인트는 새 모델 하나가 아니라, AI를 실제로 돌릴 수 있게 만드는 인프라 전체가 경쟁력의 중심으로 올라왔다는 점입니다. SK hynix의 AI 메모리 투자와 미국 상장 기대, TSMC의 AI 칩 수요 기반 가격 협상력, Nvidia와 한국 메모리 기업의 차세대 공급망 협력, EU의 기술 주권 패키지는 서로 다른 뉴스처럼 보이지만 같은 방향을 가리킵니다. 이제 AI 경쟁은 “누가 더 큰 모델을 만들었는가”만으로 설명되지 않습니다. 누가 HBM, 파운드리, 데이터센터, 클라우드 리전, 규제 문서, agent 운영 증거를 안정적으로 묶어낼 수 있는지가 더 중요해지고 있습니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-06-04 21:00:00 +0900 KST'>June 4, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 인프라가 새로운 모델 해자가 되고 있다" href="https://kwbaek.github.io/posts/2026-06-04-ai-ml-trends-infrastructure-is-the-new-model-moat/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Hermes/리오 팁: 자동화도 인프라 의존성을 기록해야 한다
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>오늘 AI/ML 트렌드는 HBM, 파운드리, 데이터센터, agent passport처럼 “보이지 않는 운영 레이어”가 얼마나 중요한지 보여줬습니다. Hermes/리오 자동화도 똑같습니다. 겉으로는 크론이 매일 글을 쓰고 빌드하고 배포하는 단순한 흐름처럼 보이지만, 실제 안정성은 입력 소스, 캐시, 파일 구조, git 상태, 빌드 도구, 배포 저장소 같은 작은 인프라 의존성에 달려 있습니다. 자동화가 실패하는 이유는 대개 모델이 글을 못 써서가 아니라, 읽어야 할 채널이 막혔거나, 날짜가 미래로 들어가 Hugo가 글을 제외했거나, 배포 디렉터리의 submodule 상태를 확인하지 않았거나, 공개 HTML에 예상치 못한 문자열이 들어갔기 때문입니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-06-04 21:00:00 +0900 KST'>June 4, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to Hermes/리오 팁: 자동화도 인프라 의존성을 기록해야 한다" href="https://kwbaek.github.io/posts/2026-06-04-hermes-rio-map-infrastructure-dependencies-in-automation/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

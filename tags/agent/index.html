@@ -143,6 +143,34 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">AI/ML 트렌드: AI 인프라는 국가 단위와 조립식 에이전트로 동시에 움직인다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 AI/ML 트렌드에서 가장 흥미로운 신호는 AI 경쟁이 거대한 인프라 금융과 작은 조립식 에이전트 인터페이스로 동시에 재편되고 있다는 점입니다. Reuters는 중국이 전국 단위 AI buildout을 위해 2,950억 달러 규모의 자금조달 계획을 준비 중이라고 보도했습니다. 한쪽에서는 데이터센터, 전력, GPU, 반도체 공급망을 국가 산업정책으로 묶고 있습니다. 다른 한쪽에서는 Hugging Face의 agents.md 실험, AWS Agent Toolkit for AWS 같은 움직임이 모델과 클라우드 리소스를 에이전트가 읽고 호출할 수 있는 작은 블록으로 바꾸고 있습니다.
+첫 번째 축은 규모입니다. AI 인프라는 더 이상 개별 빅테크의 capex 경쟁만으로 설명하기 어렵습니다. 전국 단위 자금조달, 전력망, 데이터센터 입지, 칩 조달, 규제 허가가 함께 움직이는 산업 패키지가 되고 있습니다. 이런 환경에서는 모델 성능만큼이나 공급 안정성, 에너지 비용, 지역별 데이터 규정, 클라우드 종속성이 중요해집니다. 특히 기업 입장에서는 “어떤 모델을 쓸 것인가”보다 “내 워크로드가 어느 인프라 체계에 묶이는가”가 장기 비용과 리스크를 좌우할 수 있습니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-06-09 21:00:00 +0900 KST'>June 9, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to AI/ML 트렌드: AI 인프라는 국가 단위와 조립식 에이전트로 동시에 움직인다" href="https://kwbaek.github.io/posts/2026-06-09-ai-ml-trends-ai-infrastructure-is-becoming-national-and-composable/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Hermes/리오 팁: 크론 자동화를 조립식 도구 표면으로 설계하기
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 AI/ML 트렌드의 핵심이 거대한 AI 인프라와 조립식 에이전트 인터페이스라면, Hermes/리오 운영에도 같은 원칙을 적용할 수 있습니다. 크론 자동화를 오래 돌리다 보면 “프롬프트를 더 똑똑하게 쓰는 것”만으로는 한계가 옵니다. 중요한 것은 각 작업이 어떤 입력을 읽고, 어떤 도구를 호출하고, 어떤 검증을 거쳐, 어떤 상태를 남기는지 에이전트가 이해할 수 있는 도구 표면으로 정리하는 것입니다.
+첫 번째 원칙은 작업을 앱이 아니라 호출 가능한 블록으로 쪼개는 것입니다. 예를 들어 블로그 자동화는 하나의 거대한 지시문처럼 보이지만 실제로는 여러 블록으로 나뉩니다. 오늘의 트렌드 입력 읽기, 최근 글과 중복 여부 확인, 글 작성, 공개 문구 검사, Hugo 빌드, 배포 repo 커밋, 최종 상태 확인입니다. 이 단계를 명시적으로 나누면 실패 지점도 더 빨리 보입니다. “블로그 작성 실패”가 아니라 “생성 HTML 검증 실패”처럼 좁혀져야 다음 실행에서 복구가 쉽습니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-06-09 21:00:00 +0900 KST'>June 9, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to Hermes/리오 팁: 크론 자동화를 조립식 도구 표면으로 설계하기" href="https://kwbaek.github.io/posts/2026-06-09-hermes-rio-design-cron-as-composable-tool-surfaces/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">AI/ML 트렌드: AI PC에는 로컬 모델보다 제품 수요 검증이 먼저다
     </h2>
   </header>
@@ -246,33 +274,6 @@
   </div>
   <footer class="entry-footer"><span title='2026-06-04 21:00:00 +0900 KST'>June 4, 2026</span></footer>
   <a class="entry-link" aria-label="post link to AI/ML 트렌드: 인프라가 새로운 모델 해자가 되고 있다" href="https://kwbaek.github.io/posts/2026-06-04-ai-ml-trends-infrastructure-is-the-new-model-moat/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Hermes/리오 팁: 자동화도 인프라 의존성을 기록해야 한다
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>오늘 AI/ML 트렌드는 HBM, 파운드리, 데이터센터, agent passport처럼 “보이지 않는 운영 레이어”가 얼마나 중요한지 보여줬습니다. Hermes/리오 자동화도 똑같습니다. 겉으로는 크론이 매일 글을 쓰고 빌드하고 배포하는 단순한 흐름처럼 보이지만, 실제 안정성은 입력 소스, 캐시, 파일 구조, git 상태, 빌드 도구, 배포 저장소 같은 작은 인프라 의존성에 달려 있습니다. 자동화가 실패하는 이유는 대개 모델이 글을 못 써서가 아니라, 읽어야 할 채널이 막혔거나, 날짜가 미래로 들어가 Hugo가 글을 제외했거나, 배포 디렉터리의 submodule 상태를 확인하지 않았거나, 공개 HTML에 예상치 못한 문자열이 들어갔기 때문입니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-06-04 21:00:00 +0900 KST'>June 4, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to Hermes/리오 팁: 자동화도 인프라 의존성을 기록해야 한다" href="https://kwbaek.github.io/posts/2026-06-04-hermes-rio-map-infrastructure-dependencies-in-automation/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Hermes/리오 팁: 크론 자동화에 리스크 레지스터 붙이기
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>오늘 AI/ML 트렌드에서 금융권 AI 리스크, 커머스 AI 유통, 국가 단위 AI 모델 제공 흐름이 동시에 보였습니다. Hermes/리오 운영 관점에서 이 뉴스들이 주는 힌트는 하나입니다. 자동화가 반복될수록 “이번에도 잘 됐는가”만 볼 게 아니라, 어떤 리스크가 누적되고 있는가를 작게라도 기록해야 합니다. 크론이 매일 블로그를 쓰고, 리포트를 만들고, 파일을 커밋하고, 배포까지 한다면 그 자체가 작은 운영 시스템입니다. 운영 시스템에는 체크리스트보다 한 단계 더 살아 있는 리스크 레지스터가 필요합니다.
-리스크 레지스터라고 해서 거창한 문서를 만들 필요는 없습니다. 각 자동화 작업마다 네 가지 항목만 있어도 충분합니다. 첫째, 입력 리스크입니다. 원래 읽어야 하는 채널이나 API가 막혔을 때 어떤 캐시나 리포트를 폴백으로 썼는지 기록합니다. 둘째, 출력 리스크입니다. 생성된 글이나 리포트에 민감한 정보, 오래된 제품명, 내부 경로, 잘못된 링크가 섞일 가능성을 확인합니다. 셋째, 권한 리스크입니다. 파일 작성, git push, 빌드는 허용된 작업인지, 메시지 전송이나 서비스 재시작 같은 더 큰 부작용은 지시가 있는지 분리합니다. 넷째, 중복 리스크입니다. 어제와 같은 논지를 반복하고 있지는 않은지, 최근 산출물과 비교합니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-06-03 21:00:00 +0900 KST'>June 3, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to Hermes/리오 팁: 크론 자동화에 리스크 레지스터 붙이기" href="https://kwbaek.github.io/posts/2026-06-03-hermes-rio-add-a-risk-register-to-cron-automation/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

@@ -143,6 +143,34 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">Hermes/리오 팁: 자동화 크론에는 입력 폴백과 공개 출력 경계가 필요하다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Hermes/리오로 매일 블로그, 리포트, 트렌드 스캔을 자동화할 때 가장 자주 만나는 현실은 “원래 입력이 항상 열려 있지는 않다”는 점입니다. 채널 API가 잠시 막히거나, 외부 검색이 rate limit에 걸리거나, 특정 도구가 현재 세션에서 제공되지 않을 수 있습니다. 이때 좋은 자동화는 바로 실패하지도 않고, 근거 없이 지어내지도 않습니다. 대신 입력 폴백과 공개 출력 경계를 미리 설계해 둡니다.
+입력 폴백은 단순한 예비 파일이 아닙니다. 우선순위가 있는 정보 지도입니다. 예를 들어 트렌드 기반 글쓰기 크론이라면 1순위는 오늘의 원본 채널 메시지입니다. 2순위는 같은 목적을 위해 만들어 둔 최신 스캐너 캐시입니다. 3순위는 오늘 아침 생성된 데일리 리포트입니다. 4순위는 최근 며칠의 발행 글과 히스토리입니다. 이렇게 계층을 정해 두면 live source를 읽지 못해도 작업은 멈추지 않습니다. 동시에 “내가 지금 어떤 품질의 입력을 쓰고 있는가”를 스스로 알 수 있습니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-05-31 21:00:00 +0900 KST'>May 31, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to Hermes/리오 팁: 자동화 크론에는 입력 폴백과 공개 출력 경계가 필요하다" href="https://kwbaek.github.io/posts/2026-05-31-hermes-rio-cron-needs-input-fallback-and-public-boundaries/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Hermes/리오 팁: 에이전트 자동화에는 실행 전 검문소가 필요하다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Hermes/리오로 매일 블로그를 쓰고, 리포트를 만들고, 파일을 정리하고, 빌드까지 자동화하다 보면 가장 유혹적인 설계는 “가능하면 끝까지 자동으로 실행하게 만들자”입니다. 하지만 에이전트 자동화가 강력해질수록 더 중요한 것은 완전 자동화가 아니라 실행 전 검문소입니다. 오늘 AI/ML 트렌드에서 Mistral Vibe 같은 장기 실행 에이전트와 LLM을 활용한 공격 사례가 동시에 보인 것도 같은 메시지를 줍니다. 에이전트가 일을 잘하게 되는 만큼, 어디서 멈추고 확인해야 하는지도 명확해야 합니다.
+Hermes/리오 작업을 설계할 때는 먼저 행동을 세 등급으로 나누는 편이 좋습니다. 첫째, 읽기와 분석입니다. 파일을 읽고, 최근 글을 확인하고, 보고서를 요약하고, 후보를 고르는 일은 비교적 안전합니다. 둘째, 내부 쓰기입니다. 초안 작성, 로컬 파일 생성, 상태 파일 업데이트처럼 되돌릴 수 있는 작업은 자동화해도 됩니다. 셋째, 외부 부작용입니다. 이메일 발송, 공개 게시, git push, 배포, 서비스 재시작, 결제, 주문 같은 일은 별도 검문소가 필요합니다. 이 구분이 없으면 에이전트는 “편리한 비서”에서 “왜 그런 행동을 했는지 추적하기 어려운 프로세스”가 됩니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-05-30 21:00:00 +0900 KST'>May 30, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to Hermes/리오 팁: 에이전트 자동화에는 실행 전 검문소가 필요하다" href="https://kwbaek.github.io/posts/2026-05-30-hermes-rio-automation-needs-preflight-checkpoints/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">Hermes/리오 팁: 에이전트 메모리는 검색보다 구조가 먼저다
     </h2>
   </header>
@@ -253,38 +281,12 @@
   <footer class="entry-footer"><span title='2026-04-13 21:05:00 +0900 KST'>April 13, 2026</span></footer>
   <a class="entry-link" aria-label="post link to OpenClaw 팁: instruction file 기반 cron 워크플로는 일일 퍼블리싱을 좋은 의미로 boring하게 만든다" href="https://kwbaek.github.io/posts/2026-04-13-openclaw-instruction-driven-cron-workflows-make-daily-publishing-boring-in-a-good-way/"></a>
 </article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw로 매일 트렌드 스캔을 블로그 포스트로 연결하는 방법
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>OpenClaw를 오래 만져볼수록 재미있는 지점은, 이 도구가 단순히 메시지에 답하는 봇이 아니라 채널에서 신호를 읽고, 그 신호를 실제 산출물로 바꾸는 운영 레이어에 가깝다는 점입니다. 오늘 제가 돌린 워크플로도 딱 그 예시였습니다. Discord의 #ai-ml-trends 채널에서 오늘 올라온 흐름을 읽고, 그중 가장 의미 있는 주제를 하나 고른 뒤, 그 내용을 Hugo 블로그 글로 정리하는 작업입니다.
-이런 흐름이 좋은 이유는 단순합니다. 정보 수집과 글쓰기를 분리하지 않기 때문입니다. 많은 팀이 뉴스는 뉴스대로 읽고, 블로그는 나중에 따로 쓰려다가 결국 둘 다 흐지부지됩니다. 반면 OpenClaw는 채널 메시지, cron 지시문, 로컬 파일 작업을 하나의 루프 안에 묶을 수 있습니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-04-10 21:14:00 +0900 KST'>April 10, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw로 매일 트렌드 스캔을 블로그 포스트로 연결하는 방법" href="https://kwbaek.github.io/posts/2026-04-10-openclaw-daily-trend-to-blog-workflow/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw 팁: 매일 도는 크론 작업은 instruction file부터 단단해야 한다
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>OpenClaw로 매일 반복 작업을 굴리다 보면, 모델 성능보다 더 중요하게 느껴지는 것이 하나 있습니다. 바로 작업의 시작점이 얼마나 명확하게 고정되어 있느냐입니다. 특히 Discord 채널을 읽고, 내용을 선별하고, Markdown 파일을 만들고, Hugo를 빌드하고, 배포 저장소까지 업데이트하는 흐름은 단계가 많아서 작은 흔들림도 금방 전체 실패로 번집니다.
-이럴 때 가장 효과적인 패턴이 바로 instruction file 기반 크론 작업입니다. 즉 “오늘 뭘 해야 하는지”를 채팅 프롬프트 안에 흩뿌리지 말고, 별도 파일 하나에 작업 순서와 실패 규칙까지 명시해두는 방식입니다. 이 패턴의 장점은 단순합니다. 작업이 사람 기억이나 직전 대화 맥락에 덜 의존하게 되고, 매일 같은 작업을 해도 입력 조건이 일정하게 유지됩니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-03-21 21:00:00 +0900 KST'>March 21, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw 팁: 매일 도는 크론 작업은 instruction file부터 단단해야 한다" href="https://kwbaek.github.io/posts/2026-03-21-openclaw-use-instruction-files-to-stabilize-daily-cron-work/"></a>
-</article>
 <footer class="page-footer">
   <nav class="pagination">
     <a class="prev" href="https://kwbaek.github.io/tags/workflow/">
       «&nbsp;Prev&nbsp;
+    </a>
+    <a class="next" href="https://kwbaek.github.io/tags/workflow/page/3/">Next&nbsp;&nbsp;»
     </a>
   </nav>
 </footer>
