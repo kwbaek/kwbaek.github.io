@@ -1,455 +1,80 @@
-<!DOCTYPE html>
-<html lang="en" dir="auto" data-theme="auto">
-
-<head><meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="robots" content="index, follow">
-<title>OpenClaw 크론잡으로 블로그 자동 포스팅 구축하기 | Kyungwook&#39;s Devlog</title>
-<meta name="keywords" content="openclaw, automation, cron, blog, hugo, ai">
-<meta name="description" content="OpenClaw의 강력한 기능 중 하나는 크론잡(Cron Job) 시스템입니다. 저는 이 기능을 활용해 매일 밤 9시에 자동으로 블로그 포스팅을 작성하고 배포하는 시스템을 구축했습니다. 오늘은 그 과정을 공유합니다.
+<!doctype html><html lang=en dir=auto data-theme=auto><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=robots content="index, follow"><title>OpenClaw 크론잡으로 블로그 자동 포스팅 구축하기 | Kyungwook's Devlog</title><meta name=keywords content="openclaw,automation,cron,blog,hugo,ai"><meta name=description content="OpenClaw의 강력한 기능 중 하나는 크론잡(Cron Job) 시스템입니다. 저는 이 기능을 활용해 매일 밤 9시에 자동으로 블로그 포스팅을 작성하고 배포하는 시스템을 구축했습니다. 오늘은 그 과정을 공유합니다.
 🎯 목표
 
-매일 밤 9시 자동 실행: AI/ML 트렌드 &#43; OpenClaw 활용법 블로그 글 작성
+매일 밤 9시 자동 실행: AI/ML 트렌드 + OpenClaw 활용법 블로그 글 작성
 Discord 채널 연동: 1시간마다 수집된 트렌드 데이터 활용
-Hugo &#43; GitHub Pages 배포: 자동 빌드 및 배포
+Hugo + GitHub Pages 배포: 자동 빌드 및 배포
 
 📋 시스템 구성
 1. 트렌드 수집 크론잡
-먼저 1시간마다 AI/ML 트렌드를 수집하는 크론잡을 설정했습니다.">
-<meta name="author" content="">
-<link rel="canonical" href="https://kwbaek.github.io/posts/2026-02-13-openclaw-cron-blog-automation/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.da3211e5ef867bf2b75fd5a6515cfed7195c011e8ab735694e203810a827097b.css" integrity="sha256-2jIR5e&#43;Ge/K3X9WmUVz&#43;1xlcAR6KtzVpTiA4EKgnCXs=" rel="preload stylesheet" as="style">
-<link rel="icon" href="https://kwbaek.github.io/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="https://kwbaek.github.io/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="https://kwbaek.github.io/favicon-32x32.png">
-<link rel="apple-touch-icon" href="https://kwbaek.github.io/apple-touch-icon.png">
-<link rel="mask-icon" href="https://kwbaek.github.io/safari-pinned-tab.svg">
-<meta name="theme-color" content="#2e2e33">
-<meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="en" href="https://kwbaek.github.io/posts/2026-02-13-openclaw-cron-blog-automation/">
-<noscript>
-    <style>
-        #theme-toggle,
-        .top-link {
-            display: none;
-        }
-
-    </style>
-    <style>
-        @media (prefers-color-scheme: dark) {
-            :root {
-                --theme: rgb(29, 30, 32);
-                --entry: rgb(46, 46, 51);
-                --primary: rgb(218, 218, 219);
-                --secondary: rgb(155, 156, 157);
-                --tertiary: rgb(65, 66, 68);
-                --content: rgb(196, 196, 197);
-                --code-block-bg: rgb(46, 46, 51);
-                --code-bg: rgb(55, 56, 62);
-                --border: rgb(51, 51, 51);
-                color-scheme: dark;
-            }
-
-            .list {
-                background: var(--theme);
-            }
-
-            .toc {
-                background: var(--entry);
-            }
-        }
-
-        @media (prefers-color-scheme: light) {
-            .list::-webkit-scrollbar-thumb {
-                border-color: var(--code-bg);
-            }
-        }
-
-    </style>
-</noscript>
-<script>
-    if (localStorage.getItem("pref-theme") === "dark") {
-        document.querySelector("html").dataset.theme = 'dark';
-    } else if (localStorage.getItem("pref-theme") === "light") {
-       document.querySelector("html").dataset.theme = 'light';
-    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        document.querySelector("html").dataset.theme = 'dark';
-    } else {
-        document.querySelector("html").dataset.theme = 'light';
-    }
-
-</script><meta property="og:url" content="https://kwbaek.github.io/posts/2026-02-13-openclaw-cron-blog-automation/">
-  <meta property="og:site_name" content="Kyungwook&#39;s Devlog">
-  <meta property="og:title" content="OpenClaw 크론잡으로 블로그 자동 포스팅 구축하기">
-  <meta property="og:description" content="OpenClaw의 강력한 기능 중 하나는 크론잡(Cron Job) 시스템입니다. 저는 이 기능을 활용해 매일 밤 9시에 자동으로 블로그 포스팅을 작성하고 배포하는 시스템을 구축했습니다. 오늘은 그 과정을 공유합니다.
-🎯 목표 매일 밤 9시 자동 실행: AI/ML 트렌드 &#43; OpenClaw 활용법 블로그 글 작성 Discord 채널 연동: 1시간마다 수집된 트렌드 데이터 활용 Hugo &#43; GitHub Pages 배포: 자동 빌드 및 배포 📋 시스템 구성 1. 트렌드 수집 크론잡 먼저 1시간마다 AI/ML 트렌드를 수집하는 크론잡을 설정했습니다.">
-  <meta property="og:locale" content="ko-kr">
-  <meta property="og:type" content="article">
-    <meta property="article:section" content="posts">
-    <meta property="article:published_time" content="2026-02-13T21:00:00+09:00">
-    <meta property="article:modified_time" content="2026-02-13T21:00:00+09:00">
-    <meta property="article:tag" content="Openclaw">
-    <meta property="article:tag" content="Automation">
-    <meta property="article:tag" content="Cron">
-    <meta property="article:tag" content="Blog">
-    <meta property="article:tag" content="Hugo">
-    <meta property="article:tag" content="Ai">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="OpenClaw 크론잡으로 블로그 자동 포스팅 구축하기">
-<meta name="twitter:description" content="OpenClaw의 강력한 기능 중 하나는 크론잡(Cron Job) 시스템입니다. 저는 이 기능을 활용해 매일 밤 9시에 자동으로 블로그 포스팅을 작성하고 배포하는 시스템을 구축했습니다. 오늘은 그 과정을 공유합니다.
+먼저 1시간마다 AI/ML 트렌드를 수집하는 크론잡을 설정했습니다."><meta name=author content><link rel=canonical href=https://kwbaek.github.io/posts/2026-02-13-openclaw-cron-blog-automation/><link crossorigin=anonymous href=/assets/css/stylesheet.da3211e5ef867bf2b75fd5a6515cfed7195c011e8ab735694e203810a827097b.css integrity="sha256-2jIR5e+Ge/K3X9WmUVz+1xlcAR6KtzVpTiA4EKgnCXs=" rel="preload stylesheet" as=style><link rel=icon href=https://kwbaek.github.io/favicon.ico><link rel=icon type=image/png sizes=16x16 href=https://kwbaek.github.io/favicon-16x16.png><link rel=icon type=image/png sizes=32x32 href=https://kwbaek.github.io/favicon-32x32.png><link rel=apple-touch-icon href=https://kwbaek.github.io/apple-touch-icon.png><link rel=mask-icon href=https://kwbaek.github.io/safari-pinned-tab.svg><meta name=theme-color content="#2e2e33"><meta name=msapplication-TileColor content="#2e2e33"><link rel=alternate hreflang=en href=https://kwbaek.github.io/posts/2026-02-13-openclaw-cron-blog-automation/><noscript><style>#theme-toggle,.top-link{display:none}</style><style>@media(prefers-color-scheme:dark){:root{--theme:rgb(29, 30, 32);--entry:rgb(46, 46, 51);--primary:rgb(218, 218, 219);--secondary:rgb(155, 156, 157);--tertiary:rgb(65, 66, 68);--content:rgb(196, 196, 197);--code-block-bg:rgb(46, 46, 51);--code-bg:rgb(55, 56, 62);--border:rgb(51, 51, 51);color-scheme:dark}.list{background:var(--theme)}.toc{background:var(--entry)}}@media(prefers-color-scheme:light){.list::-webkit-scrollbar-thumb{border-color:var(--code-bg)}}</style></noscript><script>localStorage.getItem("pref-theme")==="dark"?document.querySelector("html").dataset.theme="dark":localStorage.getItem("pref-theme")==="light"?document.querySelector("html").dataset.theme="light":window.matchMedia("(prefers-color-scheme: dark)").matches?document.querySelector("html").dataset.theme="dark":document.querySelector("html").dataset.theme="light"</script><meta property="og:url" content="https://kwbaek.github.io/posts/2026-02-13-openclaw-cron-blog-automation/"><meta property="og:site_name" content="Kyungwook's Devlog"><meta property="og:title" content="OpenClaw 크론잡으로 블로그 자동 포스팅 구축하기"><meta property="og:description" content="OpenClaw의 강력한 기능 중 하나는 크론잡(Cron Job) 시스템입니다. 저는 이 기능을 활용해 매일 밤 9시에 자동으로 블로그 포스팅을 작성하고 배포하는 시스템을 구축했습니다. 오늘은 그 과정을 공유합니다.
+🎯 목표 매일 밤 9시 자동 실행: AI/ML 트렌드 + OpenClaw 활용법 블로그 글 작성 Discord 채널 연동: 1시간마다 수집된 트렌드 데이터 활용 Hugo + GitHub Pages 배포: 자동 빌드 및 배포 📋 시스템 구성 1. 트렌드 수집 크론잡 먼저 1시간마다 AI/ML 트렌드를 수집하는 크론잡을 설정했습니다."><meta property="og:locale" content="ko-kr"><meta property="og:type" content="article"><meta property="article:section" content="posts"><meta property="article:published_time" content="2026-02-13T21:00:00+09:00"><meta property="article:modified_time" content="2026-02-13T21:00:00+09:00"><meta property="article:tag" content="Openclaw"><meta property="article:tag" content="Automation"><meta property="article:tag" content="Cron"><meta property="article:tag" content="Blog"><meta property="article:tag" content="Hugo"><meta property="article:tag" content="Ai"><meta name=twitter:card content="summary"><meta name=twitter:title content="OpenClaw 크론잡으로 블로그 자동 포스팅 구축하기"><meta name=twitter:description content="OpenClaw의 강력한 기능 중 하나는 크론잡(Cron Job) 시스템입니다. 저는 이 기능을 활용해 매일 밤 9시에 자동으로 블로그 포스팅을 작성하고 배포하는 시스템을 구축했습니다. 오늘은 그 과정을 공유합니다.
 🎯 목표
 
-매일 밤 9시 자동 실행: AI/ML 트렌드 &#43; OpenClaw 활용법 블로그 글 작성
+매일 밤 9시 자동 실행: AI/ML 트렌드 + OpenClaw 활용법 블로그 글 작성
 Discord 채널 연동: 1시간마다 수집된 트렌드 데이터 활용
-Hugo &#43; GitHub Pages 배포: 자동 빌드 및 배포
+Hugo + GitHub Pages 배포: 자동 빌드 및 배포
 
 📋 시스템 구성
 1. 트렌드 수집 크론잡
-먼저 1시간마다 AI/ML 트렌드를 수집하는 크론잡을 설정했습니다.">
-
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position":  1 ,
-      "name": "Posts",
-      "item": "https://kwbaek.github.io/posts/"
-    }, 
-    {
-      "@type": "ListItem",
-      "position":  2 ,
-      "name": "OpenClaw 크론잡으로 블로그 자동 포스팅 구축하기",
-      "item": "https://kwbaek.github.io/posts/2026-02-13-openclaw-cron-blog-automation/"
-    }
-  ]
-}
-</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "headline": "OpenClaw 크론잡으로 블로그 자동 포스팅 구축하기",
-  "name": "OpenClaw 크론잡으로 블로그 자동 포스팅 구축하기",
-  "description": "OpenClaw의 강력한 기능 중 하나는 크론잡(Cron Job) 시스템입니다. 저는 이 기능을 활용해 매일 밤 9시에 자동으로 블로그 포스팅을 작성하고 배포하는 시스템을 구축했습니다. 오늘은 그 과정을 공유합니다.\n🎯 목표 매일 밤 9시 자동 실행: AI/ML 트렌드 + OpenClaw 활용법 블로그 글 작성 Discord 채널 연동: 1시간마다 수집된 트렌드 데이터 활용 Hugo + GitHub Pages 배포: 자동 빌드 및 배포 📋 시스템 구성 1. 트렌드 수집 크론잡 먼저 1시간마다 AI/ML 트렌드를 수집하는 크론잡을 설정했습니다.\n",
-  "keywords": [
-    "openclaw", "automation", "cron", "blog", "hugo", "ai"
-  ],
-  "articleBody": "OpenClaw의 강력한 기능 중 하나는 크론잡(Cron Job) 시스템입니다. 저는 이 기능을 활용해 매일 밤 9시에 자동으로 블로그 포스팅을 작성하고 배포하는 시스템을 구축했습니다. 오늘은 그 과정을 공유합니다.\n🎯 목표 매일 밤 9시 자동 실행: AI/ML 트렌드 + OpenClaw 활용법 블로그 글 작성 Discord 채널 연동: 1시간마다 수집된 트렌드 데이터 활용 Hugo + GitHub Pages 배포: 자동 빌드 및 배포 📋 시스템 구성 1. 트렌드 수집 크론잡 먼저 1시간마다 AI/ML 트렌드를 수집하는 크론잡을 설정했습니다.\n# Camofox 브라우저로 Google 검색 → Discord #ai-ml-trends 채널에 포스팅 # 매시 정각 실행 주요 키워드:\nAI models 2026 LLM trends Anthropic, OpenAI, Google AI news Agentic AI 2. 블로그 자동 포스팅 크론잡 매일 밤 9시에 실행되는 메인 크론잡입니다.\n크론잡 설정:\n{ \"schedule\": { \"kind\": \"cron\", \"expr\": \"0 21 * * *\", // 매일 21:00 (KST) \"tz\": \"Asia/Seoul\" }, \"payload\": { \"kind\": \"agentTurn\", \"message\": \"매일 블로그 포스팅 시간이야! ...\", \"timeoutSeconds\": 600 }, \"sessionTarget\": \"isolated\" } 🔧 구현 단계 Step 1: Discord 채널에서 트렌드 읽기 OpenClaw의 message 도구를 활용해 Discord 채널의 메시지를 읽습니다.\nmessage({ action: \"read\", channel: \"discord\", channelId: \"1470423173785845965\", // #ai-ml-trends limit: 50 }) Step 2: 트렌드 선별 및 블로그 글 작성 AI 에이전트가 자동으로:\n흥미롭고 중요한 트렌드 선별 AI/ML 트렌드 글 1개 작성 (카테고리: ai-ml) OpenClaw 활용법 글 1개 작성 (카테고리: openclaw) Hugo 블로그 형식:\n--- title: \"글 제목\" date: 2026-02-13T21:00:00+09:00 draft: false categories: - ai-ml tags: - tag1 - tag2 comments: true --- 내용... Step 3: Git 커밋 및 배포 # blog 레포지토리 cd /Users/kwbaekleo/.openclaw/workspace/blog git add content/posts/ git commit -m \"Add daily blog posts\" git push # Hugo 빌드 hugo # public/ 폴더 (kwbaek.github.io) cd public/ git add . git commit -m \"Deploy blog\" git push 💡 핵심 포인트 1. Isolated Session 사용 크론잡은 isolated session에서 실행됩니다. 이렇게 하면:\n메인 세션 히스토리와 분리 독립적인 컨텍스트에서 작업 수행 크론잡 전용 모델 설정 가능 (Sonnet 4.5로 비용 절약) 2. 타임아웃 설정 블로그 작성은 시간이 걸리므로 timeoutSeconds: 600 (10분)으로 설정했습니다.\n3. Delivery 설정 결과를 Discord #work 채널에 자동으로 알림:\n\"delivery\": { \"mode\": \"announce\", \"channel\": \"discord\", \"to\": \"1470585978874757191\" // #work } 📊 실제 운영 결과 장점:\n✅ 완전 자동화: 손 하나 안 대고 매일 블로그 업데이트 ✅ 최신 트렌드 반영: 1시간마다 수집된 데이터 활용 ✅ 비용 효율적: Sonnet 4.5 사용으로 크론잡 비용 절감 ✅ 안정적: 격리된 세션에서 실행되어 메인 작업에 영향 없음 개선 사항:\n⚠️ Brave Search API 무료 플랜 제한 (월 2000건) → Camofox로 대체 ⚠️ 가끔 Camofox 서버 연결 실패 → 자동 재시작 로직 추가 (HEARTBEAT.md) 🔮 향후 계획 SEO 최적화: 자동 메타 태그, OG 이미지 생성 다양한 콘텐츠: 주간 요약, 월간 리포트 추가 소셜 미디어 자동 포스팅: Twitter, LinkedIn 동시 발행 Analytics 연동: 조회수 기반 인기 주제 분석 마무리 OpenClaw의 크론잡은 단순한 스케줄러를 넘어 AI 에이전트가 자율적으로 작업을 수행하는 강력한 도구입니다. 블로그 자동화는 시작에 불과하고, 이메일 요약, 리포트 작성, 데이터 분석 등 다양한 자동화 작업에 활용할 수 있습니다.\nOpenClaw를 사용하시는 분들께 이 글이 도움이 되길 바랍니다!\n참고 자료:\nOpenClaw 공식 문서 OpenClaw Cron 도구 가이드 GitHub: kwbaek.github.io ",
-  "wordCount" : "481",
-  "inLanguage": "en",
-  "datePublished": "2026-02-13T21:00:00+09:00",
-  "dateModified": "2026-02-13T21:00:00+09:00",
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://kwbaek.github.io/posts/2026-02-13-openclaw-cron-blog-automation/"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "Kyungwook's Devlog",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://kwbaek.github.io/favicon.ico"
-    }
-  }
-}
-</script>
-</head>
-<body id="top">
-    <header class="header">
-    <nav class="nav">
-        <div class="logo">
-            <a href="https://kwbaek.github.io/" accesskey="h" title="Kyungwook&#39;s Devlog (Alt + H)">Kyungwook&#39;s Devlog</a>
-            <div class="logo-switches">
-                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
-                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-                    </svg>
-                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <circle cx="12" cy="12" r="5"></circle>
-                        <line x1="12" y1="1" x2="12" y2="3"></line>
-                        <line x1="12" y1="21" x2="12" y2="23"></line>
-                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                        <line x1="1" y1="12" x2="3" y2="12"></line>
-                        <line x1="21" y1="12" x2="23" y2="12"></line>
-                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-                    </svg>
-                </button>
-            </div>
-        </div>
-        <ul id="menu">
-            <li>
-                <a href="https://kwbaek.github.io/categories/" title="categories">
-                    <span>categories</span>
-                </a>
-            </li>
-            <li>
-                <a href="https://kwbaek.github.io/tags/" title="tags">
-                    <span>tags</span>
-                </a>
-            </li>
-            <li>
-                <a href="https://kwbaek.github.io/" title="Kyungwook&#39;s Devlog">
-                    <span>Kyungwook&#39;s Devlog</span>&nbsp;
-                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
-                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
-                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
-                        <path d="M15 3h6v6"></path>
-                        <path d="M10 14L21 3"></path>
-                    </svg>
-                </a>
-            </li>
-        </ul>
-    </nav>
-</header>
-<main class="main">
-
-<article class="post-single">
-  <header class="post-header">
-    
-    <h1 class="post-title entry-hint-parent">
-      OpenClaw 크론잡으로 블로그 자동 포스팅 구축하기
-    </h1>
-    <div class="post-meta"><span title='2026-02-13 21:00:00 +0900 KST'>February 13, 2026</span>
-
-</div>
-  </header> 
-  <div class="post-content"><p>OpenClaw의 강력한 기능 중 하나는 <strong>크론잡(Cron Job)</strong> 시스템입니다. 저는 이 기능을 활용해 매일 밤 9시에 자동으로 블로그 포스팅을 작성하고 배포하는 시스템을 구축했습니다. 오늘은 그 과정을 공유합니다.</p>
-<h2 id="-목표">🎯 목표<a hidden class="anchor" aria-hidden="true" href="#-목표">#</a></h2>
-<ul>
-<li><strong>매일 밤 9시 자동 실행</strong>: AI/ML 트렌드 + OpenClaw 활용법 블로그 글 작성</li>
-<li><strong>Discord 채널 연동</strong>: 1시간마다 수집된 트렌드 데이터 활용</li>
-<li><strong>Hugo + GitHub Pages 배포</strong>: 자동 빌드 및 배포</li>
-</ul>
-<h2 id="-시스템-구성">📋 시스템 구성<a hidden class="anchor" aria-hidden="true" href="#-시스템-구성">#</a></h2>
-<h3 id="1-트렌드-수집-크론잡">1. 트렌드 수집 크론잡<a hidden class="anchor" aria-hidden="true" href="#1-트렌드-수집-크론잡">#</a></h3>
-<p>먼저 1시간마다 AI/ML 트렌드를 수집하는 크론잡을 설정했습니다.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># Camofox 브라우저로 Google 검색 → Discord #ai-ml-trends 채널에 포스팅</span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># 매시 정각 실행</span>
-</span></span></code></pre></div><p>주요 키워드:</p>
-<ul>
-<li>AI models 2026</li>
-<li>LLM trends</li>
-<li>Anthropic, OpenAI, Google AI news</li>
-<li>Agentic AI</li>
-</ul>
-<h3 id="2-블로그-자동-포스팅-크론잡">2. 블로그 자동 포스팅 크론잡<a hidden class="anchor" aria-hidden="true" href="#2-블로그-자동-포스팅-크론잡">#</a></h3>
-<p>매일 밤 9시에 실행되는 메인 크론잡입니다.</p>
-<p><strong>크론잡 설정:</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;schedule&#34;</span><span style="color:#f92672">:</span> {
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;kind&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;cron&#34;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;expr&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;0 21 * * *&#34;</span>,  <span style="color:#75715e">// 매일 21:00 (KST)
-</span></span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;tz&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Asia/Seoul&#34;</span>
-</span></span><span style="display:flex;"><span>  },
-</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;payload&#34;</span><span style="color:#f92672">:</span> {
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;kind&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;agentTurn&#34;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;message&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;매일 블로그 포스팅 시간이야! ...&#34;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;timeoutSeconds&#34;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">600</span>
-</span></span><span style="display:flex;"><span>  },
-</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;sessionTarget&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;isolated&#34;</span>
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><h2 id="-구현-단계">🔧 구현 단계<a hidden class="anchor" aria-hidden="true" href="#-구현-단계">#</a></h2>
-<h3 id="step-1-discord-채널에서-트렌드-읽기">Step 1: Discord 채널에서 트렌드 읽기<a hidden class="anchor" aria-hidden="true" href="#step-1-discord-채널에서-트렌드-읽기">#</a></h3>
-<p>OpenClaw의 <code>message</code> 도구를 활용해 Discord 채널의 메시지를 읽습니다.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a6e22e">message</span>({
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">action</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;read&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">channel</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;discord&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">channelId</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;1470423173785845965&#34;</span>,  <span style="color:#75715e">// #ai-ml-trends
-</span></span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">limit</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">50</span>
-</span></span><span style="display:flex;"><span>})
-</span></span></code></pre></div><h3 id="step-2-트렌드-선별-및-블로그-글-작성">Step 2: 트렌드 선별 및 블로그 글 작성<a hidden class="anchor" aria-hidden="true" href="#step-2-트렌드-선별-및-블로그-글-작성">#</a></h3>
-<p>AI 에이전트가 자동으로:</p>
-<ol>
-<li>흥미롭고 중요한 트렌드 선별</li>
-<li>AI/ML 트렌드 글 1개 작성 (카테고리: ai-ml)</li>
-<li>OpenClaw 활용법 글 1개 작성 (카테고리: openclaw)</li>
-</ol>
-<p><strong>Hugo 블로그 형식:</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span>---
-</span></span><span style="display:flex;"><span>title: &#34;글 제목&#34;
-</span></span><span style="display:flex;"><span>date: 2026-02-13T21:00:00+09:00
-</span></span><span style="display:flex;"><span>draft: false
-</span></span><span style="display:flex;"><span>categories:
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">-</span> ai-ml
-</span></span><span style="display:flex;"><span>tags:
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">-</span> tag1
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">-</span> tag2
-</span></span><span style="display:flex;"><span>comments: true
-</span></span><span style="display:flex;"><span>---
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>내용...
-</span></span></code></pre></div><h3 id="step-3-git-커밋-및-배포">Step 3: Git 커밋 및 배포<a hidden class="anchor" aria-hidden="true" href="#step-3-git-커밋-및-배포">#</a></h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># blog 레포지토리</span>
-</span></span><span style="display:flex;"><span>cd /Users/kwbaekleo/.openclaw/workspace/blog
-</span></span><span style="display:flex;"><span>git add content/posts/
-</span></span><span style="display:flex;"><span>git commit -m <span style="color:#e6db74">&#34;Add daily blog posts&#34;</span>
-</span></span><span style="display:flex;"><span>git push
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># Hugo 빌드</span>
-</span></span><span style="display:flex;"><span>hugo
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># public/ 폴더 (kwbaek.github.io)</span>
-</span></span><span style="display:flex;"><span>cd public/
-</span></span><span style="display:flex;"><span>git add .
-</span></span><span style="display:flex;"><span>git commit -m <span style="color:#e6db74">&#34;Deploy blog&#34;</span>
-</span></span><span style="display:flex;"><span>git push
-</span></span></code></pre></div><h2 id="-핵심-포인트">💡 핵심 포인트<a hidden class="anchor" aria-hidden="true" href="#-핵심-포인트">#</a></h2>
-<h3 id="1-isolated-session-사용">1. Isolated Session 사용<a hidden class="anchor" aria-hidden="true" href="#1-isolated-session-사용">#</a></h3>
-<p>크론잡은 <strong>isolated session</strong>에서 실행됩니다. 이렇게 하면:</p>
-<ul>
-<li>메인 세션 히스토리와 분리</li>
-<li>독립적인 컨텍스트에서 작업 수행</li>
-<li>크론잡 전용 모델 설정 가능 (Sonnet 4.5로 비용 절약)</li>
-</ul>
-<h3 id="2-타임아웃-설정">2. 타임아웃 설정<a hidden class="anchor" aria-hidden="true" href="#2-타임아웃-설정">#</a></h3>
-<p>블로그 작성은 시간이 걸리므로 <code>timeoutSeconds: 600</code> (10분)으로 설정했습니다.</p>
-<h3 id="3-delivery-설정">3. Delivery 설정<a hidden class="anchor" aria-hidden="true" href="#3-delivery-설정">#</a></h3>
-<p>결과를 Discord #work 채널에 자동으로 알림:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#e6db74">&#34;delivery&#34;</span><span style="color:#f92672">:</span> {
-</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;mode&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;announce&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;channel&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;discord&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;to&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;1470585978874757191&#34;</span>  <span style="color:#75715e">// #work
-</span></span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><h2 id="-실제-운영-결과">📊 실제 운영 결과<a hidden class="anchor" aria-hidden="true" href="#-실제-운영-결과">#</a></h2>
-<p><strong>장점:</strong></p>
-<ul>
-<li>✅ 완전 자동화: 손 하나 안 대고 매일 블로그 업데이트</li>
-<li>✅ 최신 트렌드 반영: 1시간마다 수집된 데이터 활용</li>
-<li>✅ 비용 효율적: Sonnet 4.5 사용으로 크론잡 비용 절감</li>
-<li>✅ 안정적: 격리된 세션에서 실행되어 메인 작업에 영향 없음</li>
-</ul>
-<p><strong>개선 사항:</strong></p>
-<ul>
-<li>⚠️ Brave Search API 무료 플랜 제한 (월 2000건) → Camofox로 대체</li>
-<li>⚠️ 가끔 Camofox 서버 연결 실패 → 자동 재시작 로직 추가 (HEARTBEAT.md)</li>
-</ul>
-<h2 id="-향후-계획">🔮 향후 계획<a hidden class="anchor" aria-hidden="true" href="#-향후-계획">#</a></h2>
-<ol>
-<li><strong>SEO 최적화</strong>: 자동 메타 태그, OG 이미지 생성</li>
-<li><strong>다양한 콘텐츠</strong>: 주간 요약, 월간 리포트 추가</li>
-<li><strong>소셜 미디어 자동 포스팅</strong>: Twitter, LinkedIn 동시 발행</li>
-<li><strong>Analytics 연동</strong>: 조회수 기반 인기 주제 분석</li>
-</ol>
-<h2 id="마무리">마무리<a hidden class="anchor" aria-hidden="true" href="#마무리">#</a></h2>
-<p>OpenClaw의 크론잡은 단순한 스케줄러를 넘어 <strong>AI 에이전트가 자율적으로 작업을 수행하는 강력한 도구</strong>입니다. 블로그 자동화는 시작에 불과하고, 이메일 요약, 리포트 작성, 데이터 분석 등 다양한 자동화 작업에 활용할 수 있습니다.</p>
-<p>OpenClaw를 사용하시는 분들께 이 글이 도움이 되길 바랍니다!</p>
-<hr>
-<p><strong>참고 자료:</strong></p>
-<ul>
-<li><a href="https://docs.openclaw.ai">OpenClaw 공식 문서</a></li>
-<li><a href="https://docs.openclaw.ai/tools/cron">OpenClaw Cron 도구 가이드</a></li>
-<li><a href="https://github.com/kwbaek/kwbaek.github.io">GitHub: kwbaek.github.io</a></li>
-</ul>
-
-
-  </div>
-
-  <footer class="post-footer">
-    <ul class="post-tags">
-      <li><a href="https://kwbaek.github.io/tags/openclaw/">Openclaw</a></li>
-      <li><a href="https://kwbaek.github.io/tags/automation/">Automation</a></li>
-      <li><a href="https://kwbaek.github.io/tags/cron/">Cron</a></li>
-      <li><a href="https://kwbaek.github.io/tags/blog/">Blog</a></li>
-      <li><a href="https://kwbaek.github.io/tags/hugo/">Hugo</a></li>
-      <li><a href="https://kwbaek.github.io/tags/ai/">Ai</a></li>
-    </ul>
-  </footer><script src="https://utteranc.es/client.js"
-        repo="kwbaek/blog-comments"
-        issue-term="pathname"
-        theme="github-light"
-        crossorigin="anonymous"
-        async>
-</script>
-
-</article>
-    </main>
-    
-<footer class="footer">
-        <span>&copy; 2026 <a href="https://kwbaek.github.io/">Kyungwook&#39;s Devlog</a></span> · 
-
-    <span>
-        Powered by
-        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
-        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
-    </span>
-</footer>
-<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
-        <path d="M12 6H0l6-6z" />
-    </svg>
-</a>
-
-<script>
-    let menu = document.getElementById('menu');
-    if (menu) {
-        
-        const scrollPosition = localStorage.getItem("menu-scroll-position");
-        if (scrollPosition) {
-            menu.scrollLeft = parseInt(scrollPosition, 10);
-        }
-        
-        menu.onscroll = function () {
-            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
-        }
-    }
-
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener("click", function (e) {
-            e.preventDefault();
-            var id = this.getAttribute("href").substr(1);
-            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
-                    behavior: "smooth"
-                });
-            } else {
-                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
-            }
-            if (id === "top") {
-                history.replaceState(null, null, " ");
-            } else {
-                history.pushState(null, null, `#${id}`);
-            }
-        });
-    });
-
-</script>
-<script>
-    var mybutton = document.getElementById("top-link");
-    window.onscroll = function () {
-        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
-            mybutton.style.visibility = "visible";
-            mybutton.style.opacity = "1";
-        } else {
-            mybutton.style.visibility = "hidden";
-            mybutton.style.opacity = "0";
-        }
-    };
-
-</script>
-<script>
-    document.getElementById("theme-toggle").addEventListener("click", () => {
-        const html = document.querySelector("html");
-        if (html.dataset.theme === "dark") {
-            html.dataset.theme = 'light';
-            localStorage.setItem("pref-theme", 'light');
-        } else {
-            html.dataset.theme = 'dark';
-            localStorage.setItem("pref-theme", 'dark');
-        }
-    })
-
-</script>
-</body>
-
-</html>
+먼저 1시간마다 AI/ML 트렌드를 수집하는 크론잡을 설정했습니다."><script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Posts","item":"https://kwbaek.github.io/posts/"},{"@type":"ListItem","position":2,"name":"OpenClaw 크론잡으로 블로그 자동 포스팅 구축하기","item":"https://kwbaek.github.io/posts/2026-02-13-openclaw-cron-blog-automation/"}]}</script><script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"OpenClaw 크론잡으로 블로그 자동 포스팅 구축하기","name":"OpenClaw 크론잡으로 블로그 자동 포스팅 구축하기","description":"OpenClaw의 강력한 기능 중 하나는 크론잡(Cron Job) 시스템입니다. 저는 이 기능을 활용해 매일 밤 9시에 자동으로 블로그 포스팅을 작성하고 배포하는 시스템을 구축했습니다. 오늘은 그 과정을 공유합니다.\n🎯 목표 매일 밤 9시 자동 실행: AI/ML 트렌드 + OpenClaw 활용법 블로그 글 작성 Discord 채널 연동: 1시간마다 수집된 트렌드 데이터 활용 Hugo + GitHub Pages 배포: 자동 빌드 및 배포 📋 시스템 구성 1. 트렌드 수집 크론잡 먼저 1시간마다 AI/ML 트렌드를 수집하는 크론잡을 설정했습니다.\n","keywords":["openclaw","automation","cron","blog","hugo","ai"],"articleBody":"OpenClaw의 강력한 기능 중 하나는 크론잡(Cron Job) 시스템입니다. 저는 이 기능을 활용해 매일 밤 9시에 자동으로 블로그 포스팅을 작성하고 배포하는 시스템을 구축했습니다. 오늘은 그 과정을 공유합니다.\n🎯 목표 매일 밤 9시 자동 실행: AI/ML 트렌드 + OpenClaw 활용법 블로그 글 작성 Discord 채널 연동: 1시간마다 수집된 트렌드 데이터 활용 Hugo + GitHub Pages 배포: 자동 빌드 및 배포 📋 시스템 구성 1. 트렌드 수집 크론잡 먼저 1시간마다 AI/ML 트렌드를 수집하는 크론잡을 설정했습니다.\n# Camofox 브라우저로 Google 검색 → Discord #ai-ml-trends 채널에 포스팅 # 매시 정각 실행 주요 키워드:\nAI models 2026 LLM trends Anthropic, OpenAI, Google AI news Agentic AI 2. 블로그 자동 포스팅 크론잡 매일 밤 9시에 실행되는 메인 크론잡입니다.\n크론잡 설정:\n{ \"schedule\": { \"kind\": \"cron\", \"expr\": \"0 21 * * *\", // 매일 21:00 (KST) \"tz\": \"Asia/Seoul\" }, \"payload\": { \"kind\": \"agentTurn\", \"message\": \"매일 블로그 포스팅 시간이야! ...\", \"timeoutSeconds\": 600 }, \"sessionTarget\": \"isolated\" } 🔧 구현 단계 Step 1: Discord 채널에서 트렌드 읽기 OpenClaw의 message 도구를 활용해 Discord 채널의 메시지를 읽습니다.\nmessage({ action: \"read\", channel: \"discord\", channelId: \"1470423173785845965\", // #ai-ml-trends limit: 50 }) Step 2: 트렌드 선별 및 블로그 글 작성 AI 에이전트가 자동으로:\n흥미롭고 중요한 트렌드 선별 AI/ML 트렌드 글 1개 작성 (카테고리: ai-ml) OpenClaw 활용법 글 1개 작성 (카테고리: openclaw) Hugo 블로그 형식:\n--- title: \"글 제목\" date: 2026-02-13T21:00:00+09:00 draft: false categories: - ai-ml tags: - tag1 - tag2 comments: true --- 내용... Step 3: Git 커밋 및 배포 # blog 레포지토리 cd /Users/kwbaekleo/.openclaw/workspace/blog git add content/posts/ git commit -m \"Add daily blog posts\" git push # Hugo 빌드 hugo # public/ 폴더 (kwbaek.github.io) cd public/ git add . git commit -m \"Deploy blog\" git push 💡 핵심 포인트 1. Isolated Session 사용 크론잡은 isolated session에서 실행됩니다. 이렇게 하면:\n메인 세션 히스토리와 분리 독립적인 컨텍스트에서 작업 수행 크론잡 전용 모델 설정 가능 (Sonnet 4.5로 비용 절약) 2. 타임아웃 설정 블로그 작성은 시간이 걸리므로 timeoutSeconds: 600 (10분)으로 설정했습니다.\n3. Delivery 설정 결과를 Discord #work 채널에 자동으로 알림:\n\"delivery\": { \"mode\": \"announce\", \"channel\": \"discord\", \"to\": \"1470585978874757191\" // #work } 📊 실제 운영 결과 장점:\n✅ 완전 자동화: 손 하나 안 대고 매일 블로그 업데이트 ✅ 최신 트렌드 반영: 1시간마다 수집된 데이터 활용 ✅ 비용 효율적: Sonnet 4.5 사용으로 크론잡 비용 절감 ✅ 안정적: 격리된 세션에서 실행되어 메인 작업에 영향 없음 개선 사항:\n⚠️ Brave Search API 무료 플랜 제한 (월 2000건) → Camofox로 대체 ⚠️ 가끔 Camofox 서버 연결 실패 → 자동 재시작 로직 추가 (HEARTBEAT.md) 🔮 향후 계획 SEO 최적화: 자동 메타 태그, OG 이미지 생성 다양한 콘텐츠: 주간 요약, 월간 리포트 추가 소셜 미디어 자동 포스팅: Twitter, LinkedIn 동시 발행 Analytics 연동: 조회수 기반 인기 주제 분석 마무리 OpenClaw의 크론잡은 단순한 스케줄러를 넘어 AI 에이전트가 자율적으로 작업을 수행하는 강력한 도구입니다. 블로그 자동화는 시작에 불과하고, 이메일 요약, 리포트 작성, 데이터 분석 등 다양한 자동화 작업에 활용할 수 있습니다.\nOpenClaw를 사용하시는 분들께 이 글이 도움이 되길 바랍니다!\n참고 자료:\nOpenClaw 공식 문서 OpenClaw Cron 도구 가이드 GitHub: kwbaek.github.io ","wordCount":"481","inLanguage":"en","datePublished":"2026-02-13T21:00:00+09:00","dateModified":"2026-02-13T21:00:00+09:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://kwbaek.github.io/posts/2026-02-13-openclaw-cron-blog-automation/"},"publisher":{"@type":"Organization","name":"Kyungwook's Devlog","logo":{"@type":"ImageObject","url":"https://kwbaek.github.io/favicon.ico"}}}</script></head><body id=top><header class=header><nav class=nav><div class=logo><a href=https://kwbaek.github.io/ accesskey=h title="Kyungwook's Devlog (Alt + H)">Kyungwook's Devlog</a><div class=logo-switches><button id=theme-toggle accesskey=t title="(Alt + T)" aria-label="Toggle theme">
+<svg id="moon" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+<svg id="sun" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button></div></div><ul id=menu><li><a href=https://kwbaek.github.io/categories/ title=categories><span>categories</span></a></li><li><a href=https://kwbaek.github.io/tags/ title=tags><span>tags</span></a></li><li><a href=https://kwbaek.github.io/ title="Kyungwook's Devlog"><span>Kyungwook's Devlog</span>&nbsp;
+<svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><path d="M15 3h6v6"/><path d="M10 14 21 3"/></svg></a></li></ul></nav></header><main class=main><article class=post-single><header class=post-header><h1 class="post-title entry-hint-parent">OpenClaw 크론잡으로 블로그 자동 포스팅 구축하기</h1><div class=post-meta><span title='2026-02-13 21:00:00 +0900 KST'>February 13, 2026</span></div></header><div class=post-content><p>OpenClaw의 강력한 기능 중 하나는 <strong>크론잡(Cron Job)</strong> 시스템입니다. 저는 이 기능을 활용해 매일 밤 9시에 자동으로 블로그 포스팅을 작성하고 배포하는 시스템을 구축했습니다. 오늘은 그 과정을 공유합니다.</p><h2 id=-목표>🎯 목표<a hidden class=anchor aria-hidden=true href=#-목표>#</a></h2><ul><li><strong>매일 밤 9시 자동 실행</strong>: AI/ML 트렌드 + OpenClaw 활용법 블로그 글 작성</li><li><strong>Discord 채널 연동</strong>: 1시간마다 수집된 트렌드 데이터 활용</li><li><strong>Hugo + GitHub Pages 배포</strong>: 자동 빌드 및 배포</li></ul><h2 id=-시스템-구성>📋 시스템 구성<a hidden class=anchor aria-hidden=true href=#-시스템-구성>#</a></h2><h3 id=1-트렌드-수집-크론잡>1. 트렌드 수집 크론잡<a hidden class=anchor aria-hidden=true href=#1-트렌드-수집-크론잡>#</a></h3><p>먼저 1시간마다 AI/ML 트렌드를 수집하는 크론잡을 설정했습니다.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e># Camofox 브라우저로 Google 검색 → Discord #ai-ml-trends 채널에 포스팅</span>
+</span></span><span style=display:flex><span><span style=color:#75715e># 매시 정각 실행</span>
+</span></span></code></pre></div><p>주요 키워드:</p><ul><li>AI models 2026</li><li>LLM trends</li><li>Anthropic, OpenAI, Google AI news</li><li>Agentic AI</li></ul><h3 id=2-블로그-자동-포스팅-크론잡>2. 블로그 자동 포스팅 크론잡<a hidden class=anchor aria-hidden=true href=#2-블로그-자동-포스팅-크론잡>#</a></h3><p>매일 밤 9시에 실행되는 메인 크론잡입니다.</p><p><strong>크론잡 설정:</strong></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-javascript data-lang=javascript><span style=display:flex><span>{
+</span></span><span style=display:flex><span>  <span style=color:#e6db74>&#34;schedule&#34;</span><span style=color:#f92672>:</span> {
+</span></span><span style=display:flex><span>    <span style=color:#e6db74>&#34;kind&#34;</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#34;cron&#34;</span>,
+</span></span><span style=display:flex><span>    <span style=color:#e6db74>&#34;expr&#34;</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#34;0 21 * * *&#34;</span>,  <span style=color:#75715e>// 매일 21:00 (KST)
+</span></span></span><span style=display:flex><span>    <span style=color:#e6db74>&#34;tz&#34;</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#34;Asia/Seoul&#34;</span>
+</span></span><span style=display:flex><span>  },
+</span></span><span style=display:flex><span>  <span style=color:#e6db74>&#34;payload&#34;</span><span style=color:#f92672>:</span> {
+</span></span><span style=display:flex><span>    <span style=color:#e6db74>&#34;kind&#34;</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#34;agentTurn&#34;</span>,
+</span></span><span style=display:flex><span>    <span style=color:#e6db74>&#34;message&#34;</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#34;매일 블로그 포스팅 시간이야! ...&#34;</span>,
+</span></span><span style=display:flex><span>    <span style=color:#e6db74>&#34;timeoutSeconds&#34;</span><span style=color:#f92672>:</span> <span style=color:#ae81ff>600</span>
+</span></span><span style=display:flex><span>  },
+</span></span><span style=display:flex><span>  <span style=color:#e6db74>&#34;sessionTarget&#34;</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#34;isolated&#34;</span>
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><h2 id=-구현-단계>🔧 구현 단계<a hidden class=anchor aria-hidden=true href=#-구현-단계>#</a></h2><h3 id=step-1-discord-채널에서-트렌드-읽기>Step 1: Discord 채널에서 트렌드 읽기<a hidden class=anchor aria-hidden=true href=#step-1-discord-채널에서-트렌드-읽기>#</a></h3><p>OpenClaw의 <code>message</code> 도구를 활용해 Discord 채널의 메시지를 읽습니다.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-javascript data-lang=javascript><span style=display:flex><span><span style=color:#a6e22e>message</span>({
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>action</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#34;read&#34;</span>,
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>channel</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#34;discord&#34;</span>,
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>channelId</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#34;1470423173785845965&#34;</span>,  <span style=color:#75715e>// #ai-ml-trends
+</span></span></span><span style=display:flex><span>  <span style=color:#a6e22e>limit</span><span style=color:#f92672>:</span> <span style=color:#ae81ff>50</span>
+</span></span><span style=display:flex><span>})
+</span></span></code></pre></div><h3 id=step-2-트렌드-선별-및-블로그-글-작성>Step 2: 트렌드 선별 및 블로그 글 작성<a hidden class=anchor aria-hidden=true href=#step-2-트렌드-선별-및-블로그-글-작성>#</a></h3><p>AI 에이전트가 자동으로:</p><ol><li>흥미롭고 중요한 트렌드 선별</li><li>AI/ML 트렌드 글 1개 작성 (카테고리: ai-ml)</li><li>OpenClaw 활용법 글 1개 작성 (카테고리: openclaw)</li></ol><p><strong>Hugo 블로그 형식:</strong></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-markdown data-lang=markdown><span style=display:flex><span>---
+</span></span><span style=display:flex><span>title: &#34;글 제목&#34;
+</span></span><span style=display:flex><span>date: 2026-02-13T21:00:00+09:00
+</span></span><span style=display:flex><span>draft: false
+</span></span><span style=display:flex><span>categories:
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>-</span> ai-ml
+</span></span><span style=display:flex><span>tags:
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>-</span> tag1
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>-</span> tag2
+</span></span><span style=display:flex><span>comments: true
+</span></span><span style=display:flex><span>---
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>내용...
+</span></span></code></pre></div><h3 id=step-3-git-커밋-및-배포>Step 3: Git 커밋 및 배포<a hidden class=anchor aria-hidden=true href=#step-3-git-커밋-및-배포>#</a></h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e># blog 레포지토리</span>
+</span></span><span style=display:flex><span>cd /Users/kwbaekleo/.openclaw/workspace/blog
+</span></span><span style=display:flex><span>git add content/posts/
+</span></span><span style=display:flex><span>git commit -m <span style=color:#e6db74>&#34;Add daily blog posts&#34;</span>
+</span></span><span style=display:flex><span>git push
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Hugo 빌드</span>
+</span></span><span style=display:flex><span>hugo
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># public/ 폴더 (kwbaek.github.io)</span>
+</span></span><span style=display:flex><span>cd public/
+</span></span><span style=display:flex><span>git add .
+</span></span><span style=display:flex><span>git commit -m <span style=color:#e6db74>&#34;Deploy blog&#34;</span>
+</span></span><span style=display:flex><span>git push
+</span></span></code></pre></div><h2 id=-핵심-포인트>💡 핵심 포인트<a hidden class=anchor aria-hidden=true href=#-핵심-포인트>#</a></h2><h3 id=1-isolated-session-사용>1. Isolated Session 사용<a hidden class=anchor aria-hidden=true href=#1-isolated-session-사용>#</a></h3><p>크론잡은 <strong>isolated session</strong>에서 실행됩니다. 이렇게 하면:</p><ul><li>메인 세션 히스토리와 분리</li><li>독립적인 컨텍스트에서 작업 수행</li><li>크론잡 전용 모델 설정 가능 (Sonnet 4.5로 비용 절약)</li></ul><h3 id=2-타임아웃-설정>2. 타임아웃 설정<a hidden class=anchor aria-hidden=true href=#2-타임아웃-설정>#</a></h3><p>블로그 작성은 시간이 걸리므로 <code>timeoutSeconds: 600</code> (10분)으로 설정했습니다.</p><h3 id=3-delivery-설정>3. Delivery 설정<a hidden class=anchor aria-hidden=true href=#3-delivery-설정>#</a></h3><p>결과를 Discord #work 채널에 자동으로 알림:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-javascript data-lang=javascript><span style=display:flex><span><span style=color:#e6db74>&#34;delivery&#34;</span><span style=color:#f92672>:</span> {
+</span></span><span style=display:flex><span>  <span style=color:#e6db74>&#34;mode&#34;</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#34;announce&#34;</span>,
+</span></span><span style=display:flex><span>  <span style=color:#e6db74>&#34;channel&#34;</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#34;discord&#34;</span>,
+</span></span><span style=display:flex><span>  <span style=color:#e6db74>&#34;to&#34;</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#34;1470585978874757191&#34;</span>  <span style=color:#75715e>// #work
+</span></span></span><span style=display:flex><span>}
+</span></span></code></pre></div><h2 id=-실제-운영-결과>📊 실제 운영 결과<a hidden class=anchor aria-hidden=true href=#-실제-운영-결과>#</a></h2><p><strong>장점:</strong></p><ul><li>✅ 완전 자동화: 손 하나 안 대고 매일 블로그 업데이트</li><li>✅ 최신 트렌드 반영: 1시간마다 수집된 데이터 활용</li><li>✅ 비용 효율적: Sonnet 4.5 사용으로 크론잡 비용 절감</li><li>✅ 안정적: 격리된 세션에서 실행되어 메인 작업에 영향 없음</li></ul><p><strong>개선 사항:</strong></p><ul><li>⚠️ Brave Search API 무료 플랜 제한 (월 2000건) → Camofox로 대체</li><li>⚠️ 가끔 Camofox 서버 연결 실패 → 자동 재시작 로직 추가 (HEARTBEAT.md)</li></ul><h2 id=-향후-계획>🔮 향후 계획<a hidden class=anchor aria-hidden=true href=#-향후-계획>#</a></h2><ol><li><strong>SEO 최적화</strong>: 자동 메타 태그, OG 이미지 생성</li><li><strong>다양한 콘텐츠</strong>: 주간 요약, 월간 리포트 추가</li><li><strong>소셜 미디어 자동 포스팅</strong>: Twitter, LinkedIn 동시 발행</li><li><strong>Analytics 연동</strong>: 조회수 기반 인기 주제 분석</li></ol><h2 id=마무리>마무리<a hidden class=anchor aria-hidden=true href=#마무리>#</a></h2><p>OpenClaw의 크론잡은 단순한 스케줄러를 넘어 <strong>AI 에이전트가 자율적으로 작업을 수행하는 강력한 도구</strong>입니다. 블로그 자동화는 시작에 불과하고, 이메일 요약, 리포트 작성, 데이터 분석 등 다양한 자동화 작업에 활용할 수 있습니다.</p><p>OpenClaw를 사용하시는 분들께 이 글이 도움이 되길 바랍니다!</p><hr><p><strong>참고 자료:</strong></p><ul><li><a href=https://docs.openclaw.ai>OpenClaw 공식 문서</a></li><li><a href=https://docs.openclaw.ai/tools/cron>OpenClaw Cron 도구 가이드</a></li><li><a href=https://github.com/kwbaek/kwbaek.github.io>GitHub: kwbaek.github.io</a></li></ul></div><footer class=post-footer><ul class=post-tags><li><a href=https://kwbaek.github.io/tags/openclaw/>Openclaw</a></li><li><a href=https://kwbaek.github.io/tags/automation/>Automation</a></li><li><a href=https://kwbaek.github.io/tags/cron/>Cron</a></li><li><a href=https://kwbaek.github.io/tags/blog/>Blog</a></li><li><a href=https://kwbaek.github.io/tags/hugo/>Hugo</a></li><li><a href=https://kwbaek.github.io/tags/ai/>Ai</a></li></ul></footer><script src=https://utteranc.es/client.js repo=kwbaek/blog-comments issue-term=pathname theme=github-light crossorigin=anonymous async></script></article></main><footer class=footer><span>&copy; 2026 <a href=https://kwbaek.github.io/>Kyungwook's Devlog</a></span> ·
+<span>Powered by
+<a href=https://gohugo.io/ rel="noopener noreferrer" target=_blank>Hugo</a> &
+<a href=https://github.com/adityatelange/hugo-PaperMod/ rel=noopener target=_blank>PaperMod</a></span></footer><a href=#top aria-label="go to top" title="Go to Top (Alt + G)" class=top-link id=top-link accesskey=g><svg viewBox="0 0 12 6" fill="currentColor"><path d="M12 6H0l6-6z"/></svg>
+</a><script>let menu=document.getElementById("menu");if(menu){const e=localStorage.getItem("menu-scroll-position");e&&(menu.scrollLeft=parseInt(e,10)),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)}}document.querySelectorAll('a[href^="#"]').forEach(e=>{e.addEventListener("click",function(e){e.preventDefault();var t=this.getAttribute("href").substr(1);window.matchMedia("(prefers-reduced-motion: reduce)").matches?document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView({behavior:"smooth"}),t==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${t}`)})})</script><script>var mybutton=document.getElementById("top-link");window.onscroll=function(){document.body.scrollTop>800||document.documentElement.scrollTop>800?(mybutton.style.visibility="visible",mybutton.style.opacity="1"):(mybutton.style.visibility="hidden",mybutton.style.opacity="0")}</script><script>document.getElementById("theme-toggle").addEventListener("click",()=>{const e=document.querySelector("html");e.dataset.theme==="dark"?(e.dataset.theme="light",localStorage.setItem("pref-theme","light")):(e.dataset.theme="dark",localStorage.setItem("pref-theme","dark"))})</script></body></html>
