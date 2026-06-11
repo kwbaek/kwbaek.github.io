@@ -1,8 +1,325 @@
-<!doctype html><html lang=en dir=auto data-theme=auto><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=robots content="index, follow"><title>AI/ML 트렌드: 모델 출시 신뢰성이 제품 기능이 되고 있다 | Kyungwook's Devlog</title><meta name=keywords content="AI,ML,Inference,Model Serving,vLLM,OpenAI,Meta,Local AI,Reliability"><meta name=description content="오늘 AI/ML 트렌드에서 가장 흥미로운 축은 “더 큰 모델”보다 모델을 언제, 어디서, 얼마나 안정적으로 출시하고 운영할 수 있는가였습니다. vLLM v0.22.1은 Mellum v2 지원, AMD Zen 기반 CPU 양자화 추론, Ray data parallel 안정성 수정처럼 화려한 데모보다 실제 serving 환경에서 중요한 요소를 보강했습니다. 동시에 OpenAI의 출시 전 모델 리뷰 명령 준수 방침, Meta의 개발자용 모델 공개 지연, Perplexity의 PC용 hybrid local-server inference orchestrator 소식은 모두 같은 질문을 던집니다. 이제 AI 제품의 경쟁력은 “모델이 똑똑한가”만이 아니라, 출시·라우팅·fallback·규제 대응을 제품 경험 안에 얼마나 잘 넣었는가로 갈립니다."><meta name=author content><link rel=canonical href=https://kwbaek.github.io/posts/2026-06-05-ai-ml-trends-model-launch-reliability-is-now-a-product-feature/><link crossorigin=anonymous href=/assets/css/stylesheet.da3211e5ef867bf2b75fd5a6515cfed7195c011e8ab735694e203810a827097b.css integrity="sha256-2jIR5e+Ge/K3X9WmUVz+1xlcAR6KtzVpTiA4EKgnCXs=" rel="preload stylesheet" as=style><link rel=icon href=https://kwbaek.github.io/favicon.ico><link rel=icon type=image/png sizes=16x16 href=https://kwbaek.github.io/favicon-16x16.png><link rel=icon type=image/png sizes=32x32 href=https://kwbaek.github.io/favicon-32x32.png><link rel=apple-touch-icon href=https://kwbaek.github.io/apple-touch-icon.png><link rel=mask-icon href=https://kwbaek.github.io/safari-pinned-tab.svg><meta name=theme-color content="#2e2e33"><meta name=msapplication-TileColor content="#2e2e33"><link rel=alternate hreflang=en href=https://kwbaek.github.io/posts/2026-06-05-ai-ml-trends-model-launch-reliability-is-now-a-product-feature/><noscript><style>#theme-toggle,.top-link{display:none}</style><style>@media(prefers-color-scheme:dark){:root{--theme:rgb(29, 30, 32);--entry:rgb(46, 46, 51);--primary:rgb(218, 218, 219);--secondary:rgb(155, 156, 157);--tertiary:rgb(65, 66, 68);--content:rgb(196, 196, 197);--code-block-bg:rgb(46, 46, 51);--code-bg:rgb(55, 56, 62);--border:rgb(51, 51, 51);color-scheme:dark}.list{background:var(--theme)}.toc{background:var(--entry)}}@media(prefers-color-scheme:light){.list::-webkit-scrollbar-thumb{border-color:var(--code-bg)}}</style></noscript><script>localStorage.getItem("pref-theme")==="dark"?document.querySelector("html").dataset.theme="dark":localStorage.getItem("pref-theme")==="light"?document.querySelector("html").dataset.theme="light":window.matchMedia("(prefers-color-scheme: dark)").matches?document.querySelector("html").dataset.theme="dark":document.querySelector("html").dataset.theme="light"</script><meta property="og:url" content="https://kwbaek.github.io/posts/2026-06-05-ai-ml-trends-model-launch-reliability-is-now-a-product-feature/"><meta property="og:site_name" content="Kyungwook's Devlog"><meta property="og:title" content="AI/ML 트렌드: 모델 출시 신뢰성이 제품 기능이 되고 있다"><meta property="og:description" content="오늘 AI/ML 트렌드에서 가장 흥미로운 축은 “더 큰 모델”보다 모델을 언제, 어디서, 얼마나 안정적으로 출시하고 운영할 수 있는가였습니다. vLLM v0.22.1은 Mellum v2 지원, AMD Zen 기반 CPU 양자화 추론, Ray data parallel 안정성 수정처럼 화려한 데모보다 실제 serving 환경에서 중요한 요소를 보강했습니다. 동시에 OpenAI의 출시 전 모델 리뷰 명령 준수 방침, Meta의 개발자용 모델 공개 지연, Perplexity의 PC용 hybrid local-server inference orchestrator 소식은 모두 같은 질문을 던집니다. 이제 AI 제품의 경쟁력은 “모델이 똑똑한가”만이 아니라, 출시·라우팅·fallback·규제 대응을 제품 경험 안에 얼마나 잘 넣었는가로 갈립니다."><meta property="og:locale" content="ko-kr"><meta property="og:type" content="article"><meta property="article:section" content="posts"><meta property="article:published_time" content="2026-06-05T21:00:00+09:00"><meta property="article:modified_time" content="2026-06-05T21:00:00+09:00"><meta property="article:tag" content="Ai"><meta property="article:tag" content="ML"><meta property="article:tag" content="Inference"><meta property="article:tag" content="Model Serving"><meta property="article:tag" content="VLLM"><meta property="article:tag" content="OpenAI"><meta name=twitter:card content="summary"><meta name=twitter:title content="AI/ML 트렌드: 모델 출시 신뢰성이 제품 기능이 되고 있다"><meta name=twitter:description content="오늘 AI/ML 트렌드에서 가장 흥미로운 축은 “더 큰 모델”보다 모델을 언제, 어디서, 얼마나 안정적으로 출시하고 운영할 수 있는가였습니다. vLLM v0.22.1은 Mellum v2 지원, AMD Zen 기반 CPU 양자화 추론, Ray data parallel 안정성 수정처럼 화려한 데모보다 실제 serving 환경에서 중요한 요소를 보강했습니다. 동시에 OpenAI의 출시 전 모델 리뷰 명령 준수 방침, Meta의 개발자용 모델 공개 지연, Perplexity의 PC용 hybrid local-server inference orchestrator 소식은 모두 같은 질문을 던집니다. 이제 AI 제품의 경쟁력은 “모델이 똑똑한가”만이 아니라, 출시·라우팅·fallback·규제 대응을 제품 경험 안에 얼마나 잘 넣었는가로 갈립니다."><script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Posts","item":"https://kwbaek.github.io/posts/"},{"@type":"ListItem","position":2,"name":"AI/ML 트렌드: 모델 출시 신뢰성이 제품 기능이 되고 있다","item":"https://kwbaek.github.io/posts/2026-06-05-ai-ml-trends-model-launch-reliability-is-now-a-product-feature/"}]}</script><script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"AI/ML 트렌드: 모델 출시 신뢰성이 제품 기능이 되고 있다","name":"AI\/ML 트렌드: 모델 출시 신뢰성이 제품 기능이 되고 있다","description":"오늘 AI/ML 트렌드에서 가장 흥미로운 축은 “더 큰 모델”보다 모델을 언제, 어디서, 얼마나 안정적으로 출시하고 운영할 수 있는가였습니다. vLLM v0.22.1은 Mellum v2 지원, AMD Zen 기반 CPU 양자화 추론, Ray data parallel 안정성 수정처럼 화려한 데모보다 실제 serving 환경에서 중요한 요소를 보강했습니다. 동시에 OpenAI의 출시 전 모델 리뷰 명령 준수 방침, Meta의 개발자용 모델 공개 지연, Perplexity의 PC용 hybrid local-server inference orchestrator 소식은 모두 같은 질문을 던집니다. 이제 AI 제품의 경쟁력은 “모델이 똑똑한가”만이 아니라, 출시·라우팅·fallback·규제 대응을 제품 경험 안에 얼마나 잘 넣었는가로 갈립니다.\n","keywords":["AI","ML","Inference","Model Serving","vLLM","OpenAI","Meta","Local AI","Reliability"],"articleBody":"오늘 AI/ML 트렌드에서 가장 흥미로운 축은 “더 큰 모델”보다 모델을 언제, 어디서, 얼마나 안정적으로 출시하고 운영할 수 있는가였습니다. vLLM v0.22.1은 Mellum v2 지원, AMD Zen 기반 CPU 양자화 추론, Ray data parallel 안정성 수정처럼 화려한 데모보다 실제 serving 환경에서 중요한 요소를 보강했습니다. 동시에 OpenAI의 출시 전 모델 리뷰 명령 준수 방침, Meta의 개발자용 모델 공개 지연, Perplexity의 PC용 hybrid local-server inference orchestrator 소식은 모두 같은 질문을 던집니다. 이제 AI 제품의 경쟁력은 “모델이 똑똑한가”만이 아니라, 출시·라우팅·fallback·규제 대응을 제품 경험 안에 얼마나 잘 넣었는가로 갈립니다.\n첫 번째 변화는 모델 serving의 안정성이 곧 사용자 경험이 된다는 점입니다. vLLM 업데이트에서 눈에 띄는 것은 단순 성능 개선이 아니라 운영 다양성입니다. 코드 모델을 더 잘 지원하고, CPU fallback과 양자화 경로를 넓히고, Ray 기반 대규모 서빙의 오류를 줄이는 작업은 개발자에게는 낮은 레벨의 릴리스 노트처럼 보일 수 있습니다. 하지만 기업 입장에서는 모델 장애, 특정 GPU 부족, 배포 환경 차이, 대규모 batch serving 실패가 바로 서비스 품질과 비용으로 이어집니다. 모델 선택표에 latency와 benchmark만 적는 시대는 지나가고 있습니다. 이제는 “GPU가 없을 때 어떻게 버틸 것인가”, “멀티노드에서 재현 가능한가”, “버전 업그레이드가 기존 agent workflow를 깨지 않는가”가 제품 요구사항입니다.\n두 번째 변화는 출시 전후의 정책 리스크입니다. OpenAI가 출시 전 모델 리뷰 명령을 준수하겠다는 흐름은 frontier model 로드맵이 기술 일정만으로 결정되지 않는다는 신호입니다. 모델이 강해질수록 안전성, 보안, 바이오리스크, 선거·사기 악용 가능성 같은 외부 조건이 출시 gate가 됩니다. 개발자와 기업 고객에게는 이것이 곧 공급 리스크입니다. 어떤 API나 모델 계열에 제품 핵심 기능을 과도하게 묶어두면, 규제 검토나 내부 안전성 재평가 때문에 기능 출시가 밀릴 수 있습니다.\n세 번째 변화는 Meta의 개발자용 모델 공개 지연에서 보입니다. 오픈/준오픈 모델 생태계는 Llama 계열 같은 anchor model에 크게 기대왔지만, 지연이 반복되면 downstream 개발자와 기업의 planning도 같이 흔들립니다. 공개 모델을 쓰는 팀도 이제는 “다음 버전이 나오면 갈아탄다”는 막연한 계획이 아니라, 대체 모델 후보, 회귀 평가셋, 라이선스 검토, serving compatibility 테스트를 미리 준비해야 합니다. 오픈 모델은 자유도가 높지만, 출시 일정과 품질 안정성은 여전히 중요한 외부 의존성입니다.\n마지막으로 Perplexity의 hybrid local-server inference orchestrator는 모델 실행 위치가 제품 차별화가 될 수 있음을 보여줍니다. 개인 PC에서 처리할 일과 서버로 보내야 할 일을 자동 라우팅하면 개인정보, 비용, 지연시간을 동시에 조절할 수 있습니다. 다만 이 구조는 더 똑똑한 라우터만 있으면 끝나는 문제가 아닙니다. 어떤 데이터가 로컬에 남아야 하는지, 로컬 모델 품질이 부족할 때 언제 클라우드로 넘길지, 실패 로그를 어떻게 남길지, 사용자가 실행 위치를 이해하고 통제할 수 있는지가 중요합니다.\n오늘의 결론은 분명합니다. AI 제품의 핵심 기능 목록에는 이제 모델 이름뿐 아니라 출시 신뢰성, fallback 경로, 정책 gate, 실행 위치 라우팅이 들어가야 합니다. 좋은 AI 서비스는 가장 최신 모델을 가장 빨리 붙인 서비스가 아니라, 모델이 늦어지고 바뀌고 막히고 내려가도 사용자가 믿고 쓸 수 있게 만드는 서비스입니다.\n참고 링크:\nvLLM v0.22.1 release: https://github.com/vllm-project/vllm/releases/tag/v0.22.1 CNBC: OpenAI 모델 리뷰 명령 준수 방침: https://www.cnbc.com/2026/06/05/openai-trump-ai-model-review-order.html Reuters: Meta 개발자용 AI 모델 공개 지연: https://www.reuters.com/technology/meta-repeatedly-pushes-back-new-ai-model-release-developers-wsj-says-2026-06-04/ MarkTechPost: Perplexity hybrid local-server inference orchestrator: https://www.marktechpost.com/2026/06/05/perplexity-ai-introduces-hybrid-local-server-inference-orchestrator-for-personal-computer-automatic-on-device-and-cloud-task-routing/ ","wordCount":"447","inLanguage":"en","datePublished":"2026-06-05T21:00:00+09:00","dateModified":"2026-06-05T21:00:00+09:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://kwbaek.github.io/posts/2026-06-05-ai-ml-trends-model-launch-reliability-is-now-a-product-feature/"},"publisher":{"@type":"Organization","name":"Kyungwook's Devlog","logo":{"@type":"ImageObject","url":"https://kwbaek.github.io/favicon.ico"}}}</script></head><body id=top><header class=header><nav class=nav><div class=logo><a href=https://kwbaek.github.io/ accesskey=h title="Kyungwook's Devlog (Alt + H)">Kyungwook's Devlog</a><div class=logo-switches><button id=theme-toggle accesskey=t title="(Alt + T)" aria-label="Toggle theme">
-<svg id="moon" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
-<svg id="sun" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button></div></div><ul id=menu><li><a href=https://kwbaek.github.io/categories/ title=categories><span>categories</span></a></li><li><a href=https://kwbaek.github.io/tags/ title=tags><span>tags</span></a></li><li><a href=https://kwbaek.github.io/ title="Kyungwook's Devlog"><span>Kyungwook's Devlog</span>&nbsp;
-<svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><path d="M15 3h6v6"/><path d="M10 14 21 3"/></svg></a></li></ul></nav></header><main class=main><article class=post-single><header class=post-header><h1 class="post-title entry-hint-parent">AI/ML 트렌드: 모델 출시 신뢰성이 제품 기능이 되고 있다</h1><div class=post-meta><span title='2026-06-05 21:00:00 +0900 KST'>June 5, 2026</span></div></header><div class=post-content><p>오늘 AI/ML 트렌드에서 가장 흥미로운 축은 “더 큰 모델”보다 <strong>모델을 언제, 어디서, 얼마나 안정적으로 출시하고 운영할 수 있는가</strong>였습니다. vLLM v0.22.1은 Mellum v2 지원, AMD Zen 기반 CPU 양자화 추론, Ray data parallel 안정성 수정처럼 화려한 데모보다 실제 serving 환경에서 중요한 요소를 보강했습니다. 동시에 OpenAI의 출시 전 모델 리뷰 명령 준수 방침, Meta의 개발자용 모델 공개 지연, Perplexity의 PC용 hybrid local-server inference orchestrator 소식은 모두 같은 질문을 던집니다. 이제 AI 제품의 경쟁력은 “모델이 똑똑한가”만이 아니라, 출시·라우팅·fallback·규제 대응을 제품 경험 안에 얼마나 잘 넣었는가로 갈립니다.</p><p>첫 번째 변화는 모델 serving의 안정성이 곧 사용자 경험이 된다는 점입니다. vLLM 업데이트에서 눈에 띄는 것은 단순 성능 개선이 아니라 운영 다양성입니다. 코드 모델을 더 잘 지원하고, CPU fallback과 양자화 경로를 넓히고, Ray 기반 대규모 서빙의 오류를 줄이는 작업은 개발자에게는 낮은 레벨의 릴리스 노트처럼 보일 수 있습니다. 하지만 기업 입장에서는 모델 장애, 특정 GPU 부족, 배포 환경 차이, 대규모 batch serving 실패가 바로 서비스 품질과 비용으로 이어집니다. 모델 선택표에 latency와 benchmark만 적는 시대는 지나가고 있습니다. 이제는 “GPU가 없을 때 어떻게 버틸 것인가”, “멀티노드에서 재현 가능한가”, “버전 업그레이드가 기존 agent workflow를 깨지 않는가”가 제품 요구사항입니다.</p><p>두 번째 변화는 출시 전후의 정책 리스크입니다. OpenAI가 출시 전 모델 리뷰 명령을 준수하겠다는 흐름은 frontier model 로드맵이 기술 일정만으로 결정되지 않는다는 신호입니다. 모델이 강해질수록 안전성, 보안, 바이오리스크, 선거·사기 악용 가능성 같은 외부 조건이 출시 gate가 됩니다. 개발자와 기업 고객에게는 이것이 곧 공급 리스크입니다. 어떤 API나 모델 계열에 제품 핵심 기능을 과도하게 묶어두면, 규제 검토나 내부 안전성 재평가 때문에 기능 출시가 밀릴 수 있습니다.</p><p>세 번째 변화는 Meta의 개발자용 모델 공개 지연에서 보입니다. 오픈/준오픈 모델 생태계는 Llama 계열 같은 anchor model에 크게 기대왔지만, 지연이 반복되면 downstream 개발자와 기업의 planning도 같이 흔들립니다. 공개 모델을 쓰는 팀도 이제는 “다음 버전이 나오면 갈아탄다”는 막연한 계획이 아니라, 대체 모델 후보, 회귀 평가셋, 라이선스 검토, serving compatibility 테스트를 미리 준비해야 합니다. 오픈 모델은 자유도가 높지만, 출시 일정과 품질 안정성은 여전히 중요한 외부 의존성입니다.</p><p>마지막으로 Perplexity의 hybrid local-server inference orchestrator는 모델 실행 위치가 제품 차별화가 될 수 있음을 보여줍니다. 개인 PC에서 처리할 일과 서버로 보내야 할 일을 자동 라우팅하면 개인정보, 비용, 지연시간을 동시에 조절할 수 있습니다. 다만 이 구조는 더 똑똑한 라우터만 있으면 끝나는 문제가 아닙니다. 어떤 데이터가 로컬에 남아야 하는지, 로컬 모델 품질이 부족할 때 언제 클라우드로 넘길지, 실패 로그를 어떻게 남길지, 사용자가 실행 위치를 이해하고 통제할 수 있는지가 중요합니다.</p><p>오늘의 결론은 분명합니다. AI 제품의 핵심 기능 목록에는 이제 모델 이름뿐 아니라 <strong>출시 신뢰성, fallback 경로, 정책 gate, 실행 위치 라우팅</strong>이 들어가야 합니다. 좋은 AI 서비스는 가장 최신 모델을 가장 빨리 붙인 서비스가 아니라, 모델이 늦어지고 바뀌고 막히고 내려가도 사용자가 믿고 쓸 수 있게 만드는 서비스입니다.</p><p>참고 링크:</p><ul><li>vLLM v0.22.1 release: <a href=https://github.com/vllm-project/vllm/releases/tag/v0.22.1>https://github.com/vllm-project/vllm/releases/tag/v0.22.1</a></li><li>CNBC: OpenAI 모델 리뷰 명령 준수 방침: <a href=https://www.cnbc.com/2026/06/05/openai-trump-ai-model-review-order.html>https://www.cnbc.com/2026/06/05/openai-trump-ai-model-review-order.html</a></li><li>Reuters: Meta 개발자용 AI 모델 공개 지연: <a href=https://www.reuters.com/technology/meta-repeatedly-pushes-back-new-ai-model-release-developers-wsj-says-2026-06-04/>https://www.reuters.com/technology/meta-repeatedly-pushes-back-new-ai-model-release-developers-wsj-says-2026-06-04/</a></li><li>MarkTechPost: Perplexity hybrid local-server inference orchestrator: <a href=https://www.marktechpost.com/2026/06/05/perplexity-ai-introduces-hybrid-local-server-inference-orchestrator-for-personal-computer-automatic-on-device-and-cloud-task-routing/>https://www.marktechpost.com/2026/06/05/perplexity-ai-introduces-hybrid-local-server-inference-orchestrator-for-personal-computer-automatic-on-device-and-cloud-task-routing/</a></li></ul></div><footer class=post-footer><ul class=post-tags><li><a href=https://kwbaek.github.io/tags/ai/>Ai</a></li><li><a href=https://kwbaek.github.io/tags/ml/>ML</a></li><li><a href=https://kwbaek.github.io/tags/inference/>Inference</a></li><li><a href=https://kwbaek.github.io/tags/model-serving/>Model Serving</a></li><li><a href=https://kwbaek.github.io/tags/vllm/>VLLM</a></li><li><a href=https://kwbaek.github.io/tags/openai/>OpenAI</a></li><li><a href=https://kwbaek.github.io/tags/meta/>Meta</a></li><li><a href=https://kwbaek.github.io/tags/local-ai/>Local AI</a></li><li><a href=https://kwbaek.github.io/tags/reliability/>Reliability</a></li></ul></footer><script src=https://utteranc.es/client.js repo=kwbaek/blog-comments issue-term=pathname theme=github-light crossorigin=anonymous async></script></article></main><footer class=footer><span>&copy; 2026 <a href=https://kwbaek.github.io/>Kyungwook's Devlog</a></span> ·
-<span>Powered by
-<a href=https://gohugo.io/ rel="noopener noreferrer" target=_blank>Hugo</a> &
-<a href=https://github.com/adityatelange/hugo-PaperMod/ rel=noopener target=_blank>PaperMod</a></span></footer><a href=#top aria-label="go to top" title="Go to Top (Alt + G)" class=top-link id=top-link accesskey=g><svg viewBox="0 0 12 6" fill="currentColor"><path d="M12 6H0l6-6z"/></svg>
-</a><script>let menu=document.getElementById("menu");if(menu){const e=localStorage.getItem("menu-scroll-position");e&&(menu.scrollLeft=parseInt(e,10)),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)}}document.querySelectorAll('a[href^="#"]').forEach(e=>{e.addEventListener("click",function(e){e.preventDefault();var t=this.getAttribute("href").substr(1);window.matchMedia("(prefers-reduced-motion: reduce)").matches?document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView({behavior:"smooth"}),t==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${t}`)})})</script><script>var mybutton=document.getElementById("top-link");window.onscroll=function(){document.body.scrollTop>800||document.documentElement.scrollTop>800?(mybutton.style.visibility="visible",mybutton.style.opacity="1"):(mybutton.style.visibility="hidden",mybutton.style.opacity="0")}</script><script>document.getElementById("theme-toggle").addEventListener("click",()=>{const e=document.querySelector("html");e.dataset.theme==="dark"?(e.dataset.theme="light",localStorage.setItem("pref-theme","light")):(e.dataset.theme="dark",localStorage.setItem("pref-theme","dark"))})</script></body></html>
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>AI/ML 트렌드: 모델 출시 신뢰성이 제품 기능이 되고 있다 | Kyungwook&#39;s Devlog</title>
+<meta name="keywords" content="AI, ML, Inference, Model Serving, vLLM, OpenAI, Meta, Local AI, Reliability">
+<meta name="description" content="오늘 AI/ML 트렌드에서 가장 흥미로운 축은 “더 큰 모델”보다 모델을 언제, 어디서, 얼마나 안정적으로 출시하고 운영할 수 있는가였습니다. vLLM v0.22.1은 Mellum v2 지원, AMD Zen 기반 CPU 양자화 추론, Ray data parallel 안정성 수정처럼 화려한 데모보다 실제 serving 환경에서 중요한 요소를 보강했습니다. 동시에 OpenAI의 출시 전 모델 리뷰 명령 준수 방침, Meta의 개발자용 모델 공개 지연, Perplexity의 PC용 hybrid local-server inference orchestrator 소식은 모두 같은 질문을 던집니다. 이제 AI 제품의 경쟁력은 “모델이 똑똑한가”만이 아니라, 출시·라우팅·fallback·규제 대응을 제품 경험 안에 얼마나 잘 넣었는가로 갈립니다.">
+<meta name="author" content="">
+<link rel="canonical" href="https://kwbaek.github.io/posts/2026-06-05-ai-ml-trends-model-launch-reliability-is-now-a-product-feature/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.da3211e5ef867bf2b75fd5a6515cfed7195c011e8ab735694e203810a827097b.css" integrity="sha256-2jIR5e&#43;Ge/K3X9WmUVz&#43;1xlcAR6KtzVpTiA4EKgnCXs=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://kwbaek.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://kwbaek.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://kwbaek.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://kwbaek.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://kwbaek.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://kwbaek.github.io/posts/2026-06-05-ai-ml-trends-model-launch-reliability-is-now-a-product-feature/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="https://kwbaek.github.io/posts/2026-06-05-ai-ml-trends-model-launch-reliability-is-now-a-product-feature/">
+  <meta property="og:site_name" content="Kyungwook&#39;s Devlog">
+  <meta property="og:title" content="AI/ML 트렌드: 모델 출시 신뢰성이 제품 기능이 되고 있다">
+  <meta property="og:description" content="오늘 AI/ML 트렌드에서 가장 흥미로운 축은 “더 큰 모델”보다 모델을 언제, 어디서, 얼마나 안정적으로 출시하고 운영할 수 있는가였습니다. vLLM v0.22.1은 Mellum v2 지원, AMD Zen 기반 CPU 양자화 추론, Ray data parallel 안정성 수정처럼 화려한 데모보다 실제 serving 환경에서 중요한 요소를 보강했습니다. 동시에 OpenAI의 출시 전 모델 리뷰 명령 준수 방침, Meta의 개발자용 모델 공개 지연, Perplexity의 PC용 hybrid local-server inference orchestrator 소식은 모두 같은 질문을 던집니다. 이제 AI 제품의 경쟁력은 “모델이 똑똑한가”만이 아니라, 출시·라우팅·fallback·규제 대응을 제품 경험 안에 얼마나 잘 넣었는가로 갈립니다.">
+  <meta property="og:locale" content="ko-kr">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2026-06-05T21:00:00+09:00">
+    <meta property="article:modified_time" content="2026-06-05T21:00:00+09:00">
+    <meta property="article:tag" content="Ai">
+    <meta property="article:tag" content="Ml">
+    <meta property="article:tag" content="Inference">
+    <meta property="article:tag" content="Model Serving">
+    <meta property="article:tag" content="VLLM">
+    <meta property="article:tag" content="OpenAI">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="AI/ML 트렌드: 모델 출시 신뢰성이 제품 기능이 되고 있다">
+<meta name="twitter:description" content="오늘 AI/ML 트렌드에서 가장 흥미로운 축은 “더 큰 모델”보다 모델을 언제, 어디서, 얼마나 안정적으로 출시하고 운영할 수 있는가였습니다. vLLM v0.22.1은 Mellum v2 지원, AMD Zen 기반 CPU 양자화 추론, Ray data parallel 안정성 수정처럼 화려한 데모보다 실제 serving 환경에서 중요한 요소를 보강했습니다. 동시에 OpenAI의 출시 전 모델 리뷰 명령 준수 방침, Meta의 개발자용 모델 공개 지연, Perplexity의 PC용 hybrid local-server inference orchestrator 소식은 모두 같은 질문을 던집니다. 이제 AI 제품의 경쟁력은 “모델이 똑똑한가”만이 아니라, 출시·라우팅·fallback·규제 대응을 제품 경험 안에 얼마나 잘 넣었는가로 갈립니다.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://kwbaek.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "AI/ML 트렌드: 모델 출시 신뢰성이 제품 기능이 되고 있다",
+      "item": "https://kwbaek.github.io/posts/2026-06-05-ai-ml-trends-model-launch-reliability-is-now-a-product-feature/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "AI/ML 트렌드: 모델 출시 신뢰성이 제품 기능이 되고 있다",
+  "name": "AI\/ML 트렌드: 모델 출시 신뢰성이 제품 기능이 되고 있다",
+  "description": "오늘 AI/ML 트렌드에서 가장 흥미로운 축은 “더 큰 모델”보다 모델을 언제, 어디서, 얼마나 안정적으로 출시하고 운영할 수 있는가였습니다. vLLM v0.22.1은 Mellum v2 지원, AMD Zen 기반 CPU 양자화 추론, Ray data parallel 안정성 수정처럼 화려한 데모보다 실제 serving 환경에서 중요한 요소를 보강했습니다. 동시에 OpenAI의 출시 전 모델 리뷰 명령 준수 방침, Meta의 개발자용 모델 공개 지연, Perplexity의 PC용 hybrid local-server inference orchestrator 소식은 모두 같은 질문을 던집니다. 이제 AI 제품의 경쟁력은 “모델이 똑똑한가”만이 아니라, 출시·라우팅·fallback·규제 대응을 제품 경험 안에 얼마나 잘 넣었는가로 갈립니다.\n",
+  "keywords": [
+    "AI", "ML", "Inference", "Model Serving", "vLLM", "OpenAI", "Meta", "Local AI", "Reliability"
+  ],
+  "articleBody": "오늘 AI/ML 트렌드에서 가장 흥미로운 축은 “더 큰 모델”보다 모델을 언제, 어디서, 얼마나 안정적으로 출시하고 운영할 수 있는가였습니다. vLLM v0.22.1은 Mellum v2 지원, AMD Zen 기반 CPU 양자화 추론, Ray data parallel 안정성 수정처럼 화려한 데모보다 실제 serving 환경에서 중요한 요소를 보강했습니다. 동시에 OpenAI의 출시 전 모델 리뷰 명령 준수 방침, Meta의 개발자용 모델 공개 지연, Perplexity의 PC용 hybrid local-server inference orchestrator 소식은 모두 같은 질문을 던집니다. 이제 AI 제품의 경쟁력은 “모델이 똑똑한가”만이 아니라, 출시·라우팅·fallback·규제 대응을 제품 경험 안에 얼마나 잘 넣었는가로 갈립니다.\n첫 번째 변화는 모델 serving의 안정성이 곧 사용자 경험이 된다는 점입니다. vLLM 업데이트에서 눈에 띄는 것은 단순 성능 개선이 아니라 운영 다양성입니다. 코드 모델을 더 잘 지원하고, CPU fallback과 양자화 경로를 넓히고, Ray 기반 대규모 서빙의 오류를 줄이는 작업은 개발자에게는 낮은 레벨의 릴리스 노트처럼 보일 수 있습니다. 하지만 기업 입장에서는 모델 장애, 특정 GPU 부족, 배포 환경 차이, 대규모 batch serving 실패가 바로 서비스 품질과 비용으로 이어집니다. 모델 선택표에 latency와 benchmark만 적는 시대는 지나가고 있습니다. 이제는 “GPU가 없을 때 어떻게 버틸 것인가”, “멀티노드에서 재현 가능한가”, “버전 업그레이드가 기존 agent workflow를 깨지 않는가”가 제품 요구사항입니다.\n두 번째 변화는 출시 전후의 정책 리스크입니다. OpenAI가 출시 전 모델 리뷰 명령을 준수하겠다는 흐름은 frontier model 로드맵이 기술 일정만으로 결정되지 않는다는 신호입니다. 모델이 강해질수록 안전성, 보안, 바이오리스크, 선거·사기 악용 가능성 같은 외부 조건이 출시 gate가 됩니다. 개발자와 기업 고객에게는 이것이 곧 공급 리스크입니다. 어떤 API나 모델 계열에 제품 핵심 기능을 과도하게 묶어두면, 규제 검토나 내부 안전성 재평가 때문에 기능 출시가 밀릴 수 있습니다.\n세 번째 변화는 Meta의 개발자용 모델 공개 지연에서 보입니다. 오픈/준오픈 모델 생태계는 Llama 계열 같은 anchor model에 크게 기대왔지만, 지연이 반복되면 downstream 개발자와 기업의 planning도 같이 흔들립니다. 공개 모델을 쓰는 팀도 이제는 “다음 버전이 나오면 갈아탄다”는 막연한 계획이 아니라, 대체 모델 후보, 회귀 평가셋, 라이선스 검토, serving compatibility 테스트를 미리 준비해야 합니다. 오픈 모델은 자유도가 높지만, 출시 일정과 품질 안정성은 여전히 중요한 외부 의존성입니다.\n마지막으로 Perplexity의 hybrid local-server inference orchestrator는 모델 실행 위치가 제품 차별화가 될 수 있음을 보여줍니다. 개인 PC에서 처리할 일과 서버로 보내야 할 일을 자동 라우팅하면 개인정보, 비용, 지연시간을 동시에 조절할 수 있습니다. 다만 이 구조는 더 똑똑한 라우터만 있으면 끝나는 문제가 아닙니다. 어떤 데이터가 로컬에 남아야 하는지, 로컬 모델 품질이 부족할 때 언제 클라우드로 넘길지, 실패 로그를 어떻게 남길지, 사용자가 실행 위치를 이해하고 통제할 수 있는지가 중요합니다.\n오늘의 결론은 분명합니다. AI 제품의 핵심 기능 목록에는 이제 모델 이름뿐 아니라 출시 신뢰성, fallback 경로, 정책 gate, 실행 위치 라우팅이 들어가야 합니다. 좋은 AI 서비스는 가장 최신 모델을 가장 빨리 붙인 서비스가 아니라, 모델이 늦어지고 바뀌고 막히고 내려가도 사용자가 믿고 쓸 수 있게 만드는 서비스입니다.\n참고 링크:\nvLLM v0.22.1 release: https://github.com/vllm-project/vllm/releases/tag/v0.22.1 CNBC: OpenAI 모델 리뷰 명령 준수 방침: https://www.cnbc.com/2026/06/05/openai-trump-ai-model-review-order.html Reuters: Meta 개발자용 AI 모델 공개 지연: https://www.reuters.com/technology/meta-repeatedly-pushes-back-new-ai-model-release-developers-wsj-says-2026-06-04/ MarkTechPost: Perplexity hybrid local-server inference orchestrator: https://www.marktechpost.com/2026/06/05/perplexity-ai-introduces-hybrid-local-server-inference-orchestrator-for-personal-computer-automatic-on-device-and-cloud-task-routing/ ",
+  "wordCount" : "447",
+  "inLanguage": "en",
+  "datePublished": "2026-06-05T21:00:00+09:00",
+  "dateModified": "2026-06-05T21:00:00+09:00",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://kwbaek.github.io/posts/2026-06-05-ai-ml-trends-model-launch-reliability-is-now-a-product-feature/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Kyungwook's Devlog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://kwbaek.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://kwbaek.github.io/" accesskey="h" title="Kyungwook&#39;s Devlog (Alt + H)">Kyungwook&#39;s Devlog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://kwbaek.github.io/categories/" title="categories">
+                    <span>categories</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kwbaek.github.io/tags/" title="tags">
+                    <span>tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kwbaek.github.io/" title="Kyungwook&#39;s Devlog">
+                    <span>Kyungwook&#39;s Devlog</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      AI/ML 트렌드: 모델 출시 신뢰성이 제품 기능이 되고 있다
+    </h1>
+    <div class="post-meta"><span title='2026-06-05 21:00:00 +0900 KST'>June 5, 2026</span>
+
+</div>
+  </header> 
+  <div class="post-content"><p>오늘 AI/ML 트렌드에서 가장 흥미로운 축은 “더 큰 모델”보다 <strong>모델을 언제, 어디서, 얼마나 안정적으로 출시하고 운영할 수 있는가</strong>였습니다. vLLM v0.22.1은 Mellum v2 지원, AMD Zen 기반 CPU 양자화 추론, Ray data parallel 안정성 수정처럼 화려한 데모보다 실제 serving 환경에서 중요한 요소를 보강했습니다. 동시에 OpenAI의 출시 전 모델 리뷰 명령 준수 방침, Meta의 개발자용 모델 공개 지연, Perplexity의 PC용 hybrid local-server inference orchestrator 소식은 모두 같은 질문을 던집니다. 이제 AI 제품의 경쟁력은 “모델이 똑똑한가”만이 아니라, 출시·라우팅·fallback·규제 대응을 제품 경험 안에 얼마나 잘 넣었는가로 갈립니다.</p>
+<p>첫 번째 변화는 모델 serving의 안정성이 곧 사용자 경험이 된다는 점입니다. vLLM 업데이트에서 눈에 띄는 것은 단순 성능 개선이 아니라 운영 다양성입니다. 코드 모델을 더 잘 지원하고, CPU fallback과 양자화 경로를 넓히고, Ray 기반 대규모 서빙의 오류를 줄이는 작업은 개발자에게는 낮은 레벨의 릴리스 노트처럼 보일 수 있습니다. 하지만 기업 입장에서는 모델 장애, 특정 GPU 부족, 배포 환경 차이, 대규모 batch serving 실패가 바로 서비스 품질과 비용으로 이어집니다. 모델 선택표에 latency와 benchmark만 적는 시대는 지나가고 있습니다. 이제는 “GPU가 없을 때 어떻게 버틸 것인가”, “멀티노드에서 재현 가능한가”, “버전 업그레이드가 기존 agent workflow를 깨지 않는가”가 제품 요구사항입니다.</p>
+<p>두 번째 변화는 출시 전후의 정책 리스크입니다. OpenAI가 출시 전 모델 리뷰 명령을 준수하겠다는 흐름은 frontier model 로드맵이 기술 일정만으로 결정되지 않는다는 신호입니다. 모델이 강해질수록 안전성, 보안, 바이오리스크, 선거·사기 악용 가능성 같은 외부 조건이 출시 gate가 됩니다. 개발자와 기업 고객에게는 이것이 곧 공급 리스크입니다. 어떤 API나 모델 계열에 제품 핵심 기능을 과도하게 묶어두면, 규제 검토나 내부 안전성 재평가 때문에 기능 출시가 밀릴 수 있습니다.</p>
+<p>세 번째 변화는 Meta의 개발자용 모델 공개 지연에서 보입니다. 오픈/준오픈 모델 생태계는 Llama 계열 같은 anchor model에 크게 기대왔지만, 지연이 반복되면 downstream 개발자와 기업의 planning도 같이 흔들립니다. 공개 모델을 쓰는 팀도 이제는 “다음 버전이 나오면 갈아탄다”는 막연한 계획이 아니라, 대체 모델 후보, 회귀 평가셋, 라이선스 검토, serving compatibility 테스트를 미리 준비해야 합니다. 오픈 모델은 자유도가 높지만, 출시 일정과 품질 안정성은 여전히 중요한 외부 의존성입니다.</p>
+<p>마지막으로 Perplexity의 hybrid local-server inference orchestrator는 모델 실행 위치가 제품 차별화가 될 수 있음을 보여줍니다. 개인 PC에서 처리할 일과 서버로 보내야 할 일을 자동 라우팅하면 개인정보, 비용, 지연시간을 동시에 조절할 수 있습니다. 다만 이 구조는 더 똑똑한 라우터만 있으면 끝나는 문제가 아닙니다. 어떤 데이터가 로컬에 남아야 하는지, 로컬 모델 품질이 부족할 때 언제 클라우드로 넘길지, 실패 로그를 어떻게 남길지, 사용자가 실행 위치를 이해하고 통제할 수 있는지가 중요합니다.</p>
+<p>오늘의 결론은 분명합니다. AI 제품의 핵심 기능 목록에는 이제 모델 이름뿐 아니라 <strong>출시 신뢰성, fallback 경로, 정책 gate, 실행 위치 라우팅</strong>이 들어가야 합니다. 좋은 AI 서비스는 가장 최신 모델을 가장 빨리 붙인 서비스가 아니라, 모델이 늦어지고 바뀌고 막히고 내려가도 사용자가 믿고 쓸 수 있게 만드는 서비스입니다.</p>
+<p>참고 링크:</p>
+<ul>
+<li>vLLM v0.22.1 release: <a href="https://github.com/vllm-project/vllm/releases/tag/v0.22.1">https://github.com/vllm-project/vllm/releases/tag/v0.22.1</a></li>
+<li>CNBC: OpenAI 모델 리뷰 명령 준수 방침: <a href="https://www.cnbc.com/2026/06/05/openai-trump-ai-model-review-order.html">https://www.cnbc.com/2026/06/05/openai-trump-ai-model-review-order.html</a></li>
+<li>Reuters: Meta 개발자용 AI 모델 공개 지연: <a href="https://www.reuters.com/technology/meta-repeatedly-pushes-back-new-ai-model-release-developers-wsj-says-2026-06-04/">https://www.reuters.com/technology/meta-repeatedly-pushes-back-new-ai-model-release-developers-wsj-says-2026-06-04/</a></li>
+<li>MarkTechPost: Perplexity hybrid local-server inference orchestrator: <a href="https://www.marktechpost.com/2026/06/05/perplexity-ai-introduces-hybrid-local-server-inference-orchestrator-for-personal-computer-automatic-on-device-and-cloud-task-routing/">https://www.marktechpost.com/2026/06/05/perplexity-ai-introduces-hybrid-local-server-inference-orchestrator-for-personal-computer-automatic-on-device-and-cloud-task-routing/</a></li>
+</ul>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://kwbaek.github.io/tags/ai/">Ai</a></li>
+      <li><a href="https://kwbaek.github.io/tags/ml/">Ml</a></li>
+      <li><a href="https://kwbaek.github.io/tags/inference/">Inference</a></li>
+      <li><a href="https://kwbaek.github.io/tags/model-serving/">Model Serving</a></li>
+      <li><a href="https://kwbaek.github.io/tags/vllm/">VLLM</a></li>
+      <li><a href="https://kwbaek.github.io/tags/openai/">OpenAI</a></li>
+      <li><a href="https://kwbaek.github.io/tags/meta/">Meta</a></li>
+      <li><a href="https://kwbaek.github.io/tags/local-ai/">Local AI</a></li>
+      <li><a href="https://kwbaek.github.io/tags/reliability/">Reliability</a></li>
+    </ul>
+  </footer><script src="https://utteranc.es/client.js"
+        repo="kwbaek/blog-comments"
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://kwbaek.github.io/">Kyungwook&#39;s Devlog</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

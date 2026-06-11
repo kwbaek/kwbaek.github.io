@@ -1,2 +1,20 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Editorial on Kyungwook's Devlog</title><link>https://kwbaek.github.io/tags/editorial/</link><description>Recent content in Editorial on Kyungwook's Devlog</description><generator>Hugo -- 0.155.3</generator><language>ko-kr</language><lastBuildDate>Fri, 15 May 2026 21:00:00 +0900</lastBuildDate><atom:link href="https://kwbaek.github.io/tags/editorial/index.xml" rel="self" type="application/rss+xml"/><item><title>OpenClaw 팁: Discord 트렌드 채널을 블로그 편집 입력으로 쓰기</title><link>https://kwbaek.github.io/posts/2026-05-15-openclaw-use-discord-trend-channels-as-editorial-input/</link><pubDate>Fri, 15 May 2026 21:00:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-05-15-openclaw-use-discord-trend-channels-as-editorial-input/</guid><description>&lt;p&gt;OpenClaw로 매일 블로그를 쓰다 보면 가장 중요한 입력은 웹 전체가 아니라 &lt;strong&gt;이미 선별된 내부 트렌드 채널&lt;/strong&gt;일 때가 많습니다. 하루 종일 수집 cron이 Discord 채널에 AI/ML 소식을 정리해 두었다면, 저녁 블로그 cron은 다시 웹을 처음부터 훑기보다 그 채널을 편집 입력으로 삼는 편이 더 안정적입니다. 오늘의 팁은 간단합니다. &lt;strong&gt;Discord 트렌드 채널을 “뉴스 저장소”가 아니라 “블로그 초안의 구조화된 재료”로 운영하세요.&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;첫 번째 장점은 중복 제거입니다. 트렌드 수집 cron은 이미 URL canonical 중복, 72시간 토픽 쿨다운, 중요도 선별 같은 필터를 적용할 수 있습니다. 블로그 cron이 그 결과를 읽으면 같은 Bloomberg·Reuters·GitHub release를 반복해서 다루지 않고, 하루의 흐름을 더 잘 볼 수 있습니다. 원자료를 모두 다시 검색하는 방식은 넓지만 산만합니다. 반대로 트렌드 채널을 입력으로 쓰면 “오늘 우리 시스템이 중요하다고 판단한 것”을 기준으로 글의 중심 주제를 잡을 수 있습니다.&lt;/p&gt;</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Editorial on Kyungwook&#39;s Devlog</title>
+    <link>https://kwbaek.github.io/tags/editorial/</link>
+    <description>Recent content in Editorial on Kyungwook&#39;s Devlog</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Fri, 15 May 2026 21:00:00 +0900</lastBuildDate>
+    <atom:link href="https://kwbaek.github.io/tags/editorial/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>OpenClaw 팁: Discord 트렌드 채널을 블로그 편집 입력으로 쓰기</title>
+      <link>https://kwbaek.github.io/posts/2026-05-15-openclaw-use-discord-trend-channels-as-editorial-input/</link>
+      <pubDate>Fri, 15 May 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-05-15-openclaw-use-discord-trend-channels-as-editorial-input/</guid>
+      <description>&lt;p&gt;OpenClaw로 매일 블로그를 쓰다 보면 가장 중요한 입력은 웹 전체가 아니라 &lt;strong&gt;이미 선별된 내부 트렌드 채널&lt;/strong&gt;일 때가 많습니다. 하루 종일 수집 cron이 Discord 채널에 AI/ML 소식을 정리해 두었다면, 저녁 블로그 cron은 다시 웹을 처음부터 훑기보다 그 채널을 편집 입력으로 삼는 편이 더 안정적입니다. 오늘의 팁은 간단합니다. &lt;strong&gt;Discord 트렌드 채널을 “뉴스 저장소”가 아니라 “블로그 초안의 구조화된 재료”로 운영하세요.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;첫 번째 장점은 중복 제거입니다. 트렌드 수집 cron은 이미 URL canonical 중복, 72시간 토픽 쿨다운, 중요도 선별 같은 필터를 적용할 수 있습니다. 블로그 cron이 그 결과를 읽으면 같은 Bloomberg·Reuters·GitHub release를 반복해서 다루지 않고, 하루의 흐름을 더 잘 볼 수 있습니다. 원자료를 모두 다시 검색하는 방식은 넓지만 산만합니다. 반대로 트렌드 채널을 입력으로 쓰면 “오늘 우리 시스템이 중요하다고 판단한 것”을 기준으로 글의 중심 주제를 잡을 수 있습니다.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

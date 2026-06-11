@@ -1,11 +1,333 @@
-<!doctype html><html lang=en dir=auto data-theme=auto><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=robots content="index, follow"><title>AI/ML 트렌드: AI는 정책, 자본, 런타임 인프라의 문제가 되고 있다 | Kyungwook's Devlog</title><meta name=keywords content="AI,ML,Infrastructure,Policy,Runtime,Agents,Capital,Governance"><meta name=description content="오늘 AI/ML 트렌드에서 가장 흥미로운 흐름은 AI 경쟁의 중심이 모델 성능 하나에서 정책, 자본, 런타임 인프라 전체로 확장되고 있다는 점입니다. 하루 동안 나온 신호들을 묶어보면, frontier model을 누가 더 크게 만들었는지보다 그 모델을 어떤 규제 아래 배포하고, 어떤 자금으로 인프라를 짓고, 어떤 런타임에서 안전하게 운영하며, 어떤 평가 기준으로 조달·사용할지의 문제가 더 커지고 있습니다.
-먼저 정책과 조달 쪽 신호가 강했습니다. Reuters는 EU Commission이 OpenAI·Anthropic과 AI model 관련 협의를 진행 중이라고 보도했습니다. 이는 frontier AI 규제가 추상적인 원칙 선언에서 모델 제공사와 집행기관 간의 구체적인 compliance 설계로 내려오고 있다는 뜻입니다. 또 다른 Reuters 보도에서는 AI lab이 미국 정부 계약을 받기 위해 safety review를 통과해야 한다는 제안이 나왔습니다. AI safety evaluation이 연구실 내부 benchmark나 voluntary commitment에 머무르지 않고, public procurement의 조건이 될 수 있다는 신호입니다."><meta name=author content><link rel=canonical href=https://kwbaek.github.io/posts/2026-05-11-ai-ml-trends-ai-is-becoming-policy-capital-and-runtime-infrastructure/><link crossorigin=anonymous href=/assets/css/stylesheet.da3211e5ef867bf2b75fd5a6515cfed7195c011e8ab735694e203810a827097b.css integrity="sha256-2jIR5e+Ge/K3X9WmUVz+1xlcAR6KtzVpTiA4EKgnCXs=" rel="preload stylesheet" as=style><link rel=icon href=https://kwbaek.github.io/favicon.ico><link rel=icon type=image/png sizes=16x16 href=https://kwbaek.github.io/favicon-16x16.png><link rel=icon type=image/png sizes=32x32 href=https://kwbaek.github.io/favicon-32x32.png><link rel=apple-touch-icon href=https://kwbaek.github.io/apple-touch-icon.png><link rel=mask-icon href=https://kwbaek.github.io/safari-pinned-tab.svg><meta name=theme-color content="#2e2e33"><meta name=msapplication-TileColor content="#2e2e33"><link rel=alternate hreflang=en href=https://kwbaek.github.io/posts/2026-05-11-ai-ml-trends-ai-is-becoming-policy-capital-and-runtime-infrastructure/><noscript><style>#theme-toggle,.top-link{display:none}</style><style>@media(prefers-color-scheme:dark){:root{--theme:rgb(29, 30, 32);--entry:rgb(46, 46, 51);--primary:rgb(218, 218, 219);--secondary:rgb(155, 156, 157);--tertiary:rgb(65, 66, 68);--content:rgb(196, 196, 197);--code-block-bg:rgb(46, 46, 51);--code-bg:rgb(55, 56, 62);--border:rgb(51, 51, 51);color-scheme:dark}.list{background:var(--theme)}.toc{background:var(--entry)}}@media(prefers-color-scheme:light){.list::-webkit-scrollbar-thumb{border-color:var(--code-bg)}}</style></noscript><script>localStorage.getItem("pref-theme")==="dark"?document.querySelector("html").dataset.theme="dark":localStorage.getItem("pref-theme")==="light"?document.querySelector("html").dataset.theme="light":window.matchMedia("(prefers-color-scheme: dark)").matches?document.querySelector("html").dataset.theme="dark":document.querySelector("html").dataset.theme="light"</script><meta property="og:url" content="https://kwbaek.github.io/posts/2026-05-11-ai-ml-trends-ai-is-becoming-policy-capital-and-runtime-infrastructure/"><meta property="og:site_name" content="Kyungwook's Devlog"><meta property="og:title" content="AI/ML 트렌드: AI는 정책, 자본, 런타임 인프라의 문제가 되고 있다"><meta property="og:description" content="오늘 AI/ML 트렌드에서 가장 흥미로운 흐름은 AI 경쟁의 중심이 모델 성능 하나에서 정책, 자본, 런타임 인프라 전체로 확장되고 있다는 점입니다. 하루 동안 나온 신호들을 묶어보면, frontier model을 누가 더 크게 만들었는지보다 그 모델을 어떤 규제 아래 배포하고, 어떤 자금으로 인프라를 짓고, 어떤 런타임에서 안전하게 운영하며, 어떤 평가 기준으로 조달·사용할지의 문제가 더 커지고 있습니다.
-먼저 정책과 조달 쪽 신호가 강했습니다. Reuters는 EU Commission이 OpenAI·Anthropic과 AI model 관련 협의를 진행 중이라고 보도했습니다. 이는 frontier AI 규제가 추상적인 원칙 선언에서 모델 제공사와 집행기관 간의 구체적인 compliance 설계로 내려오고 있다는 뜻입니다. 또 다른 Reuters 보도에서는 AI lab이 미국 정부 계약을 받기 위해 safety review를 통과해야 한다는 제안이 나왔습니다. AI safety evaluation이 연구실 내부 benchmark나 voluntary commitment에 머무르지 않고, public procurement의 조건이 될 수 있다는 신호입니다."><meta property="og:locale" content="ko-kr"><meta property="og:type" content="article"><meta property="article:section" content="posts"><meta property="article:published_time" content="2026-05-11T21:00:00+09:00"><meta property="article:modified_time" content="2026-05-11T21:00:00+09:00"><meta property="article:tag" content="Ai"><meta property="article:tag" content="ML"><meta property="article:tag" content="Infrastructure"><meta property="article:tag" content="Policy"><meta property="article:tag" content="Runtime"><meta property="article:tag" content="Agents"><meta name=twitter:card content="summary"><meta name=twitter:title content="AI/ML 트렌드: AI는 정책, 자본, 런타임 인프라의 문제가 되고 있다"><meta name=twitter:description content="오늘 AI/ML 트렌드에서 가장 흥미로운 흐름은 AI 경쟁의 중심이 모델 성능 하나에서 정책, 자본, 런타임 인프라 전체로 확장되고 있다는 점입니다. 하루 동안 나온 신호들을 묶어보면, frontier model을 누가 더 크게 만들었는지보다 그 모델을 어떤 규제 아래 배포하고, 어떤 자금으로 인프라를 짓고, 어떤 런타임에서 안전하게 운영하며, 어떤 평가 기준으로 조달·사용할지의 문제가 더 커지고 있습니다.
-먼저 정책과 조달 쪽 신호가 강했습니다. Reuters는 EU Commission이 OpenAI·Anthropic과 AI model 관련 협의를 진행 중이라고 보도했습니다. 이는 frontier AI 규제가 추상적인 원칙 선언에서 모델 제공사와 집행기관 간의 구체적인 compliance 설계로 내려오고 있다는 뜻입니다. 또 다른 Reuters 보도에서는 AI lab이 미국 정부 계약을 받기 위해 safety review를 통과해야 한다는 제안이 나왔습니다. AI safety evaluation이 연구실 내부 benchmark나 voluntary commitment에 머무르지 않고, public procurement의 조건이 될 수 있다는 신호입니다."><script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Posts","item":"https://kwbaek.github.io/posts/"},{"@type":"ListItem","position":2,"name":"AI/ML 트렌드: AI는 정책, 자본, 런타임 인프라의 문제가 되고 있다","item":"https://kwbaek.github.io/posts/2026-05-11-ai-ml-trends-ai-is-becoming-policy-capital-and-runtime-infrastructure/"}]}</script><script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"AI/ML 트렌드: AI는 정책, 자본, 런타임 인프라의 문제가 되고 있다","name":"AI\/ML 트렌드: AI는 정책, 자본, 런타임 인프라의 문제가 되고 있다","description":"오늘 AI/ML 트렌드에서 가장 흥미로운 흐름은 AI 경쟁의 중심이 모델 성능 하나에서 정책, 자본, 런타임 인프라 전체로 확장되고 있다는 점입니다. 하루 동안 나온 신호들을 묶어보면, frontier model을 누가 더 크게 만들었는지보다 그 모델을 어떤 규제 아래 배포하고, 어떤 자금으로 인프라를 짓고, 어떤 런타임에서 안전하게 운영하며, 어떤 평가 기준으로 조달·사용할지의 문제가 더 커지고 있습니다.\n먼저 정책과 조달 쪽 신호가 강했습니다. Reuters는 EU Commission이 OpenAI·Anthropic과 AI model 관련 협의를 진행 중이라고 보도했습니다. 이는 frontier AI 규제가 추상적인 원칙 선언에서 모델 제공사와 집행기관 간의 구체적인 compliance 설계로 내려오고 있다는 뜻입니다. 또 다른 Reuters 보도에서는 AI lab이 미국 정부 계약을 받기 위해 safety review를 통과해야 한다는 제안이 나왔습니다. AI safety evaluation이 연구실 내부 benchmark나 voluntary commitment에 머무르지 않고, public procurement의 조건이 될 수 있다는 신호입니다.\n","keywords":["AI","ML","Infrastructure","Policy","Runtime","Agents","Capital","Governance"],"articleBody":"오늘 AI/ML 트렌드에서 가장 흥미로운 흐름은 AI 경쟁의 중심이 모델 성능 하나에서 정책, 자본, 런타임 인프라 전체로 확장되고 있다는 점입니다. 하루 동안 나온 신호들을 묶어보면, frontier model을 누가 더 크게 만들었는지보다 그 모델을 어떤 규제 아래 배포하고, 어떤 자금으로 인프라를 짓고, 어떤 런타임에서 안전하게 운영하며, 어떤 평가 기준으로 조달·사용할지의 문제가 더 커지고 있습니다.\n먼저 정책과 조달 쪽 신호가 강했습니다. Reuters는 EU Commission이 OpenAI·Anthropic과 AI model 관련 협의를 진행 중이라고 보도했습니다. 이는 frontier AI 규제가 추상적인 원칙 선언에서 모델 제공사와 집행기관 간의 구체적인 compliance 설계로 내려오고 있다는 뜻입니다. 또 다른 Reuters 보도에서는 AI lab이 미국 정부 계약을 받기 위해 safety review를 통과해야 한다는 제안이 나왔습니다. AI safety evaluation이 연구실 내부 benchmark나 voluntary commitment에 머무르지 않고, public procurement의 조건이 될 수 있다는 신호입니다.\n이 흐름은 기업 전략에도 직접 영향을 줍니다. 정부·공공·규제산업에 AI를 팔려는 기업은 모델 성능만 제시해서는 부족합니다. 어떤 데이터로 평가했는지, 누가 검증했는지, 실패 시 책임과 감사 로그는 어떻게 남는지, model update 이후에도 기존 safety posture가 유지되는지까지 설명해야 합니다. 즉 AI 제품의 GTM은 점점 “데모”가 아니라 “증거 패키지”가 됩니다.\n두 번째 축은 자본과 인프라입니다. Alphabet이 AI 경쟁 속에서 첫 엔화채 발행을 추진한다는 Bloomberg 보도, Cerebras가 강한 수요를 바탕으로 IPO 가격 범위를 높일 예정이라는 Reuters 보도, SoftBank가 AI hardware push와 함께 일본 battery venture를 추진한다는 WSJ 보도는 모두 같은 방향을 가리킵니다. AI capex는 GPU 구매만의 문제가 아니라 글로벌 채권시장, public market pricing, 전력·배터리·부지·lease 구조까지 포함하는 금융·산업 인프라의 문제가 되고 있습니다.\n특히 Goldman의 분석처럼 AI가 한국·대만의 K-shaped 경제와 금리 압력을 키울 수 있다는 관점은 중요합니다. AI boom은 반도체 주가만 올리는 이벤트가 아닙니다. 특정 산업과 지역에는 임금·투자·수출·자산가격 상승을 만들고, 다른 영역에는 비용 부담과 양극화를 만들 수 있습니다. AI를 보는 관점도 이제 “기술 섹터 전망”에서 macro spillover와 금융 조건까지 확장되어야 합니다.\n세 번째 축은 런타임 운영입니다. OpenAI Agents Python v0.17.1은 sandbox archive extraction 제한과 Git repo subpath 검증을 추가했습니다. Open WebUI v0.9.5는 redirect-based SSRF 방어, iframe CSP, 권한 hardening을 대거 넣었습니다. llama.cpp는 post-sampling probabilities, HTTP timeout warning, SYCL op coverage 같은 운영 디테일을 계속 보강하고 있습니다. 로컬·오픈소스·agent runtime의 경쟁력이 “모델을 돌린다”에서 “위험한 입력, 외부 fetch, repo materialization, timeout, observability를 어떻게 다루는가”로 이동하고 있습니다.\n연구 흐름에서도 비슷한 메시지가 나옵니다. The Memory Curse는 긴 context가 multi-agent 협력 의도를 오히려 약화시킬 수 있음을 보여줍니다. 이는 agent memory 설계에서 “많이 기억하기”가 항상 답이 아니라는 중요한 경고입니다. LLMs Improving LLMs는 test-time scaling 전략을 에이전트가 발견하는 방향을 보여줍니다. inference scaling도 hand-crafted prompt technique이 아니라 자동화된 strategy discovery와 runtime search의 문제가 될 수 있습니다.\n오늘의 결론은 분명합니다. AI/ML의 다음 경쟁은 모델 하나가 아니라 모델을 둘러싼 운영 체계의 경쟁입니다. 규제기관과 계약하려면 검증 가능한 safety review가 필요하고, 대규모 서비스를 하려면 자본·전력·공급망이 필요하며, 실제 사용자에게 배포하려면 sandbox, permission, memory hygiene, observability가 필요합니다. AI를 잘 쓰는 조직은 “어떤 모델을 쓸까?”에서 멈추지 않고, “이 모델을 어떤 증거·자금·런타임·거버넌스로 지속 운영할까?”를 설계하는 조직이 될 것입니다.\n참고 링크:\nReuters: EU Commission, OpenAI·Anthropic과 AI model 관련 협의: https://news.google.com/rss/articles/CBMizAFBVV95cUxPUmMycEVRUGxZV2VUU05oZ0JzMC14Q0JnS2lCZkg1Z1BJSEwzRW52OXVBcFJRdzJLSEYzWGpyQlk5X2x2TC1IalZTdGctLW9RNDdQeHdURG5meFRSU3B3TmVaYTBRTEFuVDlHS3NUMzNiczBSWFlMYmxnYUxiZWJnTF9TZXpOSkZPamZ2bEtsMHN0T3dfdDB4XzQycy1qNmkyd3JfNjVfRl9OVm40U1BDQlp4RGtwVmp2R3o0cloyTzN3OXB6ZHFVdEZRTGk?oc=5 Reuters: AI labs should pass safety review to get US government contracts: https://news.google.com/rss/articles/CBMiwwFBVV95cUxQVTFMUlljVDZyUXczUFVJZjMxVVVfUW9jTmZJNU1Edk55R1lYSnhCT3RpNTBiR3dTU1h5ckpvbHlUUEZuM0ZqMmtBcWFpc3BqUHh5YzhnUjJzSHR1S3BwVHpEeDNldmtTQ19HV0YtOXpYRHlySG9oYVFKdFJNcS1oRlVxc1NZdTlINk9fYWJLX3dXczBFWnNQa2t6aXBOZXNIeGZHS3BSN25rbV9JUDdHTWtnY0RZOHpMSGJOTlJsUFVNblk?oc=5 OpenAI: How enterprises are scaling AI: https://openai.com/business/guides-and-resources/how-enterprises-are-scaling-ai OpenAI Agents Python v0.17.1: https://github.com/openai/openai-agents-python/releases/tag/v0.17.1 Open WebUI v0.9.5: https://github.com/open-webui/open-webui/releases/tag/v0.9.5 llama.cpp b9102: https://github.com/ggml-org/llama.cpp/releases/tag/b9102 The Memory Curse: https://arxiv.org/abs/2605.08060 LLMs Improving LLMs: https://arxiv.org/abs/2605.08083 ","wordCount":"496","inLanguage":"en","datePublished":"2026-05-11T21:00:00+09:00","dateModified":"2026-05-11T21:00:00+09:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://kwbaek.github.io/posts/2026-05-11-ai-ml-trends-ai-is-becoming-policy-capital-and-runtime-infrastructure/"},"publisher":{"@type":"Organization","name":"Kyungwook's Devlog","logo":{"@type":"ImageObject","url":"https://kwbaek.github.io/favicon.ico"}}}</script></head><body id=top><header class=header><nav class=nav><div class=logo><a href=https://kwbaek.github.io/ accesskey=h title="Kyungwook's Devlog (Alt + H)">Kyungwook's Devlog</a><div class=logo-switches><button id=theme-toggle accesskey=t title="(Alt + T)" aria-label="Toggle theme">
-<svg id="moon" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
-<svg id="sun" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button></div></div><ul id=menu><li><a href=https://kwbaek.github.io/categories/ title=categories><span>categories</span></a></li><li><a href=https://kwbaek.github.io/tags/ title=tags><span>tags</span></a></li><li><a href=https://kwbaek.github.io/ title="Kyungwook's Devlog"><span>Kyungwook's Devlog</span>&nbsp;
-<svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><path d="M15 3h6v6"/><path d="M10 14 21 3"/></svg></a></li></ul></nav></header><main class=main><article class=post-single><header class=post-header><h1 class="post-title entry-hint-parent">AI/ML 트렌드: AI는 정책, 자본, 런타임 인프라의 문제가 되고 있다</h1><div class=post-meta><span title='2026-05-11 21:00:00 +0900 KST'>May 11, 2026</span></div></header><div class=post-content><p>오늘 AI/ML 트렌드에서 가장 흥미로운 흐름은 <strong>AI 경쟁의 중심이 모델 성능 하나에서 정책, 자본, 런타임 인프라 전체로 확장되고 있다</strong>는 점입니다. 하루 동안 나온 신호들을 묶어보면, frontier model을 누가 더 크게 만들었는지보다 그 모델을 어떤 규제 아래 배포하고, 어떤 자금으로 인프라를 짓고, 어떤 런타임에서 안전하게 운영하며, 어떤 평가 기준으로 조달·사용할지의 문제가 더 커지고 있습니다.</p><p>먼저 정책과 조달 쪽 신호가 강했습니다. Reuters는 EU Commission이 OpenAI·Anthropic과 AI model 관련 협의를 진행 중이라고 보도했습니다. 이는 frontier AI 규제가 추상적인 원칙 선언에서 모델 제공사와 집행기관 간의 구체적인 compliance 설계로 내려오고 있다는 뜻입니다. 또 다른 Reuters 보도에서는 AI lab이 미국 정부 계약을 받기 위해 safety review를 통과해야 한다는 제안이 나왔습니다. AI safety evaluation이 연구실 내부 benchmark나 voluntary commitment에 머무르지 않고, public procurement의 조건이 될 수 있다는 신호입니다.</p><p>이 흐름은 기업 전략에도 직접 영향을 줍니다. 정부·공공·규제산업에 AI를 팔려는 기업은 모델 성능만 제시해서는 부족합니다. 어떤 데이터로 평가했는지, 누가 검증했는지, 실패 시 책임과 감사 로그는 어떻게 남는지, model update 이후에도 기존 safety posture가 유지되는지까지 설명해야 합니다. 즉 AI 제품의 GTM은 점점 “데모”가 아니라 “증거 패키지”가 됩니다.</p><p>두 번째 축은 자본과 인프라입니다. Alphabet이 AI 경쟁 속에서 첫 엔화채 발행을 추진한다는 Bloomberg 보도, Cerebras가 강한 수요를 바탕으로 IPO 가격 범위를 높일 예정이라는 Reuters 보도, SoftBank가 AI hardware push와 함께 일본 battery venture를 추진한다는 WSJ 보도는 모두 같은 방향을 가리킵니다. AI capex는 GPU 구매만의 문제가 아니라 글로벌 채권시장, public market pricing, 전력·배터리·부지·lease 구조까지 포함하는 금융·산업 인프라의 문제가 되고 있습니다.</p><p>특히 Goldman의 분석처럼 AI가 한국·대만의 K-shaped 경제와 금리 압력을 키울 수 있다는 관점은 중요합니다. AI boom은 반도체 주가만 올리는 이벤트가 아닙니다. 특정 산업과 지역에는 임금·투자·수출·자산가격 상승을 만들고, 다른 영역에는 비용 부담과 양극화를 만들 수 있습니다. AI를 보는 관점도 이제 “기술 섹터 전망”에서 macro spillover와 금융 조건까지 확장되어야 합니다.</p><p>세 번째 축은 런타임 운영입니다. OpenAI Agents Python v0.17.1은 sandbox archive extraction 제한과 Git repo subpath 검증을 추가했습니다. Open WebUI v0.9.5는 redirect-based SSRF 방어, iframe CSP, 권한 hardening을 대거 넣었습니다. llama.cpp는 post-sampling probabilities, HTTP timeout warning, SYCL op coverage 같은 운영 디테일을 계속 보강하고 있습니다. 로컬·오픈소스·agent runtime의 경쟁력이 “모델을 돌린다”에서 “위험한 입력, 외부 fetch, repo materialization, timeout, observability를 어떻게 다루는가”로 이동하고 있습니다.</p><p>연구 흐름에서도 비슷한 메시지가 나옵니다. <code>The Memory Curse</code>는 긴 context가 multi-agent 협력 의도를 오히려 약화시킬 수 있음을 보여줍니다. 이는 agent memory 설계에서 “많이 기억하기”가 항상 답이 아니라는 중요한 경고입니다. <code>LLMs Improving LLMs</code>는 test-time scaling 전략을 에이전트가 발견하는 방향을 보여줍니다. inference scaling도 hand-crafted prompt technique이 아니라 자동화된 strategy discovery와 runtime search의 문제가 될 수 있습니다.</p><p>오늘의 결론은 분명합니다. <strong>AI/ML의 다음 경쟁은 모델 하나가 아니라 모델을 둘러싼 운영 체계의 경쟁</strong>입니다. 규제기관과 계약하려면 검증 가능한 safety review가 필요하고, 대규모 서비스를 하려면 자본·전력·공급망이 필요하며, 실제 사용자에게 배포하려면 sandbox, permission, memory hygiene, observability가 필요합니다. AI를 잘 쓰는 조직은 “어떤 모델을 쓸까?”에서 멈추지 않고, “이 모델을 어떤 증거·자금·런타임·거버넌스로 지속 운영할까?”를 설계하는 조직이 될 것입니다.</p><p>참고 링크:</p><ul><li>Reuters: EU Commission, OpenAI·Anthropic과 AI model 관련 협의: <a href="https://news.google.com/rss/articles/CBMizAFBVV95cUxPUmMycEVRUGxZV2VUU05oZ0JzMC14Q0JnS2lCZkg1Z1BJSEwzRW52OXVBcFJRdzJLSEYzWGpyQlk5X2x2TC1IalZTdGctLW9RNDdQeHdURG5meFRSU3B3TmVaYTBRTEFuVDlHS3NUMzNiczBSWFlMYmxnYUxiZWJnTF9TZXpOSkZPamZ2bEtsMHN0T3dfdDB4XzQycy1qNmkyd3JfNjVfRl9OVm40U1BDQlp4RGtwVmp2R3o0cloyTzN3OXB6ZHFVdEZRTGk?oc=5">https://news.google.com/rss/articles/CBMizAFBVV95cUxPUmMycEVRUGxZV2VUU05oZ0JzMC14Q0JnS2lCZkg1Z1BJSEwzRW52OXVBcFJRdzJLSEYzWGpyQlk5X2x2TC1IalZTdGctLW9RNDdQeHdURG5meFRSU3B3TmVaYTBRTEFuVDlHS3NUMzNiczBSWFlMYmxnYUxiZWJnTF9TZXpOSkZPamZ2bEtsMHN0T3dfdDB4XzQycy1qNmkyd3JfNjVfRl9OVm40U1BDQlp4RGtwVmp2R3o0cloyTzN3OXB6ZHFVdEZRTGk?oc=5</a></li><li>Reuters: AI labs should pass safety review to get US government contracts: <a href="https://news.google.com/rss/articles/CBMiwwFBVV95cUxQVTFMUlljVDZyUXczUFVJZjMxVVVfUW9jTmZJNU1Edk55R1lYSnhCT3RpNTBiR3dTU1h5ckpvbHlUUEZuM0ZqMmtBcWFpc3BqUHh5YzhnUjJzSHR1S3BwVHpEeDNldmtTQ19HV0YtOXpYRHlySG9oYVFKdFJNcS1oRlVxc1NZdTlINk9fYWJLX3dXczBFWnNQa2t6aXBOZXNIeGZHS3BSN25rbV9JUDdHTWtnY0RZOHpMSGJOTlJsUFVNblk?oc=5">https://news.google.com/rss/articles/CBMiwwFBVV95cUxQVTFMUlljVDZyUXczUFVJZjMxVVVfUW9jTmZJNU1Edk55R1lYSnhCT3RpNTBiR3dTU1h5ckpvbHlUUEZuM0ZqMmtBcWFpc3BqUHh5YzhnUjJzSHR1S3BwVHpEeDNldmtTQ19HV0YtOXpYRHlySG9oYVFKdFJNcS1oRlVxc1NZdTlINk9fYWJLX3dXczBFWnNQa2t6aXBOZXNIeGZHS3BSN25rbV9JUDdHTWtnY0RZOHpMSGJOTlJsUFVNblk?oc=5</a></li><li>OpenAI: How enterprises are scaling AI: <a href=https://openai.com/business/guides-and-resources/how-enterprises-are-scaling-ai>https://openai.com/business/guides-and-resources/how-enterprises-are-scaling-ai</a></li><li>OpenAI Agents Python v0.17.1: <a href=https://github.com/openai/openai-agents-python/releases/tag/v0.17.1>https://github.com/openai/openai-agents-python/releases/tag/v0.17.1</a></li><li>Open WebUI v0.9.5: <a href=https://github.com/open-webui/open-webui/releases/tag/v0.9.5>https://github.com/open-webui/open-webui/releases/tag/v0.9.5</a></li><li>llama.cpp b9102: <a href=https://github.com/ggml-org/llama.cpp/releases/tag/b9102>https://github.com/ggml-org/llama.cpp/releases/tag/b9102</a></li><li>The Memory Curse: <a href=https://arxiv.org/abs/2605.08060>https://arxiv.org/abs/2605.08060</a></li><li>LLMs Improving LLMs: <a href=https://arxiv.org/abs/2605.08083>https://arxiv.org/abs/2605.08083</a></li></ul></div><footer class=post-footer><ul class=post-tags><li><a href=https://kwbaek.github.io/tags/ai/>Ai</a></li><li><a href=https://kwbaek.github.io/tags/ml/>ML</a></li><li><a href=https://kwbaek.github.io/tags/infrastructure/>Infrastructure</a></li><li><a href=https://kwbaek.github.io/tags/policy/>Policy</a></li><li><a href=https://kwbaek.github.io/tags/runtime/>Runtime</a></li><li><a href=https://kwbaek.github.io/tags/agents/>Agents</a></li><li><a href=https://kwbaek.github.io/tags/capital/>Capital</a></li><li><a href=https://kwbaek.github.io/tags/governance/>Governance</a></li></ul></footer><script src=https://utteranc.es/client.js repo=kwbaek/blog-comments issue-term=pathname theme=github-light crossorigin=anonymous async></script></article></main><footer class=footer><span>&copy; 2026 <a href=https://kwbaek.github.io/>Kyungwook's Devlog</a></span> ·
-<span>Powered by
-<a href=https://gohugo.io/ rel="noopener noreferrer" target=_blank>Hugo</a> &
-<a href=https://github.com/adityatelange/hugo-PaperMod/ rel=noopener target=_blank>PaperMod</a></span></footer><a href=#top aria-label="go to top" title="Go to Top (Alt + G)" class=top-link id=top-link accesskey=g><svg viewBox="0 0 12 6" fill="currentColor"><path d="M12 6H0l6-6z"/></svg>
-</a><script>let menu=document.getElementById("menu");if(menu){const e=localStorage.getItem("menu-scroll-position");e&&(menu.scrollLeft=parseInt(e,10)),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)}}document.querySelectorAll('a[href^="#"]').forEach(e=>{e.addEventListener("click",function(e){e.preventDefault();var t=this.getAttribute("href").substr(1);window.matchMedia("(prefers-reduced-motion: reduce)").matches?document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView({behavior:"smooth"}),t==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${t}`)})})</script><script>var mybutton=document.getElementById("top-link");window.onscroll=function(){document.body.scrollTop>800||document.documentElement.scrollTop>800?(mybutton.style.visibility="visible",mybutton.style.opacity="1"):(mybutton.style.visibility="hidden",mybutton.style.opacity="0")}</script><script>document.getElementById("theme-toggle").addEventListener("click",()=>{const e=document.querySelector("html");e.dataset.theme==="dark"?(e.dataset.theme="light",localStorage.setItem("pref-theme","light")):(e.dataset.theme="dark",localStorage.setItem("pref-theme","dark"))})</script></body></html>
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>AI/ML 트렌드: AI는 정책, 자본, 런타임 인프라의 문제가 되고 있다 | Kyungwook&#39;s Devlog</title>
+<meta name="keywords" content="AI, ML, Infrastructure, Policy, Runtime, Agents, Capital, Governance">
+<meta name="description" content="오늘 AI/ML 트렌드에서 가장 흥미로운 흐름은 AI 경쟁의 중심이 모델 성능 하나에서 정책, 자본, 런타임 인프라 전체로 확장되고 있다는 점입니다. 하루 동안 나온 신호들을 묶어보면, frontier model을 누가 더 크게 만들었는지보다 그 모델을 어떤 규제 아래 배포하고, 어떤 자금으로 인프라를 짓고, 어떤 런타임에서 안전하게 운영하며, 어떤 평가 기준으로 조달·사용할지의 문제가 더 커지고 있습니다.
+먼저 정책과 조달 쪽 신호가 강했습니다. Reuters는 EU Commission이 OpenAI·Anthropic과 AI model 관련 협의를 진행 중이라고 보도했습니다. 이는 frontier AI 규제가 추상적인 원칙 선언에서 모델 제공사와 집행기관 간의 구체적인 compliance 설계로 내려오고 있다는 뜻입니다. 또 다른 Reuters 보도에서는 AI lab이 미국 정부 계약을 받기 위해 safety review를 통과해야 한다는 제안이 나왔습니다. AI safety evaluation이 연구실 내부 benchmark나 voluntary commitment에 머무르지 않고, public procurement의 조건이 될 수 있다는 신호입니다.">
+<meta name="author" content="">
+<link rel="canonical" href="https://kwbaek.github.io/posts/2026-05-11-ai-ml-trends-ai-is-becoming-policy-capital-and-runtime-infrastructure/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.da3211e5ef867bf2b75fd5a6515cfed7195c011e8ab735694e203810a827097b.css" integrity="sha256-2jIR5e&#43;Ge/K3X9WmUVz&#43;1xlcAR6KtzVpTiA4EKgnCXs=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://kwbaek.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://kwbaek.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://kwbaek.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://kwbaek.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://kwbaek.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://kwbaek.github.io/posts/2026-05-11-ai-ml-trends-ai-is-becoming-policy-capital-and-runtime-infrastructure/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="https://kwbaek.github.io/posts/2026-05-11-ai-ml-trends-ai-is-becoming-policy-capital-and-runtime-infrastructure/">
+  <meta property="og:site_name" content="Kyungwook&#39;s Devlog">
+  <meta property="og:title" content="AI/ML 트렌드: AI는 정책, 자본, 런타임 인프라의 문제가 되고 있다">
+  <meta property="og:description" content="오늘 AI/ML 트렌드에서 가장 흥미로운 흐름은 AI 경쟁의 중심이 모델 성능 하나에서 정책, 자본, 런타임 인프라 전체로 확장되고 있다는 점입니다. 하루 동안 나온 신호들을 묶어보면, frontier model을 누가 더 크게 만들었는지보다 그 모델을 어떤 규제 아래 배포하고, 어떤 자금으로 인프라를 짓고, 어떤 런타임에서 안전하게 운영하며, 어떤 평가 기준으로 조달·사용할지의 문제가 더 커지고 있습니다.
+먼저 정책과 조달 쪽 신호가 강했습니다. Reuters는 EU Commission이 OpenAI·Anthropic과 AI model 관련 협의를 진행 중이라고 보도했습니다. 이는 frontier AI 규제가 추상적인 원칙 선언에서 모델 제공사와 집행기관 간의 구체적인 compliance 설계로 내려오고 있다는 뜻입니다. 또 다른 Reuters 보도에서는 AI lab이 미국 정부 계약을 받기 위해 safety review를 통과해야 한다는 제안이 나왔습니다. AI safety evaluation이 연구실 내부 benchmark나 voluntary commitment에 머무르지 않고, public procurement의 조건이 될 수 있다는 신호입니다.">
+  <meta property="og:locale" content="ko-kr">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2026-05-11T21:00:00+09:00">
+    <meta property="article:modified_time" content="2026-05-11T21:00:00+09:00">
+    <meta property="article:tag" content="Ai">
+    <meta property="article:tag" content="Ml">
+    <meta property="article:tag" content="Infrastructure">
+    <meta property="article:tag" content="Policy">
+    <meta property="article:tag" content="Runtime">
+    <meta property="article:tag" content="Agents">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="AI/ML 트렌드: AI는 정책, 자본, 런타임 인프라의 문제가 되고 있다">
+<meta name="twitter:description" content="오늘 AI/ML 트렌드에서 가장 흥미로운 흐름은 AI 경쟁의 중심이 모델 성능 하나에서 정책, 자본, 런타임 인프라 전체로 확장되고 있다는 점입니다. 하루 동안 나온 신호들을 묶어보면, frontier model을 누가 더 크게 만들었는지보다 그 모델을 어떤 규제 아래 배포하고, 어떤 자금으로 인프라를 짓고, 어떤 런타임에서 안전하게 운영하며, 어떤 평가 기준으로 조달·사용할지의 문제가 더 커지고 있습니다.
+먼저 정책과 조달 쪽 신호가 강했습니다. Reuters는 EU Commission이 OpenAI·Anthropic과 AI model 관련 협의를 진행 중이라고 보도했습니다. 이는 frontier AI 규제가 추상적인 원칙 선언에서 모델 제공사와 집행기관 간의 구체적인 compliance 설계로 내려오고 있다는 뜻입니다. 또 다른 Reuters 보도에서는 AI lab이 미국 정부 계약을 받기 위해 safety review를 통과해야 한다는 제안이 나왔습니다. AI safety evaluation이 연구실 내부 benchmark나 voluntary commitment에 머무르지 않고, public procurement의 조건이 될 수 있다는 신호입니다.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://kwbaek.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "AI/ML 트렌드: AI는 정책, 자본, 런타임 인프라의 문제가 되고 있다",
+      "item": "https://kwbaek.github.io/posts/2026-05-11-ai-ml-trends-ai-is-becoming-policy-capital-and-runtime-infrastructure/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "AI/ML 트렌드: AI는 정책, 자본, 런타임 인프라의 문제가 되고 있다",
+  "name": "AI\/ML 트렌드: AI는 정책, 자본, 런타임 인프라의 문제가 되고 있다",
+  "description": "오늘 AI/ML 트렌드에서 가장 흥미로운 흐름은 AI 경쟁의 중심이 모델 성능 하나에서 정책, 자본, 런타임 인프라 전체로 확장되고 있다는 점입니다. 하루 동안 나온 신호들을 묶어보면, frontier model을 누가 더 크게 만들었는지보다 그 모델을 어떤 규제 아래 배포하고, 어떤 자금으로 인프라를 짓고, 어떤 런타임에서 안전하게 운영하며, 어떤 평가 기준으로 조달·사용할지의 문제가 더 커지고 있습니다.\n먼저 정책과 조달 쪽 신호가 강했습니다. Reuters는 EU Commission이 OpenAI·Anthropic과 AI model 관련 협의를 진행 중이라고 보도했습니다. 이는 frontier AI 규제가 추상적인 원칙 선언에서 모델 제공사와 집행기관 간의 구체적인 compliance 설계로 내려오고 있다는 뜻입니다. 또 다른 Reuters 보도에서는 AI lab이 미국 정부 계약을 받기 위해 safety review를 통과해야 한다는 제안이 나왔습니다. AI safety evaluation이 연구실 내부 benchmark나 voluntary commitment에 머무르지 않고, public procurement의 조건이 될 수 있다는 신호입니다.\n",
+  "keywords": [
+    "AI", "ML", "Infrastructure", "Policy", "Runtime", "Agents", "Capital", "Governance"
+  ],
+  "articleBody": "오늘 AI/ML 트렌드에서 가장 흥미로운 흐름은 AI 경쟁의 중심이 모델 성능 하나에서 정책, 자본, 런타임 인프라 전체로 확장되고 있다는 점입니다. 하루 동안 나온 신호들을 묶어보면, frontier model을 누가 더 크게 만들었는지보다 그 모델을 어떤 규제 아래 배포하고, 어떤 자금으로 인프라를 짓고, 어떤 런타임에서 안전하게 운영하며, 어떤 평가 기준으로 조달·사용할지의 문제가 더 커지고 있습니다.\n먼저 정책과 조달 쪽 신호가 강했습니다. Reuters는 EU Commission이 OpenAI·Anthropic과 AI model 관련 협의를 진행 중이라고 보도했습니다. 이는 frontier AI 규제가 추상적인 원칙 선언에서 모델 제공사와 집행기관 간의 구체적인 compliance 설계로 내려오고 있다는 뜻입니다. 또 다른 Reuters 보도에서는 AI lab이 미국 정부 계약을 받기 위해 safety review를 통과해야 한다는 제안이 나왔습니다. AI safety evaluation이 연구실 내부 benchmark나 voluntary commitment에 머무르지 않고, public procurement의 조건이 될 수 있다는 신호입니다.\n이 흐름은 기업 전략에도 직접 영향을 줍니다. 정부·공공·규제산업에 AI를 팔려는 기업은 모델 성능만 제시해서는 부족합니다. 어떤 데이터로 평가했는지, 누가 검증했는지, 실패 시 책임과 감사 로그는 어떻게 남는지, model update 이후에도 기존 safety posture가 유지되는지까지 설명해야 합니다. 즉 AI 제품의 GTM은 점점 “데모”가 아니라 “증거 패키지”가 됩니다.\n두 번째 축은 자본과 인프라입니다. Alphabet이 AI 경쟁 속에서 첫 엔화채 발행을 추진한다는 Bloomberg 보도, Cerebras가 강한 수요를 바탕으로 IPO 가격 범위를 높일 예정이라는 Reuters 보도, SoftBank가 AI hardware push와 함께 일본 battery venture를 추진한다는 WSJ 보도는 모두 같은 방향을 가리킵니다. AI capex는 GPU 구매만의 문제가 아니라 글로벌 채권시장, public market pricing, 전력·배터리·부지·lease 구조까지 포함하는 금융·산업 인프라의 문제가 되고 있습니다.\n특히 Goldman의 분석처럼 AI가 한국·대만의 K-shaped 경제와 금리 압력을 키울 수 있다는 관점은 중요합니다. AI boom은 반도체 주가만 올리는 이벤트가 아닙니다. 특정 산업과 지역에는 임금·투자·수출·자산가격 상승을 만들고, 다른 영역에는 비용 부담과 양극화를 만들 수 있습니다. AI를 보는 관점도 이제 “기술 섹터 전망”에서 macro spillover와 금융 조건까지 확장되어야 합니다.\n세 번째 축은 런타임 운영입니다. OpenAI Agents Python v0.17.1은 sandbox archive extraction 제한과 Git repo subpath 검증을 추가했습니다. Open WebUI v0.9.5는 redirect-based SSRF 방어, iframe CSP, 권한 hardening을 대거 넣었습니다. llama.cpp는 post-sampling probabilities, HTTP timeout warning, SYCL op coverage 같은 운영 디테일을 계속 보강하고 있습니다. 로컬·오픈소스·agent runtime의 경쟁력이 “모델을 돌린다”에서 “위험한 입력, 외부 fetch, repo materialization, timeout, observability를 어떻게 다루는가”로 이동하고 있습니다.\n연구 흐름에서도 비슷한 메시지가 나옵니다. The Memory Curse는 긴 context가 multi-agent 협력 의도를 오히려 약화시킬 수 있음을 보여줍니다. 이는 agent memory 설계에서 “많이 기억하기”가 항상 답이 아니라는 중요한 경고입니다. LLMs Improving LLMs는 test-time scaling 전략을 에이전트가 발견하는 방향을 보여줍니다. inference scaling도 hand-crafted prompt technique이 아니라 자동화된 strategy discovery와 runtime search의 문제가 될 수 있습니다.\n오늘의 결론은 분명합니다. AI/ML의 다음 경쟁은 모델 하나가 아니라 모델을 둘러싼 운영 체계의 경쟁입니다. 규제기관과 계약하려면 검증 가능한 safety review가 필요하고, 대규모 서비스를 하려면 자본·전력·공급망이 필요하며, 실제 사용자에게 배포하려면 sandbox, permission, memory hygiene, observability가 필요합니다. AI를 잘 쓰는 조직은 “어떤 모델을 쓸까?”에서 멈추지 않고, “이 모델을 어떤 증거·자금·런타임·거버넌스로 지속 운영할까?”를 설계하는 조직이 될 것입니다.\n참고 링크:\nReuters: EU Commission, OpenAI·Anthropic과 AI model 관련 협의: https://news.google.com/rss/articles/CBMizAFBVV95cUxPUmMycEVRUGxZV2VUU05oZ0JzMC14Q0JnS2lCZkg1Z1BJSEwzRW52OXVBcFJRdzJLSEYzWGpyQlk5X2x2TC1IalZTdGctLW9RNDdQeHdURG5meFRSU3B3TmVaYTBRTEFuVDlHS3NUMzNiczBSWFlMYmxnYUxiZWJnTF9TZXpOSkZPamZ2bEtsMHN0T3dfdDB4XzQycy1qNmkyd3JfNjVfRl9OVm40U1BDQlp4RGtwVmp2R3o0cloyTzN3OXB6ZHFVdEZRTGk?oc=5 Reuters: AI labs should pass safety review to get US government contracts: https://news.google.com/rss/articles/CBMiwwFBVV95cUxQVTFMUlljVDZyUXczUFVJZjMxVVVfUW9jTmZJNU1Edk55R1lYSnhCT3RpNTBiR3dTU1h5ckpvbHlUUEZuM0ZqMmtBcWFpc3BqUHh5YzhnUjJzSHR1S3BwVHpEeDNldmtTQ19HV0YtOXpYRHlySG9oYVFKdFJNcS1oRlVxc1NZdTlINk9fYWJLX3dXczBFWnNQa2t6aXBOZXNIeGZHS3BSN25rbV9JUDdHTWtnY0RZOHpMSGJOTlJsUFVNblk?oc=5 OpenAI: How enterprises are scaling AI: https://openai.com/business/guides-and-resources/how-enterprises-are-scaling-ai OpenAI Agents Python v0.17.1: https://github.com/openai/openai-agents-python/releases/tag/v0.17.1 Open WebUI v0.9.5: https://github.com/open-webui/open-webui/releases/tag/v0.9.5 llama.cpp b9102: https://github.com/ggml-org/llama.cpp/releases/tag/b9102 The Memory Curse: https://arxiv.org/abs/2605.08060 LLMs Improving LLMs: https://arxiv.org/abs/2605.08083 ",
+  "wordCount" : "496",
+  "inLanguage": "en",
+  "datePublished": "2026-05-11T21:00:00+09:00",
+  "dateModified": "2026-05-11T21:00:00+09:00",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://kwbaek.github.io/posts/2026-05-11-ai-ml-trends-ai-is-becoming-policy-capital-and-runtime-infrastructure/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Kyungwook's Devlog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://kwbaek.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://kwbaek.github.io/" accesskey="h" title="Kyungwook&#39;s Devlog (Alt + H)">Kyungwook&#39;s Devlog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://kwbaek.github.io/categories/" title="categories">
+                    <span>categories</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kwbaek.github.io/tags/" title="tags">
+                    <span>tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kwbaek.github.io/" title="Kyungwook&#39;s Devlog">
+                    <span>Kyungwook&#39;s Devlog</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      AI/ML 트렌드: AI는 정책, 자본, 런타임 인프라의 문제가 되고 있다
+    </h1>
+    <div class="post-meta"><span title='2026-05-11 21:00:00 +0900 KST'>May 11, 2026</span>
+
+</div>
+  </header> 
+  <div class="post-content"><p>오늘 AI/ML 트렌드에서 가장 흥미로운 흐름은 <strong>AI 경쟁의 중심이 모델 성능 하나에서 정책, 자본, 런타임 인프라 전체로 확장되고 있다</strong>는 점입니다. 하루 동안 나온 신호들을 묶어보면, frontier model을 누가 더 크게 만들었는지보다 그 모델을 어떤 규제 아래 배포하고, 어떤 자금으로 인프라를 짓고, 어떤 런타임에서 안전하게 운영하며, 어떤 평가 기준으로 조달·사용할지의 문제가 더 커지고 있습니다.</p>
+<p>먼저 정책과 조달 쪽 신호가 강했습니다. Reuters는 EU Commission이 OpenAI·Anthropic과 AI model 관련 협의를 진행 중이라고 보도했습니다. 이는 frontier AI 규제가 추상적인 원칙 선언에서 모델 제공사와 집행기관 간의 구체적인 compliance 설계로 내려오고 있다는 뜻입니다. 또 다른 Reuters 보도에서는 AI lab이 미국 정부 계약을 받기 위해 safety review를 통과해야 한다는 제안이 나왔습니다. AI safety evaluation이 연구실 내부 benchmark나 voluntary commitment에 머무르지 않고, public procurement의 조건이 될 수 있다는 신호입니다.</p>
+<p>이 흐름은 기업 전략에도 직접 영향을 줍니다. 정부·공공·규제산업에 AI를 팔려는 기업은 모델 성능만 제시해서는 부족합니다. 어떤 데이터로 평가했는지, 누가 검증했는지, 실패 시 책임과 감사 로그는 어떻게 남는지, model update 이후에도 기존 safety posture가 유지되는지까지 설명해야 합니다. 즉 AI 제품의 GTM은 점점 “데모”가 아니라 “증거 패키지”가 됩니다.</p>
+<p>두 번째 축은 자본과 인프라입니다. Alphabet이 AI 경쟁 속에서 첫 엔화채 발행을 추진한다는 Bloomberg 보도, Cerebras가 강한 수요를 바탕으로 IPO 가격 범위를 높일 예정이라는 Reuters 보도, SoftBank가 AI hardware push와 함께 일본 battery venture를 추진한다는 WSJ 보도는 모두 같은 방향을 가리킵니다. AI capex는 GPU 구매만의 문제가 아니라 글로벌 채권시장, public market pricing, 전력·배터리·부지·lease 구조까지 포함하는 금융·산업 인프라의 문제가 되고 있습니다.</p>
+<p>특히 Goldman의 분석처럼 AI가 한국·대만의 K-shaped 경제와 금리 압력을 키울 수 있다는 관점은 중요합니다. AI boom은 반도체 주가만 올리는 이벤트가 아닙니다. 특정 산업과 지역에는 임금·투자·수출·자산가격 상승을 만들고, 다른 영역에는 비용 부담과 양극화를 만들 수 있습니다. AI를 보는 관점도 이제 “기술 섹터 전망”에서 macro spillover와 금융 조건까지 확장되어야 합니다.</p>
+<p>세 번째 축은 런타임 운영입니다. OpenAI Agents Python v0.17.1은 sandbox archive extraction 제한과 Git repo subpath 검증을 추가했습니다. Open WebUI v0.9.5는 redirect-based SSRF 방어, iframe CSP, 권한 hardening을 대거 넣었습니다. llama.cpp는 post-sampling probabilities, HTTP timeout warning, SYCL op coverage 같은 운영 디테일을 계속 보강하고 있습니다. 로컬·오픈소스·agent runtime의 경쟁력이 “모델을 돌린다”에서 “위험한 입력, 외부 fetch, repo materialization, timeout, observability를 어떻게 다루는가”로 이동하고 있습니다.</p>
+<p>연구 흐름에서도 비슷한 메시지가 나옵니다. <code>The Memory Curse</code>는 긴 context가 multi-agent 협력 의도를 오히려 약화시킬 수 있음을 보여줍니다. 이는 agent memory 설계에서 “많이 기억하기”가 항상 답이 아니라는 중요한 경고입니다. <code>LLMs Improving LLMs</code>는 test-time scaling 전략을 에이전트가 발견하는 방향을 보여줍니다. inference scaling도 hand-crafted prompt technique이 아니라 자동화된 strategy discovery와 runtime search의 문제가 될 수 있습니다.</p>
+<p>오늘의 결론은 분명합니다. <strong>AI/ML의 다음 경쟁은 모델 하나가 아니라 모델을 둘러싼 운영 체계의 경쟁</strong>입니다. 규제기관과 계약하려면 검증 가능한 safety review가 필요하고, 대규모 서비스를 하려면 자본·전력·공급망이 필요하며, 실제 사용자에게 배포하려면 sandbox, permission, memory hygiene, observability가 필요합니다. AI를 잘 쓰는 조직은 “어떤 모델을 쓸까?”에서 멈추지 않고, “이 모델을 어떤 증거·자금·런타임·거버넌스로 지속 운영할까?”를 설계하는 조직이 될 것입니다.</p>
+<p>참고 링크:</p>
+<ul>
+<li>Reuters: EU Commission, OpenAI·Anthropic과 AI model 관련 협의: <a href="https://news.google.com/rss/articles/CBMizAFBVV95cUxPUmMycEVRUGxZV2VUU05oZ0JzMC14Q0JnS2lCZkg1Z1BJSEwzRW52OXVBcFJRdzJLSEYzWGpyQlk5X2x2TC1IalZTdGctLW9RNDdQeHdURG5meFRSU3B3TmVaYTBRTEFuVDlHS3NUMzNiczBSWFlMYmxnYUxiZWJnTF9TZXpOSkZPamZ2bEtsMHN0T3dfdDB4XzQycy1qNmkyd3JfNjVfRl9OVm40U1BDQlp4RGtwVmp2R3o0cloyTzN3OXB6ZHFVdEZRTGk?oc=5">https://news.google.com/rss/articles/CBMizAFBVV95cUxPUmMycEVRUGxZV2VUU05oZ0JzMC14Q0JnS2lCZkg1Z1BJSEwzRW52OXVBcFJRdzJLSEYzWGpyQlk5X2x2TC1IalZTdGctLW9RNDdQeHdURG5meFRSU3B3TmVaYTBRTEFuVDlHS3NUMzNiczBSWFlMYmxnYUxiZWJnTF9TZXpOSkZPamZ2bEtsMHN0T3dfdDB4XzQycy1qNmkyd3JfNjVfRl9OVm40U1BDQlp4RGtwVmp2R3o0cloyTzN3OXB6ZHFVdEZRTGk?oc=5</a></li>
+<li>Reuters: AI labs should pass safety review to get US government contracts: <a href="https://news.google.com/rss/articles/CBMiwwFBVV95cUxQVTFMUlljVDZyUXczUFVJZjMxVVVfUW9jTmZJNU1Edk55R1lYSnhCT3RpNTBiR3dTU1h5ckpvbHlUUEZuM0ZqMmtBcWFpc3BqUHh5YzhnUjJzSHR1S3BwVHpEeDNldmtTQ19HV0YtOXpYRHlySG9oYVFKdFJNcS1oRlVxc1NZdTlINk9fYWJLX3dXczBFWnNQa2t6aXBOZXNIeGZHS3BSN25rbV9JUDdHTWtnY0RZOHpMSGJOTlJsUFVNblk?oc=5">https://news.google.com/rss/articles/CBMiwwFBVV95cUxQVTFMUlljVDZyUXczUFVJZjMxVVVfUW9jTmZJNU1Edk55R1lYSnhCT3RpNTBiR3dTU1h5ckpvbHlUUEZuM0ZqMmtBcWFpc3BqUHh5YzhnUjJzSHR1S3BwVHpEeDNldmtTQ19HV0YtOXpYRHlySG9oYVFKdFJNcS1oRlVxc1NZdTlINk9fYWJLX3dXczBFWnNQa2t6aXBOZXNIeGZHS3BSN25rbV9JUDdHTWtnY0RZOHpMSGJOTlJsUFVNblk?oc=5</a></li>
+<li>OpenAI: How enterprises are scaling AI: <a href="https://openai.com/business/guides-and-resources/how-enterprises-are-scaling-ai">https://openai.com/business/guides-and-resources/how-enterprises-are-scaling-ai</a></li>
+<li>OpenAI Agents Python v0.17.1: <a href="https://github.com/openai/openai-agents-python/releases/tag/v0.17.1">https://github.com/openai/openai-agents-python/releases/tag/v0.17.1</a></li>
+<li>Open WebUI v0.9.5: <a href="https://github.com/open-webui/open-webui/releases/tag/v0.9.5">https://github.com/open-webui/open-webui/releases/tag/v0.9.5</a></li>
+<li>llama.cpp b9102: <a href="https://github.com/ggml-org/llama.cpp/releases/tag/b9102">https://github.com/ggml-org/llama.cpp/releases/tag/b9102</a></li>
+<li>The Memory Curse: <a href="https://arxiv.org/abs/2605.08060">https://arxiv.org/abs/2605.08060</a></li>
+<li>LLMs Improving LLMs: <a href="https://arxiv.org/abs/2605.08083">https://arxiv.org/abs/2605.08083</a></li>
+</ul>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://kwbaek.github.io/tags/ai/">Ai</a></li>
+      <li><a href="https://kwbaek.github.io/tags/ml/">Ml</a></li>
+      <li><a href="https://kwbaek.github.io/tags/infrastructure/">Infrastructure</a></li>
+      <li><a href="https://kwbaek.github.io/tags/policy/">Policy</a></li>
+      <li><a href="https://kwbaek.github.io/tags/runtime/">Runtime</a></li>
+      <li><a href="https://kwbaek.github.io/tags/agents/">Agents</a></li>
+      <li><a href="https://kwbaek.github.io/tags/capital/">Capital</a></li>
+      <li><a href="https://kwbaek.github.io/tags/governance/">Governance</a></li>
+    </ul>
+  </footer><script src="https://utteranc.es/client.js"
+        repo="kwbaek/blog-comments"
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://kwbaek.github.io/">Kyungwook&#39;s Devlog</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

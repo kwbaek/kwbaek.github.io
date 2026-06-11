@@ -1,11 +1,334 @@
-<!doctype html><html lang=en dir=auto data-theme=auto><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=robots content="index, follow"><title>AI/ML 트렌드: AI 인프라는 모델 밖으로 확장되고 있다 | Kyungwook's Devlog</title><meta name=keywords content="AI,ML,AI Infrastructure,Agents,Serving,Edge AI,Evaluation,Memory"><meta name=description content="오늘 Discord #ai-ml-trends 채널에서 가장 중요한 흐름은 AI 경쟁의 병목이 모델 자체에서 메모리, CPU, 서빙 런타임, 평가, 보안, 디바이스 실행 환경으로 넓어지고 있다는 점입니다. Google의 Gemini Omni Flash 같은 멀티모달 생성 모델 소식도 눈에 띄었지만, 하루 전체 메시지를 묶어 보면 더 큰 변화는 “좋은 모델을 만들었다”보다 “그 모델을 어디서, 어떤 비용으로, 얼마나 안전하게, 어떤 운영 표면에서 계속 굴릴 것인가”에 있었습니다.
-가장 선명한 신호는 AI factory 공급망입니다. Reuters의 SK Hynix 시가총액 1조 달러 돌파 보도와 Micron 관련 소식은 HBM과 고급 DRAM이 이제 GPU의 보조 부품이 아니라 AI 인프라 경제의 핵심 병목이 됐다는 사실을 보여줍니다. NVIDIA가 대만 공급망과 더 밀착되는 흐름도 같은 맥락입니다. 모델 학습과 추론 수요가 계속 커지면 GPU만으로는 이야기가 끝나지 않습니다. 메모리 대역폭, 패키징, 서버 제조, 전력, 냉각, 지역별 공급망 리스크가 모두 AI 제품의 원가와 출시 속도를 좌우합니다."><meta name=author content><link rel=canonical href=https://kwbaek.github.io/posts/2026-05-27-ai-ml-trends-ai-infrastructure-is-expanding-beyond-the-model/><link crossorigin=anonymous href=/assets/css/stylesheet.da3211e5ef867bf2b75fd5a6515cfed7195c011e8ab735694e203810a827097b.css integrity="sha256-2jIR5e+Ge/K3X9WmUVz+1xlcAR6KtzVpTiA4EKgnCXs=" rel="preload stylesheet" as=style><link rel=icon href=https://kwbaek.github.io/favicon.ico><link rel=icon type=image/png sizes=16x16 href=https://kwbaek.github.io/favicon-16x16.png><link rel=icon type=image/png sizes=32x32 href=https://kwbaek.github.io/favicon-32x32.png><link rel=apple-touch-icon href=https://kwbaek.github.io/apple-touch-icon.png><link rel=mask-icon href=https://kwbaek.github.io/safari-pinned-tab.svg><meta name=theme-color content="#2e2e33"><meta name=msapplication-TileColor content="#2e2e33"><link rel=alternate hreflang=en href=https://kwbaek.github.io/posts/2026-05-27-ai-ml-trends-ai-infrastructure-is-expanding-beyond-the-model/><noscript><style>#theme-toggle,.top-link{display:none}</style><style>@media(prefers-color-scheme:dark){:root{--theme:rgb(29, 30, 32);--entry:rgb(46, 46, 51);--primary:rgb(218, 218, 219);--secondary:rgb(155, 156, 157);--tertiary:rgb(65, 66, 68);--content:rgb(196, 196, 197);--code-block-bg:rgb(46, 46, 51);--code-bg:rgb(55, 56, 62);--border:rgb(51, 51, 51);color-scheme:dark}.list{background:var(--theme)}.toc{background:var(--entry)}}@media(prefers-color-scheme:light){.list::-webkit-scrollbar-thumb{border-color:var(--code-bg)}}</style></noscript><script>localStorage.getItem("pref-theme")==="dark"?document.querySelector("html").dataset.theme="dark":localStorage.getItem("pref-theme")==="light"?document.querySelector("html").dataset.theme="light":window.matchMedia("(prefers-color-scheme: dark)").matches?document.querySelector("html").dataset.theme="dark":document.querySelector("html").dataset.theme="light"</script><meta property="og:url" content="https://kwbaek.github.io/posts/2026-05-27-ai-ml-trends-ai-infrastructure-is-expanding-beyond-the-model/"><meta property="og:site_name" content="Kyungwook's Devlog"><meta property="og:title" content="AI/ML 트렌드: AI 인프라는 모델 밖으로 확장되고 있다"><meta property="og:description" content="오늘 Discord #ai-ml-trends 채널에서 가장 중요한 흐름은 AI 경쟁의 병목이 모델 자체에서 메모리, CPU, 서빙 런타임, 평가, 보안, 디바이스 실행 환경으로 넓어지고 있다는 점입니다. Google의 Gemini Omni Flash 같은 멀티모달 생성 모델 소식도 눈에 띄었지만, 하루 전체 메시지를 묶어 보면 더 큰 변화는 “좋은 모델을 만들었다”보다 “그 모델을 어디서, 어떤 비용으로, 얼마나 안전하게, 어떤 운영 표면에서 계속 굴릴 것인가”에 있었습니다.
-가장 선명한 신호는 AI factory 공급망입니다. Reuters의 SK Hynix 시가총액 1조 달러 돌파 보도와 Micron 관련 소식은 HBM과 고급 DRAM이 이제 GPU의 보조 부품이 아니라 AI 인프라 경제의 핵심 병목이 됐다는 사실을 보여줍니다. NVIDIA가 대만 공급망과 더 밀착되는 흐름도 같은 맥락입니다. 모델 학습과 추론 수요가 계속 커지면 GPU만으로는 이야기가 끝나지 않습니다. 메모리 대역폭, 패키징, 서버 제조, 전력, 냉각, 지역별 공급망 리스크가 모두 AI 제품의 원가와 출시 속도를 좌우합니다."><meta property="og:locale" content="ko-kr"><meta property="og:type" content="article"><meta property="article:section" content="posts"><meta property="article:published_time" content="2026-05-27T21:00:00+09:00"><meta property="article:modified_time" content="2026-05-27T21:00:00+09:00"><meta property="article:tag" content="Ai"><meta property="article:tag" content="ML"><meta property="article:tag" content="AI Infrastructure"><meta property="article:tag" content="Agents"><meta property="article:tag" content="Serving"><meta property="article:tag" content="Edge AI"><meta name=twitter:card content="summary"><meta name=twitter:title content="AI/ML 트렌드: AI 인프라는 모델 밖으로 확장되고 있다"><meta name=twitter:description content="오늘 Discord #ai-ml-trends 채널에서 가장 중요한 흐름은 AI 경쟁의 병목이 모델 자체에서 메모리, CPU, 서빙 런타임, 평가, 보안, 디바이스 실행 환경으로 넓어지고 있다는 점입니다. Google의 Gemini Omni Flash 같은 멀티모달 생성 모델 소식도 눈에 띄었지만, 하루 전체 메시지를 묶어 보면 더 큰 변화는 “좋은 모델을 만들었다”보다 “그 모델을 어디서, 어떤 비용으로, 얼마나 안전하게, 어떤 운영 표면에서 계속 굴릴 것인가”에 있었습니다.
-가장 선명한 신호는 AI factory 공급망입니다. Reuters의 SK Hynix 시가총액 1조 달러 돌파 보도와 Micron 관련 소식은 HBM과 고급 DRAM이 이제 GPU의 보조 부품이 아니라 AI 인프라 경제의 핵심 병목이 됐다는 사실을 보여줍니다. NVIDIA가 대만 공급망과 더 밀착되는 흐름도 같은 맥락입니다. 모델 학습과 추론 수요가 계속 커지면 GPU만으로는 이야기가 끝나지 않습니다. 메모리 대역폭, 패키징, 서버 제조, 전력, 냉각, 지역별 공급망 리스크가 모두 AI 제품의 원가와 출시 속도를 좌우합니다."><script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Posts","item":"https://kwbaek.github.io/posts/"},{"@type":"ListItem","position":2,"name":"AI/ML 트렌드: AI 인프라는 모델 밖으로 확장되고 있다","item":"https://kwbaek.github.io/posts/2026-05-27-ai-ml-trends-ai-infrastructure-is-expanding-beyond-the-model/"}]}</script><script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"AI/ML 트렌드: AI 인프라는 모델 밖으로 확장되고 있다","name":"AI\/ML 트렌드: AI 인프라는 모델 밖으로 확장되고 있다","description":"오늘 Discord #ai-ml-trends 채널에서 가장 중요한 흐름은 AI 경쟁의 병목이 모델 자체에서 메모리, CPU, 서빙 런타임, 평가, 보안, 디바이스 실행 환경으로 넓어지고 있다는 점입니다. Google의 Gemini Omni Flash 같은 멀티모달 생성 모델 소식도 눈에 띄었지만, 하루 전체 메시지를 묶어 보면 더 큰 변화는 “좋은 모델을 만들었다”보다 “그 모델을 어디서, 어떤 비용으로, 얼마나 안전하게, 어떤 운영 표면에서 계속 굴릴 것인가”에 있었습니다.\n가장 선명한 신호는 AI factory 공급망입니다. Reuters의 SK Hynix 시가총액 1조 달러 돌파 보도와 Micron 관련 소식은 HBM과 고급 DRAM이 이제 GPU의 보조 부품이 아니라 AI 인프라 경제의 핵심 병목이 됐다는 사실을 보여줍니다. NVIDIA가 대만 공급망과 더 밀착되는 흐름도 같은 맥락입니다. 모델 학습과 추론 수요가 계속 커지면 GPU만으로는 이야기가 끝나지 않습니다. 메모리 대역폭, 패키징, 서버 제조, 전력, 냉각, 지역별 공급망 리스크가 모두 AI 제품의 원가와 출시 속도를 좌우합니다.\n","keywords":["AI","ML","AI Infrastructure","Agents","Serving","Edge AI","Evaluation","Memory"],"articleBody":"오늘 Discord #ai-ml-trends 채널에서 가장 중요한 흐름은 AI 경쟁의 병목이 모델 자체에서 메모리, CPU, 서빙 런타임, 평가, 보안, 디바이스 실행 환경으로 넓어지고 있다는 점입니다. Google의 Gemini Omni Flash 같은 멀티모달 생성 모델 소식도 눈에 띄었지만, 하루 전체 메시지를 묶어 보면 더 큰 변화는 “좋은 모델을 만들었다”보다 “그 모델을 어디서, 어떤 비용으로, 얼마나 안전하게, 어떤 운영 표면에서 계속 굴릴 것인가”에 있었습니다.\n가장 선명한 신호는 AI factory 공급망입니다. Reuters의 SK Hynix 시가총액 1조 달러 돌파 보도와 Micron 관련 소식은 HBM과 고급 DRAM이 이제 GPU의 보조 부품이 아니라 AI 인프라 경제의 핵심 병목이 됐다는 사실을 보여줍니다. NVIDIA가 대만 공급망과 더 밀착되는 흐름도 같은 맥락입니다. 모델 학습과 추론 수요가 계속 커지면 GPU만으로는 이야기가 끝나지 않습니다. 메모리 대역폭, 패키징, 서버 제조, 전력, 냉각, 지역별 공급망 리스크가 모두 AI 제품의 원가와 출시 속도를 좌우합니다.\nCPU도 다시 중요해지고 있습니다. NVIDIA Vera CPU 초기 벤치마크는 agentic AI workload를 전면에 둡니다. tool call, sandbox 실행, orchestration, retrieval, policy check, logging, workflow scheduling 같은 작업은 GPU 행렬 연산만으로 해결되지 않습니다. 실제 agent 시스템은 모델 호출 사이사이에 수많은 CPU-heavy 작업을 수행합니다. 그래서 AI factory 설계는 “GPU를 많이 꽂는다”에서 “GPU 주변의 CPU, 메모리, 네트워크, 스토리지, 운영 소프트웨어를 어떻게 맞출 것인가”로 이동하고 있습니다.\n서빙 비용 최적화도 연구 주제로 더 직접화되고 있습니다. vLLM v0.21.0의 KV offload, HMA, Blackwell MLA backend 같은 릴리즈 포인트는 대규모 inference 운영에서 cache와 memory placement가 얼마나 중요한지 보여줍니다. Hugging Face의 Share More, Search Less 논문은 test-time scaling에서 여러 추론 경로가 탐색 결과를 공유해 token budget을 줄이는 방향을 제안합니다. reasoning 모델을 production에 올리면 “더 오래 생각하면 더 잘한다”만으로는 부족합니다. 같은 품질을 더 적은 token, 더 낮은 latency, 더 안정적인 cache behavior로 내는 것이 곧 제품 경쟁력이 됩니다.\nagent 평가와 관측성도 빠르게 성숙하고 있습니다. VitaBench 2.0은 장기 개인화와 proactive agent를 평가하려는 벤치마크입니다. 단발 질문에 답하는 능력보다 memory, personalization, initiative, 장기 상호작용 안정성을 보려는 시도입니다. Beyond Final Answers는 산업 워크플로에서 최종 답만 보는 대신 agent trajectory 자체의 오류와 환각을 추적합니다. 이는 production agent observability와 직접 연결됩니다. agent가 최종적으로 맞는 답을 냈더라도 중간에 잘못된 파일을 읽었거나, 근거 없는 추론을 했거나, 위험한 tool path를 탔다면 운영 관점에서는 문제가 됩니다.\n안전과 거버넌스도 모델 품질과 분리할 수 없습니다. ECB가 은행권에 AI 보안 리스크 대응 투자를 요구한다는 Reuters 보도는 금융권에서 생성형 AI가 더 이상 실험 도구가 아니라 cyber resilience와 vendor governance의 감독 대상이 됐다는 신호입니다. Hugging Face의 D^2-Monitor는 diffusion-style LLM의 생성 중 hesitation signal을 활용해 safety routing을 바꾸는 접근을 보여줍니다. 앞으로의 AI 운영은 static guardrail 하나로 끝나지 않고, 실행 중 상태를 보고 라우팅과 개입 수준을 바꾸는 쪽으로 갈 가능성이 큽니다.\nedge와 on-device AI도 같은 이야기에 속합니다. Intel의 Core Ultra Series 3 기반 robotics agent 사례와 MobileMoE 연구는 CPU, GPU, NPU 조합을 활용해 로컬에서 vision, language, motion agent를 실행하려는 흐름을 보여줍니다. 개인정보, latency, 네트워크 비용, 오프라인 실행 요구가 커질수록 모든 inference를 클라우드로 보내는 구조는 부담이 됩니다. 작은 모델과 MoE, 하드웨어 가속, 로컬 policy layer를 잘 조합하는 제품이 더 실용적일 수 있습니다.\n멀티모달 생성과 공간 추론도 인프라 관점으로 읽어야 합니다. Gemini Omni Flash는 이미지, 오디오, 비디오, 텍스트를 조합해 비디오를 만들고 대화로 수정하는 creator toolchain 경쟁을 강화합니다. SpatialBench와 LongAV-Compass는 각각 공간 foundation model과 긴 audio-visual generation을 평가하려 합니다. 즉 멀티모달 모델의 다음 과제는 “그럴듯한 샘플”이 아니라, 긴 시간과 공간 구조 속에서 일관성을 유지하고 실제 작업에 쓸 수 있는지 검증하는 것입니다.\n오늘의 결론은 간단합니다. AI/ML의 중심은 여전히 모델이지만, 경쟁력은 점점 모델 밖에서 결정됩니다. HBM과 CPU, serving runtime, KV cache, test-time token sharing, trajectory-level evaluation, safety routing, edge execution, long-horizon multimodal benchmark가 모두 같은 방향을 가리킵니다. 강한 AI 제품은 모델 API 하나를 붙인 서비스가 아니라, 비용과 안전성, 평가와 공급망까지 포함한 운영 시스템이 될 것입니다.\n참고 링크:\nReuters: SK Hynix market cap tops $1 trillion: https://www.reuters.com/world/asia-pacific/sk-hynix-market-capitalisation-tops-1-trln-2026-05-27/ Reuters: ECB on AI cyber security risk: https://www.reuters.com/legal/litigation/euro-zone-banks-need-tighter-cyber-security-amid-ai-risk-ecb-says-2026-05-27/ NVIDIA Vera CPU benchmark: https://blogs.nvidia.com/blog/vera-cpu-phoronix/ vLLM releases: https://github.com/vllm-project/vllm/releases Share More, Search Less: https://huggingface.co/papers/2605.27030 VitaBench 2.0: https://huggingface.co/papers/2605.27141 D^2-Monitor: https://huggingface.co/papers/2605.25893 Intel edge AI robotics: https://newsroom.intel.com/artificial-intelligence/intel-core-ultra-series-3-for-edge-ai-robotics ","wordCount":"613","inLanguage":"en","datePublished":"2026-05-27T21:00:00+09:00","dateModified":"2026-05-27T21:00:00+09:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://kwbaek.github.io/posts/2026-05-27-ai-ml-trends-ai-infrastructure-is-expanding-beyond-the-model/"},"publisher":{"@type":"Organization","name":"Kyungwook's Devlog","logo":{"@type":"ImageObject","url":"https://kwbaek.github.io/favicon.ico"}}}</script></head><body id=top><header class=header><nav class=nav><div class=logo><a href=https://kwbaek.github.io/ accesskey=h title="Kyungwook's Devlog (Alt + H)">Kyungwook's Devlog</a><div class=logo-switches><button id=theme-toggle accesskey=t title="(Alt + T)" aria-label="Toggle theme">
-<svg id="moon" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
-<svg id="sun" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button></div></div><ul id=menu><li><a href=https://kwbaek.github.io/categories/ title=categories><span>categories</span></a></li><li><a href=https://kwbaek.github.io/tags/ title=tags><span>tags</span></a></li><li><a href=https://kwbaek.github.io/ title="Kyungwook's Devlog"><span>Kyungwook's Devlog</span>&nbsp;
-<svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><path d="M15 3h6v6"/><path d="M10 14 21 3"/></svg></a></li></ul></nav></header><main class=main><article class=post-single><header class=post-header><h1 class="post-title entry-hint-parent">AI/ML 트렌드: AI 인프라는 모델 밖으로 확장되고 있다</h1><div class=post-meta><span title='2026-05-27 21:00:00 +0900 KST'>May 27, 2026</span></div></header><div class=post-content><p>오늘 Discord <code>#ai-ml-trends</code> 채널에서 가장 중요한 흐름은 <strong>AI 경쟁의 병목이 모델 자체에서 메모리, CPU, 서빙 런타임, 평가, 보안, 디바이스 실행 환경으로 넓어지고 있다</strong>는 점입니다. Google의 Gemini Omni Flash 같은 멀티모달 생성 모델 소식도 눈에 띄었지만, 하루 전체 메시지를 묶어 보면 더 큰 변화는 “좋은 모델을 만들었다”보다 “그 모델을 어디서, 어떤 비용으로, 얼마나 안전하게, 어떤 운영 표면에서 계속 굴릴 것인가”에 있었습니다.</p><p>가장 선명한 신호는 AI factory 공급망입니다. Reuters의 SK Hynix 시가총액 1조 달러 돌파 보도와 Micron 관련 소식은 HBM과 고급 DRAM이 이제 GPU의 보조 부품이 아니라 AI 인프라 경제의 핵심 병목이 됐다는 사실을 보여줍니다. NVIDIA가 대만 공급망과 더 밀착되는 흐름도 같은 맥락입니다. 모델 학습과 추론 수요가 계속 커지면 GPU만으로는 이야기가 끝나지 않습니다. 메모리 대역폭, 패키징, 서버 제조, 전력, 냉각, 지역별 공급망 리스크가 모두 AI 제품의 원가와 출시 속도를 좌우합니다.</p><p>CPU도 다시 중요해지고 있습니다. NVIDIA Vera CPU 초기 벤치마크는 agentic AI workload를 전면에 둡니다. tool call, sandbox 실행, orchestration, retrieval, policy check, logging, workflow scheduling 같은 작업은 GPU 행렬 연산만으로 해결되지 않습니다. 실제 agent 시스템은 모델 호출 사이사이에 수많은 CPU-heavy 작업을 수행합니다. 그래서 AI factory 설계는 “GPU를 많이 꽂는다”에서 “GPU 주변의 CPU, 메모리, 네트워크, 스토리지, 운영 소프트웨어를 어떻게 맞출 것인가”로 이동하고 있습니다.</p><p>서빙 비용 최적화도 연구 주제로 더 직접화되고 있습니다. vLLM v0.21.0의 KV offload, HMA, Blackwell MLA backend 같은 릴리즈 포인트는 대규모 inference 운영에서 cache와 memory placement가 얼마나 중요한지 보여줍니다. Hugging Face의 <code>Share More, Search Less</code> 논문은 test-time scaling에서 여러 추론 경로가 탐색 결과를 공유해 token budget을 줄이는 방향을 제안합니다. reasoning 모델을 production에 올리면 “더 오래 생각하면 더 잘한다”만으로는 부족합니다. 같은 품질을 더 적은 token, 더 낮은 latency, 더 안정적인 cache behavior로 내는 것이 곧 제품 경쟁력이 됩니다.</p><p>agent 평가와 관측성도 빠르게 성숙하고 있습니다. VitaBench 2.0은 장기 개인화와 proactive agent를 평가하려는 벤치마크입니다. 단발 질문에 답하는 능력보다 memory, personalization, initiative, 장기 상호작용 안정성을 보려는 시도입니다. <code>Beyond Final Answers</code>는 산업 워크플로에서 최종 답만 보는 대신 agent trajectory 자체의 오류와 환각을 추적합니다. 이는 production agent observability와 직접 연결됩니다. agent가 최종적으로 맞는 답을 냈더라도 중간에 잘못된 파일을 읽었거나, 근거 없는 추론을 했거나, 위험한 tool path를 탔다면 운영 관점에서는 문제가 됩니다.</p><p>안전과 거버넌스도 모델 품질과 분리할 수 없습니다. ECB가 은행권에 AI 보안 리스크 대응 투자를 요구한다는 Reuters 보도는 금융권에서 생성형 AI가 더 이상 실험 도구가 아니라 cyber resilience와 vendor governance의 감독 대상이 됐다는 신호입니다. Hugging Face의 D^2-Monitor는 diffusion-style LLM의 생성 중 hesitation signal을 활용해 safety routing을 바꾸는 접근을 보여줍니다. 앞으로의 AI 운영은 static guardrail 하나로 끝나지 않고, 실행 중 상태를 보고 라우팅과 개입 수준을 바꾸는 쪽으로 갈 가능성이 큽니다.</p><p>edge와 on-device AI도 같은 이야기에 속합니다. Intel의 Core Ultra Series 3 기반 robotics agent 사례와 MobileMoE 연구는 CPU, GPU, NPU 조합을 활용해 로컬에서 vision, language, motion agent를 실행하려는 흐름을 보여줍니다. 개인정보, latency, 네트워크 비용, 오프라인 실행 요구가 커질수록 모든 inference를 클라우드로 보내는 구조는 부담이 됩니다. 작은 모델과 MoE, 하드웨어 가속, 로컬 policy layer를 잘 조합하는 제품이 더 실용적일 수 있습니다.</p><p>멀티모달 생성과 공간 추론도 인프라 관점으로 읽어야 합니다. Gemini Omni Flash는 이미지, 오디오, 비디오, 텍스트를 조합해 비디오를 만들고 대화로 수정하는 creator toolchain 경쟁을 강화합니다. SpatialBench와 LongAV-Compass는 각각 공간 foundation model과 긴 audio-visual generation을 평가하려 합니다. 즉 멀티모달 모델의 다음 과제는 “그럴듯한 샘플”이 아니라, 긴 시간과 공간 구조 속에서 일관성을 유지하고 실제 작업에 쓸 수 있는지 검증하는 것입니다.</p><p>오늘의 결론은 간단합니다. AI/ML의 중심은 여전히 모델이지만, 경쟁력은 점점 모델 밖에서 결정됩니다. HBM과 CPU, serving runtime, KV cache, test-time token sharing, trajectory-level evaluation, safety routing, edge execution, long-horizon multimodal benchmark가 모두 같은 방향을 가리킵니다. 강한 AI 제품은 모델 API 하나를 붙인 서비스가 아니라, 비용과 안전성, 평가와 공급망까지 포함한 운영 시스템이 될 것입니다.</p><p>참고 링크:</p><ul><li>Reuters: SK Hynix market cap tops $1 trillion: <a href=https://www.reuters.com/world/asia-pacific/sk-hynix-market-capitalisation-tops-1-trln-2026-05-27/>https://www.reuters.com/world/asia-pacific/sk-hynix-market-capitalisation-tops-1-trln-2026-05-27/</a></li><li>Reuters: ECB on AI cyber security risk: <a href=https://www.reuters.com/legal/litigation/euro-zone-banks-need-tighter-cyber-security-amid-ai-risk-ecb-says-2026-05-27/>https://www.reuters.com/legal/litigation/euro-zone-banks-need-tighter-cyber-security-amid-ai-risk-ecb-says-2026-05-27/</a></li><li>NVIDIA Vera CPU benchmark: <a href=https://blogs.nvidia.com/blog/vera-cpu-phoronix/>https://blogs.nvidia.com/blog/vera-cpu-phoronix/</a></li><li>vLLM releases: <a href=https://github.com/vllm-project/vllm/releases>https://github.com/vllm-project/vllm/releases</a></li><li>Share More, Search Less: <a href=https://huggingface.co/papers/2605.27030>https://huggingface.co/papers/2605.27030</a></li><li>VitaBench 2.0: <a href=https://huggingface.co/papers/2605.27141>https://huggingface.co/papers/2605.27141</a></li><li>D^2-Monitor: <a href=https://huggingface.co/papers/2605.25893>https://huggingface.co/papers/2605.25893</a></li><li>Intel edge AI robotics: <a href=https://newsroom.intel.com/artificial-intelligence/intel-core-ultra-series-3-for-edge-ai-robotics>https://newsroom.intel.com/artificial-intelligence/intel-core-ultra-series-3-for-edge-ai-robotics</a></li></ul></div><footer class=post-footer><ul class=post-tags><li><a href=https://kwbaek.github.io/tags/ai/>Ai</a></li><li><a href=https://kwbaek.github.io/tags/ml/>ML</a></li><li><a href=https://kwbaek.github.io/tags/ai-infrastructure/>AI Infrastructure</a></li><li><a href=https://kwbaek.github.io/tags/agents/>Agents</a></li><li><a href=https://kwbaek.github.io/tags/serving/>Serving</a></li><li><a href=https://kwbaek.github.io/tags/edge-ai/>Edge AI</a></li><li><a href=https://kwbaek.github.io/tags/evaluation/>Evaluation</a></li><li><a href=https://kwbaek.github.io/tags/memory/>Memory</a></li></ul></footer><script src=https://utteranc.es/client.js repo=kwbaek/blog-comments issue-term=pathname theme=github-light crossorigin=anonymous async></script></article></main><footer class=footer><span>&copy; 2026 <a href=https://kwbaek.github.io/>Kyungwook's Devlog</a></span> ·
-<span>Powered by
-<a href=https://gohugo.io/ rel="noopener noreferrer" target=_blank>Hugo</a> &
-<a href=https://github.com/adityatelange/hugo-PaperMod/ rel=noopener target=_blank>PaperMod</a></span></footer><a href=#top aria-label="go to top" title="Go to Top (Alt + G)" class=top-link id=top-link accesskey=g><svg viewBox="0 0 12 6" fill="currentColor"><path d="M12 6H0l6-6z"/></svg>
-</a><script>let menu=document.getElementById("menu");if(menu){const e=localStorage.getItem("menu-scroll-position");e&&(menu.scrollLeft=parseInt(e,10)),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)}}document.querySelectorAll('a[href^="#"]').forEach(e=>{e.addEventListener("click",function(e){e.preventDefault();var t=this.getAttribute("href").substr(1);window.matchMedia("(prefers-reduced-motion: reduce)").matches?document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView({behavior:"smooth"}),t==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${t}`)})})</script><script>var mybutton=document.getElementById("top-link");window.onscroll=function(){document.body.scrollTop>800||document.documentElement.scrollTop>800?(mybutton.style.visibility="visible",mybutton.style.opacity="1"):(mybutton.style.visibility="hidden",mybutton.style.opacity="0")}</script><script>document.getElementById("theme-toggle").addEventListener("click",()=>{const e=document.querySelector("html");e.dataset.theme==="dark"?(e.dataset.theme="light",localStorage.setItem("pref-theme","light")):(e.dataset.theme="dark",localStorage.setItem("pref-theme","dark"))})</script></body></html>
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>AI/ML 트렌드: AI 인프라는 모델 밖으로 확장되고 있다 | Kyungwook&#39;s Devlog</title>
+<meta name="keywords" content="AI, ML, AI Infrastructure, Agents, Serving, Edge AI, Evaluation, Memory">
+<meta name="description" content="오늘 Discord #ai-ml-trends 채널에서 가장 중요한 흐름은 AI 경쟁의 병목이 모델 자체에서 메모리, CPU, 서빙 런타임, 평가, 보안, 디바이스 실행 환경으로 넓어지고 있다는 점입니다. Google의 Gemini Omni Flash 같은 멀티모달 생성 모델 소식도 눈에 띄었지만, 하루 전체 메시지를 묶어 보면 더 큰 변화는 “좋은 모델을 만들었다”보다 “그 모델을 어디서, 어떤 비용으로, 얼마나 안전하게, 어떤 운영 표면에서 계속 굴릴 것인가”에 있었습니다.
+가장 선명한 신호는 AI factory 공급망입니다. Reuters의 SK Hynix 시가총액 1조 달러 돌파 보도와 Micron 관련 소식은 HBM과 고급 DRAM이 이제 GPU의 보조 부품이 아니라 AI 인프라 경제의 핵심 병목이 됐다는 사실을 보여줍니다. NVIDIA가 대만 공급망과 더 밀착되는 흐름도 같은 맥락입니다. 모델 학습과 추론 수요가 계속 커지면 GPU만으로는 이야기가 끝나지 않습니다. 메모리 대역폭, 패키징, 서버 제조, 전력, 냉각, 지역별 공급망 리스크가 모두 AI 제품의 원가와 출시 속도를 좌우합니다.">
+<meta name="author" content="">
+<link rel="canonical" href="https://kwbaek.github.io/posts/2026-05-27-ai-ml-trends-ai-infrastructure-is-expanding-beyond-the-model/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.da3211e5ef867bf2b75fd5a6515cfed7195c011e8ab735694e203810a827097b.css" integrity="sha256-2jIR5e&#43;Ge/K3X9WmUVz&#43;1xlcAR6KtzVpTiA4EKgnCXs=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://kwbaek.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://kwbaek.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://kwbaek.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://kwbaek.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://kwbaek.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://kwbaek.github.io/posts/2026-05-27-ai-ml-trends-ai-infrastructure-is-expanding-beyond-the-model/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="https://kwbaek.github.io/posts/2026-05-27-ai-ml-trends-ai-infrastructure-is-expanding-beyond-the-model/">
+  <meta property="og:site_name" content="Kyungwook&#39;s Devlog">
+  <meta property="og:title" content="AI/ML 트렌드: AI 인프라는 모델 밖으로 확장되고 있다">
+  <meta property="og:description" content="오늘 Discord #ai-ml-trends 채널에서 가장 중요한 흐름은 AI 경쟁의 병목이 모델 자체에서 메모리, CPU, 서빙 런타임, 평가, 보안, 디바이스 실행 환경으로 넓어지고 있다는 점입니다. Google의 Gemini Omni Flash 같은 멀티모달 생성 모델 소식도 눈에 띄었지만, 하루 전체 메시지를 묶어 보면 더 큰 변화는 “좋은 모델을 만들었다”보다 “그 모델을 어디서, 어떤 비용으로, 얼마나 안전하게, 어떤 운영 표면에서 계속 굴릴 것인가”에 있었습니다.
+가장 선명한 신호는 AI factory 공급망입니다. Reuters의 SK Hynix 시가총액 1조 달러 돌파 보도와 Micron 관련 소식은 HBM과 고급 DRAM이 이제 GPU의 보조 부품이 아니라 AI 인프라 경제의 핵심 병목이 됐다는 사실을 보여줍니다. NVIDIA가 대만 공급망과 더 밀착되는 흐름도 같은 맥락입니다. 모델 학습과 추론 수요가 계속 커지면 GPU만으로는 이야기가 끝나지 않습니다. 메모리 대역폭, 패키징, 서버 제조, 전력, 냉각, 지역별 공급망 리스크가 모두 AI 제품의 원가와 출시 속도를 좌우합니다.">
+  <meta property="og:locale" content="ko-kr">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2026-05-27T21:00:00+09:00">
+    <meta property="article:modified_time" content="2026-05-27T21:00:00+09:00">
+    <meta property="article:tag" content="Ai">
+    <meta property="article:tag" content="Ml">
+    <meta property="article:tag" content="AI Infrastructure">
+    <meta property="article:tag" content="Agents">
+    <meta property="article:tag" content="Serving">
+    <meta property="article:tag" content="Edge AI">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="AI/ML 트렌드: AI 인프라는 모델 밖으로 확장되고 있다">
+<meta name="twitter:description" content="오늘 Discord #ai-ml-trends 채널에서 가장 중요한 흐름은 AI 경쟁의 병목이 모델 자체에서 메모리, CPU, 서빙 런타임, 평가, 보안, 디바이스 실행 환경으로 넓어지고 있다는 점입니다. Google의 Gemini Omni Flash 같은 멀티모달 생성 모델 소식도 눈에 띄었지만, 하루 전체 메시지를 묶어 보면 더 큰 변화는 “좋은 모델을 만들었다”보다 “그 모델을 어디서, 어떤 비용으로, 얼마나 안전하게, 어떤 운영 표면에서 계속 굴릴 것인가”에 있었습니다.
+가장 선명한 신호는 AI factory 공급망입니다. Reuters의 SK Hynix 시가총액 1조 달러 돌파 보도와 Micron 관련 소식은 HBM과 고급 DRAM이 이제 GPU의 보조 부품이 아니라 AI 인프라 경제의 핵심 병목이 됐다는 사실을 보여줍니다. NVIDIA가 대만 공급망과 더 밀착되는 흐름도 같은 맥락입니다. 모델 학습과 추론 수요가 계속 커지면 GPU만으로는 이야기가 끝나지 않습니다. 메모리 대역폭, 패키징, 서버 제조, 전력, 냉각, 지역별 공급망 리스크가 모두 AI 제품의 원가와 출시 속도를 좌우합니다.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://kwbaek.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "AI/ML 트렌드: AI 인프라는 모델 밖으로 확장되고 있다",
+      "item": "https://kwbaek.github.io/posts/2026-05-27-ai-ml-trends-ai-infrastructure-is-expanding-beyond-the-model/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "AI/ML 트렌드: AI 인프라는 모델 밖으로 확장되고 있다",
+  "name": "AI\/ML 트렌드: AI 인프라는 모델 밖으로 확장되고 있다",
+  "description": "오늘 Discord #ai-ml-trends 채널에서 가장 중요한 흐름은 AI 경쟁의 병목이 모델 자체에서 메모리, CPU, 서빙 런타임, 평가, 보안, 디바이스 실행 환경으로 넓어지고 있다는 점입니다. Google의 Gemini Omni Flash 같은 멀티모달 생성 모델 소식도 눈에 띄었지만, 하루 전체 메시지를 묶어 보면 더 큰 변화는 “좋은 모델을 만들었다”보다 “그 모델을 어디서, 어떤 비용으로, 얼마나 안전하게, 어떤 운영 표면에서 계속 굴릴 것인가”에 있었습니다.\n가장 선명한 신호는 AI factory 공급망입니다. Reuters의 SK Hynix 시가총액 1조 달러 돌파 보도와 Micron 관련 소식은 HBM과 고급 DRAM이 이제 GPU의 보조 부품이 아니라 AI 인프라 경제의 핵심 병목이 됐다는 사실을 보여줍니다. NVIDIA가 대만 공급망과 더 밀착되는 흐름도 같은 맥락입니다. 모델 학습과 추론 수요가 계속 커지면 GPU만으로는 이야기가 끝나지 않습니다. 메모리 대역폭, 패키징, 서버 제조, 전력, 냉각, 지역별 공급망 리스크가 모두 AI 제품의 원가와 출시 속도를 좌우합니다.\n",
+  "keywords": [
+    "AI", "ML", "AI Infrastructure", "Agents", "Serving", "Edge AI", "Evaluation", "Memory"
+  ],
+  "articleBody": "오늘 Discord #ai-ml-trends 채널에서 가장 중요한 흐름은 AI 경쟁의 병목이 모델 자체에서 메모리, CPU, 서빙 런타임, 평가, 보안, 디바이스 실행 환경으로 넓어지고 있다는 점입니다. Google의 Gemini Omni Flash 같은 멀티모달 생성 모델 소식도 눈에 띄었지만, 하루 전체 메시지를 묶어 보면 더 큰 변화는 “좋은 모델을 만들었다”보다 “그 모델을 어디서, 어떤 비용으로, 얼마나 안전하게, 어떤 운영 표면에서 계속 굴릴 것인가”에 있었습니다.\n가장 선명한 신호는 AI factory 공급망입니다. Reuters의 SK Hynix 시가총액 1조 달러 돌파 보도와 Micron 관련 소식은 HBM과 고급 DRAM이 이제 GPU의 보조 부품이 아니라 AI 인프라 경제의 핵심 병목이 됐다는 사실을 보여줍니다. NVIDIA가 대만 공급망과 더 밀착되는 흐름도 같은 맥락입니다. 모델 학습과 추론 수요가 계속 커지면 GPU만으로는 이야기가 끝나지 않습니다. 메모리 대역폭, 패키징, 서버 제조, 전력, 냉각, 지역별 공급망 리스크가 모두 AI 제품의 원가와 출시 속도를 좌우합니다.\nCPU도 다시 중요해지고 있습니다. NVIDIA Vera CPU 초기 벤치마크는 agentic AI workload를 전면에 둡니다. tool call, sandbox 실행, orchestration, retrieval, policy check, logging, workflow scheduling 같은 작업은 GPU 행렬 연산만으로 해결되지 않습니다. 실제 agent 시스템은 모델 호출 사이사이에 수많은 CPU-heavy 작업을 수행합니다. 그래서 AI factory 설계는 “GPU를 많이 꽂는다”에서 “GPU 주변의 CPU, 메모리, 네트워크, 스토리지, 운영 소프트웨어를 어떻게 맞출 것인가”로 이동하고 있습니다.\n서빙 비용 최적화도 연구 주제로 더 직접화되고 있습니다. vLLM v0.21.0의 KV offload, HMA, Blackwell MLA backend 같은 릴리즈 포인트는 대규모 inference 운영에서 cache와 memory placement가 얼마나 중요한지 보여줍니다. Hugging Face의 Share More, Search Less 논문은 test-time scaling에서 여러 추론 경로가 탐색 결과를 공유해 token budget을 줄이는 방향을 제안합니다. reasoning 모델을 production에 올리면 “더 오래 생각하면 더 잘한다”만으로는 부족합니다. 같은 품질을 더 적은 token, 더 낮은 latency, 더 안정적인 cache behavior로 내는 것이 곧 제품 경쟁력이 됩니다.\nagent 평가와 관측성도 빠르게 성숙하고 있습니다. VitaBench 2.0은 장기 개인화와 proactive agent를 평가하려는 벤치마크입니다. 단발 질문에 답하는 능력보다 memory, personalization, initiative, 장기 상호작용 안정성을 보려는 시도입니다. Beyond Final Answers는 산업 워크플로에서 최종 답만 보는 대신 agent trajectory 자체의 오류와 환각을 추적합니다. 이는 production agent observability와 직접 연결됩니다. agent가 최종적으로 맞는 답을 냈더라도 중간에 잘못된 파일을 읽었거나, 근거 없는 추론을 했거나, 위험한 tool path를 탔다면 운영 관점에서는 문제가 됩니다.\n안전과 거버넌스도 모델 품질과 분리할 수 없습니다. ECB가 은행권에 AI 보안 리스크 대응 투자를 요구한다는 Reuters 보도는 금융권에서 생성형 AI가 더 이상 실험 도구가 아니라 cyber resilience와 vendor governance의 감독 대상이 됐다는 신호입니다. Hugging Face의 D^2-Monitor는 diffusion-style LLM의 생성 중 hesitation signal을 활용해 safety routing을 바꾸는 접근을 보여줍니다. 앞으로의 AI 운영은 static guardrail 하나로 끝나지 않고, 실행 중 상태를 보고 라우팅과 개입 수준을 바꾸는 쪽으로 갈 가능성이 큽니다.\nedge와 on-device AI도 같은 이야기에 속합니다. Intel의 Core Ultra Series 3 기반 robotics agent 사례와 MobileMoE 연구는 CPU, GPU, NPU 조합을 활용해 로컬에서 vision, language, motion agent를 실행하려는 흐름을 보여줍니다. 개인정보, latency, 네트워크 비용, 오프라인 실행 요구가 커질수록 모든 inference를 클라우드로 보내는 구조는 부담이 됩니다. 작은 모델과 MoE, 하드웨어 가속, 로컬 policy layer를 잘 조합하는 제품이 더 실용적일 수 있습니다.\n멀티모달 생성과 공간 추론도 인프라 관점으로 읽어야 합니다. Gemini Omni Flash는 이미지, 오디오, 비디오, 텍스트를 조합해 비디오를 만들고 대화로 수정하는 creator toolchain 경쟁을 강화합니다. SpatialBench와 LongAV-Compass는 각각 공간 foundation model과 긴 audio-visual generation을 평가하려 합니다. 즉 멀티모달 모델의 다음 과제는 “그럴듯한 샘플”이 아니라, 긴 시간과 공간 구조 속에서 일관성을 유지하고 실제 작업에 쓸 수 있는지 검증하는 것입니다.\n오늘의 결론은 간단합니다. AI/ML의 중심은 여전히 모델이지만, 경쟁력은 점점 모델 밖에서 결정됩니다. HBM과 CPU, serving runtime, KV cache, test-time token sharing, trajectory-level evaluation, safety routing, edge execution, long-horizon multimodal benchmark가 모두 같은 방향을 가리킵니다. 강한 AI 제품은 모델 API 하나를 붙인 서비스가 아니라, 비용과 안전성, 평가와 공급망까지 포함한 운영 시스템이 될 것입니다.\n참고 링크:\nReuters: SK Hynix market cap tops $1 trillion: https://www.reuters.com/world/asia-pacific/sk-hynix-market-capitalisation-tops-1-trln-2026-05-27/ Reuters: ECB on AI cyber security risk: https://www.reuters.com/legal/litigation/euro-zone-banks-need-tighter-cyber-security-amid-ai-risk-ecb-says-2026-05-27/ NVIDIA Vera CPU benchmark: https://blogs.nvidia.com/blog/vera-cpu-phoronix/ vLLM releases: https://github.com/vllm-project/vllm/releases Share More, Search Less: https://huggingface.co/papers/2605.27030 VitaBench 2.0: https://huggingface.co/papers/2605.27141 D^2-Monitor: https://huggingface.co/papers/2605.25893 Intel edge AI robotics: https://newsroom.intel.com/artificial-intelligence/intel-core-ultra-series-3-for-edge-ai-robotics ",
+  "wordCount" : "613",
+  "inLanguage": "en",
+  "datePublished": "2026-05-27T21:00:00+09:00",
+  "dateModified": "2026-05-27T21:00:00+09:00",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://kwbaek.github.io/posts/2026-05-27-ai-ml-trends-ai-infrastructure-is-expanding-beyond-the-model/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Kyungwook's Devlog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://kwbaek.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://kwbaek.github.io/" accesskey="h" title="Kyungwook&#39;s Devlog (Alt + H)">Kyungwook&#39;s Devlog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://kwbaek.github.io/categories/" title="categories">
+                    <span>categories</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kwbaek.github.io/tags/" title="tags">
+                    <span>tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kwbaek.github.io/" title="Kyungwook&#39;s Devlog">
+                    <span>Kyungwook&#39;s Devlog</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      AI/ML 트렌드: AI 인프라는 모델 밖으로 확장되고 있다
+    </h1>
+    <div class="post-meta"><span title='2026-05-27 21:00:00 +0900 KST'>May 27, 2026</span>
+
+</div>
+  </header> 
+  <div class="post-content"><p>오늘 Discord <code>#ai-ml-trends</code> 채널에서 가장 중요한 흐름은 <strong>AI 경쟁의 병목이 모델 자체에서 메모리, CPU, 서빙 런타임, 평가, 보안, 디바이스 실행 환경으로 넓어지고 있다</strong>는 점입니다. Google의 Gemini Omni Flash 같은 멀티모달 생성 모델 소식도 눈에 띄었지만, 하루 전체 메시지를 묶어 보면 더 큰 변화는 “좋은 모델을 만들었다”보다 “그 모델을 어디서, 어떤 비용으로, 얼마나 안전하게, 어떤 운영 표면에서 계속 굴릴 것인가”에 있었습니다.</p>
+<p>가장 선명한 신호는 AI factory 공급망입니다. Reuters의 SK Hynix 시가총액 1조 달러 돌파 보도와 Micron 관련 소식은 HBM과 고급 DRAM이 이제 GPU의 보조 부품이 아니라 AI 인프라 경제의 핵심 병목이 됐다는 사실을 보여줍니다. NVIDIA가 대만 공급망과 더 밀착되는 흐름도 같은 맥락입니다. 모델 학습과 추론 수요가 계속 커지면 GPU만으로는 이야기가 끝나지 않습니다. 메모리 대역폭, 패키징, 서버 제조, 전력, 냉각, 지역별 공급망 리스크가 모두 AI 제품의 원가와 출시 속도를 좌우합니다.</p>
+<p>CPU도 다시 중요해지고 있습니다. NVIDIA Vera CPU 초기 벤치마크는 agentic AI workload를 전면에 둡니다. tool call, sandbox 실행, orchestration, retrieval, policy check, logging, workflow scheduling 같은 작업은 GPU 행렬 연산만으로 해결되지 않습니다. 실제 agent 시스템은 모델 호출 사이사이에 수많은 CPU-heavy 작업을 수행합니다. 그래서 AI factory 설계는 “GPU를 많이 꽂는다”에서 “GPU 주변의 CPU, 메모리, 네트워크, 스토리지, 운영 소프트웨어를 어떻게 맞출 것인가”로 이동하고 있습니다.</p>
+<p>서빙 비용 최적화도 연구 주제로 더 직접화되고 있습니다. vLLM v0.21.0의 KV offload, HMA, Blackwell MLA backend 같은 릴리즈 포인트는 대규모 inference 운영에서 cache와 memory placement가 얼마나 중요한지 보여줍니다. Hugging Face의 <code>Share More, Search Less</code> 논문은 test-time scaling에서 여러 추론 경로가 탐색 결과를 공유해 token budget을 줄이는 방향을 제안합니다. reasoning 모델을 production에 올리면 “더 오래 생각하면 더 잘한다”만으로는 부족합니다. 같은 품질을 더 적은 token, 더 낮은 latency, 더 안정적인 cache behavior로 내는 것이 곧 제품 경쟁력이 됩니다.</p>
+<p>agent 평가와 관측성도 빠르게 성숙하고 있습니다. VitaBench 2.0은 장기 개인화와 proactive agent를 평가하려는 벤치마크입니다. 단발 질문에 답하는 능력보다 memory, personalization, initiative, 장기 상호작용 안정성을 보려는 시도입니다. <code>Beyond Final Answers</code>는 산업 워크플로에서 최종 답만 보는 대신 agent trajectory 자체의 오류와 환각을 추적합니다. 이는 production agent observability와 직접 연결됩니다. agent가 최종적으로 맞는 답을 냈더라도 중간에 잘못된 파일을 읽었거나, 근거 없는 추론을 했거나, 위험한 tool path를 탔다면 운영 관점에서는 문제가 됩니다.</p>
+<p>안전과 거버넌스도 모델 품질과 분리할 수 없습니다. ECB가 은행권에 AI 보안 리스크 대응 투자를 요구한다는 Reuters 보도는 금융권에서 생성형 AI가 더 이상 실험 도구가 아니라 cyber resilience와 vendor governance의 감독 대상이 됐다는 신호입니다. Hugging Face의 D^2-Monitor는 diffusion-style LLM의 생성 중 hesitation signal을 활용해 safety routing을 바꾸는 접근을 보여줍니다. 앞으로의 AI 운영은 static guardrail 하나로 끝나지 않고, 실행 중 상태를 보고 라우팅과 개입 수준을 바꾸는 쪽으로 갈 가능성이 큽니다.</p>
+<p>edge와 on-device AI도 같은 이야기에 속합니다. Intel의 Core Ultra Series 3 기반 robotics agent 사례와 MobileMoE 연구는 CPU, GPU, NPU 조합을 활용해 로컬에서 vision, language, motion agent를 실행하려는 흐름을 보여줍니다. 개인정보, latency, 네트워크 비용, 오프라인 실행 요구가 커질수록 모든 inference를 클라우드로 보내는 구조는 부담이 됩니다. 작은 모델과 MoE, 하드웨어 가속, 로컬 policy layer를 잘 조합하는 제품이 더 실용적일 수 있습니다.</p>
+<p>멀티모달 생성과 공간 추론도 인프라 관점으로 읽어야 합니다. Gemini Omni Flash는 이미지, 오디오, 비디오, 텍스트를 조합해 비디오를 만들고 대화로 수정하는 creator toolchain 경쟁을 강화합니다. SpatialBench와 LongAV-Compass는 각각 공간 foundation model과 긴 audio-visual generation을 평가하려 합니다. 즉 멀티모달 모델의 다음 과제는 “그럴듯한 샘플”이 아니라, 긴 시간과 공간 구조 속에서 일관성을 유지하고 실제 작업에 쓸 수 있는지 검증하는 것입니다.</p>
+<p>오늘의 결론은 간단합니다. AI/ML의 중심은 여전히 모델이지만, 경쟁력은 점점 모델 밖에서 결정됩니다. HBM과 CPU, serving runtime, KV cache, test-time token sharing, trajectory-level evaluation, safety routing, edge execution, long-horizon multimodal benchmark가 모두 같은 방향을 가리킵니다. 강한 AI 제품은 모델 API 하나를 붙인 서비스가 아니라, 비용과 안전성, 평가와 공급망까지 포함한 운영 시스템이 될 것입니다.</p>
+<p>참고 링크:</p>
+<ul>
+<li>Reuters: SK Hynix market cap tops $1 trillion: <a href="https://www.reuters.com/world/asia-pacific/sk-hynix-market-capitalisation-tops-1-trln-2026-05-27/">https://www.reuters.com/world/asia-pacific/sk-hynix-market-capitalisation-tops-1-trln-2026-05-27/</a></li>
+<li>Reuters: ECB on AI cyber security risk: <a href="https://www.reuters.com/legal/litigation/euro-zone-banks-need-tighter-cyber-security-amid-ai-risk-ecb-says-2026-05-27/">https://www.reuters.com/legal/litigation/euro-zone-banks-need-tighter-cyber-security-amid-ai-risk-ecb-says-2026-05-27/</a></li>
+<li>NVIDIA Vera CPU benchmark: <a href="https://blogs.nvidia.com/blog/vera-cpu-phoronix/">https://blogs.nvidia.com/blog/vera-cpu-phoronix/</a></li>
+<li>vLLM releases: <a href="https://github.com/vllm-project/vllm/releases">https://github.com/vllm-project/vllm/releases</a></li>
+<li>Share More, Search Less: <a href="https://huggingface.co/papers/2605.27030">https://huggingface.co/papers/2605.27030</a></li>
+<li>VitaBench 2.0: <a href="https://huggingface.co/papers/2605.27141">https://huggingface.co/papers/2605.27141</a></li>
+<li>D^2-Monitor: <a href="https://huggingface.co/papers/2605.25893">https://huggingface.co/papers/2605.25893</a></li>
+<li>Intel edge AI robotics: <a href="https://newsroom.intel.com/artificial-intelligence/intel-core-ultra-series-3-for-edge-ai-robotics">https://newsroom.intel.com/artificial-intelligence/intel-core-ultra-series-3-for-edge-ai-robotics</a></li>
+</ul>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://kwbaek.github.io/tags/ai/">Ai</a></li>
+      <li><a href="https://kwbaek.github.io/tags/ml/">Ml</a></li>
+      <li><a href="https://kwbaek.github.io/tags/ai-infrastructure/">AI Infrastructure</a></li>
+      <li><a href="https://kwbaek.github.io/tags/agents/">Agents</a></li>
+      <li><a href="https://kwbaek.github.io/tags/serving/">Serving</a></li>
+      <li><a href="https://kwbaek.github.io/tags/edge-ai/">Edge AI</a></li>
+      <li><a href="https://kwbaek.github.io/tags/evaluation/">Evaluation</a></li>
+      <li><a href="https://kwbaek.github.io/tags/memory/">Memory</a></li>
+    </ul>
+  </footer><script src="https://utteranc.es/client.js"
+        repo="kwbaek/blog-comments"
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://kwbaek.github.io/">Kyungwook&#39;s Devlog</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Skill on Kyungwook&#39;s Devlog</title>
+    <link>https://kwbaek.github.io/tags/skill/</link>
+    <description>Recent content in Skill on Kyungwook&#39;s Devlog</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Thu, 11 Jun 2026 21:00:00 +0900</lastBuildDate>
+    <atom:link href="https://kwbaek.github.io/tags/skill/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hermes/리오 팁: Skill 설치에도 무결성 게이트를 두기</title>
+      <link>https://kwbaek.github.io/posts/2026-06-11-hermes-rio-add-an-integrity-gate-before-installing-skills/</link>
+      <pubDate>Thu, 11 Jun 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-06-11-hermes-rio-add-an-integrity-gate-before-installing-skills/</guid>
+      <description>&lt;p&gt;오늘 AI/ML 트렌드가 에이전트 skill을 공급망으로 보라고 말해준다면, Hermes/리오 운영에도 바로 적용할 수 있는 습관이 있습니다. &lt;strong&gt;새 skill이나 tool을 붙일 때 설치 전 무결성 게이트를 둔다&lt;/strong&gt;는 원칙입니다. 에이전트 자동화에서 skill은 단순한 도움말이 아닙니다. 어떤 파일을 읽을지, 어떤 명령을 실행할지, 어떤 외부 서비스를 호출할지 결정하는 실행 표면입니다. 따라서 새 skill을 추가하는 순간 자동화의 권한 경계도 함께 바뀝니다.&lt;/p&gt;
+&lt;p&gt;첫 번째 체크는 설명과 실제 행동의 일치입니다. skill 문서가 “읽기 전용 분석”을 말한다면 실제 스크립트도 파일 쓰기, 커밋, 네트워크 전송을 하지 않아야 합니다. 반대로 배포나 전송처럼 외부 부작용이 필요한 skill이라면, 그 조건과 검증 단계가 문서에 명시돼 있어야 합니다. Hermes/리오가 자동으로 작업을 수행할수록 “이 skill이 무엇을 한다고 주장하는가”와 “실제로 어떤 권한을 쓰는가”를 비교하는 단계가 중요해집니다.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
