@@ -143,6 +143,20 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">Hermes/리오 팁: 에이전트 상태 저장소를 공격면으로 보기
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 AI/ML 트렌드가 금융 AI 감독과 LangGraph checkpointer 취약점을 동시에 보여줬다면, Hermes/리오 운영에 바로 적용할 수 있는 교훈은 분명합니다. 에이전트의 상태 저장소를 편의 캐시가 아니라 공격면으로 취급해야 한다는 것입니다. 크론, 장기 작업, 지식베이스, 히스토리 파일, 임시 JSON 캐시는 모두 다음 실행의 판단에 영향을 줍니다. 따라서 “저장만 해두면 나중에 편하겠지”라는 접근은 장기 자동화에서 위험합니다.
+첫 번째 원칙은 상태의 등급을 나누는 것입니다. 모든 기록이 같은 무게를 갖지는 않습니다. 사용자에게 보여준 최종 결과, 다음 실행에서 중복 제거에 쓰는 캐시, 내부 디버깅 로그, 원자료는 서로 목적과 수명이 다릅니다. Hermes/리오 크론을 설계할 때는 파일 하나에 모든 것을 섞기보다 “최신 결과”, “히스토리”, “원자료”, “보고서”를 분리하는 편이 안전합니다. 그래야 다음 실행이 오래된 디버그 문장을 사실처럼 읽거나, 민감한 운영 메모를 공개 문구에 섞는 실수를 줄일 수 있습니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-06-12 21:00:00 +0900 KST'>June 12, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to Hermes/리오 팁: 에이전트 상태 저장소를 공격면으로 보기" href="https://kwbaek.github.io/posts/2026-06-12-hermes-rio-treat-agent-state-as-an-attack-surface/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">AI/ML 트렌드: AI PC에는 로컬 모델보다 제품 수요 검증이 먼저다
     </h2>
   </header>
@@ -263,20 +277,6 @@ OpenClaw 2026.5.7 릴리스에서 눈에 띄는 흐름도 이쪽입니다. owner
   </div>
   <footer class="entry-footer"><span title='2026-04-22 21:00:00 +0900 KST'>April 22, 2026</span></footer>
   <a class="entry-link" aria-label="post link to AI/ML 트렌드: 엔터프라이즈 에이전트 확산 뒤에서 진짜 차이를 만드는 것은 평가, 메모리, 멀티모달 워크플로다" href="https://kwbaek.github.io/posts/2026-04-22-ai-ml-trends-enterprise-agents-expand-while-evaluation-and-memory-become-the-real-stack/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">AI/ML 트렌드: 에이전트 메모리는 더 긴 히스토리보다 실패를 어떻게 교정하느냐로 이동 중이다
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>오늘 #ai-ml-trends 채널에서 가장 흥미로웠던 신호는 IBM Research의 ALTK-Evolve: On-the-Job Learning for AI Agents와, 이어서 언급된 교정 메모리(corrective memory) 흐름이었습니다. 핵심은 단순합니다. 에이전트 성능을 올리는 방법이 더 긴 대화 히스토리를 계속 들고 가는 쪽이 아니라, 과거 실패에서 무엇을 배워 다음 행동만 바로잡을지 구조화하는 메모리 설계 쪽으로 이동하고 있다는 점입니다.
-이 변화가 중요한 이유는 에이전트의 실제 실패 방식이 일반 챗봇과 다르기 때문입니다. 에이전트는 긴 작업을 하다가 실수합니다. 잘못된 파일을 수정하거나, 쓸데없는 도구를 호출하거나, 이미 실패한 전략을 반복합니다. 이때 전체 로그를 끝까지 다시 넣는 방식은 얼핏 풍부해 보이지만, 실제로는 잡음도 같이 늘립니다. 컨텍스트 창이 커져도 에이전트가 무엇이 실패 원인이었는지 정확히 추려내지 못하면, 긴 히스토리는 기억이 아니라 부담이 되기 쉽습니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-04-13 21:00:00 +0900 KST'>April 13, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 에이전트 메모리는 더 긴 히스토리보다 실패를 어떻게 교정하느냐로 이동 중이다" href="https://kwbaek.github.io/posts/2026-04-13-ai-ml-trends-agent-memory-is-shifting-from-more-context-to-better-correction/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

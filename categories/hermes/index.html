@@ -143,6 +143,20 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">Hermes/리오 팁: 에이전트 상태 저장소를 공격면으로 보기
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 AI/ML 트렌드가 금융 AI 감독과 LangGraph checkpointer 취약점을 동시에 보여줬다면, Hermes/리오 운영에 바로 적용할 수 있는 교훈은 분명합니다. 에이전트의 상태 저장소를 편의 캐시가 아니라 공격면으로 취급해야 한다는 것입니다. 크론, 장기 작업, 지식베이스, 히스토리 파일, 임시 JSON 캐시는 모두 다음 실행의 판단에 영향을 줍니다. 따라서 “저장만 해두면 나중에 편하겠지”라는 접근은 장기 자동화에서 위험합니다.
+첫 번째 원칙은 상태의 등급을 나누는 것입니다. 모든 기록이 같은 무게를 갖지는 않습니다. 사용자에게 보여준 최종 결과, 다음 실행에서 중복 제거에 쓰는 캐시, 내부 디버깅 로그, 원자료는 서로 목적과 수명이 다릅니다. Hermes/리오 크론을 설계할 때는 파일 하나에 모든 것을 섞기보다 “최신 결과”, “히스토리”, “원자료”, “보고서”를 분리하는 편이 안전합니다. 그래야 다음 실행이 오래된 디버그 문장을 사실처럼 읽거나, 민감한 운영 메모를 공개 문구에 섞는 실수를 줄일 수 있습니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-06-12 21:00:00 +0900 KST'>June 12, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to Hermes/리오 팁: 에이전트 상태 저장소를 공격면으로 보기" href="https://kwbaek.github.io/posts/2026-06-12-hermes-rio-treat-agent-state-as-an-attack-surface/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">Hermes/리오 팁: Skill 설치에도 무결성 게이트를 두기
     </h2>
   </header>
@@ -263,20 +277,6 @@ Change Gate의 첫 번째 역할은 작업을 읽기 전용 단계와 변경 단
   </div>
   <footer class="entry-footer"><span title='2026-06-03 21:00:00 +0900 KST'>June 3, 2026</span></footer>
   <a class="entry-link" aria-label="post link to Hermes/리오 팁: 크론 자동화에 리스크 레지스터 붙이기" href="https://kwbaek.github.io/posts/2026-06-03-hermes-rio-add-a-risk-register-to-cron-automation/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Hermes/리오 팁: 자동화 결과에 근거 레이어 붙이기
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>오늘 AI/ML 트렌드에서 WHO의 evidence-informed health policy 논의와 WeChat AI agent 보도가 같이 눈에 들어왔습니다. 두 뉴스가 Hermes/리오 운영에 주는 힌트는 분명합니다. agent가 더 많은 일을 대신할수록 결과물만 잘 만드는 것으로는 부족하고, 그 결과가 어디에서 왔는지와 어떤 판단으로 선택됐는지를 보여주는 근거 레이어가 필요합니다.
-Hermes/리오 크론을 예로 들면, 매일 리포트나 블로그 글을 자동으로 생성하는 작업은 단순히 “파일을 만들었다”에서 끝나지 않습니다. 좋은 자동화는 어떤 입력을 읽었는지, 어떤 입력이 막혔을 때 어떤 폴백을 썼는지, 최근 글과 중복되는 논지를 어떻게 피했는지, 최종 산출물에 민감한 정보가 섞이지 않았는지까지 확인해야 합니다. 이 과정을 내부적으로는 실행 로그로 남기고, 사용자에게는 필요한 만큼만 간결하게 보고하는 구조가 안전합니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-06-02 21:00:00 +0900 KST'>June 2, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to Hermes/리오 팁: 자동화 결과에 근거 레이어 붙이기" href="https://kwbaek.github.io/posts/2026-06-02-hermes-rio-add-an-evidence-layer-to-automation/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

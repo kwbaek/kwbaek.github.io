@@ -6,8 +6,24 @@
     <description>Recent content in Agent on Kyungwook&#39;s Devlog</description>
     <generator>Hugo -- 0.155.3</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Thu, 11 Jun 2026 21:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Fri, 12 Jun 2026 21:00:00 +0900</lastBuildDate>
     <atom:link href="https://kwbaek.github.io/tags/agent/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI/ML 트렌드: Agentic AI는 이제 감사 인프라다</title>
+      <link>https://kwbaek.github.io/posts/2026-06-12-ai-ml-trends-agentic-ai-is-becoming-audit-infrastructure/</link>
+      <pubDate>Fri, 12 Jun 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-06-12-ai-ml-trends-agentic-ai-is-becoming-audit-infrastructure/</guid>
+      <description>&lt;p&gt;오늘 AI/ML 트렌드에서 가장 중요한 신호는 &lt;strong&gt;agentic AI가 실험 기능을 넘어 감사 가능한 운영 인프라로 취급되기 시작했다&lt;/strong&gt;는 점입니다. Reuters는 미국 은행 규제기관이 금융사의 AI 사용 감독을 강화하고 있다고 보도했고, Check Point Research는 LangGraph checkpointer 취약점 체인이 self-hosted AI agent의 원격 코드 실행으로 이어질 수 있음을 공개했습니다. 여기에 OpenAI와 Preply의 하이브리드 튜터 사례는 AI가 사람을 완전히 대체하기보다 전문가 워크플로우 안에서 운영되는 형태가 현실적인 제품 패턴이 되고 있음을 보여줍니다.&lt;/p&gt;
+&lt;p&gt;금융권 감독 강화는 AI 도입의 질문을 바꿉니다. “이 모델이 정확한가?”만으로는 부족하고, 누가 어떤 데이터로 어떤 판단을 실행했는지, 승인권자는 누구였는지, 실패 시 어떤 로그로 재구성할 수 있는지가 중요해집니다. 특히 agentic AI가 리서치 보조를 넘어 고객 응대, 리스크 판단, 주문 전 단계, 내부 운영 자동화에 붙으면 모델 리스크 관리와 업무 권한 관리가 한 묶음이 됩니다. 금융사는 AI를 기능 단위로 사는 것이 아니라 승인, 감사, 보존, 재현성을 포함한 운영 패키지로 평가하게 될 가능성이 큽니다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Hermes/리오 팁: 에이전트 상태 저장소를 공격면으로 보기</title>
+      <link>https://kwbaek.github.io/posts/2026-06-12-hermes-rio-treat-agent-state-as-an-attack-surface/</link>
+      <pubDate>Fri, 12 Jun 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-06-12-hermes-rio-treat-agent-state-as-an-attack-surface/</guid>
+      <description>&lt;p&gt;오늘 AI/ML 트렌드가 금융 AI 감독과 LangGraph checkpointer 취약점을 동시에 보여줬다면, Hermes/리오 운영에 바로 적용할 수 있는 교훈은 분명합니다. &lt;strong&gt;에이전트의 상태 저장소를 편의 캐시가 아니라 공격면으로 취급해야 한다&lt;/strong&gt;는 것입니다. 크론, 장기 작업, 지식베이스, 히스토리 파일, 임시 JSON 캐시는 모두 다음 실행의 판단에 영향을 줍니다. 따라서 “저장만 해두면 나중에 편하겠지”라는 접근은 장기 자동화에서 위험합니다.&lt;/p&gt;
+&lt;p&gt;첫 번째 원칙은 상태의 등급을 나누는 것입니다. 모든 기록이 같은 무게를 갖지는 않습니다. 사용자에게 보여준 최종 결과, 다음 실행에서 중복 제거에 쓰는 캐시, 내부 디버깅 로그, 원자료는 서로 목적과 수명이 다릅니다. Hermes/리오 크론을 설계할 때는 파일 하나에 모든 것을 섞기보다 “최신 결과”, “히스토리”, “원자료”, “보고서”를 분리하는 편이 안전합니다. 그래야 다음 실행이 오래된 디버그 문장을 사실처럼 읽거나, 민감한 운영 메모를 공개 문구에 섞는 실수를 줄일 수 있습니다.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>AI/ML 트렌드: 에이전트 Skill은 이제 공급망이다</title>
       <link>https://kwbaek.github.io/posts/2026-06-11-ai-ml-trends-agent-skills-are-now-a-supply-chain/</link>

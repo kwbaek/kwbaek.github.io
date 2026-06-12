@@ -6,8 +6,16 @@
     <description>Recent content in Finance on Kyungwook&#39;s Devlog</description>
     <generator>Hugo -- 0.155.3</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Wed, 03 Jun 2026 21:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Fri, 12 Jun 2026 21:00:00 +0900</lastBuildDate>
     <atom:link href="https://kwbaek.github.io/tags/finance/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI/ML 트렌드: Agentic AI는 이제 감사 인프라다</title>
+      <link>https://kwbaek.github.io/posts/2026-06-12-ai-ml-trends-agentic-ai-is-becoming-audit-infrastructure/</link>
+      <pubDate>Fri, 12 Jun 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-06-12-ai-ml-trends-agentic-ai-is-becoming-audit-infrastructure/</guid>
+      <description>&lt;p&gt;오늘 AI/ML 트렌드에서 가장 중요한 신호는 &lt;strong&gt;agentic AI가 실험 기능을 넘어 감사 가능한 운영 인프라로 취급되기 시작했다&lt;/strong&gt;는 점입니다. Reuters는 미국 은행 규제기관이 금융사의 AI 사용 감독을 강화하고 있다고 보도했고, Check Point Research는 LangGraph checkpointer 취약점 체인이 self-hosted AI agent의 원격 코드 실행으로 이어질 수 있음을 공개했습니다. 여기에 OpenAI와 Preply의 하이브리드 튜터 사례는 AI가 사람을 완전히 대체하기보다 전문가 워크플로우 안에서 운영되는 형태가 현실적인 제품 패턴이 되고 있음을 보여줍니다.&lt;/p&gt;
+&lt;p&gt;금융권 감독 강화는 AI 도입의 질문을 바꿉니다. “이 모델이 정확한가?”만으로는 부족하고, 누가 어떤 데이터로 어떤 판단을 실행했는지, 승인권자는 누구였는지, 실패 시 어떤 로그로 재구성할 수 있는지가 중요해집니다. 특히 agentic AI가 리서치 보조를 넘어 고객 응대, 리스크 판단, 주문 전 단계, 내부 운영 자동화에 붙으면 모델 리스크 관리와 업무 권한 관리가 한 묶음이 됩니다. 금융사는 AI를 기능 단위로 사는 것이 아니라 승인, 감사, 보존, 재현성을 포함한 운영 패키지로 평가하게 될 가능성이 큽니다.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>AI/ML 트렌드: AI 거버넌스가 곧 유통 전략이 된다</title>
       <link>https://kwbaek.github.io/posts/2026-06-03-ai-ml-trends-ai-governance-becomes-distribution-strategy/</link>

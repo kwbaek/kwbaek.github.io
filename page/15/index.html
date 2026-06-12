@@ -152,6 +152,34 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 팁: PDF 도구와 validate·healthz 루틴을 같이 써야 자동화가 덜 불안해진다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>최근 OpenClaw 메모를 훑어보다가 실무적으로 특히 마음에 들었던 조합은 두 가지였습니다. 하나는 1st-class pdf 도구 지원이고, 다른 하나는 이미 기본 루틴처럼 자리 잡은 config validate &#43; healthz/readyz 점검 흐름입니다. 따로 보면 하나는 기능 추가, 하나는 운영 체크처럼 보이지만, 같이 묶어 보면 꽤 중요한 메시지가 있습니다. OpenClaw가 점점 더 “할 수 있는 일이 많은 에이전트”를 넘어, 매일 돌려도 덜 불안한 자동화 런타임 쪽으로 정리되고 있다는 점입니다.
+pdf 도구가 왜 반가운가를 먼저 보면, 이전에는 PDF 처리 작업이 종종 우회 경로를 필요로 했습니다. 텍스트 추출을 따로 하거나, 스크린샷/이미지 변환을 섞거나, 모델별로 어떻게 넣을지 고민해야 하는 경우가 있었죠. 그런데 PDF가 1st-class 도구가 되면 사용 흐름이 훨씬 단순해집니다. 문서 분석, 리포트 요약, 계약서나 발표자료 검토처럼 실제 업무에서 자주 나오는 입력 형식을 더 직접적으로 다룰 수 있기 때문입니다. 이건 사소한 편의 개선이 아니라, 자동화 설계 난도를 낮추는 변화에 가깝습니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-04-01 21:05:00 +0900 KST'>April 1, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 팁: PDF 도구와 validate·healthz 루틴을 같이 써야 자동화가 덜 불안해진다" href="https://kwbaek.github.io/posts/2026-04-01-openclaw-pdf-tool-and-validate-healthz-routine-make-daily-automation-safer/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">AI/ML 트렌드: 이제 AI 인프라 경쟁은 GPU 수보다 전력 유연성이 더 중요해질 수 있다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 #ai-ml-trends 채널에서 가장 흥미롭고 중요한 신호로 고른 것은 NVIDIA와 Emerald AI가 강조한 power-flexible AI factories 흐름입니다. 한 줄로 줄이면, 이제 AI 인프라는 단순히 “GPU를 얼마나 많이 확보했는가”로만 경쟁하지 않는다는 이야기입니다. 앞으로는 같은 GPU 자원을 얼마나 전력 친화적으로, 그리드 친화적으로, 그리고 운영 유연하게 굴릴 수 있는가가 점점 더 중요한 경쟁력이 될 가능성이 큽니다.
+그동안 AI 인프라 담론의 중심은 대체로 비슷했습니다. 더 큰 클러스터, 더 빠른 네트워크, 더 많은 H100/B100 계열 가속기, 더 긴 학습 러닝, 더 낮은 추론 지연시간 같은 것들이었죠. 물론 이런 요소들은 여전히 중요합니다. 하지만 최근에는 전력망 제약과 데이터센터 전력 수급 문제가 너무 커졌습니다. 그래서 이제는 “연산 성능”만 보는 관점으로는 부족합니다. 전력 사용을 고정 부하로 보는 시대에서, 전력 상황에 반응하는 유연 자산으로 보는 시대로 넘어가는 중이라고 보는 편이 더 정확해 보입니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-04-01 21:00:00 +0900 KST'>April 1, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 이제 AI 인프라 경쟁은 GPU 수보다 전력 유연성이 더 중요해질 수 있다" href="https://kwbaek.github.io/posts/2026-04-01-ai-ml-trends-power-flexible-ai-factories-turn-energy-into-a-product-feature/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">OpenClaw 팁: v2026.3.7에서 더 중요해진 건 새 기능보다 끊기지 않는 운영감이다
     </h2>
   </header>
@@ -263,35 +291,6 @@
   </div>
   <footer class="entry-footer"><span title='2026-03-25 21:00:00 +0900 KST'>March 25, 2026</span></footer>
   <a class="entry-link" aria-label="post link to OpenClaw 실무 운영: 일일 자동 포스팅을 안정적으로 돌리는 5단계" href="https://kwbaek.github.io/posts/2026-03-25-openclaw-blog-automation-safe-operations/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">AI/ML 트렌드: 오늘의 축은 ‘모델 성능’에서 ‘칩·에이전트·거버넌스’ 동시 경쟁으로
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>오늘 #ai-ml-trends 채널에서 눈에 가장 크게 들어온 포인트는 한마디로 전장 이동입니다. AI 트렌드가 더 이상 모델 하나의 점수 경쟁이나 데모 완성도 경쟁에만 머물지 않고, **실행 레이어(칩, 인프라, 거버넌스)**까지 확장되고 있습니다.
-가장 핵심적인 관찰은 Alibaba가 발표한 agentic AI 전용 칩 XuanTie C950입니다. 모델-에이전트-서비스 스택이 한 번에 연결되는 구조에서, 데이터센터 GPU 전략보다 더 앞단의 질문이 “누가 더 빠른 토큰을 뽑나?”가 아니라 “누가 agentic workload를 하드웨어 수준에서 더 잘 흡수하나?”로 바뀌고 있다는 점입니다. 동시에 OpenAI의 Astral 인수 소식은 단순 회사 인수 뉴스가 아니라, 코드 생성 에이전트가 점점 더 개발 환경 전체를 흡수하려는 흐름(환경 관리, 코드 품질, 타입 점검)으로 가고 있음을 보여줍니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-03-24 21:00:00 +0900 KST'>March 24, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 오늘의 축은 ‘모델 성능’에서 ‘칩·에이전트·거버넌스’ 동시 경쟁으로" href="https://kwbaek.github.io/posts/2026-03-24-ai-ml-trends-agentic-ai-shifts-to-infrastructure-and-governance/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw 실전 운영 팁: 매일 블로그 자동화는 워크플로 안정성이 성패를 가른다
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>오늘은 수동으로 아이템을 고르는 글쓰기보다 cron-instructions 기반 자동 퍼블리싱이 훨씬 핵심이 되는 날입니다. 특히 #ai-ml-trends처럼 매일 정보가 들어오는 채널은 운영 루틴이 안 잡히면 금방 품질이 떨어집니다. 그래서 OpenClaw를 실제로 쓰는 관점에서 한 가지 분명한 결론이 나옵니다. 좋은 기능 추가보다, 반복 작업이 망가졌을 때 회복되는가가 더 중요하다는 겁니다.
-우선 실무에서 바로 쓸 만한 체크포인트를 정리하면:
-지시문 파일 우선순위 고정 지시서가 여러 곳에 산재하면 판단 분산이 생깁니다. 작업 흐름을 한 파일(cron-instructions/...)로 고정하고, 소스 채널은 읽기만 전담하게 두는 편이 안정적입니다. 채널 읽기 -&gt; 선별 -&gt; 포맷 변환을 분리 Discord 메시지는 원문은 빠르게 변합니다. OpenClaw에게 할 일은 “채널 수집”과 “블로그 포맷 변환”을 분리해 넘기는 것. 그래야 추후 규칙 변경(예: 카테고리, 글자 수)이 생겨도 충돌이 적습니다. Git/빌드/배포 실패를 같은 턴에서 처리 오늘처럼 매일 2개 포스트를 작성해 바로 push해야 하는 워크플로는 빌드 실패 지점(의존성, md front matter, 태그 누락) 하나만 있어도 루틴이 멈춥니다. 그래서 hugo 실행 직전 점검 단계까지 자동화 스크립트에 넣는 게 좋습니다. OpenClaw 운영 보안/설정 루틴과 같이 묶기 openclaw config validate와 openclaw update --dry-run, healthz/health 체크를 블로그 주기와 분리하면 “오늘은 글은 잘 올라오는데 내일 갑자기 실패” 패턴을 줄일 수 있습니다. 오늘 같은 다중 생성 루틴에서는 콘텐츠 품질보다 안정성 우선순위를 한 번에 바꾸는 게 오히려 효과가 큽니다. 특히 다음이 실무에서 체감됩니다:
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-03-24 21:00:00 +0900 KST'>March 24, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw 실전 운영 팁: 매일 블로그 자동화는 워크플로 안정성이 성패를 가른다" href="https://kwbaek.github.io/posts/2026-03-24-openclaw-practical-ops-for-todays-blog-automation/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

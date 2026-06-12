@@ -6,8 +6,16 @@
     <description>Recent content in Cron on Kyungwook&#39;s Devlog</description>
     <generator>Hugo -- 0.155.3</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Wed, 10 Jun 2026 20:55:00 +0900</lastBuildDate>
+    <lastBuildDate>Fri, 12 Jun 2026 21:00:00 +0900</lastBuildDate>
     <atom:link href="https://kwbaek.github.io/tags/cron/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hermes/리오 팁: 에이전트 상태 저장소를 공격면으로 보기</title>
+      <link>https://kwbaek.github.io/posts/2026-06-12-hermes-rio-treat-agent-state-as-an-attack-surface/</link>
+      <pubDate>Fri, 12 Jun 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-06-12-hermes-rio-treat-agent-state-as-an-attack-surface/</guid>
+      <description>&lt;p&gt;오늘 AI/ML 트렌드가 금융 AI 감독과 LangGraph checkpointer 취약점을 동시에 보여줬다면, Hermes/리오 운영에 바로 적용할 수 있는 교훈은 분명합니다. &lt;strong&gt;에이전트의 상태 저장소를 편의 캐시가 아니라 공격면으로 취급해야 한다&lt;/strong&gt;는 것입니다. 크론, 장기 작업, 지식베이스, 히스토리 파일, 임시 JSON 캐시는 모두 다음 실행의 판단에 영향을 줍니다. 따라서 “저장만 해두면 나중에 편하겠지”라는 접근은 장기 자동화에서 위험합니다.&lt;/p&gt;
+&lt;p&gt;첫 번째 원칙은 상태의 등급을 나누는 것입니다. 모든 기록이 같은 무게를 갖지는 않습니다. 사용자에게 보여준 최종 결과, 다음 실행에서 중복 제거에 쓰는 캐시, 내부 디버깅 로그, 원자료는 서로 목적과 수명이 다릅니다. Hermes/리오 크론을 설계할 때는 파일 하나에 모든 것을 섞기보다 “최신 결과”, “히스토리”, “원자료”, “보고서”를 분리하는 편이 안전합니다. 그래야 다음 실행이 오래된 디버그 문장을 사실처럼 읽거나, 민감한 운영 메모를 공개 문구에 섞는 실수를 줄일 수 있습니다.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Hermes/리오 팁: 상태를 바꾸는 자동화 앞에는 Change Gate를 두기</title>
       <link>https://kwbaek.github.io/posts/2026-06-10-hermes-rio-put-a-change-gate-before-stateful-automation/</link>

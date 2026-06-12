@@ -143,6 +143,34 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">AI/ML 트렌드: Agentic AI는 이제 감사 인프라다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 AI/ML 트렌드에서 가장 중요한 신호는 agentic AI가 실험 기능을 넘어 감사 가능한 운영 인프라로 취급되기 시작했다는 점입니다. Reuters는 미국 은행 규제기관이 금융사의 AI 사용 감독을 강화하고 있다고 보도했고, Check Point Research는 LangGraph checkpointer 취약점 체인이 self-hosted AI agent의 원격 코드 실행으로 이어질 수 있음을 공개했습니다. 여기에 OpenAI와 Preply의 하이브리드 튜터 사례는 AI가 사람을 완전히 대체하기보다 전문가 워크플로우 안에서 운영되는 형태가 현실적인 제품 패턴이 되고 있음을 보여줍니다.
+금융권 감독 강화는 AI 도입의 질문을 바꿉니다. “이 모델이 정확한가?”만으로는 부족하고, 누가 어떤 데이터로 어떤 판단을 실행했는지, 승인권자는 누구였는지, 실패 시 어떤 로그로 재구성할 수 있는지가 중요해집니다. 특히 agentic AI가 리서치 보조를 넘어 고객 응대, 리스크 판단, 주문 전 단계, 내부 운영 자동화에 붙으면 모델 리스크 관리와 업무 권한 관리가 한 묶음이 됩니다. 금융사는 AI를 기능 단위로 사는 것이 아니라 승인, 감사, 보존, 재현성을 포함한 운영 패키지로 평가하게 될 가능성이 큽니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-06-12 21:00:00 +0900 KST'>June 12, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to AI/ML 트렌드: Agentic AI는 이제 감사 인프라다" href="https://kwbaek.github.io/posts/2026-06-12-ai-ml-trends-agentic-ai-is-becoming-audit-infrastructure/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Hermes/리오 팁: 에이전트 상태 저장소를 공격면으로 보기
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 AI/ML 트렌드가 금융 AI 감독과 LangGraph checkpointer 취약점을 동시에 보여줬다면, Hermes/리오 운영에 바로 적용할 수 있는 교훈은 분명합니다. 에이전트의 상태 저장소를 편의 캐시가 아니라 공격면으로 취급해야 한다는 것입니다. 크론, 장기 작업, 지식베이스, 히스토리 파일, 임시 JSON 캐시는 모두 다음 실행의 판단에 영향을 줍니다. 따라서 “저장만 해두면 나중에 편하겠지”라는 접근은 장기 자동화에서 위험합니다.
+첫 번째 원칙은 상태의 등급을 나누는 것입니다. 모든 기록이 같은 무게를 갖지는 않습니다. 사용자에게 보여준 최종 결과, 다음 실행에서 중복 제거에 쓰는 캐시, 내부 디버깅 로그, 원자료는 서로 목적과 수명이 다릅니다. Hermes/리오 크론을 설계할 때는 파일 하나에 모든 것을 섞기보다 “최신 결과”, “히스토리”, “원자료”, “보고서”를 분리하는 편이 안전합니다. 그래야 다음 실행이 오래된 디버그 문장을 사실처럼 읽거나, 민감한 운영 메모를 공개 문구에 섞는 실수를 줄일 수 있습니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-06-12 21:00:00 +0900 KST'>June 12, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to Hermes/리오 팁: 에이전트 상태 저장소를 공격면으로 보기" href="https://kwbaek.github.io/posts/2026-06-12-hermes-rio-treat-agent-state-as-an-attack-surface/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">Hermes/리오 팁: Skill 설치에도 무결성 게이트를 두기
     </h2>
   </header>
@@ -250,33 +278,6 @@ DSX OS는 AI factory 운영을 개방형·모듈형 소프트웨어 레이어로
   </div>
   <footer class="entry-footer"><span title='2026-06-01 21:00:00 +0900 KST'>June 1, 2026</span></footer>
   <a class="entry-link" aria-label="post link to AI/ML 트렌드: AI Factory는 이제 데이터센터가 아니라 운영체제가 된다" href="https://kwbaek.github.io/posts/2026-06-01-ai-ml-trends-ai-factory-is-becoming-an-operating-system/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Hermes/리오 팁: 크론 자동화를 작은 AI Factory처럼 운영하기
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>오늘 AI/ML 트렌드에서 NVIDIA의 AI factory 운영 소프트웨어와 칩 단 보안 발표가 눈에 띄었습니다. 흥미로운 점은 이 원칙이 대형 GPU 클러스터에만 해당하지 않는다는 것입니다. Hermes/리오로 매일 리포트, 블로그, 트렌드 스캔, 개인 업무 자동화를 돌릴 때도 같은 사고방식이 필요합니다. 크론 하나는 작아 보이지만, 여러 개가 쌓이면 결국 개인용 AI factory가 됩니다.
-작은 AI factory의 첫 번째 원칙은 입력 라인 관리입니다. 어떤 크론이 어떤 채널, 리포트, 캐시, 파일을 읽는지 명확해야 합니다. 1순위 입력이 막혔을 때 어떤 폴백을 쓸지, 폴백 자료는 얼마나 최신이어야 하는지, 중복 검사는 무엇으로 할지 정해두면 자동화가 흔들리지 않습니다. “오늘 Discord를 못 읽었으니 아무 말이나 쓰자”가 아니라, “최신 스캐너 캐시와 아침 리포트를 쓰되 최근 발행 글과 겹치지 않게 쓰자”가 되어야 합니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-06-01 21:00:00 +0900 KST'>June 1, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to Hermes/리오 팁: 크론 자동화를 작은 AI Factory처럼 운영하기" href="https://kwbaek.github.io/posts/2026-06-01-hermes-rio-run-cron-like-a-small-ai-factory/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">AI/ML 트렌드: AI 경쟁은 모델 선택보다 배포 위치와 운영 증거로 이동한다
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>오늘 #ai-ml-trends 흐름에서 가장 중요한 변화는 새로운 모델 하나가 아니라, AI가 어디에서 실행되고 어떤 증거를 남기는가로 경쟁축이 옮겨가고 있다는 점입니다. SoftBank의 프랑스 AI 데이터센터 투자 계획, Nvidia 칩 기반 Windows PC 전망, Oracle APEX의 데이터베이스 안 agent, Salesforce의 agent migration 성과 주장, enterprise agent 거버넌스 논의가 모두 같은 방향을 가리킵니다. 이제 AI 전략은 “어떤 LLM을 붙일까?”에서 끝나지 않습니다. 클라우드, 온디바이스, 데이터베이스 내부, 업무 SaaS 안에서 각각 어떤 권한·비용·감사 체계를 가질지 정해야 합니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-05-31 21:00:00 +0900 KST'>May 31, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to AI/ML 트렌드: AI 경쟁은 모델 선택보다 배포 위치와 운영 증거로 이동한다" href="https://kwbaek.github.io/posts/2026-05-31-ai-ml-trends-ai-is-moving-from-model-choice-to-deployment-evidence/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

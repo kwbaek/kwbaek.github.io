@@ -158,6 +158,34 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 팁: always-on 에이전트일수록 모델보다 운영 표면이 먼저다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 OpenClaw 관련 흐름을 보며 다시 느낀 건, always-on 에이전트에서 중요한 건 모델의 화려함보다 운영 표면(ops surface) 이라는 점입니다. NVIDIA가 OpenClaw &#43; NemoClaw 조합으로 로컬 상시형 에이전트 아키텍처를 소개한 것도 결국 같은 이야기입니다. 상시형 에이전트는 한 번 똑똑하게 답하는 것으로 끝나지 않습니다. 메시지를 읽고, 도구를 호출하고, 상태를 남기고, 실패하면 다시 이어서 작업하고, 사람에게는 정말 필요할 때만 끼어들어야 합니다. 즉 문제의 중심이 “무슨 모델을 쓰느냐”에서 “이 에이전트를 어떻게 굴리느냐”로 바뀝니다.
+OpenClaw의 강점은 바로 이 운영 표면을 꽤 현실적으로 제공한다는 데 있습니다. message 같은 first-class 채널 도구가 있고, sessions_spawn으로 일을 분리할 수 있고, heartbeat와 cron으로 주기 작업과 즉시 반응 작업을 나눌 수 있습니다. 이 차이가 큽니다. 많은 로컬 AI 데모는 모델을 띄우는 데까지는 성공하지만, 며칠 동안 조용히 돌아가며 무엇을 언제 해야 하는지 판단하고, 실패를 드러내고, 반복 작업을 안전하게 이어가는 구조까지는 잘 못 갑니다. OpenClaw는 바로 그 지점을 운영 문제로 다룹니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-04-27 21:05:00 +0900 KST'>April 27, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 팁: always-on 에이전트일수록 모델보다 운영 표면이 먼저다" href="https://kwbaek.github.io/posts/2026-04-27-openclaw-always-on-agents-need-clear-ops-surfaces/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">AI/ML 트렌드: 진짜 승부는 모델 자체보다 에이전트 워크플로 레이어로 올라가고 있다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 Discord #ai-ml-trends를 읽으며 가장 또렷하게 보인 흐름은, AI 경쟁의 무게중심이 다시 한 칸 위로 올라가고 있다는 점이었습니다. 이제 사람들의 시선을 가장 많이 끄는 건 단순히 “어느 모델이 더 똑똑한가”가 아닙니다. 오히려 그 모델을 어떤 워크플로에 붙일 수 있는지, 비용과 권한을 어떻게 통제하는지, 장기 작업을 어디까지 믿고 맡길 수 있는지가 더 중요한 질문이 되고 있습니다.
+오늘 올라온 신호들을 나란히 놓고 보면 이 변화가 꽤 선명합니다. Google은 AI Studio를 구독형 프리미엄 개발 워크벤치처럼 밀고 있고, Gemini API에는 선불 결제까지 붙였습니다. 이건 단순 결제 기능 추가가 아니라, 생성형 AI가 실험 장난감 단계를 지나 팀 예산과 운영 정책 안으로 들어오고 있다는 뜻에 가깝습니다. 한편 NVIDIA의 Kaggle 사례처럼 LLM 에이전트가 수십만 줄 코드와 수백 개 실험을 밀어붙이는 흐름이나, Hugging Face의 Frontier SWE × OpenEnv처럼 장기 SWE 에이전트 훈련 환경이 본격화되는 흐름은 “좋은 답변”보다 긴 작업을 끝까지 굴리는 시스템이 더 중요해졌다는 걸 보여줍니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-04-27 21:00:00 +0900 KST'>April 27, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 진짜 승부는 모델 자체보다 에이전트 워크플로 레이어로 올라가고 있다" href="https://kwbaek.github.io/posts/2026-04-27-ai-ml-trends-the-real-battle-is-moving-up-to-the-agent-workflow-layer/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">OpenClaw 팁: 데일리 퍼블리싱은 선별·작성·배포를 분리할수록 더 안정적이다
     </h2>
   </header>
@@ -261,34 +289,6 @@
   </div>
   <footer class="entry-footer"><span title='2026-04-22 21:00:00 +0900 KST'>April 22, 2026</span></footer>
   <a class="entry-link" aria-label="post link to AI/ML 트렌드: 엔터프라이즈 에이전트 확산 뒤에서 진짜 차이를 만드는 것은 평가, 메모리, 멀티모달 워크플로다" href="https://kwbaek.github.io/posts/2026-04-22-ai-ml-trends-enterprise-agents-expand-while-evaluation-and-memory-become-the-real-stack/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw 팁: 승인 마찰을 줄이려면 반복 작업을 스크립트로 고정하는 편이 낫다
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>OpenClaw를 계속 운영하다 보면 꽤 빨리 부딪히는 문제가 있습니다. 위험한 자동화를 허용하고 싶지는 않은데, 그렇다고 매번 비슷한 점검 명령을 다시 쓰고 다시 승인받는 흐름도 점점 피곤해진다는 점입니다. 여기서 가장 실용적인 해법은 blanket auto-approval이 아닙니다. 제가 보기엔 더 나은 방향은 반복적으로 실행하는 안전한 운영 작업을 작은 스크립트로 고정해 두는 것입니다.
-이 방식이 좋은 이유는 단순합니다. 첫째, 사람이 매번 ad-hoc으로 명령을 길게 치지 않아도 됩니다. 둘째, 에이전트도 같은 종류의 점검을 할 때마다 조금씩 다른 명령을 만들지 않아도 됩니다. 셋째, 무엇보다 안전 경계가 더 또렷해집니다. 예를 들어 Camofox 상태 점검, 복구 루틴, OpenClaw health 확인처럼 자주 반복되는 작업은 scripts/ 아래에 목적이 분명한 스크립트로 묶어두면 승인도 더 이해하기 쉬워지고, 실패 원인도 추적하기 쉬워집니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-04-21 21:05:00 +0900 KST'>April 21, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw 팁: 승인 마찰을 줄이려면 반복 작업을 스크립트로 고정하는 편이 낫다" href="https://kwbaek.github.io/posts/2026-04-21-openclaw-reduce-approval-friction-by-scriptifying-repeatable-ops/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">AI/ML 트렌드: 오늘 에이전트 경쟁은 클라우드 자본, 현지화, 버티컬 실행력으로 갈라진다
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>오늘 Discord #ai-ml-trends 채널에서 가장 중요하게 보인 흐름은, 에이전트 경쟁의 기준이 다시 한 번 더 현실적인 운영 레이어로 이동하고 있다는 점입니다. 오늘 올라온 신호들을 같이 보면 승부가 단순히 “누가 더 똑똑한 모델을 만들었나”에서 끝나지 않습니다. 이제는 누가 더 큰 클라우드 자본과 배포 계약을 묶어두는지, 누가 더 잘 현지화된 데이터를 설계하는지, 그리고 누가 고신뢰 버티컬 워크플로를 실제 업무에 맞게 제품화하는지가 점점 더 중요해지고 있습니다.
-가장 강한 신호는 Reuters가 전한 Amazon과 Anthropic의 대형 클라우드 계약이었습니다. 이 소식이 중요한 이유는 프런티어 AI 경쟁이 모델 성능 비교를 넘어, 장기 컴퓨트와 유통 채널, 고객 접점을 누가 더 깊게 선점하느냐는 구조전으로 옮겨가고 있기 때문입니다. 거대한 모델을 만드는 것만으로는 충분하지 않고, 그 모델이 실제로 배포될 클라우드 인프라와 매출 엔진이 함께 묶여야 합니다. 앞으로는 “좋은 모델 회사”보다 “자본, 컴퓨트, 유통이 결합된 AI 운영체계”가 더 강해질 가능성이 큽니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-04-21 21:00:00 +0900 KST'>April 21, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 오늘 에이전트 경쟁은 클라우드 자본, 현지화, 버티컬 실행력으로 갈라진다" href="https://kwbaek.github.io/posts/2026-04-21-ai-ml-trends-cloud-capital-localization-and-vertical-agents/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">
