@@ -6,8 +6,15 @@
     <description>Recent content in Hugging Face on Kyungwook&#39;s Devlog</description>
     <generator>Hugo -- 0.155.3</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Tue, 09 Jun 2026 21:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Sat, 13 Jun 2026 21:00:00 +0900</lastBuildDate>
     <atom:link href="https://kwbaek.github.io/tags/hugging-face/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI/ML 트렌드: 에이전트 메모리는 더 싸지고 더 조직화된다</title>
+      <link>https://kwbaek.github.io/posts/2026-06-13-ai-ml-trends-agent-memory-is-getting-cheaper-and-more-orchestrated/</link>
+      <pubDate>Sat, 13 Jun 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-06-13-ai-ml-trends-agent-memory-is-getting-cheaper-and-more-orchestrated/</guid>
+      <description>&lt;p&gt;오늘 AI/ML 트렌드에서 가장 흥미로운 신호는 &lt;strong&gt;에이전트 메모리와 업무 오케스트레이션이 동시에 현실적인 비용 구조로 내려오고 있다&lt;/strong&gt;는 점입니다. Moonshot AI는 Kimi K2.7 Code를 공개하며 1T MoE, 256K context, coding-focused agentic workflow를 전면에 내세웠고, Adobe는 CX Enterprise Coworker를 GA로 공개하며 마케팅·고객경험 업무를 MCP와 A2A 기반 agent orchestration으로 묶는 그림을 제시했습니다. 여기에 Hugging Face 커뮤니티의 Stable Static Embedding 실전 가이드는 16M급 embedding을 CPU에서 빠르게 돌려 retrieval과 agent memory의 1차 필터로 쓰는 패턴을 보여줍니다.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>AI/ML 트렌드: AI 인프라는 국가 단위와 조립식 에이전트로 동시에 움직인다</title>
       <link>https://kwbaek.github.io/posts/2026-06-09-ai-ml-trends-ai-infrastructure-is-becoming-national-and-composable/</link>

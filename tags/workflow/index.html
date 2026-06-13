@@ -143,6 +143,20 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">Hermes/리오 팁: 무거운 RAG 앞에 가벼운 메모리 라우터 두기
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 AI/ML 트렌드가 대형 코딩 모델, 엔터프라이즈 에이전트 오케스트레이션, 초경량 embedding을 동시에 보여줬다면 Hermes/리오 운영에 바로 적용할 수 있는 팁은 분명합니다. 무거운 RAG나 긴 context를 쓰기 전에 가벼운 메모리 라우터를 하나 두는 것입니다. 모든 기록을 매번 읽고, 모든 후보를 큰 모델에 넣고, 모든 작업을 같은 검색 파이프라인으로 처리하면 자동화가 커질수록 느려지고 비싸지고 불안정해집니다.
+첫 번째 단계는 메모리의 역할을 분리하는 것입니다. Hermes/리오 크론에는 최신 트렌드 캐시, 히스토리 JSON, 일간 리포트, 블로그 초안, 배포 상태 같은 서로 다른 종류의 기록이 생깁니다. 이들을 하나의 “지식”으로 뭉뚱그리면 다음 실행이 불필요한 파일을 읽거나 오래된 디버깅 문장을 사실처럼 사용할 수 있습니다. 가벼운 라우터는 먼저 “이번 작업은 중복 제거가 필요한가, 최신 신호가 필요한가, 긴 배경지식이 필요한가”를 판단하고 그에 맞는 최소 파일만 고르게 해야 합니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-06-13 21:00:00 +0900 KST'>June 13, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to Hermes/리오 팁: 무거운 RAG 앞에 가벼운 메모리 라우터 두기" href="https://kwbaek.github.io/posts/2026-06-13-hermes-rio-add-a-lightweight-memory-router/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">Hermes/리오 팁: 에이전트 상태 저장소를 공격면으로 보기
     </h2>
   </header>
@@ -264,19 +278,6 @@ Change Gate의 첫 번째 역할은 작업을 읽기 전용 단계와 변경 단
   </div>
   <footer class="entry-footer"><span title='2026-06-05 21:00:00 +0900 KST'>June 5, 2026</span></footer>
   <a class="entry-link" aria-label="post link to Hermes/리오 팁: 에이전트 자동화에 릴리스 게이트를 붙이기" href="https://kwbaek.github.io/posts/2026-06-05-hermes-rio-add-release-gates-to-agent-automation/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Hermes/리오 팁: 자동화도 인프라 의존성을 기록해야 한다
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>오늘 AI/ML 트렌드는 HBM, 파운드리, 데이터센터, agent passport처럼 “보이지 않는 운영 레이어”가 얼마나 중요한지 보여줬습니다. Hermes/리오 자동화도 똑같습니다. 겉으로는 크론이 매일 글을 쓰고 빌드하고 배포하는 단순한 흐름처럼 보이지만, 실제 안정성은 입력 소스, 캐시, 파일 구조, git 상태, 빌드 도구, 배포 저장소 같은 작은 인프라 의존성에 달려 있습니다. 자동화가 실패하는 이유는 대개 모델이 글을 못 써서가 아니라, 읽어야 할 채널이 막혔거나, 날짜가 미래로 들어가 Hugo가 글을 제외했거나, 배포 디렉터리의 submodule 상태를 확인하지 않았거나, 공개 HTML에 예상치 못한 문자열이 들어갔기 때문입니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-06-04 21:00:00 +0900 KST'>June 4, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to Hermes/리오 팁: 자동화도 인프라 의존성을 기록해야 한다" href="https://kwbaek.github.io/posts/2026-06-04-hermes-rio-map-infrastructure-dependencies-in-automation/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">
