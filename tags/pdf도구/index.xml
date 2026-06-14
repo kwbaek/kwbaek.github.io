@@ -1,23 +1,5 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
-  <channel>
-    <title>Pdf도구 on Kyungwook&#39;s Devlog</title>
-    <link>https://kwbaek.github.io/tags/pdf%EB%8F%84%EA%B5%AC/</link>
-    <description>Recent content in Pdf도구 on Kyungwook&#39;s Devlog</description>
-    <generator>Hugo -- 0.155.3</generator>
-    <language>ko-kr</language>
-    <lastBuildDate>Thu, 05 Mar 2026 21:00:00 +0900</lastBuildDate>
-    <atom:link href="https://kwbaek.github.io/tags/pdf%EB%8F%84%EA%B5%AC/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>OpenClaw v2026.3.2 업그레이드 가이드: SecretRef, pdf 도구, 그리고 운영 안정성</title>
-      <link>https://kwbaek.github.io/posts/2026-03-05-openclaw-v2026-3-2-guide/</link>
-      <pubDate>Thu, 05 Mar 2026 21:00:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/posts/2026-03-05-openclaw-v2026-3-2-guide/</guid>
-      <description>&lt;p&gt;OpenClaw가 &lt;code&gt;v2026.3.2&lt;/code&gt;로 업데이트되면서 일상적인 운영에 직접 영향을 주는 변화들이 꽤 있었다. 이번 포스트에서는 주요 변경 사항과 실제로 써먹을 수 있는 운영 팁을 정리해본다.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Pdf도구 on Kyungwook's Devlog</title><link>https://kwbaek.github.io/tags/pdf%EB%8F%84%EA%B5%AC/</link><description>Recent content in Pdf도구 on Kyungwook's Devlog</description><generator>Hugo -- 0.155.3</generator><language>ko-kr</language><lastBuildDate>Thu, 05 Mar 2026 21:00:00 +0900</lastBuildDate><atom:link href="https://kwbaek.github.io/tags/pdf%EB%8F%84%EA%B5%AC/index.xml" rel="self" type="application/rss+xml"/><item><title>OpenClaw v2026.3.2 업그레이드 가이드: SecretRef, pdf 도구, 그리고 운영 안정성</title><link>https://kwbaek.github.io/posts/2026-03-05-openclaw-v2026-3-2-guide/</link><pubDate>Thu, 05 Mar 2026 21:00:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-03-05-openclaw-v2026-3-2-guide/</guid><description>&lt;p&gt;OpenClaw가 &lt;code&gt;v2026.3.2&lt;/code&gt;로 업데이트되면서 일상적인 운영에 직접 영향을 주는 변화들이 꽤 있었다. 이번 포스트에서는 주요 변경 사항과 실제로 써먹을 수 있는 운영 팁을 정리해본다.&lt;/p&gt;
 &lt;hr&gt;
-&lt;h2 id=&#34;-secretref-fail-fast-강화--미리-알고-쓰자&#34;&gt;🔑 SecretRef fail-fast 강화 — 미리 알고 쓰자&lt;/h2&gt;
+&lt;h2 id="-secretref-fail-fast-강화--미리-알고-쓰자"&gt;🔑 SecretRef fail-fast 강화 — 미리 알고 쓰자&lt;/h2&gt;
 &lt;p&gt;&lt;code&gt;v2026.3.2&lt;/code&gt;의 가장 중요한 보안 변경 사항이다. &lt;strong&gt;active surface에서 unresolved secret ref는 이제 즉시 실패(fail-fast) 처리&lt;/strong&gt;된다.&lt;/p&gt;
-&lt;p&gt;이전에는 secret ref가 제대로 해석되지 않아도 빈 값이나 리터럴 문자열로 넘어가는 경우가 있었다. 이제는 그냥 바로 에러가 난다. 처음에는 불편하게 느껴질 수 있지만, &lt;strong&gt;잘못된 설정이 조용히 운영되는 것보다 훨씬 낫다&lt;/strong&gt;.&lt;/p&gt;</description>
-    </item>
-  </channel>
-</rss>
+&lt;p&gt;이전에는 secret ref가 제대로 해석되지 않아도 빈 값이나 리터럴 문자열로 넘어가는 경우가 있었다. 이제는 그냥 바로 에러가 난다. 처음에는 불편하게 느껴질 수 있지만, &lt;strong&gt;잘못된 설정이 조용히 운영되는 것보다 훨씬 낫다&lt;/strong&gt;.&lt;/p&gt;</description></item></channel></rss>
