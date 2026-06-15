@@ -1,14 +1,39 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>에이전틱AI on Kyungwook's Devlog</title><link>https://kwbaek.github.io/tags/%EC%97%90%EC%9D%B4%EC%A0%84%ED%8B%B1ai/</link><description>Recent content in 에이전틱AI on Kyungwook's Devlog</description><generator>Hugo -- 0.155.3</generator><language>ko-kr</language><lastBuildDate>Mon, 16 Feb 2026 21:00:00 +0900</lastBuildDate><atom:link href="https://kwbaek.github.io/tags/%EC%97%90%EC%9D%B4%EC%A0%84%ED%8B%B1ai/index.xml" rel="self" type="application/rss+xml"/><item><title>중국 AI 모델 대공세: Qwen 3.5부터 Doubao 2.0까지, 에이전트 시대의 서막</title><link>https://kwbaek.github.io/posts/2026-02-16-china-ai-model-rush/</link><pubDate>Mon, 16 Feb 2026 21:00:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-02-16-china-ai-model-rush/</guid><description>&lt;h2 id="중국-ai-업계의-춘절-공세"&gt;중국 AI 업계의 춘절 공세&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>에이전틱AI on Kyungwook&#39;s Devlog</title>
+    <link>https://kwbaek.github.io/tags/%EC%97%90%EC%9D%B4%EC%A0%84%ED%8B%B1ai/</link>
+    <description>Recent content in 에이전틱AI on Kyungwook&#39;s Devlog</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Mon, 16 Feb 2026 21:00:00 +0900</lastBuildDate>
+    <atom:link href="https://kwbaek.github.io/tags/%EC%97%90%EC%9D%B4%EC%A0%84%ED%8B%B1ai/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>중국 AI 모델 대공세: Qwen 3.5부터 Doubao 2.0까지, 에이전트 시대의 서막</title>
+      <link>https://kwbaek.github.io/posts/2026-02-16-china-ai-model-rush/</link>
+      <pubDate>Mon, 16 Feb 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-02-16-china-ai-model-rush/</guid>
+      <description>&lt;h2 id=&#34;중국-ai-업계의-춘절-공세&#34;&gt;중국 AI 업계의 춘절 공세&lt;/h2&gt;
 &lt;p&gt;2026년 2월, 중국의 AI 업계가 춘절(설날) 시즌을 맞아 대규모 모델 공개 러시를 펼치고 있습니다. 작년 DeepSeek의 등장 이후 1년 만에, 중국 기업들은 더욱 공격적인 모습으로 글로벌 AI 경쟁에 뛰어들고 있습니다.&lt;/p&gt;
-&lt;h3 id="1-alibaba-qwen-35-에이전틱-ai-시대의-선언"&gt;1. Alibaba Qwen 3.5: &amp;ldquo;에이전틱 AI 시대&amp;quot;의 선언&lt;/h3&gt;
+&lt;h3 id=&#34;1-alibaba-qwen-35-에이전틱-ai-시대의-선언&#34;&gt;1. Alibaba Qwen 3.5: &amp;ldquo;에이전틱 AI 시대&amp;quot;의 선언&lt;/h3&gt;
 &lt;p&gt;Alibaba가 오늘(2월 16일) 공개한 &lt;strong&gt;Qwen 3.5&lt;/strong&gt;는 &amp;ldquo;에이전틱 AI 시대&amp;quot;를 겨냥한 플래그십 모델입니다. 주요 특징은:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;에이전트 작업에 최적화된 향상된 추론 능력&lt;/strong&gt;&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;멀티모달 지원&lt;/strong&gt; (텍스트, 이미지, 비디오 입력 처리)&lt;/li&gt;
 &lt;li&gt;DeepSeek V4 출시를 앞두고 선제적 발표&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;이 모델은 단순한 질문-답변을 넘어 &lt;strong&gt;복잡한 다단계 작업을 자율적으로 수행&lt;/strong&gt;하는 에이전트 역할에 집중하고 있습니다. Alibaba는 이를 통해 중국 AI 업계의 경쟁에서 차별화를 시도하고 있습니다.&lt;/p&gt;</description></item><item><title>OpenClaw 실전 활용: 에이전틱 워크플로우로 블로그 자동화하기</title><link>https://kwbaek.github.io/posts/2026-02-09-openclaw-agentic-workflow-tips/</link><pubDate>Mon, 09 Feb 2026 23:15:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-02-09-openclaw-agentic-workflow-tips/</guid><description>&lt;p&gt;AI 에이전트가 단순한 챗봇을 넘어 실제 업무를 자동화하는 시대가 왔습니다. 이번 글에서는 제가 실제로 사용하고 있는 &lt;strong&gt;OpenClaw의 에이전틱 워크플로우&lt;/strong&gt;를 소개합니다. 이 블로그 포스트 자체가 OpenClaw가 자동으로 작성하고 배포한 결과물입니다.&lt;/p&gt;
-&lt;h2 id="openclaw란"&gt;OpenClaw란?&lt;/h2&gt;
+&lt;p&gt;이 모델은 단순한 질문-답변을 넘어 &lt;strong&gt;복잡한 다단계 작업을 자율적으로 수행&lt;/strong&gt;하는 에이전트 역할에 집중하고 있습니다. Alibaba는 이를 통해 중국 AI 업계의 경쟁에서 차별화를 시도하고 있습니다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>OpenClaw 실전 활용: 에이전틱 워크플로우로 블로그 자동화하기</title>
+      <link>https://kwbaek.github.io/posts/2026-02-09-openclaw-agentic-workflow-tips/</link>
+      <pubDate>Mon, 09 Feb 2026 23:15:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-02-09-openclaw-agentic-workflow-tips/</guid>
+      <description>&lt;p&gt;AI 에이전트가 단순한 챗봇을 넘어 실제 업무를 자동화하는 시대가 왔습니다. 이번 글에서는 제가 실제로 사용하고 있는 &lt;strong&gt;OpenClaw의 에이전틱 워크플로우&lt;/strong&gt;를 소개합니다. 이 블로그 포스트 자체가 OpenClaw가 자동으로 작성하고 배포한 결과물입니다.&lt;/p&gt;
+&lt;h2 id=&#34;openclaw란&#34;&gt;OpenClaw란?&lt;/h2&gt;
 &lt;p&gt;OpenClaw는 개인용 AI 비서 프레임워크입니다. 단순 대화를 넘어 &lt;strong&gt;파일 시스템 접근, 웹 검색, Git 작업, 크론 작업, 브라우저 제어&lt;/strong&gt; 등 실제 도구를 사용할 수 있는 에이전트를 실행할 수 있습니다. 텔레그램, 디스코드 등 메신저와 연동해 어디서든 에이전트와 소통할 수 있죠.&lt;/p&gt;
-&lt;h2 id="자동-블로그-포스팅-워크플로우"&gt;자동 블로그 포스팅 워크플로우&lt;/h2&gt;
-&lt;p&gt;현재 제 블로그는 다음과 같은 자동화 파이프라인으로 운영됩니다:&lt;/p&gt;</description></item></channel></rss>
+&lt;h2 id=&#34;자동-블로그-포스팅-워크플로우&#34;&gt;자동 블로그 포스팅 워크플로우&lt;/h2&gt;
+&lt;p&gt;현재 제 블로그는 다음과 같은 자동화 파이프라인으로 운영됩니다:&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

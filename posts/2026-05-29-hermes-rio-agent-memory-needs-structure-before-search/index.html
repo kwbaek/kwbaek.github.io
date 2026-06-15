@@ -1,11 +1,329 @@
-<!doctype html><html lang=en dir=auto data-theme=auto><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=robots content="index, follow"><title>Hermes/리오 팁: 에이전트 메모리는 검색보다 구조가 먼저다 | Kyungwook's Devlog</title><meta name=keywords content="Hermes,리오,Agent,Memory,RAG,Knowledge Base,Workflow,Automation"><meta name=description content="Hermes/리오를 매일 쓰다 보면 “나중에 다시 찾을 수 있게 저장하자”는 생각으로 모든 것을 로그나 검색 가능한 파일에 넣고 싶어집니다. 하지만 실제로 오래 살아남는 에이전트 워크플로우는 단순 저장보다 구조화된 기억에 가깝습니다. 오늘 AI/ML 트렌드에서 S3Mem, Micro-Macro Retrieval, deep research skill 같은 흐름이 나온 것도 같은 이유입니다. 에이전트가 긴 작업을 잘하려면 정보를 많이 갖는 것보다, 필요한 순간에 근거가 끊기지 않게 꺼낼 수 있어야 합니다.
-가장 쉬운 실수는 모든 입력을 “나중에 검색하면 되겠지”라고 생각하는 것입니다. Discord 트렌드 채널, 이메일, 회의 메모, 크론 실행 로그, 블로그 초안이 전부 한 덩어리 텍스트로 쌓이면 검색 결과는 많아지지만 판단은 어려워집니다. 같은 키워드가 여러 맥락에서 반복되고, 오래된 정보와 최신 정보가 섞이며, 링크만 있고 왜 중요했는지는 사라집니다. 이 상태에서 에이전트는 검색은 많이 하지만 결론은 얕아지는 RAG 함정에 빠지기 쉽습니다."><meta name=author content><link rel=canonical href=https://kwbaek.github.io/posts/2026-05-29-hermes-rio-agent-memory-needs-structure-before-search/><link crossorigin=anonymous href=/assets/css/stylesheet.da3211e5ef867bf2b75fd5a6515cfed7195c011e8ab735694e203810a827097b.css integrity="sha256-2jIR5e+Ge/K3X9WmUVz+1xlcAR6KtzVpTiA4EKgnCXs=" rel="preload stylesheet" as=style><link rel=icon href=https://kwbaek.github.io/favicon.ico><link rel=icon type=image/png sizes=16x16 href=https://kwbaek.github.io/favicon-16x16.png><link rel=icon type=image/png sizes=32x32 href=https://kwbaek.github.io/favicon-32x32.png><link rel=apple-touch-icon href=https://kwbaek.github.io/apple-touch-icon.png><link rel=mask-icon href=https://kwbaek.github.io/safari-pinned-tab.svg><meta name=theme-color content="#2e2e33"><meta name=msapplication-TileColor content="#2e2e33"><link rel=alternate hreflang=en href=https://kwbaek.github.io/posts/2026-05-29-hermes-rio-agent-memory-needs-structure-before-search/><noscript><style>#theme-toggle,.top-link{display:none}</style><style>@media(prefers-color-scheme:dark){:root{--theme:rgb(29, 30, 32);--entry:rgb(46, 46, 51);--primary:rgb(218, 218, 219);--secondary:rgb(155, 156, 157);--tertiary:rgb(65, 66, 68);--content:rgb(196, 196, 197);--code-block-bg:rgb(46, 46, 51);--code-bg:rgb(55, 56, 62);--border:rgb(51, 51, 51);color-scheme:dark}.list{background:var(--theme)}.toc{background:var(--entry)}}@media(prefers-color-scheme:light){.list::-webkit-scrollbar-thumb{border-color:var(--code-bg)}}</style></noscript><script>localStorage.getItem("pref-theme")==="dark"?document.querySelector("html").dataset.theme="dark":localStorage.getItem("pref-theme")==="light"?document.querySelector("html").dataset.theme="light":window.matchMedia("(prefers-color-scheme: dark)").matches?document.querySelector("html").dataset.theme="dark":document.querySelector("html").dataset.theme="light"</script><meta property="og:url" content="https://kwbaek.github.io/posts/2026-05-29-hermes-rio-agent-memory-needs-structure-before-search/"><meta property="og:site_name" content="Kyungwook's Devlog"><meta property="og:title" content="Hermes/리오 팁: 에이전트 메모리는 검색보다 구조가 먼저다"><meta property="og:description" content="Hermes/리오를 매일 쓰다 보면 “나중에 다시 찾을 수 있게 저장하자”는 생각으로 모든 것을 로그나 검색 가능한 파일에 넣고 싶어집니다. 하지만 실제로 오래 살아남는 에이전트 워크플로우는 단순 저장보다 구조화된 기억에 가깝습니다. 오늘 AI/ML 트렌드에서 S3Mem, Micro-Macro Retrieval, deep research skill 같은 흐름이 나온 것도 같은 이유입니다. 에이전트가 긴 작업을 잘하려면 정보를 많이 갖는 것보다, 필요한 순간에 근거가 끊기지 않게 꺼낼 수 있어야 합니다.
-가장 쉬운 실수는 모든 입력을 “나중에 검색하면 되겠지”라고 생각하는 것입니다. Discord 트렌드 채널, 이메일, 회의 메모, 크론 실행 로그, 블로그 초안이 전부 한 덩어리 텍스트로 쌓이면 검색 결과는 많아지지만 판단은 어려워집니다. 같은 키워드가 여러 맥락에서 반복되고, 오래된 정보와 최신 정보가 섞이며, 링크만 있고 왜 중요했는지는 사라집니다. 이 상태에서 에이전트는 검색은 많이 하지만 결론은 얕아지는 RAG 함정에 빠지기 쉽습니다."><meta property="og:locale" content="ko-kr"><meta property="og:type" content="article"><meta property="article:section" content="posts"><meta property="article:published_time" content="2026-05-29T21:00:00+09:00"><meta property="article:modified_time" content="2026-05-29T21:00:00+09:00"><meta property="article:tag" content="Hermes"><meta property="article:tag" content="리오"><meta property="article:tag" content="Agent"><meta property="article:tag" content="Memory"><meta property="article:tag" content="RAG"><meta property="article:tag" content="Knowledge Base"><meta name=twitter:card content="summary"><meta name=twitter:title content="Hermes/리오 팁: 에이전트 메모리는 검색보다 구조가 먼저다"><meta name=twitter:description content="Hermes/리오를 매일 쓰다 보면 “나중에 다시 찾을 수 있게 저장하자”는 생각으로 모든 것을 로그나 검색 가능한 파일에 넣고 싶어집니다. 하지만 실제로 오래 살아남는 에이전트 워크플로우는 단순 저장보다 구조화된 기억에 가깝습니다. 오늘 AI/ML 트렌드에서 S3Mem, Micro-Macro Retrieval, deep research skill 같은 흐름이 나온 것도 같은 이유입니다. 에이전트가 긴 작업을 잘하려면 정보를 많이 갖는 것보다, 필요한 순간에 근거가 끊기지 않게 꺼낼 수 있어야 합니다.
-가장 쉬운 실수는 모든 입력을 “나중에 검색하면 되겠지”라고 생각하는 것입니다. Discord 트렌드 채널, 이메일, 회의 메모, 크론 실행 로그, 블로그 초안이 전부 한 덩어리 텍스트로 쌓이면 검색 결과는 많아지지만 판단은 어려워집니다. 같은 키워드가 여러 맥락에서 반복되고, 오래된 정보와 최신 정보가 섞이며, 링크만 있고 왜 중요했는지는 사라집니다. 이 상태에서 에이전트는 검색은 많이 하지만 결론은 얕아지는 RAG 함정에 빠지기 쉽습니다."><script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Posts","item":"https://kwbaek.github.io/posts/"},{"@type":"ListItem","position":2,"name":"Hermes/리오 팁: 에이전트 메모리는 검색보다 구조가 먼저다","item":"https://kwbaek.github.io/posts/2026-05-29-hermes-rio-agent-memory-needs-structure-before-search/"}]}</script><script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"Hermes/리오 팁: 에이전트 메모리는 검색보다 구조가 먼저다","name":"Hermes\/리오 팁: 에이전트 메모리는 검색보다 구조가 먼저다","description":"Hermes/리오를 매일 쓰다 보면 “나중에 다시 찾을 수 있게 저장하자”는 생각으로 모든 것을 로그나 검색 가능한 파일에 넣고 싶어집니다. 하지만 실제로 오래 살아남는 에이전트 워크플로우는 단순 저장보다 구조화된 기억에 가깝습니다. 오늘 AI/ML 트렌드에서 S3Mem, Micro-Macro Retrieval, deep research skill 같은 흐름이 나온 것도 같은 이유입니다. 에이전트가 긴 작업을 잘하려면 정보를 많이 갖는 것보다, 필요한 순간에 근거가 끊기지 않게 꺼낼 수 있어야 합니다.\n가장 쉬운 실수는 모든 입력을 “나중에 검색하면 되겠지”라고 생각하는 것입니다. Discord 트렌드 채널, 이메일, 회의 메모, 크론 실행 로그, 블로그 초안이 전부 한 덩어리 텍스트로 쌓이면 검색 결과는 많아지지만 판단은 어려워집니다. 같은 키워드가 여러 맥락에서 반복되고, 오래된 정보와 최신 정보가 섞이며, 링크만 있고 왜 중요했는지는 사라집니다. 이 상태에서 에이전트는 검색은 많이 하지만 결론은 얕아지는 RAG 함정에 빠지기 쉽습니다.\n","keywords":["Hermes","리오","Agent","Memory","RAG","Knowledge Base","Workflow","Automation"],"articleBody":"Hermes/리오를 매일 쓰다 보면 “나중에 다시 찾을 수 있게 저장하자”는 생각으로 모든 것을 로그나 검색 가능한 파일에 넣고 싶어집니다. 하지만 실제로 오래 살아남는 에이전트 워크플로우는 단순 저장보다 구조화된 기억에 가깝습니다. 오늘 AI/ML 트렌드에서 S3Mem, Micro-Macro Retrieval, deep research skill 같은 흐름이 나온 것도 같은 이유입니다. 에이전트가 긴 작업을 잘하려면 정보를 많이 갖는 것보다, 필요한 순간에 근거가 끊기지 않게 꺼낼 수 있어야 합니다.\n가장 쉬운 실수는 모든 입력을 “나중에 검색하면 되겠지”라고 생각하는 것입니다. Discord 트렌드 채널, 이메일, 회의 메모, 크론 실행 로그, 블로그 초안이 전부 한 덩어리 텍스트로 쌓이면 검색 결과는 많아지지만 판단은 어려워집니다. 같은 키워드가 여러 맥락에서 반복되고, 오래된 정보와 최신 정보가 섞이며, 링크만 있고 왜 중요했는지는 사라집니다. 이 상태에서 에이전트는 검색은 많이 하지만 결론은 얕아지는 RAG 함정에 빠지기 쉽습니다.\nHermes/리오에서는 기억을 세 층으로 나누는 편이 좋습니다. 첫째, 원자료는 가능한 한 그대로 보존합니다. 원문 링크, 보고서, 채널 메시지, raw export는 나중에 검증할 수 있는 출처입니다. 둘째, 작업용 요약은 현재 판단에 필요한 형태로 정리합니다. 예를 들어 오늘의 AI/ML 트렌드라면 “에이전트 메모리와 증거 인터페이스가 중요해지고 있다”처럼 하루의 thesis를 따로 남기는 방식입니다. 셋째, 오래 살아남을 지식은 위키나 스킬로 승격합니다. 반복해서 쓰는 절차는 skill이 되고, 여러 소스에서 확인된 개념은 wiki page가 됩니다.\n이 구조를 만들 때 핵심은 “무엇을 기억할 것인가”보다 “어떤 질문에 답하기 위해 기억할 것인가”입니다. 블로그 크론은 오늘의 링크 목록만 필요하지 않습니다. 어제 쓴 글과 겹치지 않는지, 공개 글에 넣으면 안 되는 내부 정보가 섞였는지, Hugo front matter가 맞는지, 빌드와 배포가 끝났는지까지 기억해야 합니다. 즉 메모리는 자료 저장소가 아니라 작업의 evidence interface입니다. 에이전트가 다음 행동을 결정할 때 바로 쓸 수 있는 형태여야 합니다.\n실무적으로는 작은 규칙 몇 개만으로도 품질이 크게 올라갑니다. 트렌드 채널 메시지는 제목, 한 줄 의미, 링크를 유지합니다. 일간 리포트는 날짜별 파일로 남기되, 반복적으로 등장하는 개념만 지식베이스로 올립니다. 크론 작업은 최종 결과뿐 아니라 실패 원인과 검증 단계를 짧게 남깁니다. 블로그 글을 만들 때는 최근 글의 thesis를 먼저 확인해 중복을 피합니다. 그리고 공개 산출물에는 로컬 경로, 토큰, 채널 ID, 세션 정보 같은 내부 세부값이 들어가지 않도록 마지막에 한 번 더 훑습니다.\n또 하나 중요한 점은 “메모리”와 “스킬”을 구분하는 것입니다. 메모리는 사실과 맥락입니다. 예를 들어 어떤 프로젝트가 Hugo를 쓰고, 어떤 카테고리 규칙을 쓰는지는 메모리에 가까울 수 있습니다. 반면 매일 블로그를 작성하고 빌드하고 배포하는 절차는 스킬입니다. 절차를 메모리에 섞어 두면 다음번 에이전트가 긴 문장을 해석해야 하지만, 스킬로 만들면 체크리스트처럼 실행할 수 있습니다. Hermes/리오의 장점은 이런 운영 지식을 점점 더 실행 가능한 형태로 바꿀 수 있다는 데 있습니다.\n결론적으로 에이전트 메모리의 목표는 “많이 저장하기”가 아니라 “다음 행동을 더 정확하게 만들기”입니다. 검색 가능한 로그는 출발점일 뿐이고, 좋은 자동화는 raw source, 요약, 위키, 스킬을 구분합니다. Hermes/리오를 개인 운영체계처럼 쓰고 싶다면 오늘부터 하나의 질문을 던져보면 됩니다. “이 정보는 나중에 검색할 자료인가, 반복 실행할 절차인가, 아니면 의사결정에 바로 쓰일 구조화된 증거인가?” 이 질문을 통과한 기억만 남겨도 에이전트의 작업 품질은 훨씬 안정적으로 쌓입니다.\n실전 체크리스트:\n원자료와 요약을 같은 파일에 섞지 않는다. 반복 절차는 메모리가 아니라 skill로 승격한다. 위키에는 오래 살아남을 개념과 엔티티만 남긴다. 크론 작업은 입력, 선택 기준, 검증 결과를 짧게 기록한다. 공개 글에는 내부 경로·토큰·채널 ID·세션 정보를 노출하지 않는다. ","wordCount":"480","inLanguage":"en","datePublished":"2026-05-29T21:00:00+09:00","dateModified":"2026-05-29T21:00:00+09:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://kwbaek.github.io/posts/2026-05-29-hermes-rio-agent-memory-needs-structure-before-search/"},"publisher":{"@type":"Organization","name":"Kyungwook's Devlog","logo":{"@type":"ImageObject","url":"https://kwbaek.github.io/favicon.ico"}}}</script></head><body id=top><header class=header><nav class=nav><div class=logo><a href=https://kwbaek.github.io/ accesskey=h title="Kyungwook's Devlog (Alt + H)">Kyungwook's Devlog</a><div class=logo-switches><button id=theme-toggle accesskey=t title="(Alt + T)" aria-label="Toggle theme">
-<svg id="moon" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
-<svg id="sun" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button></div></div><ul id=menu><li><a href=https://kwbaek.github.io/categories/ title=categories><span>categories</span></a></li><li><a href=https://kwbaek.github.io/tags/ title=tags><span>tags</span></a></li><li><a href=https://kwbaek.github.io/ title="Kyungwook's Devlog"><span>Kyungwook's Devlog</span>&nbsp;
-<svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><path d="M15 3h6v6"/><path d="M10 14 21 3"/></svg></a></li></ul></nav></header><main class=main><article class=post-single><header class=post-header><h1 class="post-title entry-hint-parent">Hermes/리오 팁: 에이전트 메모리는 검색보다 구조가 먼저다</h1><div class=post-meta><span title='2026-05-29 21:00:00 +0900 KST'>May 29, 2026</span></div></header><div class=post-content><p>Hermes/리오를 매일 쓰다 보면 “나중에 다시 찾을 수 있게 저장하자”는 생각으로 모든 것을 로그나 검색 가능한 파일에 넣고 싶어집니다. 하지만 실제로 오래 살아남는 에이전트 워크플로우는 단순 저장보다 <strong>구조화된 기억</strong>에 가깝습니다. 오늘 AI/ML 트렌드에서 S3Mem, Micro-Macro Retrieval, deep research skill 같은 흐름이 나온 것도 같은 이유입니다. 에이전트가 긴 작업을 잘하려면 정보를 많이 갖는 것보다, 필요한 순간에 근거가 끊기지 않게 꺼낼 수 있어야 합니다.</p><p>가장 쉬운 실수는 모든 입력을 “나중에 검색하면 되겠지”라고 생각하는 것입니다. Discord 트렌드 채널, 이메일, 회의 메모, 크론 실행 로그, 블로그 초안이 전부 한 덩어리 텍스트로 쌓이면 검색 결과는 많아지지만 판단은 어려워집니다. 같은 키워드가 여러 맥락에서 반복되고, 오래된 정보와 최신 정보가 섞이며, 링크만 있고 왜 중요했는지는 사라집니다. 이 상태에서 에이전트는 검색은 많이 하지만 결론은 얕아지는 RAG 함정에 빠지기 쉽습니다.</p><p>Hermes/리오에서는 기억을 세 층으로 나누는 편이 좋습니다. 첫째, 원자료는 가능한 한 그대로 보존합니다. 원문 링크, 보고서, 채널 메시지, raw export는 나중에 검증할 수 있는 출처입니다. 둘째, 작업용 요약은 현재 판단에 필요한 형태로 정리합니다. 예를 들어 오늘의 AI/ML 트렌드라면 “에이전트 메모리와 증거 인터페이스가 중요해지고 있다”처럼 하루의 thesis를 따로 남기는 방식입니다. 셋째, 오래 살아남을 지식은 위키나 스킬로 승격합니다. 반복해서 쓰는 절차는 skill이 되고, 여러 소스에서 확인된 개념은 wiki page가 됩니다.</p><p>이 구조를 만들 때 핵심은 “무엇을 기억할 것인가”보다 “어떤 질문에 답하기 위해 기억할 것인가”입니다. 블로그 크론은 오늘의 링크 목록만 필요하지 않습니다. 어제 쓴 글과 겹치지 않는지, 공개 글에 넣으면 안 되는 내부 정보가 섞였는지, Hugo front matter가 맞는지, 빌드와 배포가 끝났는지까지 기억해야 합니다. 즉 메모리는 자료 저장소가 아니라 작업의 evidence interface입니다. 에이전트가 다음 행동을 결정할 때 바로 쓸 수 있는 형태여야 합니다.</p><p>실무적으로는 작은 규칙 몇 개만으로도 품질이 크게 올라갑니다. 트렌드 채널 메시지는 제목, 한 줄 의미, 링크를 유지합니다. 일간 리포트는 날짜별 파일로 남기되, 반복적으로 등장하는 개념만 지식베이스로 올립니다. 크론 작업은 최종 결과뿐 아니라 실패 원인과 검증 단계를 짧게 남깁니다. 블로그 글을 만들 때는 최근 글의 thesis를 먼저 확인해 중복을 피합니다. 그리고 공개 산출물에는 로컬 경로, 토큰, 채널 ID, 세션 정보 같은 내부 세부값이 들어가지 않도록 마지막에 한 번 더 훑습니다.</p><p>또 하나 중요한 점은 “메모리”와 “스킬”을 구분하는 것입니다. 메모리는 사실과 맥락입니다. 예를 들어 어떤 프로젝트가 Hugo를 쓰고, 어떤 카테고리 규칙을 쓰는지는 메모리에 가까울 수 있습니다. 반면 매일 블로그를 작성하고 빌드하고 배포하는 절차는 스킬입니다. 절차를 메모리에 섞어 두면 다음번 에이전트가 긴 문장을 해석해야 하지만, 스킬로 만들면 체크리스트처럼 실행할 수 있습니다. Hermes/리오의 장점은 이런 운영 지식을 점점 더 실행 가능한 형태로 바꿀 수 있다는 데 있습니다.</p><p>결론적으로 에이전트 메모리의 목표는 “많이 저장하기”가 아니라 “다음 행동을 더 정확하게 만들기”입니다. 검색 가능한 로그는 출발점일 뿐이고, 좋은 자동화는 raw source, 요약, 위키, 스킬을 구분합니다. Hermes/리오를 개인 운영체계처럼 쓰고 싶다면 오늘부터 하나의 질문을 던져보면 됩니다. “이 정보는 나중에 검색할 자료인가, 반복 실행할 절차인가, 아니면 의사결정에 바로 쓰일 구조화된 증거인가?” 이 질문을 통과한 기억만 남겨도 에이전트의 작업 품질은 훨씬 안정적으로 쌓입니다.</p><p>실전 체크리스트:</p><ul><li>원자료와 요약을 같은 파일에 섞지 않는다.</li><li>반복 절차는 메모리가 아니라 skill로 승격한다.</li><li>위키에는 오래 살아남을 개념과 엔티티만 남긴다.</li><li>크론 작업은 입력, 선택 기준, 검증 결과를 짧게 기록한다.</li><li>공개 글에는 내부 경로·토큰·채널 ID·세션 정보를 노출하지 않는다.</li></ul></div><footer class=post-footer><ul class=post-tags><li><a href=https://kwbaek.github.io/tags/hermes/>Hermes</a></li><li><a href=https://kwbaek.github.io/tags/%EB%A6%AC%EC%98%A4/>리오</a></li><li><a href=https://kwbaek.github.io/tags/agent/>Agent</a></li><li><a href=https://kwbaek.github.io/tags/memory/>Memory</a></li><li><a href=https://kwbaek.github.io/tags/rag/>RAG</a></li><li><a href=https://kwbaek.github.io/tags/knowledge-base/>Knowledge Base</a></li><li><a href=https://kwbaek.github.io/tags/workflow/>Workflow</a></li><li><a href=https://kwbaek.github.io/tags/automation/>Automation</a></li></ul></footer><script src=https://utteranc.es/client.js repo=kwbaek/blog-comments issue-term=pathname theme=github-light crossorigin=anonymous async></script></article></main><footer class=footer><span>&copy; 2026 <a href=https://kwbaek.github.io/>Kyungwook's Devlog</a></span> ·
-<span>Powered by
-<a href=https://gohugo.io/ rel="noopener noreferrer" target=_blank>Hugo</a> &
-<a href=https://github.com/adityatelange/hugo-PaperMod/ rel=noopener target=_blank>PaperMod</a></span></footer><a href=#top aria-label="go to top" title="Go to Top (Alt + G)" class=top-link id=top-link accesskey=g><svg viewBox="0 0 12 6" fill="currentColor"><path d="M12 6H0l6-6z"/></svg>
-</a><script>let menu=document.getElementById("menu");if(menu){const e=localStorage.getItem("menu-scroll-position");e&&(menu.scrollLeft=parseInt(e,10)),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)}}document.querySelectorAll('a[href^="#"]').forEach(e=>{e.addEventListener("click",function(e){e.preventDefault();var t=this.getAttribute("href").substr(1);window.matchMedia("(prefers-reduced-motion: reduce)").matches?document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView({behavior:"smooth"}),t==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${t}`)})})</script><script>var mybutton=document.getElementById("top-link");window.onscroll=function(){document.body.scrollTop>800||document.documentElement.scrollTop>800?(mybutton.style.visibility="visible",mybutton.style.opacity="1"):(mybutton.style.visibility="hidden",mybutton.style.opacity="0")}</script><script>document.getElementById("theme-toggle").addEventListener("click",()=>{const e=document.querySelector("html");e.dataset.theme==="dark"?(e.dataset.theme="light",localStorage.setItem("pref-theme","light")):(e.dataset.theme="dark",localStorage.setItem("pref-theme","dark"))})</script></body></html>
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Hermes/리오 팁: 에이전트 메모리는 검색보다 구조가 먼저다 | Kyungwook&#39;s Devlog</title>
+<meta name="keywords" content="Hermes, 리오, Agent, Memory, RAG, Knowledge Base, Workflow, Automation">
+<meta name="description" content="Hermes/리오를 매일 쓰다 보면 “나중에 다시 찾을 수 있게 저장하자”는 생각으로 모든 것을 로그나 검색 가능한 파일에 넣고 싶어집니다. 하지만 실제로 오래 살아남는 에이전트 워크플로우는 단순 저장보다 구조화된 기억에 가깝습니다. 오늘 AI/ML 트렌드에서 S3Mem, Micro-Macro Retrieval, deep research skill 같은 흐름이 나온 것도 같은 이유입니다. 에이전트가 긴 작업을 잘하려면 정보를 많이 갖는 것보다, 필요한 순간에 근거가 끊기지 않게 꺼낼 수 있어야 합니다.
+가장 쉬운 실수는 모든 입력을 “나중에 검색하면 되겠지”라고 생각하는 것입니다. Discord 트렌드 채널, 이메일, 회의 메모, 크론 실행 로그, 블로그 초안이 전부 한 덩어리 텍스트로 쌓이면 검색 결과는 많아지지만 판단은 어려워집니다. 같은 키워드가 여러 맥락에서 반복되고, 오래된 정보와 최신 정보가 섞이며, 링크만 있고 왜 중요했는지는 사라집니다. 이 상태에서 에이전트는 검색은 많이 하지만 결론은 얕아지는 RAG 함정에 빠지기 쉽습니다.">
+<meta name="author" content="">
+<link rel="canonical" href="https://kwbaek.github.io/posts/2026-05-29-hermes-rio-agent-memory-needs-structure-before-search/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.da3211e5ef867bf2b75fd5a6515cfed7195c011e8ab735694e203810a827097b.css" integrity="sha256-2jIR5e&#43;Ge/K3X9WmUVz&#43;1xlcAR6KtzVpTiA4EKgnCXs=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://kwbaek.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://kwbaek.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://kwbaek.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://kwbaek.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://kwbaek.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://kwbaek.github.io/posts/2026-05-29-hermes-rio-agent-memory-needs-structure-before-search/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="https://kwbaek.github.io/posts/2026-05-29-hermes-rio-agent-memory-needs-structure-before-search/">
+  <meta property="og:site_name" content="Kyungwook&#39;s Devlog">
+  <meta property="og:title" content="Hermes/리오 팁: 에이전트 메모리는 검색보다 구조가 먼저다">
+  <meta property="og:description" content="Hermes/리오를 매일 쓰다 보면 “나중에 다시 찾을 수 있게 저장하자”는 생각으로 모든 것을 로그나 검색 가능한 파일에 넣고 싶어집니다. 하지만 실제로 오래 살아남는 에이전트 워크플로우는 단순 저장보다 구조화된 기억에 가깝습니다. 오늘 AI/ML 트렌드에서 S3Mem, Micro-Macro Retrieval, deep research skill 같은 흐름이 나온 것도 같은 이유입니다. 에이전트가 긴 작업을 잘하려면 정보를 많이 갖는 것보다, 필요한 순간에 근거가 끊기지 않게 꺼낼 수 있어야 합니다.
+가장 쉬운 실수는 모든 입력을 “나중에 검색하면 되겠지”라고 생각하는 것입니다. Discord 트렌드 채널, 이메일, 회의 메모, 크론 실행 로그, 블로그 초안이 전부 한 덩어리 텍스트로 쌓이면 검색 결과는 많아지지만 판단은 어려워집니다. 같은 키워드가 여러 맥락에서 반복되고, 오래된 정보와 최신 정보가 섞이며, 링크만 있고 왜 중요했는지는 사라집니다. 이 상태에서 에이전트는 검색은 많이 하지만 결론은 얕아지는 RAG 함정에 빠지기 쉽습니다.">
+  <meta property="og:locale" content="ko-kr">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2026-05-29T21:00:00+09:00">
+    <meta property="article:modified_time" content="2026-05-29T21:00:00+09:00">
+    <meta property="article:tag" content="Hermes">
+    <meta property="article:tag" content="리오">
+    <meta property="article:tag" content="Agent">
+    <meta property="article:tag" content="Memory">
+    <meta property="article:tag" content="RAG">
+    <meta property="article:tag" content="Knowledge Base">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hermes/리오 팁: 에이전트 메모리는 검색보다 구조가 먼저다">
+<meta name="twitter:description" content="Hermes/리오를 매일 쓰다 보면 “나중에 다시 찾을 수 있게 저장하자”는 생각으로 모든 것을 로그나 검색 가능한 파일에 넣고 싶어집니다. 하지만 실제로 오래 살아남는 에이전트 워크플로우는 단순 저장보다 구조화된 기억에 가깝습니다. 오늘 AI/ML 트렌드에서 S3Mem, Micro-Macro Retrieval, deep research skill 같은 흐름이 나온 것도 같은 이유입니다. 에이전트가 긴 작업을 잘하려면 정보를 많이 갖는 것보다, 필요한 순간에 근거가 끊기지 않게 꺼낼 수 있어야 합니다.
+가장 쉬운 실수는 모든 입력을 “나중에 검색하면 되겠지”라고 생각하는 것입니다. Discord 트렌드 채널, 이메일, 회의 메모, 크론 실행 로그, 블로그 초안이 전부 한 덩어리 텍스트로 쌓이면 검색 결과는 많아지지만 판단은 어려워집니다. 같은 키워드가 여러 맥락에서 반복되고, 오래된 정보와 최신 정보가 섞이며, 링크만 있고 왜 중요했는지는 사라집니다. 이 상태에서 에이전트는 검색은 많이 하지만 결론은 얕아지는 RAG 함정에 빠지기 쉽습니다.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://kwbaek.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Hermes/리오 팁: 에이전트 메모리는 검색보다 구조가 먼저다",
+      "item": "https://kwbaek.github.io/posts/2026-05-29-hermes-rio-agent-memory-needs-structure-before-search/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Hermes/리오 팁: 에이전트 메모리는 검색보다 구조가 먼저다",
+  "name": "Hermes\/리오 팁: 에이전트 메모리는 검색보다 구조가 먼저다",
+  "description": "Hermes/리오를 매일 쓰다 보면 “나중에 다시 찾을 수 있게 저장하자”는 생각으로 모든 것을 로그나 검색 가능한 파일에 넣고 싶어집니다. 하지만 실제로 오래 살아남는 에이전트 워크플로우는 단순 저장보다 구조화된 기억에 가깝습니다. 오늘 AI/ML 트렌드에서 S3Mem, Micro-Macro Retrieval, deep research skill 같은 흐름이 나온 것도 같은 이유입니다. 에이전트가 긴 작업을 잘하려면 정보를 많이 갖는 것보다, 필요한 순간에 근거가 끊기지 않게 꺼낼 수 있어야 합니다.\n가장 쉬운 실수는 모든 입력을 “나중에 검색하면 되겠지”라고 생각하는 것입니다. Discord 트렌드 채널, 이메일, 회의 메모, 크론 실행 로그, 블로그 초안이 전부 한 덩어리 텍스트로 쌓이면 검색 결과는 많아지지만 판단은 어려워집니다. 같은 키워드가 여러 맥락에서 반복되고, 오래된 정보와 최신 정보가 섞이며, 링크만 있고 왜 중요했는지는 사라집니다. 이 상태에서 에이전트는 검색은 많이 하지만 결론은 얕아지는 RAG 함정에 빠지기 쉽습니다.\n",
+  "keywords": [
+    "Hermes", "리오", "Agent", "Memory", "RAG", "Knowledge Base", "Workflow", "Automation"
+  ],
+  "articleBody": "Hermes/리오를 매일 쓰다 보면 “나중에 다시 찾을 수 있게 저장하자”는 생각으로 모든 것을 로그나 검색 가능한 파일에 넣고 싶어집니다. 하지만 실제로 오래 살아남는 에이전트 워크플로우는 단순 저장보다 구조화된 기억에 가깝습니다. 오늘 AI/ML 트렌드에서 S3Mem, Micro-Macro Retrieval, deep research skill 같은 흐름이 나온 것도 같은 이유입니다. 에이전트가 긴 작업을 잘하려면 정보를 많이 갖는 것보다, 필요한 순간에 근거가 끊기지 않게 꺼낼 수 있어야 합니다.\n가장 쉬운 실수는 모든 입력을 “나중에 검색하면 되겠지”라고 생각하는 것입니다. Discord 트렌드 채널, 이메일, 회의 메모, 크론 실행 로그, 블로그 초안이 전부 한 덩어리 텍스트로 쌓이면 검색 결과는 많아지지만 판단은 어려워집니다. 같은 키워드가 여러 맥락에서 반복되고, 오래된 정보와 최신 정보가 섞이며, 링크만 있고 왜 중요했는지는 사라집니다. 이 상태에서 에이전트는 검색은 많이 하지만 결론은 얕아지는 RAG 함정에 빠지기 쉽습니다.\nHermes/리오에서는 기억을 세 층으로 나누는 편이 좋습니다. 첫째, 원자료는 가능한 한 그대로 보존합니다. 원문 링크, 보고서, 채널 메시지, raw export는 나중에 검증할 수 있는 출처입니다. 둘째, 작업용 요약은 현재 판단에 필요한 형태로 정리합니다. 예를 들어 오늘의 AI/ML 트렌드라면 “에이전트 메모리와 증거 인터페이스가 중요해지고 있다”처럼 하루의 thesis를 따로 남기는 방식입니다. 셋째, 오래 살아남을 지식은 위키나 스킬로 승격합니다. 반복해서 쓰는 절차는 skill이 되고, 여러 소스에서 확인된 개념은 wiki page가 됩니다.\n이 구조를 만들 때 핵심은 “무엇을 기억할 것인가”보다 “어떤 질문에 답하기 위해 기억할 것인가”입니다. 블로그 크론은 오늘의 링크 목록만 필요하지 않습니다. 어제 쓴 글과 겹치지 않는지, 공개 글에 넣으면 안 되는 내부 정보가 섞였는지, Hugo front matter가 맞는지, 빌드와 배포가 끝났는지까지 기억해야 합니다. 즉 메모리는 자료 저장소가 아니라 작업의 evidence interface입니다. 에이전트가 다음 행동을 결정할 때 바로 쓸 수 있는 형태여야 합니다.\n실무적으로는 작은 규칙 몇 개만으로도 품질이 크게 올라갑니다. 트렌드 채널 메시지는 제목, 한 줄 의미, 링크를 유지합니다. 일간 리포트는 날짜별 파일로 남기되, 반복적으로 등장하는 개념만 지식베이스로 올립니다. 크론 작업은 최종 결과뿐 아니라 실패 원인과 검증 단계를 짧게 남깁니다. 블로그 글을 만들 때는 최근 글의 thesis를 먼저 확인해 중복을 피합니다. 그리고 공개 산출물에는 로컬 경로, 토큰, 채널 ID, 세션 정보 같은 내부 세부값이 들어가지 않도록 마지막에 한 번 더 훑습니다.\n또 하나 중요한 점은 “메모리”와 “스킬”을 구분하는 것입니다. 메모리는 사실과 맥락입니다. 예를 들어 어떤 프로젝트가 Hugo를 쓰고, 어떤 카테고리 규칙을 쓰는지는 메모리에 가까울 수 있습니다. 반면 매일 블로그를 작성하고 빌드하고 배포하는 절차는 스킬입니다. 절차를 메모리에 섞어 두면 다음번 에이전트가 긴 문장을 해석해야 하지만, 스킬로 만들면 체크리스트처럼 실행할 수 있습니다. Hermes/리오의 장점은 이런 운영 지식을 점점 더 실행 가능한 형태로 바꿀 수 있다는 데 있습니다.\n결론적으로 에이전트 메모리의 목표는 “많이 저장하기”가 아니라 “다음 행동을 더 정확하게 만들기”입니다. 검색 가능한 로그는 출발점일 뿐이고, 좋은 자동화는 raw source, 요약, 위키, 스킬을 구분합니다. Hermes/리오를 개인 운영체계처럼 쓰고 싶다면 오늘부터 하나의 질문을 던져보면 됩니다. “이 정보는 나중에 검색할 자료인가, 반복 실행할 절차인가, 아니면 의사결정에 바로 쓰일 구조화된 증거인가?” 이 질문을 통과한 기억만 남겨도 에이전트의 작업 품질은 훨씬 안정적으로 쌓입니다.\n실전 체크리스트:\n원자료와 요약을 같은 파일에 섞지 않는다. 반복 절차는 메모리가 아니라 skill로 승격한다. 위키에는 오래 살아남을 개념과 엔티티만 남긴다. 크론 작업은 입력, 선택 기준, 검증 결과를 짧게 기록한다. 공개 글에는 내부 경로·토큰·채널 ID·세션 정보를 노출하지 않는다. ",
+  "wordCount" : "480",
+  "inLanguage": "en",
+  "datePublished": "2026-05-29T21:00:00+09:00",
+  "dateModified": "2026-05-29T21:00:00+09:00",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://kwbaek.github.io/posts/2026-05-29-hermes-rio-agent-memory-needs-structure-before-search/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Kyungwook's Devlog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://kwbaek.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://kwbaek.github.io/" accesskey="h" title="Kyungwook&#39;s Devlog (Alt + H)">Kyungwook&#39;s Devlog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://kwbaek.github.io/categories/" title="categories">
+                    <span>categories</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kwbaek.github.io/tags/" title="tags">
+                    <span>tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kwbaek.github.io/" title="Kyungwook&#39;s Devlog">
+                    <span>Kyungwook&#39;s Devlog</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      Hermes/리오 팁: 에이전트 메모리는 검색보다 구조가 먼저다
+    </h1>
+    <div class="post-meta"><span title='2026-05-29 21:00:00 +0900 KST'>May 29, 2026</span>
+
+</div>
+  </header> 
+  <div class="post-content"><p>Hermes/리오를 매일 쓰다 보면 “나중에 다시 찾을 수 있게 저장하자”는 생각으로 모든 것을 로그나 검색 가능한 파일에 넣고 싶어집니다. 하지만 실제로 오래 살아남는 에이전트 워크플로우는 단순 저장보다 <strong>구조화된 기억</strong>에 가깝습니다. 오늘 AI/ML 트렌드에서 S3Mem, Micro-Macro Retrieval, deep research skill 같은 흐름이 나온 것도 같은 이유입니다. 에이전트가 긴 작업을 잘하려면 정보를 많이 갖는 것보다, 필요한 순간에 근거가 끊기지 않게 꺼낼 수 있어야 합니다.</p>
+<p>가장 쉬운 실수는 모든 입력을 “나중에 검색하면 되겠지”라고 생각하는 것입니다. Discord 트렌드 채널, 이메일, 회의 메모, 크론 실행 로그, 블로그 초안이 전부 한 덩어리 텍스트로 쌓이면 검색 결과는 많아지지만 판단은 어려워집니다. 같은 키워드가 여러 맥락에서 반복되고, 오래된 정보와 최신 정보가 섞이며, 링크만 있고 왜 중요했는지는 사라집니다. 이 상태에서 에이전트는 검색은 많이 하지만 결론은 얕아지는 RAG 함정에 빠지기 쉽습니다.</p>
+<p>Hermes/리오에서는 기억을 세 층으로 나누는 편이 좋습니다. 첫째, 원자료는 가능한 한 그대로 보존합니다. 원문 링크, 보고서, 채널 메시지, raw export는 나중에 검증할 수 있는 출처입니다. 둘째, 작업용 요약은 현재 판단에 필요한 형태로 정리합니다. 예를 들어 오늘의 AI/ML 트렌드라면 “에이전트 메모리와 증거 인터페이스가 중요해지고 있다”처럼 하루의 thesis를 따로 남기는 방식입니다. 셋째, 오래 살아남을 지식은 위키나 스킬로 승격합니다. 반복해서 쓰는 절차는 skill이 되고, 여러 소스에서 확인된 개념은 wiki page가 됩니다.</p>
+<p>이 구조를 만들 때 핵심은 “무엇을 기억할 것인가”보다 “어떤 질문에 답하기 위해 기억할 것인가”입니다. 블로그 크론은 오늘의 링크 목록만 필요하지 않습니다. 어제 쓴 글과 겹치지 않는지, 공개 글에 넣으면 안 되는 내부 정보가 섞였는지, Hugo front matter가 맞는지, 빌드와 배포가 끝났는지까지 기억해야 합니다. 즉 메모리는 자료 저장소가 아니라 작업의 evidence interface입니다. 에이전트가 다음 행동을 결정할 때 바로 쓸 수 있는 형태여야 합니다.</p>
+<p>실무적으로는 작은 규칙 몇 개만으로도 품질이 크게 올라갑니다. 트렌드 채널 메시지는 제목, 한 줄 의미, 링크를 유지합니다. 일간 리포트는 날짜별 파일로 남기되, 반복적으로 등장하는 개념만 지식베이스로 올립니다. 크론 작업은 최종 결과뿐 아니라 실패 원인과 검증 단계를 짧게 남깁니다. 블로그 글을 만들 때는 최근 글의 thesis를 먼저 확인해 중복을 피합니다. 그리고 공개 산출물에는 로컬 경로, 토큰, 채널 ID, 세션 정보 같은 내부 세부값이 들어가지 않도록 마지막에 한 번 더 훑습니다.</p>
+<p>또 하나 중요한 점은 “메모리”와 “스킬”을 구분하는 것입니다. 메모리는 사실과 맥락입니다. 예를 들어 어떤 프로젝트가 Hugo를 쓰고, 어떤 카테고리 규칙을 쓰는지는 메모리에 가까울 수 있습니다. 반면 매일 블로그를 작성하고 빌드하고 배포하는 절차는 스킬입니다. 절차를 메모리에 섞어 두면 다음번 에이전트가 긴 문장을 해석해야 하지만, 스킬로 만들면 체크리스트처럼 실행할 수 있습니다. Hermes/리오의 장점은 이런 운영 지식을 점점 더 실행 가능한 형태로 바꿀 수 있다는 데 있습니다.</p>
+<p>결론적으로 에이전트 메모리의 목표는 “많이 저장하기”가 아니라 “다음 행동을 더 정확하게 만들기”입니다. 검색 가능한 로그는 출발점일 뿐이고, 좋은 자동화는 raw source, 요약, 위키, 스킬을 구분합니다. Hermes/리오를 개인 운영체계처럼 쓰고 싶다면 오늘부터 하나의 질문을 던져보면 됩니다. “이 정보는 나중에 검색할 자료인가, 반복 실행할 절차인가, 아니면 의사결정에 바로 쓰일 구조화된 증거인가?” 이 질문을 통과한 기억만 남겨도 에이전트의 작업 품질은 훨씬 안정적으로 쌓입니다.</p>
+<p>실전 체크리스트:</p>
+<ul>
+<li>원자료와 요약을 같은 파일에 섞지 않는다.</li>
+<li>반복 절차는 메모리가 아니라 skill로 승격한다.</li>
+<li>위키에는 오래 살아남을 개념과 엔티티만 남긴다.</li>
+<li>크론 작업은 입력, 선택 기준, 검증 결과를 짧게 기록한다.</li>
+<li>공개 글에는 내부 경로·토큰·채널 ID·세션 정보를 노출하지 않는다.</li>
+</ul>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://kwbaek.github.io/tags/hermes/">Hermes</a></li>
+      <li><a href="https://kwbaek.github.io/tags/%EB%A6%AC%EC%98%A4/">리오</a></li>
+      <li><a href="https://kwbaek.github.io/tags/agent/">Agent</a></li>
+      <li><a href="https://kwbaek.github.io/tags/memory/">Memory</a></li>
+      <li><a href="https://kwbaek.github.io/tags/rag/">RAG</a></li>
+      <li><a href="https://kwbaek.github.io/tags/knowledge-base/">Knowledge Base</a></li>
+      <li><a href="https://kwbaek.github.io/tags/workflow/">Workflow</a></li>
+      <li><a href="https://kwbaek.github.io/tags/automation/">Automation</a></li>
+    </ul>
+  </footer><script src="https://utteranc.es/client.js"
+        repo="kwbaek/blog-comments"
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://kwbaek.github.io/">Kyungwook&#39;s Devlog</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

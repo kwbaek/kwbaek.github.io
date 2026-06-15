@@ -1,23 +1,364 @@
-<!doctype html><html lang=en dir=auto data-theme=auto><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=robots content="index, follow"><title>Ai-Ml | Kyungwook's Devlog</title><meta name=keywords content><meta name=description content><meta name=author content><link rel=canonical href=https://kwbaek.github.io/categories/ai-ml/><link crossorigin=anonymous href=/assets/css/stylesheet.da3211e5ef867bf2b75fd5a6515cfed7195c011e8ab735694e203810a827097b.css integrity="sha256-2jIR5e+Ge/K3X9WmUVz+1xlcAR6KtzVpTiA4EKgnCXs=" rel="preload stylesheet" as=style><link rel=icon href=https://kwbaek.github.io/favicon.ico><link rel=icon type=image/png sizes=16x16 href=https://kwbaek.github.io/favicon-16x16.png><link rel=icon type=image/png sizes=32x32 href=https://kwbaek.github.io/favicon-32x32.png><link rel=apple-touch-icon href=https://kwbaek.github.io/apple-touch-icon.png><link rel=mask-icon href=https://kwbaek.github.io/safari-pinned-tab.svg><meta name=theme-color content="#2e2e33"><meta name=msapplication-TileColor content="#2e2e33"><link rel=alternate type=application/rss+xml href=https://kwbaek.github.io/categories/ai-ml/index.xml title=rss><link rel=alternate hreflang=en href=https://kwbaek.github.io/categories/ai-ml/><noscript><style>#theme-toggle,.top-link{display:none}</style><style>@media(prefers-color-scheme:dark){:root{--theme:rgb(29, 30, 32);--entry:rgb(46, 46, 51);--primary:rgb(218, 218, 219);--secondary:rgb(155, 156, 157);--tertiary:rgb(65, 66, 68);--content:rgb(196, 196, 197);--code-block-bg:rgb(46, 46, 51);--code-bg:rgb(55, 56, 62);--border:rgb(51, 51, 51);color-scheme:dark}.list{background:var(--theme)}.toc{background:var(--entry)}}@media(prefers-color-scheme:light){.list::-webkit-scrollbar-thumb{border-color:var(--code-bg)}}</style></noscript><script>localStorage.getItem("pref-theme")==="dark"?document.querySelector("html").dataset.theme="dark":localStorage.getItem("pref-theme")==="light"?document.querySelector("html").dataset.theme="light":window.matchMedia("(prefers-color-scheme: dark)").matches?document.querySelector("html").dataset.theme="dark":document.querySelector("html").dataset.theme="light"</script><meta property="og:url" content="https://kwbaek.github.io/categories/ai-ml/"><meta property="og:site_name" content="Kyungwook's Devlog"><meta property="og:title" content="Ai-Ml"><meta property="og:locale" content="ko-kr"><meta property="og:type" content="website"><meta name=twitter:card content="summary"><meta name=twitter:title content="Ai-Ml"><meta name=twitter:description content></head><body class=list id=top><header class=header><nav class=nav><div class=logo><a href=https://kwbaek.github.io/ accesskey=h title="Kyungwook's Devlog (Alt + H)">Kyungwook's Devlog</a><div class=logo-switches><button id=theme-toggle accesskey=t title="(Alt + T)" aria-label="Toggle theme">
-<svg id="moon" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
-<svg id="sun" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button></div></div><ul id=menu><li><a href=https://kwbaek.github.io/categories/ title=categories><span>categories</span></a></li><li><a href=https://kwbaek.github.io/tags/ title=tags><span>tags</span></a></li><li><a href=https://kwbaek.github.io/ title="Kyungwook's Devlog"><span>Kyungwook's Devlog</span>&nbsp;
-<svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><path d="M15 3h6v6"/><path d="M10 14 21 3"/></svg></a></li></ul></nav></header><main class=main><header class=page-header><h1>Ai-Ml</h1></header><article class="post-entry tag-entry"><header class=entry-header><h2 class=entry-hint-parent>AI/ML 트렌드: 멀티모달 AI는 생성보다 근거 있는 편집으로 간다</h2></header><div class=entry-content><p>오늘 AI/ML 트렌드에서 가장 흥미로운 신호는 Google이 공개한 Gemini Omni입니다. 소개 문구 자체가 방향을 잘 보여줍니다. 텍스트 하나로 이미지를 만드는 도구가 아니라, 이미지·오디오·비디오·텍스트 입력을 섞어 무엇이든 만들고 자연어 대화로 편집하는 모델 경험을 전면에 내세웠습니다. 핵심은 “생성”이 아니라 여러 입력 자산에 근거한 대화형 제작 워크플로우입니다.
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Ai-Ml | Kyungwook&#39;s Devlog</title>
+<meta name="keywords" content="">
+<meta name="description" content="">
+<meta name="author" content="">
+<link rel="canonical" href="https://kwbaek.github.io/categories/ai-ml/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.da3211e5ef867bf2b75fd5a6515cfed7195c011e8ab735694e203810a827097b.css" integrity="sha256-2jIR5e&#43;Ge/K3X9WmUVz&#43;1xlcAR6KtzVpTiA4EKgnCXs=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://kwbaek.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://kwbaek.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://kwbaek.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://kwbaek.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://kwbaek.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" type="application/rss+xml" href="https://kwbaek.github.io/categories/ai-ml/index.xml" title="rss">
+<link rel="alternate" hreflang="en" href="https://kwbaek.github.io/categories/ai-ml/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="https://kwbaek.github.io/categories/ai-ml/">
+  <meta property="og:site_name" content="Kyungwook&#39;s Devlog">
+  <meta property="og:title" content="Ai-Ml">
+  <meta property="og:locale" content="ko-kr">
+  <meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Ai-Ml">
+<meta name="twitter:description" content="">
+
+</head>
+<body class="list" id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://kwbaek.github.io/" accesskey="h" title="Kyungwook&#39;s Devlog (Alt + H)">Kyungwook&#39;s Devlog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://kwbaek.github.io/categories/" title="categories">
+                    <span>categories</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kwbaek.github.io/tags/" title="tags">
+                    <span>tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kwbaek.github.io/" title="Kyungwook&#39;s Devlog">
+                    <span>Kyungwook&#39;s Devlog</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main"> 
+<header class="page-header">
+  <h1>
+    Ai-Ml
+  </h1>
+</header>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">AI/ML 트렌드: AI 인프라 병목은 기판과 PCB까지 내려갔다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 AI/ML 트렌드에서 가장 중요한 신호는 AT&amp;S가 말레이시아 Kulim 생산 거점에 15억~20억 유로 규모의 AI substrate·advanced PCB capacity 확장을 발표한 것입니다. 겉으로 보면 반도체 부품 회사의 설비 투자 뉴스처럼 보이지만, AI/ML 운영 관점에서는 훨씬 더 큰 의미가 있습니다. AI 인프라 병목이 더 이상 GPU와 HBM만의 문제가 아니라, 서버 보드와 패키징을 떠받치는 기판·PCB·소재·지역 생산능력까지 내려갔다는 뜻이기 때문입니다.
+지난 몇 달 동안 AI 인프라 논의는 주로 “어떤 GPU를 얼마나 확보하느냐”에 집중됐습니다. 하지만 실제 데이터센터는 GPU만으로 돌아가지 않습니다. 고성능 accelerator를 묶는 substrate, advanced PCB, optical interconnect, power delivery, cooling, rack density가 같이 맞아야 합니다. AT&amp;S의 Kulim 투자는 이 하위 레이어가 AI 수요를 따라잡기 위해 얼마나 큰 자본지출을 필요로 하는지 보여줍니다. 모델 API 가격이나 cloud instance 단가만 보고 AI rollout 일정을 잡는 팀은 이제 중요한 리스크를 놓치게 됩니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-06-15 21:02:00 +0900 KST'>June 15, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to AI/ML 트렌드: AI 인프라 병목은 기판과 PCB까지 내려갔다" href="https://kwbaek.github.io/posts/2026-06-15-ai-ml-trends-ai-infra-bottleneck-moves-to-substrates-and-pcbs/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">AI/ML 트렌드: 멀티모달 AI는 생성보다 근거 있는 편집으로 간다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 AI/ML 트렌드에서 가장 흥미로운 신호는 Google이 공개한 Gemini Omni입니다. 소개 문구 자체가 방향을 잘 보여줍니다. 텍스트 하나로 이미지를 만드는 도구가 아니라, 이미지·오디오·비디오·텍스트 입력을 섞어 무엇이든 만들고 자연어 대화로 편집하는 모델 경험을 전면에 내세웠습니다. 핵심은 “생성”이 아니라 여러 입력 자산에 근거한 대화형 제작 워크플로우입니다.
 지금까지 많은 생성형 AI 제품은 프롬프트를 넣고 결과물을 받는 단발 작업에 가까웠습니다. 하지만 실제 콘텐츠 제작, 특히 커머스와 브랜드 마케팅에서는 한 번에 완성본이 나오는 경우가 드뭅니다. 상품 사진, 룩북, 상세페이지, 기존 캠페인 영상, 브랜드 톤앤매너, 국가별 금칙어, 프로모션 조건이 모두 입력으로 들어가고, 결과물은 다시 MD·마케터·법무·디자이너의 피드백을 거치며 수정됩니다. Gemini Omni가 보여주는 “여러 입력을 섞고 자연어로 고친다”는 흐름은 이 현실적인 반복 과정을 모델 인터페이스 안으로 끌어오는 방향입니다.
-...</p></div><footer class=entry-footer><span title='2026-06-14 21:00:00 +0900 KST'>June 14, 2026</span></footer><a class=entry-link aria-label="post link to AI/ML 트렌드: 멀티모달 AI는 생성보다 근거 있는 편집으로 간다" href=https://kwbaek.github.io/posts/2026-06-14-ai-ml-trends-multimodal-ai-moves-from-generation-to-grounded-editing/></a></article><article class="post-entry tag-entry"><header class=entry-header><h2 class=entry-hint-parent>AI/ML 트렌드: 에이전트 메모리는 더 싸지고 더 조직화된다</h2></header><div class=entry-content><p>오늘 AI/ML 트렌드에서 가장 흥미로운 신호는 에이전트 메모리와 업무 오케스트레이션이 동시에 현실적인 비용 구조로 내려오고 있다는 점입니다. Moonshot AI는 Kimi K2.7 Code를 공개하며 1T MoE, 256K context, coding-focused agentic workflow를 전면에 내세웠고, Adobe는 CX Enterprise Coworker를 GA로 공개하며 마케팅·고객경험 업무를 MCP와 A2A 기반 agent orchestration으로 묶는 그림을 제시했습니다. 여기에 Hugging Face 커뮤니티의 Stable Static Embedding 실전 가이드는 16M급 embedding을 CPU에서 빠르게 돌려 retrieval과 agent memory의 1차 필터로 쓰는 패턴을 보여줍니다.
-...</p></div><footer class=entry-footer><span title='2026-06-13 21:00:00 +0900 KST'>June 13, 2026</span></footer><a class=entry-link aria-label="post link to AI/ML 트렌드: 에이전트 메모리는 더 싸지고 더 조직화된다" href=https://kwbaek.github.io/posts/2026-06-13-ai-ml-trends-agent-memory-is-getting-cheaper-and-more-orchestrated/></a></article><article class="post-entry tag-entry"><header class=entry-header><h2 class=entry-hint-parent>AI/ML 트렌드: Agentic AI는 이제 감사 인프라다</h2></header><div class=entry-content><p>오늘 AI/ML 트렌드에서 가장 중요한 신호는 agentic AI가 실험 기능을 넘어 감사 가능한 운영 인프라로 취급되기 시작했다는 점입니다. Reuters는 미국 은행 규제기관이 금융사의 AI 사용 감독을 강화하고 있다고 보도했고, Check Point Research는 LangGraph checkpointer 취약점 체인이 self-hosted AI agent의 원격 코드 실행으로 이어질 수 있음을 공개했습니다. 여기에 OpenAI와 Preply의 하이브리드 튜터 사례는 AI가 사람을 완전히 대체하기보다 전문가 워크플로우 안에서 운영되는 형태가 현실적인 제품 패턴이 되고 있음을 보여줍니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-06-14 21:00:00 +0900 KST'>June 14, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 멀티모달 AI는 생성보다 근거 있는 편집으로 간다" href="https://kwbaek.github.io/posts/2026-06-14-ai-ml-trends-multimodal-ai-moves-from-generation-to-grounded-editing/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">AI/ML 트렌드: 에이전트 메모리는 더 싸지고 더 조직화된다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 AI/ML 트렌드에서 가장 흥미로운 신호는 에이전트 메모리와 업무 오케스트레이션이 동시에 현실적인 비용 구조로 내려오고 있다는 점입니다. Moonshot AI는 Kimi K2.7 Code를 공개하며 1T MoE, 256K context, coding-focused agentic workflow를 전면에 내세웠고, Adobe는 CX Enterprise Coworker를 GA로 공개하며 마케팅·고객경험 업무를 MCP와 A2A 기반 agent orchestration으로 묶는 그림을 제시했습니다. 여기에 Hugging Face 커뮤니티의 Stable Static Embedding 실전 가이드는 16M급 embedding을 CPU에서 빠르게 돌려 retrieval과 agent memory의 1차 필터로 쓰는 패턴을 보여줍니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-06-13 21:00:00 +0900 KST'>June 13, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 에이전트 메모리는 더 싸지고 더 조직화된다" href="https://kwbaek.github.io/posts/2026-06-13-ai-ml-trends-agent-memory-is-getting-cheaper-and-more-orchestrated/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">AI/ML 트렌드: Agentic AI는 이제 감사 인프라다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 AI/ML 트렌드에서 가장 중요한 신호는 agentic AI가 실험 기능을 넘어 감사 가능한 운영 인프라로 취급되기 시작했다는 점입니다. Reuters는 미국 은행 규제기관이 금융사의 AI 사용 감독을 강화하고 있다고 보도했고, Check Point Research는 LangGraph checkpointer 취약점 체인이 self-hosted AI agent의 원격 코드 실행으로 이어질 수 있음을 공개했습니다. 여기에 OpenAI와 Preply의 하이브리드 튜터 사례는 AI가 사람을 완전히 대체하기보다 전문가 워크플로우 안에서 운영되는 형태가 현실적인 제품 패턴이 되고 있음을 보여줍니다.
 금융권 감독 강화는 AI 도입의 질문을 바꿉니다. “이 모델이 정확한가?”만으로는 부족하고, 누가 어떤 데이터로 어떤 판단을 실행했는지, 승인권자는 누구였는지, 실패 시 어떤 로그로 재구성할 수 있는지가 중요해집니다. 특히 agentic AI가 리서치 보조를 넘어 고객 응대, 리스크 판단, 주문 전 단계, 내부 운영 자동화에 붙으면 모델 리스크 관리와 업무 권한 관리가 한 묶음이 됩니다. 금융사는 AI를 기능 단위로 사는 것이 아니라 승인, 감사, 보존, 재현성을 포함한 운영 패키지로 평가하게 될 가능성이 큽니다.
-...</p></div><footer class=entry-footer><span title='2026-06-12 21:00:00 +0900 KST'>June 12, 2026</span></footer><a class=entry-link aria-label="post link to AI/ML 트렌드: Agentic AI는 이제 감사 인프라다" href=https://kwbaek.github.io/posts/2026-06-12-ai-ml-trends-agentic-ai-is-becoming-audit-infrastructure/></a></article><article class="post-entry tag-entry"><header class=entry-header><h2 class=entry-hint-parent>AI/ML 트렌드: 에이전트 Skill은 이제 공급망이다</h2></header><div class=entry-content><p>오늘 AI/ML 트렌드에서 가장 흥미로운 신호는 에이전트의 확장 단위가 프롬프트가 아니라 공급망으로 취급되기 시작했다는 점입니다. Unit 42는 AI agent skill supply chain 리스크를 다루며 Behavioral Integrity Verification(BIV)을 제안했고, TrendForce는 AI agent boom이 enterprise SSD 공급 압박으로 이어지고 있다고 분석했습니다. 하나는 에이전트가 가져다 쓰는 skill·manifest·코드의 신뢰 문제이고, 다른 하나는 에이전트 실행이 실제 저장장치 수요까지 밀어 올리는 인프라 문제입니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-06-12 21:00:00 +0900 KST'>June 12, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to AI/ML 트렌드: Agentic AI는 이제 감사 인프라다" href="https://kwbaek.github.io/posts/2026-06-12-ai-ml-trends-agentic-ai-is-becoming-audit-infrastructure/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">AI/ML 트렌드: 에이전트 Skill은 이제 공급망이다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 AI/ML 트렌드에서 가장 흥미로운 신호는 에이전트의 확장 단위가 프롬프트가 아니라 공급망으로 취급되기 시작했다는 점입니다. Unit 42는 AI agent skill supply chain 리스크를 다루며 Behavioral Integrity Verification(BIV)을 제안했고, TrendForce는 AI agent boom이 enterprise SSD 공급 압박으로 이어지고 있다고 분석했습니다. 하나는 에이전트가 가져다 쓰는 skill·manifest·코드의 신뢰 문제이고, 다른 하나는 에이전트 실행이 실제 저장장치 수요까지 밀어 올리는 인프라 문제입니다.
 첫 번째 변화는 에이전트 보안의 초점이 “모델이 나쁜 답을 하지 않는가”에서 “에이전트가 설치한 능력이 실제로 무엇을 하는가”로 이동한다는 것입니다. 지금까지 많은 팀은 skill, MCP tool, plugin, workflow 문서를 편의 기능처럼 다뤘습니다. 하지만 에이전트가 파일을 읽고, 브라우저를 조작하고, 저장소를 수정하고, 배포까지 할 수 있다면 skill은 사실상 작은 앱입니다. 설명 문서에는 읽기 전용이라고 되어 있지만 실제 코드가 쓰기 권한을 요구한다면, 그것은 prompt 품질 문제가 아니라 공급망 무결성 문제입니다.
-...</p></div><footer class=entry-footer><span title='2026-06-11 21:00:00 +0900 KST'>June 11, 2026</span></footer><a class=entry-link aria-label="post link to AI/ML 트렌드: 에이전트 Skill은 이제 공급망이다" href=https://kwbaek.github.io/posts/2026-06-11-ai-ml-trends-agent-skills-are-now-a-supply-chain/></a></article><article class="post-entry tag-entry"><header class=entry-header><h2 class=entry-hint-parent>AI/ML 트렌드: 에이전트 거버넌스는 이제 DB와 자본시장까지 확장된다</h2></header><div class=entry-content><p>오늘 AI/ML 트렌드에서 가장 흥미로운 신호는 에이전트 거버넌스의 범위가 코드 리뷰를 넘어 데이터베이스와 자본시장 신뢰까지 넓어지고 있다는 점입니다. Liquibase 5.2는 AI가 생성한 database change를 다루기 위한 Agent Safe Governance를 공개했고, Reuters는 SK Hynix가 이르면 8월 미국 상장을 검토한다는 보도를 냈습니다. 하나는 코딩 에이전트가 실제 운영 데이터 구조를 바꿀 때 필요한 통제이고, 다른 하나는 AI 메모리 공급망의 승자가 글로벌 투자자에게 더 높은 투명성과 자본 접근성을 요구받는다는 신호입니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-06-11 21:00:00 +0900 KST'>June 11, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 에이전트 Skill은 이제 공급망이다" href="https://kwbaek.github.io/posts/2026-06-11-ai-ml-trends-agent-skills-are-now-a-supply-chain/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">AI/ML 트렌드: 에이전트 거버넌스는 이제 DB와 자본시장까지 확장된다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 AI/ML 트렌드에서 가장 흥미로운 신호는 에이전트 거버넌스의 범위가 코드 리뷰를 넘어 데이터베이스와 자본시장 신뢰까지 넓어지고 있다는 점입니다. Liquibase 5.2는 AI가 생성한 database change를 다루기 위한 Agent Safe Governance를 공개했고, Reuters는 SK Hynix가 이르면 8월 미국 상장을 검토한다는 보도를 냈습니다. 하나는 코딩 에이전트가 실제 운영 데이터 구조를 바꿀 때 필요한 통제이고, 다른 하나는 AI 메모리 공급망의 승자가 글로벌 투자자에게 더 높은 투명성과 자본 접근성을 요구받는다는 신호입니다.
 첫 번째 흐름은 에이전트가 더 위험한 표면으로 내려가고 있다는 것입니다. 지금까지 많은 팀은 AI 코딩 도구를 “pull request 초안 생성기” 정도로 생각했습니다. 하지만 실제 제품 개발에서 중요한 변경은 코드만이 아닙니다. schema migration, 권한 테이블, 배치 작업, 데이터 보존 정책처럼 한 번 적용되면 되돌리기 어려운 상태 변화가 많습니다. AI가 이런 변경안을 제안하거나 자동 생성하기 시작하면, 단순히 diff를 읽는 리뷰만으로는 부족합니다. 어떤 정책을 통과했는지, 누가 승인했는지, 어떤 환경에서 검증됐는지, 실패하면 어떻게 되돌릴지까지 함께 기록되어야 합니다.
-...</p></div><footer class=entry-footer><span title='2026-06-10 20:55:00 +0900 KST'>June 10, 2026</span></footer><a class=entry-link aria-label="post link to AI/ML 트렌드: 에이전트 거버넌스는 이제 DB와 자본시장까지 확장된다" href=https://kwbaek.github.io/posts/2026-06-10-ai-ml-trends-agent-governance-now-reaches-databases-and-capital-markets/></a></article><article class="post-entry tag-entry"><header class=entry-header><h2 class=entry-hint-parent>AI/ML 트렌드: AI 인프라는 국가 단위와 조립식 에이전트로 동시에 움직인다</h2></header><div class=entry-content><p>오늘 AI/ML 트렌드에서 가장 흥미로운 신호는 AI 경쟁이 거대한 인프라 금융과 작은 조립식 에이전트 인터페이스로 동시에 재편되고 있다는 점입니다. Reuters는 중국이 전국 단위 AI buildout을 위해 2,950억 달러 규모의 자금조달 계획을 준비 중이라고 보도했습니다. 한쪽에서는 데이터센터, 전력, GPU, 반도체 공급망을 국가 산업정책으로 묶고 있습니다. 다른 한쪽에서는 Hugging Face의 agents.md 실험, AWS Agent Toolkit for AWS 같은 움직임이 모델과 클라우드 리소스를 에이전트가 읽고 호출할 수 있는 작은 블록으로 바꾸고 있습니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-06-10 20:55:00 +0900 KST'>June 10, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 에이전트 거버넌스는 이제 DB와 자본시장까지 확장된다" href="https://kwbaek.github.io/posts/2026-06-10-ai-ml-trends-agent-governance-now-reaches-databases-and-capital-markets/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">AI/ML 트렌드: AI 인프라는 국가 단위와 조립식 에이전트로 동시에 움직인다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 AI/ML 트렌드에서 가장 흥미로운 신호는 AI 경쟁이 거대한 인프라 금융과 작은 조립식 에이전트 인터페이스로 동시에 재편되고 있다는 점입니다. Reuters는 중국이 전국 단위 AI buildout을 위해 2,950억 달러 규모의 자금조달 계획을 준비 중이라고 보도했습니다. 한쪽에서는 데이터센터, 전력, GPU, 반도체 공급망을 국가 산업정책으로 묶고 있습니다. 다른 한쪽에서는 Hugging Face의 agents.md 실험, AWS Agent Toolkit for AWS 같은 움직임이 모델과 클라우드 리소스를 에이전트가 읽고 호출할 수 있는 작은 블록으로 바꾸고 있습니다.
 첫 번째 축은 규모입니다. AI 인프라는 더 이상 개별 빅테크의 capex 경쟁만으로 설명하기 어렵습니다. 전국 단위 자금조달, 전력망, 데이터센터 입지, 칩 조달, 규제 허가가 함께 움직이는 산업 패키지가 되고 있습니다. 이런 환경에서는 모델 성능만큼이나 공급 안정성, 에너지 비용, 지역별 데이터 규정, 클라우드 종속성이 중요해집니다. 특히 기업 입장에서는 “어떤 모델을 쓸 것인가”보다 “내 워크로드가 어느 인프라 체계에 묶이는가”가 장기 비용과 리스크를 좌우할 수 있습니다.
-...</p></div><footer class=entry-footer><span title='2026-06-09 21:00:00 +0900 KST'>June 9, 2026</span></footer><a class=entry-link aria-label="post link to AI/ML 트렌드: AI 인프라는 국가 단위와 조립식 에이전트로 동시에 움직인다" href=https://kwbaek.github.io/posts/2026-06-09-ai-ml-trends-ai-infrastructure-is-becoming-national-and-composable/></a></article><article class="post-entry tag-entry"><header class=entry-header><h2 class=entry-hint-parent>AI/ML 트렌드: AI PC에는 로컬 모델보다 제품 수요 검증이 먼저다</h2></header><div class=entry-content><p>오늘 AI/ML 트렌드에서 가장 눈에 띈 신호는 AI PC와 로컬 에이전트의 병목이 기술 성능에서 제품 수요 검증으로 이동하고 있다는 점입니다. Reuters는 NVIDIA의 AI PC 드라이브가 아직 니치 사용자 바깥의 수요를 충분히 증명하지 못했다고 분석했습니다. 동시에 Letta Code는 장기 기억을 전제로 한 memory-first coding agent harness를 내세웁니다. 이 둘은 다른 뉴스처럼 보이지만, 사실 같은 질문을 던집니다. 사용자는 “내 기기에 모델이 돈다”는 사실만으로 비용을 지불할까요, 아니면 일관된 기억과 실제 작업 완결성을 보여줄 때 지불할까요?
-...</p></div><footer class=entry-footer><span title='2026-06-08 21:00:00 +0900 KST'>June 8, 2026</span></footer><a class=entry-link aria-label="post link to AI/ML 트렌드: AI PC에는 로컬 모델보다 제품 수요 검증이 먼저다" href=https://kwbaek.github.io/posts/2026-06-08-ai-ml-trends-ai-pc-needs-product-demand-not-just-local-models/></a></article><article class="post-entry tag-entry"><header class=entry-header><h2 class=entry-hint-parent>AI/ML 트렌드: 코드리뷰 에이전트에는 더 많은 코멘트가 아니라 보정이 필요하다</h2></header><div class=entry-content><p>오늘 AI/ML 트렌드에서 눈에 띈 신호는 코딩 에이전트가 코드 생성 도구에서 리뷰 품질 관리 도구로 확장되고 있다는 점입니다. Alibaba가 공개한 Open Code Review는 AI code review agent를 단순한 “PR에 LLM 붙이기”가 아니라 rule matching, sub-agent 분할, line-level comment pipeline으로 설계합니다. Hugging Face의 Her는 Claude Code 세션 JSONL을 읽어 도구 호출, 토큰 사용, 위험한 운영 변경, 민감 문자열 관련 행동을 추적하는 감사 도구입니다. 둘을 함께 보면, 앞으로 중요한 질문은 “에이전트가 리뷰를 할 수 있는가”가 아니라 그 리뷰가 얼마나 일관되고, 덜 시끄럽고, 나중에 감사 가능한가입니다.
-...</p></div><footer class=entry-footer><span title='2026-06-07 21:00:00 +0900 KST'>June 7, 2026</span></footer><a class=entry-link aria-label="post link to AI/ML 트렌드: 코드리뷰 에이전트에는 더 많은 코멘트가 아니라 보정이 필요하다" href=https://kwbaek.github.io/posts/2026-06-07-ai-ml-trends-code-review-agents-need-calibration-not-more-comments/></a></article><article class="post-entry tag-entry"><header class=entry-header><h2 class=entry-hint-parent>AI/ML 트렌드: 에이전트에는 컨텍스트 창보다 월드 모델이 필요하다</h2></header><div class=entry-content><p>오늘 AI/ML 트렌드에서 가장 흥미로운 변화는 에이전트가 더 긴 컨텍스트를 읽는 수준을 넘어, 업무 세계를 구조화해서 이해해야 한다는 신호였습니다. Hugging Face에 올라온 Blackstone Graph는 법률·규제 데이터를 agent-facing world model로 만들겠다는 시도입니다. 단순히 문서를 벡터 검색하는 RAG가 아니라, 조항·사건·관계·근거를 에이전트가 질의 가능한 스키마로 바꾸려는 방향입니다. 같은 날 RTX PRO 6000 Blackwell과 GH200의 Qwen3.5 SFT 벤치마크, Karpathy nanochat을 Ascend NPU로 옮긴 Nanochat-Ascend 사례도 나왔습니다. 이 셋을 함께 보면, AI 경쟁은 “어떤 모델을 쓰는가”보다 모델이 어떤 지식 구조와 어떤 실행 환경 위에서 안정적으로 일하는가로 이동하고 있습니다.
-...</p></div><footer class=entry-footer><span title='2026-06-06 21:00:00 +0900 KST'>June 6, 2026</span></footer><a class=entry-link aria-label="post link to AI/ML 트렌드: 에이전트에는 컨텍스트 창보다 월드 모델이 필요하다" href=https://kwbaek.github.io/posts/2026-06-06-ai-ml-trends-agents-need-world-models-not-just-context-windows/></a></article><article class="post-entry tag-entry"><header class=entry-header><h2 class=entry-hint-parent>AI/ML 트렌드: 모델 출시 신뢰성이 제품 기능이 되고 있다</h2></header><div class=entry-content><p>오늘 AI/ML 트렌드에서 가장 흥미로운 축은 “더 큰 모델”보다 모델을 언제, 어디서, 얼마나 안정적으로 출시하고 운영할 수 있는가였습니다. vLLM v0.22.1은 Mellum v2 지원, AMD Zen 기반 CPU 양자화 추론, Ray data parallel 안정성 수정처럼 화려한 데모보다 실제 serving 환경에서 중요한 요소를 보강했습니다. 동시에 OpenAI의 출시 전 모델 리뷰 명령 준수 방침, Meta의 개발자용 모델 공개 지연, Perplexity의 PC용 hybrid local-server inference orchestrator 소식은 모두 같은 질문을 던집니다. 이제 AI 제품의 경쟁력은 “모델이 똑똑한가”만이 아니라, 출시·라우팅·fallback·규제 대응을 제품 경험 안에 얼마나 잘 넣었는가로 갈립니다.
-...</p></div><footer class=entry-footer><span title='2026-06-05 21:00:00 +0900 KST'>June 5, 2026</span></footer><a class=entry-link aria-label="post link to AI/ML 트렌드: 모델 출시 신뢰성이 제품 기능이 되고 있다" href=https://kwbaek.github.io/posts/2026-06-05-ai-ml-trends-model-launch-reliability-is-now-a-product-feature/></a></article><footer class=page-footer><nav class=pagination><a class=next href=https://kwbaek.github.io/categories/ai-ml/page/2/>Next&nbsp;&nbsp;»</a></nav></footer></main><footer class=footer><span>&copy; 2026 <a href=https://kwbaek.github.io/>Kyungwook's Devlog</a></span> ·
-<span>Powered by
-<a href=https://gohugo.io/ rel="noopener noreferrer" target=_blank>Hugo</a> &
-<a href=https://github.com/adityatelange/hugo-PaperMod/ rel=noopener target=_blank>PaperMod</a></span></footer><a href=#top aria-label="go to top" title="Go to Top (Alt + G)" class=top-link id=top-link accesskey=g><svg viewBox="0 0 12 6" fill="currentColor"><path d="M12 6H0l6-6z"/></svg>
-</a><script>let menu=document.getElementById("menu");if(menu){const e=localStorage.getItem("menu-scroll-position");e&&(menu.scrollLeft=parseInt(e,10)),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)}}document.querySelectorAll('a[href^="#"]').forEach(e=>{e.addEventListener("click",function(e){e.preventDefault();var t=this.getAttribute("href").substr(1);window.matchMedia("(prefers-reduced-motion: reduce)").matches?document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView({behavior:"smooth"}),t==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${t}`)})})</script><script>var mybutton=document.getElementById("top-link");window.onscroll=function(){document.body.scrollTop>800||document.documentElement.scrollTop>800?(mybutton.style.visibility="visible",mybutton.style.opacity="1"):(mybutton.style.visibility="hidden",mybutton.style.opacity="0")}</script><script>document.getElementById("theme-toggle").addEventListener("click",()=>{const e=document.querySelector("html");e.dataset.theme==="dark"?(e.dataset.theme="light",localStorage.setItem("pref-theme","light")):(e.dataset.theme="dark",localStorage.setItem("pref-theme","dark"))})</script></body></html>
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-06-09 21:00:00 +0900 KST'>June 9, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to AI/ML 트렌드: AI 인프라는 국가 단위와 조립식 에이전트로 동시에 움직인다" href="https://kwbaek.github.io/posts/2026-06-09-ai-ml-trends-ai-infrastructure-is-becoming-national-and-composable/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">AI/ML 트렌드: AI PC에는 로컬 모델보다 제품 수요 검증이 먼저다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 AI/ML 트렌드에서 가장 눈에 띈 신호는 AI PC와 로컬 에이전트의 병목이 기술 성능에서 제품 수요 검증으로 이동하고 있다는 점입니다. Reuters는 NVIDIA의 AI PC 드라이브가 아직 니치 사용자 바깥의 수요를 충분히 증명하지 못했다고 분석했습니다. 동시에 Letta Code는 장기 기억을 전제로 한 memory-first coding agent harness를 내세웁니다. 이 둘은 다른 뉴스처럼 보이지만, 사실 같은 질문을 던집니다. 사용자는 “내 기기에 모델이 돈다”는 사실만으로 비용을 지불할까요, 아니면 일관된 기억과 실제 작업 완결성을 보여줄 때 지불할까요?
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-06-08 21:00:00 +0900 KST'>June 8, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to AI/ML 트렌드: AI PC에는 로컬 모델보다 제품 수요 검증이 먼저다" href="https://kwbaek.github.io/posts/2026-06-08-ai-ml-trends-ai-pc-needs-product-demand-not-just-local-models/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">AI/ML 트렌드: 코드리뷰 에이전트에는 더 많은 코멘트가 아니라 보정이 필요하다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 AI/ML 트렌드에서 눈에 띈 신호는 코딩 에이전트가 코드 생성 도구에서 리뷰 품질 관리 도구로 확장되고 있다는 점입니다. Alibaba가 공개한 Open Code Review는 AI code review agent를 단순한 “PR에 LLM 붙이기”가 아니라 rule matching, sub-agent 분할, line-level comment pipeline으로 설계합니다. Hugging Face의 Her는 Claude Code 세션 JSONL을 읽어 도구 호출, 토큰 사용, 위험한 운영 변경, 민감 문자열 관련 행동을 추적하는 감사 도구입니다. 둘을 함께 보면, 앞으로 중요한 질문은 “에이전트가 리뷰를 할 수 있는가”가 아니라 그 리뷰가 얼마나 일관되고, 덜 시끄럽고, 나중에 감사 가능한가입니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-06-07 21:00:00 +0900 KST'>June 7, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 코드리뷰 에이전트에는 더 많은 코멘트가 아니라 보정이 필요하다" href="https://kwbaek.github.io/posts/2026-06-07-ai-ml-trends-code-review-agents-need-calibration-not-more-comments/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">AI/ML 트렌드: 에이전트에는 컨텍스트 창보다 월드 모델이 필요하다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 AI/ML 트렌드에서 가장 흥미로운 변화는 에이전트가 더 긴 컨텍스트를 읽는 수준을 넘어, 업무 세계를 구조화해서 이해해야 한다는 신호였습니다. Hugging Face에 올라온 Blackstone Graph는 법률·규제 데이터를 agent-facing world model로 만들겠다는 시도입니다. 단순히 문서를 벡터 검색하는 RAG가 아니라, 조항·사건·관계·근거를 에이전트가 질의 가능한 스키마로 바꾸려는 방향입니다. 같은 날 RTX PRO 6000 Blackwell과 GH200의 Qwen3.5 SFT 벤치마크, Karpathy nanochat을 Ascend NPU로 옮긴 Nanochat-Ascend 사례도 나왔습니다. 이 셋을 함께 보면, AI 경쟁은 “어떤 모델을 쓰는가”보다 모델이 어떤 지식 구조와 어떤 실행 환경 위에서 안정적으로 일하는가로 이동하고 있습니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-06-06 21:00:00 +0900 KST'>June 6, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 에이전트에는 컨텍스트 창보다 월드 모델이 필요하다" href="https://kwbaek.github.io/posts/2026-06-06-ai-ml-trends-agents-need-world-models-not-just-context-windows/"></a>
+</article>
+<footer class="page-footer">
+  <nav class="pagination">
+    <a class="next" href="https://kwbaek.github.io/categories/ai-ml/page/2/">Next&nbsp;&nbsp;»
+    </a>
+  </nav>
+</footer>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://kwbaek.github.io/">Kyungwook&#39;s Devlog</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

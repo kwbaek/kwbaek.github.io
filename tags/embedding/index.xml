@@ -1,2 +1,27 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Embedding on Kyungwook's Devlog</title><link>https://kwbaek.github.io/tags/embedding/</link><description>Recent content in Embedding on Kyungwook's Devlog</description><generator>Hugo -- 0.155.3</generator><language>ko-kr</language><lastBuildDate>Sat, 13 Jun 2026 21:00:00 +0900</lastBuildDate><atom:link href="https://kwbaek.github.io/tags/embedding/index.xml" rel="self" type="application/rss+xml"/><item><title>AI/ML 트렌드: 에이전트 메모리는 더 싸지고 더 조직화된다</title><link>https://kwbaek.github.io/posts/2026-06-13-ai-ml-trends-agent-memory-is-getting-cheaper-and-more-orchestrated/</link><pubDate>Sat, 13 Jun 2026 21:00:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-06-13-ai-ml-trends-agent-memory-is-getting-cheaper-and-more-orchestrated/</guid><description>&lt;p&gt;오늘 AI/ML 트렌드에서 가장 흥미로운 신호는 &lt;strong&gt;에이전트 메모리와 업무 오케스트레이션이 동시에 현실적인 비용 구조로 내려오고 있다&lt;/strong&gt;는 점입니다. Moonshot AI는 Kimi K2.7 Code를 공개하며 1T MoE, 256K context, coding-focused agentic workflow를 전면에 내세웠고, Adobe는 CX Enterprise Coworker를 GA로 공개하며 마케팅·고객경험 업무를 MCP와 A2A 기반 agent orchestration으로 묶는 그림을 제시했습니다. 여기에 Hugging Face 커뮤니티의 Stable Static Embedding 실전 가이드는 16M급 embedding을 CPU에서 빠르게 돌려 retrieval과 agent memory의 1차 필터로 쓰는 패턴을 보여줍니다.&lt;/p&gt;</description></item><item><title>Hermes/리오 팁: 무거운 RAG 앞에 가벼운 메모리 라우터 두기</title><link>https://kwbaek.github.io/posts/2026-06-13-hermes-rio-add-a-lightweight-memory-router/</link><pubDate>Sat, 13 Jun 2026 21:00:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-06-13-hermes-rio-add-a-lightweight-memory-router/</guid><description>&lt;p&gt;오늘 AI/ML 트렌드가 대형 코딩 모델, 엔터프라이즈 에이전트 오케스트레이션, 초경량 embedding을 동시에 보여줬다면 Hermes/리오 운영에 바로 적용할 수 있는 팁은 분명합니다. &lt;strong&gt;무거운 RAG나 긴 context를 쓰기 전에 가벼운 메모리 라우터를 하나 두는 것&lt;/strong&gt;입니다. 모든 기록을 매번 읽고, 모든 후보를 큰 모델에 넣고, 모든 작업을 같은 검색 파이프라인으로 처리하면 자동화가 커질수록 느려지고 비싸지고 불안정해집니다.&lt;/p&gt;
-&lt;p&gt;첫 번째 단계는 메모리의 역할을 분리하는 것입니다. Hermes/리오 크론에는 최신 트렌드 캐시, 히스토리 JSON, 일간 리포트, 블로그 초안, 배포 상태 같은 서로 다른 종류의 기록이 생깁니다. 이들을 하나의 “지식”으로 뭉뚱그리면 다음 실행이 불필요한 파일을 읽거나 오래된 디버깅 문장을 사실처럼 사용할 수 있습니다. 가벼운 라우터는 먼저 “이번 작업은 중복 제거가 필요한가, 최신 신호가 필요한가, 긴 배경지식이 필요한가”를 판단하고 그에 맞는 최소 파일만 고르게 해야 합니다.&lt;/p&gt;</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Embedding on Kyungwook&#39;s Devlog</title>
+    <link>https://kwbaek.github.io/tags/embedding/</link>
+    <description>Recent content in Embedding on Kyungwook&#39;s Devlog</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Sat, 13 Jun 2026 21:00:00 +0900</lastBuildDate>
+    <atom:link href="https://kwbaek.github.io/tags/embedding/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI/ML 트렌드: 에이전트 메모리는 더 싸지고 더 조직화된다</title>
+      <link>https://kwbaek.github.io/posts/2026-06-13-ai-ml-trends-agent-memory-is-getting-cheaper-and-more-orchestrated/</link>
+      <pubDate>Sat, 13 Jun 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-06-13-ai-ml-trends-agent-memory-is-getting-cheaper-and-more-orchestrated/</guid>
+      <description>&lt;p&gt;오늘 AI/ML 트렌드에서 가장 흥미로운 신호는 &lt;strong&gt;에이전트 메모리와 업무 오케스트레이션이 동시에 현실적인 비용 구조로 내려오고 있다&lt;/strong&gt;는 점입니다. Moonshot AI는 Kimi K2.7 Code를 공개하며 1T MoE, 256K context, coding-focused agentic workflow를 전면에 내세웠고, Adobe는 CX Enterprise Coworker를 GA로 공개하며 마케팅·고객경험 업무를 MCP와 A2A 기반 agent orchestration으로 묶는 그림을 제시했습니다. 여기에 Hugging Face 커뮤니티의 Stable Static Embedding 실전 가이드는 16M급 embedding을 CPU에서 빠르게 돌려 retrieval과 agent memory의 1차 필터로 쓰는 패턴을 보여줍니다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Hermes/리오 팁: 무거운 RAG 앞에 가벼운 메모리 라우터 두기</title>
+      <link>https://kwbaek.github.io/posts/2026-06-13-hermes-rio-add-a-lightweight-memory-router/</link>
+      <pubDate>Sat, 13 Jun 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-06-13-hermes-rio-add-a-lightweight-memory-router/</guid>
+      <description>&lt;p&gt;오늘 AI/ML 트렌드가 대형 코딩 모델, 엔터프라이즈 에이전트 오케스트레이션, 초경량 embedding을 동시에 보여줬다면 Hermes/리오 운영에 바로 적용할 수 있는 팁은 분명합니다. &lt;strong&gt;무거운 RAG나 긴 context를 쓰기 전에 가벼운 메모리 라우터를 하나 두는 것&lt;/strong&gt;입니다. 모든 기록을 매번 읽고, 모든 후보를 큰 모델에 넣고, 모든 작업을 같은 검색 파이프라인으로 처리하면 자동화가 커질수록 느려지고 비싸지고 불안정해집니다.&lt;/p&gt;
+&lt;p&gt;첫 번째 단계는 메모리의 역할을 분리하는 것입니다. Hermes/리오 크론에는 최신 트렌드 캐시, 히스토리 JSON, 일간 리포트, 블로그 초안, 배포 상태 같은 서로 다른 종류의 기록이 생깁니다. 이들을 하나의 “지식”으로 뭉뚱그리면 다음 실행이 불필요한 파일을 읽거나 오래된 디버깅 문장을 사실처럼 사용할 수 있습니다. 가벼운 라우터는 먼저 “이번 작업은 중복 제거가 필요한가, 최신 신호가 필요한가, 긴 배경지식이 필요한가”를 판단하고 그에 맞는 최소 파일만 고르게 해야 합니다.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

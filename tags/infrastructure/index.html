@@ -1,23 +1,364 @@
-<!doctype html><html lang=en dir=auto data-theme=auto><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=robots content="index, follow"><title>Infrastructure | Kyungwook's Devlog</title><meta name=keywords content><meta name=description content><meta name=author content><link rel=canonical href=https://kwbaek.github.io/tags/infrastructure/><link crossorigin=anonymous href=/assets/css/stylesheet.da3211e5ef867bf2b75fd5a6515cfed7195c011e8ab735694e203810a827097b.css integrity="sha256-2jIR5e+Ge/K3X9WmUVz+1xlcAR6KtzVpTiA4EKgnCXs=" rel="preload stylesheet" as=style><link rel=icon href=https://kwbaek.github.io/favicon.ico><link rel=icon type=image/png sizes=16x16 href=https://kwbaek.github.io/favicon-16x16.png><link rel=icon type=image/png sizes=32x32 href=https://kwbaek.github.io/favicon-32x32.png><link rel=apple-touch-icon href=https://kwbaek.github.io/apple-touch-icon.png><link rel=mask-icon href=https://kwbaek.github.io/safari-pinned-tab.svg><meta name=theme-color content="#2e2e33"><meta name=msapplication-TileColor content="#2e2e33"><link rel=alternate type=application/rss+xml href=https://kwbaek.github.io/tags/infrastructure/index.xml title=rss><link rel=alternate hreflang=en href=https://kwbaek.github.io/tags/infrastructure/><noscript><style>#theme-toggle,.top-link{display:none}</style><style>@media(prefers-color-scheme:dark){:root{--theme:rgb(29, 30, 32);--entry:rgb(46, 46, 51);--primary:rgb(218, 218, 219);--secondary:rgb(155, 156, 157);--tertiary:rgb(65, 66, 68);--content:rgb(196, 196, 197);--code-block-bg:rgb(46, 46, 51);--code-bg:rgb(55, 56, 62);--border:rgb(51, 51, 51);color-scheme:dark}.list{background:var(--theme)}.toc{background:var(--entry)}}@media(prefers-color-scheme:light){.list::-webkit-scrollbar-thumb{border-color:var(--code-bg)}}</style></noscript><script>localStorage.getItem("pref-theme")==="dark"?document.querySelector("html").dataset.theme="dark":localStorage.getItem("pref-theme")==="light"?document.querySelector("html").dataset.theme="light":window.matchMedia("(prefers-color-scheme: dark)").matches?document.querySelector("html").dataset.theme="dark":document.querySelector("html").dataset.theme="light"</script><meta property="og:url" content="https://kwbaek.github.io/tags/infrastructure/"><meta property="og:site_name" content="Kyungwook's Devlog"><meta property="og:title" content="Infrastructure"><meta property="og:locale" content="ko-kr"><meta property="og:type" content="website"><meta name=twitter:card content="summary"><meta name=twitter:title content="Infrastructure"><meta name=twitter:description content></head><body class=list id=top><header class=header><nav class=nav><div class=logo><a href=https://kwbaek.github.io/ accesskey=h title="Kyungwook's Devlog (Alt + H)">Kyungwook's Devlog</a><div class=logo-switches><button id=theme-toggle accesskey=t title="(Alt + T)" aria-label="Toggle theme">
-<svg id="moon" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
-<svg id="sun" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button></div></div><ul id=menu><li><a href=https://kwbaek.github.io/categories/ title=categories><span>categories</span></a></li><li><a href=https://kwbaek.github.io/tags/ title=tags><span>tags</span></a></li><li><a href=https://kwbaek.github.io/ title="Kyungwook's Devlog"><span>Kyungwook's Devlog</span>&nbsp;
-<svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><path d="M15 3h6v6"/><path d="M10 14 21 3"/></svg></a></li></ul></nav></header><main class=main><header class=page-header><h1>Infrastructure</h1></header><article class="post-entry tag-entry"><header class=entry-header><h2 class=entry-hint-parent>AI/ML 트렌드: 에이전트 Skill은 이제 공급망이다</h2></header><div class=entry-content><p>오늘 AI/ML 트렌드에서 가장 흥미로운 신호는 에이전트의 확장 단위가 프롬프트가 아니라 공급망으로 취급되기 시작했다는 점입니다. Unit 42는 AI agent skill supply chain 리스크를 다루며 Behavioral Integrity Verification(BIV)을 제안했고, TrendForce는 AI agent boom이 enterprise SSD 공급 압박으로 이어지고 있다고 분석했습니다. 하나는 에이전트가 가져다 쓰는 skill·manifest·코드의 신뢰 문제이고, 다른 하나는 에이전트 실행이 실제 저장장치 수요까지 밀어 올리는 인프라 문제입니다.
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Infrastructure | Kyungwook&#39;s Devlog</title>
+<meta name="keywords" content="">
+<meta name="description" content="">
+<meta name="author" content="">
+<link rel="canonical" href="https://kwbaek.github.io/tags/infrastructure/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.da3211e5ef867bf2b75fd5a6515cfed7195c011e8ab735694e203810a827097b.css" integrity="sha256-2jIR5e&#43;Ge/K3X9WmUVz&#43;1xlcAR6KtzVpTiA4EKgnCXs=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://kwbaek.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://kwbaek.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://kwbaek.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://kwbaek.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://kwbaek.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" type="application/rss+xml" href="https://kwbaek.github.io/tags/infrastructure/index.xml" title="rss">
+<link rel="alternate" hreflang="en" href="https://kwbaek.github.io/tags/infrastructure/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="https://kwbaek.github.io/tags/infrastructure/">
+  <meta property="og:site_name" content="Kyungwook&#39;s Devlog">
+  <meta property="og:title" content="Infrastructure">
+  <meta property="og:locale" content="ko-kr">
+  <meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Infrastructure">
+<meta name="twitter:description" content="">
+
+</head>
+<body class="list" id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://kwbaek.github.io/" accesskey="h" title="Kyungwook&#39;s Devlog (Alt + H)">Kyungwook&#39;s Devlog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://kwbaek.github.io/categories/" title="categories">
+                    <span>categories</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kwbaek.github.io/tags/" title="tags">
+                    <span>tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kwbaek.github.io/" title="Kyungwook&#39;s Devlog">
+                    <span>Kyungwook&#39;s Devlog</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main"> 
+<header class="page-header">
+  <h1>
+    Infrastructure
+  </h1>
+</header>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">AI/ML 트렌드: AI 인프라 병목은 기판과 PCB까지 내려갔다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 AI/ML 트렌드에서 가장 중요한 신호는 AT&amp;S가 말레이시아 Kulim 생산 거점에 15억~20억 유로 규모의 AI substrate·advanced PCB capacity 확장을 발표한 것입니다. 겉으로 보면 반도체 부품 회사의 설비 투자 뉴스처럼 보이지만, AI/ML 운영 관점에서는 훨씬 더 큰 의미가 있습니다. AI 인프라 병목이 더 이상 GPU와 HBM만의 문제가 아니라, 서버 보드와 패키징을 떠받치는 기판·PCB·소재·지역 생산능력까지 내려갔다는 뜻이기 때문입니다.
+지난 몇 달 동안 AI 인프라 논의는 주로 “어떤 GPU를 얼마나 확보하느냐”에 집중됐습니다. 하지만 실제 데이터센터는 GPU만으로 돌아가지 않습니다. 고성능 accelerator를 묶는 substrate, advanced PCB, optical interconnect, power delivery, cooling, rack density가 같이 맞아야 합니다. AT&amp;S의 Kulim 투자는 이 하위 레이어가 AI 수요를 따라잡기 위해 얼마나 큰 자본지출을 필요로 하는지 보여줍니다. 모델 API 가격이나 cloud instance 단가만 보고 AI rollout 일정을 잡는 팀은 이제 중요한 리스크를 놓치게 됩니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-06-15 21:02:00 +0900 KST'>June 15, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to AI/ML 트렌드: AI 인프라 병목은 기판과 PCB까지 내려갔다" href="https://kwbaek.github.io/posts/2026-06-15-ai-ml-trends-ai-infra-bottleneck-moves-to-substrates-and-pcbs/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">AI/ML 트렌드: 에이전트 Skill은 이제 공급망이다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 AI/ML 트렌드에서 가장 흥미로운 신호는 에이전트의 확장 단위가 프롬프트가 아니라 공급망으로 취급되기 시작했다는 점입니다. Unit 42는 AI agent skill supply chain 리스크를 다루며 Behavioral Integrity Verification(BIV)을 제안했고, TrendForce는 AI agent boom이 enterprise SSD 공급 압박으로 이어지고 있다고 분석했습니다. 하나는 에이전트가 가져다 쓰는 skill·manifest·코드의 신뢰 문제이고, 다른 하나는 에이전트 실행이 실제 저장장치 수요까지 밀어 올리는 인프라 문제입니다.
 첫 번째 변화는 에이전트 보안의 초점이 “모델이 나쁜 답을 하지 않는가”에서 “에이전트가 설치한 능력이 실제로 무엇을 하는가”로 이동한다는 것입니다. 지금까지 많은 팀은 skill, MCP tool, plugin, workflow 문서를 편의 기능처럼 다뤘습니다. 하지만 에이전트가 파일을 읽고, 브라우저를 조작하고, 저장소를 수정하고, 배포까지 할 수 있다면 skill은 사실상 작은 앱입니다. 설명 문서에는 읽기 전용이라고 되어 있지만 실제 코드가 쓰기 권한을 요구한다면, 그것은 prompt 품질 문제가 아니라 공급망 무결성 문제입니다.
-...</p></div><footer class=entry-footer><span title='2026-06-11 21:00:00 +0900 KST'>June 11, 2026</span></footer><a class=entry-link aria-label="post link to AI/ML 트렌드: 에이전트 Skill은 이제 공급망이다" href=https://kwbaek.github.io/posts/2026-06-11-ai-ml-trends-agent-skills-are-now-a-supply-chain/></a></article><article class="post-entry tag-entry"><header class=entry-header><h2 class=entry-hint-parent>AI/ML 트렌드: 에이전트 거버넌스는 이제 DB와 자본시장까지 확장된다</h2></header><div class=entry-content><p>오늘 AI/ML 트렌드에서 가장 흥미로운 신호는 에이전트 거버넌스의 범위가 코드 리뷰를 넘어 데이터베이스와 자본시장 신뢰까지 넓어지고 있다는 점입니다. Liquibase 5.2는 AI가 생성한 database change를 다루기 위한 Agent Safe Governance를 공개했고, Reuters는 SK Hynix가 이르면 8월 미국 상장을 검토한다는 보도를 냈습니다. 하나는 코딩 에이전트가 실제 운영 데이터 구조를 바꿀 때 필요한 통제이고, 다른 하나는 AI 메모리 공급망의 승자가 글로벌 투자자에게 더 높은 투명성과 자본 접근성을 요구받는다는 신호입니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-06-11 21:00:00 +0900 KST'>June 11, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 에이전트 Skill은 이제 공급망이다" href="https://kwbaek.github.io/posts/2026-06-11-ai-ml-trends-agent-skills-are-now-a-supply-chain/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">AI/ML 트렌드: 에이전트 거버넌스는 이제 DB와 자본시장까지 확장된다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 AI/ML 트렌드에서 가장 흥미로운 신호는 에이전트 거버넌스의 범위가 코드 리뷰를 넘어 데이터베이스와 자본시장 신뢰까지 넓어지고 있다는 점입니다. Liquibase 5.2는 AI가 생성한 database change를 다루기 위한 Agent Safe Governance를 공개했고, Reuters는 SK Hynix가 이르면 8월 미국 상장을 검토한다는 보도를 냈습니다. 하나는 코딩 에이전트가 실제 운영 데이터 구조를 바꿀 때 필요한 통제이고, 다른 하나는 AI 메모리 공급망의 승자가 글로벌 투자자에게 더 높은 투명성과 자본 접근성을 요구받는다는 신호입니다.
 첫 번째 흐름은 에이전트가 더 위험한 표면으로 내려가고 있다는 것입니다. 지금까지 많은 팀은 AI 코딩 도구를 “pull request 초안 생성기” 정도로 생각했습니다. 하지만 실제 제품 개발에서 중요한 변경은 코드만이 아닙니다. schema migration, 권한 테이블, 배치 작업, 데이터 보존 정책처럼 한 번 적용되면 되돌리기 어려운 상태 변화가 많습니다. AI가 이런 변경안을 제안하거나 자동 생성하기 시작하면, 단순히 diff를 읽는 리뷰만으로는 부족합니다. 어떤 정책을 통과했는지, 누가 승인했는지, 어떤 환경에서 검증됐는지, 실패하면 어떻게 되돌릴지까지 함께 기록되어야 합니다.
-...</p></div><footer class=entry-footer><span title='2026-06-10 20:55:00 +0900 KST'>June 10, 2026</span></footer><a class=entry-link aria-label="post link to AI/ML 트렌드: 에이전트 거버넌스는 이제 DB와 자본시장까지 확장된다" href=https://kwbaek.github.io/posts/2026-06-10-ai-ml-trends-agent-governance-now-reaches-databases-and-capital-markets/></a></article><article class="post-entry tag-entry"><header class=entry-header><h2 class=entry-hint-parent>AI/ML 트렌드: AI 인프라는 국가 단위와 조립식 에이전트로 동시에 움직인다</h2></header><div class=entry-content><p>오늘 AI/ML 트렌드에서 가장 흥미로운 신호는 AI 경쟁이 거대한 인프라 금융과 작은 조립식 에이전트 인터페이스로 동시에 재편되고 있다는 점입니다. Reuters는 중국이 전국 단위 AI buildout을 위해 2,950억 달러 규모의 자금조달 계획을 준비 중이라고 보도했습니다. 한쪽에서는 데이터센터, 전력, GPU, 반도체 공급망을 국가 산업정책으로 묶고 있습니다. 다른 한쪽에서는 Hugging Face의 agents.md 실험, AWS Agent Toolkit for AWS 같은 움직임이 모델과 클라우드 리소스를 에이전트가 읽고 호출할 수 있는 작은 블록으로 바꾸고 있습니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-06-10 20:55:00 +0900 KST'>June 10, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 에이전트 거버넌스는 이제 DB와 자본시장까지 확장된다" href="https://kwbaek.github.io/posts/2026-06-10-ai-ml-trends-agent-governance-now-reaches-databases-and-capital-markets/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">AI/ML 트렌드: AI 인프라는 국가 단위와 조립식 에이전트로 동시에 움직인다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 AI/ML 트렌드에서 가장 흥미로운 신호는 AI 경쟁이 거대한 인프라 금융과 작은 조립식 에이전트 인터페이스로 동시에 재편되고 있다는 점입니다. Reuters는 중국이 전국 단위 AI buildout을 위해 2,950억 달러 규모의 자금조달 계획을 준비 중이라고 보도했습니다. 한쪽에서는 데이터센터, 전력, GPU, 반도체 공급망을 국가 산업정책으로 묶고 있습니다. 다른 한쪽에서는 Hugging Face의 agents.md 실험, AWS Agent Toolkit for AWS 같은 움직임이 모델과 클라우드 리소스를 에이전트가 읽고 호출할 수 있는 작은 블록으로 바꾸고 있습니다.
 첫 번째 축은 규모입니다. AI 인프라는 더 이상 개별 빅테크의 capex 경쟁만으로 설명하기 어렵습니다. 전국 단위 자금조달, 전력망, 데이터센터 입지, 칩 조달, 규제 허가가 함께 움직이는 산업 패키지가 되고 있습니다. 이런 환경에서는 모델 성능만큼이나 공급 안정성, 에너지 비용, 지역별 데이터 규정, 클라우드 종속성이 중요해집니다. 특히 기업 입장에서는 “어떤 모델을 쓸 것인가”보다 “내 워크로드가 어느 인프라 체계에 묶이는가”가 장기 비용과 리스크를 좌우할 수 있습니다.
-...</p></div><footer class=entry-footer><span title='2026-06-09 21:00:00 +0900 KST'>June 9, 2026</span></footer><a class=entry-link aria-label="post link to AI/ML 트렌드: AI 인프라는 국가 단위와 조립식 에이전트로 동시에 움직인다" href=https://kwbaek.github.io/posts/2026-06-09-ai-ml-trends-ai-infrastructure-is-becoming-national-and-composable/></a></article><article class="post-entry tag-entry"><header class=entry-header><h2 class=entry-hint-parent>AI/ML 트렌드: 인프라가 새로운 모델 해자가 되고 있다</h2></header><div class=entry-content><p>오늘 AI/ML 흐름에서 가장 흥미로운 포인트는 새 모델 하나가 아니라, AI를 실제로 돌릴 수 있게 만드는 인프라 전체가 경쟁력의 중심으로 올라왔다는 점입니다. SK hynix의 AI 메모리 투자와 미국 상장 기대, TSMC의 AI 칩 수요 기반 가격 협상력, Nvidia와 한국 메모리 기업의 차세대 공급망 협력, EU의 기술 주권 패키지는 서로 다른 뉴스처럼 보이지만 같은 방향을 가리킵니다. 이제 AI 경쟁은 “누가 더 큰 모델을 만들었는가”만으로 설명되지 않습니다. 누가 HBM, 파운드리, 데이터센터, 클라우드 리전, 규제 문서, agent 운영 증거를 안정적으로 묶어낼 수 있는지가 더 중요해지고 있습니다.
-...</p></div><footer class=entry-footer><span title='2026-06-04 21:00:00 +0900 KST'>June 4, 2026</span></footer><a class=entry-link aria-label="post link to AI/ML 트렌드: 인프라가 새로운 모델 해자가 되고 있다" href=https://kwbaek.github.io/posts/2026-06-04-ai-ml-trends-infrastructure-is-the-new-model-moat/></a></article><article class="post-entry tag-entry"><header class=entry-header><h2 class=entry-hint-parent>Hermes/리오 팁: 자동화도 인프라 의존성을 기록해야 한다</h2></header><div class=entry-content><p>오늘 AI/ML 트렌드는 HBM, 파운드리, 데이터센터, agent passport처럼 “보이지 않는 운영 레이어”가 얼마나 중요한지 보여줬습니다. Hermes/리오 자동화도 똑같습니다. 겉으로는 크론이 매일 글을 쓰고 빌드하고 배포하는 단순한 흐름처럼 보이지만, 실제 안정성은 입력 소스, 캐시, 파일 구조, git 상태, 빌드 도구, 배포 저장소 같은 작은 인프라 의존성에 달려 있습니다. 자동화가 실패하는 이유는 대개 모델이 글을 못 써서가 아니라, 읽어야 할 채널이 막혔거나, 날짜가 미래로 들어가 Hugo가 글을 제외했거나, 배포 디렉터리의 submodule 상태를 확인하지 않았거나, 공개 HTML에 예상치 못한 문자열이 들어갔기 때문입니다.
-...</p></div><footer class=entry-footer><span title='2026-06-04 21:00:00 +0900 KST'>June 4, 2026</span></footer><a class=entry-link aria-label="post link to Hermes/리오 팁: 자동화도 인프라 의존성을 기록해야 한다" href=https://kwbaek.github.io/posts/2026-06-04-hermes-rio-map-infrastructure-dependencies-in-automation/></a></article><article class="post-entry tag-entry"><header class=entry-header><h2 class=entry-hint-parent>AI/ML 트렌드: AI Factory는 이제 데이터센터가 아니라 운영체제가 된다</h2></header><div class=entry-content><p>오늘 #ai-ml-trends 흐름에서 가장 눈에 띈 변화는 NVIDIA가 AI factory를 더 이상 “GPU가 많이 꽂힌 데이터센터”로만 설명하지 않는다는 점입니다. NVIDIA의 DSX OS 발표와 DOCA In-Silicon Security 공개는 같은 메시지를 냅니다. 앞으로 AI 경쟁의 핵심은 모델 하나를 더 잘 고르는 것이 아니라, 수천 개 GPU와 수많은 agentic workload가 돌아가는 공장을 운영체제처럼 제어하고 증거를 남기는 능력이 됩니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-06-09 21:00:00 +0900 KST'>June 9, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to AI/ML 트렌드: AI 인프라는 국가 단위와 조립식 에이전트로 동시에 움직인다" href="https://kwbaek.github.io/posts/2026-06-09-ai-ml-trends-ai-infrastructure-is-becoming-national-and-composable/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">AI/ML 트렌드: 인프라가 새로운 모델 해자가 되고 있다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 AI/ML 흐름에서 가장 흥미로운 포인트는 새 모델 하나가 아니라, AI를 실제로 돌릴 수 있게 만드는 인프라 전체가 경쟁력의 중심으로 올라왔다는 점입니다. SK hynix의 AI 메모리 투자와 미국 상장 기대, TSMC의 AI 칩 수요 기반 가격 협상력, Nvidia와 한국 메모리 기업의 차세대 공급망 협력, EU의 기술 주권 패키지는 서로 다른 뉴스처럼 보이지만 같은 방향을 가리킵니다. 이제 AI 경쟁은 “누가 더 큰 모델을 만들었는가”만으로 설명되지 않습니다. 누가 HBM, 파운드리, 데이터센터, 클라우드 리전, 규제 문서, agent 운영 증거를 안정적으로 묶어낼 수 있는지가 더 중요해지고 있습니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-06-04 21:00:00 +0900 KST'>June 4, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 인프라가 새로운 모델 해자가 되고 있다" href="https://kwbaek.github.io/posts/2026-06-04-ai-ml-trends-infrastructure-is-the-new-model-moat/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Hermes/리오 팁: 자동화도 인프라 의존성을 기록해야 한다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 AI/ML 트렌드는 HBM, 파운드리, 데이터센터, agent passport처럼 “보이지 않는 운영 레이어”가 얼마나 중요한지 보여줬습니다. Hermes/리오 자동화도 똑같습니다. 겉으로는 크론이 매일 글을 쓰고 빌드하고 배포하는 단순한 흐름처럼 보이지만, 실제 안정성은 입력 소스, 캐시, 파일 구조, git 상태, 빌드 도구, 배포 저장소 같은 작은 인프라 의존성에 달려 있습니다. 자동화가 실패하는 이유는 대개 모델이 글을 못 써서가 아니라, 읽어야 할 채널이 막혔거나, 날짜가 미래로 들어가 Hugo가 글을 제외했거나, 배포 디렉터리의 submodule 상태를 확인하지 않았거나, 공개 HTML에 예상치 못한 문자열이 들어갔기 때문입니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-06-04 21:00:00 +0900 KST'>June 4, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to Hermes/리오 팁: 자동화도 인프라 의존성을 기록해야 한다" href="https://kwbaek.github.io/posts/2026-06-04-hermes-rio-map-infrastructure-dependencies-in-automation/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">AI/ML 트렌드: AI Factory는 이제 데이터센터가 아니라 운영체제가 된다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 #ai-ml-trends 흐름에서 가장 눈에 띈 변화는 NVIDIA가 AI factory를 더 이상 “GPU가 많이 꽂힌 데이터센터”로만 설명하지 않는다는 점입니다. NVIDIA의 DSX OS 발표와 DOCA In-Silicon Security 공개는 같은 메시지를 냅니다. 앞으로 AI 경쟁의 핵심은 모델 하나를 더 잘 고르는 것이 아니라, 수천 개 GPU와 수많은 agentic workload가 돌아가는 공장을 운영체제처럼 제어하고 증거를 남기는 능력이 됩니다.
 DSX OS는 AI factory 운영을 개방형·모듈형 소프트웨어 레이어로 표준화하려는 시도입니다. 대규모 학습과 추론 클러스터에서는 GPU 할당, 네트워크, 스토리지, 장애 대응, 관측성, 비용 통제가 한 덩어리로 움직입니다. 예전에는 이런 요소가 각 회사의 내부 운영 노하우에 가까웠다면, 이제는 AI 인프라 자체가 하나의 제품 카테고리가 되고 있습니다. 기업 입장에서는 “어느 모델을 쓸까?”보다 “이 워크로드를 어느 클러스터, 어느 리전, 어느 권한 체계 안에서 돌릴까?”가 더 중요한 질문이 됩니다.
-...</p></div><footer class=entry-footer><span title='2026-06-01 21:00:00 +0900 KST'>June 1, 2026</span></footer><a class=entry-link aria-label="post link to AI/ML 트렌드: AI Factory는 이제 데이터센터가 아니라 운영체제가 된다" href=https://kwbaek.github.io/posts/2026-06-01-ai-ml-trends-ai-factory-is-becoming-an-operating-system/></a></article><article class="post-entry tag-entry"><header class=entry-header><h2 class=entry-hint-parent>AI/ML 트렌드: AI 도입은 이제 운영 모델의 문제가 되고 있다</h2></header><div class=entry-content><p>오늘 #ai-ml-trends 채널에서 가장 흥미로운 흐름은 AI가 더 이상 연구실의 성능 경쟁이나 제품 데모에 머물지 않고, 기업의 운영 모델 전체를 바꾸는 힘으로 이동하고 있다는 점입니다. Tesla의 self-driving 데이터 신뢰 문제, EQT와 Google Cloud의 AI rollout, 인도 글로벌 역량센터의 AI 활용, Wix의 감원, Meta의 AI 구독 검토, WiWynn의 AI 서버 병목 진단, IBM·Red Hat의 오픈소스 투자까지 서로 다른 뉴스처럼 보이지만 공통 질문은 하나입니다. “AI를 조직 안에 넣으면 어떤 일, 비용, 책임, 인프라가 재배치되는가?”
-...</p></div><footer class=entry-footer><span title='2026-05-28 21:00:00 +0900 KST'>May 28, 2026</span></footer><a class=entry-link aria-label="post link to AI/ML 트렌드: AI 도입은 이제 운영 모델의 문제가 되고 있다" href=https://kwbaek.github.io/posts/2026-05-28-ai-ml-trends-ai-adoption-is-becoming-an-operating-model-problem/></a></article><article class="post-entry tag-entry"><header class=entry-header><h2 class=entry-hint-parent>AI/ML 트렌드: 에이전트 스킬과 월드 모델 평가는 운영 문제로 이동한다</h2></header><div class=entry-content><p>오늘 Discord #ai-ml-trends 채널에서 가장 흥미로운 흐름은 AI 연구의 초점이 단일 모델 성능에서, 에이전트가 지식을 저장하고 멀티모달 세계를 검증하는 운영 방식으로 옮겨가고 있다는 점입니다. Andrej Karpathy가 Anthropic pre-training team에 합류했다는 소식, SkillOpt와 agent skill negative transfer 연구, Google AI Edge Gallery의 MCP 연동, SciAtlas 과학 지식그래프, VLM과 world model 평가 논문들은 서로 다른 분야처럼 보입니다. 하지만 모두 “모델이 더 똑똑해지는 것” 이후의 질문을 다룹니다. 지식은 어디에 저장할 것인가, 어떤 스킬이 실제로 도움이 되는가, 시각·공간·시간 이해는 어떻게 검증할 것인가, 그리고 이 모든 것을 어떤 런타임에서 반복 가능하게 운영할 것인가의 문제입니다.
-...</p></div><footer class=entry-footer><span title='2026-05-25 21:00:00 +0900 KST'>May 25, 2026</span></footer><a class=entry-link aria-label="post link to AI/ML 트렌드: 에이전트 스킬과 월드 모델 평가는 운영 문제로 이동한다" href=https://kwbaek.github.io/posts/2026-05-25-ai-ml-trends-agent-skills-and-world-model-evals/></a></article><article class="post-entry tag-entry"><header class=entry-header><h2 class=entry-hint-parent>AI/ML 트렌드: 에이전트 경제성과 신뢰 경계가 핵심 지표가 된다</h2></header><div class=entry-content><p>오늘 Discord #ai-ml-trends 채널에서 가장 흥미로운 흐름은 AI가 더 똑똑해지는 문제에서, 실제 조직 안에서 비용과 신뢰 경계를 어떻게 운영할 것인가의 문제로 이동하고 있다는 점입니다. DeepSeek의 V4-Pro 가격 고정, Hugging Face와 IBM의 Open Agent Leaderboard, NVIDIA의 token-metered AI service, Anthropic Project Glasswing, OpenAI의 수학 반례 발견, 그리고 AI 음성·오디오북 저작권 논쟁은 서로 다른 뉴스처럼 보입니다. 하지만 한 문장으로 묶으면 “모델 성능은 전제이고, 이제는 경제성·검증·책임이 경쟁력”이라는 이야기입니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-06-01 21:00:00 +0900 KST'>June 1, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to AI/ML 트렌드: AI Factory는 이제 데이터센터가 아니라 운영체제가 된다" href="https://kwbaek.github.io/posts/2026-06-01-ai-ml-trends-ai-factory-is-becoming-an-operating-system/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">AI/ML 트렌드: AI 도입은 이제 운영 모델의 문제가 되고 있다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 #ai-ml-trends 채널에서 가장 흥미로운 흐름은 AI가 더 이상 연구실의 성능 경쟁이나 제품 데모에 머물지 않고, 기업의 운영 모델 전체를 바꾸는 힘으로 이동하고 있다는 점입니다. Tesla의 self-driving 데이터 신뢰 문제, EQT와 Google Cloud의 AI rollout, 인도 글로벌 역량센터의 AI 활용, Wix의 감원, Meta의 AI 구독 검토, WiWynn의 AI 서버 병목 진단, IBM·Red Hat의 오픈소스 투자까지 서로 다른 뉴스처럼 보이지만 공통 질문은 하나입니다. “AI를 조직 안에 넣으면 어떤 일, 비용, 책임, 인프라가 재배치되는가?”
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-05-28 21:00:00 +0900 KST'>May 28, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to AI/ML 트렌드: AI 도입은 이제 운영 모델의 문제가 되고 있다" href="https://kwbaek.github.io/posts/2026-05-28-ai-ml-trends-ai-adoption-is-becoming-an-operating-model-problem/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">AI/ML 트렌드: 에이전트 스킬과 월드 모델 평가는 운영 문제로 이동한다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 Discord #ai-ml-trends 채널에서 가장 흥미로운 흐름은 AI 연구의 초점이 단일 모델 성능에서, 에이전트가 지식을 저장하고 멀티모달 세계를 검증하는 운영 방식으로 옮겨가고 있다는 점입니다. Andrej Karpathy가 Anthropic pre-training team에 합류했다는 소식, SkillOpt와 agent skill negative transfer 연구, Google AI Edge Gallery의 MCP 연동, SciAtlas 과학 지식그래프, VLM과 world model 평가 논문들은 서로 다른 분야처럼 보입니다. 하지만 모두 “모델이 더 똑똑해지는 것” 이후의 질문을 다룹니다. 지식은 어디에 저장할 것인가, 어떤 스킬이 실제로 도움이 되는가, 시각·공간·시간 이해는 어떻게 검증할 것인가, 그리고 이 모든 것을 어떤 런타임에서 반복 가능하게 운영할 것인가의 문제입니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-05-25 21:00:00 +0900 KST'>May 25, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 에이전트 스킬과 월드 모델 평가는 운영 문제로 이동한다" href="https://kwbaek.github.io/posts/2026-05-25-ai-ml-trends-agent-skills-and-world-model-evals/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">AI/ML 트렌드: 에이전트 경제성과 신뢰 경계가 핵심 지표가 된다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 Discord #ai-ml-trends 채널에서 가장 흥미로운 흐름은 AI가 더 똑똑해지는 문제에서, 실제 조직 안에서 비용과 신뢰 경계를 어떻게 운영할 것인가의 문제로 이동하고 있다는 점입니다. DeepSeek의 V4-Pro 가격 고정, Hugging Face와 IBM의 Open Agent Leaderboard, NVIDIA의 token-metered AI service, Anthropic Project Glasswing, OpenAI의 수학 반례 발견, 그리고 AI 음성·오디오북 저작권 논쟁은 서로 다른 뉴스처럼 보입니다. 하지만 한 문장으로 묶으면 “모델 성능은 전제이고, 이제는 경제성·검증·책임이 경쟁력”이라는 이야기입니다.
 먼저 가격 경쟁이 구조화되고 있습니다. DeepSeek가 V4-Pro API 할인 가격을 영구 가격으로 전환했다는 소식은 frontier급 API 가격이 일회성 프로모션이 아니라 지속 압박으로 바뀌고 있음을 보여줍니다. 기업 입장에서는 모델 선택 기준이 단순 benchmark 점수에서 input/output 단가, latency, context 길이, cache 효율, 장애 대응까지 확장됩니다. 모델이 충분히 좋아졌기 때문에 오히려 운영비가 더 날카로운 의사결정 기준이 됩니다.
-...</p></div><footer class=entry-footer><span title='2026-05-24 21:00:00 +0900 KST'>May 24, 2026</span></footer><a class=entry-link aria-label="post link to AI/ML 트렌드: 에이전트 경제성과 신뢰 경계가 핵심 지표가 된다" href=https://kwbaek.github.io/posts/2026-05-24-ai-ml-trends-agent-economics-and-trust-boundaries/></a></article><article class="post-entry tag-entry"><header class=entry-header><h2 class=entry-hint-parent>AI/ML 트렌드: 프론티어 AI는 운영 인프라 문제로 이동한다</h2></header><div class=entry-content><p>오늘 Discord #ai-ml-trends 채널에서 가장 크게 보이는 흐름은 프론티어 AI가 모델 데모를 넘어 운영 인프라, 공급망, 거버넌스 문제로 이동하고 있다는 점입니다. 오늘 올라온 소식들은 서로 다른 영역처럼 보입니다. OpenAI의 수학 반례 발견, Anthropic의 Project Glasswing, Airbnb의 중국 오픈소스 모델 논란, Hugging Face의 agent trace memory, ByteDance의 통합 이미지·비디오 모델, METR의 내부 agent misalignment pilot까지 범위가 넓습니다. 하지만 공통된 질문은 하나입니다. “강한 모델을 만들었는가?”가 아니라 “이 모델을 실제 조직과 사회 시스템 안에서 어떻게 검증하고, 연결하고, 통제할 것인가?”입니다.
-...</p></div><footer class=entry-footer><span title='2026-05-23 21:00:00 +0900 KST'>May 23, 2026</span></footer><a class=entry-link aria-label="post link to AI/ML 트렌드: 프론티어 AI는 운영 인프라 문제로 이동한다" href=https://kwbaek.github.io/posts/2026-05-23-ai-ml-trends-frontier-ai-is-becoming-operational-infrastructure/></a></article><footer class=page-footer><nav class=pagination><a class=next href=https://kwbaek.github.io/tags/infrastructure/page/2/>Next&nbsp;&nbsp;»</a></nav></footer></main><footer class=footer><span>&copy; 2026 <a href=https://kwbaek.github.io/>Kyungwook's Devlog</a></span> ·
-<span>Powered by
-<a href=https://gohugo.io/ rel="noopener noreferrer" target=_blank>Hugo</a> &
-<a href=https://github.com/adityatelange/hugo-PaperMod/ rel=noopener target=_blank>PaperMod</a></span></footer><a href=#top aria-label="go to top" title="Go to Top (Alt + G)" class=top-link id=top-link accesskey=g><svg viewBox="0 0 12 6" fill="currentColor"><path d="M12 6H0l6-6z"/></svg>
-</a><script>let menu=document.getElementById("menu");if(menu){const e=localStorage.getItem("menu-scroll-position");e&&(menu.scrollLeft=parseInt(e,10)),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)}}document.querySelectorAll('a[href^="#"]').forEach(e=>{e.addEventListener("click",function(e){e.preventDefault();var t=this.getAttribute("href").substr(1);window.matchMedia("(prefers-reduced-motion: reduce)").matches?document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView({behavior:"smooth"}),t==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${t}`)})})</script><script>var mybutton=document.getElementById("top-link");window.onscroll=function(){document.body.scrollTop>800||document.documentElement.scrollTop>800?(mybutton.style.visibility="visible",mybutton.style.opacity="1"):(mybutton.style.visibility="hidden",mybutton.style.opacity="0")}</script><script>document.getElementById("theme-toggle").addEventListener("click",()=>{const e=document.querySelector("html");e.dataset.theme==="dark"?(e.dataset.theme="light",localStorage.setItem("pref-theme","light")):(e.dataset.theme="dark",localStorage.setItem("pref-theme","dark"))})</script></body></html>
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-05-24 21:00:00 +0900 KST'>May 24, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 에이전트 경제성과 신뢰 경계가 핵심 지표가 된다" href="https://kwbaek.github.io/posts/2026-05-24-ai-ml-trends-agent-economics-and-trust-boundaries/"></a>
+</article>
+<footer class="page-footer">
+  <nav class="pagination">
+    <a class="next" href="https://kwbaek.github.io/tags/infrastructure/page/2/">Next&nbsp;&nbsp;»
+    </a>
+  </nav>
+</footer>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://kwbaek.github.io/">Kyungwook&#39;s Devlog</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

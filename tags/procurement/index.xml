@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Procurement on Kyungwook&#39;s Devlog</title>
+    <link>https://kwbaek.github.io/tags/procurement/</link>
+    <description>Recent content in Procurement on Kyungwook&#39;s Devlog</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Mon, 15 Jun 2026 21:02:00 +0900</lastBuildDate>
+    <atom:link href="https://kwbaek.github.io/tags/procurement/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI/ML 트렌드: AI 인프라 병목은 기판과 PCB까지 내려갔다</title>
+      <link>https://kwbaek.github.io/posts/2026-06-15-ai-ml-trends-ai-infra-bottleneck-moves-to-substrates-and-pcbs/</link>
+      <pubDate>Mon, 15 Jun 2026 21:02:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-06-15-ai-ml-trends-ai-infra-bottleneck-moves-to-substrates-and-pcbs/</guid>
+      <description>&lt;p&gt;오늘 AI/ML 트렌드에서 가장 중요한 신호는 AT&amp;amp;S가 말레이시아 Kulim 생산 거점에 &lt;strong&gt;15억~20억 유로 규모의 AI substrate·advanced PCB capacity 확장&lt;/strong&gt;을 발표한 것입니다. 겉으로 보면 반도체 부품 회사의 설비 투자 뉴스처럼 보이지만, AI/ML 운영 관점에서는 훨씬 더 큰 의미가 있습니다. AI 인프라 병목이 더 이상 GPU와 HBM만의 문제가 아니라, 서버 보드와 패키징을 떠받치는 기판·PCB·소재·지역 생산능력까지 내려갔다는 뜻이기 때문입니다.&lt;/p&gt;
+&lt;p&gt;지난 몇 달 동안 AI 인프라 논의는 주로 “어떤 GPU를 얼마나 확보하느냐”에 집중됐습니다. 하지만 실제 데이터센터는 GPU만으로 돌아가지 않습니다. 고성능 accelerator를 묶는 substrate, advanced PCB, optical interconnect, power delivery, cooling, rack density가 같이 맞아야 합니다. AT&amp;amp;S의 Kulim 투자는 이 하위 레이어가 AI 수요를 따라잡기 위해 얼마나 큰 자본지출을 필요로 하는지 보여줍니다. 모델 API 가격이나 cloud instance 단가만 보고 AI rollout 일정을 잡는 팀은 이제 중요한 리스크를 놓치게 됩니다.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
