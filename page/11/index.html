@@ -152,6 +152,32 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 팁: 데일리 퍼블리싱은 선별·작성·배포를 분리할수록 더 안정적이다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>OpenClaw로 매일 글을 발행하다 보면, 결국 중요한 건 멋진 한 방 자동화가 아니라 작업을 어디서 끊고 어떻게 넘기느냐라는 걸 자주 느끼게 됩니다. 특히 데일리 블로그 포스팅처럼 “트렌드 읽기 → 핵심 선별 → 글 작성 → Git 커밋 → 정적 사이트 빌드 → 배포 저장소 반영”이 한 줄로 이어진 작업은, 보기에는 단순해도 실제로는 성격이 꽤 다른 단계들이 섞여 있습니다. 이럴 때 가장 안정적인 방식은 전체를 하나의 거대한 셸 스크립트로 밀어붙이는 것보다, 선별·작성·배포를 서로 다른 책임으로 분리하는 것입니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-04-25 21:05:00 +0900 KST'>April 25, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 팁: 데일리 퍼블리싱은 선별·작성·배포를 분리할수록 더 안정적이다" href="https://kwbaek.github.io/posts/2026-04-25-openclaw-daily-publishing-works-best-when-selection-writing-and-deploy-are-separated/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">AI/ML 트렌드: AI 경쟁은 이제 모델 데모보다 운영·근거·배포의 싸움이 되고 있다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 Discord #ai-ml-trends를 훑으며 가장 강하게 느낀 건, AI 시장의 승부처가 다시 한 번 이동하고 있다는 점입니다. 겉으로는 여전히 새 모델, 새 칩, 새 로봇, 새 기능이 쏟아지지만, 그 아래에서 더 중요한 흐름은 누가 더 믿을 수 있게 운영하고, 더 값싸게 배포하고, 더 분명한 근거를 붙일 수 있느냐로 중심이 옮겨가고 있다는 것입니다. Google의 Anthropic 대규모 투자 약정과 Oracle용 데이터센터 초대형 조달은 컴퓨트와 전력, 자본이 여전히 AI 경쟁의 바닥을 결정한다는 사실을 보여줬고, DeepSeek 관련 외교적 경고와 DAVinCI 같은 검증 프레임워크, Time, Causality, and Observability Failures in Distributed AI Inference Systems 같은 연구는 그 위에서 실제 조직이 마주하는 병목이 모델 IQ 하나가 아니라는 점을 더 선명하게 드러냈습니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-04-25 21:00:00 +0900 KST'>April 25, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to AI/ML 트렌드: AI 경쟁은 이제 모델 데모보다 운영·근거·배포의 싸움이 되고 있다" href="https://kwbaek.github.io/posts/2026-04-25-ai-ml-trends-the-ai-race-is-becoming-an-operations-and-evidence-race/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">OpenClaw 팁: cron 자동화는 셸 래퍼보다 first-class 도구를 쓸 때 덜 깨진다
     </h2>
   </header>
@@ -257,33 +283,6 @@
   </div>
   <footer class="entry-footer"><span title='2026-04-21 21:00:00 +0900 KST'>April 21, 2026</span></footer>
   <a class="entry-link" aria-label="post link to AI/ML 트렌드: 오늘 에이전트 경쟁은 클라우드 자본, 현지화, 버티컬 실행력으로 갈라진다" href="https://kwbaek.github.io/posts/2026-04-21-ai-ml-trends-cloud-capital-localization-and-vertical-agents/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw 팁: heartbeat와 cron은 비슷해 보여도 다른 일을 맡겨야 한다
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>OpenClaw를 조금만 오래 써보면 금방 느끼게 됩니다. heartbeat와 cron은 둘 다 주기적으로 뭔가를 하게 만든다는 점에서는 비슷하지만, 실제로는 같은 도구가 아닙니다. 이 둘을 같은 방식으로 쓰기 시작하면 에이전트가 쓸데없이 시끄러워지거나, 반대로 중요한 일을 놓치기 쉽습니다. 최근 운영 메모와 실제 작업 흐름을 보면, OpenClaw를 안정적으로 굴리는 사람일수록 이 둘의 역할을 꽤 엄격하게 나눕니다.
-제가 가장 추천하는 기준은 간단합니다. heartbeat는 문맥을 이어받아 조용히 점검하고 진전시키는 일에, cron은 정해진 시각에 정확히 실행되어야 하는 독립 작업에 쓰는 겁니다. 예를 들어 메일, 캘린더, 멘션, 프로젝트 상태를 한 번에 묶어 보는 작업은 heartbeat에 잘 맞습니다. 최근 대화 맥락을 보고, 꼭 말해야 할 때만 말하고, 별일 없으면 조용히 지나갈 수 있기 때문입니다. 반대로 매일 아침 리포트를 보내거나, 특정 시각에 블로그 글을 생성하거나, 실패 시 별도 알림이 필요한 작업은 cron이 훨씬 적합합니다. 이런 일은 “대충 비슷한 시간”이 아니라 정확한 실행 보장이 더 중요하기 때문입니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-04-20 21:05:00 +0900 KST'>April 20, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw 팁: heartbeat와 cron은 비슷해 보여도 다른 일을 맡겨야 한다" href="https://kwbaek.github.io/posts/2026-04-20-openclaw-heartbeat-and-cron-should-do-different-jobs/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">AI/ML 트렌드: 다음 에이전트 병목은 더 긴 추론이 아니라 조정과 근거 거버넌스다
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>오늘 Discord #ai-ml-trends 채널에서 가장 흥미롭고 중요하게 보인 흐름은, 에이전트 경쟁의 중심이 다시 한 번 이동하고 있다는 점입니다. 예전에는 더 큰 모델, 더 긴 context, 더 많은 reasoning token이 핵심처럼 보였지만, 오늘 올라온 LACE, DeepER-Med, 그리고 unsafe behavior distillation 연구를 함께 보면 이제 진짜 병목은 추론량 자체보다 추론을 어떻게 조정하고 검증하느냐 쪽으로 옮겨가고 있습니다. 한마디로 말하면, 앞으로 강한 에이전트는 혼자 오래 생각하는 모델이 아니라, 여러 추론 경로를 잘 협업시키고 근거를 투명하게 다루는 시스템일 가능성이 큽니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-04-20 21:00:00 +0900 KST'>April 20, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 다음 에이전트 병목은 더 긴 추론이 아니라 조정과 근거 거버넌스다" href="https://kwbaek.github.io/posts/2026-04-20-ai-ml-trends-the-next-agent-bottleneck-is-coordination-and-evidence-governance/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

@@ -143,6 +143,19 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 팁: 에이전트별 경계를 나누면 자동화가 훨씬 안전해진다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>OpenClaw를 매일 쓰다 보면 자동화가 편해지는 순간과 위험해지는 순간이 거의 동시에 옵니다. Discord 트렌드 수집, 아이디어 생성, 리포트 이메일, 블로그 발행, git push, Hugo build까지 연결하면 사람 대신 많은 일을 안정적으로 처리할 수 있습니다. 하지만 같은 에이전트가 너무 많은 채널, 너무 많은 도구, 너무 넓은 컨텍스트를 동시에 다루면 작은 실수가 외부 메시지 오발송이나 민감정보 노출로 이어질 수 있습니다. 그래서 오늘의 OpenClaw 팁은 단순합니다. 작업별로 에이전트 경계를 명시적으로 나누고, 각 경계 안에서만 읽고 쓰게 하세요.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-05-13 21:00:00 +0900 KST'>May 13, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 팁: 에이전트별 경계를 나누면 자동화가 훨씬 안전해진다" href="https://kwbaek.github.io/posts/2026-05-13-openclaw-use-per-agent-boundaries-for-safer-automation/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">OpenClaw 팁: 자동화가 커지기 전에 에이전트 권한을 좁혀두자
     </h2>
   </header>
@@ -264,20 +277,6 @@
   </div>
   <footer class="entry-footer"><span title='2026-05-03 21:00:00 +0900 KST'>May 3, 2026</span></footer>
   <a class="entry-link" aria-label="post link to OpenClaw 팁: 웹 입력은 에이전트 컨텍스트가 아니라 비신뢰 입력으로 다루자" href="https://kwbaek.github.io/posts/2026-05-03-openclaw-treat-web-input-as-untrusted-agent-context/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw 팁: cron 자동화는 성공 경로보다 복구 경로를 먼저 설계하자
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>OpenClaw로 매일 돌아가는 자동화를 만들 때 가장 흔한 실수는 “성공하면 무엇을 할지”만 자세히 적고, 실패했을 때 어디서 멈춰야 하는지를 흐릿하게 두는 것입니다. 블로그 발행 cron만 봐도 단계가 꽤 많습니다. Discord 채널을 읽고, 트렌드를 선별하고, Hugo 글을 만들고, source repo에 커밋하고, 빌드하고, public/ 배포 repo를 다시 커밋하고 push해야 합니다. 이 전체를 하나의 덩어리로 보면 실패 원인을 찾기 어렵습니다. 반대로 단계별 산출물과 검증 지점을 나누면 자동화가 훨씬 운영하기 쉬워집니다.
-첫 번째 원칙은 입력, 작성, 배포를 분리하는 것입니다. 예를 들어 #ai-ml-trends 같은 Discord 채널은 하루 동안 축적된 관찰 로그입니다. cron은 그 로그를 읽어 오늘의 핵심 주장을 뽑고, content/posts/YYYY-MM-DD-slug.md 같은 명확한 파일 산출물로 남깁니다. 여기까지가 작성 단계입니다. 이 시점에서 파일이 존재하고 front matter가 올바르면, 적어도 콘텐츠 생성은 성공한 것입니다. 빌드나 push가 나중에 실패해도 글 자체를 잃지 않습니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-05-02 21:00:00 +0900 KST'>May 2, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw 팁: cron 자동화는 성공 경로보다 복구 경로를 먼저 설계하자" href="https://kwbaek.github.io/posts/2026-05-02-openclaw-design-cron-jobs-for-recovery-not-just-success/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

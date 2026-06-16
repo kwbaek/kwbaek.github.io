@@ -2,25 +2,70 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://kwbaek.github.io/tags/agents/</loc>
+    <lastmod>2026-06-16T21:01:00+09:00</lastmod>
+  </url><url>
     <loc>https://kwbaek.github.io/tags/ai/</loc>
-    <lastmod>2026-06-15T21:02:00+09:00</lastmod>
+    <lastmod>2026-06-16T21:01:00+09:00</lastmod>
+  </url><url>
+    <loc>https://kwbaek.github.io/categories/ai-ml/</loc>
+    <lastmod>2026-06-16T21:01:00+09:00</lastmod>
+  </url><url>
+    <loc>https://kwbaek.github.io/posts/2026-06-16-ai-ml-trends-notebook-ai-is-becoming-an-auditable-job-layer/</loc>
+    <lastmod>2026-06-16T21:01:00+09:00</lastmod>
+  </url><url>
+    <loc>https://kwbaek.github.io/tags/automation/</loc>
+    <lastmod>2026-06-16T21:01:00+09:00</lastmod>
+  </url><url>
+    <loc>https://kwbaek.github.io/categories/</loc>
+    <lastmod>2026-06-16T21:01:00+09:00</lastmod>
+  </url><url>
+    <loc>https://kwbaek.github.io/tags/colab/</loc>
+    <lastmod>2026-06-16T21:01:00+09:00</lastmod>
+  </url><url>
+    <loc>https://kwbaek.github.io/tags/cron/</loc>
+    <lastmod>2026-06-16T21:01:00+09:00</lastmod>
+  </url><url>
+    <loc>https://kwbaek.github.io/tags/governance/</loc>
+    <lastmod>2026-06-16T21:01:00+09:00</lastmod>
+  </url><url>
+    <loc>https://kwbaek.github.io/categories/hermes/</loc>
+    <lastmod>2026-06-16T21:01:00+09:00</lastmod>
+  </url><url>
+    <loc>https://kwbaek.github.io/tags/hermes/</loc>
+    <lastmod>2026-06-16T21:01:00+09:00</lastmod>
+  </url><url>
+    <loc>https://kwbaek.github.io/posts/2026-06-16-hermes-rio-promote-notebook-experiments-to-evidence-bundles/</loc>
+    <lastmod>2026-06-16T21:01:00+09:00</lastmod>
+  </url><url>
+    <loc>https://kwbaek.github.io/</loc>
+    <lastmod>2026-06-16T21:01:00+09:00</lastmod>
+  </url><url>
+    <loc>https://kwbaek.github.io/tags/ml/</loc>
+    <lastmod>2026-06-16T21:01:00+09:00</lastmod>
+  </url><url>
+    <loc>https://kwbaek.github.io/tags/observability/</loc>
+    <lastmod>2026-06-16T21:01:00+09:00</lastmod>
+  </url><url>
+    <loc>https://kwbaek.github.io/posts/</loc>
+    <lastmod>2026-06-16T21:01:00+09:00</lastmod>
+  </url><url>
+    <loc>https://kwbaek.github.io/tags/</loc>
+    <lastmod>2026-06-16T21:01:00+09:00</lastmod>
+  </url><url>
+    <loc>https://kwbaek.github.io/tags/verification/</loc>
+    <lastmod>2026-06-16T21:01:00+09:00</lastmod>
+  </url><url>
+    <loc>https://kwbaek.github.io/tags/workflow/</loc>
+    <lastmod>2026-06-16T21:01:00+09:00</lastmod>
+  </url><url>
+    <loc>https://kwbaek.github.io/tags/%EB%A6%AC%EC%98%A4/</loc>
+    <lastmod>2026-06-16T21:01:00+09:00</lastmod>
   </url><url>
     <loc>https://kwbaek.github.io/tags/ai-infrastructure/</loc>
     <lastmod>2026-06-15T21:02:00+09:00</lastmod>
   </url><url>
-    <loc>https://kwbaek.github.io/categories/ai-ml/</loc>
-    <lastmod>2026-06-15T21:02:00+09:00</lastmod>
-  </url><url>
     <loc>https://kwbaek.github.io/posts/2026-06-15-ai-ml-trends-ai-infra-bottleneck-moves-to-substrates-and-pcbs/</loc>
-    <lastmod>2026-06-15T21:02:00+09:00</lastmod>
-  </url><url>
-    <loc>https://kwbaek.github.io/tags/automation/</loc>
-    <lastmod>2026-06-15T21:02:00+09:00</lastmod>
-  </url><url>
-    <loc>https://kwbaek.github.io/categories/</loc>
-    <lastmod>2026-06-15T21:02:00+09:00</lastmod>
-  </url><url>
-    <loc>https://kwbaek.github.io/tags/cron/</loc>
     <lastmod>2026-06-15T21:02:00+09:00</lastmod>
   </url><url>
     <loc>https://kwbaek.github.io/tags/data-center/</loc>
@@ -29,43 +74,16 @@
     <loc>https://kwbaek.github.io/tags/hardware/</loc>
     <lastmod>2026-06-15T21:02:00+09:00</lastmod>
   </url><url>
-    <loc>https://kwbaek.github.io/categories/hermes/</loc>
-    <lastmod>2026-06-15T21:02:00+09:00</lastmod>
-  </url><url>
-    <loc>https://kwbaek.github.io/tags/hermes/</loc>
-    <lastmod>2026-06-15T21:02:00+09:00</lastmod>
-  </url><url>
     <loc>https://kwbaek.github.io/posts/2026-06-15-hermes-rio-add-a-supply-chain-readiness-check-to-ai-crons/</loc>
     <lastmod>2026-06-15T21:02:00+09:00</lastmod>
   </url><url>
     <loc>https://kwbaek.github.io/tags/infrastructure/</loc>
     <lastmod>2026-06-15T21:02:00+09:00</lastmod>
   </url><url>
-    <loc>https://kwbaek.github.io/</loc>
-    <lastmod>2026-06-15T21:02:00+09:00</lastmod>
-  </url><url>
-    <loc>https://kwbaek.github.io/tags/ml/</loc>
-    <lastmod>2026-06-15T21:02:00+09:00</lastmod>
-  </url><url>
-    <loc>https://kwbaek.github.io/posts/</loc>
-    <lastmod>2026-06-15T21:02:00+09:00</lastmod>
-  </url><url>
     <loc>https://kwbaek.github.io/tags/procurement/</loc>
     <lastmod>2026-06-15T21:02:00+09:00</lastmod>
   </url><url>
     <loc>https://kwbaek.github.io/tags/supply-chain/</loc>
-    <lastmod>2026-06-15T21:02:00+09:00</lastmod>
-  </url><url>
-    <loc>https://kwbaek.github.io/tags/</loc>
-    <lastmod>2026-06-15T21:02:00+09:00</lastmod>
-  </url><url>
-    <loc>https://kwbaek.github.io/tags/verification/</loc>
-    <lastmod>2026-06-15T21:02:00+09:00</lastmod>
-  </url><url>
-    <loc>https://kwbaek.github.io/tags/workflow/</loc>
-    <lastmod>2026-06-15T21:02:00+09:00</lastmod>
-  </url><url>
-    <loc>https://kwbaek.github.io/tags/%EB%A6%AC%EC%98%A4/</loc>
     <lastmod>2026-06-15T21:02:00+09:00</lastmod>
   </url><url>
     <loc>https://kwbaek.github.io/posts/2026-06-14-ai-ml-trends-multimodal-ai-moves-from-generation-to-grounded-editing/</loc>
@@ -120,9 +138,6 @@
     <lastmod>2026-06-12T21:00:00+09:00</lastmod>
   </url><url>
     <loc>https://kwbaek.github.io/tags/finance/</loc>
-    <lastmod>2026-06-12T21:00:00+09:00</lastmod>
-  </url><url>
-    <loc>https://kwbaek.github.io/tags/governance/</loc>
     <lastmod>2026-06-12T21:00:00+09:00</lastmod>
   </url><url>
     <loc>https://kwbaek.github.io/posts/2026-06-12-hermes-rio-treat-agent-state-as-an-attack-surface/</loc>
@@ -406,9 +421,6 @@
   </url><url>
     <loc>https://kwbaek.github.io/tags/research-workflow/</loc>
     <lastmod>2026-05-28T21:00:00+09:00</lastmod>
-  </url><url>
-    <loc>https://kwbaek.github.io/tags/agents/</loc>
-    <lastmod>2026-05-27T21:00:00+09:00</lastmod>
   </url><url>
     <loc>https://kwbaek.github.io/posts/2026-05-27-ai-ml-trends-ai-infrastructure-is-expanding-beyond-the-model/</loc>
     <lastmod>2026-05-27T21:00:00+09:00</lastmod>
@@ -723,9 +735,6 @@
     <lastmod>2026-04-25T21:05:00+09:00</lastmod>
   </url><url>
     <loc>https://kwbaek.github.io/posts/2026-04-25-ai-ml-trends-the-ai-race-is-becoming-an-operations-and-evidence-race/</loc>
-    <lastmod>2026-04-25T21:00:00+09:00</lastmod>
-  </url><url>
-    <loc>https://kwbaek.github.io/tags/observability/</loc>
     <lastmod>2026-04-25T21:00:00+09:00</lastmod>
   </url><url>
     <loc>https://kwbaek.github.io/posts/2026-04-24-openclaw-first-class-tools-make-cron-automation-less-fragile/</loc>

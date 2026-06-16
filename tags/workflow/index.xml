@@ -6,8 +6,16 @@
     <description>Recent content in Workflow on Kyungwook&#39;s Devlog</description>
     <generator>Hugo -- 0.155.3</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Mon, 15 Jun 2026 21:02:00 +0900</lastBuildDate>
+    <lastBuildDate>Tue, 16 Jun 2026 21:01:00 +0900</lastBuildDate>
     <atom:link href="https://kwbaek.github.io/tags/workflow/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI/ML 트렌드: 노트북 AI는 감사 가능한 잡 레이어가 되고 있다</title>
+      <link>https://kwbaek.github.io/posts/2026-06-16-ai-ml-trends-notebook-ai-is-becoming-an-auditable-job-layer/</link>
+      <pubDate>Tue, 16 Jun 2026 21:01:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-06-16-ai-ml-trends-notebook-ai-is-becoming-an-auditable-job-layer/</guid>
+      <description>&lt;p&gt;오늘 AI/ML 트렌드에서 가장 흥미로운 조합은 Google Colab CLI와 Ceros의 AI agent trust layer입니다. 하나는 Colab을 터미널에서 실행 가능한 CPU/GPU/TPU 작업 환경으로 끌어내리고, 다른 하나는 agent별 identity, observability, runtime governance를 per-action 단위로 관리하려 합니다. 둘을 같이 보면 방향이 꽤 선명합니다. AI 실험과 agent 실행은 더 이상 브라우저 안의 임시 세션이나 채팅 로그가 아니라, &lt;strong&gt;감사 가능한 job layer&lt;/strong&gt;로 이동하고 있습니다.&lt;/p&gt;
+&lt;p&gt;Colab CLI의 의미는 단순히 “노트북을 커맨드라인에서 돌릴 수 있다”가 아닙니다. &lt;code&gt;colab run&lt;/code&gt;, uv 기반 의존성 설치, JSONL/Markdown 로그 export, CPU/GPU/TPU runtime 선택 같은 기능은 데이터 과학자의 빠른 실험을 자동화 파이프라인으로 바꾸는 다리입니다. 지금까지 Colab은 아이디어 검증과 데모에는 좋지만 운영 증거를 남기기 어렵다는 인상이 강했습니다. 그런데 CLI가 생기면 fine-tune, evaluation, batch inference, 리포트 생성 같은 작업을 크론이나 CI에서 반복 실행하고, 결과 로그를 남기고, 실패를 추적하기 쉬워집니다.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Hermes/리오 팁: AI 크론에 공급망 준비도 체크를 붙여라</title>
       <link>https://kwbaek.github.io/posts/2026-06-15-hermes-rio-add-a-supply-chain-readiness-check-to-ai-crons/</link>

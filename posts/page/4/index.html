@@ -158,6 +158,34 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">AI/ML 트렌드: AI Factory는 이제 데이터센터가 아니라 운영체제가 된다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 #ai-ml-trends 흐름에서 가장 눈에 띈 변화는 NVIDIA가 AI factory를 더 이상 “GPU가 많이 꽂힌 데이터센터”로만 설명하지 않는다는 점입니다. NVIDIA의 DSX OS 발표와 DOCA In-Silicon Security 공개는 같은 메시지를 냅니다. 앞으로 AI 경쟁의 핵심은 모델 하나를 더 잘 고르는 것이 아니라, 수천 개 GPU와 수많은 agentic workload가 돌아가는 공장을 운영체제처럼 제어하고 증거를 남기는 능력이 됩니다.
+DSX OS는 AI factory 운영을 개방형·모듈형 소프트웨어 레이어로 표준화하려는 시도입니다. 대규모 학습과 추론 클러스터에서는 GPU 할당, 네트워크, 스토리지, 장애 대응, 관측성, 비용 통제가 한 덩어리로 움직입니다. 예전에는 이런 요소가 각 회사의 내부 운영 노하우에 가까웠다면, 이제는 AI 인프라 자체가 하나의 제품 카테고리가 되고 있습니다. 기업 입장에서는 “어느 모델을 쓸까?”보다 “이 워크로드를 어느 클러스터, 어느 리전, 어느 권한 체계 안에서 돌릴까?”가 더 중요한 질문이 됩니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-06-01 21:00:00 +0900 KST'>June 1, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to AI/ML 트렌드: AI Factory는 이제 데이터센터가 아니라 운영체제가 된다" href="https://kwbaek.github.io/posts/2026-06-01-ai-ml-trends-ai-factory-is-becoming-an-operating-system/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Hermes/리오 팁: 크론 자동화를 작은 AI Factory처럼 운영하기
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 AI/ML 트렌드에서 NVIDIA의 AI factory 운영 소프트웨어와 칩 단 보안 발표가 눈에 띄었습니다. 흥미로운 점은 이 원칙이 대형 GPU 클러스터에만 해당하지 않는다는 것입니다. Hermes/리오로 매일 리포트, 블로그, 트렌드 스캔, 개인 업무 자동화를 돌릴 때도 같은 사고방식이 필요합니다. 크론 하나는 작아 보이지만, 여러 개가 쌓이면 결국 개인용 AI factory가 됩니다.
+작은 AI factory의 첫 번째 원칙은 입력 라인 관리입니다. 어떤 크론이 어떤 채널, 리포트, 캐시, 파일을 읽는지 명확해야 합니다. 1순위 입력이 막혔을 때 어떤 폴백을 쓸지, 폴백 자료는 얼마나 최신이어야 하는지, 중복 검사는 무엇으로 할지 정해두면 자동화가 흔들리지 않습니다. “오늘 Discord를 못 읽었으니 아무 말이나 쓰자”가 아니라, “최신 스캐너 캐시와 아침 리포트를 쓰되 최근 발행 글과 겹치지 않게 쓰자”가 되어야 합니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-06-01 21:00:00 +0900 KST'>June 1, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to Hermes/리오 팁: 크론 자동화를 작은 AI Factory처럼 운영하기" href="https://kwbaek.github.io/posts/2026-06-01-hermes-rio-run-cron-like-a-small-ai-factory/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">AI/ML 트렌드: AI 경쟁은 모델 선택보다 배포 위치와 운영 증거로 이동한다
     </h2>
   </header>
@@ -264,34 +292,6 @@ OpenAI의 Rosalind Biodefense는 이 질문을 가장 민감한 영역에서 보
   </div>
   <footer class="entry-footer"><span title='2026-05-28 21:00:00 +0900 KST'>May 28, 2026</span></footer>
   <a class="entry-link" aria-label="post link to Hermes/리오 팁: 크론 블로그 자동화는 작은 편집 운영체계다" href="https://kwbaek.github.io/posts/2026-05-28-hermes-rio-cron-blog-automation-as-editorial-ops/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">AI/ML 트렌드: AI 인프라는 모델 밖으로 확장되고 있다
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>오늘 Discord #ai-ml-trends 채널에서 가장 중요한 흐름은 AI 경쟁의 병목이 모델 자체에서 메모리, CPU, 서빙 런타임, 평가, 보안, 디바이스 실행 환경으로 넓어지고 있다는 점입니다. Google의 Gemini Omni Flash 같은 멀티모달 생성 모델 소식도 눈에 띄었지만, 하루 전체 메시지를 묶어 보면 더 큰 변화는 “좋은 모델을 만들었다”보다 “그 모델을 어디서, 어떤 비용으로, 얼마나 안전하게, 어떤 운영 표면에서 계속 굴릴 것인가”에 있었습니다.
-가장 선명한 신호는 AI factory 공급망입니다. Reuters의 SK Hynix 시가총액 1조 달러 돌파 보도와 Micron 관련 소식은 HBM과 고급 DRAM이 이제 GPU의 보조 부품이 아니라 AI 인프라 경제의 핵심 병목이 됐다는 사실을 보여줍니다. NVIDIA가 대만 공급망과 더 밀착되는 흐름도 같은 맥락입니다. 모델 학습과 추론 수요가 계속 커지면 GPU만으로는 이야기가 끝나지 않습니다. 메모리 대역폭, 패키징, 서버 제조, 전력, 냉각, 지역별 공급망 리스크가 모두 AI 제품의 원가와 출시 속도를 좌우합니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-05-27 21:00:00 +0900 KST'>May 27, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to AI/ML 트렌드: AI 인프라는 모델 밖으로 확장되고 있다" href="https://kwbaek.github.io/posts/2026-05-27-ai-ml-trends-ai-infrastructure-is-expanding-beyond-the-model/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw 팁: 트렌드 채널을 편집 메모리 시스템처럼 쓰기
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>OpenClaw로 매일 블로그를 쓰다 보면 Discord 채널은 단순한 알림 피드가 아니라 편집 메모리 시스템이 됩니다. 뉴스 링크를 모아두는 곳으로만 쓰면 하루가 끝날 때 다시 처음부터 판단해야 합니다. 반대로 각 메시지에 짧은 해석, 중요도, 중복 여부, 원문 링크를 함께 남기면 저녁 cron은 raw feed를 뒤지는 대신 이미 1차 정리된 편집 재료를 읽고 글의 중심 문장을 만들 수 있습니다.
-오늘 #ai-ml-trends 채널이 좋은 예입니다. 하루 동안 Reuters, Hugging Face, Google, NVIDIA, Intel, GitHub 릴리즈가 섞여 들어왔습니다. 표면적으로는 메모리 업체 시가총액, vLLM 릴리즈, Gemini Omni Flash, ECB의 AI 보안 리스크, SpatialBench, VitaBench 2.0처럼 서로 다른 소식입니다. 하지만 각 메시지에 “왜 중요한가”가 붙어 있었기 때문에 저녁 작업에서는 개별 링크보다 반복되는 방향을 더 빨리 볼 수 있었습니다. 오늘의 중심은 AI 인프라가 모델 밖으로 확장되고 있다는 점이었습니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-05-27 21:00:00 +0900 KST'>May 27, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw 팁: 트렌드 채널을 편집 메모리 시스템처럼 쓰기" href="https://kwbaek.github.io/posts/2026-05-27-openclaw-use-trend-channels-as-an-editorial-memory-system/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

@@ -158,6 +158,38 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">AI/ML 시스템의 메시지 전송 안정성: Outbound Queue 패턴
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>AI 에이전트가 실제 서비스로 진화하면서, “메시지 전송 안정성&#34;이 핵심 과제로 떠올랐습니다. 특히 챗봇, 알림 시스템, 자동화 에이전트처럼 실시간 응답이 필수인 AI 시스템에서는 재시작이나 크래시 직후 메시지가 유실되는 문제가 치명적일 수 있습니다.
+문제: 전송 중 재시작 시 메시지 유실 전통적인 AI 챗봇 아키텍처에서는 다음과 같은 흐름이 일반적입니다:
+AI 모델이 응답 생성 메모리(변수)에 응답 저장 Discord/Telegram/Slack API 호출해서 전송 하지만 3번 API 호출 직전에 서버가 재시작되면? 응답은 영원히 사라집니다. 사용자 입장에서는 “봇이 답을 안 해&#34;라는 최악의 경험이 됩니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-02-15 21:00:00 +0900 KST'>February 15, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to AI/ML 시스템의 메시지 전송 안정성: Outbound Queue 패턴" href="https://kwbaek.github.io/posts/2026-02-15-ai-ml-outbound-resilience/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 업데이트 운영 체크리스트 (2026.2 버전 기준)
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>OpenClaw는 빠르게 진화하는 AI 에이전트 플랫폼입니다. 2주에 한 번꼴로 새 기능과 버그 수정이 나오는데, 업데이트 후 시스템이 제대로 동작하는지 확인하는 운영 체크리스트가 필요합니다.
+이번 글에서는 2026.2.13 업데이트를 기준으로 실전 검증 루틴을 정리해봤습니다.
+1단계: 업데이트 전 준비 현재 버전 확인 openclaw --version 예: 2026.2.9
+백업 (선택) 중요한 설정이 있다면 백업:
+cp ~/.openclaw/openclaw.json ~/.openclaw/openclaw.json.backup 2단계: 업데이트 실행 npm 글로벌 설치 (가장 흔한 방식) npm install -g openclaw@latest 소스 설치 (개발자) cd ~/openclaw git pull npm install openclaw update 3단계: 핵심 3종 체크 ⭐ 업데이트 후 반드시 실행해야 하는 3가지 명령:
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-02-15 21:00:00 +0900 KST'>February 15, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 업데이트 운영 체크리스트 (2026.2 버전 기준)" href="https://kwbaek.github.io/posts/2026-02-15-openclaw-update-checklist/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">2026년 2월, 중국 AI 모델 러시와 Gemini 3 Deep Think의 등장
     </h2>
   </header>
@@ -275,37 +307,6 @@ Alibaba: RynnBrain (물리적 AI/로봇 특화) Kuaishou: Kling 3.0 ByteDance: S
   </div>
   <footer class="entry-footer"><span title='2026-02-11 21:00:00 +0900 KST'>February 11, 2026</span></footer>
   <a class="entry-link" aria-label="post link to OpenClaw 크론으로 블로그 자동 포스팅하기: AI 비서가 매일 글을 써준다" href="https://kwbaek.github.io/posts/2026-02-11-openclaw-cron-automation/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">AI 에이전트가 시스템을 만드는 시대: NVIDIA VibeTensor와 자기 학습의 진화
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>AI가 AI를 만든다 2026년 2월, NVIDIA가 공개한 VibeTensor는 AI 개발의 새로운 패러다임을 제시합니다. 이 프로젝트의 핵심은 LLM 기반 코딩 에이전트가 전체 딥러닝 런타임 스택을 프로그래밍 방식으로 생성했다는 점입니다.
-사람이 작성한 것은 high-level 가이드뿐. 나머지 시스템 소프트웨어는 AI 에이전트가 직접 작성했습니다. 이는 단순히 “코드 자동 생성&#34;을 넘어, AI가 복잡한 시스템 아키텍처를 이해하고 구현할 수 있는 수준에 도달했음을 의미합니다.
-자기 대화(Mumbling)로 학습하는 AI 더 흥미로운 것은 AI의 학습 방식 자체도 진화하고 있다는 점입니다. 최근 연구(1월 28일 발표)에 따르면, AI가 내부적으로 “중얼거리는(mumbling)” 행위와 단기 메모리를 결합하면 새로운 작업 적응, 목표 전환, 복잡한 과제 처리가 더 쉬워진다고 합니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-02-10 21:00:00 +0900 KST'>February 10, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to AI 에이전트가 시스템을 만드는 시대: NVIDIA VibeTensor와 자기 학습의 진화" href="https://kwbaek.github.io/posts/2026-02-10-ai-agents-building-systems/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw Heartbeat 활용법: AI가 알아서 챙겨주는 똑똑한 비서 만들기
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>AI 비서가 내 일을 알아서 챙긴다면? OpenClaw의 Heartbeat 기능을 제대로 활용하면, AI 비서가 단순한 대화 상대를 넘어 진짜 일을 대신 처리해주는 존재로 진화합니다. 이 글에서는 Heartbeat를 실전에서 어떻게 활용할 수 있는지 소개합니다.
-Heartbeat란? Heartbeat는 주기적으로 AI가 깨어나 체크리스트를 수행하는 기능입니다. 사용자가 명령을 내리지 않아도, AI가 스스로 필요한 작업을 확인하고 보고합니다.
-기본 동작 방식:
-OpenClaw Gateway가 설정된 주기(기본 30분)마다 AI 세션에 heartbeat 메시지를 전송 AI가 HEARTBEAT.md 파일을 읽고 작성된 작업을 수행 특별한 일이 없으면 HEARTBEAT_OK 응답으로 조용히 넘어감 중요한 사항이 있으면 사용자에게 알림 실전 활용 예시 1. 이메일 모니터링 # HEARTBEAT.md ## 이메일 체크 (하루 3-4회) - Gmail 미읽은 메일 확인 - &#34;urgent&#34;, &#34;ASAP&#34;, &#34;중요&#34; 키워드 포함 메일은 즉시 알림 - 그 외 메일은 요약 정리 AI가 알아서 inbox를 스캔하고, 급한 메일만 골라서 알려줍니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-02-10 21:00:00 +0900 KST'>February 10, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw Heartbeat 활용법: AI가 알아서 챙겨주는 똑똑한 비서 만들기" href="https://kwbaek.github.io/posts/2026-02-10-openclaw-heartbeat-guide/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

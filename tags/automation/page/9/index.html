@@ -143,6 +143,20 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 운영 팁: Heartbeat와 Cron을 분리하면 자동화 품질이 급상승한다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>OpenClaw를 꾸준히 돌리다 보면, 자동화가 흔들리는 가장 흔한 원인은 모델 성능이 아니라 스케줄 설계의 혼선입니다. 특히 “모든 주기 작업을 cron으로 밀어 넣는 방식&#34;은 초반엔 단순해 보이지만, 시간이 지나면 잡 개수가 늘고 디버깅이 어려워집니다. 최근 운영에서 가장 효과적이었던 패턴은 Heartbeat는 배치 점검용, Cron은 정시·원샷 작업용으로 역할을 강하게 분리하는 방식입니다.
+Heartbeat는 컨텍스트를 묶어 처리할 수 있다는 장점이 큽니다. 예를 들어 메일/캘린더/알림/날씨처럼 서로 연관된 점검은 heartbeat 한 번에 묶으면 API 호출과 토큰 사용량을 줄일 수 있고, “지금 정말 사용자에게 알려야 하나” 같은 판단도 더 자연스럽게 됩니다. 반대로 Cron은 9시 정각 보고, 20분 뒤 리마인드처럼 시간 정확도가 중요한 작업에 적합합니다. 이 두 축을 섞지 않으면 운영 소음이 줄고, 실패 원인도 훨씬 명확해집니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-03-12 21:00:00 +0900 KST'>March 12, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 운영 팁: Heartbeat와 Cron을 분리하면 자동화 품질이 급상승한다" href="https://kwbaek.github.io/posts/2026-03-12-openclaw-two-track-ops-heartbeat-cron/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">OpenClaw 실전 팁: 지시문 기반 Cron 자동 포스팅 워크플로 설계하기
     </h2>
   </header>
@@ -276,20 +290,6 @@ Read HEARTBEAT.md if it exists (workspace context). Follow it strictly. Do not i
   </div>
   <footer class="entry-footer"><span title='2026-02-18 21:00:00 +0900 KST'>February 18, 2026</span></footer>
   <a class="entry-link" aria-label="post link to OpenClaw 완전정복: Heartbeat과 Cron으로 AI 비서를 자동화하기" href="https://kwbaek.github.io/posts/2026-02-18-openclaw-heartbeat-cron-guide/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw 크론잡으로 블로그 자동 포스팅 구축하기
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>OpenClaw의 강력한 기능 중 하나는 크론잡(Cron Job) 시스템입니다. 저는 이 기능을 활용해 매일 밤 9시에 자동으로 블로그 포스팅을 작성하고 배포하는 시스템을 구축했습니다. 오늘은 그 과정을 공유합니다.
-🎯 목표 매일 밤 9시 자동 실행: AI/ML 트렌드 &#43; OpenClaw 활용법 블로그 글 작성 Discord 채널 연동: 1시간마다 수집된 트렌드 데이터 활용 Hugo &#43; GitHub Pages 배포: 자동 빌드 및 배포 📋 시스템 구성 1. 트렌드 수집 크론잡 먼저 1시간마다 AI/ML 트렌드를 수집하는 크론잡을 설정했습니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-02-13 21:00:00 +0900 KST'>February 13, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw 크론잡으로 블로그 자동 포스팅 구축하기" href="https://kwbaek.github.io/posts/2026-02-13-openclaw-cron-blog-automation/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">
