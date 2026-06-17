@@ -143,6 +143,21 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 운영 노트: 기능 추가보다 중요한 건 운영 규율
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>OpenClaw를 매일 쓰다 보면, 새 기능을 따라가는 속도보다 더 중요한 게 있습니다. 바로 운영 규율(ops discipline) 입니다. 최근 업데이트 메모를 보면 모델/채널/cron/security 관련 기능이 거의 매일 추가되는데, 이 시기일수록 “무엇을 새로 켰는지”보다 “어떻게 안정적으로 굴리는지”가 성패를 가릅니다.
+제가 요즘 기준으로 잡는 핵심은 간단합니다. (1) 검증, (2) 최소권한, (3) 주기 점검, (4) 분리 운용 입니다.
+첫째, 검증입니다. 설정을 바꾼 뒤 바로 운영에 넣기보다 openclaw config validate --json과 health/ready 프로브를 통해 사전 확인하는 루틴이 중요합니다. 이 습관 하나로, 사소한 키 오타나 breaking 변경으로 인한 장애를 꽤 많이 줄일 수 있습니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-03-19 21:00:00 +0900 KST'>March 19, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 운영 노트: 기능 추가보다 중요한 건 운영 규율" href="https://kwbaek.github.io/posts/2026-03-19-openclaw-from-feature-chasing-to-ops-discipline/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">OpenClaw 운영 브리프 (2026-03-18): 데일리 블로그/크론 운영의 안정성 패턴
     </h2>
   </header>
@@ -269,21 +284,6 @@ OpenClaw Cron이란? OpenClaw의 Cron은 단순한 스케줄러가 아닙니다.
   </div>
   <footer class="entry-footer"><span title='2026-03-07 21:00:00 +0900 KST'>March 7, 2026</span></footer>
   <a class="entry-link" aria-label="post link to OpenClaw 활용법 — Cron으로 매일 블로그 자동 포스팅하기" href="https://kwbaek.github.io/posts/2026-03-07-openclaw-cron-blog-automation/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw v2026.3.2 실전 팁 — Secrets 워크플로와 스트리밍 설정 완전 정리
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>OpenClaw v2026.3.2가 안정화된 지 며칠이 지났다. 이번 릴리즈에서 조용히 바뀐 것들 중 실제 운영에서 체감하는 두 가지 — Secrets 워크플로와 스트리밍 설정 — 를 집중 정리한다.
-Secrets 워크플로: audit → configure → apply → reload v2026.2.26부터 정식화된 Secrets 관리 워크플로가 이제 꽤 안정적으로 쓸 수 있는 상태다. 기본 순서는 이렇다:
-# 1. 현재 상태 점검 openclaw secrets audit --check # 2. 미설정 항목 구성 openclaw secrets configure # 3. 드라이런으로 영향 확인 openclaw secrets apply --dry-run # 4. 실제 적용 openclaw secrets apply # 5. 게이트웨이에 반영 openclaw secrets reload 특히 --dry-run 단계를 절대 건너뛰지 말 것. active surface에서 unresolved secret ref가 있으면 fail-fast로 즉시 실패 처리되기 때문에, 실수로 운영 중단이 생길 수 있다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-03-06 21:00:00 +0900 KST'>March 6, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw v2026.3.2 실전 팁 — Secrets 워크플로와 스트리밍 설정 완전 정리" href="https://kwbaek.github.io/posts/2026-03-06-openclaw-secrets-and-streaming/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">
