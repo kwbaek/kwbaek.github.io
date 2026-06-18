@@ -1,20 +1,2 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
-  <channel>
-    <title>AI Factory on Kyungwook&#39;s Devlog</title>
-    <link>https://kwbaek.github.io/tags/ai-factory/</link>
-    <description>Recent content in AI Factory on Kyungwook&#39;s Devlog</description>
-    <generator>Hugo -- 0.155.3</generator>
-    <language>ko-kr</language>
-    <lastBuildDate>Mon, 01 Jun 2026 21:00:00 +0900</lastBuildDate>
-    <atom:link href="https://kwbaek.github.io/tags/ai-factory/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>AI/ML 트렌드: AI Factory는 이제 데이터센터가 아니라 운영체제가 된다</title>
-      <link>https://kwbaek.github.io/posts/2026-06-01-ai-ml-trends-ai-factory-is-becoming-an-operating-system/</link>
-      <pubDate>Mon, 01 Jun 2026 21:00:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/posts/2026-06-01-ai-ml-trends-ai-factory-is-becoming-an-operating-system/</guid>
-      <description>&lt;p&gt;오늘 &lt;code&gt;#ai-ml-trends&lt;/code&gt; 흐름에서 가장 눈에 띈 변화는 NVIDIA가 AI factory를 더 이상 “GPU가 많이 꽂힌 데이터센터”로만 설명하지 않는다는 점입니다. NVIDIA의 DSX OS 발표와 DOCA In-Silicon Security 공개는 같은 메시지를 냅니다. 앞으로 AI 경쟁의 핵심은 모델 하나를 더 잘 고르는 것이 아니라, 수천 개 GPU와 수많은 agentic workload가 돌아가는 공장을 &lt;strong&gt;운영체제처럼 제어하고 증거를 남기는 능력&lt;/strong&gt;이 됩니다.&lt;/p&gt;
-&lt;p&gt;DSX OS는 AI factory 운영을 개방형·모듈형 소프트웨어 레이어로 표준화하려는 시도입니다. 대규모 학습과 추론 클러스터에서는 GPU 할당, 네트워크, 스토리지, 장애 대응, 관측성, 비용 통제가 한 덩어리로 움직입니다. 예전에는 이런 요소가 각 회사의 내부 운영 노하우에 가까웠다면, 이제는 AI 인프라 자체가 하나의 제품 카테고리가 되고 있습니다. 기업 입장에서는 “어느 모델을 쓸까?”보다 “이 워크로드를 어느 클러스터, 어느 리전, 어느 권한 체계 안에서 돌릴까?”가 더 중요한 질문이 됩니다.&lt;/p&gt;</description>
-    </item>
-  </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>AI Factory on Kyungwook's Devlog</title><link>https://kwbaek.github.io/tags/ai-factory/</link><description>Recent content in AI Factory on Kyungwook's Devlog</description><generator>Hugo -- 0.155.3</generator><language>ko-kr</language><lastBuildDate>Mon, 01 Jun 2026 21:00:00 +0900</lastBuildDate><atom:link href="https://kwbaek.github.io/tags/ai-factory/index.xml" rel="self" type="application/rss+xml"/><item><title>AI/ML 트렌드: AI Factory는 이제 데이터센터가 아니라 운영체제가 된다</title><link>https://kwbaek.github.io/posts/2026-06-01-ai-ml-trends-ai-factory-is-becoming-an-operating-system/</link><pubDate>Mon, 01 Jun 2026 21:00:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-06-01-ai-ml-trends-ai-factory-is-becoming-an-operating-system/</guid><description>&lt;p&gt;오늘 &lt;code&gt;#ai-ml-trends&lt;/code&gt; 흐름에서 가장 눈에 띈 변화는 NVIDIA가 AI factory를 더 이상 “GPU가 많이 꽂힌 데이터센터”로만 설명하지 않는다는 점입니다. NVIDIA의 DSX OS 발표와 DOCA In-Silicon Security 공개는 같은 메시지를 냅니다. 앞으로 AI 경쟁의 핵심은 모델 하나를 더 잘 고르는 것이 아니라, 수천 개 GPU와 수많은 agentic workload가 돌아가는 공장을 &lt;strong&gt;운영체제처럼 제어하고 증거를 남기는 능력&lt;/strong&gt;이 됩니다.&lt;/p&gt;
+&lt;p&gt;DSX OS는 AI factory 운영을 개방형·모듈형 소프트웨어 레이어로 표준화하려는 시도입니다. 대규모 학습과 추론 클러스터에서는 GPU 할당, 네트워크, 스토리지, 장애 대응, 관측성, 비용 통제가 한 덩어리로 움직입니다. 예전에는 이런 요소가 각 회사의 내부 운영 노하우에 가까웠다면, 이제는 AI 인프라 자체가 하나의 제품 카테고리가 되고 있습니다. 기업 입장에서는 “어느 모델을 쓸까?”보다 “이 워크로드를 어느 클러스터, 어느 리전, 어느 권한 체계 안에서 돌릴까?”가 더 중요한 질문이 됩니다.&lt;/p&gt;</description></item></channel></rss>
