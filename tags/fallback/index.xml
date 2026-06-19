@@ -1,2 +1,27 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Fallback on Kyungwook's Devlog</title><link>https://kwbaek.github.io/tags/fallback/</link><description>Recent content in Fallback on Kyungwook's Devlog</description><generator>Hugo -- 0.155.3</generator><language>ko-kr</language><lastBuildDate>Sun, 31 May 2026 21:00:00 +0900</lastBuildDate><atom:link href="https://kwbaek.github.io/tags/fallback/index.xml" rel="self" type="application/rss+xml"/><item><title>Hermes/리오 팁: 자동화 크론에는 입력 폴백과 공개 출력 경계가 필요하다</title><link>https://kwbaek.github.io/posts/2026-05-31-hermes-rio-cron-needs-input-fallback-and-public-boundaries/</link><pubDate>Sun, 31 May 2026 21:00:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-05-31-hermes-rio-cron-needs-input-fallback-and-public-boundaries/</guid><description>&lt;p&gt;Hermes/리오로 매일 블로그, 리포트, 트렌드 스캔을 자동화할 때 가장 자주 만나는 현실은 “원래 입력이 항상 열려 있지는 않다”는 점입니다. 채널 API가 잠시 막히거나, 외부 검색이 rate limit에 걸리거나, 특정 도구가 현재 세션에서 제공되지 않을 수 있습니다. 이때 좋은 자동화는 바로 실패하지도 않고, 근거 없이 지어내지도 않습니다. 대신 &lt;strong&gt;입력 폴백&lt;/strong&gt;과 &lt;strong&gt;공개 출력 경계&lt;/strong&gt;를 미리 설계해 둡니다.&lt;/p&gt;
-&lt;p&gt;입력 폴백은 단순한 예비 파일이 아닙니다. 우선순위가 있는 정보 지도입니다. 예를 들어 트렌드 기반 글쓰기 크론이라면 1순위는 오늘의 원본 채널 메시지입니다. 2순위는 같은 목적을 위해 만들어 둔 최신 스캐너 캐시입니다. 3순위는 오늘 아침 생성된 데일리 리포트입니다. 4순위는 최근 며칠의 발행 글과 히스토리입니다. 이렇게 계층을 정해 두면 live source를 읽지 못해도 작업은 멈추지 않습니다. 동시에 “내가 지금 어떤 품질의 입력을 쓰고 있는가”를 스스로 알 수 있습니다.&lt;/p&gt;</description></item><item><title>OpenClaw 팁: 에이전트 자동화에는 모델 교체 계획이 필요하다</title><link>https://kwbaek.github.io/posts/2026-05-09-openclaw-plan-for-model-churn-in-agent-automation/</link><pubDate>Sat, 09 May 2026 21:00:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-05-09-openclaw-plan-for-model-churn-in-agent-automation/</guid><description>&lt;p&gt;OpenClaw를 매일 쓰는 개인 비서나 블로그 발행 cron, Discord 트렌드 수집기, 코드 리뷰 도우미로 운영하다 보면 모델은 “한 번 정하면 끝”인 설정값이 아니라는 사실을 금방 느끼게 됩니다. 오늘 트렌드 피드에서도 GitHub의 Grok Code Fast 1 deprecation 예정 공지, GPT-4.1 deprecation 공지, Claude Sonnet 4 deprecation 흐름이 반복해서 등장했습니다. coding assistant와 agentic workflow의 기본 모델 수명주기가 점점 짧아지고 있다는 뜻입니다. 그래서 OpenClaw 자동화에서는 &lt;strong&gt;모델 교체를 예외 상황이 아니라 정상 운영 이벤트로 설계&lt;/strong&gt;해야 합니다.&lt;/p&gt;</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Fallback on Kyungwook&#39;s Devlog</title>
+    <link>https://kwbaek.github.io/tags/fallback/</link>
+    <description>Recent content in Fallback on Kyungwook&#39;s Devlog</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Sun, 31 May 2026 21:00:00 +0900</lastBuildDate>
+    <atom:link href="https://kwbaek.github.io/tags/fallback/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hermes/리오 팁: 자동화 크론에는 입력 폴백과 공개 출력 경계가 필요하다</title>
+      <link>https://kwbaek.github.io/posts/2026-05-31-hermes-rio-cron-needs-input-fallback-and-public-boundaries/</link>
+      <pubDate>Sun, 31 May 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-05-31-hermes-rio-cron-needs-input-fallback-and-public-boundaries/</guid>
+      <description>&lt;p&gt;Hermes/리오로 매일 블로그, 리포트, 트렌드 스캔을 자동화할 때 가장 자주 만나는 현실은 “원래 입력이 항상 열려 있지는 않다”는 점입니다. 채널 API가 잠시 막히거나, 외부 검색이 rate limit에 걸리거나, 특정 도구가 현재 세션에서 제공되지 않을 수 있습니다. 이때 좋은 자동화는 바로 실패하지도 않고, 근거 없이 지어내지도 않습니다. 대신 &lt;strong&gt;입력 폴백&lt;/strong&gt;과 &lt;strong&gt;공개 출력 경계&lt;/strong&gt;를 미리 설계해 둡니다.&lt;/p&gt;
+&lt;p&gt;입력 폴백은 단순한 예비 파일이 아닙니다. 우선순위가 있는 정보 지도입니다. 예를 들어 트렌드 기반 글쓰기 크론이라면 1순위는 오늘의 원본 채널 메시지입니다. 2순위는 같은 목적을 위해 만들어 둔 최신 스캐너 캐시입니다. 3순위는 오늘 아침 생성된 데일리 리포트입니다. 4순위는 최근 며칠의 발행 글과 히스토리입니다. 이렇게 계층을 정해 두면 live source를 읽지 못해도 작업은 멈추지 않습니다. 동시에 “내가 지금 어떤 품질의 입력을 쓰고 있는가”를 스스로 알 수 있습니다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>OpenClaw 팁: 에이전트 자동화에는 모델 교체 계획이 필요하다</title>
+      <link>https://kwbaek.github.io/posts/2026-05-09-openclaw-plan-for-model-churn-in-agent-automation/</link>
+      <pubDate>Sat, 09 May 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-05-09-openclaw-plan-for-model-churn-in-agent-automation/</guid>
+      <description>&lt;p&gt;OpenClaw를 매일 쓰는 개인 비서나 블로그 발행 cron, Discord 트렌드 수집기, 코드 리뷰 도우미로 운영하다 보면 모델은 “한 번 정하면 끝”인 설정값이 아니라는 사실을 금방 느끼게 됩니다. 오늘 트렌드 피드에서도 GitHub의 Grok Code Fast 1 deprecation 예정 공지, GPT-4.1 deprecation 공지, Claude Sonnet 4 deprecation 흐름이 반복해서 등장했습니다. coding assistant와 agentic workflow의 기본 모델 수명주기가 점점 짧아지고 있다는 뜻입니다. 그래서 OpenClaw 자동화에서는 &lt;strong&gt;모델 교체를 예외 상황이 아니라 정상 운영 이벤트로 설계&lt;/strong&gt;해야 합니다.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

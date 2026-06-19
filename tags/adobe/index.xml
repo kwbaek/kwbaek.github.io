@@ -1,1 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Adobe on Kyungwook's Devlog</title><link>https://kwbaek.github.io/tags/adobe/</link><description>Recent content in Adobe on Kyungwook's Devlog</description><generator>Hugo -- 0.155.3</generator><language>ko-kr</language><lastBuildDate>Sat, 13 Jun 2026 21:00:00 +0900</lastBuildDate><atom:link href="https://kwbaek.github.io/tags/adobe/index.xml" rel="self" type="application/rss+xml"/><item><title>AI/ML 트렌드: 에이전트 메모리는 더 싸지고 더 조직화된다</title><link>https://kwbaek.github.io/posts/2026-06-13-ai-ml-trends-agent-memory-is-getting-cheaper-and-more-orchestrated/</link><pubDate>Sat, 13 Jun 2026 21:00:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-06-13-ai-ml-trends-agent-memory-is-getting-cheaper-and-more-orchestrated/</guid><description>&lt;p&gt;오늘 AI/ML 트렌드에서 가장 흥미로운 신호는 &lt;strong&gt;에이전트 메모리와 업무 오케스트레이션이 동시에 현실적인 비용 구조로 내려오고 있다&lt;/strong&gt;는 점입니다. Moonshot AI는 Kimi K2.7 Code를 공개하며 1T MoE, 256K context, coding-focused agentic workflow를 전면에 내세웠고, Adobe는 CX Enterprise Coworker를 GA로 공개하며 마케팅·고객경험 업무를 MCP와 A2A 기반 agent orchestration으로 묶는 그림을 제시했습니다. 여기에 Hugging Face 커뮤니티의 Stable Static Embedding 실전 가이드는 16M급 embedding을 CPU에서 빠르게 돌려 retrieval과 agent memory의 1차 필터로 쓰는 패턴을 보여줍니다.&lt;/p&gt;</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Adobe on Kyungwook&#39;s Devlog</title>
+    <link>https://kwbaek.github.io/tags/adobe/</link>
+    <description>Recent content in Adobe on Kyungwook&#39;s Devlog</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Sat, 13 Jun 2026 21:00:00 +0900</lastBuildDate>
+    <atom:link href="https://kwbaek.github.io/tags/adobe/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI/ML 트렌드: 에이전트 메모리는 더 싸지고 더 조직화된다</title>
+      <link>https://kwbaek.github.io/posts/2026-06-13-ai-ml-trends-agent-memory-is-getting-cheaper-and-more-orchestrated/</link>
+      <pubDate>Sat, 13 Jun 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-06-13-ai-ml-trends-agent-memory-is-getting-cheaper-and-more-orchestrated/</guid>
+      <description>&lt;p&gt;오늘 AI/ML 트렌드에서 가장 흥미로운 신호는 &lt;strong&gt;에이전트 메모리와 업무 오케스트레이션이 동시에 현실적인 비용 구조로 내려오고 있다&lt;/strong&gt;는 점입니다. Moonshot AI는 Kimi K2.7 Code를 공개하며 1T MoE, 256K context, coding-focused agentic workflow를 전면에 내세웠고, Adobe는 CX Enterprise Coworker를 GA로 공개하며 마케팅·고객경험 업무를 MCP와 A2A 기반 agent orchestration으로 묶는 그림을 제시했습니다. 여기에 Hugging Face 커뮤니티의 Stable Static Embedding 실전 가이드는 16M급 embedding을 CPU에서 빠르게 돌려 retrieval과 agent memory의 1차 필터로 쓰는 패턴을 보여줍니다.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

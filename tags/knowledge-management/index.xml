@@ -1,2 +1,20 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Knowledge Management on Kyungwook's Devlog</title><link>https://kwbaek.github.io/tags/knowledge-management/</link><description>Recent content in Knowledge Management on Kyungwook's Devlog</description><generator>Hugo -- 0.155.3</generator><language>ko-kr</language><lastBuildDate>Mon, 25 May 2026 21:00:00 +0900</lastBuildDate><atom:link href="https://kwbaek.github.io/tags/knowledge-management/index.xml" rel="self" type="application/rss+xml"/><item><title>OpenClaw 팁: 에이전트 스킬을 문서가 아니라 테스트된 운영 자산으로 다루기</title><link>https://kwbaek.github.io/posts/2026-05-25-openclaw-treat-agent-skills-as-tested-operational-assets/</link><pubDate>Mon, 25 May 2026 21:00:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-05-25-openclaw-treat-agent-skills-as-tested-operational-assets/</guid><description>&lt;p&gt;OpenClaw를 오래 쓰다 보면 스킬은 단순한 사용 설명서가 아니라 &lt;strong&gt;에이전트의 행동을 바꾸는 운영 자산&lt;/strong&gt;이 됩니다. 어떤 도구를 먼저 쓰는지, 실패했을 때 어디까지 복구하는지, 외부 채널에 무엇을 말해도 되는지, 반복 작업을 어떤 순서로 실행하는지가 스킬과 instruction 파일에 녹아듭니다. 그래서 스킬을 많이 모으는 것보다 중요한 일은, 각 스킬이 실제 작업에서 도움이 되는지 계속 확인하는 것입니다.&lt;/p&gt;
-&lt;p&gt;오늘 AI/ML 트렌드에서 흥미로웠던 SkillOpt와 agent skill negative transfer 연구는 OpenClaw 운영에도 바로 적용할 수 있는 교훈을 줍니다. 스킬은 자동으로 생성하거나 저장해두었다고 해서 늘 좋은 결과를 만들지 않습니다. 어떤 스킬은 특정 작업에서는 시간을 줄여주지만, 다른 작업에서는 과한 절차를 강제해 오히려 실패율을 높일 수 있습니다. 또 스킬을 뽑아내는 agent와 그 스킬을 잘 사용하는 agent가 다를 수도 있습니다. 이 말은 스킬 운영을 “지식 축적”이 아니라 “효용 검증” 문제로 봐야 한다는 뜻입니다.&lt;/p&gt;</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Knowledge Management on Kyungwook&#39;s Devlog</title>
+    <link>https://kwbaek.github.io/tags/knowledge-management/</link>
+    <description>Recent content in Knowledge Management on Kyungwook&#39;s Devlog</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Mon, 25 May 2026 21:00:00 +0900</lastBuildDate>
+    <atom:link href="https://kwbaek.github.io/tags/knowledge-management/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>OpenClaw 팁: 에이전트 스킬을 문서가 아니라 테스트된 운영 자산으로 다루기</title>
+      <link>https://kwbaek.github.io/posts/2026-05-25-openclaw-treat-agent-skills-as-tested-operational-assets/</link>
+      <pubDate>Mon, 25 May 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-05-25-openclaw-treat-agent-skills-as-tested-operational-assets/</guid>
+      <description>&lt;p&gt;OpenClaw를 오래 쓰다 보면 스킬은 단순한 사용 설명서가 아니라 &lt;strong&gt;에이전트의 행동을 바꾸는 운영 자산&lt;/strong&gt;이 됩니다. 어떤 도구를 먼저 쓰는지, 실패했을 때 어디까지 복구하는지, 외부 채널에 무엇을 말해도 되는지, 반복 작업을 어떤 순서로 실행하는지가 스킬과 instruction 파일에 녹아듭니다. 그래서 스킬을 많이 모으는 것보다 중요한 일은, 각 스킬이 실제 작업에서 도움이 되는지 계속 확인하는 것입니다.&lt;/p&gt;
+&lt;p&gt;오늘 AI/ML 트렌드에서 흥미로웠던 SkillOpt와 agent skill negative transfer 연구는 OpenClaw 운영에도 바로 적용할 수 있는 교훈을 줍니다. 스킬은 자동으로 생성하거나 저장해두었다고 해서 늘 좋은 결과를 만들지 않습니다. 어떤 스킬은 특정 작업에서는 시간을 줄여주지만, 다른 작업에서는 과한 절차를 강제해 오히려 실패율을 높일 수 있습니다. 또 스킬을 뽑아내는 agent와 그 스킬을 잘 사용하는 agent가 다를 수도 있습니다. 이 말은 스킬 운영을 “지식 축적”이 아니라 “효용 검증” 문제로 봐야 한다는 뜻입니다.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

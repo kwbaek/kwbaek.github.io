@@ -1,11 +1,331 @@
-<!doctype html><html lang=en dir=auto data-theme=auto><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=robots content="index, follow"><title>Hermes/리오 팁: 크론 블로그 자동화는 작은 편집 운영체계다 | Kyungwook's Devlog</title><meta name=keywords content="Hermes,리오,Cron,Blog,Automation,Hugo,Ops,Research Workflow"><meta name=description content="Hermes/리오로 매일 블로그 포스팅을 자동화할 때 가장 중요한 관점은 “에이전트가 글을 대신 써준다”가 아닙니다. 더 정확히는 입력 수집, 선별, 작성, 검증, 배포를 매일 같은 방식으로 통과시키는 작은 편집 운영체계를 만드는 일입니다. AI/ML 트렌드 글처럼 매일 바뀌는 소재를 다룰수록 즉흥적인 웹 검색보다 안정적인 입력 채널, 명확한 작성 규칙, 빌드 검증, 배포 커밋이 중요합니다.
-첫 번째 축은 입력입니다. Discord의 #ai-ml-trends 같은 채널은 단순 링크 저장소가 아니라 editorial inbox로 쓰는 편이 좋습니다. 하루 동안 Reuters, Bloomberg, Hugging Face, GitHub release, 기업 블로그가 섞여 들어오더라도 메시지마다 제목, 한 줄 의미, 원문 링크가 유지되면 저녁 크론은 훨씬 빠르게 중심 주제를 잡을 수 있습니다. 오늘처럼 Tesla 안전 데이터, EQT의 AI rollout, Wix 감원, Meta 구독, IBM·Red Hat 오픈소스 투자가 한꺼번에 들어온 날에는 “개별 뉴스”보다 “AI 도입이 운영 모델을 바꾼다”는 공통선을 발견하는 능력이 더 중요합니다."><meta name=author content><link rel=canonical href=https://kwbaek.github.io/posts/2026-05-28-hermes-rio-cron-blog-automation-as-editorial-ops/><link crossorigin=anonymous href=/assets/css/stylesheet.da3211e5ef867bf2b75fd5a6515cfed7195c011e8ab735694e203810a827097b.css integrity="sha256-2jIR5e+Ge/K3X9WmUVz+1xlcAR6KtzVpTiA4EKgnCXs=" rel="preload stylesheet" as=style><link rel=icon href=https://kwbaek.github.io/favicon.ico><link rel=icon type=image/png sizes=16x16 href=https://kwbaek.github.io/favicon-16x16.png><link rel=icon type=image/png sizes=32x32 href=https://kwbaek.github.io/favicon-32x32.png><link rel=apple-touch-icon href=https://kwbaek.github.io/apple-touch-icon.png><link rel=mask-icon href=https://kwbaek.github.io/safari-pinned-tab.svg><meta name=theme-color content="#2e2e33"><meta name=msapplication-TileColor content="#2e2e33"><link rel=alternate hreflang=en href=https://kwbaek.github.io/posts/2026-05-28-hermes-rio-cron-blog-automation-as-editorial-ops/><noscript><style>#theme-toggle,.top-link{display:none}</style><style>@media(prefers-color-scheme:dark){:root{--theme:rgb(29, 30, 32);--entry:rgb(46, 46, 51);--primary:rgb(218, 218, 219);--secondary:rgb(155, 156, 157);--tertiary:rgb(65, 66, 68);--content:rgb(196, 196, 197);--code-block-bg:rgb(46, 46, 51);--code-bg:rgb(55, 56, 62);--border:rgb(51, 51, 51);color-scheme:dark}.list{background:var(--theme)}.toc{background:var(--entry)}}@media(prefers-color-scheme:light){.list::-webkit-scrollbar-thumb{border-color:var(--code-bg)}}</style></noscript><script>localStorage.getItem("pref-theme")==="dark"?document.querySelector("html").dataset.theme="dark":localStorage.getItem("pref-theme")==="light"?document.querySelector("html").dataset.theme="light":window.matchMedia("(prefers-color-scheme: dark)").matches?document.querySelector("html").dataset.theme="dark":document.querySelector("html").dataset.theme="light"</script><meta property="og:url" content="https://kwbaek.github.io/posts/2026-05-28-hermes-rio-cron-blog-automation-as-editorial-ops/"><meta property="og:site_name" content="Kyungwook's Devlog"><meta property="og:title" content="Hermes/리오 팁: 크론 블로그 자동화는 작은 편집 운영체계다"><meta property="og:description" content="Hermes/리오로 매일 블로그 포스팅을 자동화할 때 가장 중요한 관점은 “에이전트가 글을 대신 써준다”가 아닙니다. 더 정확히는 입력 수집, 선별, 작성, 검증, 배포를 매일 같은 방식으로 통과시키는 작은 편집 운영체계를 만드는 일입니다. AI/ML 트렌드 글처럼 매일 바뀌는 소재를 다룰수록 즉흥적인 웹 검색보다 안정적인 입력 채널, 명확한 작성 규칙, 빌드 검증, 배포 커밋이 중요합니다.
-첫 번째 축은 입력입니다. Discord의 #ai-ml-trends 같은 채널은 단순 링크 저장소가 아니라 editorial inbox로 쓰는 편이 좋습니다. 하루 동안 Reuters, Bloomberg, Hugging Face, GitHub release, 기업 블로그가 섞여 들어오더라도 메시지마다 제목, 한 줄 의미, 원문 링크가 유지되면 저녁 크론은 훨씬 빠르게 중심 주제를 잡을 수 있습니다. 오늘처럼 Tesla 안전 데이터, EQT의 AI rollout, Wix 감원, Meta 구독, IBM·Red Hat 오픈소스 투자가 한꺼번에 들어온 날에는 “개별 뉴스”보다 “AI 도입이 운영 모델을 바꾼다”는 공통선을 발견하는 능력이 더 중요합니다."><meta property="og:locale" content="ko-kr"><meta property="og:type" content="article"><meta property="article:section" content="posts"><meta property="article:published_time" content="2026-05-28T21:00:00+09:00"><meta property="article:modified_time" content="2026-05-28T21:00:00+09:00"><meta property="article:tag" content="Hermes"><meta property="article:tag" content="리오"><meta property="article:tag" content="Cron"><meta property="article:tag" content="Blog"><meta property="article:tag" content="Automation"><meta property="article:tag" content="Hugo"><meta name=twitter:card content="summary"><meta name=twitter:title content="Hermes/리오 팁: 크론 블로그 자동화는 작은 편집 운영체계다"><meta name=twitter:description content="Hermes/리오로 매일 블로그 포스팅을 자동화할 때 가장 중요한 관점은 “에이전트가 글을 대신 써준다”가 아닙니다. 더 정확히는 입력 수집, 선별, 작성, 검증, 배포를 매일 같은 방식으로 통과시키는 작은 편집 운영체계를 만드는 일입니다. AI/ML 트렌드 글처럼 매일 바뀌는 소재를 다룰수록 즉흥적인 웹 검색보다 안정적인 입력 채널, 명확한 작성 규칙, 빌드 검증, 배포 커밋이 중요합니다.
-첫 번째 축은 입력입니다. Discord의 #ai-ml-trends 같은 채널은 단순 링크 저장소가 아니라 editorial inbox로 쓰는 편이 좋습니다. 하루 동안 Reuters, Bloomberg, Hugging Face, GitHub release, 기업 블로그가 섞여 들어오더라도 메시지마다 제목, 한 줄 의미, 원문 링크가 유지되면 저녁 크론은 훨씬 빠르게 중심 주제를 잡을 수 있습니다. 오늘처럼 Tesla 안전 데이터, EQT의 AI rollout, Wix 감원, Meta 구독, IBM·Red Hat 오픈소스 투자가 한꺼번에 들어온 날에는 “개별 뉴스”보다 “AI 도입이 운영 모델을 바꾼다”는 공통선을 발견하는 능력이 더 중요합니다."><script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Posts","item":"https://kwbaek.github.io/posts/"},{"@type":"ListItem","position":2,"name":"Hermes/리오 팁: 크론 블로그 자동화는 작은 편집 운영체계다","item":"https://kwbaek.github.io/posts/2026-05-28-hermes-rio-cron-blog-automation-as-editorial-ops/"}]}</script><script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"Hermes/리오 팁: 크론 블로그 자동화는 작은 편집 운영체계다","name":"Hermes\/리오 팁: 크론 블로그 자동화는 작은 편집 운영체계다","description":"Hermes/리오로 매일 블로그 포스팅을 자동화할 때 가장 중요한 관점은 “에이전트가 글을 대신 써준다”가 아닙니다. 더 정확히는 입력 수집, 선별, 작성, 검증, 배포를 매일 같은 방식으로 통과시키는 작은 편집 운영체계를 만드는 일입니다. AI/ML 트렌드 글처럼 매일 바뀌는 소재를 다룰수록 즉흥적인 웹 검색보다 안정적인 입력 채널, 명확한 작성 규칙, 빌드 검증, 배포 커밋이 중요합니다.\n첫 번째 축은 입력입니다. Discord의 #ai-ml-trends 같은 채널은 단순 링크 저장소가 아니라 editorial inbox로 쓰는 편이 좋습니다. 하루 동안 Reuters, Bloomberg, Hugging Face, GitHub release, 기업 블로그가 섞여 들어오더라도 메시지마다 제목, 한 줄 의미, 원문 링크가 유지되면 저녁 크론은 훨씬 빠르게 중심 주제를 잡을 수 있습니다. 오늘처럼 Tesla 안전 데이터, EQT의 AI rollout, Wix 감원, Meta 구독, IBM·Red Hat 오픈소스 투자가 한꺼번에 들어온 날에는 “개별 뉴스”보다 “AI 도입이 운영 모델을 바꾼다”는 공통선을 발견하는 능력이 더 중요합니다.\n","keywords":["Hermes","리오","Cron","Blog","Automation","Hugo","Ops","Research Workflow"],"articleBody":"Hermes/리오로 매일 블로그 포스팅을 자동화할 때 가장 중요한 관점은 “에이전트가 글을 대신 써준다”가 아닙니다. 더 정확히는 입력 수집, 선별, 작성, 검증, 배포를 매일 같은 방식으로 통과시키는 작은 편집 운영체계를 만드는 일입니다. AI/ML 트렌드 글처럼 매일 바뀌는 소재를 다룰수록 즉흥적인 웹 검색보다 안정적인 입력 채널, 명확한 작성 규칙, 빌드 검증, 배포 커밋이 중요합니다.\n첫 번째 축은 입력입니다. Discord의 #ai-ml-trends 같은 채널은 단순 링크 저장소가 아니라 editorial inbox로 쓰는 편이 좋습니다. 하루 동안 Reuters, Bloomberg, Hugging Face, GitHub release, 기업 블로그가 섞여 들어오더라도 메시지마다 제목, 한 줄 의미, 원문 링크가 유지되면 저녁 크론은 훨씬 빠르게 중심 주제를 잡을 수 있습니다. 오늘처럼 Tesla 안전 데이터, EQT의 AI rollout, Wix 감원, Meta 구독, IBM·Red Hat 오픈소스 투자가 한꺼번에 들어온 날에는 “개별 뉴스”보다 “AI 도입이 운영 모델을 바꾼다”는 공통선을 발견하는 능력이 더 중요합니다.\n두 번째 축은 선별입니다. 자동화가 모든 링크를 같은 무게로 다루면 블로그는 기사 목록이 됩니다. Hermes/리오는 트렌드 채널의 오늘 메시지를 읽고, 중복되거나 반복적인 소재를 줄이고, 독자가 기억할 만한 하나의 thesis를 골라야 합니다. 이 단계에서 좋은 기준은 세 가지입니다. 첫째, 단기 뉴스가 아니라 며칠 뒤에도 의미가 남는가. 둘째, 기술·비즈니스·운영 중 두 개 이상을 연결하는가. 셋째, 개인 프로젝트나 업무 자동화에 적용 가능한 시사점이 있는가. 이 기준을 통과한 소재는 글의 중심 문장이 됩니다.\n세 번째 축은 형식 고정입니다. Hugo 블로그 자동화에서는 front matter가 작지만 중요합니다. title, date, draft: false, categories, tags, comments: true가 일관되게 들어가야 하고, 파일명에는 날짜와 slug가 들어가야 합니다. 이 규칙이 고정돼 있으면 글이 많아져도 정리하기 쉽고, 배포 단계에서 예측 불가능한 문제가 줄어듭니다. 특히 매일 생성되는 글은 블로그 글이면서 동시에 장기적인 기술 감각의 로그이기 때문에 날짜와 카테고리의 일관성이 나중에 큰 차이를 만듭니다.\n네 번째 축은 공개 경계입니다. 에이전트는 로컬 파일, 채널 메시지, git 저장소, 빌드 로그를 함께 다루지만, 공개 글에는 독자가 필요한 맥락만 들어가야 합니다. 내부 경로, 토큰, 세션 정보, 실행 환경의 세부값은 글에 섞이지 않아야 합니다. Hermes/리오 같은 개인 에이전트가 강력해질수록 “무엇을 알고 있는가”만큼 “무엇을 공개하지 않는가”가 중요합니다. 자동화된 글쓰기에서 privacy는 부가 기능이 아니라 기본 설계입니다.\n다섯 번째 축은 검증입니다. 좋은 daily blog cron은 Markdown 파일을 만든 뒤 끝나지 않습니다. 원문 저장소에서 변경분을 확인하고, 커밋하고, Hugo 빌드를 돌리고, 생성된 정적 사이트를 배포 저장소에서 다시 커밋합니다. 이 과정이 번거로워 보일 수 있지만 실패 지점을 분리해 줍니다. 글 파일이 잘못됐는지, Hugo 빌드가 실패했는지, 정적 사이트 배포가 누락됐는지 바로 알 수 있습니다. 자동화는 성공할 때보다 실패할 때 구조의 품질이 드러납니다.\n여섯 번째 축은 마이그레이션 감각입니다. 예전에 쓰던 자동화 이름이나 레거시 디렉터리가 남아 있어도, 사용자에게 보이는 제품 경험은 현재 기준에 맞게 정리되어야 합니다. 내부 호환성을 위해 오래된 경로나 서비스명이 남는 것은 자연스럽지만, 블로그 독자에게는 지금 실제로 쓰는 Hermes/리오 워크플로우로 설명하는 편이 맞습니다. 이렇게 하면 과거 자동화 자산을 버리지 않으면서도, 새 기준의 운영 철학을 분명히 전달할 수 있습니다.\n이 패턴은 블로그에만 머물지 않습니다. 같은 구조를 GitHub issue triage, 리서치 리포트, 패션 트렌드 스캔, 개인 지식베이스 업데이트에도 적용할 수 있습니다. 입력 채널을 정하고, 선별 기준을 만들고, 산출물 형식을 고정하고, 검증 단계를 넣으면 에이전트는 매번 새로 고민하는 대신 작은 운영체계를 반복 실행합니다. 사람이 해야 할 일은 방향과 기준을 다듬는 것이고, Hermes/리오는 지루하지만 중요한 반복 실행을 맡습니다.\n결론적으로 daily blog cron은 단순한 글쓰기 자동화가 아닙니다. 매일의 기술 신호를 잡아내고, 공개 가능한 언어로 정리하고, 빌드와 배포까지 밀어 넣는 editorial ops입니다. Hermes/리오를 이런 작은 편집 운영체계로 쓰면 블로그는 콘텐츠 저장소를 넘어, 내가 어떤 기술 변화를 중요하게 봤는지 축적하는 장기 메모리가 됩니다.\n실전 체크리스트:\n트렌드 채널 메시지는 제목, 한 줄 해석, 원문 링크 형식으로 남긴다. 하루 글은 링크 나열이 아니라 하나의 thesis를 중심으로 쓴다. Hugo front matter와 파일명 규칙을 고정한다. 공개 글에는 내부 실행 세부사항과 민감정보를 넣지 않는다. 원문 커밋, Hugo 빌드, 정적 사이트 배포 커밋을 별도로 확인한다. ","wordCount":"574","inLanguage":"en","datePublished":"2026-05-28T21:00:00+09:00","dateModified":"2026-05-28T21:00:00+09:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://kwbaek.github.io/posts/2026-05-28-hermes-rio-cron-blog-automation-as-editorial-ops/"},"publisher":{"@type":"Organization","name":"Kyungwook's Devlog","logo":{"@type":"ImageObject","url":"https://kwbaek.github.io/favicon.ico"}}}</script></head><body id=top><header class=header><nav class=nav><div class=logo><a href=https://kwbaek.github.io/ accesskey=h title="Kyungwook's Devlog (Alt + H)">Kyungwook's Devlog</a><div class=logo-switches><button id=theme-toggle accesskey=t title="(Alt + T)" aria-label="Toggle theme">
-<svg id="moon" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
-<svg id="sun" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button></div></div><ul id=menu><li><a href=https://kwbaek.github.io/categories/ title=categories><span>categories</span></a></li><li><a href=https://kwbaek.github.io/tags/ title=tags><span>tags</span></a></li><li><a href=https://kwbaek.github.io/ title="Kyungwook's Devlog"><span>Kyungwook's Devlog</span>&nbsp;
-<svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><path d="M15 3h6v6"/><path d="M10 14 21 3"/></svg></a></li></ul></nav></header><main class=main><article class=post-single><header class=post-header><h1 class="post-title entry-hint-parent">Hermes/리오 팁: 크론 블로그 자동화는 작은 편집 운영체계다</h1><div class=post-meta><span title='2026-05-28 21:00:00 +0900 KST'>May 28, 2026</span></div></header><div class=post-content><p>Hermes/리오로 매일 블로그 포스팅을 자동화할 때 가장 중요한 관점은 “에이전트가 글을 대신 써준다”가 아닙니다. 더 정확히는 <strong>입력 수집, 선별, 작성, 검증, 배포를 매일 같은 방식으로 통과시키는 작은 편집 운영체계</strong>를 만드는 일입니다. AI/ML 트렌드 글처럼 매일 바뀌는 소재를 다룰수록 즉흥적인 웹 검색보다 안정적인 입력 채널, 명확한 작성 규칙, 빌드 검증, 배포 커밋이 중요합니다.</p><p>첫 번째 축은 입력입니다. Discord의 <code>#ai-ml-trends</code> 같은 채널은 단순 링크 저장소가 아니라 editorial inbox로 쓰는 편이 좋습니다. 하루 동안 Reuters, Bloomberg, Hugging Face, GitHub release, 기업 블로그가 섞여 들어오더라도 메시지마다 제목, 한 줄 의미, 원문 링크가 유지되면 저녁 크론은 훨씬 빠르게 중심 주제를 잡을 수 있습니다. 오늘처럼 Tesla 안전 데이터, EQT의 AI rollout, Wix 감원, Meta 구독, IBM·Red Hat 오픈소스 투자가 한꺼번에 들어온 날에는 “개별 뉴스”보다 “AI 도입이 운영 모델을 바꾼다”는 공통선을 발견하는 능력이 더 중요합니다.</p><p>두 번째 축은 선별입니다. 자동화가 모든 링크를 같은 무게로 다루면 블로그는 기사 목록이 됩니다. Hermes/리오는 트렌드 채널의 오늘 메시지를 읽고, 중복되거나 반복적인 소재를 줄이고, 독자가 기억할 만한 하나의 thesis를 골라야 합니다. 이 단계에서 좋은 기준은 세 가지입니다. 첫째, 단기 뉴스가 아니라 며칠 뒤에도 의미가 남는가. 둘째, 기술·비즈니스·운영 중 두 개 이상을 연결하는가. 셋째, 개인 프로젝트나 업무 자동화에 적용 가능한 시사점이 있는가. 이 기준을 통과한 소재는 글의 중심 문장이 됩니다.</p><p>세 번째 축은 형식 고정입니다. Hugo 블로그 자동화에서는 front matter가 작지만 중요합니다. <code>title</code>, <code>date</code>, <code>draft: false</code>, <code>categories</code>, <code>tags</code>, <code>comments: true</code>가 일관되게 들어가야 하고, 파일명에는 날짜와 slug가 들어가야 합니다. 이 규칙이 고정돼 있으면 글이 많아져도 정리하기 쉽고, 배포 단계에서 예측 불가능한 문제가 줄어듭니다. 특히 매일 생성되는 글은 블로그 글이면서 동시에 장기적인 기술 감각의 로그이기 때문에 날짜와 카테고리의 일관성이 나중에 큰 차이를 만듭니다.</p><p>네 번째 축은 공개 경계입니다. 에이전트는 로컬 파일, 채널 메시지, git 저장소, 빌드 로그를 함께 다루지만, 공개 글에는 독자가 필요한 맥락만 들어가야 합니다. 내부 경로, 토큰, 세션 정보, 실행 환경의 세부값은 글에 섞이지 않아야 합니다. Hermes/리오 같은 개인 에이전트가 강력해질수록 “무엇을 알고 있는가”만큼 “무엇을 공개하지 않는가”가 중요합니다. 자동화된 글쓰기에서 privacy는 부가 기능이 아니라 기본 설계입니다.</p><p>다섯 번째 축은 검증입니다. 좋은 daily blog cron은 Markdown 파일을 만든 뒤 끝나지 않습니다. 원문 저장소에서 변경분을 확인하고, 커밋하고, Hugo 빌드를 돌리고, 생성된 정적 사이트를 배포 저장소에서 다시 커밋합니다. 이 과정이 번거로워 보일 수 있지만 실패 지점을 분리해 줍니다. 글 파일이 잘못됐는지, Hugo 빌드가 실패했는지, 정적 사이트 배포가 누락됐는지 바로 알 수 있습니다. 자동화는 성공할 때보다 실패할 때 구조의 품질이 드러납니다.</p><p>여섯 번째 축은 마이그레이션 감각입니다. 예전에 쓰던 자동화 이름이나 레거시 디렉터리가 남아 있어도, 사용자에게 보이는 제품 경험은 현재 기준에 맞게 정리되어야 합니다. 내부 호환성을 위해 오래된 경로나 서비스명이 남는 것은 자연스럽지만, 블로그 독자에게는 지금 실제로 쓰는 Hermes/리오 워크플로우로 설명하는 편이 맞습니다. 이렇게 하면 과거 자동화 자산을 버리지 않으면서도, 새 기준의 운영 철학을 분명히 전달할 수 있습니다.</p><p>이 패턴은 블로그에만 머물지 않습니다. 같은 구조를 GitHub issue triage, 리서치 리포트, 패션 트렌드 스캔, 개인 지식베이스 업데이트에도 적용할 수 있습니다. 입력 채널을 정하고, 선별 기준을 만들고, 산출물 형식을 고정하고, 검증 단계를 넣으면 에이전트는 매번 새로 고민하는 대신 작은 운영체계를 반복 실행합니다. 사람이 해야 할 일은 방향과 기준을 다듬는 것이고, Hermes/리오는 지루하지만 중요한 반복 실행을 맡습니다.</p><p>결론적으로 daily blog cron은 단순한 글쓰기 자동화가 아닙니다. 매일의 기술 신호를 잡아내고, 공개 가능한 언어로 정리하고, 빌드와 배포까지 밀어 넣는 editorial ops입니다. Hermes/리오를 이런 작은 편집 운영체계로 쓰면 블로그는 콘텐츠 저장소를 넘어, 내가 어떤 기술 변화를 중요하게 봤는지 축적하는 장기 메모리가 됩니다.</p><p>실전 체크리스트:</p><ul><li>트렌드 채널 메시지는 제목, 한 줄 해석, 원문 링크 형식으로 남긴다.</li><li>하루 글은 링크 나열이 아니라 하나의 thesis를 중심으로 쓴다.</li><li>Hugo front matter와 파일명 규칙을 고정한다.</li><li>공개 글에는 내부 실행 세부사항과 민감정보를 넣지 않는다.</li><li>원문 커밋, Hugo 빌드, 정적 사이트 배포 커밋을 별도로 확인한다.</li></ul></div><footer class=post-footer><ul class=post-tags><li><a href=https://kwbaek.github.io/tags/hermes/>Hermes</a></li><li><a href=https://kwbaek.github.io/tags/%EB%A6%AC%EC%98%A4/>리오</a></li><li><a href=https://kwbaek.github.io/tags/cron/>Cron</a></li><li><a href=https://kwbaek.github.io/tags/blog/>Blog</a></li><li><a href=https://kwbaek.github.io/tags/automation/>Automation</a></li><li><a href=https://kwbaek.github.io/tags/hugo/>Hugo</a></li><li><a href=https://kwbaek.github.io/tags/ops/>Ops</a></li><li><a href=https://kwbaek.github.io/tags/research-workflow/>Research Workflow</a></li></ul></footer><script src=https://utteranc.es/client.js repo=kwbaek/blog-comments issue-term=pathname theme=github-light crossorigin=anonymous async></script></article></main><footer class=footer><span>&copy; 2026 <a href=https://kwbaek.github.io/>Kyungwook's Devlog</a></span> ·
-<span>Powered by
-<a href=https://gohugo.io/ rel="noopener noreferrer" target=_blank>Hugo</a> &
-<a href=https://github.com/adityatelange/hugo-PaperMod/ rel=noopener target=_blank>PaperMod</a></span></footer><a href=#top aria-label="go to top" title="Go to Top (Alt + G)" class=top-link id=top-link accesskey=g><svg viewBox="0 0 12 6" fill="currentColor"><path d="M12 6H0l6-6z"/></svg>
-</a><script>let menu=document.getElementById("menu");if(menu){const e=localStorage.getItem("menu-scroll-position");e&&(menu.scrollLeft=parseInt(e,10)),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)}}document.querySelectorAll('a[href^="#"]').forEach(e=>{e.addEventListener("click",function(e){e.preventDefault();var t=this.getAttribute("href").substr(1);window.matchMedia("(prefers-reduced-motion: reduce)").matches?document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView({behavior:"smooth"}),t==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${t}`)})})</script><script>var mybutton=document.getElementById("top-link");window.onscroll=function(){document.body.scrollTop>800||document.documentElement.scrollTop>800?(mybutton.style.visibility="visible",mybutton.style.opacity="1"):(mybutton.style.visibility="hidden",mybutton.style.opacity="0")}</script><script>document.getElementById("theme-toggle").addEventListener("click",()=>{const e=document.querySelector("html");e.dataset.theme==="dark"?(e.dataset.theme="light",localStorage.setItem("pref-theme","light")):(e.dataset.theme="dark",localStorage.setItem("pref-theme","dark"))})</script></body></html>
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Hermes/리오 팁: 크론 블로그 자동화는 작은 편집 운영체계다 | Kyungwook&#39;s Devlog</title>
+<meta name="keywords" content="Hermes, 리오, Cron, Blog, Automation, Hugo, Ops, Research Workflow">
+<meta name="description" content="Hermes/리오로 매일 블로그 포스팅을 자동화할 때 가장 중요한 관점은 “에이전트가 글을 대신 써준다”가 아닙니다. 더 정확히는 입력 수집, 선별, 작성, 검증, 배포를 매일 같은 방식으로 통과시키는 작은 편집 운영체계를 만드는 일입니다. AI/ML 트렌드 글처럼 매일 바뀌는 소재를 다룰수록 즉흥적인 웹 검색보다 안정적인 입력 채널, 명확한 작성 규칙, 빌드 검증, 배포 커밋이 중요합니다.
+첫 번째 축은 입력입니다. Discord의 #ai-ml-trends 같은 채널은 단순 링크 저장소가 아니라 editorial inbox로 쓰는 편이 좋습니다. 하루 동안 Reuters, Bloomberg, Hugging Face, GitHub release, 기업 블로그가 섞여 들어오더라도 메시지마다 제목, 한 줄 의미, 원문 링크가 유지되면 저녁 크론은 훨씬 빠르게 중심 주제를 잡을 수 있습니다. 오늘처럼 Tesla 안전 데이터, EQT의 AI rollout, Wix 감원, Meta 구독, IBM·Red Hat 오픈소스 투자가 한꺼번에 들어온 날에는 “개별 뉴스”보다 “AI 도입이 운영 모델을 바꾼다”는 공통선을 발견하는 능력이 더 중요합니다.">
+<meta name="author" content="">
+<link rel="canonical" href="https://kwbaek.github.io/posts/2026-05-28-hermes-rio-cron-blog-automation-as-editorial-ops/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.da3211e5ef867bf2b75fd5a6515cfed7195c011e8ab735694e203810a827097b.css" integrity="sha256-2jIR5e&#43;Ge/K3X9WmUVz&#43;1xlcAR6KtzVpTiA4EKgnCXs=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://kwbaek.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://kwbaek.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://kwbaek.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://kwbaek.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://kwbaek.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://kwbaek.github.io/posts/2026-05-28-hermes-rio-cron-blog-automation-as-editorial-ops/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="https://kwbaek.github.io/posts/2026-05-28-hermes-rio-cron-blog-automation-as-editorial-ops/">
+  <meta property="og:site_name" content="Kyungwook&#39;s Devlog">
+  <meta property="og:title" content="Hermes/리오 팁: 크론 블로그 자동화는 작은 편집 운영체계다">
+  <meta property="og:description" content="Hermes/리오로 매일 블로그 포스팅을 자동화할 때 가장 중요한 관점은 “에이전트가 글을 대신 써준다”가 아닙니다. 더 정확히는 입력 수집, 선별, 작성, 검증, 배포를 매일 같은 방식으로 통과시키는 작은 편집 운영체계를 만드는 일입니다. AI/ML 트렌드 글처럼 매일 바뀌는 소재를 다룰수록 즉흥적인 웹 검색보다 안정적인 입력 채널, 명확한 작성 규칙, 빌드 검증, 배포 커밋이 중요합니다.
+첫 번째 축은 입력입니다. Discord의 #ai-ml-trends 같은 채널은 단순 링크 저장소가 아니라 editorial inbox로 쓰는 편이 좋습니다. 하루 동안 Reuters, Bloomberg, Hugging Face, GitHub release, 기업 블로그가 섞여 들어오더라도 메시지마다 제목, 한 줄 의미, 원문 링크가 유지되면 저녁 크론은 훨씬 빠르게 중심 주제를 잡을 수 있습니다. 오늘처럼 Tesla 안전 데이터, EQT의 AI rollout, Wix 감원, Meta 구독, IBM·Red Hat 오픈소스 투자가 한꺼번에 들어온 날에는 “개별 뉴스”보다 “AI 도입이 운영 모델을 바꾼다”는 공통선을 발견하는 능력이 더 중요합니다.">
+  <meta property="og:locale" content="ko-kr">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2026-05-28T21:00:00+09:00">
+    <meta property="article:modified_time" content="2026-05-28T21:00:00+09:00">
+    <meta property="article:tag" content="Hermes">
+    <meta property="article:tag" content="리오">
+    <meta property="article:tag" content="Cron">
+    <meta property="article:tag" content="Blog">
+    <meta property="article:tag" content="Automation">
+    <meta property="article:tag" content="Hugo">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hermes/리오 팁: 크론 블로그 자동화는 작은 편집 운영체계다">
+<meta name="twitter:description" content="Hermes/리오로 매일 블로그 포스팅을 자동화할 때 가장 중요한 관점은 “에이전트가 글을 대신 써준다”가 아닙니다. 더 정확히는 입력 수집, 선별, 작성, 검증, 배포를 매일 같은 방식으로 통과시키는 작은 편집 운영체계를 만드는 일입니다. AI/ML 트렌드 글처럼 매일 바뀌는 소재를 다룰수록 즉흥적인 웹 검색보다 안정적인 입력 채널, 명확한 작성 규칙, 빌드 검증, 배포 커밋이 중요합니다.
+첫 번째 축은 입력입니다. Discord의 #ai-ml-trends 같은 채널은 단순 링크 저장소가 아니라 editorial inbox로 쓰는 편이 좋습니다. 하루 동안 Reuters, Bloomberg, Hugging Face, GitHub release, 기업 블로그가 섞여 들어오더라도 메시지마다 제목, 한 줄 의미, 원문 링크가 유지되면 저녁 크론은 훨씬 빠르게 중심 주제를 잡을 수 있습니다. 오늘처럼 Tesla 안전 데이터, EQT의 AI rollout, Wix 감원, Meta 구독, IBM·Red Hat 오픈소스 투자가 한꺼번에 들어온 날에는 “개별 뉴스”보다 “AI 도입이 운영 모델을 바꾼다”는 공통선을 발견하는 능력이 더 중요합니다.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://kwbaek.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Hermes/리오 팁: 크론 블로그 자동화는 작은 편집 운영체계다",
+      "item": "https://kwbaek.github.io/posts/2026-05-28-hermes-rio-cron-blog-automation-as-editorial-ops/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Hermes/리오 팁: 크론 블로그 자동화는 작은 편집 운영체계다",
+  "name": "Hermes\/리오 팁: 크론 블로그 자동화는 작은 편집 운영체계다",
+  "description": "Hermes/리오로 매일 블로그 포스팅을 자동화할 때 가장 중요한 관점은 “에이전트가 글을 대신 써준다”가 아닙니다. 더 정확히는 입력 수집, 선별, 작성, 검증, 배포를 매일 같은 방식으로 통과시키는 작은 편집 운영체계를 만드는 일입니다. AI/ML 트렌드 글처럼 매일 바뀌는 소재를 다룰수록 즉흥적인 웹 검색보다 안정적인 입력 채널, 명확한 작성 규칙, 빌드 검증, 배포 커밋이 중요합니다.\n첫 번째 축은 입력입니다. Discord의 #ai-ml-trends 같은 채널은 단순 링크 저장소가 아니라 editorial inbox로 쓰는 편이 좋습니다. 하루 동안 Reuters, Bloomberg, Hugging Face, GitHub release, 기업 블로그가 섞여 들어오더라도 메시지마다 제목, 한 줄 의미, 원문 링크가 유지되면 저녁 크론은 훨씬 빠르게 중심 주제를 잡을 수 있습니다. 오늘처럼 Tesla 안전 데이터, EQT의 AI rollout, Wix 감원, Meta 구독, IBM·Red Hat 오픈소스 투자가 한꺼번에 들어온 날에는 “개별 뉴스”보다 “AI 도입이 운영 모델을 바꾼다”는 공통선을 발견하는 능력이 더 중요합니다.\n",
+  "keywords": [
+    "Hermes", "리오", "Cron", "Blog", "Automation", "Hugo", "Ops", "Research Workflow"
+  ],
+  "articleBody": "Hermes/리오로 매일 블로그 포스팅을 자동화할 때 가장 중요한 관점은 “에이전트가 글을 대신 써준다”가 아닙니다. 더 정확히는 입력 수집, 선별, 작성, 검증, 배포를 매일 같은 방식으로 통과시키는 작은 편집 운영체계를 만드는 일입니다. AI/ML 트렌드 글처럼 매일 바뀌는 소재를 다룰수록 즉흥적인 웹 검색보다 안정적인 입력 채널, 명확한 작성 규칙, 빌드 검증, 배포 커밋이 중요합니다.\n첫 번째 축은 입력입니다. Discord의 #ai-ml-trends 같은 채널은 단순 링크 저장소가 아니라 editorial inbox로 쓰는 편이 좋습니다. 하루 동안 Reuters, Bloomberg, Hugging Face, GitHub release, 기업 블로그가 섞여 들어오더라도 메시지마다 제목, 한 줄 의미, 원문 링크가 유지되면 저녁 크론은 훨씬 빠르게 중심 주제를 잡을 수 있습니다. 오늘처럼 Tesla 안전 데이터, EQT의 AI rollout, Wix 감원, Meta 구독, IBM·Red Hat 오픈소스 투자가 한꺼번에 들어온 날에는 “개별 뉴스”보다 “AI 도입이 운영 모델을 바꾼다”는 공통선을 발견하는 능력이 더 중요합니다.\n두 번째 축은 선별입니다. 자동화가 모든 링크를 같은 무게로 다루면 블로그는 기사 목록이 됩니다. Hermes/리오는 트렌드 채널의 오늘 메시지를 읽고, 중복되거나 반복적인 소재를 줄이고, 독자가 기억할 만한 하나의 thesis를 골라야 합니다. 이 단계에서 좋은 기준은 세 가지입니다. 첫째, 단기 뉴스가 아니라 며칠 뒤에도 의미가 남는가. 둘째, 기술·비즈니스·운영 중 두 개 이상을 연결하는가. 셋째, 개인 프로젝트나 업무 자동화에 적용 가능한 시사점이 있는가. 이 기준을 통과한 소재는 글의 중심 문장이 됩니다.\n세 번째 축은 형식 고정입니다. Hugo 블로그 자동화에서는 front matter가 작지만 중요합니다. title, date, draft: false, categories, tags, comments: true가 일관되게 들어가야 하고, 파일명에는 날짜와 slug가 들어가야 합니다. 이 규칙이 고정돼 있으면 글이 많아져도 정리하기 쉽고, 배포 단계에서 예측 불가능한 문제가 줄어듭니다. 특히 매일 생성되는 글은 블로그 글이면서 동시에 장기적인 기술 감각의 로그이기 때문에 날짜와 카테고리의 일관성이 나중에 큰 차이를 만듭니다.\n네 번째 축은 공개 경계입니다. 에이전트는 로컬 파일, 채널 메시지, git 저장소, 빌드 로그를 함께 다루지만, 공개 글에는 독자가 필요한 맥락만 들어가야 합니다. 내부 경로, 토큰, 세션 정보, 실행 환경의 세부값은 글에 섞이지 않아야 합니다. Hermes/리오 같은 개인 에이전트가 강력해질수록 “무엇을 알고 있는가”만큼 “무엇을 공개하지 않는가”가 중요합니다. 자동화된 글쓰기에서 privacy는 부가 기능이 아니라 기본 설계입니다.\n다섯 번째 축은 검증입니다. 좋은 daily blog cron은 Markdown 파일을 만든 뒤 끝나지 않습니다. 원문 저장소에서 변경분을 확인하고, 커밋하고, Hugo 빌드를 돌리고, 생성된 정적 사이트를 배포 저장소에서 다시 커밋합니다. 이 과정이 번거로워 보일 수 있지만 실패 지점을 분리해 줍니다. 글 파일이 잘못됐는지, Hugo 빌드가 실패했는지, 정적 사이트 배포가 누락됐는지 바로 알 수 있습니다. 자동화는 성공할 때보다 실패할 때 구조의 품질이 드러납니다.\n여섯 번째 축은 마이그레이션 감각입니다. 예전에 쓰던 자동화 이름이나 레거시 디렉터리가 남아 있어도, 사용자에게 보이는 제품 경험은 현재 기준에 맞게 정리되어야 합니다. 내부 호환성을 위해 오래된 경로나 서비스명이 남는 것은 자연스럽지만, 블로그 독자에게는 지금 실제로 쓰는 Hermes/리오 워크플로우로 설명하는 편이 맞습니다. 이렇게 하면 과거 자동화 자산을 버리지 않으면서도, 새 기준의 운영 철학을 분명히 전달할 수 있습니다.\n이 패턴은 블로그에만 머물지 않습니다. 같은 구조를 GitHub issue triage, 리서치 리포트, 패션 트렌드 스캔, 개인 지식베이스 업데이트에도 적용할 수 있습니다. 입력 채널을 정하고, 선별 기준을 만들고, 산출물 형식을 고정하고, 검증 단계를 넣으면 에이전트는 매번 새로 고민하는 대신 작은 운영체계를 반복 실행합니다. 사람이 해야 할 일은 방향과 기준을 다듬는 것이고, Hermes/리오는 지루하지만 중요한 반복 실행을 맡습니다.\n결론적으로 daily blog cron은 단순한 글쓰기 자동화가 아닙니다. 매일의 기술 신호를 잡아내고, 공개 가능한 언어로 정리하고, 빌드와 배포까지 밀어 넣는 editorial ops입니다. Hermes/리오를 이런 작은 편집 운영체계로 쓰면 블로그는 콘텐츠 저장소를 넘어, 내가 어떤 기술 변화를 중요하게 봤는지 축적하는 장기 메모리가 됩니다.\n실전 체크리스트:\n트렌드 채널 메시지는 제목, 한 줄 해석, 원문 링크 형식으로 남긴다. 하루 글은 링크 나열이 아니라 하나의 thesis를 중심으로 쓴다. Hugo front matter와 파일명 규칙을 고정한다. 공개 글에는 내부 실행 세부사항과 민감정보를 넣지 않는다. 원문 커밋, Hugo 빌드, 정적 사이트 배포 커밋을 별도로 확인한다. ",
+  "wordCount" : "574",
+  "inLanguage": "en",
+  "datePublished": "2026-05-28T21:00:00+09:00",
+  "dateModified": "2026-05-28T21:00:00+09:00",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://kwbaek.github.io/posts/2026-05-28-hermes-rio-cron-blog-automation-as-editorial-ops/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Kyungwook's Devlog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://kwbaek.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://kwbaek.github.io/" accesskey="h" title="Kyungwook&#39;s Devlog (Alt + H)">Kyungwook&#39;s Devlog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://kwbaek.github.io/categories/" title="categories">
+                    <span>categories</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kwbaek.github.io/tags/" title="tags">
+                    <span>tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kwbaek.github.io/" title="Kyungwook&#39;s Devlog">
+                    <span>Kyungwook&#39;s Devlog</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      Hermes/리오 팁: 크론 블로그 자동화는 작은 편집 운영체계다
+    </h1>
+    <div class="post-meta"><span title='2026-05-28 21:00:00 +0900 KST'>May 28, 2026</span>
+
+</div>
+  </header> 
+  <div class="post-content"><p>Hermes/리오로 매일 블로그 포스팅을 자동화할 때 가장 중요한 관점은 “에이전트가 글을 대신 써준다”가 아닙니다. 더 정확히는 <strong>입력 수집, 선별, 작성, 검증, 배포를 매일 같은 방식으로 통과시키는 작은 편집 운영체계</strong>를 만드는 일입니다. AI/ML 트렌드 글처럼 매일 바뀌는 소재를 다룰수록 즉흥적인 웹 검색보다 안정적인 입력 채널, 명확한 작성 규칙, 빌드 검증, 배포 커밋이 중요합니다.</p>
+<p>첫 번째 축은 입력입니다. Discord의 <code>#ai-ml-trends</code> 같은 채널은 단순 링크 저장소가 아니라 editorial inbox로 쓰는 편이 좋습니다. 하루 동안 Reuters, Bloomberg, Hugging Face, GitHub release, 기업 블로그가 섞여 들어오더라도 메시지마다 제목, 한 줄 의미, 원문 링크가 유지되면 저녁 크론은 훨씬 빠르게 중심 주제를 잡을 수 있습니다. 오늘처럼 Tesla 안전 데이터, EQT의 AI rollout, Wix 감원, Meta 구독, IBM·Red Hat 오픈소스 투자가 한꺼번에 들어온 날에는 “개별 뉴스”보다 “AI 도입이 운영 모델을 바꾼다”는 공통선을 발견하는 능력이 더 중요합니다.</p>
+<p>두 번째 축은 선별입니다. 자동화가 모든 링크를 같은 무게로 다루면 블로그는 기사 목록이 됩니다. Hermes/리오는 트렌드 채널의 오늘 메시지를 읽고, 중복되거나 반복적인 소재를 줄이고, 독자가 기억할 만한 하나의 thesis를 골라야 합니다. 이 단계에서 좋은 기준은 세 가지입니다. 첫째, 단기 뉴스가 아니라 며칠 뒤에도 의미가 남는가. 둘째, 기술·비즈니스·운영 중 두 개 이상을 연결하는가. 셋째, 개인 프로젝트나 업무 자동화에 적용 가능한 시사점이 있는가. 이 기준을 통과한 소재는 글의 중심 문장이 됩니다.</p>
+<p>세 번째 축은 형식 고정입니다. Hugo 블로그 자동화에서는 front matter가 작지만 중요합니다. <code>title</code>, <code>date</code>, <code>draft: false</code>, <code>categories</code>, <code>tags</code>, <code>comments: true</code>가 일관되게 들어가야 하고, 파일명에는 날짜와 slug가 들어가야 합니다. 이 규칙이 고정돼 있으면 글이 많아져도 정리하기 쉽고, 배포 단계에서 예측 불가능한 문제가 줄어듭니다. 특히 매일 생성되는 글은 블로그 글이면서 동시에 장기적인 기술 감각의 로그이기 때문에 날짜와 카테고리의 일관성이 나중에 큰 차이를 만듭니다.</p>
+<p>네 번째 축은 공개 경계입니다. 에이전트는 로컬 파일, 채널 메시지, git 저장소, 빌드 로그를 함께 다루지만, 공개 글에는 독자가 필요한 맥락만 들어가야 합니다. 내부 경로, 토큰, 세션 정보, 실행 환경의 세부값은 글에 섞이지 않아야 합니다. Hermes/리오 같은 개인 에이전트가 강력해질수록 “무엇을 알고 있는가”만큼 “무엇을 공개하지 않는가”가 중요합니다. 자동화된 글쓰기에서 privacy는 부가 기능이 아니라 기본 설계입니다.</p>
+<p>다섯 번째 축은 검증입니다. 좋은 daily blog cron은 Markdown 파일을 만든 뒤 끝나지 않습니다. 원문 저장소에서 변경분을 확인하고, 커밋하고, Hugo 빌드를 돌리고, 생성된 정적 사이트를 배포 저장소에서 다시 커밋합니다. 이 과정이 번거로워 보일 수 있지만 실패 지점을 분리해 줍니다. 글 파일이 잘못됐는지, Hugo 빌드가 실패했는지, 정적 사이트 배포가 누락됐는지 바로 알 수 있습니다. 자동화는 성공할 때보다 실패할 때 구조의 품질이 드러납니다.</p>
+<p>여섯 번째 축은 마이그레이션 감각입니다. 예전에 쓰던 자동화 이름이나 레거시 디렉터리가 남아 있어도, 사용자에게 보이는 제품 경험은 현재 기준에 맞게 정리되어야 합니다. 내부 호환성을 위해 오래된 경로나 서비스명이 남는 것은 자연스럽지만, 블로그 독자에게는 지금 실제로 쓰는 Hermes/리오 워크플로우로 설명하는 편이 맞습니다. 이렇게 하면 과거 자동화 자산을 버리지 않으면서도, 새 기준의 운영 철학을 분명히 전달할 수 있습니다.</p>
+<p>이 패턴은 블로그에만 머물지 않습니다. 같은 구조를 GitHub issue triage, 리서치 리포트, 패션 트렌드 스캔, 개인 지식베이스 업데이트에도 적용할 수 있습니다. 입력 채널을 정하고, 선별 기준을 만들고, 산출물 형식을 고정하고, 검증 단계를 넣으면 에이전트는 매번 새로 고민하는 대신 작은 운영체계를 반복 실행합니다. 사람이 해야 할 일은 방향과 기준을 다듬는 것이고, Hermes/리오는 지루하지만 중요한 반복 실행을 맡습니다.</p>
+<p>결론적으로 daily blog cron은 단순한 글쓰기 자동화가 아닙니다. 매일의 기술 신호를 잡아내고, 공개 가능한 언어로 정리하고, 빌드와 배포까지 밀어 넣는 editorial ops입니다. Hermes/리오를 이런 작은 편집 운영체계로 쓰면 블로그는 콘텐츠 저장소를 넘어, 내가 어떤 기술 변화를 중요하게 봤는지 축적하는 장기 메모리가 됩니다.</p>
+<p>실전 체크리스트:</p>
+<ul>
+<li>트렌드 채널 메시지는 제목, 한 줄 해석, 원문 링크 형식으로 남긴다.</li>
+<li>하루 글은 링크 나열이 아니라 하나의 thesis를 중심으로 쓴다.</li>
+<li>Hugo front matter와 파일명 규칙을 고정한다.</li>
+<li>공개 글에는 내부 실행 세부사항과 민감정보를 넣지 않는다.</li>
+<li>원문 커밋, Hugo 빌드, 정적 사이트 배포 커밋을 별도로 확인한다.</li>
+</ul>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://kwbaek.github.io/tags/hermes/">Hermes</a></li>
+      <li><a href="https://kwbaek.github.io/tags/%EB%A6%AC%EC%98%A4/">리오</a></li>
+      <li><a href="https://kwbaek.github.io/tags/cron/">Cron</a></li>
+      <li><a href="https://kwbaek.github.io/tags/blog/">Blog</a></li>
+      <li><a href="https://kwbaek.github.io/tags/automation/">Automation</a></li>
+      <li><a href="https://kwbaek.github.io/tags/hugo/">Hugo</a></li>
+      <li><a href="https://kwbaek.github.io/tags/ops/">Ops</a></li>
+      <li><a href="https://kwbaek.github.io/tags/research-workflow/">Research Workflow</a></li>
+    </ul>
+  </footer><script src="https://utteranc.es/client.js"
+        repo="kwbaek/blog-comments"
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://kwbaek.github.io/">Kyungwook&#39;s Devlog</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

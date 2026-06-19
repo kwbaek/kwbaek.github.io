@@ -1,13 +1,357 @@
-<!doctype html><html lang=en dir=auto data-theme=auto><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=robots content="index, follow"><title>OpenClaw 운영 메모: v2026.3.7 이후 꼭 챙길 4가지 (실전 체크리스트) | Kyungwook's Devlog</title><meta name=keywords content="openclaw,operations,security,discord,cron,heartbeat"><meta name=description content='OpenClaw를 계속 굴리다 보면 새 기능보다 더 중요한 게 있습니다. 바로 &ldquo;이번 업데이트에서 운영 리스크가 어디로 이동했는지"를 빨리 잡는 것입니다. 최근 버전 흐름(v2026.3.7 기준)을 보면, 단순 기능 추가보다 보안 기본값, 라우팅 안정성, 운영 점검 루틴이 점점 더 중요해지고 있습니다. 오늘은 실제로 바로 적용 가능한 포인트만 압축해서 정리합니다.
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>OpenClaw 운영 메모: v2026.3.7 이후 꼭 챙길 4가지 (실전 체크리스트) | Kyungwook&#39;s Devlog</title>
+<meta name="keywords" content="openclaw, operations, security, discord, cron, heartbeat">
+<meta name="description" content="OpenClaw를 계속 굴리다 보면 새 기능보다 더 중요한 게 있습니다. 바로 &ldquo;이번 업데이트에서 운영 리스크가 어디로 이동했는지&quot;를 빨리 잡는 것입니다. 최근 버전 흐름(v2026.3.7 기준)을 보면, 단순 기능 추가보다 보안 기본값, 라우팅 안정성, 운영 점검 루틴이 점점 더 중요해지고 있습니다. 오늘은 실제로 바로 적용 가능한 포인트만 압축해서 정리합니다.
 1) 먼저 확인: auth 설정의 브레이킹 포인트
-v2026.3.7에서 가장 먼저 체크할 건 gateway 인증 조합입니다. gateway.auth.token과 gateway.auth.password를 동시에 쓰는 환경이라면 gateway.auth.mode를 반드시 명시해야 합니다. 이걸 놓치면 업데이트 직후 &ldquo;왜 갑자기 인증이 꼬였지?&rdquo; 같은 장애가 생기기 쉽습니다.'><meta name=author content><link rel=canonical href=https://kwbaek.github.io/posts/2026-03-10-openclaw-v2026-3-7-operations-playbook/><link crossorigin=anonymous href=/assets/css/stylesheet.da3211e5ef867bf2b75fd5a6515cfed7195c011e8ab735694e203810a827097b.css integrity="sha256-2jIR5e+Ge/K3X9WmUVz+1xlcAR6KtzVpTiA4EKgnCXs=" rel="preload stylesheet" as=style><link rel=icon href=https://kwbaek.github.io/favicon.ico><link rel=icon type=image/png sizes=16x16 href=https://kwbaek.github.io/favicon-16x16.png><link rel=icon type=image/png sizes=32x32 href=https://kwbaek.github.io/favicon-32x32.png><link rel=apple-touch-icon href=https://kwbaek.github.io/apple-touch-icon.png><link rel=mask-icon href=https://kwbaek.github.io/safari-pinned-tab.svg><meta name=theme-color content="#2e2e33"><meta name=msapplication-TileColor content="#2e2e33"><link rel=alternate hreflang=en href=https://kwbaek.github.io/posts/2026-03-10-openclaw-v2026-3-7-operations-playbook/><noscript><style>#theme-toggle,.top-link{display:none}</style><style>@media(prefers-color-scheme:dark){:root{--theme:rgb(29, 30, 32);--entry:rgb(46, 46, 51);--primary:rgb(218, 218, 219);--secondary:rgb(155, 156, 157);--tertiary:rgb(65, 66, 68);--content:rgb(196, 196, 197);--code-block-bg:rgb(46, 46, 51);--code-bg:rgb(55, 56, 62);--border:rgb(51, 51, 51);color-scheme:dark}.list{background:var(--theme)}.toc{background:var(--entry)}}@media(prefers-color-scheme:light){.list::-webkit-scrollbar-thumb{border-color:var(--code-bg)}}</style></noscript><script>localStorage.getItem("pref-theme")==="dark"?document.querySelector("html").dataset.theme="dark":localStorage.getItem("pref-theme")==="light"?document.querySelector("html").dataset.theme="light":window.matchMedia("(prefers-color-scheme: dark)").matches?document.querySelector("html").dataset.theme="dark":document.querySelector("html").dataset.theme="light"</script><meta property="og:url" content="https://kwbaek.github.io/posts/2026-03-10-openclaw-v2026-3-7-operations-playbook/"><meta property="og:site_name" content="Kyungwook's Devlog"><meta property="og:title" content="OpenClaw 운영 메모: v2026.3.7 이후 꼭 챙길 4가지 (실전 체크리스트)"><meta property="og:description" content='OpenClaw를 계속 굴리다 보면 새 기능보다 더 중요한 게 있습니다. 바로 “이번 업데이트에서 운영 리스크가 어디로 이동했는지"를 빨리 잡는 것입니다. 최근 버전 흐름(v2026.3.7 기준)을 보면, 단순 기능 추가보다 보안 기본값, 라우팅 안정성, 운영 점검 루틴이 점점 더 중요해지고 있습니다. 오늘은 실제로 바로 적용 가능한 포인트만 압축해서 정리합니다.
-1) 먼저 확인: auth 설정의 브레이킹 포인트 v2026.3.7에서 가장 먼저 체크할 건 gateway 인증 조합입니다. gateway.auth.token과 gateway.auth.password를 동시에 쓰는 환경이라면 gateway.auth.mode를 반드시 명시해야 합니다. 이걸 놓치면 업데이트 직후 “왜 갑자기 인증이 꼬였지?” 같은 장애가 생기기 쉽습니다.'><meta property="og:locale" content="ko-kr"><meta property="og:type" content="article"><meta property="article:section" content="posts"><meta property="article:published_time" content="2026-03-10T21:05:00+09:00"><meta property="article:modified_time" content="2026-03-10T21:05:00+09:00"><meta property="article:tag" content="OpenClaw"><meta property="article:tag" content="Operations"><meta property="article:tag" content="Security"><meta property="article:tag" content="Discord"><meta property="article:tag" content="Cron"><meta property="article:tag" content="Heartbeat"><meta name=twitter:card content="summary"><meta name=twitter:title content="OpenClaw 운영 메모: v2026.3.7 이후 꼭 챙길 4가지 (실전 체크리스트)"><meta name=twitter:description content='OpenClaw를 계속 굴리다 보면 새 기능보다 더 중요한 게 있습니다. 바로 &ldquo;이번 업데이트에서 운영 리스크가 어디로 이동했는지"를 빨리 잡는 것입니다. 최근 버전 흐름(v2026.3.7 기준)을 보면, 단순 기능 추가보다 보안 기본값, 라우팅 안정성, 운영 점검 루틴이 점점 더 중요해지고 있습니다. 오늘은 실제로 바로 적용 가능한 포인트만 압축해서 정리합니다.
+v2026.3.7에서 가장 먼저 체크할 건 gateway 인증 조합입니다. gateway.auth.token과 gateway.auth.password를 동시에 쓰는 환경이라면 gateway.auth.mode를 반드시 명시해야 합니다. 이걸 놓치면 업데이트 직후 &ldquo;왜 갑자기 인증이 꼬였지?&rdquo; 같은 장애가 생기기 쉽습니다.">
+<meta name="author" content="">
+<link rel="canonical" href="https://kwbaek.github.io/posts/2026-03-10-openclaw-v2026-3-7-operations-playbook/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.da3211e5ef867bf2b75fd5a6515cfed7195c011e8ab735694e203810a827097b.css" integrity="sha256-2jIR5e&#43;Ge/K3X9WmUVz&#43;1xlcAR6KtzVpTiA4EKgnCXs=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://kwbaek.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://kwbaek.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://kwbaek.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://kwbaek.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://kwbaek.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://kwbaek.github.io/posts/2026-03-10-openclaw-v2026-3-7-operations-playbook/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="https://kwbaek.github.io/posts/2026-03-10-openclaw-v2026-3-7-operations-playbook/">
+  <meta property="og:site_name" content="Kyungwook&#39;s Devlog">
+  <meta property="og:title" content="OpenClaw 운영 메모: v2026.3.7 이후 꼭 챙길 4가지 (실전 체크리스트)">
+  <meta property="og:description" content="OpenClaw를 계속 굴리다 보면 새 기능보다 더 중요한 게 있습니다. 바로 “이번 업데이트에서 운영 리스크가 어디로 이동했는지&#34;를 빨리 잡는 것입니다. 최근 버전 흐름(v2026.3.7 기준)을 보면, 단순 기능 추가보다 보안 기본값, 라우팅 안정성, 운영 점검 루틴이 점점 더 중요해지고 있습니다. 오늘은 실제로 바로 적용 가능한 포인트만 압축해서 정리합니다.
+1) 먼저 확인: auth 설정의 브레이킹 포인트 v2026.3.7에서 가장 먼저 체크할 건 gateway 인증 조합입니다. gateway.auth.token과 gateway.auth.password를 동시에 쓰는 환경이라면 gateway.auth.mode를 반드시 명시해야 합니다. 이걸 놓치면 업데이트 직후 “왜 갑자기 인증이 꼬였지?” 같은 장애가 생기기 쉽습니다.">
+  <meta property="og:locale" content="ko-kr">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2026-03-10T21:05:00+09:00">
+    <meta property="article:modified_time" content="2026-03-10T21:05:00+09:00">
+    <meta property="article:tag" content="OpenClaw">
+    <meta property="article:tag" content="Operations">
+    <meta property="article:tag" content="Security">
+    <meta property="article:tag" content="Discord">
+    <meta property="article:tag" content="Cron">
+    <meta property="article:tag" content="Heartbeat">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="OpenClaw 운영 메모: v2026.3.7 이후 꼭 챙길 4가지 (실전 체크리스트)">
+<meta name="twitter:description" content="OpenClaw를 계속 굴리다 보면 새 기능보다 더 중요한 게 있습니다. 바로 &ldquo;이번 업데이트에서 운영 리스크가 어디로 이동했는지&quot;를 빨리 잡는 것입니다. 최근 버전 흐름(v2026.3.7 기준)을 보면, 단순 기능 추가보다 보안 기본값, 라우팅 안정성, 운영 점검 루틴이 점점 더 중요해지고 있습니다. 오늘은 실제로 바로 적용 가능한 포인트만 압축해서 정리합니다.
 1) 먼저 확인: auth 설정의 브레이킹 포인트
-v2026.3.7에서 가장 먼저 체크할 건 gateway 인증 조합입니다. gateway.auth.token과 gateway.auth.password를 동시에 쓰는 환경이라면 gateway.auth.mode를 반드시 명시해야 합니다. 이걸 놓치면 업데이트 직후 &ldquo;왜 갑자기 인증이 꼬였지?&rdquo; 같은 장애가 생기기 쉽습니다.'><script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Posts","item":"https://kwbaek.github.io/posts/"},{"@type":"ListItem","position":2,"name":"OpenClaw 운영 메모: v2026.3.7 이후 꼭 챙길 4가지 (실전 체크리스트)","item":"https://kwbaek.github.io/posts/2026-03-10-openclaw-v2026-3-7-operations-playbook/"}]}</script><script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"OpenClaw 운영 메모: v2026.3.7 이후 꼭 챙길 4가지 (실전 체크리스트)","name":"OpenClaw 운영 메모: v2026.3.7 이후 꼭 챙길 4가지 (실전 체크리스트)","description":"OpenClaw를 계속 굴리다 보면 새 기능보다 더 중요한 게 있습니다. 바로 \u0026ldquo;이번 업데이트에서 운영 리스크가 어디로 이동했는지\u0026quot;를 빨리 잡는 것입니다. 최근 버전 흐름(v2026.3.7 기준)을 보면, 단순 기능 추가보다 보안 기본값, 라우팅 안정성, 운영 점검 루틴이 점점 더 중요해지고 있습니다. 오늘은 실제로 바로 적용 가능한 포인트만 압축해서 정리합니다.\n1) 먼저 확인: auth 설정의 브레이킹 포인트 v2026.3.7에서 가장 먼저 체크할 건 gateway 인증 조합입니다. gateway.auth.token과 gateway.auth.password를 동시에 쓰는 환경이라면 gateway.auth.mode를 반드시 명시해야 합니다. 이걸 놓치면 업데이트 직후 \u0026ldquo;왜 갑자기 인증이 꼬였지?\u0026rdquo; 같은 장애가 생기기 쉽습니다.\n","keywords":["openclaw","operations","security","discord","cron","heartbeat"],"articleBody":"OpenClaw를 계속 굴리다 보면 새 기능보다 더 중요한 게 있습니다. 바로 “이번 업데이트에서 운영 리스크가 어디로 이동했는지\"를 빨리 잡는 것입니다. 최근 버전 흐름(v2026.3.7 기준)을 보면, 단순 기능 추가보다 보안 기본값, 라우팅 안정성, 운영 점검 루틴이 점점 더 중요해지고 있습니다. 오늘은 실제로 바로 적용 가능한 포인트만 압축해서 정리합니다.\n1) 먼저 확인: auth 설정의 브레이킹 포인트 v2026.3.7에서 가장 먼저 체크할 건 gateway 인증 조합입니다. gateway.auth.token과 gateway.auth.password를 동시에 쓰는 환경이라면 gateway.auth.mode를 반드시 명시해야 합니다. 이걸 놓치면 업데이트 직후 “왜 갑자기 인증이 꼬였지?” 같은 장애가 생기기 쉽습니다.\n운영 팁은 단순합니다.\n인증 수단을 하나로 단순화하거나 둘 다 쓸 거면 mode를 명시적으로 고정 자동 추론에 기대지 말고 선언적으로 잠그는 게 안전합니다.\n2) Discord/Telegram 채널 운영: “바인딩 영속화\"를 설계로 활용하기 최근 흐름에서 체감이 큰 변화는 ACP 채널 바인딩의 영속화입니다. 재시작 후에도 채널/토픽 바인딩이 유지되므로, 운영자가 매번 세션 라우팅을 재정렬할 필요가 줄었습니다. 즉, 일회성 데모 구조보다 지속 운영 구조에 더 적합해졌습니다.\n여기서 중요한 건 규칙화입니다.\n어떤 채널은 리서치 전용 어떤 채널은 배포/알림 전용 어떤 채널은 사람 승인 필수 이렇게 채널 책임을 분리해 두면, 에이전트가 많아져도 충돌이 줄어듭니다.\n3) Heartbeat/Cron: “정시성\"과 “문맥성\"을 분리해서 쓰기 OpenClaw 운영에서 자주 헷갈리는 부분이 heartbeat와 cron의 경계입니다. 기준은 명확합니다.\n정각 실행·리마인더·배치 트리거 → cron 여러 체크를 한 번에 묶는 문맥형 점검 → heartbeat 특히 lightContext 같은 옵션은 heartbeat 토큰 소비를 줄이는 데 유용합니다. 반대로 시간 정확도가 필요한 잡을 heartbeat로 억지 구현하면 실행 시점이 흔들려서 신뢰도가 떨어집니다. “정확한 시계\"는 cron에 맡기고, “문맥이 필요한 판단\"은 heartbeat로 두는 구조가 비용과 안정성을 같이 잡습니다.\n4) 업데이트 후 고정 루틴: 짧고 강하게 실무에서 가장 중요한 건 체크리스트를 짧게 유지하는 겁니다. 길면 안 지켜집니다. 제 추천 기본 루틴은 아래 4단계입니다.\nopenclaw config validate --json openclaw secrets audit --check openclaw security audit health/ready 프로브 확인 핵심은 “기능 테스트\"보다 먼저 “운영 안전성\"을 통과시키는 순서입니다. 기능은 나중에 고쳐도 되지만, 인증/보안/라우팅 이슈는 한 번 터지면 복구 비용이 큽니다.\n결론: OpenClaw는 이제 “잘 돌리는 능력\"이 경쟁력 요즘 OpenClaw 릴리즈는 화려한 기능만 추가하는 단계가 아니라, 실제 팀 운영을 전제로 플랫폼 성격이 강해지고 있습니다. 그래서 중요한 질문도 바뀝니다.\n어떤 모델이 제일 똑똑한가? → (여전히 중요) 우리 운영 설계가 장애·비용·보안을 버틸 수 있는가? → (더 중요) 개인적으로는 이 변화가 아주 건강하다고 봅니다. 에이전트는 결국 “한 번 잘 되는 데모\"가 아니라 “매일 안정적으로 돌아가는 시스템\"이어야 하니까요.\n메모: 본 글은 최근 OpenClaw 릴리즈/운영 노트 흐름을 기준으로 정리한 실무 체크리스트입니다.\n","wordCount":"369","inLanguage":"en","datePublished":"2026-03-10T21:05:00+09:00","dateModified":"2026-03-10T21:05:00+09:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://kwbaek.github.io/posts/2026-03-10-openclaw-v2026-3-7-operations-playbook/"},"publisher":{"@type":"Organization","name":"Kyungwook's Devlog","logo":{"@type":"ImageObject","url":"https://kwbaek.github.io/favicon.ico"}}}</script></head><body id=top><header class=header><nav class=nav><div class=logo><a href=https://kwbaek.github.io/ accesskey=h title="Kyungwook's Devlog (Alt + H)">Kyungwook's Devlog</a><div class=logo-switches><button id=theme-toggle accesskey=t title="(Alt + T)" aria-label="Toggle theme">
-<svg id="moon" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
-<svg id="sun" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button></div></div><ul id=menu><li><a href=https://kwbaek.github.io/categories/ title=categories><span>categories</span></a></li><li><a href=https://kwbaek.github.io/tags/ title=tags><span>tags</span></a></li><li><a href=https://kwbaek.github.io/ title="Kyungwook's Devlog"><span>Kyungwook's Devlog</span>&nbsp;
-<svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><path d="M15 3h6v6"/><path d="M10 14 21 3"/></svg></a></li></ul></nav></header><main class=main><article class=post-single><header class=post-header><h1 class="post-title entry-hint-parent">OpenClaw 운영 메모: v2026.3.7 이후 꼭 챙길 4가지 (실전 체크리스트)</h1><div class=post-meta><span title='2026-03-10 21:05:00 +0900 KST'>March 10, 2026</span></div></header><div class=post-content><p>OpenClaw를 계속 굴리다 보면 새 기능보다 더 중요한 게 있습니다. 바로 &ldquo;이번 업데이트에서 운영 리스크가 어디로 이동했는지"를 빨리 잡는 것입니다. 최근 버전 흐름(v2026.3.7 기준)을 보면, 단순 기능 추가보다 <strong>보안 기본값, 라우팅 안정성, 운영 점검 루틴</strong>이 점점 더 중요해지고 있습니다. 오늘은 실제로 바로 적용 가능한 포인트만 압축해서 정리합니다.</p><h2 id=1-먼저-확인-auth-설정의-브레이킹-포인트>1) 먼저 확인: auth 설정의 브레이킹 포인트<a hidden class=anchor aria-hidden=true href=#1-먼저-확인-auth-설정의-브레이킹-포인트>#</a></h2><p>v2026.3.7에서 가장 먼저 체크할 건 gateway 인증 조합입니다. <code>gateway.auth.token</code>과 <code>gateway.auth.password</code>를 동시에 쓰는 환경이라면 <code>gateway.auth.mode</code>를 반드시 명시해야 합니다. 이걸 놓치면 업데이트 직후 &ldquo;왜 갑자기 인증이 꼬였지?&rdquo; 같은 장애가 생기기 쉽습니다.</p><p>운영 팁은 단순합니다.</p><ul><li>인증 수단을 하나로 단순화하거나</li><li>둘 다 쓸 거면 mode를 명시적으로 고정</li></ul><p>자동 추론에 기대지 말고 선언적으로 잠그는 게 안전합니다.</p><h2 id=2-discordtelegram-채널-운영-바인딩-영속화를-설계로-활용하기>2) Discord/Telegram 채널 운영: &ldquo;바인딩 영속화"를 설계로 활용하기<a hidden class=anchor aria-hidden=true href=#2-discordtelegram-채널-운영-바인딩-영속화를-설계로-활용하기>#</a></h2><p>최근 흐름에서 체감이 큰 변화는 ACP 채널 바인딩의 영속화입니다. 재시작 후에도 채널/토픽 바인딩이 유지되므로, 운영자가 매번 세션 라우팅을 재정렬할 필요가 줄었습니다. 즉, 일회성 데모 구조보다 <strong>지속 운영 구조</strong>에 더 적합해졌습니다.</p><p>여기서 중요한 건 규칙화입니다.</p><ul><li>어떤 채널은 리서치 전용</li><li>어떤 채널은 배포/알림 전용</li><li>어떤 채널은 사람 승인 필수</li></ul><p>이렇게 채널 책임을 분리해 두면, 에이전트가 많아져도 충돌이 줄어듭니다.</p><h2 id=3-heartbeatcron-정시성과-문맥성을-분리해서-쓰기>3) Heartbeat/Cron: &ldquo;정시성"과 &ldquo;문맥성"을 분리해서 쓰기<a hidden class=anchor aria-hidden=true href=#3-heartbeatcron-정시성과-문맥성을-분리해서-쓰기>#</a></h2><p>OpenClaw 운영에서 자주 헷갈리는 부분이 heartbeat와 cron의 경계입니다. 기준은 명확합니다.</p><ul><li>정각 실행·리마인더·배치 트리거 → cron</li><li>여러 체크를 한 번에 묶는 문맥형 점검 → heartbeat</li></ul><p>특히 <code>lightContext</code> 같은 옵션은 heartbeat 토큰 소비를 줄이는 데 유용합니다. 반대로 시간 정확도가 필요한 잡을 heartbeat로 억지 구현하면 실행 시점이 흔들려서 신뢰도가 떨어집니다. &ldquo;정확한 시계"는 cron에 맡기고, &ldquo;문맥이 필요한 판단"은 heartbeat로 두는 구조가 비용과 안정성을 같이 잡습니다.</p><h2 id=4-업데이트-후-고정-루틴-짧고-강하게>4) 업데이트 후 고정 루틴: 짧고 강하게<a hidden class=anchor aria-hidden=true href=#4-업데이트-후-고정-루틴-짧고-강하게>#</a></h2><p>실무에서 가장 중요한 건 체크리스트를 짧게 유지하는 겁니다. 길면 안 지켜집니다. 제 추천 기본 루틴은 아래 4단계입니다.</p><ol><li><code>openclaw config validate --json</code></li><li><code>openclaw secrets audit --check</code></li><li><code>openclaw security audit</code></li><li>health/ready 프로브 확인</li></ol><p>핵심은 &ldquo;기능 테스트"보다 먼저 &ldquo;운영 안전성"을 통과시키는 순서입니다. 기능은 나중에 고쳐도 되지만, 인증/보안/라우팅 이슈는 한 번 터지면 복구 비용이 큽니다.</p><h2 id=결론-openclaw는-이제-잘-돌리는-능력이-경쟁력>결론: OpenClaw는 이제 &ldquo;잘 돌리는 능력"이 경쟁력<a hidden class=anchor aria-hidden=true href=#결론-openclaw는-이제-잘-돌리는-능력이-경쟁력>#</a></h2><p>요즘 OpenClaw 릴리즈는 화려한 기능만 추가하는 단계가 아니라, 실제 팀 운영을 전제로 플랫폼 성격이 강해지고 있습니다. 그래서 중요한 질문도 바뀝니다.</p><ul><li>어떤 모델이 제일 똑똑한가? → (여전히 중요)</li><li>우리 운영 설계가 장애·비용·보안을 버틸 수 있는가? → (더 중요)</li></ul><p>개인적으로는 이 변화가 아주 건강하다고 봅니다. 에이전트는 결국 &ldquo;한 번 잘 되는 데모"가 아니라 &ldquo;매일 안정적으로 돌아가는 시스템"이어야 하니까요.</p><hr><p><em>메모: 본 글은 최근 OpenClaw 릴리즈/운영 노트 흐름을 기준으로 정리한 실무 체크리스트입니다.</em></p></div><footer class=post-footer><ul class=post-tags><li><a href=https://kwbaek.github.io/tags/openclaw/>OpenClaw</a></li><li><a href=https://kwbaek.github.io/tags/operations/>Operations</a></li><li><a href=https://kwbaek.github.io/tags/security/>Security</a></li><li><a href=https://kwbaek.github.io/tags/discord/>Discord</a></li><li><a href=https://kwbaek.github.io/tags/cron/>Cron</a></li><li><a href=https://kwbaek.github.io/tags/heartbeat/>Heartbeat</a></li></ul></footer><script src=https://utteranc.es/client.js repo=kwbaek/blog-comments issue-term=pathname theme=github-light crossorigin=anonymous async></script></article></main><footer class=footer><span>&copy; 2026 <a href=https://kwbaek.github.io/>Kyungwook's Devlog</a></span> ·
-<span>Powered by
-<a href=https://gohugo.io/ rel="noopener noreferrer" target=_blank>Hugo</a> &
-<a href=https://github.com/adityatelange/hugo-PaperMod/ rel=noopener target=_blank>PaperMod</a></span></footer><a href=#top aria-label="go to top" title="Go to Top (Alt + G)" class=top-link id=top-link accesskey=g><svg viewBox="0 0 12 6" fill="currentColor"><path d="M12 6H0l6-6z"/></svg>
-</a><script>let menu=document.getElementById("menu");if(menu){const e=localStorage.getItem("menu-scroll-position");e&&(menu.scrollLeft=parseInt(e,10)),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)}}document.querySelectorAll('a[href^="#"]').forEach(e=>{e.addEventListener("click",function(e){e.preventDefault();var t=this.getAttribute("href").substr(1);window.matchMedia("(prefers-reduced-motion: reduce)").matches?document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView({behavior:"smooth"}),t==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${t}`)})})</script><script>var mybutton=document.getElementById("top-link");window.onscroll=function(){document.body.scrollTop>800||document.documentElement.scrollTop>800?(mybutton.style.visibility="visible",mybutton.style.opacity="1"):(mybutton.style.visibility="hidden",mybutton.style.opacity="0")}</script><script>document.getElementById("theme-toggle").addEventListener("click",()=>{const e=document.querySelector("html");e.dataset.theme==="dark"?(e.dataset.theme="light",localStorage.setItem("pref-theme","light")):(e.dataset.theme="dark",localStorage.setItem("pref-theme","dark"))})</script></body></html>
+v2026.3.7에서 가장 먼저 체크할 건 gateway 인증 조합입니다. gateway.auth.token과 gateway.auth.password를 동시에 쓰는 환경이라면 gateway.auth.mode를 반드시 명시해야 합니다. 이걸 놓치면 업데이트 직후 &ldquo;왜 갑자기 인증이 꼬였지?&rdquo; 같은 장애가 생기기 쉽습니다.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://kwbaek.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "OpenClaw 운영 메모: v2026.3.7 이후 꼭 챙길 4가지 (실전 체크리스트)",
+      "item": "https://kwbaek.github.io/posts/2026-03-10-openclaw-v2026-3-7-operations-playbook/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "OpenClaw 운영 메모: v2026.3.7 이후 꼭 챙길 4가지 (실전 체크리스트)",
+  "name": "OpenClaw 운영 메모: v2026.3.7 이후 꼭 챙길 4가지 (실전 체크리스트)",
+  "description": "OpenClaw를 계속 굴리다 보면 새 기능보다 더 중요한 게 있습니다. 바로 \u0026ldquo;이번 업데이트에서 운영 리스크가 어디로 이동했는지\u0026quot;를 빨리 잡는 것입니다. 최근 버전 흐름(v2026.3.7 기준)을 보면, 단순 기능 추가보다 보안 기본값, 라우팅 안정성, 운영 점검 루틴이 점점 더 중요해지고 있습니다. 오늘은 실제로 바로 적용 가능한 포인트만 압축해서 정리합니다.\n1) 먼저 확인: auth 설정의 브레이킹 포인트 v2026.3.7에서 가장 먼저 체크할 건 gateway 인증 조합입니다. gateway.auth.token과 gateway.auth.password를 동시에 쓰는 환경이라면 gateway.auth.mode를 반드시 명시해야 합니다. 이걸 놓치면 업데이트 직후 \u0026ldquo;왜 갑자기 인증이 꼬였지?\u0026rdquo; 같은 장애가 생기기 쉽습니다.\n",
+  "keywords": [
+    "openclaw", "operations", "security", "discord", "cron", "heartbeat"
+  ],
+  "articleBody": "OpenClaw를 계속 굴리다 보면 새 기능보다 더 중요한 게 있습니다. 바로 “이번 업데이트에서 운영 리스크가 어디로 이동했는지\"를 빨리 잡는 것입니다. 최근 버전 흐름(v2026.3.7 기준)을 보면, 단순 기능 추가보다 보안 기본값, 라우팅 안정성, 운영 점검 루틴이 점점 더 중요해지고 있습니다. 오늘은 실제로 바로 적용 가능한 포인트만 압축해서 정리합니다.\n1) 먼저 확인: auth 설정의 브레이킹 포인트 v2026.3.7에서 가장 먼저 체크할 건 gateway 인증 조합입니다. gateway.auth.token과 gateway.auth.password를 동시에 쓰는 환경이라면 gateway.auth.mode를 반드시 명시해야 합니다. 이걸 놓치면 업데이트 직후 “왜 갑자기 인증이 꼬였지?” 같은 장애가 생기기 쉽습니다.\n운영 팁은 단순합니다.\n인증 수단을 하나로 단순화하거나 둘 다 쓸 거면 mode를 명시적으로 고정 자동 추론에 기대지 말고 선언적으로 잠그는 게 안전합니다.\n2) Discord/Telegram 채널 운영: “바인딩 영속화\"를 설계로 활용하기 최근 흐름에서 체감이 큰 변화는 ACP 채널 바인딩의 영속화입니다. 재시작 후에도 채널/토픽 바인딩이 유지되므로, 운영자가 매번 세션 라우팅을 재정렬할 필요가 줄었습니다. 즉, 일회성 데모 구조보다 지속 운영 구조에 더 적합해졌습니다.\n여기서 중요한 건 규칙화입니다.\n어떤 채널은 리서치 전용 어떤 채널은 배포/알림 전용 어떤 채널은 사람 승인 필수 이렇게 채널 책임을 분리해 두면, 에이전트가 많아져도 충돌이 줄어듭니다.\n3) Heartbeat/Cron: “정시성\"과 “문맥성\"을 분리해서 쓰기 OpenClaw 운영에서 자주 헷갈리는 부분이 heartbeat와 cron의 경계입니다. 기준은 명확합니다.\n정각 실행·리마인더·배치 트리거 → cron 여러 체크를 한 번에 묶는 문맥형 점검 → heartbeat 특히 lightContext 같은 옵션은 heartbeat 토큰 소비를 줄이는 데 유용합니다. 반대로 시간 정확도가 필요한 잡을 heartbeat로 억지 구현하면 실행 시점이 흔들려서 신뢰도가 떨어집니다. “정확한 시계\"는 cron에 맡기고, “문맥이 필요한 판단\"은 heartbeat로 두는 구조가 비용과 안정성을 같이 잡습니다.\n4) 업데이트 후 고정 루틴: 짧고 강하게 실무에서 가장 중요한 건 체크리스트를 짧게 유지하는 겁니다. 길면 안 지켜집니다. 제 추천 기본 루틴은 아래 4단계입니다.\nopenclaw config validate --json openclaw secrets audit --check openclaw security audit health/ready 프로브 확인 핵심은 “기능 테스트\"보다 먼저 “운영 안전성\"을 통과시키는 순서입니다. 기능은 나중에 고쳐도 되지만, 인증/보안/라우팅 이슈는 한 번 터지면 복구 비용이 큽니다.\n결론: OpenClaw는 이제 “잘 돌리는 능력\"이 경쟁력 요즘 OpenClaw 릴리즈는 화려한 기능만 추가하는 단계가 아니라, 실제 팀 운영을 전제로 플랫폼 성격이 강해지고 있습니다. 그래서 중요한 질문도 바뀝니다.\n어떤 모델이 제일 똑똑한가? → (여전히 중요) 우리 운영 설계가 장애·비용·보안을 버틸 수 있는가? → (더 중요) 개인적으로는 이 변화가 아주 건강하다고 봅니다. 에이전트는 결국 “한 번 잘 되는 데모\"가 아니라 “매일 안정적으로 돌아가는 시스템\"이어야 하니까요.\n메모: 본 글은 최근 OpenClaw 릴리즈/운영 노트 흐름을 기준으로 정리한 실무 체크리스트입니다.\n",
+  "wordCount" : "369",
+  "inLanguage": "en",
+  "datePublished": "2026-03-10T21:05:00+09:00",
+  "dateModified": "2026-03-10T21:05:00+09:00",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://kwbaek.github.io/posts/2026-03-10-openclaw-v2026-3-7-operations-playbook/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Kyungwook's Devlog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://kwbaek.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://kwbaek.github.io/" accesskey="h" title="Kyungwook&#39;s Devlog (Alt + H)">Kyungwook&#39;s Devlog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://kwbaek.github.io/categories/" title="categories">
+                    <span>categories</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kwbaek.github.io/tags/" title="tags">
+                    <span>tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kwbaek.github.io/" title="Kyungwook&#39;s Devlog">
+                    <span>Kyungwook&#39;s Devlog</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      OpenClaw 운영 메모: v2026.3.7 이후 꼭 챙길 4가지 (실전 체크리스트)
+    </h1>
+    <div class="post-meta"><span title='2026-03-10 21:05:00 +0900 KST'>March 10, 2026</span>
+
+</div>
+  </header> 
+  <div class="post-content"><p>OpenClaw를 계속 굴리다 보면 새 기능보다 더 중요한 게 있습니다. 바로 &ldquo;이번 업데이트에서 운영 리스크가 어디로 이동했는지&quot;를 빨리 잡는 것입니다. 최근 버전 흐름(v2026.3.7 기준)을 보면, 단순 기능 추가보다 <strong>보안 기본값, 라우팅 안정성, 운영 점검 루틴</strong>이 점점 더 중요해지고 있습니다. 오늘은 실제로 바로 적용 가능한 포인트만 압축해서 정리합니다.</p>
+<h2 id="1-먼저-확인-auth-설정의-브레이킹-포인트">1) 먼저 확인: auth 설정의 브레이킹 포인트<a hidden class="anchor" aria-hidden="true" href="#1-먼저-확인-auth-설정의-브레이킹-포인트">#</a></h2>
+<p>v2026.3.7에서 가장 먼저 체크할 건 gateway 인증 조합입니다. <code>gateway.auth.token</code>과 <code>gateway.auth.password</code>를 동시에 쓰는 환경이라면 <code>gateway.auth.mode</code>를 반드시 명시해야 합니다. 이걸 놓치면 업데이트 직후 &ldquo;왜 갑자기 인증이 꼬였지?&rdquo; 같은 장애가 생기기 쉽습니다.</p>
+<p>운영 팁은 단순합니다.</p>
+<ul>
+<li>인증 수단을 하나로 단순화하거나</li>
+<li>둘 다 쓸 거면 mode를 명시적으로 고정</li>
+</ul>
+<p>자동 추론에 기대지 말고 선언적으로 잠그는 게 안전합니다.</p>
+<h2 id="2-discordtelegram-채널-운영-바인딩-영속화를-설계로-활용하기">2) Discord/Telegram 채널 운영: &ldquo;바인딩 영속화&quot;를 설계로 활용하기<a hidden class="anchor" aria-hidden="true" href="#2-discordtelegram-채널-운영-바인딩-영속화를-설계로-활용하기">#</a></h2>
+<p>최근 흐름에서 체감이 큰 변화는 ACP 채널 바인딩의 영속화입니다. 재시작 후에도 채널/토픽 바인딩이 유지되므로, 운영자가 매번 세션 라우팅을 재정렬할 필요가 줄었습니다. 즉, 일회성 데모 구조보다 <strong>지속 운영 구조</strong>에 더 적합해졌습니다.</p>
+<p>여기서 중요한 건 규칙화입니다.</p>
+<ul>
+<li>어떤 채널은 리서치 전용</li>
+<li>어떤 채널은 배포/알림 전용</li>
+<li>어떤 채널은 사람 승인 필수</li>
+</ul>
+<p>이렇게 채널 책임을 분리해 두면, 에이전트가 많아져도 충돌이 줄어듭니다.</p>
+<h2 id="3-heartbeatcron-정시성과-문맥성을-분리해서-쓰기">3) Heartbeat/Cron: &ldquo;정시성&quot;과 &ldquo;문맥성&quot;을 분리해서 쓰기<a hidden class="anchor" aria-hidden="true" href="#3-heartbeatcron-정시성과-문맥성을-분리해서-쓰기">#</a></h2>
+<p>OpenClaw 운영에서 자주 헷갈리는 부분이 heartbeat와 cron의 경계입니다. 기준은 명확합니다.</p>
+<ul>
+<li>정각 실행·리마인더·배치 트리거 → cron</li>
+<li>여러 체크를 한 번에 묶는 문맥형 점검 → heartbeat</li>
+</ul>
+<p>특히 <code>lightContext</code> 같은 옵션은 heartbeat 토큰 소비를 줄이는 데 유용합니다. 반대로 시간 정확도가 필요한 잡을 heartbeat로 억지 구현하면 실행 시점이 흔들려서 신뢰도가 떨어집니다. &ldquo;정확한 시계&quot;는 cron에 맡기고, &ldquo;문맥이 필요한 판단&quot;은 heartbeat로 두는 구조가 비용과 안정성을 같이 잡습니다.</p>
+<h2 id="4-업데이트-후-고정-루틴-짧고-강하게">4) 업데이트 후 고정 루틴: 짧고 강하게<a hidden class="anchor" aria-hidden="true" href="#4-업데이트-후-고정-루틴-짧고-강하게">#</a></h2>
+<p>실무에서 가장 중요한 건 체크리스트를 짧게 유지하는 겁니다. 길면 안 지켜집니다. 제 추천 기본 루틴은 아래 4단계입니다.</p>
+<ol>
+<li><code>openclaw config validate --json</code></li>
+<li><code>openclaw secrets audit --check</code></li>
+<li><code>openclaw security audit</code></li>
+<li>health/ready 프로브 확인</li>
+</ol>
+<p>핵심은 &ldquo;기능 테스트&quot;보다 먼저 &ldquo;운영 안전성&quot;을 통과시키는 순서입니다. 기능은 나중에 고쳐도 되지만, 인증/보안/라우팅 이슈는 한 번 터지면 복구 비용이 큽니다.</p>
+<h2 id="결론-openclaw는-이제-잘-돌리는-능력이-경쟁력">결론: OpenClaw는 이제 &ldquo;잘 돌리는 능력&quot;이 경쟁력<a hidden class="anchor" aria-hidden="true" href="#결론-openclaw는-이제-잘-돌리는-능력이-경쟁력">#</a></h2>
+<p>요즘 OpenClaw 릴리즈는 화려한 기능만 추가하는 단계가 아니라, 실제 팀 운영을 전제로 플랫폼 성격이 강해지고 있습니다. 그래서 중요한 질문도 바뀝니다.</p>
+<ul>
+<li>어떤 모델이 제일 똑똑한가? → (여전히 중요)</li>
+<li>우리 운영 설계가 장애·비용·보안을 버틸 수 있는가? → (더 중요)</li>
+</ul>
+<p>개인적으로는 이 변화가 아주 건강하다고 봅니다. 에이전트는 결국 &ldquo;한 번 잘 되는 데모&quot;가 아니라 &ldquo;매일 안정적으로 돌아가는 시스템&quot;이어야 하니까요.</p>
+<hr>
+<p><em>메모: 본 글은 최근 OpenClaw 릴리즈/운영 노트 흐름을 기준으로 정리한 실무 체크리스트입니다.</em></p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://kwbaek.github.io/tags/openclaw/">OpenClaw</a></li>
+      <li><a href="https://kwbaek.github.io/tags/operations/">Operations</a></li>
+      <li><a href="https://kwbaek.github.io/tags/security/">Security</a></li>
+      <li><a href="https://kwbaek.github.io/tags/discord/">Discord</a></li>
+      <li><a href="https://kwbaek.github.io/tags/cron/">Cron</a></li>
+      <li><a href="https://kwbaek.github.io/tags/heartbeat/">Heartbeat</a></li>
+    </ul>
+  </footer><script src="https://utteranc.es/client.js"
+        repo="kwbaek/blog-comments"
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://kwbaek.github.io/">Kyungwook&#39;s Devlog</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

@@ -1,8 +1,327 @@
-<!doctype html><html lang=en dir=auto data-theme=auto><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=robots content="index, follow"><title>OpenClaw 팁: 에이전트별 경계를 나누면 자동화가 훨씬 안전해진다 | Kyungwook's Devlog</title><meta name=keywords content="OpenClaw,Agents,Security,Automation,Cron,Discord,Governance,Operations"><meta name=description content="OpenClaw를 매일 쓰다 보면 자동화가 편해지는 순간과 위험해지는 순간이 거의 동시에 옵니다. Discord 트렌드 수집, 아이디어 생성, 리포트 이메일, 블로그 발행, git push, Hugo build까지 연결하면 사람 대신 많은 일을 안정적으로 처리할 수 있습니다. 하지만 같은 에이전트가 너무 많은 채널, 너무 많은 도구, 너무 넓은 컨텍스트를 동시에 다루면 작은 실수가 외부 메시지 오발송이나 민감정보 노출로 이어질 수 있습니다. 그래서 오늘의 OpenClaw 팁은 단순합니다. 작업별로 에이전트 경계를 명시적으로 나누고, 각 경계 안에서만 읽고 쓰게 하세요."><meta name=author content><link rel=canonical href=https://kwbaek.github.io/posts/2026-05-13-openclaw-use-per-agent-boundaries-for-safer-automation/><link crossorigin=anonymous href=/assets/css/stylesheet.da3211e5ef867bf2b75fd5a6515cfed7195c011e8ab735694e203810a827097b.css integrity="sha256-2jIR5e+Ge/K3X9WmUVz+1xlcAR6KtzVpTiA4EKgnCXs=" rel="preload stylesheet" as=style><link rel=icon href=https://kwbaek.github.io/favicon.ico><link rel=icon type=image/png sizes=16x16 href=https://kwbaek.github.io/favicon-16x16.png><link rel=icon type=image/png sizes=32x32 href=https://kwbaek.github.io/favicon-32x32.png><link rel=apple-touch-icon href=https://kwbaek.github.io/apple-touch-icon.png><link rel=mask-icon href=https://kwbaek.github.io/safari-pinned-tab.svg><meta name=theme-color content="#2e2e33"><meta name=msapplication-TileColor content="#2e2e33"><link rel=alternate hreflang=en href=https://kwbaek.github.io/posts/2026-05-13-openclaw-use-per-agent-boundaries-for-safer-automation/><noscript><style>#theme-toggle,.top-link{display:none}</style><style>@media(prefers-color-scheme:dark){:root{--theme:rgb(29, 30, 32);--entry:rgb(46, 46, 51);--primary:rgb(218, 218, 219);--secondary:rgb(155, 156, 157);--tertiary:rgb(65, 66, 68);--content:rgb(196, 196, 197);--code-block-bg:rgb(46, 46, 51);--code-bg:rgb(55, 56, 62);--border:rgb(51, 51, 51);color-scheme:dark}.list{background:var(--theme)}.toc{background:var(--entry)}}@media(prefers-color-scheme:light){.list::-webkit-scrollbar-thumb{border-color:var(--code-bg)}}</style></noscript><script>localStorage.getItem("pref-theme")==="dark"?document.querySelector("html").dataset.theme="dark":localStorage.getItem("pref-theme")==="light"?document.querySelector("html").dataset.theme="light":window.matchMedia("(prefers-color-scheme: dark)").matches?document.querySelector("html").dataset.theme="dark":document.querySelector("html").dataset.theme="light"</script><meta property="og:url" content="https://kwbaek.github.io/posts/2026-05-13-openclaw-use-per-agent-boundaries-for-safer-automation/"><meta property="og:site_name" content="Kyungwook's Devlog"><meta property="og:title" content="OpenClaw 팁: 에이전트별 경계를 나누면 자동화가 훨씬 안전해진다"><meta property="og:description" content="OpenClaw를 매일 쓰다 보면 자동화가 편해지는 순간과 위험해지는 순간이 거의 동시에 옵니다. Discord 트렌드 수집, 아이디어 생성, 리포트 이메일, 블로그 발행, git push, Hugo build까지 연결하면 사람 대신 많은 일을 안정적으로 처리할 수 있습니다. 하지만 같은 에이전트가 너무 많은 채널, 너무 많은 도구, 너무 넓은 컨텍스트를 동시에 다루면 작은 실수가 외부 메시지 오발송이나 민감정보 노출로 이어질 수 있습니다. 그래서 오늘의 OpenClaw 팁은 단순합니다. 작업별로 에이전트 경계를 명시적으로 나누고, 각 경계 안에서만 읽고 쓰게 하세요."><meta property="og:locale" content="ko-kr"><meta property="og:type" content="article"><meta property="article:section" content="posts"><meta property="article:published_time" content="2026-05-13T21:00:00+09:00"><meta property="article:modified_time" content="2026-05-13T21:00:00+09:00"><meta property="article:tag" content="OpenClaw"><meta property="article:tag" content="Agents"><meta property="article:tag" content="Security"><meta property="article:tag" content="Automation"><meta property="article:tag" content="Cron"><meta property="article:tag" content="Discord"><meta name=twitter:card content="summary"><meta name=twitter:title content="OpenClaw 팁: 에이전트별 경계를 나누면 자동화가 훨씬 안전해진다"><meta name=twitter:description content="OpenClaw를 매일 쓰다 보면 자동화가 편해지는 순간과 위험해지는 순간이 거의 동시에 옵니다. Discord 트렌드 수집, 아이디어 생성, 리포트 이메일, 블로그 발행, git push, Hugo build까지 연결하면 사람 대신 많은 일을 안정적으로 처리할 수 있습니다. 하지만 같은 에이전트가 너무 많은 채널, 너무 많은 도구, 너무 넓은 컨텍스트를 동시에 다루면 작은 실수가 외부 메시지 오발송이나 민감정보 노출로 이어질 수 있습니다. 그래서 오늘의 OpenClaw 팁은 단순합니다. 작업별로 에이전트 경계를 명시적으로 나누고, 각 경계 안에서만 읽고 쓰게 하세요."><script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Posts","item":"https://kwbaek.github.io/posts/"},{"@type":"ListItem","position":2,"name":"OpenClaw 팁: 에이전트별 경계를 나누면 자동화가 훨씬 안전해진다","item":"https://kwbaek.github.io/posts/2026-05-13-openclaw-use-per-agent-boundaries-for-safer-automation/"}]}</script><script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"OpenClaw 팁: 에이전트별 경계를 나누면 자동화가 훨씬 안전해진다","name":"OpenClaw 팁: 에이전트별 경계를 나누면 자동화가 훨씬 안전해진다","description":"OpenClaw를 매일 쓰다 보면 자동화가 편해지는 순간과 위험해지는 순간이 거의 동시에 옵니다. Discord 트렌드 수집, 아이디어 생성, 리포트 이메일, 블로그 발행, git push, Hugo build까지 연결하면 사람 대신 많은 일을 안정적으로 처리할 수 있습니다. 하지만 같은 에이전트가 너무 많은 채널, 너무 많은 도구, 너무 넓은 컨텍스트를 동시에 다루면 작은 실수가 외부 메시지 오발송이나 민감정보 노출로 이어질 수 있습니다. 그래서 오늘의 OpenClaw 팁은 단순합니다. 작업별로 에이전트 경계를 명시적으로 나누고, 각 경계 안에서만 읽고 쓰게 하세요.\n","keywords":["OpenClaw","Agents","Security","Automation","Cron","Discord","Governance","Operations"],"articleBody":"OpenClaw를 매일 쓰다 보면 자동화가 편해지는 순간과 위험해지는 순간이 거의 동시에 옵니다. Discord 트렌드 수집, 아이디어 생성, 리포트 이메일, 블로그 발행, git push, Hugo build까지 연결하면 사람 대신 많은 일을 안정적으로 처리할 수 있습니다. 하지만 같은 에이전트가 너무 많은 채널, 너무 많은 도구, 너무 넓은 컨텍스트를 동시에 다루면 작은 실수가 외부 메시지 오발송이나 민감정보 노출로 이어질 수 있습니다. 그래서 오늘의 OpenClaw 팁은 단순합니다. 작업별로 에이전트 경계를 명시적으로 나누고, 각 경계 안에서만 읽고 쓰게 하세요.\n최근 OpenClaw v2026.5.10 beta 흐름에서도 이 방향이 잘 보입니다. per-agent message crossContext/action allow, redacted diagnostics, provider-level localService, context map, skill archive gate 같은 변화는 모두 같은 질문에 답합니다. “에이전트가 어디까지 볼 수 있고, 어디까지 행동할 수 있으며, 실패했을 때 무엇을 보여줘야 하는가?” 기능 추가보다 중요한 것은 blast radius를 줄이는 일입니다.\n첫 번째 실전 팁은 cron job을 역할별로 분리하는 것입니다. 예를 들어 AI/ML trend scanner는 Discord 채널을 읽고 요약 메시지를 쓰는 역할만 맡기고, blog publisher는 이미 축적된 메시지를 읽어 Hugo 파일을 만들고 배포하는 역할만 맡기는 식입니다. trend scanner에게 블로그 배포 권한이 필요 없고, blog publisher에게 모든 채널 발신 권한이 필요 없습니다. 역할을 좁히면 프롬프트도 짧아지고 검증도 쉬워집니다.\n두 번째 팁은 channel write 권한을 목적지 단위로 생각하는 것입니다. OpenClaw의 message tool은 강력합니다. 바로 그렇기 때문에 에이전트가 “어디로 보낼 수 있는지”를 instruction과 설정에서 명확히 해야 합니다. 내부 상태 보고용 채널, 공개 공유용 채널, 개인 알림용 채널은 성격이 다릅니다. 실패 보고는 짧아야 하고, 민감정보나 로컬 경로는 빠져야 하며, 사용자를 대신해 말하는 것처럼 보이면 안 됩니다. 자동화가 외부 채널에 닿는 순간부터 message boundary는 보안 경계입니다.\n세 번째 팁은 context boundary를 따로 두는 것입니다. 긴 메모리와 많은 채널 기록은 편리하지만, 모든 작업에 필요하지는 않습니다. 블로그 발행에는 오늘의 트렌드 메시지와 기존 포스트 형식 정도면 충분합니다. 채용공고 리포트에는 채용 관련 자료만 있으면 됩니다. 특정 작업에 불필요한 개인 메모리, 토큰, 로컬 세부 경로, 다른 프로젝트 로그를 섞지 않는 편이 안전합니다. 컨텍스트가 적을수록 모델이 헷갈릴 여지도 줄어듭니다.\n네 번째 팁은 redacted diagnostics를 기본 습관으로 삼는 것입니다. 자동화 실패는 언젠가 반드시 생깁니다. 중요한 것은 실패를 숨기지 않되, 너무 많이 말하지 않는 것입니다. hugo build failed, source channel read failed, push rejected, instruction file missing처럼 사람이 다음 액션을 알 수 있는 최소 문장만 남기면 충분합니다. raw stack trace, 세션키, 토큰, 계정 식별자, 로컬 절대경로를 외부 채널에 그대로 보내면 장애 보고가 보안 사고가 됩니다.\n다섯 번째 팁은 build와 commit을 분리된 gate로 보는 것입니다. Hugo 블로그 자동화라면 먼저 content repository에 새 글을 commit하고, 그다음 hugo build를 통과시킨 뒤 public repository를 따로 commit하는 흐름이 좋습니다. 이렇게 하면 글 생성 문제, 빌드 문제, 배포 문제를 각각 분리해서 추적할 수 있습니다. OpenClaw 자동화는 “한 번에 다 해줘”보다 “각 단계가 검증되면 다음 단계로 넘어가”가 훨씬 오래 안정적입니다.\n마지막으로, OpenClaw의 강점은 에이전트를 많이 붙일 수 있다는 점이 아니라 에이전트별 책임과 권한을 설계할 수 있다는 점입니다. 하나의 똑똑한 에이전트에게 모든 것을 맡기기보다, 좁은 역할을 가진 여러 자동화를 만들고 각 자동화가 남기는 산출물을 검증하는 방식이 더 안전합니다. 특히 Discord, Telegram, 이메일, git, Hugo, cron이 함께 움직이는 환경에서는 경계 설계가 곧 신뢰 설계입니다.\n오늘의 한 줄 팁은 이렇습니다. OpenClaw 자동화가 외부 채널이나 배포 repo에 닿는다면, 먼저 에이전트별 읽기·쓰기·컨텍스트 경계를 좁히세요. 경계가 작아질수록 자동화는 조용하고, 고장 나도 안전하고, 오래 믿고 돌릴 수 있습니다.\n참고 링크:\nOpenClaw releases: https://github.com/openclaw/openclaw/releases OpenClaw v2026.5.10-beta.5: https://github.com/openclaw/openclaw/releases/tag/v2026.5.10-beta.5 OpenClaw v2026.5.10-beta.3: https://github.com/openclaw/openclaw/releases/tag/v2026.5.10-beta.3 Claude Code v2.1.140: https://github.com/anthropics/claude-code/releases/tag/v2.1.140 ","wordCount":"519","inLanguage":"en","datePublished":"2026-05-13T21:00:00+09:00","dateModified":"2026-05-13T21:00:00+09:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://kwbaek.github.io/posts/2026-05-13-openclaw-use-per-agent-boundaries-for-safer-automation/"},"publisher":{"@type":"Organization","name":"Kyungwook's Devlog","logo":{"@type":"ImageObject","url":"https://kwbaek.github.io/favicon.ico"}}}</script></head><body id=top><header class=header><nav class=nav><div class=logo><a href=https://kwbaek.github.io/ accesskey=h title="Kyungwook's Devlog (Alt + H)">Kyungwook's Devlog</a><div class=logo-switches><button id=theme-toggle accesskey=t title="(Alt + T)" aria-label="Toggle theme">
-<svg id="moon" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
-<svg id="sun" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button></div></div><ul id=menu><li><a href=https://kwbaek.github.io/categories/ title=categories><span>categories</span></a></li><li><a href=https://kwbaek.github.io/tags/ title=tags><span>tags</span></a></li><li><a href=https://kwbaek.github.io/ title="Kyungwook's Devlog"><span>Kyungwook's Devlog</span>&nbsp;
-<svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><path d="M15 3h6v6"/><path d="M10 14 21 3"/></svg></a></li></ul></nav></header><main class=main><article class=post-single><header class=post-header><h1 class="post-title entry-hint-parent">OpenClaw 팁: 에이전트별 경계를 나누면 자동화가 훨씬 안전해진다</h1><div class=post-meta><span title='2026-05-13 21:00:00 +0900 KST'>May 13, 2026</span></div></header><div class=post-content><p>OpenClaw를 매일 쓰다 보면 자동화가 편해지는 순간과 위험해지는 순간이 거의 동시에 옵니다. Discord 트렌드 수집, 아이디어 생성, 리포트 이메일, 블로그 발행, git push, Hugo build까지 연결하면 사람 대신 많은 일을 안정적으로 처리할 수 있습니다. 하지만 같은 에이전트가 너무 많은 채널, 너무 많은 도구, 너무 넓은 컨텍스트를 동시에 다루면 작은 실수가 외부 메시지 오발송이나 민감정보 노출로 이어질 수 있습니다. 그래서 오늘의 OpenClaw 팁은 단순합니다. <strong>작업별로 에이전트 경계를 명시적으로 나누고, 각 경계 안에서만 읽고 쓰게 하세요.</strong></p><p>최근 OpenClaw v2026.5.10 beta 흐름에서도 이 방향이 잘 보입니다. per-agent message crossContext/action allow, redacted diagnostics, provider-level localService, context map, skill archive gate 같은 변화는 모두 같은 질문에 답합니다. “에이전트가 어디까지 볼 수 있고, 어디까지 행동할 수 있으며, 실패했을 때 무엇을 보여줘야 하는가?” 기능 추가보다 중요한 것은 blast radius를 줄이는 일입니다.</p><p>첫 번째 실전 팁은 cron job을 역할별로 분리하는 것입니다. 예를 들어 AI/ML trend scanner는 Discord 채널을 읽고 요약 메시지를 쓰는 역할만 맡기고, blog publisher는 이미 축적된 메시지를 읽어 Hugo 파일을 만들고 배포하는 역할만 맡기는 식입니다. trend scanner에게 블로그 배포 권한이 필요 없고, blog publisher에게 모든 채널 발신 권한이 필요 없습니다. 역할을 좁히면 프롬프트도 짧아지고 검증도 쉬워집니다.</p><p>두 번째 팁은 channel write 권한을 목적지 단위로 생각하는 것입니다. OpenClaw의 message tool은 강력합니다. 바로 그렇기 때문에 에이전트가 “어디로 보낼 수 있는지”를 instruction과 설정에서 명확히 해야 합니다. 내부 상태 보고용 채널, 공개 공유용 채널, 개인 알림용 채널은 성격이 다릅니다. 실패 보고는 짧아야 하고, 민감정보나 로컬 경로는 빠져야 하며, 사용자를 대신해 말하는 것처럼 보이면 안 됩니다. 자동화가 외부 채널에 닿는 순간부터 message boundary는 보안 경계입니다.</p><p>세 번째 팁은 context boundary를 따로 두는 것입니다. 긴 메모리와 많은 채널 기록은 편리하지만, 모든 작업에 필요하지는 않습니다. 블로그 발행에는 오늘의 트렌드 메시지와 기존 포스트 형식 정도면 충분합니다. 채용공고 리포트에는 채용 관련 자료만 있으면 됩니다. 특정 작업에 불필요한 개인 메모리, 토큰, 로컬 세부 경로, 다른 프로젝트 로그를 섞지 않는 편이 안전합니다. 컨텍스트가 적을수록 모델이 헷갈릴 여지도 줄어듭니다.</p><p>네 번째 팁은 redacted diagnostics를 기본 습관으로 삼는 것입니다. 자동화 실패는 언젠가 반드시 생깁니다. 중요한 것은 실패를 숨기지 않되, 너무 많이 말하지 않는 것입니다. <code>hugo build failed</code>, <code>source channel read failed</code>, <code>push rejected</code>, <code>instruction file missing</code>처럼 사람이 다음 액션을 알 수 있는 최소 문장만 남기면 충분합니다. raw stack trace, 세션키, 토큰, 계정 식별자, 로컬 절대경로를 외부 채널에 그대로 보내면 장애 보고가 보안 사고가 됩니다.</p><p>다섯 번째 팁은 build와 commit을 분리된 gate로 보는 것입니다. Hugo 블로그 자동화라면 먼저 content repository에 새 글을 commit하고, 그다음 <code>hugo</code> build를 통과시킨 뒤 public repository를 따로 commit하는 흐름이 좋습니다. 이렇게 하면 글 생성 문제, 빌드 문제, 배포 문제를 각각 분리해서 추적할 수 있습니다. OpenClaw 자동화는 “한 번에 다 해줘”보다 “각 단계가 검증되면 다음 단계로 넘어가”가 훨씬 오래 안정적입니다.</p><p>마지막으로, OpenClaw의 강점은 에이전트를 많이 붙일 수 있다는 점이 아니라 <strong>에이전트별 책임과 권한을 설계할 수 있다는 점</strong>입니다. 하나의 똑똑한 에이전트에게 모든 것을 맡기기보다, 좁은 역할을 가진 여러 자동화를 만들고 각 자동화가 남기는 산출물을 검증하는 방식이 더 안전합니다. 특히 Discord, Telegram, 이메일, git, Hugo, cron이 함께 움직이는 환경에서는 경계 설계가 곧 신뢰 설계입니다.</p><p>오늘의 한 줄 팁은 이렇습니다. <strong>OpenClaw 자동화가 외부 채널이나 배포 repo에 닿는다면, 먼저 에이전트별 읽기·쓰기·컨텍스트 경계를 좁히세요.</strong> 경계가 작아질수록 자동화는 조용하고, 고장 나도 안전하고, 오래 믿고 돌릴 수 있습니다.</p><p>참고 링크:</p><ul><li>OpenClaw releases: <a href=https://github.com/openclaw/openclaw/releases>https://github.com/openclaw/openclaw/releases</a></li><li>OpenClaw v2026.5.10-beta.5: <a href=https://github.com/openclaw/openclaw/releases/tag/v2026.5.10-beta.5>https://github.com/openclaw/openclaw/releases/tag/v2026.5.10-beta.5</a></li><li>OpenClaw v2026.5.10-beta.3: <a href=https://github.com/openclaw/openclaw/releases/tag/v2026.5.10-beta.3>https://github.com/openclaw/openclaw/releases/tag/v2026.5.10-beta.3</a></li><li>Claude Code v2.1.140: <a href=https://github.com/anthropics/claude-code/releases/tag/v2.1.140>https://github.com/anthropics/claude-code/releases/tag/v2.1.140</a></li></ul></div><footer class=post-footer><ul class=post-tags><li><a href=https://kwbaek.github.io/tags/openclaw/>OpenClaw</a></li><li><a href=https://kwbaek.github.io/tags/agents/>Agents</a></li><li><a href=https://kwbaek.github.io/tags/security/>Security</a></li><li><a href=https://kwbaek.github.io/tags/automation/>Automation</a></li><li><a href=https://kwbaek.github.io/tags/cron/>Cron</a></li><li><a href=https://kwbaek.github.io/tags/discord/>Discord</a></li><li><a href=https://kwbaek.github.io/tags/governance/>Governance</a></li><li><a href=https://kwbaek.github.io/tags/operations/>Operations</a></li></ul></footer><script src=https://utteranc.es/client.js repo=kwbaek/blog-comments issue-term=pathname theme=github-light crossorigin=anonymous async></script></article></main><footer class=footer><span>&copy; 2026 <a href=https://kwbaek.github.io/>Kyungwook's Devlog</a></span> ·
-<span>Powered by
-<a href=https://gohugo.io/ rel="noopener noreferrer" target=_blank>Hugo</a> &
-<a href=https://github.com/adityatelange/hugo-PaperMod/ rel=noopener target=_blank>PaperMod</a></span></footer><a href=#top aria-label="go to top" title="Go to Top (Alt + G)" class=top-link id=top-link accesskey=g><svg viewBox="0 0 12 6" fill="currentColor"><path d="M12 6H0l6-6z"/></svg>
-</a><script>let menu=document.getElementById("menu");if(menu){const e=localStorage.getItem("menu-scroll-position");e&&(menu.scrollLeft=parseInt(e,10)),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)}}document.querySelectorAll('a[href^="#"]').forEach(e=>{e.addEventListener("click",function(e){e.preventDefault();var t=this.getAttribute("href").substr(1);window.matchMedia("(prefers-reduced-motion: reduce)").matches?document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView({behavior:"smooth"}),t==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${t}`)})})</script><script>var mybutton=document.getElementById("top-link");window.onscroll=function(){document.body.scrollTop>800||document.documentElement.scrollTop>800?(mybutton.style.visibility="visible",mybutton.style.opacity="1"):(mybutton.style.visibility="hidden",mybutton.style.opacity="0")}</script><script>document.getElementById("theme-toggle").addEventListener("click",()=>{const e=document.querySelector("html");e.dataset.theme==="dark"?(e.dataset.theme="light",localStorage.setItem("pref-theme","light")):(e.dataset.theme="dark",localStorage.setItem("pref-theme","dark"))})</script></body></html>
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>OpenClaw 팁: 에이전트별 경계를 나누면 자동화가 훨씬 안전해진다 | Kyungwook&#39;s Devlog</title>
+<meta name="keywords" content="OpenClaw, Agents, Security, Automation, Cron, Discord, Governance, Operations">
+<meta name="description" content="OpenClaw를 매일 쓰다 보면 자동화가 편해지는 순간과 위험해지는 순간이 거의 동시에 옵니다. Discord 트렌드 수집, 아이디어 생성, 리포트 이메일, 블로그 발행, git push, Hugo build까지 연결하면 사람 대신 많은 일을 안정적으로 처리할 수 있습니다. 하지만 같은 에이전트가 너무 많은 채널, 너무 많은 도구, 너무 넓은 컨텍스트를 동시에 다루면 작은 실수가 외부 메시지 오발송이나 민감정보 노출로 이어질 수 있습니다. 그래서 오늘의 OpenClaw 팁은 단순합니다. 작업별로 에이전트 경계를 명시적으로 나누고, 각 경계 안에서만 읽고 쓰게 하세요.">
+<meta name="author" content="">
+<link rel="canonical" href="https://kwbaek.github.io/posts/2026-05-13-openclaw-use-per-agent-boundaries-for-safer-automation/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.da3211e5ef867bf2b75fd5a6515cfed7195c011e8ab735694e203810a827097b.css" integrity="sha256-2jIR5e&#43;Ge/K3X9WmUVz&#43;1xlcAR6KtzVpTiA4EKgnCXs=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://kwbaek.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://kwbaek.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://kwbaek.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://kwbaek.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://kwbaek.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://kwbaek.github.io/posts/2026-05-13-openclaw-use-per-agent-boundaries-for-safer-automation/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="https://kwbaek.github.io/posts/2026-05-13-openclaw-use-per-agent-boundaries-for-safer-automation/">
+  <meta property="og:site_name" content="Kyungwook&#39;s Devlog">
+  <meta property="og:title" content="OpenClaw 팁: 에이전트별 경계를 나누면 자동화가 훨씬 안전해진다">
+  <meta property="og:description" content="OpenClaw를 매일 쓰다 보면 자동화가 편해지는 순간과 위험해지는 순간이 거의 동시에 옵니다. Discord 트렌드 수집, 아이디어 생성, 리포트 이메일, 블로그 발행, git push, Hugo build까지 연결하면 사람 대신 많은 일을 안정적으로 처리할 수 있습니다. 하지만 같은 에이전트가 너무 많은 채널, 너무 많은 도구, 너무 넓은 컨텍스트를 동시에 다루면 작은 실수가 외부 메시지 오발송이나 민감정보 노출로 이어질 수 있습니다. 그래서 오늘의 OpenClaw 팁은 단순합니다. 작업별로 에이전트 경계를 명시적으로 나누고, 각 경계 안에서만 읽고 쓰게 하세요.">
+  <meta property="og:locale" content="ko-kr">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2026-05-13T21:00:00+09:00">
+    <meta property="article:modified_time" content="2026-05-13T21:00:00+09:00">
+    <meta property="article:tag" content="OpenClaw">
+    <meta property="article:tag" content="Agents">
+    <meta property="article:tag" content="Security">
+    <meta property="article:tag" content="Automation">
+    <meta property="article:tag" content="Cron">
+    <meta property="article:tag" content="Discord">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="OpenClaw 팁: 에이전트별 경계를 나누면 자동화가 훨씬 안전해진다">
+<meta name="twitter:description" content="OpenClaw를 매일 쓰다 보면 자동화가 편해지는 순간과 위험해지는 순간이 거의 동시에 옵니다. Discord 트렌드 수집, 아이디어 생성, 리포트 이메일, 블로그 발행, git push, Hugo build까지 연결하면 사람 대신 많은 일을 안정적으로 처리할 수 있습니다. 하지만 같은 에이전트가 너무 많은 채널, 너무 많은 도구, 너무 넓은 컨텍스트를 동시에 다루면 작은 실수가 외부 메시지 오발송이나 민감정보 노출로 이어질 수 있습니다. 그래서 오늘의 OpenClaw 팁은 단순합니다. 작업별로 에이전트 경계를 명시적으로 나누고, 각 경계 안에서만 읽고 쓰게 하세요.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://kwbaek.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "OpenClaw 팁: 에이전트별 경계를 나누면 자동화가 훨씬 안전해진다",
+      "item": "https://kwbaek.github.io/posts/2026-05-13-openclaw-use-per-agent-boundaries-for-safer-automation/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "OpenClaw 팁: 에이전트별 경계를 나누면 자동화가 훨씬 안전해진다",
+  "name": "OpenClaw 팁: 에이전트별 경계를 나누면 자동화가 훨씬 안전해진다",
+  "description": "OpenClaw를 매일 쓰다 보면 자동화가 편해지는 순간과 위험해지는 순간이 거의 동시에 옵니다. Discord 트렌드 수집, 아이디어 생성, 리포트 이메일, 블로그 발행, git push, Hugo build까지 연결하면 사람 대신 많은 일을 안정적으로 처리할 수 있습니다. 하지만 같은 에이전트가 너무 많은 채널, 너무 많은 도구, 너무 넓은 컨텍스트를 동시에 다루면 작은 실수가 외부 메시지 오발송이나 민감정보 노출로 이어질 수 있습니다. 그래서 오늘의 OpenClaw 팁은 단순합니다. 작업별로 에이전트 경계를 명시적으로 나누고, 각 경계 안에서만 읽고 쓰게 하세요.\n",
+  "keywords": [
+    "OpenClaw", "Agents", "Security", "Automation", "Cron", "Discord", "Governance", "Operations"
+  ],
+  "articleBody": "OpenClaw를 매일 쓰다 보면 자동화가 편해지는 순간과 위험해지는 순간이 거의 동시에 옵니다. Discord 트렌드 수집, 아이디어 생성, 리포트 이메일, 블로그 발행, git push, Hugo build까지 연결하면 사람 대신 많은 일을 안정적으로 처리할 수 있습니다. 하지만 같은 에이전트가 너무 많은 채널, 너무 많은 도구, 너무 넓은 컨텍스트를 동시에 다루면 작은 실수가 외부 메시지 오발송이나 민감정보 노출로 이어질 수 있습니다. 그래서 오늘의 OpenClaw 팁은 단순합니다. 작업별로 에이전트 경계를 명시적으로 나누고, 각 경계 안에서만 읽고 쓰게 하세요.\n최근 OpenClaw v2026.5.10 beta 흐름에서도 이 방향이 잘 보입니다. per-agent message crossContext/action allow, redacted diagnostics, provider-level localService, context map, skill archive gate 같은 변화는 모두 같은 질문에 답합니다. “에이전트가 어디까지 볼 수 있고, 어디까지 행동할 수 있으며, 실패했을 때 무엇을 보여줘야 하는가?” 기능 추가보다 중요한 것은 blast radius를 줄이는 일입니다.\n첫 번째 실전 팁은 cron job을 역할별로 분리하는 것입니다. 예를 들어 AI/ML trend scanner는 Discord 채널을 읽고 요약 메시지를 쓰는 역할만 맡기고, blog publisher는 이미 축적된 메시지를 읽어 Hugo 파일을 만들고 배포하는 역할만 맡기는 식입니다. trend scanner에게 블로그 배포 권한이 필요 없고, blog publisher에게 모든 채널 발신 권한이 필요 없습니다. 역할을 좁히면 프롬프트도 짧아지고 검증도 쉬워집니다.\n두 번째 팁은 channel write 권한을 목적지 단위로 생각하는 것입니다. OpenClaw의 message tool은 강력합니다. 바로 그렇기 때문에 에이전트가 “어디로 보낼 수 있는지”를 instruction과 설정에서 명확히 해야 합니다. 내부 상태 보고용 채널, 공개 공유용 채널, 개인 알림용 채널은 성격이 다릅니다. 실패 보고는 짧아야 하고, 민감정보나 로컬 경로는 빠져야 하며, 사용자를 대신해 말하는 것처럼 보이면 안 됩니다. 자동화가 외부 채널에 닿는 순간부터 message boundary는 보안 경계입니다.\n세 번째 팁은 context boundary를 따로 두는 것입니다. 긴 메모리와 많은 채널 기록은 편리하지만, 모든 작업에 필요하지는 않습니다. 블로그 발행에는 오늘의 트렌드 메시지와 기존 포스트 형식 정도면 충분합니다. 채용공고 리포트에는 채용 관련 자료만 있으면 됩니다. 특정 작업에 불필요한 개인 메모리, 토큰, 로컬 세부 경로, 다른 프로젝트 로그를 섞지 않는 편이 안전합니다. 컨텍스트가 적을수록 모델이 헷갈릴 여지도 줄어듭니다.\n네 번째 팁은 redacted diagnostics를 기본 습관으로 삼는 것입니다. 자동화 실패는 언젠가 반드시 생깁니다. 중요한 것은 실패를 숨기지 않되, 너무 많이 말하지 않는 것입니다. hugo build failed, source channel read failed, push rejected, instruction file missing처럼 사람이 다음 액션을 알 수 있는 최소 문장만 남기면 충분합니다. raw stack trace, 세션키, 토큰, 계정 식별자, 로컬 절대경로를 외부 채널에 그대로 보내면 장애 보고가 보안 사고가 됩니다.\n다섯 번째 팁은 build와 commit을 분리된 gate로 보는 것입니다. Hugo 블로그 자동화라면 먼저 content repository에 새 글을 commit하고, 그다음 hugo build를 통과시킨 뒤 public repository를 따로 commit하는 흐름이 좋습니다. 이렇게 하면 글 생성 문제, 빌드 문제, 배포 문제를 각각 분리해서 추적할 수 있습니다. OpenClaw 자동화는 “한 번에 다 해줘”보다 “각 단계가 검증되면 다음 단계로 넘어가”가 훨씬 오래 안정적입니다.\n마지막으로, OpenClaw의 강점은 에이전트를 많이 붙일 수 있다는 점이 아니라 에이전트별 책임과 권한을 설계할 수 있다는 점입니다. 하나의 똑똑한 에이전트에게 모든 것을 맡기기보다, 좁은 역할을 가진 여러 자동화를 만들고 각 자동화가 남기는 산출물을 검증하는 방식이 더 안전합니다. 특히 Discord, Telegram, 이메일, git, Hugo, cron이 함께 움직이는 환경에서는 경계 설계가 곧 신뢰 설계입니다.\n오늘의 한 줄 팁은 이렇습니다. OpenClaw 자동화가 외부 채널이나 배포 repo에 닿는다면, 먼저 에이전트별 읽기·쓰기·컨텍스트 경계를 좁히세요. 경계가 작아질수록 자동화는 조용하고, 고장 나도 안전하고, 오래 믿고 돌릴 수 있습니다.\n참고 링크:\nOpenClaw releases: https://github.com/openclaw/openclaw/releases OpenClaw v2026.5.10-beta.5: https://github.com/openclaw/openclaw/releases/tag/v2026.5.10-beta.5 OpenClaw v2026.5.10-beta.3: https://github.com/openclaw/openclaw/releases/tag/v2026.5.10-beta.3 Claude Code v2.1.140: https://github.com/anthropics/claude-code/releases/tag/v2.1.140 ",
+  "wordCount" : "519",
+  "inLanguage": "en",
+  "datePublished": "2026-05-13T21:00:00+09:00",
+  "dateModified": "2026-05-13T21:00:00+09:00",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://kwbaek.github.io/posts/2026-05-13-openclaw-use-per-agent-boundaries-for-safer-automation/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Kyungwook's Devlog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://kwbaek.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://kwbaek.github.io/" accesskey="h" title="Kyungwook&#39;s Devlog (Alt + H)">Kyungwook&#39;s Devlog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://kwbaek.github.io/categories/" title="categories">
+                    <span>categories</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kwbaek.github.io/tags/" title="tags">
+                    <span>tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kwbaek.github.io/" title="Kyungwook&#39;s Devlog">
+                    <span>Kyungwook&#39;s Devlog</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      OpenClaw 팁: 에이전트별 경계를 나누면 자동화가 훨씬 안전해진다
+    </h1>
+    <div class="post-meta"><span title='2026-05-13 21:00:00 +0900 KST'>May 13, 2026</span>
+
+</div>
+  </header> 
+  <div class="post-content"><p>OpenClaw를 매일 쓰다 보면 자동화가 편해지는 순간과 위험해지는 순간이 거의 동시에 옵니다. Discord 트렌드 수집, 아이디어 생성, 리포트 이메일, 블로그 발행, git push, Hugo build까지 연결하면 사람 대신 많은 일을 안정적으로 처리할 수 있습니다. 하지만 같은 에이전트가 너무 많은 채널, 너무 많은 도구, 너무 넓은 컨텍스트를 동시에 다루면 작은 실수가 외부 메시지 오발송이나 민감정보 노출로 이어질 수 있습니다. 그래서 오늘의 OpenClaw 팁은 단순합니다. <strong>작업별로 에이전트 경계를 명시적으로 나누고, 각 경계 안에서만 읽고 쓰게 하세요.</strong></p>
+<p>최근 OpenClaw v2026.5.10 beta 흐름에서도 이 방향이 잘 보입니다. per-agent message crossContext/action allow, redacted diagnostics, provider-level localService, context map, skill archive gate 같은 변화는 모두 같은 질문에 답합니다. “에이전트가 어디까지 볼 수 있고, 어디까지 행동할 수 있으며, 실패했을 때 무엇을 보여줘야 하는가?” 기능 추가보다 중요한 것은 blast radius를 줄이는 일입니다.</p>
+<p>첫 번째 실전 팁은 cron job을 역할별로 분리하는 것입니다. 예를 들어 AI/ML trend scanner는 Discord 채널을 읽고 요약 메시지를 쓰는 역할만 맡기고, blog publisher는 이미 축적된 메시지를 읽어 Hugo 파일을 만들고 배포하는 역할만 맡기는 식입니다. trend scanner에게 블로그 배포 권한이 필요 없고, blog publisher에게 모든 채널 발신 권한이 필요 없습니다. 역할을 좁히면 프롬프트도 짧아지고 검증도 쉬워집니다.</p>
+<p>두 번째 팁은 channel write 권한을 목적지 단위로 생각하는 것입니다. OpenClaw의 message tool은 강력합니다. 바로 그렇기 때문에 에이전트가 “어디로 보낼 수 있는지”를 instruction과 설정에서 명확히 해야 합니다. 내부 상태 보고용 채널, 공개 공유용 채널, 개인 알림용 채널은 성격이 다릅니다. 실패 보고는 짧아야 하고, 민감정보나 로컬 경로는 빠져야 하며, 사용자를 대신해 말하는 것처럼 보이면 안 됩니다. 자동화가 외부 채널에 닿는 순간부터 message boundary는 보안 경계입니다.</p>
+<p>세 번째 팁은 context boundary를 따로 두는 것입니다. 긴 메모리와 많은 채널 기록은 편리하지만, 모든 작업에 필요하지는 않습니다. 블로그 발행에는 오늘의 트렌드 메시지와 기존 포스트 형식 정도면 충분합니다. 채용공고 리포트에는 채용 관련 자료만 있으면 됩니다. 특정 작업에 불필요한 개인 메모리, 토큰, 로컬 세부 경로, 다른 프로젝트 로그를 섞지 않는 편이 안전합니다. 컨텍스트가 적을수록 모델이 헷갈릴 여지도 줄어듭니다.</p>
+<p>네 번째 팁은 redacted diagnostics를 기본 습관으로 삼는 것입니다. 자동화 실패는 언젠가 반드시 생깁니다. 중요한 것은 실패를 숨기지 않되, 너무 많이 말하지 않는 것입니다. <code>hugo build failed</code>, <code>source channel read failed</code>, <code>push rejected</code>, <code>instruction file missing</code>처럼 사람이 다음 액션을 알 수 있는 최소 문장만 남기면 충분합니다. raw stack trace, 세션키, 토큰, 계정 식별자, 로컬 절대경로를 외부 채널에 그대로 보내면 장애 보고가 보안 사고가 됩니다.</p>
+<p>다섯 번째 팁은 build와 commit을 분리된 gate로 보는 것입니다. Hugo 블로그 자동화라면 먼저 content repository에 새 글을 commit하고, 그다음 <code>hugo</code> build를 통과시킨 뒤 public repository를 따로 commit하는 흐름이 좋습니다. 이렇게 하면 글 생성 문제, 빌드 문제, 배포 문제를 각각 분리해서 추적할 수 있습니다. OpenClaw 자동화는 “한 번에 다 해줘”보다 “각 단계가 검증되면 다음 단계로 넘어가”가 훨씬 오래 안정적입니다.</p>
+<p>마지막으로, OpenClaw의 강점은 에이전트를 많이 붙일 수 있다는 점이 아니라 <strong>에이전트별 책임과 권한을 설계할 수 있다는 점</strong>입니다. 하나의 똑똑한 에이전트에게 모든 것을 맡기기보다, 좁은 역할을 가진 여러 자동화를 만들고 각 자동화가 남기는 산출물을 검증하는 방식이 더 안전합니다. 특히 Discord, Telegram, 이메일, git, Hugo, cron이 함께 움직이는 환경에서는 경계 설계가 곧 신뢰 설계입니다.</p>
+<p>오늘의 한 줄 팁은 이렇습니다. <strong>OpenClaw 자동화가 외부 채널이나 배포 repo에 닿는다면, 먼저 에이전트별 읽기·쓰기·컨텍스트 경계를 좁히세요.</strong> 경계가 작아질수록 자동화는 조용하고, 고장 나도 안전하고, 오래 믿고 돌릴 수 있습니다.</p>
+<p>참고 링크:</p>
+<ul>
+<li>OpenClaw releases: <a href="https://github.com/openclaw/openclaw/releases">https://github.com/openclaw/openclaw/releases</a></li>
+<li>OpenClaw v2026.5.10-beta.5: <a href="https://github.com/openclaw/openclaw/releases/tag/v2026.5.10-beta.5">https://github.com/openclaw/openclaw/releases/tag/v2026.5.10-beta.5</a></li>
+<li>OpenClaw v2026.5.10-beta.3: <a href="https://github.com/openclaw/openclaw/releases/tag/v2026.5.10-beta.3">https://github.com/openclaw/openclaw/releases/tag/v2026.5.10-beta.3</a></li>
+<li>Claude Code v2.1.140: <a href="https://github.com/anthropics/claude-code/releases/tag/v2.1.140">https://github.com/anthropics/claude-code/releases/tag/v2.1.140</a></li>
+</ul>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://kwbaek.github.io/tags/openclaw/">OpenClaw</a></li>
+      <li><a href="https://kwbaek.github.io/tags/agents/">Agents</a></li>
+      <li><a href="https://kwbaek.github.io/tags/security/">Security</a></li>
+      <li><a href="https://kwbaek.github.io/tags/automation/">Automation</a></li>
+      <li><a href="https://kwbaek.github.io/tags/cron/">Cron</a></li>
+      <li><a href="https://kwbaek.github.io/tags/discord/">Discord</a></li>
+      <li><a href="https://kwbaek.github.io/tags/governance/">Governance</a></li>
+      <li><a href="https://kwbaek.github.io/tags/operations/">Operations</a></li>
+    </ul>
+  </footer><script src="https://utteranc.es/client.js"
+        repo="kwbaek/blog-comments"
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://kwbaek.github.io/">Kyungwook&#39;s Devlog</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

@@ -1,11 +1,325 @@
-<!doctype html><html lang=en dir=auto data-theme=auto><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=robots content="index, follow"><title>AI/ML 트렌드: 에이전트 거버넌스는 이제 DB와 자본시장까지 확장된다 | Kyungwook's Devlog</title><meta name=keywords content="AI,ML,Agent,Governance,Database,Infrastructure,SK Hynix,Liquibase,Audit"><meta name=description content="오늘 AI/ML 트렌드에서 가장 흥미로운 신호는 에이전트 거버넌스의 범위가 코드 리뷰를 넘어 데이터베이스와 자본시장 신뢰까지 넓어지고 있다는 점입니다. Liquibase 5.2는 AI가 생성한 database change를 다루기 위한 Agent Safe Governance를 공개했고, Reuters는 SK Hynix가 이르면 8월 미국 상장을 검토한다는 보도를 냈습니다. 하나는 코딩 에이전트가 실제 운영 데이터 구조를 바꿀 때 필요한 통제이고, 다른 하나는 AI 메모리 공급망의 승자가 글로벌 투자자에게 더 높은 투명성과 자본 접근성을 요구받는다는 신호입니다.
-첫 번째 흐름은 에이전트가 더 위험한 표면으로 내려가고 있다는 것입니다. 지금까지 많은 팀은 AI 코딩 도구를 “pull request 초안 생성기” 정도로 생각했습니다. 하지만 실제 제품 개발에서 중요한 변경은 코드만이 아닙니다. schema migration, 권한 테이블, 배치 작업, 데이터 보존 정책처럼 한 번 적용되면 되돌리기 어려운 상태 변화가 많습니다. AI가 이런 변경안을 제안하거나 자동 생성하기 시작하면, 단순히 diff를 읽는 리뷰만으로는 부족합니다. 어떤 정책을 통과했는지, 누가 승인했는지, 어떤 환경에서 검증됐는지, 실패하면 어떻게 되돌릴지까지 함께 기록되어야 합니다."><meta name=author content><link rel=canonical href=https://kwbaek.github.io/posts/2026-06-10-ai-ml-trends-agent-governance-now-reaches-databases-and-capital-markets/><link crossorigin=anonymous href=/assets/css/stylesheet.da3211e5ef867bf2b75fd5a6515cfed7195c011e8ab735694e203810a827097b.css integrity="sha256-2jIR5e+Ge/K3X9WmUVz+1xlcAR6KtzVpTiA4EKgnCXs=" rel="preload stylesheet" as=style><link rel=icon href=https://kwbaek.github.io/favicon.ico><link rel=icon type=image/png sizes=16x16 href=https://kwbaek.github.io/favicon-16x16.png><link rel=icon type=image/png sizes=32x32 href=https://kwbaek.github.io/favicon-32x32.png><link rel=apple-touch-icon href=https://kwbaek.github.io/apple-touch-icon.png><link rel=mask-icon href=https://kwbaek.github.io/safari-pinned-tab.svg><meta name=theme-color content="#2e2e33"><meta name=msapplication-TileColor content="#2e2e33"><link rel=alternate hreflang=en href=https://kwbaek.github.io/posts/2026-06-10-ai-ml-trends-agent-governance-now-reaches-databases-and-capital-markets/><noscript><style>#theme-toggle,.top-link{display:none}</style><style>@media(prefers-color-scheme:dark){:root{--theme:rgb(29, 30, 32);--entry:rgb(46, 46, 51);--primary:rgb(218, 218, 219);--secondary:rgb(155, 156, 157);--tertiary:rgb(65, 66, 68);--content:rgb(196, 196, 197);--code-block-bg:rgb(46, 46, 51);--code-bg:rgb(55, 56, 62);--border:rgb(51, 51, 51);color-scheme:dark}.list{background:var(--theme)}.toc{background:var(--entry)}}@media(prefers-color-scheme:light){.list::-webkit-scrollbar-thumb{border-color:var(--code-bg)}}</style></noscript><script>localStorage.getItem("pref-theme")==="dark"?document.querySelector("html").dataset.theme="dark":localStorage.getItem("pref-theme")==="light"?document.querySelector("html").dataset.theme="light":window.matchMedia("(prefers-color-scheme: dark)").matches?document.querySelector("html").dataset.theme="dark":document.querySelector("html").dataset.theme="light"</script><meta property="og:url" content="https://kwbaek.github.io/posts/2026-06-10-ai-ml-trends-agent-governance-now-reaches-databases-and-capital-markets/"><meta property="og:site_name" content="Kyungwook's Devlog"><meta property="og:title" content="AI/ML 트렌드: 에이전트 거버넌스는 이제 DB와 자본시장까지 확장된다"><meta property="og:description" content="오늘 AI/ML 트렌드에서 가장 흥미로운 신호는 에이전트 거버넌스의 범위가 코드 리뷰를 넘어 데이터베이스와 자본시장 신뢰까지 넓어지고 있다는 점입니다. Liquibase 5.2는 AI가 생성한 database change를 다루기 위한 Agent Safe Governance를 공개했고, Reuters는 SK Hynix가 이르면 8월 미국 상장을 검토한다는 보도를 냈습니다. 하나는 코딩 에이전트가 실제 운영 데이터 구조를 바꿀 때 필요한 통제이고, 다른 하나는 AI 메모리 공급망의 승자가 글로벌 투자자에게 더 높은 투명성과 자본 접근성을 요구받는다는 신호입니다.
-첫 번째 흐름은 에이전트가 더 위험한 표면으로 내려가고 있다는 것입니다. 지금까지 많은 팀은 AI 코딩 도구를 “pull request 초안 생성기” 정도로 생각했습니다. 하지만 실제 제품 개발에서 중요한 변경은 코드만이 아닙니다. schema migration, 권한 테이블, 배치 작업, 데이터 보존 정책처럼 한 번 적용되면 되돌리기 어려운 상태 변화가 많습니다. AI가 이런 변경안을 제안하거나 자동 생성하기 시작하면, 단순히 diff를 읽는 리뷰만으로는 부족합니다. 어떤 정책을 통과했는지, 누가 승인했는지, 어떤 환경에서 검증됐는지, 실패하면 어떻게 되돌릴지까지 함께 기록되어야 합니다."><meta property="og:locale" content="ko-kr"><meta property="og:type" content="article"><meta property="article:section" content="posts"><meta property="article:published_time" content="2026-06-10T20:55:00+09:00"><meta property="article:modified_time" content="2026-06-10T20:55:00+09:00"><meta property="article:tag" content="Ai"><meta property="article:tag" content="ML"><meta property="article:tag" content="Agent"><meta property="article:tag" content="Governance"><meta property="article:tag" content="Database"><meta property="article:tag" content="Infrastructure"><meta name=twitter:card content="summary"><meta name=twitter:title content="AI/ML 트렌드: 에이전트 거버넌스는 이제 DB와 자본시장까지 확장된다"><meta name=twitter:description content="오늘 AI/ML 트렌드에서 가장 흥미로운 신호는 에이전트 거버넌스의 범위가 코드 리뷰를 넘어 데이터베이스와 자본시장 신뢰까지 넓어지고 있다는 점입니다. Liquibase 5.2는 AI가 생성한 database change를 다루기 위한 Agent Safe Governance를 공개했고, Reuters는 SK Hynix가 이르면 8월 미국 상장을 검토한다는 보도를 냈습니다. 하나는 코딩 에이전트가 실제 운영 데이터 구조를 바꿀 때 필요한 통제이고, 다른 하나는 AI 메모리 공급망의 승자가 글로벌 투자자에게 더 높은 투명성과 자본 접근성을 요구받는다는 신호입니다.
-첫 번째 흐름은 에이전트가 더 위험한 표면으로 내려가고 있다는 것입니다. 지금까지 많은 팀은 AI 코딩 도구를 “pull request 초안 생성기” 정도로 생각했습니다. 하지만 실제 제품 개발에서 중요한 변경은 코드만이 아닙니다. schema migration, 권한 테이블, 배치 작업, 데이터 보존 정책처럼 한 번 적용되면 되돌리기 어려운 상태 변화가 많습니다. AI가 이런 변경안을 제안하거나 자동 생성하기 시작하면, 단순히 diff를 읽는 리뷰만으로는 부족합니다. 어떤 정책을 통과했는지, 누가 승인했는지, 어떤 환경에서 검증됐는지, 실패하면 어떻게 되돌릴지까지 함께 기록되어야 합니다."><script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Posts","item":"https://kwbaek.github.io/posts/"},{"@type":"ListItem","position":2,"name":"AI/ML 트렌드: 에이전트 거버넌스는 이제 DB와 자본시장까지 확장된다","item":"https://kwbaek.github.io/posts/2026-06-10-ai-ml-trends-agent-governance-now-reaches-databases-and-capital-markets/"}]}</script><script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"AI/ML 트렌드: 에이전트 거버넌스는 이제 DB와 자본시장까지 확장된다","name":"AI\/ML 트렌드: 에이전트 거버넌스는 이제 DB와 자본시장까지 확장된다","description":"오늘 AI/ML 트렌드에서 가장 흥미로운 신호는 에이전트 거버넌스의 범위가 코드 리뷰를 넘어 데이터베이스와 자본시장 신뢰까지 넓어지고 있다는 점입니다. Liquibase 5.2는 AI가 생성한 database change를 다루기 위한 Agent Safe Governance를 공개했고, Reuters는 SK Hynix가 이르면 8월 미국 상장을 검토한다는 보도를 냈습니다. 하나는 코딩 에이전트가 실제 운영 데이터 구조를 바꿀 때 필요한 통제이고, 다른 하나는 AI 메모리 공급망의 승자가 글로벌 투자자에게 더 높은 투명성과 자본 접근성을 요구받는다는 신호입니다.\n첫 번째 흐름은 에이전트가 더 위험한 표면으로 내려가고 있다는 것입니다. 지금까지 많은 팀은 AI 코딩 도구를 “pull request 초안 생성기” 정도로 생각했습니다. 하지만 실제 제품 개발에서 중요한 변경은 코드만이 아닙니다. schema migration, 권한 테이블, 배치 작업, 데이터 보존 정책처럼 한 번 적용되면 되돌리기 어려운 상태 변화가 많습니다. AI가 이런 변경안을 제안하거나 자동 생성하기 시작하면, 단순히 diff를 읽는 리뷰만으로는 부족합니다. 어떤 정책을 통과했는지, 누가 승인했는지, 어떤 환경에서 검증됐는지, 실패하면 어떻게 되돌릴지까지 함께 기록되어야 합니다.\n","keywords":["AI","ML","Agent","Governance","Database","Infrastructure","SK Hynix","Liquibase","Audit"],"articleBody":"오늘 AI/ML 트렌드에서 가장 흥미로운 신호는 에이전트 거버넌스의 범위가 코드 리뷰를 넘어 데이터베이스와 자본시장 신뢰까지 넓어지고 있다는 점입니다. Liquibase 5.2는 AI가 생성한 database change를 다루기 위한 Agent Safe Governance를 공개했고, Reuters는 SK Hynix가 이르면 8월 미국 상장을 검토한다는 보도를 냈습니다. 하나는 코딩 에이전트가 실제 운영 데이터 구조를 바꿀 때 필요한 통제이고, 다른 하나는 AI 메모리 공급망의 승자가 글로벌 투자자에게 더 높은 투명성과 자본 접근성을 요구받는다는 신호입니다.\n첫 번째 흐름은 에이전트가 더 위험한 표면으로 내려가고 있다는 것입니다. 지금까지 많은 팀은 AI 코딩 도구를 “pull request 초안 생성기” 정도로 생각했습니다. 하지만 실제 제품 개발에서 중요한 변경은 코드만이 아닙니다. schema migration, 권한 테이블, 배치 작업, 데이터 보존 정책처럼 한 번 적용되면 되돌리기 어려운 상태 변화가 많습니다. AI가 이런 변경안을 제안하거나 자동 생성하기 시작하면, 단순히 diff를 읽는 리뷰만으로는 부족합니다. 어떤 정책을 통과했는지, 누가 승인했는지, 어떤 환경에서 검증됐는지, 실패하면 어떻게 되돌릴지까지 함께 기록되어야 합니다.\n두 번째 흐름은 AI 인프라 기업의 경쟁력이 기술 성능뿐 아니라 자본시장 신뢰와도 연결된다는 점입니다. SK Hynix는 HBM과 AI 메모리 수요의 핵심 수혜자로 꼽히지만, 공급 확대에는 대규모 설비 투자와 장기 고객 신뢰가 필요합니다. 미국 상장 검토 보도는 AI 반도체 경쟁이 생산능력, 고객 계약, 투자자 커뮤니케이션, 글로벌 규제 대응을 한 묶음으로 요구한다는 의미로 읽을 수 있습니다. AI 시대의 “인프라 moat”는 칩 성능만이 아니라, 그 칩을 안정적으로 조달하고 검증 가능한 방식으로 확장하는 능력입니다.\n두 뉴스는 다른 층위의 이야기처럼 보이지만 같은 방향을 가리킵니다. AI가 더 많은 일을 맡을수록, 사람과 조직은 “무엇을 자동화할 수 있는가”보다 무엇을 감사 가능하게 자동화할 수 있는가를 묻게 됩니다. 데이터베이스 변경은 작은 운영 단위에서의 감사 가능성이고, 반도체 공급망과 상장 검토는 거대한 산업 단위에서의 감사 가능성입니다. AI/ML의 다음 경쟁력은 모델의 똑똑함만이 아니라, 그 모델이 만든 변화가 추적되고 설명되고 되돌릴 수 있는 구조 안에서 실행되는지에 달려 있습니다.\n실무적으로는 AI 도입 체크리스트를 한 단계 더 구체화해야 합니다. 코딩 에이전트를 쓰는 팀은 “코드 생성 품질”뿐 아니라 migration 승인, 운영 데이터 영향도, rollback 기준, 변경 로그 보존을 제품 요구사항으로 넣어야 합니다. 인프라와 반도체를 보는 팀은 GPU·HBM 이름만 보지 말고 공급 능력, 자본 조달, 고객 집중도, 해외 투자자 신뢰까지 함께 봐야 합니다. 오늘의 결론은 간단합니다. AI가 시스템을 바꾸는 속도가 빨라질수록, 거버넌스는 방해물이 아니라 제품과 인프라의 핵심 기능이 됩니다.\n참고 링크:\nLiquibase 5.2 Agent Safe Governance: https://www.liquibase.com/vw/liquibase-5-2-introduces-agent-safe-governance Reuters: SK Hynix US listing 검토 보도: https://www.reuters.com/world/asia-pacific/south-koreas-sk-hynix-eyes-us-listing-soon-august-sources-say-2026-06-10/ ","wordCount":"356","inLanguage":"en","datePublished":"2026-06-10T20:55:00+09:00","dateModified":"2026-06-10T20:55:00+09:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://kwbaek.github.io/posts/2026-06-10-ai-ml-trends-agent-governance-now-reaches-databases-and-capital-markets/"},"publisher":{"@type":"Organization","name":"Kyungwook's Devlog","logo":{"@type":"ImageObject","url":"https://kwbaek.github.io/favicon.ico"}}}</script></head><body id=top><header class=header><nav class=nav><div class=logo><a href=https://kwbaek.github.io/ accesskey=h title="Kyungwook's Devlog (Alt + H)">Kyungwook's Devlog</a><div class=logo-switches><button id=theme-toggle accesskey=t title="(Alt + T)" aria-label="Toggle theme">
-<svg id="moon" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
-<svg id="sun" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button></div></div><ul id=menu><li><a href=https://kwbaek.github.io/categories/ title=categories><span>categories</span></a></li><li><a href=https://kwbaek.github.io/tags/ title=tags><span>tags</span></a></li><li><a href=https://kwbaek.github.io/ title="Kyungwook's Devlog"><span>Kyungwook's Devlog</span>&nbsp;
-<svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><path d="M15 3h6v6"/><path d="M10 14 21 3"/></svg></a></li></ul></nav></header><main class=main><article class=post-single><header class=post-header><h1 class="post-title entry-hint-parent">AI/ML 트렌드: 에이전트 거버넌스는 이제 DB와 자본시장까지 확장된다</h1><div class=post-meta><span title='2026-06-10 20:55:00 +0900 KST'>June 10, 2026</span></div></header><div class=post-content><p>오늘 AI/ML 트렌드에서 가장 흥미로운 신호는 <strong>에이전트 거버넌스의 범위가 코드 리뷰를 넘어 데이터베이스와 자본시장 신뢰까지 넓어지고 있다</strong>는 점입니다. Liquibase 5.2는 AI가 생성한 database change를 다루기 위한 Agent Safe Governance를 공개했고, Reuters는 SK Hynix가 이르면 8월 미국 상장을 검토한다는 보도를 냈습니다. 하나는 코딩 에이전트가 실제 운영 데이터 구조를 바꿀 때 필요한 통제이고, 다른 하나는 AI 메모리 공급망의 승자가 글로벌 투자자에게 더 높은 투명성과 자본 접근성을 요구받는다는 신호입니다.</p><p>첫 번째 흐름은 에이전트가 더 위험한 표면으로 내려가고 있다는 것입니다. 지금까지 많은 팀은 AI 코딩 도구를 “pull request 초안 생성기” 정도로 생각했습니다. 하지만 실제 제품 개발에서 중요한 변경은 코드만이 아닙니다. schema migration, 권한 테이블, 배치 작업, 데이터 보존 정책처럼 한 번 적용되면 되돌리기 어려운 상태 변화가 많습니다. AI가 이런 변경안을 제안하거나 자동 생성하기 시작하면, 단순히 diff를 읽는 리뷰만으로는 부족합니다. 어떤 정책을 통과했는지, 누가 승인했는지, 어떤 환경에서 검증됐는지, 실패하면 어떻게 되돌릴지까지 함께 기록되어야 합니다.</p><p>두 번째 흐름은 AI 인프라 기업의 경쟁력이 기술 성능뿐 아니라 자본시장 신뢰와도 연결된다는 점입니다. SK Hynix는 HBM과 AI 메모리 수요의 핵심 수혜자로 꼽히지만, 공급 확대에는 대규모 설비 투자와 장기 고객 신뢰가 필요합니다. 미국 상장 검토 보도는 AI 반도체 경쟁이 생산능력, 고객 계약, 투자자 커뮤니케이션, 글로벌 규제 대응을 한 묶음으로 요구한다는 의미로 읽을 수 있습니다. AI 시대의 “인프라 moat”는 칩 성능만이 아니라, 그 칩을 안정적으로 조달하고 검증 가능한 방식으로 확장하는 능력입니다.</p><p>두 뉴스는 다른 층위의 이야기처럼 보이지만 같은 방향을 가리킵니다. AI가 더 많은 일을 맡을수록, 사람과 조직은 “무엇을 자동화할 수 있는가”보다 <strong>무엇을 감사 가능하게 자동화할 수 있는가</strong>를 묻게 됩니다. 데이터베이스 변경은 작은 운영 단위에서의 감사 가능성이고, 반도체 공급망과 상장 검토는 거대한 산업 단위에서의 감사 가능성입니다. AI/ML의 다음 경쟁력은 모델의 똑똑함만이 아니라, 그 모델이 만든 변화가 추적되고 설명되고 되돌릴 수 있는 구조 안에서 실행되는지에 달려 있습니다.</p><p>실무적으로는 AI 도입 체크리스트를 한 단계 더 구체화해야 합니다. 코딩 에이전트를 쓰는 팀은 “코드 생성 품질”뿐 아니라 migration 승인, 운영 데이터 영향도, rollback 기준, 변경 로그 보존을 제품 요구사항으로 넣어야 합니다. 인프라와 반도체를 보는 팀은 GPU·HBM 이름만 보지 말고 공급 능력, 자본 조달, 고객 집중도, 해외 투자자 신뢰까지 함께 봐야 합니다. 오늘의 결론은 간단합니다. AI가 시스템을 바꾸는 속도가 빨라질수록, 거버넌스는 방해물이 아니라 제품과 인프라의 핵심 기능이 됩니다.</p><p>참고 링크:</p><ul><li>Liquibase 5.2 Agent Safe Governance: <a href=https://www.liquibase.com/vw/liquibase-5-2-introduces-agent-safe-governance>https://www.liquibase.com/vw/liquibase-5-2-introduces-agent-safe-governance</a></li><li>Reuters: SK Hynix US listing 검토 보도: <a href=https://www.reuters.com/world/asia-pacific/south-koreas-sk-hynix-eyes-us-listing-soon-august-sources-say-2026-06-10/>https://www.reuters.com/world/asia-pacific/south-koreas-sk-hynix-eyes-us-listing-soon-august-sources-say-2026-06-10/</a></li></ul></div><footer class=post-footer><ul class=post-tags><li><a href=https://kwbaek.github.io/tags/ai/>Ai</a></li><li><a href=https://kwbaek.github.io/tags/ml/>ML</a></li><li><a href=https://kwbaek.github.io/tags/agent/>Agent</a></li><li><a href=https://kwbaek.github.io/tags/governance/>Governance</a></li><li><a href=https://kwbaek.github.io/tags/database/>Database</a></li><li><a href=https://kwbaek.github.io/tags/infrastructure/>Infrastructure</a></li><li><a href=https://kwbaek.github.io/tags/sk-hynix/>SK Hynix</a></li><li><a href=https://kwbaek.github.io/tags/liquibase/>Liquibase</a></li><li><a href=https://kwbaek.github.io/tags/audit/>Audit</a></li></ul></footer><script src=https://utteranc.es/client.js repo=kwbaek/blog-comments issue-term=pathname theme=github-light crossorigin=anonymous async></script></article></main><footer class=footer><span>&copy; 2026 <a href=https://kwbaek.github.io/>Kyungwook's Devlog</a></span> ·
-<span>Powered by
-<a href=https://gohugo.io/ rel="noopener noreferrer" target=_blank>Hugo</a> &
-<a href=https://github.com/adityatelange/hugo-PaperMod/ rel=noopener target=_blank>PaperMod</a></span></footer><a href=#top aria-label="go to top" title="Go to Top (Alt + G)" class=top-link id=top-link accesskey=g><svg viewBox="0 0 12 6" fill="currentColor"><path d="M12 6H0l6-6z"/></svg>
-</a><script>let menu=document.getElementById("menu");if(menu){const e=localStorage.getItem("menu-scroll-position");e&&(menu.scrollLeft=parseInt(e,10)),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)}}document.querySelectorAll('a[href^="#"]').forEach(e=>{e.addEventListener("click",function(e){e.preventDefault();var t=this.getAttribute("href").substr(1);window.matchMedia("(prefers-reduced-motion: reduce)").matches?document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView({behavior:"smooth"}),t==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${t}`)})})</script><script>var mybutton=document.getElementById("top-link");window.onscroll=function(){document.body.scrollTop>800||document.documentElement.scrollTop>800?(mybutton.style.visibility="visible",mybutton.style.opacity="1"):(mybutton.style.visibility="hidden",mybutton.style.opacity="0")}</script><script>document.getElementById("theme-toggle").addEventListener("click",()=>{const e=document.querySelector("html");e.dataset.theme==="dark"?(e.dataset.theme="light",localStorage.setItem("pref-theme","light")):(e.dataset.theme="dark",localStorage.setItem("pref-theme","dark"))})</script></body></html>
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>AI/ML 트렌드: 에이전트 거버넌스는 이제 DB와 자본시장까지 확장된다 | Kyungwook&#39;s Devlog</title>
+<meta name="keywords" content="AI, ML, Agent, Governance, Database, Infrastructure, SK Hynix, Liquibase, Audit">
+<meta name="description" content="오늘 AI/ML 트렌드에서 가장 흥미로운 신호는 에이전트 거버넌스의 범위가 코드 리뷰를 넘어 데이터베이스와 자본시장 신뢰까지 넓어지고 있다는 점입니다. Liquibase 5.2는 AI가 생성한 database change를 다루기 위한 Agent Safe Governance를 공개했고, Reuters는 SK Hynix가 이르면 8월 미국 상장을 검토한다는 보도를 냈습니다. 하나는 코딩 에이전트가 실제 운영 데이터 구조를 바꿀 때 필요한 통제이고, 다른 하나는 AI 메모리 공급망의 승자가 글로벌 투자자에게 더 높은 투명성과 자본 접근성을 요구받는다는 신호입니다.
+첫 번째 흐름은 에이전트가 더 위험한 표면으로 내려가고 있다는 것입니다. 지금까지 많은 팀은 AI 코딩 도구를 “pull request 초안 생성기” 정도로 생각했습니다. 하지만 실제 제품 개발에서 중요한 변경은 코드만이 아닙니다. schema migration, 권한 테이블, 배치 작업, 데이터 보존 정책처럼 한 번 적용되면 되돌리기 어려운 상태 변화가 많습니다. AI가 이런 변경안을 제안하거나 자동 생성하기 시작하면, 단순히 diff를 읽는 리뷰만으로는 부족합니다. 어떤 정책을 통과했는지, 누가 승인했는지, 어떤 환경에서 검증됐는지, 실패하면 어떻게 되돌릴지까지 함께 기록되어야 합니다.">
+<meta name="author" content="">
+<link rel="canonical" href="https://kwbaek.github.io/posts/2026-06-10-ai-ml-trends-agent-governance-now-reaches-databases-and-capital-markets/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.da3211e5ef867bf2b75fd5a6515cfed7195c011e8ab735694e203810a827097b.css" integrity="sha256-2jIR5e&#43;Ge/K3X9WmUVz&#43;1xlcAR6KtzVpTiA4EKgnCXs=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://kwbaek.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://kwbaek.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://kwbaek.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://kwbaek.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://kwbaek.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://kwbaek.github.io/posts/2026-06-10-ai-ml-trends-agent-governance-now-reaches-databases-and-capital-markets/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="https://kwbaek.github.io/posts/2026-06-10-ai-ml-trends-agent-governance-now-reaches-databases-and-capital-markets/">
+  <meta property="og:site_name" content="Kyungwook&#39;s Devlog">
+  <meta property="og:title" content="AI/ML 트렌드: 에이전트 거버넌스는 이제 DB와 자본시장까지 확장된다">
+  <meta property="og:description" content="오늘 AI/ML 트렌드에서 가장 흥미로운 신호는 에이전트 거버넌스의 범위가 코드 리뷰를 넘어 데이터베이스와 자본시장 신뢰까지 넓어지고 있다는 점입니다. Liquibase 5.2는 AI가 생성한 database change를 다루기 위한 Agent Safe Governance를 공개했고, Reuters는 SK Hynix가 이르면 8월 미국 상장을 검토한다는 보도를 냈습니다. 하나는 코딩 에이전트가 실제 운영 데이터 구조를 바꿀 때 필요한 통제이고, 다른 하나는 AI 메모리 공급망의 승자가 글로벌 투자자에게 더 높은 투명성과 자본 접근성을 요구받는다는 신호입니다.
+첫 번째 흐름은 에이전트가 더 위험한 표면으로 내려가고 있다는 것입니다. 지금까지 많은 팀은 AI 코딩 도구를 “pull request 초안 생성기” 정도로 생각했습니다. 하지만 실제 제품 개발에서 중요한 변경은 코드만이 아닙니다. schema migration, 권한 테이블, 배치 작업, 데이터 보존 정책처럼 한 번 적용되면 되돌리기 어려운 상태 변화가 많습니다. AI가 이런 변경안을 제안하거나 자동 생성하기 시작하면, 단순히 diff를 읽는 리뷰만으로는 부족합니다. 어떤 정책을 통과했는지, 누가 승인했는지, 어떤 환경에서 검증됐는지, 실패하면 어떻게 되돌릴지까지 함께 기록되어야 합니다.">
+  <meta property="og:locale" content="ko-kr">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2026-06-10T20:55:00+09:00">
+    <meta property="article:modified_time" content="2026-06-10T20:55:00+09:00">
+    <meta property="article:tag" content="Ai">
+    <meta property="article:tag" content="ML">
+    <meta property="article:tag" content="Agent">
+    <meta property="article:tag" content="Governance">
+    <meta property="article:tag" content="Database">
+    <meta property="article:tag" content="Infrastructure">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="AI/ML 트렌드: 에이전트 거버넌스는 이제 DB와 자본시장까지 확장된다">
+<meta name="twitter:description" content="오늘 AI/ML 트렌드에서 가장 흥미로운 신호는 에이전트 거버넌스의 범위가 코드 리뷰를 넘어 데이터베이스와 자본시장 신뢰까지 넓어지고 있다는 점입니다. Liquibase 5.2는 AI가 생성한 database change를 다루기 위한 Agent Safe Governance를 공개했고, Reuters는 SK Hynix가 이르면 8월 미국 상장을 검토한다는 보도를 냈습니다. 하나는 코딩 에이전트가 실제 운영 데이터 구조를 바꿀 때 필요한 통제이고, 다른 하나는 AI 메모리 공급망의 승자가 글로벌 투자자에게 더 높은 투명성과 자본 접근성을 요구받는다는 신호입니다.
+첫 번째 흐름은 에이전트가 더 위험한 표면으로 내려가고 있다는 것입니다. 지금까지 많은 팀은 AI 코딩 도구를 “pull request 초안 생성기” 정도로 생각했습니다. 하지만 실제 제품 개발에서 중요한 변경은 코드만이 아닙니다. schema migration, 권한 테이블, 배치 작업, 데이터 보존 정책처럼 한 번 적용되면 되돌리기 어려운 상태 변화가 많습니다. AI가 이런 변경안을 제안하거나 자동 생성하기 시작하면, 단순히 diff를 읽는 리뷰만으로는 부족합니다. 어떤 정책을 통과했는지, 누가 승인했는지, 어떤 환경에서 검증됐는지, 실패하면 어떻게 되돌릴지까지 함께 기록되어야 합니다.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://kwbaek.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "AI/ML 트렌드: 에이전트 거버넌스는 이제 DB와 자본시장까지 확장된다",
+      "item": "https://kwbaek.github.io/posts/2026-06-10-ai-ml-trends-agent-governance-now-reaches-databases-and-capital-markets/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "AI/ML 트렌드: 에이전트 거버넌스는 이제 DB와 자본시장까지 확장된다",
+  "name": "AI\/ML 트렌드: 에이전트 거버넌스는 이제 DB와 자본시장까지 확장된다",
+  "description": "오늘 AI/ML 트렌드에서 가장 흥미로운 신호는 에이전트 거버넌스의 범위가 코드 리뷰를 넘어 데이터베이스와 자본시장 신뢰까지 넓어지고 있다는 점입니다. Liquibase 5.2는 AI가 생성한 database change를 다루기 위한 Agent Safe Governance를 공개했고, Reuters는 SK Hynix가 이르면 8월 미국 상장을 검토한다는 보도를 냈습니다. 하나는 코딩 에이전트가 실제 운영 데이터 구조를 바꿀 때 필요한 통제이고, 다른 하나는 AI 메모리 공급망의 승자가 글로벌 투자자에게 더 높은 투명성과 자본 접근성을 요구받는다는 신호입니다.\n첫 번째 흐름은 에이전트가 더 위험한 표면으로 내려가고 있다는 것입니다. 지금까지 많은 팀은 AI 코딩 도구를 “pull request 초안 생성기” 정도로 생각했습니다. 하지만 실제 제품 개발에서 중요한 변경은 코드만이 아닙니다. schema migration, 권한 테이블, 배치 작업, 데이터 보존 정책처럼 한 번 적용되면 되돌리기 어려운 상태 변화가 많습니다. AI가 이런 변경안을 제안하거나 자동 생성하기 시작하면, 단순히 diff를 읽는 리뷰만으로는 부족합니다. 어떤 정책을 통과했는지, 누가 승인했는지, 어떤 환경에서 검증됐는지, 실패하면 어떻게 되돌릴지까지 함께 기록되어야 합니다.\n",
+  "keywords": [
+    "AI", "ML", "Agent", "Governance", "Database", "Infrastructure", "SK Hynix", "Liquibase", "Audit"
+  ],
+  "articleBody": "오늘 AI/ML 트렌드에서 가장 흥미로운 신호는 에이전트 거버넌스의 범위가 코드 리뷰를 넘어 데이터베이스와 자본시장 신뢰까지 넓어지고 있다는 점입니다. Liquibase 5.2는 AI가 생성한 database change를 다루기 위한 Agent Safe Governance를 공개했고, Reuters는 SK Hynix가 이르면 8월 미국 상장을 검토한다는 보도를 냈습니다. 하나는 코딩 에이전트가 실제 운영 데이터 구조를 바꿀 때 필요한 통제이고, 다른 하나는 AI 메모리 공급망의 승자가 글로벌 투자자에게 더 높은 투명성과 자본 접근성을 요구받는다는 신호입니다.\n첫 번째 흐름은 에이전트가 더 위험한 표면으로 내려가고 있다는 것입니다. 지금까지 많은 팀은 AI 코딩 도구를 “pull request 초안 생성기” 정도로 생각했습니다. 하지만 실제 제품 개발에서 중요한 변경은 코드만이 아닙니다. schema migration, 권한 테이블, 배치 작업, 데이터 보존 정책처럼 한 번 적용되면 되돌리기 어려운 상태 변화가 많습니다. AI가 이런 변경안을 제안하거나 자동 생성하기 시작하면, 단순히 diff를 읽는 리뷰만으로는 부족합니다. 어떤 정책을 통과했는지, 누가 승인했는지, 어떤 환경에서 검증됐는지, 실패하면 어떻게 되돌릴지까지 함께 기록되어야 합니다.\n두 번째 흐름은 AI 인프라 기업의 경쟁력이 기술 성능뿐 아니라 자본시장 신뢰와도 연결된다는 점입니다. SK Hynix는 HBM과 AI 메모리 수요의 핵심 수혜자로 꼽히지만, 공급 확대에는 대규모 설비 투자와 장기 고객 신뢰가 필요합니다. 미국 상장 검토 보도는 AI 반도체 경쟁이 생산능력, 고객 계약, 투자자 커뮤니케이션, 글로벌 규제 대응을 한 묶음으로 요구한다는 의미로 읽을 수 있습니다. AI 시대의 “인프라 moat”는 칩 성능만이 아니라, 그 칩을 안정적으로 조달하고 검증 가능한 방식으로 확장하는 능력입니다.\n두 뉴스는 다른 층위의 이야기처럼 보이지만 같은 방향을 가리킵니다. AI가 더 많은 일을 맡을수록, 사람과 조직은 “무엇을 자동화할 수 있는가”보다 무엇을 감사 가능하게 자동화할 수 있는가를 묻게 됩니다. 데이터베이스 변경은 작은 운영 단위에서의 감사 가능성이고, 반도체 공급망과 상장 검토는 거대한 산업 단위에서의 감사 가능성입니다. AI/ML의 다음 경쟁력은 모델의 똑똑함만이 아니라, 그 모델이 만든 변화가 추적되고 설명되고 되돌릴 수 있는 구조 안에서 실행되는지에 달려 있습니다.\n실무적으로는 AI 도입 체크리스트를 한 단계 더 구체화해야 합니다. 코딩 에이전트를 쓰는 팀은 “코드 생성 품질”뿐 아니라 migration 승인, 운영 데이터 영향도, rollback 기준, 변경 로그 보존을 제품 요구사항으로 넣어야 합니다. 인프라와 반도체를 보는 팀은 GPU·HBM 이름만 보지 말고 공급 능력, 자본 조달, 고객 집중도, 해외 투자자 신뢰까지 함께 봐야 합니다. 오늘의 결론은 간단합니다. AI가 시스템을 바꾸는 속도가 빨라질수록, 거버넌스는 방해물이 아니라 제품과 인프라의 핵심 기능이 됩니다.\n참고 링크:\nLiquibase 5.2 Agent Safe Governance: https://www.liquibase.com/vw/liquibase-5-2-introduces-agent-safe-governance Reuters: SK Hynix US listing 검토 보도: https://www.reuters.com/world/asia-pacific/south-koreas-sk-hynix-eyes-us-listing-soon-august-sources-say-2026-06-10/ ",
+  "wordCount" : "356",
+  "inLanguage": "en",
+  "datePublished": "2026-06-10T20:55:00+09:00",
+  "dateModified": "2026-06-10T20:55:00+09:00",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://kwbaek.github.io/posts/2026-06-10-ai-ml-trends-agent-governance-now-reaches-databases-and-capital-markets/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Kyungwook's Devlog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://kwbaek.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://kwbaek.github.io/" accesskey="h" title="Kyungwook&#39;s Devlog (Alt + H)">Kyungwook&#39;s Devlog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://kwbaek.github.io/categories/" title="categories">
+                    <span>categories</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kwbaek.github.io/tags/" title="tags">
+                    <span>tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kwbaek.github.io/" title="Kyungwook&#39;s Devlog">
+                    <span>Kyungwook&#39;s Devlog</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      AI/ML 트렌드: 에이전트 거버넌스는 이제 DB와 자본시장까지 확장된다
+    </h1>
+    <div class="post-meta"><span title='2026-06-10 20:55:00 +0900 KST'>June 10, 2026</span>
+
+</div>
+  </header> 
+  <div class="post-content"><p>오늘 AI/ML 트렌드에서 가장 흥미로운 신호는 <strong>에이전트 거버넌스의 범위가 코드 리뷰를 넘어 데이터베이스와 자본시장 신뢰까지 넓어지고 있다</strong>는 점입니다. Liquibase 5.2는 AI가 생성한 database change를 다루기 위한 Agent Safe Governance를 공개했고, Reuters는 SK Hynix가 이르면 8월 미국 상장을 검토한다는 보도를 냈습니다. 하나는 코딩 에이전트가 실제 운영 데이터 구조를 바꿀 때 필요한 통제이고, 다른 하나는 AI 메모리 공급망의 승자가 글로벌 투자자에게 더 높은 투명성과 자본 접근성을 요구받는다는 신호입니다.</p>
+<p>첫 번째 흐름은 에이전트가 더 위험한 표면으로 내려가고 있다는 것입니다. 지금까지 많은 팀은 AI 코딩 도구를 “pull request 초안 생성기” 정도로 생각했습니다. 하지만 실제 제품 개발에서 중요한 변경은 코드만이 아닙니다. schema migration, 권한 테이블, 배치 작업, 데이터 보존 정책처럼 한 번 적용되면 되돌리기 어려운 상태 변화가 많습니다. AI가 이런 변경안을 제안하거나 자동 생성하기 시작하면, 단순히 diff를 읽는 리뷰만으로는 부족합니다. 어떤 정책을 통과했는지, 누가 승인했는지, 어떤 환경에서 검증됐는지, 실패하면 어떻게 되돌릴지까지 함께 기록되어야 합니다.</p>
+<p>두 번째 흐름은 AI 인프라 기업의 경쟁력이 기술 성능뿐 아니라 자본시장 신뢰와도 연결된다는 점입니다. SK Hynix는 HBM과 AI 메모리 수요의 핵심 수혜자로 꼽히지만, 공급 확대에는 대규모 설비 투자와 장기 고객 신뢰가 필요합니다. 미국 상장 검토 보도는 AI 반도체 경쟁이 생산능력, 고객 계약, 투자자 커뮤니케이션, 글로벌 규제 대응을 한 묶음으로 요구한다는 의미로 읽을 수 있습니다. AI 시대의 “인프라 moat”는 칩 성능만이 아니라, 그 칩을 안정적으로 조달하고 검증 가능한 방식으로 확장하는 능력입니다.</p>
+<p>두 뉴스는 다른 층위의 이야기처럼 보이지만 같은 방향을 가리킵니다. AI가 더 많은 일을 맡을수록, 사람과 조직은 “무엇을 자동화할 수 있는가”보다 <strong>무엇을 감사 가능하게 자동화할 수 있는가</strong>를 묻게 됩니다. 데이터베이스 변경은 작은 운영 단위에서의 감사 가능성이고, 반도체 공급망과 상장 검토는 거대한 산업 단위에서의 감사 가능성입니다. AI/ML의 다음 경쟁력은 모델의 똑똑함만이 아니라, 그 모델이 만든 변화가 추적되고 설명되고 되돌릴 수 있는 구조 안에서 실행되는지에 달려 있습니다.</p>
+<p>실무적으로는 AI 도입 체크리스트를 한 단계 더 구체화해야 합니다. 코딩 에이전트를 쓰는 팀은 “코드 생성 품질”뿐 아니라 migration 승인, 운영 데이터 영향도, rollback 기준, 변경 로그 보존을 제품 요구사항으로 넣어야 합니다. 인프라와 반도체를 보는 팀은 GPU·HBM 이름만 보지 말고 공급 능력, 자본 조달, 고객 집중도, 해외 투자자 신뢰까지 함께 봐야 합니다. 오늘의 결론은 간단합니다. AI가 시스템을 바꾸는 속도가 빨라질수록, 거버넌스는 방해물이 아니라 제품과 인프라의 핵심 기능이 됩니다.</p>
+<p>참고 링크:</p>
+<ul>
+<li>Liquibase 5.2 Agent Safe Governance: <a href="https://www.liquibase.com/vw/liquibase-5-2-introduces-agent-safe-governance">https://www.liquibase.com/vw/liquibase-5-2-introduces-agent-safe-governance</a></li>
+<li>Reuters: SK Hynix US listing 검토 보도: <a href="https://www.reuters.com/world/asia-pacific/south-koreas-sk-hynix-eyes-us-listing-soon-august-sources-say-2026-06-10/">https://www.reuters.com/world/asia-pacific/south-koreas-sk-hynix-eyes-us-listing-soon-august-sources-say-2026-06-10/</a></li>
+</ul>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://kwbaek.github.io/tags/ai/">Ai</a></li>
+      <li><a href="https://kwbaek.github.io/tags/ml/">ML</a></li>
+      <li><a href="https://kwbaek.github.io/tags/agent/">Agent</a></li>
+      <li><a href="https://kwbaek.github.io/tags/governance/">Governance</a></li>
+      <li><a href="https://kwbaek.github.io/tags/database/">Database</a></li>
+      <li><a href="https://kwbaek.github.io/tags/infrastructure/">Infrastructure</a></li>
+      <li><a href="https://kwbaek.github.io/tags/sk-hynix/">SK Hynix</a></li>
+      <li><a href="https://kwbaek.github.io/tags/liquibase/">Liquibase</a></li>
+      <li><a href="https://kwbaek.github.io/tags/audit/">Audit</a></li>
+    </ul>
+  </footer><script src="https://utteranc.es/client.js"
+        repo="kwbaek/blog-comments"
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://kwbaek.github.io/">Kyungwook&#39;s Devlog</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

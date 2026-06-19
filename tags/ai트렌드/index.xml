@@ -1,11 +1,47 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>AI트렌드 on Kyungwook's Devlog</title><link>https://kwbaek.github.io/tags/ai%ED%8A%B8%EB%A0%8C%EB%93%9C/</link><description>Recent content in AI트렌드 on Kyungwook's Devlog</description><generator>Hugo -- 0.155.3</generator><language>ko-kr</language><lastBuildDate>Thu, 05 Mar 2026 21:00:00 +0900</lastBuildDate><atom:link href="https://kwbaek.github.io/tags/ai%ED%8A%B8%EB%A0%8C%EB%93%9C/index.xml" rel="self" type="application/rss+xml"/><item><title>AI/ML 트렌드 브리핑: 2026년 3월 5일 — 에이전트 시대의 본격화</title><link>https://kwbaek.github.io/posts/2026-03-05-ai-ml-trends/</link><pubDate>Thu, 05 Mar 2026 21:00:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-03-05-ai-ml-trends/</guid><description>&lt;p&gt;오늘 하루 AI/ML 씬에서 쏟아진 뉴스를 추려봤다. 큰 그림으로 보면 한 가지 흐름이 선명하다 — &lt;strong&gt;AI가 더 이상 실험실 단계가 아닌, 실제 산업 현장과 경제 구조 자체를 재편하고 있다는 것&lt;/strong&gt;.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>AI트렌드 on Kyungwook&#39;s Devlog</title>
+    <link>https://kwbaek.github.io/tags/ai%ED%8A%B8%EB%A0%8C%EB%93%9C/</link>
+    <description>Recent content in AI트렌드 on Kyungwook&#39;s Devlog</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Thu, 05 Mar 2026 21:00:00 +0900</lastBuildDate>
+    <atom:link href="https://kwbaek.github.io/tags/ai%ED%8A%B8%EB%A0%8C%EB%93%9C/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI/ML 트렌드 브리핑: 2026년 3월 5일 — 에이전트 시대의 본격화</title>
+      <link>https://kwbaek.github.io/posts/2026-03-05-ai-ml-trends/</link>
+      <pubDate>Thu, 05 Mar 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-03-05-ai-ml-trends/</guid>
+      <description>&lt;p&gt;오늘 하루 AI/ML 씬에서 쏟아진 뉴스를 추려봤다. 큰 그림으로 보면 한 가지 흐름이 선명하다 — &lt;strong&gt;AI가 더 이상 실험실 단계가 아닌, 실제 산업 현장과 경제 구조 자체를 재편하고 있다는 것&lt;/strong&gt;.&lt;/p&gt;
 &lt;hr&gt;
-&lt;h2 id="-openai-연간-매출-250억-달러-돌파"&gt;🏆 OpenAI, 연간 매출 250억 달러 돌파&lt;/h2&gt;
-&lt;p&gt;ChatGPT 출시 약 2년 만에 OpenAI의 연간 환산 매출(ARR)이 &lt;strong&gt;250억 달러&lt;/strong&gt;를 넘어섰다. AI 기업 중 역대 최단기 대규모 매출 달성이다. 구독·API·엔터프라이즈 계약이 고르게 성장하며 이뤄낸 결과로, 연내 IPO 밸류에이션에도 직접 영향을 줄 전망이다.&lt;/p&gt;</description></item><item><title>학습보다 추론이 전장: Nvidia 새 칩 소식이 보여준 AI 인프라의 무게중심 이동</title><link>https://kwbaek.github.io/posts/2026-02-28-inference-is-the-new-ai-bottleneck/</link><pubDate>Sat, 28 Feb 2026 21:00:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-02-28-inference-is-the-new-ai-bottleneck/</guid><description>&lt;p&gt;오늘 Discord &lt;code&gt;#ai-ml-trends&lt;/code&gt; 채널에서 가장 중요한 신호는 Reuters가 보도한 &lt;strong&gt;Nvidia의 신규 추론(inference) 가속 시스템 준비&lt;/strong&gt; 뉴스였습니다. 겉으로는 또 하나의 칩 출시 소식처럼 보이지만, 실제로는 AI 산업의 중심축이 어디로 이동하고 있는지를 보여주는 상징적인 사건이라고 봅니다.&lt;/p&gt;
-&lt;p&gt;지난 2년은 “누가 더 큰 모델을 더 빨리 학습시키는가”가 핵심 경쟁이었습니다. 그래서 시장의 관심도 자연스럽게 학습용 GPU 수급, 대형 클러스터, CAPEX 규모에 쏠려 있었습니다. 그런데 지금은 상황이 달라졌습니다. 생성형 AI가 대중 서비스와 기업 워크플로우에 본격 탑재되면서, 비용과 성능의 병목이 학습보다 &lt;strong&gt;추론 단계&lt;/strong&gt;에서 더 크게 드러나고 있습니다. 사용자가 실제로 체감하는 것은 학습 성과가 아니라 응답 지연(latency), 처리량(throughput), 그리고 토큰당 비용이기 때문입니다.&lt;/p&gt;</description></item><item><title>범용 AI보다 강한 도메인 AI: 교육 현장에서 드러난 성과 격차</title><link>https://kwbaek.github.io/posts/2026-02-27-domain-ai-beats-general-ai-in-education/</link><pubDate>Fri, 27 Feb 2026 21:00:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-02-27-domain-ai-beats-general-ai-in-education/</guid><description>&lt;p&gt;오늘 Discord &lt;code&gt;#ai-ml-trends&lt;/code&gt;에서 가장 눈에 띈 뉴스는 Reuters가 보도한 &lt;strong&gt;Pearson의 실적 코멘트&lt;/strong&gt;였습니다. 요지는 명확합니다. &lt;em&gt;자사 커리큘럼에 맞춰 설계된 AI 코스웨어는 성적 개선 효과를 보였지만, 범용 AI를 단독 사용한 경우 학습·추론 능력에 부정적 영향이 관찰됐다&lt;/em&gt;는 것입니다.&lt;/p&gt;
-&lt;p&gt;이 포인트가 중요한 이유는 단순히 “어떤 모델이 더 똑똑하냐”의 문제가 아니기 때문입니다. 교육은 정답 생성보다 &lt;strong&gt;학습 경로 설계, 오개념 교정, 피드백 타이밍, 평가 정합성&lt;/strong&gt;이 더 중요합니다. 범용 챗봇은 질문에 답은 잘하지만, 학습자 수준·수업 목표·평가 루브릭과 엮인 ‘수업 문맥’을 기본적으로 알지 못합니다. 반면 도메인 AI는 학습 데이터와 인터랙션 자체가 특정 교육 목적에 맞춰져 있어, 학습 효과를 일관되게 밀어 올릴 가능성이 큽니다.&lt;/p&gt;</description></item><item><title>2026년 2월, 중국 AI 모델 러시와 Gemini 3 Deep Think의 등장</title><link>https://kwbaek.github.io/posts/2026-02-14-ai-ml-trends-china-rush/</link><pubDate>Sat, 14 Feb 2026 21:00:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-02-14-ai-ml-trends-china-rush/</guid><description>&lt;h2 id="-2026년-2월-ai-업계에-무슨-일이"&gt;🚀 2026년 2월, AI 업계에 무슨 일이?&lt;/h2&gt;
+&lt;h2 id=&#34;-openai-연간-매출-250억-달러-돌파&#34;&gt;🏆 OpenAI, 연간 매출 250억 달러 돌파&lt;/h2&gt;
+&lt;p&gt;ChatGPT 출시 약 2년 만에 OpenAI의 연간 환산 매출(ARR)이 &lt;strong&gt;250억 달러&lt;/strong&gt;를 넘어섰다. AI 기업 중 역대 최단기 대규모 매출 달성이다. 구독·API·엔터프라이즈 계약이 고르게 성장하며 이뤄낸 결과로, 연내 IPO 밸류에이션에도 직접 영향을 줄 전망이다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>학습보다 추론이 전장: Nvidia 새 칩 소식이 보여준 AI 인프라의 무게중심 이동</title>
+      <link>https://kwbaek.github.io/posts/2026-02-28-inference-is-the-new-ai-bottleneck/</link>
+      <pubDate>Sat, 28 Feb 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-02-28-inference-is-the-new-ai-bottleneck/</guid>
+      <description>&lt;p&gt;오늘 Discord &lt;code&gt;#ai-ml-trends&lt;/code&gt; 채널에서 가장 중요한 신호는 Reuters가 보도한 &lt;strong&gt;Nvidia의 신규 추론(inference) 가속 시스템 준비&lt;/strong&gt; 뉴스였습니다. 겉으로는 또 하나의 칩 출시 소식처럼 보이지만, 실제로는 AI 산업의 중심축이 어디로 이동하고 있는지를 보여주는 상징적인 사건이라고 봅니다.&lt;/p&gt;
+&lt;p&gt;지난 2년은 “누가 더 큰 모델을 더 빨리 학습시키는가”가 핵심 경쟁이었습니다. 그래서 시장의 관심도 자연스럽게 학습용 GPU 수급, 대형 클러스터, CAPEX 규모에 쏠려 있었습니다. 그런데 지금은 상황이 달라졌습니다. 생성형 AI가 대중 서비스와 기업 워크플로우에 본격 탑재되면서, 비용과 성능의 병목이 학습보다 &lt;strong&gt;추론 단계&lt;/strong&gt;에서 더 크게 드러나고 있습니다. 사용자가 실제로 체감하는 것은 학습 성과가 아니라 응답 지연(latency), 처리량(throughput), 그리고 토큰당 비용이기 때문입니다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>범용 AI보다 강한 도메인 AI: 교육 현장에서 드러난 성과 격차</title>
+      <link>https://kwbaek.github.io/posts/2026-02-27-domain-ai-beats-general-ai-in-education/</link>
+      <pubDate>Fri, 27 Feb 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-02-27-domain-ai-beats-general-ai-in-education/</guid>
+      <description>&lt;p&gt;오늘 Discord &lt;code&gt;#ai-ml-trends&lt;/code&gt;에서 가장 눈에 띈 뉴스는 Reuters가 보도한 &lt;strong&gt;Pearson의 실적 코멘트&lt;/strong&gt;였습니다. 요지는 명확합니다. &lt;em&gt;자사 커리큘럼에 맞춰 설계된 AI 코스웨어는 성적 개선 효과를 보였지만, 범용 AI를 단독 사용한 경우 학습·추론 능력에 부정적 영향이 관찰됐다&lt;/em&gt;는 것입니다.&lt;/p&gt;
+&lt;p&gt;이 포인트가 중요한 이유는 단순히 “어떤 모델이 더 똑똑하냐”의 문제가 아니기 때문입니다. 교육은 정답 생성보다 &lt;strong&gt;학습 경로 설계, 오개념 교정, 피드백 타이밍, 평가 정합성&lt;/strong&gt;이 더 중요합니다. 범용 챗봇은 질문에 답은 잘하지만, 학습자 수준·수업 목표·평가 루브릭과 엮인 ‘수업 문맥’을 기본적으로 알지 못합니다. 반면 도메인 AI는 학습 데이터와 인터랙션 자체가 특정 교육 목적에 맞춰져 있어, 학습 효과를 일관되게 밀어 올릴 가능성이 큽니다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>2026년 2월, 중국 AI 모델 러시와 Gemini 3 Deep Think의 등장</title>
+      <link>https://kwbaek.github.io/posts/2026-02-14-ai-ml-trends-china-rush/</link>
+      <pubDate>Sat, 14 Feb 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-02-14-ai-ml-trends-china-rush/</guid>
+      <description>&lt;h2 id=&#34;-2026년-2월-ai-업계에-무슨-일이&#34;&gt;🚀 2026년 2월, AI 업계에 무슨 일이?&lt;/h2&gt;
 &lt;p&gt;2026년 2월은 AI 업계에 엄청난 변화가 일어나고 있는 달입니다. 특히 중국 AI 기업들의 공격적인 모델 출시와 Google, Anthropic의 신규 모델 발표가 동시에 터지면서 &lt;strong&gt;AI 모델 전쟁&lt;/strong&gt;이 새로운 국면으로 접어들었습니다.&lt;/p&gt;
-&lt;h2 id="-중국-ai-모델-러시-alibaba-bytedance-zhipu의-동시다발-공세"&gt;🇨🇳 중국 AI 모델 러시: Alibaba, ByteDance, Zhipu의 동시다발 공세&lt;/h2&gt;
+&lt;h2 id=&#34;-중국-ai-모델-러시-alibaba-bytedance-zhipu의-동시다발-공세&#34;&gt;🇨🇳 중국 AI 모델 러시: Alibaba, ByteDance, Zhipu의 동시다발 공세&lt;/h2&gt;
 &lt;p&gt;이번 주 중국 AI 업계가 폭발적인 움직임을 보였습니다:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;Alibaba: RynnBrain&lt;/strong&gt; (물리적 AI/로봇 특화)&lt;/li&gt;
@@ -13,4 +49,7 @@
 &lt;li&gt;&lt;strong&gt;ByteDance: Seedance 모델&lt;/strong&gt;&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Zhipu AI: GLM-5&lt;/strong&gt; (Agentic Engineering 돌파구)&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;특히 &lt;strong&gt;Zhipu AI의 주가는 30% 급등&lt;/strong&gt;하며 시장의 뜨거운 반응을 얻었습니다. GLM-5는 에이전트 시스템에 특화된 모델로, 중국발 AI 모델이 글로벌 경쟁에서 본격적으로 주목받는 신호탄이 되었습니다.&lt;/p&gt;</description></item></channel></rss>
+&lt;p&gt;특히 &lt;strong&gt;Zhipu AI의 주가는 30% 급등&lt;/strong&gt;하며 시장의 뜨거운 반응을 얻었습니다. GLM-5는 에이전트 시스템에 특화된 모델로, 중국발 AI 모델이 글로벌 경쟁에서 본격적으로 주목받는 신호탄이 되었습니다.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
