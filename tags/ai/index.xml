@@ -6,8 +6,16 @@
     <description>Recent content in Ai on Kyungwook&#39;s Devlog</description>
     <generator>Hugo -- 0.155.3</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Fri, 19 Jun 2026 20:55:00 +0900</lastBuildDate>
+    <lastBuildDate>Sat, 20 Jun 2026 20:58:00 +0900</lastBuildDate>
     <atom:link href="https://kwbaek.github.io/tags/ai/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI/ML 트렌드: Creative AI는 이제 앱 기능이 아니라 Workflow Agent Layer다</title>
+      <link>https://kwbaek.github.io/posts/2026-06-20-ai-ml-trends-creative-ai-is-becoming-a-workflow-agent-layer/</link>
+      <pubDate>Sat, 20 Jun 2026 20:58:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-06-20-ai-ml-trends-creative-ai-is-becoming-a-workflow-agent-layer/</guid>
+      <description>&lt;p&gt;오늘 AI/ML 트렌드에서 가장 흥미로운 신호는 Adobe가 Creative Agent를 Firefly와 Photoshop, Premiere를 포함한 Creative Cloud 전반으로 확장한다고 발표한 점입니다. 생성형 AI가 이미지 한 장을 만들어주는 기능으로 머무는 단계는 빠르게 지나가고 있습니다. 이제 핵심은 사용자가 원하는 결과를 자연어로 설명하면, 여러 앱과 편집 단계를 넘나들며 작업을 조율하는 &lt;strong&gt;creative workflow agent&lt;/strong&gt;입니다.&lt;/p&gt;
+&lt;p&gt;이 변화가 중요한 이유는 창작 업무의 병목이 더 이상 단일 모델의 품질만이 아니기 때문입니다. 실제 마케팅, 콘텐츠, 디자인 업무에서는 이미지 생성, 배경 제거, 영상 컷 편집, 브랜드 톤 적용, 포맷 변환, 피드백 반영, 배포용 asset 정리까지 여러 도구가 이어집니다. 모델이 한 번에 멋진 결과물을 만들어도 이 연결 과정이 끊기면 실무 생산성은 제한됩니다. Adobe가 Creative Agent를 Creative Cloud 전체와 ChatGPT, Claude, Copilot, Gemini, Slack 같은 업무 표면으로 넓히려는 이유도 여기에 있습니다.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>AI/ML 트렌드: 생성형 광고의 다음 병목은 모델보다 공개 기준이다</title>
       <link>https://kwbaek.github.io/posts/2026-06-19-ai-ml-trends-generative-ads-need-disclosure-operations/</link>
