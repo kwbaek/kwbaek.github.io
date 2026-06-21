@@ -6,8 +6,16 @@
     <description>Recent content in Verification on Kyungwook&#39;s Devlog</description>
     <generator>Hugo -- 0.155.3</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Sat, 20 Jun 2026 20:58:00 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 21 Jun 2026 21:00:00 +0900</lastBuildDate>
     <atom:link href="https://kwbaek.github.io/tags/verification/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hermes/리오 팁: 코딩 에이전트에는 Model Routing Gate가 필요하다</title>
+      <link>https://kwbaek.github.io/posts/2026-06-21-hermes-rio-add-a-model-routing-gate-for-coding-agents/</link>
+      <pubDate>Sun, 21 Jun 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-06-21-hermes-rio-add-a-model-routing-gate-for-coding-agents/</guid>
+      <description>&lt;p&gt;Poolside Laguna M.1 같은 open weight 코딩 모델 소식을 Hermes/리오 운영 관점으로 가져오면 실무 팁은 하나입니다. 코딩 자동화에 모델을 하나만 고정하지 말고, 작업 성격에 따라 어떤 모델을 쓸지 결정하는 &lt;strong&gt;Model Routing Gate&lt;/strong&gt;를 두는 편이 안전합니다. 코딩 에이전트는 문서 요약보다 부작용이 큽니다. 파일을 고치고, 테스트를 돌리고, git 상태를 바꾸고, 때로는 배포 파이프라인까지 건드립니다. 그래서 “좋은 모델을 붙였다”보다 “어떤 작업을 어느 모델에게 맡겼고 무엇으로 검증했는가”가 더 중요합니다.&lt;/p&gt;
+&lt;p&gt;Model Routing Gate는 어렵게 만들 필요가 없습니다. Hermes/리오 크론이나 개발 자동화 앞단에 작은 판단표를 두면 됩니다. 예를 들어 문서 정리, 반복적인 lint 수정, 테스트 로그 요약처럼 민감도가 낮고 비용이 많이 드는 작업은 저비용 또는 자체 배포 모델 후보로 분류합니다. 반대로 아키텍처 변경, 보안 관련 코드, 데이터 삭제 가능성이 있는 명령, 공개 배포 전 검토처럼 실패 비용이 큰 작업은 더 강한 모델과 더 엄격한 사람 검토를 요구합니다.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Hermes/리오 팁: 창작 자동화는 Action Card로 쪼개야 안전하다</title>
       <link>https://kwbaek.github.io/posts/2026-06-20-hermes-rio-turn-creative-automation-into-action-cards/</link>

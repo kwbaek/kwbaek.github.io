@@ -143,6 +143,33 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 팁: cron 결과물을 개인 에이전트의 control plane으로 쓰기
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>OpenClaw를 개인 비서형 agent로 오래 쓰다 보면 cron의 의미가 조금 달라집니다. 처음에는 “정해진 시간에 자동 실행되는 작업” 정도로 보이지만, 실제로는 개인 agent 운영의 작은 control plane이 됩니다. 매일 트렌드를 읽고, 블로그를 쓰고, 빌드하고, 배포하고, 실패하면 어디서 막혔는지 남기는 과정 자체가 에이전트의 운영 면을 만듭니다.
+오늘처럼 Discord #ai-ml-trends 채널을 읽어 블로그 글을 만드는 작업을 예로 들어보면 구조가 분명합니다. 입력은 채널 메시지입니다. 처리 단계는 트렌드 선별, 글 작성, Hugo front matter 생성, 파일 저장, git commit, hugo build, public 배포입니다. 출력은 블로그 글과 배포 커밋입니다. 이 흐름에서 중요한 것은 모델이 글을 잘 쓰는 것만이 아닙니다. 어떤 채널을 읽었는지, 오늘 메시지만 봤는지, 파일명이 규칙을 지켰는지, 빌드가 통과했는지, public 폴더가 실제 배포 repo인지 확인하는 작은 gate들이 더 중요합니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-05-20 21:00:00 +0900 KST'>May 20, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 팁: cron 결과물을 개인 에이전트의 control plane으로 쓰기" href="https://kwbaek.github.io/posts/2026-05-20-openclaw-use-cron-outputs-as-an-operational-control-plane/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">AI/ML 트렌드: 에이전트 AI는 이제 기능이 아니라 운영체제가 되고 있다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘의 AI/ML 흐름에서 가장 흥미로운 공통분모는 agentic AI가 단일 기능이나 데모를 넘어, 기업과 개발 환경의 운영체제처럼 자리 잡기 시작했다는 점입니다. 오늘 #ai-ml-trends에 올라온 소식들은 표면적으로는 꽤 흩어져 있습니다. Anthropic의 Stainless 인수, GitHub Copilot cloud agent의 Actions one-click fix, Google ADK의 persistent task store, Bedrock AgentCore의 custom evaluator, Workday와 KPMG의 enterprise AI 전환, CHI-Bench 같은 healthcare workflow benchmark, 그리고 OpenClaw·Claude Code·Pydantic AI 같은 agent runtime 업데이트까지 다양합니다. 하지만 모두 같은 방향을 가리킵니다. 이제 AI 경쟁의 중심은 “모델이 무엇을 말할 수 있나”가 아니라 에이전트가 어떤 시스템 안에서 오래, 안전하게, 검증 가능하게 일할 수 있나로 이동하고 있습니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-05-19 21:00:00 +0900 KST'>May 19, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 에이전트 AI는 이제 기능이 아니라 운영체제가 되고 있다" href="https://kwbaek.github.io/posts/2026-05-19-ai-ml-trends-agentic-ai-is-becoming-an-operating-system/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">OpenClaw 팁: 에이전트 운영에서 startup trace와 skill 관리가 중요한 이유
     </h2>
   </header>
@@ -244,34 +271,6 @@
   </div>
   <footer class="entry-footer"><span title='2026-05-13 21:00:00 +0900 KST'>May 13, 2026</span></footer>
   <a class="entry-link" aria-label="post link to OpenClaw 팁: 에이전트별 경계를 나누면 자동화가 훨씬 안전해진다" href="https://kwbaek.github.io/posts/2026-05-13-openclaw-use-per-agent-boundaries-for-safer-automation/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">AI/ML 트렌드: AI 스택은 챗봇에서 운영 표면으로 이동하고 있다
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>오늘 AI/ML 트렌드에서 가장 선명한 흐름은 AI가 챗봇이나 단일 모델 기능에서 벗어나, 실제 업무와 산업 시스템을 움직이는 운영 표면으로 내려가고 있다는 점입니다. 하루 동안 나온 소식들을 묶어보면, 경쟁의 질문은 더 이상 “어떤 모델이 더 똑똑한가?”에 머물지 않습니다. 이제는 “그 모델이 어떤 데이터와 도구를 보고, 어떤 권한으로 행동하며, 어떤 인프라 위에서 감시되고, 어떤 법적·경제적 책임을 남기는가?”가 핵심이 되고 있습니다.
-가장 먼저 눈에 띄는 것은 enterprise deployment의 성숙입니다. OpenAI의 ChatGPT adoption broadened 분석은 AI 사용이 일부 early adopter의 실험을 넘어 더 넓은 사용자와 업무 패턴으로 확산되고 있음을 보여줍니다. 동시에 Capgemini가 OpenAI Deployment Company에 투자했다는 소식은 frontier AI 상업화가 API 판매만으로 끝나지 않는다는 점을 잘 드러냅니다. 기업은 모델을 사는 것이 아니라 use-case 선정, 데이터 연결, 운영 전환, 직원 채택, 리스크 관리까지 묶인 배포 역량을 삽니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-05-12 21:00:00 +0900 KST'>May 12, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to AI/ML 트렌드: AI 스택은 챗봇에서 운영 표면으로 이동하고 있다" href="https://kwbaek.github.io/posts/2026-05-12-ai-ml-trends-the-ai-stack-is-moving-from-chatbots-to-operating-surfaces/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw 팁: 자동화가 커지기 전에 에이전트 권한을 좁혀두자
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>OpenClaw를 개인 비서나 팀 자동화 런타임으로 오래 쓰다 보면, 가장 중요한 설계 질문은 “무엇을 할 수 있나?”에서 **“각 에이전트가 어디까지 할 수 있어야 하나?”**로 바뀝니다. 자동화가 한두 개일 때는 모든 기능을 넓게 열어두는 편이 편합니다. 하지만 크론, Discord, Telegram, 블로그 배포, 파일 작업, 메시지 전송이 서로 얽히기 시작하면 권한의 폭이 곧 사고의 폭이 됩니다.
-오늘 살펴볼 포인트는 OpenClaw v2026.5.10-beta.5에서 보인 per-agent message crossContext/action allow와 redacted diagnostics 흐름입니다. 핵심은 단순합니다. 에이전트 전체에 하나의 거대한 메시지 권한을 주기보다, 에이전트별로 어떤 context를 넘나들 수 있는지, 어떤 message action을 수행할 수 있는지 좁히고, 진단 출력에서는 민감한 값을 가리는 방향입니다. 작은 변화처럼 보이지만 실제 운영에서는 매우 큰 차이를 만듭니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-05-12 21:00:00 +0900 KST'>May 12, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw 팁: 자동화가 커지기 전에 에이전트 권한을 좁혀두자" href="https://kwbaek.github.io/posts/2026-05-12-openclaw-narrow-agent-permissions-before-automation-scales/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

@@ -143,6 +143,33 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">AI/ML 트렌드: AI 인프라는 모델 밖으로 확장되고 있다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 Discord #ai-ml-trends 채널에서 가장 중요한 흐름은 AI 경쟁의 병목이 모델 자체에서 메모리, CPU, 서빙 런타임, 평가, 보안, 디바이스 실행 환경으로 넓어지고 있다는 점입니다. Google의 Gemini Omni Flash 같은 멀티모달 생성 모델 소식도 눈에 띄었지만, 하루 전체 메시지를 묶어 보면 더 큰 변화는 “좋은 모델을 만들었다”보다 “그 모델을 어디서, 어떤 비용으로, 얼마나 안전하게, 어떤 운영 표면에서 계속 굴릴 것인가”에 있었습니다.
+가장 선명한 신호는 AI factory 공급망입니다. Reuters의 SK Hynix 시가총액 1조 달러 돌파 보도와 Micron 관련 소식은 HBM과 고급 DRAM이 이제 GPU의 보조 부품이 아니라 AI 인프라 경제의 핵심 병목이 됐다는 사실을 보여줍니다. NVIDIA가 대만 공급망과 더 밀착되는 흐름도 같은 맥락입니다. 모델 학습과 추론 수요가 계속 커지면 GPU만으로는 이야기가 끝나지 않습니다. 메모리 대역폭, 패키징, 서버 제조, 전력, 냉각, 지역별 공급망 리스크가 모두 AI 제품의 원가와 출시 속도를 좌우합니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-05-27 21:00:00 +0900 KST'>May 27, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to AI/ML 트렌드: AI 인프라는 모델 밖으로 확장되고 있다" href="https://kwbaek.github.io/posts/2026-05-27-ai-ml-trends-ai-infrastructure-is-expanding-beyond-the-model/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">AI/ML 트렌드: 에이전트 런타임은 디바이스와 운영 표면으로 내려온다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 Discord #ai-ml-trends 채널에서 가장 눈에 띈 흐름은 에이전트가 클라우드 챗봇 안에 머무르지 않고, 모바일 디바이스, 개발자 터미널, 운영 UI, 연구 워크플로로 퍼지고 있다는 점입니다. Google의 ADK for Kotlin/Android, LiteRT-LM, Gemini CLI의 Antigravity CLI 전환, Hugging Face의 generative UI 모델과 personal assistant benchmark, GitHub Copilot의 semantic issue search, 그리고 여러 multimodal agent 연구는 서로 다른 소식처럼 보입니다. 하지만 한 문장으로 묶으면 “모델 성능 다음의 전쟁터는 에이전트가 실제 환경에서 어디에 붙고 어떻게 움직이는가”입니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-05-26 21:00:00 +0900 KST'>May 26, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 에이전트 런타임은 디바이스와 운영 표면으로 내려온다" href="https://kwbaek.github.io/posts/2026-05-26-ai-ml-trends-agent-runtime-moves-onto-devices-and-operating-surfaces/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">AI/ML 트렌드: 에이전트 스킬과 월드 모델 평가는 운영 문제로 이동한다
     </h2>
   </header>
@@ -247,33 +274,6 @@
   </div>
   <footer class="entry-footer"><span title='2026-05-20 21:00:00 +0900 KST'>May 20, 2026</span></footer>
   <a class="entry-link" aria-label="post link to AI/ML 트렌드: 에이전트 AI의 다음 전장은 control plane이다" href="https://kwbaek.github.io/posts/2026-05-20-ai-ml-trends-agentic-ai-is-moving-into-control-planes/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw 팁: cron 결과물을 개인 에이전트의 control plane으로 쓰기
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>OpenClaw를 개인 비서형 agent로 오래 쓰다 보면 cron의 의미가 조금 달라집니다. 처음에는 “정해진 시간에 자동 실행되는 작업” 정도로 보이지만, 실제로는 개인 agent 운영의 작은 control plane이 됩니다. 매일 트렌드를 읽고, 블로그를 쓰고, 빌드하고, 배포하고, 실패하면 어디서 막혔는지 남기는 과정 자체가 에이전트의 운영 면을 만듭니다.
-오늘처럼 Discord #ai-ml-trends 채널을 읽어 블로그 글을 만드는 작업을 예로 들어보면 구조가 분명합니다. 입력은 채널 메시지입니다. 처리 단계는 트렌드 선별, 글 작성, Hugo front matter 생성, 파일 저장, git commit, hugo build, public 배포입니다. 출력은 블로그 글과 배포 커밋입니다. 이 흐름에서 중요한 것은 모델이 글을 잘 쓰는 것만이 아닙니다. 어떤 채널을 읽었는지, 오늘 메시지만 봤는지, 파일명이 규칙을 지켰는지, 빌드가 통과했는지, public 폴더가 실제 배포 repo인지 확인하는 작은 gate들이 더 중요합니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-05-20 21:00:00 +0900 KST'>May 20, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw 팁: cron 결과물을 개인 에이전트의 control plane으로 쓰기" href="https://kwbaek.github.io/posts/2026-05-20-openclaw-use-cron-outputs-as-an-operational-control-plane/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">AI/ML 트렌드: 에이전트 AI는 이제 기능이 아니라 운영체제가 되고 있다
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>오늘의 AI/ML 흐름에서 가장 흥미로운 공통분모는 agentic AI가 단일 기능이나 데모를 넘어, 기업과 개발 환경의 운영체제처럼 자리 잡기 시작했다는 점입니다. 오늘 #ai-ml-trends에 올라온 소식들은 표면적으로는 꽤 흩어져 있습니다. Anthropic의 Stainless 인수, GitHub Copilot cloud agent의 Actions one-click fix, Google ADK의 persistent task store, Bedrock AgentCore의 custom evaluator, Workday와 KPMG의 enterprise AI 전환, CHI-Bench 같은 healthcare workflow benchmark, 그리고 OpenClaw·Claude Code·Pydantic AI 같은 agent runtime 업데이트까지 다양합니다. 하지만 모두 같은 방향을 가리킵니다. 이제 AI 경쟁의 중심은 “모델이 무엇을 말할 수 있나”가 아니라 에이전트가 어떤 시스템 안에서 오래, 안전하게, 검증 가능하게 일할 수 있나로 이동하고 있습니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-05-19 21:00:00 +0900 KST'>May 19, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 에이전트 AI는 이제 기능이 아니라 운영체제가 되고 있다" href="https://kwbaek.github.io/posts/2026-05-19-ai-ml-trends-agentic-ai-is-becoming-an-operating-system/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

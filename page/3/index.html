@@ -152,6 +152,34 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">AI/ML 트렌드: 에이전트 Skill은 이제 공급망이다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 AI/ML 트렌드에서 가장 흥미로운 신호는 에이전트의 확장 단위가 프롬프트가 아니라 공급망으로 취급되기 시작했다는 점입니다. Unit 42는 AI agent skill supply chain 리스크를 다루며 Behavioral Integrity Verification(BIV)을 제안했고, TrendForce는 AI agent boom이 enterprise SSD 공급 압박으로 이어지고 있다고 분석했습니다. 하나는 에이전트가 가져다 쓰는 skill·manifest·코드의 신뢰 문제이고, 다른 하나는 에이전트 실행이 실제 저장장치 수요까지 밀어 올리는 인프라 문제입니다.
+첫 번째 변화는 에이전트 보안의 초점이 “모델이 나쁜 답을 하지 않는가”에서 “에이전트가 설치한 능력이 실제로 무엇을 하는가”로 이동한다는 것입니다. 지금까지 많은 팀은 skill, MCP tool, plugin, workflow 문서를 편의 기능처럼 다뤘습니다. 하지만 에이전트가 파일을 읽고, 브라우저를 조작하고, 저장소를 수정하고, 배포까지 할 수 있다면 skill은 사실상 작은 앱입니다. 설명 문서에는 읽기 전용이라고 되어 있지만 실제 코드가 쓰기 권한을 요구한다면, 그것은 prompt 품질 문제가 아니라 공급망 무결성 문제입니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-06-11 21:00:00 +0900 KST'>June 11, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 에이전트 Skill은 이제 공급망이다" href="https://kwbaek.github.io/posts/2026-06-11-ai-ml-trends-agent-skills-are-now-a-supply-chain/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Hermes/리오 팁: Skill 설치에도 무결성 게이트를 두기
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 AI/ML 트렌드가 에이전트 skill을 공급망으로 보라고 말해준다면, Hermes/리오 운영에도 바로 적용할 수 있는 습관이 있습니다. 새 skill이나 tool을 붙일 때 설치 전 무결성 게이트를 둔다는 원칙입니다. 에이전트 자동화에서 skill은 단순한 도움말이 아닙니다. 어떤 파일을 읽을지, 어떤 명령을 실행할지, 어떤 외부 서비스를 호출할지 결정하는 실행 표면입니다. 따라서 새 skill을 추가하는 순간 자동화의 권한 경계도 함께 바뀝니다.
+첫 번째 체크는 설명과 실제 행동의 일치입니다. skill 문서가 “읽기 전용 분석”을 말한다면 실제 스크립트도 파일 쓰기, 커밋, 네트워크 전송을 하지 않아야 합니다. 반대로 배포나 전송처럼 외부 부작용이 필요한 skill이라면, 그 조건과 검증 단계가 문서에 명시돼 있어야 합니다. Hermes/리오가 자동으로 작업을 수행할수록 “이 skill이 무엇을 한다고 주장하는가”와 “실제로 어떤 권한을 쓰는가”를 비교하는 단계가 중요해집니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-06-11 21:00:00 +0900 KST'>June 11, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to Hermes/리오 팁: Skill 설치에도 무결성 게이트를 두기" href="https://kwbaek.github.io/posts/2026-06-11-hermes-rio-add-an-integrity-gate-before-installing-skills/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">AI/ML 트렌드: 에이전트 거버넌스는 이제 DB와 자본시장까지 확장된다
     </h2>
   </header>
@@ -258,32 +286,6 @@ Change Gate의 첫 번째 역할은 작업을 읽기 전용 단계와 변경 단
   </div>
   <footer class="entry-footer"><span title='2026-06-07 21:00:00 +0900 KST'>June 7, 2026</span></footer>
   <a class="entry-link" aria-label="post link to Hermes/리오 팁: 에이전트 코드리뷰를 감사 가능한 작업으로 만들기" href="https://kwbaek.github.io/posts/2026-06-07-hermes-rio-make-agent-code-review-auditable/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">AI/ML 트렌드: 에이전트에는 컨텍스트 창보다 월드 모델이 필요하다
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>오늘 AI/ML 트렌드에서 가장 흥미로운 변화는 에이전트가 더 긴 컨텍스트를 읽는 수준을 넘어, 업무 세계를 구조화해서 이해해야 한다는 신호였습니다. Hugging Face에 올라온 Blackstone Graph는 법률·규제 데이터를 agent-facing world model로 만들겠다는 시도입니다. 단순히 문서를 벡터 검색하는 RAG가 아니라, 조항·사건·관계·근거를 에이전트가 질의 가능한 스키마로 바꾸려는 방향입니다. 같은 날 RTX PRO 6000 Blackwell과 GH200의 Qwen3.5 SFT 벤치마크, Karpathy nanochat을 Ascend NPU로 옮긴 Nanochat-Ascend 사례도 나왔습니다. 이 셋을 함께 보면, AI 경쟁은 “어떤 모델을 쓰는가”보다 모델이 어떤 지식 구조와 어떤 실행 환경 위에서 안정적으로 일하는가로 이동하고 있습니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-06-06 21:00:00 +0900 KST'>June 6, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 에이전트에는 컨텍스트 창보다 월드 모델이 필요하다" href="https://kwbaek.github.io/posts/2026-06-06-ai-ml-trends-agents-need-world-models-not-just-context-windows/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Hermes/리오 팁: 자동화에 작은 월드 모델을 붙이기
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>Hermes/리오를 매일 쓰다 보면 자동화의 품질을 가르는 기준이 “프롬프트를 얼마나 잘 썼는가”만은 아니라는 걸 자주 느낍니다. 반복 작업이 안정적으로 좋아지려면 에이전트가 매번 처음부터 추론하는 대신, 자기 작업 세계를 작게라도 구조화해서 들고 있어야 합니다. 나는 이것을 자동화용 작은 월드 모델이라고 부르고 싶습니다. 거창한 그래프 데이터베이스가 아니어도 됩니다. 입력 소스가 어디에 있고, 어떤 출력 형식이 필요한지, 최근에 무엇을 했는지, 어떤 표현은 쓰면 안 되는지, 실패하면 어떤 폴백을 써야 하는지를 파일과 링크로 정리해 두는 것만으로도 크론의 품질은 크게 달라집니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-06-06 21:00:00 +0900 KST'>June 6, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to Hermes/리오 팁: 자동화에 작은 월드 모델을 붙이기" href="https://kwbaek.github.io/posts/2026-06-06-hermes-rio-add-a-small-world-model-to-automation/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">
