@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>AI/ML 트렌드: AI 공급망은 이제 모델 성능보다 정책·전력 라우팅 문제다 | Kyungwook&#39;s Devlog</title>
+<meta name="keywords" content="AI, ML, AI Infrastructure, Sovereign AI, Compliance, Energy, Vendor Routing">
+<meta name="description" content="오늘 AI/ML 트렌드에서 가장 흥미로운 신호는 Reuters가 전한 두 가지 흐름입니다. 하나는 미국의 AI 규제가 유럽 기업들로 하여금 모델·클라우드 공급망 리스크를 분산하게 만들고 있다는 점이고, 다른 하나는 중국 AI 프로젝트의 green-power 사용 확대가 전력망과 입지 병목에 부딪히고 있다는 점입니다. 겉으로는 서로 다른 뉴스처럼 보이지만, 공통 메시지는 분명합니다. AI 경쟁은 더 이상 “어떤 모델이 더 똑똑한가”만의 문제가 아니라, 어느 지역에서 어떤 공급자와 어떤 전력 조건으로 운영할 수 있는가의 문제로 이동하고 있습니다.">
+<meta name="author" content="">
+<link rel="canonical" href="https://kwbaek.github.io/posts/2026-06-22-ai-ml-trends-ai-supply-chain-is-becoming-policy-and-power-routing/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.da3211e5ef867bf2b75fd5a6515cfed7195c011e8ab735694e203810a827097b.css" integrity="sha256-2jIR5e&#43;Ge/K3X9WmUVz&#43;1xlcAR6KtzVpTiA4EKgnCXs=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://kwbaek.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://kwbaek.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://kwbaek.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://kwbaek.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://kwbaek.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://kwbaek.github.io/posts/2026-06-22-ai-ml-trends-ai-supply-chain-is-becoming-policy-and-power-routing/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="https://kwbaek.github.io/posts/2026-06-22-ai-ml-trends-ai-supply-chain-is-becoming-policy-and-power-routing/">
+  <meta property="og:site_name" content="Kyungwook&#39;s Devlog">
+  <meta property="og:title" content="AI/ML 트렌드: AI 공급망은 이제 모델 성능보다 정책·전력 라우팅 문제다">
+  <meta property="og:description" content="오늘 AI/ML 트렌드에서 가장 흥미로운 신호는 Reuters가 전한 두 가지 흐름입니다. 하나는 미국의 AI 규제가 유럽 기업들로 하여금 모델·클라우드 공급망 리스크를 분산하게 만들고 있다는 점이고, 다른 하나는 중국 AI 프로젝트의 green-power 사용 확대가 전력망과 입지 병목에 부딪히고 있다는 점입니다. 겉으로는 서로 다른 뉴스처럼 보이지만, 공통 메시지는 분명합니다. AI 경쟁은 더 이상 “어떤 모델이 더 똑똑한가”만의 문제가 아니라, 어느 지역에서 어떤 공급자와 어떤 전력 조건으로 운영할 수 있는가의 문제로 이동하고 있습니다.">
+  <meta property="og:locale" content="ko-kr">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2026-06-22T20:55:00+09:00">
+    <meta property="article:modified_time" content="2026-06-22T20:55:00+09:00">
+    <meta property="article:tag" content="AI">
+    <meta property="article:tag" content="Ml">
+    <meta property="article:tag" content="AI Infrastructure">
+    <meta property="article:tag" content="Sovereign AI">
+    <meta property="article:tag" content="Compliance">
+    <meta property="article:tag" content="Energy">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="AI/ML 트렌드: AI 공급망은 이제 모델 성능보다 정책·전력 라우팅 문제다">
+<meta name="twitter:description" content="오늘 AI/ML 트렌드에서 가장 흥미로운 신호는 Reuters가 전한 두 가지 흐름입니다. 하나는 미국의 AI 규제가 유럽 기업들로 하여금 모델·클라우드 공급망 리스크를 분산하게 만들고 있다는 점이고, 다른 하나는 중국 AI 프로젝트의 green-power 사용 확대가 전력망과 입지 병목에 부딪히고 있다는 점입니다. 겉으로는 서로 다른 뉴스처럼 보이지만, 공통 메시지는 분명합니다. AI 경쟁은 더 이상 “어떤 모델이 더 똑똑한가”만의 문제가 아니라, 어느 지역에서 어떤 공급자와 어떤 전력 조건으로 운영할 수 있는가의 문제로 이동하고 있습니다.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://kwbaek.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "AI/ML 트렌드: AI 공급망은 이제 모델 성능보다 정책·전력 라우팅 문제다",
+      "item": "https://kwbaek.github.io/posts/2026-06-22-ai-ml-trends-ai-supply-chain-is-becoming-policy-and-power-routing/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "AI/ML 트렌드: AI 공급망은 이제 모델 성능보다 정책·전력 라우팅 문제다",
+  "name": "AI\/ML 트렌드: AI 공급망은 이제 모델 성능보다 정책·전력 라우팅 문제다",
+  "description": "오늘 AI/ML 트렌드에서 가장 흥미로운 신호는 Reuters가 전한 두 가지 흐름입니다. 하나는 미국의 AI 규제가 유럽 기업들로 하여금 모델·클라우드 공급망 리스크를 분산하게 만들고 있다는 점이고, 다른 하나는 중국 AI 프로젝트의 green-power 사용 확대가 전력망과 입지 병목에 부딪히고 있다는 점입니다. 겉으로는 서로 다른 뉴스처럼 보이지만, 공통 메시지는 분명합니다. AI 경쟁은 더 이상 “어떤 모델이 더 똑똑한가”만의 문제가 아니라, 어느 지역에서 어떤 공급자와 어떤 전력 조건으로 운영할 수 있는가의 문제로 이동하고 있습니다.\n",
+  "keywords": [
+    "AI", "ML", "AI Infrastructure", "Sovereign AI", "Compliance", "Energy", "Vendor Routing"
+  ],
+  "articleBody": "오늘 AI/ML 트렌드에서 가장 흥미로운 신호는 Reuters가 전한 두 가지 흐름입니다. 하나는 미국의 AI 규제가 유럽 기업들로 하여금 모델·클라우드 공급망 리스크를 분산하게 만들고 있다는 점이고, 다른 하나는 중국 AI 프로젝트의 green-power 사용 확대가 전력망과 입지 병목에 부딪히고 있다는 점입니다. 겉으로는 서로 다른 뉴스처럼 보이지만, 공통 메시지는 분명합니다. AI 경쟁은 더 이상 “어떤 모델이 더 똑똑한가”만의 문제가 아니라, 어느 지역에서 어떤 공급자와 어떤 전력 조건으로 운영할 수 있는가의 문제로 이동하고 있습니다.\n유럽 기업 입장에서 미국 AI 규제는 단순한 외교 뉴스가 아닙니다. 특정 모델, 클라우드, 칩, 데이터 처리 경로에 지나치게 의존하면 갑작스러운 수출통제, 서비스 제한, 데이터 이전 규정, 조달 심사에 노출됩니다. 그래서 기업들은 미국계 모델을 쓰지 말자는 식의 단순한 결론보다, 업무별로 공급자를 나누고 지역별 규제 요구사항을 반영하는 vendor routing 전략을 고민하게 됩니다. 고객 데이터가 민감한 업무, 공공 조달이 걸린 업무, 저비용 대량 추론 업무는 서로 다른 모델·리전·계약 조건을 요구할 수 있습니다.\n중국의 green-power 병목은 같은 문제를 물리 인프라 쪽에서 보여줍니다. AI 데이터센터는 GPU만 사면 끝나는 자산이 아닙니다. 전력망 접속, 재생에너지 인증, 냉각, 부지, 지역 정책, 전력 가격 변동까지 모두 운영비와 확장성을 결정합니다. 특히 “친환경 AI”를 내세우려는 프로젝트일수록 실제 재생에너지 조달 가능성과 지역 전력망 여유가 병목이 됩니다. 모델 API 비용만 계산한 AI 사업계획은 이제 너무 얕습니다.\n제품 전략 관점에서 중요한 변화는 AI 플랫폼팀의 역할입니다. 과거에는 모델 성능 평가와 프롬프트 품질이 핵심이었다면, 이제는 공급망·정책·전력 리스크를 함께 보는 운영 설계가 필요합니다. 예를 들어 유럽 고객에게 제공하는 AI 기능은 어떤 모델 공급자가 중단됐을 때 어느 대체 모델로 넘어갈지, 데이터가 어느 리전에 남는지, 그 전환이 서비스 품질과 비용에 어떤 영향을 주는지 미리 정해야 합니다. 대규모 inference나 agent workflow를 운영하는 팀은 전력·탄소·지역 리스크도 SLA의 일부로 다뤄야 합니다.\n이 흐름은 “sovereign AI”라는 말을 더 현실적으로 만듭니다. 주권형 AI는 국가별 자체 모델을 만든다는 구호만이 아니라, 기업이 AI 기능을 배포할 때 정책 변화와 물리 인프라 제약을 견디는 구조를 갖추는 일입니다. 앞으로 좋은 AI 제품은 모델 카드만 제시하지 않고, 공급자 대체 경로, 리전별 데이터 정책, 비용·전력 가정, 장애 시 fallback을 함께 설명할 수 있어야 합니다.\n오늘의 결론은 단순합니다. AI 도입 검토표에 성능, 비용, latency만 넣는 시대는 끝나가고 있습니다. 이제는 policy risk, vendor concentration, energy availability, regional fallback을 같은 표에 넣어야 합니다. AI 공급망을 코드처럼 라우팅하고, 전력과 규제를 제품 요구사항으로 다루는 팀이 다음 단계의 AI 운영 경쟁에서 더 오래 버틸 가능성이 큽니다.\n참고:\nReuters: 미국 AI 규제로 유럽 기업들이 AI 공급망 리스크 분산에 나섬 — https://www.reuters.com/legal/litigation/us-curbs-ai-spur-european-firms-spread-risk-2026-06-22/ Reuters: 중국 AI 프로젝트의 green-power 사용 확대가 전력망·입지 병목에 부딪힘 — https://www.reuters.com/business/energy/chinas-push-green-power-use-ai-projects-faces-hurdles-experts-say-2026-06-22/ ",
+  "wordCount" : "385",
+  "inLanguage": "en",
+  "datePublished": "2026-06-22T20:55:00+09:00",
+  "dateModified": "2026-06-22T20:55:00+09:00",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://kwbaek.github.io/posts/2026-06-22-ai-ml-trends-ai-supply-chain-is-becoming-policy-and-power-routing/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Kyungwook's Devlog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://kwbaek.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://kwbaek.github.io/" accesskey="h" title="Kyungwook&#39;s Devlog (Alt + H)">Kyungwook&#39;s Devlog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://kwbaek.github.io/categories/" title="categories">
+                    <span>categories</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kwbaek.github.io/tags/" title="tags">
+                    <span>tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kwbaek.github.io/" title="Kyungwook&#39;s Devlog">
+                    <span>Kyungwook&#39;s Devlog</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      AI/ML 트렌드: AI 공급망은 이제 모델 성능보다 정책·전력 라우팅 문제다
+    </h1>
+    <div class="post-meta"><span title='2026-06-22 20:55:00 +0900 KST'>June 22, 2026</span>
+
+</div>
+  </header> 
+  <div class="post-content"><p>오늘 AI/ML 트렌드에서 가장 흥미로운 신호는 Reuters가 전한 두 가지 흐름입니다. 하나는 미국의 AI 규제가 유럽 기업들로 하여금 모델·클라우드 공급망 리스크를 분산하게 만들고 있다는 점이고, 다른 하나는 중국 AI 프로젝트의 green-power 사용 확대가 전력망과 입지 병목에 부딪히고 있다는 점입니다. 겉으로는 서로 다른 뉴스처럼 보이지만, 공통 메시지는 분명합니다. AI 경쟁은 더 이상 “어떤 모델이 더 똑똑한가”만의 문제가 아니라, <strong>어느 지역에서 어떤 공급자와 어떤 전력 조건으로 운영할 수 있는가</strong>의 문제로 이동하고 있습니다.</p>
+<p>유럽 기업 입장에서 미국 AI 규제는 단순한 외교 뉴스가 아닙니다. 특정 모델, 클라우드, 칩, 데이터 처리 경로에 지나치게 의존하면 갑작스러운 수출통제, 서비스 제한, 데이터 이전 규정, 조달 심사에 노출됩니다. 그래서 기업들은 미국계 모델을 쓰지 말자는 식의 단순한 결론보다, 업무별로 공급자를 나누고 지역별 규제 요구사항을 반영하는 vendor routing 전략을 고민하게 됩니다. 고객 데이터가 민감한 업무, 공공 조달이 걸린 업무, 저비용 대량 추론 업무는 서로 다른 모델·리전·계약 조건을 요구할 수 있습니다.</p>
+<p>중국의 green-power 병목은 같은 문제를 물리 인프라 쪽에서 보여줍니다. AI 데이터센터는 GPU만 사면 끝나는 자산이 아닙니다. 전력망 접속, 재생에너지 인증, 냉각, 부지, 지역 정책, 전력 가격 변동까지 모두 운영비와 확장성을 결정합니다. 특히 “친환경 AI”를 내세우려는 프로젝트일수록 실제 재생에너지 조달 가능성과 지역 전력망 여유가 병목이 됩니다. 모델 API 비용만 계산한 AI 사업계획은 이제 너무 얕습니다.</p>
+<p>제품 전략 관점에서 중요한 변화는 AI 플랫폼팀의 역할입니다. 과거에는 모델 성능 평가와 프롬프트 품질이 핵심이었다면, 이제는 공급망·정책·전력 리스크를 함께 보는 운영 설계가 필요합니다. 예를 들어 유럽 고객에게 제공하는 AI 기능은 어떤 모델 공급자가 중단됐을 때 어느 대체 모델로 넘어갈지, 데이터가 어느 리전에 남는지, 그 전환이 서비스 품질과 비용에 어떤 영향을 주는지 미리 정해야 합니다. 대규모 inference나 agent workflow를 운영하는 팀은 전력·탄소·지역 리스크도 SLA의 일부로 다뤄야 합니다.</p>
+<p>이 흐름은 “sovereign AI”라는 말을 더 현실적으로 만듭니다. 주권형 AI는 국가별 자체 모델을 만든다는 구호만이 아니라, 기업이 AI 기능을 배포할 때 정책 변화와 물리 인프라 제약을 견디는 구조를 갖추는 일입니다. 앞으로 좋은 AI 제품은 모델 카드만 제시하지 않고, 공급자 대체 경로, 리전별 데이터 정책, 비용·전력 가정, 장애 시 fallback을 함께 설명할 수 있어야 합니다.</p>
+<p>오늘의 결론은 단순합니다. AI 도입 검토표에 성능, 비용, latency만 넣는 시대는 끝나가고 있습니다. 이제는 <strong>policy risk, vendor concentration, energy availability, regional fallback</strong>을 같은 표에 넣어야 합니다. AI 공급망을 코드처럼 라우팅하고, 전력과 규제를 제품 요구사항으로 다루는 팀이 다음 단계의 AI 운영 경쟁에서 더 오래 버틸 가능성이 큽니다.</p>
+<p>참고:</p>
+<ul>
+<li>Reuters: 미국 AI 규제로 유럽 기업들이 AI 공급망 리스크 분산에 나섬 — <a href="https://www.reuters.com/legal/litigation/us-curbs-ai-spur-european-firms-spread-risk-2026-06-22/">https://www.reuters.com/legal/litigation/us-curbs-ai-spur-european-firms-spread-risk-2026-06-22/</a></li>
+<li>Reuters: 중국 AI 프로젝트의 green-power 사용 확대가 전력망·입지 병목에 부딪힘 — <a href="https://www.reuters.com/business/energy/chinas-push-green-power-use-ai-projects-faces-hurdles-experts-say-2026-06-22/">https://www.reuters.com/business/energy/chinas-push-green-power-use-ai-projects-faces-hurdles-experts-say-2026-06-22/</a></li>
+</ul>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://kwbaek.github.io/tags/ai/">AI</a></li>
+      <li><a href="https://kwbaek.github.io/tags/ml/">Ml</a></li>
+      <li><a href="https://kwbaek.github.io/tags/ai-infrastructure/">AI Infrastructure</a></li>
+      <li><a href="https://kwbaek.github.io/tags/sovereign-ai/">Sovereign AI</a></li>
+      <li><a href="https://kwbaek.github.io/tags/compliance/">Compliance</a></li>
+      <li><a href="https://kwbaek.github.io/tags/energy/">Energy</a></li>
+      <li><a href="https://kwbaek.github.io/tags/vendor-routing/">Vendor Routing</a></li>
+    </ul>
+  </footer><script src="https://utteranc.es/client.js"
+        repo="kwbaek/blog-comments"
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://kwbaek.github.io/">Kyungwook&#39;s Devlog</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

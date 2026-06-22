@@ -6,8 +6,23 @@
     <description>Recent content on Kyungwook&#39;s Devlog</description>
     <generator>Hugo -- 0.155.3</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Sun, 21 Jun 2026 21:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Mon, 22 Jun 2026 20:55:00 +0900</lastBuildDate>
     <atom:link href="https://kwbaek.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI/ML 트렌드: AI 공급망은 이제 모델 성능보다 정책·전력 라우팅 문제다</title>
+      <link>https://kwbaek.github.io/posts/2026-06-22-ai-ml-trends-ai-supply-chain-is-becoming-policy-and-power-routing/</link>
+      <pubDate>Mon, 22 Jun 2026 20:55:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-06-22-ai-ml-trends-ai-supply-chain-is-becoming-policy-and-power-routing/</guid>
+      <description>&lt;p&gt;오늘 AI/ML 트렌드에서 가장 흥미로운 신호는 Reuters가 전한 두 가지 흐름입니다. 하나는 미국의 AI 규제가 유럽 기업들로 하여금 모델·클라우드 공급망 리스크를 분산하게 만들고 있다는 점이고, 다른 하나는 중국 AI 프로젝트의 green-power 사용 확대가 전력망과 입지 병목에 부딪히고 있다는 점입니다. 겉으로는 서로 다른 뉴스처럼 보이지만, 공통 메시지는 분명합니다. AI 경쟁은 더 이상 “어떤 모델이 더 똑똑한가”만의 문제가 아니라, &lt;strong&gt;어느 지역에서 어떤 공급자와 어떤 전력 조건으로 운영할 수 있는가&lt;/strong&gt;의 문제로 이동하고 있습니다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Hermes/리오 팁: AI 자동화에는 Region-Provider Readiness Gate를 붙이자</title>
+      <link>https://kwbaek.github.io/posts/2026-06-22-hermes-rio-add-a-region-provider-readiness-gate/</link>
+      <pubDate>Mon, 22 Jun 2026 20:55:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-06-22-hermes-rio-add-a-region-provider-readiness-gate/</guid>
+      <description>&lt;p&gt;오늘 Reuters의 AI 공급망·전력 병목 뉴스를 Hermes/리오 운영 관점으로 가져오면 실무 팁은 하나입니다. AI 자동화를 만들 때 모델 이름만 기록하지 말고, 실행 전후에 &lt;strong&gt;Region-Provider Readiness Gate&lt;/strong&gt;를 붙이는 편이 안전합니다. 크론, 리포트 생성, 코드 리뷰, 고객 응대, 데이터 분석처럼 반복 실행되는 자동화는 처음에는 작은 작업처럼 보이지만, 시간이 지나면 특정 모델 공급자, 특정 리전, 특정 데이터 경로에 조용히 의존하게 됩니다.&lt;/p&gt;
+&lt;p&gt;Region-Provider Readiness Gate는 “이 작업을 어느 모델로 돌릴까?”보다 한 단계 넓은 질문입니다. 첫째, 입력 데이터가 어느 지역 규제나 고객 계약의 영향을 받는가. 둘째, 현재 쓰는 모델·클라우드 공급자가 막히면 대체 경로가 있는가. 셋째, 대체 모델로 바뀌었을 때 품질·비용·응답시간이 얼마나 달라지는가. 넷째, 대량 실행이나 장시간 작업이라면 전력·인프라 비용 가정이 현실적인가. 이 네 가지를 작업 카드 앞단에 짧게 적어두면 자동화가 커져도 운영 리스크를 놓치기 어렵습니다.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>AI/ML 트렌드: Open Weight 코딩 에이전트가 배포 전략의 선택지가 되고 있다</title>
       <link>https://kwbaek.github.io/posts/2026-06-21-ai-ml-trends-open-weight-coding-agents-become-deployment-choice/</link>

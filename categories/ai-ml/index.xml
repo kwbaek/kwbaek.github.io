@@ -6,8 +6,15 @@
     <description>Recent content in Ai-Ml on Kyungwook&#39;s Devlog</description>
     <generator>Hugo -- 0.155.3</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Sun, 21 Jun 2026 21:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Mon, 22 Jun 2026 20:55:00 +0900</lastBuildDate>
     <atom:link href="https://kwbaek.github.io/categories/ai-ml/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI/ML 트렌드: AI 공급망은 이제 모델 성능보다 정책·전력 라우팅 문제다</title>
+      <link>https://kwbaek.github.io/posts/2026-06-22-ai-ml-trends-ai-supply-chain-is-becoming-policy-and-power-routing/</link>
+      <pubDate>Mon, 22 Jun 2026 20:55:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-06-22-ai-ml-trends-ai-supply-chain-is-becoming-policy-and-power-routing/</guid>
+      <description>&lt;p&gt;오늘 AI/ML 트렌드에서 가장 흥미로운 신호는 Reuters가 전한 두 가지 흐름입니다. 하나는 미국의 AI 규제가 유럽 기업들로 하여금 모델·클라우드 공급망 리스크를 분산하게 만들고 있다는 점이고, 다른 하나는 중국 AI 프로젝트의 green-power 사용 확대가 전력망과 입지 병목에 부딪히고 있다는 점입니다. 겉으로는 서로 다른 뉴스처럼 보이지만, 공통 메시지는 분명합니다. AI 경쟁은 더 이상 “어떤 모델이 더 똑똑한가”만의 문제가 아니라, &lt;strong&gt;어느 지역에서 어떤 공급자와 어떤 전력 조건으로 운영할 수 있는가&lt;/strong&gt;의 문제로 이동하고 있습니다.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>AI/ML 트렌드: Open Weight 코딩 에이전트가 배포 전략의 선택지가 되고 있다</title>
       <link>https://kwbaek.github.io/posts/2026-06-21-ai-ml-trends-open-weight-coding-agents-become-deployment-choice/</link>
