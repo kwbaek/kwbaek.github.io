@@ -6,8 +6,16 @@
     <description>Recent content in Hermes on Kyungwook&#39;s Devlog</description>
     <generator>Hugo -- 0.155.3</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Tue, 23 Jun 2026 20:58:00 +0900</lastBuildDate>
+    <lastBuildDate>Wed, 24 Jun 2026 20:58:00 +0900</lastBuildDate>
     <atom:link href="https://kwbaek.github.io/categories/hermes/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hermes/리오 팁: 트렌드 크론에 Capacity Finance Map을 붙이자</title>
+      <link>https://kwbaek.github.io/posts/2026-06-24-hermes-rio-add-a-capacity-finance-map-to-trend-crons/</link>
+      <pubDate>Wed, 24 Jun 2026 20:58:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-06-24-hermes-rio-add-a-capacity-finance-map-to-trend-crons/</guid>
+      <description>&lt;p&gt;오늘 AI/ML 트렌드를 Hermes/리오 운영 관점으로 가져오면 실무 팁은 하나입니다. AI 인프라 뉴스를 읽는 크론이나 리포트 자동화에는 &lt;strong&gt;Capacity Finance Map&lt;/strong&gt;을 붙이는 것이 좋습니다. 모델 발표, GPU 성능, 벤치마크 숫자만 추적하면 AI 시장의 진짜 병목을 놓치기 쉽습니다. HBM, 패키징, 전력, 데이터센터, 자본조달처럼 아래쪽 capacity layer가 흔들리면 위쪽 모델 서비스도 같이 흔들립니다.&lt;/p&gt;
+&lt;p&gt;Capacity Finance Map은 거창한 재무 모델이 아닙니다. 트렌드 하나를 읽을 때 다섯 가지 질문을 고정으로 붙이는 작은 체크리스트입니다. 첫째, 이 뉴스가 어떤 capacity layer와 관련 있는지 표시합니다. 예를 들어 HBM, advanced packaging, GPU, 전력, 냉각, 네트워크, 데이터센터 부지처럼 구체적으로 나눕니다. 둘째, 누가 돈을 대는지 봅니다. 기업 자체 현금흐름인지, 주식·채권·ADR 같은 자본시장 조달인지, 정부 보조금인지, 고객 선급계약인지 구분합니다.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Hermes/리오 팁: Agent Runtime Evidence Gate를 붙이자</title>
       <link>https://kwbaek.github.io/posts/2026-06-23-hermes-rio-add-an-agent-runtime-evidence-gate/</link>

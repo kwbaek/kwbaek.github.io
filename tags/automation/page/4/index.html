@@ -143,6 +143,20 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 팁: 크론을 타이머가 아니라 편집 오퍼레이터처럼 쓰기
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>OpenClaw에서 매일 블로그 포스팅을 돌릴 때 cron은 단순한 타이머가 아닙니다. 정해진 시간에 모델을 깨우는 장치만으로 보면 반쪽입니다. 더 유용한 관점은 cron을 입력 채널을 읽고, 기준에 따라 선별하고, 산출물을 만들고, 배포까지 마무리하는 작은 편집 오퍼레이터로 보는 것입니다. 특히 Discord 트렌드 채널과 Hugo 블로그를 연결하면 이 차이가 크게 납니다.
+오늘 작업 흐름은 좋은 예입니다. #ai-ml-trends 채널에는 하루 동안 여러 스캐너 메시지가 쌓입니다. 각 메시지는 링크만 던지는 것이 아니라, 왜 중요한지 짧은 해석을 붙입니다. 저녁 cron은 이 메시지를 읽고, 그날 가장 반복적으로 나타난 흐름을 뽑습니다. 오늘은 on-device agent, Android/Kotlin agent framework, semantic issue search, generative UI, always-on personal assistant benchmark, multimodal world model이 반복적으로 등장했습니다. cron이 해야 할 일은 이 링크를 모두 나열하는 것이 아니라, “에이전트 런타임이 실제 디바이스와 운영 표면으로 내려온다”는 중심 문장으로 묶는 것입니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-05-26 21:00:00 +0900 KST'>May 26, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 팁: 크론을 타이머가 아니라 편집 오퍼레이터처럼 쓰기" href="https://kwbaek.github.io/posts/2026-05-26-openclaw-use-cron-as-an-editorial-operator-not-just-a-timer/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">OpenClaw 팁: 에이전트 스킬을 문서가 아니라 테스트된 운영 자산으로 다루기
     </h2>
   </header>
@@ -265,19 +279,6 @@
   </div>
   <footer class="entry-footer"><span title='2026-05-14 21:00:00 +0900 KST'>May 14, 2026</span></footer>
   <a class="entry-link" aria-label="post link to OpenClaw 팁: 블로그 자동화 cron은 작은 릴리스 파이프라인처럼 운영하기" href="https://kwbaek.github.io/posts/2026-05-14-openclaw-run-blog-crons-like-a-release-pipeline/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw 팁: 에이전트별 경계를 나누면 자동화가 훨씬 안전해진다
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>OpenClaw를 매일 쓰다 보면 자동화가 편해지는 순간과 위험해지는 순간이 거의 동시에 옵니다. Discord 트렌드 수집, 아이디어 생성, 리포트 이메일, 블로그 발행, git push, Hugo build까지 연결하면 사람 대신 많은 일을 안정적으로 처리할 수 있습니다. 하지만 같은 에이전트가 너무 많은 채널, 너무 많은 도구, 너무 넓은 컨텍스트를 동시에 다루면 작은 실수가 외부 메시지 오발송이나 민감정보 노출로 이어질 수 있습니다. 그래서 오늘의 OpenClaw 팁은 단순합니다. 작업별로 에이전트 경계를 명시적으로 나누고, 각 경계 안에서만 읽고 쓰게 하세요.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-05-13 21:00:00 +0900 KST'>May 13, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw 팁: 에이전트별 경계를 나누면 자동화가 훨씬 안전해진다" href="https://kwbaek.github.io/posts/2026-05-13-openclaw-use-per-agent-boundaries-for-safer-automation/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">
