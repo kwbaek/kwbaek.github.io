@@ -6,8 +6,24 @@
     <description>Recent content on Kyungwook&#39;s Devlog</description>
     <generator>Hugo -- 0.155.3</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Wed, 24 Jun 2026 20:58:00 +0900</lastBuildDate>
+    <lastBuildDate>Thu, 25 Jun 2026 21:00:00 +0900</lastBuildDate>
     <atom:link href="https://kwbaek.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI/ML 트렌드: 모델 접근권은 새로운 공급망 리스크다</title>
+      <link>https://kwbaek.github.io/posts/2026-06-25-ai-ml-trends-model-access-is-now-geopolitical-supply-chain/</link>
+      <pubDate>Thu, 25 Jun 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-06-25-ai-ml-trends-model-access-is-now-geopolitical-supply-chain/</guid>
+      <description>&lt;p&gt;오늘 AI/ML 트렌드에서 가장 흥미로운 신호는 Reuters가 보도한 중국 Z.ai 소식입니다. Anthropic이 중국 관련 접근을 차단한 뒤, Z.ai가 frontier model 격차를 좁히고 홍콩·상하이 dual listing을 추진한다는 내용입니다. 표면적으로는 한 중국 AI 기업의 성장 뉴스처럼 보이지만, 더 크게 보면 &lt;strong&gt;모델 접근권 자체가 새로운 공급망 리스크&lt;/strong&gt;가 되고 있다는 뜻입니다.&lt;/p&gt;
+&lt;p&gt;그동안 AI 공급망이라고 하면 GPU, HBM, 데이터센터, 전력 같은 물리적 인프라를 먼저 떠올렸습니다. 하지만 기업이 실제 AI 제품을 만들 때는 모델 API 접근권, 지역별 사용 가능 여부, 약관 변경, 제재 리스크, 대체 모델 조달 가능성도 같은 수준의 운영 변수입니다. 특정 국가나 조직이 어느 날 주요 모델에 접근하지 못하게 되면, 이는 단순한 벤더 교체가 아니라 제품 로드맵, 데이터 파이프라인, 평가 기준, 비용 구조를 모두 흔드는 사건이 됩니다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Hermes/리오 팁: 자동화에 Model Access Risk Register를 붙이자</title>
+      <link>https://kwbaek.github.io/posts/2026-06-25-hermes-rio-add-a-model-access-risk-register/</link>
+      <pubDate>Thu, 25 Jun 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-06-25-hermes-rio-add-a-model-access-risk-register/</guid>
+      <description>&lt;p&gt;오늘 AI/ML 트렌드를 Hermes/리오 운영 관점으로 가져오면 실무 팁은 하나입니다. AI 모델이나 에이전트 자동화를 만들 때 &lt;strong&gt;Model Access Risk Register&lt;/strong&gt;를 같이 관리해야 합니다. 이제 리스크는 “모델이 답을 틀릴 수 있다”에만 있지 않습니다. 특정 모델을 특정 지역, 고객, 데이터 유형, 사용 목적에서 계속 쓸 수 있는지 자체가 운영 리스크가 되고 있습니다.&lt;/p&gt;
+&lt;p&gt;Hermes/리오 같은 자동화는 보통 여러 모델, 검색 소스, 브라우저, 로컬 캐시, 파일 시스템, 빌드 도구를 엮어 결과를 만듭니다. 이때 한 모델이나 API가 막히면 단순히 다른 모델로 바꾸면 된다고 생각하기 쉽습니다. 하지만 실제로는 출력 품질, 비용, 지연시간, 개인정보 처리 조건, 공개 가능한 근거 수준, fallback 시나리오가 모두 달라집니다. 그래서 모델 접근권을 코드 안의 설정값이 아니라 운영 자산으로 다뤄야 합니다.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>AI/ML 트렌드: AI 메모리는 자본시장 이슈가 되고 있다</title>
       <link>https://kwbaek.github.io/posts/2026-06-24-ai-ml-trends-ai-memory-is-becoming-a-capital-markets-story/</link>
