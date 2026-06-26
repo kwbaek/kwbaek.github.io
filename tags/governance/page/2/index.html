@@ -143,6 +143,34 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">Hermes/리오 팁: 에이전트 상태 저장소를 공격면으로 보기
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 AI/ML 트렌드가 금융 AI 감독과 LangGraph checkpointer 취약점을 동시에 보여줬다면, Hermes/리오 운영에 바로 적용할 수 있는 교훈은 분명합니다. 에이전트의 상태 저장소를 편의 캐시가 아니라 공격면으로 취급해야 한다는 것입니다. 크론, 장기 작업, 지식베이스, 히스토리 파일, 임시 JSON 캐시는 모두 다음 실행의 판단에 영향을 줍니다. 따라서 “저장만 해두면 나중에 편하겠지”라는 접근은 장기 자동화에서 위험합니다.
+첫 번째 원칙은 상태의 등급을 나누는 것입니다. 모든 기록이 같은 무게를 갖지는 않습니다. 사용자에게 보여준 최종 결과, 다음 실행에서 중복 제거에 쓰는 캐시, 내부 디버깅 로그, 원자료는 서로 목적과 수명이 다릅니다. Hermes/리오 크론을 설계할 때는 파일 하나에 모든 것을 섞기보다 “최신 결과”, “히스토리”, “원자료”, “보고서”를 분리하는 편이 안전합니다. 그래야 다음 실행이 오래된 디버그 문장을 사실처럼 읽거나, 민감한 운영 메모를 공개 문구에 섞는 실수를 줄일 수 있습니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-06-12 21:00:00 +0900 KST'>June 12, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to Hermes/리오 팁: 에이전트 상태 저장소를 공격면으로 보기" href="https://kwbaek.github.io/posts/2026-06-12-hermes-rio-treat-agent-state-as-an-attack-surface/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Hermes/리오 팁: Skill 설치에도 무결성 게이트를 두기
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 AI/ML 트렌드가 에이전트 skill을 공급망으로 보라고 말해준다면, Hermes/리오 운영에도 바로 적용할 수 있는 습관이 있습니다. 새 skill이나 tool을 붙일 때 설치 전 무결성 게이트를 둔다는 원칙입니다. 에이전트 자동화에서 skill은 단순한 도움말이 아닙니다. 어떤 파일을 읽을지, 어떤 명령을 실행할지, 어떤 외부 서비스를 호출할지 결정하는 실행 표면입니다. 따라서 새 skill을 추가하는 순간 자동화의 권한 경계도 함께 바뀝니다.
+첫 번째 체크는 설명과 실제 행동의 일치입니다. skill 문서가 “읽기 전용 분석”을 말한다면 실제 스크립트도 파일 쓰기, 커밋, 네트워크 전송을 하지 않아야 합니다. 반대로 배포나 전송처럼 외부 부작용이 필요한 skill이라면, 그 조건과 검증 단계가 문서에 명시돼 있어야 합니다. Hermes/리오가 자동으로 작업을 수행할수록 “이 skill이 무엇을 한다고 주장하는가”와 “실제로 어떤 권한을 쓰는가”를 비교하는 단계가 중요해집니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-06-11 21:00:00 +0900 KST'>June 11, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to Hermes/리오 팁: Skill 설치에도 무결성 게이트를 두기" href="https://kwbaek.github.io/posts/2026-06-11-hermes-rio-add-an-integrity-gate-before-installing-skills/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">AI/ML 트렌드: 에이전트 거버넌스는 이제 DB와 자본시장까지 확장된다
     </h2>
   </header>
@@ -250,32 +278,6 @@ DSX OS는 AI factory 운영을 개방형·모듈형 소프트웨어 레이어로
   </div>
   <footer class="entry-footer"><span title='2026-06-01 21:00:00 +0900 KST'>June 1, 2026</span></footer>
   <a class="entry-link" aria-label="post link to Hermes/리오 팁: 크론 자동화를 작은 AI Factory처럼 운영하기" href="https://kwbaek.github.io/posts/2026-06-01-hermes-rio-run-cron-like-a-small-ai-factory/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">AI/ML 트렌드: AI 경쟁은 모델 선택보다 배포 위치와 운영 증거로 이동한다
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>오늘 #ai-ml-trends 흐름에서 가장 중요한 변화는 새로운 모델 하나가 아니라, AI가 어디에서 실행되고 어떤 증거를 남기는가로 경쟁축이 옮겨가고 있다는 점입니다. SoftBank의 프랑스 AI 데이터센터 투자 계획, Nvidia 칩 기반 Windows PC 전망, Oracle APEX의 데이터베이스 안 agent, Salesforce의 agent migration 성과 주장, enterprise agent 거버넌스 논의가 모두 같은 방향을 가리킵니다. 이제 AI 전략은 “어떤 LLM을 붙일까?”에서 끝나지 않습니다. 클라우드, 온디바이스, 데이터베이스 내부, 업무 SaaS 안에서 각각 어떤 권한·비용·감사 체계를 가질지 정해야 합니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-05-31 21:00:00 +0900 KST'>May 31, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to AI/ML 트렌드: AI 경쟁은 모델 선택보다 배포 위치와 운영 증거로 이동한다" href="https://kwbaek.github.io/posts/2026-05-31-ai-ml-trends-ai-is-moving-from-model-choice-to-deployment-evidence/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">AI/ML 트렌드: AI 도입은 이제 운영 모델의 문제가 되고 있다
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>오늘 #ai-ml-trends 채널에서 가장 흥미로운 흐름은 AI가 더 이상 연구실의 성능 경쟁이나 제품 데모에 머물지 않고, 기업의 운영 모델 전체를 바꾸는 힘으로 이동하고 있다는 점입니다. Tesla의 self-driving 데이터 신뢰 문제, EQT와 Google Cloud의 AI rollout, 인도 글로벌 역량센터의 AI 활용, Wix의 감원, Meta의 AI 구독 검토, WiWynn의 AI 서버 병목 진단, IBM·Red Hat의 오픈소스 투자까지 서로 다른 뉴스처럼 보이지만 공통 질문은 하나입니다. “AI를 조직 안에 넣으면 어떤 일, 비용, 책임, 인프라가 재배치되는가?”
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-05-28 21:00:00 +0900 KST'>May 28, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to AI/ML 트렌드: AI 도입은 이제 운영 모델의 문제가 되고 있다" href="https://kwbaek.github.io/posts/2026-05-28-ai-ml-trends-ai-adoption-is-becoming-an-operating-model-problem/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

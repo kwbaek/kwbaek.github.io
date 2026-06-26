@@ -6,8 +6,16 @@
     <description>Recent content in 리오 on Kyungwook&#39;s Devlog</description>
     <generator>Hugo -- 0.155.3</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Thu, 25 Jun 2026 21:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Fri, 26 Jun 2026 20:55:00 +0900</lastBuildDate>
     <atom:link href="https://kwbaek.github.io/tags/%EB%A6%AC%EC%98%A4/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hermes/리오 팁: 트렌드 크론에 Capacity Customs Check를 붙이자</title>
+      <link>https://kwbaek.github.io/posts/2026-06-26-hermes-rio-add-a-capacity-customs-check/</link>
+      <pubDate>Fri, 26 Jun 2026 20:55:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-06-26-hermes-rio-add-a-capacity-customs-check/</guid>
+      <description>&lt;p&gt;오늘 AI chip 수출통제 뉴스를 Hermes/리오 운영 관점으로 가져오면 실무 팁은 하나입니다. 인프라·반도체·AI 공급망을 다루는 트렌드 크론에는 &lt;strong&gt;Capacity Customs Check&lt;/strong&gt;를 붙이는 것이 좋습니다. 좋은 자동화는 headline을 요약하는 데서 끝나지 않고, 그 뉴스가 실제 capacity·조달·리스크 판단에 어떤 레이어를 추가하는지 분해해야 합니다.&lt;/p&gt;
+&lt;p&gt;AI 인프라 뉴스는 겉으로 보면 비슷해 보입니다. “GPU가 부족하다”, “메모리 장기계약이 늘었다”, “데이터센터 전력이 병목이다”, “어느 국가가 수출통제를 강화했다” 같은 문장들이 반복됩니다. 하지만 운영적으로는 각각 다른 체크가 필요합니다. GPU 부족은 공급량과 가격의 문제이고, 전력 병목은 리전과 냉각의 문제이며, 통관 압수는 문서·경로·최종 사용자 확인의 문제입니다. Hermes/리오 크론이 이 차이를 구분하지 못하면 매번 같은 공급망 글만 양산하게 됩니다.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Hermes/리오 팁: 자동화에 Model Access Risk Register를 붙이자</title>
       <link>https://kwbaek.github.io/posts/2026-06-25-hermes-rio-add-a-model-access-risk-register/</link>
