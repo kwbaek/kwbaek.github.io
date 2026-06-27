@@ -158,6 +158,34 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">AI/ML 트렌드: Agentic AI는 이제 감사 인프라다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 AI/ML 트렌드에서 가장 중요한 신호는 agentic AI가 실험 기능을 넘어 감사 가능한 운영 인프라로 취급되기 시작했다는 점입니다. Reuters는 미국 은행 규제기관이 금융사의 AI 사용 감독을 강화하고 있다고 보도했고, Check Point Research는 LangGraph checkpointer 취약점 체인이 self-hosted AI agent의 원격 코드 실행으로 이어질 수 있음을 공개했습니다. 여기에 OpenAI와 Preply의 하이브리드 튜터 사례는 AI가 사람을 완전히 대체하기보다 전문가 워크플로우 안에서 운영되는 형태가 현실적인 제품 패턴이 되고 있음을 보여줍니다.
+금융권 감독 강화는 AI 도입의 질문을 바꿉니다. “이 모델이 정확한가?”만으로는 부족하고, 누가 어떤 데이터로 어떤 판단을 실행했는지, 승인권자는 누구였는지, 실패 시 어떤 로그로 재구성할 수 있는지가 중요해집니다. 특히 agentic AI가 리서치 보조를 넘어 고객 응대, 리스크 판단, 주문 전 단계, 내부 운영 자동화에 붙으면 모델 리스크 관리와 업무 권한 관리가 한 묶음이 됩니다. 금융사는 AI를 기능 단위로 사는 것이 아니라 승인, 감사, 보존, 재현성을 포함한 운영 패키지로 평가하게 될 가능성이 큽니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-06-12 21:00:00 +0900 KST'>June 12, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to AI/ML 트렌드: Agentic AI는 이제 감사 인프라다" href="https://kwbaek.github.io/posts/2026-06-12-ai-ml-trends-agentic-ai-is-becoming-audit-infrastructure/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Hermes/리오 팁: 에이전트 상태 저장소를 공격면으로 보기
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 AI/ML 트렌드가 금융 AI 감독과 LangGraph checkpointer 취약점을 동시에 보여줬다면, Hermes/리오 운영에 바로 적용할 수 있는 교훈은 분명합니다. 에이전트의 상태 저장소를 편의 캐시가 아니라 공격면으로 취급해야 한다는 것입니다. 크론, 장기 작업, 지식베이스, 히스토리 파일, 임시 JSON 캐시는 모두 다음 실행의 판단에 영향을 줍니다. 따라서 “저장만 해두면 나중에 편하겠지”라는 접근은 장기 자동화에서 위험합니다.
+첫 번째 원칙은 상태의 등급을 나누는 것입니다. 모든 기록이 같은 무게를 갖지는 않습니다. 사용자에게 보여준 최종 결과, 다음 실행에서 중복 제거에 쓰는 캐시, 내부 디버깅 로그, 원자료는 서로 목적과 수명이 다릅니다. Hermes/리오 크론을 설계할 때는 파일 하나에 모든 것을 섞기보다 “최신 결과”, “히스토리”, “원자료”, “보고서”를 분리하는 편이 안전합니다. 그래야 다음 실행이 오래된 디버그 문장을 사실처럼 읽거나, 민감한 운영 메모를 공개 문구에 섞는 실수를 줄일 수 있습니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-06-12 21:00:00 +0900 KST'>June 12, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to Hermes/리오 팁: 에이전트 상태 저장소를 공격면으로 보기" href="https://kwbaek.github.io/posts/2026-06-12-hermes-rio-treat-agent-state-as-an-attack-surface/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">AI/ML 트렌드: 에이전트 Skill은 이제 공급망이다
     </h2>
   </header>
@@ -265,33 +293,6 @@ Change Gate의 첫 번째 역할은 작업을 읽기 전용 단계와 변경 단
   </div>
   <footer class="entry-footer"><span title='2026-06-08 21:00:00 +0900 KST'>June 8, 2026</span></footer>
   <a class="entry-link" aria-label="post link to Hermes/리오 팁: 크론 자동화의 기억을 제품 기능처럼 설계하기" href="https://kwbaek.github.io/posts/2026-06-08-hermes-rio-design-cron-memory-like-a-product-feature/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">AI/ML 트렌드: 코드리뷰 에이전트에는 더 많은 코멘트가 아니라 보정이 필요하다
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>오늘 AI/ML 트렌드에서 눈에 띈 신호는 코딩 에이전트가 코드 생성 도구에서 리뷰 품질 관리 도구로 확장되고 있다는 점입니다. Alibaba가 공개한 Open Code Review는 AI code review agent를 단순한 “PR에 LLM 붙이기”가 아니라 rule matching, sub-agent 분할, line-level comment pipeline으로 설계합니다. Hugging Face의 Her는 Claude Code 세션 JSONL을 읽어 도구 호출, 토큰 사용, 위험한 운영 변경, 민감 문자열 관련 행동을 추적하는 감사 도구입니다. 둘을 함께 보면, 앞으로 중요한 질문은 “에이전트가 리뷰를 할 수 있는가”가 아니라 그 리뷰가 얼마나 일관되고, 덜 시끄럽고, 나중에 감사 가능한가입니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-06-07 21:00:00 +0900 KST'>June 7, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 코드리뷰 에이전트에는 더 많은 코멘트가 아니라 보정이 필요하다" href="https://kwbaek.github.io/posts/2026-06-07-ai-ml-trends-code-review-agents-need-calibration-not-more-comments/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Hermes/리오 팁: 에이전트 코드리뷰를 감사 가능한 작업으로 만들기
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>Hermes/리오로 코드 작성, 리뷰, 블로그 배포 같은 반복 작업을 자동화할 때 가장 위험한 착각은 “에이전트가 맞는 말을 했으니 충분하다”입니다. 실제 운영에서는 답변의 그럴듯함보다 무엇을 읽었고, 어떤 변경을 했고, 어떤 검증을 통과했는지가 더 중요합니다. 특히 코드리뷰 자동화는 PR에 코멘트를 다는 순간 팀의 merge 판단에 영향을 줍니다. 그래서 Hermes/리오 워크플로우에서는 코드리뷰를 단순한 자연어 의견이 아니라 감사 가능한 작업 단위로 설계하는 편이 좋습니다.
-첫 번째 원칙은 입력 범위를 명확히 남기는 것입니다. 에이전트가 리뷰한 diff, 관련 파일, 테스트 결과, 최근 커밋, 사용자 지시를 구분해야 합니다. “전체 repo를 봤다”는 표현은 거의 항상 부정확합니다. 실제로는 특정 파일 몇 개, 특정 로그, 특정 테스트 출력만 봤을 가능성이 큽니다. 리뷰 결과에는 어떤 근거를 사용했는지 짧게라도 남겨야 합니다. 이렇게 하면 나중에 잘못된 판단이 나왔을 때 모델 탓만 하지 않고, 입력이 부족했는지, 검증이 빠졌는지, 규칙이 애매했는지 확인할 수 있습니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-06-07 21:00:00 +0900 KST'>June 7, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to Hermes/리오 팁: 에이전트 코드리뷰를 감사 가능한 작업으로 만들기" href="https://kwbaek.github.io/posts/2026-06-07-hermes-rio-make-agent-code-review-auditable/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

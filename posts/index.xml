@@ -6,8 +6,24 @@
     <description>Recent content in Posts on Kyungwook&#39;s Devlog</description>
     <generator>Hugo -- 0.155.3</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Fri, 26 Jun 2026 20:55:00 +0900</lastBuildDate>
+    <lastBuildDate>Sat, 27 Jun 2026 21:00:00 +0900</lastBuildDate>
     <atom:link href="https://kwbaek.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI/ML 트렌드: 모델 접근권은 사이버보안 릴리스 게이트가 된다</title>
+      <link>https://kwbaek.github.io/posts/2026-06-27-ai-ml-trends-model-access-becomes-cybersecurity-release-gate/</link>
+      <pubDate>Sat, 27 Jun 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-06-27-ai-ml-trends-model-access-becomes-cybersecurity-release-gate/</guid>
+      <description>&lt;p&gt;오늘 AI/ML 트렌드에서 가장 중요한 신호는 Reuters가 전한 Anthropic Mythos 5의 제한적 재배포 소식입니다. 2주 전 전면 차단됐던 frontier cybersecurity model이 이제 일부 신뢰된 미국 조직, 특히 핵심 인프라 방어와 사이버보안 업무를 맡는 조직을 중심으로 다시 열리기 시작했습니다. 이 뉴스가 흥미로운 이유는 단순히 “모델이 다시 풀렸다”가 아니라, 고성능 모델의 출시와 회수가 이제 제품 로드맵보다 &lt;strong&gt;정부 승인, 고객별 접근통제, 감사 가능한 배포 운영&lt;/strong&gt;의 문제로 바뀌고 있다는 점입니다.&lt;/p&gt;
+&lt;p&gt;frontier model 경쟁을 볼 때 우리는 보통 성능, 벤치마크, 가격, latency를 먼저 봅니다. 하지만 Mythos 5 사례는 모델의 실제 가용성이 기술 스펙만으로 결정되지 않는다는 것을 보여줍니다. 특히 사이버보안 모델은 방어 역량을 크게 높일 수 있지만, 동시에 공격 자동화나 취약점 탐색에도 악용될 수 있습니다. 그래서 공개 여부는 “모두에게 제공할 것인가”가 아니라 “어떤 조직을 trusted recipient로 볼 것인가”, “어떤 사용 로그와 책임 구조를 요구할 것인가”, “차단된 모델을 어떤 조건에서 복구할 것인가”로 쪼개집니다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Hermes/리오 팁: 자동화에 Model Access Recovery Gate를 붙이자</title>
+      <link>https://kwbaek.github.io/posts/2026-06-27-hermes-rio-add-a-model-access-recovery-gate/</link>
+      <pubDate>Sat, 27 Jun 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-06-27-hermes-rio-add-a-model-access-recovery-gate/</guid>
+      <description>&lt;p&gt;오늘 Anthropic Mythos 5 제한 재배포 뉴스를 Hermes/리오 운영 관점으로 가져오면 실무 팁은 하나입니다. 모델·API·agent tool에 의존하는 자동화에는 &lt;strong&gt;Model Access Recovery Gate&lt;/strong&gt;를 붙이는 것이 좋습니다. 좋은 크론과 에이전트 워크플로우는 “모델이 막혔다” 또는 “다시 열렸다”를 단순 장애 이벤트로 보지 않고, 접근권이 바뀌었을 때 어떤 업무를 안전하게 복구할지 결정하는 작은 릴리스 게이트를 가져야 합니다.&lt;/p&gt;
+&lt;p&gt;모델 접근권은 생각보다 자주 흔들립니다. region 제한, vendor 정책 변경, 정부 요청, enterprise plan 변경, 보안 incident, 사용량 기반 과금, 고객별 승인 조건이 모두 자동화의 실행 가능성을 바꿀 수 있습니다. 특히 사이버보안, 금융, 공공, 의료처럼 민감한 영역에서는 고성능 모델이 전면 공개되지 않고 trusted organization이나 특정 workflow에만 허용될 수 있습니다. Hermes/리오가 이런 신호를 읽는다면 “새 모델이 좋다”에서 멈추지 말고, 그 모델을 쓰는 자동화의 복구 조건까지 점검해야 합니다.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>AI/ML 트렌드: 수출통제는 이제 물류 레이어에서 집행된다</title>
       <link>https://kwbaek.github.io/posts/2026-06-26-ai-ml-trends-export-controls-move-to-the-logistics-layer/</link>
