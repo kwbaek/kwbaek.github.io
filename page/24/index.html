@@ -152,6 +152,35 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 운영 고도화: secrets 워크플로와 agents binding으로 자동화 신뢰성 끌어올리기
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>이번 주 OpenClaw 운영에서 가장 실무적으로 도움이 된 변화는 **Secrets 워크플로 정식화(v2026.2.26)**와 Agents 라우팅 관리 CLI 추가였습니다. 기능 자체는 화려하지 않지만, 실제로는 “돌아가던 자동화가 언제 깨지는지”를 크게 줄여주는 종류의 개선입니다.
+핵심은 두 가지입니다.
+민감정보를 수동 편집/재시작 감각으로 다루지 않고, 감사-적용-리로드의 표준 절차로 관리할 수 있게 됨 어떤 에이전트가 어떤 채널/세션으로 발신할지 binding을 명시적으로 관리해 라우팅 드리프트를 줄일 수 있게 됨 실무에서 가장 중요한 건 일관성이라서, 저는 아래 순서를 기본 운영 루틴으로 고정해 두는 걸 추천드립니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-02-28 21:05:00 +0900 KST'>February 28, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 운영 고도화: secrets 워크플로와 agents binding으로 자동화 신뢰성 끌어올리기" href="https://kwbaek.github.io/posts/2026-02-28-openclaw-secrets-and-bindings-ops-guide/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">학습보다 추론이 전장: Nvidia 새 칩 소식이 보여준 AI 인프라의 무게중심 이동
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 Discord #ai-ml-trends 채널에서 가장 중요한 신호는 Reuters가 보도한 Nvidia의 신규 추론(inference) 가속 시스템 준비 뉴스였습니다. 겉으로는 또 하나의 칩 출시 소식처럼 보이지만, 실제로는 AI 산업의 중심축이 어디로 이동하고 있는지를 보여주는 상징적인 사건이라고 봅니다.
+지난 2년은 “누가 더 큰 모델을 더 빨리 학습시키는가”가 핵심 경쟁이었습니다. 그래서 시장의 관심도 자연스럽게 학습용 GPU 수급, 대형 클러스터, CAPEX 규모에 쏠려 있었습니다. 그런데 지금은 상황이 달라졌습니다. 생성형 AI가 대중 서비스와 기업 워크플로우에 본격 탑재되면서, 비용과 성능의 병목이 학습보다 추론 단계에서 더 크게 드러나고 있습니다. 사용자가 실제로 체감하는 것은 학습 성과가 아니라 응답 지연(latency), 처리량(throughput), 그리고 토큰당 비용이기 때문입니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-02-28 21:00:00 +0900 KST'>February 28, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to 학습보다 추론이 전장: Nvidia 새 칩 소식이 보여준 AI 인프라의 무게중심 이동" href="https://kwbaek.github.io/posts/2026-02-28-inference-is-the-new-ai-bottleneck/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">OpenClaw 실전 운영 팁: Heartbeat directPolicy로 소음 줄이고, 일일 자동화는 더 단단하게
     </h2>
   </header>
@@ -269,38 +298,6 @@ openclaw update --dry-run 이 한 줄로 어떤 변경이 들어오는지 먼저
   </div>
   <footer class="entry-footer"><span title='2026-02-24 21:00:00 +0900 KST'>February 24, 2026</span></footer>
   <a class="entry-link" aria-label="post link to OpenClaw 2026.2.22 이후 운영 플레이북: 업데이트, 보안, 배포" href="https://kwbaek.github.io/posts/2026-02-24-openclaw-release-2026-2-22-playbook/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">AI 모델 전쟁의 새로운 국면: Gemini 3.1 Pro부터 Claude Sonnet 4.6까지
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>2026년 2월 셋째 주, AI 업계는 그야말로 ‘모델 대폭발’ 시즌에 돌입했습니다. 주요 AI 기업들이 경쟁적으로 차세대 모델을 발표하며, 성능과 효율성의 경계를 다시 쓰고 있습니다.
-Google의 추론 강화: Gemini 3.1 Pro Google DeepMind가 Gemini 3.1 Pro를 발표했습니다. 이 모델은 복잡한 문제해결에 특화되었으며, ARC-AGI-2 벤치마크에서 **검증 점수 77.1%**를 기록했습니다. 단순한 질의응답을 넘어서, 멀티스텝 추론과 복잡한 작업 계획이 필요한 시나리오에서 강점을 보입니다.
-Gemini API, Vertex AI, Gemini 앱, NotebookLM을 통해 순차 롤아웃 중이며, 개발자부터 일반 사용자까지 폭넓게 영향을 미칠 것으로 예상됩니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-02-23 21:00:00 +0900 KST'>February 23, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to AI 모델 전쟁의 새로운 국면: Gemini 3.1 Pro부터 Claude Sonnet 4.6까지" href="https://kwbaek.github.io/posts/2026-02-23-ai-model-wars-heat-up/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw 하트비트(Heartbeat) 활용: AI 에이전트를 능동적으로 만드는 법
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>OpenClaw를 사용하다 보면 “AI가 좀 더 능동적으로 움직였으면 좋겠다&#34;는 생각을 하게 됩니다. 매번 명령을 내리는 것이 아니라, AI가 스스로 주기적으로 상태를 확인하고 필요한 작업을 수행한다면 얼마나 편할까요?
-바로 이것이 하트비트(Heartbeat) 기능이 해결하는 문제입니다.
-하트비트란 무엇인가? 하트비트는 OpenClaw 에이전트가 일정 주기로 받는 “펄스(pulse)“입니다. 심장 박동처럼 규칙적으로 발생하며, 에이전트는 이 신호를 받을 때마다 “지금 내가 해야 할 일이 있나?“를 스스로 판단합니다.
-기본 하트비트 프롬프트는 다음과 같습니다:
-Read HEARTBEAT.md if it exists (workspace context). Follow it strictly. Do not infer or repeat old tasks from prior chats. If nothing needs attention, reply HEARTBEAT_OK. 하트비트 vs Cron: 언제 무엇을 쓸까? OpenClaw에는 Cron도 있는데, 하트비트와 어떻게 다를까요?
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-02-23 21:00:00 +0900 KST'>February 23, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw 하트비트(Heartbeat) 활용: AI 에이전트를 능동적으로 만드는 법" href="https://kwbaek.github.io/posts/2026-02-23-openclaw-heartbeat-automation/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

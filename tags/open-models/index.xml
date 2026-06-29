@@ -6,8 +6,15 @@
     <description>Recent content in Open Models on Kyungwook&#39;s Devlog</description>
     <generator>Hugo -- 0.155.3</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Sat, 23 May 2026 21:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Mon, 29 Jun 2026 21:00:00 +0900</lastBuildDate>
     <atom:link href="https://kwbaek.github.io/tags/open-models/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI/ML 트렌드: 더 싼 AI가 모델 라우팅 전략을 만든다</title>
+      <link>https://kwbaek.github.io/posts/2026-06-29-ai-ml-trends-cheaper-ai-makes-model-routing-strategy/</link>
+      <pubDate>Mon, 29 Jun 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-06-29-ai-ml-trends-cheaper-ai-makes-model-routing-strategy/</guid>
+      <description>&lt;p&gt;오늘 AI/ML 트렌드에서 가장 중요한 신호는 “가장 좋은 모델 하나”보다 &lt;strong&gt;업무별로 충분히 좋은 모델을 싸고 안정적으로 고르는 능력&lt;/strong&gt;이 더 중요해지고 있다는 점입니다. Reuters는 AI 비용이 급등하면서 기업들이 더 저렴한 모델을 적극적으로 검토하고 있다고 보도했습니다. 동시에 NVIDIA와 Palantir는 Nemotron open models를 미국 정부용 air-gapped AI 엔진에 결합한다고 발표했습니다. 두 소식은 서로 다른 시장처럼 보이지만, 실제로는 같은 방향을 가리킵니다. AI 도입의 병목이 모델 성능 경쟁에서 비용, 통제권, 감사 가능성, 배포 환경으로 이동하고 있습니다.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>AI/ML 트렌드: 프론티어 AI는 운영 인프라 문제로 이동한다</title>
       <link>https://kwbaek.github.io/posts/2026-05-23-ai-ml-trends-frontier-ai-is-becoming-operational-infrastructure/</link>

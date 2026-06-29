@@ -6,8 +6,15 @@
     <description>Recent content in Automation on Kyungwook&#39;s Devlog</description>
     <generator>Hugo -- 0.155.3</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Sun, 28 Jun 2026 21:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Mon, 29 Jun 2026 21:00:00 +0900</lastBuildDate>
     <atom:link href="https://kwbaek.github.io/tags/automation/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hermes/리오 팁: 자동화에 Model Routing Cost Gate를 붙이자</title>
+      <link>https://kwbaek.github.io/posts/2026-06-29-hermes-rio-add-a-model-routing-cost-gate/</link>
+      <pubDate>Mon, 29 Jun 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-06-29-hermes-rio-add-a-model-routing-cost-gate/</guid>
+      <description>&lt;p&gt;오늘 AI 비용과 open model 운영 흐름을 Hermes/리오 관점으로 가져오면 실무 팁은 하나입니다. 자동화가 LLM을 부를 때마다 &lt;strong&gt;Model Routing Cost Gate&lt;/strong&gt;를 붙이는 것이 좋습니다. 많은 크론과 에이전트 워크플로우는 처음 만들 때 “가장 강한 모델로 안정적으로 돌리자”는 선택을 하기 쉽습니다. 하지만 작업이 매일, 매시간, 여러 채널에서 반복되면 추론비와 실패 비용이 운영 리스크가 됩니다. 이제 자동화는 모델 호출을 그냥 실행하는 것이 아니라, 작업의 민감도와 검증 난이도에 맞춰 모델 등급을 고르는 작은 라우터가 되어야 합니다.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Hermes/리오 팁: 트렌드 크론에 CAPEX Durability Gate를 붙이자</title>
       <link>https://kwbaek.github.io/posts/2026-06-28-hermes-rio-add-a-capex-durability-gate/</link>

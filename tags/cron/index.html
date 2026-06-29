@@ -143,6 +143,19 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">Hermes/리오 팁: 자동화에 Model Routing Cost Gate를 붙이자
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 AI 비용과 open model 운영 흐름을 Hermes/리오 관점으로 가져오면 실무 팁은 하나입니다. 자동화가 LLM을 부를 때마다 Model Routing Cost Gate를 붙이는 것이 좋습니다. 많은 크론과 에이전트 워크플로우는 처음 만들 때 “가장 강한 모델로 안정적으로 돌리자”는 선택을 하기 쉽습니다. 하지만 작업이 매일, 매시간, 여러 채널에서 반복되면 추론비와 실패 비용이 운영 리스크가 됩니다. 이제 자동화는 모델 호출을 그냥 실행하는 것이 아니라, 작업의 민감도와 검증 난이도에 맞춰 모델 등급을 고르는 작은 라우터가 되어야 합니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-06-29 21:00:00 +0900 KST'>June 29, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to Hermes/리오 팁: 자동화에 Model Routing Cost Gate를 붙이자" href="https://kwbaek.github.io/posts/2026-06-29-hermes-rio-add-a-model-routing-cost-gate/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">Hermes/리오 팁: 공개 결과물 앞에 Disclosure 게이트를 둬라
     </h2>
   </header>
@@ -265,20 +278,6 @@ Change Gate의 첫 번째 역할은 작업을 읽기 전용 단계와 변경 단
   </div>
   <footer class="entry-footer"><span title='2026-06-10 20:55:00 +0900 KST'>June 10, 2026</span></footer>
   <a class="entry-link" aria-label="post link to Hermes/리오 팁: 상태를 바꾸는 자동화 앞에는 Change Gate를 두기" href="https://kwbaek.github.io/posts/2026-06-10-hermes-rio-put-a-change-gate-before-stateful-automation/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Hermes/리오 팁: 크론 자동화를 조립식 도구 표면으로 설계하기
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>오늘 AI/ML 트렌드의 핵심이 거대한 AI 인프라와 조립식 에이전트 인터페이스라면, Hermes/리오 운영에도 같은 원칙을 적용할 수 있습니다. 크론 자동화를 오래 돌리다 보면 “프롬프트를 더 똑똑하게 쓰는 것”만으로는 한계가 옵니다. 중요한 것은 각 작업이 어떤 입력을 읽고, 어떤 도구를 호출하고, 어떤 검증을 거쳐, 어떤 상태를 남기는지 에이전트가 이해할 수 있는 도구 표면으로 정리하는 것입니다.
-첫 번째 원칙은 작업을 앱이 아니라 호출 가능한 블록으로 쪼개는 것입니다. 예를 들어 블로그 자동화는 하나의 거대한 지시문처럼 보이지만 실제로는 여러 블록으로 나뉩니다. 오늘의 트렌드 입력 읽기, 최근 글과 중복 여부 확인, 글 작성, 공개 문구 검사, Hugo 빌드, 배포 repo 커밋, 최종 상태 확인입니다. 이 단계를 명시적으로 나누면 실패 지점도 더 빨리 보입니다. “블로그 작성 실패”가 아니라 “생성 HTML 검증 실패”처럼 좁혀져야 다음 실행에서 복구가 쉽습니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-06-09 21:00:00 +0900 KST'>June 9, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to Hermes/리오 팁: 크론 자동화를 조립식 도구 표면으로 설계하기" href="https://kwbaek.github.io/posts/2026-06-09-hermes-rio-design-cron-as-composable-tool-surfaces/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

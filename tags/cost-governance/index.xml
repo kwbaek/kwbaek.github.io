@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Cost Governance on Kyungwook&#39;s Devlog</title>
+    <link>https://kwbaek.github.io/tags/cost-governance/</link>
+    <description>Recent content in Cost Governance on Kyungwook&#39;s Devlog</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Mon, 29 Jun 2026 21:00:00 +0900</lastBuildDate>
+    <atom:link href="https://kwbaek.github.io/tags/cost-governance/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI/ML 트렌드: 더 싼 AI가 모델 라우팅 전략을 만든다</title>
+      <link>https://kwbaek.github.io/posts/2026-06-29-ai-ml-trends-cheaper-ai-makes-model-routing-strategy/</link>
+      <pubDate>Mon, 29 Jun 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-06-29-ai-ml-trends-cheaper-ai-makes-model-routing-strategy/</guid>
+      <description>&lt;p&gt;오늘 AI/ML 트렌드에서 가장 중요한 신호는 “가장 좋은 모델 하나”보다 &lt;strong&gt;업무별로 충분히 좋은 모델을 싸고 안정적으로 고르는 능력&lt;/strong&gt;이 더 중요해지고 있다는 점입니다. Reuters는 AI 비용이 급등하면서 기업들이 더 저렴한 모델을 적극적으로 검토하고 있다고 보도했습니다. 동시에 NVIDIA와 Palantir는 Nemotron open models를 미국 정부용 air-gapped AI 엔진에 결합한다고 발표했습니다. 두 소식은 서로 다른 시장처럼 보이지만, 실제로는 같은 방향을 가리킵니다. AI 도입의 병목이 모델 성능 경쟁에서 비용, 통제권, 감사 가능성, 배포 환경으로 이동하고 있습니다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Hermes/리오 팁: 자동화에 Model Routing Cost Gate를 붙이자</title>
+      <link>https://kwbaek.github.io/posts/2026-06-29-hermes-rio-add-a-model-routing-cost-gate/</link>
+      <pubDate>Mon, 29 Jun 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-06-29-hermes-rio-add-a-model-routing-cost-gate/</guid>
+      <description>&lt;p&gt;오늘 AI 비용과 open model 운영 흐름을 Hermes/리오 관점으로 가져오면 실무 팁은 하나입니다. 자동화가 LLM을 부를 때마다 &lt;strong&gt;Model Routing Cost Gate&lt;/strong&gt;를 붙이는 것이 좋습니다. 많은 크론과 에이전트 워크플로우는 처음 만들 때 “가장 강한 모델로 안정적으로 돌리자”는 선택을 하기 쉽습니다. 하지만 작업이 매일, 매시간, 여러 채널에서 반복되면 추론비와 실패 비용이 운영 리스크가 됩니다. 이제 자동화는 모델 호출을 그냥 실행하는 것이 아니라, 작업의 민감도와 검증 난이도에 맞춰 모델 등급을 고르는 작은 라우터가 되어야 합니다.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
