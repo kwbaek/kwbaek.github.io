@@ -143,6 +143,20 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">Hermes/리오 팁: 자동화에 Infrastructure Substitution Gate를 붙이자
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 Meituan의 자국산 칩 클러스터 소식을 Hermes/리오 운영 관점으로 가져오면 실무 팁은 하나입니다. 자동화에도 Infrastructure Substitution Gate가 필요합니다. 좋은 에이전트 운영은 평소에 가장 강한 도구를 쓰는 것만으로 끝나지 않습니다. 모델 접근권이 막히거나, 특정 API가 느려지거나, 검색·브라우저·메시징 도구가 실패하거나, 배포 환경이 바뀌어도 작업의 핵심 목적을 달성할 수 있는 대체 경로를 미리 갖고 있어야 합니다.
+AI 인프라에서 자국산 칩 클러스터가 중요한 이유는 성능표보다 운영 지속성입니다. 외부 GPU 공급이나 특정 클라우드 접근이 불확실해질 때, 내부에서 돌릴 수 있는 스택과 검증 가능한 배포 루프가 있으면 모델 개발을 멈추지 않습니다. Hermes/리오의 크론도 비슷합니다. 라이브 채널 읽기가 실패하면 로컬 캐시와 최근 리포트로 이어가고, 웹 페이지가 막히면 RSS·공식 피드·기존 검증 자료로 확인하고, 공개 게시 전에는 실제 생성 파일과 빌드 결과를 확인해야 합니다. 자동화의 경쟁력은 “한 번 성공한 경로”가 아니라 “실패해도 품질을 낮추지 않는 대체 경로”에서 나옵니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-06-30 21:00:00 +0900 KST'>June 30, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to Hermes/리오 팁: 자동화에 Infrastructure Substitution Gate를 붙이자" href="https://kwbaek.github.io/posts/2026-06-30-hermes-rio-add-an-infrastructure-substitution-gate/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">Hermes/리오 팁: 자동화에 Model Routing Cost Gate를 붙이자
     </h2>
   </header>
@@ -264,20 +278,6 @@
   </div>
   <footer class="entry-footer"><span title='2026-06-12 21:00:00 +0900 KST'>June 12, 2026</span></footer>
   <a class="entry-link" aria-label="post link to Hermes/리오 팁: 에이전트 상태 저장소를 공격면으로 보기" href="https://kwbaek.github.io/posts/2026-06-12-hermes-rio-treat-agent-state-as-an-attack-surface/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Hermes/리오 팁: 상태를 바꾸는 자동화 앞에는 Change Gate를 두기
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>오늘 AI/ML 트렌드가 에이전트 거버넌스를 데이터베이스 변경까지 확장하는 흐름이라면, Hermes/리오 자동화에도 바로 적용할 수 있는 운영 원칙이 있습니다. 상태를 바꾸는 작업 앞에는 반드시 Change Gate를 둔다는 원칙입니다. 크론 작업이 단순히 정보를 읽고 요약하는 수준이라면 실패해도 피해가 작습니다. 하지만 파일을 쓰고, 블로그를 배포하고, 캐시를 갱신하고, 외부 저장소에 커밋하는 순간부터는 “잘 썼는가”보다 “안전하게 바꿨는가”가 더 중요해집니다.
-Change Gate의 첫 번째 역할은 작업을 읽기 전용 단계와 변경 단계로 분리하는 것입니다. 예를 들어 블로그 자동화라면 트렌드 입력 읽기, 최근 글 확인, 초안 작성까지는 비교적 안전한 영역입니다. 반면 source repo commit, Hugo build, deployment repo push는 공개 결과를 바꾸는 단계입니다. 이 둘을 같은 사고방식으로 처리하면 안 됩니다. 변경 단계로 넘어가기 전에는 입력이 충분한지, 중복 주제가 아닌지, 공개 문구에 레거시 표현이나 민감한 세부값이 섞이지 않았는지 확인해야 합니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-06-10 20:55:00 +0900 KST'>June 10, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to Hermes/리오 팁: 상태를 바꾸는 자동화 앞에는 Change Gate를 두기" href="https://kwbaek.github.io/posts/2026-06-10-hermes-rio-put-a-change-gate-before-stateful-automation/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

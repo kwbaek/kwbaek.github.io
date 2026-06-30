@@ -143,6 +143,20 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 팁: 매일 블로그 크론을 작은 편집 파이프라인처럼 운영하기
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>OpenClaw로 매일 블로그 포스팅을 자동화할 때 핵심은 “글을 자동으로 쓴다”가 아닙니다. 더 중요한 것은 입력 수집, 선별, 작성, 빌드, 배포를 작고 검증 가능한 편집 파이프라인으로 나누는 것입니다. 오늘 같은 daily blog cron은 Discord 트렌드 채널을 읽고, 그중 가장 중요한 AI/ML 흐름을 고른 뒤, Hugo 포스트를 만들고, 블로그 레포와 public/ 배포 레포를 각각 커밋하는 구조입니다. 겉으로 보면 단순하지만, 실제로는 운영 자동화의 좋은 축소판입니다.
+첫 번째 원칙은 입력 채널을 명확히 나누는 것입니다. #ai-ml-trends 같은 Discord 채널은 raw feed가 아니라 이미 한 번 걸러진 editorial inbox로 쓰는 편이 좋습니다. RSS, GitHub release, 논문, 뉴스가 모두 섞여 있어도 채널 메시지에는 “왜 중요한가”가 짧게 적혀 있습니다. OpenClaw cron은 여기서 다시 오늘 날짜 메시지만 읽고, 중복 URL이나 오래된 토픽을 제외한 뒤 글의 중심 문장을 잡으면 됩니다. 이렇게 하면 모델이 웹을 무작정 떠돌며 소재를 찾는 시간을 줄이고, 매일 글의 품질도 더 안정됩니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-05-22 21:00:00 +0900 KST'>May 22, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 팁: 매일 블로그 크론을 작은 편집 파이프라인처럼 운영하기" href="https://kwbaek.github.io/posts/2026-05-22-openclaw-use-cron-blogging-as-a-small-editorial-pipeline/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">OpenClaw 팁: 블로그 크론에 작은 검증 게이트 붙이기
     </h2>
   </header>
@@ -264,20 +278,6 @@
   </div>
   <footer class="entry-footer"><span title='2026-05-06 21:00:00 +0900 KST'>May 6, 2026</span></footer>
   <a class="entry-link" aria-label="post link to OpenClaw 팁: 블로그 발행 cron은 감사 가능한 출판 파이프라인으로 만들자" href="https://kwbaek.github.io/posts/2026-05-06-openclaw-build-blog-crons-as-auditable-publishing-pipelines/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw 팁: 에이전트 자동화는 상태를 남기되 감사 가능하게 만들자
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>OpenClaw로 매일 트렌드 수집, 아이디어 생성, 리포트 발송, 블로그 배포 같은 자동화를 굴리다 보면 한 가지 원칙이 점점 중요해집니다. 에이전트 자동화는 상태가 있어야 유용하지만, 그 상태가 감사 가능해야 안전합니다. 오늘 AI/ML 트렌드에서도 Pydantic AI의 conversation state 지원, Google Gemini API Webhooks, Workspace Studio agent, intent-aware authorization 연구가 올라왔습니다. 이 흐름은 OpenClaw cron과 heartbeat를 설계할 때 그대로 참고할 만합니다.
-첫 번째 원칙은 “기억”을 파일과 Git에 남기는 것입니다. 에이전트가 매번 처음 보는 것처럼 일하면 중복 링크를 또 고르고, 같은 아이디어를 반복하고, 실패 지점을 놓치기 쉽습니다. 반대로 최근 메시지, 생성한 글, 보고서, 배포 결과를 파일로 남기면 다음 실행이 더 똑똑해집니다. OpenClaw에서는 memory/YYYY-MM-DD.md, reports/, content/posts/ 같은 산출물 경로를 잘 쓰고, 중요한 결과는 Git 커밋으로 checkpoint를 남기는 방식이 실용적입니다. 상태는 머릿속이 아니라 파일에 있어야 복구됩니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-05-05 21:00:00 +0900 KST'>May 5, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw 팁: 에이전트 자동화는 상태를 남기되 감사 가능하게 만들자" href="https://kwbaek.github.io/posts/2026-05-05-openclaw-make-agent-automation-stateful-but-auditable/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

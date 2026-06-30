@@ -6,8 +6,16 @@
     <description>Recent content in Ai-Ml on Kyungwook&#39;s Devlog</description>
     <generator>Hugo -- 0.155.3</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Mon, 29 Jun 2026 21:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Tue, 30 Jun 2026 21:00:00 +0900</lastBuildDate>
     <atom:link href="https://kwbaek.github.io/categories/ai-ml/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI/ML 트렌드: 자국산 칩 클러스터가 AI 전략이 된다</title>
+      <link>https://kwbaek.github.io/posts/2026-06-30-ai-ml-trends-domestic-chip-clusters-become-ai-strategy/</link>
+      <pubDate>Tue, 30 Jun 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-06-30-ai-ml-trends-domestic-chip-clusters-become-ai-strategy/</guid>
+      <description>&lt;p&gt;오늘 AI/ML 트렌드에서 가장 흥미로운 신호는 Reuters가 전한 Meituan의 LongCat-2.0 발표입니다. Meituan은 새 AI 모델을 약 5만 개 중국산 칩 클러스터에서 학습·구동했다고 밝혔고, 모델을 오픈소스로 공개하는 흐름까지 함께 보여줬습니다. 이 뉴스가 중요한 이유는 “중국도 좋은 모델을 만들었다”가 아니라, AI 경쟁의 단위가 모델 성능표에서 &lt;strong&gt;자국산 칩 클러스터를 실제 학습과 추론에 투입하는 운영 능력&lt;/strong&gt;으로 이동하고 있다는 점입니다.&lt;/p&gt;
+&lt;p&gt;최근 며칠간 AI 인프라 뉴스는 수출통제, 통관, HBM·데이터센터 금융, 모델 접근권처럼 공급망의 여러 층을 보여줬습니다. Meituan 사례는 그 흐름의 반대편, 즉 외부 접근이 불확실할 때 내부 생태계가 얼마나 빨리 대체 경로를 만들 수 있는지를 보여줍니다. 고성능 GPU를 안정적으로 들여오는 것이 어려워질수록, 기업과 국가는 “최고 사양 칩을 얼마나 확보했는가”만이 아니라 “보유한 칩을 어떤 소프트웨어 스택과 분산 학습 운영으로 묶어 실제 모델 릴리스까지 밀어붙이는가”를 증명해야 합니다.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>AI/ML 트렌드: 더 싼 AI가 모델 라우팅 전략을 만든다</title>
       <link>https://kwbaek.github.io/posts/2026-06-29-ai-ml-trends-cheaper-ai-makes-model-routing-strategy/</link>

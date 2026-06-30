@@ -143,6 +143,20 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">Hermes/리오 팁: 자동화에 Infrastructure Substitution Gate를 붙이자
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 Meituan의 자국산 칩 클러스터 소식을 Hermes/리오 운영 관점으로 가져오면 실무 팁은 하나입니다. 자동화에도 Infrastructure Substitution Gate가 필요합니다. 좋은 에이전트 운영은 평소에 가장 강한 도구를 쓰는 것만으로 끝나지 않습니다. 모델 접근권이 막히거나, 특정 API가 느려지거나, 검색·브라우저·메시징 도구가 실패하거나, 배포 환경이 바뀌어도 작업의 핵심 목적을 달성할 수 있는 대체 경로를 미리 갖고 있어야 합니다.
+AI 인프라에서 자국산 칩 클러스터가 중요한 이유는 성능표보다 운영 지속성입니다. 외부 GPU 공급이나 특정 클라우드 접근이 불확실해질 때, 내부에서 돌릴 수 있는 스택과 검증 가능한 배포 루프가 있으면 모델 개발을 멈추지 않습니다. Hermes/리오의 크론도 비슷합니다. 라이브 채널 읽기가 실패하면 로컬 캐시와 최근 리포트로 이어가고, 웹 페이지가 막히면 RSS·공식 피드·기존 검증 자료로 확인하고, 공개 게시 전에는 실제 생성 파일과 빌드 결과를 확인해야 합니다. 자동화의 경쟁력은 “한 번 성공한 경로”가 아니라 “실패해도 품질을 낮추지 않는 대체 경로”에서 나옵니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-06-30 21:00:00 +0900 KST'>June 30, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to Hermes/리오 팁: 자동화에 Infrastructure Substitution Gate를 붙이자" href="https://kwbaek.github.io/posts/2026-06-30-hermes-rio-add-an-infrastructure-substitution-gate/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">Hermes/리오 팁: 자동화에 Model Routing Cost Gate를 붙이자
     </h2>
   </header>
@@ -264,20 +278,6 @@ Model Routing Gate는 어렵게 만들 필요가 없습니다. Hermes/리오 크
   </div>
   <footer class="entry-footer"><span title='2026-06-21 21:00:00 +0900 KST'>June 21, 2026</span></footer>
   <a class="entry-link" aria-label="post link to Hermes/리오 팁: 코딩 에이전트에는 Model Routing Gate가 필요하다" href="https://kwbaek.github.io/posts/2026-06-21-hermes-rio-add-a-model-routing-gate-for-coding-agents/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Hermes/리오 팁: 창작 자동화는 Action Card로 쪼개야 안전하다
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>Adobe의 Creative Agent 확장 소식을 Hermes/리오 운영 관점으로 가져오면 실무 팁은 하나입니다. 창작 자동화를 한 번의 거대한 프롬프트로 처리하지 말고, Action Card 단위로 쪼개야 합니다. 블로그 글, 이미지, 쇼츠 대본, 리포트, 뉴스레터처럼 공개 결과물이 있는 작업일수록 “멋진 초안 만들기”보다 “어떤 작업을 어떤 근거로 실행했는지”가 더 중요합니다.
-Action Card는 agent가 수행할 한 단계 작업을 작은 카드처럼 정의하는 방식입니다. 예를 들어 트렌드 글 자동화라면 소스 수집, 핵심 주장 선택, 공개 가능한 링크 확인, 초안 작성, 레거시 명칭 점검, 생성된 HTML 확인, 배포를 각각 별도 카드로 둡니다. 카드마다 입력, 허용 도구, 금지 정보, 완료 조건, 검증 방법을 적어두면 Hermes/리오가 작업을 이어가더라도 중간 판단이 흐려지지 않습니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-06-20 20:58:00 +0900 KST'>June 20, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to Hermes/리오 팁: 창작 자동화는 Action Card로 쪼개야 안전하다" href="https://kwbaek.github.io/posts/2026-06-20-hermes-rio-turn-creative-automation-into-action-cards/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

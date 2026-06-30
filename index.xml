@@ -6,8 +6,24 @@
     <description>Recent content on Kyungwook&#39;s Devlog</description>
     <generator>Hugo -- 0.155.3</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Mon, 29 Jun 2026 21:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Tue, 30 Jun 2026 21:00:00 +0900</lastBuildDate>
     <atom:link href="https://kwbaek.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI/ML 트렌드: 자국산 칩 클러스터가 AI 전략이 된다</title>
+      <link>https://kwbaek.github.io/posts/2026-06-30-ai-ml-trends-domestic-chip-clusters-become-ai-strategy/</link>
+      <pubDate>Tue, 30 Jun 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-06-30-ai-ml-trends-domestic-chip-clusters-become-ai-strategy/</guid>
+      <description>&lt;p&gt;오늘 AI/ML 트렌드에서 가장 흥미로운 신호는 Reuters가 전한 Meituan의 LongCat-2.0 발표입니다. Meituan은 새 AI 모델을 약 5만 개 중국산 칩 클러스터에서 학습·구동했다고 밝혔고, 모델을 오픈소스로 공개하는 흐름까지 함께 보여줬습니다. 이 뉴스가 중요한 이유는 “중국도 좋은 모델을 만들었다”가 아니라, AI 경쟁의 단위가 모델 성능표에서 &lt;strong&gt;자국산 칩 클러스터를 실제 학습과 추론에 투입하는 운영 능력&lt;/strong&gt;으로 이동하고 있다는 점입니다.&lt;/p&gt;
+&lt;p&gt;최근 며칠간 AI 인프라 뉴스는 수출통제, 통관, HBM·데이터센터 금융, 모델 접근권처럼 공급망의 여러 층을 보여줬습니다. Meituan 사례는 그 흐름의 반대편, 즉 외부 접근이 불확실할 때 내부 생태계가 얼마나 빨리 대체 경로를 만들 수 있는지를 보여줍니다. 고성능 GPU를 안정적으로 들여오는 것이 어려워질수록, 기업과 국가는 “최고 사양 칩을 얼마나 확보했는가”만이 아니라 “보유한 칩을 어떤 소프트웨어 스택과 분산 학습 운영으로 묶어 실제 모델 릴리스까지 밀어붙이는가”를 증명해야 합니다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Hermes/리오 팁: 자동화에 Infrastructure Substitution Gate를 붙이자</title>
+      <link>https://kwbaek.github.io/posts/2026-06-30-hermes-rio-add-an-infrastructure-substitution-gate/</link>
+      <pubDate>Tue, 30 Jun 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-06-30-hermes-rio-add-an-infrastructure-substitution-gate/</guid>
+      <description>&lt;p&gt;오늘 Meituan의 자국산 칩 클러스터 소식을 Hermes/리오 운영 관점으로 가져오면 실무 팁은 하나입니다. 자동화에도 &lt;strong&gt;Infrastructure Substitution Gate&lt;/strong&gt;가 필요합니다. 좋은 에이전트 운영은 평소에 가장 강한 도구를 쓰는 것만으로 끝나지 않습니다. 모델 접근권이 막히거나, 특정 API가 느려지거나, 검색·브라우저·메시징 도구가 실패하거나, 배포 환경이 바뀌어도 작업의 핵심 목적을 달성할 수 있는 대체 경로를 미리 갖고 있어야 합니다.&lt;/p&gt;
+&lt;p&gt;AI 인프라에서 자국산 칩 클러스터가 중요한 이유는 성능표보다 운영 지속성입니다. 외부 GPU 공급이나 특정 클라우드 접근이 불확실해질 때, 내부에서 돌릴 수 있는 스택과 검증 가능한 배포 루프가 있으면 모델 개발을 멈추지 않습니다. Hermes/리오의 크론도 비슷합니다. 라이브 채널 읽기가 실패하면 로컬 캐시와 최근 리포트로 이어가고, 웹 페이지가 막히면 RSS·공식 피드·기존 검증 자료로 확인하고, 공개 게시 전에는 실제 생성 파일과 빌드 결과를 확인해야 합니다. 자동화의 경쟁력은 “한 번 성공한 경로”가 아니라 “실패해도 품질을 낮추지 않는 대체 경로”에서 나옵니다.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>AI/ML 트렌드: 더 싼 AI가 모델 라우팅 전략을 만든다</title>
       <link>https://kwbaek.github.io/posts/2026-06-29-ai-ml-trends-cheaper-ai-makes-model-routing-strategy/</link>
