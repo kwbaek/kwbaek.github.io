@@ -1,20 +1,2 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
-  <channel>
-    <title>Telecom on Kyungwook&#39;s Devlog</title>
-    <link>https://kwbaek.github.io/tags/telecom/</link>
-    <description>Recent content in Telecom on Kyungwook&#39;s Devlog</description>
-    <generator>Hugo -- 0.155.3</generator>
-    <language>ko-kr</language>
-    <lastBuildDate>Tue, 23 Jun 2026 20:58:00 +0900</lastBuildDate>
-    <atom:link href="https://kwbaek.github.io/tags/telecom/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>AI/ML 트렌드: AI 운영 경쟁은 런타임과 환경 증거로 이동한다</title>
-      <link>https://kwbaek.github.io/posts/2026-06-23-ai-ml-trends-ai-operations-need-runtime-and-environmental-evidence/</link>
-      <pubDate>Tue, 23 Jun 2026 20:58:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/posts/2026-06-23-ai-ml-trends-ai-operations-need-runtime-and-environmental-evidence/</guid>
-      <description>&lt;p&gt;오늘 AI/ML 트렌드에서 눈에 띈 신호는 NVIDIA의 통신망 운영용 24/7 AI agent 스택 공개와 Reuters가 보도한 UN 사무총장의 AI 기업 환경 비용 공개 요구입니다. 하나는 agent가 실제 통신망 운영에 들어가는 이야기이고, 다른 하나는 AI 데이터센터의 전력·물·탄소 비용을 투명하게 밝혀야 한다는 요구입니다. 겉으로는 다른 뉴스지만, 공통된 메시지는 같습니다. AI 경쟁은 이제 모델 데모가 아니라 &lt;strong&gt;운영 런타임과 그 런타임을 설명할 수 있는 증거&lt;/strong&gt;의 경쟁으로 이동하고 있습니다.&lt;/p&gt;
-&lt;p&gt;NVIDIA가 DTW Ignite에서 제시한 통신망 AI agent 흐름은 단순한 챗봇이 아닙니다. 통신망 장애를 감지하고, 원인을 분석하고, 조치 후보를 만들고, ServiceNow나 Amdocs 같은 운영 시스템과 연결하는 형태입니다. 통신망은 장애 비용이 크고 고객 영향이 즉시 발생하는 영역이라서, agent가 “그럴듯한 답”을 내는 것만으로는 부족합니다. 어떤 데이터를 근거로 판단했는지, 어느 단계까지 자동 조치가 허용되는지, 사람이 어디에서 승인해야 하는지, 사후 감사가 가능한지가 제품 가치의 핵심이 됩니다.&lt;/p&gt;</description>
-    </item>
-  </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Telecom on Kyungwook's Devlog</title><link>https://kwbaek.github.io/tags/telecom/</link><description>Recent content in Telecom on Kyungwook's Devlog</description><generator>Hugo -- 0.155.3</generator><language>ko-kr</language><lastBuildDate>Tue, 23 Jun 2026 20:58:00 +0900</lastBuildDate><atom:link href="https://kwbaek.github.io/tags/telecom/index.xml" rel="self" type="application/rss+xml"/><item><title>AI/ML 트렌드: AI 운영 경쟁은 런타임과 환경 증거로 이동한다</title><link>https://kwbaek.github.io/posts/2026-06-23-ai-ml-trends-ai-operations-need-runtime-and-environmental-evidence/</link><pubDate>Tue, 23 Jun 2026 20:58:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-06-23-ai-ml-trends-ai-operations-need-runtime-and-environmental-evidence/</guid><description>&lt;p&gt;오늘 AI/ML 트렌드에서 눈에 띈 신호는 NVIDIA의 통신망 운영용 24/7 AI agent 스택 공개와 Reuters가 보도한 UN 사무총장의 AI 기업 환경 비용 공개 요구입니다. 하나는 agent가 실제 통신망 운영에 들어가는 이야기이고, 다른 하나는 AI 데이터센터의 전력·물·탄소 비용을 투명하게 밝혀야 한다는 요구입니다. 겉으로는 다른 뉴스지만, 공통된 메시지는 같습니다. AI 경쟁은 이제 모델 데모가 아니라 &lt;strong&gt;운영 런타임과 그 런타임을 설명할 수 있는 증거&lt;/strong&gt;의 경쟁으로 이동하고 있습니다.&lt;/p&gt;
+&lt;p&gt;NVIDIA가 DTW Ignite에서 제시한 통신망 AI agent 흐름은 단순한 챗봇이 아닙니다. 통신망 장애를 감지하고, 원인을 분석하고, 조치 후보를 만들고, ServiceNow나 Amdocs 같은 운영 시스템과 연결하는 형태입니다. 통신망은 장애 비용이 크고 고객 영향이 즉시 발생하는 영역이라서, agent가 “그럴듯한 답”을 내는 것만으로는 부족합니다. 어떤 데이터를 근거로 판단했는지, 어느 단계까지 자동 조치가 허용되는지, 사람이 어디에서 승인해야 하는지, 사후 감사가 가능한지가 제품 가치의 핵심이 됩니다.&lt;/p&gt;</description></item></channel></rss>

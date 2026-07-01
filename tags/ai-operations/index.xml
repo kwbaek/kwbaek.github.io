@@ -1,28 +1,3 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
-  <channel>
-    <title>AI Operations on Kyungwook&#39;s Devlog</title>
-    <link>https://kwbaek.github.io/tags/ai-operations/</link>
-    <description>Recent content in AI Operations on Kyungwook&#39;s Devlog</description>
-    <generator>Hugo -- 0.155.3</generator>
-    <language>ko-kr</language>
-    <lastBuildDate>Sat, 27 Jun 2026 21:00:00 +0900</lastBuildDate>
-    <atom:link href="https://kwbaek.github.io/tags/ai-operations/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Hermes/리오 팁: 자동화에 Model Access Recovery Gate를 붙이자</title>
-      <link>https://kwbaek.github.io/posts/2026-06-27-hermes-rio-add-a-model-access-recovery-gate/</link>
-      <pubDate>Sat, 27 Jun 2026 21:00:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/posts/2026-06-27-hermes-rio-add-a-model-access-recovery-gate/</guid>
-      <description>&lt;p&gt;오늘 Anthropic Mythos 5 제한 재배포 뉴스를 Hermes/리오 운영 관점으로 가져오면 실무 팁은 하나입니다. 모델·API·agent tool에 의존하는 자동화에는 &lt;strong&gt;Model Access Recovery Gate&lt;/strong&gt;를 붙이는 것이 좋습니다. 좋은 크론과 에이전트 워크플로우는 “모델이 막혔다” 또는 “다시 열렸다”를 단순 장애 이벤트로 보지 않고, 접근권이 바뀌었을 때 어떤 업무를 안전하게 복구할지 결정하는 작은 릴리스 게이트를 가져야 합니다.&lt;/p&gt;
-&lt;p&gt;모델 접근권은 생각보다 자주 흔들립니다. region 제한, vendor 정책 변경, 정부 요청, enterprise plan 변경, 보안 incident, 사용량 기반 과금, 고객별 승인 조건이 모두 자동화의 실행 가능성을 바꿀 수 있습니다. 특히 사이버보안, 금융, 공공, 의료처럼 민감한 영역에서는 고성능 모델이 전면 공개되지 않고 trusted organization이나 특정 workflow에만 허용될 수 있습니다. Hermes/리오가 이런 신호를 읽는다면 “새 모델이 좋다”에서 멈추지 말고, 그 모델을 쓰는 자동화의 복구 조건까지 점검해야 합니다.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Hermes/리오 팁: AI 자동화에는 Region-Provider Readiness Gate를 붙이자</title>
-      <link>https://kwbaek.github.io/posts/2026-06-22-hermes-rio-add-a-region-provider-readiness-gate/</link>
-      <pubDate>Mon, 22 Jun 2026 20:55:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/posts/2026-06-22-hermes-rio-add-a-region-provider-readiness-gate/</guid>
-      <description>&lt;p&gt;오늘 Reuters의 AI 공급망·전력 병목 뉴스를 Hermes/리오 운영 관점으로 가져오면 실무 팁은 하나입니다. AI 자동화를 만들 때 모델 이름만 기록하지 말고, 실행 전후에 &lt;strong&gt;Region-Provider Readiness Gate&lt;/strong&gt;를 붙이는 편이 안전합니다. 크론, 리포트 생성, 코드 리뷰, 고객 응대, 데이터 분석처럼 반복 실행되는 자동화는 처음에는 작은 작업처럼 보이지만, 시간이 지나면 특정 모델 공급자, 특정 리전, 특정 데이터 경로에 조용히 의존하게 됩니다.&lt;/p&gt;
-&lt;p&gt;Region-Provider Readiness Gate는 “이 작업을 어느 모델로 돌릴까?”보다 한 단계 넓은 질문입니다. 첫째, 입력 데이터가 어느 지역 규제나 고객 계약의 영향을 받는가. 둘째, 현재 쓰는 모델·클라우드 공급자가 막히면 대체 경로가 있는가. 셋째, 대체 모델로 바뀌었을 때 품질·비용·응답시간이 얼마나 달라지는가. 넷째, 대량 실행이나 장시간 작업이라면 전력·인프라 비용 가정이 현실적인가. 이 네 가지를 작업 카드 앞단에 짧게 적어두면 자동화가 커져도 운영 리스크를 놓치기 어렵습니다.&lt;/p&gt;</description>
-    </item>
-  </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>AI Operations on Kyungwook's Devlog</title><link>https://kwbaek.github.io/tags/ai-operations/</link><description>Recent content in AI Operations on Kyungwook's Devlog</description><generator>Hugo -- 0.155.3</generator><language>ko-kr</language><lastBuildDate>Sat, 27 Jun 2026 21:00:00 +0900</lastBuildDate><atom:link href="https://kwbaek.github.io/tags/ai-operations/index.xml" rel="self" type="application/rss+xml"/><item><title>Hermes/리오 팁: 자동화에 Model Access Recovery Gate를 붙이자</title><link>https://kwbaek.github.io/posts/2026-06-27-hermes-rio-add-a-model-access-recovery-gate/</link><pubDate>Sat, 27 Jun 2026 21:00:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-06-27-hermes-rio-add-a-model-access-recovery-gate/</guid><description>&lt;p&gt;오늘 Anthropic Mythos 5 제한 재배포 뉴스를 Hermes/리오 운영 관점으로 가져오면 실무 팁은 하나입니다. 모델·API·agent tool에 의존하는 자동화에는 &lt;strong&gt;Model Access Recovery Gate&lt;/strong&gt;를 붙이는 것이 좋습니다. 좋은 크론과 에이전트 워크플로우는 “모델이 막혔다” 또는 “다시 열렸다”를 단순 장애 이벤트로 보지 않고, 접근권이 바뀌었을 때 어떤 업무를 안전하게 복구할지 결정하는 작은 릴리스 게이트를 가져야 합니다.&lt;/p&gt;
+&lt;p&gt;모델 접근권은 생각보다 자주 흔들립니다. region 제한, vendor 정책 변경, 정부 요청, enterprise plan 변경, 보안 incident, 사용량 기반 과금, 고객별 승인 조건이 모두 자동화의 실행 가능성을 바꿀 수 있습니다. 특히 사이버보안, 금융, 공공, 의료처럼 민감한 영역에서는 고성능 모델이 전면 공개되지 않고 trusted organization이나 특정 workflow에만 허용될 수 있습니다. Hermes/리오가 이런 신호를 읽는다면 “새 모델이 좋다”에서 멈추지 말고, 그 모델을 쓰는 자동화의 복구 조건까지 점검해야 합니다.&lt;/p&gt;</description></item><item><title>Hermes/리오 팁: AI 자동화에는 Region-Provider Readiness Gate를 붙이자</title><link>https://kwbaek.github.io/posts/2026-06-22-hermes-rio-add-a-region-provider-readiness-gate/</link><pubDate>Mon, 22 Jun 2026 20:55:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-06-22-hermes-rio-add-a-region-provider-readiness-gate/</guid><description>&lt;p&gt;오늘 Reuters의 AI 공급망·전력 병목 뉴스를 Hermes/리오 운영 관점으로 가져오면 실무 팁은 하나입니다. AI 자동화를 만들 때 모델 이름만 기록하지 말고, 실행 전후에 &lt;strong&gt;Region-Provider Readiness Gate&lt;/strong&gt;를 붙이는 편이 안전합니다. 크론, 리포트 생성, 코드 리뷰, 고객 응대, 데이터 분석처럼 반복 실행되는 자동화는 처음에는 작은 작업처럼 보이지만, 시간이 지나면 특정 모델 공급자, 특정 리전, 특정 데이터 경로에 조용히 의존하게 됩니다.&lt;/p&gt;
+&lt;p&gt;Region-Provider Readiness Gate는 “이 작업을 어느 모델로 돌릴까?”보다 한 단계 넓은 질문입니다. 첫째, 입력 데이터가 어느 지역 규제나 고객 계약의 영향을 받는가. 둘째, 현재 쓰는 모델·클라우드 공급자가 막히면 대체 경로가 있는가. 셋째, 대체 모델로 바뀌었을 때 품질·비용·응답시간이 얼마나 달라지는가. 넷째, 대량 실행이나 장시간 작업이라면 전력·인프라 비용 가정이 현실적인가. 이 네 가지를 작업 카드 앞단에 짧게 적어두면 자동화가 커져도 운영 리스크를 놓치기 어렵습니다.&lt;/p&gt;</description></item></channel></rss>

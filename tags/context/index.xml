@@ -1,28 +1,3 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
-  <channel>
-    <title>Context on Kyungwook&#39;s Devlog</title>
-    <link>https://kwbaek.github.io/tags/context/</link>
-    <description>Recent content in Context on Kyungwook&#39;s Devlog</description>
-    <generator>Hugo -- 0.155.3</generator>
-    <language>ko-kr</language>
-    <lastBuildDate>Thu, 18 Jun 2026 21:00:00 +0900</lastBuildDate>
-    <atom:link href="https://kwbaek.github.io/tags/context/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Hermes/리오 팁: Agent 크론 앞에 컨텍스트 권한 게이트를 둬라</title>
-      <link>https://kwbaek.github.io/posts/2026-06-18-hermes-rio-add-a-context-permission-gate-to-agent-crons/</link>
-      <pubDate>Thu, 18 Jun 2026 21:00:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/posts/2026-06-18-hermes-rio-add-a-context-permission-gate-to-agent-crons/</guid>
-      <description>&lt;p&gt;오늘 AWS의 Context와 Bedrock AgentCore 흐름을 Hermes/리오 운영에 적용하면 팁은 하나입니다. &lt;strong&gt;agent 크론 앞에 컨텍스트 권한 게이트를 둬야 합니다.&lt;/strong&gt; 자동화가 실패하는 이유는 항상 모델이 멍청해서가 아닙니다. 어떤 입력을 읽어도 되는지, 어느 캐시가 최신인지, 어떤 자료는 공개 결과에 쓰면 안 되는지, fallback을 썼을 때 신뢰도를 어떻게 낮출지 정하지 않았기 때문에 흔들리는 경우가 많습니다.&lt;/p&gt;
-&lt;p&gt;첫 번째 게이트는 입력 목록입니다. 크론이 실행될 때 “오늘 메시지”, “최근 리포트”, “캐시 파일”, “RSS”, “블로그 기존 글”, “Git 상태”처럼 읽은 자료를 작업 단위로 분리해 기록해야 합니다. 중요한 것은 많이 읽는 것이 아니라, 각 입력이 어떤 역할인지 구분하는 것입니다. 최신 트렌드는 오늘의 각도를 정하고, 기존 글은 중복을 막고, 캐시는 live source 실패 시 fallback이 됩니다. 이 구분이 없으면 agent는 오래된 자료를 최신 근거처럼 쓰거나 같은 주제를 반복하기 쉽습니다.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>OpenClaw 팁: 에이전트 크론은 컨텍스트, 비용, 협업 경계를 함께 운영하자</title>
-      <link>https://kwbaek.github.io/posts/2026-05-11-openclaw-operate-agent-crons-with-context-cost-and-collaboration-controls/</link>
-      <pubDate>Mon, 11 May 2026 21:00:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/posts/2026-05-11-openclaw-operate-agent-crons-with-context-cost-and-collaboration-controls/</guid>
-      <description>&lt;p&gt;OpenClaw를 매일 쓰다 보면 자동화의 난이도는 “한 번 실행되느냐”보다 &lt;strong&gt;오래 반복 실행될 때 얼마나 예측 가능하고, 비용이 보이고, 협업 채널을 어지럽히지 않는가&lt;/strong&gt;로 이동합니다. 오늘 살펴볼 포인트는 OpenClaw v2026.5.10-beta.3에서 보인 방향성입니다. provider-level &lt;code&gt;localService&lt;/code&gt;, context map, Slack unfurl/replyBroadcast 같은 기능은 모두 에이전트 자동화를 더 운영 가능한 시스템으로 만들기 위한 장치에 가깝습니다.&lt;/p&gt;
-&lt;p&gt;첫 번째로 중요한 것은 로컬 모델 서버의 생명주기입니다. provider-level &lt;code&gt;localService&lt;/code&gt;는 특정 provider가 필요로 하는 로컬 서비스를 자동으로 띄우고 관리하는 방향을 보여줍니다. 개인 비서나 팀 자동화에서 로컬 LLM, 임베딩 서버, 프록시, 전사 서버를 쓰기 시작하면 “모델 선택”보다 “그 서버가 언제 켜지고, 실패하면 어떻게 알리고, 어떤 작업이 의존하는가”가 더 중요해집니다. 크론 작업이 매일 돌 때마다 로컬 서비스 상태를 사람이 확인해야 한다면 자동화의 이점이 줄어듭니다.&lt;/p&gt;</description>
-    </item>
-  </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Context on Kyungwook's Devlog</title><link>https://kwbaek.github.io/tags/context/</link><description>Recent content in Context on Kyungwook's Devlog</description><generator>Hugo -- 0.155.3</generator><language>ko-kr</language><lastBuildDate>Thu, 18 Jun 2026 21:00:00 +0900</lastBuildDate><atom:link href="https://kwbaek.github.io/tags/context/index.xml" rel="self" type="application/rss+xml"/><item><title>Hermes/리오 팁: Agent 크론 앞에 컨텍스트 권한 게이트를 둬라</title><link>https://kwbaek.github.io/posts/2026-06-18-hermes-rio-add-a-context-permission-gate-to-agent-crons/</link><pubDate>Thu, 18 Jun 2026 21:00:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-06-18-hermes-rio-add-a-context-permission-gate-to-agent-crons/</guid><description>&lt;p&gt;오늘 AWS의 Context와 Bedrock AgentCore 흐름을 Hermes/리오 운영에 적용하면 팁은 하나입니다. &lt;strong&gt;agent 크론 앞에 컨텍스트 권한 게이트를 둬야 합니다.&lt;/strong&gt; 자동화가 실패하는 이유는 항상 모델이 멍청해서가 아닙니다. 어떤 입력을 읽어도 되는지, 어느 캐시가 최신인지, 어떤 자료는 공개 결과에 쓰면 안 되는지, fallback을 썼을 때 신뢰도를 어떻게 낮출지 정하지 않았기 때문에 흔들리는 경우가 많습니다.&lt;/p&gt;
+&lt;p&gt;첫 번째 게이트는 입력 목록입니다. 크론이 실행될 때 “오늘 메시지”, “최근 리포트”, “캐시 파일”, “RSS”, “블로그 기존 글”, “Git 상태”처럼 읽은 자료를 작업 단위로 분리해 기록해야 합니다. 중요한 것은 많이 읽는 것이 아니라, 각 입력이 어떤 역할인지 구분하는 것입니다. 최신 트렌드는 오늘의 각도를 정하고, 기존 글은 중복을 막고, 캐시는 live source 실패 시 fallback이 됩니다. 이 구분이 없으면 agent는 오래된 자료를 최신 근거처럼 쓰거나 같은 주제를 반복하기 쉽습니다.&lt;/p&gt;</description></item><item><title>OpenClaw 팁: 에이전트 크론은 컨텍스트, 비용, 협업 경계를 함께 운영하자</title><link>https://kwbaek.github.io/posts/2026-05-11-openclaw-operate-agent-crons-with-context-cost-and-collaboration-controls/</link><pubDate>Mon, 11 May 2026 21:00:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-05-11-openclaw-operate-agent-crons-with-context-cost-and-collaboration-controls/</guid><description>&lt;p&gt;OpenClaw를 매일 쓰다 보면 자동화의 난이도는 “한 번 실행되느냐”보다 &lt;strong&gt;오래 반복 실행될 때 얼마나 예측 가능하고, 비용이 보이고, 협업 채널을 어지럽히지 않는가&lt;/strong&gt;로 이동합니다. 오늘 살펴볼 포인트는 OpenClaw v2026.5.10-beta.3에서 보인 방향성입니다. provider-level &lt;code&gt;localService&lt;/code&gt;, context map, Slack unfurl/replyBroadcast 같은 기능은 모두 에이전트 자동화를 더 운영 가능한 시스템으로 만들기 위한 장치에 가깝습니다.&lt;/p&gt;
+&lt;p&gt;첫 번째로 중요한 것은 로컬 모델 서버의 생명주기입니다. provider-level &lt;code&gt;localService&lt;/code&gt;는 특정 provider가 필요로 하는 로컬 서비스를 자동으로 띄우고 관리하는 방향을 보여줍니다. 개인 비서나 팀 자동화에서 로컬 LLM, 임베딩 서버, 프록시, 전사 서버를 쓰기 시작하면 “모델 선택”보다 “그 서버가 언제 켜지고, 실패하면 어떻게 알리고, 어떤 작업이 의존하는가”가 더 중요해집니다. 크론 작업이 매일 돌 때마다 로컬 서비스 상태를 사람이 확인해야 한다면 자동화의 이점이 줄어듭니다.&lt;/p&gt;</description></item></channel></rss>
