@@ -1,11 +1,321 @@
-<!doctype html><html lang=en dir=auto data-theme=auto><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=robots content="index, follow"><title>Hermes/리오 팁: 상태를 바꾸는 자동화 앞에는 Change Gate를 두기 | Kyungwook's Devlog</title><meta name=keywords content="Hermes,리오,Agent,Automation,Cron,Governance,Audit,Workflow,Database"><meta name=description content="오늘 AI/ML 트렌드가 에이전트 거버넌스를 데이터베이스 변경까지 확장하는 흐름이라면, Hermes/리오 자동화에도 바로 적용할 수 있는 운영 원칙이 있습니다. 상태를 바꾸는 작업 앞에는 반드시 Change Gate를 둔다는 원칙입니다. 크론 작업이 단순히 정보를 읽고 요약하는 수준이라면 실패해도 피해가 작습니다. 하지만 파일을 쓰고, 블로그를 배포하고, 캐시를 갱신하고, 외부 저장소에 커밋하는 순간부터는 “잘 썼는가”보다 “안전하게 바꿨는가”가 더 중요해집니다.
-Change Gate의 첫 번째 역할은 작업을 읽기 전용 단계와 변경 단계로 분리하는 것입니다. 예를 들어 블로그 자동화라면 트렌드 입력 읽기, 최근 글 확인, 초안 작성까지는 비교적 안전한 영역입니다. 반면 source repo commit, Hugo build, deployment repo push는 공개 결과를 바꾸는 단계입니다. 이 둘을 같은 사고방식으로 처리하면 안 됩니다. 변경 단계로 넘어가기 전에는 입력이 충분한지, 중복 주제가 아닌지, 공개 문구에 레거시 표현이나 민감한 세부값이 섞이지 않았는지 확인해야 합니다."><meta name=author content><link rel=canonical href=https://kwbaek.github.io/posts/2026-06-10-hermes-rio-put-a-change-gate-before-stateful-automation/><link crossorigin=anonymous href=/assets/css/stylesheet.da3211e5ef867bf2b75fd5a6515cfed7195c011e8ab735694e203810a827097b.css integrity="sha256-2jIR5e+Ge/K3X9WmUVz+1xlcAR6KtzVpTiA4EKgnCXs=" rel="preload stylesheet" as=style><link rel=icon href=https://kwbaek.github.io/favicon.ico><link rel=icon type=image/png sizes=16x16 href=https://kwbaek.github.io/favicon-16x16.png><link rel=icon type=image/png sizes=32x32 href=https://kwbaek.github.io/favicon-32x32.png><link rel=apple-touch-icon href=https://kwbaek.github.io/apple-touch-icon.png><link rel=mask-icon href=https://kwbaek.github.io/safari-pinned-tab.svg><meta name=theme-color content="#2e2e33"><meta name=msapplication-TileColor content="#2e2e33"><link rel=alternate hreflang=en href=https://kwbaek.github.io/posts/2026-06-10-hermes-rio-put-a-change-gate-before-stateful-automation/><noscript><style>#theme-toggle,.top-link{display:none}</style><style>@media(prefers-color-scheme:dark){:root{--theme:rgb(29, 30, 32);--entry:rgb(46, 46, 51);--primary:rgb(218, 218, 219);--secondary:rgb(155, 156, 157);--tertiary:rgb(65, 66, 68);--content:rgb(196, 196, 197);--code-block-bg:rgb(46, 46, 51);--code-bg:rgb(55, 56, 62);--border:rgb(51, 51, 51);color-scheme:dark}.list{background:var(--theme)}.toc{background:var(--entry)}}@media(prefers-color-scheme:light){.list::-webkit-scrollbar-thumb{border-color:var(--code-bg)}}</style></noscript><script>localStorage.getItem("pref-theme")==="dark"?document.querySelector("html").dataset.theme="dark":localStorage.getItem("pref-theme")==="light"?document.querySelector("html").dataset.theme="light":window.matchMedia("(prefers-color-scheme: dark)").matches?document.querySelector("html").dataset.theme="dark":document.querySelector("html").dataset.theme="light"</script><meta property="og:url" content="https://kwbaek.github.io/posts/2026-06-10-hermes-rio-put-a-change-gate-before-stateful-automation/"><meta property="og:site_name" content="Kyungwook's Devlog"><meta property="og:title" content="Hermes/리오 팁: 상태를 바꾸는 자동화 앞에는 Change Gate를 두기"><meta property="og:description" content="오늘 AI/ML 트렌드가 에이전트 거버넌스를 데이터베이스 변경까지 확장하는 흐름이라면, Hermes/리오 자동화에도 바로 적용할 수 있는 운영 원칙이 있습니다. 상태를 바꾸는 작업 앞에는 반드시 Change Gate를 둔다는 원칙입니다. 크론 작업이 단순히 정보를 읽고 요약하는 수준이라면 실패해도 피해가 작습니다. 하지만 파일을 쓰고, 블로그를 배포하고, 캐시를 갱신하고, 외부 저장소에 커밋하는 순간부터는 “잘 썼는가”보다 “안전하게 바꿨는가”가 더 중요해집니다.
-Change Gate의 첫 번째 역할은 작업을 읽기 전용 단계와 변경 단계로 분리하는 것입니다. 예를 들어 블로그 자동화라면 트렌드 입력 읽기, 최근 글 확인, 초안 작성까지는 비교적 안전한 영역입니다. 반면 source repo commit, Hugo build, deployment repo push는 공개 결과를 바꾸는 단계입니다. 이 둘을 같은 사고방식으로 처리하면 안 됩니다. 변경 단계로 넘어가기 전에는 입력이 충분한지, 중복 주제가 아닌지, 공개 문구에 레거시 표현이나 민감한 세부값이 섞이지 않았는지 확인해야 합니다."><meta property="og:locale" content="ko-kr"><meta property="og:type" content="article"><meta property="article:section" content="posts"><meta property="article:published_time" content="2026-06-10T20:55:00+09:00"><meta property="article:modified_time" content="2026-06-10T20:55:00+09:00"><meta property="article:tag" content="Hermes"><meta property="article:tag" content="리오"><meta property="article:tag" content="Agent"><meta property="article:tag" content="Automation"><meta property="article:tag" content="Cron"><meta property="article:tag" content="Governance"><meta name=twitter:card content="summary"><meta name=twitter:title content="Hermes/리오 팁: 상태를 바꾸는 자동화 앞에는 Change Gate를 두기"><meta name=twitter:description content="오늘 AI/ML 트렌드가 에이전트 거버넌스를 데이터베이스 변경까지 확장하는 흐름이라면, Hermes/리오 자동화에도 바로 적용할 수 있는 운영 원칙이 있습니다. 상태를 바꾸는 작업 앞에는 반드시 Change Gate를 둔다는 원칙입니다. 크론 작업이 단순히 정보를 읽고 요약하는 수준이라면 실패해도 피해가 작습니다. 하지만 파일을 쓰고, 블로그를 배포하고, 캐시를 갱신하고, 외부 저장소에 커밋하는 순간부터는 “잘 썼는가”보다 “안전하게 바꿨는가”가 더 중요해집니다.
-Change Gate의 첫 번째 역할은 작업을 읽기 전용 단계와 변경 단계로 분리하는 것입니다. 예를 들어 블로그 자동화라면 트렌드 입력 읽기, 최근 글 확인, 초안 작성까지는 비교적 안전한 영역입니다. 반면 source repo commit, Hugo build, deployment repo push는 공개 결과를 바꾸는 단계입니다. 이 둘을 같은 사고방식으로 처리하면 안 됩니다. 변경 단계로 넘어가기 전에는 입력이 충분한지, 중복 주제가 아닌지, 공개 문구에 레거시 표현이나 민감한 세부값이 섞이지 않았는지 확인해야 합니다."><script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Posts","item":"https://kwbaek.github.io/posts/"},{"@type":"ListItem","position":2,"name":"Hermes/리오 팁: 상태를 바꾸는 자동화 앞에는 Change Gate를 두기","item":"https://kwbaek.github.io/posts/2026-06-10-hermes-rio-put-a-change-gate-before-stateful-automation/"}]}</script><script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"Hermes/리오 팁: 상태를 바꾸는 자동화 앞에는 Change Gate를 두기","name":"Hermes\/리오 팁: 상태를 바꾸는 자동화 앞에는 Change Gate를 두기","description":"오늘 AI/ML 트렌드가 에이전트 거버넌스를 데이터베이스 변경까지 확장하는 흐름이라면, Hermes/리오 자동화에도 바로 적용할 수 있는 운영 원칙이 있습니다. 상태를 바꾸는 작업 앞에는 반드시 Change Gate를 둔다는 원칙입니다. 크론 작업이 단순히 정보를 읽고 요약하는 수준이라면 실패해도 피해가 작습니다. 하지만 파일을 쓰고, 블로그를 배포하고, 캐시를 갱신하고, 외부 저장소에 커밋하는 순간부터는 “잘 썼는가”보다 “안전하게 바꿨는가”가 더 중요해집니다.\nChange Gate의 첫 번째 역할은 작업을 읽기 전용 단계와 변경 단계로 분리하는 것입니다. 예를 들어 블로그 자동화라면 트렌드 입력 읽기, 최근 글 확인, 초안 작성까지는 비교적 안전한 영역입니다. 반면 source repo commit, Hugo build, deployment repo push는 공개 결과를 바꾸는 단계입니다. 이 둘을 같은 사고방식으로 처리하면 안 됩니다. 변경 단계로 넘어가기 전에는 입력이 충분한지, 중복 주제가 아닌지, 공개 문구에 레거시 표현이나 민감한 세부값이 섞이지 않았는지 확인해야 합니다.\n","keywords":["Hermes","리오","Agent","Automation","Cron","Governance","Audit","Workflow","Database"],"articleBody":"오늘 AI/ML 트렌드가 에이전트 거버넌스를 데이터베이스 변경까지 확장하는 흐름이라면, Hermes/리오 자동화에도 바로 적용할 수 있는 운영 원칙이 있습니다. 상태를 바꾸는 작업 앞에는 반드시 Change Gate를 둔다는 원칙입니다. 크론 작업이 단순히 정보를 읽고 요약하는 수준이라면 실패해도 피해가 작습니다. 하지만 파일을 쓰고, 블로그를 배포하고, 캐시를 갱신하고, 외부 저장소에 커밋하는 순간부터는 “잘 썼는가”보다 “안전하게 바꿨는가”가 더 중요해집니다.\nChange Gate의 첫 번째 역할은 작업을 읽기 전용 단계와 변경 단계로 분리하는 것입니다. 예를 들어 블로그 자동화라면 트렌드 입력 읽기, 최근 글 확인, 초안 작성까지는 비교적 안전한 영역입니다. 반면 source repo commit, Hugo build, deployment repo push는 공개 결과를 바꾸는 단계입니다. 이 둘을 같은 사고방식으로 처리하면 안 됩니다. 변경 단계로 넘어가기 전에는 입력이 충분한지, 중복 주제가 아닌지, 공개 문구에 레거시 표현이나 민감한 세부값이 섞이지 않았는지 확인해야 합니다.\n두 번째 역할은 검증 증거를 남기는 것입니다. 에이전트 자동화에서 “성공한 것 같다”는 말은 별 가치가 없습니다. 새 Markdown 파일이 실제로 존재하는지, front matter가 빌드 가능한지, Hugo가 에러 없이 끝났는지, 생성된 HTML이 만들어졌는지, git status가 기대한 상태인지 확인해야 합니다. 특히 공개 글이나 리포트는 source만 검사하면 부족합니다. 템플릿, 관련 글 위젯, 목록 페이지, RSS가 예상치 못한 문구를 노출할 수 있기 때문에 최종 생성물도 확인해야 합니다.\n세 번째 역할은 되돌릴 수 없는 변경을 작게 만드는 것입니다. 하나의 거대한 자동화가 여러 저장소, 여러 파일, 여러 전송 채널을 한 번에 바꾸면 실패했을 때 어디서 끊겼는지 파악하기 어렵습니다. Hermes/리오에서는 변경 단위를 작게 나누는 편이 좋습니다. 먼저 콘텐츠 파일만 커밋하고, 빌드가 통과한 뒤 생성물을 커밋하고, 마지막에 배포 포인터가 바뀌었는지 확인하는 식입니다. 이렇게 하면 중간 실패가 나도 이미 끝난 단계와 다시 해야 할 단계를 구분할 수 있습니다.\n네 번째 역할은 사람에게 보여줄 결과와 내부 운영 상태를 분리하는 것입니다. 사용자는 “배포 완료” 또는 “어떤 단계에서 실패했는지”를 알고 싶어 합니다. 반면 다음 실행의 Hermes/리오는 어떤 주제를 썼는지, 어떤 링크를 사용했는지, 어떤 fallback을 탔는지를 읽을 수 있어야 합니다. 이 둘을 섞으면 공개 보고서가 지저분해지고, 내부 상태도 재사용하기 어려워집니다. 사용자-facing 출력은 짧고 깨끗하게, 내부 상태는 다음 실행이 읽기 좋게 남기는 것이 좋습니다.\n결론적으로 Hermes/리오 자동화의 품질은 더 많은 권한을 주는 데서 나오지 않습니다. 권한이 필요한 작업일수록 Change Gate를 더 명확히 두는 데서 나옵니다. 읽기, 작성, 검증, 커밋, 배포를 단계별로 나누고 각 단계가 통과해야 할 조건을 명시하면, 크론은 운 좋게 돌아가는 스크립트가 아니라 감사 가능한 운영 루틴이 됩니다. AI 에이전트가 점점 더 많은 상태를 바꾸는 시대에는 이 작은 습관이 자동화의 신뢰도를 결정합니다.\n","wordCount":"370","inLanguage":"en","datePublished":"2026-06-10T20:55:00+09:00","dateModified":"2026-06-10T20:55:00+09:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://kwbaek.github.io/posts/2026-06-10-hermes-rio-put-a-change-gate-before-stateful-automation/"},"publisher":{"@type":"Organization","name":"Kyungwook's Devlog","logo":{"@type":"ImageObject","url":"https://kwbaek.github.io/favicon.ico"}}}</script></head><body id=top><header class=header><nav class=nav><div class=logo><a href=https://kwbaek.github.io/ accesskey=h title="Kyungwook's Devlog (Alt + H)">Kyungwook's Devlog</a><div class=logo-switches><button id=theme-toggle accesskey=t title="(Alt + T)" aria-label="Toggle theme">
-<svg id="moon" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
-<svg id="sun" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button></div></div><ul id=menu><li><a href=https://kwbaek.github.io/categories/ title=categories><span>categories</span></a></li><li><a href=https://kwbaek.github.io/tags/ title=tags><span>tags</span></a></li><li><a href=https://kwbaek.github.io/ title="Kyungwook's Devlog"><span>Kyungwook's Devlog</span>&nbsp;
-<svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><path d="M15 3h6v6"/><path d="M10 14 21 3"/></svg></a></li></ul></nav></header><main class=main><article class=post-single><header class=post-header><h1 class="post-title entry-hint-parent">Hermes/리오 팁: 상태를 바꾸는 자동화 앞에는 Change Gate를 두기</h1><div class=post-meta><span title='2026-06-10 20:55:00 +0900 KST'>June 10, 2026</span></div></header><div class=post-content><p>오늘 AI/ML 트렌드가 에이전트 거버넌스를 데이터베이스 변경까지 확장하는 흐름이라면, Hermes/리오 자동화에도 바로 적용할 수 있는 운영 원칙이 있습니다. <strong>상태를 바꾸는 작업 앞에는 반드시 Change Gate를 둔다</strong>는 원칙입니다. 크론 작업이 단순히 정보를 읽고 요약하는 수준이라면 실패해도 피해가 작습니다. 하지만 파일을 쓰고, 블로그를 배포하고, 캐시를 갱신하고, 외부 저장소에 커밋하는 순간부터는 “잘 썼는가”보다 “안전하게 바꿨는가”가 더 중요해집니다.</p><p>Change Gate의 첫 번째 역할은 작업을 읽기 전용 단계와 변경 단계로 분리하는 것입니다. 예를 들어 블로그 자동화라면 트렌드 입력 읽기, 최근 글 확인, 초안 작성까지는 비교적 안전한 영역입니다. 반면 source repo commit, Hugo build, deployment repo push는 공개 결과를 바꾸는 단계입니다. 이 둘을 같은 사고방식으로 처리하면 안 됩니다. 변경 단계로 넘어가기 전에는 입력이 충분한지, 중복 주제가 아닌지, 공개 문구에 레거시 표현이나 민감한 세부값이 섞이지 않았는지 확인해야 합니다.</p><p>두 번째 역할은 검증 증거를 남기는 것입니다. 에이전트 자동화에서 “성공한 것 같다”는 말은 별 가치가 없습니다. 새 Markdown 파일이 실제로 존재하는지, front matter가 빌드 가능한지, Hugo가 에러 없이 끝났는지, 생성된 HTML이 만들어졌는지, git status가 기대한 상태인지 확인해야 합니다. 특히 공개 글이나 리포트는 source만 검사하면 부족합니다. 템플릿, 관련 글 위젯, 목록 페이지, RSS가 예상치 못한 문구를 노출할 수 있기 때문에 최종 생성물도 확인해야 합니다.</p><p>세 번째 역할은 되돌릴 수 없는 변경을 작게 만드는 것입니다. 하나의 거대한 자동화가 여러 저장소, 여러 파일, 여러 전송 채널을 한 번에 바꾸면 실패했을 때 어디서 끊겼는지 파악하기 어렵습니다. Hermes/리오에서는 변경 단위를 작게 나누는 편이 좋습니다. 먼저 콘텐츠 파일만 커밋하고, 빌드가 통과한 뒤 생성물을 커밋하고, 마지막에 배포 포인터가 바뀌었는지 확인하는 식입니다. 이렇게 하면 중간 실패가 나도 이미 끝난 단계와 다시 해야 할 단계를 구분할 수 있습니다.</p><p>네 번째 역할은 사람에게 보여줄 결과와 내부 운영 상태를 분리하는 것입니다. 사용자는 “배포 완료” 또는 “어떤 단계에서 실패했는지”를 알고 싶어 합니다. 반면 다음 실행의 Hermes/리오는 어떤 주제를 썼는지, 어떤 링크를 사용했는지, 어떤 fallback을 탔는지를 읽을 수 있어야 합니다. 이 둘을 섞으면 공개 보고서가 지저분해지고, 내부 상태도 재사용하기 어려워집니다. 사용자-facing 출력은 짧고 깨끗하게, 내부 상태는 다음 실행이 읽기 좋게 남기는 것이 좋습니다.</p><p>결론적으로 Hermes/리오 자동화의 품질은 더 많은 권한을 주는 데서 나오지 않습니다. 권한이 필요한 작업일수록 Change Gate를 더 명확히 두는 데서 나옵니다. 읽기, 작성, 검증, 커밋, 배포를 단계별로 나누고 각 단계가 통과해야 할 조건을 명시하면, 크론은 운 좋게 돌아가는 스크립트가 아니라 감사 가능한 운영 루틴이 됩니다. AI 에이전트가 점점 더 많은 상태를 바꾸는 시대에는 이 작은 습관이 자동화의 신뢰도를 결정합니다.</p></div><footer class=post-footer><ul class=post-tags><li><a href=https://kwbaek.github.io/tags/hermes/>Hermes</a></li><li><a href=https://kwbaek.github.io/tags/%EB%A6%AC%EC%98%A4/>리오</a></li><li><a href=https://kwbaek.github.io/tags/agent/>Agent</a></li><li><a href=https://kwbaek.github.io/tags/automation/>Automation</a></li><li><a href=https://kwbaek.github.io/tags/cron/>Cron</a></li><li><a href=https://kwbaek.github.io/tags/governance/>Governance</a></li><li><a href=https://kwbaek.github.io/tags/audit/>Audit</a></li><li><a href=https://kwbaek.github.io/tags/workflow/>Workflow</a></li><li><a href=https://kwbaek.github.io/tags/database/>Database</a></li></ul></footer><script src=https://utteranc.es/client.js repo=kwbaek/blog-comments issue-term=pathname theme=github-light crossorigin=anonymous async></script></article></main><footer class=footer><span>&copy; 2026 <a href=https://kwbaek.github.io/>Kyungwook's Devlog</a></span> ·
-<span>Powered by
-<a href=https://gohugo.io/ rel="noopener noreferrer" target=_blank>Hugo</a> &
-<a href=https://github.com/adityatelange/hugo-PaperMod/ rel=noopener target=_blank>PaperMod</a></span></footer><a href=#top aria-label="go to top" title="Go to Top (Alt + G)" class=top-link id=top-link accesskey=g><svg viewBox="0 0 12 6" fill="currentColor"><path d="M12 6H0l6-6z"/></svg>
-</a><script>let menu=document.getElementById("menu");if(menu){const e=localStorage.getItem("menu-scroll-position");e&&(menu.scrollLeft=parseInt(e,10)),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)}}document.querySelectorAll('a[href^="#"]').forEach(e=>{e.addEventListener("click",function(e){e.preventDefault();var t=this.getAttribute("href").substr(1);window.matchMedia("(prefers-reduced-motion: reduce)").matches?document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView({behavior:"smooth"}),t==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${t}`)})})</script><script>var mybutton=document.getElementById("top-link");window.onscroll=function(){document.body.scrollTop>800||document.documentElement.scrollTop>800?(mybutton.style.visibility="visible",mybutton.style.opacity="1"):(mybutton.style.visibility="hidden",mybutton.style.opacity="0")}</script><script>document.getElementById("theme-toggle").addEventListener("click",()=>{const e=document.querySelector("html");e.dataset.theme==="dark"?(e.dataset.theme="light",localStorage.setItem("pref-theme","light")):(e.dataset.theme="dark",localStorage.setItem("pref-theme","dark"))})</script></body></html>
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Hermes/리오 팁: 상태를 바꾸는 자동화 앞에는 Change Gate를 두기 | Kyungwook&#39;s Devlog</title>
+<meta name="keywords" content="Hermes, 리오, Agent, Automation, Cron, Governance, Audit, Workflow, Database">
+<meta name="description" content="오늘 AI/ML 트렌드가 에이전트 거버넌스를 데이터베이스 변경까지 확장하는 흐름이라면, Hermes/리오 자동화에도 바로 적용할 수 있는 운영 원칙이 있습니다. 상태를 바꾸는 작업 앞에는 반드시 Change Gate를 둔다는 원칙입니다. 크론 작업이 단순히 정보를 읽고 요약하는 수준이라면 실패해도 피해가 작습니다. 하지만 파일을 쓰고, 블로그를 배포하고, 캐시를 갱신하고, 외부 저장소에 커밋하는 순간부터는 “잘 썼는가”보다 “안전하게 바꿨는가”가 더 중요해집니다.
+Change Gate의 첫 번째 역할은 작업을 읽기 전용 단계와 변경 단계로 분리하는 것입니다. 예를 들어 블로그 자동화라면 트렌드 입력 읽기, 최근 글 확인, 초안 작성까지는 비교적 안전한 영역입니다. 반면 source repo commit, Hugo build, deployment repo push는 공개 결과를 바꾸는 단계입니다. 이 둘을 같은 사고방식으로 처리하면 안 됩니다. 변경 단계로 넘어가기 전에는 입력이 충분한지, 중복 주제가 아닌지, 공개 문구에 레거시 표현이나 민감한 세부값이 섞이지 않았는지 확인해야 합니다.">
+<meta name="author" content="">
+<link rel="canonical" href="https://kwbaek.github.io/posts/2026-06-10-hermes-rio-put-a-change-gate-before-stateful-automation/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.da3211e5ef867bf2b75fd5a6515cfed7195c011e8ab735694e203810a827097b.css" integrity="sha256-2jIR5e&#43;Ge/K3X9WmUVz&#43;1xlcAR6KtzVpTiA4EKgnCXs=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://kwbaek.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://kwbaek.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://kwbaek.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://kwbaek.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://kwbaek.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://kwbaek.github.io/posts/2026-06-10-hermes-rio-put-a-change-gate-before-stateful-automation/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="https://kwbaek.github.io/posts/2026-06-10-hermes-rio-put-a-change-gate-before-stateful-automation/">
+  <meta property="og:site_name" content="Kyungwook&#39;s Devlog">
+  <meta property="og:title" content="Hermes/리오 팁: 상태를 바꾸는 자동화 앞에는 Change Gate를 두기">
+  <meta property="og:description" content="오늘 AI/ML 트렌드가 에이전트 거버넌스를 데이터베이스 변경까지 확장하는 흐름이라면, Hermes/리오 자동화에도 바로 적용할 수 있는 운영 원칙이 있습니다. 상태를 바꾸는 작업 앞에는 반드시 Change Gate를 둔다는 원칙입니다. 크론 작업이 단순히 정보를 읽고 요약하는 수준이라면 실패해도 피해가 작습니다. 하지만 파일을 쓰고, 블로그를 배포하고, 캐시를 갱신하고, 외부 저장소에 커밋하는 순간부터는 “잘 썼는가”보다 “안전하게 바꿨는가”가 더 중요해집니다.
+Change Gate의 첫 번째 역할은 작업을 읽기 전용 단계와 변경 단계로 분리하는 것입니다. 예를 들어 블로그 자동화라면 트렌드 입력 읽기, 최근 글 확인, 초안 작성까지는 비교적 안전한 영역입니다. 반면 source repo commit, Hugo build, deployment repo push는 공개 결과를 바꾸는 단계입니다. 이 둘을 같은 사고방식으로 처리하면 안 됩니다. 변경 단계로 넘어가기 전에는 입력이 충분한지, 중복 주제가 아닌지, 공개 문구에 레거시 표현이나 민감한 세부값이 섞이지 않았는지 확인해야 합니다.">
+  <meta property="og:locale" content="ko-kr">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2026-06-10T20:55:00+09:00">
+    <meta property="article:modified_time" content="2026-06-10T20:55:00+09:00">
+    <meta property="article:tag" content="Hermes">
+    <meta property="article:tag" content="리오">
+    <meta property="article:tag" content="Agent">
+    <meta property="article:tag" content="Automation">
+    <meta property="article:tag" content="Cron">
+    <meta property="article:tag" content="Governance">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hermes/리오 팁: 상태를 바꾸는 자동화 앞에는 Change Gate를 두기">
+<meta name="twitter:description" content="오늘 AI/ML 트렌드가 에이전트 거버넌스를 데이터베이스 변경까지 확장하는 흐름이라면, Hermes/리오 자동화에도 바로 적용할 수 있는 운영 원칙이 있습니다. 상태를 바꾸는 작업 앞에는 반드시 Change Gate를 둔다는 원칙입니다. 크론 작업이 단순히 정보를 읽고 요약하는 수준이라면 실패해도 피해가 작습니다. 하지만 파일을 쓰고, 블로그를 배포하고, 캐시를 갱신하고, 외부 저장소에 커밋하는 순간부터는 “잘 썼는가”보다 “안전하게 바꿨는가”가 더 중요해집니다.
+Change Gate의 첫 번째 역할은 작업을 읽기 전용 단계와 변경 단계로 분리하는 것입니다. 예를 들어 블로그 자동화라면 트렌드 입력 읽기, 최근 글 확인, 초안 작성까지는 비교적 안전한 영역입니다. 반면 source repo commit, Hugo build, deployment repo push는 공개 결과를 바꾸는 단계입니다. 이 둘을 같은 사고방식으로 처리하면 안 됩니다. 변경 단계로 넘어가기 전에는 입력이 충분한지, 중복 주제가 아닌지, 공개 문구에 레거시 표현이나 민감한 세부값이 섞이지 않았는지 확인해야 합니다.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://kwbaek.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Hermes/리오 팁: 상태를 바꾸는 자동화 앞에는 Change Gate를 두기",
+      "item": "https://kwbaek.github.io/posts/2026-06-10-hermes-rio-put-a-change-gate-before-stateful-automation/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Hermes/리오 팁: 상태를 바꾸는 자동화 앞에는 Change Gate를 두기",
+  "name": "Hermes\/리오 팁: 상태를 바꾸는 자동화 앞에는 Change Gate를 두기",
+  "description": "오늘 AI/ML 트렌드가 에이전트 거버넌스를 데이터베이스 변경까지 확장하는 흐름이라면, Hermes/리오 자동화에도 바로 적용할 수 있는 운영 원칙이 있습니다. 상태를 바꾸는 작업 앞에는 반드시 Change Gate를 둔다는 원칙입니다. 크론 작업이 단순히 정보를 읽고 요약하는 수준이라면 실패해도 피해가 작습니다. 하지만 파일을 쓰고, 블로그를 배포하고, 캐시를 갱신하고, 외부 저장소에 커밋하는 순간부터는 “잘 썼는가”보다 “안전하게 바꿨는가”가 더 중요해집니다.\nChange Gate의 첫 번째 역할은 작업을 읽기 전용 단계와 변경 단계로 분리하는 것입니다. 예를 들어 블로그 자동화라면 트렌드 입력 읽기, 최근 글 확인, 초안 작성까지는 비교적 안전한 영역입니다. 반면 source repo commit, Hugo build, deployment repo push는 공개 결과를 바꾸는 단계입니다. 이 둘을 같은 사고방식으로 처리하면 안 됩니다. 변경 단계로 넘어가기 전에는 입력이 충분한지, 중복 주제가 아닌지, 공개 문구에 레거시 표현이나 민감한 세부값이 섞이지 않았는지 확인해야 합니다.\n",
+  "keywords": [
+    "Hermes", "리오", "Agent", "Automation", "Cron", "Governance", "Audit", "Workflow", "Database"
+  ],
+  "articleBody": "오늘 AI/ML 트렌드가 에이전트 거버넌스를 데이터베이스 변경까지 확장하는 흐름이라면, Hermes/리오 자동화에도 바로 적용할 수 있는 운영 원칙이 있습니다. 상태를 바꾸는 작업 앞에는 반드시 Change Gate를 둔다는 원칙입니다. 크론 작업이 단순히 정보를 읽고 요약하는 수준이라면 실패해도 피해가 작습니다. 하지만 파일을 쓰고, 블로그를 배포하고, 캐시를 갱신하고, 외부 저장소에 커밋하는 순간부터는 “잘 썼는가”보다 “안전하게 바꿨는가”가 더 중요해집니다.\nChange Gate의 첫 번째 역할은 작업을 읽기 전용 단계와 변경 단계로 분리하는 것입니다. 예를 들어 블로그 자동화라면 트렌드 입력 읽기, 최근 글 확인, 초안 작성까지는 비교적 안전한 영역입니다. 반면 source repo commit, Hugo build, deployment repo push는 공개 결과를 바꾸는 단계입니다. 이 둘을 같은 사고방식으로 처리하면 안 됩니다. 변경 단계로 넘어가기 전에는 입력이 충분한지, 중복 주제가 아닌지, 공개 문구에 레거시 표현이나 민감한 세부값이 섞이지 않았는지 확인해야 합니다.\n두 번째 역할은 검증 증거를 남기는 것입니다. 에이전트 자동화에서 “성공한 것 같다”는 말은 별 가치가 없습니다. 새 Markdown 파일이 실제로 존재하는지, front matter가 빌드 가능한지, Hugo가 에러 없이 끝났는지, 생성된 HTML이 만들어졌는지, git status가 기대한 상태인지 확인해야 합니다. 특히 공개 글이나 리포트는 source만 검사하면 부족합니다. 템플릿, 관련 글 위젯, 목록 페이지, RSS가 예상치 못한 문구를 노출할 수 있기 때문에 최종 생성물도 확인해야 합니다.\n세 번째 역할은 되돌릴 수 없는 변경을 작게 만드는 것입니다. 하나의 거대한 자동화가 여러 저장소, 여러 파일, 여러 전송 채널을 한 번에 바꾸면 실패했을 때 어디서 끊겼는지 파악하기 어렵습니다. Hermes/리오에서는 변경 단위를 작게 나누는 편이 좋습니다. 먼저 콘텐츠 파일만 커밋하고, 빌드가 통과한 뒤 생성물을 커밋하고, 마지막에 배포 포인터가 바뀌었는지 확인하는 식입니다. 이렇게 하면 중간 실패가 나도 이미 끝난 단계와 다시 해야 할 단계를 구분할 수 있습니다.\n네 번째 역할은 사람에게 보여줄 결과와 내부 운영 상태를 분리하는 것입니다. 사용자는 “배포 완료” 또는 “어떤 단계에서 실패했는지”를 알고 싶어 합니다. 반면 다음 실행의 Hermes/리오는 어떤 주제를 썼는지, 어떤 링크를 사용했는지, 어떤 fallback을 탔는지를 읽을 수 있어야 합니다. 이 둘을 섞으면 공개 보고서가 지저분해지고, 내부 상태도 재사용하기 어려워집니다. 사용자-facing 출력은 짧고 깨끗하게, 내부 상태는 다음 실행이 읽기 좋게 남기는 것이 좋습니다.\n결론적으로 Hermes/리오 자동화의 품질은 더 많은 권한을 주는 데서 나오지 않습니다. 권한이 필요한 작업일수록 Change Gate를 더 명확히 두는 데서 나옵니다. 읽기, 작성, 검증, 커밋, 배포를 단계별로 나누고 각 단계가 통과해야 할 조건을 명시하면, 크론은 운 좋게 돌아가는 스크립트가 아니라 감사 가능한 운영 루틴이 됩니다. AI 에이전트가 점점 더 많은 상태를 바꾸는 시대에는 이 작은 습관이 자동화의 신뢰도를 결정합니다.\n",
+  "wordCount" : "370",
+  "inLanguage": "en",
+  "datePublished": "2026-06-10T20:55:00+09:00",
+  "dateModified": "2026-06-10T20:55:00+09:00",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://kwbaek.github.io/posts/2026-06-10-hermes-rio-put-a-change-gate-before-stateful-automation/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Kyungwook's Devlog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://kwbaek.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://kwbaek.github.io/" accesskey="h" title="Kyungwook&#39;s Devlog (Alt + H)">Kyungwook&#39;s Devlog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://kwbaek.github.io/categories/" title="categories">
+                    <span>categories</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kwbaek.github.io/tags/" title="tags">
+                    <span>tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kwbaek.github.io/" title="Kyungwook&#39;s Devlog">
+                    <span>Kyungwook&#39;s Devlog</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      Hermes/리오 팁: 상태를 바꾸는 자동화 앞에는 Change Gate를 두기
+    </h1>
+    <div class="post-meta"><span title='2026-06-10 20:55:00 +0900 KST'>June 10, 2026</span>
+
+</div>
+  </header> 
+  <div class="post-content"><p>오늘 AI/ML 트렌드가 에이전트 거버넌스를 데이터베이스 변경까지 확장하는 흐름이라면, Hermes/리오 자동화에도 바로 적용할 수 있는 운영 원칙이 있습니다. <strong>상태를 바꾸는 작업 앞에는 반드시 Change Gate를 둔다</strong>는 원칙입니다. 크론 작업이 단순히 정보를 읽고 요약하는 수준이라면 실패해도 피해가 작습니다. 하지만 파일을 쓰고, 블로그를 배포하고, 캐시를 갱신하고, 외부 저장소에 커밋하는 순간부터는 “잘 썼는가”보다 “안전하게 바꿨는가”가 더 중요해집니다.</p>
+<p>Change Gate의 첫 번째 역할은 작업을 읽기 전용 단계와 변경 단계로 분리하는 것입니다. 예를 들어 블로그 자동화라면 트렌드 입력 읽기, 최근 글 확인, 초안 작성까지는 비교적 안전한 영역입니다. 반면 source repo commit, Hugo build, deployment repo push는 공개 결과를 바꾸는 단계입니다. 이 둘을 같은 사고방식으로 처리하면 안 됩니다. 변경 단계로 넘어가기 전에는 입력이 충분한지, 중복 주제가 아닌지, 공개 문구에 레거시 표현이나 민감한 세부값이 섞이지 않았는지 확인해야 합니다.</p>
+<p>두 번째 역할은 검증 증거를 남기는 것입니다. 에이전트 자동화에서 “성공한 것 같다”는 말은 별 가치가 없습니다. 새 Markdown 파일이 실제로 존재하는지, front matter가 빌드 가능한지, Hugo가 에러 없이 끝났는지, 생성된 HTML이 만들어졌는지, git status가 기대한 상태인지 확인해야 합니다. 특히 공개 글이나 리포트는 source만 검사하면 부족합니다. 템플릿, 관련 글 위젯, 목록 페이지, RSS가 예상치 못한 문구를 노출할 수 있기 때문에 최종 생성물도 확인해야 합니다.</p>
+<p>세 번째 역할은 되돌릴 수 없는 변경을 작게 만드는 것입니다. 하나의 거대한 자동화가 여러 저장소, 여러 파일, 여러 전송 채널을 한 번에 바꾸면 실패했을 때 어디서 끊겼는지 파악하기 어렵습니다. Hermes/리오에서는 변경 단위를 작게 나누는 편이 좋습니다. 먼저 콘텐츠 파일만 커밋하고, 빌드가 통과한 뒤 생성물을 커밋하고, 마지막에 배포 포인터가 바뀌었는지 확인하는 식입니다. 이렇게 하면 중간 실패가 나도 이미 끝난 단계와 다시 해야 할 단계를 구분할 수 있습니다.</p>
+<p>네 번째 역할은 사람에게 보여줄 결과와 내부 운영 상태를 분리하는 것입니다. 사용자는 “배포 완료” 또는 “어떤 단계에서 실패했는지”를 알고 싶어 합니다. 반면 다음 실행의 Hermes/리오는 어떤 주제를 썼는지, 어떤 링크를 사용했는지, 어떤 fallback을 탔는지를 읽을 수 있어야 합니다. 이 둘을 섞으면 공개 보고서가 지저분해지고, 내부 상태도 재사용하기 어려워집니다. 사용자-facing 출력은 짧고 깨끗하게, 내부 상태는 다음 실행이 읽기 좋게 남기는 것이 좋습니다.</p>
+<p>결론적으로 Hermes/리오 자동화의 품질은 더 많은 권한을 주는 데서 나오지 않습니다. 권한이 필요한 작업일수록 Change Gate를 더 명확히 두는 데서 나옵니다. 읽기, 작성, 검증, 커밋, 배포를 단계별로 나누고 각 단계가 통과해야 할 조건을 명시하면, 크론은 운 좋게 돌아가는 스크립트가 아니라 감사 가능한 운영 루틴이 됩니다. AI 에이전트가 점점 더 많은 상태를 바꾸는 시대에는 이 작은 습관이 자동화의 신뢰도를 결정합니다.</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://kwbaek.github.io/tags/hermes/">Hermes</a></li>
+      <li><a href="https://kwbaek.github.io/tags/%EB%A6%AC%EC%98%A4/">리오</a></li>
+      <li><a href="https://kwbaek.github.io/tags/agent/">Agent</a></li>
+      <li><a href="https://kwbaek.github.io/tags/automation/">Automation</a></li>
+      <li><a href="https://kwbaek.github.io/tags/cron/">Cron</a></li>
+      <li><a href="https://kwbaek.github.io/tags/governance/">Governance</a></li>
+      <li><a href="https://kwbaek.github.io/tags/audit/">Audit</a></li>
+      <li><a href="https://kwbaek.github.io/tags/workflow/">Workflow</a></li>
+      <li><a href="https://kwbaek.github.io/tags/database/">Database</a></li>
+    </ul>
+  </footer><script src="https://utteranc.es/client.js"
+        repo="kwbaek/blog-comments"
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://kwbaek.github.io/">Kyungwook&#39;s Devlog</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

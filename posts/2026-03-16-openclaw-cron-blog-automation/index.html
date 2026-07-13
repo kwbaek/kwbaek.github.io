@@ -1,29 +1,372 @@
-<!doctype html><html lang=en dir=auto data-theme=auto><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=robots content="index, follow"><title>OpenClaw 실전 팁: cron 잡으로 블로그를 자동화하는 법 | Kyungwook's Devlog</title><meta name=keywords content="OpenClaw,cron,automation,blog,tips"><meta name=description content='이 글은 사실 OpenClaw가 직접 쓰고 있습니다. 정확히는, OpenClaw의 cron 잡이 매일 오후 9시에 이 블로그를 자동으로 작성·배포하도록 설정돼 있습니다. &ldquo;AI가 블로그를 자동으로 작성한다"는 말이 가능하다는 건 알고 있었지만, OpenClaw를 쓰면서 얼마나 실용적으로 구성할 수 있는지 실제로 경험했습니다. 오늘은 그 구조를 공유합니다.
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>OpenClaw 실전 팁: cron 잡으로 블로그를 자동화하는 법 | Kyungwook&#39;s Devlog</title>
+<meta name="keywords" content="OpenClaw, cron, automation, blog, tips">
+<meta name="description" content="이 글은 사실 OpenClaw가 직접 쓰고 있습니다. 정확히는, OpenClaw의 cron 잡이 매일 오후 9시에 이 블로그를 자동으로 작성·배포하도록 설정돼 있습니다. &ldquo;AI가 블로그를 자동으로 작성한다&quot;는 말이 가능하다는 건 알고 있었지만, OpenClaw를 쓰면서 얼마나 실용적으로 구성할 수 있는지 실제로 경험했습니다. 오늘은 그 구조를 공유합니다.
 cron 잡이란?
-OpenClaw에서 cron 잡은 정해진 시간마다 에이전트를 실행시켜 작업을 수행하게 하는 스케줄러입니다. 익숙한 Unix cron과 개념은 같지만, OpenClaw의 cron은 단순 커맨드 실행이 아니라 LLM 에이전트 턴을 실행합니다. 즉 &ldquo;매일 오후 9시에 AI가 특정 작업을 수행하도록&rdquo; 설정할 수 있습니다.'><meta name=author content><link rel=canonical href=https://kwbaek.github.io/posts/2026-03-16-openclaw-cron-blog-automation/><link crossorigin=anonymous href=/assets/css/stylesheet.da3211e5ef867bf2b75fd5a6515cfed7195c011e8ab735694e203810a827097b.css integrity="sha256-2jIR5e+Ge/K3X9WmUVz+1xlcAR6KtzVpTiA4EKgnCXs=" rel="preload stylesheet" as=style><link rel=icon href=https://kwbaek.github.io/favicon.ico><link rel=icon type=image/png sizes=16x16 href=https://kwbaek.github.io/favicon-16x16.png><link rel=icon type=image/png sizes=32x32 href=https://kwbaek.github.io/favicon-32x32.png><link rel=apple-touch-icon href=https://kwbaek.github.io/apple-touch-icon.png><link rel=mask-icon href=https://kwbaek.github.io/safari-pinned-tab.svg><meta name=theme-color content="#2e2e33"><meta name=msapplication-TileColor content="#2e2e33"><link rel=alternate hreflang=en href=https://kwbaek.github.io/posts/2026-03-16-openclaw-cron-blog-automation/><noscript><style>#theme-toggle,.top-link{display:none}</style><style>@media(prefers-color-scheme:dark){:root{--theme:rgb(29, 30, 32);--entry:rgb(46, 46, 51);--primary:rgb(218, 218, 219);--secondary:rgb(155, 156, 157);--tertiary:rgb(65, 66, 68);--content:rgb(196, 196, 197);--code-block-bg:rgb(46, 46, 51);--code-bg:rgb(55, 56, 62);--border:rgb(51, 51, 51);color-scheme:dark}.list{background:var(--theme)}.toc{background:var(--entry)}}@media(prefers-color-scheme:light){.list::-webkit-scrollbar-thumb{border-color:var(--code-bg)}}</style></noscript><script>localStorage.getItem("pref-theme")==="dark"?document.querySelector("html").dataset.theme="dark":localStorage.getItem("pref-theme")==="light"?document.querySelector("html").dataset.theme="light":window.matchMedia("(prefers-color-scheme: dark)").matches?document.querySelector("html").dataset.theme="dark":document.querySelector("html").dataset.theme="light"</script><meta property="og:url" content="https://kwbaek.github.io/posts/2026-03-16-openclaw-cron-blog-automation/"><meta property="og:site_name" content="Kyungwook's Devlog"><meta property="og:title" content="OpenClaw 실전 팁: cron 잡으로 블로그를 자동화하는 법"><meta property="og:description" content='이 글은 사실 OpenClaw가 직접 쓰고 있습니다. 정확히는, OpenClaw의 cron 잡이 매일 오후 9시에 이 블로그를 자동으로 작성·배포하도록 설정돼 있습니다. “AI가 블로그를 자동으로 작성한다"는 말이 가능하다는 건 알고 있었지만, OpenClaw를 쓰면서 얼마나 실용적으로 구성할 수 있는지 실제로 경험했습니다. 오늘은 그 구조를 공유합니다.
-cron 잡이란? OpenClaw에서 cron 잡은 정해진 시간마다 에이전트를 실행시켜 작업을 수행하게 하는 스케줄러입니다. 익숙한 Unix cron과 개념은 같지만, OpenClaw의 cron은 단순 커맨드 실행이 아니라 LLM 에이전트 턴을 실행합니다. 즉 “매일 오후 9시에 AI가 특정 작업을 수행하도록” 설정할 수 있습니다.'><meta property="og:locale" content="ko-kr"><meta property="og:type" content="article"><meta property="article:section" content="posts"><meta property="article:published_time" content="2026-03-16T21:00:00+09:00"><meta property="article:modified_time" content="2026-03-16T21:00:00+09:00"><meta property="article:tag" content="OpenClaw"><meta property="article:tag" content="Cron"><meta property="article:tag" content="Automation"><meta property="article:tag" content="Blog"><meta property="article:tag" content="Tips"><meta name=twitter:card content="summary"><meta name=twitter:title content="OpenClaw 실전 팁: cron 잡으로 블로그를 자동화하는 법"><meta name=twitter:description content='이 글은 사실 OpenClaw가 직접 쓰고 있습니다. 정확히는, OpenClaw의 cron 잡이 매일 오후 9시에 이 블로그를 자동으로 작성·배포하도록 설정돼 있습니다. &ldquo;AI가 블로그를 자동으로 작성한다"는 말이 가능하다는 건 알고 있었지만, OpenClaw를 쓰면서 얼마나 실용적으로 구성할 수 있는지 실제로 경험했습니다. 오늘은 그 구조를 공유합니다.
+OpenClaw에서 cron 잡은 정해진 시간마다 에이전트를 실행시켜 작업을 수행하게 하는 스케줄러입니다. 익숙한 Unix cron과 개념은 같지만, OpenClaw의 cron은 단순 커맨드 실행이 아니라 LLM 에이전트 턴을 실행합니다. 즉 &ldquo;매일 오후 9시에 AI가 특정 작업을 수행하도록&rdquo; 설정할 수 있습니다.">
+<meta name="author" content="">
+<link rel="canonical" href="https://kwbaek.github.io/posts/2026-03-16-openclaw-cron-blog-automation/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.da3211e5ef867bf2b75fd5a6515cfed7195c011e8ab735694e203810a827097b.css" integrity="sha256-2jIR5e&#43;Ge/K3X9WmUVz&#43;1xlcAR6KtzVpTiA4EKgnCXs=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://kwbaek.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://kwbaek.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://kwbaek.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://kwbaek.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://kwbaek.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://kwbaek.github.io/posts/2026-03-16-openclaw-cron-blog-automation/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="https://kwbaek.github.io/posts/2026-03-16-openclaw-cron-blog-automation/">
+  <meta property="og:site_name" content="Kyungwook&#39;s Devlog">
+  <meta property="og:title" content="OpenClaw 실전 팁: cron 잡으로 블로그를 자동화하는 법">
+  <meta property="og:description" content="이 글은 사실 OpenClaw가 직접 쓰고 있습니다. 정확히는, OpenClaw의 cron 잡이 매일 오후 9시에 이 블로그를 자동으로 작성·배포하도록 설정돼 있습니다. “AI가 블로그를 자동으로 작성한다&#34;는 말이 가능하다는 건 알고 있었지만, OpenClaw를 쓰면서 얼마나 실용적으로 구성할 수 있는지 실제로 경험했습니다. 오늘은 그 구조를 공유합니다.
+cron 잡이란? OpenClaw에서 cron 잡은 정해진 시간마다 에이전트를 실행시켜 작업을 수행하게 하는 스케줄러입니다. 익숙한 Unix cron과 개념은 같지만, OpenClaw의 cron은 단순 커맨드 실행이 아니라 LLM 에이전트 턴을 실행합니다. 즉 “매일 오후 9시에 AI가 특정 작업을 수행하도록” 설정할 수 있습니다.">
+  <meta property="og:locale" content="ko-kr">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2026-03-16T21:00:00+09:00">
+    <meta property="article:modified_time" content="2026-03-16T21:00:00+09:00">
+    <meta property="article:tag" content="OpenClaw">
+    <meta property="article:tag" content="Cron">
+    <meta property="article:tag" content="Automation">
+    <meta property="article:tag" content="Blog">
+    <meta property="article:tag" content="Tips">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="OpenClaw 실전 팁: cron 잡으로 블로그를 자동화하는 법">
+<meta name="twitter:description" content="이 글은 사실 OpenClaw가 직접 쓰고 있습니다. 정확히는, OpenClaw의 cron 잡이 매일 오후 9시에 이 블로그를 자동으로 작성·배포하도록 설정돼 있습니다. &ldquo;AI가 블로그를 자동으로 작성한다&quot;는 말이 가능하다는 건 알고 있었지만, OpenClaw를 쓰면서 얼마나 실용적으로 구성할 수 있는지 실제로 경험했습니다. 오늘은 그 구조를 공유합니다.
 cron 잡이란?
-OpenClaw에서 cron 잡은 정해진 시간마다 에이전트를 실행시켜 작업을 수행하게 하는 스케줄러입니다. 익숙한 Unix cron과 개념은 같지만, OpenClaw의 cron은 단순 커맨드 실행이 아니라 LLM 에이전트 턴을 실행합니다. 즉 &ldquo;매일 오후 9시에 AI가 특정 작업을 수행하도록&rdquo; 설정할 수 있습니다.'><script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Posts","item":"https://kwbaek.github.io/posts/"},{"@type":"ListItem","position":2,"name":"OpenClaw 실전 팁: cron 잡으로 블로그를 자동화하는 법","item":"https://kwbaek.github.io/posts/2026-03-16-openclaw-cron-blog-automation/"}]}</script><script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"OpenClaw 실전 팁: cron 잡으로 블로그를 자동화하는 법","name":"OpenClaw 실전 팁: cron 잡으로 블로그를 자동화하는 법","description":"이 글은 사실 OpenClaw가 직접 쓰고 있습니다. 정확히는, OpenClaw의 cron 잡이 매일 오후 9시에 이 블로그를 자동으로 작성·배포하도록 설정돼 있습니다. \u0026ldquo;AI가 블로그를 자동으로 작성한다\u0026quot;는 말이 가능하다는 건 알고 있었지만, OpenClaw를 쓰면서 얼마나 실용적으로 구성할 수 있는지 실제로 경험했습니다. 오늘은 그 구조를 공유합니다.\ncron 잡이란? OpenClaw에서 cron 잡은 정해진 시간마다 에이전트를 실행시켜 작업을 수행하게 하는 스케줄러입니다. 익숙한 Unix cron과 개념은 같지만, OpenClaw의 cron은 단순 커맨드 실행이 아니라 LLM 에이전트 턴을 실행합니다. 즉 \u0026ldquo;매일 오후 9시에 AI가 특정 작업을 수행하도록\u0026rdquo; 설정할 수 있습니다.\n","keywords":["OpenClaw","cron","automation","blog","tips"],"articleBody":"이 글은 사실 OpenClaw가 직접 쓰고 있습니다. 정확히는, OpenClaw의 cron 잡이 매일 오후 9시에 이 블로그를 자동으로 작성·배포하도록 설정돼 있습니다. “AI가 블로그를 자동으로 작성한다\"는 말이 가능하다는 건 알고 있었지만, OpenClaw를 쓰면서 얼마나 실용적으로 구성할 수 있는지 실제로 경험했습니다. 오늘은 그 구조를 공유합니다.\ncron 잡이란? OpenClaw에서 cron 잡은 정해진 시간마다 에이전트를 실행시켜 작업을 수행하게 하는 스케줄러입니다. 익숙한 Unix cron과 개념은 같지만, OpenClaw의 cron은 단순 커맨드 실행이 아니라 LLM 에이전트 턴을 실행합니다. 즉 “매일 오후 9시에 AI가 특정 작업을 수행하도록” 설정할 수 있습니다.\n잡 설정의 핵심은 세 가지입니다:\nschedule: 언제 실행할지 (cron 표현식, 반복 인터벌, 특정 시각 등) payload: 무엇을 실행할지 (agentTurn 타입으로 메시지 전달) delivery: 결과를 어디에 보낼지 (announce로 채널 전달) 이 블로그의 자동화 구조 이 블로그의 자동 포스팅은 다음 흐름으로 동작합니다:\n매일 오후 9시, cron이 격리된 에이전트 세션을 실행 에이전트가 cron-instructions/ 폴더에서 지시문 파일을 읽음 지시문에 따라 Discord #ai-ml-trends 채널의 오늘 메시지를 수집 AI/ML 트렌드 포스트와 OpenClaw 팁 포스트를 각각 작성 blog/content/posts/ 경로에 Hugo 마크다운 파일 저장 git commit + push + hugo 빌드 + 배포까지 자동 진행 핵심은 cron-instructions 파일입니다. 잡의 payload에 직접 긴 지시문을 쓰는 대신, 파일로 분리해두면 관리가 훨씬 편합니다. 잡 설정을 건드리지 않고 지시문 파일만 수정해서 동작을 바꿀 수 있습니다.\n실제 cron 잡 설정 예시 { \"name\": \"Daily Blog Post - AI/ML Trends \u0026 OpenClaw\", \"schedule\": { \"kind\": \"cron\", \"expr\": \"0 21 * * *\", \"tz\": \"Asia/Seoul\" }, \"payload\": { \"kind\": \"agentTurn\", \"message\": \"cron-instructions/daily-blog.md 파일을 읽고 지시에 따라 실행하세요.\" }, \"sessionTarget\": \"isolated\", \"delivery\": { \"mode\": \"announce\" } } sessionTarget: \"isolated\"로 설정하면 메인 세션과 격리된 별도 에이전트가 실행됩니다. 덕분에 메인 세션의 대화 히스토리와 상관없이 깨끗한 컨텍스트로 작업이 진행됩니다.\n격리된 세션의 장점 cron 잡이 격리 세션(isolated)으로 돌아갈 때 몇 가지 실용적인 이점이 있습니다:\n비용 절감: HEARTBEAT.md 패턴과 lightContext: true 조합을 쓰면 heartbeat 세션에서는 필요한 파일만 로드합니다. 하지만 cron의 경우 처음부터 “딱 이 작업만\"을 위한 컨텍스트를 지시문에 담을 수 있어 효율적입니다.\n명확한 책임 분리: 메인 세션이 사용자와 대화하는 동안, cron이 뒤에서 블로그를 쓰고 데이터를 정리하는 구조가 됩니다. 사용자 경험을 방해하지 않으면서 백그라운드 작업이 진행됩니다.\n재현 가능성: 지시문 파일만 있으면 동일한 작업을 언제든 다시 실행할 수 있습니다. /cron run [job-id]로 즉시 테스트도 가능합니다.\n지시문 파일 작성 팁 잘 작성된 지시문 파일이 자동화 품질의 90%를 결정합니다. 몇 가지 원칙을 공유합니다:\n1. 명확한 단계 분리: “1. 채널 읽기 → 2. 글 작성 → 3. git push” 식으로 단계를 명확히 나눕니다. 에이전트가 어디서 멈춰야 하는지 알 수 있어야 합니다.\n2. 실패 조건 명시: 파일이 없으면 어디에 보고할지, 작업 불가 시 어떻게 종료할지 명시합니다. “추측하지 말고 실패 원인 1줄과 다음 액션 1개만 보고하고 종료\"라는 패턴이 효과적입니다.\n3. 포맷 가이드라인 포함: 블로그 포스트라면 front matter 형식, 최소 글자 수, 파일명 규칙을 함께 작성해둡니다.\n4. 보안 규칙 명시: 민감정보 출력 금지, 절대경로 사용 금지 같은 규칙도 지시문 안에 포함시킵니다. 격리 세션이라도 프롬프트 레벨의 가드레일이 중요합니다.\nHeartbeat vs Cron: 언제 뭘 쓸까? OpenClaw에는 두 가지 주기적 실행 방식이 있습니다: heartbeat와 cron. 용도가 다릅니다.\nHeartbeat는 30분마다 메인 세션에서 실행되며, 여러 가벼운 체크(메일 확인, 캘린더, 날씨)를 묶어서 처리하기 좋습니다. 정확한 타이밍보다 주기적인 점검이 목적일 때 씁니다.\nCron은 정확한 시각에 격리 세션으로 실행됩니다. 이 블로그처럼 “오후 9시 정각에, 독립적으로, 긴 작업을” 해야 할 때 씁니다. 타이밍이 중요하거나 메인 세션과 분리해야 하는 작업은 cron이 맞습니다.\n마무리 OpenClaw cron 잡은 단순한 스케줄러가 아닙니다. 지시문 파일과 결합하면 꽤 복잡한 워크플로도 매일 자동으로 실행할 수 있습니다. 이 글도 그 결과물입니다. 매일 오후 9시, AI가 오늘의 AI/ML 트렌드를 읽고 글을 씁니다. 아직 완벽하지 않고 개선할 부분도 있지만, 방향은 맞습니다. 반복 가능한 작업을 에이전트에게 넘기고, 나는 더 중요한 일에 집중합니다.\n참고 OpenClaw cron 공식 문서: Gateway \u003e Cron Jobs Heartbeat와 Cron의 차이: AGENTS.md 내 “Heartbeat vs Cron” 섹션 ","wordCount":"582","inLanguage":"en","datePublished":"2026-03-16T21:00:00+09:00","dateModified":"2026-03-16T21:00:00+09:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://kwbaek.github.io/posts/2026-03-16-openclaw-cron-blog-automation/"},"publisher":{"@type":"Organization","name":"Kyungwook's Devlog","logo":{"@type":"ImageObject","url":"https://kwbaek.github.io/favicon.ico"}}}</script></head><body id=top><header class=header><nav class=nav><div class=logo><a href=https://kwbaek.github.io/ accesskey=h title="Kyungwook's Devlog (Alt + H)">Kyungwook's Devlog</a><div class=logo-switches><button id=theme-toggle accesskey=t title="(Alt + T)" aria-label="Toggle theme">
-<svg id="moon" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
-<svg id="sun" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button></div></div><ul id=menu><li><a href=https://kwbaek.github.io/categories/ title=categories><span>categories</span></a></li><li><a href=https://kwbaek.github.io/tags/ title=tags><span>tags</span></a></li><li><a href=https://kwbaek.github.io/ title="Kyungwook's Devlog"><span>Kyungwook's Devlog</span>&nbsp;
-<svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><path d="M15 3h6v6"/><path d="M10 14 21 3"/></svg></a></li></ul></nav></header><main class=main><article class=post-single><header class=post-header><h1 class="post-title entry-hint-parent">OpenClaw 실전 팁: cron 잡으로 블로그를 자동화하는 법</h1><div class=post-meta><span title='2026-03-16 21:00:00 +0900 KST'>March 16, 2026</span></div></header><div class=post-content><p>이 글은 사실 OpenClaw가 직접 쓰고 있습니다. 정확히는, OpenClaw의 cron 잡이 매일 오후 9시에 이 블로그를 자동으로 작성·배포하도록 설정돼 있습니다. &ldquo;AI가 블로그를 자동으로 작성한다"는 말이 가능하다는 건 알고 있었지만, OpenClaw를 쓰면서 얼마나 실용적으로 구성할 수 있는지 실제로 경험했습니다. 오늘은 그 구조를 공유합니다.</p><h2 id=cron-잡이란>cron 잡이란?<a hidden class=anchor aria-hidden=true href=#cron-잡이란>#</a></h2><p>OpenClaw에서 cron 잡은 정해진 시간마다 에이전트를 실행시켜 작업을 수행하게 하는 스케줄러입니다. 익숙한 Unix cron과 개념은 같지만, OpenClaw의 cron은 단순 커맨드 실행이 아니라 LLM 에이전트 턴을 실행합니다. 즉 &ldquo;매일 오후 9시에 AI가 특정 작업을 수행하도록&rdquo; 설정할 수 있습니다.</p><p>잡 설정의 핵심은 세 가지입니다:</p><ul><li><strong>schedule</strong>: 언제 실행할지 (cron 표현식, 반복 인터벌, 특정 시각 등)</li><li><strong>payload</strong>: 무엇을 실행할지 (agentTurn 타입으로 메시지 전달)</li><li><strong>delivery</strong>: 결과를 어디에 보낼지 (announce로 채널 전달)</li></ul><h2 id=이-블로그의-자동화-구조>이 블로그의 자동화 구조<a hidden class=anchor aria-hidden=true href=#이-블로그의-자동화-구조>#</a></h2><p>이 블로그의 자동 포스팅은 다음 흐름으로 동작합니다:</p><ol><li>매일 오후 9시, cron이 격리된 에이전트 세션을 실행</li><li>에이전트가 <code>cron-instructions/</code> 폴더에서 지시문 파일을 읽음</li><li>지시문에 따라 Discord <code>#ai-ml-trends</code> 채널의 오늘 메시지를 수집</li><li>AI/ML 트렌드 포스트와 OpenClaw 팁 포스트를 각각 작성</li><li><code>blog/content/posts/</code> 경로에 Hugo 마크다운 파일 저장</li><li>git commit + push + hugo 빌드 + 배포까지 자동 진행</li></ol><p>핵심은 <strong>cron-instructions 파일</strong>입니다. 잡의 payload에 직접 긴 지시문을 쓰는 대신, 파일로 분리해두면 관리가 훨씬 편합니다. 잡 설정을 건드리지 않고 지시문 파일만 수정해서 동작을 바꿀 수 있습니다.</p><h2 id=실제-cron-잡-설정-예시>실제 cron 잡 설정 예시<a hidden class=anchor aria-hidden=true href=#실제-cron-잡-설정-예시>#</a></h2><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-json data-lang=json><span style=display:flex><span>{
-</span></span><span style=display:flex><span>  <span style=color:#f92672>&#34;name&#34;</span>: <span style=color:#e6db74>&#34;Daily Blog Post - AI/ML Trends &amp; OpenClaw&#34;</span>,
-</span></span><span style=display:flex><span>  <span style=color:#f92672>&#34;schedule&#34;</span>: {
-</span></span><span style=display:flex><span>    <span style=color:#f92672>&#34;kind&#34;</span>: <span style=color:#e6db74>&#34;cron&#34;</span>,
-</span></span><span style=display:flex><span>    <span style=color:#f92672>&#34;expr&#34;</span>: <span style=color:#e6db74>&#34;0 21 * * *&#34;</span>,
-</span></span><span style=display:flex><span>    <span style=color:#f92672>&#34;tz&#34;</span>: <span style=color:#e6db74>&#34;Asia/Seoul&#34;</span>
-</span></span><span style=display:flex><span>  },
-</span></span><span style=display:flex><span>  <span style=color:#f92672>&#34;payload&#34;</span>: {
-</span></span><span style=display:flex><span>    <span style=color:#f92672>&#34;kind&#34;</span>: <span style=color:#e6db74>&#34;agentTurn&#34;</span>,
-</span></span><span style=display:flex><span>    <span style=color:#f92672>&#34;message&#34;</span>: <span style=color:#e6db74>&#34;cron-instructions/daily-blog.md 파일을 읽고 지시에 따라 실행하세요.&#34;</span>
-</span></span><span style=display:flex><span>  },
-</span></span><span style=display:flex><span>  <span style=color:#f92672>&#34;sessionTarget&#34;</span>: <span style=color:#e6db74>&#34;isolated&#34;</span>,
-</span></span><span style=display:flex><span>  <span style=color:#f92672>&#34;delivery&#34;</span>: {
-</span></span><span style=display:flex><span>    <span style=color:#f92672>&#34;mode&#34;</span>: <span style=color:#e6db74>&#34;announce&#34;</span>
-</span></span><span style=display:flex><span>  }
-</span></span><span style=display:flex><span>}
-</span></span></code></pre></div><p><code>sessionTarget: "isolated"</code>로 설정하면 메인 세션과 격리된 별도 에이전트가 실행됩니다. 덕분에 메인 세션의 대화 히스토리와 상관없이 깨끗한 컨텍스트로 작업이 진행됩니다.</p><h2 id=격리된-세션의-장점>격리된 세션의 장점<a hidden class=anchor aria-hidden=true href=#격리된-세션의-장점>#</a></h2><p>cron 잡이 격리 세션(<code>isolated</code>)으로 돌아갈 때 몇 가지 실용적인 이점이 있습니다:</p><p><strong>비용 절감</strong>: HEARTBEAT.md 패턴과 <code>lightContext: true</code> 조합을 쓰면 heartbeat 세션에서는 필요한 파일만 로드합니다. 하지만 cron의 경우 처음부터 &ldquo;딱 이 작업만"을 위한 컨텍스트를 지시문에 담을 수 있어 효율적입니다.</p><p><strong>명확한 책임 분리</strong>: 메인 세션이 사용자와 대화하는 동안, cron이 뒤에서 블로그를 쓰고 데이터를 정리하는 구조가 됩니다. 사용자 경험을 방해하지 않으면서 백그라운드 작업이 진행됩니다.</p><p><strong>재현 가능성</strong>: 지시문 파일만 있으면 동일한 작업을 언제든 다시 실행할 수 있습니다. <code>/cron run [job-id]</code>로 즉시 테스트도 가능합니다.</p><h2 id=지시문-파일-작성-팁>지시문 파일 작성 팁<a hidden class=anchor aria-hidden=true href=#지시문-파일-작성-팁>#</a></h2><p>잘 작성된 지시문 파일이 자동화 품질의 90%를 결정합니다. 몇 가지 원칙을 공유합니다:</p><p><strong>1. 명확한 단계 분리</strong>: &ldquo;1. 채널 읽기 → 2. 글 작성 → 3. git push&rdquo; 식으로 단계를 명확히 나눕니다. 에이전트가 어디서 멈춰야 하는지 알 수 있어야 합니다.</p><p><strong>2. 실패 조건 명시</strong>: 파일이 없으면 어디에 보고할지, 작업 불가 시 어떻게 종료할지 명시합니다. &ldquo;추측하지 말고 실패 원인 1줄과 다음 액션 1개만 보고하고 종료"라는 패턴이 효과적입니다.</p><p><strong>3. 포맷 가이드라인 포함</strong>: 블로그 포스트라면 front matter 형식, 최소 글자 수, 파일명 규칙을 함께 작성해둡니다.</p><p><strong>4. 보안 규칙 명시</strong>: 민감정보 출력 금지, 절대경로 사용 금지 같은 규칙도 지시문 안에 포함시킵니다. 격리 세션이라도 프롬프트 레벨의 가드레일이 중요합니다.</p><h2 id=heartbeat-vs-cron-언제-뭘-쓸까>Heartbeat vs Cron: 언제 뭘 쓸까?<a hidden class=anchor aria-hidden=true href=#heartbeat-vs-cron-언제-뭘-쓸까>#</a></h2><p>OpenClaw에는 두 가지 주기적 실행 방식이 있습니다: heartbeat와 cron. 용도가 다릅니다.</p><p><strong>Heartbeat</strong>는 30분마다 메인 세션에서 실행되며, 여러 가벼운 체크(메일 확인, 캘린더, 날씨)를 묶어서 처리하기 좋습니다. 정확한 타이밍보다 주기적인 점검이 목적일 때 씁니다.</p><p><strong>Cron</strong>은 정확한 시각에 격리 세션으로 실행됩니다. 이 블로그처럼 &ldquo;오후 9시 정각에, 독립적으로, 긴 작업을&rdquo; 해야 할 때 씁니다. 타이밍이 중요하거나 메인 세션과 분리해야 하는 작업은 cron이 맞습니다.</p><h2 id=마무리>마무리<a hidden class=anchor aria-hidden=true href=#마무리>#</a></h2><p>OpenClaw cron 잡은 단순한 스케줄러가 아닙니다. 지시문 파일과 결합하면 꽤 복잡한 워크플로도 매일 자동으로 실행할 수 있습니다. 이 글도 그 결과물입니다. 매일 오후 9시, AI가 오늘의 AI/ML 트렌드를 읽고 글을 씁니다. 아직 완벽하지 않고 개선할 부분도 있지만, 방향은 맞습니다. 반복 가능한 작업을 에이전트에게 넘기고, 나는 더 중요한 일에 집중합니다.</p><h2 id=참고>참고<a hidden class=anchor aria-hidden=true href=#참고>#</a></h2><ul><li>OpenClaw cron 공식 문서: Gateway > Cron Jobs</li><li>Heartbeat와 Cron의 차이: AGENTS.md 내 &ldquo;Heartbeat vs Cron&rdquo; 섹션</li></ul></div><footer class=post-footer><ul class=post-tags><li><a href=https://kwbaek.github.io/tags/openclaw/>OpenClaw</a></li><li><a href=https://kwbaek.github.io/tags/cron/>Cron</a></li><li><a href=https://kwbaek.github.io/tags/automation/>Automation</a></li><li><a href=https://kwbaek.github.io/tags/blog/>Blog</a></li><li><a href=https://kwbaek.github.io/tags/tips/>Tips</a></li></ul></footer><script src=https://utteranc.es/client.js repo=kwbaek/blog-comments issue-term=pathname theme=github-light crossorigin=anonymous async></script></article></main><footer class=footer><span>&copy; 2026 <a href=https://kwbaek.github.io/>Kyungwook's Devlog</a></span> ·
-<span>Powered by
-<a href=https://gohugo.io/ rel="noopener noreferrer" target=_blank>Hugo</a> &
-<a href=https://github.com/adityatelange/hugo-PaperMod/ rel=noopener target=_blank>PaperMod</a></span></footer><a href=#top aria-label="go to top" title="Go to Top (Alt + G)" class=top-link id=top-link accesskey=g><svg viewBox="0 0 12 6" fill="currentColor"><path d="M12 6H0l6-6z"/></svg>
-</a><script>let menu=document.getElementById("menu");if(menu){const e=localStorage.getItem("menu-scroll-position");e&&(menu.scrollLeft=parseInt(e,10)),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)}}document.querySelectorAll('a[href^="#"]').forEach(e=>{e.addEventListener("click",function(e){e.preventDefault();var t=this.getAttribute("href").substr(1);window.matchMedia("(prefers-reduced-motion: reduce)").matches?document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView({behavior:"smooth"}),t==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${t}`)})})</script><script>var mybutton=document.getElementById("top-link");window.onscroll=function(){document.body.scrollTop>800||document.documentElement.scrollTop>800?(mybutton.style.visibility="visible",mybutton.style.opacity="1"):(mybutton.style.visibility="hidden",mybutton.style.opacity="0")}</script><script>document.getElementById("theme-toggle").addEventListener("click",()=>{const e=document.querySelector("html");e.dataset.theme==="dark"?(e.dataset.theme="light",localStorage.setItem("pref-theme","light")):(e.dataset.theme="dark",localStorage.setItem("pref-theme","dark"))})</script></body></html>
+OpenClaw에서 cron 잡은 정해진 시간마다 에이전트를 실행시켜 작업을 수행하게 하는 스케줄러입니다. 익숙한 Unix cron과 개념은 같지만, OpenClaw의 cron은 단순 커맨드 실행이 아니라 LLM 에이전트 턴을 실행합니다. 즉 &ldquo;매일 오후 9시에 AI가 특정 작업을 수행하도록&rdquo; 설정할 수 있습니다.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://kwbaek.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "OpenClaw 실전 팁: cron 잡으로 블로그를 자동화하는 법",
+      "item": "https://kwbaek.github.io/posts/2026-03-16-openclaw-cron-blog-automation/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "OpenClaw 실전 팁: cron 잡으로 블로그를 자동화하는 법",
+  "name": "OpenClaw 실전 팁: cron 잡으로 블로그를 자동화하는 법",
+  "description": "이 글은 사실 OpenClaw가 직접 쓰고 있습니다. 정확히는, OpenClaw의 cron 잡이 매일 오후 9시에 이 블로그를 자동으로 작성·배포하도록 설정돼 있습니다. \u0026ldquo;AI가 블로그를 자동으로 작성한다\u0026quot;는 말이 가능하다는 건 알고 있었지만, OpenClaw를 쓰면서 얼마나 실용적으로 구성할 수 있는지 실제로 경험했습니다. 오늘은 그 구조를 공유합니다.\ncron 잡이란? OpenClaw에서 cron 잡은 정해진 시간마다 에이전트를 실행시켜 작업을 수행하게 하는 스케줄러입니다. 익숙한 Unix cron과 개념은 같지만, OpenClaw의 cron은 단순 커맨드 실행이 아니라 LLM 에이전트 턴을 실행합니다. 즉 \u0026ldquo;매일 오후 9시에 AI가 특정 작업을 수행하도록\u0026rdquo; 설정할 수 있습니다.\n",
+  "keywords": [
+    "OpenClaw", "cron", "automation", "blog", "tips"
+  ],
+  "articleBody": "이 글은 사실 OpenClaw가 직접 쓰고 있습니다. 정확히는, OpenClaw의 cron 잡이 매일 오후 9시에 이 블로그를 자동으로 작성·배포하도록 설정돼 있습니다. “AI가 블로그를 자동으로 작성한다\"는 말이 가능하다는 건 알고 있었지만, OpenClaw를 쓰면서 얼마나 실용적으로 구성할 수 있는지 실제로 경험했습니다. 오늘은 그 구조를 공유합니다.\ncron 잡이란? OpenClaw에서 cron 잡은 정해진 시간마다 에이전트를 실행시켜 작업을 수행하게 하는 스케줄러입니다. 익숙한 Unix cron과 개념은 같지만, OpenClaw의 cron은 단순 커맨드 실행이 아니라 LLM 에이전트 턴을 실행합니다. 즉 “매일 오후 9시에 AI가 특정 작업을 수행하도록” 설정할 수 있습니다.\n잡 설정의 핵심은 세 가지입니다:\nschedule: 언제 실행할지 (cron 표현식, 반복 인터벌, 특정 시각 등) payload: 무엇을 실행할지 (agentTurn 타입으로 메시지 전달) delivery: 결과를 어디에 보낼지 (announce로 채널 전달) 이 블로그의 자동화 구조 이 블로그의 자동 포스팅은 다음 흐름으로 동작합니다:\n매일 오후 9시, cron이 격리된 에이전트 세션을 실행 에이전트가 cron-instructions/ 폴더에서 지시문 파일을 읽음 지시문에 따라 Discord #ai-ml-trends 채널의 오늘 메시지를 수집 AI/ML 트렌드 포스트와 OpenClaw 팁 포스트를 각각 작성 blog/content/posts/ 경로에 Hugo 마크다운 파일 저장 git commit + push + hugo 빌드 + 배포까지 자동 진행 핵심은 cron-instructions 파일입니다. 잡의 payload에 직접 긴 지시문을 쓰는 대신, 파일로 분리해두면 관리가 훨씬 편합니다. 잡 설정을 건드리지 않고 지시문 파일만 수정해서 동작을 바꿀 수 있습니다.\n실제 cron 잡 설정 예시 { \"name\": \"Daily Blog Post - AI/ML Trends \u0026 OpenClaw\", \"schedule\": { \"kind\": \"cron\", \"expr\": \"0 21 * * *\", \"tz\": \"Asia/Seoul\" }, \"payload\": { \"kind\": \"agentTurn\", \"message\": \"cron-instructions/daily-blog.md 파일을 읽고 지시에 따라 실행하세요.\" }, \"sessionTarget\": \"isolated\", \"delivery\": { \"mode\": \"announce\" } } sessionTarget: \"isolated\"로 설정하면 메인 세션과 격리된 별도 에이전트가 실행됩니다. 덕분에 메인 세션의 대화 히스토리와 상관없이 깨끗한 컨텍스트로 작업이 진행됩니다.\n격리된 세션의 장점 cron 잡이 격리 세션(isolated)으로 돌아갈 때 몇 가지 실용적인 이점이 있습니다:\n비용 절감: HEARTBEAT.md 패턴과 lightContext: true 조합을 쓰면 heartbeat 세션에서는 필요한 파일만 로드합니다. 하지만 cron의 경우 처음부터 “딱 이 작업만\"을 위한 컨텍스트를 지시문에 담을 수 있어 효율적입니다.\n명확한 책임 분리: 메인 세션이 사용자와 대화하는 동안, cron이 뒤에서 블로그를 쓰고 데이터를 정리하는 구조가 됩니다. 사용자 경험을 방해하지 않으면서 백그라운드 작업이 진행됩니다.\n재현 가능성: 지시문 파일만 있으면 동일한 작업을 언제든 다시 실행할 수 있습니다. /cron run [job-id]로 즉시 테스트도 가능합니다.\n지시문 파일 작성 팁 잘 작성된 지시문 파일이 자동화 품질의 90%를 결정합니다. 몇 가지 원칙을 공유합니다:\n1. 명확한 단계 분리: “1. 채널 읽기 → 2. 글 작성 → 3. git push” 식으로 단계를 명확히 나눕니다. 에이전트가 어디서 멈춰야 하는지 알 수 있어야 합니다.\n2. 실패 조건 명시: 파일이 없으면 어디에 보고할지, 작업 불가 시 어떻게 종료할지 명시합니다. “추측하지 말고 실패 원인 1줄과 다음 액션 1개만 보고하고 종료\"라는 패턴이 효과적입니다.\n3. 포맷 가이드라인 포함: 블로그 포스트라면 front matter 형식, 최소 글자 수, 파일명 규칙을 함께 작성해둡니다.\n4. 보안 규칙 명시: 민감정보 출력 금지, 절대경로 사용 금지 같은 규칙도 지시문 안에 포함시킵니다. 격리 세션이라도 프롬프트 레벨의 가드레일이 중요합니다.\nHeartbeat vs Cron: 언제 뭘 쓸까? OpenClaw에는 두 가지 주기적 실행 방식이 있습니다: heartbeat와 cron. 용도가 다릅니다.\nHeartbeat는 30분마다 메인 세션에서 실행되며, 여러 가벼운 체크(메일 확인, 캘린더, 날씨)를 묶어서 처리하기 좋습니다. 정확한 타이밍보다 주기적인 점검이 목적일 때 씁니다.\nCron은 정확한 시각에 격리 세션으로 실행됩니다. 이 블로그처럼 “오후 9시 정각에, 독립적으로, 긴 작업을” 해야 할 때 씁니다. 타이밍이 중요하거나 메인 세션과 분리해야 하는 작업은 cron이 맞습니다.\n마무리 OpenClaw cron 잡은 단순한 스케줄러가 아닙니다. 지시문 파일과 결합하면 꽤 복잡한 워크플로도 매일 자동으로 실행할 수 있습니다. 이 글도 그 결과물입니다. 매일 오후 9시, AI가 오늘의 AI/ML 트렌드를 읽고 글을 씁니다. 아직 완벽하지 않고 개선할 부분도 있지만, 방향은 맞습니다. 반복 가능한 작업을 에이전트에게 넘기고, 나는 더 중요한 일에 집중합니다.\n참고 OpenClaw cron 공식 문서: Gateway \u003e Cron Jobs Heartbeat와 Cron의 차이: AGENTS.md 내 “Heartbeat vs Cron” 섹션 ",
+  "wordCount" : "582",
+  "inLanguage": "en",
+  "datePublished": "2026-03-16T21:00:00+09:00",
+  "dateModified": "2026-03-16T21:00:00+09:00",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://kwbaek.github.io/posts/2026-03-16-openclaw-cron-blog-automation/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Kyungwook's Devlog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://kwbaek.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://kwbaek.github.io/" accesskey="h" title="Kyungwook&#39;s Devlog (Alt + H)">Kyungwook&#39;s Devlog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://kwbaek.github.io/categories/" title="categories">
+                    <span>categories</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kwbaek.github.io/tags/" title="tags">
+                    <span>tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kwbaek.github.io/" title="Kyungwook&#39;s Devlog">
+                    <span>Kyungwook&#39;s Devlog</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      OpenClaw 실전 팁: cron 잡으로 블로그를 자동화하는 법
+    </h1>
+    <div class="post-meta"><span title='2026-03-16 21:00:00 +0900 KST'>March 16, 2026</span>
+
+</div>
+  </header> 
+  <div class="post-content"><p>이 글은 사실 OpenClaw가 직접 쓰고 있습니다. 정확히는, OpenClaw의 cron 잡이 매일 오후 9시에 이 블로그를 자동으로 작성·배포하도록 설정돼 있습니다. &ldquo;AI가 블로그를 자동으로 작성한다&quot;는 말이 가능하다는 건 알고 있었지만, OpenClaw를 쓰면서 얼마나 실용적으로 구성할 수 있는지 실제로 경험했습니다. 오늘은 그 구조를 공유합니다.</p>
+<h2 id="cron-잡이란">cron 잡이란?<a hidden class="anchor" aria-hidden="true" href="#cron-잡이란">#</a></h2>
+<p>OpenClaw에서 cron 잡은 정해진 시간마다 에이전트를 실행시켜 작업을 수행하게 하는 스케줄러입니다. 익숙한 Unix cron과 개념은 같지만, OpenClaw의 cron은 단순 커맨드 실행이 아니라 LLM 에이전트 턴을 실행합니다. 즉 &ldquo;매일 오후 9시에 AI가 특정 작업을 수행하도록&rdquo; 설정할 수 있습니다.</p>
+<p>잡 설정의 핵심은 세 가지입니다:</p>
+<ul>
+<li><strong>schedule</strong>: 언제 실행할지 (cron 표현식, 반복 인터벌, 특정 시각 등)</li>
+<li><strong>payload</strong>: 무엇을 실행할지 (agentTurn 타입으로 메시지 전달)</li>
+<li><strong>delivery</strong>: 결과를 어디에 보낼지 (announce로 채널 전달)</li>
+</ul>
+<h2 id="이-블로그의-자동화-구조">이 블로그의 자동화 구조<a hidden class="anchor" aria-hidden="true" href="#이-블로그의-자동화-구조">#</a></h2>
+<p>이 블로그의 자동 포스팅은 다음 흐름으로 동작합니다:</p>
+<ol>
+<li>매일 오후 9시, cron이 격리된 에이전트 세션을 실행</li>
+<li>에이전트가 <code>cron-instructions/</code> 폴더에서 지시문 파일을 읽음</li>
+<li>지시문에 따라 Discord <code>#ai-ml-trends</code> 채널의 오늘 메시지를 수집</li>
+<li>AI/ML 트렌드 포스트와 OpenClaw 팁 포스트를 각각 작성</li>
+<li><code>blog/content/posts/</code> 경로에 Hugo 마크다운 파일 저장</li>
+<li>git commit + push + hugo 빌드 + 배포까지 자동 진행</li>
+</ol>
+<p>핵심은 <strong>cron-instructions 파일</strong>입니다. 잡의 payload에 직접 긴 지시문을 쓰는 대신, 파일로 분리해두면 관리가 훨씬 편합니다. 잡 설정을 건드리지 않고 지시문 파일만 수정해서 동작을 바꿀 수 있습니다.</p>
+<h2 id="실제-cron-잡-설정-예시">실제 cron 잡 설정 예시<a hidden class="anchor" aria-hidden="true" href="#실제-cron-잡-설정-예시">#</a></h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;Daily Blog Post - AI/ML Trends &amp; OpenClaw&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;schedule&#34;</span>: {
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;kind&#34;</span>: <span style="color:#e6db74">&#34;cron&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;expr&#34;</span>: <span style="color:#e6db74">&#34;0 21 * * *&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;tz&#34;</span>: <span style="color:#e6db74">&#34;Asia/Seoul&#34;</span>
+</span></span><span style="display:flex;"><span>  },
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;payload&#34;</span>: {
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;kind&#34;</span>: <span style="color:#e6db74">&#34;agentTurn&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;message&#34;</span>: <span style="color:#e6db74">&#34;cron-instructions/daily-blog.md 파일을 읽고 지시에 따라 실행하세요.&#34;</span>
+</span></span><span style="display:flex;"><span>  },
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;sessionTarget&#34;</span>: <span style="color:#e6db74">&#34;isolated&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;delivery&#34;</span>: {
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;mode&#34;</span>: <span style="color:#e6db74">&#34;announce&#34;</span>
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p><code>sessionTarget: &quot;isolated&quot;</code>로 설정하면 메인 세션과 격리된 별도 에이전트가 실행됩니다. 덕분에 메인 세션의 대화 히스토리와 상관없이 깨끗한 컨텍스트로 작업이 진행됩니다.</p>
+<h2 id="격리된-세션의-장점">격리된 세션의 장점<a hidden class="anchor" aria-hidden="true" href="#격리된-세션의-장점">#</a></h2>
+<p>cron 잡이 격리 세션(<code>isolated</code>)으로 돌아갈 때 몇 가지 실용적인 이점이 있습니다:</p>
+<p><strong>비용 절감</strong>: HEARTBEAT.md 패턴과 <code>lightContext: true</code> 조합을 쓰면 heartbeat 세션에서는 필요한 파일만 로드합니다. 하지만 cron의 경우 처음부터 &ldquo;딱 이 작업만&quot;을 위한 컨텍스트를 지시문에 담을 수 있어 효율적입니다.</p>
+<p><strong>명확한 책임 분리</strong>: 메인 세션이 사용자와 대화하는 동안, cron이 뒤에서 블로그를 쓰고 데이터를 정리하는 구조가 됩니다. 사용자 경험을 방해하지 않으면서 백그라운드 작업이 진행됩니다.</p>
+<p><strong>재현 가능성</strong>: 지시문 파일만 있으면 동일한 작업을 언제든 다시 실행할 수 있습니다. <code>/cron run [job-id]</code>로 즉시 테스트도 가능합니다.</p>
+<h2 id="지시문-파일-작성-팁">지시문 파일 작성 팁<a hidden class="anchor" aria-hidden="true" href="#지시문-파일-작성-팁">#</a></h2>
+<p>잘 작성된 지시문 파일이 자동화 품질의 90%를 결정합니다. 몇 가지 원칙을 공유합니다:</p>
+<p><strong>1. 명확한 단계 분리</strong>: &ldquo;1. 채널 읽기 → 2. 글 작성 → 3. git push&rdquo; 식으로 단계를 명확히 나눕니다. 에이전트가 어디서 멈춰야 하는지 알 수 있어야 합니다.</p>
+<p><strong>2. 실패 조건 명시</strong>: 파일이 없으면 어디에 보고할지, 작업 불가 시 어떻게 종료할지 명시합니다. &ldquo;추측하지 말고 실패 원인 1줄과 다음 액션 1개만 보고하고 종료&quot;라는 패턴이 효과적입니다.</p>
+<p><strong>3. 포맷 가이드라인 포함</strong>: 블로그 포스트라면 front matter 형식, 최소 글자 수, 파일명 규칙을 함께 작성해둡니다.</p>
+<p><strong>4. 보안 규칙 명시</strong>: 민감정보 출력 금지, 절대경로 사용 금지 같은 규칙도 지시문 안에 포함시킵니다. 격리 세션이라도 프롬프트 레벨의 가드레일이 중요합니다.</p>
+<h2 id="heartbeat-vs-cron-언제-뭘-쓸까">Heartbeat vs Cron: 언제 뭘 쓸까?<a hidden class="anchor" aria-hidden="true" href="#heartbeat-vs-cron-언제-뭘-쓸까">#</a></h2>
+<p>OpenClaw에는 두 가지 주기적 실행 방식이 있습니다: heartbeat와 cron. 용도가 다릅니다.</p>
+<p><strong>Heartbeat</strong>는 30분마다 메인 세션에서 실행되며, 여러 가벼운 체크(메일 확인, 캘린더, 날씨)를 묶어서 처리하기 좋습니다. 정확한 타이밍보다 주기적인 점검이 목적일 때 씁니다.</p>
+<p><strong>Cron</strong>은 정확한 시각에 격리 세션으로 실행됩니다. 이 블로그처럼 &ldquo;오후 9시 정각에, 독립적으로, 긴 작업을&rdquo; 해야 할 때 씁니다. 타이밍이 중요하거나 메인 세션과 분리해야 하는 작업은 cron이 맞습니다.</p>
+<h2 id="마무리">마무리<a hidden class="anchor" aria-hidden="true" href="#마무리">#</a></h2>
+<p>OpenClaw cron 잡은 단순한 스케줄러가 아닙니다. 지시문 파일과 결합하면 꽤 복잡한 워크플로도 매일 자동으로 실행할 수 있습니다. 이 글도 그 결과물입니다. 매일 오후 9시, AI가 오늘의 AI/ML 트렌드를 읽고 글을 씁니다. 아직 완벽하지 않고 개선할 부분도 있지만, 방향은 맞습니다. 반복 가능한 작업을 에이전트에게 넘기고, 나는 더 중요한 일에 집중합니다.</p>
+<h2 id="참고">참고<a hidden class="anchor" aria-hidden="true" href="#참고">#</a></h2>
+<ul>
+<li>OpenClaw cron 공식 문서: Gateway &gt; Cron Jobs</li>
+<li>Heartbeat와 Cron의 차이: AGENTS.md 내 &ldquo;Heartbeat vs Cron&rdquo; 섹션</li>
+</ul>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://kwbaek.github.io/tags/openclaw/">OpenClaw</a></li>
+      <li><a href="https://kwbaek.github.io/tags/cron/">Cron</a></li>
+      <li><a href="https://kwbaek.github.io/tags/automation/">Automation</a></li>
+      <li><a href="https://kwbaek.github.io/tags/blog/">Blog</a></li>
+      <li><a href="https://kwbaek.github.io/tags/tips/">Tips</a></li>
+    </ul>
+  </footer><script src="https://utteranc.es/client.js"
+        repo="kwbaek/blog-comments"
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://kwbaek.github.io/">Kyungwook&#39;s Devlog</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

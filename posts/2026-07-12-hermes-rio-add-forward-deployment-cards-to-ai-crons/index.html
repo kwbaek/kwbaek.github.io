@@ -1,30 +1,341 @@
-<!doctype html><html lang=en dir=auto data-theme=auto><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=robots content="index, follow"><title>Hermes/리오 팁: AI 크론에 현장 배치 카드를 추가하자 | Kyungwook's Devlog</title><meta name=keywords content="Hermes,리오,Cron,AI Automation,Forward Deployment,Workflow,Verification"><meta name=description content="Hermes/리오로 AI 트렌드나 업무 자동화 크론을 만들 때 가장 흔한 실수는 “정보를 잘 모아 요약하면 일이 끝난다”고 생각하는 것입니다. 실제 현업에서는 좋은 요약 뒤에 데이터 연결, 담당자 확인, 시스템 입력, 예외처리, 결과 검증이 이어집니다. 자동화가 이 마지막 구간을 다루지 못하면 매일 실행돼도 업무를 바꾸지 못하는 알림 봇에 머뭅니다.
-이 문제를 줄이는 방법은 각 크론에 **현장 배치 카드(forward deployment card)**를 붙이는 것입니다. 카드는 멋진 에이전트 설계 문서가 아니라, 자동화가 어떤 업무 환경에 들어가 무엇을 읽고 어디까지 행동하며 무엇으로 완료를 증명할지를 한눈에 보여주는 운영 계약입니다."><meta name=author content><link rel=canonical href=https://kwbaek.github.io/posts/2026-07-12-hermes-rio-add-forward-deployment-cards-to-ai-crons/><link crossorigin=anonymous href=/assets/css/stylesheet.da3211e5ef867bf2b75fd5a6515cfed7195c011e8ab735694e203810a827097b.css integrity="sha256-2jIR5e+Ge/K3X9WmUVz+1xlcAR6KtzVpTiA4EKgnCXs=" rel="preload stylesheet" as=style><link rel=icon href=https://kwbaek.github.io/favicon.ico><link rel=icon type=image/png sizes=16x16 href=https://kwbaek.github.io/favicon-16x16.png><link rel=icon type=image/png sizes=32x32 href=https://kwbaek.github.io/favicon-32x32.png><link rel=apple-touch-icon href=https://kwbaek.github.io/apple-touch-icon.png><link rel=mask-icon href=https://kwbaek.github.io/safari-pinned-tab.svg><meta name=theme-color content="#2e2e33"><meta name=msapplication-TileColor content="#2e2e33"><link rel=alternate hreflang=en href=https://kwbaek.github.io/posts/2026-07-12-hermes-rio-add-forward-deployment-cards-to-ai-crons/><noscript><style>#theme-toggle,.top-link{display:none}</style><style>@media(prefers-color-scheme:dark){:root{--theme:rgb(29, 30, 32);--entry:rgb(46, 46, 51);--primary:rgb(218, 218, 219);--secondary:rgb(155, 156, 157);--tertiary:rgb(65, 66, 68);--content:rgb(196, 196, 197);--code-block-bg:rgb(46, 46, 51);--code-bg:rgb(55, 56, 62);--border:rgb(51, 51, 51);color-scheme:dark}.list{background:var(--theme)}.toc{background:var(--entry)}}@media(prefers-color-scheme:light){.list::-webkit-scrollbar-thumb{border-color:var(--code-bg)}}</style></noscript><script>localStorage.getItem("pref-theme")==="dark"?document.querySelector("html").dataset.theme="dark":localStorage.getItem("pref-theme")==="light"?document.querySelector("html").dataset.theme="light":window.matchMedia("(prefers-color-scheme: dark)").matches?document.querySelector("html").dataset.theme="dark":document.querySelector("html").dataset.theme="light"</script><meta property="og:url" content="https://kwbaek.github.io/posts/2026-07-12-hermes-rio-add-forward-deployment-cards-to-ai-crons/"><meta property="og:site_name" content="Kyungwook's Devlog"><meta property="og:title" content="Hermes/리오 팁: AI 크론에 현장 배치 카드를 추가하자"><meta property="og:description" content="Hermes/리오로 AI 트렌드나 업무 자동화 크론을 만들 때 가장 흔한 실수는 “정보를 잘 모아 요약하면 일이 끝난다”고 생각하는 것입니다. 실제 현업에서는 좋은 요약 뒤에 데이터 연결, 담당자 확인, 시스템 입력, 예외처리, 결과 검증이 이어집니다. 자동화가 이 마지막 구간을 다루지 못하면 매일 실행돼도 업무를 바꾸지 못하는 알림 봇에 머뭅니다.
-이 문제를 줄이는 방법은 각 크론에 **현장 배치 카드(forward deployment card)**를 붙이는 것입니다. 카드는 멋진 에이전트 설계 문서가 아니라, 자동화가 어떤 업무 환경에 들어가 무엇을 읽고 어디까지 행동하며 무엇으로 완료를 증명할지를 한눈에 보여주는 운영 계약입니다."><meta property="og:locale" content="ko-kr"><meta property="og:type" content="article"><meta property="article:section" content="posts"><meta property="article:published_time" content="2026-07-12T21:00:00+09:00"><meta property="article:modified_time" content="2026-07-12T21:00:00+09:00"><meta property="article:tag" content="Hermes"><meta property="article:tag" content="리오"><meta property="article:tag" content="Cron"><meta property="article:tag" content="AI Automation"><meta property="article:tag" content="Forward Deployment"><meta property="article:tag" content="Workflow"><meta name=twitter:card content="summary"><meta name=twitter:title content="Hermes/리오 팁: AI 크론에 현장 배치 카드를 추가하자"><meta name=twitter:description content="Hermes/리오로 AI 트렌드나 업무 자동화 크론을 만들 때 가장 흔한 실수는 “정보를 잘 모아 요약하면 일이 끝난다”고 생각하는 것입니다. 실제 현업에서는 좋은 요약 뒤에 데이터 연결, 담당자 확인, 시스템 입력, 예외처리, 결과 검증이 이어집니다. 자동화가 이 마지막 구간을 다루지 못하면 매일 실행돼도 업무를 바꾸지 못하는 알림 봇에 머뭅니다.
-이 문제를 줄이는 방법은 각 크론에 **현장 배치 카드(forward deployment card)**를 붙이는 것입니다. 카드는 멋진 에이전트 설계 문서가 아니라, 자동화가 어떤 업무 환경에 들어가 무엇을 읽고 어디까지 행동하며 무엇으로 완료를 증명할지를 한눈에 보여주는 운영 계약입니다."><script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Posts","item":"https://kwbaek.github.io/posts/"},{"@type":"ListItem","position":2,"name":"Hermes/리오 팁: AI 크론에 현장 배치 카드를 추가하자","item":"https://kwbaek.github.io/posts/2026-07-12-hermes-rio-add-forward-deployment-cards-to-ai-crons/"}]}</script><script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"Hermes/리오 팁: AI 크론에 현장 배치 카드를 추가하자","name":"Hermes\/리오 팁: AI 크론에 현장 배치 카드를 추가하자","description":"Hermes/리오로 AI 트렌드나 업무 자동화 크론을 만들 때 가장 흔한 실수는 “정보를 잘 모아 요약하면 일이 끝난다”고 생각하는 것입니다. 실제 현업에서는 좋은 요약 뒤에 데이터 연결, 담당자 확인, 시스템 입력, 예외처리, 결과 검증이 이어집니다. 자동화가 이 마지막 구간을 다루지 못하면 매일 실행돼도 업무를 바꾸지 못하는 알림 봇에 머뭅니다.\n이 문제를 줄이는 방법은 각 크론에 **현장 배치 카드(forward deployment card)**를 붙이는 것입니다. 카드는 멋진 에이전트 설계 문서가 아니라, 자동화가 어떤 업무 환경에 들어가 무엇을 읽고 어디까지 행동하며 무엇으로 완료를 증명할지를 한눈에 보여주는 운영 계약입니다.\n","keywords":["Hermes","리오","Cron","AI Automation","Forward Deployment","Workflow","Verification"],"articleBody":"Hermes/리오로 AI 트렌드나 업무 자동화 크론을 만들 때 가장 흔한 실수는 “정보를 잘 모아 요약하면 일이 끝난다”고 생각하는 것입니다. 실제 현업에서는 좋은 요약 뒤에 데이터 연결, 담당자 확인, 시스템 입력, 예외처리, 결과 검증이 이어집니다. 자동화가 이 마지막 구간을 다루지 못하면 매일 실행돼도 업무를 바꾸지 못하는 알림 봇에 머뭅니다.\n이 문제를 줄이는 방법은 각 크론에 **현장 배치 카드(forward deployment card)**를 붙이는 것입니다. 카드는 멋진 에이전트 설계 문서가 아니라, 자동화가 어떤 업무 환경에 들어가 무엇을 읽고 어디까지 행동하며 무엇으로 완료를 증명할지를 한눈에 보여주는 운영 계약입니다.\nforward_deployment_card: business_goal: \"의사결정에 필요한 신규 AI 신호를 매일 선별\" inputs: - approved trend sources - recent dedupe history allowed_actions: - read sources - write local report artifacts prohibited_actions: - unapproved external publishing - destructive system changes completion_evidence: - source links verified - duplicate check passed - output format validated fallback: - use recent local cache when channel history is unavailable escalation: - report one blocker and one next action 모델 지시문보다 업무 경계를 먼저 적기 자동화 품질은 프롬프트 문장만 다듬는다고 안정되지 않습니다. 입력 출처가 불명확하면 오래된 기사를 새 소식으로 오인할 수 있고, 허용 행동이 모호하면 보고만 해야 할 작업이 외부 게시로 이어질 수 있습니다. 완료 증거가 없으면 파일을 작성했지만 빌드되지 않았거나, 빌드됐지만 실제 공개 페이지에 반영되지 않은 상태를 성공으로 착각하게 됩니다.\n따라서 카드는 최소 여섯 가지를 포함해야 합니다. 첫째는 사업 목적, 둘째는 허용된 입력, 셋째는 행동 범위, 넷째는 금지된 부작용, 다섯째는 완료 증거, 여섯째는 실패 시 fallback과 중단 조건입니다. 특히 “작성”과 “배포”, “보고”와 “실행”을 서로 다른 권한으로 분리하면 unattended cron의 위험을 크게 낮출 수 있습니다.\n실행 결과를 증거 묶음으로 남기기 Hermes/리오는 단순히 최종 문장을 만드는 역할보다 실행 결과를 검증 가능한 묶음으로 만드는 역할에서 더 큰 가치를 냅니다. 블로그 크론이라면 원문 출처, 생성된 마크다운, 빌드 성공, 새 HTML 존재 여부, 공개 문구 점검, 저장소 반영 상태가 증거가 됩니다. 트렌드 크론이라면 게시 시각, canonical URL, 핵심 수치, 중복 기준, 최신 캐시 반영 여부가 증거가 됩니다.\n여기서 중요한 원칙은 모든 도구 로그를 공개하는 것이 아닙니다. 내부에는 충분한 검증 흔적을 남기되, 사용자에게는 필요한 결과와 실패 원인만 전달해야 합니다. 로컬 환경 정보나 운영 식별자가 공개 글에 섞이지 않도록 최종 산출물만 별도로 검사하는 단계도 카드에 포함하는 편이 좋습니다.\n기업 AI가 데모에서 현장 배치로 이동하듯, 개인 자동화도 프롬프트에서 운영 계약으로 이동해야 합니다. 현장 배치 카드를 붙이면 Hermes/리오 크론은 “무언가를 생성하는 작업”을 넘어 업무 경계 안에서 실행하고, 확인하고, 복구할 수 있는 작은 운영 시스템이 됩니다.\n","wordCount":"380","inLanguage":"en","datePublished":"2026-07-12T21:00:00+09:00","dateModified":"2026-07-12T21:00:00+09:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://kwbaek.github.io/posts/2026-07-12-hermes-rio-add-forward-deployment-cards-to-ai-crons/"},"publisher":{"@type":"Organization","name":"Kyungwook's Devlog","logo":{"@type":"ImageObject","url":"https://kwbaek.github.io/favicon.ico"}}}</script></head><body id=top><header class=header><nav class=nav><div class=logo><a href=https://kwbaek.github.io/ accesskey=h title="Kyungwook's Devlog (Alt + H)">Kyungwook's Devlog</a><div class=logo-switches><button id=theme-toggle accesskey=t title="(Alt + T)" aria-label="Toggle theme">
-<svg id="moon" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
-<svg id="sun" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button></div></div><ul id=menu><li><a href=https://kwbaek.github.io/categories/ title=categories><span>categories</span></a></li><li><a href=https://kwbaek.github.io/tags/ title=tags><span>tags</span></a></li><li><a href=https://kwbaek.github.io/ title="Kyungwook's Devlog"><span>Kyungwook's Devlog</span>&nbsp;
-<svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><path d="M15 3h6v6"/><path d="M10 14 21 3"/></svg></a></li></ul></nav></header><main class=main><article class=post-single><header class=post-header><h1 class="post-title entry-hint-parent">Hermes/리오 팁: AI 크론에 현장 배치 카드를 추가하자</h1><div class=post-meta><span title='2026-07-12 21:00:00 +0900 KST'>July 12, 2026</span></div></header><div class=post-content><p>Hermes/리오로 AI 트렌드나 업무 자동화 크론을 만들 때 가장 흔한 실수는 “정보를 잘 모아 요약하면 일이 끝난다”고 생각하는 것입니다. 실제 현업에서는 좋은 요약 뒤에 데이터 연결, 담당자 확인, 시스템 입력, 예외처리, 결과 검증이 이어집니다. 자동화가 이 마지막 구간을 다루지 못하면 매일 실행돼도 업무를 바꾸지 못하는 알림 봇에 머뭅니다.</p><p>이 문제를 줄이는 방법은 각 크론에 **현장 배치 카드(forward deployment card)**를 붙이는 것입니다. 카드는 멋진 에이전트 설계 문서가 아니라, 자동화가 어떤 업무 환경에 들어가 무엇을 읽고 어디까지 행동하며 무엇으로 완료를 증명할지를 한눈에 보여주는 운영 계약입니다.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-yaml data-lang=yaml><span style=display:flex><span><span style=color:#f92672>forward_deployment_card</span>:
-</span></span><span style=display:flex><span>  <span style=color:#f92672>business_goal</span>: <span style=color:#e6db74>&#34;의사결정에 필요한 신규 AI 신호를 매일 선별&#34;</span>
-</span></span><span style=display:flex><span>  <span style=color:#f92672>inputs</span>:
-</span></span><span style=display:flex><span>    - <span style=color:#ae81ff>approved trend sources</span>
-</span></span><span style=display:flex><span>    - <span style=color:#ae81ff>recent dedupe history</span>
-</span></span><span style=display:flex><span>  <span style=color:#f92672>allowed_actions</span>:
-</span></span><span style=display:flex><span>    - <span style=color:#ae81ff>read sources</span>
-</span></span><span style=display:flex><span>    - <span style=color:#ae81ff>write local report artifacts</span>
-</span></span><span style=display:flex><span>  <span style=color:#f92672>prohibited_actions</span>:
-</span></span><span style=display:flex><span>    - <span style=color:#ae81ff>unapproved external publishing</span>
-</span></span><span style=display:flex><span>    - <span style=color:#ae81ff>destructive system changes</span>
-</span></span><span style=display:flex><span>  <span style=color:#f92672>completion_evidence</span>:
-</span></span><span style=display:flex><span>    - <span style=color:#ae81ff>source links verified</span>
-</span></span><span style=display:flex><span>    - <span style=color:#ae81ff>duplicate check passed</span>
-</span></span><span style=display:flex><span>    - <span style=color:#ae81ff>output format validated</span>
-</span></span><span style=display:flex><span>  <span style=color:#f92672>fallback</span>:
-</span></span><span style=display:flex><span>    - <span style=color:#ae81ff>use recent local cache when channel history is unavailable</span>
-</span></span><span style=display:flex><span>  <span style=color:#f92672>escalation</span>:
-</span></span><span style=display:flex><span>    - <span style=color:#ae81ff>report one blocker and one next action</span>
-</span></span></code></pre></div><h2 id=모델-지시문보다-업무-경계를-먼저-적기>모델 지시문보다 업무 경계를 먼저 적기<a hidden class=anchor aria-hidden=true href=#모델-지시문보다-업무-경계를-먼저-적기>#</a></h2><p>자동화 품질은 프롬프트 문장만 다듬는다고 안정되지 않습니다. 입력 출처가 불명확하면 오래된 기사를 새 소식으로 오인할 수 있고, 허용 행동이 모호하면 보고만 해야 할 작업이 외부 게시로 이어질 수 있습니다. 완료 증거가 없으면 파일을 작성했지만 빌드되지 않았거나, 빌드됐지만 실제 공개 페이지에 반영되지 않은 상태를 성공으로 착각하게 됩니다.</p><p>따라서 카드는 최소 여섯 가지를 포함해야 합니다. 첫째는 사업 목적, 둘째는 허용된 입력, 셋째는 행동 범위, 넷째는 금지된 부작용, 다섯째는 완료 증거, 여섯째는 실패 시 fallback과 중단 조건입니다. 특히 “작성”과 “배포”, “보고”와 “실행”을 서로 다른 권한으로 분리하면 unattended cron의 위험을 크게 낮출 수 있습니다.</p><h2 id=실행-결과를-증거-묶음으로-남기기>실행 결과를 증거 묶음으로 남기기<a hidden class=anchor aria-hidden=true href=#실행-결과를-증거-묶음으로-남기기>#</a></h2><p>Hermes/리오는 단순히 최종 문장을 만드는 역할보다 <strong>실행 결과를 검증 가능한 묶음으로 만드는 역할</strong>에서 더 큰 가치를 냅니다. 블로그 크론이라면 원문 출처, 생성된 마크다운, 빌드 성공, 새 HTML 존재 여부, 공개 문구 점검, 저장소 반영 상태가 증거가 됩니다. 트렌드 크론이라면 게시 시각, canonical URL, 핵심 수치, 중복 기준, 최신 캐시 반영 여부가 증거가 됩니다.</p><p>여기서 중요한 원칙은 모든 도구 로그를 공개하는 것이 아닙니다. 내부에는 충분한 검증 흔적을 남기되, 사용자에게는 필요한 결과와 실패 원인만 전달해야 합니다. 로컬 환경 정보나 운영 식별자가 공개 글에 섞이지 않도록 최종 산출물만 별도로 검사하는 단계도 카드에 포함하는 편이 좋습니다.</p><p>기업 AI가 데모에서 현장 배치로 이동하듯, 개인 자동화도 프롬프트에서 운영 계약으로 이동해야 합니다. 현장 배치 카드를 붙이면 Hermes/리오 크론은 “무언가를 생성하는 작업”을 넘어 <strong>업무 경계 안에서 실행하고, 확인하고, 복구할 수 있는 작은 운영 시스템</strong>이 됩니다.</p></div><footer class=post-footer><ul class=post-tags><li><a href=https://kwbaek.github.io/tags/hermes/>Hermes</a></li><li><a href=https://kwbaek.github.io/tags/%EB%A6%AC%EC%98%A4/>리오</a></li><li><a href=https://kwbaek.github.io/tags/cron/>Cron</a></li><li><a href=https://kwbaek.github.io/tags/ai-automation/>AI Automation</a></li><li><a href=https://kwbaek.github.io/tags/forward-deployment/>Forward Deployment</a></li><li><a href=https://kwbaek.github.io/tags/workflow/>Workflow</a></li><li><a href=https://kwbaek.github.io/tags/verification/>Verification</a></li></ul></footer><script src=https://utteranc.es/client.js repo=kwbaek/blog-comments issue-term=pathname theme=github-light crossorigin=anonymous async></script></article></main><footer class=footer><span>&copy; 2026 <a href=https://kwbaek.github.io/>Kyungwook's Devlog</a></span> ·
-<span>Powered by
-<a href=https://gohugo.io/ rel="noopener noreferrer" target=_blank>Hugo</a> &
-<a href=https://github.com/adityatelange/hugo-PaperMod/ rel=noopener target=_blank>PaperMod</a></span></footer><a href=#top aria-label="go to top" title="Go to Top (Alt + G)" class=top-link id=top-link accesskey=g><svg viewBox="0 0 12 6" fill="currentColor"><path d="M12 6H0l6-6z"/></svg>
-</a><script>let menu=document.getElementById("menu");if(menu){const e=localStorage.getItem("menu-scroll-position");e&&(menu.scrollLeft=parseInt(e,10)),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)}}document.querySelectorAll('a[href^="#"]').forEach(e=>{e.addEventListener("click",function(e){e.preventDefault();var t=this.getAttribute("href").substr(1);window.matchMedia("(prefers-reduced-motion: reduce)").matches?document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView({behavior:"smooth"}),t==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${t}`)})})</script><script>var mybutton=document.getElementById("top-link");window.onscroll=function(){document.body.scrollTop>800||document.documentElement.scrollTop>800?(mybutton.style.visibility="visible",mybutton.style.opacity="1"):(mybutton.style.visibility="hidden",mybutton.style.opacity="0")}</script><script>document.getElementById("theme-toggle").addEventListener("click",()=>{const e=document.querySelector("html");e.dataset.theme==="dark"?(e.dataset.theme="light",localStorage.setItem("pref-theme","light")):(e.dataset.theme="dark",localStorage.setItem("pref-theme","dark"))})</script></body></html>
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Hermes/리오 팁: AI 크론에 현장 배치 카드를 추가하자 | Kyungwook&#39;s Devlog</title>
+<meta name="keywords" content="Hermes, 리오, Cron, AI Automation, Forward Deployment, Workflow, Verification">
+<meta name="description" content="Hermes/리오로 AI 트렌드나 업무 자동화 크론을 만들 때 가장 흔한 실수는 “정보를 잘 모아 요약하면 일이 끝난다”고 생각하는 것입니다. 실제 현업에서는 좋은 요약 뒤에 데이터 연결, 담당자 확인, 시스템 입력, 예외처리, 결과 검증이 이어집니다. 자동화가 이 마지막 구간을 다루지 못하면 매일 실행돼도 업무를 바꾸지 못하는 알림 봇에 머뭅니다.
+이 문제를 줄이는 방법은 각 크론에 **현장 배치 카드(forward deployment card)**를 붙이는 것입니다. 카드는 멋진 에이전트 설계 문서가 아니라, 자동화가 어떤 업무 환경에 들어가 무엇을 읽고 어디까지 행동하며 무엇으로 완료를 증명할지를 한눈에 보여주는 운영 계약입니다.">
+<meta name="author" content="">
+<link rel="canonical" href="https://kwbaek.github.io/posts/2026-07-12-hermes-rio-add-forward-deployment-cards-to-ai-crons/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.da3211e5ef867bf2b75fd5a6515cfed7195c011e8ab735694e203810a827097b.css" integrity="sha256-2jIR5e&#43;Ge/K3X9WmUVz&#43;1xlcAR6KtzVpTiA4EKgnCXs=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://kwbaek.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://kwbaek.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://kwbaek.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://kwbaek.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://kwbaek.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://kwbaek.github.io/posts/2026-07-12-hermes-rio-add-forward-deployment-cards-to-ai-crons/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="https://kwbaek.github.io/posts/2026-07-12-hermes-rio-add-forward-deployment-cards-to-ai-crons/">
+  <meta property="og:site_name" content="Kyungwook&#39;s Devlog">
+  <meta property="og:title" content="Hermes/리오 팁: AI 크론에 현장 배치 카드를 추가하자">
+  <meta property="og:description" content="Hermes/리오로 AI 트렌드나 업무 자동화 크론을 만들 때 가장 흔한 실수는 “정보를 잘 모아 요약하면 일이 끝난다”고 생각하는 것입니다. 실제 현업에서는 좋은 요약 뒤에 데이터 연결, 담당자 확인, 시스템 입력, 예외처리, 결과 검증이 이어집니다. 자동화가 이 마지막 구간을 다루지 못하면 매일 실행돼도 업무를 바꾸지 못하는 알림 봇에 머뭅니다.
+이 문제를 줄이는 방법은 각 크론에 **현장 배치 카드(forward deployment card)**를 붙이는 것입니다. 카드는 멋진 에이전트 설계 문서가 아니라, 자동화가 어떤 업무 환경에 들어가 무엇을 읽고 어디까지 행동하며 무엇으로 완료를 증명할지를 한눈에 보여주는 운영 계약입니다.">
+  <meta property="og:locale" content="ko-kr">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2026-07-12T21:00:00+09:00">
+    <meta property="article:modified_time" content="2026-07-12T21:00:00+09:00">
+    <meta property="article:tag" content="Hermes">
+    <meta property="article:tag" content="리오">
+    <meta property="article:tag" content="Cron">
+    <meta property="article:tag" content="AI Automation">
+    <meta property="article:tag" content="Forward Deployment">
+    <meta property="article:tag" content="Workflow">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hermes/리오 팁: AI 크론에 현장 배치 카드를 추가하자">
+<meta name="twitter:description" content="Hermes/리오로 AI 트렌드나 업무 자동화 크론을 만들 때 가장 흔한 실수는 “정보를 잘 모아 요약하면 일이 끝난다”고 생각하는 것입니다. 실제 현업에서는 좋은 요약 뒤에 데이터 연결, 담당자 확인, 시스템 입력, 예외처리, 결과 검증이 이어집니다. 자동화가 이 마지막 구간을 다루지 못하면 매일 실행돼도 업무를 바꾸지 못하는 알림 봇에 머뭅니다.
+이 문제를 줄이는 방법은 각 크론에 **현장 배치 카드(forward deployment card)**를 붙이는 것입니다. 카드는 멋진 에이전트 설계 문서가 아니라, 자동화가 어떤 업무 환경에 들어가 무엇을 읽고 어디까지 행동하며 무엇으로 완료를 증명할지를 한눈에 보여주는 운영 계약입니다.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://kwbaek.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Hermes/리오 팁: AI 크론에 현장 배치 카드를 추가하자",
+      "item": "https://kwbaek.github.io/posts/2026-07-12-hermes-rio-add-forward-deployment-cards-to-ai-crons/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Hermes/리오 팁: AI 크론에 현장 배치 카드를 추가하자",
+  "name": "Hermes\/리오 팁: AI 크론에 현장 배치 카드를 추가하자",
+  "description": "Hermes/리오로 AI 트렌드나 업무 자동화 크론을 만들 때 가장 흔한 실수는 “정보를 잘 모아 요약하면 일이 끝난다”고 생각하는 것입니다. 실제 현업에서는 좋은 요약 뒤에 데이터 연결, 담당자 확인, 시스템 입력, 예외처리, 결과 검증이 이어집니다. 자동화가 이 마지막 구간을 다루지 못하면 매일 실행돼도 업무를 바꾸지 못하는 알림 봇에 머뭅니다.\n이 문제를 줄이는 방법은 각 크론에 **현장 배치 카드(forward deployment card)**를 붙이는 것입니다. 카드는 멋진 에이전트 설계 문서가 아니라, 자동화가 어떤 업무 환경에 들어가 무엇을 읽고 어디까지 행동하며 무엇으로 완료를 증명할지를 한눈에 보여주는 운영 계약입니다.\n",
+  "keywords": [
+    "Hermes", "리오", "Cron", "AI Automation", "Forward Deployment", "Workflow", "Verification"
+  ],
+  "articleBody": "Hermes/리오로 AI 트렌드나 업무 자동화 크론을 만들 때 가장 흔한 실수는 “정보를 잘 모아 요약하면 일이 끝난다”고 생각하는 것입니다. 실제 현업에서는 좋은 요약 뒤에 데이터 연결, 담당자 확인, 시스템 입력, 예외처리, 결과 검증이 이어집니다. 자동화가 이 마지막 구간을 다루지 못하면 매일 실행돼도 업무를 바꾸지 못하는 알림 봇에 머뭅니다.\n이 문제를 줄이는 방법은 각 크론에 **현장 배치 카드(forward deployment card)**를 붙이는 것입니다. 카드는 멋진 에이전트 설계 문서가 아니라, 자동화가 어떤 업무 환경에 들어가 무엇을 읽고 어디까지 행동하며 무엇으로 완료를 증명할지를 한눈에 보여주는 운영 계약입니다.\nforward_deployment_card: business_goal: \"의사결정에 필요한 신규 AI 신호를 매일 선별\" inputs: - approved trend sources - recent dedupe history allowed_actions: - read sources - write local report artifacts prohibited_actions: - unapproved external publishing - destructive system changes completion_evidence: - source links verified - duplicate check passed - output format validated fallback: - use recent local cache when channel history is unavailable escalation: - report one blocker and one next action 모델 지시문보다 업무 경계를 먼저 적기 자동화 품질은 프롬프트 문장만 다듬는다고 안정되지 않습니다. 입력 출처가 불명확하면 오래된 기사를 새 소식으로 오인할 수 있고, 허용 행동이 모호하면 보고만 해야 할 작업이 외부 게시로 이어질 수 있습니다. 완료 증거가 없으면 파일을 작성했지만 빌드되지 않았거나, 빌드됐지만 실제 공개 페이지에 반영되지 않은 상태를 성공으로 착각하게 됩니다.\n따라서 카드는 최소 여섯 가지를 포함해야 합니다. 첫째는 사업 목적, 둘째는 허용된 입력, 셋째는 행동 범위, 넷째는 금지된 부작용, 다섯째는 완료 증거, 여섯째는 실패 시 fallback과 중단 조건입니다. 특히 “작성”과 “배포”, “보고”와 “실행”을 서로 다른 권한으로 분리하면 unattended cron의 위험을 크게 낮출 수 있습니다.\n실행 결과를 증거 묶음으로 남기기 Hermes/리오는 단순히 최종 문장을 만드는 역할보다 실행 결과를 검증 가능한 묶음으로 만드는 역할에서 더 큰 가치를 냅니다. 블로그 크론이라면 원문 출처, 생성된 마크다운, 빌드 성공, 새 HTML 존재 여부, 공개 문구 점검, 저장소 반영 상태가 증거가 됩니다. 트렌드 크론이라면 게시 시각, canonical URL, 핵심 수치, 중복 기준, 최신 캐시 반영 여부가 증거가 됩니다.\n여기서 중요한 원칙은 모든 도구 로그를 공개하는 것이 아닙니다. 내부에는 충분한 검증 흔적을 남기되, 사용자에게는 필요한 결과와 실패 원인만 전달해야 합니다. 로컬 환경 정보나 운영 식별자가 공개 글에 섞이지 않도록 최종 산출물만 별도로 검사하는 단계도 카드에 포함하는 편이 좋습니다.\n기업 AI가 데모에서 현장 배치로 이동하듯, 개인 자동화도 프롬프트에서 운영 계약으로 이동해야 합니다. 현장 배치 카드를 붙이면 Hermes/리오 크론은 “무언가를 생성하는 작업”을 넘어 업무 경계 안에서 실행하고, 확인하고, 복구할 수 있는 작은 운영 시스템이 됩니다.\n",
+  "wordCount" : "380",
+  "inLanguage": "en",
+  "datePublished": "2026-07-12T21:00:00+09:00",
+  "dateModified": "2026-07-12T21:00:00+09:00",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://kwbaek.github.io/posts/2026-07-12-hermes-rio-add-forward-deployment-cards-to-ai-crons/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Kyungwook's Devlog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://kwbaek.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://kwbaek.github.io/" accesskey="h" title="Kyungwook&#39;s Devlog (Alt + H)">Kyungwook&#39;s Devlog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://kwbaek.github.io/categories/" title="categories">
+                    <span>categories</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kwbaek.github.io/tags/" title="tags">
+                    <span>tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kwbaek.github.io/" title="Kyungwook&#39;s Devlog">
+                    <span>Kyungwook&#39;s Devlog</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      Hermes/리오 팁: AI 크론에 현장 배치 카드를 추가하자
+    </h1>
+    <div class="post-meta"><span title='2026-07-12 21:00:00 +0900 KST'>July 12, 2026</span>
+
+</div>
+  </header> 
+  <div class="post-content"><p>Hermes/리오로 AI 트렌드나 업무 자동화 크론을 만들 때 가장 흔한 실수는 “정보를 잘 모아 요약하면 일이 끝난다”고 생각하는 것입니다. 실제 현업에서는 좋은 요약 뒤에 데이터 연결, 담당자 확인, 시스템 입력, 예외처리, 결과 검증이 이어집니다. 자동화가 이 마지막 구간을 다루지 못하면 매일 실행돼도 업무를 바꾸지 못하는 알림 봇에 머뭅니다.</p>
+<p>이 문제를 줄이는 방법은 각 크론에 **현장 배치 카드(forward deployment card)**를 붙이는 것입니다. 카드는 멋진 에이전트 설계 문서가 아니라, 자동화가 어떤 업무 환경에 들어가 무엇을 읽고 어디까지 행동하며 무엇으로 완료를 증명할지를 한눈에 보여주는 운영 계약입니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">forward_deployment_card</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">business_goal</span>: <span style="color:#e6db74">&#34;의사결정에 필요한 신규 AI 신호를 매일 선별&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">inputs</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#ae81ff">approved trend sources</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#ae81ff">recent dedupe history</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">allowed_actions</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#ae81ff">read sources</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#ae81ff">write local report artifacts</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">prohibited_actions</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#ae81ff">unapproved external publishing</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#ae81ff">destructive system changes</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">completion_evidence</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#ae81ff">source links verified</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#ae81ff">duplicate check passed</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#ae81ff">output format validated</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">fallback</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#ae81ff">use recent local cache when channel history is unavailable</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">escalation</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#ae81ff">report one blocker and one next action</span>
+</span></span></code></pre></div><h2 id="모델-지시문보다-업무-경계를-먼저-적기">모델 지시문보다 업무 경계를 먼저 적기<a hidden class="anchor" aria-hidden="true" href="#모델-지시문보다-업무-경계를-먼저-적기">#</a></h2>
+<p>자동화 품질은 프롬프트 문장만 다듬는다고 안정되지 않습니다. 입력 출처가 불명확하면 오래된 기사를 새 소식으로 오인할 수 있고, 허용 행동이 모호하면 보고만 해야 할 작업이 외부 게시로 이어질 수 있습니다. 완료 증거가 없으면 파일을 작성했지만 빌드되지 않았거나, 빌드됐지만 실제 공개 페이지에 반영되지 않은 상태를 성공으로 착각하게 됩니다.</p>
+<p>따라서 카드는 최소 여섯 가지를 포함해야 합니다. 첫째는 사업 목적, 둘째는 허용된 입력, 셋째는 행동 범위, 넷째는 금지된 부작용, 다섯째는 완료 증거, 여섯째는 실패 시 fallback과 중단 조건입니다. 특히 “작성”과 “배포”, “보고”와 “실행”을 서로 다른 권한으로 분리하면 unattended cron의 위험을 크게 낮출 수 있습니다.</p>
+<h2 id="실행-결과를-증거-묶음으로-남기기">실행 결과를 증거 묶음으로 남기기<a hidden class="anchor" aria-hidden="true" href="#실행-결과를-증거-묶음으로-남기기">#</a></h2>
+<p>Hermes/리오는 단순히 최종 문장을 만드는 역할보다 <strong>실행 결과를 검증 가능한 묶음으로 만드는 역할</strong>에서 더 큰 가치를 냅니다. 블로그 크론이라면 원문 출처, 생성된 마크다운, 빌드 성공, 새 HTML 존재 여부, 공개 문구 점검, 저장소 반영 상태가 증거가 됩니다. 트렌드 크론이라면 게시 시각, canonical URL, 핵심 수치, 중복 기준, 최신 캐시 반영 여부가 증거가 됩니다.</p>
+<p>여기서 중요한 원칙은 모든 도구 로그를 공개하는 것이 아닙니다. 내부에는 충분한 검증 흔적을 남기되, 사용자에게는 필요한 결과와 실패 원인만 전달해야 합니다. 로컬 환경 정보나 운영 식별자가 공개 글에 섞이지 않도록 최종 산출물만 별도로 검사하는 단계도 카드에 포함하는 편이 좋습니다.</p>
+<p>기업 AI가 데모에서 현장 배치로 이동하듯, 개인 자동화도 프롬프트에서 운영 계약으로 이동해야 합니다. 현장 배치 카드를 붙이면 Hermes/리오 크론은 “무언가를 생성하는 작업”을 넘어 <strong>업무 경계 안에서 실행하고, 확인하고, 복구할 수 있는 작은 운영 시스템</strong>이 됩니다.</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://kwbaek.github.io/tags/hermes/">Hermes</a></li>
+      <li><a href="https://kwbaek.github.io/tags/%EB%A6%AC%EC%98%A4/">리오</a></li>
+      <li><a href="https://kwbaek.github.io/tags/cron/">Cron</a></li>
+      <li><a href="https://kwbaek.github.io/tags/ai-automation/">AI Automation</a></li>
+      <li><a href="https://kwbaek.github.io/tags/forward-deployment/">Forward Deployment</a></li>
+      <li><a href="https://kwbaek.github.io/tags/workflow/">Workflow</a></li>
+      <li><a href="https://kwbaek.github.io/tags/verification/">Verification</a></li>
+    </ul>
+  </footer><script src="https://utteranc.es/client.js"
+        repo="kwbaek/blog-comments"
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://kwbaek.github.io/">Kyungwook&#39;s Devlog</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

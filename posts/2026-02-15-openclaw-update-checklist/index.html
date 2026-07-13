@@ -1,4 +1,13 @@
-<!doctype html><html lang=en dir=auto data-theme=auto><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=robots content="index, follow"><title>OpenClaw 업데이트 운영 체크리스트 (2026.2 버전 기준) | Kyungwook's Devlog</title><meta name=keywords content="OpenClaw,업데이트,운영,체크리스트,안정성"><meta name=description content="OpenClaw는 빠르게 진화하는 AI 에이전트 플랫폼입니다. 2주에 한 번꼴로 새 기능과 버그 수정이 나오는데, 업데이트 후 시스템이 제대로 동작하는지 확인하는 운영 체크리스트가 필요합니다.
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>OpenClaw 업데이트 운영 체크리스트 (2026.2 버전 기준) | Kyungwook&#39;s Devlog</title>
+<meta name="keywords" content="OpenClaw, 업데이트, 운영, 체크리스트, 안정성">
+<meta name="description" content="OpenClaw는 빠르게 진화하는 AI 에이전트 플랫폼입니다. 2주에 한 번꼴로 새 기능과 버그 수정이 나오는데, 업데이트 후 시스템이 제대로 동작하는지 확인하는 운영 체크리스트가 필요합니다.
 이번 글에서는 2026.2.13 업데이트를 기준으로 실전 검증 루틴을 정리해봤습니다.
 1단계: 업데이트 전 준비
 현재 버전 확인
@@ -16,11 +25,90 @@ git pull
 npm install
 openclaw update
 3단계: 핵심 3종 체크 ⭐
-업데이트 후 반드시 실행해야 하는 3가지 명령:"><meta name=author content><link rel=canonical href=https://kwbaek.github.io/posts/2026-02-15-openclaw-update-checklist/><link crossorigin=anonymous href=/assets/css/stylesheet.da3211e5ef867bf2b75fd5a6515cfed7195c011e8ab735694e203810a827097b.css integrity="sha256-2jIR5e+Ge/K3X9WmUVz+1xlcAR6KtzVpTiA4EKgnCXs=" rel="preload stylesheet" as=style><link rel=icon href=https://kwbaek.github.io/favicon.ico><link rel=icon type=image/png sizes=16x16 href=https://kwbaek.github.io/favicon-16x16.png><link rel=icon type=image/png sizes=32x32 href=https://kwbaek.github.io/favicon-32x32.png><link rel=apple-touch-icon href=https://kwbaek.github.io/apple-touch-icon.png><link rel=mask-icon href=https://kwbaek.github.io/safari-pinned-tab.svg><meta name=theme-color content="#2e2e33"><meta name=msapplication-TileColor content="#2e2e33"><link rel=alternate hreflang=en href=https://kwbaek.github.io/posts/2026-02-15-openclaw-update-checklist/><noscript><style>#theme-toggle,.top-link{display:none}</style><style>@media(prefers-color-scheme:dark){:root{--theme:rgb(29, 30, 32);--entry:rgb(46, 46, 51);--primary:rgb(218, 218, 219);--secondary:rgb(155, 156, 157);--tertiary:rgb(65, 66, 68);--content:rgb(196, 196, 197);--code-block-bg:rgb(46, 46, 51);--code-bg:rgb(55, 56, 62);--border:rgb(51, 51, 51);color-scheme:dark}.list{background:var(--theme)}.toc{background:var(--entry)}}@media(prefers-color-scheme:light){.list::-webkit-scrollbar-thumb{border-color:var(--code-bg)}}</style></noscript><script>localStorage.getItem("pref-theme")==="dark"?document.querySelector("html").dataset.theme="dark":localStorage.getItem("pref-theme")==="light"?document.querySelector("html").dataset.theme="light":window.matchMedia("(prefers-color-scheme: dark)").matches?document.querySelector("html").dataset.theme="dark":document.querySelector("html").dataset.theme="light"</script><meta property="og:url" content="https://kwbaek.github.io/posts/2026-02-15-openclaw-update-checklist/"><meta property="og:site_name" content="Kyungwook's Devlog"><meta property="og:title" content="OpenClaw 업데이트 운영 체크리스트 (2026.2 버전 기준)"><meta property="og:description" content="OpenClaw는 빠르게 진화하는 AI 에이전트 플랫폼입니다. 2주에 한 번꼴로 새 기능과 버그 수정이 나오는데, 업데이트 후 시스템이 제대로 동작하는지 확인하는 운영 체크리스트가 필요합니다.
+업데이트 후 반드시 실행해야 하는 3가지 명령:">
+<meta name="author" content="">
+<link rel="canonical" href="https://kwbaek.github.io/posts/2026-02-15-openclaw-update-checklist/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.da3211e5ef867bf2b75fd5a6515cfed7195c011e8ab735694e203810a827097b.css" integrity="sha256-2jIR5e&#43;Ge/K3X9WmUVz&#43;1xlcAR6KtzVpTiA4EKgnCXs=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://kwbaek.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://kwbaek.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://kwbaek.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://kwbaek.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://kwbaek.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://kwbaek.github.io/posts/2026-02-15-openclaw-update-checklist/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="https://kwbaek.github.io/posts/2026-02-15-openclaw-update-checklist/">
+  <meta property="og:site_name" content="Kyungwook&#39;s Devlog">
+  <meta property="og:title" content="OpenClaw 업데이트 운영 체크리스트 (2026.2 버전 기준)">
+  <meta property="og:description" content="OpenClaw는 빠르게 진화하는 AI 에이전트 플랫폼입니다. 2주에 한 번꼴로 새 기능과 버그 수정이 나오는데, 업데이트 후 시스템이 제대로 동작하는지 확인하는 운영 체크리스트가 필요합니다.
 이번 글에서는 2026.2.13 업데이트를 기준으로 실전 검증 루틴을 정리해봤습니다.
 1단계: 업데이트 전 준비 현재 버전 확인 openclaw --version 예: 2026.2.9
 백업 (선택) 중요한 설정이 있다면 백업:
-cp ~/.openclaw/openclaw.json ~/.openclaw/openclaw.json.backup 2단계: 업데이트 실행 npm 글로벌 설치 (가장 흔한 방식) npm install -g openclaw@latest 소스 설치 (개발자) cd ~/openclaw git pull npm install openclaw update 3단계: 핵심 3종 체크 ⭐ 업데이트 후 반드시 실행해야 하는 3가지 명령:"><meta property="og:locale" content="ko-kr"><meta property="og:type" content="article"><meta property="article:section" content="posts"><meta property="article:published_time" content="2026-02-15T21:00:00+09:00"><meta property="article:modified_time" content="2026-02-15T21:00:00+09:00"><meta property="article:tag" content="OpenClaw"><meta property="article:tag" content="업데이트"><meta property="article:tag" content="운영"><meta property="article:tag" content="체크리스트"><meta property="article:tag" content="안정성"><meta name=twitter:card content="summary"><meta name=twitter:title content="OpenClaw 업데이트 운영 체크리스트 (2026.2 버전 기준)"><meta name=twitter:description content="OpenClaw는 빠르게 진화하는 AI 에이전트 플랫폼입니다. 2주에 한 번꼴로 새 기능과 버그 수정이 나오는데, 업데이트 후 시스템이 제대로 동작하는지 확인하는 운영 체크리스트가 필요합니다.
+cp ~/.openclaw/openclaw.json ~/.openclaw/openclaw.json.backup 2단계: 업데이트 실행 npm 글로벌 설치 (가장 흔한 방식) npm install -g openclaw@latest 소스 설치 (개발자) cd ~/openclaw git pull npm install openclaw update 3단계: 핵심 3종 체크 ⭐ 업데이트 후 반드시 실행해야 하는 3가지 명령:">
+  <meta property="og:locale" content="ko-kr">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2026-02-15T21:00:00+09:00">
+    <meta property="article:modified_time" content="2026-02-15T21:00:00+09:00">
+    <meta property="article:tag" content="OpenClaw">
+    <meta property="article:tag" content="업데이트">
+    <meta property="article:tag" content="운영">
+    <meta property="article:tag" content="체크리스트">
+    <meta property="article:tag" content="안정성">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="OpenClaw 업데이트 운영 체크리스트 (2026.2 버전 기준)">
+<meta name="twitter:description" content="OpenClaw는 빠르게 진화하는 AI 에이전트 플랫폼입니다. 2주에 한 번꼴로 새 기능과 버그 수정이 나오는데, 업데이트 후 시스템이 제대로 동작하는지 확인하는 운영 체크리스트가 필요합니다.
 이번 글에서는 2026.2.13 업데이트를 기준으로 실전 검증 루틴을 정리해봤습니다.
 1단계: 업데이트 전 준비
 현재 버전 확인
@@ -38,25 +126,180 @@ git pull
 npm install
 openclaw update
 3단계: 핵심 3종 체크 ⭐
-업데이트 후 반드시 실행해야 하는 3가지 명령:"><script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Posts","item":"https://kwbaek.github.io/posts/"},{"@type":"ListItem","position":2,"name":"OpenClaw 업데이트 운영 체크리스트 (2026.2 버전 기준)","item":"https://kwbaek.github.io/posts/2026-02-15-openclaw-update-checklist/"}]}</script><script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"OpenClaw 업데이트 운영 체크리스트 (2026.2 버전 기준)","name":"OpenClaw 업데이트 운영 체크리스트 (2026.2 버전 기준)","description":"OpenClaw는 빠르게 진화하는 AI 에이전트 플랫폼입니다. 2주에 한 번꼴로 새 기능과 버그 수정이 나오는데, 업데이트 후 시스템이 제대로 동작하는지 확인하는 운영 체크리스트가 필요합니다.\n이번 글에서는 2026.2.13 업데이트를 기준으로 실전 검증 루틴을 정리해봤습니다.\n1단계: 업데이트 전 준비 현재 버전 확인 openclaw --version 예: 2026.2.9\n백업 (선택) 중요한 설정이 있다면 백업:\ncp ~/.openclaw/openclaw.json ~/.openclaw/openclaw.json.backup 2단계: 업데이트 실행 npm 글로벌 설치 (가장 흔한 방식) npm install -g openclaw@latest 소스 설치 (개발자) cd ~/openclaw git pull npm install openclaw update 3단계: 핵심 3종 체크 ⭐ 업데이트 후 반드시 실행해야 하는 3가지 명령:\n","keywords":["OpenClaw","업데이트","운영","체크리스트","안정성"],"articleBody":"OpenClaw는 빠르게 진화하는 AI 에이전트 플랫폼입니다. 2주에 한 번꼴로 새 기능과 버그 수정이 나오는데, 업데이트 후 시스템이 제대로 동작하는지 확인하는 운영 체크리스트가 필요합니다.\n이번 글에서는 2026.2.13 업데이트를 기준으로 실전 검증 루틴을 정리해봤습니다.\n1단계: 업데이트 전 준비 현재 버전 확인 openclaw --version 예: 2026.2.9\n백업 (선택) 중요한 설정이 있다면 백업:\ncp ~/.openclaw/openclaw.json ~/.openclaw/openclaw.json.backup 2단계: 업데이트 실행 npm 글로벌 설치 (가장 흔한 방식) npm install -g openclaw@latest 소스 설치 (개발자) cd ~/openclaw git pull npm install openclaw update 3단계: 핵심 3종 체크 ⭐ 업데이트 후 반드시 실행해야 하는 3가지 명령:\n1) openclaw doctor 설정 파일 문제, 권한 이슈, 마이그레이션 필요 여부를 자동 진단합니다.\nopenclaw doctor 주요 체크 항목:\n✅ 설정 스키마 버전 호환성 ✅ 파일 권한 ✅ 필수 디렉토리 존재 여부 ✅ Deprecated 설정 사용 여부 예시 출력:\n✓ Config schema version: 2026.2 ⚠ Warning: channels.discord.dm.policy is deprecated Use channels.discord.dmPolicy instead → Run: openclaw doctor --fix 자동 수정:\nopenclaw doctor --fix 2) openclaw gateway restart 게이트웨이(백그라운드 서비스)를 재시작해서 새 코드를 로드합니다.\nopenclaw gateway restart 체크 포인트:\n재시작 시간이 10초 이상 걸리면 로그 확인 필요 기존 크론잡/활성 세션이 정상 복구되는지 확인 3) openclaw health (또는 openclaw status) 전체 시스템 상태를 종합 점검합니다.\nopenclaw status 주요 섹션:\nGateway Status: 실행 중 / PID / 포트 Channels: Discord/Telegram/WhatsApp 연결 상태 Models: 설정된 모델 프로바이더 Security Audit: 보안 경고 (있으면 빨간색) 예시 출력:\nGateway Status Status: running (pid 12345) RPC probe: ok Listening: 127.0.0.1:18789 Channels ✓ telegram (1 account) ✓ discord (default) Security Audit ⚠ CRITICAL: discord.groupPolicy=open → Risk: Prompt injection from strangers → Fix: Set groupPolicy to \"pairing\" or \"allowlist\" 보안 체크 (2026.2.13 기준) 최근 릴리즈에서 강화된 보안 항목:\n1) Hook 인증 강화 POST /hooks/agent가 이제 임의 sessionKey override를 기본 차단합니다.\nBreaking Change: 웹훅으로 특정 세션에 메시지 보내는 스크립트가 있다면 수정 필요.\n2) Discord DM/Group 정책 channels: discord: dmPolicy: pairing # open은 위험 groupPolicy: allowlist # open은 프롬프트 인젝션 위험 open은 왜 위험한가?\n아무나 DM/그룹 초대로 에이전트에게 명령 가능 악의적 프롬프트 인젝션 → 토큰 탈취, 파일 접근 등 권장 설정:\n개인 용도: pairing (명시적 페어링만 허용) 팀 용도: allowlist (허용된 서버/사용자만) 3) Plugin 허용 범위 plugins: allow: [] # 빈 배열 = 로컬 플러그인 로딩 차단 로컬에 extensions/ 폴더가 있다면 명시적으로 허용 목록 관리.\n크론잡 안정성 (2026.2.12~2.13 대폭 강화) 최근 릴리즈에서 크론 스케줄러 버그가 대거 수정되었습니다:\n✅ 중복 실행 방지 ✅ 재시작 후 중복 트리거 방지 ✅ 동시 트리거 경합 조건(race condition) 수정 체크 방법:\nopenclaw cron status 정상이면 Scheduler: running 표시.\n업데이트 후 테스트 1) 간단한 대화 테스트 openclaw chat \"안녕?\" 응답이 정상 오면 OK.\n2) 웹 검색 테스트 (Brave Search 설정 시) openclaw chat \"최신 AI 뉴스 검색해줘\" web_search 도구가 정상 작동하는지 확인.\n3) 크론잡 수동 실행 openclaw cron run 특정 크론잡을 수동 실행해서 에러 없는지 확인.\n문제 발생 시 대응 로그 확인 openclaw logs --follow 2026.2.13 신기능: --local-time 플래그로 로컬 타임존 표시\nopenclaw logs --local-time 롤백 (긴급) npm install -g openclaw@2026.2.9 openclaw gateway restart 설정 초기화 (최후 수단) mv ~/.openclaw/openclaw.json ~/.openclaw/openclaw.json.broken openclaw configure 자주 묻는 질문 (FAQ) Q: 업데이트 후 Discord 봇이 응답 안 해요 A: openclaw gateway restart 후 Discord 재연결까지 5~10초 걸릴 수 있습니다. openclaw status로 Discord 상태 확인.\nQ: 크론잡이 2번씩 실행돼요 A: 2026.2.12 이전 버전 버그입니다. 최신 버전으로 업데이트하면 해결.\nQ: doctor --fix 실행 후 설정이 사라졌어요 A: ~/.openclaw/openclaw.json.bak 백업 파일이 생성됩니다. 복원 후 수동 수정.\n결론: 3종 체크만 기억하세요 OpenClaw 업데이트 후 반드시:\nopenclaw doctor (문제 진단) openclaw gateway restart (코드 갱신) openclaw status (상태 확인) 이 3가지만 실행하면 95% 이상의 문제를 사전 발견할 수 있습니다.\n안정적인 AI 에이전트 운영, OpenClaw가 함께합니다. 🦁\n참고 링크:\nOpenClaw 공식 문서 GitHub Releases Discord 커뮤니티 ","wordCount":"586","inLanguage":"en","datePublished":"2026-02-15T21:00:00+09:00","dateModified":"2026-02-15T21:00:00+09:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://kwbaek.github.io/posts/2026-02-15-openclaw-update-checklist/"},"publisher":{"@type":"Organization","name":"Kyungwook's Devlog","logo":{"@type":"ImageObject","url":"https://kwbaek.github.io/favicon.ico"}}}</script></head><body id=top><header class=header><nav class=nav><div class=logo><a href=https://kwbaek.github.io/ accesskey=h title="Kyungwook's Devlog (Alt + H)">Kyungwook's Devlog</a><div class=logo-switches><button id=theme-toggle accesskey=t title="(Alt + T)" aria-label="Toggle theme">
-<svg id="moon" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
-<svg id="sun" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button></div></div><ul id=menu><li><a href=https://kwbaek.github.io/categories/ title=categories><span>categories</span></a></li><li><a href=https://kwbaek.github.io/tags/ title=tags><span>tags</span></a></li><li><a href=https://kwbaek.github.io/ title="Kyungwook's Devlog"><span>Kyungwook's Devlog</span>&nbsp;
-<svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><path d="M15 3h6v6"/><path d="M10 14 21 3"/></svg></a></li></ul></nav></header><main class=main><article class=post-single><header class=post-header><h1 class="post-title entry-hint-parent">OpenClaw 업데이트 운영 체크리스트 (2026.2 버전 기준)</h1><div class=post-meta><span title='2026-02-15 21:00:00 +0900 KST'>February 15, 2026</span></div></header><div class=post-content><p>OpenClaw는 빠르게 진화하는 AI 에이전트 플랫폼입니다. 2주에 한 번꼴로 새 기능과 버그 수정이 나오는데, 업데이트 후 시스템이 제대로 동작하는지 확인하는 <strong>운영 체크리스트</strong>가 필요합니다.</p><p>이번 글에서는 2026.2.13 업데이트를 기준으로 실전 검증 루틴을 정리해봤습니다.</p><h2 id=1단계-업데이트-전-준비>1단계: 업데이트 전 준비<a hidden class=anchor aria-hidden=true href=#1단계-업데이트-전-준비>#</a></h2><h3 id=현재-버전-확인>현재 버전 확인<a hidden class=anchor aria-hidden=true href=#현재-버전-확인>#</a></h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span>openclaw --version
-</span></span></code></pre></div><p>예: <code>2026.2.9</code></p><h3 id=백업-선택>백업 (선택)<a hidden class=anchor aria-hidden=true href=#백업-선택>#</a></h3><p>중요한 설정이 있다면 백업:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span>cp ~/.openclaw/openclaw.json ~/.openclaw/openclaw.json.backup
-</span></span></code></pre></div><h2 id=2단계-업데이트-실행>2단계: 업데이트 실행<a hidden class=anchor aria-hidden=true href=#2단계-업데이트-실행>#</a></h2><h3 id=npm-글로벌-설치-가장-흔한-방식>npm 글로벌 설치 (가장 흔한 방식)<a hidden class=anchor aria-hidden=true href=#npm-글로벌-설치-가장-흔한-방식>#</a></h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span>npm install -g openclaw@latest
-</span></span></code></pre></div><h3 id=소스-설치-개발자>소스 설치 (개발자)<a hidden class=anchor aria-hidden=true href=#소스-설치-개발자>#</a></h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span>cd ~/openclaw
-</span></span><span style=display:flex><span>git pull
-</span></span><span style=display:flex><span>npm install
-</span></span><span style=display:flex><span>openclaw update
-</span></span></code></pre></div><h2 id=3단계-핵심-3종-체크->3단계: 핵심 3종 체크 ⭐<a hidden class=anchor aria-hidden=true href=#3단계-핵심-3종-체크->#</a></h2><p>업데이트 후 반드시 실행해야 하는 3가지 명령:</p><h3 id=1-openclaw-doctor>1) <code>openclaw doctor</code><a hidden class=anchor aria-hidden=true href=#1-openclaw-doctor>#</a></h3><p>설정 파일 문제, 권한 이슈, 마이그레이션 필요 여부를 자동 진단합니다.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span>openclaw doctor
-</span></span></code></pre></div><p><strong>주요 체크 항목:</strong></p><ul><li>✅ 설정 스키마 버전 호환성</li><li>✅ 파일 권한</li><li>✅ 필수 디렉토리 존재 여부</li><li>✅ Deprecated 설정 사용 여부</li></ul><p><strong>예시 출력:</strong></p><pre tabindex=0><code>✓ Config schema version: 2026.2
+업데이트 후 반드시 실행해야 하는 3가지 명령:">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://kwbaek.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "OpenClaw 업데이트 운영 체크리스트 (2026.2 버전 기준)",
+      "item": "https://kwbaek.github.io/posts/2026-02-15-openclaw-update-checklist/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "OpenClaw 업데이트 운영 체크리스트 (2026.2 버전 기준)",
+  "name": "OpenClaw 업데이트 운영 체크리스트 (2026.2 버전 기준)",
+  "description": "OpenClaw는 빠르게 진화하는 AI 에이전트 플랫폼입니다. 2주에 한 번꼴로 새 기능과 버그 수정이 나오는데, 업데이트 후 시스템이 제대로 동작하는지 확인하는 운영 체크리스트가 필요합니다.\n이번 글에서는 2026.2.13 업데이트를 기준으로 실전 검증 루틴을 정리해봤습니다.\n1단계: 업데이트 전 준비 현재 버전 확인 openclaw --version 예: 2026.2.9\n백업 (선택) 중요한 설정이 있다면 백업:\ncp ~/.openclaw/openclaw.json ~/.openclaw/openclaw.json.backup 2단계: 업데이트 실행 npm 글로벌 설치 (가장 흔한 방식) npm install -g openclaw@latest 소스 설치 (개발자) cd ~/openclaw git pull npm install openclaw update 3단계: 핵심 3종 체크 ⭐ 업데이트 후 반드시 실행해야 하는 3가지 명령:\n",
+  "keywords": [
+    "OpenClaw", "업데이트", "운영", "체크리스트", "안정성"
+  ],
+  "articleBody": "OpenClaw는 빠르게 진화하는 AI 에이전트 플랫폼입니다. 2주에 한 번꼴로 새 기능과 버그 수정이 나오는데, 업데이트 후 시스템이 제대로 동작하는지 확인하는 운영 체크리스트가 필요합니다.\n이번 글에서는 2026.2.13 업데이트를 기준으로 실전 검증 루틴을 정리해봤습니다.\n1단계: 업데이트 전 준비 현재 버전 확인 openclaw --version 예: 2026.2.9\n백업 (선택) 중요한 설정이 있다면 백업:\ncp ~/.openclaw/openclaw.json ~/.openclaw/openclaw.json.backup 2단계: 업데이트 실행 npm 글로벌 설치 (가장 흔한 방식) npm install -g openclaw@latest 소스 설치 (개발자) cd ~/openclaw git pull npm install openclaw update 3단계: 핵심 3종 체크 ⭐ 업데이트 후 반드시 실행해야 하는 3가지 명령:\n1) openclaw doctor 설정 파일 문제, 권한 이슈, 마이그레이션 필요 여부를 자동 진단합니다.\nopenclaw doctor 주요 체크 항목:\n✅ 설정 스키마 버전 호환성 ✅ 파일 권한 ✅ 필수 디렉토리 존재 여부 ✅ Deprecated 설정 사용 여부 예시 출력:\n✓ Config schema version: 2026.2 ⚠ Warning: channels.discord.dm.policy is deprecated Use channels.discord.dmPolicy instead → Run: openclaw doctor --fix 자동 수정:\nopenclaw doctor --fix 2) openclaw gateway restart 게이트웨이(백그라운드 서비스)를 재시작해서 새 코드를 로드합니다.\nopenclaw gateway restart 체크 포인트:\n재시작 시간이 10초 이상 걸리면 로그 확인 필요 기존 크론잡/활성 세션이 정상 복구되는지 확인 3) openclaw health (또는 openclaw status) 전체 시스템 상태를 종합 점검합니다.\nopenclaw status 주요 섹션:\nGateway Status: 실행 중 / PID / 포트 Channels: Discord/Telegram/WhatsApp 연결 상태 Models: 설정된 모델 프로바이더 Security Audit: 보안 경고 (있으면 빨간색) 예시 출력:\nGateway Status Status: running (pid 12345) RPC probe: ok Listening: 127.0.0.1:18789 Channels ✓ telegram (1 account) ✓ discord (default) Security Audit ⚠ CRITICAL: discord.groupPolicy=open → Risk: Prompt injection from strangers → Fix: Set groupPolicy to \"pairing\" or \"allowlist\" 보안 체크 (2026.2.13 기준) 최근 릴리즈에서 강화된 보안 항목:\n1) Hook 인증 강화 POST /hooks/agent가 이제 임의 sessionKey override를 기본 차단합니다.\nBreaking Change: 웹훅으로 특정 세션에 메시지 보내는 스크립트가 있다면 수정 필요.\n2) Discord DM/Group 정책 channels: discord: dmPolicy: pairing # open은 위험 groupPolicy: allowlist # open은 프롬프트 인젝션 위험 open은 왜 위험한가?\n아무나 DM/그룹 초대로 에이전트에게 명령 가능 악의적 프롬프트 인젝션 → 토큰 탈취, 파일 접근 등 권장 설정:\n개인 용도: pairing (명시적 페어링만 허용) 팀 용도: allowlist (허용된 서버/사용자만) 3) Plugin 허용 범위 plugins: allow: [] # 빈 배열 = 로컬 플러그인 로딩 차단 로컬에 extensions/ 폴더가 있다면 명시적으로 허용 목록 관리.\n크론잡 안정성 (2026.2.12~2.13 대폭 강화) 최근 릴리즈에서 크론 스케줄러 버그가 대거 수정되었습니다:\n✅ 중복 실행 방지 ✅ 재시작 후 중복 트리거 방지 ✅ 동시 트리거 경합 조건(race condition) 수정 체크 방법:\nopenclaw cron status 정상이면 Scheduler: running 표시.\n업데이트 후 테스트 1) 간단한 대화 테스트 openclaw chat \"안녕?\" 응답이 정상 오면 OK.\n2) 웹 검색 테스트 (Brave Search 설정 시) openclaw chat \"최신 AI 뉴스 검색해줘\" web_search 도구가 정상 작동하는지 확인.\n3) 크론잡 수동 실행 openclaw cron run 특정 크론잡을 수동 실행해서 에러 없는지 확인.\n문제 발생 시 대응 로그 확인 openclaw logs --follow 2026.2.13 신기능: --local-time 플래그로 로컬 타임존 표시\nopenclaw logs --local-time 롤백 (긴급) npm install -g openclaw@2026.2.9 openclaw gateway restart 설정 초기화 (최후 수단) mv ~/.openclaw/openclaw.json ~/.openclaw/openclaw.json.broken openclaw configure 자주 묻는 질문 (FAQ) Q: 업데이트 후 Discord 봇이 응답 안 해요 A: openclaw gateway restart 후 Discord 재연결까지 5~10초 걸릴 수 있습니다. openclaw status로 Discord 상태 확인.\nQ: 크론잡이 2번씩 실행돼요 A: 2026.2.12 이전 버전 버그입니다. 최신 버전으로 업데이트하면 해결.\nQ: doctor --fix 실행 후 설정이 사라졌어요 A: ~/.openclaw/openclaw.json.bak 백업 파일이 생성됩니다. 복원 후 수동 수정.\n결론: 3종 체크만 기억하세요 OpenClaw 업데이트 후 반드시:\nopenclaw doctor (문제 진단) openclaw gateway restart (코드 갱신) openclaw status (상태 확인) 이 3가지만 실행하면 95% 이상의 문제를 사전 발견할 수 있습니다.\n안정적인 AI 에이전트 운영, OpenClaw가 함께합니다. 🦁\n참고 링크:\nOpenClaw 공식 문서 GitHub Releases Discord 커뮤니티 ",
+  "wordCount" : "586",
+  "inLanguage": "en",
+  "datePublished": "2026-02-15T21:00:00+09:00",
+  "dateModified": "2026-02-15T21:00:00+09:00",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://kwbaek.github.io/posts/2026-02-15-openclaw-update-checklist/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Kyungwook's Devlog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://kwbaek.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://kwbaek.github.io/" accesskey="h" title="Kyungwook&#39;s Devlog (Alt + H)">Kyungwook&#39;s Devlog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://kwbaek.github.io/categories/" title="categories">
+                    <span>categories</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kwbaek.github.io/tags/" title="tags">
+                    <span>tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kwbaek.github.io/" title="Kyungwook&#39;s Devlog">
+                    <span>Kyungwook&#39;s Devlog</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      OpenClaw 업데이트 운영 체크리스트 (2026.2 버전 기준)
+    </h1>
+    <div class="post-meta"><span title='2026-02-15 21:00:00 +0900 KST'>February 15, 2026</span>
+
+</div>
+  </header> 
+  <div class="post-content"><p>OpenClaw는 빠르게 진화하는 AI 에이전트 플랫폼입니다. 2주에 한 번꼴로 새 기능과 버그 수정이 나오는데, 업데이트 후 시스템이 제대로 동작하는지 확인하는 <strong>운영 체크리스트</strong>가 필요합니다.</p>
+<p>이번 글에서는 2026.2.13 업데이트를 기준으로 실전 검증 루틴을 정리해봤습니다.</p>
+<h2 id="1단계-업데이트-전-준비">1단계: 업데이트 전 준비<a hidden class="anchor" aria-hidden="true" href="#1단계-업데이트-전-준비">#</a></h2>
+<h3 id="현재-버전-확인">현재 버전 확인<a hidden class="anchor" aria-hidden="true" href="#현재-버전-확인">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>openclaw --version
+</span></span></code></pre></div><p>예: <code>2026.2.9</code></p>
+<h3 id="백업-선택">백업 (선택)<a hidden class="anchor" aria-hidden="true" href="#백업-선택">#</a></h3>
+<p>중요한 설정이 있다면 백업:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cp ~/.openclaw/openclaw.json ~/.openclaw/openclaw.json.backup
+</span></span></code></pre></div><h2 id="2단계-업데이트-실행">2단계: 업데이트 실행<a hidden class="anchor" aria-hidden="true" href="#2단계-업데이트-실행">#</a></h2>
+<h3 id="npm-글로벌-설치-가장-흔한-방식">npm 글로벌 설치 (가장 흔한 방식)<a hidden class="anchor" aria-hidden="true" href="#npm-글로벌-설치-가장-흔한-방식">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>npm install -g openclaw@latest
+</span></span></code></pre></div><h3 id="소스-설치-개발자">소스 설치 (개발자)<a hidden class="anchor" aria-hidden="true" href="#소스-설치-개발자">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cd ~/openclaw
+</span></span><span style="display:flex;"><span>git pull
+</span></span><span style="display:flex;"><span>npm install
+</span></span><span style="display:flex;"><span>openclaw update
+</span></span></code></pre></div><h2 id="3단계-핵심-3종-체크-">3단계: 핵심 3종 체크 ⭐<a hidden class="anchor" aria-hidden="true" href="#3단계-핵심-3종-체크-">#</a></h2>
+<p>업데이트 후 반드시 실행해야 하는 3가지 명령:</p>
+<h3 id="1-openclaw-doctor">1) <code>openclaw doctor</code><a hidden class="anchor" aria-hidden="true" href="#1-openclaw-doctor">#</a></h3>
+<p>설정 파일 문제, 권한 이슈, 마이그레이션 필요 여부를 자동 진단합니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>openclaw doctor
+</span></span></code></pre></div><p><strong>주요 체크 항목:</strong></p>
+<ul>
+<li>✅ 설정 스키마 버전 호환성</li>
+<li>✅ 파일 권한</li>
+<li>✅ 필수 디렉토리 존재 여부</li>
+<li>✅ Deprecated 설정 사용 여부</li>
+</ul>
+<p><strong>예시 출력:</strong></p>
+<pre tabindex="0"><code>✓ Config schema version: 2026.2
 ⚠ Warning: channels.discord.dm.policy is deprecated
   Use channels.discord.dmPolicy instead
 → Run: openclaw doctor --fix
-</code></pre><p><strong>자동 수정:</strong></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span>openclaw doctor --fix
-</span></span></code></pre></div><h3 id=2-openclaw-gateway-restart>2) <code>openclaw gateway restart</code><a hidden class=anchor aria-hidden=true href=#2-openclaw-gateway-restart>#</a></h3><p>게이트웨이(백그라운드 서비스)를 재시작해서 새 코드를 로드합니다.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span>openclaw gateway restart
-</span></span></code></pre></div><p><strong>체크 포인트:</strong></p><ul><li>재시작 시간이 10초 이상 걸리면 로그 확인 필요</li><li>기존 크론잡/활성 세션이 정상 복구되는지 확인</li></ul><h3 id=3-openclaw-health-또는-openclaw-status>3) <code>openclaw health</code> (또는 <code>openclaw status</code>)<a hidden class=anchor aria-hidden=true href=#3-openclaw-health-또는-openclaw-status>#</a></h3><p>전체 시스템 상태를 종합 점검합니다.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span>openclaw status
-</span></span></code></pre></div><p><strong>주요 섹션:</strong></p><ul><li><strong>Gateway Status</strong>: 실행 중 / PID / 포트</li><li><strong>Channels</strong>: Discord/Telegram/WhatsApp 연결 상태</li><li><strong>Models</strong>: 설정된 모델 프로바이더</li><li><strong>Security Audit</strong>: 보안 경고 (있으면 빨간색)</li></ul><p><strong>예시 출력:</strong></p><pre tabindex=0><code>Gateway Status
+</code></pre><p><strong>자동 수정:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>openclaw doctor --fix
+</span></span></code></pre></div><h3 id="2-openclaw-gateway-restart">2) <code>openclaw gateway restart</code><a hidden class="anchor" aria-hidden="true" href="#2-openclaw-gateway-restart">#</a></h3>
+<p>게이트웨이(백그라운드 서비스)를 재시작해서 새 코드를 로드합니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>openclaw gateway restart
+</span></span></code></pre></div><p><strong>체크 포인트:</strong></p>
+<ul>
+<li>재시작 시간이 10초 이상 걸리면 로그 확인 필요</li>
+<li>기존 크론잡/활성 세션이 정상 복구되는지 확인</li>
+</ul>
+<h3 id="3-openclaw-health-또는-openclaw-status">3) <code>openclaw health</code> (또는 <code>openclaw status</code>)<a hidden class="anchor" aria-hidden="true" href="#3-openclaw-health-또는-openclaw-status">#</a></h3>
+<p>전체 시스템 상태를 종합 점검합니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>openclaw status
+</span></span></code></pre></div><p><strong>주요 섹션:</strong></p>
+<ul>
+<li><strong>Gateway Status</strong>: 실행 중 / PID / 포트</li>
+<li><strong>Channels</strong>: Discord/Telegram/WhatsApp 연결 상태</li>
+<li><strong>Models</strong>: 설정된 모델 프로바이더</li>
+<li><strong>Security Audit</strong>: 보안 경고 (있으면 빨간색)</li>
+</ul>
+<p><strong>예시 출력:</strong></p>
+<pre tabindex="0"><code>Gateway Status
   Status: running (pid 12345)
   RPC probe: ok
   Listening: 127.0.0.1:18789
@@ -69,24 +312,182 @@ Security Audit
   ⚠ CRITICAL: discord.groupPolicy=open
      → Risk: Prompt injection from strangers
      → Fix: Set groupPolicy to &#34;pairing&#34; or &#34;allowlist&#34;
-</code></pre><h2 id=보안-체크-2026213-기준>보안 체크 (2026.2.13 기준)<a hidden class=anchor aria-hidden=true href=#보안-체크-2026213-기준>#</a></h2><p>최근 릴리즈에서 강화된 보안 항목:</p><h3 id=1-hook-인증-강화>1) Hook 인증 강화<a hidden class=anchor aria-hidden=true href=#1-hook-인증-강화>#</a></h3><p><code>POST /hooks/agent</code>가 이제 임의 <code>sessionKey</code> override를 기본 차단합니다.</p><p><strong>Breaking Change:</strong> 웹훅으로 특정 세션에 메시지 보내는 스크립트가 있다면 수정 필요.</p><h3 id=2-discord-dmgroup-정책>2) Discord DM/Group 정책<a hidden class=anchor aria-hidden=true href=#2-discord-dmgroup-정책>#</a></h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-yaml data-lang=yaml><span style=display:flex><span><span style=color:#f92672>channels</span>:
-</span></span><span style=display:flex><span>  <span style=color:#f92672>discord</span>:
-</span></span><span style=display:flex><span>    <span style=color:#f92672>dmPolicy</span>: <span style=color:#ae81ff>pairing </span> <span style=color:#75715e># open은 위험</span>
-</span></span><span style=display:flex><span>    <span style=color:#f92672>groupPolicy</span>: <span style=color:#ae81ff>allowlist </span> <span style=color:#75715e># open은 프롬프트 인젝션 위험</span>
-</span></span></code></pre></div><p><strong><code>open</code>은 왜 위험한가?</strong></p><ul><li>아무나 DM/그룹 초대로 에이전트에게 명령 가능</li><li>악의적 프롬프트 인젝션 → 토큰 탈취, 파일 접근 등</li></ul><p><strong>권장 설정:</strong></p><ul><li><strong>개인 용도</strong>: <code>pairing</code> (명시적 페어링만 허용)</li><li><strong>팀 용도</strong>: <code>allowlist</code> (허용된 서버/사용자만)</li></ul><h3 id=3-plugin-허용-범위>3) Plugin 허용 범위<a hidden class=anchor aria-hidden=true href=#3-plugin-허용-범위>#</a></h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-yaml data-lang=yaml><span style=display:flex><span><span style=color:#f92672>plugins</span>:
-</span></span><span style=display:flex><span>  <span style=color:#f92672>allow</span>: []  <span style=color:#75715e># 빈 배열 = 로컬 플러그인 로딩 차단</span>
-</span></span></code></pre></div><p>로컬에 <code>extensions/</code> 폴더가 있다면 명시적으로 허용 목록 관리.</p><h2 id=크론잡-안정성-2026212213-대폭-강화>크론잡 안정성 (2026.2.12~2.13 대폭 강화)<a hidden class=anchor aria-hidden=true href=#크론잡-안정성-2026212213-대폭-강화>#</a></h2><p>최근 릴리즈에서 크론 스케줄러 버그가 대거 수정되었습니다:</p><ul><li>✅ 중복 실행 방지</li><li>✅ 재시작 후 중복 트리거 방지</li><li>✅ 동시 트리거 경합 조건(race condition) 수정</li></ul><p><strong>체크 방법:</strong></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span>openclaw cron status
-</span></span></code></pre></div><p>정상이면 <code>Scheduler: running</code> 표시.</p><h2 id=업데이트-후-테스트>업데이트 후 테스트<a hidden class=anchor aria-hidden=true href=#업데이트-후-테스트>#</a></h2><h3 id=1-간단한-대화-테스트>1) 간단한 대화 테스트<a hidden class=anchor aria-hidden=true href=#1-간단한-대화-테스트>#</a></h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span>openclaw chat <span style=color:#e6db74>&#34;안녕?&#34;</span>
-</span></span></code></pre></div><p>응답이 정상 오면 OK.</p><h3 id=2-웹-검색-테스트-brave-search-설정-시>2) 웹 검색 테스트 (Brave Search 설정 시)<a hidden class=anchor aria-hidden=true href=#2-웹-검색-테스트-brave-search-설정-시>#</a></h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span>openclaw chat <span style=color:#e6db74>&#34;최신 AI 뉴스 검색해줘&#34;</span>
-</span></span></code></pre></div><p><code>web_search</code> 도구가 정상 작동하는지 확인.</p><h3 id=3-크론잡-수동-실행>3) 크론잡 수동 실행<a hidden class=anchor aria-hidden=true href=#3-크론잡-수동-실행>#</a></h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span>openclaw cron run &lt;jobId&gt;
-</span></span></code></pre></div><p>특정 크론잡을 수동 실행해서 에러 없는지 확인.</p><h2 id=문제-발생-시-대응>문제 발생 시 대응<a hidden class=anchor aria-hidden=true href=#문제-발생-시-대응>#</a></h2><h3 id=로그-확인>로그 확인<a hidden class=anchor aria-hidden=true href=#로그-확인>#</a></h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span>openclaw logs --follow
-</span></span></code></pre></div><p><strong>2026.2.13 신기능:</strong> <code>--local-time</code> 플래그로 로컬 타임존 표시</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span>openclaw logs --local-time
-</span></span></code></pre></div><h3 id=롤백-긴급>롤백 (긴급)<a hidden class=anchor aria-hidden=true href=#롤백-긴급>#</a></h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span>npm install -g openclaw@2026.2.9
-</span></span><span style=display:flex><span>openclaw gateway restart
-</span></span></code></pre></div><h3 id=설정-초기화-최후-수단>설정 초기화 (최후 수단)<a hidden class=anchor aria-hidden=true href=#설정-초기화-최후-수단>#</a></h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span>mv ~/.openclaw/openclaw.json ~/.openclaw/openclaw.json.broken
-</span></span><span style=display:flex><span>openclaw configure
-</span></span></code></pre></div><h2 id=자주-묻는-질문-faq>자주 묻는 질문 (FAQ)<a hidden class=anchor aria-hidden=true href=#자주-묻는-질문-faq>#</a></h2><h3 id=q-업데이트-후-discord-봇이-응답-안-해요>Q: 업데이트 후 Discord 봇이 응답 안 해요<a hidden class=anchor aria-hidden=true href=#q-업데이트-후-discord-봇이-응답-안-해요>#</a></h3><p><strong>A:</strong> <code>openclaw gateway restart</code> 후 Discord 재연결까지 5~10초 걸릴 수 있습니다. <code>openclaw status</code>로 Discord 상태 확인.</p><h3 id=q-크론잡이-2번씩-실행돼요>Q: 크론잡이 2번씩 실행돼요<a hidden class=anchor aria-hidden=true href=#q-크론잡이-2번씩-실행돼요>#</a></h3><p><strong>A:</strong> 2026.2.12 이전 버전 버그입니다. 최신 버전으로 업데이트하면 해결.</p><h3 id=q-doctor---fix-실행-후-설정이-사라졌어요>Q: <code>doctor --fix</code> 실행 후 설정이 사라졌어요<a hidden class=anchor aria-hidden=true href=#q-doctor---fix-실행-후-설정이-사라졌어요>#</a></h3><p><strong>A:</strong> <code>~/.openclaw/openclaw.json.bak</code> 백업 파일이 생성됩니다. 복원 후 수동 수정.</p><h2 id=결론-3종-체크만-기억하세요>결론: 3종 체크만 기억하세요<a hidden class=anchor aria-hidden=true href=#결론-3종-체크만-기억하세요>#</a></h2><p>OpenClaw 업데이트 후 반드시:</p><ol><li><code>openclaw doctor</code> (문제 진단)</li><li><code>openclaw gateway restart</code> (코드 갱신)</li><li><code>openclaw status</code> (상태 확인)</li></ol><p>이 3가지만 실행하면 <strong>95% 이상의 문제를 사전 발견</strong>할 수 있습니다.</p><p>안정적인 AI 에이전트 운영, OpenClaw가 함께합니다. 🦁</p><hr><p><strong>참고 링크:</strong></p><ul><li><a href=https://docs.openclaw.ai>OpenClaw 공식 문서</a></li><li><a href=https://github.com/openclaw/openclaw/releases>GitHub Releases</a></li><li><a href=https://discord.com/invite/clawd>Discord 커뮤니티</a></li></ul></div><footer class=post-footer><ul class=post-tags><li><a href=https://kwbaek.github.io/tags/openclaw/>OpenClaw</a></li><li><a href=https://kwbaek.github.io/tags/%EC%97%85%EB%8D%B0%EC%9D%B4%ED%8A%B8/>업데이트</a></li><li><a href=https://kwbaek.github.io/tags/%EC%9A%B4%EC%98%81/>운영</a></li><li><a href=https://kwbaek.github.io/tags/%EC%B2%B4%ED%81%AC%EB%A6%AC%EC%8A%A4%ED%8A%B8/>체크리스트</a></li><li><a href=https://kwbaek.github.io/tags/%EC%95%88%EC%A0%95%EC%84%B1/>안정성</a></li></ul></footer><script src=https://utteranc.es/client.js repo=kwbaek/blog-comments issue-term=pathname theme=github-light crossorigin=anonymous async></script></article></main><footer class=footer><span>&copy; 2026 <a href=https://kwbaek.github.io/>Kyungwook's Devlog</a></span> ·
-<span>Powered by
-<a href=https://gohugo.io/ rel="noopener noreferrer" target=_blank>Hugo</a> &
-<a href=https://github.com/adityatelange/hugo-PaperMod/ rel=noopener target=_blank>PaperMod</a></span></footer><a href=#top aria-label="go to top" title="Go to Top (Alt + G)" class=top-link id=top-link accesskey=g><svg viewBox="0 0 12 6" fill="currentColor"><path d="M12 6H0l6-6z"/></svg>
-</a><script>let menu=document.getElementById("menu");if(menu){const e=localStorage.getItem("menu-scroll-position");e&&(menu.scrollLeft=parseInt(e,10)),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)}}document.querySelectorAll('a[href^="#"]').forEach(e=>{e.addEventListener("click",function(e){e.preventDefault();var t=this.getAttribute("href").substr(1);window.matchMedia("(prefers-reduced-motion: reduce)").matches?document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView({behavior:"smooth"}),t==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${t}`)})})</script><script>var mybutton=document.getElementById("top-link");window.onscroll=function(){document.body.scrollTop>800||document.documentElement.scrollTop>800?(mybutton.style.visibility="visible",mybutton.style.opacity="1"):(mybutton.style.visibility="hidden",mybutton.style.opacity="0")}</script><script>document.getElementById("theme-toggle").addEventListener("click",()=>{const e=document.querySelector("html");e.dataset.theme==="dark"?(e.dataset.theme="light",localStorage.setItem("pref-theme","light")):(e.dataset.theme="dark",localStorage.setItem("pref-theme","dark"))})</script></body></html>
+</code></pre><h2 id="보안-체크-2026213-기준">보안 체크 (2026.2.13 기준)<a hidden class="anchor" aria-hidden="true" href="#보안-체크-2026213-기준">#</a></h2>
+<p>최근 릴리즈에서 강화된 보안 항목:</p>
+<h3 id="1-hook-인증-강화">1) Hook 인증 강화<a hidden class="anchor" aria-hidden="true" href="#1-hook-인증-강화">#</a></h3>
+<p><code>POST /hooks/agent</code>가 이제 임의 <code>sessionKey</code> override를 기본 차단합니다.</p>
+<p><strong>Breaking Change:</strong> 웹훅으로 특정 세션에 메시지 보내는 스크립트가 있다면 수정 필요.</p>
+<h3 id="2-discord-dmgroup-정책">2) Discord DM/Group 정책<a hidden class="anchor" aria-hidden="true" href="#2-discord-dmgroup-정책">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">channels</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">discord</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">dmPolicy</span>: <span style="color:#ae81ff">pairing </span> <span style="color:#75715e"># open은 위험</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">groupPolicy</span>: <span style="color:#ae81ff">allowlist </span> <span style="color:#75715e"># open은 프롬프트 인젝션 위험</span>
+</span></span></code></pre></div><p><strong><code>open</code>은 왜 위험한가?</strong></p>
+<ul>
+<li>아무나 DM/그룹 초대로 에이전트에게 명령 가능</li>
+<li>악의적 프롬프트 인젝션 → 토큰 탈취, 파일 접근 등</li>
+</ul>
+<p><strong>권장 설정:</strong></p>
+<ul>
+<li><strong>개인 용도</strong>: <code>pairing</code> (명시적 페어링만 허용)</li>
+<li><strong>팀 용도</strong>: <code>allowlist</code> (허용된 서버/사용자만)</li>
+</ul>
+<h3 id="3-plugin-허용-범위">3) Plugin 허용 범위<a hidden class="anchor" aria-hidden="true" href="#3-plugin-허용-범위">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">plugins</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">allow</span>: []  <span style="color:#75715e"># 빈 배열 = 로컬 플러그인 로딩 차단</span>
+</span></span></code></pre></div><p>로컬에 <code>extensions/</code> 폴더가 있다면 명시적으로 허용 목록 관리.</p>
+<h2 id="크론잡-안정성-2026212213-대폭-강화">크론잡 안정성 (2026.2.12~2.13 대폭 강화)<a hidden class="anchor" aria-hidden="true" href="#크론잡-안정성-2026212213-대폭-강화">#</a></h2>
+<p>최근 릴리즈에서 크론 스케줄러 버그가 대거 수정되었습니다:</p>
+<ul>
+<li>✅ 중복 실행 방지</li>
+<li>✅ 재시작 후 중복 트리거 방지</li>
+<li>✅ 동시 트리거 경합 조건(race condition) 수정</li>
+</ul>
+<p><strong>체크 방법:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>openclaw cron status
+</span></span></code></pre></div><p>정상이면 <code>Scheduler: running</code> 표시.</p>
+<h2 id="업데이트-후-테스트">업데이트 후 테스트<a hidden class="anchor" aria-hidden="true" href="#업데이트-후-테스트">#</a></h2>
+<h3 id="1-간단한-대화-테스트">1) 간단한 대화 테스트<a hidden class="anchor" aria-hidden="true" href="#1-간단한-대화-테스트">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>openclaw chat <span style="color:#e6db74">&#34;안녕?&#34;</span>
+</span></span></code></pre></div><p>응답이 정상 오면 OK.</p>
+<h3 id="2-웹-검색-테스트-brave-search-설정-시">2) 웹 검색 테스트 (Brave Search 설정 시)<a hidden class="anchor" aria-hidden="true" href="#2-웹-검색-테스트-brave-search-설정-시">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>openclaw chat <span style="color:#e6db74">&#34;최신 AI 뉴스 검색해줘&#34;</span>
+</span></span></code></pre></div><p><code>web_search</code> 도구가 정상 작동하는지 확인.</p>
+<h3 id="3-크론잡-수동-실행">3) 크론잡 수동 실행<a hidden class="anchor" aria-hidden="true" href="#3-크론잡-수동-실행">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>openclaw cron run &lt;jobId&gt;
+</span></span></code></pre></div><p>특정 크론잡을 수동 실행해서 에러 없는지 확인.</p>
+<h2 id="문제-발생-시-대응">문제 발생 시 대응<a hidden class="anchor" aria-hidden="true" href="#문제-발생-시-대응">#</a></h2>
+<h3 id="로그-확인">로그 확인<a hidden class="anchor" aria-hidden="true" href="#로그-확인">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>openclaw logs --follow
+</span></span></code></pre></div><p><strong>2026.2.13 신기능:</strong> <code>--local-time</code> 플래그로 로컬 타임존 표시</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>openclaw logs --local-time
+</span></span></code></pre></div><h3 id="롤백-긴급">롤백 (긴급)<a hidden class="anchor" aria-hidden="true" href="#롤백-긴급">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>npm install -g openclaw@2026.2.9
+</span></span><span style="display:flex;"><span>openclaw gateway restart
+</span></span></code></pre></div><h3 id="설정-초기화-최후-수단">설정 초기화 (최후 수단)<a hidden class="anchor" aria-hidden="true" href="#설정-초기화-최후-수단">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>mv ~/.openclaw/openclaw.json ~/.openclaw/openclaw.json.broken
+</span></span><span style="display:flex;"><span>openclaw configure
+</span></span></code></pre></div><h2 id="자주-묻는-질문-faq">자주 묻는 질문 (FAQ)<a hidden class="anchor" aria-hidden="true" href="#자주-묻는-질문-faq">#</a></h2>
+<h3 id="q-업데이트-후-discord-봇이-응답-안-해요">Q: 업데이트 후 Discord 봇이 응답 안 해요<a hidden class="anchor" aria-hidden="true" href="#q-업데이트-후-discord-봇이-응답-안-해요">#</a></h3>
+<p><strong>A:</strong> <code>openclaw gateway restart</code> 후 Discord 재연결까지 5~10초 걸릴 수 있습니다. <code>openclaw status</code>로 Discord 상태 확인.</p>
+<h3 id="q-크론잡이-2번씩-실행돼요">Q: 크론잡이 2번씩 실행돼요<a hidden class="anchor" aria-hidden="true" href="#q-크론잡이-2번씩-실행돼요">#</a></h3>
+<p><strong>A:</strong> 2026.2.12 이전 버전 버그입니다. 최신 버전으로 업데이트하면 해결.</p>
+<h3 id="q-doctor---fix-실행-후-설정이-사라졌어요">Q: <code>doctor --fix</code> 실행 후 설정이 사라졌어요<a hidden class="anchor" aria-hidden="true" href="#q-doctor---fix-실행-후-설정이-사라졌어요">#</a></h3>
+<p><strong>A:</strong> <code>~/.openclaw/openclaw.json.bak</code> 백업 파일이 생성됩니다. 복원 후 수동 수정.</p>
+<h2 id="결론-3종-체크만-기억하세요">결론: 3종 체크만 기억하세요<a hidden class="anchor" aria-hidden="true" href="#결론-3종-체크만-기억하세요">#</a></h2>
+<p>OpenClaw 업데이트 후 반드시:</p>
+<ol>
+<li><code>openclaw doctor</code> (문제 진단)</li>
+<li><code>openclaw gateway restart</code> (코드 갱신)</li>
+<li><code>openclaw status</code> (상태 확인)</li>
+</ol>
+<p>이 3가지만 실행하면 <strong>95% 이상의 문제를 사전 발견</strong>할 수 있습니다.</p>
+<p>안정적인 AI 에이전트 운영, OpenClaw가 함께합니다. 🦁</p>
+<hr>
+<p><strong>참고 링크:</strong></p>
+<ul>
+<li><a href="https://docs.openclaw.ai">OpenClaw 공식 문서</a></li>
+<li><a href="https://github.com/openclaw/openclaw/releases">GitHub Releases</a></li>
+<li><a href="https://discord.com/invite/clawd">Discord 커뮤니티</a></li>
+</ul>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://kwbaek.github.io/tags/openclaw/">OpenClaw</a></li>
+      <li><a href="https://kwbaek.github.io/tags/%EC%97%85%EB%8D%B0%EC%9D%B4%ED%8A%B8/">업데이트</a></li>
+      <li><a href="https://kwbaek.github.io/tags/%EC%9A%B4%EC%98%81/">운영</a></li>
+      <li><a href="https://kwbaek.github.io/tags/%EC%B2%B4%ED%81%AC%EB%A6%AC%EC%8A%A4%ED%8A%B8/">체크리스트</a></li>
+      <li><a href="https://kwbaek.github.io/tags/%EC%95%88%EC%A0%95%EC%84%B1/">안정성</a></li>
+    </ul>
+  </footer><script src="https://utteranc.es/client.js"
+        repo="kwbaek/blog-comments"
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://kwbaek.github.io/">Kyungwook&#39;s Devlog</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

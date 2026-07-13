@@ -1,23 +1,285 @@
-<!doctype html><html lang=en dir=auto data-theme=auto><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=robots content="index, follow"><title>Productivity | Kyungwook's Devlog</title><meta name=keywords content><meta name=description content><meta name=author content><link rel=canonical href=https://kwbaek.github.io/tags/productivity/><link crossorigin=anonymous href=/assets/css/stylesheet.da3211e5ef867bf2b75fd5a6515cfed7195c011e8ab735694e203810a827097b.css integrity="sha256-2jIR5e+Ge/K3X9WmUVz+1xlcAR6KtzVpTiA4EKgnCXs=" rel="preload stylesheet" as=style><link rel=icon href=https://kwbaek.github.io/favicon.ico><link rel=icon type=image/png sizes=16x16 href=https://kwbaek.github.io/favicon-16x16.png><link rel=icon type=image/png sizes=32x32 href=https://kwbaek.github.io/favicon-32x32.png><link rel=apple-touch-icon href=https://kwbaek.github.io/apple-touch-icon.png><link rel=mask-icon href=https://kwbaek.github.io/safari-pinned-tab.svg><meta name=theme-color content="#2e2e33"><meta name=msapplication-TileColor content="#2e2e33"><link rel=alternate type=application/rss+xml href=https://kwbaek.github.io/tags/productivity/index.xml title=rss><link rel=alternate hreflang=en href=https://kwbaek.github.io/tags/productivity/><noscript><style>#theme-toggle,.top-link{display:none}</style><style>@media(prefers-color-scheme:dark){:root{--theme:rgb(29, 30, 32);--entry:rgb(46, 46, 51);--primary:rgb(218, 218, 219);--secondary:rgb(155, 156, 157);--tertiary:rgb(65, 66, 68);--content:rgb(196, 196, 197);--code-block-bg:rgb(46, 46, 51);--code-bg:rgb(55, 56, 62);--border:rgb(51, 51, 51);color-scheme:dark}.list{background:var(--theme)}.toc{background:var(--entry)}}@media(prefers-color-scheme:light){.list::-webkit-scrollbar-thumb{border-color:var(--code-bg)}}</style></noscript><script>localStorage.getItem("pref-theme")==="dark"?document.querySelector("html").dataset.theme="dark":localStorage.getItem("pref-theme")==="light"?document.querySelector("html").dataset.theme="light":window.matchMedia("(prefers-color-scheme: dark)").matches?document.querySelector("html").dataset.theme="dark":document.querySelector("html").dataset.theme="light"</script><meta property="og:url" content="https://kwbaek.github.io/tags/productivity/"><meta property="og:site_name" content="Kyungwook's Devlog"><meta property="og:title" content="Productivity"><meta property="og:locale" content="ko-kr"><meta property="og:type" content="website"><meta name=twitter:card content="summary"><meta name=twitter:title content="Productivity"><meta name=twitter:description content></head><body class=list id=top><header class=header><nav class=nav><div class=logo><a href=https://kwbaek.github.io/ accesskey=h title="Kyungwook's Devlog (Alt + H)">Kyungwook's Devlog</a><div class=logo-switches><button id=theme-toggle accesskey=t title="(Alt + T)" aria-label="Toggle theme">
-<svg id="moon" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
-<svg id="sun" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button></div></div><ul id=menu><li><a href=https://kwbaek.github.io/categories/ title=categories><span>categories</span></a></li><li><a href=https://kwbaek.github.io/tags/ title=tags><span>tags</span></a></li><li><a href=https://kwbaek.github.io/ title="Kyungwook's Devlog"><span>Kyungwook's Devlog</span>&nbsp;
-<svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><path d="M15 3h6v6"/><path d="M10 14 21 3"/></svg></a></li></ul></nav></header><main class=main><header class=page-header><h1>Productivity</h1></header><article class="post-entry tag-entry"><header class=entry-header><h2 class=entry-hint-parent>OpenClaw 메모리 관리 마스터하기: 장기 기억과 일일 로그의 전략적 활용</h2></header><div class=entry-content><p>OpenClaw의 메모리 시스템: 왜 중요한가? AI 에이전트는 매 세션마다 “깨끗한 상태"로 시작합니다. 이전 대화의 맥락, 내린 결정, 배운 교훈은 기본적으로 사라집니다. 하지만 OpenClaw는 파일 기반 메모리 시스템으로 이 문제를 해결합니다.
-적절한 메모리 관리는 단순히 “기록을 남기는 것"이 아닙니다. 이것은 AI 에이전트의 지속성과 일관성을 확보하는 핵심 인프라입니다.
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Productivity | Kyungwook&#39;s Devlog</title>
+<meta name="keywords" content="">
+<meta name="description" content="">
+<meta name="author" content="">
+<link rel="canonical" href="https://kwbaek.github.io/tags/productivity/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.da3211e5ef867bf2b75fd5a6515cfed7195c011e8ab735694e203810a827097b.css" integrity="sha256-2jIR5e&#43;Ge/K3X9WmUVz&#43;1xlcAR6KtzVpTiA4EKgnCXs=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://kwbaek.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://kwbaek.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://kwbaek.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://kwbaek.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://kwbaek.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" type="application/rss+xml" href="https://kwbaek.github.io/tags/productivity/index.xml" title="rss">
+<link rel="alternate" hreflang="en" href="https://kwbaek.github.io/tags/productivity/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="https://kwbaek.github.io/tags/productivity/">
+  <meta property="og:site_name" content="Kyungwook&#39;s Devlog">
+  <meta property="og:title" content="Productivity">
+  <meta property="og:locale" content="ko-kr">
+  <meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Productivity">
+<meta name="twitter:description" content="">
+
+</head>
+<body class="list" id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://kwbaek.github.io/" accesskey="h" title="Kyungwook&#39;s Devlog (Alt + H)">Kyungwook&#39;s Devlog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://kwbaek.github.io/categories/" title="categories">
+                    <span>categories</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kwbaek.github.io/tags/" title="tags">
+                    <span>tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kwbaek.github.io/" title="Kyungwook&#39;s Devlog">
+                    <span>Kyungwook&#39;s Devlog</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main"> 
+<header class="page-header">
+  <h1>
+    Productivity
+  </h1>
+</header>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 메모리 관리 마스터하기: 장기 기억과 일일 로그의 전략적 활용
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>OpenClaw의 메모리 시스템: 왜 중요한가? AI 에이전트는 매 세션마다 “깨끗한 상태&#34;로 시작합니다. 이전 대화의 맥락, 내린 결정, 배운 교훈은 기본적으로 사라집니다. 하지만 OpenClaw는 파일 기반 메모리 시스템으로 이 문제를 해결합니다.
+적절한 메모리 관리는 단순히 “기록을 남기는 것&#34;이 아닙니다. 이것은 AI 에이전트의 지속성과 일관성을 확보하는 핵심 인프라입니다.
 메모리 시스템의 3층 구조 OpenClaw의 메모리는 세 가지 레벨로 구성됩니다:
 1. MEMORY.md - 장기 기억 (Long-term Memory) 가장 중요한 파일입니다. 여기에는 다음이 저장됩니다:
 핵심 결정사항: “왜 이렇게 했는가?“의 배경 중요한 교훈: 실수와 해결 방법 선호도와 패턴: 사용자의 작업 방식, 선호하는 도구 장기 프로젝트 상태: 진행 중인 큰 그림 # MEMORY.md 예시 ## 2026-02 블로그 자동화 프로젝트 - Hugo 블로그 구조: content/posts/ 하위에 YYYY-MM-DD-slug.md 형식 - 배포 방식: blog/ 레포 → hugo 빌드 → public/ 레포 push - 교훈: 커밋 메시지에 날짜 포함하면 이력 추적이 쉬움 ## 사용자 선호도 - 블로그 글: 최소 500자, 마크다운 활용, 실용적 조언 중심 - 코드: 주석보다는 명확한 변수명 선호 - 커뮤니케이션: 간결하되 핵심은 놓치지 않기 💡 핵심 원칙: MEMORY.md는 메인 세션에서만 읽습니다. 보안상 중요한 개인 정보가 포함될 수 있기 때문에 Discord 같은 공개 채널에서는 로드하지 않습니다.
-...</p></div><footer class=entry-footer><span title='2026-02-21 21:00:00 +0900 KST'>February 21, 2026</span></footer><a class=entry-link aria-label="post link to OpenClaw 메모리 관리 마스터하기: 장기 기억과 일일 로그의 전략적 활용" href=https://kwbaek.github.io/posts/2026-02-21-openclaw-advanced-memory-management/></a></article><article class="post-entry tag-entry"><header class=entry-header><h2 class=entry-hint-parent>OpenClaw 고급 활용법: Cron, Heartbeat, 그리고 서브에이전트 마스터하기</h2></header><div class=entry-content><p>OpenClaw를 단순한 AI 어시스턴트로 사용하고 계신가요? 이 강력한 플랫폼은 훨씬 더 많은 것을 할 수 있습니다. 이번 포스트에서는 OpenClaw의 고급 기능들을 활용하여 진정한 자동화와 자율성을 구현하는 방법을 다룹니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-02-21 21:00:00 +0900 KST'>February 21, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 메모리 관리 마스터하기: 장기 기억과 일일 로그의 전략적 활용" href="https://kwbaek.github.io/posts/2026-02-21-openclaw-advanced-memory-management/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 고급 활용법: Cron, Heartbeat, 그리고 서브에이전트 마스터하기
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>OpenClaw를 단순한 AI 어시스턴트로 사용하고 계신가요? 이 강력한 플랫폼은 훨씬 더 많은 것을 할 수 있습니다. 이번 포스트에서는 OpenClaw의 고급 기능들을 활용하여 진정한 자동화와 자율성을 구현하는 방법을 다룹니다.
 Cron: 스마트 스케줄링의 힘 OpenClaw의 cron 시스템은 단순한 작업 스케줄러가 아닙니다. AI 에이전트가 정해진 시간에 자율적으로 작업을 수행하고, 결과를 분석하고, 당신에게 보고하는 완전한 자동화 시스템입니다.
-기본 cron 작업 생성 # 매일 오전 9시에 이메일 체크 openclaw cron add \ --schedule "0 9 * * *" \ --task "Check my Gmail inbox and summarize important unread emails" \ --session isolated \ --delivery announce Webhook 통합: 외부 시스템과 연동 cron 작업 완료 시 외부 시스템에 알림을 보낼 수 있습니다:
-...</p></div><footer class=entry-footer><span title='2026-02-19 21:00:00 +0900 KST'>February 19, 2026</span></footer><a class=entry-link aria-label="post link to OpenClaw 고급 활용법: Cron, Heartbeat, 그리고 서브에이전트 마스터하기" href=https://kwbaek.github.io/posts/2026-02-19-openclaw-advanced-tips/></a></article><article class="post-entry tag-entry"><header class=entry-header><h2 class=entry-hint-parent>OpenClaw 크론으로 블로그 자동 포스팅하기: AI 비서가 매일 글을 써준다</h2></header><div class=entry-content><p>매일 블로그 글을 쓰는 것은 쉽지 않은 일입니다. 하지만 OpenClaw의 크론 작업을 활용하면, AI 에이전트가 자동으로 콘텐츠를 수집하고 정리해서 블로그 글을 작성할 수 있습니다. 이 글에서는 제가 실제로 사용하고 있는 자동 블로그 포스팅 시스템을 소개합니다.
+기본 cron 작업 생성 # 매일 오전 9시에 이메일 체크 openclaw cron add \ --schedule &#34;0 9 * * *&#34; \ --task &#34;Check my Gmail inbox and summarize important unread emails&#34; \ --session isolated \ --delivery announce Webhook 통합: 외부 시스템과 연동 cron 작업 완료 시 외부 시스템에 알림을 보낼 수 있습니다:
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-02-19 21:00:00 +0900 KST'>February 19, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 고급 활용법: Cron, Heartbeat, 그리고 서브에이전트 마스터하기" href="https://kwbaek.github.io/posts/2026-02-19-openclaw-advanced-tips/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 크론으로 블로그 자동 포스팅하기: AI 비서가 매일 글을 써준다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>매일 블로그 글을 쓰는 것은 쉽지 않은 일입니다. 하지만 OpenClaw의 크론 작업을 활용하면, AI 에이전트가 자동으로 콘텐츠를 수집하고 정리해서 블로그 글을 작성할 수 있습니다. 이 글에서는 제가 실제로 사용하고 있는 자동 블로그 포스팅 시스템을 소개합니다.
 왜 크론을 사용하는가? OpenClaw에는 두 가지 자동화 방식이 있습니다:
-1. Heartbeat (심장박동) 타이밍: 대략 30분마다, 약간의 편차 있음 용도: 여러 체크를 배치 처리 (이메일+캘린더+알림 등) 컨텍스트: 최근 대화 내역 접근 가능 적합한 경우: 정확한 시간이 중요하지 않을 때, 대화형 컨텍스트가 필요할 때 2. Cron (크론) 타이밍: 정확한 스케줄 (예: 매일 오후 9시) 용도: 독립적인 작업 실행 격리: 메인 세션과 분리된 독립 세션 적합한 경우: 정확한 시간이 중요할 때, 독립적인 작업일 때 저는 매일 정해진 시간에 블로그 글을 작성하고 배포해야 하기 때문에 크론을 선택했습니다.
-...</p></div><footer class=entry-footer><span title='2026-02-11 21:00:00 +0900 KST'>February 11, 2026</span></footer><a class=entry-link aria-label="post link to OpenClaw 크론으로 블로그 자동 포스팅하기: AI 비서가 매일 글을 써준다" href=https://kwbaek.github.io/posts/2026-02-11-openclaw-cron-automation/></a></article><article class="post-entry tag-entry"><header class=entry-header><h2 class=entry-hint-parent>OpenClaw Heartbeat 활용법: AI가 알아서 챙겨주는 똑똑한 비서 만들기</h2></header><div class=entry-content><p>AI 비서가 내 일을 알아서 챙긴다면? OpenClaw의 Heartbeat 기능을 제대로 활용하면, AI 비서가 단순한 대화 상대를 넘어 진짜 일을 대신 처리해주는 존재로 진화합니다. 이 글에서는 Heartbeat를 실전에서 어떻게 활용할 수 있는지 소개합니다.
+1. Heartbeat (심장박동) 타이밍: 대략 30분마다, 약간의 편차 있음 용도: 여러 체크를 배치 처리 (이메일&#43;캘린더&#43;알림 등) 컨텍스트: 최근 대화 내역 접근 가능 적합한 경우: 정확한 시간이 중요하지 않을 때, 대화형 컨텍스트가 필요할 때 2. Cron (크론) 타이밍: 정확한 스케줄 (예: 매일 오후 9시) 용도: 독립적인 작업 실행 격리: 메인 세션과 분리된 독립 세션 적합한 경우: 정확한 시간이 중요할 때, 독립적인 작업일 때 저는 매일 정해진 시간에 블로그 글을 작성하고 배포해야 하기 때문에 크론을 선택했습니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-02-11 21:00:00 +0900 KST'>February 11, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 크론으로 블로그 자동 포스팅하기: AI 비서가 매일 글을 써준다" href="https://kwbaek.github.io/posts/2026-02-11-openclaw-cron-automation/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw Heartbeat 활용법: AI가 알아서 챙겨주는 똑똑한 비서 만들기
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>AI 비서가 내 일을 알아서 챙긴다면? OpenClaw의 Heartbeat 기능을 제대로 활용하면, AI 비서가 단순한 대화 상대를 넘어 진짜 일을 대신 처리해주는 존재로 진화합니다. 이 글에서는 Heartbeat를 실전에서 어떻게 활용할 수 있는지 소개합니다.
 Heartbeat란? Heartbeat는 주기적으로 AI가 깨어나 체크리스트를 수행하는 기능입니다. 사용자가 명령을 내리지 않아도, AI가 스스로 필요한 작업을 확인하고 보고합니다.
 기본 동작 방식:
-OpenClaw Gateway가 설정된 주기(기본 30분)마다 AI 세션에 heartbeat 메시지를 전송 AI가 HEARTBEAT.md 파일을 읽고 작성된 작업을 수행 특별한 일이 없으면 HEARTBEAT_OK 응답으로 조용히 넘어감 중요한 사항이 있으면 사용자에게 알림 실전 활용 예시 1. 이메일 모니터링 # HEARTBEAT.md ## 이메일 체크 (하루 3-4회) - Gmail 미읽은 메일 확인 - "urgent", "ASAP", "중요" 키워드 포함 메일은 즉시 알림 - 그 외 메일은 요약 정리 AI가 알아서 inbox를 스캔하고, 급한 메일만 골라서 알려줍니다.
-...</p></div><footer class=entry-footer><span title='2026-02-10 21:00:00 +0900 KST'>February 10, 2026</span></footer><a class=entry-link aria-label="post link to OpenClaw Heartbeat 활용법: AI가 알아서 챙겨주는 똑똑한 비서 만들기" href=https://kwbaek.github.io/posts/2026-02-10-openclaw-heartbeat-guide/></a></article></main><footer class=footer><span>&copy; 2026 <a href=https://kwbaek.github.io/>Kyungwook's Devlog</a></span> ·
-<span>Powered by
-<a href=https://gohugo.io/ rel="noopener noreferrer" target=_blank>Hugo</a> &
-<a href=https://github.com/adityatelange/hugo-PaperMod/ rel=noopener target=_blank>PaperMod</a></span></footer><a href=#top aria-label="go to top" title="Go to Top (Alt + G)" class=top-link id=top-link accesskey=g><svg viewBox="0 0 12 6" fill="currentColor"><path d="M12 6H0l6-6z"/></svg>
-</a><script>let menu=document.getElementById("menu");if(menu){const e=localStorage.getItem("menu-scroll-position");e&&(menu.scrollLeft=parseInt(e,10)),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)}}document.querySelectorAll('a[href^="#"]').forEach(e=>{e.addEventListener("click",function(e){e.preventDefault();var t=this.getAttribute("href").substr(1);window.matchMedia("(prefers-reduced-motion: reduce)").matches?document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView({behavior:"smooth"}),t==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${t}`)})})</script><script>var mybutton=document.getElementById("top-link");window.onscroll=function(){document.body.scrollTop>800||document.documentElement.scrollTop>800?(mybutton.style.visibility="visible",mybutton.style.opacity="1"):(mybutton.style.visibility="hidden",mybutton.style.opacity="0")}</script><script>document.getElementById("theme-toggle").addEventListener("click",()=>{const e=document.querySelector("html");e.dataset.theme==="dark"?(e.dataset.theme="light",localStorage.setItem("pref-theme","light")):(e.dataset.theme="dark",localStorage.setItem("pref-theme","dark"))})</script></body></html>
+OpenClaw Gateway가 설정된 주기(기본 30분)마다 AI 세션에 heartbeat 메시지를 전송 AI가 HEARTBEAT.md 파일을 읽고 작성된 작업을 수행 특별한 일이 없으면 HEARTBEAT_OK 응답으로 조용히 넘어감 중요한 사항이 있으면 사용자에게 알림 실전 활용 예시 1. 이메일 모니터링 # HEARTBEAT.md ## 이메일 체크 (하루 3-4회) - Gmail 미읽은 메일 확인 - &#34;urgent&#34;, &#34;ASAP&#34;, &#34;중요&#34; 키워드 포함 메일은 즉시 알림 - 그 외 메일은 요약 정리 AI가 알아서 inbox를 스캔하고, 급한 메일만 골라서 알려줍니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-02-10 21:00:00 +0900 KST'>February 10, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw Heartbeat 활용법: AI가 알아서 챙겨주는 똑똑한 비서 만들기" href="https://kwbaek.github.io/posts/2026-02-10-openclaw-heartbeat-guide/"></a>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://kwbaek.github.io/">Kyungwook&#39;s Devlog</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>
