@@ -1,65 +1,29 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
-  <channel>
-    <title>보안 on Kyungwook&#39;s Devlog</title>
-    <link>https://kwbaek.github.io/tags/%EB%B3%B4%EC%95%88/</link>
-    <description>Recent content in 보안 on Kyungwook&#39;s Devlog</description>
-    <generator>Hugo -- 0.155.3</generator>
-    <language>ko-kr</language>
-    <lastBuildDate>Thu, 05 Mar 2026 21:00:00 +0900</lastBuildDate>
-    <atom:link href="https://kwbaek.github.io/tags/%EB%B3%B4%EC%95%88/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>OpenClaw v2026.3.2 업그레이드 가이드: SecretRef, pdf 도구, 그리고 운영 안정성</title>
-      <link>https://kwbaek.github.io/posts/2026-03-05-openclaw-v2026-3-2-guide/</link>
-      <pubDate>Thu, 05 Mar 2026 21:00:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/posts/2026-03-05-openclaw-v2026-3-2-guide/</guid>
-      <description>&lt;p&gt;OpenClaw가 &lt;code&gt;v2026.3.2&lt;/code&gt;로 업데이트되면서 일상적인 운영에 직접 영향을 주는 변화들이 꽤 있었다. 이번 포스트에서는 주요 변경 사항과 실제로 써먹을 수 있는 운영 팁을 정리해본다.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>보안 on Kyungwook's Devlog</title><link>https://kwbaek.github.io/tags/%EB%B3%B4%EC%95%88/</link><description>Recent content in 보안 on Kyungwook's Devlog</description><generator>Hugo -- 0.155.3</generator><language>ko-kr</language><lastBuildDate>Thu, 05 Mar 2026 21:00:00 +0900</lastBuildDate><atom:link href="https://kwbaek.github.io/tags/%EB%B3%B4%EC%95%88/index.xml" rel="self" type="application/rss+xml"/><item><title>OpenClaw v2026.3.2 업그레이드 가이드: SecretRef, pdf 도구, 그리고 운영 안정성</title><link>https://kwbaek.github.io/posts/2026-03-05-openclaw-v2026-3-2-guide/</link><pubDate>Thu, 05 Mar 2026 21:00:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-03-05-openclaw-v2026-3-2-guide/</guid><description>&lt;p&gt;OpenClaw가 &lt;code&gt;v2026.3.2&lt;/code&gt;로 업데이트되면서 일상적인 운영에 직접 영향을 주는 변화들이 꽤 있었다. 이번 포스트에서는 주요 변경 사항과 실제로 써먹을 수 있는 운영 팁을 정리해본다.&lt;/p&gt;
 &lt;hr&gt;
-&lt;h2 id=&#34;-secretref-fail-fast-강화--미리-알고-쓰자&#34;&gt;🔑 SecretRef fail-fast 강화 — 미리 알고 쓰자&lt;/h2&gt;
+&lt;h2 id="-secretref-fail-fast-강화--미리-알고-쓰자"&gt;🔑 SecretRef fail-fast 강화 — 미리 알고 쓰자&lt;/h2&gt;
 &lt;p&gt;&lt;code&gt;v2026.3.2&lt;/code&gt;의 가장 중요한 보안 변경 사항이다. &lt;strong&gt;active surface에서 unresolved secret ref는 이제 즉시 실패(fail-fast) 처리&lt;/strong&gt;된다.&lt;/p&gt;
-&lt;p&gt;이전에는 secret ref가 제대로 해석되지 않아도 빈 값이나 리터럴 문자열로 넘어가는 경우가 있었다. 이제는 그냥 바로 에러가 난다. 처음에는 불편하게 느껴질 수 있지만, &lt;strong&gt;잘못된 설정이 조용히 운영되는 것보다 훨씬 낫다&lt;/strong&gt;.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>OpenClaw 2026.2.22 이후 운영 플레이북: 업데이트, 보안, 배포</title>
-      <link>https://kwbaek.github.io/posts/2026-02-24-openclaw-release-2026-2-22-playbook/</link>
-      <pubDate>Tue, 24 Feb 2026 21:00:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/posts/2026-02-24-openclaw-release-2026-2-22-playbook/</guid>
-      <description>&lt;p&gt;최근 OpenClaw를 실무에 붙여 쓰면서 느낀 핵심은, 기능이 빨리 늘어나는 만큼 &lt;strong&gt;업데이트 루틴을 표준화한 팀이 결국 안정적으로 오래 간다&lt;/strong&gt;는 점입니다. 특히 2026.2.22 릴리즈 구간은 운영 관점에서 체감 변화가 꽤 큽니다.&lt;/p&gt;
+&lt;p&gt;이전에는 secret ref가 제대로 해석되지 않아도 빈 값이나 리터럴 문자열로 넘어가는 경우가 있었다. 이제는 그냥 바로 에러가 난다. 처음에는 불편하게 느껴질 수 있지만, &lt;strong&gt;잘못된 설정이 조용히 운영되는 것보다 훨씬 낫다&lt;/strong&gt;.&lt;/p&gt;</description></item><item><title>OpenClaw 2026.2.22 이후 운영 플레이북: 업데이트, 보안, 배포</title><link>https://kwbaek.github.io/posts/2026-02-24-openclaw-release-2026-2-22-playbook/</link><pubDate>Tue, 24 Feb 2026 21:00:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-02-24-openclaw-release-2026-2-22-playbook/</guid><description>&lt;p&gt;최근 OpenClaw를 실무에 붙여 쓰면서 느낀 핵심은, 기능이 빨리 늘어나는 만큼 &lt;strong&gt;업데이트 루틴을 표준화한 팀이 결국 안정적으로 오래 간다&lt;/strong&gt;는 점입니다. 특히 2026.2.22 릴리즈 구간은 운영 관점에서 체감 변화가 꽤 큽니다.&lt;/p&gt;
 &lt;p&gt;이번 구간의 실무 포인트를 한 줄로 요약하면 이렇습니다.&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;“새 기능을 바로 쓰기보다, &lt;code&gt;사전 점검 → 설정 정리 → 재시작 → 헬스체크&lt;/code&gt;를 루틴화하라.”&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h2 id=&#34;1-업데이트-전에-꼭-할-것-dry-run&#34;&gt;1) 업데이트 전에 꼭 할 것: dry-run&lt;/h2&gt;
+&lt;h2 id="1-업데이트-전에-꼭-할-것-dry-run"&gt;1) 업데이트 전에 꼭 할 것: dry-run&lt;/h2&gt;
 &lt;p&gt;OpenClaw는 이제 업데이트 전에 영향을 예측하는 흐름이 훨씬 중요해졌습니다.&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;openclaw update --dry-run
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;이 한 줄로 어떤 변경이 들어오는지 먼저 확인해두면, 실제 운영 중 예상치 못한 중단을 크게 줄일 수 있습니다. 특히 여러 채널(Discord/Telegram/Slack)을 동시에 쓰는 환경에서는 설정 키 변경 영향이 생각보다 크게 나타납니다.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>OpenClaw 최신 업데이트: Cron 안정화, Discord 컴포넌트 v2, 그리고 보안 강화</title>
-      <link>https://kwbaek.github.io/posts/2026-02-22-openclaw-updates/</link>
-      <pubDate>Sun, 22 Feb 2026 21:00:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/posts/2026-02-22-openclaw-updates/</guid>
-      <description>&lt;h2 id=&#34;openclaw가-더-강력해졌습니다&#34;&gt;OpenClaw가 더 강력해졌습니다&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;openclaw update --dry-run
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;이 한 줄로 어떤 변경이 들어오는지 먼저 확인해두면, 실제 운영 중 예상치 못한 중단을 크게 줄일 수 있습니다. 특히 여러 채널(Discord/Telegram/Slack)을 동시에 쓰는 환경에서는 설정 키 변경 영향이 생각보다 크게 나타납니다.&lt;/p&gt;</description></item><item><title>OpenClaw 최신 업데이트: Cron 안정화, Discord 컴포넌트 v2, 그리고 보안 강화</title><link>https://kwbaek.github.io/posts/2026-02-22-openclaw-updates/</link><pubDate>Sun, 22 Feb 2026 21:00:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-02-22-openclaw-updates/</guid><description>&lt;h2 id="openclaw가-더-강력해졌습니다"&gt;OpenClaw가 더 강력해졌습니다&lt;/h2&gt;
 &lt;p&gt;지난 몇 주간 OpenClaw에 대규모 업데이트가 진행되었습니다. Cron 안정성 패치부터 Discord 상호작용 강화, 보안 기능 개선까지 - 운영 환경에서 꼭 필요한 기능들이 대거 추가되었습니다.&lt;/p&gt;
 &lt;p&gt;이번 포스트에서는 실전에서 바로 활용할 수 있는 주요 업데이트를 정리해드립니다.&lt;/p&gt;
-&lt;h2 id=&#34;1-cron-시스템-안정화-이제-믿고-쓸-수-있습니다&#34;&gt;1. Cron 시스템 안정화: 이제 믿고 쓸 수 있습니다&lt;/h2&gt;
-&lt;h3 id=&#34;문제가-있었습니다&#34;&gt;문제가 있었습니다&lt;/h3&gt;
+&lt;h2 id="1-cron-시스템-안정화-이제-믿고-쓸-수-있습니다"&gt;1. Cron 시스템 안정화: 이제 믿고 쓸 수 있습니다&lt;/h2&gt;
+&lt;h3 id="문제가-있었습니다"&gt;문제가 있었습니다&lt;/h3&gt;
 &lt;p&gt;초기 Cron 시스템은 몇 가지 치명적인 문제가 있었습니다:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;중복 실행&lt;/strong&gt;: 같은 작업이 여러 번 실행되는 경우&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;누락&lt;/strong&gt;: 예정된 작업이 실행되지 않는 경우&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;재시작 후 오동작&lt;/strong&gt;: Gateway 재시작 후 스케줄이 꼬이는 현상&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;이제-해결되었습니다&#34;&gt;이제 해결되었습니다&lt;/h3&gt;
-&lt;p&gt;2월 중순 대규모 Cron 안정성 패치가 적용되면서 이 문제들이 모두 해결되었습니다. 특히:&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>2026년 2월 AI 업계 총정리: 모델 러시와 투자 열풍</title>
-      <link>https://kwbaek.github.io/posts/2026-02-20-ai-ml-february-rush/</link>
-      <pubDate>Fri, 20 Feb 2026 21:00:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/posts/2026-02-20-ai-ml-february-rush/</guid>
-      <description>&lt;p&gt;2026년 2월은 AI 업계 역사상 가장 뜨거운 달 중 하나로 기록될 것 같습니다. 거의 매일 새로운 모델이 출시되고, 수억에서 수백억 달러 규모의 투자가 쏟아지고 있습니다. 오늘 하루 동안만 해도 엄청난 소식들이 쏟아졌는데요, 주요 트렌드를 정리해봤습니다.&lt;/p&gt;
-&lt;h2 id=&#34;-claude-sonnet-46-전방위-업그레이드&#34;&gt;🚀 Claude Sonnet 4.6: 전방위 업그레이드&lt;/h2&gt;
+&lt;h3 id="이제-해결되었습니다"&gt;이제 해결되었습니다&lt;/h3&gt;
+&lt;p&gt;2월 중순 대규모 Cron 안정성 패치가 적용되면서 이 문제들이 모두 해결되었습니다. 특히:&lt;/p&gt;</description></item><item><title>2026년 2월 AI 업계 총정리: 모델 러시와 투자 열풍</title><link>https://kwbaek.github.io/posts/2026-02-20-ai-ml-february-rush/</link><pubDate>Fri, 20 Feb 2026 21:00:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-02-20-ai-ml-february-rush/</guid><description>&lt;p&gt;2026년 2월은 AI 업계 역사상 가장 뜨거운 달 중 하나로 기록될 것 같습니다. 거의 매일 새로운 모델이 출시되고, 수억에서 수백억 달러 규모의 투자가 쏟아지고 있습니다. 오늘 하루 동안만 해도 엄청난 소식들이 쏟아졌는데요, 주요 트렌드를 정리해봤습니다.&lt;/p&gt;
+&lt;h2 id="-claude-sonnet-46-전방위-업그레이드"&gt;🚀 Claude Sonnet 4.6: 전방위 업그레이드&lt;/h2&gt;
 &lt;p&gt;Anthropic이 &lt;strong&gt;Claude Sonnet 4.6&lt;/strong&gt;를 발표했습니다. 이번 업데이트는 단순한 버전업이 아니라 전방위적인 성능 향상을 이룬 풀 업그레이드입니다.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;주요 개선사항:&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
@@ -69,15 +33,8 @@
 &lt;li&gt;&lt;strong&gt;에이전트 계획(Agent Planning)&lt;/strong&gt; 능력 향상&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;지식 작업 효율성&lt;/strong&gt; 증대&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;특히 에이전트 기반 워크플로우와 복잡한 작업 처리에서 큰 개선을 보였다고 합니다. Free와 Pro 사용자 모두 기본 모델로 사용할 수 있으며, 현재 바로 사용 가능합니다.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>OpenClaw 2월 중순 업데이트: Cron 안정화와 보안 강화</title>
-      <link>https://kwbaek.github.io/posts/2026-02-20-openclaw-latest-updates/</link>
-      <pubDate>Fri, 20 Feb 2026 21:00:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/posts/2026-02-20-openclaw-latest-updates/</guid>
-      <description>&lt;p&gt;OpenClaw가 2월 중순 동안 여러 차례 중요한 업데이트를 진행했습니다. 특히 &lt;strong&gt;Cron 안정성 대폭 개선&lt;/strong&gt;과 &lt;strong&gt;보안 강화&lt;/strong&gt;에 초점을 맞춘 업데이트들이 많았는데요, 주요 내용을 정리해봤습니다.&lt;/p&gt;
-&lt;h2 id=&#34;-cron-시스템-전면-개선-212-업데이트&#34;&gt;🔧 Cron 시스템 전면 개선 (2.12 업데이트)&lt;/h2&gt;
+&lt;p&gt;특히 에이전트 기반 워크플로우와 복잡한 작업 처리에서 큰 개선을 보였다고 합니다. Free와 Pro 사용자 모두 기본 모델로 사용할 수 있으며, 현재 바로 사용 가능합니다.&lt;/p&gt;</description></item><item><title>OpenClaw 2월 중순 업데이트: Cron 안정화와 보안 강화</title><link>https://kwbaek.github.io/posts/2026-02-20-openclaw-latest-updates/</link><pubDate>Fri, 20 Feb 2026 21:00:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-02-20-openclaw-latest-updates/</guid><description>&lt;p&gt;OpenClaw가 2월 중순 동안 여러 차례 중요한 업데이트를 진행했습니다. 특히 &lt;strong&gt;Cron 안정성 대폭 개선&lt;/strong&gt;과 &lt;strong&gt;보안 강화&lt;/strong&gt;에 초점을 맞춘 업데이트들이 많았는데요, 주요 내용을 정리해봤습니다.&lt;/p&gt;
+&lt;h2 id="-cron-시스템-전면-개선-212-업데이트"&gt;🔧 Cron 시스템 전면 개선 (2.12 업데이트)&lt;/h2&gt;
 &lt;p&gt;OpenClaw의 Cron 기능이 대폭 안정화되었습니다. 기존에 간헐적으로 발생하던 문제들이 대부분 해결되었습니다.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;주요 개선사항:&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
@@ -87,28 +44,18 @@
 &lt;li&gt;&lt;code&gt;openclaw logs --local-time&lt;/code&gt; 로컬 타임존 지원 (운영 디버깅 편의성 향상)&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;&lt;strong&gt;운영 체크 루틴&lt;/strong&gt; (업데이트 후 권장):&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;openclaw doctor
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;openclaw gateway restart
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;openclaw health
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Cron을 사용 중이라면 이번 업데이트는 필수입니다!&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>OpenClaw 보안 가이드: AI 어시스턴트를 안전하게 운영하는 방법</title>
-      <link>https://kwbaek.github.io/posts/2026-02-16-openclaw-security-best-practices/</link>
-      <pubDate>Mon, 16 Feb 2026 21:00:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/posts/2026-02-16-openclaw-security-best-practices/</guid>
-      <description>&lt;h2 id=&#34;ai-어시스턴트-보안-왜-중요한가&#34;&gt;AI 어시스턴트 보안, 왜 중요한가?&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;openclaw doctor
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;openclaw gateway restart
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;openclaw health
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Cron을 사용 중이라면 이번 업데이트는 필수입니다!&lt;/p&gt;</description></item><item><title>OpenClaw 보안 가이드: AI 어시스턴트를 안전하게 운영하는 방법</title><link>https://kwbaek.github.io/posts/2026-02-16-openclaw-security-best-practices/</link><pubDate>Mon, 16 Feb 2026 21:00:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-02-16-openclaw-security-best-practices/</guid><description>&lt;h2 id="ai-어시스턴트-보안-왜-중요한가"&gt;AI 어시스턴트 보안, 왜 중요한가?&lt;/h2&gt;
 &lt;p&gt;최근 개인 AI 어시스턴트 도구들의 보안 취약점이 연이어 발견되고 있습니다. 특히 &lt;strong&gt;OpenClaw AI 어시스턴트에서도 CVE-2026-25593&lt;/strong&gt; 취약점이 발견되어 패치되었습니다. 이는 AI 에이전트의 보안이 더 이상 선택이 아닌 필수임을 보여줍니다.&lt;/p&gt;
 &lt;p&gt;오늘은 OpenClaw를 안전하게 운영하기 위한 보안 모범 사례를 정리해봤습니다.&lt;/p&gt;
-&lt;h2 id=&#34;1-cve-2026-25593-openclaw의-교훈&#34;&gt;1. CVE-2026-25593: OpenClaw의 교훈&lt;/h2&gt;
-&lt;h3 id=&#34;취약점-개요&#34;&gt;취약점 개요&lt;/h3&gt;
+&lt;h2 id="1-cve-2026-25593-openclaw의-교훈"&gt;1. CVE-2026-25593: OpenClaw의 교훈&lt;/h2&gt;
+&lt;h3 id="취약점-개요"&gt;취약점 개요&lt;/h3&gt;
 &lt;p&gt;2026년 1월 29일, OpenClaw에서 &lt;strong&gt;cliPath를 통한 command injection이 가능한 원격 코드 실행(RCE) 취약점&lt;/strong&gt;이 발견되었습니다.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;CVE ID&lt;/strong&gt;: CVE-2026-25593&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;심각도&lt;/strong&gt;: High&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;패치 버전&lt;/strong&gt;: 2026.1.29&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;이 취약점은 악의적인 사용자가 cliPath 설정을 조작하여 시스템에서 임의의 명령을 실행할 수 있는 문제였습니다.&lt;/p&gt;</description>
-    </item>
-  </channel>
-</rss>
+&lt;p&gt;이 취약점은 악의적인 사용자가 cliPath 설정을 조작하여 시스템에서 임의의 명령을 실행할 수 있는 문제였습니다.&lt;/p&gt;</description></item></channel></rss>

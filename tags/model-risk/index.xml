@@ -1,28 +1,3 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
-  <channel>
-    <title>Model Risk on Kyungwook&#39;s Devlog</title>
-    <link>https://kwbaek.github.io/tags/model-risk/</link>
-    <description>Recent content in Model Risk on Kyungwook&#39;s Devlog</description>
-    <generator>Hugo -- 0.155.3</generator>
-    <language>ko-kr</language>
-    <lastBuildDate>Mon, 06 Jul 2026 21:01:00 +0900</lastBuildDate>
-    <atom:link href="https://kwbaek.github.io/tags/model-risk/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>AI/ML 트렌드: 금융 AI는 이제 모델 책임 경계까지 설계해야 한다</title>
-      <link>https://kwbaek.github.io/posts/2026-07-06-ai-ml-trends-financial-ai-needs-model-liability-layer/</link>
-      <pubDate>Mon, 06 Jul 2026 21:01:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/posts/2026-07-06-ai-ml-trends-financial-ai-needs-model-liability-layer/</guid>
-      <description>&lt;p&gt;오늘 AI/ML 트렌드에서 가장 흥미로운 축은 금융권 AI가 “어떤 업무에 쓰이는가”를 넘어 &lt;strong&gt;모델 자체의 책임 경계&lt;/strong&gt;로 이동하고 있다는 점입니다. Reuters는 영국 FCA 관계자가 금융 서비스에서 AI 사용처뿐 아니라 AI model 자체를 규제 대상으로 검토해야 한다고 말했다고 보도했습니다. 이 말은 꽤 무겁습니다. 은행이나 핀테크가 AI를 고객 상담, 신용심사 보조, 투자자문 문서작성에 붙일 때 책임이 앱 운영팀에만 머무르지 않고, 모델 공급자·도입 기업·업무 소유자·감사 조직 사이의 경계 문제로 확장된다는 뜻이기 때문입니다.&lt;/p&gt;
-&lt;p&gt;동시에 Singapore MAS의 SAFR 흐름은 financial AI agent가 실제 결제, treasury, wealth advisory, client engagement 같은 action을 실행하기 직전에 runtime safeguard를 가져야 한다는 방향을 보여줍니다. 여기서 중요한 포인트는 “좋은 답변”이 아니라 “실행 직전의 차단, 승인, 기록”입니다. 금융권 agent는 금액 한도, 고객 적합성, 업무 위임 범위, 예외 처리, 사후 감사 근거를 코드와 운영 로그로 남겨야 합니다.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Hermes/리오 팁: 에이전트 크론에 모델 책임 게이트를 붙이자</title>
-      <link>https://kwbaek.github.io/posts/2026-07-06-hermes-rio-model-liability-gate-for-agent-crons/</link>
-      <pubDate>Mon, 06 Jul 2026 21:01:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/posts/2026-07-06-hermes-rio-model-liability-gate-for-agent-crons/</guid>
-      <description>&lt;p&gt;Hermes/리오로 반복 작업을 자동화할수록 중요한 질문이 하나 생깁니다. “이 작업을 어떤 모델이나 도구가 수행했는가?”보다 더 중요한 질문은 &lt;strong&gt;그 결과에 누가 어떤 책임을 질 수 있는가&lt;/strong&gt;입니다. 특히 크론이 리포트를 만들고, 글을 쓰고, 저장소를 업데이트하고, 외부 자료를 인용하는 순간 자동화는 단순 보조가 아니라 작은 운영 시스템이 됩니다. 그래서 저는 agent cron에도 금융권 AI에서 말하는 model risk와 비슷한 책임 게이트가 필요하다고 봅니다.&lt;/p&gt;
-&lt;p&gt;모델 책임 게이트는 거창한 규정집이 아닙니다. 크론 실행 전에 “입력 자료가 무엇인지”, “어떤 행동은 허용되고 어떤 행동은 금지되는지”, “결과를 어떻게 검증할지”, “실패하면 어디서 멈출지”를 짧게 고정하는 습관입니다. 예를 들어 블로그 크론이라면 최신 트렌드 캐시와 최근 글을 읽고, 같은 날짜 글이 없는지 확인하고, 공개 글에는 내부 운영 흔적이 들어가지 않게 검사하고, Hugo build와 생성 HTML 확인까지 끝내야 합니다. 여기까지 닫혀야 완료입니다.&lt;/p&gt;</description>
-    </item>
-  </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Model Risk on Kyungwook's Devlog</title><link>https://kwbaek.github.io/tags/model-risk/</link><description>Recent content in Model Risk on Kyungwook's Devlog</description><generator>Hugo -- 0.155.3</generator><language>ko-kr</language><lastBuildDate>Mon, 06 Jul 2026 21:01:00 +0900</lastBuildDate><atom:link href="https://kwbaek.github.io/tags/model-risk/index.xml" rel="self" type="application/rss+xml"/><item><title>AI/ML 트렌드: 금융 AI는 이제 모델 책임 경계까지 설계해야 한다</title><link>https://kwbaek.github.io/posts/2026-07-06-ai-ml-trends-financial-ai-needs-model-liability-layer/</link><pubDate>Mon, 06 Jul 2026 21:01:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-07-06-ai-ml-trends-financial-ai-needs-model-liability-layer/</guid><description>&lt;p&gt;오늘 AI/ML 트렌드에서 가장 흥미로운 축은 금융권 AI가 “어떤 업무에 쓰이는가”를 넘어 &lt;strong&gt;모델 자체의 책임 경계&lt;/strong&gt;로 이동하고 있다는 점입니다. Reuters는 영국 FCA 관계자가 금융 서비스에서 AI 사용처뿐 아니라 AI model 자체를 규제 대상으로 검토해야 한다고 말했다고 보도했습니다. 이 말은 꽤 무겁습니다. 은행이나 핀테크가 AI를 고객 상담, 신용심사 보조, 투자자문 문서작성에 붙일 때 책임이 앱 운영팀에만 머무르지 않고, 모델 공급자·도입 기업·업무 소유자·감사 조직 사이의 경계 문제로 확장된다는 뜻이기 때문입니다.&lt;/p&gt;
+&lt;p&gt;동시에 Singapore MAS의 SAFR 흐름은 financial AI agent가 실제 결제, treasury, wealth advisory, client engagement 같은 action을 실행하기 직전에 runtime safeguard를 가져야 한다는 방향을 보여줍니다. 여기서 중요한 포인트는 “좋은 답변”이 아니라 “실행 직전의 차단, 승인, 기록”입니다. 금융권 agent는 금액 한도, 고객 적합성, 업무 위임 범위, 예외 처리, 사후 감사 근거를 코드와 운영 로그로 남겨야 합니다.&lt;/p&gt;</description></item><item><title>Hermes/리오 팁: 에이전트 크론에 모델 책임 게이트를 붙이자</title><link>https://kwbaek.github.io/posts/2026-07-06-hermes-rio-model-liability-gate-for-agent-crons/</link><pubDate>Mon, 06 Jul 2026 21:01:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-07-06-hermes-rio-model-liability-gate-for-agent-crons/</guid><description>&lt;p&gt;Hermes/리오로 반복 작업을 자동화할수록 중요한 질문이 하나 생깁니다. “이 작업을 어떤 모델이나 도구가 수행했는가?”보다 더 중요한 질문은 &lt;strong&gt;그 결과에 누가 어떤 책임을 질 수 있는가&lt;/strong&gt;입니다. 특히 크론이 리포트를 만들고, 글을 쓰고, 저장소를 업데이트하고, 외부 자료를 인용하는 순간 자동화는 단순 보조가 아니라 작은 운영 시스템이 됩니다. 그래서 저는 agent cron에도 금융권 AI에서 말하는 model risk와 비슷한 책임 게이트가 필요하다고 봅니다.&lt;/p&gt;
+&lt;p&gt;모델 책임 게이트는 거창한 규정집이 아닙니다. 크론 실행 전에 “입력 자료가 무엇인지”, “어떤 행동은 허용되고 어떤 행동은 금지되는지”, “결과를 어떻게 검증할지”, “실패하면 어디서 멈출지”를 짧게 고정하는 습관입니다. 예를 들어 블로그 크론이라면 최신 트렌드 캐시와 최근 글을 읽고, 같은 날짜 글이 없는지 확인하고, 공개 글에는 내부 운영 흔적이 들어가지 않게 검사하고, Hugo build와 생성 HTML 확인까지 끝내야 합니다. 여기까지 닫혀야 완료입니다.&lt;/p&gt;</description></item></channel></rss>

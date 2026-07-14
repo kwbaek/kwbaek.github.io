@@ -1,82 +1,60 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
-  <channel>
-    <title>Linux on Kyungwook&#39;s Devlog</title>
-    <link>https://kwbaek.github.io/tags/linux/</link>
-    <description>Recent content in Linux on Kyungwook&#39;s Devlog</description>
-    <generator>Hugo -- 0.155.3</generator>
-    <language>ko-kr</language>
-    <lastBuildDate>Thu, 09 Feb 2023 16:11:40 +0900</lastBuildDate>
-    <atom:link href="https://kwbaek.github.io/tags/linux/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Install Kubeflow 15 16</title>
-      <link>https://kwbaek.github.io/posts/install-kubeflow-15-16/</link>
-      <pubDate>Thu, 09 Feb 2023 16:11:40 +0900</pubDate>
-      <guid>https://kwbaek.github.io/posts/install-kubeflow-15-16/</guid>
-      <description>&lt;p&gt;기&lt;/p&gt;
-&lt;h1 id=&#34;kubeflow-16-설치하기&#34;&gt;kubeflow 16 설치하기&lt;/h1&gt;
-&lt;h2 id=&#34;개요&#34;&gt;개요&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Linux on Kyungwook's Devlog</title><link>https://kwbaek.github.io/tags/linux/</link><description>Recent content in Linux on Kyungwook's Devlog</description><generator>Hugo -- 0.155.3</generator><language>ko-kr</language><lastBuildDate>Thu, 09 Feb 2023 16:11:40 +0900</lastBuildDate><atom:link href="https://kwbaek.github.io/tags/linux/index.xml" rel="self" type="application/rss+xml"/><item><title>Install Kubeflow 15 16</title><link>https://kwbaek.github.io/posts/install-kubeflow-15-16/</link><pubDate>Thu, 09 Feb 2023 16:11:40 +0900</pubDate><guid>https://kwbaek.github.io/posts/install-kubeflow-15-16/</guid><description>&lt;p&gt;기&lt;/p&gt;
+&lt;h1 id="kubeflow-16-설치하기"&gt;kubeflow 16 설치하기&lt;/h1&gt;
+&lt;h2 id="개요"&gt;개요&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;kubeflow 를 설치 시 쉽고 빠른 좋은 설치 방법이 있어 공유 합니다.&lt;/li&gt;
 &lt;li&gt;하기 참조 링크를 참고하여 kubeflow 설치 및 실행 방법에 대해 정리 한 문서 입니다.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;설치전-기존-설치환경-초기화&#34;&gt;설치전 기존 설치환경 초기화&lt;/h2&gt;
-&lt;h3 id=&#34;kubernetes-초기화&#34;&gt;kubernetes 초기화&lt;/h3&gt;
+&lt;h2 id="설치전-기존-설치환경-초기화"&gt;설치전 기존 설치환경 초기화&lt;/h2&gt;
+&lt;h3 id="kubernetes-초기화"&gt;kubernetes 초기화&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;기존에 쿠버네티스가 설치되어 있으면 기존 쿠버네티스를 삭제 및 초기화 하여 새로운 설치를 시도 합니다.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;실행-스크립트&#34;&gt;실행 스크립트&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;## 쿠버네티스 초기화&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo kubeadm reset
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;y
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;## 쿠버네티스 &amp;amp;&amp;amp; 도커 기동 중지&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo systemctl stop kubelet
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo systemctl stop docker
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;## 쿠버네티스 네트워크 설정( Cluster Network Interface ) 삭제&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo ip link delete cni0
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo ip link delete flannel.1
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;## 쿠버네티스 관련 파일 삭제&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo rm -rf /var/lib/cni/
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo rm -rf /var/lib/kubelet/*
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo rm -rf /var/lib/etcd
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo rm -rf /run/flannel
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo rm -rf /etc/cni
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo rm -rf /etc/kubernetes
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo rm -rf ~/.kube
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;## 쿠버네티스 관련 패키지 삭제(Ubuntu)&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo apt-get purge kubeadm kubectl kubelet kubernetes-cni kube* -y
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo apt-get autoremove
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;docker-초기화&#34;&gt;docker 초기화&lt;/h3&gt;
-&lt;h3 id=&#34;실행-스크립트-1&#34;&gt;실행 스크립트&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo apt-get purge docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin docker-ce-rootless-extras
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo rm -rf /var/lib/docker
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo rm -rf /var/lib/containerd
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo apt-get purge nvidia-docker2
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo apt-get purge nvidia-container-toolkit
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo apt autoremove
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;kubeflow-설치&#34;&gt;kubeflow 설치&lt;/h2&gt;
-&lt;h2 id=&#34;kubeflow-설치-스크립트-clone&#34;&gt;kubeflow 설치 스크립트 clone&lt;/h2&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git clone https://github.com/myoh0623/kubeflow.git
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;1-install-cudnn&#34;&gt;1. install cudnn&lt;/h2&gt;
-&lt;h3 id=&#34;실행-스크립트-2&#34;&gt;실행 스크립트&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;cd kubeflow_tutorial/kubeflow/section1_install
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;./1_install_cudnn.sh
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;테스트 서버에 gpu 는 A100 이고 스크립트 에 있는 cuda 버전 이 낮아 최신 버전으로 변경하기 위해 다음과 같이 수정&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Ubuntu Install Oh My Zsh</title>
-      <link>https://kwbaek.github.io/posts/ubuntu-install-oh-my-zsh/</link>
-      <pubDate>Mon, 06 Feb 2023 16:53:04 +0900</pubDate>
-      <guid>https://kwbaek.github.io/posts/ubuntu-install-oh-my-zsh/</guid>
-      <description>&lt;h1 id=&#34;ubuntu-에-oh-my-zsh-설치하기&#34;&gt;Ubuntu 에 Oh My Zsh 설치하기&lt;/h1&gt;
-&lt;h2 id=&#34;설치전-요구사항&#34;&gt;설치전 요구사항&lt;/h2&gt;
+&lt;h3 id="실행-스크립트"&gt;실행 스크립트&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;## 쿠버네티스 초기화&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo kubeadm reset
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;y
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;## 쿠버네티스 &amp;amp;&amp;amp; 도커 기동 중지&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo systemctl stop kubelet
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo systemctl stop docker
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;## 쿠버네티스 네트워크 설정( Cluster Network Interface ) 삭제&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo ip link delete cni0
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo ip link delete flannel.1
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;## 쿠버네티스 관련 파일 삭제&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo rm -rf /var/lib/cni/
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo rm -rf /var/lib/kubelet/*
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo rm -rf /var/lib/etcd
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo rm -rf /run/flannel
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo rm -rf /etc/cni
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo rm -rf /etc/kubernetes
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo rm -rf ~/.kube
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;## 쿠버네티스 관련 패키지 삭제(Ubuntu)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo apt-get purge kubeadm kubectl kubelet kubernetes-cni kube* -y
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo apt-get autoremove
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="docker-초기화"&gt;docker 초기화&lt;/h3&gt;
+&lt;h3 id="실행-스크립트-1"&gt;실행 스크립트&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo apt-get purge docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin docker-ce-rootless-extras
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo rm -rf /var/lib/docker
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo rm -rf /var/lib/containerd
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo apt-get purge nvidia-docker2
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo apt-get purge nvidia-container-toolkit
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo apt autoremove
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="kubeflow-설치"&gt;kubeflow 설치&lt;/h2&gt;
+&lt;h2 id="kubeflow-설치-스크립트-clone"&gt;kubeflow 설치 스크립트 clone&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;git clone https://github.com/myoh0623/kubeflow.git
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="1-install-cudnn"&gt;1. install cudnn&lt;/h2&gt;
+&lt;h3 id="실행-스크립트-2"&gt;실행 스크립트&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;cd kubeflow_tutorial/kubeflow/section1_install
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;./1_install_cudnn.sh
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;테스트 서버에 gpu 는 A100 이고 스크립트 에 있는 cuda 버전 이 낮아 최신 버전으로 변경하기 위해 다음과 같이 수정&lt;/p&gt;</description></item><item><title>Ubuntu Install Oh My Zsh</title><link>https://kwbaek.github.io/posts/ubuntu-install-oh-my-zsh/</link><pubDate>Mon, 06 Feb 2023 16:53:04 +0900</pubDate><guid>https://kwbaek.github.io/posts/ubuntu-install-oh-my-zsh/</guid><description>&lt;h1 id="ubuntu-에-oh-my-zsh-설치하기"&gt;Ubuntu 에 Oh My Zsh 설치하기&lt;/h1&gt;
+&lt;h2 id="설치전-요구사항"&gt;설치전 요구사항&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;zsh 설치 되어 있어야함 (V5.0.8 또는 그 이상)&lt;/p&gt;
@@ -89,23 +67,20 @@
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;설치 command&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ sudo apt install curl wget git
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;$ sudo apt install curl wget git
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;설치 결과 화면
-&lt;img alt=&#34;설치 결과 화면&#34; loading=&#34;lazy&#34; src=&#34;https://kwbaek.github.io/posts/ubuntu-install-oh-my-zsh/imgaes/1.zsh.png&#34;&gt;&lt;/p&gt;
+&lt;img alt="설치 결과 화면" loading="lazy" src="https://kwbaek.github.io/posts/ubuntu-install-oh-my-zsh/imgaes/1.zsh.png"&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;터미널 기본 셀 변경&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;chsh -s &lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;which zsh&lt;span style=&#34;color:#66d9ef&#34;&gt;)&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;chsh -s &lt;span style="color:#66d9ef"&gt;$(&lt;/span&gt;which zsh&lt;span style="color:#66d9ef"&gt;)&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;zsh 를 설치 후 chsh 명령어를 통해 기본 shell 을 변경&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;터미널을 재시작 하면 자동으로 zsh 설정 화면이 나오는데, 0을 입력해서 파일 생성만 한다.&lt;/p&gt;</description>
-    </item>
-  </channel>
-</rss>
+&lt;p&gt;터미널을 재시작 하면 자동으로 zsh 설정 화면이 나오는데, 0을 입력해서 파일 생성만 한다.&lt;/p&gt;</description></item></channel></rss>
