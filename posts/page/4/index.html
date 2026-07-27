@@ -1,27 +1,385 @@
-<!doctype html><html lang=en dir=auto data-theme=auto><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=robots content="index, follow"><title>Posts | Kyungwook's Devlog</title><meta name=keywords content><meta name=description content="Posts - Kyungwook's Devlog"><meta name=author content><link rel=canonical href=https://kwbaek.github.io/posts/><link crossorigin=anonymous href=/assets/css/stylesheet.da3211e5ef867bf2b75fd5a6515cfed7195c011e8ab735694e203810a827097b.css integrity="sha256-2jIR5e+Ge/K3X9WmUVz+1xlcAR6KtzVpTiA4EKgnCXs=" rel="preload stylesheet" as=style><link rel=icon href=https://kwbaek.github.io/favicon.ico><link rel=icon type=image/png sizes=16x16 href=https://kwbaek.github.io/favicon-16x16.png><link rel=icon type=image/png sizes=32x32 href=https://kwbaek.github.io/favicon-32x32.png><link rel=apple-touch-icon href=https://kwbaek.github.io/apple-touch-icon.png><link rel=mask-icon href=https://kwbaek.github.io/safari-pinned-tab.svg><meta name=theme-color content="#2e2e33"><meta name=msapplication-TileColor content="#2e2e33"><link rel=alternate type=application/rss+xml href=https://kwbaek.github.io/posts/index.xml title=rss><link rel=alternate hreflang=en href=https://kwbaek.github.io/posts/><noscript><style>#theme-toggle,.top-link{display:none}</style><style>@media(prefers-color-scheme:dark){:root{--theme:rgb(29, 30, 32);--entry:rgb(46, 46, 51);--primary:rgb(218, 218, 219);--secondary:rgb(155, 156, 157);--tertiary:rgb(65, 66, 68);--content:rgb(196, 196, 197);--code-block-bg:rgb(46, 46, 51);--code-bg:rgb(55, 56, 62);--border:rgb(51, 51, 51);color-scheme:dark}.list{background:var(--theme)}.toc{background:var(--entry)}}@media(prefers-color-scheme:light){.list::-webkit-scrollbar-thumb{border-color:var(--code-bg)}}</style></noscript><script>localStorage.getItem("pref-theme")==="dark"?document.querySelector("html").dataset.theme="dark":localStorage.getItem("pref-theme")==="light"?document.querySelector("html").dataset.theme="light":window.matchMedia("(prefers-color-scheme: dark)").matches?document.querySelector("html").dataset.theme="dark":document.querySelector("html").dataset.theme="light"</script><meta property="og:url" content="https://kwbaek.github.io/posts/"><meta property="og:site_name" content="Kyungwook's Devlog"><meta property="og:title" content="Posts"><meta property="og:locale" content="ko-kr"><meta property="og:type" content="website"><meta name=twitter:card content="summary"><meta name=twitter:title content="Posts"><meta name=twitter:description content><script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Posts","item":"https://kwbaek.github.io/posts/"}]}</script></head><body class=list id=top><header class=header><nav class=nav><div class=logo><a href=https://kwbaek.github.io/ accesskey=h title="Kyungwook's Devlog (Alt + H)">Kyungwook's Devlog</a><div class=logo-switches><button id=theme-toggle accesskey=t title="(Alt + T)" aria-label="Toggle theme">
-<svg id="moon" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
-<svg id="sun" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button></div></div><ul id=menu><li><a href=https://kwbaek.github.io/categories/ title=categories><span>categories</span></a></li><li><a href=https://kwbaek.github.io/tags/ title=tags><span>tags</span></a></li><li><a href=https://kwbaek.github.io/ title="Kyungwook's Devlog"><span>Kyungwook's Devlog</span>&nbsp;
-<svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><path d="M15 3h6v6"/><path d="M10 14 21 3"/></svg></a></li></ul></nav></header><main class=main><header class=page-header><h1>Posts</h1></header><article class=post-entry><header class=entry-header><h2 class=entry-hint-parent>AI/ML 트렌드: 금융 AI는 이제 모델 책임 경계까지 설계해야 한다</h2></header><div class=entry-content><p>오늘 AI/ML 트렌드에서 가장 흥미로운 축은 금융권 AI가 “어떤 업무에 쓰이는가”를 넘어 모델 자체의 책임 경계로 이동하고 있다는 점입니다. Reuters는 영국 FCA 관계자가 금융 서비스에서 AI 사용처뿐 아니라 AI model 자체를 규제 대상으로 검토해야 한다고 말했다고 보도했습니다. 이 말은 꽤 무겁습니다. 은행이나 핀테크가 AI를 고객 상담, 신용심사 보조, 투자자문 문서작성에 붙일 때 책임이 앱 운영팀에만 머무르지 않고, 모델 공급자·도입 기업·업무 소유자·감사 조직 사이의 경계 문제로 확장된다는 뜻이기 때문입니다.
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Posts | Kyungwook&#39;s Devlog</title>
+<meta name="keywords" content="">
+<meta name="description" content="Posts - Kyungwook&#39;s Devlog">
+<meta name="author" content="">
+<link rel="canonical" href="https://kwbaek.github.io/posts/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.da3211e5ef867bf2b75fd5a6515cfed7195c011e8ab735694e203810a827097b.css" integrity="sha256-2jIR5e&#43;Ge/K3X9WmUVz&#43;1xlcAR6KtzVpTiA4EKgnCXs=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://kwbaek.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://kwbaek.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://kwbaek.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://kwbaek.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://kwbaek.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" type="application/rss+xml" href="https://kwbaek.github.io/posts/index.xml" title="rss">
+<link rel="alternate" hreflang="en" href="https://kwbaek.github.io/posts/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="https://kwbaek.github.io/posts/">
+  <meta property="og:site_name" content="Kyungwook&#39;s Devlog">
+  <meta property="og:title" content="Posts">
+  <meta property="og:locale" content="ko-kr">
+  <meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Posts">
+<meta name="twitter:description" content="">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://kwbaek.github.io/posts/"
+    }
+  ]
+}
+</script>
+</head>
+<body class="list" id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://kwbaek.github.io/" accesskey="h" title="Kyungwook&#39;s Devlog (Alt + H)">Kyungwook&#39;s Devlog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://kwbaek.github.io/categories/" title="categories">
+                    <span>categories</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kwbaek.github.io/tags/" title="tags">
+                    <span>tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kwbaek.github.io/" title="Kyungwook&#39;s Devlog">
+                    <span>Kyungwook&#39;s Devlog</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main"> 
+<header class="page-header">
+  <h1>
+    Posts
+  </h1>
+</header>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">AI/ML 트렌드: Copilot 도입 효과는 이제 리뷰 병목으로 측정된다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 가장 흥미로운 AI/ML 신호는 거대한 모델 발표가 아니라 GitHub Copilot usage metrics API의 작은 지표 추가였습니다. GitHub은 Copilot 사용량 리포트에 AI adoption phase별 review cycle과 time to first review 지표를 추가했습니다. 이제 조직은 Copilot을 얼마나 많이 켰는지가 아니라, Copilot을 더 깊게 쓰는 팀의 Pull Request가 실제로 더 빨리 리뷰되고 더 적은 반복으로 머지되는지를 볼 수 있습니다.
+이 변화가 중요한 이유는 AI 도입의 KPI가 “사용량”에서 “업무 흐름의 병목 제거”로 이동하고 있기 때문입니다. 많은 조직이 이미 Copilot seats, 활성 사용자 수, 자동완성 수락률 같은 지표를 봅니다. 하지만 이런 숫자만으로는 개발 속도가 실제로 좋아졌는지 판단하기 어렵습니다. 자동완성이 늘어도 PR이 오래 대기하거나 리뷰 코멘트가 반복되면 병목은 그대로입니다. GitHub이 리뷰 지연과 리뷰 반복 횟수를 adoption phase별로 보여주기 시작했다는 것은, AI 개발도구 시장이 생산성 홍보를 넘어 운영 증거의 단계로 들어갔다는 뜻입니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-07-08 21:00:00 +0900 KST'>July 8, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to AI/ML 트렌드: Copilot 도입 효과는 이제 리뷰 병목으로 측정된다" href="https://kwbaek.github.io/posts/2026-07-08-ai-ml-trends-copilot-metrics-turn-ai-adoption-into-review-throughput/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Hermes/리오 팁: 자동화에도 리뷰 처리량 게이트를 붙이자
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Hermes/리오로 블로그 작성, 리포트 생성, 코드 수정, 배포 보조 같은 작업을 자동화하다 보면 “작업을 끝냈다”는 말의 기준이 중요해집니다. 파일을 썼다고 끝난 것이 아닙니다. 테스트를 돌리고, 빌드하고, 생성 산출물을 확인하고, 공개될 문장에 내부 운영 흔적이 섞이지 않았는지 살펴봐야 합니다. 그래서 저는 개발 자동화 크론에도 review throughput gate를 붙이는 것이 좋다고 봅니다.
+GitHub이 Copilot usage metrics API에 review cycle과 time-to-review 지표를 추가한 것은 개인 자동화에도 시사점이 큽니다. AI가 코드를 빠르게 만들수록 병목은 “작성”이 아니라 “검토”로 이동합니다. 에이전트가 PR 초안을 만들고, 테스트를 실행하고, 설명을 작성하더라도 사람이 리뷰할 때 맥락이 부족하면 오히려 반복이 늘어납니다. Hermes/리오 자동화도 마찬가지입니다. 결과물을 많이 만드는 것보다, 검토자가 빠르게 판단할 수 있는 증거를 함께 남기는 것이 더 중요합니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-07-08 21:00:00 +0900 KST'>July 8, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to Hermes/리오 팁: 자동화에도 리뷰 처리량 게이트를 붙이자" href="https://kwbaek.github.io/posts/2026-07-08-hermes-rio-add-review-throughput-gate-to-agent-crons/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">AI/ML 트렌드: 중국 AI 스택은 비용 절감 카드에서 운영 리스크가 됐다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 AI/ML 트렌드에서 가장 흥미로운 축은 중국 AI 모델이 더 이상 “저렴한 대체 모델” 정도로만 볼 수 없게 됐다는 점입니다. CNBC는 OpenRouter 기준으로 미국 기업의 중국 AI 모델 사용 비중이 2026년 2월 이후 매주 30%를 넘었고, 한때 46%까지 올라갔다고 보도했습니다. DeepSeek, Z.ai 같은 중국 open-weight 모델이 OpenAI·Anthropic 대비 비용 우위를 만들면서, 기업들은 이미 실제 트래픽 일부를 중국 모델 쪽으로 보내고 있습니다.
+그런데 같은 날 Reuters는 DeepSeek가 자체 AI chip 개발을 추진하고 있다고 전했습니다. 이 조합이 중요합니다. 중국 AI 경쟁력은 이제 모델 가중치나 API 단가만의 문제가 아니라, 추론을 어떤 칩·가속기·클라우드·수출통제 환경 위에서 계속 운영할 수 있는가의 문제로 확장되고 있습니다. 값싼 모델을 쓰는 순간 기업은 단순히 모델 벤더를 바꾸는 것이 아니라, 지정학적 리스크와 공급망 리스크가 붙은 AI 스택을 선택하는 셈입니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-07-07 21:01:00 +0900 KST'>July 7, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 중국 AI 스택은 비용 절감 카드에서 운영 리스크가 됐다" href="https://kwbaek.github.io/posts/2026-07-07-ai-ml-trends-china-ai-stack-becomes-an-operating-risk/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Hermes/리오 팁: 모델 믹스 크론에는 승인 매트릭스가 필요하다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Hermes/리오로 매일 리포트, 블로그, 트렌드 스캐너, 아이디어 생성기를 돌리다 보면 자연스럽게 여러 모델과 도구를 섞게 됩니다. 어떤 작업은 빠른 모델로 충분하고, 어떤 작업은 긴 문맥이 필요하며, 어떤 작업은 외부 검색·브라우저·Git 작업까지 포함합니다. 그래서 이제는 개인 자동화에도 model mix approval matrix가 필요하다고 봅니다. 거창한 엔터프라이즈 문서가 아니라, “이 작업에는 어떤 모델/도구 조합을 써도 되는가”를 짧고 명확하게 정리한 표입니다.
+예를 들어 뉴스 스캐너는 빠른 요약 모델과 RSS/브라우저 검증 조합으로 충분할 수 있습니다. 하지만 블로그 게시 크론은 다릅니다. 글을 쓰는 것에서 끝나지 않고 Hugo build, 공개 HTML 생성, 민감 문자열 검사, git commit/push, 배포 확인까지 이어집니다. 여기서는 모델 선택보다 작업 경계와 검증 루프가 더 중요합니다. 어떤 모델을 쓰든 최종 결과가 공개 저장소로 나가기 때문에, 내부 경로·토큰·채널 ID 같은 운영 흔적이 섞이지 않았는지 반드시 확인해야 합니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-07-07 21:01:00 +0900 KST'>July 7, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to Hermes/리오 팁: 모델 믹스 크론에는 승인 매트릭스가 필요하다" href="https://kwbaek.github.io/posts/2026-07-07-hermes-rio-model-mix-approval-matrix-for-crons/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">AI/ML 트렌드: 금융 AI는 이제 모델 책임 경계까지 설계해야 한다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 AI/ML 트렌드에서 가장 흥미로운 축은 금융권 AI가 “어떤 업무에 쓰이는가”를 넘어 모델 자체의 책임 경계로 이동하고 있다는 점입니다. Reuters는 영국 FCA 관계자가 금융 서비스에서 AI 사용처뿐 아니라 AI model 자체를 규제 대상으로 검토해야 한다고 말했다고 보도했습니다. 이 말은 꽤 무겁습니다. 은행이나 핀테크가 AI를 고객 상담, 신용심사 보조, 투자자문 문서작성에 붙일 때 책임이 앱 운영팀에만 머무르지 않고, 모델 공급자·도입 기업·업무 소유자·감사 조직 사이의 경계 문제로 확장된다는 뜻이기 때문입니다.
 동시에 Singapore MAS의 SAFR 흐름은 financial AI agent가 실제 결제, treasury, wealth advisory, client engagement 같은 action을 실행하기 직전에 runtime safeguard를 가져야 한다는 방향을 보여줍니다. 여기서 중요한 포인트는 “좋은 답변”이 아니라 “실행 직전의 차단, 승인, 기록”입니다. 금융권 agent는 금액 한도, 고객 적합성, 업무 위임 범위, 예외 처리, 사후 감사 근거를 코드와 운영 로그로 남겨야 합니다.
-...</p></div><footer class=entry-footer><span title='2026-07-06 21:01:00 +0900 KST'>July 6, 2026</span></footer><a class=entry-link aria-label="post link to AI/ML 트렌드: 금융 AI는 이제 모델 책임 경계까지 설계해야 한다" href=https://kwbaek.github.io/posts/2026-07-06-ai-ml-trends-financial-ai-needs-model-liability-layer/></a></article><article class=post-entry><header class=entry-header><h2 class=entry-hint-parent>Hermes/리오 팁: 에이전트 크론에 모델 책임 게이트를 붙이자</h2></header><div class=entry-content><p>Hermes/리오로 반복 작업을 자동화할수록 중요한 질문이 하나 생깁니다. “이 작업을 어떤 모델이나 도구가 수행했는가?”보다 더 중요한 질문은 그 결과에 누가 어떤 책임을 질 수 있는가입니다. 특히 크론이 리포트를 만들고, 글을 쓰고, 저장소를 업데이트하고, 외부 자료를 인용하는 순간 자동화는 단순 보조가 아니라 작은 운영 시스템이 됩니다. 그래서 저는 agent cron에도 금융권 AI에서 말하는 model risk와 비슷한 책임 게이트가 필요하다고 봅니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-07-06 21:01:00 +0900 KST'>July 6, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 금융 AI는 이제 모델 책임 경계까지 설계해야 한다" href="https://kwbaek.github.io/posts/2026-07-06-ai-ml-trends-financial-ai-needs-model-liability-layer/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Hermes/리오 팁: 에이전트 크론에 모델 책임 게이트를 붙이자
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Hermes/리오로 반복 작업을 자동화할수록 중요한 질문이 하나 생깁니다. “이 작업을 어떤 모델이나 도구가 수행했는가?”보다 더 중요한 질문은 그 결과에 누가 어떤 책임을 질 수 있는가입니다. 특히 크론이 리포트를 만들고, 글을 쓰고, 저장소를 업데이트하고, 외부 자료를 인용하는 순간 자동화는 단순 보조가 아니라 작은 운영 시스템이 됩니다. 그래서 저는 agent cron에도 금융권 AI에서 말하는 model risk와 비슷한 책임 게이트가 필요하다고 봅니다.
 모델 책임 게이트는 거창한 규정집이 아닙니다. 크론 실행 전에 “입력 자료가 무엇인지”, “어떤 행동은 허용되고 어떤 행동은 금지되는지”, “결과를 어떻게 검증할지”, “실패하면 어디서 멈출지”를 짧게 고정하는 습관입니다. 예를 들어 블로그 크론이라면 최신 트렌드 캐시와 최근 글을 읽고, 같은 날짜 글이 없는지 확인하고, 공개 글에는 내부 운영 흔적이 들어가지 않게 검사하고, Hugo build와 생성 HTML 확인까지 끝내야 합니다. 여기까지 닫혀야 완료입니다.
-...</p></div><footer class=entry-footer><span title='2026-07-06 21:01:00 +0900 KST'>July 6, 2026</span></footer><a class=entry-link aria-label="post link to Hermes/리오 팁: 에이전트 크론에 모델 책임 게이트를 붙이자" href=https://kwbaek.github.io/posts/2026-07-06-hermes-rio-model-liability-gate-for-agent-crons/></a></article><article class=post-entry><header class=entry-header><h2 class=entry-hint-parent>AI/ML 트렌드: AI 인프라는 이제 공공 자본 루프까지 설계해야 한다</h2></header><div class=entry-content><p>오늘 AI/ML 트렌드에서 가장 크게 보이는 신호는 AI 인프라 경쟁이 모델 성능이나 GPU 구매 경쟁을 넘어 국가 단위 자본 배분 문제로 커지고 있다는 점입니다. Reuters가 보도한 한국의 Future Response Fund 구상은 이 흐름을 잘 보여줍니다. 반도체 호황에서 나온 세수를 physical AI, 데이터센터, AI chip 경쟁력 같은 장기 프로젝트에 다시 넣겠다는 구조이기 때문입니다. 단순 보조금이 아니라 “반도체 사이클 → 세수 → 전략 인프라 투자 → 다음 AI 산업 기반”으로 이어지는 루프가 만들어지는 셈입니다.
-...</p></div><footer class=entry-footer><span title='2026-07-05 21:00:00 +0900 KST'>July 5, 2026</span></footer><a class=entry-link aria-label="post link to AI/ML 트렌드: AI 인프라는 이제 공공 자본 루프까지 설계해야 한다" href=https://kwbaek.github.io/posts/2026-07-05-ai-ml-trends-ai-infra-needs-a-public-capital-loop/></a></article><article class=post-entry><header class=entry-header><h2 class=entry-hint-parent>Hermes/리오 팁: 블로그 크론에 출판 게이트를 붙이자</h2></header><div class=entry-content><p>Hermes/리오로 블로그 자동화를 돌릴 때 가장 중요한 습관은 글을 잘 쓰는 것보다 출판 게이트를 명확히 두는 것입니다. 크론은 사람이 보는 실시간 편집기가 아닙니다. 한 번 실행되면 자료를 읽고, 글을 만들고, 저장소를 커밋하고, Hugo를 빌드하고, 생성된 public 사이트를 배포합니다. 이 흐름이 자동화될수록 “어떤 조건을 만족해야 출판해도 되는가”가 글쓰기 품질만큼 중요해집니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-07-06 21:01:00 +0900 KST'>July 6, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to Hermes/리오 팁: 에이전트 크론에 모델 책임 게이트를 붙이자" href="https://kwbaek.github.io/posts/2026-07-06-hermes-rio-model-liability-gate-for-agent-crons/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">AI/ML 트렌드: AI 인프라는 이제 공공 자본 루프까지 설계해야 한다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 AI/ML 트렌드에서 가장 크게 보이는 신호는 AI 인프라 경쟁이 모델 성능이나 GPU 구매 경쟁을 넘어 국가 단위 자본 배분 문제로 커지고 있다는 점입니다. Reuters가 보도한 한국의 Future Response Fund 구상은 이 흐름을 잘 보여줍니다. 반도체 호황에서 나온 세수를 physical AI, 데이터센터, AI chip 경쟁력 같은 장기 프로젝트에 다시 넣겠다는 구조이기 때문입니다. 단순 보조금이 아니라 “반도체 사이클 → 세수 → 전략 인프라 투자 → 다음 AI 산업 기반”으로 이어지는 루프가 만들어지는 셈입니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-07-05 21:00:00 +0900 KST'>July 5, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to AI/ML 트렌드: AI 인프라는 이제 공공 자본 루프까지 설계해야 한다" href="https://kwbaek.github.io/posts/2026-07-05-ai-ml-trends-ai-infra-needs-a-public-capital-loop/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Hermes/리오 팁: 블로그 크론에 출판 게이트를 붙이자
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Hermes/리오로 블로그 자동화를 돌릴 때 가장 중요한 습관은 글을 잘 쓰는 것보다 출판 게이트를 명확히 두는 것입니다. 크론은 사람이 보는 실시간 편집기가 아닙니다. 한 번 실행되면 자료를 읽고, 글을 만들고, 저장소를 커밋하고, Hugo를 빌드하고, 생성된 public 사이트를 배포합니다. 이 흐름이 자동화될수록 “어떤 조건을 만족해야 출판해도 되는가”가 글쓰기 품질만큼 중요해집니다.
 출판 게이트는 복잡한 CI 시스템이 아니어도 됩니다. 최소한 같은 날짜 글이 이미 있는지 확인하고, front matter의 date가 실제 현재 시각보다 미래가 아닌지 확인하고, 글 길이와 카테고리가 맞는지 보고, Hugo build가 성공했는지 확인하면 됩니다. 그 다음 새로 생성된 HTML이 실제로 존재하는지, 공개 페이지에 로컬 경로·토큰·채널 ID 같은 민감한 문자열이 섞이지 않았는지 좁은 범위로 검사해야 합니다. 자동 글쓰기의 위험은 글이 조금 어색한 것이 아니라 내부 운영 흔적이 공개 결과물에 새는 것입니다.
-...</p></div><footer class=entry-footer><span title='2026-07-05 21:00:00 +0900 KST'>July 5, 2026</span></footer><a class=entry-link aria-label="post link to Hermes/리오 팁: 블로그 크론에 출판 게이트를 붙이자" href=https://kwbaek.github.io/posts/2026-07-05-hermes-rio-add-a-publishing-gate-to-crons/></a></article><article class=post-entry><header class=entry-header><h2 class=entry-hint-parent>AI/ML 트렌드: 에이전트 데이터 플레인이 새 RAG 레이어가 된다</h2></header><div class=entry-content><p>오늘 AI/ML 트렌드에서 가장 눈에 띈 흐름은 에이전트 경쟁의 초점이 모델 호출 자체에서 운영 데이터 계층으로 옮겨가고 있다는 점입니다. Couchbase가 발표한 AI Data Plane GA는 이 변화를 잘 보여줍니다. 기업형 에이전트가 실제 업무에 들어가면 필요한 것은 더 긴 답변만이 아닙니다. 지속되는 메모리, 최신 컨텍스트 검색, 클라우드와 엣지의 데이터 접근, MCP 기반 도구 연결, 그리고 이 모든 것을 관리할 수 있는 권한·감사 구조가 필요합니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-07-05 21:00:00 +0900 KST'>July 5, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to Hermes/리오 팁: 블로그 크론에 출판 게이트를 붙이자" href="https://kwbaek.github.io/posts/2026-07-05-hermes-rio-add-a-publishing-gate-to-crons/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">AI/ML 트렌드: 에이전트 데이터 플레인이 새 RAG 레이어가 된다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 AI/ML 트렌드에서 가장 눈에 띈 흐름은 에이전트 경쟁의 초점이 모델 호출 자체에서 운영 데이터 계층으로 옮겨가고 있다는 점입니다. Couchbase가 발표한 AI Data Plane GA는 이 변화를 잘 보여줍니다. 기업형 에이전트가 실제 업무에 들어가면 필요한 것은 더 긴 답변만이 아닙니다. 지속되는 메모리, 최신 컨텍스트 검색, 클라우드와 엣지의 데이터 접근, MCP 기반 도구 연결, 그리고 이 모든 것을 관리할 수 있는 권한·감사 구조가 필요합니다.
 초기의 RAG는 “문서를 임베딩해서 검색한 뒤 모델에 넣는다”에 가까웠습니다. 하지만 agentic workflow에서는 그 정도로 부족합니다. 에이전트는 고객 상태, 업무 이력, 실시간 이벤트, 세션 기록, 승인 조건을 계속 읽고 갱신합니다. 즉 검색 인프라는 더 이상 부가 기능이 아니라 에이전트가 현실 세계를 이해하는 운영 기반이 됩니다. 이 계층이 약하면 모델이 좋아져도 같은 질문을 반복하거나, 오래된 정보를 근거로 행동하거나, 팀별 데이터 정책을 어길 수 있습니다.
-...</p></div><footer class=entry-footer><span title='2026-07-04 21:00:00 +0900 KST'>July 4, 2026</span></footer><a class=entry-link aria-label="post link to AI/ML 트렌드: 에이전트 데이터 플레인이 새 RAG 레이어가 된다" href=https://kwbaek.github.io/posts/2026-07-04-ai-ml-trends-agent-data-plane-becomes-the-new-rag-layer/></a></article><article class=post-entry><header class=entry-header><h2 class=entry-hint-parent>Hermes/리오 팁: 에이전트 컨텍스트 계약서를 붙이자</h2></header><div class=entry-content><p>오늘의 AI/ML 흐름을 Hermes/리오 운영 팁으로 바꾸면 핵심은 단순합니다. 자동화가 읽고 쓰는 컨텍스트에 대해 에이전트 컨텍스트 계약서를 붙여야 합니다. 에이전트가 한두 개의 파일만 읽을 때는 “필요한 자료를 알아서 찾아봐”도 괜찮아 보입니다. 하지만 크론, 리포트, 블로그, 배포, 캐시, MCP 도구가 연결되면 컨텍스트는 곧 운영 상태가 됩니다. 어떤 입력을 믿을 수 있는지, 어떤 상태를 갱신할 수 있는지, 무엇을 공개 문구에 절대 넣으면 안 되는지를 명시하지 않으면 자동화는 점점 불안정해집니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-07-04 21:00:00 +0900 KST'>July 4, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 에이전트 데이터 플레인이 새 RAG 레이어가 된다" href="https://kwbaek.github.io/posts/2026-07-04-ai-ml-trends-agent-data-plane-becomes-the-new-rag-layer/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Hermes/리오 팁: 에이전트 컨텍스트 계약서를 붙이자
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘의 AI/ML 흐름을 Hermes/리오 운영 팁으로 바꾸면 핵심은 단순합니다. 자동화가 읽고 쓰는 컨텍스트에 대해 에이전트 컨텍스트 계약서를 붙여야 합니다. 에이전트가 한두 개의 파일만 읽을 때는 “필요한 자료를 알아서 찾아봐”도 괜찮아 보입니다. 하지만 크론, 리포트, 블로그, 배포, 캐시, MCP 도구가 연결되면 컨텍스트는 곧 운영 상태가 됩니다. 어떤 입력을 믿을 수 있는지, 어떤 상태를 갱신할 수 있는지, 무엇을 공개 문구에 절대 넣으면 안 되는지를 명시하지 않으면 자동화는 점점 불안정해집니다.
 컨텍스트 계약서는 복잡한 문서가 아니어도 됩니다. 작업별로 입력 원천, 신뢰도, 갱신 권한, 실패 시 대체 경로, 검증 방법을 적어두면 충분합니다. 예를 들어 블로그 포스팅 크론이라면 입력은 최신 AI/ML 트렌드 캐시와 일간 리포트, 중복 기준은 최근 블로그 글, 쓰기 대상은 Hugo 글과 생성 사이트, 검증은 글 길이·빌드 성공·생성 HTML 확인·공개 문구 점검입니다. 이렇게 적어두면 다음 실행에서 “무엇을 근거로 글을 썼는지”와 “어디까지 자동으로 해도 되는지”가 분리됩니다.
-...</p></div><footer class=entry-footer><span title='2026-07-04 21:00:00 +0900 KST'>July 4, 2026</span></footer><a class=entry-link aria-label="post link to Hermes/리오 팁: 에이전트 컨텍스트 계약서를 붙이자" href=https://kwbaek.github.io/posts/2026-07-04-hermes-rio-add-an-agent-context-contract/></a></article><article class=post-entry><header class=entry-header><h2 class=entry-hint-parent>AI/ML 트렌드: 에이전트 보안은 런타임 레이어로 내려온다</h2></header><div class=entry-content><p>오늘 AI/ML 트렌드에서 가장 중요한 흐름은 에이전트가 더 똑똑해지는 것보다, 에이전트를 운영 중에 어떻게 통제할 것인가가 전면으로 올라왔다는 점입니다. Microsoft Defender는 관리형 Windows/macOS 환경에서 로컬 AI agent와 MCP server를 인벤토리화하고, Copilot CLI·Claude Code류 도구를 겨냥한 prompt injection을 실행 전 차단하는 방향을 보여줬습니다. Reuters가 다룬 Argentina의 AI-run company 실험도 같은 메시지를 줍니다. AI가 법인 운영을 돕더라도 책임 주체, 인간 대표자, 거버넌스 구조를 피할 수 없습니다.
-이 변화는 단순한 보안 기능 추가가 아닙니다. 그동안 AI 보안은 주로 인증키 보호, 데이터 유출 방지, 모델 응답 필터링에 집중했습니다. 하지만 agentic workflow에서는 위험 지점이 달라집니다. 에이전트는 파일을 읽고, 브라우저를 열고, 코드를 실행하고, MCP server를 통해 외부 도구를 호출합니다. 따라서 보안팀은 “모델이 무엇을 답했나”뿐 아니라 “어떤 로컬 agent가 설치되어 있는가”, “어떤 MCP server가 활성화되어 있는가”, “어떤 prompt가 도구 실행으로 이어졌는가”를 봐야 합니다.
-...</p></div><footer class=entry-footer><span title='2026-07-03 21:01:00 +0900 KST'>July 3, 2026</span></footer><a class=entry-link aria-label="post link to AI/ML 트렌드: 에이전트 보안은 런타임 레이어로 내려온다" href=https://kwbaek.github.io/posts/2026-07-03-ai-ml-trends-agent-security-moves-to-the-runtime-layer/></a></article><article class=post-entry><header class=entry-header><h2 class=entry-hint-parent>Hermes/리오 팁: 로컬 에이전트 인벤토리를 먼저 만들자</h2></header><div class=entry-content><p>오늘의 AI/ML 보안 흐름을 Hermes/리오 운영 팁으로 바꾸면 핵심은 간단합니다. 자동화를 늘리기 전에 로컬 에이전트 인벤토리를 먼저 만들어야 합니다. 에이전트가 하나의 챗봇일 때는 어떤 모델을 쓰는지만 알아도 충분했습니다. 하지만 이제는 코딩 에이전트, 브라우저 자동화, 크론 리포트, MCP server, 파일 편집 도구, 배포 스크립트가 서로 연결됩니다. 이 상태에서 “무슨 일이 있었는지”를 나중에 추적하려면 어떤 에이전트와 도구가 존재하는지부터 명확해야 합니다.
-로컬 에이전트 인벤토리는 거창한 보안 플랫폼이 아니라 작은 운영 문서로 시작할 수 있습니다. 각 자동화에 대해 이름, 목적, 읽을 수 있는 입력, 쓸 수 있는 출력, 외부 부작용 가능성, 사용하는 도구, 실패 시 멈춰야 하는 조건을 적습니다. 예를 들어 블로그 포스팅 자동화라면 입력은 AI/ML 리포트와 최근 트렌드 캐시, 출력은 Hugo 글과 배포 커밋, 검증은 글 길이·Hugo 빌드·생성 HTML 민감정보 검사입니다. 이 정도만 적어도 다음에 문제가 생겼을 때 원인을 훨씬 빨리 찾을 수 있습니다.
-...</p></div><footer class=entry-footer><span title='2026-07-03 21:01:00 +0900 KST'>July 3, 2026</span></footer><a class=entry-link aria-label="post link to Hermes/리오 팁: 로컬 에이전트 인벤토리를 먼저 만들자" href=https://kwbaek.github.io/posts/2026-07-03-hermes-rio-start-with-a-local-agent-inventory/></a></article><article class=post-entry><header class=entry-header><h2 class=entry-hint-parent>AI/ML 트렌드: 에이전트 라우팅이 운영 통제가 된다</h2></header><div class=entry-content><p>오늘 AI/ML 트렌드에서 가장 흥미로운 신호는 모델 자체보다 에이전트 운영 레이어가 빠르게 제품화되고 있다는 점입니다. GitHub는 Copilot CLI에 작업별 auto model selection과 AI credit session limit을 추가했고, Copilot Vision과 VS Code browser tools도 일반 제공으로 확장했습니다. AWS는 여러 에이전트를 단일 도메인, JWT scope, agent registry, routing policy로 묶는 serverless A2A gateway 패턴을 공개했습니다. 각각 따로 보면 개발자 도구 업데이트처럼 보이지만, 함께 보면 에이전트를 운영하는 방식이 “좋은 답을 생성하는가”에서 “누가, 어떤 권한으로, 어떤 비용 한도 안에서, 어떤 모델과 도구를 호출하는가”로 이동하고 있습니다.
-...</p></div><footer class=entry-footer><span title='2026-07-02 21:00:00 +0900 KST'>July 2, 2026</span></footer><a class=entry-link aria-label="post link to AI/ML 트렌드: 에이전트 라우팅이 운영 통제가 된다" href=https://kwbaek.github.io/posts/2026-07-02-ai-ml-trends-agent-routing-becomes-operating-control/></a></article><article class=post-entry><header class=entry-header><h2 class=entry-hint-parent>Hermes/리오 팁: Agent Routing Ledger를 남기자</h2></header><div class=entry-content><p>오늘 GitHub Copilot의 자동 모델 선택과 AWS의 A2A gateway 흐름을 Hermes/리오 운영 관점으로 가져오면 실무 팁은 하나입니다. 자동화마다 Agent Routing Ledger를 남기는 것입니다. 에이전트가 하나일 때는 “어떤 모델로 답했는가” 정도만 봐도 충분해 보입니다. 하지만 크론, 블로그 생성, 리포트 작성, 코드 수정, 브라우저 확인처럼 작업 종류가 늘어나면 중요한 질문이 바뀝니다. 왜 이 도구를 썼는지, 왜 이 출처를 신뢰했는지, 왜 이 파일만 수정했는지, 어떤 단계에서 멈출 수 있었는지를 기록해야 합니다.
-Agent Routing Ledger는 거창한 데이터베이스가 아니라 실행별 짧은 운영 장부입니다. Hermes/리오가 어떤 입력을 읽었고, 어떤 후보를 버렸고, 어떤 도구 호출을 했고, 어떤 검증을 통과했는지 남기는 습관에 가깝습니다. 예를 들어 블로그 포스팅 크론이라면 오늘의 AI/ML 리포트와 최신 트렌드 캐시를 확인했는지, 같은 날짜 글이 이미 있는지, 새 글이 500자 이상인지, Hugo 빌드가 통과했는지, 생성된 공개 HTML에 민감한 운영 세부값이 섞이지 않았는지를 기록해야 합니다.
-...</p></div><footer class=entry-footer><span title='2026-07-02 21:00:00 +0900 KST'>July 2, 2026</span></footer><a class=entry-link aria-label="post link to Hermes/리오 팁: Agent Routing Ledger를 남기자" href=https://kwbaek.github.io/posts/2026-07-02-hermes-rio-add-an-agent-routing-ledger/></a></article><footer class=page-footer><nav class=pagination><a class=prev href=https://kwbaek.github.io/posts/page/3/>«&nbsp;Prev&nbsp;
-</a><a class=next href=https://kwbaek.github.io/posts/page/5/>Next&nbsp;&nbsp;»</a></nav></footer></main><footer class=footer><span>&copy; 2026 <a href=https://kwbaek.github.io/>Kyungwook's Devlog</a></span> ·
-<span>Powered by
-<a href=https://gohugo.io/ rel="noopener noreferrer" target=_blank>Hugo</a> &
-<a href=https://github.com/adityatelange/hugo-PaperMod/ rel=noopener target=_blank>PaperMod</a></span></footer><a href=#top aria-label="go to top" title="Go to Top (Alt + G)" class=top-link id=top-link accesskey=g><svg viewBox="0 0 12 6" fill="currentColor"><path d="M12 6H0l6-6z"/></svg>
-</a><script>let menu=document.getElementById("menu");if(menu){const e=localStorage.getItem("menu-scroll-position");e&&(menu.scrollLeft=parseInt(e,10)),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)}}document.querySelectorAll('a[href^="#"]').forEach(e=>{e.addEventListener("click",function(e){e.preventDefault();var t=this.getAttribute("href").substr(1);window.matchMedia("(prefers-reduced-motion: reduce)").matches?document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView({behavior:"smooth"}),t==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${t}`)})})</script><script>var mybutton=document.getElementById("top-link");window.onscroll=function(){document.body.scrollTop>800||document.documentElement.scrollTop>800?(mybutton.style.visibility="visible",mybutton.style.opacity="1"):(mybutton.style.visibility="hidden",mybutton.style.opacity="0")}</script><script>document.getElementById("theme-toggle").addEventListener("click",()=>{const e=document.querySelector("html");e.dataset.theme==="dark"?(e.dataset.theme="light",localStorage.setItem("pref-theme","light")):(e.dataset.theme="dark",localStorage.setItem("pref-theme","dark"))})</script></body></html>
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-07-04 21:00:00 +0900 KST'>July 4, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to Hermes/리오 팁: 에이전트 컨텍스트 계약서를 붙이자" href="https://kwbaek.github.io/posts/2026-07-04-hermes-rio-add-an-agent-context-contract/"></a>
+</article>
+<footer class="page-footer">
+  <nav class="pagination">
+    <a class="prev" href="https://kwbaek.github.io/posts/page/3/">
+      «&nbsp;Prev&nbsp;
+    </a>
+    <a class="next" href="https://kwbaek.github.io/posts/page/5/">Next&nbsp;&nbsp;»
+    </a>
+  </nav>
+</footer>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://kwbaek.github.io/">Kyungwook&#39;s Devlog</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

@@ -1,8 +1,26 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Region Risk on Kyungwook's Devlog</title><link>https://kwbaek.github.io/tags/region-risk/</link><description>Recent content in Region Risk on Kyungwook's Devlog</description><generator>Hugo -- 0.155.3</generator><language>ko-kr</language><lastBuildDate>Wed, 15 Jul 2026 21:16:00 +0900</lastBuildDate><atom:link href="https://kwbaek.github.io/tags/region-risk/index.xml" rel="self" type="application/rss+xml"/><item><title>Hermes(리오) 활용법: '인프라 의존성' 블록에 지역 리스크 태그를 추가하라</title><link>https://kwbaek.github.io/posts/2026-07-15-hermes-rio-add-region-risk-tag-to-infra-block/</link><pubDate>Wed, 15 Jul 2026 21:16:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-07-15-hermes-rio-add-region-risk-tag-to-infra-block/</guid><description>&lt;p&gt;어제 이 블로그에서 크론마다 &amp;lsquo;인프라 의존성&amp;rsquo; 블록(주 모델/폴백, 외부 API, 암묵적 지역 의존, 컴퓨트 민감도, 저하 시 동작)을 선언하자고 제안했습니다. 오늘 나온 신호 — 뉴욕은 데이터센터 승인을 보류하고, 호주·사우디·일본은 반대로 인허가와 보조금을 앞세워 AI 인프라를 유치한다는 소식 — 은 그 블록에 &lt;strong&gt;한 줄이 빠졌다&lt;/strong&gt;는 걸 보여줍니다. 바로 &amp;ldquo;이 크론이 어느 나라/리전의 정책 리스크에 걸려 있는가&amp;quot;입니다.&lt;/p&gt;
-&lt;h2 id="왜-지역-리스크를-따로-태그해야-하는가"&gt;왜 지역 리스크를 따로 태그해야 하는가&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Region Risk on Kyungwook&#39;s Devlog</title>
+    <link>https://kwbaek.github.io/tags/region-risk/</link>
+    <description>Recent content in Region Risk on Kyungwook&#39;s Devlog</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Wed, 15 Jul 2026 21:16:00 +0900</lastBuildDate>
+    <atom:link href="https://kwbaek.github.io/tags/region-risk/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hermes(리오) 활용법: &#39;인프라 의존성&#39; 블록에 지역 리스크 태그를 추가하라</title>
+      <link>https://kwbaek.github.io/posts/2026-07-15-hermes-rio-add-region-risk-tag-to-infra-block/</link>
+      <pubDate>Wed, 15 Jul 2026 21:16:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-07-15-hermes-rio-add-region-risk-tag-to-infra-block/</guid>
+      <description>&lt;p&gt;어제 이 블로그에서 크론마다 &amp;lsquo;인프라 의존성&amp;rsquo; 블록(주 모델/폴백, 외부 API, 암묵적 지역 의존, 컴퓨트 민감도, 저하 시 동작)을 선언하자고 제안했습니다. 오늘 나온 신호 — 뉴욕은 데이터센터 승인을 보류하고, 호주·사우디·일본은 반대로 인허가와 보조금을 앞세워 AI 인프라를 유치한다는 소식 — 은 그 블록에 &lt;strong&gt;한 줄이 빠졌다&lt;/strong&gt;는 걸 보여줍니다. 바로 &amp;ldquo;이 크론이 어느 나라/리전의 정책 리스크에 걸려 있는가&amp;quot;입니다.&lt;/p&gt;
+&lt;h2 id=&#34;왜-지역-리스크를-따로-태그해야-하는가&#34;&gt;왜 지역 리스크를 따로 태그해야 하는가&lt;/h2&gt;
 &lt;p&gt;같은 &amp;lsquo;암묵적 지역 의존&amp;rsquo;이라도 리스크의 방향이 다릅니다.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;거부권 지역&lt;/strong&gt;(예: 신규 데이터센터 인허가를 보류·지연시키는 곳)에 걸린 크론은 &lt;strong&gt;용량 축소·지연&lt;/strong&gt;이 리스크입니다.&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;유치 경쟁 지역&lt;/strong&gt;(예: 인허가를 패스트트랙하거나 보조금을 태우는 곳)에 걸린 크론은 오히려 &lt;strong&gt;정책 급변·보조금 철회 시의 변동성&lt;/strong&gt;이 리스크입니다.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;두 리스크는 대응이 다릅니다. 전자는 폴백 리전을 미리 정해둬야 하고, 후자는 &amp;ldquo;이 저가/고속 인프라가 언제까지 지속될지&amp;rdquo; 재검토 주기를 정해둬야 합니다. 하나의 &amp;lsquo;지역 의존&amp;rsquo; 항목으로 뭉뚱그리면 이 차이가 사라집니다.&lt;/p&gt;</description></item></channel></rss>
+&lt;p&gt;두 리스크는 대응이 다릅니다. 전자는 폴백 리전을 미리 정해둬야 하고, 후자는 &amp;ldquo;이 저가/고속 인프라가 언제까지 지속될지&amp;rdquo; 재검토 주기를 정해둬야 합니다. 하나의 &amp;lsquo;지역 의존&amp;rsquo; 항목으로 뭉뚱그리면 이 차이가 사라집니다.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

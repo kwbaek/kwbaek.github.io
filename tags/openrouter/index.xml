@@ -1,3 +1,28 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>OpenRouter on Kyungwook's Devlog</title><link>https://kwbaek.github.io/tags/openrouter/</link><description>Recent content in OpenRouter on Kyungwook's Devlog</description><generator>Hugo -- 0.155.3</generator><language>ko-kr</language><lastBuildDate>Sun, 19 Jul 2026 20:56:00 +0900</lastBuildDate><atom:link href="https://kwbaek.github.io/tags/openrouter/index.xml" rel="self" type="application/rss+xml"/><item><title>Hermes/리오 팁: 크론이 라우팅 미들웨어 하나에만 의존하면 안 되는 이유</title><link>https://kwbaek.github.io/posts/2026-07-19-hermes-rio-model-routing-middleware-fallback/</link><pubDate>Sun, 19 Jul 2026 20:56:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-07-19-hermes-rio-model-routing-middleware-fallback/</guid><description>&lt;p&gt;오늘 AI/ML 트렌드 채널에서 흥미로운 소식 하나가 있었습니다. FourWeekMBA에 따르면 여러 LLM 벤더를 단일 API로 라우팅해주는 미들웨어인 OpenRouter가 수십억달러 규모의 인수 관심을 받고 있다는 것입니다. 개발자와 파운데이션 모델 사이의 상업적 관계 자체를 장악하는 &amp;lsquo;라우팅 레이어&amp;rsquo;가, 이제 빅테크가 눈독을 들이는 전략적 요충지로 재평가되고 있다는 신호입니다.&lt;/p&gt;
-&lt;p&gt;이 소식은 Hermes/리오처럼 여러 모델·여러 벤더 API를 오가며 크론을 운영하는 입장에서 남 일이 아닙니다. 대부분의 크론은 어떤 형태로든 &amp;ldquo;모델 A가 안 되면 모델 B로&amp;rdquo; 같은 라우팅 로직을 갖고 있고, 그 라우팅 계층이 자체 게이트웨이든 외부 미들웨어든, 하나의 벤더·하나의 서비스에 암묵적으로 의존하기 쉽습니다. 그런데 라우팅 미들웨어가 인수되면 가격 정책, 지원 모델 카탈로그, API 약관이 하루아침에 바뀔 수 있다는 걸 오늘 뉴스가 상기시켜 줍니다.&lt;/p&gt;</description></item><item><title>AI/ML 트렌드: 중국 AI 스택은 비용 절감 카드에서 운영 리스크가 됐다</title><link>https://kwbaek.github.io/posts/2026-07-07-ai-ml-trends-china-ai-stack-becomes-an-operating-risk/</link><pubDate>Tue, 07 Jul 2026 21:01:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-07-07-ai-ml-trends-china-ai-stack-becomes-an-operating-risk/</guid><description>&lt;p&gt;오늘 AI/ML 트렌드에서 가장 흥미로운 축은 중국 AI 모델이 더 이상 “저렴한 대체 모델” 정도로만 볼 수 없게 됐다는 점입니다. CNBC는 OpenRouter 기준으로 미국 기업의 중국 AI 모델 사용 비중이 2026년 2월 이후 매주 30%를 넘었고, 한때 46%까지 올라갔다고 보도했습니다. DeepSeek, Z.ai 같은 중국 open-weight 모델이 OpenAI·Anthropic 대비 비용 우위를 만들면서, 기업들은 이미 실제 트래픽 일부를 중국 모델 쪽으로 보내고 있습니다.&lt;/p&gt;
-&lt;p&gt;그런데 같은 날 Reuters는 DeepSeek가 자체 AI chip 개발을 추진하고 있다고 전했습니다. 이 조합이 중요합니다. 중국 AI 경쟁력은 이제 모델 가중치나 API 단가만의 문제가 아니라, 추론을 어떤 칩·가속기·클라우드·수출통제 환경 위에서 계속 운영할 수 있는가의 문제로 확장되고 있습니다. 값싼 모델을 쓰는 순간 기업은 단순히 모델 벤더를 바꾸는 것이 아니라, 지정학적 리스크와 공급망 리스크가 붙은 AI 스택을 선택하는 셈입니다.&lt;/p&gt;</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>OpenRouter on Kyungwook&#39;s Devlog</title>
+    <link>https://kwbaek.github.io/tags/openrouter/</link>
+    <description>Recent content in OpenRouter on Kyungwook&#39;s Devlog</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Sun, 19 Jul 2026 20:56:00 +0900</lastBuildDate>
+    <atom:link href="https://kwbaek.github.io/tags/openrouter/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hermes/리오 팁: 크론이 라우팅 미들웨어 하나에만 의존하면 안 되는 이유</title>
+      <link>https://kwbaek.github.io/posts/2026-07-19-hermes-rio-model-routing-middleware-fallback/</link>
+      <pubDate>Sun, 19 Jul 2026 20:56:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-07-19-hermes-rio-model-routing-middleware-fallback/</guid>
+      <description>&lt;p&gt;오늘 AI/ML 트렌드 채널에서 흥미로운 소식 하나가 있었습니다. FourWeekMBA에 따르면 여러 LLM 벤더를 단일 API로 라우팅해주는 미들웨어인 OpenRouter가 수십억달러 규모의 인수 관심을 받고 있다는 것입니다. 개발자와 파운데이션 모델 사이의 상업적 관계 자체를 장악하는 &amp;lsquo;라우팅 레이어&amp;rsquo;가, 이제 빅테크가 눈독을 들이는 전략적 요충지로 재평가되고 있다는 신호입니다.&lt;/p&gt;
+&lt;p&gt;이 소식은 Hermes/리오처럼 여러 모델·여러 벤더 API를 오가며 크론을 운영하는 입장에서 남 일이 아닙니다. 대부분의 크론은 어떤 형태로든 &amp;ldquo;모델 A가 안 되면 모델 B로&amp;rdquo; 같은 라우팅 로직을 갖고 있고, 그 라우팅 계층이 자체 게이트웨이든 외부 미들웨어든, 하나의 벤더·하나의 서비스에 암묵적으로 의존하기 쉽습니다. 그런데 라우팅 미들웨어가 인수되면 가격 정책, 지원 모델 카탈로그, API 약관이 하루아침에 바뀔 수 있다는 걸 오늘 뉴스가 상기시켜 줍니다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>AI/ML 트렌드: 중국 AI 스택은 비용 절감 카드에서 운영 리스크가 됐다</title>
+      <link>https://kwbaek.github.io/posts/2026-07-07-ai-ml-trends-china-ai-stack-becomes-an-operating-risk/</link>
+      <pubDate>Tue, 07 Jul 2026 21:01:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-07-07-ai-ml-trends-china-ai-stack-becomes-an-operating-risk/</guid>
+      <description>&lt;p&gt;오늘 AI/ML 트렌드에서 가장 흥미로운 축은 중국 AI 모델이 더 이상 “저렴한 대체 모델” 정도로만 볼 수 없게 됐다는 점입니다. CNBC는 OpenRouter 기준으로 미국 기업의 중국 AI 모델 사용 비중이 2026년 2월 이후 매주 30%를 넘었고, 한때 46%까지 올라갔다고 보도했습니다. DeepSeek, Z.ai 같은 중국 open-weight 모델이 OpenAI·Anthropic 대비 비용 우위를 만들면서, 기업들은 이미 실제 트래픽 일부를 중국 모델 쪽으로 보내고 있습니다.&lt;/p&gt;
+&lt;p&gt;그런데 같은 날 Reuters는 DeepSeek가 자체 AI chip 개발을 추진하고 있다고 전했습니다. 이 조합이 중요합니다. 중국 AI 경쟁력은 이제 모델 가중치나 API 단가만의 문제가 아니라, 추론을 어떤 칩·가속기·클라우드·수출통제 환경 위에서 계속 운영할 수 있는가의 문제로 확장되고 있습니다. 값싼 모델을 쓰는 순간 기업은 단순히 모델 벤더를 바꾸는 것이 아니라, 지정학적 리스크와 공급망 리스크가 붙은 AI 스택을 선택하는 셈입니다.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

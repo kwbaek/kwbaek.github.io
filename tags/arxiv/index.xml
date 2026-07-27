@@ -1,4 +1,29 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>ArXiv on Kyungwook's Devlog</title><link>https://kwbaek.github.io/tags/arxiv/</link><description>Recent content in ArXiv on Kyungwook's Devlog</description><generator>Hugo -- 0.155.3</generator><language>ko-kr</language><lastBuildDate>Tue, 21 Jul 2026 21:00:00 +0900</lastBuildDate><atom:link href="https://kwbaek.github.io/tags/arxiv/index.xml" rel="self" type="application/rss+xml"/><item><title>코딩 에이전트가 무분별하게 tool output을 쓰고 있다 — 컨텍스트 비용의 물리적 한계</title><link>https://kwbaek.github.io/posts/2026-07-21-ai-ml-trends-codegen-pruning-hits-infrastructure/</link><pubDate>Tue, 21 Jul 2026 21:00:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-07-21-ai-ml-trends-codegen-pruning-hits-infrastructure/</guid><description>&lt;p&gt;오늘 AI/ML 트렌드에서 눈여겨볼 신호는 &lt;strong&gt;코딩 에이전트의 컨텍스트 폭발&lt;/strong&gt;입니다. 지난주 GitHub의 AI credit pool 관리 기능과 NVIDIA의 NVLink 인프라 강화 발표가 있었는데, 그 배경에는 코드 실행 에이전트들이 생성하는 tool output의 양이 모델과 인프라의 설계 범위를 벗어나고 있다는 신호가 숨어 있습니다.&lt;/p&gt;
-&lt;p&gt;arXiv에 공개된 SWE-Pruner Pro 논문이 정확히 이 문제를 다룹니다. 코딩 에이전트가 실행 결과(에러 메시지, 로그, 빌드 출력)를 그대로 컨텍스트에 넣으면, 한 번의 코드 실행으로 수천 토큰이 소비됩니다. 컨텍스트 윈도우는 고정돼 있고, 토큰당 비용은 할인율이 떨어지므로, 에이전트는 자신이 읽어야 할 정보와 읽으면 안 되는 noise를 구분할 수 없습니다.&lt;/p&gt;</description></item><item><title>AI/ML 트렌드 (2026-03-17): 추론 안정성과 검색 중심 에이전트 전환</title><link>https://kwbaek.github.io/posts/2026-03-17-ai-ml-trends-agentic-memory-reasoning/</link><pubDate>Tue, 17 Mar 2026 21:00:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-03-17-ai-ml-trends-agentic-memory-reasoning/</guid><description>&lt;p&gt;오늘(#ai-ml-trends) 메시지에서 특히 눈에 띄는 포인트는 **&amp;lsquo;결과 품질을 어떻게 더 안정적으로 끌어올릴 것인가&amp;rsquo;**에 초점이 맞춰졌다는 점입니다. 단순히 더 큰 모델이 아니라, &lt;strong&gt;추론 구조·메모리 검색·깊은 구조에서의 신호 유지&lt;/strong&gt;를 개선하려는 흐름이 강합니다.&lt;/p&gt;
-&lt;h2 id="1-smartsearch-구조화보다-순위가-중요할-수-있다"&gt;1) SmartSearch: 구조화보다 순위가 중요할 수 있다&lt;/h2&gt;
-&lt;p&gt;최근 공개된 &lt;code&gt;SmartSearch&lt;/code&gt;는 대규모 대화 메모리에서 대화 구조화보다 &lt;strong&gt;순위 학습 기반 검색&lt;/strong&gt;이 더 강할 수 있음을 실험으로 보여줍니다. 장기 대화에서 핵심 문맥을 어떻게 인덱싱/추출하느냐보다, &amp;ldquo;어떤 과거 조각이 지금 작업에 가장 도움이 되는지&amp;quot;를 정확히 랭크하는 것이 성능과 안정성에 유리하다는 점이 핵심입니다.&lt;/p&gt;</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>ArXiv on Kyungwook&#39;s Devlog</title>
+    <link>https://kwbaek.github.io/tags/arxiv/</link>
+    <description>Recent content in ArXiv on Kyungwook&#39;s Devlog</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Tue, 21 Jul 2026 21:00:00 +0900</lastBuildDate>
+    <atom:link href="https://kwbaek.github.io/tags/arxiv/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>코딩 에이전트가 무분별하게 tool output을 쓰고 있다 — 컨텍스트 비용의 물리적 한계</title>
+      <link>https://kwbaek.github.io/posts/2026-07-21-ai-ml-trends-codegen-pruning-hits-infrastructure/</link>
+      <pubDate>Tue, 21 Jul 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-07-21-ai-ml-trends-codegen-pruning-hits-infrastructure/</guid>
+      <description>&lt;p&gt;오늘 AI/ML 트렌드에서 눈여겨볼 신호는 &lt;strong&gt;코딩 에이전트의 컨텍스트 폭발&lt;/strong&gt;입니다. 지난주 GitHub의 AI credit pool 관리 기능과 NVIDIA의 NVLink 인프라 강화 발표가 있었는데, 그 배경에는 코드 실행 에이전트들이 생성하는 tool output의 양이 모델과 인프라의 설계 범위를 벗어나고 있다는 신호가 숨어 있습니다.&lt;/p&gt;
+&lt;p&gt;arXiv에 공개된 SWE-Pruner Pro 논문이 정확히 이 문제를 다룹니다. 코딩 에이전트가 실행 결과(에러 메시지, 로그, 빌드 출력)를 그대로 컨텍스트에 넣으면, 한 번의 코드 실행으로 수천 토큰이 소비됩니다. 컨텍스트 윈도우는 고정돼 있고, 토큰당 비용은 할인율이 떨어지므로, 에이전트는 자신이 읽어야 할 정보와 읽으면 안 되는 noise를 구분할 수 없습니다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>AI/ML 트렌드 (2026-03-17): 추론 안정성과 검색 중심 에이전트 전환</title>
+      <link>https://kwbaek.github.io/posts/2026-03-17-ai-ml-trends-agentic-memory-reasoning/</link>
+      <pubDate>Tue, 17 Mar 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-03-17-ai-ml-trends-agentic-memory-reasoning/</guid>
+      <description>&lt;p&gt;오늘(#ai-ml-trends) 메시지에서 특히 눈에 띄는 포인트는 **&amp;lsquo;결과 품질을 어떻게 더 안정적으로 끌어올릴 것인가&amp;rsquo;**에 초점이 맞춰졌다는 점입니다. 단순히 더 큰 모델이 아니라, &lt;strong&gt;추론 구조·메모리 검색·깊은 구조에서의 신호 유지&lt;/strong&gt;를 개선하려는 흐름이 강합니다.&lt;/p&gt;
+&lt;h2 id=&#34;1-smartsearch-구조화보다-순위가-중요할-수-있다&#34;&gt;1) SmartSearch: 구조화보다 순위가 중요할 수 있다&lt;/h2&gt;
+&lt;p&gt;최근 공개된 &lt;code&gt;SmartSearch&lt;/code&gt;는 대규모 대화 메모리에서 대화 구조화보다 &lt;strong&gt;순위 학습 기반 검색&lt;/strong&gt;이 더 강할 수 있음을 실험으로 보여줍니다. 장기 대화에서 핵심 문맥을 어떻게 인덱싱/추출하느냐보다, &amp;ldquo;어떤 과거 조각이 지금 작업에 가장 도움이 되는지&amp;quot;를 정확히 랭크하는 것이 성능과 안정성에 유리하다는 점이 핵심입니다.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

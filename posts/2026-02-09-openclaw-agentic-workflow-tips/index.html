@@ -1,24 +1,373 @@
-<!doctype html><html lang=en dir=auto data-theme=auto><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=robots content="index, follow"><title>OpenClaw 실전 활용: 에이전틱 워크플로우로 블로그 자동화하기 | Kyungwook's Devlog</title><meta name=keywords content="OpenClaw,자동화,에이전틱AI,cron,블로그"><meta name=description content="AI 에이전트가 단순한 챗봇을 넘어 실제 업무를 자동화하는 시대가 왔습니다. 이번 글에서는 제가 실제로 사용하고 있는 OpenClaw의 에이전틱 워크플로우를 소개합니다. 이 블로그 포스트 자체가 OpenClaw가 자동으로 작성하고 배포한 결과물입니다.
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>OpenClaw 실전 활용: 에이전틱 워크플로우로 블로그 자동화하기 | Kyungwook&#39;s Devlog</title>
+<meta name="keywords" content="OpenClaw, 자동화, 에이전틱AI, cron, 블로그">
+<meta name="description" content="AI 에이전트가 단순한 챗봇을 넘어 실제 업무를 자동화하는 시대가 왔습니다. 이번 글에서는 제가 실제로 사용하고 있는 OpenClaw의 에이전틱 워크플로우를 소개합니다. 이 블로그 포스트 자체가 OpenClaw가 자동으로 작성하고 배포한 결과물입니다.
 OpenClaw란?
 OpenClaw는 개인용 AI 비서 프레임워크입니다. 단순 대화를 넘어 파일 시스템 접근, 웹 검색, Git 작업, 크론 작업, 브라우저 제어 등 실제 도구를 사용할 수 있는 에이전트를 실행할 수 있습니다. 텔레그램, 디스코드 등 메신저와 연동해 어디서든 에이전트와 소통할 수 있죠.
 자동 블로그 포스팅 워크플로우
-현재 제 블로그는 다음과 같은 자동화 파이프라인으로 운영됩니다:"><meta name=author content><link rel=canonical href=https://kwbaek.github.io/posts/2026-02-09-openclaw-agentic-workflow-tips/><link crossorigin=anonymous href=/assets/css/stylesheet.da3211e5ef867bf2b75fd5a6515cfed7195c011e8ab735694e203810a827097b.css integrity="sha256-2jIR5e+Ge/K3X9WmUVz+1xlcAR6KtzVpTiA4EKgnCXs=" rel="preload stylesheet" as=style><link rel=icon href=https://kwbaek.github.io/favicon.ico><link rel=icon type=image/png sizes=16x16 href=https://kwbaek.github.io/favicon-16x16.png><link rel=icon type=image/png sizes=32x32 href=https://kwbaek.github.io/favicon-32x32.png><link rel=apple-touch-icon href=https://kwbaek.github.io/apple-touch-icon.png><link rel=mask-icon href=https://kwbaek.github.io/safari-pinned-tab.svg><meta name=theme-color content="#2e2e33"><meta name=msapplication-TileColor content="#2e2e33"><link rel=alternate hreflang=en href=https://kwbaek.github.io/posts/2026-02-09-openclaw-agentic-workflow-tips/><noscript><style>#theme-toggle,.top-link{display:none}</style><style>@media(prefers-color-scheme:dark){:root{--theme:rgb(29, 30, 32);--entry:rgb(46, 46, 51);--primary:rgb(218, 218, 219);--secondary:rgb(155, 156, 157);--tertiary:rgb(65, 66, 68);--content:rgb(196, 196, 197);--code-block-bg:rgb(46, 46, 51);--code-bg:rgb(55, 56, 62);--border:rgb(51, 51, 51);color-scheme:dark}.list{background:var(--theme)}.toc{background:var(--entry)}}@media(prefers-color-scheme:light){.list::-webkit-scrollbar-thumb{border-color:var(--code-bg)}}</style></noscript><script>localStorage.getItem("pref-theme")==="dark"?document.querySelector("html").dataset.theme="dark":localStorage.getItem("pref-theme")==="light"?document.querySelector("html").dataset.theme="light":window.matchMedia("(prefers-color-scheme: dark)").matches?document.querySelector("html").dataset.theme="dark":document.querySelector("html").dataset.theme="light"</script><meta property="og:url" content="https://kwbaek.github.io/posts/2026-02-09-openclaw-agentic-workflow-tips/"><meta property="og:site_name" content="Kyungwook's Devlog"><meta property="og:title" content="OpenClaw 실전 활용: 에이전틱 워크플로우로 블로그 자동화하기"><meta property="og:description" content="AI 에이전트가 단순한 챗봇을 넘어 실제 업무를 자동화하는 시대가 왔습니다. 이번 글에서는 제가 실제로 사용하고 있는 OpenClaw의 에이전틱 워크플로우를 소개합니다. 이 블로그 포스트 자체가 OpenClaw가 자동으로 작성하고 배포한 결과물입니다.
+현재 제 블로그는 다음과 같은 자동화 파이프라인으로 운영됩니다:">
+<meta name="author" content="">
+<link rel="canonical" href="https://kwbaek.github.io/posts/2026-02-09-openclaw-agentic-workflow-tips/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.da3211e5ef867bf2b75fd5a6515cfed7195c011e8ab735694e203810a827097b.css" integrity="sha256-2jIR5e&#43;Ge/K3X9WmUVz&#43;1xlcAR6KtzVpTiA4EKgnCXs=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://kwbaek.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://kwbaek.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://kwbaek.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://kwbaek.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://kwbaek.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://kwbaek.github.io/posts/2026-02-09-openclaw-agentic-workflow-tips/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="https://kwbaek.github.io/posts/2026-02-09-openclaw-agentic-workflow-tips/">
+  <meta property="og:site_name" content="Kyungwook&#39;s Devlog">
+  <meta property="og:title" content="OpenClaw 실전 활용: 에이전틱 워크플로우로 블로그 자동화하기">
+  <meta property="og:description" content="AI 에이전트가 단순한 챗봇을 넘어 실제 업무를 자동화하는 시대가 왔습니다. 이번 글에서는 제가 실제로 사용하고 있는 OpenClaw의 에이전틱 워크플로우를 소개합니다. 이 블로그 포스트 자체가 OpenClaw가 자동으로 작성하고 배포한 결과물입니다.
 OpenClaw란? OpenClaw는 개인용 AI 비서 프레임워크입니다. 단순 대화를 넘어 파일 시스템 접근, 웹 검색, Git 작업, 크론 작업, 브라우저 제어 등 실제 도구를 사용할 수 있는 에이전트를 실행할 수 있습니다. 텔레그램, 디스코드 등 메신저와 연동해 어디서든 에이전트와 소통할 수 있죠.
-자동 블로그 포스팅 워크플로우 현재 제 블로그는 다음과 같은 자동화 파이프라인으로 운영됩니다:"><meta property="og:locale" content="ko-kr"><meta property="og:type" content="article"><meta property="article:section" content="posts"><meta property="article:published_time" content="2026-02-09T23:15:00+09:00"><meta property="article:modified_time" content="2026-02-09T23:15:00+09:00"><meta property="article:tag" content="OpenClaw"><meta property="article:tag" content="자동화"><meta property="article:tag" content="에이전틱AI"><meta property="article:tag" content="Cron"><meta property="article:tag" content="블로그"><meta name=twitter:card content="summary"><meta name=twitter:title content="OpenClaw 실전 활용: 에이전틱 워크플로우로 블로그 자동화하기"><meta name=twitter:description content="AI 에이전트가 단순한 챗봇을 넘어 실제 업무를 자동화하는 시대가 왔습니다. 이번 글에서는 제가 실제로 사용하고 있는 OpenClaw의 에이전틱 워크플로우를 소개합니다. 이 블로그 포스트 자체가 OpenClaw가 자동으로 작성하고 배포한 결과물입니다.
+자동 블로그 포스팅 워크플로우 현재 제 블로그는 다음과 같은 자동화 파이프라인으로 운영됩니다:">
+  <meta property="og:locale" content="ko-kr">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2026-02-09T23:15:00+09:00">
+    <meta property="article:modified_time" content="2026-02-09T23:15:00+09:00">
+    <meta property="article:tag" content="OpenClaw">
+    <meta property="article:tag" content="자동화">
+    <meta property="article:tag" content="에이전틱AI">
+    <meta property="article:tag" content="Cron">
+    <meta property="article:tag" content="블로그">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="OpenClaw 실전 활용: 에이전틱 워크플로우로 블로그 자동화하기">
+<meta name="twitter:description" content="AI 에이전트가 단순한 챗봇을 넘어 실제 업무를 자동화하는 시대가 왔습니다. 이번 글에서는 제가 실제로 사용하고 있는 OpenClaw의 에이전틱 워크플로우를 소개합니다. 이 블로그 포스트 자체가 OpenClaw가 자동으로 작성하고 배포한 결과물입니다.
 OpenClaw란?
 OpenClaw는 개인용 AI 비서 프레임워크입니다. 단순 대화를 넘어 파일 시스템 접근, 웹 검색, Git 작업, 크론 작업, 브라우저 제어 등 실제 도구를 사용할 수 있는 에이전트를 실행할 수 있습니다. 텔레그램, 디스코드 등 메신저와 연동해 어디서든 에이전트와 소통할 수 있죠.
 자동 블로그 포스팅 워크플로우
-현재 제 블로그는 다음과 같은 자동화 파이프라인으로 운영됩니다:"><script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Posts","item":"https://kwbaek.github.io/posts/"},{"@type":"ListItem","position":2,"name":"OpenClaw 실전 활용: 에이전틱 워크플로우로 블로그 자동화하기","item":"https://kwbaek.github.io/posts/2026-02-09-openclaw-agentic-workflow-tips/"}]}</script><script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"OpenClaw 실전 활용: 에이전틱 워크플로우로 블로그 자동화하기","name":"OpenClaw 실전 활용: 에이전틱 워크플로우로 블로그 자동화하기","description":"AI 에이전트가 단순한 챗봇을 넘어 실제 업무를 자동화하는 시대가 왔습니다. 이번 글에서는 제가 실제로 사용하고 있는 OpenClaw의 에이전틱 워크플로우를 소개합니다. 이 블로그 포스트 자체가 OpenClaw가 자동으로 작성하고 배포한 결과물입니다.\nOpenClaw란? OpenClaw는 개인용 AI 비서 프레임워크입니다. 단순 대화를 넘어 파일 시스템 접근, 웹 검색, Git 작업, 크론 작업, 브라우저 제어 등 실제 도구를 사용할 수 있는 에이전트를 실행할 수 있습니다. 텔레그램, 디스코드 등 메신저와 연동해 어디서든 에이전트와 소통할 수 있죠.\n자동 블로그 포스팅 워크플로우 현재 제 블로그는 다음과 같은 자동화 파이프라인으로 운영됩니다:\n","keywords":["OpenClaw","자동화","에이전틱AI","cron","블로그"],"articleBody":"AI 에이전트가 단순한 챗봇을 넘어 실제 업무를 자동화하는 시대가 왔습니다. 이번 글에서는 제가 실제로 사용하고 있는 OpenClaw의 에이전틱 워크플로우를 소개합니다. 이 블로그 포스트 자체가 OpenClaw가 자동으로 작성하고 배포한 결과물입니다.\nOpenClaw란? OpenClaw는 개인용 AI 비서 프레임워크입니다. 단순 대화를 넘어 파일 시스템 접근, 웹 검색, Git 작업, 크론 작업, 브라우저 제어 등 실제 도구를 사용할 수 있는 에이전트를 실행할 수 있습니다. 텔레그램, 디스코드 등 메신저와 연동해 어디서든 에이전트와 소통할 수 있죠.\n자동 블로그 포스팅 워크플로우 현재 제 블로그는 다음과 같은 자동화 파이프라인으로 운영됩니다:\n1단계: Cron 작업 설정 OpenClaw의 cron 기능으로 매일 특정 시간에 블로그 작성 태스크를 트리거합니다.\n스케줄: 매일 23:00 KST 세션: isolated (독립 세션에서 실행) 페이로드: agentTurn 독립 세션(isolated)을 사용하는 이유는 메인 세션의 대화 히스토리에 영향을 주지 않으면서, 작업 완료 후 결과만 알림으로 받을 수 있기 때문입니다.\n2단계: 웹 리서치 → 콘텐츠 생성 에이전트는 web_search와 web_fetch 도구를 사용해 최신 AI/ML 뉴스를 수집하고, 이를 바탕으로 Hugo 블로그 형식의 마크다운 파일을 생성합니다.\n포인트:\nFront matter 자동 생성: 날짜, 카테고리, 태그 등을 자동으로 채움 한국어 작성: 프롬프트에 언어를 지정하면 해당 언어로 작성 최소 품질 보장: 글 길이, 구조, 마크다운 활용 등 기준을 프롬프트에 명시 3단계: Git 커밋 \u0026 배포 글 작성이 끝나면 에이전트가 직접:\ngit add → git commit → git push (소스 레포) hugo 빌드 실행 public/ 폴더에서 git add → git commit → git push (GitHub Pages 배포) 사람이 개입할 필요가 전혀 없습니다.\n핵심 OpenClaw 기능 활용 팁 📋 HEARTBEAT.md로 주기적 작업 관리 HEARTBEAT.md 파일에 체크리스트를 작성하면, 에이전트가 하트비트(주기적 폴링) 시 해당 작업을 수행합니다. 다만 정확한 타이밍이 필요한 작업은 cron이 더 적합합니다.\n# HEARTBEAT.md - [ ] 이메일 확인 - [ ] 캘린더 다음 24시간 이벤트 체크 🧠 메모리 시스템 활용 OpenClaw은 세션 간 기억을 유지하기 위해 파일 기반 메모리를 사용합니다:\nMEMORY.md: 장기 기억 (중요한 결정, 선호도, 교훈) memory/YYYY-MM-DD.md: 일별 로그 에이전트에게 “이거 기억해둬\"라고 하면 해당 파일에 자동으로 기록합니다.\n🔧 Skills로 기능 확장 OpenClaw는 스킬 시스템을 통해 기능을 모듈식으로 확장할 수 있습니다. GitHub 연동, 날씨 조회, 코딩 에이전트 실행 등 다양한 스킬을 SKILL.md 형식으로 추가하면 됩니다.\nClaHub에서 커뮤니티 스킬을 찾아볼 수도 있습니다.\n🔄 Sub-Agent 활용 복잡한 태스크는 sessions_spawn으로 서브 에이전트에 위임할 수 있습니다. 메인 세션을 블로킹하지 않고 백그라운드에서 작업을 처리한 뒤 결과를 돌려받는 구조입니다.\n실제 운영 후기 약 1주일간 이 자동화를 운영하면서 느낀 점:\n일관성: 사람이 까먹거나 미루는 일 없이 매일 포스팅이 올라감 품질 관리: 프롬프트를 잘 작성하면 꽤 괜찮은 품질의 글이 나옴 커스터마이징: 카테고리, 스타일, 길이 등을 프롬프트로 쉽게 조절 가능 투명성: 모든 과정이 Git 히스토리에 남아 추적 가능 마무리 AI 에이전트의 진정한 가치는 대화가 아니라 행동에 있습니다. OpenClaw 같은 도구를 활용하면, 반복적인 작업을 자동화하면서도 사람이 최종 통제권을 유지할 수 있습니다. 블로그 자동화는 시작일 뿐 — 이메일 관리, 코드 리뷰, 데이터 수집 등 가능성은 무궁무진합니다.\n궁금한 점이 있으면 OpenClaw Discord에서 만나요! 🦁\n","wordCount":"441","inLanguage":"en","datePublished":"2026-02-09T23:15:00+09:00","dateModified":"2026-02-09T23:15:00+09:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://kwbaek.github.io/posts/2026-02-09-openclaw-agentic-workflow-tips/"},"publisher":{"@type":"Organization","name":"Kyungwook's Devlog","logo":{"@type":"ImageObject","url":"https://kwbaek.github.io/favicon.ico"}}}</script></head><body id=top><header class=header><nav class=nav><div class=logo><a href=https://kwbaek.github.io/ accesskey=h title="Kyungwook's Devlog (Alt + H)">Kyungwook's Devlog</a><div class=logo-switches><button id=theme-toggle accesskey=t title="(Alt + T)" aria-label="Toggle theme">
-<svg id="moon" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
-<svg id="sun" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button></div></div><ul id=menu><li><a href=https://kwbaek.github.io/categories/ title=categories><span>categories</span></a></li><li><a href=https://kwbaek.github.io/tags/ title=tags><span>tags</span></a></li><li><a href=https://kwbaek.github.io/ title="Kyungwook's Devlog"><span>Kyungwook's Devlog</span>&nbsp;
-<svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><path d="M15 3h6v6"/><path d="M10 14 21 3"/></svg></a></li></ul></nav></header><main class=main><article class=post-single><header class=post-header><h1 class="post-title entry-hint-parent">OpenClaw 실전 활용: 에이전틱 워크플로우로 블로그 자동화하기</h1><div class=post-meta><span title='2026-02-09 23:15:00 +0900 KST'>February 9, 2026</span></div></header><div class=post-content><p>AI 에이전트가 단순한 챗봇을 넘어 실제 업무를 자동화하는 시대가 왔습니다. 이번 글에서는 제가 실제로 사용하고 있는 <strong>OpenClaw의 에이전틱 워크플로우</strong>를 소개합니다. 이 블로그 포스트 자체가 OpenClaw가 자동으로 작성하고 배포한 결과물입니다.</p><h2 id=openclaw란>OpenClaw란?<a hidden class=anchor aria-hidden=true href=#openclaw란>#</a></h2><p>OpenClaw는 개인용 AI 비서 프레임워크입니다. 단순 대화를 넘어 <strong>파일 시스템 접근, 웹 검색, Git 작업, 크론 작업, 브라우저 제어</strong> 등 실제 도구를 사용할 수 있는 에이전트를 실행할 수 있습니다. 텔레그램, 디스코드 등 메신저와 연동해 어디서든 에이전트와 소통할 수 있죠.</p><h2 id=자동-블로그-포스팅-워크플로우>자동 블로그 포스팅 워크플로우<a hidden class=anchor aria-hidden=true href=#자동-블로그-포스팅-워크플로우>#</a></h2><p>현재 제 블로그는 다음과 같은 자동화 파이프라인으로 운영됩니다:</p><h3 id=1단계-cron-작업-설정>1단계: Cron 작업 설정<a hidden class=anchor aria-hidden=true href=#1단계-cron-작업-설정>#</a></h3><p>OpenClaw의 <code>cron</code> 기능으로 매일 특정 시간에 블로그 작성 태스크를 트리거합니다.</p><pre tabindex=0><code>스케줄: 매일 23:00 KST
+현재 제 블로그는 다음과 같은 자동화 파이프라인으로 운영됩니다:">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://kwbaek.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "OpenClaw 실전 활용: 에이전틱 워크플로우로 블로그 자동화하기",
+      "item": "https://kwbaek.github.io/posts/2026-02-09-openclaw-agentic-workflow-tips/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "OpenClaw 실전 활용: 에이전틱 워크플로우로 블로그 자동화하기",
+  "name": "OpenClaw 실전 활용: 에이전틱 워크플로우로 블로그 자동화하기",
+  "description": "AI 에이전트가 단순한 챗봇을 넘어 실제 업무를 자동화하는 시대가 왔습니다. 이번 글에서는 제가 실제로 사용하고 있는 OpenClaw의 에이전틱 워크플로우를 소개합니다. 이 블로그 포스트 자체가 OpenClaw가 자동으로 작성하고 배포한 결과물입니다.\nOpenClaw란? OpenClaw는 개인용 AI 비서 프레임워크입니다. 단순 대화를 넘어 파일 시스템 접근, 웹 검색, Git 작업, 크론 작업, 브라우저 제어 등 실제 도구를 사용할 수 있는 에이전트를 실행할 수 있습니다. 텔레그램, 디스코드 등 메신저와 연동해 어디서든 에이전트와 소통할 수 있죠.\n자동 블로그 포스팅 워크플로우 현재 제 블로그는 다음과 같은 자동화 파이프라인으로 운영됩니다:\n",
+  "keywords": [
+    "OpenClaw", "자동화", "에이전틱AI", "cron", "블로그"
+  ],
+  "articleBody": "AI 에이전트가 단순한 챗봇을 넘어 실제 업무를 자동화하는 시대가 왔습니다. 이번 글에서는 제가 실제로 사용하고 있는 OpenClaw의 에이전틱 워크플로우를 소개합니다. 이 블로그 포스트 자체가 OpenClaw가 자동으로 작성하고 배포한 결과물입니다.\nOpenClaw란? OpenClaw는 개인용 AI 비서 프레임워크입니다. 단순 대화를 넘어 파일 시스템 접근, 웹 검색, Git 작업, 크론 작업, 브라우저 제어 등 실제 도구를 사용할 수 있는 에이전트를 실행할 수 있습니다. 텔레그램, 디스코드 등 메신저와 연동해 어디서든 에이전트와 소통할 수 있죠.\n자동 블로그 포스팅 워크플로우 현재 제 블로그는 다음과 같은 자동화 파이프라인으로 운영됩니다:\n1단계: Cron 작업 설정 OpenClaw의 cron 기능으로 매일 특정 시간에 블로그 작성 태스크를 트리거합니다.\n스케줄: 매일 23:00 KST 세션: isolated (독립 세션에서 실행) 페이로드: agentTurn 독립 세션(isolated)을 사용하는 이유는 메인 세션의 대화 히스토리에 영향을 주지 않으면서, 작업 완료 후 결과만 알림으로 받을 수 있기 때문입니다.\n2단계: 웹 리서치 → 콘텐츠 생성 에이전트는 web_search와 web_fetch 도구를 사용해 최신 AI/ML 뉴스를 수집하고, 이를 바탕으로 Hugo 블로그 형식의 마크다운 파일을 생성합니다.\n포인트:\nFront matter 자동 생성: 날짜, 카테고리, 태그 등을 자동으로 채움 한국어 작성: 프롬프트에 언어를 지정하면 해당 언어로 작성 최소 품질 보장: 글 길이, 구조, 마크다운 활용 등 기준을 프롬프트에 명시 3단계: Git 커밋 \u0026 배포 글 작성이 끝나면 에이전트가 직접:\ngit add → git commit → git push (소스 레포) hugo 빌드 실행 public/ 폴더에서 git add → git commit → git push (GitHub Pages 배포) 사람이 개입할 필요가 전혀 없습니다.\n핵심 OpenClaw 기능 활용 팁 📋 HEARTBEAT.md로 주기적 작업 관리 HEARTBEAT.md 파일에 체크리스트를 작성하면, 에이전트가 하트비트(주기적 폴링) 시 해당 작업을 수행합니다. 다만 정확한 타이밍이 필요한 작업은 cron이 더 적합합니다.\n# HEARTBEAT.md - [ ] 이메일 확인 - [ ] 캘린더 다음 24시간 이벤트 체크 🧠 메모리 시스템 활용 OpenClaw은 세션 간 기억을 유지하기 위해 파일 기반 메모리를 사용합니다:\nMEMORY.md: 장기 기억 (중요한 결정, 선호도, 교훈) memory/YYYY-MM-DD.md: 일별 로그 에이전트에게 “이거 기억해둬\"라고 하면 해당 파일에 자동으로 기록합니다.\n🔧 Skills로 기능 확장 OpenClaw는 스킬 시스템을 통해 기능을 모듈식으로 확장할 수 있습니다. GitHub 연동, 날씨 조회, 코딩 에이전트 실행 등 다양한 스킬을 SKILL.md 형식으로 추가하면 됩니다.\nClaHub에서 커뮤니티 스킬을 찾아볼 수도 있습니다.\n🔄 Sub-Agent 활용 복잡한 태스크는 sessions_spawn으로 서브 에이전트에 위임할 수 있습니다. 메인 세션을 블로킹하지 않고 백그라운드에서 작업을 처리한 뒤 결과를 돌려받는 구조입니다.\n실제 운영 후기 약 1주일간 이 자동화를 운영하면서 느낀 점:\n일관성: 사람이 까먹거나 미루는 일 없이 매일 포스팅이 올라감 품질 관리: 프롬프트를 잘 작성하면 꽤 괜찮은 품질의 글이 나옴 커스터마이징: 카테고리, 스타일, 길이 등을 프롬프트로 쉽게 조절 가능 투명성: 모든 과정이 Git 히스토리에 남아 추적 가능 마무리 AI 에이전트의 진정한 가치는 대화가 아니라 행동에 있습니다. OpenClaw 같은 도구를 활용하면, 반복적인 작업을 자동화하면서도 사람이 최종 통제권을 유지할 수 있습니다. 블로그 자동화는 시작일 뿐 — 이메일 관리, 코드 리뷰, 데이터 수집 등 가능성은 무궁무진합니다.\n궁금한 점이 있으면 OpenClaw Discord에서 만나요! 🦁\n",
+  "wordCount" : "441",
+  "inLanguage": "en",
+  "datePublished": "2026-02-09T23:15:00+09:00",
+  "dateModified": "2026-02-09T23:15:00+09:00",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://kwbaek.github.io/posts/2026-02-09-openclaw-agentic-workflow-tips/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Kyungwook's Devlog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://kwbaek.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://kwbaek.github.io/" accesskey="h" title="Kyungwook&#39;s Devlog (Alt + H)">Kyungwook&#39;s Devlog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://kwbaek.github.io/categories/" title="categories">
+                    <span>categories</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kwbaek.github.io/tags/" title="tags">
+                    <span>tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kwbaek.github.io/" title="Kyungwook&#39;s Devlog">
+                    <span>Kyungwook&#39;s Devlog</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      OpenClaw 실전 활용: 에이전틱 워크플로우로 블로그 자동화하기
+    </h1>
+    <div class="post-meta"><span title='2026-02-09 23:15:00 +0900 KST'>February 9, 2026</span>
+
+</div>
+  </header> 
+  <div class="post-content"><p>AI 에이전트가 단순한 챗봇을 넘어 실제 업무를 자동화하는 시대가 왔습니다. 이번 글에서는 제가 실제로 사용하고 있는 <strong>OpenClaw의 에이전틱 워크플로우</strong>를 소개합니다. 이 블로그 포스트 자체가 OpenClaw가 자동으로 작성하고 배포한 결과물입니다.</p>
+<h2 id="openclaw란">OpenClaw란?<a hidden class="anchor" aria-hidden="true" href="#openclaw란">#</a></h2>
+<p>OpenClaw는 개인용 AI 비서 프레임워크입니다. 단순 대화를 넘어 <strong>파일 시스템 접근, 웹 검색, Git 작업, 크론 작업, 브라우저 제어</strong> 등 실제 도구를 사용할 수 있는 에이전트를 실행할 수 있습니다. 텔레그램, 디스코드 등 메신저와 연동해 어디서든 에이전트와 소통할 수 있죠.</p>
+<h2 id="자동-블로그-포스팅-워크플로우">자동 블로그 포스팅 워크플로우<a hidden class="anchor" aria-hidden="true" href="#자동-블로그-포스팅-워크플로우">#</a></h2>
+<p>현재 제 블로그는 다음과 같은 자동화 파이프라인으로 운영됩니다:</p>
+<h3 id="1단계-cron-작업-설정">1단계: Cron 작업 설정<a hidden class="anchor" aria-hidden="true" href="#1단계-cron-작업-설정">#</a></h3>
+<p>OpenClaw의 <code>cron</code> 기능으로 매일 특정 시간에 블로그 작성 태스크를 트리거합니다.</p>
+<pre tabindex="0"><code>스케줄: 매일 23:00 KST
 세션: isolated (독립 세션에서 실행)
 페이로드: agentTurn
-</code></pre><p>독립 세션(<code>isolated</code>)을 사용하는 이유는 메인 세션의 대화 히스토리에 영향을 주지 않으면서, 작업 완료 후 결과만 알림으로 받을 수 있기 때문입니다.</p><h3 id=2단계-웹-리서치--콘텐츠-생성>2단계: 웹 리서치 → 콘텐츠 생성<a hidden class=anchor aria-hidden=true href=#2단계-웹-리서치--콘텐츠-생성>#</a></h3><p>에이전트는 <code>web_search</code>와 <code>web_fetch</code> 도구를 사용해 최신 AI/ML 뉴스를 수집하고, 이를 바탕으로 Hugo 블로그 형식의 마크다운 파일을 생성합니다.</p><p>포인트:</p><ul><li><strong>Front matter 자동 생성</strong>: 날짜, 카테고리, 태그 등을 자동으로 채움</li><li><strong>한국어 작성</strong>: 프롬프트에 언어를 지정하면 해당 언어로 작성</li><li><strong>최소 품질 보장</strong>: 글 길이, 구조, 마크다운 활용 등 기준을 프롬프트에 명시</li></ul><h3 id=3단계-git-커밋--배포>3단계: Git 커밋 & 배포<a hidden class=anchor aria-hidden=true href=#3단계-git-커밋--배포>#</a></h3><p>글 작성이 끝나면 에이전트가 직접:</p><ol><li><code>git add</code> → <code>git commit</code> → <code>git push</code> (소스 레포)</li><li><code>hugo</code> 빌드 실행</li><li><code>public/</code> 폴더에서 <code>git add</code> → <code>git commit</code> → <code>git push</code> (GitHub Pages 배포)</li></ol><p>사람이 개입할 필요가 전혀 없습니다.</p><h2 id=핵심-openclaw-기능-활용-팁>핵심 OpenClaw 기능 활용 팁<a hidden class=anchor aria-hidden=true href=#핵심-openclaw-기능-활용-팁>#</a></h2><h3 id=-heartbeatmd로-주기적-작업-관리>📋 HEARTBEAT.md로 주기적 작업 관리<a hidden class=anchor aria-hidden=true href=#-heartbeatmd로-주기적-작업-관리>#</a></h3><p><code>HEARTBEAT.md</code> 파일에 체크리스트를 작성하면, 에이전트가 하트비트(주기적 폴링) 시 해당 작업을 수행합니다. 다만 정확한 타이밍이 필요한 작업은 cron이 더 적합합니다.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-markdown data-lang=markdown><span style=display:flex><span># HEARTBEAT.md
-</span></span><span style=display:flex><span><span style=color:#66d9ef>- [ ]</span> 이메일 확인
-</span></span><span style=display:flex><span><span style=color:#66d9ef>- [ ]</span> 캘린더 다음 24시간 이벤트 체크
-</span></span></code></pre></div><h3 id=-메모리-시스템-활용>🧠 메모리 시스템 활용<a hidden class=anchor aria-hidden=true href=#-메모리-시스템-활용>#</a></h3><p>OpenClaw은 세션 간 기억을 유지하기 위해 파일 기반 메모리를 사용합니다:</p><ul><li><code>MEMORY.md</code>: 장기 기억 (중요한 결정, 선호도, 교훈)</li><li><code>memory/YYYY-MM-DD.md</code>: 일별 로그</li></ul><p>에이전트에게 &ldquo;이거 기억해둬"라고 하면 해당 파일에 자동으로 기록합니다.</p><h3 id=-skills로-기능-확장>🔧 Skills로 기능 확장<a hidden class=anchor aria-hidden=true href=#-skills로-기능-확장>#</a></h3><p>OpenClaw는 스킬 시스템을 통해 기능을 모듈식으로 확장할 수 있습니다. GitHub 연동, 날씨 조회, 코딩 에이전트 실행 등 다양한 스킬을 <code>SKILL.md</code> 형식으로 추가하면 됩니다.</p><p><a href=https://clawhub.com>ClaHub</a>에서 커뮤니티 스킬을 찾아볼 수도 있습니다.</p><h3 id=-sub-agent-활용>🔄 Sub-Agent 활용<a hidden class=anchor aria-hidden=true href=#-sub-agent-활용>#</a></h3><p>복잡한 태스크는 <code>sessions_spawn</code>으로 서브 에이전트에 위임할 수 있습니다. 메인 세션을 블로킹하지 않고 백그라운드에서 작업을 처리한 뒤 결과를 돌려받는 구조입니다.</p><h2 id=실제-운영-후기>실제 운영 후기<a hidden class=anchor aria-hidden=true href=#실제-운영-후기>#</a></h2><p>약 1주일간 이 자동화를 운영하면서 느낀 점:</p><ol><li><strong>일관성</strong>: 사람이 까먹거나 미루는 일 없이 매일 포스팅이 올라감</li><li><strong>품질 관리</strong>: 프롬프트를 잘 작성하면 꽤 괜찮은 품질의 글이 나옴</li><li><strong>커스터마이징</strong>: 카테고리, 스타일, 길이 등을 프롬프트로 쉽게 조절 가능</li><li><strong>투명성</strong>: 모든 과정이 Git 히스토리에 남아 추적 가능</li></ol><h2 id=마무리>마무리<a hidden class=anchor aria-hidden=true href=#마무리>#</a></h2><p>AI 에이전트의 진정한 가치는 대화가 아니라 <strong>행동</strong>에 있습니다. OpenClaw 같은 도구를 활용하면, 반복적인 작업을 자동화하면서도 사람이 최종 통제권을 유지할 수 있습니다. 블로그 자동화는 시작일 뿐 — 이메일 관리, 코드 리뷰, 데이터 수집 등 가능성은 무궁무진합니다.</p><p>궁금한 점이 있으면 <a href=https://discord.com/invite/clawd>OpenClaw Discord</a>에서 만나요! 🦁</p></div><footer class=post-footer><ul class=post-tags><li><a href=https://kwbaek.github.io/tags/openclaw/>OpenClaw</a></li><li><a href=https://kwbaek.github.io/tags/%EC%9E%90%EB%8F%99%ED%99%94/>자동화</a></li><li><a href=https://kwbaek.github.io/tags/%EC%97%90%EC%9D%B4%EC%A0%84%ED%8B%B1ai/>에이전틱AI</a></li><li><a href=https://kwbaek.github.io/tags/cron/>Cron</a></li><li><a href=https://kwbaek.github.io/tags/%EB%B8%94%EB%A1%9C%EA%B7%B8/>블로그</a></li></ul></footer><script src=https://utteranc.es/client.js repo=kwbaek/blog-comments issue-term=pathname theme=github-light crossorigin=anonymous async></script></article></main><footer class=footer><span>&copy; 2026 <a href=https://kwbaek.github.io/>Kyungwook's Devlog</a></span> ·
-<span>Powered by
-<a href=https://gohugo.io/ rel="noopener noreferrer" target=_blank>Hugo</a> &
-<a href=https://github.com/adityatelange/hugo-PaperMod/ rel=noopener target=_blank>PaperMod</a></span></footer><a href=#top aria-label="go to top" title="Go to Top (Alt + G)" class=top-link id=top-link accesskey=g><svg viewBox="0 0 12 6" fill="currentColor"><path d="M12 6H0l6-6z"/></svg>
-</a><script>let menu=document.getElementById("menu");if(menu){const e=localStorage.getItem("menu-scroll-position");e&&(menu.scrollLeft=parseInt(e,10)),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)}}document.querySelectorAll('a[href^="#"]').forEach(e=>{e.addEventListener("click",function(e){e.preventDefault();var t=this.getAttribute("href").substr(1);window.matchMedia("(prefers-reduced-motion: reduce)").matches?document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView({behavior:"smooth"}),t==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${t}`)})})</script><script>var mybutton=document.getElementById("top-link");window.onscroll=function(){document.body.scrollTop>800||document.documentElement.scrollTop>800?(mybutton.style.visibility="visible",mybutton.style.opacity="1"):(mybutton.style.visibility="hidden",mybutton.style.opacity="0")}</script><script>document.getElementById("theme-toggle").addEventListener("click",()=>{const e=document.querySelector("html");e.dataset.theme==="dark"?(e.dataset.theme="light",localStorage.setItem("pref-theme","light")):(e.dataset.theme="dark",localStorage.setItem("pref-theme","dark"))})</script></body></html>
+</code></pre><p>독립 세션(<code>isolated</code>)을 사용하는 이유는 메인 세션의 대화 히스토리에 영향을 주지 않으면서, 작업 완료 후 결과만 알림으로 받을 수 있기 때문입니다.</p>
+<h3 id="2단계-웹-리서치--콘텐츠-생성">2단계: 웹 리서치 → 콘텐츠 생성<a hidden class="anchor" aria-hidden="true" href="#2단계-웹-리서치--콘텐츠-생성">#</a></h3>
+<p>에이전트는 <code>web_search</code>와 <code>web_fetch</code> 도구를 사용해 최신 AI/ML 뉴스를 수집하고, 이를 바탕으로 Hugo 블로그 형식의 마크다운 파일을 생성합니다.</p>
+<p>포인트:</p>
+<ul>
+<li><strong>Front matter 자동 생성</strong>: 날짜, 카테고리, 태그 등을 자동으로 채움</li>
+<li><strong>한국어 작성</strong>: 프롬프트에 언어를 지정하면 해당 언어로 작성</li>
+<li><strong>최소 품질 보장</strong>: 글 길이, 구조, 마크다운 활용 등 기준을 프롬프트에 명시</li>
+</ul>
+<h3 id="3단계-git-커밋--배포">3단계: Git 커밋 &amp; 배포<a hidden class="anchor" aria-hidden="true" href="#3단계-git-커밋--배포">#</a></h3>
+<p>글 작성이 끝나면 에이전트가 직접:</p>
+<ol>
+<li><code>git add</code> → <code>git commit</code> → <code>git push</code> (소스 레포)</li>
+<li><code>hugo</code> 빌드 실행</li>
+<li><code>public/</code> 폴더에서 <code>git add</code> → <code>git commit</code> → <code>git push</code> (GitHub Pages 배포)</li>
+</ol>
+<p>사람이 개입할 필요가 전혀 없습니다.</p>
+<h2 id="핵심-openclaw-기능-활용-팁">핵심 OpenClaw 기능 활용 팁<a hidden class="anchor" aria-hidden="true" href="#핵심-openclaw-기능-활용-팁">#</a></h2>
+<h3 id="-heartbeatmd로-주기적-작업-관리">📋 HEARTBEAT.md로 주기적 작업 관리<a hidden class="anchor" aria-hidden="true" href="#-heartbeatmd로-주기적-작업-관리">#</a></h3>
+<p><code>HEARTBEAT.md</code> 파일에 체크리스트를 작성하면, 에이전트가 하트비트(주기적 폴링) 시 해당 작업을 수행합니다. 다만 정확한 타이밍이 필요한 작업은 cron이 더 적합합니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span># HEARTBEAT.md
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">- [ ]</span> 이메일 확인
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">- [ ]</span> 캘린더 다음 24시간 이벤트 체크
+</span></span></code></pre></div><h3 id="-메모리-시스템-활용">🧠 메모리 시스템 활용<a hidden class="anchor" aria-hidden="true" href="#-메모리-시스템-활용">#</a></h3>
+<p>OpenClaw은 세션 간 기억을 유지하기 위해 파일 기반 메모리를 사용합니다:</p>
+<ul>
+<li><code>MEMORY.md</code>: 장기 기억 (중요한 결정, 선호도, 교훈)</li>
+<li><code>memory/YYYY-MM-DD.md</code>: 일별 로그</li>
+</ul>
+<p>에이전트에게 &ldquo;이거 기억해둬&quot;라고 하면 해당 파일에 자동으로 기록합니다.</p>
+<h3 id="-skills로-기능-확장">🔧 Skills로 기능 확장<a hidden class="anchor" aria-hidden="true" href="#-skills로-기능-확장">#</a></h3>
+<p>OpenClaw는 스킬 시스템을 통해 기능을 모듈식으로 확장할 수 있습니다. GitHub 연동, 날씨 조회, 코딩 에이전트 실행 등 다양한 스킬을 <code>SKILL.md</code> 형식으로 추가하면 됩니다.</p>
+<p><a href="https://clawhub.com">ClaHub</a>에서 커뮤니티 스킬을 찾아볼 수도 있습니다.</p>
+<h3 id="-sub-agent-활용">🔄 Sub-Agent 활용<a hidden class="anchor" aria-hidden="true" href="#-sub-agent-활용">#</a></h3>
+<p>복잡한 태스크는 <code>sessions_spawn</code>으로 서브 에이전트에 위임할 수 있습니다. 메인 세션을 블로킹하지 않고 백그라운드에서 작업을 처리한 뒤 결과를 돌려받는 구조입니다.</p>
+<h2 id="실제-운영-후기">실제 운영 후기<a hidden class="anchor" aria-hidden="true" href="#실제-운영-후기">#</a></h2>
+<p>약 1주일간 이 자동화를 운영하면서 느낀 점:</p>
+<ol>
+<li><strong>일관성</strong>: 사람이 까먹거나 미루는 일 없이 매일 포스팅이 올라감</li>
+<li><strong>품질 관리</strong>: 프롬프트를 잘 작성하면 꽤 괜찮은 품질의 글이 나옴</li>
+<li><strong>커스터마이징</strong>: 카테고리, 스타일, 길이 등을 프롬프트로 쉽게 조절 가능</li>
+<li><strong>투명성</strong>: 모든 과정이 Git 히스토리에 남아 추적 가능</li>
+</ol>
+<h2 id="마무리">마무리<a hidden class="anchor" aria-hidden="true" href="#마무리">#</a></h2>
+<p>AI 에이전트의 진정한 가치는 대화가 아니라 <strong>행동</strong>에 있습니다. OpenClaw 같은 도구를 활용하면, 반복적인 작업을 자동화하면서도 사람이 최종 통제권을 유지할 수 있습니다. 블로그 자동화는 시작일 뿐 — 이메일 관리, 코드 리뷰, 데이터 수집 등 가능성은 무궁무진합니다.</p>
+<p>궁금한 점이 있으면 <a href="https://discord.com/invite/clawd">OpenClaw Discord</a>에서 만나요! 🦁</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://kwbaek.github.io/tags/openclaw/">OpenClaw</a></li>
+      <li><a href="https://kwbaek.github.io/tags/%EC%9E%90%EB%8F%99%ED%99%94/">자동화</a></li>
+      <li><a href="https://kwbaek.github.io/tags/%EC%97%90%EC%9D%B4%EC%A0%84%ED%8B%B1ai/">에이전틱AI</a></li>
+      <li><a href="https://kwbaek.github.io/tags/cron/">Cron</a></li>
+      <li><a href="https://kwbaek.github.io/tags/%EB%B8%94%EB%A1%9C%EA%B7%B8/">블로그</a></li>
+    </ul>
+  </footer><script src="https://utteranc.es/client.js"
+        repo="kwbaek/blog-comments"
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://kwbaek.github.io/">Kyungwook&#39;s Devlog</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

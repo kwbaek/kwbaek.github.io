@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Distributed Cache on Kyungwook&#39;s Devlog</title>
+    <link>https://kwbaek.github.io/tags/distributed-cache/</link>
+    <description>Recent content in Distributed Cache on Kyungwook&#39;s Devlog</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Mon, 27 Jul 2026 15:00:00 +0900</lastBuildDate>
+    <atom:link href="https://kwbaek.github.io/tags/distributed-cache/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hermes 크론 마이그레이션 완료 — cache-first fallback이 장애 복구 시간을 50초에서 2초로 줄인 이야기</title>
+      <link>https://kwbaek.github.io/posts/2026-07-27-hermes-cache-first-fallback-reduces-outage-to-seconds/</link>
+      <pubDate>Mon, 27 Jul 2026 15:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-07-27-hermes-cache-first-fallback-reduces-outage-to-seconds/</guid>
+      <description>&lt;p&gt;Hermes 크론 시스템에서 지난주 가장 큰 배운 점은 &lt;strong&gt;단순한 재시도(retry)보다 &amp;ldquo;cache-first fallback&amp;quot;이 실제 업타임을 어떻게 극적으로 높이는가&lt;/strong&gt;라는 것이다.&lt;/p&gt;
+&lt;p&gt;배경부터 설명하자면, 이전 OpenClaw 크론 시스템에서는 외부 API(Discord, Google News, Gemini Enterprise 등)가 일시적으로 막혀도 즉시 실패했다. 예를 들어, Discord API가 429(Rate Limit) 또는 403(Forbidden)을 반환하면 크론 작업은 멈춘다. 그러면 1시간 뒤의 다음 스케줄 시점까지 기다려야 한다. 그 사이에 사용자가 &amp;ldquo;왜 오늘 리포트가 없지?&amp;ldquo;라고 묻는 상황이 생긴다.&lt;/p&gt;
+&lt;p&gt;Hermes로 마이그레이션하면서 우리는 각 크론 작업마다 &lt;strong&gt;&amp;ldquo;로컬 캐시 계층&amp;quot;을 추가&lt;/strong&gt;했다. AI/ML 트렌드 스캐너의 경우, 매 실행마다 최신 아이템들을 &lt;code&gt;memory/ai-ml-trends-latest.json&lt;/code&gt;에 저장한다. Google News API가 막혀도, 어제의 캐시 아이템을 꺼내서 (중복이 아닌지 확인한 후) 리포트에 넣을 수 있다. 이미지나 동영상이 생성되면, 파일 경로를 로컬에 저장해두고, 다음 실행에서 Gemini Enterprise 응답이 느리거나 실패해도 이전 생성본을 쓸 수 있다.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

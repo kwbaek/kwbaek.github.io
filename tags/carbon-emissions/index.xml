@@ -1,2 +1,20 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Carbon Emissions on Kyungwook's Devlog</title><link>https://kwbaek.github.io/tags/carbon-emissions/</link><description>Recent content in Carbon Emissions on Kyungwook's Devlog</description><generator>Hugo -- 0.155.3</generator><language>ko-kr</language><lastBuildDate>Sat, 11 Jul 2026 21:01:00 +0900</lastBuildDate><atom:link href="https://kwbaek.github.io/tags/carbon-emissions/index.xml" rel="self" type="application/rss+xml"/><item><title>AI/ML 트렌드: AI 데이터센터의 병목이 전력에서 공급망 탄소로 넓어진다</title><link>https://kwbaek.github.io/posts/2026-07-11-ai-ml-trends-data-center-bottleneck-expands-to-scope-3-carbon/</link><pubDate>Sat, 11 Jul 2026 21:01:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-07-11-ai-ml-trends-data-center-bottleneck-expands-to-scope-3-carbon/</guid><description>&lt;p&gt;오늘 주목할 AI/ML 트렌드는 새로운 모델이 아니라 &lt;strong&gt;AI 인프라의 비용표가 바뀌고 있다는 신호&lt;/strong&gt;입니다. 가디언이 Microsoft·Amazon·Google의 지속가능성 보고서를 종합한 결과, 세 회사의 2026 회계연도 탄소배출량은 총 1억1,900만tCO₂e로 전년 약 1억100만tCO₂e보다 거의 18% 늘었습니다. 기사에 따르면 Microsoft는 25%, Google은 18%, Amazon은 16% 증가했으며, 데이터센터 건설과 이를 뒷받침하는 공급망 활동이 핵심 요인으로 지목됐습니다.&lt;/p&gt;
-&lt;p&gt;AI 인프라 논의는 보통 GPU 수급, 전력 확보, 냉각, 네트워크 대역폭에 집중됩니다. 하지만 이번 수치는 서버가 켜진 뒤 사용하는 전기만으로는 전체 비용과 환경 영향을 설명할 수 없다는 점을 보여줍니다. 건물의 철강·콘크리트, 반도체와 서버 제조, 냉각 설비, 물류처럼 데이터센터를 짓기 전에 발생하는 &lt;strong&gt;embodied carbon&lt;/strong&gt;과 Scope 3 배출이 AI 확장의 중요한 제약으로 부상하고 있습니다.&lt;/p&gt;</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Carbon Emissions on Kyungwook&#39;s Devlog</title>
+    <link>https://kwbaek.github.io/tags/carbon-emissions/</link>
+    <description>Recent content in Carbon Emissions on Kyungwook&#39;s Devlog</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Sat, 11 Jul 2026 21:01:00 +0900</lastBuildDate>
+    <atom:link href="https://kwbaek.github.io/tags/carbon-emissions/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI/ML 트렌드: AI 데이터센터의 병목이 전력에서 공급망 탄소로 넓어진다</title>
+      <link>https://kwbaek.github.io/posts/2026-07-11-ai-ml-trends-data-center-bottleneck-expands-to-scope-3-carbon/</link>
+      <pubDate>Sat, 11 Jul 2026 21:01:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-07-11-ai-ml-trends-data-center-bottleneck-expands-to-scope-3-carbon/</guid>
+      <description>&lt;p&gt;오늘 주목할 AI/ML 트렌드는 새로운 모델이 아니라 &lt;strong&gt;AI 인프라의 비용표가 바뀌고 있다는 신호&lt;/strong&gt;입니다. 가디언이 Microsoft·Amazon·Google의 지속가능성 보고서를 종합한 결과, 세 회사의 2026 회계연도 탄소배출량은 총 1억1,900만tCO₂e로 전년 약 1억100만tCO₂e보다 거의 18% 늘었습니다. 기사에 따르면 Microsoft는 25%, Google은 18%, Amazon은 16% 증가했으며, 데이터센터 건설과 이를 뒷받침하는 공급망 활동이 핵심 요인으로 지목됐습니다.&lt;/p&gt;
+&lt;p&gt;AI 인프라 논의는 보통 GPU 수급, 전력 확보, 냉각, 네트워크 대역폭에 집중됩니다. 하지만 이번 수치는 서버가 켜진 뒤 사용하는 전기만으로는 전체 비용과 환경 영향을 설명할 수 없다는 점을 보여줍니다. 건물의 철강·콘크리트, 반도체와 서버 제조, 냉각 설비, 물류처럼 데이터센터를 짓기 전에 발생하는 &lt;strong&gt;embodied carbon&lt;/strong&gt;과 Scope 3 배출이 AI 확장의 중요한 제약으로 부상하고 있습니다.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

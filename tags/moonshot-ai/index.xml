@@ -1,3 +1,35 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Moonshot AI on Kyungwook's Devlog</title><link>https://kwbaek.github.io/tags/moonshot-ai/</link><description>Recent content in Moonshot AI on Kyungwook's Devlog</description><generator>Hugo -- 0.155.3</generator><language>ko-kr</language><lastBuildDate>Sat, 18 Jul 2026 21:21:00 +0900</lastBuildDate><atom:link href="https://kwbaek.github.io/tags/moonshot-ai/index.xml" rel="self" type="application/rss+xml"/><item><title>AI 랠리 피로 신호 — 시총 재편, 오픈웨이트 충격, 그리고 컴퓨팅 임대 경쟁</title><link>https://kwbaek.github.io/posts/2026-07-18-ai-ml-trends-ai-rally-fatigue-reshuffles-market/</link><pubDate>Sat, 18 Jul 2026 21:21:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-07-18-ai-ml-trends-ai-rally-fatigue-reshuffles-market/</guid><description>&lt;p&gt;오늘 AI/ML 트렌드 채널을 하루치 훑어보면, 개별 뉴스보다 흐름이 더 눈에 띕니다. AI 밸류에이션에 대한 시장의 믿음이 조용히 흔들리고 있고, 그 틈에서 오픈웨이트 모델과 인프라 임대라는 두 개의 대안 구조가 동시에 힘을 얻고 있다는 점입니다.&lt;/p&gt;
-&lt;p&gt;가장 상징적인 신호는 Reuters가 보도한 &lt;strong&gt;애플의 세계 시가총액 1위 재탈환&lt;/strong&gt;입니다. AI 반도체 대장주였던 Nvidia를 제치고 애플이 다시 1위로 올라선 사건은, &amp;ldquo;AI 투자 우려 속&amp;quot;이라는 수식어가 붙었다는 점에서 의미가 큽니다. 시장이 AI 인프라 밸류에이션을 재평가하기 시작했다는 뜻이고, 이는 반도체 한 종목의 문제가 아니라 AI 랠리 전체의 서사에 대한 피로 신호로 읽을 수 있습니다.&lt;/p&gt;</description></item><item><title>프론티어 모델이 늦어지는 사이, 오픈웨이트는 따라붙는다</title><link>https://kwbaek.github.io/posts/2026-07-17-ai-ml-trends-frontier-delay-open-weight-catchup/</link><pubDate>Fri, 17 Jul 2026 20:55:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-07-17-ai-ml-trends-frontier-delay-open-weight-catchup/</guid><description>&lt;p&gt;오늘 AI/ML 트렌드 채널에 올라온 소식들을 나란히 놓으면, 프론티어 모델 시장의 힘의 균형이 조용히 움직이고 있다는 신호가 보입니다. 핵심은 두 가지입니다 — 최상위 폐쇄형 모델의 출시가 내부 목표치를 못 맞춰 밀리고 있다는 것, 그리고 그 틈을 오픈웨이트 모델이 벤치마크로 빠르게 좁혀오고 있다는 것입니다.&lt;/p&gt;
-&lt;p&gt;첫 번째 신호는 Bloomberg와 Reuters가 함께 보도한 구글 &amp;lsquo;Gemini 3.5 Pro&amp;rsquo; 출시 연기 소식입니다. 코딩 성능 등 자체 내부 목표를 세 번째로 못 맞춘 것으로 알려졌고, 구글은 임시(stopgap) 출시를 검토하고 있다고 합니다. 프론티어 모델 개발이 &amp;lsquo;경쟁사보다 빠르게&amp;rsquo;가 아니라 &amp;lsquo;스스로 정한 기준을 통과하는가&amp;rsquo;라는 내부 게이트에 걸려 지연되는 사례가 반복되고 있다는 뜻입니다. 알파벳 주가에도 영향을 줬다는 점은, 시장이 이 지연을 더 이상 사소한 일정 변경으로 보지 않는다는 신호입니다.&lt;/p&gt;</description></item><item><title>AI/ML 트렌드: 에이전트 메모리는 더 싸지고 더 조직화된다</title><link>https://kwbaek.github.io/posts/2026-06-13-ai-ml-trends-agent-memory-is-getting-cheaper-and-more-orchestrated/</link><pubDate>Sat, 13 Jun 2026 21:00:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-06-13-ai-ml-trends-agent-memory-is-getting-cheaper-and-more-orchestrated/</guid><description>&lt;p&gt;오늘 AI/ML 트렌드에서 가장 흥미로운 신호는 &lt;strong&gt;에이전트 메모리와 업무 오케스트레이션이 동시에 현실적인 비용 구조로 내려오고 있다&lt;/strong&gt;는 점입니다. Moonshot AI는 Kimi K2.7 Code를 공개하며 1T MoE, 256K context, coding-focused agentic workflow를 전면에 내세웠고, Adobe는 CX Enterprise Coworker를 GA로 공개하며 마케팅·고객경험 업무를 MCP와 A2A 기반 agent orchestration으로 묶는 그림을 제시했습니다. 여기에 Hugging Face 커뮤니티의 Stable Static Embedding 실전 가이드는 16M급 embedding을 CPU에서 빠르게 돌려 retrieval과 agent memory의 1차 필터로 쓰는 패턴을 보여줍니다.&lt;/p&gt;</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Moonshot AI on Kyungwook&#39;s Devlog</title>
+    <link>https://kwbaek.github.io/tags/moonshot-ai/</link>
+    <description>Recent content in Moonshot AI on Kyungwook&#39;s Devlog</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Sat, 18 Jul 2026 21:21:00 +0900</lastBuildDate>
+    <atom:link href="https://kwbaek.github.io/tags/moonshot-ai/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI 랠리 피로 신호 — 시총 재편, 오픈웨이트 충격, 그리고 컴퓨팅 임대 경쟁</title>
+      <link>https://kwbaek.github.io/posts/2026-07-18-ai-ml-trends-ai-rally-fatigue-reshuffles-market/</link>
+      <pubDate>Sat, 18 Jul 2026 21:21:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-07-18-ai-ml-trends-ai-rally-fatigue-reshuffles-market/</guid>
+      <description>&lt;p&gt;오늘 AI/ML 트렌드 채널을 하루치 훑어보면, 개별 뉴스보다 흐름이 더 눈에 띕니다. AI 밸류에이션에 대한 시장의 믿음이 조용히 흔들리고 있고, 그 틈에서 오픈웨이트 모델과 인프라 임대라는 두 개의 대안 구조가 동시에 힘을 얻고 있다는 점입니다.&lt;/p&gt;
+&lt;p&gt;가장 상징적인 신호는 Reuters가 보도한 &lt;strong&gt;애플의 세계 시가총액 1위 재탈환&lt;/strong&gt;입니다. AI 반도체 대장주였던 Nvidia를 제치고 애플이 다시 1위로 올라선 사건은, &amp;ldquo;AI 투자 우려 속&amp;quot;이라는 수식어가 붙었다는 점에서 의미가 큽니다. 시장이 AI 인프라 밸류에이션을 재평가하기 시작했다는 뜻이고, 이는 반도체 한 종목의 문제가 아니라 AI 랠리 전체의 서사에 대한 피로 신호로 읽을 수 있습니다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>프론티어 모델이 늦어지는 사이, 오픈웨이트는 따라붙는다</title>
+      <link>https://kwbaek.github.io/posts/2026-07-17-ai-ml-trends-frontier-delay-open-weight-catchup/</link>
+      <pubDate>Fri, 17 Jul 2026 20:55:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-07-17-ai-ml-trends-frontier-delay-open-weight-catchup/</guid>
+      <description>&lt;p&gt;오늘 AI/ML 트렌드 채널에 올라온 소식들을 나란히 놓으면, 프론티어 모델 시장의 힘의 균형이 조용히 움직이고 있다는 신호가 보입니다. 핵심은 두 가지입니다 — 최상위 폐쇄형 모델의 출시가 내부 목표치를 못 맞춰 밀리고 있다는 것, 그리고 그 틈을 오픈웨이트 모델이 벤치마크로 빠르게 좁혀오고 있다는 것입니다.&lt;/p&gt;
+&lt;p&gt;첫 번째 신호는 Bloomberg와 Reuters가 함께 보도한 구글 &amp;lsquo;Gemini 3.5 Pro&amp;rsquo; 출시 연기 소식입니다. 코딩 성능 등 자체 내부 목표를 세 번째로 못 맞춘 것으로 알려졌고, 구글은 임시(stopgap) 출시를 검토하고 있다고 합니다. 프론티어 모델 개발이 &amp;lsquo;경쟁사보다 빠르게&amp;rsquo;가 아니라 &amp;lsquo;스스로 정한 기준을 통과하는가&amp;rsquo;라는 내부 게이트에 걸려 지연되는 사례가 반복되고 있다는 뜻입니다. 알파벳 주가에도 영향을 줬다는 점은, 시장이 이 지연을 더 이상 사소한 일정 변경으로 보지 않는다는 신호입니다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>AI/ML 트렌드: 에이전트 메모리는 더 싸지고 더 조직화된다</title>
+      <link>https://kwbaek.github.io/posts/2026-06-13-ai-ml-trends-agent-memory-is-getting-cheaper-and-more-orchestrated/</link>
+      <pubDate>Sat, 13 Jun 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-06-13-ai-ml-trends-agent-memory-is-getting-cheaper-and-more-orchestrated/</guid>
+      <description>&lt;p&gt;오늘 AI/ML 트렌드에서 가장 흥미로운 신호는 &lt;strong&gt;에이전트 메모리와 업무 오케스트레이션이 동시에 현실적인 비용 구조로 내려오고 있다&lt;/strong&gt;는 점입니다. Moonshot AI는 Kimi K2.7 Code를 공개하며 1T MoE, 256K context, coding-focused agentic workflow를 전면에 내세웠고, Adobe는 CX Enterprise Coworker를 GA로 공개하며 마케팅·고객경험 업무를 MCP와 A2A 기반 agent orchestration으로 묶는 그림을 제시했습니다. 여기에 Hugging Face 커뮤니티의 Stable Static Embedding 실전 가이드는 16M급 embedding을 CPU에서 빠르게 돌려 retrieval과 agent memory의 1차 필터로 쓰는 패턴을 보여줍니다.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

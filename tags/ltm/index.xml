@@ -1,12 +1,30 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Ltm on Kyungwook's Devlog</title><link>https://kwbaek.github.io/tags/ltm/</link><description>Recent content in Ltm on Kyungwook's Devlog</description><generator>Hugo -- 0.155.3</generator><language>ko-kr</language><lastBuildDate>Wed, 11 Feb 2026 21:00:00 +0900</lastBuildDate><atom:link href="https://kwbaek.github.io/tags/ltm/index.xml" rel="self" type="application/rss+xml"/><item><title>2026년 2월 AI/ML 트렌드: AI가 AI를 만들고, AI가 거짓말을 탐지하다</title><link>https://kwbaek.github.io/posts/2026-02-11-ai-ml-trends-feb-2026/</link><pubDate>Wed, 11 Feb 2026 21:00:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-02-11-ai-ml-trends-feb-2026/</guid><description>&lt;p&gt;2026년 2월 첫째 주는 AI 업계에 정말 많은 일이 있었습니다. NVIDIA는 AI 에이전트가 만든 딥러닝 런타임을 공개했고, Microsoft는 AI 모델이 거짓말을 숨기는 방법을 탐지하는 혁신적인 기술을 발표했습니다. 이번 주 가장 흥미로운 AI/ML 트렌드를 정리해봤습니다.&lt;/p&gt;
-&lt;h2 id="1-nvidia-vibetensor-ai가-만든-딥러닝-시스템"&gt;1. NVIDIA VibeTensor: AI가 만든 딥러닝 시스템&lt;/h2&gt;
-&lt;p&gt;&lt;img alt="VibeTensor" loading="lazy" src="https://www.marktechpost.com/wp-content/uploads/2026/02/blog-banner23-10.png"&gt;&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Ltm on Kyungwook&#39;s Devlog</title>
+    <link>https://kwbaek.github.io/tags/ltm/</link>
+    <description>Recent content in Ltm on Kyungwook&#39;s Devlog</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Wed, 11 Feb 2026 21:00:00 +0900</lastBuildDate>
+    <atom:link href="https://kwbaek.github.io/tags/ltm/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>2026년 2월 AI/ML 트렌드: AI가 AI를 만들고, AI가 거짓말을 탐지하다</title>
+      <link>https://kwbaek.github.io/posts/2026-02-11-ai-ml-trends-feb-2026/</link>
+      <pubDate>Wed, 11 Feb 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-02-11-ai-ml-trends-feb-2026/</guid>
+      <description>&lt;p&gt;2026년 2월 첫째 주는 AI 업계에 정말 많은 일이 있었습니다. NVIDIA는 AI 에이전트가 만든 딥러닝 런타임을 공개했고, Microsoft는 AI 모델이 거짓말을 숨기는 방법을 탐지하는 혁신적인 기술을 발표했습니다. 이번 주 가장 흥미로운 AI/ML 트렌드를 정리해봤습니다.&lt;/p&gt;
+&lt;h2 id=&#34;1-nvidia-vibetensor-ai가-만든-딥러닝-시스템&#34;&gt;1. NVIDIA VibeTensor: AI가 만든 딥러닝 시스템&lt;/h2&gt;
+&lt;p&gt;&lt;img alt=&#34;VibeTensor&#34; loading=&#34;lazy&#34; src=&#34;https://www.marktechpost.com/wp-content/uploads/2026/02/blog-banner23-10.png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;NVIDIA가 공개한 &lt;strong&gt;VibeTensor&lt;/strong&gt;는 매우 독특한 프로젝트입니다. 이 딥러닝 런타임은 &lt;strong&gt;사람이 아닌 AI 코딩 에이전트가 처음부터 끝까지 프로그래밍으로 생성&lt;/strong&gt;했습니다.&lt;/p&gt;
-&lt;h3 id="핵심-특징"&gt;핵심 특징&lt;/h3&gt;
+&lt;h3 id=&#34;핵심-특징&#34;&gt;핵심 특징&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;완전 자동 생성&lt;/strong&gt;: LLM 기반 코딩 에이전트가 고수준 인간 가이드만으로 전체 소프트웨어 스택을 작성&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;PyTorch 스타일&lt;/strong&gt;: 기존 딥러닝 프레임워크와 유사한 인터페이스&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;CUDA 기반&lt;/strong&gt;: NVIDIA GPU 최적화&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;오픈소스&lt;/strong&gt;: Apache 2.0 라이선스로 공개&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;이것이 의미하는 바는 명확합니다. &lt;strong&gt;AI가 AI를 만드는 시대&lt;/strong&gt;가 본격적으로 시작되었습니다. 물론 아직은 연구 단계이지만, 앞으로 소프트웨어 개발 방식에 큰 변화를 가져올 것으로 보입니다.&lt;/p&gt;</description></item></channel></rss>
+&lt;p&gt;이것이 의미하는 바는 명확합니다. &lt;strong&gt;AI가 AI를 만드는 시대&lt;/strong&gt;가 본격적으로 시작되었습니다. 물론 아직은 연구 단계이지만, 앞으로 소프트웨어 개발 방식에 큰 변화를 가져올 것으로 보입니다.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

@@ -1,19 +1,327 @@
-<!doctype html><html lang=en dir=auto data-theme=auto><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=robots content="index, follow"><title>Hermes/리오 팁: 로컬 에이전트 인벤토리를 먼저 만들자 | Kyungwook's Devlog</title><meta name=keywords content="Hermes,리오,Agent,MCP,Security,Automation,Cron,Audit"><meta name=description content="오늘의 AI/ML 보안 흐름을 Hermes/리오 운영 팁으로 바꾸면 핵심은 간단합니다. 자동화를 늘리기 전에 로컬 에이전트 인벤토리를 먼저 만들어야 합니다. 에이전트가 하나의 챗봇일 때는 어떤 모델을 쓰는지만 알아도 충분했습니다. 하지만 이제는 코딩 에이전트, 브라우저 자동화, 크론 리포트, MCP server, 파일 편집 도구, 배포 스크립트가 서로 연결됩니다. 이 상태에서 “무슨 일이 있었는지”를 나중에 추적하려면 어떤 에이전트와 도구가 존재하는지부터 명확해야 합니다.
-로컬 에이전트 인벤토리는 거창한 보안 플랫폼이 아니라 작은 운영 문서로 시작할 수 있습니다. 각 자동화에 대해 이름, 목적, 읽을 수 있는 입력, 쓸 수 있는 출력, 외부 부작용 가능성, 사용하는 도구, 실패 시 멈춰야 하는 조건을 적습니다. 예를 들어 블로그 포스팅 자동화라면 입력은 AI/ML 리포트와 최근 트렌드 캐시, 출력은 Hugo 글과 배포 커밋, 검증은 글 길이·Hugo 빌드·생성 HTML 민감정보 검사입니다. 이 정도만 적어도 다음에 문제가 생겼을 때 원인을 훨씬 빨리 찾을 수 있습니다."><meta name=author content><link rel=canonical href=https://kwbaek.github.io/posts/2026-07-03-hermes-rio-start-with-a-local-agent-inventory/><link crossorigin=anonymous href=/assets/css/stylesheet.da3211e5ef867bf2b75fd5a6515cfed7195c011e8ab735694e203810a827097b.css integrity="sha256-2jIR5e+Ge/K3X9WmUVz+1xlcAR6KtzVpTiA4EKgnCXs=" rel="preload stylesheet" as=style><link rel=icon href=https://kwbaek.github.io/favicon.ico><link rel=icon type=image/png sizes=16x16 href=https://kwbaek.github.io/favicon-16x16.png><link rel=icon type=image/png sizes=32x32 href=https://kwbaek.github.io/favicon-32x32.png><link rel=apple-touch-icon href=https://kwbaek.github.io/apple-touch-icon.png><link rel=mask-icon href=https://kwbaek.github.io/safari-pinned-tab.svg><meta name=theme-color content="#2e2e33"><meta name=msapplication-TileColor content="#2e2e33"><link rel=alternate hreflang=en href=https://kwbaek.github.io/posts/2026-07-03-hermes-rio-start-with-a-local-agent-inventory/><noscript><style>#theme-toggle,.top-link{display:none}</style><style>@media(prefers-color-scheme:dark){:root{--theme:rgb(29, 30, 32);--entry:rgb(46, 46, 51);--primary:rgb(218, 218, 219);--secondary:rgb(155, 156, 157);--tertiary:rgb(65, 66, 68);--content:rgb(196, 196, 197);--code-block-bg:rgb(46, 46, 51);--code-bg:rgb(55, 56, 62);--border:rgb(51, 51, 51);color-scheme:dark}.list{background:var(--theme)}.toc{background:var(--entry)}}@media(prefers-color-scheme:light){.list::-webkit-scrollbar-thumb{border-color:var(--code-bg)}}</style></noscript><script>localStorage.getItem("pref-theme")==="dark"?document.querySelector("html").dataset.theme="dark":localStorage.getItem("pref-theme")==="light"?document.querySelector("html").dataset.theme="light":window.matchMedia("(prefers-color-scheme: dark)").matches?document.querySelector("html").dataset.theme="dark":document.querySelector("html").dataset.theme="light"</script><meta property="og:url" content="https://kwbaek.github.io/posts/2026-07-03-hermes-rio-start-with-a-local-agent-inventory/"><meta property="og:site_name" content="Kyungwook's Devlog"><meta property="og:title" content="Hermes/리오 팁: 로컬 에이전트 인벤토리를 먼저 만들자"><meta property="og:description" content="오늘의 AI/ML 보안 흐름을 Hermes/리오 운영 팁으로 바꾸면 핵심은 간단합니다. 자동화를 늘리기 전에 로컬 에이전트 인벤토리를 먼저 만들어야 합니다. 에이전트가 하나의 챗봇일 때는 어떤 모델을 쓰는지만 알아도 충분했습니다. 하지만 이제는 코딩 에이전트, 브라우저 자동화, 크론 리포트, MCP server, 파일 편집 도구, 배포 스크립트가 서로 연결됩니다. 이 상태에서 “무슨 일이 있었는지”를 나중에 추적하려면 어떤 에이전트와 도구가 존재하는지부터 명확해야 합니다.
-로컬 에이전트 인벤토리는 거창한 보안 플랫폼이 아니라 작은 운영 문서로 시작할 수 있습니다. 각 자동화에 대해 이름, 목적, 읽을 수 있는 입력, 쓸 수 있는 출력, 외부 부작용 가능성, 사용하는 도구, 실패 시 멈춰야 하는 조건을 적습니다. 예를 들어 블로그 포스팅 자동화라면 입력은 AI/ML 리포트와 최근 트렌드 캐시, 출력은 Hugo 글과 배포 커밋, 검증은 글 길이·Hugo 빌드·생성 HTML 민감정보 검사입니다. 이 정도만 적어도 다음에 문제가 생겼을 때 원인을 훨씬 빨리 찾을 수 있습니다."><meta property="og:locale" content="ko-kr"><meta property="og:type" content="article"><meta property="article:section" content="posts"><meta property="article:published_time" content="2026-07-03T21:01:00+09:00"><meta property="article:modified_time" content="2026-07-03T21:01:00+09:00"><meta property="article:tag" content="Hermes"><meta property="article:tag" content="리오"><meta property="article:tag" content="Agent"><meta property="article:tag" content="MCP"><meta property="article:tag" content="Security"><meta property="article:tag" content="Automation"><meta name=twitter:card content="summary"><meta name=twitter:title content="Hermes/리오 팁: 로컬 에이전트 인벤토리를 먼저 만들자"><meta name=twitter:description content="오늘의 AI/ML 보안 흐름을 Hermes/리오 운영 팁으로 바꾸면 핵심은 간단합니다. 자동화를 늘리기 전에 로컬 에이전트 인벤토리를 먼저 만들어야 합니다. 에이전트가 하나의 챗봇일 때는 어떤 모델을 쓰는지만 알아도 충분했습니다. 하지만 이제는 코딩 에이전트, 브라우저 자동화, 크론 리포트, MCP server, 파일 편집 도구, 배포 스크립트가 서로 연결됩니다. 이 상태에서 “무슨 일이 있었는지”를 나중에 추적하려면 어떤 에이전트와 도구가 존재하는지부터 명확해야 합니다.
-로컬 에이전트 인벤토리는 거창한 보안 플랫폼이 아니라 작은 운영 문서로 시작할 수 있습니다. 각 자동화에 대해 이름, 목적, 읽을 수 있는 입력, 쓸 수 있는 출력, 외부 부작용 가능성, 사용하는 도구, 실패 시 멈춰야 하는 조건을 적습니다. 예를 들어 블로그 포스팅 자동화라면 입력은 AI/ML 리포트와 최근 트렌드 캐시, 출력은 Hugo 글과 배포 커밋, 검증은 글 길이·Hugo 빌드·생성 HTML 민감정보 검사입니다. 이 정도만 적어도 다음에 문제가 생겼을 때 원인을 훨씬 빨리 찾을 수 있습니다."><script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Posts","item":"https://kwbaek.github.io/posts/"},{"@type":"ListItem","position":2,"name":"Hermes/리오 팁: 로컬 에이전트 인벤토리를 먼저 만들자","item":"https://kwbaek.github.io/posts/2026-07-03-hermes-rio-start-with-a-local-agent-inventory/"}]}</script><script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"Hermes/리오 팁: 로컬 에이전트 인벤토리를 먼저 만들자","name":"Hermes\/리오 팁: 로컬 에이전트 인벤토리를 먼저 만들자","description":"오늘의 AI/ML 보안 흐름을 Hermes/리오 운영 팁으로 바꾸면 핵심은 간단합니다. 자동화를 늘리기 전에 로컬 에이전트 인벤토리를 먼저 만들어야 합니다. 에이전트가 하나의 챗봇일 때는 어떤 모델을 쓰는지만 알아도 충분했습니다. 하지만 이제는 코딩 에이전트, 브라우저 자동화, 크론 리포트, MCP server, 파일 편집 도구, 배포 스크립트가 서로 연결됩니다. 이 상태에서 “무슨 일이 있었는지”를 나중에 추적하려면 어떤 에이전트와 도구가 존재하는지부터 명확해야 합니다.\n로컬 에이전트 인벤토리는 거창한 보안 플랫폼이 아니라 작은 운영 문서로 시작할 수 있습니다. 각 자동화에 대해 이름, 목적, 읽을 수 있는 입력, 쓸 수 있는 출력, 외부 부작용 가능성, 사용하는 도구, 실패 시 멈춰야 하는 조건을 적습니다. 예를 들어 블로그 포스팅 자동화라면 입력은 AI/ML 리포트와 최근 트렌드 캐시, 출력은 Hugo 글과 배포 커밋, 검증은 글 길이·Hugo 빌드·생성 HTML 민감정보 검사입니다. 이 정도만 적어도 다음에 문제가 생겼을 때 원인을 훨씬 빨리 찾을 수 있습니다.\n","keywords":["Hermes","리오","Agent","MCP","Security","Automation","Cron","Audit"],"articleBody":"오늘의 AI/ML 보안 흐름을 Hermes/리오 운영 팁으로 바꾸면 핵심은 간단합니다. 자동화를 늘리기 전에 로컬 에이전트 인벤토리를 먼저 만들어야 합니다. 에이전트가 하나의 챗봇일 때는 어떤 모델을 쓰는지만 알아도 충분했습니다. 하지만 이제는 코딩 에이전트, 브라우저 자동화, 크론 리포트, MCP server, 파일 편집 도구, 배포 스크립트가 서로 연결됩니다. 이 상태에서 “무슨 일이 있었는지”를 나중에 추적하려면 어떤 에이전트와 도구가 존재하는지부터 명확해야 합니다.\n로컬 에이전트 인벤토리는 거창한 보안 플랫폼이 아니라 작은 운영 문서로 시작할 수 있습니다. 각 자동화에 대해 이름, 목적, 읽을 수 있는 입력, 쓸 수 있는 출력, 외부 부작용 가능성, 사용하는 도구, 실패 시 멈춰야 하는 조건을 적습니다. 예를 들어 블로그 포스팅 자동화라면 입력은 AI/ML 리포트와 최근 트렌드 캐시, 출력은 Hugo 글과 배포 커밋, 검증은 글 길이·Hugo 빌드·생성 HTML 민감정보 검사입니다. 이 정도만 적어도 다음에 문제가 생겼을 때 원인을 훨씬 빨리 찾을 수 있습니다.\n특히 MCP나 로컬 CLI를 붙일 때는 “가능한 일”과 “허용된 일”을 분리해서 봐야 합니다. 어떤 도구가 기술적으로 파일을 지울 수 있다고 해서 크론에게 그 권한을 줘야 하는 것은 아닙니다. Hermes/리오 자동화는 작업별로 허용 범위를 좁게 두는 편이 안전합니다. 보고 전용 watchdog은 재시작하지 않고 상태만 알려야 하고, 배포 크론은 글·빌드·public 배포처럼 원본 지시가 허용한 범위 안에서만 움직여야 합니다.\n실무 체크리스트는 이렇게 잡을 수 있습니다.\n## Local Agent Inventory - Purpose: 이 자동화가 해결하는 문제 - Inputs: 읽는 리포트, 캐시, 소스, 채널 - Writes: 생성하거나 수정할 수 있는 파일/아티팩트 - External effects: 커밋, 푸시, 이메일, 배포처럼 밖으로 나가는 행동 - Tools: 파일, 브라우저, 터미널, MCP, API 등 실제 호출 도구 - Guardrails: 금지된 행동, 민감정보 출력 금지, 실패 시 중단 조건 - Verification: 빌드, 테스트, 링크 확인, 민감정보 검사 이 인벤토리의 가치는 자동화가 많아질수록 커집니다. 사람 없이 도는 크론은 성공하면 조용하고 실패하면 짧게 보고해야 하지만, 내부적으로는 재현 가능한 흔적이 필요합니다. Hermes/리오를 개인 운영체제처럼 쓰려면 “많이 시킨다”보다 “어디까지 맡겼는지 명확히 안다”가 더 중요합니다. 에이전트가 더 많은 도구를 연결할수록, 첫 번째 보안 기능은 거대한 대시보드가 아니라 작고 정확한 인벤토리입니다.\n","wordCount":"305","inLanguage":"en","datePublished":"2026-07-03T21:01:00+09:00","dateModified":"2026-07-03T21:01:00+09:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://kwbaek.github.io/posts/2026-07-03-hermes-rio-start-with-a-local-agent-inventory/"},"publisher":{"@type":"Organization","name":"Kyungwook's Devlog","logo":{"@type":"ImageObject","url":"https://kwbaek.github.io/favicon.ico"}}}</script></head><body id=top><header class=header><nav class=nav><div class=logo><a href=https://kwbaek.github.io/ accesskey=h title="Kyungwook's Devlog (Alt + H)">Kyungwook's Devlog</a><div class=logo-switches><button id=theme-toggle accesskey=t title="(Alt + T)" aria-label="Toggle theme">
-<svg id="moon" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
-<svg id="sun" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button></div></div><ul id=menu><li><a href=https://kwbaek.github.io/categories/ title=categories><span>categories</span></a></li><li><a href=https://kwbaek.github.io/tags/ title=tags><span>tags</span></a></li><li><a href=https://kwbaek.github.io/ title="Kyungwook's Devlog"><span>Kyungwook's Devlog</span>&nbsp;
-<svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><path d="M15 3h6v6"/><path d="M10 14 21 3"/></svg></a></li></ul></nav></header><main class=main><article class=post-single><header class=post-header><h1 class="post-title entry-hint-parent">Hermes/리오 팁: 로컬 에이전트 인벤토리를 먼저 만들자</h1><div class=post-meta><span title='2026-07-03 21:01:00 +0900 KST'>July 3, 2026</span></div></header><div class=post-content><p>오늘의 AI/ML 보안 흐름을 Hermes/리오 운영 팁으로 바꾸면 핵심은 간단합니다. 자동화를 늘리기 전에 <strong>로컬 에이전트 인벤토리</strong>를 먼저 만들어야 합니다. 에이전트가 하나의 챗봇일 때는 어떤 모델을 쓰는지만 알아도 충분했습니다. 하지만 이제는 코딩 에이전트, 브라우저 자동화, 크론 리포트, MCP server, 파일 편집 도구, 배포 스크립트가 서로 연결됩니다. 이 상태에서 “무슨 일이 있었는지”를 나중에 추적하려면 어떤 에이전트와 도구가 존재하는지부터 명확해야 합니다.</p><p>로컬 에이전트 인벤토리는 거창한 보안 플랫폼이 아니라 작은 운영 문서로 시작할 수 있습니다. 각 자동화에 대해 이름, 목적, 읽을 수 있는 입력, 쓸 수 있는 출력, 외부 부작용 가능성, 사용하는 도구, 실패 시 멈춰야 하는 조건을 적습니다. 예를 들어 블로그 포스팅 자동화라면 입력은 AI/ML 리포트와 최근 트렌드 캐시, 출력은 Hugo 글과 배포 커밋, 검증은 글 길이·Hugo 빌드·생성 HTML 민감정보 검사입니다. 이 정도만 적어도 다음에 문제가 생겼을 때 원인을 훨씬 빨리 찾을 수 있습니다.</p><p>특히 MCP나 로컬 CLI를 붙일 때는 “가능한 일”과 “허용된 일”을 분리해서 봐야 합니다. 어떤 도구가 기술적으로 파일을 지울 수 있다고 해서 크론에게 그 권한을 줘야 하는 것은 아닙니다. Hermes/리오 자동화는 작업별로 허용 범위를 좁게 두는 편이 안전합니다. 보고 전용 watchdog은 재시작하지 않고 상태만 알려야 하고, 배포 크론은 글·빌드·public 배포처럼 원본 지시가 허용한 범위 안에서만 움직여야 합니다.</p><p>실무 체크리스트는 이렇게 잡을 수 있습니다.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-markdown data-lang=markdown><span style=display:flex><span><span style=color:#75715e>## Local Agent Inventory
-</span></span></span><span style=display:flex><span><span style=color:#66d9ef>-</span> Purpose: 이 자동화가 해결하는 문제
-</span></span><span style=display:flex><span><span style=color:#66d9ef>-</span> Inputs: 읽는 리포트, 캐시, 소스, 채널
-</span></span><span style=display:flex><span><span style=color:#66d9ef>-</span> Writes: 생성하거나 수정할 수 있는 파일/아티팩트
-</span></span><span style=display:flex><span><span style=color:#66d9ef>-</span> External effects: 커밋, 푸시, 이메일, 배포처럼 밖으로 나가는 행동
-</span></span><span style=display:flex><span><span style=color:#66d9ef>-</span> Tools: 파일, 브라우저, 터미널, MCP, API 등 실제 호출 도구
-</span></span><span style=display:flex><span><span style=color:#66d9ef>-</span> Guardrails: 금지된 행동, 민감정보 출력 금지, 실패 시 중단 조건
-</span></span><span style=display:flex><span><span style=color:#66d9ef>-</span> Verification: 빌드, 테스트, 링크 확인, 민감정보 검사
-</span></span></code></pre></div><p>이 인벤토리의 가치는 자동화가 많아질수록 커집니다. 사람 없이 도는 크론은 성공하면 조용하고 실패하면 짧게 보고해야 하지만, 내부적으로는 재현 가능한 흔적이 필요합니다. Hermes/리오를 개인 운영체제처럼 쓰려면 “많이 시킨다”보다 “어디까지 맡겼는지 명확히 안다”가 더 중요합니다. 에이전트가 더 많은 도구를 연결할수록, 첫 번째 보안 기능은 거대한 대시보드가 아니라 작고 정확한 인벤토리입니다.</p></div><footer class=post-footer><ul class=post-tags><li><a href=https://kwbaek.github.io/tags/hermes/>Hermes</a></li><li><a href=https://kwbaek.github.io/tags/%EB%A6%AC%EC%98%A4/>리오</a></li><li><a href=https://kwbaek.github.io/tags/agent/>Agent</a></li><li><a href=https://kwbaek.github.io/tags/mcp/>MCP</a></li><li><a href=https://kwbaek.github.io/tags/security/>Security</a></li><li><a href=https://kwbaek.github.io/tags/automation/>Automation</a></li><li><a href=https://kwbaek.github.io/tags/cron/>Cron</a></li><li><a href=https://kwbaek.github.io/tags/audit/>Audit</a></li></ul></footer><script src=https://utteranc.es/client.js repo=kwbaek/blog-comments issue-term=pathname theme=github-light crossorigin=anonymous async></script></article></main><footer class=footer><span>&copy; 2026 <a href=https://kwbaek.github.io/>Kyungwook's Devlog</a></span> ·
-<span>Powered by
-<a href=https://gohugo.io/ rel="noopener noreferrer" target=_blank>Hugo</a> &
-<a href=https://github.com/adityatelange/hugo-PaperMod/ rel=noopener target=_blank>PaperMod</a></span></footer><a href=#top aria-label="go to top" title="Go to Top (Alt + G)" class=top-link id=top-link accesskey=g><svg viewBox="0 0 12 6" fill="currentColor"><path d="M12 6H0l6-6z"/></svg>
-</a><script>let menu=document.getElementById("menu");if(menu){const e=localStorage.getItem("menu-scroll-position");e&&(menu.scrollLeft=parseInt(e,10)),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)}}document.querySelectorAll('a[href^="#"]').forEach(e=>{e.addEventListener("click",function(e){e.preventDefault();var t=this.getAttribute("href").substr(1);window.matchMedia("(prefers-reduced-motion: reduce)").matches?document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView({behavior:"smooth"}),t==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${t}`)})})</script><script>var mybutton=document.getElementById("top-link");window.onscroll=function(){document.body.scrollTop>800||document.documentElement.scrollTop>800?(mybutton.style.visibility="visible",mybutton.style.opacity="1"):(mybutton.style.visibility="hidden",mybutton.style.opacity="0")}</script><script>document.getElementById("theme-toggle").addEventListener("click",()=>{const e=document.querySelector("html");e.dataset.theme==="dark"?(e.dataset.theme="light",localStorage.setItem("pref-theme","light")):(e.dataset.theme="dark",localStorage.setItem("pref-theme","dark"))})</script></body></html>
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Hermes/리오 팁: 로컬 에이전트 인벤토리를 먼저 만들자 | Kyungwook&#39;s Devlog</title>
+<meta name="keywords" content="Hermes, 리오, Agent, MCP, Security, Automation, Cron, Audit">
+<meta name="description" content="오늘의 AI/ML 보안 흐름을 Hermes/리오 운영 팁으로 바꾸면 핵심은 간단합니다. 자동화를 늘리기 전에 로컬 에이전트 인벤토리를 먼저 만들어야 합니다. 에이전트가 하나의 챗봇일 때는 어떤 모델을 쓰는지만 알아도 충분했습니다. 하지만 이제는 코딩 에이전트, 브라우저 자동화, 크론 리포트, MCP server, 파일 편집 도구, 배포 스크립트가 서로 연결됩니다. 이 상태에서 “무슨 일이 있었는지”를 나중에 추적하려면 어떤 에이전트와 도구가 존재하는지부터 명확해야 합니다.
+로컬 에이전트 인벤토리는 거창한 보안 플랫폼이 아니라 작은 운영 문서로 시작할 수 있습니다. 각 자동화에 대해 이름, 목적, 읽을 수 있는 입력, 쓸 수 있는 출력, 외부 부작용 가능성, 사용하는 도구, 실패 시 멈춰야 하는 조건을 적습니다. 예를 들어 블로그 포스팅 자동화라면 입력은 AI/ML 리포트와 최근 트렌드 캐시, 출력은 Hugo 글과 배포 커밋, 검증은 글 길이·Hugo 빌드·생성 HTML 민감정보 검사입니다. 이 정도만 적어도 다음에 문제가 생겼을 때 원인을 훨씬 빨리 찾을 수 있습니다.">
+<meta name="author" content="">
+<link rel="canonical" href="https://kwbaek.github.io/posts/2026-07-03-hermes-rio-start-with-a-local-agent-inventory/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.da3211e5ef867bf2b75fd5a6515cfed7195c011e8ab735694e203810a827097b.css" integrity="sha256-2jIR5e&#43;Ge/K3X9WmUVz&#43;1xlcAR6KtzVpTiA4EKgnCXs=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://kwbaek.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://kwbaek.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://kwbaek.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://kwbaek.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://kwbaek.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://kwbaek.github.io/posts/2026-07-03-hermes-rio-start-with-a-local-agent-inventory/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="https://kwbaek.github.io/posts/2026-07-03-hermes-rio-start-with-a-local-agent-inventory/">
+  <meta property="og:site_name" content="Kyungwook&#39;s Devlog">
+  <meta property="og:title" content="Hermes/리오 팁: 로컬 에이전트 인벤토리를 먼저 만들자">
+  <meta property="og:description" content="오늘의 AI/ML 보안 흐름을 Hermes/리오 운영 팁으로 바꾸면 핵심은 간단합니다. 자동화를 늘리기 전에 로컬 에이전트 인벤토리를 먼저 만들어야 합니다. 에이전트가 하나의 챗봇일 때는 어떤 모델을 쓰는지만 알아도 충분했습니다. 하지만 이제는 코딩 에이전트, 브라우저 자동화, 크론 리포트, MCP server, 파일 편집 도구, 배포 스크립트가 서로 연결됩니다. 이 상태에서 “무슨 일이 있었는지”를 나중에 추적하려면 어떤 에이전트와 도구가 존재하는지부터 명확해야 합니다.
+로컬 에이전트 인벤토리는 거창한 보안 플랫폼이 아니라 작은 운영 문서로 시작할 수 있습니다. 각 자동화에 대해 이름, 목적, 읽을 수 있는 입력, 쓸 수 있는 출력, 외부 부작용 가능성, 사용하는 도구, 실패 시 멈춰야 하는 조건을 적습니다. 예를 들어 블로그 포스팅 자동화라면 입력은 AI/ML 리포트와 최근 트렌드 캐시, 출력은 Hugo 글과 배포 커밋, 검증은 글 길이·Hugo 빌드·생성 HTML 민감정보 검사입니다. 이 정도만 적어도 다음에 문제가 생겼을 때 원인을 훨씬 빨리 찾을 수 있습니다.">
+  <meta property="og:locale" content="ko-kr">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2026-07-03T21:01:00+09:00">
+    <meta property="article:modified_time" content="2026-07-03T21:01:00+09:00">
+    <meta property="article:tag" content="Hermes">
+    <meta property="article:tag" content="리오">
+    <meta property="article:tag" content="Agent">
+    <meta property="article:tag" content="MCP">
+    <meta property="article:tag" content="Security">
+    <meta property="article:tag" content="Automation">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hermes/리오 팁: 로컬 에이전트 인벤토리를 먼저 만들자">
+<meta name="twitter:description" content="오늘의 AI/ML 보안 흐름을 Hermes/리오 운영 팁으로 바꾸면 핵심은 간단합니다. 자동화를 늘리기 전에 로컬 에이전트 인벤토리를 먼저 만들어야 합니다. 에이전트가 하나의 챗봇일 때는 어떤 모델을 쓰는지만 알아도 충분했습니다. 하지만 이제는 코딩 에이전트, 브라우저 자동화, 크론 리포트, MCP server, 파일 편집 도구, 배포 스크립트가 서로 연결됩니다. 이 상태에서 “무슨 일이 있었는지”를 나중에 추적하려면 어떤 에이전트와 도구가 존재하는지부터 명확해야 합니다.
+로컬 에이전트 인벤토리는 거창한 보안 플랫폼이 아니라 작은 운영 문서로 시작할 수 있습니다. 각 자동화에 대해 이름, 목적, 읽을 수 있는 입력, 쓸 수 있는 출력, 외부 부작용 가능성, 사용하는 도구, 실패 시 멈춰야 하는 조건을 적습니다. 예를 들어 블로그 포스팅 자동화라면 입력은 AI/ML 리포트와 최근 트렌드 캐시, 출력은 Hugo 글과 배포 커밋, 검증은 글 길이·Hugo 빌드·생성 HTML 민감정보 검사입니다. 이 정도만 적어도 다음에 문제가 생겼을 때 원인을 훨씬 빨리 찾을 수 있습니다.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://kwbaek.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Hermes/리오 팁: 로컬 에이전트 인벤토리를 먼저 만들자",
+      "item": "https://kwbaek.github.io/posts/2026-07-03-hermes-rio-start-with-a-local-agent-inventory/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Hermes/리오 팁: 로컬 에이전트 인벤토리를 먼저 만들자",
+  "name": "Hermes\/리오 팁: 로컬 에이전트 인벤토리를 먼저 만들자",
+  "description": "오늘의 AI/ML 보안 흐름을 Hermes/리오 운영 팁으로 바꾸면 핵심은 간단합니다. 자동화를 늘리기 전에 로컬 에이전트 인벤토리를 먼저 만들어야 합니다. 에이전트가 하나의 챗봇일 때는 어떤 모델을 쓰는지만 알아도 충분했습니다. 하지만 이제는 코딩 에이전트, 브라우저 자동화, 크론 리포트, MCP server, 파일 편집 도구, 배포 스크립트가 서로 연결됩니다. 이 상태에서 “무슨 일이 있었는지”를 나중에 추적하려면 어떤 에이전트와 도구가 존재하는지부터 명확해야 합니다.\n로컬 에이전트 인벤토리는 거창한 보안 플랫폼이 아니라 작은 운영 문서로 시작할 수 있습니다. 각 자동화에 대해 이름, 목적, 읽을 수 있는 입력, 쓸 수 있는 출력, 외부 부작용 가능성, 사용하는 도구, 실패 시 멈춰야 하는 조건을 적습니다. 예를 들어 블로그 포스팅 자동화라면 입력은 AI/ML 리포트와 최근 트렌드 캐시, 출력은 Hugo 글과 배포 커밋, 검증은 글 길이·Hugo 빌드·생성 HTML 민감정보 검사입니다. 이 정도만 적어도 다음에 문제가 생겼을 때 원인을 훨씬 빨리 찾을 수 있습니다.\n",
+  "keywords": [
+    "Hermes", "리오", "Agent", "MCP", "Security", "Automation", "Cron", "Audit"
+  ],
+  "articleBody": "오늘의 AI/ML 보안 흐름을 Hermes/리오 운영 팁으로 바꾸면 핵심은 간단합니다. 자동화를 늘리기 전에 로컬 에이전트 인벤토리를 먼저 만들어야 합니다. 에이전트가 하나의 챗봇일 때는 어떤 모델을 쓰는지만 알아도 충분했습니다. 하지만 이제는 코딩 에이전트, 브라우저 자동화, 크론 리포트, MCP server, 파일 편집 도구, 배포 스크립트가 서로 연결됩니다. 이 상태에서 “무슨 일이 있었는지”를 나중에 추적하려면 어떤 에이전트와 도구가 존재하는지부터 명확해야 합니다.\n로컬 에이전트 인벤토리는 거창한 보안 플랫폼이 아니라 작은 운영 문서로 시작할 수 있습니다. 각 자동화에 대해 이름, 목적, 읽을 수 있는 입력, 쓸 수 있는 출력, 외부 부작용 가능성, 사용하는 도구, 실패 시 멈춰야 하는 조건을 적습니다. 예를 들어 블로그 포스팅 자동화라면 입력은 AI/ML 리포트와 최근 트렌드 캐시, 출력은 Hugo 글과 배포 커밋, 검증은 글 길이·Hugo 빌드·생성 HTML 민감정보 검사입니다. 이 정도만 적어도 다음에 문제가 생겼을 때 원인을 훨씬 빨리 찾을 수 있습니다.\n특히 MCP나 로컬 CLI를 붙일 때는 “가능한 일”과 “허용된 일”을 분리해서 봐야 합니다. 어떤 도구가 기술적으로 파일을 지울 수 있다고 해서 크론에게 그 권한을 줘야 하는 것은 아닙니다. Hermes/리오 자동화는 작업별로 허용 범위를 좁게 두는 편이 안전합니다. 보고 전용 watchdog은 재시작하지 않고 상태만 알려야 하고, 배포 크론은 글·빌드·public 배포처럼 원본 지시가 허용한 범위 안에서만 움직여야 합니다.\n실무 체크리스트는 이렇게 잡을 수 있습니다.\n## Local Agent Inventory - Purpose: 이 자동화가 해결하는 문제 - Inputs: 읽는 리포트, 캐시, 소스, 채널 - Writes: 생성하거나 수정할 수 있는 파일/아티팩트 - External effects: 커밋, 푸시, 이메일, 배포처럼 밖으로 나가는 행동 - Tools: 파일, 브라우저, 터미널, MCP, API 등 실제 호출 도구 - Guardrails: 금지된 행동, 민감정보 출력 금지, 실패 시 중단 조건 - Verification: 빌드, 테스트, 링크 확인, 민감정보 검사 이 인벤토리의 가치는 자동화가 많아질수록 커집니다. 사람 없이 도는 크론은 성공하면 조용하고 실패하면 짧게 보고해야 하지만, 내부적으로는 재현 가능한 흔적이 필요합니다. Hermes/리오를 개인 운영체제처럼 쓰려면 “많이 시킨다”보다 “어디까지 맡겼는지 명확히 안다”가 더 중요합니다. 에이전트가 더 많은 도구를 연결할수록, 첫 번째 보안 기능은 거대한 대시보드가 아니라 작고 정확한 인벤토리입니다.\n",
+  "wordCount" : "305",
+  "inLanguage": "en",
+  "datePublished": "2026-07-03T21:01:00+09:00",
+  "dateModified": "2026-07-03T21:01:00+09:00",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://kwbaek.github.io/posts/2026-07-03-hermes-rio-start-with-a-local-agent-inventory/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Kyungwook's Devlog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://kwbaek.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://kwbaek.github.io/" accesskey="h" title="Kyungwook&#39;s Devlog (Alt + H)">Kyungwook&#39;s Devlog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://kwbaek.github.io/categories/" title="categories">
+                    <span>categories</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kwbaek.github.io/tags/" title="tags">
+                    <span>tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kwbaek.github.io/" title="Kyungwook&#39;s Devlog">
+                    <span>Kyungwook&#39;s Devlog</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      Hermes/리오 팁: 로컬 에이전트 인벤토리를 먼저 만들자
+    </h1>
+    <div class="post-meta"><span title='2026-07-03 21:01:00 +0900 KST'>July 3, 2026</span>
+
+</div>
+  </header> 
+  <div class="post-content"><p>오늘의 AI/ML 보안 흐름을 Hermes/리오 운영 팁으로 바꾸면 핵심은 간단합니다. 자동화를 늘리기 전에 <strong>로컬 에이전트 인벤토리</strong>를 먼저 만들어야 합니다. 에이전트가 하나의 챗봇일 때는 어떤 모델을 쓰는지만 알아도 충분했습니다. 하지만 이제는 코딩 에이전트, 브라우저 자동화, 크론 리포트, MCP server, 파일 편집 도구, 배포 스크립트가 서로 연결됩니다. 이 상태에서 “무슨 일이 있었는지”를 나중에 추적하려면 어떤 에이전트와 도구가 존재하는지부터 명확해야 합니다.</p>
+<p>로컬 에이전트 인벤토리는 거창한 보안 플랫폼이 아니라 작은 운영 문서로 시작할 수 있습니다. 각 자동화에 대해 이름, 목적, 읽을 수 있는 입력, 쓸 수 있는 출력, 외부 부작용 가능성, 사용하는 도구, 실패 시 멈춰야 하는 조건을 적습니다. 예를 들어 블로그 포스팅 자동화라면 입력은 AI/ML 리포트와 최근 트렌드 캐시, 출력은 Hugo 글과 배포 커밋, 검증은 글 길이·Hugo 빌드·생성 HTML 민감정보 검사입니다. 이 정도만 적어도 다음에 문제가 생겼을 때 원인을 훨씬 빨리 찾을 수 있습니다.</p>
+<p>특히 MCP나 로컬 CLI를 붙일 때는 “가능한 일”과 “허용된 일”을 분리해서 봐야 합니다. 어떤 도구가 기술적으로 파일을 지울 수 있다고 해서 크론에게 그 권한을 줘야 하는 것은 아닙니다. Hermes/리오 자동화는 작업별로 허용 범위를 좁게 두는 편이 안전합니다. 보고 전용 watchdog은 재시작하지 않고 상태만 알려야 하고, 배포 크론은 글·빌드·public 배포처럼 원본 지시가 허용한 범위 안에서만 움직여야 합니다.</p>
+<p>실무 체크리스트는 이렇게 잡을 수 있습니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span><span style="color:#75715e">## Local Agent Inventory
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Purpose: 이 자동화가 해결하는 문제
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Inputs: 읽는 리포트, 캐시, 소스, 채널
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Writes: 생성하거나 수정할 수 있는 파일/아티팩트
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> External effects: 커밋, 푸시, 이메일, 배포처럼 밖으로 나가는 행동
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Tools: 파일, 브라우저, 터미널, MCP, API 등 실제 호출 도구
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Guardrails: 금지된 행동, 민감정보 출력 금지, 실패 시 중단 조건
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Verification: 빌드, 테스트, 링크 확인, 민감정보 검사
+</span></span></code></pre></div><p>이 인벤토리의 가치는 자동화가 많아질수록 커집니다. 사람 없이 도는 크론은 성공하면 조용하고 실패하면 짧게 보고해야 하지만, 내부적으로는 재현 가능한 흔적이 필요합니다. Hermes/리오를 개인 운영체제처럼 쓰려면 “많이 시킨다”보다 “어디까지 맡겼는지 명확히 안다”가 더 중요합니다. 에이전트가 더 많은 도구를 연결할수록, 첫 번째 보안 기능은 거대한 대시보드가 아니라 작고 정확한 인벤토리입니다.</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://kwbaek.github.io/tags/hermes/">Hermes</a></li>
+      <li><a href="https://kwbaek.github.io/tags/%EB%A6%AC%EC%98%A4/">리오</a></li>
+      <li><a href="https://kwbaek.github.io/tags/agent/">Agent</a></li>
+      <li><a href="https://kwbaek.github.io/tags/mcp/">MCP</a></li>
+      <li><a href="https://kwbaek.github.io/tags/security/">Security</a></li>
+      <li><a href="https://kwbaek.github.io/tags/automation/">Automation</a></li>
+      <li><a href="https://kwbaek.github.io/tags/cron/">Cron</a></li>
+      <li><a href="https://kwbaek.github.io/tags/audit/">Audit</a></li>
+    </ul>
+  </footer><script src="https://utteranc.es/client.js"
+        repo="kwbaek/blog-comments"
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://kwbaek.github.io/">Kyungwook&#39;s Devlog</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

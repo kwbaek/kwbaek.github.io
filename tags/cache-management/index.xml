@@ -1,5 +1,20 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Cache Management on Kyungwook's Devlog</title><link>https://kwbaek.github.io/tags/cache-management/</link><description>Recent content in Cache Management on Kyungwook's Devlog</description><generator>Hugo -- 0.155.3</generator><language>ko-kr</language><lastBuildDate>Tue, 21 Jul 2026 21:01:00 +0900</lastBuildDate><atom:link href="https://kwbaek.github.io/tags/cache-management/index.xml" rel="self" type="application/rss+xml"/><item><title>Hermes/리오 팁: 분산 크론 캐시는 '원자적 갱신 + 검증'이 아니면 언제 깨진다</title><link>https://kwbaek.github.io/posts/2026-07-21-hermes-rio-distributed-cache-atomicity/</link><pubDate>Tue, 21 Jul 2026 21:01:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-07-21-hermes-rio-distributed-cache-atomicity/</guid><description>&lt;p&gt;Hermes/리오를 운영하다 보면 자연스럽게 마주치는 문제가 있습니다. &lt;strong&gt;여러 크론이 공유 캐시를 갱신할 때, 언제 그 캐시는 일관성을 잃는가?&lt;/strong&gt; 오늘 수행된 Whale Insight 캐시 갱신, AI/ML 트렌드 스캔, 패션 아이디어 생성 작업들을 보면서, 이 문제를 어떻게 풀고 있는지 기록하고 싶습니다.&lt;/p&gt;
-&lt;h2 id="문제-크론-경합race-condition"&gt;문제: 크론 경합(Race Condition)&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Cache Management on Kyungwook&#39;s Devlog</title>
+    <link>https://kwbaek.github.io/tags/cache-management/</link>
+    <description>Recent content in Cache Management on Kyungwook&#39;s Devlog</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Tue, 21 Jul 2026 21:01:00 +0900</lastBuildDate>
+    <atom:link href="https://kwbaek.github.io/tags/cache-management/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hermes/리오 팁: 분산 크론 캐시는 &#39;원자적 갱신 &#43; 검증&#39;이 아니면 언제 깨진다</title>
+      <link>https://kwbaek.github.io/posts/2026-07-21-hermes-rio-distributed-cache-atomicity/</link>
+      <pubDate>Tue, 21 Jul 2026 21:01:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-07-21-hermes-rio-distributed-cache-atomicity/</guid>
+      <description>&lt;p&gt;Hermes/리오를 운영하다 보면 자연스럽게 마주치는 문제가 있습니다. &lt;strong&gt;여러 크론이 공유 캐시를 갱신할 때, 언제 그 캐시는 일관성을 잃는가?&lt;/strong&gt; 오늘 수행된 Whale Insight 캐시 갱신, AI/ML 트렌드 스캔, 패션 아이디어 생성 작업들을 보면서, 이 문제를 어떻게 풀고 있는지 기록하고 싶습니다.&lt;/p&gt;
+&lt;h2 id=&#34;문제-크론-경합race-condition&#34;&gt;문제: 크론 경합(Race Condition)&lt;/h2&gt;
 &lt;p&gt;아침 6시부터 오후 7시까지 Hermes/리오는 다음과 같은 작업들을 병렬로 실행합니다:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;Whale Insight cache refresh&lt;/strong&gt;: 국민연금 공시 데이터를 매시간 갱신 (hourly)&lt;/li&gt;
@@ -7,4 +22,7 @@
 &lt;li&gt;&lt;strong&gt;Fashion Trend Scanner&lt;/strong&gt;: 패션 산업 신호 수집 (다중 실행)&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Daily/Weekly Report Generator&lt;/strong&gt;: 캐시 데이터를 읽어서 보고서 생성&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;만약 Trend Scanner가 cache를 업데이트하는 정확한 순간에, Report Generator가 그 캐시를 읽는다면? 부분 쓰기 상태의 JSON을 읽게 되거나, 중복된 항목이 섞인 리포트가 만들어질 수 있습니다.&lt;/p&gt;</description></item></channel></rss>
+&lt;p&gt;만약 Trend Scanner가 cache를 업데이트하는 정확한 순간에, Report Generator가 그 캐시를 읽는다면? 부분 쓰기 상태의 JSON을 읽게 되거나, 중복된 항목이 섞인 리포트가 만들어질 수 있습니다.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

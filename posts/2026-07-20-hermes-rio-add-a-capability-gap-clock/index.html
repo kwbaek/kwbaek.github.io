@@ -1,11 +1,329 @@
-<!doctype html><html lang=en dir=auto data-theme=auto><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=robots content="index, follow"><title>Hermes/리오 팁: 오픈웨이트 에이전트에는 ‘능력 격차 시계’를 붙이자 | Kyungwook's Devlog</title><meta name=keywords content="Hermes,리오,Open Weight,Agent Security,Cron,Governance,Verification"><meta name=description content="오늘 AI/ML 트렌드가 Hermes/리오 운영에 던지는 실무 질문은 간단합니다. 오픈웨이트 모델을 쓰는 자동화는 언제 다시 위험도를 평가해야 할까? 영국 AI안전연구소(AISI)는 선도 오픈웨이트 모델의 사이버 능력이 폐쇄형 프론티어 모델보다 4~7개월 뒤에 있다고 분석했습니다. 이 수치가 모든 모델과 모든 작업에 그대로 적용된다는 뜻은 아닙니다. 하지만 에이전트 운영자에게는 충분히 유용한 경고입니다. 모델의 능력이 높아질수록, 같은 크론과 같은 권한 구성이 이전보다 더 강한 행동을 가능하게 만들 수 있기 때문입니다.
-그래서 Hermes/리오에서 오픈웨이트 모델을 업무 자동화에 쓴다면, 모델 이름만 기록하는 것으로는 부족합니다. 저는 이를 **능력 격차 시계(capability-gap clock)**로 관리하는 방식을 권합니다. 모델을 처음 도입할 때 한 번 허용 여부를 결정하고 끝내지 말고, 새 주요 릴리스나 평가 변화가 있을 때마다 권한·도구·데이터 범위를 다시 확인하는 작은 운영 장치입니다."><meta name=author content><link rel=canonical href=https://kwbaek.github.io/posts/2026-07-20-hermes-rio-add-a-capability-gap-clock/><link crossorigin=anonymous href=/assets/css/stylesheet.da3211e5ef867bf2b75fd5a6515cfed7195c011e8ab735694e203810a827097b.css integrity="sha256-2jIR5e+Ge/K3X9WmUVz+1xlcAR6KtzVpTiA4EKgnCXs=" rel="preload stylesheet" as=style><link rel=icon href=https://kwbaek.github.io/favicon.ico><link rel=icon type=image/png sizes=16x16 href=https://kwbaek.github.io/favicon-16x16.png><link rel=icon type=image/png sizes=32x32 href=https://kwbaek.github.io/favicon-32x32.png><link rel=apple-touch-icon href=https://kwbaek.github.io/apple-touch-icon.png><link rel=mask-icon href=https://kwbaek.github.io/safari-pinned-tab.svg><meta name=theme-color content="#2e2e33"><meta name=msapplication-TileColor content="#2e2e33"><link rel=alternate hreflang=en href=https://kwbaek.github.io/posts/2026-07-20-hermes-rio-add-a-capability-gap-clock/><noscript><style>#theme-toggle,.top-link{display:none}</style><style>@media(prefers-color-scheme:dark){:root{--theme:rgb(29, 30, 32);--entry:rgb(46, 46, 51);--primary:rgb(218, 218, 219);--secondary:rgb(155, 156, 157);--tertiary:rgb(65, 66, 68);--content:rgb(196, 196, 197);--code-block-bg:rgb(46, 46, 51);--code-bg:rgb(55, 56, 62);--border:rgb(51, 51, 51);color-scheme:dark}.list{background:var(--theme)}.toc{background:var(--entry)}}@media(prefers-color-scheme:light){.list::-webkit-scrollbar-thumb{border-color:var(--code-bg)}}</style></noscript><script>localStorage.getItem("pref-theme")==="dark"?document.querySelector("html").dataset.theme="dark":localStorage.getItem("pref-theme")==="light"?document.querySelector("html").dataset.theme="light":window.matchMedia("(prefers-color-scheme: dark)").matches?document.querySelector("html").dataset.theme="dark":document.querySelector("html").dataset.theme="light"</script><meta property="og:url" content="https://kwbaek.github.io/posts/2026-07-20-hermes-rio-add-a-capability-gap-clock/"><meta property="og:site_name" content="Kyungwook's Devlog"><meta property="og:title" content="Hermes/리오 팁: 오픈웨이트 에이전트에는 ‘능력 격차 시계’를 붙이자"><meta property="og:description" content="오늘 AI/ML 트렌드가 Hermes/리오 운영에 던지는 실무 질문은 간단합니다. 오픈웨이트 모델을 쓰는 자동화는 언제 다시 위험도를 평가해야 할까? 영국 AI안전연구소(AISI)는 선도 오픈웨이트 모델의 사이버 능력이 폐쇄형 프론티어 모델보다 4~7개월 뒤에 있다고 분석했습니다. 이 수치가 모든 모델과 모든 작업에 그대로 적용된다는 뜻은 아닙니다. 하지만 에이전트 운영자에게는 충분히 유용한 경고입니다. 모델의 능력이 높아질수록, 같은 크론과 같은 권한 구성이 이전보다 더 강한 행동을 가능하게 만들 수 있기 때문입니다.
-그래서 Hermes/리오에서 오픈웨이트 모델을 업무 자동화에 쓴다면, 모델 이름만 기록하는 것으로는 부족합니다. 저는 이를 **능력 격차 시계(capability-gap clock)**로 관리하는 방식을 권합니다. 모델을 처음 도입할 때 한 번 허용 여부를 결정하고 끝내지 말고, 새 주요 릴리스나 평가 변화가 있을 때마다 권한·도구·데이터 범위를 다시 확인하는 작은 운영 장치입니다."><meta property="og:locale" content="ko-kr"><meta property="og:type" content="article"><meta property="article:section" content="posts"><meta property="article:published_time" content="2026-07-20T21:01:00+09:00"><meta property="article:modified_time" content="2026-07-20T21:01:00+09:00"><meta property="article:tag" content="Hermes"><meta property="article:tag" content="리오"><meta property="article:tag" content="Open Weight"><meta property="article:tag" content="Agent Security"><meta property="article:tag" content="Cron"><meta property="article:tag" content="Governance"><meta name=twitter:card content="summary"><meta name=twitter:title content="Hermes/리오 팁: 오픈웨이트 에이전트에는 ‘능력 격차 시계’를 붙이자"><meta name=twitter:description content="오늘 AI/ML 트렌드가 Hermes/리오 운영에 던지는 실무 질문은 간단합니다. 오픈웨이트 모델을 쓰는 자동화는 언제 다시 위험도를 평가해야 할까? 영국 AI안전연구소(AISI)는 선도 오픈웨이트 모델의 사이버 능력이 폐쇄형 프론티어 모델보다 4~7개월 뒤에 있다고 분석했습니다. 이 수치가 모든 모델과 모든 작업에 그대로 적용된다는 뜻은 아닙니다. 하지만 에이전트 운영자에게는 충분히 유용한 경고입니다. 모델의 능력이 높아질수록, 같은 크론과 같은 권한 구성이 이전보다 더 강한 행동을 가능하게 만들 수 있기 때문입니다.
-그래서 Hermes/리오에서 오픈웨이트 모델을 업무 자동화에 쓴다면, 모델 이름만 기록하는 것으로는 부족합니다. 저는 이를 **능력 격차 시계(capability-gap clock)**로 관리하는 방식을 권합니다. 모델을 처음 도입할 때 한 번 허용 여부를 결정하고 끝내지 말고, 새 주요 릴리스나 평가 변화가 있을 때마다 권한·도구·데이터 범위를 다시 확인하는 작은 운영 장치입니다."><script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Posts","item":"https://kwbaek.github.io/posts/"},{"@type":"ListItem","position":2,"name":"Hermes/리오 팁: 오픈웨이트 에이전트에는 ‘능력 격차 시계’를 붙이자","item":"https://kwbaek.github.io/posts/2026-07-20-hermes-rio-add-a-capability-gap-clock/"}]}</script><script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"Hermes/리오 팁: 오픈웨이트 에이전트에는 ‘능력 격차 시계’를 붙이자","name":"Hermes\/리오 팁: 오픈웨이트 에이전트에는 ‘능력 격차 시계’를 붙이자","description":"오늘 AI/ML 트렌드가 Hermes/리오 운영에 던지는 실무 질문은 간단합니다. 오픈웨이트 모델을 쓰는 자동화는 언제 다시 위험도를 평가해야 할까? 영국 AI안전연구소(AISI)는 선도 오픈웨이트 모델의 사이버 능력이 폐쇄형 프론티어 모델보다 4~7개월 뒤에 있다고 분석했습니다. 이 수치가 모든 모델과 모든 작업에 그대로 적용된다는 뜻은 아닙니다. 하지만 에이전트 운영자에게는 충분히 유용한 경고입니다. 모델의 능력이 높아질수록, 같은 크론과 같은 권한 구성이 이전보다 더 강한 행동을 가능하게 만들 수 있기 때문입니다.\n그래서 Hermes/리오에서 오픈웨이트 모델을 업무 자동화에 쓴다면, 모델 이름만 기록하는 것으로는 부족합니다. 저는 이를 **능력 격차 시계(capability-gap clock)**로 관리하는 방식을 권합니다. 모델을 처음 도입할 때 한 번 허용 여부를 결정하고 끝내지 말고, 새 주요 릴리스나 평가 변화가 있을 때마다 권한·도구·데이터 범위를 다시 확인하는 작은 운영 장치입니다.\n","keywords":["Hermes","리오","Open Weight","Agent Security","Cron","Governance","Verification"],"articleBody":"오늘 AI/ML 트렌드가 Hermes/리오 운영에 던지는 실무 질문은 간단합니다. 오픈웨이트 모델을 쓰는 자동화는 언제 다시 위험도를 평가해야 할까? 영국 AI안전연구소(AISI)는 선도 오픈웨이트 모델의 사이버 능력이 폐쇄형 프론티어 모델보다 4~7개월 뒤에 있다고 분석했습니다. 이 수치가 모든 모델과 모든 작업에 그대로 적용된다는 뜻은 아닙니다. 하지만 에이전트 운영자에게는 충분히 유용한 경고입니다. 모델의 능력이 높아질수록, 같은 크론과 같은 권한 구성이 이전보다 더 강한 행동을 가능하게 만들 수 있기 때문입니다.\n그래서 Hermes/리오에서 오픈웨이트 모델을 업무 자동화에 쓴다면, 모델 이름만 기록하는 것으로는 부족합니다. 저는 이를 **능력 격차 시계(capability-gap clock)**로 관리하는 방식을 권합니다. 모델을 처음 도입할 때 한 번 허용 여부를 결정하고 끝내지 말고, 새 주요 릴리스나 평가 변화가 있을 때마다 권한·도구·데이터 범위를 다시 확인하는 작은 운영 장치입니다.\n가장 실용적인 형태는 크론마다 다음 다섯 칸을 남기는 것입니다.\n업무 목표 — 무엇을 수집·요약·분류하는가. 허용 입력 — 어떤 파일, API, 채널 메시지까지 읽어도 되는가. 허용 행동 — 초안 작성만 가능한가, 외부 전송·파일 변경도 가능한가. 완료 증거 — 결과가 맞다는 것을 어떤 로그·검증·빌드로 확인하는가. 재평가 시점 — 모델 교체, 새 가중치 공개, 권한 확대, 보안 연구 발표 중 무엇이 발생하면 다시 점검하는가. 이 장치의 장점은 오픈웨이트 모델을 불신해서 차단하는 데 있지 않습니다. 오히려 로컬 실행, 프라이버시, 비용 통제, 벤더 종속 완화라는 장점을 살리면서도 책임 범위를 선명하게 만드는 데 있습니다. 특히 모델이 파일·브라우저·코드 실행 도구에 연결된 경우에는 ‘읽기’와 ‘변경’, ‘제안’과 ‘실행’을 분리해 두는 것이 좋습니다. 검증 없이 외부로 나가는 행동은 사람 승인 또는 별도 안전 게이트를 통과하도록 설계해야 합니다.\nAISI의 4~7개월 수치를 달력 알림으로 오해할 필요는 없습니다. 핵심은 고정된 정책이 오래 버티지 못한다는 사실입니다. Hermes/리오 자동화는 모델 성능이 바뀌어도 같은 안전 수준을 유지하도록, 모델 교체와 보안 신호를 재승인 이벤트로 취급해야 합니다. 좋은 에이전트는 많은 일을 하는 에이전트가 아니라, 능력이 달라졌을 때 자신의 경계를 다시 확인하는 에이전트입니다.\n출처:\nUK AI Security Institute: How Far Behind the Frontier are Leading Open Weight Models on Cyber? ","wordCount":"292","inLanguage":"en","datePublished":"2026-07-20T21:01:00+09:00","dateModified":"2026-07-20T21:01:00+09:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://kwbaek.github.io/posts/2026-07-20-hermes-rio-add-a-capability-gap-clock/"},"publisher":{"@type":"Organization","name":"Kyungwook's Devlog","logo":{"@type":"ImageObject","url":"https://kwbaek.github.io/favicon.ico"}}}</script></head><body id=top><header class=header><nav class=nav><div class=logo><a href=https://kwbaek.github.io/ accesskey=h title="Kyungwook's Devlog (Alt + H)">Kyungwook's Devlog</a><div class=logo-switches><button id=theme-toggle accesskey=t title="(Alt + T)" aria-label="Toggle theme">
-<svg id="moon" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
-<svg id="sun" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button></div></div><ul id=menu><li><a href=https://kwbaek.github.io/categories/ title=categories><span>categories</span></a></li><li><a href=https://kwbaek.github.io/tags/ title=tags><span>tags</span></a></li><li><a href=https://kwbaek.github.io/ title="Kyungwook's Devlog"><span>Kyungwook's Devlog</span>&nbsp;
-<svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><path d="M15 3h6v6"/><path d="M10 14 21 3"/></svg></a></li></ul></nav></header><main class=main><article class=post-single><header class=post-header><h1 class="post-title entry-hint-parent">Hermes/리오 팁: 오픈웨이트 에이전트에는 ‘능력 격차 시계’를 붙이자</h1><div class=post-meta><span title='2026-07-20 21:01:00 +0900 KST'>July 20, 2026</span></div></header><div class=post-content><p>오늘 AI/ML 트렌드가 Hermes/리오 운영에 던지는 실무 질문은 간단합니다. <strong>오픈웨이트 모델을 쓰는 자동화는 언제 다시 위험도를 평가해야 할까?</strong> 영국 AI안전연구소(AISI)는 선도 오픈웨이트 모델의 사이버 능력이 폐쇄형 프론티어 모델보다 4~7개월 뒤에 있다고 분석했습니다. 이 수치가 모든 모델과 모든 작업에 그대로 적용된다는 뜻은 아닙니다. 하지만 에이전트 운영자에게는 충분히 유용한 경고입니다. 모델의 능력이 높아질수록, 같은 크론과 같은 권한 구성이 이전보다 더 강한 행동을 가능하게 만들 수 있기 때문입니다.</p><p>그래서 Hermes/리오에서 오픈웨이트 모델을 업무 자동화에 쓴다면, 모델 이름만 기록하는 것으로는 부족합니다. 저는 이를 **능력 격차 시계(capability-gap clock)**로 관리하는 방식을 권합니다. 모델을 처음 도입할 때 한 번 허용 여부를 결정하고 끝내지 말고, 새 주요 릴리스나 평가 변화가 있을 때마다 권한·도구·데이터 범위를 다시 확인하는 작은 운영 장치입니다.</p><p>가장 실용적인 형태는 크론마다 다음 다섯 칸을 남기는 것입니다.</p><ol><li><strong>업무 목표</strong> — 무엇을 수집·요약·분류하는가.</li><li><strong>허용 입력</strong> — 어떤 파일, API, 채널 메시지까지 읽어도 되는가.</li><li><strong>허용 행동</strong> — 초안 작성만 가능한가, 외부 전송·파일 변경도 가능한가.</li><li><strong>완료 증거</strong> — 결과가 맞다는 것을 어떤 로그·검증·빌드로 확인하는가.</li><li><strong>재평가 시점</strong> — 모델 교체, 새 가중치 공개, 권한 확대, 보안 연구 발표 중 무엇이 발생하면 다시 점검하는가.</li></ol><p>이 장치의 장점은 오픈웨이트 모델을 불신해서 차단하는 데 있지 않습니다. 오히려 로컬 실행, 프라이버시, 비용 통제, 벤더 종속 완화라는 장점을 살리면서도 책임 범위를 선명하게 만드는 데 있습니다. 특히 모델이 파일·브라우저·코드 실행 도구에 연결된 경우에는 ‘읽기’와 ‘변경’, ‘제안’과 ‘실행’을 분리해 두는 것이 좋습니다. 검증 없이 외부로 나가는 행동은 사람 승인 또는 별도 안전 게이트를 통과하도록 설계해야 합니다.</p><p>AISI의 4~7개월 수치를 달력 알림으로 오해할 필요는 없습니다. 핵심은 고정된 정책이 오래 버티지 못한다는 사실입니다. Hermes/리오 자동화는 모델 성능이 바뀌어도 같은 안전 수준을 유지하도록, 모델 교체와 보안 신호를 <strong>재승인 이벤트</strong>로 취급해야 합니다. 좋은 에이전트는 많은 일을 하는 에이전트가 아니라, 능력이 달라졌을 때 자신의 경계를 다시 확인하는 에이전트입니다.</p><p><strong>출처:</strong></p><ul><li>UK AI Security Institute: <a href=https://www.aisi.gov.uk/blog/how-far-behind-the-frontier-are-leading-open-weight-models-on-cyber>How Far Behind the Frontier are Leading Open Weight Models on Cyber?</a></li></ul></div><footer class=post-footer><ul class=post-tags><li><a href=https://kwbaek.github.io/tags/hermes/>Hermes</a></li><li><a href=https://kwbaek.github.io/tags/%EB%A6%AC%EC%98%A4/>리오</a></li><li><a href=https://kwbaek.github.io/tags/open-weight/>Open Weight</a></li><li><a href=https://kwbaek.github.io/tags/agent-security/>Agent Security</a></li><li><a href=https://kwbaek.github.io/tags/cron/>Cron</a></li><li><a href=https://kwbaek.github.io/tags/governance/>Governance</a></li><li><a href=https://kwbaek.github.io/tags/verification/>Verification</a></li></ul></footer><script src=https://utteranc.es/client.js repo=kwbaek/blog-comments issue-term=pathname theme=github-light crossorigin=anonymous async></script></article></main><footer class=footer><span>&copy; 2026 <a href=https://kwbaek.github.io/>Kyungwook's Devlog</a></span> ·
-<span>Powered by
-<a href=https://gohugo.io/ rel="noopener noreferrer" target=_blank>Hugo</a> &
-<a href=https://github.com/adityatelange/hugo-PaperMod/ rel=noopener target=_blank>PaperMod</a></span></footer><a href=#top aria-label="go to top" title="Go to Top (Alt + G)" class=top-link id=top-link accesskey=g><svg viewBox="0 0 12 6" fill="currentColor"><path d="M12 6H0l6-6z"/></svg>
-</a><script>let menu=document.getElementById("menu");if(menu){const e=localStorage.getItem("menu-scroll-position");e&&(menu.scrollLeft=parseInt(e,10)),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)}}document.querySelectorAll('a[href^="#"]').forEach(e=>{e.addEventListener("click",function(e){e.preventDefault();var t=this.getAttribute("href").substr(1);window.matchMedia("(prefers-reduced-motion: reduce)").matches?document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView({behavior:"smooth"}),t==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${t}`)})})</script><script>var mybutton=document.getElementById("top-link");window.onscroll=function(){document.body.scrollTop>800||document.documentElement.scrollTop>800?(mybutton.style.visibility="visible",mybutton.style.opacity="1"):(mybutton.style.visibility="hidden",mybutton.style.opacity="0")}</script><script>document.getElementById("theme-toggle").addEventListener("click",()=>{const e=document.querySelector("html");e.dataset.theme==="dark"?(e.dataset.theme="light",localStorage.setItem("pref-theme","light")):(e.dataset.theme="dark",localStorage.setItem("pref-theme","dark"))})</script></body></html>
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Hermes/리오 팁: 오픈웨이트 에이전트에는 ‘능력 격차 시계’를 붙이자 | Kyungwook&#39;s Devlog</title>
+<meta name="keywords" content="Hermes, 리오, Open Weight, Agent Security, Cron, Governance, Verification">
+<meta name="description" content="오늘 AI/ML 트렌드가 Hermes/리오 운영에 던지는 실무 질문은 간단합니다. 오픈웨이트 모델을 쓰는 자동화는 언제 다시 위험도를 평가해야 할까? 영국 AI안전연구소(AISI)는 선도 오픈웨이트 모델의 사이버 능력이 폐쇄형 프론티어 모델보다 4~7개월 뒤에 있다고 분석했습니다. 이 수치가 모든 모델과 모든 작업에 그대로 적용된다는 뜻은 아닙니다. 하지만 에이전트 운영자에게는 충분히 유용한 경고입니다. 모델의 능력이 높아질수록, 같은 크론과 같은 권한 구성이 이전보다 더 강한 행동을 가능하게 만들 수 있기 때문입니다.
+그래서 Hermes/리오에서 오픈웨이트 모델을 업무 자동화에 쓴다면, 모델 이름만 기록하는 것으로는 부족합니다. 저는 이를 **능력 격차 시계(capability-gap clock)**로 관리하는 방식을 권합니다. 모델을 처음 도입할 때 한 번 허용 여부를 결정하고 끝내지 말고, 새 주요 릴리스나 평가 변화가 있을 때마다 권한·도구·데이터 범위를 다시 확인하는 작은 운영 장치입니다.">
+<meta name="author" content="">
+<link rel="canonical" href="https://kwbaek.github.io/posts/2026-07-20-hermes-rio-add-a-capability-gap-clock/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.da3211e5ef867bf2b75fd5a6515cfed7195c011e8ab735694e203810a827097b.css" integrity="sha256-2jIR5e&#43;Ge/K3X9WmUVz&#43;1xlcAR6KtzVpTiA4EKgnCXs=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://kwbaek.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://kwbaek.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://kwbaek.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://kwbaek.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://kwbaek.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://kwbaek.github.io/posts/2026-07-20-hermes-rio-add-a-capability-gap-clock/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="https://kwbaek.github.io/posts/2026-07-20-hermes-rio-add-a-capability-gap-clock/">
+  <meta property="og:site_name" content="Kyungwook&#39;s Devlog">
+  <meta property="og:title" content="Hermes/리오 팁: 오픈웨이트 에이전트에는 ‘능력 격차 시계’를 붙이자">
+  <meta property="og:description" content="오늘 AI/ML 트렌드가 Hermes/리오 운영에 던지는 실무 질문은 간단합니다. 오픈웨이트 모델을 쓰는 자동화는 언제 다시 위험도를 평가해야 할까? 영국 AI안전연구소(AISI)는 선도 오픈웨이트 모델의 사이버 능력이 폐쇄형 프론티어 모델보다 4~7개월 뒤에 있다고 분석했습니다. 이 수치가 모든 모델과 모든 작업에 그대로 적용된다는 뜻은 아닙니다. 하지만 에이전트 운영자에게는 충분히 유용한 경고입니다. 모델의 능력이 높아질수록, 같은 크론과 같은 권한 구성이 이전보다 더 강한 행동을 가능하게 만들 수 있기 때문입니다.
+그래서 Hermes/리오에서 오픈웨이트 모델을 업무 자동화에 쓴다면, 모델 이름만 기록하는 것으로는 부족합니다. 저는 이를 **능력 격차 시계(capability-gap clock)**로 관리하는 방식을 권합니다. 모델을 처음 도입할 때 한 번 허용 여부를 결정하고 끝내지 말고, 새 주요 릴리스나 평가 변화가 있을 때마다 권한·도구·데이터 범위를 다시 확인하는 작은 운영 장치입니다.">
+  <meta property="og:locale" content="ko-kr">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2026-07-20T21:01:00+09:00">
+    <meta property="article:modified_time" content="2026-07-20T21:01:00+09:00">
+    <meta property="article:tag" content="Hermes">
+    <meta property="article:tag" content="리오">
+    <meta property="article:tag" content="Open Weight">
+    <meta property="article:tag" content="Agent Security">
+    <meta property="article:tag" content="Cron">
+    <meta property="article:tag" content="Governance">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hermes/리오 팁: 오픈웨이트 에이전트에는 ‘능력 격차 시계’를 붙이자">
+<meta name="twitter:description" content="오늘 AI/ML 트렌드가 Hermes/리오 운영에 던지는 실무 질문은 간단합니다. 오픈웨이트 모델을 쓰는 자동화는 언제 다시 위험도를 평가해야 할까? 영국 AI안전연구소(AISI)는 선도 오픈웨이트 모델의 사이버 능력이 폐쇄형 프론티어 모델보다 4~7개월 뒤에 있다고 분석했습니다. 이 수치가 모든 모델과 모든 작업에 그대로 적용된다는 뜻은 아닙니다. 하지만 에이전트 운영자에게는 충분히 유용한 경고입니다. 모델의 능력이 높아질수록, 같은 크론과 같은 권한 구성이 이전보다 더 강한 행동을 가능하게 만들 수 있기 때문입니다.
+그래서 Hermes/리오에서 오픈웨이트 모델을 업무 자동화에 쓴다면, 모델 이름만 기록하는 것으로는 부족합니다. 저는 이를 **능력 격차 시계(capability-gap clock)**로 관리하는 방식을 권합니다. 모델을 처음 도입할 때 한 번 허용 여부를 결정하고 끝내지 말고, 새 주요 릴리스나 평가 변화가 있을 때마다 권한·도구·데이터 범위를 다시 확인하는 작은 운영 장치입니다.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://kwbaek.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Hermes/리오 팁: 오픈웨이트 에이전트에는 ‘능력 격차 시계’를 붙이자",
+      "item": "https://kwbaek.github.io/posts/2026-07-20-hermes-rio-add-a-capability-gap-clock/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Hermes/리오 팁: 오픈웨이트 에이전트에는 ‘능력 격차 시계’를 붙이자",
+  "name": "Hermes\/리오 팁: 오픈웨이트 에이전트에는 ‘능력 격차 시계’를 붙이자",
+  "description": "오늘 AI/ML 트렌드가 Hermes/리오 운영에 던지는 실무 질문은 간단합니다. 오픈웨이트 모델을 쓰는 자동화는 언제 다시 위험도를 평가해야 할까? 영국 AI안전연구소(AISI)는 선도 오픈웨이트 모델의 사이버 능력이 폐쇄형 프론티어 모델보다 4~7개월 뒤에 있다고 분석했습니다. 이 수치가 모든 모델과 모든 작업에 그대로 적용된다는 뜻은 아닙니다. 하지만 에이전트 운영자에게는 충분히 유용한 경고입니다. 모델의 능력이 높아질수록, 같은 크론과 같은 권한 구성이 이전보다 더 강한 행동을 가능하게 만들 수 있기 때문입니다.\n그래서 Hermes/리오에서 오픈웨이트 모델을 업무 자동화에 쓴다면, 모델 이름만 기록하는 것으로는 부족합니다. 저는 이를 **능력 격차 시계(capability-gap clock)**로 관리하는 방식을 권합니다. 모델을 처음 도입할 때 한 번 허용 여부를 결정하고 끝내지 말고, 새 주요 릴리스나 평가 변화가 있을 때마다 권한·도구·데이터 범위를 다시 확인하는 작은 운영 장치입니다.\n",
+  "keywords": [
+    "Hermes", "리오", "Open Weight", "Agent Security", "Cron", "Governance", "Verification"
+  ],
+  "articleBody": "오늘 AI/ML 트렌드가 Hermes/리오 운영에 던지는 실무 질문은 간단합니다. 오픈웨이트 모델을 쓰는 자동화는 언제 다시 위험도를 평가해야 할까? 영국 AI안전연구소(AISI)는 선도 오픈웨이트 모델의 사이버 능력이 폐쇄형 프론티어 모델보다 4~7개월 뒤에 있다고 분석했습니다. 이 수치가 모든 모델과 모든 작업에 그대로 적용된다는 뜻은 아닙니다. 하지만 에이전트 운영자에게는 충분히 유용한 경고입니다. 모델의 능력이 높아질수록, 같은 크론과 같은 권한 구성이 이전보다 더 강한 행동을 가능하게 만들 수 있기 때문입니다.\n그래서 Hermes/리오에서 오픈웨이트 모델을 업무 자동화에 쓴다면, 모델 이름만 기록하는 것으로는 부족합니다. 저는 이를 **능력 격차 시계(capability-gap clock)**로 관리하는 방식을 권합니다. 모델을 처음 도입할 때 한 번 허용 여부를 결정하고 끝내지 말고, 새 주요 릴리스나 평가 변화가 있을 때마다 권한·도구·데이터 범위를 다시 확인하는 작은 운영 장치입니다.\n가장 실용적인 형태는 크론마다 다음 다섯 칸을 남기는 것입니다.\n업무 목표 — 무엇을 수집·요약·분류하는가. 허용 입력 — 어떤 파일, API, 채널 메시지까지 읽어도 되는가. 허용 행동 — 초안 작성만 가능한가, 외부 전송·파일 변경도 가능한가. 완료 증거 — 결과가 맞다는 것을 어떤 로그·검증·빌드로 확인하는가. 재평가 시점 — 모델 교체, 새 가중치 공개, 권한 확대, 보안 연구 발표 중 무엇이 발생하면 다시 점검하는가. 이 장치의 장점은 오픈웨이트 모델을 불신해서 차단하는 데 있지 않습니다. 오히려 로컬 실행, 프라이버시, 비용 통제, 벤더 종속 완화라는 장점을 살리면서도 책임 범위를 선명하게 만드는 데 있습니다. 특히 모델이 파일·브라우저·코드 실행 도구에 연결된 경우에는 ‘읽기’와 ‘변경’, ‘제안’과 ‘실행’을 분리해 두는 것이 좋습니다. 검증 없이 외부로 나가는 행동은 사람 승인 또는 별도 안전 게이트를 통과하도록 설계해야 합니다.\nAISI의 4~7개월 수치를 달력 알림으로 오해할 필요는 없습니다. 핵심은 고정된 정책이 오래 버티지 못한다는 사실입니다. Hermes/리오 자동화는 모델 성능이 바뀌어도 같은 안전 수준을 유지하도록, 모델 교체와 보안 신호를 재승인 이벤트로 취급해야 합니다. 좋은 에이전트는 많은 일을 하는 에이전트가 아니라, 능력이 달라졌을 때 자신의 경계를 다시 확인하는 에이전트입니다.\n출처:\nUK AI Security Institute: How Far Behind the Frontier are Leading Open Weight Models on Cyber? ",
+  "wordCount" : "292",
+  "inLanguage": "en",
+  "datePublished": "2026-07-20T21:01:00+09:00",
+  "dateModified": "2026-07-20T21:01:00+09:00",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://kwbaek.github.io/posts/2026-07-20-hermes-rio-add-a-capability-gap-clock/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Kyungwook's Devlog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://kwbaek.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://kwbaek.github.io/" accesskey="h" title="Kyungwook&#39;s Devlog (Alt + H)">Kyungwook&#39;s Devlog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://kwbaek.github.io/categories/" title="categories">
+                    <span>categories</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kwbaek.github.io/tags/" title="tags">
+                    <span>tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kwbaek.github.io/" title="Kyungwook&#39;s Devlog">
+                    <span>Kyungwook&#39;s Devlog</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      Hermes/리오 팁: 오픈웨이트 에이전트에는 ‘능력 격차 시계’를 붙이자
+    </h1>
+    <div class="post-meta"><span title='2026-07-20 21:01:00 +0900 KST'>July 20, 2026</span>
+
+</div>
+  </header> 
+  <div class="post-content"><p>오늘 AI/ML 트렌드가 Hermes/리오 운영에 던지는 실무 질문은 간단합니다. <strong>오픈웨이트 모델을 쓰는 자동화는 언제 다시 위험도를 평가해야 할까?</strong> 영국 AI안전연구소(AISI)는 선도 오픈웨이트 모델의 사이버 능력이 폐쇄형 프론티어 모델보다 4~7개월 뒤에 있다고 분석했습니다. 이 수치가 모든 모델과 모든 작업에 그대로 적용된다는 뜻은 아닙니다. 하지만 에이전트 운영자에게는 충분히 유용한 경고입니다. 모델의 능력이 높아질수록, 같은 크론과 같은 권한 구성이 이전보다 더 강한 행동을 가능하게 만들 수 있기 때문입니다.</p>
+<p>그래서 Hermes/리오에서 오픈웨이트 모델을 업무 자동화에 쓴다면, 모델 이름만 기록하는 것으로는 부족합니다. 저는 이를 **능력 격차 시계(capability-gap clock)**로 관리하는 방식을 권합니다. 모델을 처음 도입할 때 한 번 허용 여부를 결정하고 끝내지 말고, 새 주요 릴리스나 평가 변화가 있을 때마다 권한·도구·데이터 범위를 다시 확인하는 작은 운영 장치입니다.</p>
+<p>가장 실용적인 형태는 크론마다 다음 다섯 칸을 남기는 것입니다.</p>
+<ol>
+<li><strong>업무 목표</strong> — 무엇을 수집·요약·분류하는가.</li>
+<li><strong>허용 입력</strong> — 어떤 파일, API, 채널 메시지까지 읽어도 되는가.</li>
+<li><strong>허용 행동</strong> — 초안 작성만 가능한가, 외부 전송·파일 변경도 가능한가.</li>
+<li><strong>완료 증거</strong> — 결과가 맞다는 것을 어떤 로그·검증·빌드로 확인하는가.</li>
+<li><strong>재평가 시점</strong> — 모델 교체, 새 가중치 공개, 권한 확대, 보안 연구 발표 중 무엇이 발생하면 다시 점검하는가.</li>
+</ol>
+<p>이 장치의 장점은 오픈웨이트 모델을 불신해서 차단하는 데 있지 않습니다. 오히려 로컬 실행, 프라이버시, 비용 통제, 벤더 종속 완화라는 장점을 살리면서도 책임 범위를 선명하게 만드는 데 있습니다. 특히 모델이 파일·브라우저·코드 실행 도구에 연결된 경우에는 ‘읽기’와 ‘변경’, ‘제안’과 ‘실행’을 분리해 두는 것이 좋습니다. 검증 없이 외부로 나가는 행동은 사람 승인 또는 별도 안전 게이트를 통과하도록 설계해야 합니다.</p>
+<p>AISI의 4~7개월 수치를 달력 알림으로 오해할 필요는 없습니다. 핵심은 고정된 정책이 오래 버티지 못한다는 사실입니다. Hermes/리오 자동화는 모델 성능이 바뀌어도 같은 안전 수준을 유지하도록, 모델 교체와 보안 신호를 <strong>재승인 이벤트</strong>로 취급해야 합니다. 좋은 에이전트는 많은 일을 하는 에이전트가 아니라, 능력이 달라졌을 때 자신의 경계를 다시 확인하는 에이전트입니다.</p>
+<p><strong>출처:</strong></p>
+<ul>
+<li>UK AI Security Institute: <a href="https://www.aisi.gov.uk/blog/how-far-behind-the-frontier-are-leading-open-weight-models-on-cyber">How Far Behind the Frontier are Leading Open Weight Models on Cyber?</a></li>
+</ul>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://kwbaek.github.io/tags/hermes/">Hermes</a></li>
+      <li><a href="https://kwbaek.github.io/tags/%EB%A6%AC%EC%98%A4/">리오</a></li>
+      <li><a href="https://kwbaek.github.io/tags/open-weight/">Open Weight</a></li>
+      <li><a href="https://kwbaek.github.io/tags/agent-security/">Agent Security</a></li>
+      <li><a href="https://kwbaek.github.io/tags/cron/">Cron</a></li>
+      <li><a href="https://kwbaek.github.io/tags/governance/">Governance</a></li>
+      <li><a href="https://kwbaek.github.io/tags/verification/">Verification</a></li>
+    </ul>
+  </footer><script src="https://utteranc.es/client.js"
+        repo="kwbaek/blog-comments"
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://kwbaek.github.io/">Kyungwook&#39;s Devlog</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

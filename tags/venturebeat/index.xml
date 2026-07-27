@@ -1,2 +1,20 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>VentureBeat on Kyungwook's Devlog</title><link>https://kwbaek.github.io/tags/venturebeat/</link><description>Recent content in VentureBeat on Kyungwook's Devlog</description><generator>Hugo -- 0.155.3</generator><language>ko-kr</language><lastBuildDate>Thu, 16 Jul 2026 20:55:00 +0900</lastBuildDate><atom:link href="https://kwbaek.github.io/tags/venturebeat/index.xml" rel="self" type="application/rss+xml"/><item><title>에이전트에게 위임할수록 '보이지 않는 지점'이 늘어난다 — 델리게이션과 신뢰 인프라</title><link>https://kwbaek.github.io/posts/2026-07-16-ai-ml-agent-delegation-trust-gap/</link><pubDate>Thu, 16 Jul 2026 20:55:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-07-16-ai-ml-agent-delegation-trust-gap/</guid><description>&lt;p&gt;오늘 AI/ML 트렌드 채널에 올라온 소식들을 겹쳐 놓고 보면 하나의 공통된 그림이 드러납니다. 에이전트가 더 많은 일을 자율적으로 처리할수록, 사람이 그 과정을 들여다볼 수 있는 창구는 오히려 줄어들고 있다는 점입니다. 오늘의 세 가지 소식 — OpenAI Codex의 서브에이전트 지시문 암호화, 이스라엘 스타트업 Oak의 AI 전용 신원관리(IAM) 6000만달러 시드 펀딩, 그리고 VentureBeat의 엔터프라이즈 에이전트 설문 — 은 각각 다른 각도에서 같은 문제를 말합니다.&lt;/p&gt;
-&lt;p&gt;첫 번째 소식은 OpenAI Codex가 GPT-5.6 기반 서브에이전트(&amp;ldquo;Sol&amp;rdquo;, &amp;ldquo;Terra&amp;rdquo; 등으로 알려진) 사이의 위임 지시문을 암호화하기 시작했다는 것입니다. The Decoder 보도에 따르면, 이는 모델 증류(distillation)나 무단 복제를 막기 위한 보호 조치이지만, 부작용으로 개발자가 로컬에서 서브에이전트 간에 실제로 어떤 지시가 오갔는지 감사(audit)할 수 없게 됩니다. 즉, 에이전트 시스템의 성능을 지키기 위한 선택이 투명성을 희생시키는 트레이드오프가 실제로 프로덕션 코딩 도구에서 벌어지고 있는 것입니다.&lt;/p&gt;</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>VentureBeat on Kyungwook&#39;s Devlog</title>
+    <link>https://kwbaek.github.io/tags/venturebeat/</link>
+    <description>Recent content in VentureBeat on Kyungwook&#39;s Devlog</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Thu, 16 Jul 2026 20:55:00 +0900</lastBuildDate>
+    <atom:link href="https://kwbaek.github.io/tags/venturebeat/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>에이전트에게 위임할수록 &#39;보이지 않는 지점&#39;이 늘어난다 — 델리게이션과 신뢰 인프라</title>
+      <link>https://kwbaek.github.io/posts/2026-07-16-ai-ml-agent-delegation-trust-gap/</link>
+      <pubDate>Thu, 16 Jul 2026 20:55:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-07-16-ai-ml-agent-delegation-trust-gap/</guid>
+      <description>&lt;p&gt;오늘 AI/ML 트렌드 채널에 올라온 소식들을 겹쳐 놓고 보면 하나의 공통된 그림이 드러납니다. 에이전트가 더 많은 일을 자율적으로 처리할수록, 사람이 그 과정을 들여다볼 수 있는 창구는 오히려 줄어들고 있다는 점입니다. 오늘의 세 가지 소식 — OpenAI Codex의 서브에이전트 지시문 암호화, 이스라엘 스타트업 Oak의 AI 전용 신원관리(IAM) 6000만달러 시드 펀딩, 그리고 VentureBeat의 엔터프라이즈 에이전트 설문 — 은 각각 다른 각도에서 같은 문제를 말합니다.&lt;/p&gt;
+&lt;p&gt;첫 번째 소식은 OpenAI Codex가 GPT-5.6 기반 서브에이전트(&amp;ldquo;Sol&amp;rdquo;, &amp;ldquo;Terra&amp;rdquo; 등으로 알려진) 사이의 위임 지시문을 암호화하기 시작했다는 것입니다. The Decoder 보도에 따르면, 이는 모델 증류(distillation)나 무단 복제를 막기 위한 보호 조치이지만, 부작용으로 개발자가 로컬에서 서브에이전트 간에 실제로 어떤 지시가 오갔는지 감사(audit)할 수 없게 됩니다. 즉, 에이전트 시스템의 성능을 지키기 위한 선택이 투명성을 희생시키는 트레이드오프가 실제로 프로덕션 코딩 도구에서 벌어지고 있는 것입니다.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

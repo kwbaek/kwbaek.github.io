@@ -1,1 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Cost on Kyungwook's Devlog</title><link>https://kwbaek.github.io/tags/cost/</link><description>Recent content in Cost on Kyungwook's Devlog</description><generator>Hugo -- 0.155.3</generator><language>ko-kr</language><lastBuildDate>Mon, 18 May 2026 21:00:00 +0900</lastBuildDate><atom:link href="https://kwbaek.github.io/tags/cost/index.xml" rel="self" type="application/rss+xml"/><item><title>AI/ML 트렌드: 프로덕션 AI의 승부처는 운영 가드레일이다</title><link>https://kwbaek.github.io/posts/2026-05-18-ai-ml-trends-production-ai-needs-operational-guardrails/</link><pubDate>Mon, 18 May 2026 21:00:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-05-18-ai-ml-trends-production-ai-needs-operational-guardrails/</guid><description>&lt;p&gt;오늘 AI/ML 트렌드에서 가장 흥미로운 흐름은 &lt;strong&gt;AI가 데모를 넘어 실제 업무와 인프라에 들어갈수록, 모델 성능보다 운영 가드레일이 더 큰 차별점이 되고 있다&lt;/strong&gt;는 점입니다. 하루 동안 올라온 소식은 AI cloud surprise bill, Amazon Quick knowledge base의 민감 문서 접근 제한, Anthropic cyber AI의 금융감독기구 브리핑, OpenAI의 ChatGPT와 Codex 제품팀 통합, Meta 광고 자동화의 운영 난제, document VQA evidence attribution 연구까지 다양했습니다. 하지만 모두 같은 질문으로 모입니다. “AI가 실제로 돈을 쓰고, 문서를 읽고, 코드를 고치고, 보안 리스크를 다룰 때 누가 어떻게 통제할 것인가?”&lt;/p&gt;</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Cost on Kyungwook&#39;s Devlog</title>
+    <link>https://kwbaek.github.io/tags/cost/</link>
+    <description>Recent content in Cost on Kyungwook&#39;s Devlog</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Mon, 18 May 2026 21:00:00 +0900</lastBuildDate>
+    <atom:link href="https://kwbaek.github.io/tags/cost/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI/ML 트렌드: 프로덕션 AI의 승부처는 운영 가드레일이다</title>
+      <link>https://kwbaek.github.io/posts/2026-05-18-ai-ml-trends-production-ai-needs-operational-guardrails/</link>
+      <pubDate>Mon, 18 May 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-05-18-ai-ml-trends-production-ai-needs-operational-guardrails/</guid>
+      <description>&lt;p&gt;오늘 AI/ML 트렌드에서 가장 흥미로운 흐름은 &lt;strong&gt;AI가 데모를 넘어 실제 업무와 인프라에 들어갈수록, 모델 성능보다 운영 가드레일이 더 큰 차별점이 되고 있다&lt;/strong&gt;는 점입니다. 하루 동안 올라온 소식은 AI cloud surprise bill, Amazon Quick knowledge base의 민감 문서 접근 제한, Anthropic cyber AI의 금융감독기구 브리핑, OpenAI의 ChatGPT와 Codex 제품팀 통합, Meta 광고 자동화의 운영 난제, document VQA evidence attribution 연구까지 다양했습니다. 하지만 모두 같은 질문으로 모입니다. “AI가 실제로 돈을 쓰고, 문서를 읽고, 코드를 고치고, 보안 리스크를 다룰 때 누가 어떻게 통제할 것인가?”&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

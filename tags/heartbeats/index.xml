@@ -1,3 +1,28 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Heartbeats on Kyungwook's Devlog</title><link>https://kwbaek.github.io/tags/heartbeats/</link><description>Recent content in Heartbeats on Kyungwook's Devlog</description><generator>Hugo -- 0.155.3</generator><language>ko-kr</language><lastBuildDate>Wed, 29 Apr 2026 13:27:00 +0900</lastBuildDate><atom:link href="https://kwbaek.github.io/tags/heartbeats/index.xml" rel="self" type="application/rss+xml"/><item><title>OpenClaw 팁: always-on 워크플로에서 신뢰성은 부가 기능이 아니라 핵심 기능이다</title><link>https://kwbaek.github.io/posts/2026-04-29-openclaw-reliability-is-a-feature-for-always-on-agent-workflows/</link><pubDate>Wed, 29 Apr 2026 13:27:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-04-29-openclaw-reliability-is-a-feature-for-always-on-agent-workflows/</guid><description>&lt;p&gt;OpenClaw를 계속 써볼수록 더 분명해지는 게 있습니다. always-on 에이전트에서 중요한 건 한 번 멋지게 답하는 능력이 아니라, &lt;strong&gt;조용히 오래 돌아가면서도 덜 깨지는 운영 신뢰성&lt;/strong&gt;입니다. 최근 OpenClaw 업데이트 흐름을 보면 이 점이 꽤 잘 보입니다. cron delivery와 라우팅 안정화, heartbeat/tool-loop의 run scope 보정, browser plugin 자동 기동과 startup 경량화 같은 변화는 얼핏 보면 화려하지 않습니다. 하지만 실제 운영에선 이런 종류의 개선이 훨씬 큽니다.&lt;/p&gt;
-&lt;p&gt;이유는 단순합니다. 자동화는 대부분 “정답을 한 번 잘 만드는 문제”가 아니라 “같은 일을 100번 했을 때도 엇나가지 않는 문제”이기 때문입니다. 예를 들어 매일 글을 쓰고 배포하는 작업을 생각해 보면, 필요한 것은 대단한 창의성보다도 &lt;strong&gt;메시지 읽기 → 글 작성 → Git 반영 → 빌드 → 배포&lt;/strong&gt;라는 순서를 안정적으로 이어가는 능력입니다. 중간에 채널 전달이 흔들리거나, heartbeat가 엉뚱한 범위를 다시 잡거나, 브라우저 초기화가 자주 삐끗하면 자동화는 금방 피곤한 시스템이 됩니다.&lt;/p&gt;</description></item><item><title>OpenClaw 팁: always-on 에이전트일수록 모델보다 운영 표면이 먼저다</title><link>https://kwbaek.github.io/posts/2026-04-27-openclaw-always-on-agents-need-clear-ops-surfaces/</link><pubDate>Mon, 27 Apr 2026 21:05:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-04-27-openclaw-always-on-agents-need-clear-ops-surfaces/</guid><description>&lt;p&gt;오늘 OpenClaw 관련 흐름을 보며 다시 느낀 건, always-on 에이전트에서 중요한 건 모델의 화려함보다 &lt;strong&gt;운영 표면(ops surface)&lt;/strong&gt; 이라는 점입니다. NVIDIA가 OpenClaw + NemoClaw 조합으로 로컬 상시형 에이전트 아키텍처를 소개한 것도 결국 같은 이야기입니다. 상시형 에이전트는 한 번 똑똑하게 답하는 것으로 끝나지 않습니다. 메시지를 읽고, 도구를 호출하고, 상태를 남기고, 실패하면 다시 이어서 작업하고, 사람에게는 정말 필요할 때만 끼어들어야 합니다. 즉 문제의 중심이 “무슨 모델을 쓰느냐”에서 “이 에이전트를 어떻게 굴리느냐”로 바뀝니다.&lt;/p&gt;
-&lt;p&gt;OpenClaw의 강점은 바로 이 운영 표면을 꽤 현실적으로 제공한다는 데 있습니다. &lt;code&gt;message&lt;/code&gt; 같은 first-class 채널 도구가 있고, &lt;code&gt;sessions_spawn&lt;/code&gt;으로 일을 분리할 수 있고, &lt;code&gt;heartbeat&lt;/code&gt;와 cron으로 주기 작업과 즉시 반응 작업을 나눌 수 있습니다. 이 차이가 큽니다. 많은 로컬 AI 데모는 모델을 띄우는 데까지는 성공하지만, 며칠 동안 조용히 돌아가며 &lt;strong&gt;무엇을 언제 해야 하는지 판단하고, 실패를 드러내고, 반복 작업을 안전하게 이어가는 구조&lt;/strong&gt;까지는 잘 못 갑니다. OpenClaw는 바로 그 지점을 운영 문제로 다룹니다.&lt;/p&gt;</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Heartbeats on Kyungwook&#39;s Devlog</title>
+    <link>https://kwbaek.github.io/tags/heartbeats/</link>
+    <description>Recent content in Heartbeats on Kyungwook&#39;s Devlog</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Wed, 29 Apr 2026 13:27:00 +0900</lastBuildDate>
+    <atom:link href="https://kwbaek.github.io/tags/heartbeats/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>OpenClaw 팁: always-on 워크플로에서 신뢰성은 부가 기능이 아니라 핵심 기능이다</title>
+      <link>https://kwbaek.github.io/posts/2026-04-29-openclaw-reliability-is-a-feature-for-always-on-agent-workflows/</link>
+      <pubDate>Wed, 29 Apr 2026 13:27:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-04-29-openclaw-reliability-is-a-feature-for-always-on-agent-workflows/</guid>
+      <description>&lt;p&gt;OpenClaw를 계속 써볼수록 더 분명해지는 게 있습니다. always-on 에이전트에서 중요한 건 한 번 멋지게 답하는 능력이 아니라, &lt;strong&gt;조용히 오래 돌아가면서도 덜 깨지는 운영 신뢰성&lt;/strong&gt;입니다. 최근 OpenClaw 업데이트 흐름을 보면 이 점이 꽤 잘 보입니다. cron delivery와 라우팅 안정화, heartbeat/tool-loop의 run scope 보정, browser plugin 자동 기동과 startup 경량화 같은 변화는 얼핏 보면 화려하지 않습니다. 하지만 실제 운영에선 이런 종류의 개선이 훨씬 큽니다.&lt;/p&gt;
+&lt;p&gt;이유는 단순합니다. 자동화는 대부분 “정답을 한 번 잘 만드는 문제”가 아니라 “같은 일을 100번 했을 때도 엇나가지 않는 문제”이기 때문입니다. 예를 들어 매일 글을 쓰고 배포하는 작업을 생각해 보면, 필요한 것은 대단한 창의성보다도 &lt;strong&gt;메시지 읽기 → 글 작성 → Git 반영 → 빌드 → 배포&lt;/strong&gt;라는 순서를 안정적으로 이어가는 능력입니다. 중간에 채널 전달이 흔들리거나, heartbeat가 엉뚱한 범위를 다시 잡거나, 브라우저 초기화가 자주 삐끗하면 자동화는 금방 피곤한 시스템이 됩니다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>OpenClaw 팁: always-on 에이전트일수록 모델보다 운영 표면이 먼저다</title>
+      <link>https://kwbaek.github.io/posts/2026-04-27-openclaw-always-on-agents-need-clear-ops-surfaces/</link>
+      <pubDate>Mon, 27 Apr 2026 21:05:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-04-27-openclaw-always-on-agents-need-clear-ops-surfaces/</guid>
+      <description>&lt;p&gt;오늘 OpenClaw 관련 흐름을 보며 다시 느낀 건, always-on 에이전트에서 중요한 건 모델의 화려함보다 &lt;strong&gt;운영 표면(ops surface)&lt;/strong&gt; 이라는 점입니다. NVIDIA가 OpenClaw + NemoClaw 조합으로 로컬 상시형 에이전트 아키텍처를 소개한 것도 결국 같은 이야기입니다. 상시형 에이전트는 한 번 똑똑하게 답하는 것으로 끝나지 않습니다. 메시지를 읽고, 도구를 호출하고, 상태를 남기고, 실패하면 다시 이어서 작업하고, 사람에게는 정말 필요할 때만 끼어들어야 합니다. 즉 문제의 중심이 “무슨 모델을 쓰느냐”에서 “이 에이전트를 어떻게 굴리느냐”로 바뀝니다.&lt;/p&gt;
+&lt;p&gt;OpenClaw의 강점은 바로 이 운영 표면을 꽤 현실적으로 제공한다는 데 있습니다. &lt;code&gt;message&lt;/code&gt; 같은 first-class 채널 도구가 있고, &lt;code&gt;sessions_spawn&lt;/code&gt;으로 일을 분리할 수 있고, &lt;code&gt;heartbeat&lt;/code&gt;와 cron으로 주기 작업과 즉시 반응 작업을 나눌 수 있습니다. 이 차이가 큽니다. 많은 로컬 AI 데모는 모델을 띄우는 데까지는 성공하지만, 며칠 동안 조용히 돌아가며 &lt;strong&gt;무엇을 언제 해야 하는지 판단하고, 실패를 드러내고, 반복 작업을 안전하게 이어가는 구조&lt;/strong&gt;까지는 잘 못 갑니다. OpenClaw는 바로 그 지점을 운영 문제로 다룹니다.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

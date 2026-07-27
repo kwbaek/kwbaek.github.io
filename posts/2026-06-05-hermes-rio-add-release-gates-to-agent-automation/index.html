@@ -1,17 +1,327 @@
-<!doctype html><html lang=en dir=auto data-theme=auto><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=robots content="index, follow"><title>Hermes/리오 팁: 에이전트 자동화에 릴리스 게이트를 붙이기 | Kyungwook's Devlog</title><meta name=keywords content="Hermes,리오,Agent,Automation,Cron,Release,Reliability,Workflow"><meta name=description content="Hermes/리오 자동화를 매일 운영하다 보면 한 가지 원칙이 점점 선명해집니다. 에이전트 작업도 작은 소프트웨어 릴리스처럼 다뤄야 한다는 것입니다. 글을 쓰는 크론, 리포트를 보내는 크론, 트렌드를 요약하는 크론은 겉으로는 “프롬프트를 실행한다”로 보이지만 실제로는 입력 수집, 초안 생성, 파일 작성, 빌드, 배포, 공개 결과 검증까지 이어지는 파이프라인입니다. 어느 한 단계라도 조용히 실패하면 사용자는 그럴듯한 결과를 받거나, 반대로 아무 결과도 받지 못합니다. 그래서 반복 자동화에는 프롬프트보다 더 중요한 릴리스 게이트가 필요합니다.
-첫 번째 게이트는 입력 확인입니다. 원래 읽어야 하는 채널이나 API가 항상 열려 있다고 가정하면 자동화는 쉽게 깨집니다. 좋은 Hermes/리오 작업은 1순위 입력, 2순위 캐시, 3순위 최근 리포트를 구분합니다. 예를 들어 트렌드 글을 쓰는 작업이라면 최신 채널 메시지를 먼저 보되, 접근이 막히면 같은 날 생성된 트렌드 캐시나 일간 리포트에서 근거를 가져올 수 있어야 합니다. 중요한 것은 폴백을 쓰더라도 “새로운 척” 하지 않는 것입니다. 근거가 오래되었으면 오래되었다고 내부적으로 판단하고, 충분히 새롭지 않으면 조용히 멈출 수 있어야 합니다."><meta name=author content><link rel=canonical href=https://kwbaek.github.io/posts/2026-06-05-hermes-rio-add-release-gates-to-agent-automation/><link crossorigin=anonymous href=/assets/css/stylesheet.da3211e5ef867bf2b75fd5a6515cfed7195c011e8ab735694e203810a827097b.css integrity="sha256-2jIR5e+Ge/K3X9WmUVz+1xlcAR6KtzVpTiA4EKgnCXs=" rel="preload stylesheet" as=style><link rel=icon href=https://kwbaek.github.io/favicon.ico><link rel=icon type=image/png sizes=16x16 href=https://kwbaek.github.io/favicon-16x16.png><link rel=icon type=image/png sizes=32x32 href=https://kwbaek.github.io/favicon-32x32.png><link rel=apple-touch-icon href=https://kwbaek.github.io/apple-touch-icon.png><link rel=mask-icon href=https://kwbaek.github.io/safari-pinned-tab.svg><meta name=theme-color content="#2e2e33"><meta name=msapplication-TileColor content="#2e2e33"><link rel=alternate hreflang=en href=https://kwbaek.github.io/posts/2026-06-05-hermes-rio-add-release-gates-to-agent-automation/><noscript><style>#theme-toggle,.top-link{display:none}</style><style>@media(prefers-color-scheme:dark){:root{--theme:rgb(29, 30, 32);--entry:rgb(46, 46, 51);--primary:rgb(218, 218, 219);--secondary:rgb(155, 156, 157);--tertiary:rgb(65, 66, 68);--content:rgb(196, 196, 197);--code-block-bg:rgb(46, 46, 51);--code-bg:rgb(55, 56, 62);--border:rgb(51, 51, 51);color-scheme:dark}.list{background:var(--theme)}.toc{background:var(--entry)}}@media(prefers-color-scheme:light){.list::-webkit-scrollbar-thumb{border-color:var(--code-bg)}}</style></noscript><script>localStorage.getItem("pref-theme")==="dark"?document.querySelector("html").dataset.theme="dark":localStorage.getItem("pref-theme")==="light"?document.querySelector("html").dataset.theme="light":window.matchMedia("(prefers-color-scheme: dark)").matches?document.querySelector("html").dataset.theme="dark":document.querySelector("html").dataset.theme="light"</script><meta property="og:url" content="https://kwbaek.github.io/posts/2026-06-05-hermes-rio-add-release-gates-to-agent-automation/"><meta property="og:site_name" content="Kyungwook's Devlog"><meta property="og:title" content="Hermes/리오 팁: 에이전트 자동화에 릴리스 게이트를 붙이기"><meta property="og:description" content="Hermes/리오 자동화를 매일 운영하다 보면 한 가지 원칙이 점점 선명해집니다. 에이전트 작업도 작은 소프트웨어 릴리스처럼 다뤄야 한다는 것입니다. 글을 쓰는 크론, 리포트를 보내는 크론, 트렌드를 요약하는 크론은 겉으로는 “프롬프트를 실행한다”로 보이지만 실제로는 입력 수집, 초안 생성, 파일 작성, 빌드, 배포, 공개 결과 검증까지 이어지는 파이프라인입니다. 어느 한 단계라도 조용히 실패하면 사용자는 그럴듯한 결과를 받거나, 반대로 아무 결과도 받지 못합니다. 그래서 반복 자동화에는 프롬프트보다 더 중요한 릴리스 게이트가 필요합니다.
-첫 번째 게이트는 입력 확인입니다. 원래 읽어야 하는 채널이나 API가 항상 열려 있다고 가정하면 자동화는 쉽게 깨집니다. 좋은 Hermes/리오 작업은 1순위 입력, 2순위 캐시, 3순위 최근 리포트를 구분합니다. 예를 들어 트렌드 글을 쓰는 작업이라면 최신 채널 메시지를 먼저 보되, 접근이 막히면 같은 날 생성된 트렌드 캐시나 일간 리포트에서 근거를 가져올 수 있어야 합니다. 중요한 것은 폴백을 쓰더라도 “새로운 척” 하지 않는 것입니다. 근거가 오래되었으면 오래되었다고 내부적으로 판단하고, 충분히 새롭지 않으면 조용히 멈출 수 있어야 합니다."><meta property="og:locale" content="ko-kr"><meta property="og:type" content="article"><meta property="article:section" content="posts"><meta property="article:published_time" content="2026-06-05T21:00:00+09:00"><meta property="article:modified_time" content="2026-06-05T21:00:00+09:00"><meta property="article:tag" content="Hermes"><meta property="article:tag" content="리오"><meta property="article:tag" content="Agent"><meta property="article:tag" content="Automation"><meta property="article:tag" content="Cron"><meta property="article:tag" content="Release"><meta name=twitter:card content="summary"><meta name=twitter:title content="Hermes/리오 팁: 에이전트 자동화에 릴리스 게이트를 붙이기"><meta name=twitter:description content="Hermes/리오 자동화를 매일 운영하다 보면 한 가지 원칙이 점점 선명해집니다. 에이전트 작업도 작은 소프트웨어 릴리스처럼 다뤄야 한다는 것입니다. 글을 쓰는 크론, 리포트를 보내는 크론, 트렌드를 요약하는 크론은 겉으로는 “프롬프트를 실행한다”로 보이지만 실제로는 입력 수집, 초안 생성, 파일 작성, 빌드, 배포, 공개 결과 검증까지 이어지는 파이프라인입니다. 어느 한 단계라도 조용히 실패하면 사용자는 그럴듯한 결과를 받거나, 반대로 아무 결과도 받지 못합니다. 그래서 반복 자동화에는 프롬프트보다 더 중요한 릴리스 게이트가 필요합니다.
-첫 번째 게이트는 입력 확인입니다. 원래 읽어야 하는 채널이나 API가 항상 열려 있다고 가정하면 자동화는 쉽게 깨집니다. 좋은 Hermes/리오 작업은 1순위 입력, 2순위 캐시, 3순위 최근 리포트를 구분합니다. 예를 들어 트렌드 글을 쓰는 작업이라면 최신 채널 메시지를 먼저 보되, 접근이 막히면 같은 날 생성된 트렌드 캐시나 일간 리포트에서 근거를 가져올 수 있어야 합니다. 중요한 것은 폴백을 쓰더라도 “새로운 척” 하지 않는 것입니다. 근거가 오래되었으면 오래되었다고 내부적으로 판단하고, 충분히 새롭지 않으면 조용히 멈출 수 있어야 합니다."><script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Posts","item":"https://kwbaek.github.io/posts/"},{"@type":"ListItem","position":2,"name":"Hermes/리오 팁: 에이전트 자동화에 릴리스 게이트를 붙이기","item":"https://kwbaek.github.io/posts/2026-06-05-hermes-rio-add-release-gates-to-agent-automation/"}]}</script><script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"Hermes/리오 팁: 에이전트 자동화에 릴리스 게이트를 붙이기","name":"Hermes\/리오 팁: 에이전트 자동화에 릴리스 게이트를 붙이기","description":"Hermes/리오 자동화를 매일 운영하다 보면 한 가지 원칙이 점점 선명해집니다. 에이전트 작업도 작은 소프트웨어 릴리스처럼 다뤄야 한다는 것입니다. 글을 쓰는 크론, 리포트를 보내는 크론, 트렌드를 요약하는 크론은 겉으로는 “프롬프트를 실행한다”로 보이지만 실제로는 입력 수집, 초안 생성, 파일 작성, 빌드, 배포, 공개 결과 검증까지 이어지는 파이프라인입니다. 어느 한 단계라도 조용히 실패하면 사용자는 그럴듯한 결과를 받거나, 반대로 아무 결과도 받지 못합니다. 그래서 반복 자동화에는 프롬프트보다 더 중요한 릴리스 게이트가 필요합니다.\n첫 번째 게이트는 입력 확인입니다. 원래 읽어야 하는 채널이나 API가 항상 열려 있다고 가정하면 자동화는 쉽게 깨집니다. 좋은 Hermes/리오 작업은 1순위 입력, 2순위 캐시, 3순위 최근 리포트를 구분합니다. 예를 들어 트렌드 글을 쓰는 작업이라면 최신 채널 메시지를 먼저 보되, 접근이 막히면 같은 날 생성된 트렌드 캐시나 일간 리포트에서 근거를 가져올 수 있어야 합니다. 중요한 것은 폴백을 쓰더라도 “새로운 척” 하지 않는 것입니다. 근거가 오래되었으면 오래되었다고 내부적으로 판단하고, 충분히 새롭지 않으면 조용히 멈출 수 있어야 합니다.\n","keywords":["Hermes","리오","Agent","Automation","Cron","Release","Reliability","Workflow"],"articleBody":"Hermes/리오 자동화를 매일 운영하다 보면 한 가지 원칙이 점점 선명해집니다. 에이전트 작업도 작은 소프트웨어 릴리스처럼 다뤄야 한다는 것입니다. 글을 쓰는 크론, 리포트를 보내는 크론, 트렌드를 요약하는 크론은 겉으로는 “프롬프트를 실행한다”로 보이지만 실제로는 입력 수집, 초안 생성, 파일 작성, 빌드, 배포, 공개 결과 검증까지 이어지는 파이프라인입니다. 어느 한 단계라도 조용히 실패하면 사용자는 그럴듯한 결과를 받거나, 반대로 아무 결과도 받지 못합니다. 그래서 반복 자동화에는 프롬프트보다 더 중요한 릴리스 게이트가 필요합니다.\n첫 번째 게이트는 입력 확인입니다. 원래 읽어야 하는 채널이나 API가 항상 열려 있다고 가정하면 자동화는 쉽게 깨집니다. 좋은 Hermes/리오 작업은 1순위 입력, 2순위 캐시, 3순위 최근 리포트를 구분합니다. 예를 들어 트렌드 글을 쓰는 작업이라면 최신 채널 메시지를 먼저 보되, 접근이 막히면 같은 날 생성된 트렌드 캐시나 일간 리포트에서 근거를 가져올 수 있어야 합니다. 중요한 것은 폴백을 쓰더라도 “새로운 척” 하지 않는 것입니다. 근거가 오래되었으면 오래되었다고 내부적으로 판단하고, 충분히 새롭지 않으면 조용히 멈출 수 있어야 합니다.\n두 번째 게이트는 작성 규칙입니다. 파일명, front matter, 카테고리, 태그, 금지 표현, 최소 분량은 매번 모델의 감에 맡기면 안 됩니다. 특히 마이그레이션된 자동화에서는 사용자에게 보이는 이름과 실제 시스템 식별자를 분리해야 합니다. 사용자-facing 문구는 현재 기준인 Hermes/리오로 정리하되, 실제 파일 경로나 레거시 서비스명처럼 바꾸면 동작이 깨지는 값은 그대로 두는 식입니다. 이 구분이 없으면 글에는 새 이름을 쓰면서도 스크립트는 옛 식별자를 찾아야 하는 애매한 상태가 생깁니다.\n세 번째 게이트는 빌드와 생성물 확인입니다. “Markdown 파일을 썼다”는 완료가 아닙니다. Hugo 같은 정적 사이트에서는 front matter의 시간이 미래로 들어가면 글이 생성되지 않을 수 있고, permalink 규칙 때문에 예상과 다른 디렉터리에 HTML이 생길 수도 있습니다. 따라서 완료 기준은 새 Markdown이 존재하는 것, 빌드 명령이 성공하는 것, 새 HTML이 실제로 생성되는 것, 그리고 그 HTML 안에 민감한 문자열이나 의도하지 않은 레거시 표현이 없는 것까지 포함해야 합니다.\n네 번째 게이트는 배포 저장소 상태입니다. 소스 저장소와 public 배포 저장소가 분리되어 있거나 submodule로 연결되어 있으면, 소스만 push하고 끝내는 것은 절반짜리 완료입니다. generated site 저장소를 따로 commit/push하고, 필요하면 부모 저장소의 submodule pointer까지 갱신해야 실제 배포가 따라옵니다. 반대로 관련 없는 theme submodule 변경이 이미 더럽혀져 있다면 자동화가 건드리지 말아야 합니다. 릴리스 게이트는 “무엇을 커밋할지”뿐 아니라 “무엇을 건드리지 않을지”도 정합니다.\n실무 템플릿은 아주 짧아도 충분합니다.\n## Release Gates - Input gate: primary source, fallback cache, freshness check - Draft gate: filename, front matter, category, forbidden terms - Build gate: static build success, generated HTML exists - Safety gate: no sensitive strings, no unintended legacy wording, no local path exposure - Deploy gate: source commit/push, public commit/push, submodule pointer check Hermes/리오의 강점은 단순히 작업을 대신하는 것이 아니라, 작업을 끝까지 검증 가능한 상태로 밀어붙일 수 있다는 데 있습니다. 에이전트 자동화가 신뢰를 얻으려면 “좋은 답변”보다 “릴리스 가능한 결과”가 중요합니다. 매일 반복되는 작은 크론부터 릴리스 게이트를 붙이면, 자동화는 운 좋게 돌아가는 스크립트가 아니라 관리 가능한 운영 시스템이 됩니다.\n","wordCount":"434","inLanguage":"en","datePublished":"2026-06-05T21:00:00+09:00","dateModified":"2026-06-05T21:00:00+09:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://kwbaek.github.io/posts/2026-06-05-hermes-rio-add-release-gates-to-agent-automation/"},"publisher":{"@type":"Organization","name":"Kyungwook's Devlog","logo":{"@type":"ImageObject","url":"https://kwbaek.github.io/favicon.ico"}}}</script></head><body id=top><header class=header><nav class=nav><div class=logo><a href=https://kwbaek.github.io/ accesskey=h title="Kyungwook's Devlog (Alt + H)">Kyungwook's Devlog</a><div class=logo-switches><button id=theme-toggle accesskey=t title="(Alt + T)" aria-label="Toggle theme">
-<svg id="moon" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
-<svg id="sun" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button></div></div><ul id=menu><li><a href=https://kwbaek.github.io/categories/ title=categories><span>categories</span></a></li><li><a href=https://kwbaek.github.io/tags/ title=tags><span>tags</span></a></li><li><a href=https://kwbaek.github.io/ title="Kyungwook's Devlog"><span>Kyungwook's Devlog</span>&nbsp;
-<svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><path d="M15 3h6v6"/><path d="M10 14 21 3"/></svg></a></li></ul></nav></header><main class=main><article class=post-single><header class=post-header><h1 class="post-title entry-hint-parent">Hermes/리오 팁: 에이전트 자동화에 릴리스 게이트를 붙이기</h1><div class=post-meta><span title='2026-06-05 21:00:00 +0900 KST'>June 5, 2026</span></div></header><div class=post-content><p>Hermes/리오 자동화를 매일 운영하다 보면 한 가지 원칙이 점점 선명해집니다. <strong>에이전트 작업도 작은 소프트웨어 릴리스처럼 다뤄야 한다</strong>는 것입니다. 글을 쓰는 크론, 리포트를 보내는 크론, 트렌드를 요약하는 크론은 겉으로는 “프롬프트를 실행한다”로 보이지만 실제로는 입력 수집, 초안 생성, 파일 작성, 빌드, 배포, 공개 결과 검증까지 이어지는 파이프라인입니다. 어느 한 단계라도 조용히 실패하면 사용자는 그럴듯한 결과를 받거나, 반대로 아무 결과도 받지 못합니다. 그래서 반복 자동화에는 프롬프트보다 더 중요한 릴리스 게이트가 필요합니다.</p><p>첫 번째 게이트는 입력 확인입니다. 원래 읽어야 하는 채널이나 API가 항상 열려 있다고 가정하면 자동화는 쉽게 깨집니다. 좋은 Hermes/리오 작업은 1순위 입력, 2순위 캐시, 3순위 최근 리포트를 구분합니다. 예를 들어 트렌드 글을 쓰는 작업이라면 최신 채널 메시지를 먼저 보되, 접근이 막히면 같은 날 생성된 트렌드 캐시나 일간 리포트에서 근거를 가져올 수 있어야 합니다. 중요한 것은 폴백을 쓰더라도 “새로운 척” 하지 않는 것입니다. 근거가 오래되었으면 오래되었다고 내부적으로 판단하고, 충분히 새롭지 않으면 조용히 멈출 수 있어야 합니다.</p><p>두 번째 게이트는 작성 규칙입니다. 파일명, front matter, 카테고리, 태그, 금지 표현, 최소 분량은 매번 모델의 감에 맡기면 안 됩니다. 특히 마이그레이션된 자동화에서는 사용자에게 보이는 이름과 실제 시스템 식별자를 분리해야 합니다. 사용자-facing 문구는 현재 기준인 Hermes/리오로 정리하되, 실제 파일 경로나 레거시 서비스명처럼 바꾸면 동작이 깨지는 값은 그대로 두는 식입니다. 이 구분이 없으면 글에는 새 이름을 쓰면서도 스크립트는 옛 식별자를 찾아야 하는 애매한 상태가 생깁니다.</p><p>세 번째 게이트는 빌드와 생성물 확인입니다. “Markdown 파일을 썼다”는 완료가 아닙니다. Hugo 같은 정적 사이트에서는 front matter의 시간이 미래로 들어가면 글이 생성되지 않을 수 있고, permalink 규칙 때문에 예상과 다른 디렉터리에 HTML이 생길 수도 있습니다. 따라서 완료 기준은 새 Markdown이 존재하는 것, 빌드 명령이 성공하는 것, 새 HTML이 실제로 생성되는 것, 그리고 그 HTML 안에 민감한 문자열이나 의도하지 않은 레거시 표현이 없는 것까지 포함해야 합니다.</p><p>네 번째 게이트는 배포 저장소 상태입니다. 소스 저장소와 public 배포 저장소가 분리되어 있거나 submodule로 연결되어 있으면, 소스만 push하고 끝내는 것은 절반짜리 완료입니다. generated site 저장소를 따로 commit/push하고, 필요하면 부모 저장소의 submodule pointer까지 갱신해야 실제 배포가 따라옵니다. 반대로 관련 없는 theme submodule 변경이 이미 더럽혀져 있다면 자동화가 건드리지 말아야 합니다. 릴리스 게이트는 “무엇을 커밋할지”뿐 아니라 “무엇을 건드리지 않을지”도 정합니다.</p><p>실무 템플릿은 아주 짧아도 충분합니다.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-markdown data-lang=markdown><span style=display:flex><span><span style=color:#75715e>## Release Gates
-</span></span></span><span style=display:flex><span><span style=color:#66d9ef>-</span> Input gate: primary source, fallback cache, freshness check
-</span></span><span style=display:flex><span><span style=color:#66d9ef>-</span> Draft gate: filename, front matter, category, forbidden terms
-</span></span><span style=display:flex><span><span style=color:#66d9ef>-</span> Build gate: static build success, generated HTML exists
-</span></span><span style=display:flex><span><span style=color:#66d9ef>-</span> Safety gate: no sensitive strings, no unintended legacy wording, no local path exposure
-</span></span><span style=display:flex><span><span style=color:#66d9ef>-</span> Deploy gate: source commit/push, public commit/push, submodule pointer check
-</span></span></code></pre></div><p>Hermes/리오의 강점은 단순히 작업을 대신하는 것이 아니라, 작업을 끝까지 검증 가능한 상태로 밀어붙일 수 있다는 데 있습니다. 에이전트 자동화가 신뢰를 얻으려면 “좋은 답변”보다 “릴리스 가능한 결과”가 중요합니다. 매일 반복되는 작은 크론부터 릴리스 게이트를 붙이면, 자동화는 운 좋게 돌아가는 스크립트가 아니라 관리 가능한 운영 시스템이 됩니다.</p></div><footer class=post-footer><ul class=post-tags><li><a href=https://kwbaek.github.io/tags/hermes/>Hermes</a></li><li><a href=https://kwbaek.github.io/tags/%EB%A6%AC%EC%98%A4/>리오</a></li><li><a href=https://kwbaek.github.io/tags/agent/>Agent</a></li><li><a href=https://kwbaek.github.io/tags/automation/>Automation</a></li><li><a href=https://kwbaek.github.io/tags/cron/>Cron</a></li><li><a href=https://kwbaek.github.io/tags/release/>Release</a></li><li><a href=https://kwbaek.github.io/tags/reliability/>Reliability</a></li><li><a href=https://kwbaek.github.io/tags/workflow/>Workflow</a></li></ul></footer><script src=https://utteranc.es/client.js repo=kwbaek/blog-comments issue-term=pathname theme=github-light crossorigin=anonymous async></script></article></main><footer class=footer><span>&copy; 2026 <a href=https://kwbaek.github.io/>Kyungwook's Devlog</a></span> ·
-<span>Powered by
-<a href=https://gohugo.io/ rel="noopener noreferrer" target=_blank>Hugo</a> &
-<a href=https://github.com/adityatelange/hugo-PaperMod/ rel=noopener target=_blank>PaperMod</a></span></footer><a href=#top aria-label="go to top" title="Go to Top (Alt + G)" class=top-link id=top-link accesskey=g><svg viewBox="0 0 12 6" fill="currentColor"><path d="M12 6H0l6-6z"/></svg>
-</a><script>let menu=document.getElementById("menu");if(menu){const e=localStorage.getItem("menu-scroll-position");e&&(menu.scrollLeft=parseInt(e,10)),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)}}document.querySelectorAll('a[href^="#"]').forEach(e=>{e.addEventListener("click",function(e){e.preventDefault();var t=this.getAttribute("href").substr(1);window.matchMedia("(prefers-reduced-motion: reduce)").matches?document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView({behavior:"smooth"}),t==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${t}`)})})</script><script>var mybutton=document.getElementById("top-link");window.onscroll=function(){document.body.scrollTop>800||document.documentElement.scrollTop>800?(mybutton.style.visibility="visible",mybutton.style.opacity="1"):(mybutton.style.visibility="hidden",mybutton.style.opacity="0")}</script><script>document.getElementById("theme-toggle").addEventListener("click",()=>{const e=document.querySelector("html");e.dataset.theme==="dark"?(e.dataset.theme="light",localStorage.setItem("pref-theme","light")):(e.dataset.theme="dark",localStorage.setItem("pref-theme","dark"))})</script></body></html>
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Hermes/리오 팁: 에이전트 자동화에 릴리스 게이트를 붙이기 | Kyungwook&#39;s Devlog</title>
+<meta name="keywords" content="Hermes, 리오, Agent, Automation, Cron, Release, Reliability, Workflow">
+<meta name="description" content="Hermes/리오 자동화를 매일 운영하다 보면 한 가지 원칙이 점점 선명해집니다. 에이전트 작업도 작은 소프트웨어 릴리스처럼 다뤄야 한다는 것입니다. 글을 쓰는 크론, 리포트를 보내는 크론, 트렌드를 요약하는 크론은 겉으로는 “프롬프트를 실행한다”로 보이지만 실제로는 입력 수집, 초안 생성, 파일 작성, 빌드, 배포, 공개 결과 검증까지 이어지는 파이프라인입니다. 어느 한 단계라도 조용히 실패하면 사용자는 그럴듯한 결과를 받거나, 반대로 아무 결과도 받지 못합니다. 그래서 반복 자동화에는 프롬프트보다 더 중요한 릴리스 게이트가 필요합니다.
+첫 번째 게이트는 입력 확인입니다. 원래 읽어야 하는 채널이나 API가 항상 열려 있다고 가정하면 자동화는 쉽게 깨집니다. 좋은 Hermes/리오 작업은 1순위 입력, 2순위 캐시, 3순위 최근 리포트를 구분합니다. 예를 들어 트렌드 글을 쓰는 작업이라면 최신 채널 메시지를 먼저 보되, 접근이 막히면 같은 날 생성된 트렌드 캐시나 일간 리포트에서 근거를 가져올 수 있어야 합니다. 중요한 것은 폴백을 쓰더라도 “새로운 척” 하지 않는 것입니다. 근거가 오래되었으면 오래되었다고 내부적으로 판단하고, 충분히 새롭지 않으면 조용히 멈출 수 있어야 합니다.">
+<meta name="author" content="">
+<link rel="canonical" href="https://kwbaek.github.io/posts/2026-06-05-hermes-rio-add-release-gates-to-agent-automation/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.da3211e5ef867bf2b75fd5a6515cfed7195c011e8ab735694e203810a827097b.css" integrity="sha256-2jIR5e&#43;Ge/K3X9WmUVz&#43;1xlcAR6KtzVpTiA4EKgnCXs=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://kwbaek.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://kwbaek.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://kwbaek.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://kwbaek.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://kwbaek.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://kwbaek.github.io/posts/2026-06-05-hermes-rio-add-release-gates-to-agent-automation/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="https://kwbaek.github.io/posts/2026-06-05-hermes-rio-add-release-gates-to-agent-automation/">
+  <meta property="og:site_name" content="Kyungwook&#39;s Devlog">
+  <meta property="og:title" content="Hermes/리오 팁: 에이전트 자동화에 릴리스 게이트를 붙이기">
+  <meta property="og:description" content="Hermes/리오 자동화를 매일 운영하다 보면 한 가지 원칙이 점점 선명해집니다. 에이전트 작업도 작은 소프트웨어 릴리스처럼 다뤄야 한다는 것입니다. 글을 쓰는 크론, 리포트를 보내는 크론, 트렌드를 요약하는 크론은 겉으로는 “프롬프트를 실행한다”로 보이지만 실제로는 입력 수집, 초안 생성, 파일 작성, 빌드, 배포, 공개 결과 검증까지 이어지는 파이프라인입니다. 어느 한 단계라도 조용히 실패하면 사용자는 그럴듯한 결과를 받거나, 반대로 아무 결과도 받지 못합니다. 그래서 반복 자동화에는 프롬프트보다 더 중요한 릴리스 게이트가 필요합니다.
+첫 번째 게이트는 입력 확인입니다. 원래 읽어야 하는 채널이나 API가 항상 열려 있다고 가정하면 자동화는 쉽게 깨집니다. 좋은 Hermes/리오 작업은 1순위 입력, 2순위 캐시, 3순위 최근 리포트를 구분합니다. 예를 들어 트렌드 글을 쓰는 작업이라면 최신 채널 메시지를 먼저 보되, 접근이 막히면 같은 날 생성된 트렌드 캐시나 일간 리포트에서 근거를 가져올 수 있어야 합니다. 중요한 것은 폴백을 쓰더라도 “새로운 척” 하지 않는 것입니다. 근거가 오래되었으면 오래되었다고 내부적으로 판단하고, 충분히 새롭지 않으면 조용히 멈출 수 있어야 합니다.">
+  <meta property="og:locale" content="ko-kr">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2026-06-05T21:00:00+09:00">
+    <meta property="article:modified_time" content="2026-06-05T21:00:00+09:00">
+    <meta property="article:tag" content="Hermes">
+    <meta property="article:tag" content="리오">
+    <meta property="article:tag" content="Agent">
+    <meta property="article:tag" content="Automation">
+    <meta property="article:tag" content="Cron">
+    <meta property="article:tag" content="Release">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hermes/리오 팁: 에이전트 자동화에 릴리스 게이트를 붙이기">
+<meta name="twitter:description" content="Hermes/리오 자동화를 매일 운영하다 보면 한 가지 원칙이 점점 선명해집니다. 에이전트 작업도 작은 소프트웨어 릴리스처럼 다뤄야 한다는 것입니다. 글을 쓰는 크론, 리포트를 보내는 크론, 트렌드를 요약하는 크론은 겉으로는 “프롬프트를 실행한다”로 보이지만 실제로는 입력 수집, 초안 생성, 파일 작성, 빌드, 배포, 공개 결과 검증까지 이어지는 파이프라인입니다. 어느 한 단계라도 조용히 실패하면 사용자는 그럴듯한 결과를 받거나, 반대로 아무 결과도 받지 못합니다. 그래서 반복 자동화에는 프롬프트보다 더 중요한 릴리스 게이트가 필요합니다.
+첫 번째 게이트는 입력 확인입니다. 원래 읽어야 하는 채널이나 API가 항상 열려 있다고 가정하면 자동화는 쉽게 깨집니다. 좋은 Hermes/리오 작업은 1순위 입력, 2순위 캐시, 3순위 최근 리포트를 구분합니다. 예를 들어 트렌드 글을 쓰는 작업이라면 최신 채널 메시지를 먼저 보되, 접근이 막히면 같은 날 생성된 트렌드 캐시나 일간 리포트에서 근거를 가져올 수 있어야 합니다. 중요한 것은 폴백을 쓰더라도 “새로운 척” 하지 않는 것입니다. 근거가 오래되었으면 오래되었다고 내부적으로 판단하고, 충분히 새롭지 않으면 조용히 멈출 수 있어야 합니다.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://kwbaek.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Hermes/리오 팁: 에이전트 자동화에 릴리스 게이트를 붙이기",
+      "item": "https://kwbaek.github.io/posts/2026-06-05-hermes-rio-add-release-gates-to-agent-automation/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Hermes/리오 팁: 에이전트 자동화에 릴리스 게이트를 붙이기",
+  "name": "Hermes\/리오 팁: 에이전트 자동화에 릴리스 게이트를 붙이기",
+  "description": "Hermes/리오 자동화를 매일 운영하다 보면 한 가지 원칙이 점점 선명해집니다. 에이전트 작업도 작은 소프트웨어 릴리스처럼 다뤄야 한다는 것입니다. 글을 쓰는 크론, 리포트를 보내는 크론, 트렌드를 요약하는 크론은 겉으로는 “프롬프트를 실행한다”로 보이지만 실제로는 입력 수집, 초안 생성, 파일 작성, 빌드, 배포, 공개 결과 검증까지 이어지는 파이프라인입니다. 어느 한 단계라도 조용히 실패하면 사용자는 그럴듯한 결과를 받거나, 반대로 아무 결과도 받지 못합니다. 그래서 반복 자동화에는 프롬프트보다 더 중요한 릴리스 게이트가 필요합니다.\n첫 번째 게이트는 입력 확인입니다. 원래 읽어야 하는 채널이나 API가 항상 열려 있다고 가정하면 자동화는 쉽게 깨집니다. 좋은 Hermes/리오 작업은 1순위 입력, 2순위 캐시, 3순위 최근 리포트를 구분합니다. 예를 들어 트렌드 글을 쓰는 작업이라면 최신 채널 메시지를 먼저 보되, 접근이 막히면 같은 날 생성된 트렌드 캐시나 일간 리포트에서 근거를 가져올 수 있어야 합니다. 중요한 것은 폴백을 쓰더라도 “새로운 척” 하지 않는 것입니다. 근거가 오래되었으면 오래되었다고 내부적으로 판단하고, 충분히 새롭지 않으면 조용히 멈출 수 있어야 합니다.\n",
+  "keywords": [
+    "Hermes", "리오", "Agent", "Automation", "Cron", "Release", "Reliability", "Workflow"
+  ],
+  "articleBody": "Hermes/리오 자동화를 매일 운영하다 보면 한 가지 원칙이 점점 선명해집니다. 에이전트 작업도 작은 소프트웨어 릴리스처럼 다뤄야 한다는 것입니다. 글을 쓰는 크론, 리포트를 보내는 크론, 트렌드를 요약하는 크론은 겉으로는 “프롬프트를 실행한다”로 보이지만 실제로는 입력 수집, 초안 생성, 파일 작성, 빌드, 배포, 공개 결과 검증까지 이어지는 파이프라인입니다. 어느 한 단계라도 조용히 실패하면 사용자는 그럴듯한 결과를 받거나, 반대로 아무 결과도 받지 못합니다. 그래서 반복 자동화에는 프롬프트보다 더 중요한 릴리스 게이트가 필요합니다.\n첫 번째 게이트는 입력 확인입니다. 원래 읽어야 하는 채널이나 API가 항상 열려 있다고 가정하면 자동화는 쉽게 깨집니다. 좋은 Hermes/리오 작업은 1순위 입력, 2순위 캐시, 3순위 최근 리포트를 구분합니다. 예를 들어 트렌드 글을 쓰는 작업이라면 최신 채널 메시지를 먼저 보되, 접근이 막히면 같은 날 생성된 트렌드 캐시나 일간 리포트에서 근거를 가져올 수 있어야 합니다. 중요한 것은 폴백을 쓰더라도 “새로운 척” 하지 않는 것입니다. 근거가 오래되었으면 오래되었다고 내부적으로 판단하고, 충분히 새롭지 않으면 조용히 멈출 수 있어야 합니다.\n두 번째 게이트는 작성 규칙입니다. 파일명, front matter, 카테고리, 태그, 금지 표현, 최소 분량은 매번 모델의 감에 맡기면 안 됩니다. 특히 마이그레이션된 자동화에서는 사용자에게 보이는 이름과 실제 시스템 식별자를 분리해야 합니다. 사용자-facing 문구는 현재 기준인 Hermes/리오로 정리하되, 실제 파일 경로나 레거시 서비스명처럼 바꾸면 동작이 깨지는 값은 그대로 두는 식입니다. 이 구분이 없으면 글에는 새 이름을 쓰면서도 스크립트는 옛 식별자를 찾아야 하는 애매한 상태가 생깁니다.\n세 번째 게이트는 빌드와 생성물 확인입니다. “Markdown 파일을 썼다”는 완료가 아닙니다. Hugo 같은 정적 사이트에서는 front matter의 시간이 미래로 들어가면 글이 생성되지 않을 수 있고, permalink 규칙 때문에 예상과 다른 디렉터리에 HTML이 생길 수도 있습니다. 따라서 완료 기준은 새 Markdown이 존재하는 것, 빌드 명령이 성공하는 것, 새 HTML이 실제로 생성되는 것, 그리고 그 HTML 안에 민감한 문자열이나 의도하지 않은 레거시 표현이 없는 것까지 포함해야 합니다.\n네 번째 게이트는 배포 저장소 상태입니다. 소스 저장소와 public 배포 저장소가 분리되어 있거나 submodule로 연결되어 있으면, 소스만 push하고 끝내는 것은 절반짜리 완료입니다. generated site 저장소를 따로 commit/push하고, 필요하면 부모 저장소의 submodule pointer까지 갱신해야 실제 배포가 따라옵니다. 반대로 관련 없는 theme submodule 변경이 이미 더럽혀져 있다면 자동화가 건드리지 말아야 합니다. 릴리스 게이트는 “무엇을 커밋할지”뿐 아니라 “무엇을 건드리지 않을지”도 정합니다.\n실무 템플릿은 아주 짧아도 충분합니다.\n## Release Gates - Input gate: primary source, fallback cache, freshness check - Draft gate: filename, front matter, category, forbidden terms - Build gate: static build success, generated HTML exists - Safety gate: no sensitive strings, no unintended legacy wording, no local path exposure - Deploy gate: source commit/push, public commit/push, submodule pointer check Hermes/리오의 강점은 단순히 작업을 대신하는 것이 아니라, 작업을 끝까지 검증 가능한 상태로 밀어붙일 수 있다는 데 있습니다. 에이전트 자동화가 신뢰를 얻으려면 “좋은 답변”보다 “릴리스 가능한 결과”가 중요합니다. 매일 반복되는 작은 크론부터 릴리스 게이트를 붙이면, 자동화는 운 좋게 돌아가는 스크립트가 아니라 관리 가능한 운영 시스템이 됩니다.\n",
+  "wordCount" : "434",
+  "inLanguage": "en",
+  "datePublished": "2026-06-05T21:00:00+09:00",
+  "dateModified": "2026-06-05T21:00:00+09:00",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://kwbaek.github.io/posts/2026-06-05-hermes-rio-add-release-gates-to-agent-automation/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Kyungwook's Devlog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://kwbaek.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://kwbaek.github.io/" accesskey="h" title="Kyungwook&#39;s Devlog (Alt + H)">Kyungwook&#39;s Devlog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://kwbaek.github.io/categories/" title="categories">
+                    <span>categories</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kwbaek.github.io/tags/" title="tags">
+                    <span>tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kwbaek.github.io/" title="Kyungwook&#39;s Devlog">
+                    <span>Kyungwook&#39;s Devlog</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      Hermes/리오 팁: 에이전트 자동화에 릴리스 게이트를 붙이기
+    </h1>
+    <div class="post-meta"><span title='2026-06-05 21:00:00 +0900 KST'>June 5, 2026</span>
+
+</div>
+  </header> 
+  <div class="post-content"><p>Hermes/리오 자동화를 매일 운영하다 보면 한 가지 원칙이 점점 선명해집니다. <strong>에이전트 작업도 작은 소프트웨어 릴리스처럼 다뤄야 한다</strong>는 것입니다. 글을 쓰는 크론, 리포트를 보내는 크론, 트렌드를 요약하는 크론은 겉으로는 “프롬프트를 실행한다”로 보이지만 실제로는 입력 수집, 초안 생성, 파일 작성, 빌드, 배포, 공개 결과 검증까지 이어지는 파이프라인입니다. 어느 한 단계라도 조용히 실패하면 사용자는 그럴듯한 결과를 받거나, 반대로 아무 결과도 받지 못합니다. 그래서 반복 자동화에는 프롬프트보다 더 중요한 릴리스 게이트가 필요합니다.</p>
+<p>첫 번째 게이트는 입력 확인입니다. 원래 읽어야 하는 채널이나 API가 항상 열려 있다고 가정하면 자동화는 쉽게 깨집니다. 좋은 Hermes/리오 작업은 1순위 입력, 2순위 캐시, 3순위 최근 리포트를 구분합니다. 예를 들어 트렌드 글을 쓰는 작업이라면 최신 채널 메시지를 먼저 보되, 접근이 막히면 같은 날 생성된 트렌드 캐시나 일간 리포트에서 근거를 가져올 수 있어야 합니다. 중요한 것은 폴백을 쓰더라도 “새로운 척” 하지 않는 것입니다. 근거가 오래되었으면 오래되었다고 내부적으로 판단하고, 충분히 새롭지 않으면 조용히 멈출 수 있어야 합니다.</p>
+<p>두 번째 게이트는 작성 규칙입니다. 파일명, front matter, 카테고리, 태그, 금지 표현, 최소 분량은 매번 모델의 감에 맡기면 안 됩니다. 특히 마이그레이션된 자동화에서는 사용자에게 보이는 이름과 실제 시스템 식별자를 분리해야 합니다. 사용자-facing 문구는 현재 기준인 Hermes/리오로 정리하되, 실제 파일 경로나 레거시 서비스명처럼 바꾸면 동작이 깨지는 값은 그대로 두는 식입니다. 이 구분이 없으면 글에는 새 이름을 쓰면서도 스크립트는 옛 식별자를 찾아야 하는 애매한 상태가 생깁니다.</p>
+<p>세 번째 게이트는 빌드와 생성물 확인입니다. “Markdown 파일을 썼다”는 완료가 아닙니다. Hugo 같은 정적 사이트에서는 front matter의 시간이 미래로 들어가면 글이 생성되지 않을 수 있고, permalink 규칙 때문에 예상과 다른 디렉터리에 HTML이 생길 수도 있습니다. 따라서 완료 기준은 새 Markdown이 존재하는 것, 빌드 명령이 성공하는 것, 새 HTML이 실제로 생성되는 것, 그리고 그 HTML 안에 민감한 문자열이나 의도하지 않은 레거시 표현이 없는 것까지 포함해야 합니다.</p>
+<p>네 번째 게이트는 배포 저장소 상태입니다. 소스 저장소와 public 배포 저장소가 분리되어 있거나 submodule로 연결되어 있으면, 소스만 push하고 끝내는 것은 절반짜리 완료입니다. generated site 저장소를 따로 commit/push하고, 필요하면 부모 저장소의 submodule pointer까지 갱신해야 실제 배포가 따라옵니다. 반대로 관련 없는 theme submodule 변경이 이미 더럽혀져 있다면 자동화가 건드리지 말아야 합니다. 릴리스 게이트는 “무엇을 커밋할지”뿐 아니라 “무엇을 건드리지 않을지”도 정합니다.</p>
+<p>실무 템플릿은 아주 짧아도 충분합니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span><span style="color:#75715e">## Release Gates
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Input gate: primary source, fallback cache, freshness check
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Draft gate: filename, front matter, category, forbidden terms
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Build gate: static build success, generated HTML exists
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Safety gate: no sensitive strings, no unintended legacy wording, no local path exposure
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Deploy gate: source commit/push, public commit/push, submodule pointer check
+</span></span></code></pre></div><p>Hermes/리오의 강점은 단순히 작업을 대신하는 것이 아니라, 작업을 끝까지 검증 가능한 상태로 밀어붙일 수 있다는 데 있습니다. 에이전트 자동화가 신뢰를 얻으려면 “좋은 답변”보다 “릴리스 가능한 결과”가 중요합니다. 매일 반복되는 작은 크론부터 릴리스 게이트를 붙이면, 자동화는 운 좋게 돌아가는 스크립트가 아니라 관리 가능한 운영 시스템이 됩니다.</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://kwbaek.github.io/tags/hermes/">Hermes</a></li>
+      <li><a href="https://kwbaek.github.io/tags/%EB%A6%AC%EC%98%A4/">리오</a></li>
+      <li><a href="https://kwbaek.github.io/tags/agent/">Agent</a></li>
+      <li><a href="https://kwbaek.github.io/tags/automation/">Automation</a></li>
+      <li><a href="https://kwbaek.github.io/tags/cron/">Cron</a></li>
+      <li><a href="https://kwbaek.github.io/tags/release/">Release</a></li>
+      <li><a href="https://kwbaek.github.io/tags/reliability/">Reliability</a></li>
+      <li><a href="https://kwbaek.github.io/tags/workflow/">Workflow</a></li>
+    </ul>
+  </footer><script src="https://utteranc.es/client.js"
+        repo="kwbaek/blog-comments"
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://kwbaek.github.io/">Kyungwook&#39;s Devlog</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

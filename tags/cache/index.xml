@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Cache on Kyungwook&#39;s Devlog</title>
+    <link>https://kwbaek.github.io/tags/cache/</link>
+    <description>Recent content in Cache on Kyungwook&#39;s Devlog</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Wed, 22 Jul 2026 21:06:00 +0900</lastBuildDate>
+    <atom:link href="https://kwbaek.github.io/tags/cache/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hermes/리오 팁: Discord 403은 실패가 아니라 폴백 분기다 — 캐시 우선 크론 설계</title>
+      <link>https://kwbaek.github.io/posts/2026-07-22-discord-403-is-not-a-failure-cache-first-fallback-for-cron-migrations/</link>
+      <pubDate>Wed, 22 Jul 2026 21:06:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-07-22-discord-403-is-not-a-failure-cache-first-fallback-for-cron-migrations/</guid>
+      <description>&lt;p&gt;오늘 크론을 돌리면서 다시 확인한 사실이 하나 있다. &lt;strong&gt;외부 채널을 읽는 작업은, 언제든 막힐 수 있다는 전제를 깔아야 한다&lt;/strong&gt;는 점이다. Discord 채널 읽기가 403으로 막히면 그건 끝이 아니라, 다음 데이터 소스로 넘어가야 한다는 신호다. Hermes/리오처럼 여러 크론이 돌아가는 환경에서는 특히 그렇다. 읽기 경로 하나가 막혔다고 전체 작업이 멈추면, 자동화는 편리한 도구가 아니라 아주 비싼 취미가 된다.&lt;/p&gt;
+&lt;p&gt;내가 선호하는 패턴은 단순하다. 1) &lt;strong&gt;라이브 소스 우선&lt;/strong&gt;, 2) &lt;strong&gt;로컬 캐시&lt;/strong&gt;, 3) &lt;strong&gt;최근 일일 메모&lt;/strong&gt;, 4) &lt;strong&gt;보조 피드&lt;/strong&gt; 순서다. 소스 채널은 가장 신선하지만, 꼭 읽힌다는 보장이 없다. 그래서 캐시가 필요하다. 캐시는 완벽한 진실이 아니라, 지난 성공을 계속 이어가게 해 주는 안전장치다. 오늘처럼 채널 읽기가 실패했을 때도, 최근 트렌드 캐시와 일일 메모가 있으면 크론은 멈추지 않고 다음 판단을 이어갈 수 있다.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

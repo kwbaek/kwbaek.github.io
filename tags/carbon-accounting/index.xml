@@ -1,2 +1,20 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Carbon Accounting on Kyungwook's Devlog</title><link>https://kwbaek.github.io/tags/carbon-accounting/</link><description>Recent content in Carbon Accounting on Kyungwook's Devlog</description><generator>Hugo -- 0.155.3</generator><language>ko-kr</language><lastBuildDate>Sat, 11 Jul 2026 21:01:00 +0900</lastBuildDate><atom:link href="https://kwbaek.github.io/tags/carbon-accounting/index.xml" rel="self" type="application/rss+xml"/><item><title>Hermes/리오 팁: AI 트렌드 크론에 탄소 증거 장부를 추가하자</title><link>https://kwbaek.github.io/posts/2026-07-11-hermes-rio-add-carbon-evidence-ledger-to-ai-trend-crons/</link><pubDate>Sat, 11 Jul 2026 21:01:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-07-11-hermes-rio-add-carbon-evidence-ledger-to-ai-trend-crons/</guid><description>&lt;p&gt;Hermes/리오로 AI/ML 트렌드 크론을 운영하면 새 모델, 벤치마크, 투자액 같은 눈에 띄는 신호를 빠르게 모을 수 있습니다. 하지만 데이터센터와 클라우드 인프라를 다루는 글에서는 “전력을 많이 쓴다”는 한 문장만으로 부족합니다. 운영 전력, 건설, 장비 제조, 공급망 배출, 그리고 AI가 다른 업무에서 줄였다고 주장하는 배출을 섞으면 숫자가 커 보여도 의사결정에는 쓸 수 없는 요약이 됩니다.&lt;/p&gt;
-&lt;p&gt;이럴 때는 크론에 작은 **탄소 증거 장부(carbon evidence ledger)**를 추가하는 것이 좋습니다. 핵심은 탄소량을 임의로 계산하는 것이 아니라, 출처가 공개한 측정 범위와 사업적 해석을 분리하는 것입니다. Hermes/리오가 기사에서 숫자를 추출할 때 각 수치에 기준연도, 대상 회사, Scope 범위, 증가 원인, 원자료 링크를 함께 저장하게 하면 과장과 중복 계산을 크게 줄일 수 있습니다.&lt;/p&gt;</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Carbon Accounting on Kyungwook&#39;s Devlog</title>
+    <link>https://kwbaek.github.io/tags/carbon-accounting/</link>
+    <description>Recent content in Carbon Accounting on Kyungwook&#39;s Devlog</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Sat, 11 Jul 2026 21:01:00 +0900</lastBuildDate>
+    <atom:link href="https://kwbaek.github.io/tags/carbon-accounting/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hermes/리오 팁: AI 트렌드 크론에 탄소 증거 장부를 추가하자</title>
+      <link>https://kwbaek.github.io/posts/2026-07-11-hermes-rio-add-carbon-evidence-ledger-to-ai-trend-crons/</link>
+      <pubDate>Sat, 11 Jul 2026 21:01:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-07-11-hermes-rio-add-carbon-evidence-ledger-to-ai-trend-crons/</guid>
+      <description>&lt;p&gt;Hermes/리오로 AI/ML 트렌드 크론을 운영하면 새 모델, 벤치마크, 투자액 같은 눈에 띄는 신호를 빠르게 모을 수 있습니다. 하지만 데이터센터와 클라우드 인프라를 다루는 글에서는 “전력을 많이 쓴다”는 한 문장만으로 부족합니다. 운영 전력, 건설, 장비 제조, 공급망 배출, 그리고 AI가 다른 업무에서 줄였다고 주장하는 배출을 섞으면 숫자가 커 보여도 의사결정에는 쓸 수 없는 요약이 됩니다.&lt;/p&gt;
+&lt;p&gt;이럴 때는 크론에 작은 **탄소 증거 장부(carbon evidence ledger)**를 추가하는 것이 좋습니다. 핵심은 탄소량을 임의로 계산하는 것이 아니라, 출처가 공개한 측정 범위와 사업적 해석을 분리하는 것입니다. Hermes/리오가 기사에서 숫자를 추출할 때 각 수치에 기준연도, 대상 회사, Scope 범위, 증가 원인, 원자료 링크를 함께 저장하게 하면 과장과 중복 계산을 크게 줄일 수 있습니다.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

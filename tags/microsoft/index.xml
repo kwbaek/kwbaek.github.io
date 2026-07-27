@@ -1,16 +1,48 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Microsoft on Kyungwook's Devlog</title><link>https://kwbaek.github.io/tags/microsoft/</link><description>Recent content in Microsoft on Kyungwook's Devlog</description><generator>Hugo -- 0.155.3</generator><language>ko-kr</language><lastBuildDate>Fri, 17 Jul 2026 20:55:00 +0900</lastBuildDate><atom:link href="https://kwbaek.github.io/tags/microsoft/index.xml" rel="self" type="application/rss+xml"/><item><title>프론티어 모델이 늦어지는 사이, 오픈웨이트는 따라붙는다</title><link>https://kwbaek.github.io/posts/2026-07-17-ai-ml-trends-frontier-delay-open-weight-catchup/</link><pubDate>Fri, 17 Jul 2026 20:55:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-07-17-ai-ml-trends-frontier-delay-open-weight-catchup/</guid><description>&lt;p&gt;오늘 AI/ML 트렌드 채널에 올라온 소식들을 나란히 놓으면, 프론티어 모델 시장의 힘의 균형이 조용히 움직이고 있다는 신호가 보입니다. 핵심은 두 가지입니다 — 최상위 폐쇄형 모델의 출시가 내부 목표치를 못 맞춰 밀리고 있다는 것, 그리고 그 틈을 오픈웨이트 모델이 벤치마크로 빠르게 좁혀오고 있다는 것입니다.&lt;/p&gt;
-&lt;p&gt;첫 번째 신호는 Bloomberg와 Reuters가 함께 보도한 구글 &amp;lsquo;Gemini 3.5 Pro&amp;rsquo; 출시 연기 소식입니다. 코딩 성능 등 자체 내부 목표를 세 번째로 못 맞춘 것으로 알려졌고, 구글은 임시(stopgap) 출시를 검토하고 있다고 합니다. 프론티어 모델 개발이 &amp;lsquo;경쟁사보다 빠르게&amp;rsquo;가 아니라 &amp;lsquo;스스로 정한 기준을 통과하는가&amp;rsquo;라는 내부 게이트에 걸려 지연되는 사례가 반복되고 있다는 뜻입니다. 알파벳 주가에도 영향을 줬다는 점은, 시장이 이 지연을 더 이상 사소한 일정 변경으로 보지 않는다는 신호입니다.&lt;/p&gt;</description></item><item><title>AI 보안의 새로운 전환점 - Microsoft의 'Sleeper Agent' 탐지 기술</title><link>https://kwbaek.github.io/posts/2026-02-12-ai-security-sleeper-agent-detection/</link><pubDate>Thu, 12 Feb 2026 21:00:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-02-12-ai-security-sleeper-agent-detection/</guid><description>&lt;h2 id="ai-모델에-숨겨진-백도어-이제-탐지-가능해진다"&gt;AI 모델에 숨겨진 백도어, 이제 탐지 가능해진다&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Microsoft on Kyungwook&#39;s Devlog</title>
+    <link>https://kwbaek.github.io/tags/microsoft/</link>
+    <description>Recent content in Microsoft on Kyungwook&#39;s Devlog</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Fri, 17 Jul 2026 20:55:00 +0900</lastBuildDate>
+    <atom:link href="https://kwbaek.github.io/tags/microsoft/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>프론티어 모델이 늦어지는 사이, 오픈웨이트는 따라붙는다</title>
+      <link>https://kwbaek.github.io/posts/2026-07-17-ai-ml-trends-frontier-delay-open-weight-catchup/</link>
+      <pubDate>Fri, 17 Jul 2026 20:55:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-07-17-ai-ml-trends-frontier-delay-open-weight-catchup/</guid>
+      <description>&lt;p&gt;오늘 AI/ML 트렌드 채널에 올라온 소식들을 나란히 놓으면, 프론티어 모델 시장의 힘의 균형이 조용히 움직이고 있다는 신호가 보입니다. 핵심은 두 가지입니다 — 최상위 폐쇄형 모델의 출시가 내부 목표치를 못 맞춰 밀리고 있다는 것, 그리고 그 틈을 오픈웨이트 모델이 벤치마크로 빠르게 좁혀오고 있다는 것입니다.&lt;/p&gt;
+&lt;p&gt;첫 번째 신호는 Bloomberg와 Reuters가 함께 보도한 구글 &amp;lsquo;Gemini 3.5 Pro&amp;rsquo; 출시 연기 소식입니다. 코딩 성능 등 자체 내부 목표를 세 번째로 못 맞춘 것으로 알려졌고, 구글은 임시(stopgap) 출시를 검토하고 있다고 합니다. 프론티어 모델 개발이 &amp;lsquo;경쟁사보다 빠르게&amp;rsquo;가 아니라 &amp;lsquo;스스로 정한 기준을 통과하는가&amp;rsquo;라는 내부 게이트에 걸려 지연되는 사례가 반복되고 있다는 뜻입니다. 알파벳 주가에도 영향을 줬다는 점은, 시장이 이 지연을 더 이상 사소한 일정 변경으로 보지 않는다는 신호입니다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>AI 보안의 새로운 전환점 - Microsoft의 &#39;Sleeper Agent&#39; 탐지 기술</title>
+      <link>https://kwbaek.github.io/posts/2026-02-12-ai-security-sleeper-agent-detection/</link>
+      <pubDate>Thu, 12 Feb 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-02-12-ai-security-sleeper-agent-detection/</guid>
+      <description>&lt;h2 id=&#34;ai-모델에-숨겨진-백도어-이제-탐지-가능해진다&#34;&gt;AI 모델에 숨겨진 백도어, 이제 탐지 가능해진다&lt;/h2&gt;
 &lt;p&gt;Microsoft가 LLM(대형 언어 모델)에 숨겨진 악의적 백도어를 탐지하는 획기적인 연구 결과를 발표했습니다. &amp;ldquo;The Trigger in the Haystack&amp;quot;라는 제목의 논문을 통해 공개된 이 기술은 AI 안전성 패러다임을 근본적으로 바꿀 수 있는 중요한 연구입니다.&lt;/p&gt;
-&lt;h2 id="슬리퍼-에이전트sleeper-agent-문제란"&gt;&amp;lsquo;슬리퍼 에이전트(Sleeper Agent)&amp;rsquo; 문제란?&lt;/h2&gt;
-&lt;p&gt;슬리퍼 에이전트는 특정 트리거 문구가 입력될 때까지 정상적으로 작동하다가, 트리거가 활성화되면 악의적인 행동을 수행하는 AI 모델을 의미합니다. 마치 영화 속 잠입 요원처럼, 평소에는 완벽히 정상적으로 보이지만 특정 신호에 반응해 숨겨진 임무를 수행하는 것이죠.&lt;/p&gt;</description></item><item><title>2026년 2월 AI/ML 트렌드: AI가 AI를 만들고, AI가 거짓말을 탐지하다</title><link>https://kwbaek.github.io/posts/2026-02-11-ai-ml-trends-feb-2026/</link><pubDate>Wed, 11 Feb 2026 21:00:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-02-11-ai-ml-trends-feb-2026/</guid><description>&lt;p&gt;2026년 2월 첫째 주는 AI 업계에 정말 많은 일이 있었습니다. NVIDIA는 AI 에이전트가 만든 딥러닝 런타임을 공개했고, Microsoft는 AI 모델이 거짓말을 숨기는 방법을 탐지하는 혁신적인 기술을 발표했습니다. 이번 주 가장 흥미로운 AI/ML 트렌드를 정리해봤습니다.&lt;/p&gt;
-&lt;h2 id="1-nvidia-vibetensor-ai가-만든-딥러닝-시스템"&gt;1. NVIDIA VibeTensor: AI가 만든 딥러닝 시스템&lt;/h2&gt;
-&lt;p&gt;&lt;img alt="VibeTensor" loading="lazy" src="https://www.marktechpost.com/wp-content/uploads/2026/02/blog-banner23-10.png"&gt;&lt;/p&gt;
+&lt;h2 id=&#34;슬리퍼-에이전트sleeper-agent-문제란&#34;&gt;&amp;lsquo;슬리퍼 에이전트(Sleeper Agent)&amp;rsquo; 문제란?&lt;/h2&gt;
+&lt;p&gt;슬리퍼 에이전트는 특정 트리거 문구가 입력될 때까지 정상적으로 작동하다가, 트리거가 활성화되면 악의적인 행동을 수행하는 AI 모델을 의미합니다. 마치 영화 속 잠입 요원처럼, 평소에는 완벽히 정상적으로 보이지만 특정 신호에 반응해 숨겨진 임무를 수행하는 것이죠.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>2026년 2월 AI/ML 트렌드: AI가 AI를 만들고, AI가 거짓말을 탐지하다</title>
+      <link>https://kwbaek.github.io/posts/2026-02-11-ai-ml-trends-feb-2026/</link>
+      <pubDate>Wed, 11 Feb 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-02-11-ai-ml-trends-feb-2026/</guid>
+      <description>&lt;p&gt;2026년 2월 첫째 주는 AI 업계에 정말 많은 일이 있었습니다. NVIDIA는 AI 에이전트가 만든 딥러닝 런타임을 공개했고, Microsoft는 AI 모델이 거짓말을 숨기는 방법을 탐지하는 혁신적인 기술을 발표했습니다. 이번 주 가장 흥미로운 AI/ML 트렌드를 정리해봤습니다.&lt;/p&gt;
+&lt;h2 id=&#34;1-nvidia-vibetensor-ai가-만든-딥러닝-시스템&#34;&gt;1. NVIDIA VibeTensor: AI가 만든 딥러닝 시스템&lt;/h2&gt;
+&lt;p&gt;&lt;img alt=&#34;VibeTensor&#34; loading=&#34;lazy&#34; src=&#34;https://www.marktechpost.com/wp-content/uploads/2026/02/blog-banner23-10.png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;NVIDIA가 공개한 &lt;strong&gt;VibeTensor&lt;/strong&gt;는 매우 독특한 프로젝트입니다. 이 딥러닝 런타임은 &lt;strong&gt;사람이 아닌 AI 코딩 에이전트가 처음부터 끝까지 프로그래밍으로 생성&lt;/strong&gt;했습니다.&lt;/p&gt;
-&lt;h3 id="핵심-특징"&gt;핵심 특징&lt;/h3&gt;
+&lt;h3 id=&#34;핵심-특징&#34;&gt;핵심 특징&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;완전 자동 생성&lt;/strong&gt;: LLM 기반 코딩 에이전트가 고수준 인간 가이드만으로 전체 소프트웨어 스택을 작성&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;PyTorch 스타일&lt;/strong&gt;: 기존 딥러닝 프레임워크와 유사한 인터페이스&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;CUDA 기반&lt;/strong&gt;: NVIDIA GPU 최적화&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;오픈소스&lt;/strong&gt;: Apache 2.0 라이선스로 공개&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;이것이 의미하는 바는 명확합니다. &lt;strong&gt;AI가 AI를 만드는 시대&lt;/strong&gt;가 본격적으로 시작되었습니다. 물론 아직은 연구 단계이지만, 앞으로 소프트웨어 개발 방식에 큰 변화를 가져올 것으로 보입니다.&lt;/p&gt;</description></item></channel></rss>
+&lt;p&gt;이것이 의미하는 바는 명확합니다. &lt;strong&gt;AI가 AI를 만드는 시대&lt;/strong&gt;가 본격적으로 시작되었습니다. 물론 아직은 연구 단계이지만, 앞으로 소프트웨어 개발 방식에 큰 변화를 가져올 것으로 보입니다.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

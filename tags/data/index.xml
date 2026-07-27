@@ -1,2 +1,20 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Data on Kyungwook's Devlog</title><link>https://kwbaek.github.io/tags/data/</link><description>Recent content in Data on Kyungwook's Devlog</description><generator>Hugo -- 0.155.3</generator><language>ko-kr</language><lastBuildDate>Sat, 04 Jul 2026 21:00:00 +0900</lastBuildDate><atom:link href="https://kwbaek.github.io/tags/data/index.xml" rel="self" type="application/rss+xml"/><item><title>AI/ML 트렌드: 에이전트 데이터 플레인이 새 RAG 레이어가 된다</title><link>https://kwbaek.github.io/posts/2026-07-04-ai-ml-trends-agent-data-plane-becomes-the-new-rag-layer/</link><pubDate>Sat, 04 Jul 2026 21:00:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-07-04-ai-ml-trends-agent-data-plane-becomes-the-new-rag-layer/</guid><description>&lt;p&gt;오늘 AI/ML 트렌드에서 가장 눈에 띈 흐름은 에이전트 경쟁의 초점이 모델 호출 자체에서 &lt;strong&gt;운영 데이터 계층&lt;/strong&gt;으로 옮겨가고 있다는 점입니다. Couchbase가 발표한 AI Data Plane GA는 이 변화를 잘 보여줍니다. 기업형 에이전트가 실제 업무에 들어가면 필요한 것은 더 긴 답변만이 아닙니다. 지속되는 메모리, 최신 컨텍스트 검색, 클라우드와 엣지의 데이터 접근, MCP 기반 도구 연결, 그리고 이 모든 것을 관리할 수 있는 권한·감사 구조가 필요합니다.&lt;/p&gt;
-&lt;p&gt;초기의 RAG는 “문서를 임베딩해서 검색한 뒤 모델에 넣는다”에 가까웠습니다. 하지만 agentic workflow에서는 그 정도로 부족합니다. 에이전트는 고객 상태, 업무 이력, 실시간 이벤트, 세션 기록, 승인 조건을 계속 읽고 갱신합니다. 즉 검색 인프라는 더 이상 부가 기능이 아니라 에이전트가 현실 세계를 이해하는 운영 기반이 됩니다. 이 계층이 약하면 모델이 좋아져도 같은 질문을 반복하거나, 오래된 정보를 근거로 행동하거나, 팀별 데이터 정책을 어길 수 있습니다.&lt;/p&gt;</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Data on Kyungwook&#39;s Devlog</title>
+    <link>https://kwbaek.github.io/tags/data/</link>
+    <description>Recent content in Data on Kyungwook&#39;s Devlog</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Sat, 04 Jul 2026 21:00:00 +0900</lastBuildDate>
+    <atom:link href="https://kwbaek.github.io/tags/data/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI/ML 트렌드: 에이전트 데이터 플레인이 새 RAG 레이어가 된다</title>
+      <link>https://kwbaek.github.io/posts/2026-07-04-ai-ml-trends-agent-data-plane-becomes-the-new-rag-layer/</link>
+      <pubDate>Sat, 04 Jul 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-07-04-ai-ml-trends-agent-data-plane-becomes-the-new-rag-layer/</guid>
+      <description>&lt;p&gt;오늘 AI/ML 트렌드에서 가장 눈에 띈 흐름은 에이전트 경쟁의 초점이 모델 호출 자체에서 &lt;strong&gt;운영 데이터 계층&lt;/strong&gt;으로 옮겨가고 있다는 점입니다. Couchbase가 발표한 AI Data Plane GA는 이 변화를 잘 보여줍니다. 기업형 에이전트가 실제 업무에 들어가면 필요한 것은 더 긴 답변만이 아닙니다. 지속되는 메모리, 최신 컨텍스트 검색, 클라우드와 엣지의 데이터 접근, MCP 기반 도구 연결, 그리고 이 모든 것을 관리할 수 있는 권한·감사 구조가 필요합니다.&lt;/p&gt;
+&lt;p&gt;초기의 RAG는 “문서를 임베딩해서 검색한 뒤 모델에 넣는다”에 가까웠습니다. 하지만 agentic workflow에서는 그 정도로 부족합니다. 에이전트는 고객 상태, 업무 이력, 실시간 이벤트, 세션 기록, 승인 조건을 계속 읽고 갱신합니다. 즉 검색 인프라는 더 이상 부가 기능이 아니라 에이전트가 현실 세계를 이해하는 운영 기반이 됩니다. 이 계층이 약하면 모델이 좋아져도 같은 질문을 반복하거나, 오래된 정보를 근거로 행동하거나, 팀별 데이터 정책을 어길 수 있습니다.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
