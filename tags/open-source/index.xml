@@ -6,8 +6,16 @@
     <description>Recent content in Open Source on Kyungwook&#39;s Devlog</description>
     <generator>Hugo -- 0.155.3</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Mon, 27 Jul 2026 14:30:00 +0900</lastBuildDate>
+    <lastBuildDate>Fri, 31 Jul 2026 21:01:00 +0900</lastBuildDate>
     <atom:link href="https://kwbaek.github.io/tags/open-source/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>코딩 에이전트 보안은 프롬프트가 아니라 런타임 통제가 된다</title>
+      <link>https://kwbaek.github.io/posts/2026-07-31-ai-ml-trends-coding-agent-security-moves-into-the-runtime/</link>
+      <pubDate>Fri, 31 Jul 2026 21:01:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-07-31-ai-ml-trends-coding-agent-security-moves-into-the-runtime/</guid>
+      <description>&lt;p&gt;오늘의 AI/ML 트렌드에서 가장 중요한 변화는 코딩 에이전트의 보안 문제가 더 이상 “좋은 프롬프트를 쓰면 해결되는 문제”로 취급되지 않는다는 점이다. 에이전트가 저장소를 읽고, 셸 명령을 실행하고, 패키지를 설치하고, 외부 서비스에 접근하는 순간 보안 경계는 모델의 답변이 아니라 **실행 경로(runtime)**에 생긴다.&lt;/p&gt;
+&lt;p&gt;최근 Perplexity가 공개한 Numbat 관련 보도는 이 변화를 잘 보여준다. Numbat은 코딩 에이전트 세션에 사전 실행 훅과 규칙 기반 검사를 적용해 시크릿 접근, 권한 상승 같은 위험한 행동을 감시하고 필요하면 차단하는 접근이다. 핵심은 모델이 무엇을 “말했는가”가 아니라, 다음 도구 호출이 실제 시스템에 어떤 변화를 일으키는지를 판단하는 데 있다. 에이전트가 아무리 유창하게 정당화해도 &lt;code&gt;git push&lt;/code&gt;, 자격증명 파일 읽기, 네트워크 호출은 별도의 정책 이벤트로 기록되어야 한다.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>에이전트 라우팅과 코드리뷰가 오픈소스에서 주류로 — Claude 5가 먼저, 에코시스템이 따라간다</title>
       <link>https://kwbaek.github.io/posts/2026-07-27-ai-ml-trends-agent-routing-and-agentic-code-review-hit-mainstream/</link>

@@ -5,11 +5,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
-<title>Categories | Kyungwook&#39;s Devlog</title>
+<title>DevSecOps | Kyungwook&#39;s Devlog</title>
 <meta name="keywords" content="">
 <meta name="description" content="">
 <meta name="author" content="">
-<link rel="canonical" href="https://kwbaek.github.io/categories/">
+<link rel="canonical" href="https://kwbaek.github.io/tags/devsecops/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.da3211e5ef867bf2b75fd5a6515cfed7195c011e8ab735694e203810a827097b.css" integrity="sha256-2jIR5e&#43;Ge/K3X9WmUVz&#43;1xlcAR6KtzVpTiA4EKgnCXs=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://kwbaek.github.io/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://kwbaek.github.io/favicon-16x16.png">
@@ -18,8 +18,8 @@
 <link rel="mask-icon" href="https://kwbaek.github.io/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" type="application/rss+xml" href="https://kwbaek.github.io/categories/index.xml" title="rss">
-<link rel="alternate" hreflang="en" href="https://kwbaek.github.io/categories/">
+<link rel="alternate" type="application/rss+xml" href="https://kwbaek.github.io/tags/devsecops/index.xml" title="rss">
+<link rel="alternate" hreflang="en" href="https://kwbaek.github.io/tags/devsecops/">
 <noscript>
     <style>
         #theme-toggle,
@@ -71,13 +71,13 @@
         document.querySelector("html").dataset.theme = 'light';
     }
 
-</script><meta property="og:url" content="https://kwbaek.github.io/categories/">
+</script><meta property="og:url" content="https://kwbaek.github.io/tags/devsecops/">
   <meta property="og:site_name" content="Kyungwook&#39;s Devlog">
-  <meta property="og:title" content="Categories">
+  <meta property="og:title" content="DevSecOps">
   <meta property="og:locale" content="ko-kr">
   <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Categories">
+<meta name="twitter:title" content="DevSecOps">
 <meta name="twitter:description" content="">
 
 </head>
@@ -112,7 +112,7 @@
         <ul id="menu">
             <li>
                 <a href="https://kwbaek.github.io/categories/" title="categories">
-                    <span class="active">categories</span>
+                    <span>categories</span>
                 </a>
             </li>
             <li>
@@ -134,28 +134,26 @@
         </ul>
     </nav>
 </header>
-<main class="main">
+<main class="main"> 
 <header class="page-header">
-    <h1>Categories</h1>
+  <h1>
+    DevSecOps
+  </h1>
 </header>
 
-<ul class="terms-tags">
-    <li>
-        <a href="https://kwbaek.github.io/categories/ai-ml/">ai-ml <sup><strong><sup>160</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="https://kwbaek.github.io/categories/diary/">diary <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="https://kwbaek.github.io/categories/hermes/">hermes <sup><strong><sup>52</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="https://kwbaek.github.io/categories/openclaw/">openclaw <sup><strong><sup>109</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="https://kwbaek.github.io/categories/os/linux/">linux <sup><strong><sup>2</sup></strong></sup> </a>
-    </li>
-</ul>
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">코딩 에이전트 보안은 프롬프트가 아니라 런타임 통제가 된다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘의 AI/ML 트렌드에서 가장 중요한 변화는 코딩 에이전트의 보안 문제가 더 이상 “좋은 프롬프트를 쓰면 해결되는 문제”로 취급되지 않는다는 점이다. 에이전트가 저장소를 읽고, 셸 명령을 실행하고, 패키지를 설치하고, 외부 서비스에 접근하는 순간 보안 경계는 모델의 답변이 아니라 **실행 경로(runtime)**에 생긴다.
+최근 Perplexity가 공개한 Numbat 관련 보도는 이 변화를 잘 보여준다. Numbat은 코딩 에이전트 세션에 사전 실행 훅과 규칙 기반 검사를 적용해 시크릿 접근, 권한 상승 같은 위험한 행동을 감시하고 필요하면 차단하는 접근이다. 핵심은 모델이 무엇을 “말했는가”가 아니라, 다음 도구 호출이 실제 시스템에 어떤 변화를 일으키는지를 판단하는 데 있다. 에이전트가 아무리 유창하게 정당화해도 git push, 자격증명 파일 읽기, 네트워크 호출은 별도의 정책 이벤트로 기록되어야 한다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-07-31 21:01:00 +0900 KST'>July 31, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to 코딩 에이전트 보안은 프롬프트가 아니라 런타임 통제가 된다" href="https://kwbaek.github.io/posts/2026-07-31-ai-ml-trends-coding-agent-security-moves-into-the-runtime/"></a>
+</article>
     </main>
     
 <footer class="footer">

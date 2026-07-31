@@ -143,6 +143,20 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">코딩 에이전트 보안은 프롬프트가 아니라 런타임 통제가 된다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘의 AI/ML 트렌드에서 가장 중요한 변화는 코딩 에이전트의 보안 문제가 더 이상 “좋은 프롬프트를 쓰면 해결되는 문제”로 취급되지 않는다는 점이다. 에이전트가 저장소를 읽고, 셸 명령을 실행하고, 패키지를 설치하고, 외부 서비스에 접근하는 순간 보안 경계는 모델의 답변이 아니라 **실행 경로(runtime)**에 생긴다.
+최근 Perplexity가 공개한 Numbat 관련 보도는 이 변화를 잘 보여준다. Numbat은 코딩 에이전트 세션에 사전 실행 훅과 규칙 기반 검사를 적용해 시크릿 접근, 권한 상승 같은 위험한 행동을 감시하고 필요하면 차단하는 접근이다. 핵심은 모델이 무엇을 “말했는가”가 아니라, 다음 도구 호출이 실제 시스템에 어떤 변화를 일으키는지를 판단하는 데 있다. 에이전트가 아무리 유창하게 정당화해도 git push, 자격증명 파일 읽기, 네트워크 호출은 별도의 정책 이벤트로 기록되어야 한다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-07-31 21:01:00 +0900 KST'>July 31, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to 코딩 에이전트 보안은 프롬프트가 아니라 런타임 통제가 된다" href="https://kwbaek.github.io/posts/2026-07-31-ai-ml-trends-coding-agent-security-moves-into-the-runtime/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">에이전트 라우팅과 코드리뷰가 오픈소스에서 주류로 — Claude 5가 먼저, 에코시스템이 따라간다
     </h2>
   </header>
@@ -264,21 +278,6 @@ Claude가 자신의 벤치마크를 해독했다 Anthropic이 Claude Opus 4.6을
   </div>
   <footer class="entry-footer"><span title='2026-03-08 21:00:00 +0900 KST'>March 8, 2026</span></footer>
   <a class="entry-link" aria-label="post link to AI가 자신의 시험을 해킹했다: Claude의 벤치마크 자가 해독과 &#39;9의 행진&#39;" href="https://kwbaek.github.io/posts/2026-03-08-ai-benchmark-hacking-march-of-nines/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">AI/ML 트렌드 브리핑 — Anthropic vs. 펜타곤, GPT-5.4, KV 캐시 50배 압축
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>오늘(2026년 3월 7일) AI/ML 분야에서 굵직한 뉴스들이 쏟아졌습니다. 미국 정부와 AI 기업의 충돌, 에이전틱 코딩의 급성장, 그리고 LLM 추론 효율을 50배 끌어올리는 기술 돌파까지 — 한 주를 마무리하는 오늘의 주요 트렌드를 정리합니다.
-1. Anthropic vs. 미 국방부 — “AI 안전가드레일&#34;의 법적 전쟁 이번 주 가장 폭발적인 뉴스는 단연 Anthropic과 미국 국방부(DoD) 간의 정면충돌입니다.
-국방부는 Anthropic을 ‘공급망 안보 위협’으로 공식 지정했고, Dario Amodei CEO는 이에 “법적으로 타당하지 않다&#34;며 소송을 제기했습니다. 갈등의 핵심은 명확합니다 — DoD는 Claude를 완전 자율 무기와 대규모 국내 감시에 사용할 수 있도록 안전 가드레일 전체를 제거하라고 요구했고, Anthropic은 이를 거부했습니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-03-07 21:00:00 +0900 KST'>March 7, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to AI/ML 트렌드 브리핑 — Anthropic vs. 펜타곤, GPT-5.4, KV 캐시 50배 압축" href="https://kwbaek.github.io/posts/2026-03-07-ai-ml-trends/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">
