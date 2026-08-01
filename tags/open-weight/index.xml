@@ -1,36 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
-  <channel>
-    <title>Open Weight on Kyungwook&#39;s Devlog</title>
-    <link>https://kwbaek.github.io/tags/open-weight/</link>
-    <description>Recent content in Open Weight on Kyungwook&#39;s Devlog</description>
-    <generator>Hugo -- 0.155.3</generator>
-    <language>ko-kr</language>
-    <lastBuildDate>Mon, 20 Jul 2026 21:01:00 +0900</lastBuildDate>
-    <atom:link href="https://kwbaek.github.io/tags/open-weight/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Hermes/리오 팁: 오픈웨이트 에이전트에는 ‘능력 격차 시계’를 붙이자</title>
-      <link>https://kwbaek.github.io/posts/2026-07-20-hermes-rio-add-a-capability-gap-clock/</link>
-      <pubDate>Mon, 20 Jul 2026 21:01:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/posts/2026-07-20-hermes-rio-add-a-capability-gap-clock/</guid>
-      <description>&lt;p&gt;오늘 AI/ML 트렌드가 Hermes/리오 운영에 던지는 실무 질문은 간단합니다. &lt;strong&gt;오픈웨이트 모델을 쓰는 자동화는 언제 다시 위험도를 평가해야 할까?&lt;/strong&gt; 영국 AI안전연구소(AISI)는 선도 오픈웨이트 모델의 사이버 능력이 폐쇄형 프론티어 모델보다 4~7개월 뒤에 있다고 분석했습니다. 이 수치가 모든 모델과 모든 작업에 그대로 적용된다는 뜻은 아닙니다. 하지만 에이전트 운영자에게는 충분히 유용한 경고입니다. 모델의 능력이 높아질수록, 같은 크론과 같은 권한 구성이 이전보다 더 강한 행동을 가능하게 만들 수 있기 때문입니다.&lt;/p&gt;
-&lt;p&gt;그래서 Hermes/리오에서 오픈웨이트 모델을 업무 자동화에 쓴다면, 모델 이름만 기록하는 것으로는 부족합니다. 저는 이를 **능력 격차 시계(capability-gap clock)**로 관리하는 방식을 권합니다. 모델을 처음 도입할 때 한 번 허용 여부를 결정하고 끝내지 말고, 새 주요 릴리스나 평가 변화가 있을 때마다 권한·도구·데이터 범위를 다시 확인하는 작은 운영 장치입니다.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>오픈웨이트 모델의 사이버 격차가 4~7개월로 줄었다 — 보안팀에 남은 것은 ‘시간’이다</title>
-      <link>https://kwbaek.github.io/posts/2026-07-20-ai-ml-trends-open-weight-cyber-gap-is-now-a-clock/</link>
-      <pubDate>Mon, 20 Jul 2026 21:00:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/posts/2026-07-20-ai-ml-trends-open-weight-cyber-gap-is-now-a-clock/</guid>
-      <description>&lt;p&gt;오늘 AI/ML 트렌드에서 가장 묵직한 신호는 새 모델의 벤치마크 순위가 아닙니다. 영국 AI안전연구소(AISI)가 공개한 분석에 따르면, 선도 오픈웨이트 모델의 사이버 능력은 폐쇄형 프론티어 모델보다 이제 &lt;strong&gt;4~7개월&lt;/strong&gt; 뒤에 있습니다. 2025년 내부 평가에서의 6~10개월 격차보다 더 좁아졌습니다. 보안 관점에서 이 숫자는 단순한 성능 비교가 아니라, 방어자가 준비할 수 있는 시간 창이 짧아지고 있다는 뜻입니다.&lt;/p&gt;
-&lt;p&gt;AISI는 2026년 6월 공개된 GLM-5.2가 협소한 사이버 과제에서는 2026년 2월의 Opus 4.6, 긴 호흡의 사이버 레인지에서는 2025년 11월의 Opus 4.5와 비슷한 수준이라고 평가했습니다. DeepSeek V4-Pro 역시 Opus 4.5에 근접했습니다. 여기서 중요한 것은 “오픈 모델이 곧바로 최전선과 같아졌다”는 과장된 결론이 아닙니다. AISI의 평가도 특정 과제와 시뮬레이션 환경에 한정되며, 최근 폐쇄형 모델의 급격한 도약을 미래의 오픈 모델이 그대로 따라갈지 예측하지는 못합니다.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>프론티어 모델이 늦어지는 사이, 오픈웨이트는 따라붙는다</title>
-      <link>https://kwbaek.github.io/posts/2026-07-17-ai-ml-trends-frontier-delay-open-weight-catchup/</link>
-      <pubDate>Fri, 17 Jul 2026 20:55:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/posts/2026-07-17-ai-ml-trends-frontier-delay-open-weight-catchup/</guid>
-      <description>&lt;p&gt;오늘 AI/ML 트렌드 채널에 올라온 소식들을 나란히 놓으면, 프론티어 모델 시장의 힘의 균형이 조용히 움직이고 있다는 신호가 보입니다. 핵심은 두 가지입니다 — 최상위 폐쇄형 모델의 출시가 내부 목표치를 못 맞춰 밀리고 있다는 것, 그리고 그 틈을 오픈웨이트 모델이 벤치마크로 빠르게 좁혀오고 있다는 것입니다.&lt;/p&gt;
-&lt;p&gt;첫 번째 신호는 Bloomberg와 Reuters가 함께 보도한 구글 &amp;lsquo;Gemini 3.5 Pro&amp;rsquo; 출시 연기 소식입니다. 코딩 성능 등 자체 내부 목표를 세 번째로 못 맞춘 것으로 알려졌고, 구글은 임시(stopgap) 출시를 검토하고 있다고 합니다. 프론티어 모델 개발이 &amp;lsquo;경쟁사보다 빠르게&amp;rsquo;가 아니라 &amp;lsquo;스스로 정한 기준을 통과하는가&amp;rsquo;라는 내부 게이트에 걸려 지연되는 사례가 반복되고 있다는 뜻입니다. 알파벳 주가에도 영향을 줬다는 점은, 시장이 이 지연을 더 이상 사소한 일정 변경으로 보지 않는다는 신호입니다.&lt;/p&gt;</description>
-    </item>
-  </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Open Weight on Kyungwook's Devlog</title><link>https://kwbaek.github.io/tags/open-weight/</link><description>Recent content in Open Weight on Kyungwook's Devlog</description><generator>Hugo -- 0.155.3</generator><language>ko-kr</language><lastBuildDate>Mon, 20 Jul 2026 21:01:00 +0900</lastBuildDate><atom:link href="https://kwbaek.github.io/tags/open-weight/index.xml" rel="self" type="application/rss+xml"/><item><title>Hermes/리오 팁: 오픈웨이트 에이전트에는 ‘능력 격차 시계’를 붙이자</title><link>https://kwbaek.github.io/posts/2026-07-20-hermes-rio-add-a-capability-gap-clock/</link><pubDate>Mon, 20 Jul 2026 21:01:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-07-20-hermes-rio-add-a-capability-gap-clock/</guid><description>&lt;p&gt;오늘 AI/ML 트렌드가 Hermes/리오 운영에 던지는 실무 질문은 간단합니다. &lt;strong&gt;오픈웨이트 모델을 쓰는 자동화는 언제 다시 위험도를 평가해야 할까?&lt;/strong&gt; 영국 AI안전연구소(AISI)는 선도 오픈웨이트 모델의 사이버 능력이 폐쇄형 프론티어 모델보다 4~7개월 뒤에 있다고 분석했습니다. 이 수치가 모든 모델과 모든 작업에 그대로 적용된다는 뜻은 아닙니다. 하지만 에이전트 운영자에게는 충분히 유용한 경고입니다. 모델의 능력이 높아질수록, 같은 크론과 같은 권한 구성이 이전보다 더 강한 행동을 가능하게 만들 수 있기 때문입니다.&lt;/p&gt;
+&lt;p&gt;그래서 Hermes/리오에서 오픈웨이트 모델을 업무 자동화에 쓴다면, 모델 이름만 기록하는 것으로는 부족합니다. 저는 이를 **능력 격차 시계(capability-gap clock)**로 관리하는 방식을 권합니다. 모델을 처음 도입할 때 한 번 허용 여부를 결정하고 끝내지 말고, 새 주요 릴리스나 평가 변화가 있을 때마다 권한·도구·데이터 범위를 다시 확인하는 작은 운영 장치입니다.&lt;/p&gt;</description></item><item><title>오픈웨이트 모델의 사이버 격차가 4~7개월로 줄었다 — 보안팀에 남은 것은 ‘시간’이다</title><link>https://kwbaek.github.io/posts/2026-07-20-ai-ml-trends-open-weight-cyber-gap-is-now-a-clock/</link><pubDate>Mon, 20 Jul 2026 21:00:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-07-20-ai-ml-trends-open-weight-cyber-gap-is-now-a-clock/</guid><description>&lt;p&gt;오늘 AI/ML 트렌드에서 가장 묵직한 신호는 새 모델의 벤치마크 순위가 아닙니다. 영국 AI안전연구소(AISI)가 공개한 분석에 따르면, 선도 오픈웨이트 모델의 사이버 능력은 폐쇄형 프론티어 모델보다 이제 &lt;strong&gt;4~7개월&lt;/strong&gt; 뒤에 있습니다. 2025년 내부 평가에서의 6~10개월 격차보다 더 좁아졌습니다. 보안 관점에서 이 숫자는 단순한 성능 비교가 아니라, 방어자가 준비할 수 있는 시간 창이 짧아지고 있다는 뜻입니다.&lt;/p&gt;
+&lt;p&gt;AISI는 2026년 6월 공개된 GLM-5.2가 협소한 사이버 과제에서는 2026년 2월의 Opus 4.6, 긴 호흡의 사이버 레인지에서는 2025년 11월의 Opus 4.5와 비슷한 수준이라고 평가했습니다. DeepSeek V4-Pro 역시 Opus 4.5에 근접했습니다. 여기서 중요한 것은 “오픈 모델이 곧바로 최전선과 같아졌다”는 과장된 결론이 아닙니다. AISI의 평가도 특정 과제와 시뮬레이션 환경에 한정되며, 최근 폐쇄형 모델의 급격한 도약을 미래의 오픈 모델이 그대로 따라갈지 예측하지는 못합니다.&lt;/p&gt;</description></item><item><title>프론티어 모델이 늦어지는 사이, 오픈웨이트는 따라붙는다</title><link>https://kwbaek.github.io/posts/2026-07-17-ai-ml-trends-frontier-delay-open-weight-catchup/</link><pubDate>Fri, 17 Jul 2026 20:55:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-07-17-ai-ml-trends-frontier-delay-open-weight-catchup/</guid><description>&lt;p&gt;오늘 AI/ML 트렌드 채널에 올라온 소식들을 나란히 놓으면, 프론티어 모델 시장의 힘의 균형이 조용히 움직이고 있다는 신호가 보입니다. 핵심은 두 가지입니다 — 최상위 폐쇄형 모델의 출시가 내부 목표치를 못 맞춰 밀리고 있다는 것, 그리고 그 틈을 오픈웨이트 모델이 벤치마크로 빠르게 좁혀오고 있다는 것입니다.&lt;/p&gt;
+&lt;p&gt;첫 번째 신호는 Bloomberg와 Reuters가 함께 보도한 구글 &amp;lsquo;Gemini 3.5 Pro&amp;rsquo; 출시 연기 소식입니다. 코딩 성능 등 자체 내부 목표를 세 번째로 못 맞춘 것으로 알려졌고, 구글은 임시(stopgap) 출시를 검토하고 있다고 합니다. 프론티어 모델 개발이 &amp;lsquo;경쟁사보다 빠르게&amp;rsquo;가 아니라 &amp;lsquo;스스로 정한 기준을 통과하는가&amp;rsquo;라는 내부 게이트에 걸려 지연되는 사례가 반복되고 있다는 뜻입니다. 알파벳 주가에도 영향을 줬다는 점은, 시장이 이 지연을 더 이상 사소한 일정 변경으로 보지 않는다는 신호입니다.&lt;/p&gt;</description></item></channel></rss>

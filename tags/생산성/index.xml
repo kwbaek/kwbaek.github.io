@@ -1,54 +1,25 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
-  <channel>
-    <title>생산성 on Kyungwook&#39;s Devlog</title>
-    <link>https://kwbaek.github.io/tags/%EC%83%9D%EC%82%B0%EC%84%B1/</link>
-    <description>Recent content in 생산성 on Kyungwook&#39;s Devlog</description>
-    <generator>Hugo -- 0.155.3</generator>
-    <language>ko-kr</language>
-    <lastBuildDate>Mon, 23 Feb 2026 21:00:00 +0900</lastBuildDate>
-    <atom:link href="https://kwbaek.github.io/tags/%EC%83%9D%EC%82%B0%EC%84%B1/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>OpenClaw 하트비트(Heartbeat) 활용: AI 에이전트를 능동적으로 만드는 법</title>
-      <link>https://kwbaek.github.io/posts/2026-02-23-openclaw-heartbeat-automation/</link>
-      <pubDate>Mon, 23 Feb 2026 21:00:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/posts/2026-02-23-openclaw-heartbeat-automation/</guid>
-      <description>&lt;p&gt;OpenClaw를 사용하다 보면 &amp;ldquo;AI가 좀 더 능동적으로 움직였으면 좋겠다&amp;quot;는 생각을 하게 됩니다. 매번 명령을 내리는 것이 아니라, AI가 스스로 주기적으로 상태를 확인하고 필요한 작업을 수행한다면 얼마나 편할까요?&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>생산성 on Kyungwook's Devlog</title><link>https://kwbaek.github.io/tags/%EC%83%9D%EC%82%B0%EC%84%B1/</link><description>Recent content in 생산성 on Kyungwook's Devlog</description><generator>Hugo -- 0.155.3</generator><language>ko-kr</language><lastBuildDate>Mon, 23 Feb 2026 21:00:00 +0900</lastBuildDate><atom:link href="https://kwbaek.github.io/tags/%EC%83%9D%EC%82%B0%EC%84%B1/index.xml" rel="self" type="application/rss+xml"/><item><title>OpenClaw 하트비트(Heartbeat) 활용: AI 에이전트를 능동적으로 만드는 법</title><link>https://kwbaek.github.io/posts/2026-02-23-openclaw-heartbeat-automation/</link><pubDate>Mon, 23 Feb 2026 21:00:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-02-23-openclaw-heartbeat-automation/</guid><description>&lt;p&gt;OpenClaw를 사용하다 보면 &amp;ldquo;AI가 좀 더 능동적으로 움직였으면 좋겠다&amp;quot;는 생각을 하게 됩니다. 매번 명령을 내리는 것이 아니라, AI가 스스로 주기적으로 상태를 확인하고 필요한 작업을 수행한다면 얼마나 편할까요?&lt;/p&gt;
 &lt;p&gt;바로 이것이 &lt;strong&gt;하트비트(Heartbeat)&lt;/strong&gt; 기능이 해결하는 문제입니다.&lt;/p&gt;
-&lt;h2 id=&#34;하트비트란-무엇인가&#34;&gt;하트비트란 무엇인가?&lt;/h2&gt;
+&lt;h2 id="하트비트란-무엇인가"&gt;하트비트란 무엇인가?&lt;/h2&gt;
 &lt;p&gt;하트비트는 OpenClaw 에이전트가 일정 주기로 받는 &amp;ldquo;펄스(pulse)&amp;ldquo;입니다. 심장 박동처럼 규칙적으로 발생하며, 에이전트는 이 신호를 받을 때마다 &amp;ldquo;지금 내가 해야 할 일이 있나?&amp;ldquo;를 스스로 판단합니다.&lt;/p&gt;
 &lt;p&gt;기본 하트비트 프롬프트는 다음과 같습니다:&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;Read HEARTBEAT.md if it exists (workspace context). 
-Follow it strictly. Do not infer or repeat old tasks from prior chats. 
+&lt;pre tabindex="0"&gt;&lt;code&gt;Read HEARTBEAT.md if it exists (workspace context).
+Follow it strictly. Do not infer or repeat old tasks from prior chats.
 If nothing needs attention, reply HEARTBEAT_OK.
-&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;하트비트-vs-cron-언제-무엇을-쓸까&#34;&gt;하트비트 vs Cron: 언제 무엇을 쓸까?&lt;/h2&gt;
-&lt;p&gt;OpenClaw에는 Cron도 있는데, 하트비트와 어떻게 다를까요?&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>OpenClaw 완전정복: Heartbeat과 Cron으로 AI 비서를 자동화하기</title>
-      <link>https://kwbaek.github.io/posts/2026-02-18-openclaw-heartbeat-cron-guide/</link>
-      <pubDate>Wed, 18 Feb 2026 21:00:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/posts/2026-02-18-openclaw-heartbeat-cron-guide/</guid>
-      <description>&lt;h2 id=&#34;openclaw를-진정한-비서로-만드는-법&#34;&gt;OpenClaw를 진정한 비서로 만드는 법&lt;/h2&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id="하트비트-vs-cron-언제-무엇을-쓸까"&gt;하트비트 vs Cron: 언제 무엇을 쓸까?&lt;/h2&gt;
+&lt;p&gt;OpenClaw에는 Cron도 있는데, 하트비트와 어떻게 다를까요?&lt;/p&gt;</description></item><item><title>OpenClaw 완전정복: Heartbeat과 Cron으로 AI 비서를 자동화하기</title><link>https://kwbaek.github.io/posts/2026-02-18-openclaw-heartbeat-cron-guide/</link><pubDate>Wed, 18 Feb 2026 21:00:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-02-18-openclaw-heartbeat-cron-guide/</guid><description>&lt;h2 id="openclaw를-진정한-비서로-만드는-법"&gt;OpenClaw를 진정한 비서로 만드는 법&lt;/h2&gt;
 &lt;p&gt;OpenClaw를 사용하고 계신가요? 챗봇처럼 매번 명령을 내려야 하는 게 불편하지 않으셨나요? 오늘은 OpenClaw를 &lt;strong&gt;진짜 비서처럼 자동으로 움직이게&lt;/strong&gt; 만드는 두 가지 핵심 기능을 소개합니다.&lt;/p&gt;
 &lt;p&gt;바로 &lt;strong&gt;Heartbeat&lt;/strong&gt;과 &lt;strong&gt;Cron&lt;/strong&gt;입니다.&lt;/p&gt;
-&lt;h2 id=&#34;heartbeat-비서의-심장박동&#34;&gt;Heartbeat: 비서의 심장박동&lt;/h2&gt;
-&lt;h3 id=&#34;heartbeat이란&#34;&gt;Heartbeat이란?&lt;/h3&gt;
+&lt;h2 id="heartbeat-비서의-심장박동"&gt;Heartbeat: 비서의 심장박동&lt;/h2&gt;
+&lt;h3 id="heartbeat이란"&gt;Heartbeat이란?&lt;/h3&gt;
 &lt;p&gt;Heartbeat은 OpenClaw가 주기적으로 &amp;ldquo;지금 내가 해야 할 일이 있나?&amp;ldquo;라고 스스로 체크하는 기능입니다. 마치 사람 비서가 30분마다 &amp;ldquo;혹시 필요한 거 없으세요?&amp;ldquo;라고 물어보는 것과 같습니다.&lt;/p&gt;
-&lt;h3 id=&#34;기본-설정&#34;&gt;기본 설정&lt;/h3&gt;
+&lt;h3 id="기본-설정"&gt;기본 설정&lt;/h3&gt;
 &lt;p&gt;OpenClaw의 기본 Heartbeat 프롬프트는 다음과 같습니다:&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;Read HEARTBEAT.md if it exists (workspace context). Follow it strictly. 
-Do not infer or repeat old tasks from prior chats. 
+&lt;pre tabindex="0"&gt;&lt;code&gt;Read HEARTBEAT.md if it exists (workspace context). Follow it strictly.
+Do not infer or repeat old tasks from prior chats.
 If nothing needs attention, reply HEARTBEAT_OK.
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;즉, &lt;code&gt;HEARTBEAT.md&lt;/code&gt; 파일에 체크할 항목을 적어두면, OpenClaw가 주기적으로 그 파일을 읽고 필요한 작업을 수행합니다.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>OpenClaw 서브에이전트로 반복 작업 자동화하기</title>
-      <link>https://kwbaek.github.io/posts/2026-02-09-openclaw-subagent-automation/</link>
-      <pubDate>Mon, 09 Feb 2026 23:00:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/posts/2026-02-09-openclaw-subagent-automation/</guid>
-      <description>&lt;p&gt;OpenClaw를 쓰면서 가장 생산성이 올라간 기능 중 하나가 바로 &lt;strong&gt;서브에이전트(Subagent)&lt;/strong&gt; 시스템입니다. 이 글에서는 서브에이전트가 무엇인지, 어떻게 활용하면 좋은지 실제 경험을 바탕으로 공유합니다.&lt;/p&gt;
-&lt;h2 id=&#34;서브에이전트란&#34;&gt;서브에이전트란?&lt;/h2&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;즉, &lt;code&gt;HEARTBEAT.md&lt;/code&gt; 파일에 체크할 항목을 적어두면, OpenClaw가 주기적으로 그 파일을 읽고 필요한 작업을 수행합니다.&lt;/p&gt;</description></item><item><title>OpenClaw 서브에이전트로 반복 작업 자동화하기</title><link>https://kwbaek.github.io/posts/2026-02-09-openclaw-subagent-automation/</link><pubDate>Mon, 09 Feb 2026 23:00:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-02-09-openclaw-subagent-automation/</guid><description>&lt;p&gt;OpenClaw를 쓰면서 가장 생산성이 올라간 기능 중 하나가 바로 &lt;strong&gt;서브에이전트(Subagent)&lt;/strong&gt; 시스템입니다. 이 글에서는 서브에이전트가 무엇인지, 어떻게 활용하면 좋은지 실제 경험을 바탕으로 공유합니다.&lt;/p&gt;
+&lt;h2 id="서브에이전트란"&gt;서브에이전트란?&lt;/h2&gt;
 &lt;p&gt;서브에이전트는 메인 에이전트가 특정 작업을 위해 &lt;strong&gt;독립적으로 생성하는 하위 에이전트&lt;/strong&gt;입니다. 메인 에이전트와 별도의 세션에서 동작하며, 작업이 완료되면 결과를 메인 에이전트에게 보고합니다.&lt;/p&gt;
 &lt;p&gt;핵심 특징:&lt;/p&gt;
 &lt;ul&gt;
@@ -56,8 +27,5 @@ If nothing needs attention, reply HEARTBEAT_OK.
 &lt;li&gt;&lt;strong&gt;작업 집중&lt;/strong&gt;: 할당된 작업만 수행하고 종료&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;병렬 처리&lt;/strong&gt;: 여러 서브에이전트를 동시에 띄울 수 있음&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;실제-활용-사례-블로그-포스팅-자동화&#34;&gt;실제 활용 사례: 블로그 포스팅 자동화&lt;/h2&gt;
-&lt;p&gt;이 블로그 포스트 자체가 서브에이전트로 작성되고 있습니다! 워크플로우는 다음과 같습니다:&lt;/p&gt;</description>
-    </item>
-  </channel>
-</rss>
+&lt;h2 id="실제-활용-사례-블로그-포스팅-자동화"&gt;실제 활용 사례: 블로그 포스팅 자동화&lt;/h2&gt;
+&lt;p&gt;이 블로그 포스트 자체가 서브에이전트로 작성되고 있습니다! 워크플로우는 다음과 같습니다:&lt;/p&gt;</description></item></channel></rss>

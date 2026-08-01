@@ -1,47 +1,18 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
-  <channel>
-    <title>중국AI on Kyungwook&#39;s Devlog</title>
-    <link>https://kwbaek.github.io/tags/%EC%A4%91%EA%B5%ADai/</link>
-    <description>Recent content in 중국AI on Kyungwook&#39;s Devlog</description>
-    <generator>Hugo -- 0.155.3</generator>
-    <language>ko-kr</language>
-    <lastBuildDate>Thu, 05 Mar 2026 21:00:00 +0900</lastBuildDate>
-    <atom:link href="https://kwbaek.github.io/tags/%EC%A4%91%EA%B5%ADai/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>AI/ML 트렌드 브리핑: 2026년 3월 5일 — 에이전트 시대의 본격화</title>
-      <link>https://kwbaek.github.io/posts/2026-03-05-ai-ml-trends/</link>
-      <pubDate>Thu, 05 Mar 2026 21:00:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/posts/2026-03-05-ai-ml-trends/</guid>
-      <description>&lt;p&gt;오늘 하루 AI/ML 씬에서 쏟아진 뉴스를 추려봤다. 큰 그림으로 보면 한 가지 흐름이 선명하다 — &lt;strong&gt;AI가 더 이상 실험실 단계가 아닌, 실제 산업 현장과 경제 구조 자체를 재편하고 있다는 것&lt;/strong&gt;.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>중국AI on Kyungwook's Devlog</title><link>https://kwbaek.github.io/tags/%EC%A4%91%EA%B5%ADai/</link><description>Recent content in 중국AI on Kyungwook's Devlog</description><generator>Hugo -- 0.155.3</generator><language>ko-kr</language><lastBuildDate>Thu, 05 Mar 2026 21:00:00 +0900</lastBuildDate><atom:link href="https://kwbaek.github.io/tags/%EC%A4%91%EA%B5%ADai/index.xml" rel="self" type="application/rss+xml"/><item><title>AI/ML 트렌드 브리핑: 2026년 3월 5일 — 에이전트 시대의 본격화</title><link>https://kwbaek.github.io/posts/2026-03-05-ai-ml-trends/</link><pubDate>Thu, 05 Mar 2026 21:00:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-03-05-ai-ml-trends/</guid><description>&lt;p&gt;오늘 하루 AI/ML 씬에서 쏟아진 뉴스를 추려봤다. 큰 그림으로 보면 한 가지 흐름이 선명하다 — &lt;strong&gt;AI가 더 이상 실험실 단계가 아닌, 실제 산업 현장과 경제 구조 자체를 재편하고 있다는 것&lt;/strong&gt;.&lt;/p&gt;
 &lt;hr&gt;
-&lt;h2 id=&#34;-openai-연간-매출-250억-달러-돌파&#34;&gt;🏆 OpenAI, 연간 매출 250억 달러 돌파&lt;/h2&gt;
-&lt;p&gt;ChatGPT 출시 약 2년 만에 OpenAI의 연간 환산 매출(ARR)이 &lt;strong&gt;250억 달러&lt;/strong&gt;를 넘어섰다. AI 기업 중 역대 최단기 대규모 매출 달성이다. 구독·API·엔터프라이즈 계약이 고르게 성장하며 이뤄낸 결과로, 연내 IPO 밸류에이션에도 직접 영향을 줄 전망이다.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>중국 AI 모델 대공세: Qwen 3.5부터 Doubao 2.0까지, 에이전트 시대의 서막</title>
-      <link>https://kwbaek.github.io/posts/2026-02-16-china-ai-model-rush/</link>
-      <pubDate>Mon, 16 Feb 2026 21:00:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/posts/2026-02-16-china-ai-model-rush/</guid>
-      <description>&lt;h2 id=&#34;중국-ai-업계의-춘절-공세&#34;&gt;중국 AI 업계의 춘절 공세&lt;/h2&gt;
+&lt;h2 id="-openai-연간-매출-250억-달러-돌파"&gt;🏆 OpenAI, 연간 매출 250억 달러 돌파&lt;/h2&gt;
+&lt;p&gt;ChatGPT 출시 약 2년 만에 OpenAI의 연간 환산 매출(ARR)이 &lt;strong&gt;250억 달러&lt;/strong&gt;를 넘어섰다. AI 기업 중 역대 최단기 대규모 매출 달성이다. 구독·API·엔터프라이즈 계약이 고르게 성장하며 이뤄낸 결과로, 연내 IPO 밸류에이션에도 직접 영향을 줄 전망이다.&lt;/p&gt;</description></item><item><title>중국 AI 모델 대공세: Qwen 3.5부터 Doubao 2.0까지, 에이전트 시대의 서막</title><link>https://kwbaek.github.io/posts/2026-02-16-china-ai-model-rush/</link><pubDate>Mon, 16 Feb 2026 21:00:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-02-16-china-ai-model-rush/</guid><description>&lt;h2 id="중국-ai-업계의-춘절-공세"&gt;중국 AI 업계의 춘절 공세&lt;/h2&gt;
 &lt;p&gt;2026년 2월, 중국의 AI 업계가 춘절(설날) 시즌을 맞아 대규모 모델 공개 러시를 펼치고 있습니다. 작년 DeepSeek의 등장 이후 1년 만에, 중국 기업들은 더욱 공격적인 모습으로 글로벌 AI 경쟁에 뛰어들고 있습니다.&lt;/p&gt;
-&lt;h3 id=&#34;1-alibaba-qwen-35-에이전틱-ai-시대의-선언&#34;&gt;1. Alibaba Qwen 3.5: &amp;ldquo;에이전틱 AI 시대&amp;quot;의 선언&lt;/h3&gt;
+&lt;h3 id="1-alibaba-qwen-35-에이전틱-ai-시대의-선언"&gt;1. Alibaba Qwen 3.5: &amp;ldquo;에이전틱 AI 시대&amp;quot;의 선언&lt;/h3&gt;
 &lt;p&gt;Alibaba가 오늘(2월 16일) 공개한 &lt;strong&gt;Qwen 3.5&lt;/strong&gt;는 &amp;ldquo;에이전틱 AI 시대&amp;quot;를 겨냥한 플래그십 모델입니다. 주요 특징은:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;에이전트 작업에 최적화된 향상된 추론 능력&lt;/strong&gt;&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;멀티모달 지원&lt;/strong&gt; (텍스트, 이미지, 비디오 입력 처리)&lt;/li&gt;
 &lt;li&gt;DeepSeek V4 출시를 앞두고 선제적 발표&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;이 모델은 단순한 질문-답변을 넘어 &lt;strong&gt;복잡한 다단계 작업을 자율적으로 수행&lt;/strong&gt;하는 에이전트 역할에 집중하고 있습니다. Alibaba는 이를 통해 중국 AI 업계의 경쟁에서 차별화를 시도하고 있습니다.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>2026년 2월, 중국 AI 모델 러시와 Gemini 3 Deep Think의 등장</title>
-      <link>https://kwbaek.github.io/posts/2026-02-14-ai-ml-trends-china-rush/</link>
-      <pubDate>Sat, 14 Feb 2026 21:00:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/posts/2026-02-14-ai-ml-trends-china-rush/</guid>
-      <description>&lt;h2 id=&#34;-2026년-2월-ai-업계에-무슨-일이&#34;&gt;🚀 2026년 2월, AI 업계에 무슨 일이?&lt;/h2&gt;
+&lt;p&gt;이 모델은 단순한 질문-답변을 넘어 &lt;strong&gt;복잡한 다단계 작업을 자율적으로 수행&lt;/strong&gt;하는 에이전트 역할에 집중하고 있습니다. Alibaba는 이를 통해 중국 AI 업계의 경쟁에서 차별화를 시도하고 있습니다.&lt;/p&gt;</description></item><item><title>2026년 2월, 중국 AI 모델 러시와 Gemini 3 Deep Think의 등장</title><link>https://kwbaek.github.io/posts/2026-02-14-ai-ml-trends-china-rush/</link><pubDate>Sat, 14 Feb 2026 21:00:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-02-14-ai-ml-trends-china-rush/</guid><description>&lt;h2 id="-2026년-2월-ai-업계에-무슨-일이"&gt;🚀 2026년 2월, AI 업계에 무슨 일이?&lt;/h2&gt;
 &lt;p&gt;2026년 2월은 AI 업계에 엄청난 변화가 일어나고 있는 달입니다. 특히 중국 AI 기업들의 공격적인 모델 출시와 Google, Anthropic의 신규 모델 발표가 동시에 터지면서 &lt;strong&gt;AI 모델 전쟁&lt;/strong&gt;이 새로운 국면으로 접어들었습니다.&lt;/p&gt;
-&lt;h2 id=&#34;-중국-ai-모델-러시-alibaba-bytedance-zhipu의-동시다발-공세&#34;&gt;🇨🇳 중국 AI 모델 러시: Alibaba, ByteDance, Zhipu의 동시다발 공세&lt;/h2&gt;
+&lt;h2 id="-중국-ai-모델-러시-alibaba-bytedance-zhipu의-동시다발-공세"&gt;🇨🇳 중국 AI 모델 러시: Alibaba, ByteDance, Zhipu의 동시다발 공세&lt;/h2&gt;
 &lt;p&gt;이번 주 중국 AI 업계가 폭발적인 움직임을 보였습니다:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;Alibaba: RynnBrain&lt;/strong&gt; (물리적 AI/로봇 특화)&lt;/li&gt;
@@ -49,7 +20,4 @@
 &lt;li&gt;&lt;strong&gt;ByteDance: Seedance 모델&lt;/strong&gt;&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Zhipu AI: GLM-5&lt;/strong&gt; (Agentic Engineering 돌파구)&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;특히 &lt;strong&gt;Zhipu AI의 주가는 30% 급등&lt;/strong&gt;하며 시장의 뜨거운 반응을 얻었습니다. GLM-5는 에이전트 시스템에 특화된 모델로, 중국발 AI 모델이 글로벌 경쟁에서 본격적으로 주목받는 신호탄이 되었습니다.&lt;/p&gt;</description>
-    </item>
-  </channel>
-</rss>
+&lt;p&gt;특히 &lt;strong&gt;Zhipu AI의 주가는 30% 급등&lt;/strong&gt;하며 시장의 뜨거운 반응을 얻었습니다. GLM-5는 에이전트 시스템에 특화된 모델로, 중국발 AI 모델이 글로벌 경쟁에서 본격적으로 주목받는 신호탄이 되었습니다.&lt;/p&gt;</description></item></channel></rss>

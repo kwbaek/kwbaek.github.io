@@ -1,21 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
-  <channel>
-    <title>Cron Jobs on Kyungwook&#39;s Devlog</title>
-    <link>https://kwbaek.github.io/tags/cron-jobs/</link>
-    <description>Recent content in Cron Jobs on Kyungwook&#39;s Devlog</description>
-    <generator>Hugo -- 0.155.3</generator>
-    <language>ko-kr</language>
-    <lastBuildDate>Mon, 27 Jul 2026 15:00:00 +0900</lastBuildDate>
-    <atom:link href="https://kwbaek.github.io/tags/cron-jobs/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Hermes 크론 마이그레이션 완료 — cache-first fallback이 장애 복구 시간을 50초에서 2초로 줄인 이야기</title>
-      <link>https://kwbaek.github.io/posts/2026-07-27-hermes-cache-first-fallback-reduces-outage-to-seconds/</link>
-      <pubDate>Mon, 27 Jul 2026 15:00:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/posts/2026-07-27-hermes-cache-first-fallback-reduces-outage-to-seconds/</guid>
-      <description>&lt;p&gt;Hermes 크론 시스템에서 지난주 가장 큰 배운 점은 &lt;strong&gt;단순한 재시도(retry)보다 &amp;ldquo;cache-first fallback&amp;quot;이 실제 업타임을 어떻게 극적으로 높이는가&lt;/strong&gt;라는 것이다.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Cron Jobs on Kyungwook's Devlog</title><link>https://kwbaek.github.io/tags/cron-jobs/</link><description>Recent content in Cron Jobs on Kyungwook's Devlog</description><generator>Hugo -- 0.155.3</generator><language>ko-kr</language><lastBuildDate>Fri, 31 Jul 2026 21:02:00 +0900</lastBuildDate><atom:link href="https://kwbaek.github.io/tags/cron-jobs/index.xml" rel="self" type="application/rss+xml"/><item><title>Hermes/리오 운영 팁 — 코딩 에이전트에 런타임 가드레일과 cache-first를 함께 넣는 법</title><link>https://kwbaek.github.io/posts/2026-07-31-hermes-agent-runtime-guardrails-for-coding-agents/</link><pubDate>Fri, 31 Jul 2026 21:02:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-07-31-hermes-agent-runtime-guardrails-for-coding-agents/</guid><description>&lt;p&gt;Hermes/리오로 코딩 에이전트나 크론 작업을 운영할 때 가장 위험한 설계는 “모델이 알아서 조심하겠지”라는 가정이다. 최근 코딩 에이전트 보안 흐름은 에이전트의 판단을 믿는 것과 시스템의 실행을 허용하는 것을 분리해야 한다는 사실을 보여준다. 모델은 계획을 세울 수 있지만, 실제 파일 변경·네트워크 요청·배포는 별도의 런타임 정책이 결정해야 한다.&lt;/p&gt;
+&lt;p&gt;가장 실용적인 패턴은 &lt;strong&gt;정책 게이트 + 안전한 저하(safe degradation) + 감사 로그&lt;/strong&gt;를 하나의 실행 래퍼로 묶는 것이다. 먼저 작업을 읽기 전용, 로컬 변경, 외부 통신, 배포처럼 위험도별로 나눈다. 읽기 전용 작업은 자동 실행하되, 시크릿 파일 접근이나 외부 전송은 차단하거나 명시적 승인을 요구한다. 작업이 끝난 뒤에는 어떤 도구가 호출됐고, 어떤 파일이 바뀌었으며, 어떤 명령이 거부됐는지를 세션 ID와 함께 남긴다.&lt;/p&gt;</description></item><item><title>Hermes 크론 마이그레이션 완료 — cache-first fallback이 장애 복구 시간을 50초에서 2초로 줄인 이야기</title><link>https://kwbaek.github.io/posts/2026-07-27-hermes-cache-first-fallback-reduces-outage-to-seconds/</link><pubDate>Mon, 27 Jul 2026 15:00:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-07-27-hermes-cache-first-fallback-reduces-outage-to-seconds/</guid><description>&lt;p&gt;Hermes 크론 시스템에서 지난주 가장 큰 배운 점은 &lt;strong&gt;단순한 재시도(retry)보다 &amp;ldquo;cache-first fallback&amp;quot;이 실제 업타임을 어떻게 극적으로 높이는가&lt;/strong&gt;라는 것이다.&lt;/p&gt;
 &lt;p&gt;배경부터 설명하자면, 이전 OpenClaw 크론 시스템에서는 외부 API(Discord, Google News, Gemini Enterprise 등)가 일시적으로 막혀도 즉시 실패했다. 예를 들어, Discord API가 429(Rate Limit) 또는 403(Forbidden)을 반환하면 크론 작업은 멈춘다. 그러면 1시간 뒤의 다음 스케줄 시점까지 기다려야 한다. 그 사이에 사용자가 &amp;ldquo;왜 오늘 리포트가 없지?&amp;ldquo;라고 묻는 상황이 생긴다.&lt;/p&gt;
-&lt;p&gt;Hermes로 마이그레이션하면서 우리는 각 크론 작업마다 &lt;strong&gt;&amp;ldquo;로컬 캐시 계층&amp;quot;을 추가&lt;/strong&gt;했다. AI/ML 트렌드 스캐너의 경우, 매 실행마다 최신 아이템들을 &lt;code&gt;memory/ai-ml-trends-latest.json&lt;/code&gt;에 저장한다. Google News API가 막혀도, 어제의 캐시 아이템을 꺼내서 (중복이 아닌지 확인한 후) 리포트에 넣을 수 있다. 이미지나 동영상이 생성되면, 파일 경로를 로컬에 저장해두고, 다음 실행에서 Gemini Enterprise 응답이 느리거나 실패해도 이전 생성본을 쓸 수 있다.&lt;/p&gt;</description>
-    </item>
-  </channel>
-</rss>
+&lt;p&gt;Hermes로 마이그레이션하면서 우리는 각 크론 작업마다 &lt;strong&gt;&amp;ldquo;로컬 캐시 계층&amp;quot;을 추가&lt;/strong&gt;했다. AI/ML 트렌드 스캐너의 경우, 매 실행마다 최신 아이템들을 &lt;code&gt;memory/ai-ml-trends-latest.json&lt;/code&gt;에 저장한다. Google News API가 막혀도, 어제의 캐시 아이템을 꺼내서 (중복이 아닌지 확인한 후) 리포트에 넣을 수 있다. 이미지나 동영상이 생성되면, 파일 경로를 로컬에 저장해두고, 다음 실행에서 Gemini Enterprise 응답이 느리거나 실패해도 이전 생성본을 쓸 수 있다.&lt;/p&gt;</description></item></channel></rss>

@@ -1,20 +1,5 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
-  <channel>
-    <title>OpenSSL on Kyungwook&#39;s Devlog</title>
-    <link>https://kwbaek.github.io/tags/openssl/</link>
-    <description>Recent content in OpenSSL on Kyungwook&#39;s Devlog</description>
-    <generator>Hugo -- 0.155.3</generator>
-    <language>ko-kr</language>
-    <lastBuildDate>Fri, 20 Feb 2026 21:00:00 +0900</lastBuildDate>
-    <atom:link href="https://kwbaek.github.io/tags/openssl/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>2026년 2월 AI 업계 총정리: 모델 러시와 투자 열풍</title>
-      <link>https://kwbaek.github.io/posts/2026-02-20-ai-ml-february-rush/</link>
-      <pubDate>Fri, 20 Feb 2026 21:00:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/posts/2026-02-20-ai-ml-february-rush/</guid>
-      <description>&lt;p&gt;2026년 2월은 AI 업계 역사상 가장 뜨거운 달 중 하나로 기록될 것 같습니다. 거의 매일 새로운 모델이 출시되고, 수억에서 수백억 달러 규모의 투자가 쏟아지고 있습니다. 오늘 하루 동안만 해도 엄청난 소식들이 쏟아졌는데요, 주요 트렌드를 정리해봤습니다.&lt;/p&gt;
-&lt;h2 id=&#34;-claude-sonnet-46-전방위-업그레이드&#34;&gt;🚀 Claude Sonnet 4.6: 전방위 업그레이드&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>OpenSSL on Kyungwook's Devlog</title><link>https://kwbaek.github.io/tags/openssl/</link><description>Recent content in OpenSSL on Kyungwook's Devlog</description><generator>Hugo -- 0.155.3</generator><language>ko-kr</language><lastBuildDate>Fri, 20 Feb 2026 21:00:00 +0900</lastBuildDate><atom:link href="https://kwbaek.github.io/tags/openssl/index.xml" rel="self" type="application/rss+xml"/><item><title>2026년 2월 AI 업계 총정리: 모델 러시와 투자 열풍</title><link>https://kwbaek.github.io/posts/2026-02-20-ai-ml-february-rush/</link><pubDate>Fri, 20 Feb 2026 21:00:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-02-20-ai-ml-february-rush/</guid><description>&lt;p&gt;2026년 2월은 AI 업계 역사상 가장 뜨거운 달 중 하나로 기록될 것 같습니다. 거의 매일 새로운 모델이 출시되고, 수억에서 수백억 달러 규모의 투자가 쏟아지고 있습니다. 오늘 하루 동안만 해도 엄청난 소식들이 쏟아졌는데요, 주요 트렌드를 정리해봤습니다.&lt;/p&gt;
+&lt;h2 id="-claude-sonnet-46-전방위-업그레이드"&gt;🚀 Claude Sonnet 4.6: 전방위 업그레이드&lt;/h2&gt;
 &lt;p&gt;Anthropic이 &lt;strong&gt;Claude Sonnet 4.6&lt;/strong&gt;를 발표했습니다. 이번 업데이트는 단순한 버전업이 아니라 전방위적인 성능 향상을 이룬 풀 업그레이드입니다.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;주요 개선사항:&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
@@ -24,7 +9,4 @@
 &lt;li&gt;&lt;strong&gt;에이전트 계획(Agent Planning)&lt;/strong&gt; 능력 향상&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;지식 작업 효율성&lt;/strong&gt; 증대&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;특히 에이전트 기반 워크플로우와 복잡한 작업 처리에서 큰 개선을 보였다고 합니다. Free와 Pro 사용자 모두 기본 모델로 사용할 수 있으며, 현재 바로 사용 가능합니다.&lt;/p&gt;</description>
-    </item>
-  </channel>
-</rss>
+&lt;p&gt;특히 에이전트 기반 워크플로우와 복잡한 작업 처리에서 큰 개선을 보였다고 합니다. Free와 Pro 사용자 모두 기본 모델로 사용할 수 있으며, 현재 바로 사용 가능합니다.&lt;/p&gt;</description></item></channel></rss>
