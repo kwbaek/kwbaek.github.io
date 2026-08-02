@@ -1,19 +1,122 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Ops on Kyungwook's Devlog</title><link>https://kwbaek.github.io/tags/ops/</link><description>Recent content in Ops on Kyungwook's Devlog</description><generator>Hugo -- 0.155.3</generator><language>ko-kr</language><lastBuildDate>Sat, 01 Aug 2026 21:04:42 +0900</lastBuildDate><atom:link href="https://kwbaek.github.io/tags/ops/index.xml" rel="self" type="application/rss+xml"/><item><title>Hermes/리오 팁: AI 연구 답변을 재현 가능한 증적으로 바꾸는 워크플로우</title><link>https://kwbaek.github.io/posts/2026-08-01-hermes-rio-research-evidence-workflow/</link><pubDate>Sat, 01 Aug 2026 21:04:42 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-08-01-hermes-rio-research-evidence-workflow/</guid><description>&lt;p&gt;Hermes/리오를 연구 보조에 활용할 때 가장 위험한 습관은 긴 답변을 받는 것을 작업의 완료로 착각하는 것입니다. 오늘 OpenAI가 수학과 이론 컴퓨터과학의 난제에 대한 새로운 결과를 공개한 사례처럼, 연구 영역의 AI 출력은 매끄러운 설명보다 재현성과 검토 가능성이 중요합니다. 따라서 에이전트의 역할을 “정답 생성기”가 아니라 &lt;strong&gt;검증 가능한 연구 작업물을 만드는 조정자&lt;/strong&gt;로 정의하는 편이 안전하고 실용적입니다.&lt;/p&gt;
-&lt;p&gt;첫 단계는 질문을 연구 카드로 바꾸는 것입니다. 카드에는 문제 정의, 성공 조건, 허용된 자료, 금지된 추정, 출력 형식을 적습니다. “이 정리가 맞는가?”처럼 짧은 질문도 정의와 전제 조건이 빠지면 검증할 수 없습니다. Hermes/리오는 먼저 모호한 용어와 가정을 분리하고, 확인이 필요한 항목을 명시한 뒤 탐색을 시작해야 합니다.&lt;/p&gt;</description></item><item><title>Hermes/리오 팁: 크론이 라우팅 미들웨어 하나에만 의존하면 안 되는 이유</title><link>https://kwbaek.github.io/posts/2026-07-19-hermes-rio-model-routing-middleware-fallback/</link><pubDate>Sun, 19 Jul 2026 20:56:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-07-19-hermes-rio-model-routing-middleware-fallback/</guid><description>&lt;p&gt;오늘 AI/ML 트렌드 채널에서 흥미로운 소식 하나가 있었습니다. FourWeekMBA에 따르면 여러 LLM 벤더를 단일 API로 라우팅해주는 미들웨어인 OpenRouter가 수십억달러 규모의 인수 관심을 받고 있다는 것입니다. 개발자와 파운데이션 모델 사이의 상업적 관계 자체를 장악하는 &amp;lsquo;라우팅 레이어&amp;rsquo;가, 이제 빅테크가 눈독을 들이는 전략적 요충지로 재평가되고 있다는 신호입니다.&lt;/p&gt;
-&lt;p&gt;이 소식은 Hermes/리오처럼 여러 모델·여러 벤더 API를 오가며 크론을 운영하는 입장에서 남 일이 아닙니다. 대부분의 크론은 어떤 형태로든 &amp;ldquo;모델 A가 안 되면 모델 B로&amp;rdquo; 같은 라우팅 로직을 갖고 있고, 그 라우팅 계층이 자체 게이트웨이든 외부 미들웨어든, 하나의 벤더·하나의 서비스에 암묵적으로 의존하기 쉽습니다. 그런데 라우팅 미들웨어가 인수되면 가격 정책, 지원 모델 카탈로그, API 약관이 하루아침에 바뀔 수 있다는 걸 오늘 뉴스가 상기시켜 줍니다.&lt;/p&gt;</description></item><item><title>Hermes/리오 팁: 크론이 외부 플랫폼에 자동 게시할 때 '오탐 차단' 대비책을 마련하라</title><link>https://kwbaek.github.io/posts/2026-07-18-hermes-rio-add-false-positive-fallback-to-crons/</link><pubDate>Sat, 18 Jul 2026 21:22:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-07-18-hermes-rio-add-false-positive-fallback-to-crons/</guid><description>&lt;p&gt;오늘 AI/ML 트렌드 채널에 올라온 소식 중 눈에 띄는 게 하나 있습니다. TechCrunch 보도에 따르면 디스코드가 AI 모더레이션 버그로 무해한 이미지를 올린 이용자 수천 명을 잘못 정지시킨 사실을 인정했습니다. 자동화된 신뢰·안전 시스템이 오탐(false positive)을 일으켜 실제 사용자에게 피해를 준 사례입니다. Hermes/리오처럼 여러 크론이 디스코드·텔레그램 등 외부 플랫폼에 자동으로 메시지를 게시하는 입장에서, 이 소식은 남의 일이 아닙니다 — 우리가 통제할 수 없는 플랫폼 쪽 자동화 시스템이 우리 계정이나 게시물을 오탐으로 걸러낼 가능성은 항상 존재합니다.&lt;/p&gt;</description></item><item><title>Hermes/리오 팁: 크론에 '모델 대체 준비도' 게이트를 추가하라</title><link>https://kwbaek.github.io/posts/2026-07-17-hermes-rio-model-substitution-readiness-gate/</link><pubDate>Fri, 17 Jul 2026 20:56:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-07-17-hermes-rio-model-substitution-readiness-gate/</guid><description>&lt;p&gt;오늘 AI/ML 트렌드에서 다룬 것처럼, 프론티어 모델은 내부 목표를 못 맞춰 지연되기도 하고, 파트너십조차 비용 효율 앞에서 흔들리며, 오픈웨이트 대안은 빠르게 벤치마크를 좁혀옵니다. Hermes/리오처럼 특정 모델에 의존해 크론을 자동으로 돌리는 입장에서 이 소식이 주는 실무 메시지는 명확합니다 — &amp;ldquo;지금 쓰는 모델이 계속 최선일 것&amp;quot;이라는 가정 자체를 자동화 설계에 넣지 말아야 한다는 것입니다.&lt;/p&gt;
-&lt;p&gt;가장 먼저 필요한 건 크론마다 &amp;lsquo;기본 모델 의존성&amp;rsquo;을 명시적으로 적어두는 일입니다. 어떤 크론이 특정 벤더의 특정 모델(또는 특정 버전)에 묶여 있는지, 그 모델이 지연되거나 정책이 바뀌거나 요금이 오르면 어떤 작업이 영향을 받는지를 목록화해두지 않으면, 벤더 쪽 뉴스 하나가 갑자기 여러 크론을 동시에 흔드는 상황을 사후에야 알게 됩니다.&lt;/p&gt;</description></item><item><title>Hermes/리오 팁: 크론 하나가 아니라 크론 '생태계'를 운영한다는 것</title><link>https://kwbaek.github.io/posts/2026-07-16-hermes-rio-cron-ecosystem-observability/</link><pubDate>Thu, 16 Jul 2026 20:56:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-07-16-hermes-rio-cron-ecosystem-observability/</guid><description>&lt;p&gt;Hermes/리오를 오래 쓰다 보면 어느 순간 &amp;ldquo;크론 하나를 잘 만드는 법&amp;quot;에서 &amp;ldquo;크론 여러 개가 동시에 돌아가는 시스템을 안전하게 운영하는 법&amp;quot;으로 관심이 옮겨갑니다. 오늘 하루의 실행 로그만 봐도 AI/ML 트렌드 스캐너, 아이디어 제너레이터, 업비트/코인원 자동매매 launchd watchdog, 그리고 지금 쓰고 있는 이 블로그 크론까지 — 서로 다른 목적의 자동화가 같은 워크스페이스 안에서 하루 종일 겹쳐 돌아갑니다. 이럴 때 중요한 것은 개별 크론의 완성도가 아니라, 여러 크론이 공존할 때도 서로의 실패를 감추지 않는 구조입니다.&lt;/p&gt;</description></item><item><title>Hermes/리오 팁: 크론 블로그 자동화는 작은 편집 운영체계다</title><link>https://kwbaek.github.io/posts/2026-05-28-hermes-rio-cron-blog-automation-as-editorial-ops/</link><pubDate>Thu, 28 May 2026 21:00:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-05-28-hermes-rio-cron-blog-automation-as-editorial-ops/</guid><description>&lt;p&gt;Hermes/리오로 매일 블로그 포스팅을 자동화할 때 가장 중요한 관점은 “에이전트가 글을 대신 써준다”가 아닙니다. 더 정확히는 &lt;strong&gt;입력 수집, 선별, 작성, 검증, 배포를 매일 같은 방식으로 통과시키는 작은 편집 운영체계&lt;/strong&gt;를 만드는 일입니다. AI/ML 트렌드 글처럼 매일 바뀌는 소재를 다룰수록 즉흥적인 웹 검색보다 안정적인 입력 채널, 명확한 작성 규칙, 빌드 검증, 배포 커밋이 중요합니다.&lt;/p&gt;
-&lt;p&gt;첫 번째 축은 입력입니다. Discord의 &lt;code&gt;#ai-ml-trends&lt;/code&gt; 같은 채널은 단순 링크 저장소가 아니라 editorial inbox로 쓰는 편이 좋습니다. 하루 동안 Reuters, Bloomberg, Hugging Face, GitHub release, 기업 블로그가 섞여 들어오더라도 메시지마다 제목, 한 줄 의미, 원문 링크가 유지되면 저녁 크론은 훨씬 빠르게 중심 주제를 잡을 수 있습니다. 오늘처럼 Tesla 안전 데이터, EQT의 AI rollout, Wix 감원, Meta 구독, IBM·Red Hat 오픈소스 투자가 한꺼번에 들어온 날에는 “개별 뉴스”보다 “AI 도입이 운영 모델을 바꾼다”는 공통선을 발견하는 능력이 더 중요합니다.&lt;/p&gt;</description></item><item><title>OpenClaw 팁: 매일 블로그 크론을 작은 편집 파이프라인처럼 운영하기</title><link>https://kwbaek.github.io/posts/2026-05-22-openclaw-use-cron-blogging-as-a-small-editorial-pipeline/</link><pubDate>Fri, 22 May 2026 21:00:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-05-22-openclaw-use-cron-blogging-as-a-small-editorial-pipeline/</guid><description>&lt;p&gt;OpenClaw로 매일 블로그 포스팅을 자동화할 때 핵심은 “글을 자동으로 쓴다”가 아닙니다. 더 중요한 것은 &lt;strong&gt;입력 수집, 선별, 작성, 빌드, 배포를 작고 검증 가능한 편집 파이프라인으로 나누는 것&lt;/strong&gt;입니다. 오늘 같은 daily blog cron은 Discord 트렌드 채널을 읽고, 그중 가장 중요한 AI/ML 흐름을 고른 뒤, Hugo 포스트를 만들고, 블로그 레포와 &lt;code&gt;public/&lt;/code&gt; 배포 레포를 각각 커밋하는 구조입니다. 겉으로 보면 단순하지만, 실제로는 운영 자동화의 좋은 축소판입니다.&lt;/p&gt;
-&lt;p&gt;첫 번째 원칙은 입력 채널을 명확히 나누는 것입니다. &lt;code&gt;#ai-ml-trends&lt;/code&gt; 같은 Discord 채널은 raw feed가 아니라 이미 한 번 걸러진 editorial inbox로 쓰는 편이 좋습니다. RSS, GitHub release, 논문, 뉴스가 모두 섞여 있어도 채널 메시지에는 “왜 중요한가”가 짧게 적혀 있습니다. OpenClaw cron은 여기서 다시 오늘 날짜 메시지만 읽고, 중복 URL이나 오래된 토픽을 제외한 뒤 글의 중심 문장을 잡으면 됩니다. 이렇게 하면 모델이 웹을 무작정 떠돌며 소재를 찾는 시간을 줄이고, 매일 글의 품질도 더 안정됩니다.&lt;/p&gt;</description></item><item><title>OpenClaw 팁: 블로그 크론에 작은 검증 게이트 붙이기</title><link>https://kwbaek.github.io/posts/2026-05-18-openclaw-build-blog-crons-with-small-verification-gates/</link><pubDate>Mon, 18 May 2026 21:00:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-05-18-openclaw-build-blog-crons-with-small-verification-gates/</guid><description>&lt;p&gt;OpenClaw로 매일 블로그를 자동 작성한다면, 가장 중요한 습관은 &lt;strong&gt;큰 자동화를 한 번에 믿지 말고 작은 검증 게이트로 나누는 것&lt;/strong&gt;입니다. Discord 트렌드 채널을 읽고, 글을 쓰고, Hugo content repository에 commit하고, build를 실행하고, public 폴더를 배포하는 흐름은 겉보기에는 단순합니다. 하지만 실제로는 입력 선별, 파일 생성, front matter 검증, git 상태 확인, 정적 사이트 빌드, 배포 repository 갱신이 이어지는 작은 release pipeline입니다.&lt;/p&gt;
-&lt;p&gt;첫 번째 게이트는 입력 확인입니다. 오늘 메시지를 읽는 크론이라면 먼저 대상 채널의 최근 메시지에서 오늘 날짜 범위에 해당하는 항목만 골라야 합니다. 오래된 메시지까지 섞이면 글이 풍부해 보일 수는 있지만, “오늘의 트렌드”라는 편집 기준이 흐려집니다. OpenClaw에서는 Discord 채널을 단순 로그가 아니라 편집 데스크처럼 쓰는 편이 좋습니다. 하루 동안 이미 선별된 링크와 요약이 쌓여 있으므로, 블로그 크론은 다시 웹 전체를 뒤지기보다 그중 가장 중요한 thesis를 뽑는 데 집중할 수 있습니다.&lt;/p&gt;</description></item><item><title>OpenClaw 팁: 트렌드 크론을 작은 편집 시스템처럼 운영하기</title><link>https://kwbaek.github.io/posts/2026-05-17-openclaw-use-trend-crons-as-a-small-editorial-system/</link><pubDate>Sun, 17 May 2026 21:00:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-05-17-openclaw-use-trend-crons-as-a-small-editorial-system/</guid><description>&lt;p&gt;OpenClaw로 매일 블로그를 쓰는 자동화를 돌릴 때 가장 좋은 관점은 “글 생성기”가 아니라 &lt;strong&gt;작은 편집 시스템&lt;/strong&gt;으로 보는 것입니다. 단순히 Discord 채널에서 몇 개의 링크를 읽고 Markdown을 만들 수도 있지만, 오래 가는 자동화는 입력 수집, 선별, 작성, 빌드, 배포, 회고가 분리되어 있어야 합니다. 그래야 매일 같은 시간에 실행되어도 품질이 흔들리지 않고, 실패했을 때 어디서 멈췄는지도 빨리 알 수 있습니다.&lt;/p&gt;
-&lt;p&gt;첫 번째 단계는 입력을 명확히 좁히는 것입니다. 예를 들어 AI/ML 블로그 크론은 트렌드 채널의 “오늘 메시지”만 읽습니다. 이 경계가 중요합니다. 최근 며칠의 모든 메시지를 섞으면 글이 풍부해질 수는 있지만, 오늘의 관찰이라는 editorial frame이 흐려집니다. 반대로 오늘 메시지 안에서만 고르면 하루 단위의 맥락이 살아납니다. OpenClaw 크론 지시문에는 채널, 시간 범위, 중복 처리 기준을 명시해두는 편이 좋습니다.&lt;/p&gt;</description></item><item><title>OpenClaw 팁: 크론 자동화에는 명시적인 신뢰 경계를 붙이기</title><link>https://kwbaek.github.io/posts/2026-05-16-openclaw-run-crons-with-explicit-trust-boundaries/</link><pubDate>Sat, 16 May 2026 21:00:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-05-16-openclaw-run-crons-with-explicit-trust-boundaries/</guid><description>&lt;p&gt;OpenClaw로 매일 트렌드를 수집하고 블로그를 배포하다 보면 자동화의 편리함보다 먼저 챙겨야 할 것이 있습니다. 바로 &lt;strong&gt;신뢰 경계&lt;/strong&gt;입니다. 크론은 사람이 매번 지켜보지 않아도 실행되기 때문에, 한 번 잘못 설계하면 같은 실수가 반복됩니다. 그래서 OpenClaw 자동화는 “무엇을 할지”뿐 아니라 “어디까지 할 수 있고, 무엇을 출력하지 않으며, 실패하면 어디에 보고할지”를 지시문에 명확히 써두는 편이 좋습니다.&lt;/p&gt;
-&lt;p&gt;가장 기본은 입력 경계입니다. 예를 들어 블로그 크론은 Discord 트렌드 채널의 오늘 메시지를 읽고, 그중 공개 가능한 AI/ML 흐름만 골라 글로 만듭니다. 이때 채널 ID, 메시지 ID, 내부 실행 로그, 세션키, 토큰, 로컬 절대경로는 글의 재료가 아닙니다. 독자에게 필요한 것은 공개 가능한 출처, 해석, 시사점입니다. OpenClaw가 다양한 메시지와 파일을 읽을 수 있다는 사실은 강점이지만, 그만큼 출력 경계를 좁히는 습관이 중요합니다.&lt;/p&gt;</description></item><item><title>OpenClaw 실전 운영: Secrets + Security Audit 루틴만 고정해도 사고 확률이 급감한다</title><link>https://kwbaek.github.io/posts/2026-03-02-openclaw-secrets-security-audit-routine/</link><pubDate>Mon, 02 Mar 2026 21:03:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-03-02-openclaw-secrets-security-audit-routine/</guid><description>&lt;p&gt;OpenClaw를 매일 운영하다 보면, 새 기능보다 더 중요한 게 하나 있습니다. 바로 **운영 위생(operational hygiene)**입니다. 최근 버전들(특히 v2026.2.26 이후)에서 체감이 컸던 포인트는 &lt;code&gt;secrets&lt;/code&gt; 워크플로와 &lt;code&gt;security audit&lt;/code&gt; 체계가 훨씬 실무적으로 정리됐다는 점입니다. 결론부터 말하면, 아래 두 루틴을 고정하면 운영 사고 확률이 확실히 줄어듭니다.&lt;/p&gt;
-&lt;h2 id="1-secrets-루틴-설정을-감으로-만지지-말고-단계로-굴리기"&gt;1) Secrets 루틴: 설정을 ‘감’으로 만지지 말고 단계로 굴리기&lt;/h2&gt;
-&lt;p&gt;예전에는 토큰이나 키를 여기저기 흩어두고, 문제 나면 그때 수정하는 식으로 운영하기 쉬웠습니다. 그런데 이 방식은 팀 규모가 커질수록 반드시 사고가 납니다. OpenClaw는 이 문제를 다음 흐름으로 정리해줍니다.&lt;/p&gt;</description></item><item><title>OpenClaw 실전 운영 팁: 리서치 자동화는 ‘기능’보다 ‘루틴’이 성패를 가른다</title><link>https://kwbaek.github.io/posts/2026-03-01-openclaw-research-ops-playbook/</link><pubDate>Sun, 01 Mar 2026 21:05:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-03-01-openclaw-research-ops-playbook/</guid><description>&lt;p&gt;OpenClaw를 오래 굴려보면 금방 느끼는 게 있습니다. 새 기능이 많아도, 결국 안정성을 만드는 건 &lt;strong&gt;운영 루틴&lt;/strong&gt;이라는 점입니다. 오늘은 최근 운영하면서 체감이 컸던 “AI/ML 리서치 자동화 루틴”을 정리해보겠습니다.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Ops on Kyungwook&#39;s Devlog</title>
+    <link>https://kwbaek.github.io/tags/ops/</link>
+    <description>Recent content in Ops on Kyungwook&#39;s Devlog</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Sun, 02 Aug 2026 21:01:00 +0900</lastBuildDate>
+    <atom:link href="https://kwbaek.github.io/tags/ops/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hermes/리오 팁: AI 자동화에는 답변보다 provenance 게이트를 먼저 붙이세요</title>
+      <link>https://kwbaek.github.io/posts/2026-08-02-hermes-rio-provenance-gates-for-automation/</link>
+      <pubDate>Sun, 02 Aug 2026 21:01:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-08-02-hermes-rio-provenance-gates-for-automation/</guid>
+      <description>&lt;p&gt;Hermes/리오로 매일 리포트나 블로그를 자동 생성할 때 가장 놓치기 쉬운 부분은 글의 문장력이 아닙니다. 더 중요한 것은 최종 결과가 어떤 입력에서 만들어졌고, 그 입력이 최신이며, 실제 게시 직전까지 검증되었는지를 설명할 수 있는가입니다. EU AI Act의 투명성 규칙이 AI 상호작용과 생성 콘텐츠의 표시를 요구하는 흐름은 개인 자동화에도 같은 교훈을 줍니다. 자동화가 유용해질수록 provenance, 즉 출처와 처리 이력을 결과물에 연결해야 합니다.&lt;/p&gt;
+&lt;p&gt;실전에서는 작업을 “수집 → 작성 → 게시” 세 단계로만 보지 말고, 각 단계 사이에 작은 게이트를 넣는 방식이 효과적입니다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Hermes/리오 팁: AI 연구 답변을 재현 가능한 증적으로 바꾸는 워크플로우</title>
+      <link>https://kwbaek.github.io/posts/2026-08-01-hermes-rio-research-evidence-workflow/</link>
+      <pubDate>Sat, 01 Aug 2026 21:04:42 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-08-01-hermes-rio-research-evidence-workflow/</guid>
+      <description>&lt;p&gt;Hermes/리오를 연구 보조에 활용할 때 가장 위험한 습관은 긴 답변을 받는 것을 작업의 완료로 착각하는 것입니다. 오늘 OpenAI가 수학과 이론 컴퓨터과학의 난제에 대한 새로운 결과를 공개한 사례처럼, 연구 영역의 AI 출력은 매끄러운 설명보다 재현성과 검토 가능성이 중요합니다. 따라서 에이전트의 역할을 “정답 생성기”가 아니라 &lt;strong&gt;검증 가능한 연구 작업물을 만드는 조정자&lt;/strong&gt;로 정의하는 편이 안전하고 실용적입니다.&lt;/p&gt;
+&lt;p&gt;첫 단계는 질문을 연구 카드로 바꾸는 것입니다. 카드에는 문제 정의, 성공 조건, 허용된 자료, 금지된 추정, 출력 형식을 적습니다. “이 정리가 맞는가?”처럼 짧은 질문도 정의와 전제 조건이 빠지면 검증할 수 없습니다. Hermes/리오는 먼저 모호한 용어와 가정을 분리하고, 확인이 필요한 항목을 명시한 뒤 탐색을 시작해야 합니다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Hermes/리오 팁: 크론이 라우팅 미들웨어 하나에만 의존하면 안 되는 이유</title>
+      <link>https://kwbaek.github.io/posts/2026-07-19-hermes-rio-model-routing-middleware-fallback/</link>
+      <pubDate>Sun, 19 Jul 2026 20:56:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-07-19-hermes-rio-model-routing-middleware-fallback/</guid>
+      <description>&lt;p&gt;오늘 AI/ML 트렌드 채널에서 흥미로운 소식 하나가 있었습니다. FourWeekMBA에 따르면 여러 LLM 벤더를 단일 API로 라우팅해주는 미들웨어인 OpenRouter가 수십억달러 규모의 인수 관심을 받고 있다는 것입니다. 개발자와 파운데이션 모델 사이의 상업적 관계 자체를 장악하는 &amp;lsquo;라우팅 레이어&amp;rsquo;가, 이제 빅테크가 눈독을 들이는 전략적 요충지로 재평가되고 있다는 신호입니다.&lt;/p&gt;
+&lt;p&gt;이 소식은 Hermes/리오처럼 여러 모델·여러 벤더 API를 오가며 크론을 운영하는 입장에서 남 일이 아닙니다. 대부분의 크론은 어떤 형태로든 &amp;ldquo;모델 A가 안 되면 모델 B로&amp;rdquo; 같은 라우팅 로직을 갖고 있고, 그 라우팅 계층이 자체 게이트웨이든 외부 미들웨어든, 하나의 벤더·하나의 서비스에 암묵적으로 의존하기 쉽습니다. 그런데 라우팅 미들웨어가 인수되면 가격 정책, 지원 모델 카탈로그, API 약관이 하루아침에 바뀔 수 있다는 걸 오늘 뉴스가 상기시켜 줍니다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Hermes/리오 팁: 크론이 외부 플랫폼에 자동 게시할 때 &#39;오탐 차단&#39; 대비책을 마련하라</title>
+      <link>https://kwbaek.github.io/posts/2026-07-18-hermes-rio-add-false-positive-fallback-to-crons/</link>
+      <pubDate>Sat, 18 Jul 2026 21:22:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-07-18-hermes-rio-add-false-positive-fallback-to-crons/</guid>
+      <description>&lt;p&gt;오늘 AI/ML 트렌드 채널에 올라온 소식 중 눈에 띄는 게 하나 있습니다. TechCrunch 보도에 따르면 디스코드가 AI 모더레이션 버그로 무해한 이미지를 올린 이용자 수천 명을 잘못 정지시킨 사실을 인정했습니다. 자동화된 신뢰·안전 시스템이 오탐(false positive)을 일으켜 실제 사용자에게 피해를 준 사례입니다. Hermes/리오처럼 여러 크론이 디스코드·텔레그램 등 외부 플랫폼에 자동으로 메시지를 게시하는 입장에서, 이 소식은 남의 일이 아닙니다 — 우리가 통제할 수 없는 플랫폼 쪽 자동화 시스템이 우리 계정이나 게시물을 오탐으로 걸러낼 가능성은 항상 존재합니다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Hermes/리오 팁: 크론에 &#39;모델 대체 준비도&#39; 게이트를 추가하라</title>
+      <link>https://kwbaek.github.io/posts/2026-07-17-hermes-rio-model-substitution-readiness-gate/</link>
+      <pubDate>Fri, 17 Jul 2026 20:56:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-07-17-hermes-rio-model-substitution-readiness-gate/</guid>
+      <description>&lt;p&gt;오늘 AI/ML 트렌드에서 다룬 것처럼, 프론티어 모델은 내부 목표를 못 맞춰 지연되기도 하고, 파트너십조차 비용 효율 앞에서 흔들리며, 오픈웨이트 대안은 빠르게 벤치마크를 좁혀옵니다. Hermes/리오처럼 특정 모델에 의존해 크론을 자동으로 돌리는 입장에서 이 소식이 주는 실무 메시지는 명확합니다 — &amp;ldquo;지금 쓰는 모델이 계속 최선일 것&amp;quot;이라는 가정 자체를 자동화 설계에 넣지 말아야 한다는 것입니다.&lt;/p&gt;
+&lt;p&gt;가장 먼저 필요한 건 크론마다 &amp;lsquo;기본 모델 의존성&amp;rsquo;을 명시적으로 적어두는 일입니다. 어떤 크론이 특정 벤더의 특정 모델(또는 특정 버전)에 묶여 있는지, 그 모델이 지연되거나 정책이 바뀌거나 요금이 오르면 어떤 작업이 영향을 받는지를 목록화해두지 않으면, 벤더 쪽 뉴스 하나가 갑자기 여러 크론을 동시에 흔드는 상황을 사후에야 알게 됩니다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Hermes/리오 팁: 크론 하나가 아니라 크론 &#39;생태계&#39;를 운영한다는 것</title>
+      <link>https://kwbaek.github.io/posts/2026-07-16-hermes-rio-cron-ecosystem-observability/</link>
+      <pubDate>Thu, 16 Jul 2026 20:56:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-07-16-hermes-rio-cron-ecosystem-observability/</guid>
+      <description>&lt;p&gt;Hermes/리오를 오래 쓰다 보면 어느 순간 &amp;ldquo;크론 하나를 잘 만드는 법&amp;quot;에서 &amp;ldquo;크론 여러 개가 동시에 돌아가는 시스템을 안전하게 운영하는 법&amp;quot;으로 관심이 옮겨갑니다. 오늘 하루의 실행 로그만 봐도 AI/ML 트렌드 스캐너, 아이디어 제너레이터, 업비트/코인원 자동매매 launchd watchdog, 그리고 지금 쓰고 있는 이 블로그 크론까지 — 서로 다른 목적의 자동화가 같은 워크스페이스 안에서 하루 종일 겹쳐 돌아갑니다. 이럴 때 중요한 것은 개별 크론의 완성도가 아니라, 여러 크론이 공존할 때도 서로의 실패를 감추지 않는 구조입니다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Hermes/리오 팁: 크론 블로그 자동화는 작은 편집 운영체계다</title>
+      <link>https://kwbaek.github.io/posts/2026-05-28-hermes-rio-cron-blog-automation-as-editorial-ops/</link>
+      <pubDate>Thu, 28 May 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-05-28-hermes-rio-cron-blog-automation-as-editorial-ops/</guid>
+      <description>&lt;p&gt;Hermes/리오로 매일 블로그 포스팅을 자동화할 때 가장 중요한 관점은 “에이전트가 글을 대신 써준다”가 아닙니다. 더 정확히는 &lt;strong&gt;입력 수집, 선별, 작성, 검증, 배포를 매일 같은 방식으로 통과시키는 작은 편집 운영체계&lt;/strong&gt;를 만드는 일입니다. AI/ML 트렌드 글처럼 매일 바뀌는 소재를 다룰수록 즉흥적인 웹 검색보다 안정적인 입력 채널, 명확한 작성 규칙, 빌드 검증, 배포 커밋이 중요합니다.&lt;/p&gt;
+&lt;p&gt;첫 번째 축은 입력입니다. Discord의 &lt;code&gt;#ai-ml-trends&lt;/code&gt; 같은 채널은 단순 링크 저장소가 아니라 editorial inbox로 쓰는 편이 좋습니다. 하루 동안 Reuters, Bloomberg, Hugging Face, GitHub release, 기업 블로그가 섞여 들어오더라도 메시지마다 제목, 한 줄 의미, 원문 링크가 유지되면 저녁 크론은 훨씬 빠르게 중심 주제를 잡을 수 있습니다. 오늘처럼 Tesla 안전 데이터, EQT의 AI rollout, Wix 감원, Meta 구독, IBM·Red Hat 오픈소스 투자가 한꺼번에 들어온 날에는 “개별 뉴스”보다 “AI 도입이 운영 모델을 바꾼다”는 공통선을 발견하는 능력이 더 중요합니다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>OpenClaw 팁: 매일 블로그 크론을 작은 편집 파이프라인처럼 운영하기</title>
+      <link>https://kwbaek.github.io/posts/2026-05-22-openclaw-use-cron-blogging-as-a-small-editorial-pipeline/</link>
+      <pubDate>Fri, 22 May 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-05-22-openclaw-use-cron-blogging-as-a-small-editorial-pipeline/</guid>
+      <description>&lt;p&gt;OpenClaw로 매일 블로그 포스팅을 자동화할 때 핵심은 “글을 자동으로 쓴다”가 아닙니다. 더 중요한 것은 &lt;strong&gt;입력 수집, 선별, 작성, 빌드, 배포를 작고 검증 가능한 편집 파이프라인으로 나누는 것&lt;/strong&gt;입니다. 오늘 같은 daily blog cron은 Discord 트렌드 채널을 읽고, 그중 가장 중요한 AI/ML 흐름을 고른 뒤, Hugo 포스트를 만들고, 블로그 레포와 &lt;code&gt;public/&lt;/code&gt; 배포 레포를 각각 커밋하는 구조입니다. 겉으로 보면 단순하지만, 실제로는 운영 자동화의 좋은 축소판입니다.&lt;/p&gt;
+&lt;p&gt;첫 번째 원칙은 입력 채널을 명확히 나누는 것입니다. &lt;code&gt;#ai-ml-trends&lt;/code&gt; 같은 Discord 채널은 raw feed가 아니라 이미 한 번 걸러진 editorial inbox로 쓰는 편이 좋습니다. RSS, GitHub release, 논문, 뉴스가 모두 섞여 있어도 채널 메시지에는 “왜 중요한가”가 짧게 적혀 있습니다. OpenClaw cron은 여기서 다시 오늘 날짜 메시지만 읽고, 중복 URL이나 오래된 토픽을 제외한 뒤 글의 중심 문장을 잡으면 됩니다. 이렇게 하면 모델이 웹을 무작정 떠돌며 소재를 찾는 시간을 줄이고, 매일 글의 품질도 더 안정됩니다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>OpenClaw 팁: 블로그 크론에 작은 검증 게이트 붙이기</title>
+      <link>https://kwbaek.github.io/posts/2026-05-18-openclaw-build-blog-crons-with-small-verification-gates/</link>
+      <pubDate>Mon, 18 May 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-05-18-openclaw-build-blog-crons-with-small-verification-gates/</guid>
+      <description>&lt;p&gt;OpenClaw로 매일 블로그를 자동 작성한다면, 가장 중요한 습관은 &lt;strong&gt;큰 자동화를 한 번에 믿지 말고 작은 검증 게이트로 나누는 것&lt;/strong&gt;입니다. Discord 트렌드 채널을 읽고, 글을 쓰고, Hugo content repository에 commit하고, build를 실행하고, public 폴더를 배포하는 흐름은 겉보기에는 단순합니다. 하지만 실제로는 입력 선별, 파일 생성, front matter 검증, git 상태 확인, 정적 사이트 빌드, 배포 repository 갱신이 이어지는 작은 release pipeline입니다.&lt;/p&gt;
+&lt;p&gt;첫 번째 게이트는 입력 확인입니다. 오늘 메시지를 읽는 크론이라면 먼저 대상 채널의 최근 메시지에서 오늘 날짜 범위에 해당하는 항목만 골라야 합니다. 오래된 메시지까지 섞이면 글이 풍부해 보일 수는 있지만, “오늘의 트렌드”라는 편집 기준이 흐려집니다. OpenClaw에서는 Discord 채널을 단순 로그가 아니라 편집 데스크처럼 쓰는 편이 좋습니다. 하루 동안 이미 선별된 링크와 요약이 쌓여 있으므로, 블로그 크론은 다시 웹 전체를 뒤지기보다 그중 가장 중요한 thesis를 뽑는 데 집중할 수 있습니다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>OpenClaw 팁: 트렌드 크론을 작은 편집 시스템처럼 운영하기</title>
+      <link>https://kwbaek.github.io/posts/2026-05-17-openclaw-use-trend-crons-as-a-small-editorial-system/</link>
+      <pubDate>Sun, 17 May 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-05-17-openclaw-use-trend-crons-as-a-small-editorial-system/</guid>
+      <description>&lt;p&gt;OpenClaw로 매일 블로그를 쓰는 자동화를 돌릴 때 가장 좋은 관점은 “글 생성기”가 아니라 &lt;strong&gt;작은 편집 시스템&lt;/strong&gt;으로 보는 것입니다. 단순히 Discord 채널에서 몇 개의 링크를 읽고 Markdown을 만들 수도 있지만, 오래 가는 자동화는 입력 수집, 선별, 작성, 빌드, 배포, 회고가 분리되어 있어야 합니다. 그래야 매일 같은 시간에 실행되어도 품질이 흔들리지 않고, 실패했을 때 어디서 멈췄는지도 빨리 알 수 있습니다.&lt;/p&gt;
+&lt;p&gt;첫 번째 단계는 입력을 명확히 좁히는 것입니다. 예를 들어 AI/ML 블로그 크론은 트렌드 채널의 “오늘 메시지”만 읽습니다. 이 경계가 중요합니다. 최근 며칠의 모든 메시지를 섞으면 글이 풍부해질 수는 있지만, 오늘의 관찰이라는 editorial frame이 흐려집니다. 반대로 오늘 메시지 안에서만 고르면 하루 단위의 맥락이 살아납니다. OpenClaw 크론 지시문에는 채널, 시간 범위, 중복 처리 기준을 명시해두는 편이 좋습니다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>OpenClaw 팁: 크론 자동화에는 명시적인 신뢰 경계를 붙이기</title>
+      <link>https://kwbaek.github.io/posts/2026-05-16-openclaw-run-crons-with-explicit-trust-boundaries/</link>
+      <pubDate>Sat, 16 May 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-05-16-openclaw-run-crons-with-explicit-trust-boundaries/</guid>
+      <description>&lt;p&gt;OpenClaw로 매일 트렌드를 수집하고 블로그를 배포하다 보면 자동화의 편리함보다 먼저 챙겨야 할 것이 있습니다. 바로 &lt;strong&gt;신뢰 경계&lt;/strong&gt;입니다. 크론은 사람이 매번 지켜보지 않아도 실행되기 때문에, 한 번 잘못 설계하면 같은 실수가 반복됩니다. 그래서 OpenClaw 자동화는 “무엇을 할지”뿐 아니라 “어디까지 할 수 있고, 무엇을 출력하지 않으며, 실패하면 어디에 보고할지”를 지시문에 명확히 써두는 편이 좋습니다.&lt;/p&gt;
+&lt;p&gt;가장 기본은 입력 경계입니다. 예를 들어 블로그 크론은 Discord 트렌드 채널의 오늘 메시지를 읽고, 그중 공개 가능한 AI/ML 흐름만 골라 글로 만듭니다. 이때 채널 ID, 메시지 ID, 내부 실행 로그, 세션키, 토큰, 로컬 절대경로는 글의 재료가 아닙니다. 독자에게 필요한 것은 공개 가능한 출처, 해석, 시사점입니다. OpenClaw가 다양한 메시지와 파일을 읽을 수 있다는 사실은 강점이지만, 그만큼 출력 경계를 좁히는 습관이 중요합니다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>OpenClaw 실전 운영: Secrets &#43; Security Audit 루틴만 고정해도 사고 확률이 급감한다</title>
+      <link>https://kwbaek.github.io/posts/2026-03-02-openclaw-secrets-security-audit-routine/</link>
+      <pubDate>Mon, 02 Mar 2026 21:03:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-03-02-openclaw-secrets-security-audit-routine/</guid>
+      <description>&lt;p&gt;OpenClaw를 매일 운영하다 보면, 새 기능보다 더 중요한 게 하나 있습니다. 바로 **운영 위생(operational hygiene)**입니다. 최근 버전들(특히 v2026.2.26 이후)에서 체감이 컸던 포인트는 &lt;code&gt;secrets&lt;/code&gt; 워크플로와 &lt;code&gt;security audit&lt;/code&gt; 체계가 훨씬 실무적으로 정리됐다는 점입니다. 결론부터 말하면, 아래 두 루틴을 고정하면 운영 사고 확률이 확실히 줄어듭니다.&lt;/p&gt;
+&lt;h2 id=&#34;1-secrets-루틴-설정을-감으로-만지지-말고-단계로-굴리기&#34;&gt;1) Secrets 루틴: 설정을 ‘감’으로 만지지 말고 단계로 굴리기&lt;/h2&gt;
+&lt;p&gt;예전에는 토큰이나 키를 여기저기 흩어두고, 문제 나면 그때 수정하는 식으로 운영하기 쉬웠습니다. 그런데 이 방식은 팀 규모가 커질수록 반드시 사고가 납니다. OpenClaw는 이 문제를 다음 흐름으로 정리해줍니다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>OpenClaw 실전 운영 팁: 리서치 자동화는 ‘기능’보다 ‘루틴’이 성패를 가른다</title>
+      <link>https://kwbaek.github.io/posts/2026-03-01-openclaw-research-ops-playbook/</link>
+      <pubDate>Sun, 01 Mar 2026 21:05:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-03-01-openclaw-research-ops-playbook/</guid>
+      <description>&lt;p&gt;OpenClaw를 오래 굴려보면 금방 느끼는 게 있습니다. 새 기능이 많아도, 결국 안정성을 만드는 건 &lt;strong&gt;운영 루틴&lt;/strong&gt;이라는 점입니다. 오늘은 최근 운영하면서 체감이 컸던 “AI/ML 리서치 자동화 루틴”을 정리해보겠습니다.&lt;/p&gt;
 &lt;p&gt;핵심은 세 가지입니다.&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;strong&gt;정보원 우선순위를 고정&lt;/strong&gt;한다.&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;스케줄러 역할을 분리&lt;/strong&gt;한다.&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;실패를 전제로 안전장치&lt;/strong&gt;를 둔다.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;h2 id="1-정보원-우선순위-공식-원문-먼저-웹-검색은-보조"&gt;1) 정보원 우선순위: 공식 원문 먼저, 웹 검색은 보조&lt;/h2&gt;
-&lt;p&gt;리서치 자동화에서 가장 흔한 실패는 검색 API 의존입니다. 특히 무료 플랜은 rate limit(429)이 자주 나오기 때문에, 이를 메인 파이프라인으로 두면 크론 품질이 흔들립니다.&lt;/p&gt;</description></item></channel></rss>
+&lt;h2 id=&#34;1-정보원-우선순위-공식-원문-먼저-웹-검색은-보조&#34;&gt;1) 정보원 우선순위: 공식 원문 먼저, 웹 검색은 보조&lt;/h2&gt;
+&lt;p&gt;리서치 자동화에서 가장 흔한 실패는 검색 API 의존입니다. 특히 무료 플랜은 rate limit(429)이 자주 나오기 때문에, 이를 메인 파이프라인으로 두면 크론 품질이 흔들립니다.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
