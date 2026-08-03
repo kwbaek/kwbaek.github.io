@@ -1,20 +1,2 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
-  <channel>
-    <title>Transparency on Kyungwook&#39;s Devlog</title>
-    <link>https://kwbaek.github.io/tags/transparency/</link>
-    <description>Recent content in Transparency on Kyungwook&#39;s Devlog</description>
-    <generator>Hugo -- 0.155.3</generator>
-    <language>ko-kr</language>
-    <lastBuildDate>Sun, 02 Aug 2026 21:01:00 +0900</lastBuildDate>
-    <atom:link href="https://kwbaek.github.io/tags/transparency/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>AI/ML 트렌드: AI 투명성이 모델 기능이 아니라 런타임 계약이 되다</title>
-      <link>https://kwbaek.github.io/posts/2026-08-02-ai-ml-trends-ai-transparency-becomes-runtime-contract/</link>
-      <pubDate>Sun, 02 Aug 2026 21:01:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/posts/2026-08-02-ai-ml-trends-ai-transparency-becomes-runtime-contract/</guid>
-      <description>&lt;p&gt;2026년 8월 2일부터 EU AI Act의 투명성 관련 규칙이 적용되면서, AI 서비스의 경쟁 기준이 한 단계 바뀌었습니다. 핵심은 단순히 모델이 좋은 답을 내는지가 아닙니다. 사용자가 챗봇이나 AI 에이전트와 상호작용하고 있다는 사실을 알 수 있어야 하고, 딥페이크와 일부 AI 생성 콘텐츠는 적절한 방식으로 표시되어야 합니다. 투명성은 정책 문서의 문구가 아니라 제품의 실행 경로에 들어가야 하는 런타임 계약이 된 셈입니다.&lt;/p&gt;
-&lt;p&gt;이 변화가 중요한 이유는 에이전트가 기존 챗봇보다 훨씬 많은 상태와 도구를 다루기 때문입니다. 에이전트가 외부 시스템을 조회하고, 백그라운드에서 작업을 수행하고, 다른 애플리케이션에 결과를 전달한다면 사용자는 언제 AI와 상호작용하는지뿐 아니라 어떤 결과가 생성되었고 어디에서 왔는지도 이해해야 합니다. 따라서 고지 문구 하나를 화면에 추가하는 방식만으로는 부족합니다. 세션 로그, 콘텐츠 provenance, 생성·수정 시각, 사람의 승인 여부가 서로 연결되어야 합니다.&lt;/p&gt;</description>
-    </item>
-  </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Transparency on Kyungwook's Devlog</title><link>https://kwbaek.github.io/tags/transparency/</link><description>Recent content in Transparency on Kyungwook's Devlog</description><generator>Hugo -- 0.155.3</generator><language>ko-kr</language><lastBuildDate>Sun, 02 Aug 2026 21:01:00 +0900</lastBuildDate><atom:link href="https://kwbaek.github.io/tags/transparency/index.xml" rel="self" type="application/rss+xml"/><item><title>AI/ML 트렌드: AI 투명성이 모델 기능이 아니라 런타임 계약이 되다</title><link>https://kwbaek.github.io/posts/2026-08-02-ai-ml-trends-ai-transparency-becomes-runtime-contract/</link><pubDate>Sun, 02 Aug 2026 21:01:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-08-02-ai-ml-trends-ai-transparency-becomes-runtime-contract/</guid><description>&lt;p&gt;2026년 8월 2일부터 EU AI Act의 투명성 관련 규칙이 적용되면서, AI 서비스의 경쟁 기준이 한 단계 바뀌었습니다. 핵심은 단순히 모델이 좋은 답을 내는지가 아닙니다. 사용자가 챗봇이나 AI 에이전트와 상호작용하고 있다는 사실을 알 수 있어야 하고, 딥페이크와 일부 AI 생성 콘텐츠는 적절한 방식으로 표시되어야 합니다. 투명성은 정책 문서의 문구가 아니라 제품의 실행 경로에 들어가야 하는 런타임 계약이 된 셈입니다.&lt;/p&gt;
+&lt;p&gt;이 변화가 중요한 이유는 에이전트가 기존 챗봇보다 훨씬 많은 상태와 도구를 다루기 때문입니다. 에이전트가 외부 시스템을 조회하고, 백그라운드에서 작업을 수행하고, 다른 애플리케이션에 결과를 전달한다면 사용자는 언제 AI와 상호작용하는지뿐 아니라 어떤 결과가 생성되었고 어디에서 왔는지도 이해해야 합니다. 따라서 고지 문구 하나를 화면에 추가하는 방식만으로는 부족합니다. 세션 로그, 콘텐츠 provenance, 생성·수정 시각, 사람의 승인 여부가 서로 연결되어야 합니다.&lt;/p&gt;</description></item></channel></rss>
