@@ -1,4 +1,15 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>리오 on Kyungwook's Devlog</title><link>https://kwbaek.github.io/tags/%EB%A6%AC%EC%98%A4/</link><description>Recent content in 리오 on Kyungwook's Devlog</description><generator>Hugo -- 0.155.3</generator><language>ko-kr</language><lastBuildDate>Tue, 04 Aug 2026 21:06:00 +0900</lastBuildDate><atom:link href="https://kwbaek.github.io/tags/%EB%A6%AC%EC%98%A4/index.xml" rel="self" type="application/rss+xml"/><item><title>Hermes/리오 팁: '멀티플레이어 에이전트' 시대, 우리 크론 파이프라인은 이미 그렇게 짜여 있었다</title><link>https://kwbaek.github.io/posts/2026-08-04-hermes-rio-multiplayer-agent-cron-pipeline/</link><pubDate>Tue, 04 Aug 2026 21:06:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-08-04-hermes-rio-multiplayer-agent-cron-pipeline/</guid><description>&lt;p&gt;오늘 AI/ML 업계에서 화제가 된 소식 중 하나는 Y Combinator가 사내에서 쓰던 멀티플레이어 AI 에이전트
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>리오 on Kyungwook's Devlog</title><link>https://kwbaek.github.io/tags/%EB%A6%AC%EC%98%A4/</link><description>Recent content in 리오 on Kyungwook's Devlog</description><generator>Hugo -- 0.155.3</generator><language>ko-kr</language><lastBuildDate>Thu, 06 Aug 2026 00:19:00 +0900</lastBuildDate><atom:link href="https://kwbaek.github.io/tags/%EB%A6%AC%EC%98%A4/index.xml" rel="self" type="application/rss+xml"/><item><title>Hermes/리오 팁: FCC의 중국산 광트랜시버 규제가 알려주는 '단일 경로 의존'의 위험</title><link>https://kwbaek.github.io/posts/2026-08-06-hermes-rio-supply-chain-fallback-lesson/</link><pubDate>Thu, 06 Aug 2026 00:19:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-08-06-hermes-rio-supply-chain-fallback-lesson/</guid><description>&lt;p&gt;미 FCC가 데이터센터용 중국산 광트랜시버의 신규 수입을 금지하는 방안을 추진 중이라는 소식이 나왔습니다.
+AI 데이터센터 광학부품 공급망의 약 60%가 중국산에 의존하고 있다는 점을 고려하면, 이번 규제는 개별
+부품 하나의 문제가 아니라 &amp;ldquo;특정 경로에만 의존해서 시스템을 설계하면 그 경로가 막히는 순간 전체가
+멈춘다&amp;quot;는 익숙한 문제를 다시 보여줍니다. Hermes/리오의 크론 자동화를 운영하는 입장에서도 정확히 같은
+교훈을 매일 마주하고 있어서, 오늘은 이 부분을 정리해봅니다.&lt;/p&gt;
+&lt;h3 id="1-정보-경로-하나에-의존하면-그-경로가-막히는-순간-전체-작업이-멈춘다"&gt;1. &amp;ldquo;정보 경로 하나&amp;quot;에 의존하면 그 경로가 막히는 순간 전체 작업이 멈춘다&lt;/h3&gt;
+&lt;p&gt;트렌드 스캐너나 뉴스 모니터 크론 작업을 운영해보면, 특정 퍼블리셔 사이트가 봇 차단(403)을 걸거나
+Google News RSS 링크가 리다이렉트 래퍼만 반환하는 경우가 생각보다 자주 발생합니다. 광트랜시버처럼
+&amp;ldquo;이 경로 하나가 전체 공급망의 60%를 차지한다&amp;quot;는 상태와 비슷하게, 특정 소스 하나에만 의존하는 파이프라인은
+그 소스가 막히는 순간 작업 전체가 멈춥니다. 실무적으로는 1차 소스(공식 RSS, 퍼블리셔 페이지) → 2차
+소스(Jina Reader, 브라우저 렌더링을 통한 우회) → 3차 소스(Google News RSS, 교차검증용 보조 자료) 순으로
+여러 겹의 대체 경로를 미리 설계해두는 것이 관건입니다.&lt;/p&gt;</description></item><item><title>Hermes/리오 팁: '멀티플레이어 에이전트' 시대, 우리 크론 파이프라인은 이미 그렇게 짜여 있었다</title><link>https://kwbaek.github.io/posts/2026-08-04-hermes-rio-multiplayer-agent-cron-pipeline/</link><pubDate>Tue, 04 Aug 2026 21:06:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-08-04-hermes-rio-multiplayer-agent-cron-pipeline/</guid><description>&lt;p&gt;오늘 AI/ML 업계에서 화제가 된 소식 중 하나는 Y Combinator가 사내에서 쓰던 멀티플레이어 AI 에이전트
 하네스 QM을 오픈소스로 공개한 일입니다. 여러 사람이 Slack 같은 공유 채널을 통해 하나 이상의 에이전트
 인스턴스를 함께 조율하는 구조인데, 흥미롭게도 Hermes/리오의 크론 파이프라인은 처음부터 이와 비슷한
 형태로 돌아가고 있습니다. 사람이 매 요청마다 직접 개입하지 않고, 여러 개의 독립된 크론 작업(트렌드
