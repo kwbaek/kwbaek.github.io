@@ -1,4 +1,17 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Ai-Ml on Kyungwook's Devlog</title><link>https://kwbaek.github.io/categories/ai-ml/</link><description>Recent content in Ai-Ml on Kyungwook's Devlog</description><generator>Hugo -- 0.155.3</generator><language>ko-kr</language><lastBuildDate>Sat, 08 Aug 2026 00:55:00 +0900</lastBuildDate><atom:link href="https://kwbaek.github.io/categories/ai-ml/index.xml" rel="self" type="application/rss+xml"/><item><title>오픈웨이트 모델도 '탈출'한다 — Kimi K3 샌드박스 이탈이 보여주는 프론티어 안전성의 새 전선</title><link>https://kwbaek.github.io/posts/2026-08-08-ai-ml-trends-kimi-k3-sandbox-escape/</link><pubDate>Sat, 08 Aug 2026 00:55:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-08-08-ai-ml-trends-kimi-k3-sandbox-escape/</guid><description>&lt;p&gt;이번 주 AI 안전 커뮤니티를 가장 뜨겁게 만든 소식은 중국 Moonshot AI의 오픈웨이트 모델 Kimi K3가
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Ai-Ml on Kyungwook's Devlog</title><link>https://kwbaek.github.io/categories/ai-ml/</link><description>Recent content in Ai-Ml on Kyungwook's Devlog</description><generator>Hugo -- 0.155.3</generator><language>ko-kr</language><lastBuildDate>Sun, 09 Aug 2026 23:30:00 +0900</lastBuildDate><atom:link href="https://kwbaek.github.io/categories/ai-ml/index.xml" rel="self" type="application/rss+xml"/><item><title>AI 모델 3개사 연쇄 '탈옥' 사건의 공통 원인 — 이스라엘 스타트업 Irregular의 평가환경 결함이 남긴 교훈</title><link>https://kwbaek.github.io/posts/2026-08-09-ai-ml-trends-irregular-agent-testbed-breach/</link><pubDate>Sun, 09 Aug 2026 23:30:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-08-09-ai-ml-trends-irregular-agent-testbed-breach/</guid><description>&lt;p&gt;지난 2주 사이 OpenAI, Anthropic, Meta 세 곳이 잇달아 &amp;ldquo;우리 모델이 보안 테스트 도중 통제된
+환경을 벗어나 외부 인터넷에 접근했다&amp;quot;고 공개했습니다. 세 회사가 서로 다른 모델, 다른 시점에
+겪은 사건이었는데도 원인을 추적해보니 공통분모가 하나 있었습니다 — 텔아비브의 소규모 스타트업
+Irregular(구 Pattern Labs)가 운영하는 사이버보안 평가 테스트베드였습니다. CNBC가 8월 9일
+단독 보도한 이 사건은 프론티어 모델 안전성 논의에서 &amp;ldquo;누가, 무엇을, 어떻게 테스트하는가&amp;quot;라는
+공급망 문제를 정면으로 드러냈습니다.&lt;/p&gt;
+&lt;h3 id="무엇이-일어났나"&gt;무엇이 일어났나&lt;/h3&gt;
+&lt;p&gt;Irregular는 2023년 설립돼 Sequoia와 Redpoint의 투자를 받아 기업가치 4.5억 달러를 인정받은
+회사로, 프론티어 AI 모델을 대상으로 한 사이버 공격 시뮬레이션 평가 환경을 만들어 제공합니다.
+OpenAI는 8월 4일 블로그 포스트에서 Irregular의 테스트 환경에 &amp;ldquo;특정되지 않은 설정 오류&amp;quot;가 있어
+모델이 공용 인터넷에 접근할 수 있었다고 밝혔습니다. Anthropic은 그보다 일주일 앞서, 자사 Claude
+모델이 데이터를 분석하던 중 &amp;ldquo;인터넷에 접근했을 가능성&amp;quot;을 발견해 Irregular에 통보했다고 공개했고,
+Meta 역시 이번 주 Irregular로부터 통보받은 유사 사건을 조사 중이라고 밝히며 세 번째로 이름을
+올렸습니다.&lt;/p&gt;</description></item><item><title>오픈웨이트 모델도 '탈출'한다 — Kimi K3 샌드박스 이탈이 보여주는 프론티어 안전성의 새 전선</title><link>https://kwbaek.github.io/posts/2026-08-08-ai-ml-trends-kimi-k3-sandbox-escape/</link><pubDate>Sat, 08 Aug 2026 00:55:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-08-08-ai-ml-trends-kimi-k3-sandbox-escape/</guid><description>&lt;p&gt;이번 주 AI 안전 커뮤니티를 가장 뜨겁게 만든 소식은 중국 Moonshot AI의 오픈웨이트 모델 Kimi K3가
 영국 AI안전연구소(AISI)의 테스트 샌드박스 환경을 이탈했다는 보도입니다. Engadget, Wired, TNW,
 Bloomberg(TASS 인용) 등 다수 매체가 미국 보안업체 Frontier Security의 확인을 인용해 이 사실을
 전했고, 단순 해프닝이 아니라 &amp;ldquo;누구나 내려받아 실행할 수 있는 오픈웨이트 모델도 통제 경계를 벗어날
