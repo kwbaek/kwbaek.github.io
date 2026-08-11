@@ -143,6 +143,20 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">Hermes/리오 크론에 에이전트 실행 표면을 설계하는 법 — 세션·도구·토큰을 운영 데이터로 만들기
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>OpenAI의 workspace agents와 GitHub Copilot SDK for Java가 보여주는 공통된 변화는 에이전트가 더 이상 프롬프트 한 번으로 끝나는 기능이 아니라는 점입니다. 팀 컨텍스트를 읽고, 도구를 호출하고, 세션을 이어가며, 결과를 업무 화면에 남기는 실행 표면이 제품의 중심이 되고 있습니다. Hermes/리오의 무인 크론도 같은 관점으로 설계하면 “모델이 무슨 말을 했는가”보다 “업무 계약을 지켰는가”를 안정적으로 검증할 수 있습니다.
+1. 세션을 대화가 아니라 실행 단위로 정의하기 크론 작업마다 실행 ID를 먼저 부여하고, 입력 시점·사용한 모델·도구 호출 목록·최종 산출물·실패 사유를 한 묶음으로 기록합니다. 세션은 단순한 대화 이력이 아니라 하나의 업무 트랜잭션입니다. 예를 들어 AI/ML 트렌드 스캐너라면 동일한 실행 안에서 후보 수집, canonical URL 확인, 중복 판정, 캐시 업데이트가 어떻게 이어졌는지 재현할 수 있어야 합니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-08-11 21:00:00 +0900 KST'>August 11, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to Hermes/리오 크론에 에이전트 실행 표면을 설계하는 법 — 세션·도구·토큰을 운영 데이터로 만들기" href="https://kwbaek.github.io/posts/2026-08-11-hermes-rio-agent-runtime-observability/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">Hermes/리오 크론에 로컬 멀티모달 모델을 붙일 때 필요한 전환 준비도 게이트
     </h2>
   </header>
@@ -265,21 +279,6 @@ Hermes/리오 크론이 이미 하고 있는 격리 Hermes/리오로 운영 중�
   </div>
   <footer class="entry-footer"><span title='2026-07-31 21:02:00 +0900 KST'>July 31, 2026</span></footer>
   <a class="entry-link" aria-label="post link to Hermes/리오 운영 팁 — 코딩 에이전트에 런타임 가드레일과 cache-first를 함께 넣는 법" href="https://kwbaek.github.io/posts/2026-07-31-hermes-agent-runtime-guardrails-for-coding-agents/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Hermes 크론 마이그레이션 완료 — cache-first fallback이 장애 복구 시간을 50초에서 2초로 줄인 이야기
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>Hermes 크론 시스템에서 지난주 가장 큰 배운 점은 단순한 재시도(retry)보다 “cache-first fallback&#34;이 실제 업타임을 어떻게 극적으로 높이는가라는 것이다.
-배경부터 설명하자면, 이전 OpenClaw 크론 시스템에서는 외부 API(Discord, Google News, Gemini Enterprise 등)가 일시적으로 막혀도 즉시 실패했다. 예를 들어, Discord API가 429(Rate Limit) 또는 403(Forbidden)을 반환하면 크론 작업은 멈춘다. 그러면 1시간 뒤의 다음 스케줄 시점까지 기다려야 한다. 그 사이에 사용자가 “왜 오늘 리포트가 없지?“라고 묻는 상황이 생긴다.
-Hermes로 마이그레이션하면서 우리는 각 크론 작업마다 “로컬 캐시 계층&#34;을 추가했다. AI/ML 트렌드 스캐너의 경우, 매 실행마다 최신 아이템들을 memory/ai-ml-trends-latest.json에 저장한다. Google News API가 막혀도, 어제의 캐시 아이템을 꺼내서 (중복이 아닌지 확인한 후) 리포트에 넣을 수 있다. 이미지나 동영상이 생성되면, 파일 경로를 로컬에 저장해두고, 다음 실행에서 Gemini Enterprise 응답이 느리거나 실패해도 이전 생성본을 쓸 수 있다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-07-27 15:00:00 +0900 KST'>July 27, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to Hermes 크론 마이그레이션 완료 — cache-first fallback이 장애 복구 시간을 50초에서 2초로 줄인 이야기" href="https://kwbaek.github.io/posts/2026-07-27-hermes-cache-first-fallback-reduces-outage-to-seconds/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

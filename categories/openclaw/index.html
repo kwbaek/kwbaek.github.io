@@ -143,6 +143,20 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">Hermes/리오 크론에 에이전트 실행 표면을 설계하는 법 — 세션·도구·토큰을 운영 데이터로 만들기
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>OpenAI의 workspace agents와 GitHub Copilot SDK for Java가 보여주는 공통된 변화는 에이전트가 더 이상 프롬프트 한 번으로 끝나는 기능이 아니라는 점입니다. 팀 컨텍스트를 읽고, 도구를 호출하고, 세션을 이어가며, 결과를 업무 화면에 남기는 실행 표면이 제품의 중심이 되고 있습니다. Hermes/리오의 무인 크론도 같은 관점으로 설계하면 “모델이 무슨 말을 했는가”보다 “업무 계약을 지켰는가”를 안정적으로 검증할 수 있습니다.
+1. 세션을 대화가 아니라 실행 단위로 정의하기 크론 작업마다 실행 ID를 먼저 부여하고, 입력 시점·사용한 모델·도구 호출 목록·최종 산출물·실패 사유를 한 묶음으로 기록합니다. 세션은 단순한 대화 이력이 아니라 하나의 업무 트랜잭션입니다. 예를 들어 AI/ML 트렌드 스캐너라면 동일한 실행 안에서 후보 수집, canonical URL 확인, 중복 판정, 캐시 업데이트가 어떻게 이어졌는지 재현할 수 있어야 합니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-08-11 21:00:00 +0900 KST'>August 11, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to Hermes/리오 크론에 에이전트 실행 표면을 설계하는 법 — 세션·도구·토큰을 운영 데이터로 만들기" href="https://kwbaek.github.io/posts/2026-08-11-hermes-rio-agent-runtime-observability/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">Hermes/리오 크론에 로컬 멀티모달 모델을 붙일 때 필요한 전환 준비도 게이트
     </h2>
   </header>
@@ -265,21 +279,6 @@ Hermes/리오 크론이 이미 하고 있는 격리 Hermes/리오로 운영 중�
   </div>
   <footer class="entry-footer"><span title='2026-07-22 21:06:00 +0900 KST'>July 22, 2026</span></footer>
   <a class="entry-link" aria-label="post link to Hermes/리오 팁: Discord 403은 실패가 아니라 폴백 분기다 — 캐시 우선 크론 설계" href="https://kwbaek.github.io/posts/2026-07-22-discord-403-is-not-a-failure-cache-first-fallback-for-cron-migrations/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Hermes(리오) 활용법: &#39;인프라 의존성&#39; 블록에 지역 리스크 태그를 추가하라
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>어제 이 블로그에서 크론마다 ‘인프라 의존성’ 블록(주 모델/폴백, 외부 API, 암묵적 지역 의존, 컴퓨트 민감도, 저하 시 동작)을 선언하자고 제안했습니다. 오늘 나온 신호 — 뉴욕은 데이터센터 승인을 보류하고, 호주·사우디·일본은 반대로 인허가와 보조금을 앞세워 AI 인프라를 유치한다는 소식 — 은 그 블록에 한 줄이 빠졌다는 걸 보여줍니다. 바로 “이 크론이 어느 나라/리전의 정책 리스크에 걸려 있는가&#34;입니다.
-왜 지역 리스크를 따로 태그해야 하는가 같은 ‘암묵적 지역 의존’이라도 리스크의 방향이 다릅니다.
-거부권 지역(예: 신규 데이터센터 인허가를 보류·지연시키는 곳)에 걸린 크론은 용량 축소·지연이 리스크입니다. 유치 경쟁 지역(예: 인허가를 패스트트랙하거나 보조금을 태우는 곳)에 걸린 크론은 오히려 정책 급변·보조금 철회 시의 변동성이 리스크입니다. 두 리스크는 대응이 다릅니다. 전자는 폴백 리전을 미리 정해둬야 하고, 후자는 “이 저가/고속 인프라가 언제까지 지속될지” 재검토 주기를 정해둬야 합니다. 하나의 ‘지역 의존’ 항목으로 뭉뚱그리면 이 차이가 사라집니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-07-15 21:16:00 +0900 KST'>July 15, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to Hermes(리오) 활용법: &#39;인프라 의존성&#39; 블록에 지역 리스크 태그를 추가하라" href="https://kwbaek.github.io/posts/2026-07-15-hermes-rio-add-region-risk-tag-to-infra-block/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">
