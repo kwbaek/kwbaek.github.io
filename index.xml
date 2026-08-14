@@ -6,8 +6,25 @@
     <description>Recent content on Kyungwook&#39;s Devlog</description>
     <generator>Hugo -- 0.155.3</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Thu, 13 Aug 2026 21:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Fri, 14 Aug 2026 21:00:00 +0900</lastBuildDate>
     <atom:link href="https://kwbaek.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI/ML 트렌드: 연구 재현성이 모델 도입의 증거 레이어가 된다</title>
+      <link>https://kwbaek.github.io/posts/2026-08-14-ai-ml-trends-reproducibility-becomes-deployment-evidence/</link>
+      <pubDate>Fri, 14 Aug 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-08-14-ai-ml-trends-reproducibility-becomes-deployment-evidence/</guid>
+      <description>&lt;p&gt;오늘 AI/ML 트렌드에서 가장 중요한 신호는 새로운 모델의 발표가 아니라, &lt;strong&gt;논문과 벤치마크 결과를 실제로 다시 실행해 볼 수 있는가&lt;/strong&gt;가 제품 도입의 조건으로 올라오고 있다는 점입니다. Hugging Face가 공개한 ICML 논문 2,200편 규모의 오픈 재현 프로젝트는 연구 결과를 읽고 인용하는 단계에서 벗어나 코드, 데이터, 의존성, 실행 환경을 함께 고정하고 결과를 비교하는 흐름을 보여줍니다. AI의 신뢰성이 논문에 적힌 숫자 하나가 아니라 재현 가능한 실행 증적으로 이동하고 있는 것입니다.&lt;/p&gt;
+&lt;p&gt;이 변화는 연구자만의 문제가 아닙니다. 기업이 새로운 foundation model이나 agent framework를 도입할 때도 공급자가 제시한 benchmark score를 그대로 믿기 어렵습니다. GPU 종류와 드라이버, 라이브러리 버전, 프롬프트 템플릿, 데이터 전처리, 평가 기준이 조금만 달라져도 결과가 달라질 수 있기 때문입니다. 특히 에이전트는 최종 답변만 평가해서는 부족합니다. tool call의 인자 정확도, 실패 후 재시도, 세션 상태 보존, 권한 거절, 테스트 통과 여부까지 함께 재현해야 실제 업무 품질을 알 수 있습니다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Hermes/리오 팁: 크론 결과를 재현 가능한 증거 번들로 만드는 법</title>
+      <link>https://kwbaek.github.io/posts/2026-08-14-hermes-rio-reproducible-agent-cron-evidence/</link>
+      <pubDate>Fri, 14 Aug 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-08-14-hermes-rio-reproducible-agent-cron-evidence/</guid>
+      <description>&lt;p&gt;AI 연구 재현성 프로젝트가 Hermes/리오 크론에 주는 가장 실용적인 교훈은 간단합니다. &lt;strong&gt;성공했다는 문장보다 성공을 다시 확인할 수 있는 증거 번들이 중요하다&lt;/strong&gt;는 것입니다. 무인 크론은 마지막 응답만 보면 그럴듯하게 끝났어도 입력이 오래됐는지, 출처가 바뀌었는지, 모델이 다른 경로를 탔는지, 중간 파일이 반쯤 기록됐는지 알기 어렵습니다. 따라서 결과물과 함께 실행 조건을 남기는 구조가 필요합니다.&lt;/p&gt;
+&lt;h3 id=&#34;1-실행마다-고유한-증거-묶음을-만든다&#34;&gt;1. 실행마다 고유한 증거 묶음을 만든다&lt;/h3&gt;
+&lt;p&gt;크론 시작 시 실행 ID를 만들고 입력 시각, instruction 버전, 사용한 모델, 도구 호출 목록, 원본 URL, 최종 산출물 경로를 한 묶음으로 기록하십시오. 트렌드 스캐너라면 후보 수집 → canonical URL 확인 → 본문 검증 → 중복 판정 → 캐시 갱신의 단계별 상태를 남기면 됩니다. 최종 글만 저장하는 것보다 어떤 후보가 왜 탈락했는지까지 보존하는 편이 다음 실행의 재현성과 디버깅에 훨씬 유리합니다.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Hermes/리오 크론에서 임베딩 기반 검색을 운영하는 법 — 결과보다 근거 레이어를 보존하라</title>
       <link>https://kwbaek.github.io/posts/2026-08-13-hermes-rio-embedding-search-evidence-layer/</link>
