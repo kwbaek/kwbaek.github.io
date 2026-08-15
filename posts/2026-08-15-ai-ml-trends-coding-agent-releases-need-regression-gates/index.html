@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>AI/ML 트렌드: 코딩 에이전트의 빠른 릴리스 경쟁, 이제 회귀검증이 제품 기능이다 | Kyungwook&#39;s Devlog</title>
+<meta name="keywords" content="AI에이전트, 코딩에이전트, Codex, CLI, 릴리스, 회귀검증, 개발자도구">
+<meta name="description" content="최근 OpenAI Codex CLI 0.148.0-alpha.19 릴리스가 보여주는 중요한 신호는 단순히 “새 버전이 나왔다”가 아닙니다. 터미널에서 파일을 수정하고 명령을 실행하는 코딩 에이전트가 빠른 주기로 계속 업데이트되면서, 모델 성능 경쟁이 곧 실행면의 호환성·안전성·회귀검증 경쟁으로 바뀌고 있다는 점입니다. 릴리스 페이지의 게시 시각은 2026년 8월 15일 02:21 UTC로 확인되며, 현재 버전은 알파 채널입니다.
+알파 릴리스가 던지는 운영 질문
+CLI 에이전트는 일반적인 자동완성 도구와 다릅니다. 출력이 마음에 들지 않으면 다시 질문하면 되는 수준을 넘어, 저장소의 파일·Git 상태·셸 명령·테스트 실행과 직접 연결됩니다. 따라서 업데이트의 위험은 “답변 문장이 조금 달라졌다”에 그치지 않습니다. 같은 프롬프트라도 수정 파일의 범위가 넓어지거나, 승인 없이 실행되는 명령의 종류가 달라지거나, 실패 후 재개 동작이 바뀔 수 있습니다. 특히 알파 버전은 새 기능을 빨리 받는 대신 이러한 경계면이 아직 안정화되지 않았을 가능성을 전제로 써야 합니다.">
+<meta name="author" content="">
+<link rel="canonical" href="https://kwbaek.github.io/posts/2026-08-15-ai-ml-trends-coding-agent-releases-need-regression-gates/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.da3211e5ef867bf2b75fd5a6515cfed7195c011e8ab735694e203810a827097b.css" integrity="sha256-2jIR5e&#43;Ge/K3X9WmUVz&#43;1xlcAR6KtzVpTiA4EKgnCXs=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://kwbaek.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://kwbaek.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://kwbaek.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://kwbaek.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://kwbaek.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://kwbaek.github.io/posts/2026-08-15-ai-ml-trends-coding-agent-releases-need-regression-gates/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="https://kwbaek.github.io/posts/2026-08-15-ai-ml-trends-coding-agent-releases-need-regression-gates/">
+  <meta property="og:site_name" content="Kyungwook&#39;s Devlog">
+  <meta property="og:title" content="AI/ML 트렌드: 코딩 에이전트의 빠른 릴리스 경쟁, 이제 회귀검증이 제품 기능이다">
+  <meta property="og:description" content="최근 OpenAI Codex CLI 0.148.0-alpha.19 릴리스가 보여주는 중요한 신호는 단순히 “새 버전이 나왔다”가 아닙니다. 터미널에서 파일을 수정하고 명령을 실행하는 코딩 에이전트가 빠른 주기로 계속 업데이트되면서, 모델 성능 경쟁이 곧 실행면의 호환성·안전성·회귀검증 경쟁으로 바뀌고 있다는 점입니다. 릴리스 페이지의 게시 시각은 2026년 8월 15일 02:21 UTC로 확인되며, 현재 버전은 알파 채널입니다.
+알파 릴리스가 던지는 운영 질문 CLI 에이전트는 일반적인 자동완성 도구와 다릅니다. 출력이 마음에 들지 않으면 다시 질문하면 되는 수준을 넘어, 저장소의 파일·Git 상태·셸 명령·테스트 실행과 직접 연결됩니다. 따라서 업데이트의 위험은 “답변 문장이 조금 달라졌다”에 그치지 않습니다. 같은 프롬프트라도 수정 파일의 범위가 넓어지거나, 승인 없이 실행되는 명령의 종류가 달라지거나, 실패 후 재개 동작이 바뀔 수 있습니다. 특히 알파 버전은 새 기능을 빨리 받는 대신 이러한 경계면이 아직 안정화되지 않았을 가능성을 전제로 써야 합니다.">
+  <meta property="og:locale" content="ko-kr">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2026-08-15T21:00:00+09:00">
+    <meta property="article:modified_time" content="2026-08-15T21:00:00+09:00">
+    <meta property="article:tag" content="AI에이전트">
+    <meta property="article:tag" content="코딩에이전트">
+    <meta property="article:tag" content="Codex">
+    <meta property="article:tag" content="CLI">
+    <meta property="article:tag" content="릴리스">
+    <meta property="article:tag" content="회귀검증">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="AI/ML 트렌드: 코딩 에이전트의 빠른 릴리스 경쟁, 이제 회귀검증이 제품 기능이다">
+<meta name="twitter:description" content="최근 OpenAI Codex CLI 0.148.0-alpha.19 릴리스가 보여주는 중요한 신호는 단순히 “새 버전이 나왔다”가 아닙니다. 터미널에서 파일을 수정하고 명령을 실행하는 코딩 에이전트가 빠른 주기로 계속 업데이트되면서, 모델 성능 경쟁이 곧 실행면의 호환성·안전성·회귀검증 경쟁으로 바뀌고 있다는 점입니다. 릴리스 페이지의 게시 시각은 2026년 8월 15일 02:21 UTC로 확인되며, 현재 버전은 알파 채널입니다.
+알파 릴리스가 던지는 운영 질문
+CLI 에이전트는 일반적인 자동완성 도구와 다릅니다. 출력이 마음에 들지 않으면 다시 질문하면 되는 수준을 넘어, 저장소의 파일·Git 상태·셸 명령·테스트 실행과 직접 연결됩니다. 따라서 업데이트의 위험은 “답변 문장이 조금 달라졌다”에 그치지 않습니다. 같은 프롬프트라도 수정 파일의 범위가 넓어지거나, 승인 없이 실행되는 명령의 종류가 달라지거나, 실패 후 재개 동작이 바뀔 수 있습니다. 특히 알파 버전은 새 기능을 빨리 받는 대신 이러한 경계면이 아직 안정화되지 않았을 가능성을 전제로 써야 합니다.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://kwbaek.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "AI/ML 트렌드: 코딩 에이전트의 빠른 릴리스 경쟁, 이제 회귀검증이 제품 기능이다",
+      "item": "https://kwbaek.github.io/posts/2026-08-15-ai-ml-trends-coding-agent-releases-need-regression-gates/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "AI/ML 트렌드: 코딩 에이전트의 빠른 릴리스 경쟁, 이제 회귀검증이 제품 기능이다",
+  "name": "AI\/ML 트렌드: 코딩 에이전트의 빠른 릴리스 경쟁, 이제 회귀검증이 제품 기능이다",
+  "description": "최근 OpenAI Codex CLI 0.148.0-alpha.19 릴리스가 보여주는 중요한 신호는 단순히 “새 버전이 나왔다”가 아닙니다. 터미널에서 파일을 수정하고 명령을 실행하는 코딩 에이전트가 빠른 주기로 계속 업데이트되면서, 모델 성능 경쟁이 곧 실행면의 호환성·안전성·회귀검증 경쟁으로 바뀌고 있다는 점입니다. 릴리스 페이지의 게시 시각은 2026년 8월 15일 02:21 UTC로 확인되며, 현재 버전은 알파 채널입니다.\n알파 릴리스가 던지는 운영 질문 CLI 에이전트는 일반적인 자동완성 도구와 다릅니다. 출력이 마음에 들지 않으면 다시 질문하면 되는 수준을 넘어, 저장소의 파일·Git 상태·셸 명령·테스트 실행과 직접 연결됩니다. 따라서 업데이트의 위험은 “답변 문장이 조금 달라졌다”에 그치지 않습니다. 같은 프롬프트라도 수정 파일의 범위가 넓어지거나, 승인 없이 실행되는 명령의 종류가 달라지거나, 실패 후 재개 동작이 바뀔 수 있습니다. 특히 알파 버전은 새 기능을 빨리 받는 대신 이러한 경계면이 아직 안정화되지 않았을 가능성을 전제로 써야 합니다.\n",
+  "keywords": [
+    "AI에이전트", "코딩에이전트", "Codex", "CLI", "릴리스", "회귀검증", "개발자도구"
+  ],
+  "articleBody": "최근 OpenAI Codex CLI 0.148.0-alpha.19 릴리스가 보여주는 중요한 신호는 단순히 “새 버전이 나왔다”가 아닙니다. 터미널에서 파일을 수정하고 명령을 실행하는 코딩 에이전트가 빠른 주기로 계속 업데이트되면서, 모델 성능 경쟁이 곧 실행면의 호환성·안전성·회귀검증 경쟁으로 바뀌고 있다는 점입니다. 릴리스 페이지의 게시 시각은 2026년 8월 15일 02:21 UTC로 확인되며, 현재 버전은 알파 채널입니다.\n알파 릴리스가 던지는 운영 질문 CLI 에이전트는 일반적인 자동완성 도구와 다릅니다. 출력이 마음에 들지 않으면 다시 질문하면 되는 수준을 넘어, 저장소의 파일·Git 상태·셸 명령·테스트 실행과 직접 연결됩니다. 따라서 업데이트의 위험은 “답변 문장이 조금 달라졌다”에 그치지 않습니다. 같은 프롬프트라도 수정 파일의 범위가 넓어지거나, 승인 없이 실행되는 명령의 종류가 달라지거나, 실패 후 재개 동작이 바뀔 수 있습니다. 특히 알파 버전은 새 기능을 빨리 받는 대신 이러한 경계면이 아직 안정화되지 않았을 가능성을 전제로 써야 합니다.\n여기서 중요한 것은 릴리스 노트를 읽고 곧바로 전사 배포하는 것이 아니라, 우리 조직의 대표 작업을 고정해 전후를 비교하는 일입니다. 예를 들어 백엔드 버그 수정, 단위 테스트 추가, SQL 마이그레이션, 문서 생성, MCP 도구 호출처럼 서로 다른 작업 20개를 작은 평가 세트로 만들 수 있습니다. 각 작업에 대해 성공 여부뿐 아니라 변경된 파일 수, diff 크기, 테스트 통과율, 명령 승인 횟수, 소요 시간, 토큰·API 비용, 실패 시 복구 가능성을 함께 기록해야 합니다.\n모델 평가에서 실행 평가로 기존 LLM 벤치마크는 정답률이나 코드 생성 품질을 중심으로 설계됐습니다. 하지만 실제 개발팀이 구매하고 운영하는 것은 모델 자체가 아니라 “저장소에서 안전하게 완료되는 작업”입니다. 그러므로 코딩 에이전트의 평가 단위도 모델 점수에서 작업 계약으로 내려와야 합니다.\n최소한 다음 네 가지를 별도 게이트로 두는 편이 좋습니다.\n변경 게이트: 허용된 디렉터리와 파일만 수정했는가. 실행 게이트: 네트워크·셸·비밀정보 접근이 정책 범위 안에 있었는가. 품질 게이트: 테스트, 린트, 타입 검사와 사람이 보는 diff를 통과했는가. 복구 게이트: 실패하거나 중단됐을 때 이전 커밋으로 되돌리고 작업을 재개할 수 있는가. 이렇게 보면 Codex CLI의 잦은 업데이트는 개발자 생산성의 기회인 동시에, 사내 플랫폼팀이 “에이전트 버전 관리”를 별도 운영 대상으로 삼아야 한다는 신호입니다. 개발자마다 최신 버전을 임의로 쓰게 두면 장애 원인을 모델, 프롬프트, 저장소, 권한 정책 중 어디에서 찾아야 할지 어려워집니다. 반대로 버전·작업·권한 정책·평가 결과를 묶어 기록하면 빠른 업데이트를 통제된 실험으로 바꿀 수 있습니다.\n실무 적용 순서 가장 현실적인 도입 순서는 작습니다. 먼저 현재 사용 중인 버전을 기준선으로 고정하고, 읽기 전용 저장소에서 대표 작업을 replay합니다. 다음으로 새 버전을 격리된 브랜치와 최소 권한 환경에서 실행합니다. 기준선 대비 결과가 좋아도 권한 범위나 외부 호출이 넓어졌다면 자동 승격하지 말고 보류합니다. 마지막으로 승인된 버전과 평가 결과를 개발자에게 배포하고, 다음 릴리스가 나오면 같은 세트를 다시 실행합니다.\n핵심은 에이전트를 “똑똑한 챗봇”으로 평가하지 않는 것입니다. 파일을 바꾸고 명령을 실행하며 장시간 일하는 시스템이라면, 릴리스의 품질은 생성된 코드의 화려함보다 예측 가능한 변경, 제한된 권한, 검증 가능한 완료, 빠른 복구로 측정해야 합니다. 코딩 에이전트 시대의 회귀 테스트는 부가적인 QA 작업이 아니라 제품 기능 그 자체입니다.\n출처 OpenAI Codex — GitHub Release 0.148.0-alpha.19 — 2026-08-15 게시 릴리스 OpenAI Codex — GitHub Releases — CLI 릴리스 흐름 확인 ",
+  "wordCount" : "448",
+  "inLanguage": "en",
+  "datePublished": "2026-08-15T21:00:00+09:00",
+  "dateModified": "2026-08-15T21:00:00+09:00",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://kwbaek.github.io/posts/2026-08-15-ai-ml-trends-coding-agent-releases-need-regression-gates/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Kyungwook's Devlog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://kwbaek.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://kwbaek.github.io/" accesskey="h" title="Kyungwook&#39;s Devlog (Alt + H)">Kyungwook&#39;s Devlog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://kwbaek.github.io/categories/" title="categories">
+                    <span>categories</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kwbaek.github.io/tags/" title="tags">
+                    <span>tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kwbaek.github.io/" title="Kyungwook&#39;s Devlog">
+                    <span>Kyungwook&#39;s Devlog</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      AI/ML 트렌드: 코딩 에이전트의 빠른 릴리스 경쟁, 이제 회귀검증이 제품 기능이다
+    </h1>
+    <div class="post-meta"><span title='2026-08-15 21:00:00 +0900 KST'>August 15, 2026</span>
+
+</div>
+  </header> 
+  <div class="post-content"><p>최근 OpenAI Codex CLI <code>0.148.0-alpha.19</code> 릴리스가 보여주는 중요한 신호는 단순히 “새 버전이 나왔다”가 아닙니다. 터미널에서 파일을 수정하고 명령을 실행하는 코딩 에이전트가 빠른 주기로 계속 업데이트되면서, 모델 성능 경쟁이 곧 <strong>실행면의 호환성·안전성·회귀검증 경쟁</strong>으로 바뀌고 있다는 점입니다. 릴리스 페이지의 게시 시각은 2026년 8월 15일 02:21 UTC로 확인되며, 현재 버전은 알파 채널입니다.</p>
+<h3 id="알파-릴리스가-던지는-운영-질문">알파 릴리스가 던지는 운영 질문<a hidden class="anchor" aria-hidden="true" href="#알파-릴리스가-던지는-운영-질문">#</a></h3>
+<p>CLI 에이전트는 일반적인 자동완성 도구와 다릅니다. 출력이 마음에 들지 않으면 다시 질문하면 되는 수준을 넘어, 저장소의 파일·Git 상태·셸 명령·테스트 실행과 직접 연결됩니다. 따라서 업데이트의 위험은 “답변 문장이 조금 달라졌다”에 그치지 않습니다. 같은 프롬프트라도 수정 파일의 범위가 넓어지거나, 승인 없이 실행되는 명령의 종류가 달라지거나, 실패 후 재개 동작이 바뀔 수 있습니다. 특히 알파 버전은 새 기능을 빨리 받는 대신 이러한 경계면이 아직 안정화되지 않았을 가능성을 전제로 써야 합니다.</p>
+<p>여기서 중요한 것은 릴리스 노트를 읽고 곧바로 전사 배포하는 것이 아니라, 우리 조직의 대표 작업을 고정해 전후를 비교하는 일입니다. 예를 들어 백엔드 버그 수정, 단위 테스트 추가, SQL 마이그레이션, 문서 생성, MCP 도구 호출처럼 서로 다른 작업 20개를 작은 평가 세트로 만들 수 있습니다. 각 작업에 대해 성공 여부뿐 아니라 변경된 파일 수, diff 크기, 테스트 통과율, 명령 승인 횟수, 소요 시간, 토큰·API 비용, 실패 시 복구 가능성을 함께 기록해야 합니다.</p>
+<h3 id="모델-평가에서-실행-평가로">모델 평가에서 실행 평가로<a hidden class="anchor" aria-hidden="true" href="#모델-평가에서-실행-평가로">#</a></h3>
+<p>기존 LLM 벤치마크는 정답률이나 코드 생성 품질을 중심으로 설계됐습니다. 하지만 실제 개발팀이 구매하고 운영하는 것은 모델 자체가 아니라 “저장소에서 안전하게 완료되는 작업”입니다. 그러므로 코딩 에이전트의 평가 단위도 모델 점수에서 작업 계약으로 내려와야 합니다.</p>
+<p>최소한 다음 네 가지를 별도 게이트로 두는 편이 좋습니다.</p>
+<ol>
+<li><strong>변경 게이트:</strong> 허용된 디렉터리와 파일만 수정했는가.</li>
+<li><strong>실행 게이트:</strong> 네트워크·셸·비밀정보 접근이 정책 범위 안에 있었는가.</li>
+<li><strong>품질 게이트:</strong> 테스트, 린트, 타입 검사와 사람이 보는 diff를 통과했는가.</li>
+<li><strong>복구 게이트:</strong> 실패하거나 중단됐을 때 이전 커밋으로 되돌리고 작업을 재개할 수 있는가.</li>
+</ol>
+<p>이렇게 보면 Codex CLI의 잦은 업데이트는 개발자 생산성의 기회인 동시에, 사내 플랫폼팀이 “에이전트 버전 관리”를 별도 운영 대상으로 삼아야 한다는 신호입니다. 개발자마다 최신 버전을 임의로 쓰게 두면 장애 원인을 모델, 프롬프트, 저장소, 권한 정책 중 어디에서 찾아야 할지 어려워집니다. 반대로 버전·작업·권한 정책·평가 결과를 묶어 기록하면 빠른 업데이트를 통제된 실험으로 바꿀 수 있습니다.</p>
+<h3 id="실무-적용-순서">실무 적용 순서<a hidden class="anchor" aria-hidden="true" href="#실무-적용-순서">#</a></h3>
+<p>가장 현실적인 도입 순서는 작습니다. 먼저 현재 사용 중인 버전을 기준선으로 고정하고, 읽기 전용 저장소에서 대표 작업을 replay합니다. 다음으로 새 버전을 격리된 브랜치와 최소 권한 환경에서 실행합니다. 기준선 대비 결과가 좋아도 권한 범위나 외부 호출이 넓어졌다면 자동 승격하지 말고 보류합니다. 마지막으로 승인된 버전과 평가 결과를 개발자에게 배포하고, 다음 릴리스가 나오면 같은 세트를 다시 실행합니다.</p>
+<p>핵심은 에이전트를 “똑똑한 챗봇”으로 평가하지 않는 것입니다. 파일을 바꾸고 명령을 실행하며 장시간 일하는 시스템이라면, 릴리스의 품질은 생성된 코드의 화려함보다 <strong>예측 가능한 변경, 제한된 권한, 검증 가능한 완료, 빠른 복구</strong>로 측정해야 합니다. 코딩 에이전트 시대의 회귀 테스트는 부가적인 QA 작업이 아니라 제품 기능 그 자체입니다.</p>
+<h2 id="출처">출처<a hidden class="anchor" aria-hidden="true" href="#출처">#</a></h2>
+<ul>
+<li><a href="https://github.com/openai/codex/releases/tag/rust-v0.148.0-alpha.19">OpenAI Codex — GitHub Release 0.148.0-alpha.19</a> — 2026-08-15 게시 릴리스</li>
+<li><a href="https://github.com/openai/codex/releases">OpenAI Codex — GitHub Releases</a> — CLI 릴리스 흐름 확인</li>
+</ul>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://kwbaek.github.io/tags/ai%EC%97%90%EC%9D%B4%EC%A0%84%ED%8A%B8/">AI에이전트</a></li>
+      <li><a href="https://kwbaek.github.io/tags/%EC%BD%94%EB%94%A9%EC%97%90%EC%9D%B4%EC%A0%84%ED%8A%B8/">코딩에이전트</a></li>
+      <li><a href="https://kwbaek.github.io/tags/codex/">Codex</a></li>
+      <li><a href="https://kwbaek.github.io/tags/cli/">CLI</a></li>
+      <li><a href="https://kwbaek.github.io/tags/%EB%A6%B4%EB%A6%AC%EC%8A%A4/">릴리스</a></li>
+      <li><a href="https://kwbaek.github.io/tags/%ED%9A%8C%EA%B7%80%EA%B2%80%EC%A6%9D/">회귀검증</a></li>
+      <li><a href="https://kwbaek.github.io/tags/%EA%B0%9C%EB%B0%9C%EC%9E%90%EB%8F%84%EA%B5%AC/">개발자도구</a></li>
+    </ul>
+  </footer><script src="https://utteranc.es/client.js"
+        repo="kwbaek/blog-comments"
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://kwbaek.github.io/">Kyungwook&#39;s Devlog</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>
