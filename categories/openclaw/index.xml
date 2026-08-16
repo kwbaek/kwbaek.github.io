@@ -6,8 +6,17 @@
     <description>Recent content in Openclaw on Kyungwook&#39;s Devlog</description>
     <generator>Hugo -- 0.155.3</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Sat, 15 Aug 2026 21:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 16 Aug 2026 21:00:00 +0900</lastBuildDate>
     <atom:link href="https://kwbaek.github.io/categories/openclaw/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hermes/리오 팁: 로컬 모델 업데이트에는 입력 계약 게이트를 붙이자</title>
+      <link>https://kwbaek.github.io/posts/2026-08-16-hermes-rio-structured-input-release-gate/</link>
+      <pubDate>Sun, 16 Aug 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-08-16-hermes-rio-structured-input-release-gate/</guid>
+      <description>&lt;p&gt;로컬 LLM 런타임은 빠르게 업데이트됩니다. 이번에는 llama.cpp &lt;code&gt;b10452&lt;/code&gt;가 문자열 콘텐츠와 typed 콘텐츠의 지원 판정 및 메시지 입력 정규화를 손봤습니다. 이런 변경은 단순한 내부 리팩터링으로 지나갈 수 있지만, Hermes/리오에서 문서·이미지·검색 결과를 조합하는 크론을 운영한다면 반드시 작은 &lt;strong&gt;입력 계약 Release Gate&lt;/strong&gt;를 거치는 편이 안전합니다. 모델이 답변을 생성했다는 사실보다, 작업에 필요한 콘텐츠가 런타임을 통과해 그대로 전달됐는지가 먼저이기 때문입니다.&lt;/p&gt;
+&lt;h3 id=&#34;1-크론의-대표-입력을-고정한다&#34;&gt;1. 크론의 대표 입력을 고정한다&lt;/h3&gt;
+&lt;p&gt;먼저 실제 업무에서 자주 쓰는 메시지를 세 가지 정도 고정하십시오. 예를 들어 텍스트만 있는 질의, 이미지와 텍스트가 섞인 상품 분석, 검색 결과와 JSON 도구 출력이 함께 들어오는 리포트 생성 작업입니다. 테스트 입력에는 예상되는 콘텐츠 타입과 완료 조건을 적어 둡니다. 그래야 런타임을 바꾼 뒤 “대충 비슷하게 답했다”가 아니라 입력 보존 여부와 도구 호출 결과를 비교할 수 있습니다.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Hermes/리오 팁: 코딩 에이전트 업데이트 앞에 작은 Release Gate를 두자</title>
       <link>https://kwbaek.github.io/posts/2026-08-15-hermes-rio-coding-agent-release-gate/</link>
