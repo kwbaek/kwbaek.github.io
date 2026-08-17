@@ -6,8 +6,17 @@
     <description>Recent content in Ai-Ml on Kyungwook&#39;s Devlog</description>
     <generator>Hugo -- 0.155.3</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Sun, 16 Aug 2026 21:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Mon, 17 Aug 2026 21:00:47 +0900</lastBuildDate>
     <atom:link href="https://kwbaek.github.io/categories/ai-ml/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI/ML 트렌드: 에이전트 하네스는 플러그인 경계에서 운영체제가 된다</title>
+      <link>https://kwbaek.github.io/posts/2026-08-17-ai-ml-trends-plugin-first-agent-harness/</link>
+      <pubDate>Mon, 17 Aug 2026 21:00:47 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-08-17-ai-ml-trends-plugin-first-agent-harness/</guid>
+      <description>&lt;p&gt;오늘 AI/ML 생태계에서 눈여겨볼 신호는 더 큰 모델이 아니라 &lt;strong&gt;에이전트 하네스의 기능을 플러그인 경계로 분해하려는 움직임&lt;/strong&gt;입니다. DeepSeek AI가 공개한 DeepSeek Harness(&lt;code&gt;dsh&lt;/code&gt;)는 “Everything is a Plugin”을 핵심 설계로 내세우고, Cordis를 기반으로 에이전트 실행 환경을 구성합니다. 저장소는 2026년 8월 13일 생성됐고 17일에도 갱신되고 있어, 단순한 장기 아이디어가 아니라 빠르게 실험되는 개발자용 실행 표면으로 볼 수 있습니다.&lt;/p&gt;
+&lt;h3 id=&#34;하네스의-경쟁력은-모델-밖으로-이동한다&#34;&gt;하네스의 경쟁력은 모델 밖으로 이동한다&lt;/h3&gt;
+&lt;p&gt;에이전트 하네스는 모델에게 프롬프트를 전달하는 얇은 래퍼가 아닙니다. 세션, 도구, 이벤트, 사용자 인터페이스, 확장 기능, 상태 저장과 실패 복구가 함께 움직이는 실행 시스템입니다. 이 기능들이 하나의 거대한 코어에 묶이면 새 도구를 추가할 때마다 권한·의존성·회귀 범위가 커집니다. 반대로 플러그인 단위로 나누면 기능을 교체하거나 특정 환경에서만 활성화하기 쉬워집니다.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>AI/ML 트렌드: 로컬 LLM 런타임의 다음 전장은 구조화 콘텐츠 계약이다</title>
       <link>https://kwbaek.github.io/posts/2026-08-16-ai-ml-trends-structured-content-runtime-contract/</link>
