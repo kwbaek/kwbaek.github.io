@@ -1,21 +1,29 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
-  <channel>
-    <title>검증 on Kyungwook&#39;s Devlog</title>
-    <link>https://kwbaek.github.io/tags/%EA%B2%80%EC%A6%9D/</link>
-    <description>Recent content in 검증 on Kyungwook&#39;s Devlog</description>
-    <generator>Hugo -- 0.155.3</generator>
-    <language>ko-kr</language>
-    <lastBuildDate>Mon, 10 Aug 2026 21:00:00 +0900</lastBuildDate>
-    <atom:link href="https://kwbaek.github.io/tags/%EA%B2%80%EC%A6%9D/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Hermes/리오 크론에 로컬 멀티모달 모델을 붙일 때 필요한 전환 준비도 게이트</title>
-      <link>https://kwbaek.github.io/posts/2026-08-10-hermes-rio-local-model-readiness-gate/</link>
-      <pubDate>Mon, 10 Aug 2026 21:00:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/posts/2026-08-10-hermes-rio-local-model-readiness-gate/</guid>
-      <description>&lt;p&gt;로컬 멀티모달 모델이 공개되면 가장 먼저 떠오르는 질문은 “Hermes/리오의 기본 모델을 이것으로 바꿀 수 있을까?”입니다. 하지만 무인 크론을 운영하는 입장에서 모델 교체는 설정 한 줄의 문제가 아닙니다. 오늘 공개된 Meta Muse Glimmer처럼 로컬·에이전틱·멀티모달 사용을 겨냥한 모델이 Transformers, llama.cpp, vLLM에 빠르게 연결되더라도, 실제 자동화에서는 호환성·비용·실패 복구를 함께 통과해야 합니다.&lt;/p&gt;
-&lt;h3 id=&#34;모델-교체보다-먼저-해야-할-일&#34;&gt;모델 교체보다 먼저 해야 할 일&lt;/h3&gt;
-&lt;p&gt;첫 단계는 현재 크론의 업무 계약을 고정하는 것입니다. 예를 들어 트렌드 스캐너라면 입력 URL의 canonicality 확인, 출처의 날짜 판정, 중복 제거, JSON 캐시 갱신, 최종 출력 형식이 모두 테스트 대상입니다. 단순히 “답변이 그럴듯한가”를 보는 대신, 동일한 입력을 로컬 모델과 기존 모델에 전달하고 다음 네 가지를 비교해야 합니다.&lt;/p&gt;</description>
-    </item>
-  </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>검증 on Kyungwook's Devlog</title><link>https://kwbaek.github.io/tags/%EA%B2%80%EC%A6%9D/</link><description>Recent content in 검증 on Kyungwook's Devlog</description><generator>Hugo -- 0.155.3</generator><language>ko-kr</language><lastBuildDate>Tue, 18 Aug 2026 21:05:00 +0900</lastBuildDate><atom:link href="https://kwbaek.github.io/tags/%EA%B2%80%EC%A6%9D/index.xml" rel="self" type="application/rss+xml"/><item><title>AI/ML 트렌드: 오프라인 점수보다 라이브 평가가 실력을 드러낸다</title><link>https://kwbaek.github.io/posts/2026-08-18-ai-ml-trends-live-evaluation-beats-offline-scores/</link><pubDate>Tue, 18 Aug 2026 21:05:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-08-18-ai-ml-trends-live-evaluation-beats-offline-scores/</guid><description>&lt;p&gt;오늘 눈에 들어온 두 신호는 서로 다른 산업에서 나왔지만 결론이 같습니다. &lt;strong&gt;모델의 오프라인 점수가 아니라, 처음 보는 환경에서 실제로 작동하는지가 실력의 기준이 되고 있다는 것&lt;/strong&gt;입니다.&lt;/p&gt;
+&lt;h3 id="1-databricks-grounded-reasoning-cup--새-코퍼스에서-라이브로-붙였다"&gt;1. Databricks Grounded Reasoning Cup — 새 코퍼스에서 라이브로 붙였다&lt;/h3&gt;
+&lt;p&gt;Databricks는 첫 Grounded Reasoning Cup을 열어, 기업 문서 컬렉션을 근거로 추론하는 에이전트를 라이브 경쟁 조건에서 평가했습니다. 미국·캐나다 11개 학술팀이 참가해 약 두 달간 OfficeQA 벤치마크로 에이전트를 최적화했고, 대회 당일에는 &lt;strong&gt;그날 새로 공개된 코퍼스&lt;/strong&gt;로 문제를 풀었습니다. 팀별로 OpenAI·Anthropic·Google DeepMind 중 한 파트너 랩의 모델 계열만 쓰도록 제한했습니다.&lt;/p&gt;</description></item><item><title>Hermes/리오 실전 팁: 자동화에 '미해결 장부'를 붙이면 신뢰가 생긴다</title><link>https://kwbaek.github.io/posts/2026-08-18-hermes-rio-unsolved-ledger/</link><pubDate>Tue, 18 Aug 2026 21:05:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-08-18-hermes-rio-unsolved-ledger/</guid><description>&lt;p&gt;라이브 에이전트 대회에서 전체 문항의 18.8%를 &lt;strong&gt;어떤 팀도 풀지 못했다&lt;/strong&gt;는 결과를 보고, Hermes/리오로 매일 돌리는 자동화에 바로 적용할 수 있는 실무 습관 하나를 정리했습니다. 자동화의 신뢰는 성공률을 부풀려 보고할 때가 아니라, &lt;strong&gt;못 한 일을 매번 같은 형식으로 남길 때&lt;/strong&gt; 생깁니다.&lt;/p&gt;
+&lt;h3 id="1-실행마다-미해결-장부를-남긴다"&gt;1. 실행마다 &amp;ldquo;미해결 장부&amp;quot;를 남긴다&lt;/h3&gt;
+&lt;p&gt;대부분의 자동화 리포트는 결과만 보여줍니다. 그런데 정작 사람이 알아야 하는 것은 실패한 항목입니다. 그래서 리오의 각 크론/작업 결과 뒤에 짧은 장부를 붙입니다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;처리 시도: N건&lt;/li&gt;
+&lt;li&gt;확정 처리: N건 (근거 링크·파일 존재 확인 완료)&lt;/li&gt;
+&lt;li&gt;부분 처리: N건 (일부 필드 누락 / 재확인 필요)&lt;/li&gt;
+&lt;li&gt;미해결: N건 + 사유 한 줄 (원본 접근 차단, 형식 불일치, 판단 근거 부족 등)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;핵심은 사유를 카테고리로 고정하는 것입니다. &amp;ldquo;실패&amp;quot;라고만 쓰면 다음 실행에서 개선할 수 없지만, &amp;ldquo;원본 접근 차단&amp;quot;과 &amp;ldquo;판단 근거 부족&amp;quot;은 서로 다른 대응(대체 소스 추가 vs 사람 판단 라우팅)으로 연결됩니다.&lt;/p&gt;</description></item><item><title>Hermes/리오 실전 팁: 플러그인 에이전트는 권한·이벤트·롤백 카드로 운영하자</title><link>https://kwbaek.github.io/posts/2026-08-17-hermes-rio-plugin-boundary-ops/</link><pubDate>Mon, 17 Aug 2026 21:00:47 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-08-17-hermes-rio-plugin-boundary-ops/</guid><description>&lt;p&gt;DeepSeek Harness가 “Everything is a Plugin”이라는 방향을 보여준다면, Hermes/리오를 실제 업무 자동화에 적용할 때 얻을 수 있는 교훈은 명확합니다. 플러그인이나 도구를 많이 붙이는 것보다 &lt;strong&gt;각 확장 기능의 경계와 완료 증거를 먼저 적는 것&lt;/strong&gt;이 중요합니다. 기능이 하나의 코어에 있을 때는 내부 동작을 믿고 넘어가기 쉽지만, 외부 플러그인이 세션·파일·네트워크·메시지에 접근하는 순간에는 작은 운영 계약이 필요합니다.&lt;/p&gt;
+&lt;h3 id="1-플러그인마다-다섯-줄짜리-운영-카드를-만든다"&gt;1. 플러그인마다 다섯 줄짜리 운영 카드를 만든다&lt;/h3&gt;
+&lt;p&gt;새 도구를 연결할 때 아래 항목을 짧게 기록합니다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;목적: 이 플러그인이 해결하는 한 가지 업무는 무엇인가?&lt;/li&gt;
+&lt;li&gt;입력: 어떤 파일·메시지·API 응답만 읽을 수 있는가?&lt;/li&gt;
+&lt;li&gt;허용 동작: 생성·수정·전송 중 어디까지 가능한가?&lt;/li&gt;
+&lt;li&gt;금지 동작: 실거래, 공개 게시, 서비스 재시작처럼 승인 없이는 하면 안 되는 일은 무엇인가?&lt;/li&gt;
+&lt;li&gt;완료 증거: 파일 경로, 커밋 ID, HTTP 상태, 테스트 결과 중 무엇을 남길 것인가?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;이 카드는 단순한 문서가 아니라 배포 전 체크리스트입니다. 특히 자동화 작업은 “성공했다”는 자연어보다 실제 산출물과 검증 결과가 있어야 다음 단계로 넘어가도록 설계해야 합니다.&lt;/p&gt;</description></item><item><title>AI/ML 트렌드: 연구 재현성이 모델 도입의 증거 레이어가 된다</title><link>https://kwbaek.github.io/posts/2026-08-14-ai-ml-trends-reproducibility-becomes-deployment-evidence/</link><pubDate>Fri, 14 Aug 2026 21:00:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-08-14-ai-ml-trends-reproducibility-becomes-deployment-evidence/</guid><description>&lt;p&gt;오늘 AI/ML 트렌드에서 가장 중요한 신호는 새로운 모델의 발표가 아니라, &lt;strong&gt;논문과 벤치마크 결과를 실제로 다시 실행해 볼 수 있는가&lt;/strong&gt;가 제품 도입의 조건으로 올라오고 있다는 점입니다. Hugging Face가 공개한 ICML 논문 2,200편 규모의 오픈 재현 프로젝트는 연구 결과를 읽고 인용하는 단계에서 벗어나 코드, 데이터, 의존성, 실행 환경을 함께 고정하고 결과를 비교하는 흐름을 보여줍니다. AI의 신뢰성이 논문에 적힌 숫자 하나가 아니라 재현 가능한 실행 증적으로 이동하고 있는 것입니다.&lt;/p&gt;
+&lt;p&gt;이 변화는 연구자만의 문제가 아닙니다. 기업이 새로운 foundation model이나 agent framework를 도입할 때도 공급자가 제시한 benchmark score를 그대로 믿기 어렵습니다. GPU 종류와 드라이버, 라이브러리 버전, 프롬프트 템플릿, 데이터 전처리, 평가 기준이 조금만 달라져도 결과가 달라질 수 있기 때문입니다. 특히 에이전트는 최종 답변만 평가해서는 부족합니다. tool call의 인자 정확도, 실패 후 재시도, 세션 상태 보존, 권한 거절, 테스트 통과 여부까지 함께 재현해야 실제 업무 품질을 알 수 있습니다.&lt;/p&gt;</description></item><item><title>Hermes/리오 팁: 크론 결과를 재현 가능한 증거 번들로 만드는 법</title><link>https://kwbaek.github.io/posts/2026-08-14-hermes-rio-reproducible-agent-cron-evidence/</link><pubDate>Fri, 14 Aug 2026 21:00:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-08-14-hermes-rio-reproducible-agent-cron-evidence/</guid><description>&lt;p&gt;AI 연구 재현성 프로젝트가 Hermes/리오 크론에 주는 가장 실용적인 교훈은 간단합니다. &lt;strong&gt;성공했다는 문장보다 성공을 다시 확인할 수 있는 증거 번들이 중요하다&lt;/strong&gt;는 것입니다. 무인 크론은 마지막 응답만 보면 그럴듯하게 끝났어도 입력이 오래됐는지, 출처가 바뀌었는지, 모델이 다른 경로를 탔는지, 중간 파일이 반쯤 기록됐는지 알기 어렵습니다. 따라서 결과물과 함께 실행 조건을 남기는 구조가 필요합니다.&lt;/p&gt;
+&lt;h3 id="1-실행마다-고유한-증거-묶음을-만든다"&gt;1. 실행마다 고유한 증거 묶음을 만든다&lt;/h3&gt;
+&lt;p&gt;크론 시작 시 실행 ID를 만들고 입력 시각, instruction 버전, 사용한 모델, 도구 호출 목록, 원본 URL, 최종 산출물 경로를 한 묶음으로 기록하십시오. 트렌드 스캐너라면 후보 수집 → canonical URL 확인 → 본문 검증 → 중복 판정 → 캐시 갱신의 단계별 상태를 남기면 됩니다. 최종 글만 저장하는 것보다 어떤 후보가 왜 탈락했는지까지 보존하는 편이 다음 실행의 재현성과 디버깅에 훨씬 유리합니다.&lt;/p&gt;</description></item><item><title>Hermes/리오 크론에서 임베딩 기반 검색을 운영하는 법 — 결과보다 근거 레이어를 보존하라</title><link>https://kwbaek.github.io/posts/2026-08-13-hermes-rio-embedding-search-evidence-layer/</link><pubDate>Thu, 13 Aug 2026 21:00:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-08-13-hermes-rio-embedding-search-evidence-layer/</guid><description>&lt;p&gt;OlmoEarth embeddings가 보여주는 중요한 운영 교훈은 임베딩을 생성하는 것보다 &lt;strong&gt;나중에 다시 검색하고 검증할 수 있게 저장하는 것&lt;/strong&gt;이 어렵다는 점입니다. Hermes/리오 크론에서 트렌드 후보, 문서 조각, 상품 이미지, 현장 데이터를 임베딩으로 축적하려면 “가장 비슷한 결과”만 캐시해서는 안 됩니다. 검색 결과가 왜 나왔는지 재현할 수 있는 원본과 생성 조건까지 함께 보존해야 합니다.&lt;/p&gt;
+&lt;h3 id="1-임베딩-캐시와-게시-상태를-분리하기"&gt;1. 임베딩 캐시와 게시 상태를 분리하기&lt;/h3&gt;
+&lt;p&gt;첫째, 후보 검색 결과와 최종 게시·실행 상태를 다른 파일이나 다른 레코드 층으로 나누십시오. 후보는 새 모델이나 새 질의가 나오면 다시 계산될 수 있지만, 이미 사용자에게 전달된 결과는 별도의 멱등 키와 게시 시각을 가져야 합니다. URL만 중복 키로 쓰면 같은 주제의 업데이트를 놓치고, 반대로 제목만 비교하면 표현이 조금 바뀐 동일 항목을 반복 게시할 수 있습니다. &lt;code&gt;source_url&lt;/code&gt;, &lt;code&gt;content_hash&lt;/code&gt;, &lt;code&gt;embedding_model&lt;/code&gt;, &lt;code&gt;model_version&lt;/code&gt;, &lt;code&gt;created_at&lt;/code&gt;, &lt;code&gt;topic_key&lt;/code&gt;를 최소 필드로 두면 재처리와 중복 판정을 분리할 수 있습니다.&lt;/p&gt;</description></item><item><title>Hermes/리오 크론에 로컬 멀티모달 모델을 붙일 때 필요한 전환 준비도 게이트</title><link>https://kwbaek.github.io/posts/2026-08-10-hermes-rio-local-model-readiness-gate/</link><pubDate>Mon, 10 Aug 2026 21:00:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-08-10-hermes-rio-local-model-readiness-gate/</guid><description>&lt;p&gt;로컬 멀티모달 모델이 공개되면 가장 먼저 떠오르는 질문은 “Hermes/리오의 기본 모델을 이것으로 바꿀 수 있을까?”입니다. 하지만 무인 크론을 운영하는 입장에서 모델 교체는 설정 한 줄의 문제가 아닙니다. 오늘 공개된 Meta Muse Glimmer처럼 로컬·에이전틱·멀티모달 사용을 겨냥한 모델이 Transformers, llama.cpp, vLLM에 빠르게 연결되더라도, 실제 자동화에서는 호환성·비용·실패 복구를 함께 통과해야 합니다.&lt;/p&gt;
+&lt;h3 id="모델-교체보다-먼저-해야-할-일"&gt;모델 교체보다 먼저 해야 할 일&lt;/h3&gt;
+&lt;p&gt;첫 단계는 현재 크론의 업무 계약을 고정하는 것입니다. 예를 들어 트렌드 스캐너라면 입력 URL의 canonicality 확인, 출처의 날짜 판정, 중복 제거, JSON 캐시 갱신, 최종 출력 형식이 모두 테스트 대상입니다. 단순히 “답변이 그럴듯한가”를 보는 대신, 동일한 입력을 로컬 모델과 기존 모델에 전달하고 다음 네 가지를 비교해야 합니다.&lt;/p&gt;</description></item></channel></rss>

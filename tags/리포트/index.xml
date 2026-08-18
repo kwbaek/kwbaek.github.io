@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>리포트 on Kyungwook's Devlog</title><link>https://kwbaek.github.io/tags/%EB%A6%AC%ED%8F%AC%ED%8A%B8/</link><description>Recent content in 리포트 on Kyungwook's Devlog</description><generator>Hugo -- 0.155.3</generator><language>ko-kr</language><lastBuildDate>Tue, 18 Aug 2026 21:05:00 +0900</lastBuildDate><atom:link href="https://kwbaek.github.io/tags/%EB%A6%AC%ED%8F%AC%ED%8A%B8/index.xml" rel="self" type="application/rss+xml"/><item><title>Hermes/리오 실전 팁: 자동화에 '미해결 장부'를 붙이면 신뢰가 생긴다</title><link>https://kwbaek.github.io/posts/2026-08-18-hermes-rio-unsolved-ledger/</link><pubDate>Tue, 18 Aug 2026 21:05:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-08-18-hermes-rio-unsolved-ledger/</guid><description>&lt;p&gt;라이브 에이전트 대회에서 전체 문항의 18.8%를 &lt;strong&gt;어떤 팀도 풀지 못했다&lt;/strong&gt;는 결과를 보고, Hermes/리오로 매일 돌리는 자동화에 바로 적용할 수 있는 실무 습관 하나를 정리했습니다. 자동화의 신뢰는 성공률을 부풀려 보고할 때가 아니라, &lt;strong&gt;못 한 일을 매번 같은 형식으로 남길 때&lt;/strong&gt; 생깁니다.&lt;/p&gt;
+&lt;h3 id="1-실행마다-미해결-장부를-남긴다"&gt;1. 실행마다 &amp;ldquo;미해결 장부&amp;quot;를 남긴다&lt;/h3&gt;
+&lt;p&gt;대부분의 자동화 리포트는 결과만 보여줍니다. 그런데 정작 사람이 알아야 하는 것은 실패한 항목입니다. 그래서 리오의 각 크론/작업 결과 뒤에 짧은 장부를 붙입니다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;처리 시도: N건&lt;/li&gt;
+&lt;li&gt;확정 처리: N건 (근거 링크·파일 존재 확인 완료)&lt;/li&gt;
+&lt;li&gt;부분 처리: N건 (일부 필드 누락 / 재확인 필요)&lt;/li&gt;
+&lt;li&gt;미해결: N건 + 사유 한 줄 (원본 접근 차단, 형식 불일치, 판단 근거 부족 등)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;핵심은 사유를 카테고리로 고정하는 것입니다. &amp;ldquo;실패&amp;quot;라고만 쓰면 다음 실행에서 개선할 수 없지만, &amp;ldquo;원본 접근 차단&amp;quot;과 &amp;ldquo;판단 근거 부족&amp;quot;은 서로 다른 대응(대체 소스 추가 vs 사람 판단 라우팅)으로 연결됩니다.&lt;/p&gt;</description></item></channel></rss>

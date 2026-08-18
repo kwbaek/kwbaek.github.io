@@ -1,29 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
-  <channel>
-    <title>추론 on Kyungwook&#39;s Devlog</title>
-    <link>https://kwbaek.github.io/tags/%EC%B6%94%EB%A1%A0/</link>
-    <description>Recent content in 추론 on Kyungwook&#39;s Devlog</description>
-    <generator>Hugo -- 0.155.3</generator>
-    <language>ko-kr</language>
-    <lastBuildDate>Sun, 16 Aug 2026 21:00:00 +0900</lastBuildDate>
-    <atom:link href="https://kwbaek.github.io/tags/%EC%B6%94%EB%A1%A0/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>AI/ML 트렌드: 로컬 LLM 런타임의 다음 전장은 구조화 콘텐츠 계약이다</title>
-      <link>https://kwbaek.github.io/posts/2026-08-16-ai-ml-trends-structured-content-runtime-contract/</link>
-      <pubDate>Sun, 16 Aug 2026 21:00:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/posts/2026-08-16-ai-ml-trends-structured-content-runtime-contract/</guid>
-      <description>&lt;p&gt;오늘 AI/ML 트렌드에서 눈여겨볼 신호는 거대한 새 모델의 등장보다 &lt;strong&gt;모델을 호출하는 입력 계약이 런타임의 핵심 제품 표면으로 내려오고 있다는 점&lt;/strong&gt;입니다. llama.cpp의 &lt;code&gt;b10452&lt;/code&gt; 릴리스는 &lt;code&gt;supports_string_content&lt;/code&gt;와 &lt;code&gt;supports_typed_content&lt;/code&gt; 처리를 리팩터링하고, &lt;code&gt;messages_inp_normalizer&lt;/code&gt;를 보강했습니다. 겉으로는 내부 채팅 입력 처리의 작은 변경처럼 보이지만, 실제로는 텍스트·이미지·도구 결과처럼 타입이 다른 콘텐츠를 어떤 형태로 정규화해 모델에 전달할지에 관한 호환성 문제입니다.&lt;/p&gt;
-&lt;h3 id=&#34;입력-포맷은-더-이상-주변부가-아니다&#34;&gt;입력 포맷은 더 이상 주변부가 아니다&lt;/h3&gt;
-&lt;p&gt;LLM 애플리케이션은 이제 단순한 문자열 프롬프트만 보내지 않습니다. 대화 메시지 안에 텍스트 블록, 이미지 참조, 파일 내용, 도구 호출 결과, 구조화된 JSON이 함께 들어갑니다. 클라우드 API에서는 SDK가 이 차이를 흡수해 주지만, 로컬 런타임에서는 각 모델의 chat template과 서버 구현이 경계면을 직접 책임져야 합니다. 문자열을 기대하는 경로에 typed content를 넣거나, 반대로 구조화된 블록을 문자열로 평탄화하면 답변 품질이 떨어지는 수준을 넘어 이미지가 사라지거나 도구 인자가 깨질 수 있습니다.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>멀티모달 AI의 다음 경쟁은 모델 성능이 아니라 전환 비용이다 — Muse Glimmer와 지식 증류가 여는 로컬 에이전트</title>
-      <link>https://kwbaek.github.io/posts/2026-08-10-ai-ml-trends-local-multimodal-agents-lower-the-switching-cost/</link>
-      <pubDate>Mon, 10 Aug 2026 21:00:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/posts/2026-08-10-ai-ml-trends-local-multimodal-agents-lower-the-switching-cost/</guid>
-      <description>&lt;p&gt;오늘의 AI/ML 흐름에서 중요한 변화는 “더 큰 모델이 곧 더 좋은 제품”이라는 단순한 경쟁 구도가 약해지고 있다는 점입니다. 8월 10일 공개된 Meta의 Muse Glimmer는 Apache 2.0 라이선스의 30B 로컬·에이전틱 멀티모달 모델로 소개됐고, Transformers·llama.cpp·vLLM 생태계가 공개 당일부터 연결됐습니다. 동시에 Multiverse Computing은 교사 모델을 학습 중 계속 탑재하지 않고 top-K logits와 fused chunked KL을 활용하는 지식 증류 방식을 제시했습니다.&lt;/p&gt;
-&lt;p&gt;두 소식은 서로 다른 문제를 다루지만 같은 방향을 가리킵니다. 하나는 이미지·문서·도구 호출을 기업 내부 GPU에서 실행할 수 있는 선택지를 넓히고, 다른 하나는 장문맥 모델을 압축·개인화하는 실험의 메모리 진입장벽을 낮춥니다. 특히 모델이 30B라는 숫자만으로 실용성을 판단해서는 안 됩니다. 실제 도입에서는 모델 가중치 크기보다 멀티모달 입력 처리 지연, tool calling 실패율, 양자화 이후의 정확도, GPU 메모리 피크, 그리고 민감한 문서가 외부 API로 전송되지 않는지가 더 직접적인 비용과 리스크가 됩니다.&lt;/p&gt;</description>
-    </item>
-  </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>추론 on Kyungwook's Devlog</title><link>https://kwbaek.github.io/tags/%EC%B6%94%EB%A1%A0/</link><description>Recent content in 추론 on Kyungwook's Devlog</description><generator>Hugo -- 0.155.3</generator><language>ko-kr</language><lastBuildDate>Sun, 16 Aug 2026 21:00:00 +0900</lastBuildDate><atom:link href="https://kwbaek.github.io/tags/%EC%B6%94%EB%A1%A0/index.xml" rel="self" type="application/rss+xml"/><item><title>AI/ML 트렌드: 로컬 LLM 런타임의 다음 전장은 구조화 콘텐츠 계약이다</title><link>https://kwbaek.github.io/posts/2026-08-16-ai-ml-trends-structured-content-runtime-contract/</link><pubDate>Sun, 16 Aug 2026 21:00:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-08-16-ai-ml-trends-structured-content-runtime-contract/</guid><description>&lt;p&gt;오늘 AI/ML 트렌드에서 눈여겨볼 신호는 거대한 새 모델의 등장보다 &lt;strong&gt;모델을 호출하는 입력 계약이 런타임의 핵심 제품 표면으로 내려오고 있다는 점&lt;/strong&gt;입니다. llama.cpp의 &lt;code&gt;b10452&lt;/code&gt; 릴리스는 &lt;code&gt;supports_string_content&lt;/code&gt;와 &lt;code&gt;supports_typed_content&lt;/code&gt; 처리를 리팩터링하고, &lt;code&gt;messages_inp_normalizer&lt;/code&gt;를 보강했습니다. 겉으로는 내부 채팅 입력 처리의 작은 변경처럼 보이지만, 실제로는 텍스트·이미지·도구 결과처럼 타입이 다른 콘텐츠를 어떤 형태로 정규화해 모델에 전달할지에 관한 호환성 문제입니다.&lt;/p&gt;
+&lt;h3 id="입력-포맷은-더-이상-주변부가-아니다"&gt;입력 포맷은 더 이상 주변부가 아니다&lt;/h3&gt;
+&lt;p&gt;LLM 애플리케이션은 이제 단순한 문자열 프롬프트만 보내지 않습니다. 대화 메시지 안에 텍스트 블록, 이미지 참조, 파일 내용, 도구 호출 결과, 구조화된 JSON이 함께 들어갑니다. 클라우드 API에서는 SDK가 이 차이를 흡수해 주지만, 로컬 런타임에서는 각 모델의 chat template과 서버 구현이 경계면을 직접 책임져야 합니다. 문자열을 기대하는 경로에 typed content를 넣거나, 반대로 구조화된 블록을 문자열로 평탄화하면 답변 품질이 떨어지는 수준을 넘어 이미지가 사라지거나 도구 인자가 깨질 수 있습니다.&lt;/p&gt;</description></item><item><title>멀티모달 AI의 다음 경쟁은 모델 성능이 아니라 전환 비용이다 — Muse Glimmer와 지식 증류가 여는 로컬 에이전트</title><link>https://kwbaek.github.io/posts/2026-08-10-ai-ml-trends-local-multimodal-agents-lower-the-switching-cost/</link><pubDate>Mon, 10 Aug 2026 21:00:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-08-10-ai-ml-trends-local-multimodal-agents-lower-the-switching-cost/</guid><description>&lt;p&gt;오늘의 AI/ML 흐름에서 중요한 변화는 “더 큰 모델이 곧 더 좋은 제품”이라는 단순한 경쟁 구도가 약해지고 있다는 점입니다. 8월 10일 공개된 Meta의 Muse Glimmer는 Apache 2.0 라이선스의 30B 로컬·에이전틱 멀티모달 모델로 소개됐고, Transformers·llama.cpp·vLLM 생태계가 공개 당일부터 연결됐습니다. 동시에 Multiverse Computing은 교사 모델을 학습 중 계속 탑재하지 않고 top-K logits와 fused chunked KL을 활용하는 지식 증류 방식을 제시했습니다.&lt;/p&gt;
+&lt;p&gt;두 소식은 서로 다른 문제를 다루지만 같은 방향을 가리킵니다. 하나는 이미지·문서·도구 호출을 기업 내부 GPU에서 실행할 수 있는 선택지를 넓히고, 다른 하나는 장문맥 모델을 압축·개인화하는 실험의 메모리 진입장벽을 낮춥니다. 특히 모델이 30B라는 숫자만으로 실용성을 판단해서는 안 됩니다. 실제 도입에서는 모델 가중치 크기보다 멀티모달 입력 처리 지연, tool calling 실패율, 양자화 이후의 정확도, GPU 메모리 피크, 그리고 민감한 문서가 외부 API로 전송되지 않는지가 더 직접적인 비용과 리스크가 됩니다.&lt;/p&gt;</description></item></channel></rss>
