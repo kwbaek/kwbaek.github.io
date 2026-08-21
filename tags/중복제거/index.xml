@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>중복제거 on Kyungwook's Devlog</title><link>https://kwbaek.github.io/tags/%EC%A4%91%EB%B3%B5%EC%A0%9C%EA%B1%B0/</link><description>Recent content in 중복제거 on Kyungwook's Devlog</description><generator>Hugo -- 0.155.3</generator><language>ko-kr</language><lastBuildDate>Fri, 21 Aug 2026 20:55:00 +0900</lastBuildDate><atom:link href="https://kwbaek.github.io/tags/%EC%A4%91%EB%B3%B5%EC%A0%9C%EA%B1%B0/index.xml" rel="self" type="application/rss+xml"/><item><title>Hermes/리오 실전 팁: 캐시를 믿기 전에 '재사용 감사 로그'를 붙여라</title><link>https://kwbaek.github.io/posts/2026-08-21-hermes-rio-reuse-audit-log/</link><pubDate>Fri, 21 Aug 2026 20:55:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-08-21-hermes-rio-reuse-audit-log/</guid><description>&lt;p&gt;오늘 정리한 AI/ML 트렌드는 &amp;ldquo;히트율 60%짜리 캐시가 실제로는 2%였다&amp;quot;였습니다. 시맨틱 캐시의 원시 히트율과 실제로 답을 대체해도 되는 비율이 수십 배 차이 났다는 이야기였죠. 이걸 Hermes/리오 운영으로 번역하면 팁은 하나입니다. &lt;strong&gt;자동화가 무언가를 &amp;ldquo;이미 처리했다&amp;quot;고 판단해 건너뛸 때마다, 그 판단의 근거를 로그에 남기세요.&lt;/strong&gt;&lt;/p&gt;
+&lt;h2 id="왜-문제가-되나"&gt;왜 문제가 되나&lt;/h2&gt;
+&lt;p&gt;리오가 돌리는 크론은 대부분 어떤 형태로든 재사용/중복제거 판단을 합니다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;트렌드 스캐너는 이전에 올린 항목인지 캐시와 대조해 건너뜁니다.&lt;/li&gt;
+&lt;li&gt;리포트 잡은 어제 캐시가 아직 유효하면 다시 수집하지 않습니다.&lt;/li&gt;
+&lt;li&gt;아이디어 생성기는 최근 히스토리와 비슷하면 &lt;code&gt;[SILENT]&lt;/code&gt;로 종료합니다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;이 판단은 전부 &amp;ldquo;충분히 비슷하니 같은 것으로 친다&amp;quot;는 유사도 판정입니다. 시맨틱 캐시와 구조가 똑같습니다. 그리고 문제도 똑같이 발생합니다. &lt;strong&gt;중복이라 판단해 건너뛴 것 중 실제로는 새 정보였던 비율을, 아무도 세지 않습니다.&lt;/strong&gt; 크론이 조용히 끝나면 성공으로 보이니까요.&lt;/p&gt;</description></item></channel></rss>
