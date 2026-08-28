@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>에이전트런타임 on Kyungwook&#39;s Devlog</title>
+    <link>https://kwbaek.github.io/tags/%EC%97%90%EC%9D%B4%EC%A0%84%ED%8A%B8%EB%9F%B0%ED%83%80%EC%9E%84/</link>
+    <description>Recent content in 에이전트런타임 on Kyungwook&#39;s Devlog</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Fri, 28 Aug 2026 21:08:00 +0900</lastBuildDate>
+    <atom:link href="https://kwbaek.github.io/tags/%EC%97%90%EC%9D%B4%EC%A0%84%ED%8A%B8%EB%9F%B0%ED%83%80%EC%9E%84/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hermes/리오 실전 팁: 하드웨어 백엔드 다변화 시대의 에이전트 런타임 거버넌스</title>
+      <link>https://kwbaek.github.io/posts/2026-08-28-hermes-rio-hardware-backend-governance/</link>
+      <pubDate>Fri, 28 Aug 2026 21:08:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-08-28-hermes-rio-hardware-backend-governance/</guid>
+      <description>&lt;p&gt;오늘 AI/ML 트렌드에서 전해진 AMD ROCm 10 공식 출시와 OpenAI의 추론 칩 Jalapeño 실측 결과는 한 가지 공통된 흐름을 가리킵니다. 바로 **&amp;ldquo;AI 에이전트를 가동하는 하드웨어와 추론 백엔드가 급격히 다변화되고 있다&amp;rdquo;**는 사실입니다.&lt;/p&gt;
+&lt;p&gt;초기에는 대형 클라우드 벤더의 상위 모델 API 하나에 전적으로 의존했다면, 이제는 온디바이스 NPU, 로컬/온프레미스 GPU 클러스터, 그리고 다양한 클라우드 백엔드가 혼합된 하이브리드 환경이 표준이 되어가고 있습니다.&lt;/p&gt;
+&lt;p&gt;이러한 환경에서 Hermes/리오와 같은 자율 에이전트를 안정적이고 비용 효율적으로 24시간 무인 가동(Cron)하기 위해 필요한 &lt;strong&gt;런타임 거버넌스 3대 원칙&lt;/strong&gt;을 정리해 봅니다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>AI/ML 트렌드: AMD ROCm 10이 던진 승부수, &#39;에이전틱 워크로드&#39;와 칩 생태계 다변화</title>
+      <link>https://kwbaek.github.io/posts/2026-08-28-ai-ml-trends-amd-rocm-10-agentic-stack/</link>
+      <pubDate>Fri, 28 Aug 2026 21:05:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-08-28-ai-ml-trends-amd-rocm-10-agentic-stack/</guid>
+      <description>&lt;p&gt;AMD가 Instinct GPU 및 EPYC 서버 환경을 위한 차세대 소프트웨어 플랫폼인 &lt;strong&gt;ROCm 10&lt;/strong&gt;을 정식 출시했습니다. 이번 릴리즈에서 가장 주목할 부분은 단순한 부동소수점 연산 성능(TFLOPS) 향상에 그치지 않고, 최근 급부상한 **&amp;ldquo;에이전틱 AI(Agentic AI) 개발 및 서빙 최적화&amp;rdquo;**를 공식적인 핵심 축으로 내세웠다는 점입니다.&lt;/p&gt;
+&lt;p&gt;NVIDIA의 CUDA 생태계가 오랜 기간 장악해 온 AI 인프라 시장에서, AMD가 소프트웨어 스택의 전면적 체질 개선을 통해 엔터프라이즈 에이전트 런타임의 실질적인 대안으로 자리 잡으려는 의도가 명확히 드러납니다.&lt;/p&gt;
+&lt;h2 id=&#34;rocm-10의-핵심-변화-에이전틱-런타임-중심의-도구-체계&#34;&gt;ROCm 10의 핵심 변화: 에이전틱 런타임 중심의 도구 체계&lt;/h2&gt;
+&lt;p&gt;ROCm 10은 기존의 복잡했던 빌드 및 드라이버 의존성을 대폭 정리하고, AI 네이티브 개발 경험을 위한 신규 컴포넌트들을 대거 도입했습니다.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
