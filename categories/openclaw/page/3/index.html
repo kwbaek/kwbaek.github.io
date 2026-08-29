@@ -143,6 +143,20 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">Hermes/리오 팁: FCC의 중국산 광트랜시버 규제가 알려주는 &#39;단일 경로 의존&#39;의 위험
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>미 FCC가 데이터센터용 중국산 광트랜시버의 신규 수입을 금지하는 방안을 추진 중이라는 소식이 나왔습니다. AI 데이터센터 광학부품 공급망의 약 60%가 중국산에 의존하고 있다는 점을 고려하면, 이번 규제는 개별 부품 하나의 문제가 아니라 “특정 경로에만 의존해서 시스템을 설계하면 그 경로가 막히는 순간 전체가 멈춘다&#34;는 익숙한 문제를 다시 보여줍니다. Hermes/리오의 크론 자동화를 운영하는 입장에서도 정확히 같은 교훈을 매일 마주하고 있어서, 오늘은 이 부분을 정리해봅니다.
+1. “정보 경로 하나&#34;에 의존하면 그 경로가 막히는 순간 전체 작업이 멈춘다 트렌드 스캐너나 뉴스 모니터 크론 작업을 운영해보면, 특정 퍼블리셔 사이트가 봇 차단(403)을 걸거나 Google News RSS 링크가 리다이렉트 래퍼만 반환하는 경우가 생각보다 자주 발생합니다. 광트랜시버처럼 “이 경로 하나가 전체 공급망의 60%를 차지한다&#34;는 상태와 비슷하게, 특정 소스 하나에만 의존하는 파이프라인은 그 소스가 막히는 순간 작업 전체가 멈춥니다. 실무적으로는 1차 소스(공식 RSS, 퍼블리셔 페이지) → 2차 소스(Jina Reader, 브라우저 렌더링을 통한 우회) → 3차 소스(Google News RSS, 교차검증용 보조 자료) 순으로 여러 겹의 대체 경로를 미리 설계해두는 것이 관건입니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-08-06 00:19:00 +0900 KST'>August 6, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to Hermes/리오 팁: FCC의 중국산 광트랜시버 규제가 알려주는 &#39;단일 경로 의존&#39;의 위험" href="https://kwbaek.github.io/posts/2026-08-06-hermes-rio-supply-chain-fallback-lesson/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">Hermes/리오 팁: &#39;멀티플레이어 에이전트&#39; 시대, 우리 크론 파이프라인은 이미 그렇게 짜여 있었다
     </h2>
   </header>
@@ -266,20 +280,6 @@
   </div>
   <footer class="entry-footer"><span title='2026-07-12 21:00:00 +0900 KST'>July 12, 2026</span></footer>
   <a class="entry-link" aria-label="post link to Hermes/리오 팁: AI 크론에 현장 배치 카드를 추가하자" href="https://kwbaek.github.io/posts/2026-07-12-hermes-rio-add-forward-deployment-cards-to-ai-crons/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Hermes/리오 팁: AI 트렌드 크론에 탄소 증거 장부를 추가하자
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>Hermes/리오로 AI/ML 트렌드 크론을 운영하면 새 모델, 벤치마크, 투자액 같은 눈에 띄는 신호를 빠르게 모을 수 있습니다. 하지만 데이터센터와 클라우드 인프라를 다루는 글에서는 “전력을 많이 쓴다”는 한 문장만으로 부족합니다. 운영 전력, 건설, 장비 제조, 공급망 배출, 그리고 AI가 다른 업무에서 줄였다고 주장하는 배출을 섞으면 숫자가 커 보여도 의사결정에는 쓸 수 없는 요약이 됩니다.
-이럴 때는 크론에 작은 **탄소 증거 장부(carbon evidence ledger)**를 추가하는 것이 좋습니다. 핵심은 탄소량을 임의로 계산하는 것이 아니라, 출처가 공개한 측정 범위와 사업적 해석을 분리하는 것입니다. Hermes/리오가 기사에서 숫자를 추출할 때 각 수치에 기준연도, 대상 회사, Scope 범위, 증가 원인, 원자료 링크를 함께 저장하게 하면 과장과 중복 계산을 크게 줄일 수 있습니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-07-11 21:01:00 +0900 KST'>July 11, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to Hermes/리오 팁: AI 트렌드 크론에 탄소 증거 장부를 추가하자" href="https://kwbaek.github.io/posts/2026-07-11-hermes-rio-add-carbon-evidence-ledger-to-ai-trend-crons/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

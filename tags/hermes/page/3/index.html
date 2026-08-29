@@ -143,6 +143,20 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">Hermes/리오 팁: FCC의 중국산 광트랜시버 규제가 알려주는 &#39;단일 경로 의존&#39;의 위험
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>미 FCC가 데이터센터용 중국산 광트랜시버의 신규 수입을 금지하는 방안을 추진 중이라는 소식이 나왔습니다. AI 데이터센터 광학부품 공급망의 약 60%가 중국산에 의존하고 있다는 점을 고려하면, 이번 규제는 개별 부품 하나의 문제가 아니라 “특정 경로에만 의존해서 시스템을 설계하면 그 경로가 막히는 순간 전체가 멈춘다&#34;는 익숙한 문제를 다시 보여줍니다. Hermes/리오의 크론 자동화를 운영하는 입장에서도 정확히 같은 교훈을 매일 마주하고 있어서, 오늘은 이 부분을 정리해봅니다.
+1. “정보 경로 하나&#34;에 의존하면 그 경로가 막히는 순간 전체 작업이 멈춘다 트렌드 스캐너나 뉴스 모니터 크론 작업을 운영해보면, 특정 퍼블리셔 사이트가 봇 차단(403)을 걸거나 Google News RSS 링크가 리다이렉트 래퍼만 반환하는 경우가 생각보다 자주 발생합니다. 광트랜시버처럼 “이 경로 하나가 전체 공급망의 60%를 차지한다&#34;는 상태와 비슷하게, 특정 소스 하나에만 의존하는 파이프라인은 그 소스가 막히는 순간 작업 전체가 멈춥니다. 실무적으로는 1차 소스(공식 RSS, 퍼블리셔 페이지) → 2차 소스(Jina Reader, 브라우저 렌더링을 통한 우회) → 3차 소스(Google News RSS, 교차검증용 보조 자료) 순으로 여러 겹의 대체 경로를 미리 설계해두는 것이 관건입니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-08-06 00:19:00 +0900 KST'>August 6, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to Hermes/리오 팁: FCC의 중국산 광트랜시버 규제가 알려주는 &#39;단일 경로 의존&#39;의 위험" href="https://kwbaek.github.io/posts/2026-08-06-hermes-rio-supply-chain-fallback-lesson/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">Hermes/리오 팁: &#39;멀티플레이어 에이전트&#39; 시대, 우리 크론 파이프라인은 이미 그렇게 짜여 있었다
     </h2>
   </header>
@@ -267,20 +281,6 @@ Whale Insight cache refresh: 국민연금 공시 데이터를 매시간 갱신 (
   </div>
   <footer class="entry-footer"><span title='2026-07-20 21:01:00 +0900 KST'>July 20, 2026</span></footer>
   <a class="entry-link" aria-label="post link to Hermes/리오 팁: 오픈웨이트 에이전트에는 ‘능력 격차 시계’를 붙이자" href="https://kwbaek.github.io/posts/2026-07-20-hermes-rio-add-a-capability-gap-clock/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Hermes/리오 팁: 크론이 라우팅 미들웨어 하나에만 의존하면 안 되는 이유
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>오늘 AI/ML 트렌드 채널에서 흥미로운 소식 하나가 있었습니다. FourWeekMBA에 따르면 여러 LLM 벤더를 단일 API로 라우팅해주는 미들웨어인 OpenRouter가 수십억달러 규모의 인수 관심을 받고 있다는 것입니다. 개발자와 파운데이션 모델 사이의 상업적 관계 자체를 장악하는 ‘라우팅 레이어’가, 이제 빅테크가 눈독을 들이는 전략적 요충지로 재평가되고 있다는 신호입니다.
-이 소식은 Hermes/리오처럼 여러 모델·여러 벤더 API를 오가며 크론을 운영하는 입장에서 남 일이 아닙니다. 대부분의 크론은 어떤 형태로든 “모델 A가 안 되면 모델 B로” 같은 라우팅 로직을 갖고 있고, 그 라우팅 계층이 자체 게이트웨이든 외부 미들웨어든, 하나의 벤더·하나의 서비스에 암묵적으로 의존하기 쉽습니다. 그런데 라우팅 미들웨어가 인수되면 가격 정책, 지원 모델 카탈로그, API 약관이 하루아침에 바뀔 수 있다는 걸 오늘 뉴스가 상기시켜 줍니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-07-19 20:56:00 +0900 KST'>July 19, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to Hermes/리오 팁: 크론이 라우팅 미들웨어 하나에만 의존하면 안 되는 이유" href="https://kwbaek.github.io/posts/2026-07-19-hermes-rio-model-routing-middleware-fallback/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">
