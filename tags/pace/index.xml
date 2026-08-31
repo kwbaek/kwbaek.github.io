@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>PACE on Kyungwook&#39;s Devlog</title>
+    <link>https://kwbaek.github.io/tags/pace/</link>
+    <description>Recent content in PACE on Kyungwook&#39;s Devlog</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Mon, 31 Aug 2026 21:01:00 +0900</lastBuildDate>
+    <atom:link href="https://kwbaek.github.io/tags/pace/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hermes/리오 실전 팁: PACE 패턴을 적용한 &#39;오프라인 에이전트 탐색 - 런타임 결정론적 실행&#39; 무비용 크론 파이프라인</title>
+      <link>https://kwbaek.github.io/posts/2026-08-31-hermes-rio-pace-pattern-zero-cost-cron/</link>
+      <pubDate>Mon, 31 Aug 2026 21:01:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-08-31-hermes-rio-pace-pattern-zero-cost-cron/</guid>
+      <description>&lt;p&gt;오늘 AI/ML 트렌드에서 소개된 논문 **&amp;ldquo;PACE: Publisher-Adaptive Content Extraction&amp;rdquo; (arXiv:2608.27466)**은 24시간 자율 에이전트 시스템을 운영하는 엔지니어들에게 매우 중요한 아키텍처적 통찰을 제공합니다.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&amp;ldquo;정기적으로 반복되는 수집·분석 크론 작업에서, 왜 매 실행마다 비싼 LLM API를 호출하여 비정형 HTML을 파싱해야 하는가? 똑똑한 에이전트는 &amp;lsquo;오프라인(빌드 타임)&amp;lsquo;에서만 일하고, 실제 운영되는 &amp;lsquo;런타임 크론&amp;rsquo;은 무비용 결정론적 코드로 돌아가야 한다.&amp;rdquo;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Hermes/리오 환경에서 24/7 무인 크론 파이프라인의 API 비용을 획기적으로 절감하고 처리 속도와 안정성을 극대화하기 위해 적용할 수 있는 &lt;strong&gt;&amp;lsquo;오프라인 에이전트 탐색 - 런타임 결정론적 실행(Offline Exploration &amp;amp; Deterministic Runtime)&amp;rsquo; 아키텍처 패턴&lt;/strong&gt;을 정리해 소개합니다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>AI/ML 트렌드: 소프트뱅크-OpenAI의 55억 달러 워런트와 기가와트(GW)급 전력 확보전 — AI 인프라의 금융 결합과 런타임 제로 오버헤드 기술</title>
+      <link>https://kwbaek.github.io/posts/2026-08-31-ai-ml-trends-sb-energy-openai-warrants-pace/</link>
+      <pubDate>Mon, 31 Aug 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-08-31-ai-ml-trends-sb-energy-openai-warrants-pace/</guid>
+      <description>&lt;p&gt;2026년 8월 말 AI 산업은 거시적 인프라 투자와 미시적 런타임 최적화라는 양 극단에서 중대한 분기점을 맞이하고 있습니다. 하나는 &lt;strong&gt;기가와트(GW)급 전력을 확보하기 위해 금융 파생상품(신주인수권)까지 동원되는 초대형 데이터센터 파이낸싱&lt;/strong&gt;이며, 다른 하나는 &lt;strong&gt;런타임 LLM 호출 비용을 0으로 만들거나 디코딩 병목을 인덱스로 치환하는 극단적 시스템 최적화 연구&lt;/strong&gt;입니다.&lt;/p&gt;
+&lt;p&gt;이 두 흐름은 AI 기술의 중심축이 단순한 &amp;lsquo;모델 스케일업&amp;rsquo;을 넘어, **&amp;lsquo;전력·자본 조달의 현실적 구조화&amp;rsquo;와 &amp;lsquo;배포 단위에서의 효율성 극대화&amp;rsquo;**로 완전히 이동했음을 입증하고 있습니다.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;1-기가와트gw-시대를-여는-데이터센터-파이낸싱-소프트뱅크의-55억-달러-워런트&#34;&gt;1. 기가와트(GW) 시대를 여는 데이터센터 파이낸싱: 소프트뱅크의 55억 달러 워런트&lt;/h2&gt;
+&lt;p&gt;월스트리트저널(WSJ)에 따르면, 소프트뱅크의 재생에너지 자회사 &lt;strong&gt;SB Energy&lt;/strong&gt;는 미국 증시 IPO를 앞두고 OpenAI를 핵심 앵커 테넌트(Anchor Tenant)로 유치하기 위해 **55억 달러(약 7조 6,000억 원) 규모의 신주인수권(Warrants)**을 제공했습니다.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
