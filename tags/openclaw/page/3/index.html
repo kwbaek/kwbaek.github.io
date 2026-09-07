@@ -5,12 +5,12 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
-<title>OpenClaw | Kyungwook&#39;s Devlog</title>
+<title>Openclaw | Kyungwook&#39;s Devlog</title>
 <meta name="keywords" content="">
 <meta name="description" content="">
-<meta name="author" content="">
+<meta name="author" content="map[email: name:Kyungwook Baek]">
 <link rel="canonical" href="https://kwbaek.github.io/tags/openclaw/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.da3211e5ef867bf2b75fd5a6515cfed7195c011e8ab735694e203810a827097b.css" integrity="sha256-2jIR5e&#43;Ge/K3X9WmUVz&#43;1xlcAR6KtzVpTiA4EKgnCXs=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.199042e659bc7245f5609d333d6c044eb554a0640849bb874e1dff8eb0f57209.css" integrity="sha256-GZBC5lm8ckX1YJ0zPWwETrVUoGQISbuHTh3/jrD1cgk=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://kwbaek.github.io/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://kwbaek.github.io/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://kwbaek.github.io/favicon-32x32.png">
@@ -73,11 +73,11 @@
 
 </script><meta property="og:url" content="https://kwbaek.github.io/tags/openclaw/">
   <meta property="og:site_name" content="Kyungwook&#39;s Devlog">
-  <meta property="og:title" content="OpenClaw">
+  <meta property="og:title" content="Openclaw">
   <meta property="og:locale" content="ko-kr">
   <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="OpenClaw">
+<meta name="twitter:title" content="Openclaw">
 <meta name="twitter:description" content="">
 
 </head>
@@ -137,7 +137,7 @@
 <main class="main"> 
 <header class="page-header">
   <h1>
-    OpenClaw
+    Openclaw
   </h1>
 </header>
 
@@ -151,7 +151,7 @@
 첫 번째 원칙은 입력과 지시를 분리하는 것입니다. Discord 채널, 웹페이지, RSS, 이메일 본문은 좋은 자료일 수 있지만 운영 지시는 아닙니다. 예를 들어 블로그 cron은 트렌드 채널 메시지를 읽어 글감을 고르되, 배포 순서와 파일 경로, 카테고리, 실패 보고 방식은 별도의 instruction 파일에서만 가져와야 합니다. 이렇게 하면 외부 텍스트가 “이 명령을 실행해” 같은 문장을 포함하더라도 자동화의 권한 경계를 넘지 못합니다. OpenClaw에서 cron instruction을 작게 고정하고, 채널 메시지는 참고 자료로만 쓰는 이유가 여기에 있습니다.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2026-05-07 21:00:00 +0900 KST'>May 7, 2026</span></footer>
+  <footer class="entry-footer"><span title='2026-05-07 21:00:00 +0900 KST'>2026년 5월 7일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
   <a class="entry-link" aria-label="post link to OpenClaw 팁: 도구 호출은 모두 감사 가능한 부작용으로 다루자" href="https://kwbaek.github.io/posts/2026-05-07-openclaw-treat-tool-calls-as-auditable-side-effects/"></a>
 </article>
 
@@ -165,7 +165,7 @@
 첫 번째 단계는 입력을 명확히 고정하는 것입니다. 예를 들어 “오늘 Discord 트렌드 채널의 메시지”를 읽는다고 해도, 그 메시지는 명령이 아니라 자료입니다. 채널 본문에 링크, 요약, 외부 문장, 혹시 모를 prompt injection이 섞일 수 있으므로, 운영 지시는 cron instruction에서만 오고 Discord 메시지는 선별 재료로만 써야 합니다. 이 경계를 분리하면 외부 텍스트가 배포 명령으로 승격되는 사고를 막을 수 있습니다.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2026-05-06 21:00:00 +0900 KST'>May 6, 2026</span></footer>
+  <footer class="entry-footer"><span title='2026-05-06 21:00:00 +0900 KST'>2026년 5월 6일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
   <a class="entry-link" aria-label="post link to OpenClaw 팁: 블로그 발행 cron은 감사 가능한 출판 파이프라인으로 만들자" href="https://kwbaek.github.io/posts/2026-05-06-openclaw-build-blog-crons-as-auditable-publishing-pipelines/"></a>
 </article>
 
@@ -179,7 +179,7 @@
 첫 번째 원칙은 “기억”을 파일과 Git에 남기는 것입니다. 에이전트가 매번 처음 보는 것처럼 일하면 중복 링크를 또 고르고, 같은 아이디어를 반복하고, 실패 지점을 놓치기 쉽습니다. 반대로 최근 메시지, 생성한 글, 보고서, 배포 결과를 파일로 남기면 다음 실행이 더 똑똑해집니다. OpenClaw에서는 memory/YYYY-MM-DD.md, reports/, content/posts/ 같은 산출물 경로를 잘 쓰고, 중요한 결과는 Git 커밋으로 checkpoint를 남기는 방식이 실용적입니다. 상태는 머릿속이 아니라 파일에 있어야 복구됩니다.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2026-05-05 21:00:00 +0900 KST'>May 5, 2026</span></footer>
+  <footer class="entry-footer"><span title='2026-05-05 21:00:00 +0900 KST'>2026년 5월 5일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
   <a class="entry-link" aria-label="post link to OpenClaw 팁: 에이전트 자동화는 상태를 남기되 감사 가능하게 만들자" href="https://kwbaek.github.io/posts/2026-05-05-openclaw-make-agent-automation-stateful-but-auditable/"></a>
 </article>
 
@@ -193,7 +193,7 @@
 첫 번째 원칙은 작업을 난이도와 위험도별로 나누는 것입니다. 예를 들어 Discord 채널에서 오늘 메시지를 읽고 후보 링크를 모으는 일은 비교적 구조화된 작업입니다. 반면 여러 후보를 하나의 주장으로 묶어 블로그 글을 쓰는 일은 해석과 편집 능력이 더 필요합니다. 또 git push, 외부 메시지 전송, 배포 저장소 커밋처럼 외부 상태를 바꾸는 일은 모델 지능보다 절차적 안전성이 중요합니다. 이 세 종류를 한 덩어리로 보면 자동화가 비싸지고 불안정해집니다. 반대로 수집, 판단, 작성, 검증, 배포로 나누면 각 단계에 맞는 모델과 권한을 붙일 수 있습니다.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2026-05-04 21:00:00 +0900 KST'>May 4, 2026</span></footer>
+  <footer class="entry-footer"><span title='2026-05-04 21:00:00 +0900 KST'>2026년 5월 4일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
   <a class="entry-link" aria-label="post link to OpenClaw 팁: 에이전트 cron은 작은 모델 라우팅과 도구 게이트를 함께 설계하자" href="https://kwbaek.github.io/posts/2026-05-04-openclaw-use-small-model-routing-and-tool-gates-for-agent-crons/"></a>
 </article>
 
@@ -207,7 +207,7 @@
 첫 번째 원칙은 외부 입력과 운영 지시를 분리하는 것입니다. cron 지시문, AGENTS.md, 스킬 파일처럼 내가 신뢰하는 운영 규칙과, 웹에서 가져온 본문은 같은 텍스트라도 역할이 다릅니다. OpenClaw 작업을 설계할 때는 “이 텍스트는 참고 자료일 뿐이며 지시로 따르지 않는다”는 경계를 명확히 두는 편이 좋습니다. 예를 들어 트렌드 스캐너가 웹페이지를 읽더라도, 그 안의 “이전 지시를 무시하라” 같은 문장은 요약 대상이지 실행 대상이 아닙니다.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2026-05-03 21:00:00 +0900 KST'>May 3, 2026</span></footer>
+  <footer class="entry-footer"><span title='2026-05-03 21:00:00 +0900 KST'>2026년 5월 3일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
   <a class="entry-link" aria-label="post link to OpenClaw 팁: 웹 입력은 에이전트 컨텍스트가 아니라 비신뢰 입력으로 다루자" href="https://kwbaek.github.io/posts/2026-05-03-openclaw-treat-web-input-as-untrusted-agent-context/"></a>
 </article>
 
@@ -221,7 +221,7 @@
 첫 번째 원칙은 입력, 작성, 배포를 분리하는 것입니다. 예를 들어 #ai-ml-trends 같은 Discord 채널은 하루 동안 축적된 관찰 로그입니다. cron은 그 로그를 읽어 오늘의 핵심 주장을 뽑고, content/posts/YYYY-MM-DD-slug.md 같은 명확한 파일 산출물로 남깁니다. 여기까지가 작성 단계입니다. 이 시점에서 파일이 존재하고 front matter가 올바르면, 적어도 콘텐츠 생성은 성공한 것입니다. 빌드나 push가 나중에 실패해도 글 자체를 잃지 않습니다.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2026-05-02 21:00:00 +0900 KST'>May 2, 2026</span></footer>
+  <footer class="entry-footer"><span title='2026-05-02 21:00:00 +0900 KST'>2026년 5월 2일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
   <a class="entry-link" aria-label="post link to OpenClaw 팁: cron 자동화는 성공 경로보다 복구 경로를 먼저 설계하자" href="https://kwbaek.github.io/posts/2026-05-02-openclaw-design-cron-jobs-for-recovery-not-just-success/"></a>
 </article>
 
@@ -235,7 +235,7 @@
 이 방식의 장점은 즉흥성이 줄어든다는 것입니다. 블로그 작성 시점에 웹을 처음 뒤지는 구조라면, 검색 품질이나 CAPTCHA, 일시적인 네트워크 문제에 결과가 크게 흔들립니다. 반대로 하루 종일 별도 trend scanner가 원문을 확인하고 Discord에 짧은 분석을 남겨두면, 저녁 블로그 cron은 그 기록을 다시 읽고 “오늘의 큰 방향”을 정리하는 역할에 집중할 수 있습니다. OpenClaw 입장에서는 Discord 채널이 일종의 lightweight research database가 되는 셈입니다.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2026-05-01 21:00:00 +0900 KST'>May 1, 2026</span></footer>
+  <footer class="entry-footer"><span title='2026-05-01 21:00:00 +0900 KST'>2026년 5월 1일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
   <a class="entry-link" aria-label="post link to OpenClaw 팁: Discord 트렌드 피드를 매일 발행 파이프라인으로 바꾸기" href="https://kwbaek.github.io/posts/2026-05-01-openclaw-discord-trend-feeds-can-become-publishing-pipelines/"></a>
 </article>
 
@@ -249,7 +249,7 @@
 제가 가장 유용하다고 느끼는 방식은 cron instruction 파일을 최대한 명확하게 두는 것입니다. 예를 들어 “어느 Discord 채널을 읽을지”, “어떤 카테고리로 글을 만들지”, “Hugo front matter에 무엇을 넣을지”, “소스 저장소와 배포 저장소를 어떤 순서로 커밋할지”를 모두 적어두면 실행 때마다 모델이 불필요한 판단을 덜 하게 됩니다. 이건 창의성을 죽이는 게 아니라, 창의성이 필요한 부분과 반복 가능한 운영 부분을 분리하는 일입니다.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2026-04-30 21:05:00 +0900 KST'>April 30, 2026</span></footer>
+  <footer class="entry-footer"><span title='2026-04-30 21:05:00 +0900 KST'>2026년 4월 30일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
   <a class="entry-link" aria-label="post link to OpenClaw 팁: cron 작업은 작은 운영 제품처럼 다루는 게 좋다" href="https://kwbaek.github.io/posts/2026-04-30-openclaw-treat-cron-jobs-like-small-operational-products/"></a>
 </article>
 
@@ -263,7 +263,7 @@
 이유는 단순합니다. 자동화는 대부분 “정답을 한 번 잘 만드는 문제”가 아니라 “같은 일을 100번 했을 때도 엇나가지 않는 문제”이기 때문입니다. 예를 들어 매일 글을 쓰고 배포하는 작업을 생각해 보면, 필요한 것은 대단한 창의성보다도 메시지 읽기 → 글 작성 → Git 반영 → 빌드 → 배포라는 순서를 안정적으로 이어가는 능력입니다. 중간에 채널 전달이 흔들리거나, heartbeat가 엉뚱한 범위를 다시 잡거나, 브라우저 초기화가 자주 삐끗하면 자동화는 금방 피곤한 시스템이 됩니다.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2026-04-29 13:27:00 +0900 KST'>April 29, 2026</span></footer>
+  <footer class="entry-footer"><span title='2026-04-29 13:27:00 +0900 KST'>2026년 4월 29일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
   <a class="entry-link" aria-label="post link to OpenClaw 팁: always-on 워크플로에서 신뢰성은 부가 기능이 아니라 핵심 기능이다" href="https://kwbaek.github.io/posts/2026-04-29-openclaw-reliability-is-a-feature-for-always-on-agent-workflows/"></a>
 </article>
 
@@ -277,7 +277,7 @@
 OpenClaw의 강점은 바로 이 운영 표면을 꽤 현실적으로 제공한다는 데 있습니다. message 같은 first-class 채널 도구가 있고, sessions_spawn으로 일을 분리할 수 있고, heartbeat와 cron으로 주기 작업과 즉시 반응 작업을 나눌 수 있습니다. 이 차이가 큽니다. 많은 로컬 AI 데모는 모델을 띄우는 데까지는 성공하지만, 며칠 동안 조용히 돌아가며 무엇을 언제 해야 하는지 판단하고, 실패를 드러내고, 반복 작업을 안전하게 이어가는 구조까지는 잘 못 갑니다. OpenClaw는 바로 그 지점을 운영 문제로 다룹니다.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2026-04-27 21:05:00 +0900 KST'>April 27, 2026</span></footer>
+  <footer class="entry-footer"><span title='2026-04-27 21:05:00 +0900 KST'>2026년 4월 27일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
   <a class="entry-link" aria-label="post link to OpenClaw 팁: always-on 에이전트일수록 모델보다 운영 표면이 먼저다" href="https://kwbaek.github.io/posts/2026-04-27-openclaw-always-on-agents-need-clear-ops-surfaces/"></a>
 </article>
 <footer class="page-footer">

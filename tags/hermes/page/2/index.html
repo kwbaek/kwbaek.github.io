@@ -8,9 +8,9 @@
 <title>Hermes | Kyungwook&#39;s Devlog</title>
 <meta name="keywords" content="">
 <meta name="description" content="">
-<meta name="author" content="">
+<meta name="author" content="map[email: name:Kyungwook Baek]">
 <link rel="canonical" href="https://kwbaek.github.io/tags/hermes/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.da3211e5ef867bf2b75fd5a6515cfed7195c011e8ab735694e203810a827097b.css" integrity="sha256-2jIR5e&#43;Ge/K3X9WmUVz&#43;1xlcAR6KtzVpTiA4EKgnCXs=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.199042e659bc7245f5609d333d6c044eb554a0640849bb874e1dff8eb0f57209.css" integrity="sha256-GZBC5lm8ckX1YJ0zPWwETrVUoGQISbuHTh3/jrD1cgk=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://kwbaek.github.io/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://kwbaek.github.io/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://kwbaek.github.io/favicon-32x32.png">
@@ -143,6 +143,65 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">Hermes/리오 실전 팁: 크론 하네스를 점검하는 6줄 체크
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 AI/ML 트렌드에서 정리한 결론은 “모델을 바꾸기 전에 하네스를 고쳐라&#34;였습니다. 같은 모델에 메모리·감독자 컴포넌트만 붙여 30%를 100%로 만든 사례가 있고, 반대로 파서 하나 더 끼웠다가 성공률이 73%p 날아간 사례가 있습니다.
+이걸 Hermes/리오 운영 언어로 옮기면 이렇게 됩니다. 우리가 매일 돌리는 크론 작업 하나하나가 전부 하네스입니다. 프롬프트만 있고 나머지는 없는 하네스일 뿐이죠. 오늘은 그 하네스를 점검하는 여섯 줄짜리 체크리스트를 정리합니다.
+왜 크론이 곧 하네스인가 크론 작업 하나를 뜯어보면 구성 요소가 이렇습니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-08-23 21:05:00 +0900 KST'>2026년 8월 23일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to Hermes/리오 실전 팁: 크론 하네스를 점검하는 6줄 체크" href="https://kwbaek.github.io/posts/2026-08-23-hermes-rio-cron-harness-check/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Hermes/리오 실전 팁: 크론에 &#39;노출 표면 명세&#39;를 붙여라
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 정리한 AI/ML 트렌드의 결론은 “거부는 경계가 아니다&#34;였습니다. 모델이 직접 요구를 거절해도 컨텍스트에 있던 4자리 비밀이 82% 복원되고, 툴 호출 사이 구간에서 숨겨진 추론이 뽑히고, 스킬 탐지기는 처음 보는 출처에서 무너집니다. 이걸 Hermes/리오 운영 언어로 번역하면 팁은 하나입니다.
+크론 작업마다 “이 작업이 무엇을 어디에 노출하는가&#34;를 한 장으로 적어두세요. 모델을 믿는 대신, 표면을 세는 겁니다.
+왜 필요한가 — 자동화는 노출을 조용히 늘린다 크론 작업은 사람 없이 돌기 때문에 노출이 축적되는 걸 아무도 못 봅니다. 전형적인 경로는 이렇습니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-08-22 21:05:00 +0900 KST'>2026년 8월 22일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to Hermes/리오 실전 팁: 크론에 &#39;노출 표면 명세&#39;를 붙여라" href="https://kwbaek.github.io/posts/2026-08-22-hermes-rio-exposure-surface-spec/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Hermes/리오 실전 팁: 캐시를 믿기 전에 &#39;재사용 감사 로그&#39;를 붙여라
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 정리한 AI/ML 트렌드는 “히트율 60%짜리 캐시가 실제로는 2%였다&#34;였습니다. 시맨틱 캐시의 원시 히트율과 실제로 답을 대체해도 되는 비율이 수십 배 차이 났다는 이야기였죠. 이걸 Hermes/리오 운영으로 번역하면 팁은 하나입니다. 자동화가 무언가를 “이미 처리했다&#34;고 판단해 건너뛸 때마다, 그 판단의 근거를 로그에 남기세요.
+왜 문제가 되나 리오가 돌리는 크론은 대부분 어떤 형태로든 재사용/중복제거 판단을 합니다.
+트렌드 스캐너는 이전에 올린 항목인지 캐시와 대조해 건너뜁니다. 리포트 잡은 어제 캐시가 아직 유효하면 다시 수집하지 않습니다. 아이디어 생성기는 최근 히스토리와 비슷하면 [SILENT]로 종료합니다. 이 판단은 전부 “충분히 비슷하니 같은 것으로 친다&#34;는 유사도 판정입니다. 시맨틱 캐시와 구조가 똑같습니다. 그리고 문제도 똑같이 발생합니다. 중복이라 판단해 건너뛴 것 중 실제로는 새 정보였던 비율을, 아무도 세지 않습니다. 크론이 조용히 끝나면 성공으로 보이니까요.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-08-21 20:55:00 +0900 KST'>2026년 8월 21일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to Hermes/리오 실전 팁: 캐시를 믿기 전에 &#39;재사용 감사 로그&#39;를 붙여라" href="https://kwbaek.github.io/posts/2026-08-21-hermes-rio-reuse-audit-log/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Hermes/리오 실전 팁: 자동화에 &#39;실행 모델 원장&#39;을 남겨라
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 정리한 AI/ML 트렌드는 “쓸 수 있는 모델과 존재하는 모델은 다르다&#34;였습니다. 프론티어 랩은 최상위 모델을 사내에 두고, 지역과 계약이 남은 선택지를 다시 깎아냅니다. 이걸 Hermes/리오 운영으로 번역하면 팁은 하나입니다. 자동화가 어떤 모델로 실행됐는지를 매번 기록하는 ‘실행 모델 원장(Model Execution Ledger)‘을 붙이세요.
+왜 필요한가 대부분의 자동화는 “이 작업은 A 모델로 돌린다&#34;고 한 번 정해두고 잊어버립니다. 문제는 그 결정이 조용히 바뀐다는 데 있습니다. 크레딧이 떨어져서 fallback으로 넘어가고, 지역 정책 때문에 특정 공급자가 막히고, 레이트리밋 때문에 재시도가 다른 경로로 나가고, 설정 파일을 손댄 뒤 프로필별 기본값이 달라집니다. 결과물은 계속 나오기 때문에 아무도 눈치채지 못합니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-08-20 20:55:00 +0900 KST'>2026년 8월 20일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to Hermes/리오 실전 팁: 자동화에 &#39;실행 모델 원장&#39;을 남겨라" href="https://kwbaek.github.io/posts/2026-08-20-hermes-rio-model-execution-ledger/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">Hermes/리오 실전 팁: 에이전트 리뷰에 &#39;회의적 검증 단계&#39;를 강제로 끼워라
     </h2>
   </header>
@@ -151,7 +210,7 @@
 왜 ‘한 번 더 의심하는 단계’가 별도 스텝이어야 하나 에이전트에게 “취약점을 찾아라&#34;라고 시키면 대개 그럴듯한 목록이 나온다. 문제는 그 목록의 절반이 재현 불가능하거나, 실제 실행 경로에 도달하지 않는 코드거나, 이미 상위 계층에서 막혀 있는 항목이라는 점이다. 같은 프롬프트 안에서 “정확하게 판단해&#34;라고 덧붙이는 것만으로는 이 비율이 잘 안 떨어진다. 생성과 검증이 같은 턴에 섞이면 모델은 자기 결론을 방어하는 쪽으로 기울기 때문이다.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2026-08-19 20:30:00 +0900 KST'>August 19, 2026</span></footer>
+  <footer class="entry-footer"><span title='2026-08-19 20:30:00 +0900 KST'>2026년 8월 19일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
   <a class="entry-link" aria-label="post link to Hermes/리오 실전 팁: 에이전트 리뷰에 &#39;회의적 검증 단계&#39;를 강제로 끼워라" href="https://kwbaek.github.io/posts/2026-08-19-hermes-rio-skeptical-validation-stage/"></a>
 </article>
 
@@ -166,7 +225,7 @@
 처리 시도: N건 확정 처리: N건 (근거 링크·파일 존재 확인 완료) 부분 처리: N건 (일부 필드 누락 / 재확인 필요) 미해결: N건 &#43; 사유 한 줄 (원본 접근 차단, 형식 불일치, 판단 근거 부족 등) 핵심은 사유를 카테고리로 고정하는 것입니다. “실패&#34;라고만 쓰면 다음 실행에서 개선할 수 없지만, “원본 접근 차단&#34;과 “판단 근거 부족&#34;은 서로 다른 대응(대체 소스 추가 vs 사람 판단 라우팅)으로 연결됩니다.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2026-08-18 21:05:00 +0900 KST'>August 18, 2026</span></footer>
+  <footer class="entry-footer"><span title='2026-08-18 21:05:00 +0900 KST'>2026년 8월 18일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
   <a class="entry-link" aria-label="post link to Hermes/리오 실전 팁: 자동화에 &#39;미해결 장부&#39;를 붙이면 신뢰가 생긴다" href="https://kwbaek.github.io/posts/2026-08-18-hermes-rio-unsolved-ledger/"></a>
 </article>
 
@@ -181,7 +240,7 @@
 목적: 이 플러그인이 해결하는 한 가지 업무는 무엇인가? 입력: 어떤 파일·메시지·API 응답만 읽을 수 있는가? 허용 동작: 생성·수정·전송 중 어디까지 가능한가? 금지 동작: 실거래, 공개 게시, 서비스 재시작처럼 승인 없이는 하면 안 되는 일은 무엇인가? 완료 증거: 파일 경로, 커밋 ID, HTTP 상태, 테스트 결과 중 무엇을 남길 것인가? 이 카드는 단순한 문서가 아니라 배포 전 체크리스트입니다. 특히 자동화 작업은 “성공했다”는 자연어보다 실제 산출물과 검증 결과가 있어야 다음 단계로 넘어가도록 설계해야 합니다.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2026-08-17 21:00:47 +0900 KST'>August 17, 2026</span></footer>
+  <footer class="entry-footer"><span title='2026-08-17 21:00:47 +0900 KST'>2026년 8월 17일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
   <a class="entry-link" aria-label="post link to Hermes/리오 실전 팁: 플러그인 에이전트는 권한·이벤트·롤백 카드로 운영하자" href="https://kwbaek.github.io/posts/2026-08-17-hermes-rio-plugin-boundary-ops/"></a>
 </article>
 
@@ -195,7 +254,7 @@
 1. 크론의 대표 입력을 고정한다 먼저 실제 업무에서 자주 쓰는 메시지를 세 가지 정도 고정하십시오. 예를 들어 텍스트만 있는 질의, 이미지와 텍스트가 섞인 상품 분석, 검색 결과와 JSON 도구 출력이 함께 들어오는 리포트 생성 작업입니다. 테스트 입력에는 예상되는 콘텐츠 타입과 완료 조건을 적어 둡니다. 그래야 런타임을 바꾼 뒤 “대충 비슷하게 답했다”가 아니라 입력 보존 여부와 도구 호출 결과를 비교할 수 있습니다.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2026-08-16 21:00:00 +0900 KST'>August 16, 2026</span></footer>
+  <footer class="entry-footer"><span title='2026-08-16 21:00:00 +0900 KST'>2026년 8월 16일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
   <a class="entry-link" aria-label="post link to Hermes/리오 팁: 로컬 모델 업데이트에는 입력 계약 게이트를 붙이자" href="https://kwbaek.github.io/posts/2026-08-16-hermes-rio-structured-input-release-gate/"></a>
 </article>
 
@@ -209,7 +268,7 @@
 1. 먼저 작업 계약을 고정하기 Release Gate의 출발점은 대표 작업을 고정하는 것입니다. “코드를 개선해줘”처럼 넓은 프롬프트 하나만 저장하면 버전 간 비교가 어렵습니다. 대신 저장소와 브랜치, 입력 파일, 허용 도구, 성공 조건을 명시한 작업 계약을 만드십시오.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2026-08-15 21:00:00 +0900 KST'>August 15, 2026</span></footer>
+  <footer class="entry-footer"><span title='2026-08-15 21:00:00 +0900 KST'>2026년 8월 15일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
   <a class="entry-link" aria-label="post link to Hermes/리오 팁: 코딩 에이전트 업데이트 앞에 작은 Release Gate를 두자" href="https://kwbaek.github.io/posts/2026-08-15-hermes-rio-coding-agent-release-gate/"></a>
 </article>
 
@@ -223,64 +282,8 @@
 1. 실행마다 고유한 증거 묶음을 만든다 크론 시작 시 실행 ID를 만들고 입력 시각, instruction 버전, 사용한 모델, 도구 호출 목록, 원본 URL, 최종 산출물 경로를 한 묶음으로 기록하십시오. 트렌드 스캐너라면 후보 수집 → canonical URL 확인 → 본문 검증 → 중복 판정 → 캐시 갱신의 단계별 상태를 남기면 됩니다. 최종 글만 저장하는 것보다 어떤 후보가 왜 탈락했는지까지 보존하는 편이 다음 실행의 재현성과 디버깅에 훨씬 유리합니다.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2026-08-14 21:00:00 +0900 KST'>August 14, 2026</span></footer>
+  <footer class="entry-footer"><span title='2026-08-14 21:00:00 +0900 KST'>2026년 8월 14일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
   <a class="entry-link" aria-label="post link to Hermes/리오 팁: 크론 결과를 재현 가능한 증거 번들로 만드는 법" href="https://kwbaek.github.io/posts/2026-08-14-hermes-rio-reproducible-agent-cron-evidence/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Hermes/리오 크론에서 임베딩 기반 검색을 운영하는 법 — 결과보다 근거 레이어를 보존하라
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>OlmoEarth embeddings가 보여주는 중요한 운영 교훈은 임베딩을 생성하는 것보다 나중에 다시 검색하고 검증할 수 있게 저장하는 것이 어렵다는 점입니다. Hermes/리오 크론에서 트렌드 후보, 문서 조각, 상품 이미지, 현장 데이터를 임베딩으로 축적하려면 “가장 비슷한 결과”만 캐시해서는 안 됩니다. 검색 결과가 왜 나왔는지 재현할 수 있는 원본과 생성 조건까지 함께 보존해야 합니다.
-1. 임베딩 캐시와 게시 상태를 분리하기 첫째, 후보 검색 결과와 최종 게시·실행 상태를 다른 파일이나 다른 레코드 층으로 나누십시오. 후보는 새 모델이나 새 질의가 나오면 다시 계산될 수 있지만, 이미 사용자에게 전달된 결과는 별도의 멱등 키와 게시 시각을 가져야 합니다. URL만 중복 키로 쓰면 같은 주제의 업데이트를 놓치고, 반대로 제목만 비교하면 표현이 조금 바뀐 동일 항목을 반복 게시할 수 있습니다. source_url, content_hash, embedding_model, model_version, created_at, topic_key를 최소 필드로 두면 재처리와 중복 판정을 분리할 수 있습니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-08-13 21:00:00 +0900 KST'>August 13, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to Hermes/리오 크론에서 임베딩 기반 검색을 운영하는 법 — 결과보다 근거 레이어를 보존하라" href="https://kwbaek.github.io/posts/2026-08-13-hermes-rio-embedding-search-evidence-layer/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Hermes/리오 크론에 기억과 로컬 모델 경계를 넣는 법 — 메모리는 캐시가 아니다
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>GitHub Copilot for JetBrains의 세션 간 memory와 Ollama BYOK 지원은 Hermes/리오 같은 에이전트 자동화에도 중요한 질문을 던집니다. 크론이 이전 실행의 맥락을 활용할 때, 그 파일을 단순한 캐시로 취급하면 안 됩니다. 한 번 잘못 기록된 판단이 다음 실행의 사실처럼 재사용될 수 있기 때문입니다. 기억은 편의 기능인 동시에 정책이 적용되는 운영 데이터입니다.
-1. 기억 항목에 수명과 근거를 붙이기 트렌드 후보, 중복 판정, 장애 원인처럼 다음 실행에 영향을 주는 값은 저장할 때 created_at, source_url, topic_key, confidence, expires_at을 함께 두는 것이 좋습니다. 특히 “이 URL은 이미 처리했다”와 “이 주제는 영구적으로 중복이다”는 전혀 다른 주장입니다. URL은 재게시를 막는 단기 멱등 키이고, 주제는 일정 시간이 지나면 새로운 업데이트로 다시 검토해야 하는 판단입니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-08-12 21:00:00 +0900 KST'>August 12, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to Hermes/리오 크론에 기억과 로컬 모델 경계를 넣는 법 — 메모리는 캐시가 아니다" href="https://kwbaek.github.io/posts/2026-08-12-hermes-rio-memory-and-local-model-boundaries/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Hermes/리오 크론에 에이전트 실행 표면을 설계하는 법 — 세션·도구·토큰을 운영 데이터로 만들기
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>OpenAI의 workspace agents와 GitHub Copilot SDK for Java가 보여주는 공통된 변화는 에이전트가 더 이상 프롬프트 한 번으로 끝나는 기능이 아니라는 점입니다. 팀 컨텍스트를 읽고, 도구를 호출하고, 세션을 이어가며, 결과를 업무 화면에 남기는 실행 표면이 제품의 중심이 되고 있습니다. Hermes/리오의 무인 크론도 같은 관점으로 설계하면 “모델이 무슨 말을 했는가”보다 “업무 계약을 지켰는가”를 안정적으로 검증할 수 있습니다.
-1. 세션을 대화가 아니라 실행 단위로 정의하기 크론 작업마다 실행 ID를 먼저 부여하고, 입력 시점·사용한 모델·도구 호출 목록·최종 산출물·실패 사유를 한 묶음으로 기록합니다. 세션은 단순한 대화 이력이 아니라 하나의 업무 트랜잭션입니다. 예를 들어 AI/ML 트렌드 스캐너라면 동일한 실행 안에서 후보 수집, canonical URL 확인, 중복 판정, 캐시 업데이트가 어떻게 이어졌는지 재현할 수 있어야 합니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-08-11 21:00:00 +0900 KST'>August 11, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to Hermes/리오 크론에 에이전트 실행 표면을 설계하는 법 — 세션·도구·토큰을 운영 데이터로 만들기" href="https://kwbaek.github.io/posts/2026-08-11-hermes-rio-agent-runtime-observability/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Hermes/리오 크론에 로컬 멀티모달 모델을 붙일 때 필요한 전환 준비도 게이트
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>로컬 멀티모달 모델이 공개되면 가장 먼저 떠오르는 질문은 “Hermes/리오의 기본 모델을 이것으로 바꿀 수 있을까?”입니다. 하지만 무인 크론을 운영하는 입장에서 모델 교체는 설정 한 줄의 문제가 아닙니다. 오늘 공개된 Meta Muse Glimmer처럼 로컬·에이전틱·멀티모달 사용을 겨냥한 모델이 Transformers, llama.cpp, vLLM에 빠르게 연결되더라도, 실제 자동화에서는 호환성·비용·실패 복구를 함께 통과해야 합니다.
-모델 교체보다 먼저 해야 할 일 첫 단계는 현재 크론의 업무 계약을 고정하는 것입니다. 예를 들어 트렌드 스캐너라면 입력 URL의 canonicality 확인, 출처의 날짜 판정, 중복 제거, JSON 캐시 갱신, 최종 출력 형식이 모두 테스트 대상입니다. 단순히 “답변이 그럴듯한가”를 보는 대신, 동일한 입력을 로컬 모델과 기존 모델에 전달하고 다음 네 가지를 비교해야 합니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-08-10 21:00:00 +0900 KST'>August 10, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to Hermes/리오 크론에 로컬 멀티모달 모델을 붙일 때 필요한 전환 준비도 게이트" href="https://kwbaek.github.io/posts/2026-08-10-hermes-rio-local-model-readiness-gate/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

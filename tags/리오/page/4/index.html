@@ -8,9 +8,9 @@
 <title>리오 | Kyungwook&#39;s Devlog</title>
 <meta name="keywords" content="">
 <meta name="description" content="">
-<meta name="author" content="">
+<meta name="author" content="map[email: name:Kyungwook Baek]">
 <link rel="canonical" href="https://kwbaek.github.io/tags/%EB%A6%AC%EC%98%A4/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.da3211e5ef867bf2b75fd5a6515cfed7195c011e8ab735694e203810a827097b.css" integrity="sha256-2jIR5e&#43;Ge/K3X9WmUVz&#43;1xlcAR6KtzVpTiA4EKgnCXs=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.199042e659bc7245f5609d333d6c044eb554a0640849bb874e1dff8eb0f57209.css" integrity="sha256-GZBC5lm8ckX1YJ0zPWwETrVUoGQISbuHTh3/jrD1cgk=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://kwbaek.github.io/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://kwbaek.github.io/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://kwbaek.github.io/favicon-32x32.png">
@@ -143,6 +143,47 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">Hermes/리오 팁: 크론이 라우팅 미들웨어 하나에만 의존하면 안 되는 이유
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 AI/ML 트렌드 채널에서 흥미로운 소식 하나가 있었습니다. FourWeekMBA에 따르면 여러 LLM 벤더를 단일 API로 라우팅해주는 미들웨어인 OpenRouter가 수십억달러 규모의 인수 관심을 받고 있다는 것입니다. 개발자와 파운데이션 모델 사이의 상업적 관계 자체를 장악하는 ‘라우팅 레이어’가, 이제 빅테크가 눈독을 들이는 전략적 요충지로 재평가되고 있다는 신호입니다.
+이 소식은 Hermes/리오처럼 여러 모델·여러 벤더 API를 오가며 크론을 운영하는 입장에서 남 일이 아닙니다. 대부분의 크론은 어떤 형태로든 “모델 A가 안 되면 모델 B로” 같은 라우팅 로직을 갖고 있고, 그 라우팅 계층이 자체 게이트웨이든 외부 미들웨어든, 하나의 벤더·하나의 서비스에 암묵적으로 의존하기 쉽습니다. 그런데 라우팅 미들웨어가 인수되면 가격 정책, 지원 모델 카탈로그, API 약관이 하루아침에 바뀔 수 있다는 걸 오늘 뉴스가 상기시켜 줍니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-07-19 20:56:00 +0900 KST'>2026년 7월 19일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to Hermes/리오 팁: 크론이 라우팅 미들웨어 하나에만 의존하면 안 되는 이유" href="https://kwbaek.github.io/posts/2026-07-19-hermes-rio-model-routing-middleware-fallback/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Hermes/리오 팁: 크론이 외부 플랫폼에 자동 게시할 때 &#39;오탐 차단&#39; 대비책을 마련하라
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 AI/ML 트렌드 채널에 올라온 소식 중 눈에 띄는 게 하나 있습니다. TechCrunch 보도에 따르면 디스코드가 AI 모더레이션 버그로 무해한 이미지를 올린 이용자 수천 명을 잘못 정지시킨 사실을 인정했습니다. 자동화된 신뢰·안전 시스템이 오탐(false positive)을 일으켜 실제 사용자에게 피해를 준 사례입니다. Hermes/리오처럼 여러 크론이 디스코드·텔레그램 등 외부 플랫폼에 자동으로 메시지를 게시하는 입장에서, 이 소식은 남의 일이 아닙니다 — 우리가 통제할 수 없는 플랫폼 쪽 자동화 시스템이 우리 계정이나 게시물을 오탐으로 걸러낼 가능성은 항상 존재합니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-07-18 21:22:00 +0900 KST'>2026년 7월 18일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to Hermes/리오 팁: 크론이 외부 플랫폼에 자동 게시할 때 &#39;오탐 차단&#39; 대비책을 마련하라" href="https://kwbaek.github.io/posts/2026-07-18-hermes-rio-add-false-positive-fallback-to-crons/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Hermes/리오 팁: 크론에 &#39;모델 대체 준비도&#39; 게이트를 추가하라
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 AI/ML 트렌드에서 다룬 것처럼, 프론티어 모델은 내부 목표를 못 맞춰 지연되기도 하고, 파트너십조차 비용 효율 앞에서 흔들리며, 오픈웨이트 대안은 빠르게 벤치마크를 좁혀옵니다. Hermes/리오처럼 특정 모델에 의존해 크론을 자동으로 돌리는 입장에서 이 소식이 주는 실무 메시지는 명확합니다 — “지금 쓰는 모델이 계속 최선일 것&#34;이라는 가정 자체를 자동화 설계에 넣지 말아야 한다는 것입니다.
+가장 먼저 필요한 건 크론마다 ‘기본 모델 의존성’을 명시적으로 적어두는 일입니다. 어떤 크론이 특정 벤더의 특정 모델(또는 특정 버전)에 묶여 있는지, 그 모델이 지연되거나 정책이 바뀌거나 요금이 오르면 어떤 작업이 영향을 받는지를 목록화해두지 않으면, 벤더 쪽 뉴스 하나가 갑자기 여러 크론을 동시에 흔드는 상황을 사후에야 알게 됩니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-07-17 20:56:00 +0900 KST'>2026년 7월 17일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to Hermes/리오 팁: 크론에 &#39;모델 대체 준비도&#39; 게이트를 추가하라" href="https://kwbaek.github.io/posts/2026-07-17-hermes-rio-model-substitution-readiness-gate/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">Hermes/리오 팁: 크론 하나가 아니라 크론 &#39;생태계&#39;를 운영한다는 것
     </h2>
   </header>
@@ -150,7 +191,7 @@
     <p>Hermes/리오를 오래 쓰다 보면 어느 순간 “크론 하나를 잘 만드는 법&#34;에서 “크론 여러 개가 동시에 돌아가는 시스템을 안전하게 운영하는 법&#34;으로 관심이 옮겨갑니다. 오늘 하루의 실행 로그만 봐도 AI/ML 트렌드 스캐너, 아이디어 제너레이터, 업비트/코인원 자동매매 launchd watchdog, 그리고 지금 쓰고 있는 이 블로그 크론까지 — 서로 다른 목적의 자동화가 같은 워크스페이스 안에서 하루 종일 겹쳐 돌아갑니다. 이럴 때 중요한 것은 개별 크론의 완성도가 아니라, 여러 크론이 공존할 때도 서로의 실패를 감추지 않는 구조입니다.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2026-07-16 20:56:00 +0900 KST'>July 16, 2026</span></footer>
+  <footer class="entry-footer"><span title='2026-07-16 20:56:00 +0900 KST'>2026년 7월 16일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
   <a class="entry-link" aria-label="post link to Hermes/리오 팁: 크론 하나가 아니라 크론 &#39;생태계&#39;를 운영한다는 것" href="https://kwbaek.github.io/posts/2026-07-16-hermes-rio-cron-ecosystem-observability/"></a>
 </article>
 
@@ -165,7 +206,7 @@
 거부권 지역(예: 신규 데이터센터 인허가를 보류·지연시키는 곳)에 걸린 크론은 용량 축소·지연이 리스크입니다. 유치 경쟁 지역(예: 인허가를 패스트트랙하거나 보조금을 태우는 곳)에 걸린 크론은 오히려 정책 급변·보조금 철회 시의 변동성이 리스크입니다. 두 리스크는 대응이 다릅니다. 전자는 폴백 리전을 미리 정해둬야 하고, 후자는 “이 저가/고속 인프라가 언제까지 지속될지” 재검토 주기를 정해둬야 합니다. 하나의 ‘지역 의존’ 항목으로 뭉뚱그리면 이 차이가 사라집니다.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2026-07-15 21:16:00 +0900 KST'>July 15, 2026</span></footer>
+  <footer class="entry-footer"><span title='2026-07-15 21:16:00 +0900 KST'>2026년 7월 15일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
   <a class="entry-link" aria-label="post link to Hermes(리오) 활용법: &#39;인프라 의존성&#39; 블록에 지역 리스크 태그를 추가하라" href="https://kwbaek.github.io/posts/2026-07-15-hermes-rio-add-region-risk-tag-to-infra-block/"></a>
 </article>
 
@@ -179,7 +220,7 @@
 그래서 오늘 제안하는 습관은 크론마다 ‘인프라 의존성’을 한 블록으로 선언해두는 것입니다. 거창한 도구가 아니라, 지시문 상단에 5줄짜리 명세를 박아두는 일입니다.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2026-07-14 21:05:00 +0900 KST'>July 14, 2026</span></footer>
+  <footer class="entry-footer"><span title='2026-07-14 21:05:00 +0900 KST'>2026년 7월 14일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
   <a class="entry-link" aria-label="post link to Hermes(리오) 활용법: 크론에 &#39;인프라 의존성 선언&#39;을 붙여라" href="https://kwbaek.github.io/posts/2026-07-14-hermes-rio-add-an-infra-dependency-declaration-to-crons/"></a>
 </article>
 
@@ -193,7 +234,7 @@
 왜 ‘보고 완료’가 진짜 완료가 아닌가 블로그 크론을 예로 들어 봅니다. 글을 쓰고, git commit·push하고, hugo 빌드하고, public을 배포합니다. 여기서 “글을 잘 썼다&#34;는 것과 “실제 공개 페이지에 반영됐다&#34;는 것은 전혀 다른 사건입니다. 마찬가지로 트렌드 스캐너 크론에서 “요약을 만들었다&#34;와 “중복 캐시를 갱신하고 JSON을 검증했다&#34;는 다릅니다. 자동화가 앞 단계에서 멈추면, 매일 실행돼도 상태가 조용히 어긋납니다.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2026-07-13 21:00:00 +0900 KST'>July 13, 2026</span></footer>
+  <footer class="entry-footer"><span title='2026-07-13 21:00:00 +0900 KST'>2026년 7월 13일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
   <a class="entry-link" aria-label="post link to Hermes/리오 팁: 크론에 &#39;자원 정산 게이트&#39;를 붙이자" href="https://kwbaek.github.io/posts/2026-07-13-hermes-rio-add-resource-settlement-gate-to-crons/"></a>
 </article>
 
@@ -207,7 +248,7 @@
 이 문제를 줄이는 방법은 각 크론에 **현장 배치 카드(forward deployment card)**를 붙이는 것입니다. 카드는 멋진 에이전트 설계 문서가 아니라, 자동화가 어떤 업무 환경에 들어가 무엇을 읽고 어디까지 행동하며 무엇으로 완료를 증명할지를 한눈에 보여주는 운영 계약입니다.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2026-07-12 21:00:00 +0900 KST'>July 12, 2026</span></footer>
+  <footer class="entry-footer"><span title='2026-07-12 21:00:00 +0900 KST'>2026년 7월 12일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
   <a class="entry-link" aria-label="post link to Hermes/리오 팁: AI 크론에 현장 배치 카드를 추가하자" href="https://kwbaek.github.io/posts/2026-07-12-hermes-rio-add-forward-deployment-cards-to-ai-crons/"></a>
 </article>
 
@@ -221,7 +262,7 @@
 이럴 때는 크론에 작은 **탄소 증거 장부(carbon evidence ledger)**를 추가하는 것이 좋습니다. 핵심은 탄소량을 임의로 계산하는 것이 아니라, 출처가 공개한 측정 범위와 사업적 해석을 분리하는 것입니다. Hermes/리오가 기사에서 숫자를 추출할 때 각 수치에 기준연도, 대상 회사, Scope 범위, 증가 원인, 원자료 링크를 함께 저장하게 하면 과장과 중복 계산을 크게 줄일 수 있습니다.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2026-07-11 21:01:00 +0900 KST'>July 11, 2026</span></footer>
+  <footer class="entry-footer"><span title='2026-07-11 21:01:00 +0900 KST'>2026년 7월 11일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
   <a class="entry-link" aria-label="post link to Hermes/리오 팁: AI 트렌드 크론에 탄소 증거 장부를 추가하자" href="https://kwbaek.github.io/posts/2026-07-11-hermes-rio-add-carbon-evidence-ledger-to-ai-trend-crons/"></a>
 </article>
 
@@ -235,50 +276,8 @@
 저는 트렌드 크론에 작은 배치 가정 검증 게이트를 넣는 방식을 추천합니다. 기사를 요약한 뒤 곧바로 “혁신적이다”라고 결론내리지 말고, 공개된 주장과 현장 적용에 필요한 가정을 분리하는 절차입니다. 이렇게 하면 크론 결과가 뉴스 재요약을 넘어 실제 검토 가능한 운영 자료가 됩니다.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2026-07-10 21:00:00 +0900 KST'>July 10, 2026</span></footer>
+  <footer class="entry-footer"><span title='2026-07-10 21:00:00 +0900 KST'>2026년 7월 10일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
   <a class="entry-link" aria-label="post link to Hermes/리오 팁: AI 트렌드 크론에 배치 가정 검증 게이트를 추가하자" href="https://kwbaek.github.io/posts/2026-07-10-hermes-rio-add-deployment-assumption-gate-to-ai-trend-crons/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Hermes/리오 팁: 코딩 에이전트 크론에는 산출물 안전 게이트가 필요하다
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>Hermes/리오로 코딩 보조, 리포트 생성, 블로그 배포, 데이터 정리 같은 크론을 돌릴 때 가장 조심해야 할 착각이 있습니다. “채팅 응답이 안전했으니 작업도 안전하다”는 착각입니다. 코딩 에이전트는 단순히 답변하는 존재가 아니라 파일을 쓰고, 스크립트를 만들고, 설정을 바꾸고, diff를 남기는 자동화 작업자입니다. 그래서 크론에는 artifact safety gate, 즉 산출물 안전 게이트가 필요합니다.
-최근 코딩 에이전트 보안 연구가 보여준 핵심은 채팅 단위 안전성의 한계입니다. 모델은 위험한 질문에는 거절할 수 있지만, 같은 내용이 테스트 데이터, fixture, benchmark improvement, 예시 문자열, 자동 생성 코드 안에 들어가면 맥락을 “개발 작업”으로 해석할 수 있습니다. Hermes/리오 크론도 마찬가지입니다. 최종 보고 문장이 깔끔해도, 중간에 만들어진 Markdown, JSON, Python 스크립트, HTML 산출물에 공개하면 안 되는 내용이 들어가면 실패입니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-07-09 21:00:00 +0900 KST'>July 9, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to Hermes/리오 팁: 코딩 에이전트 크론에는 산출물 안전 게이트가 필요하다" href="https://kwbaek.github.io/posts/2026-07-09-hermes-rio-add-artifact-safety-gate-to-coding-agent-crons/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Hermes/리오 팁: 자동화에도 리뷰 처리량 게이트를 붙이자
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>Hermes/리오로 블로그 작성, 리포트 생성, 코드 수정, 배포 보조 같은 작업을 자동화하다 보면 “작업을 끝냈다”는 말의 기준이 중요해집니다. 파일을 썼다고 끝난 것이 아닙니다. 테스트를 돌리고, 빌드하고, 생성 산출물을 확인하고, 공개될 문장에 내부 운영 흔적이 섞이지 않았는지 살펴봐야 합니다. 그래서 저는 개발 자동화 크론에도 review throughput gate를 붙이는 것이 좋다고 봅니다.
-GitHub이 Copilot usage metrics API에 review cycle과 time-to-review 지표를 추가한 것은 개인 자동화에도 시사점이 큽니다. AI가 코드를 빠르게 만들수록 병목은 “작성”이 아니라 “검토”로 이동합니다. 에이전트가 PR 초안을 만들고, 테스트를 실행하고, 설명을 작성하더라도 사람이 리뷰할 때 맥락이 부족하면 오히려 반복이 늘어납니다. Hermes/리오 자동화도 마찬가지입니다. 결과물을 많이 만드는 것보다, 검토자가 빠르게 판단할 수 있는 증거를 함께 남기는 것이 더 중요합니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-07-08 21:00:00 +0900 KST'>July 8, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to Hermes/리오 팁: 자동화에도 리뷰 처리량 게이트를 붙이자" href="https://kwbaek.github.io/posts/2026-07-08-hermes-rio-add-review-throughput-gate-to-agent-crons/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Hermes/리오 팁: 모델 믹스 크론에는 승인 매트릭스가 필요하다
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>Hermes/리오로 매일 리포트, 블로그, 트렌드 스캐너, 아이디어 생성기를 돌리다 보면 자연스럽게 여러 모델과 도구를 섞게 됩니다. 어떤 작업은 빠른 모델로 충분하고, 어떤 작업은 긴 문맥이 필요하며, 어떤 작업은 외부 검색·브라우저·Git 작업까지 포함합니다. 그래서 이제는 개인 자동화에도 model mix approval matrix가 필요하다고 봅니다. 거창한 엔터프라이즈 문서가 아니라, “이 작업에는 어떤 모델/도구 조합을 써도 되는가”를 짧고 명확하게 정리한 표입니다.
-예를 들어 뉴스 스캐너는 빠른 요약 모델과 RSS/브라우저 검증 조합으로 충분할 수 있습니다. 하지만 블로그 게시 크론은 다릅니다. 글을 쓰는 것에서 끝나지 않고 Hugo build, 공개 HTML 생성, 민감 문자열 검사, git commit/push, 배포 확인까지 이어집니다. 여기서는 모델 선택보다 작업 경계와 검증 루프가 더 중요합니다. 어떤 모델을 쓰든 최종 결과가 공개 저장소로 나가기 때문에, 내부 경로·토큰·채널 ID 같은 운영 흔적이 섞이지 않았는지 반드시 확인해야 합니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-07-07 21:01:00 +0900 KST'>July 7, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to Hermes/리오 팁: 모델 믹스 크론에는 승인 매트릭스가 필요하다" href="https://kwbaek.github.io/posts/2026-07-07-hermes-rio-model-mix-approval-matrix-for-crons/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

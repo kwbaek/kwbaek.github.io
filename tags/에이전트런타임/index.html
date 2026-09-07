@@ -8,9 +8,9 @@
 <title>에이전트런타임 | Kyungwook&#39;s Devlog</title>
 <meta name="keywords" content="">
 <meta name="description" content="">
-<meta name="author" content="">
+<meta name="author" content="map[email: name:Kyungwook Baek]">
 <link rel="canonical" href="https://kwbaek.github.io/tags/%EC%97%90%EC%9D%B4%EC%A0%84%ED%8A%B8%EB%9F%B0%ED%83%80%EC%9E%84/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.da3211e5ef867bf2b75fd5a6515cfed7195c011e8ab735694e203810a827097b.css" integrity="sha256-2jIR5e&#43;Ge/K3X9WmUVz&#43;1xlcAR6KtzVpTiA4EKgnCXs=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.199042e659bc7245f5609d333d6c044eb554a0640849bb874e1dff8eb0f57209.css" integrity="sha256-GZBC5lm8ckX1YJ0zPWwETrVUoGQISbuHTh3/jrD1cgk=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://kwbaek.github.io/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://kwbaek.github.io/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://kwbaek.github.io/favicon-32x32.png">
@@ -143,6 +143,21 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">Hermes/리오 실전 팁: &#39;팀워크&#39; 패턴으로 읽는 장기 과제 위임(Delegate) 아키텍처 설계
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 AI/ML 트렌드에서 소개된 **Google Antigravity의 ‘Teamwork’**는 여러 에이전트가 서로의 결과물을 비평·재작업하며 수 시간~수일에 걸쳐 학술 난제를 해결한 사례입니다. 단일 모델 호출로는 도달하지 못했던 성과가 “협업하는 팀” 구조에서 나왔다는 점이, Hermes/리오 환경에서 delegate_task로 서브에이전트를 운용할 때도 그대로 적용되는 설계 원칙입니다.
+1. 왜 “한 번에 다 시키기&#34;는 장기 과제에서 실패하는가 Hermes/리오에서 복잡한 리서치·코딩·데이터 정리 작업을 단일 프롬프트로 서브에이전트에 던지면 흔히 이런 문제가 생깁니다.
+컨텍스트가 길어질수록 초반 지시가 희석되어 후반 작업에서 원래 목표를 놓침 중간 산출물을 검증하는 단계가 없어 오류가 누적된 채로 끝까지 진행 서브에이전트가 막히면 부모가 결과를 받을 때까지 문제를 알 수 없음 Antigravity Teamwork의 핵심은 이 문제를 “단일 에이전트의 인내심&#34;이 아니라 역할 분리 &#43; 상호 비평 루프로 풀었다는 점입니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-09-01 21:11:00 +0900 KST'>2026년 9월 1일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to Hermes/리오 실전 팁: &#39;팀워크&#39; 패턴으로 읽는 장기 과제 위임(Delegate) 아키텍처 설계" href="https://kwbaek.github.io/posts/2026-09-01-hermes-rio-teamwork-delegation-architecture/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">Hermes/리오 실전 팁: PACE 패턴을 적용한 &#39;오프라인 에이전트 탐색 - 런타임 결정론적 실행&#39; 무비용 크론 파이프라인
     </h2>
   </header>
@@ -152,7 +167,7 @@
 Hermes/리오 환경에서 24/7 무인 크론 파이프라인의 API 비용을 획기적으로 절감하고 처리 속도와 안정성을 극대화하기 위해 적용할 수 있는 ‘오프라인 에이전트 탐색 - 런타임 결정론적 실행(Offline Exploration &amp; Deterministic Runtime)’ 아키텍처 패턴을 정리해 소개합니다.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2026-08-31 21:01:00 +0900 KST'>August 31, 2026</span></footer>
+  <footer class="entry-footer"><span title='2026-08-31 21:01:00 +0900 KST'>2026년 8월 31일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
   <a class="entry-link" aria-label="post link to Hermes/리오 실전 팁: PACE 패턴을 적용한 &#39;오프라인 에이전트 탐색 - 런타임 결정론적 실행&#39; 무비용 크론 파이프라인" href="https://kwbaek.github.io/posts/2026-08-31-hermes-rio-pace-pattern-zero-cost-cron/"></a>
 </article>
 
@@ -168,7 +183,7 @@ Hermes/리오 환경에서 안정적이고 경제적인 자율 에이전트 시�
 1. 계층적 모델 라우팅과 점진적 에스컬레이션 (Tiered Model Routing) 모든 작업에 최고 사양의 프론티어 모델을 투입하는 것은 대표적인 리소스 낭비입니다. Hermes/리오에서는 작업의 성격과 단계에 따라 모델을 3단계로 차등 배치합니다.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2026-08-30 21:01:00 +0900 KST'>August 30, 2026</span></footer>
+  <footer class="entry-footer"><span title='2026-08-30 21:01:00 +0900 KST'>2026년 8월 30일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
   <a class="entry-link" aria-label="post link to Hermes/리오 실전 팁: 24/7 무인 크론 에이전트를 위한 예산 거버넌스와 온디맨드 스킬 라이프사이클" href="https://kwbaek.github.io/posts/2026-08-30-hermes-rio-budget-governance-and-skill-lifecycle/"></a>
 </article>
 
@@ -183,7 +198,7 @@ Hermes/리오 환경에서 24시간 무인으로 동작하는 일일 리포트 �
 이러한 문제를 방지하고 크론 작업의 무인 완주율을 99% 이상으로 끌어올리기 위한 Hermes/리오 런타임 오류 격리 및 자가치유 4대 실전 패턴을 정리합니다.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2026-08-29 21:01:00 +0900 KST'>August 29, 2026</span></footer>
+  <footer class="entry-footer"><span title='2026-08-29 21:01:00 +0900 KST'>2026년 8월 29일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
   <a class="entry-link" aria-label="post link to Hermes/리오 실전 팁: 장기 실행 무인 크론 에이전트를 위한 인플라이트(In-Flight) 오류 격리와 자가치유 패턴" href="https://kwbaek.github.io/posts/2026-08-29-hermes-rio-in-flight-error-isolation/"></a>
 </article>
 
@@ -198,7 +213,7 @@ Hermes/리오 환경에서 24시간 무인으로 동작하는 일일 리포트 �
 이러한 환경에서 Hermes/리오와 같은 자율 에이전트를 안정적이고 비용 효율적으로 24시간 무인 가동(Cron)하기 위해 필요한 런타임 거버넌스 3대 원칙을 정리해 봅니다.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2026-08-28 21:08:00 +0900 KST'>August 28, 2026</span></footer>
+  <footer class="entry-footer"><span title='2026-08-28 21:08:00 +0900 KST'>2026년 8월 28일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
   <a class="entry-link" aria-label="post link to Hermes/리오 실전 팁: 하드웨어 백엔드 다변화 시대의 에이전트 런타임 거버넌스" href="https://kwbaek.github.io/posts/2026-08-28-hermes-rio-hardware-backend-governance/"></a>
 </article>
 
@@ -213,7 +228,7 @@ NVIDIA의 CUDA 생태계가 오랜 기간 장악해 온 AI 인프라 시장에�
 ROCm 10의 핵심 변화: 에이전틱 런타임 중심의 도구 체계 ROCm 10은 기존의 복잡했던 빌드 및 드라이버 의존성을 대폭 정리하고, AI 네이티브 개발 경험을 위한 신규 컴포넌트들을 대거 도입했습니다.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2026-08-28 21:05:00 +0900 KST'>August 28, 2026</span></footer>
+  <footer class="entry-footer"><span title='2026-08-28 21:05:00 +0900 KST'>2026년 8월 28일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
   <a class="entry-link" aria-label="post link to AI/ML 트렌드: AMD ROCm 10이 던진 승부수, &#39;에이전틱 워크로드&#39;와 칩 생태계 다변화" href="https://kwbaek.github.io/posts/2026-08-28-ai-ml-trends-amd-rocm-10-agentic-stack/"></a>
 </article>
     </main>

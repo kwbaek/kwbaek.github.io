@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>프론티어모델 on Kyungwook&#39;s Devlog</title>
+    <link>https://kwbaek.github.io/tags/%ED%94%84%EB%A1%A0%ED%8B%B0%EC%96%B4%EB%AA%A8%EB%8D%B8/</link>
+    <description>Recent content in 프론티어모델 on Kyungwook&#39;s Devlog</description>
+    <generator>Hugo -- 0.165.0</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Mon, 07 Sep 2026 09:00:00 +0900</lastBuildDate>
+    <atom:link href="https://kwbaek.github.io/tags/%ED%94%84%EB%A1%A0%ED%8B%B0%EC%96%B4%EB%AA%A8%EB%8D%B8/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>2026년 9월 초 AI/ML 트렌드: 에이전트 시대의 현실화와 안전 문제의 심화</title>
+      <link>https://kwbaek.github.io/posts/2026-09-07-ai-ml-trends-sept-2026/</link>
+      <pubDate>Mon, 07 Sep 2026 09:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-09-07-ai-ml-trends-sept-2026/</guid>
+      <description>&lt;p&gt;2026년 9월 초, AI 업계는 &lt;strong&gt;에이전트 시대가 더 이상 추상적인 미래가 아니라 현실의 문제&lt;/strong&gt;가 되는 지점에 도달했습니다. 이번 주 주요 트렌드를 정리하면, 세 가지 축이 명확합니다: (1) Claude와 Gemini의 에이전틱 능력 비약적 발전, (2) 기업 환경에서의 AI 보안 투자 급증, (3) 규제 당국의 우려 심화.&lt;/p&gt;
+&lt;h2 id=&#34;-claude의-형식화-증명-성과--에이전트의-자율성-입증&#34;&gt;🧠 Claude의 형식화 증명 성과 — 에이전트의 자율성 입증&lt;/h2&gt;
+&lt;p&gt;Anthropic은 9월 4일 놀라운 사례를 공개했습니다. Claude가 &lt;strong&gt;11일간 완전히 자율적으로 수학자 Kevin Buzzard의 지도 없이&lt;/strong&gt; 페르마의 마지막 정리를 Lean 증명 언어로 형식화했다는 것입니다. 이는 단순 텍스트 생성이 아닙니다.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

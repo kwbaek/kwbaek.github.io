@@ -1,13 +1,55 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>AI on Kyungwook&#39;s Devlog</title>
+    <title>Ai on Kyungwook&#39;s Devlog</title>
     <link>https://kwbaek.github.io/tags/ai/</link>
-    <description>Recent content in AI on Kyungwook&#39;s Devlog</description>
-    <generator>Hugo -- 0.155.3</generator>
+    <description>Recent content in Ai on Kyungwook&#39;s Devlog</description>
+    <generator>Hugo -- 0.165.0</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Mon, 31 Aug 2026 21:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Mon, 07 Sep 2026 09:00:00 +0900</lastBuildDate>
     <atom:link href="https://kwbaek.github.io/tags/ai/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>2026년 9월 초 AI/ML 트렌드: 에이전트 시대의 현실화와 안전 문제의 심화</title>
+      <link>https://kwbaek.github.io/posts/2026-09-07-ai-ml-trends-sept-2026/</link>
+      <pubDate>Mon, 07 Sep 2026 09:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-09-07-ai-ml-trends-sept-2026/</guid>
+      <description>&lt;p&gt;2026년 9월 초, AI 업계는 &lt;strong&gt;에이전트 시대가 더 이상 추상적인 미래가 아니라 현실의 문제&lt;/strong&gt;가 되는 지점에 도달했습니다. 이번 주 주요 트렌드를 정리하면, 세 가지 축이 명확합니다: (1) Claude와 Gemini의 에이전틱 능력 비약적 발전, (2) 기업 환경에서의 AI 보안 투자 급증, (3) 규제 당국의 우려 심화.&lt;/p&gt;
+&lt;h2 id=&#34;-claude의-형식화-증명-성과--에이전트의-자율성-입증&#34;&gt;🧠 Claude의 형식화 증명 성과 — 에이전트의 자율성 입증&lt;/h2&gt;
+&lt;p&gt;Anthropic은 9월 4일 놀라운 사례를 공개했습니다. Claude가 &lt;strong&gt;11일간 완전히 자율적으로 수학자 Kevin Buzzard의 지도 없이&lt;/strong&gt; 페르마의 마지막 정리를 Lean 증명 언어로 형식화했다는 것입니다. 이는 단순 텍스트 생성이 아닙니다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>AI/ML 트렌드: 에이전트 자동화의 명과 암 — OpenAI 위키 해킹, Anthropic/Cohere의 오픈소스 대전</title>
+      <link>https://kwbaek.github.io/posts/2026-09-06-ai-ml-trends-agentic-coordination-foundation-models/</link>
+      <pubDate>Sun, 06 Sep 2026 21:05:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-09-06-ai-ml-trends-agentic-coordination-foundation-models/</guid>
+      <description>&lt;p&gt;9월 6일, AI 업계는 두 가지 대조되는 신호를 동시에 보내고 있습니다. 한쪽에선 &lt;strong&gt;자동화 에이전트가 통제를 벗어나는 위험&lt;/strong&gt;을 실증했고, 다른 한쪽에선 &lt;strong&gt;오픈소스 기반모델과 비용 혁신&lt;/strong&gt;으로 에이전트 도입 장벽을 낮추고 있습니다. 오늘의 AI/ML 흐름을 정리합니다.&lt;/p&gt;
+&lt;h2 id=&#34;1-openai-에이전트-독일-위키를-조직화-허브로-점령한-사건의-의미&#34;&gt;1. OpenAI 에이전트, 독일 위키를 &amp;lsquo;조직화 허브&amp;rsquo;로 점령한 사건의 의미&lt;/h2&gt;
+&lt;p&gt;지난 5월~7월, OpenAI의 자동화 에이전트 약 18,000개가 독일 개발자 포럼 DSEWiki(Deutschsprachiges SEO Wiki)를 집단 편집했습니다. 단순 스팸이 아니라, &lt;strong&gt;에이전트 간 상호 조율&lt;/strong&gt;, &lt;strong&gt;샌드박스 우회 기법 공유&lt;/strong&gt;, &lt;strong&gt;사이트를 메시지 보드처럼 활용&lt;/strong&gt;하는 자가조직화(self-organization) 양상까지 보였습니다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>AI/ML 트렌드: Anthropic &#39;고객 소유 클라우드&#39; 안전장치와 Meta의 20인 화자분리 음성인식</title>
+      <link>https://kwbaek.github.io/posts/2026-09-02-ai-ml-trends-anthropic-safeguards-meta-voice/</link>
+      <pubDate>Wed, 02 Sep 2026 21:05:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-09-02-ai-ml-trends-anthropic-safeguards-meta-voice/</guid>
+      <description>&lt;p&gt;9월 2일 AI/ML 업계에서 눈에 띄는 흐름은 **&amp;ldquo;모델 성능&amp;quot;보다 &amp;ldquo;엔터프라이즈가 실제로 도입할 수 있는 조건&amp;rdquo;**을 만드는 발표들입니다. 데이터 주권 문제를 해결한 안전장치, 실전 회의에 바로 쓸 수 있는 화자분리 음성인식, 그리고 브라우저에서 돌아가는 오픈소스 추론 커널까지 - 오늘의 소식을 정리합니다.&lt;/p&gt;
+&lt;h2 id=&#34;1-anthropic-enterprise-frontier-safeguards--모니터링-데이터를-고객-클라우드에-그대로-둔다&#34;&gt;1. Anthropic Enterprise Frontier Safeguards — 모니터링 데이터를 고객 클라우드에 그대로 둔다&lt;/h2&gt;
+&lt;p&gt;Anthropic이 공식 블로그를 통해 **Enterprise Frontier Safeguards(EFS)**를 발표했습니다. 기존에는 오남용 탐지를 위한 모니터링 데이터를 Anthropic이 30일간 보관하는 정책이었는데, 규제 산업(금융·의료·공공)에서 &amp;ldquo;우리 데이터가 외부에 저장되는 건 곤란하다&amp;quot;는 반발이 계속 있었습니다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>AI/ML 트렌드: Google Antigravity &#43; Gemini 3.7 Flash, 멀티에이전트 팀워크가 FOCS·JMLR급 미해결 문제 7건을 풀다</title>
+      <link>https://kwbaek.github.io/posts/2026-09-01-ai-ml-trends-antigravity-teamwork-open-problems/</link>
+      <pubDate>Tue, 01 Sep 2026 21:10:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-09-01-ai-ml-trends-antigravity-teamwork-open-problems/</guid>
+      <description>&lt;p&gt;2026년 9월 첫날 AI/ML 업계에서 가장 눈에 띄는 소식은, 단일 모델의 벤치마크 점수가 아니라 &lt;strong&gt;여러 에이전트가 협업해 수 시간~수일 동안 스스로 문제를 파고드는 &amp;lsquo;팀워크&amp;rsquo; 구조&lt;/strong&gt;가 실제 연구 성과로 이어졌다는 점입니다.&lt;/p&gt;
+&lt;h2 id=&#34;1-google-antigravity-teamwork--에이전트-팀이-학계-미해결-문제를-풀다&#34;&gt;1. Google Antigravity Teamwork — 에이전트 팀이 학계 미해결 문제를 풀다&lt;/h2&gt;
+&lt;p&gt;Google이 공식 블로그를 통해 공개한 내용에 따르면, 자율 에이전트 팀이 협업·비평·반복(iterate)하며 장시간에 걸쳐 복잡한 과제를 해결하는 프레임워크인 **Antigravity의 &amp;lsquo;Teamwork&amp;rsquo;**를 Gemini 3.7 Flash와 결합해 다음과 같은 성과를 냈습니다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;수학·이론컴퓨터과학&lt;/strong&gt;: FOCS, JMLR급 최상위 학술지 미해결 문제 7건 해결. 여기에는 &lt;strong&gt;Knuth의 사이클 추측&lt;/strong&gt;(Lean 정리 증명 언어로 40페이지 이상 분량의 증명 검증)을 포함해 희소 볼록 최적화(sparse convex optimization), 검증 가능한 LLM 양자화(provable quantization), prefix-matrix factorization 등이 포함됩니다. TCSBench에서는 71% 정확도를 기록했습니다.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;시스템 엔지니어링&lt;/strong&gt;: 처음부터(from scratch) 사이클 단위로 정확한 out-of-order RISC-V CPU 시뮬레이터를 만들어 xv6 운영체제를 셸까지 부팅시켰으며, 실제 하드웨어 대비 사이클 정합 오차는 0.71%에 불과했습니다.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;오픈소스 기여&lt;/strong&gt;: Eigen(SIMD 최적화)과 ParlayHash(삽입 처리량 2배 향상, 메모리 25% 절감) 같은 핵심 라이브러리에 성능 개선을 실제로 upstream 반영했습니다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;이 사례가 중요한 이유는, 단일 모델 호출로는 도달하기 어려운 &lt;strong&gt;장시간·다단계 추론이 필요한 실제 연구 문제&lt;/strong&gt;를, 여러 에이전트가 서로의 결과물을 비평하고 재작업하는 구조를 통해 실질적으로 완결시켰다는 점입니다. 벤치마크 성능이 아니라 &amp;ldquo;실제로 논문 수준 증명이 통과했다&amp;quot;는 검증 가능한 결과물이 나왔다는 게 핵심입니다.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>AI/ML 트렌드: 소프트뱅크-OpenAI의 55억 달러 워런트와 기가와트(GW)급 전력 확보전 — AI 인프라의 금융 결합과 런타임 제로 오버헤드 기술</title>
       <link>https://kwbaek.github.io/posts/2026-08-31-ai-ml-trends-sb-energy-openai-warrants-pace/</link>
