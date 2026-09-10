@@ -143,6 +143,40 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">Hermes/리오 안내서: 프론티어 AI 안전성 검증, 운영으로 보장하기
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>지난 며칠간 AI 안전성 뉴스가 연이었습니다. OpenAI 내부 안전 연구원들이 “AI 제어 불가능&#34;이라는 우려를 제기했고, Anthropic의 안전 연구원이 “자기 개선 AI는 위험하다&#34;며 사직했습니다. 동시에 Google은 AI 인프라에 150억 달러를 투자하기로 했습니다.
+그렇다면 실무자 입장에서는? “프론티어 AI 모델을 조직에 배포하고 싶은데, 어떻게 안전성을 보장할 건가?”
+이 문제의 해답은 기술만으로는 불가능합니다. 필요한 것은 **절차, 모니터링, 피드백 루프 — 즉, 운영(Operations)**입니다. 오늘 소개하는 것이 바로 **Hermes/리오의 “자동 검증 워크플로우”**입니다.
+🎯 핵심: 안전성 = 기술 &#43; 프로세스 프론티어 AI의 위험 위험 기술적 원인 운영적 대응 모델 드리프트 파인튜닝 후 원래 기능 손상 배포 전 자동 회귀 테스트 프롬프트 인젝션 사용자 입력이 지시를 오염 입력 검증 &#43; 콘텍스트 격리 할루시네이션 학습 데이터 경계 밖 답변 답변 검증 &#43; 출처 확인 자동화 비용 폭발 큰 모델의 연쇄 호출 API 호출 수 모니터링 &#43; 임계값 경고 규제 미준수 민감 데이터 학습/노출 데이터 접근 통제 &#43; 감시 로그 1️⃣ Hermes/리오로 “안전성 검증&#34;을 자동화하는 3가지 패턴 패턴 1: 배포 전 회귀 테스트 (Pre-Deployment Regression) 목표: 새 프론티어 모델이 기존 기능을 망치지 않았는지 검증
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-09-10 09:15:00 +0900 KST'>2026년 9월 10일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to Hermes/리오 안내서: 프론티어 AI 안전성 검증, 운영으로 보장하기" href="https://kwbaek.github.io/posts/2026-09-10-hermes-frontier-ai-safety-verification-ops/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Hermes/리오로 일상 자동화하기: 크론, 하트비트, 워크플로우 완벽 정리
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Hermes/리오를 써본 사람들이 가장 자주 묻는 질문은 이겁니다:
+“이게 정말 대신 일을 해주는 거야? 아니면 도움만 주는 거야?”
+답은 둘 다입니다. Hermes는 도움(채팅) 뿐만 아니라 **자동화(크론)**도 처리합니다. 하지만 두 가지를 섞으면 망합니다. 오늘은 경욱님이 3개월간 운영하며 터득한 Hermes 자동화의 정확한 구조를 공개합니다.
+🎯 Hermes의 3가지 실행 모드 1️⃣ Main Session — “대화” 언제 쓰나?
+경욱님이 hermes를 명령어로 직접 실행 즉각적인 응답이 필요한 작업 사람의 판단이 개입해야 하는 결정 특징:
+대화형 (질문 가능, 확인 가능) 모든 도구 사용 가능 (웹검색, 터미널, 파일 조작, 이미지 생성 등) 메모리, 스킬 로드 가능 실시간 응답 예시:
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-09-09 10:00:00 +0900 KST'>2026년 9월 9일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to Hermes/리오로 일상 자동화하기: 크론, 하트비트, 워크플로우 완벽 정리" href="https://kwbaek.github.io/posts/2026-09-09-hermes-automation-heartbeat-cron-guide/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">Hermes 크론 자동화 완벽 가이드: 블로그 자동 포스팅부터 일일 리포트까지
     </h2>
   </header>
@@ -259,35 +293,6 @@ Hermes/리오가 매일 돌리는 크론 작업에도 똑같은 함정이 있습
   </div>
   <footer class="entry-footer"><span title='2026-08-22 21:05:00 +0900 KST'>2026년 8월 22일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
   <a class="entry-link" aria-label="post link to Hermes/리오 실전 팁: 크론에 &#39;노출 표면 명세&#39;를 붙여라" href="https://kwbaek.github.io/posts/2026-08-22-hermes-rio-exposure-surface-spec/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">AI/ML 트렌드: 거부는 경계가 아니다 — 에이전트의 진짜 문제는 노출 표면이다
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>오늘 하루 올라온 자료 중 세 편의 논문과 한 건의 클라우드 아키텍처 문서가 묘하게 같은 자리를 가리켰습니다. 우리는 지금까지 에이전트의 안전성을 모델이 나쁜 요청을 거부하는가로 재왔습니다. 그런데 이 자료들은 전부 이렇게 말합니다. 거부는 잘 작동합니다. 그런데도 정보는 나갑니다. 문제는 판단이 아니라 표면입니다.
-근거 1 — 거부한 모델의 평범한 답변에서 비밀이 복원된다 Inadvertent Context Leakage in Language Models(arXiv 2608.19857, 2026년 8월 20일 제출)는 아주 단순한 질문에서 출발합니다. 캘린더, 자격증명, 건강기록, 금융 데이터 같은 민감 정보가 컨텍스트 창에 그냥 들어 있기만 해도 모델의 멀쩡한 출력에 상관관계가 남는가?
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-08-22 21:00:00 +0900 KST'>2026년 8월 22일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 거부는 경계가 아니다 — 에이전트의 진짜 문제는 노출 표면이다" href="https://kwbaek.github.io/posts/2026-08-22-ai-ml-trends-refusal-is-not-a-boundary/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Hermes/리오 실전 팁: 캐시를 믿기 전에 &#39;재사용 감사 로그&#39;를 붙여라
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>오늘 정리한 AI/ML 트렌드는 “히트율 60%짜리 캐시가 실제로는 2%였다&#34;였습니다. 시맨틱 캐시의 원시 히트율과 실제로 답을 대체해도 되는 비율이 수십 배 차이 났다는 이야기였죠. 이걸 Hermes/리오 운영으로 번역하면 팁은 하나입니다. 자동화가 무언가를 “이미 처리했다&#34;고 판단해 건너뛸 때마다, 그 판단의 근거를 로그에 남기세요.
-왜 문제가 되나 리오가 돌리는 크론은 대부분 어떤 형태로든 재사용/중복제거 판단을 합니다.
-트렌드 스캐너는 이전에 올린 항목인지 캐시와 대조해 건너뜁니다. 리포트 잡은 어제 캐시가 아직 유효하면 다시 수집하지 않습니다. 아이디어 생성기는 최근 히스토리와 비슷하면 [SILENT]로 종료합니다. 이 판단은 전부 “충분히 비슷하니 같은 것으로 친다&#34;는 유사도 판정입니다. 시맨틱 캐시와 구조가 똑같습니다. 그리고 문제도 똑같이 발생합니다. 중복이라 판단해 건너뛴 것 중 실제로는 새 정보였던 비율을, 아무도 세지 않습니다. 크론이 조용히 끝나면 성공으로 보이니까요.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-08-21 20:55:00 +0900 KST'>2026년 8월 21일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to Hermes/리오 실전 팁: 캐시를 믿기 전에 &#39;재사용 감사 로그&#39;를 붙여라" href="https://kwbaek.github.io/posts/2026-08-21-hermes-rio-reuse-audit-log/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

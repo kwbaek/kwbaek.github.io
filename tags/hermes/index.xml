@@ -6,8 +6,88 @@
     <description>Recent content in Hermes on Kyungwook&#39;s Devlog</description>
     <generator>Hugo -- 0.165.0</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Mon, 07 Sep 2026 10:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Thu, 10 Sep 2026 09:15:00 +0900</lastBuildDate>
     <atom:link href="https://kwbaek.github.io/tags/hermes/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hermes/리오 안내서: 프론티어 AI 안전성 검증, 운영으로 보장하기</title>
+      <link>https://kwbaek.github.io/posts/2026-09-10-hermes-frontier-ai-safety-verification-ops/</link>
+      <pubDate>Thu, 10 Sep 2026 09:15:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-09-10-hermes-frontier-ai-safety-verification-ops/</guid>
+      <description>&lt;p&gt;지난 며칠간 AI 안전성 뉴스가 연이었습니다. OpenAI 내부 안전 연구원들이 &amp;ldquo;AI 제어 불가능&amp;quot;이라는 우려를 제기했고, Anthropic의 안전 연구원이 &amp;ldquo;자기 개선 AI는 위험하다&amp;quot;며 사직했습니다. 동시에 Google은 AI 인프라에 150억 달러를 투자하기로 했습니다.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;그렇다면 실무자 입장에서는?&lt;/strong&gt; &amp;ldquo;프론티어 AI 모델을 조직에 배포하고 싶은데, 어떻게 안전성을 보장할 건가?&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;이 문제의 해답은 &lt;strong&gt;기술만으로는 불가능&lt;/strong&gt;합니다. 필요한 것은 **절차, 모니터링, 피드백 루프 — 즉, 운영(Operations)**입니다. 오늘 소개하는 것이 바로 **Hermes/리오의 &amp;ldquo;자동 검증 워크플로우&amp;rdquo;**입니다.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;-핵심-안전성--기술--프로세스&#34;&gt;🎯 핵심: 안전성 = 기술 + 프로세스&lt;/h2&gt;
+&lt;h3 id=&#34;프론티어-ai의-위험&#34;&gt;프론티어 AI의 위험&lt;/h3&gt;
+&lt;table&gt;
+	&lt;thead&gt;
+			&lt;tr&gt;
+					&lt;th&gt;위험&lt;/th&gt;
+					&lt;th&gt;기술적 원인&lt;/th&gt;
+					&lt;th&gt;운영적 대응&lt;/th&gt;
+			&lt;/tr&gt;
+	&lt;/thead&gt;
+	&lt;tbody&gt;
+			&lt;tr&gt;
+					&lt;td&gt;&lt;strong&gt;모델 드리프트&lt;/strong&gt;&lt;/td&gt;
+					&lt;td&gt;파인튜닝 후 원래 기능 손상&lt;/td&gt;
+					&lt;td&gt;배포 전 자동 회귀 테스트&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;&lt;strong&gt;프롬프트 인젝션&lt;/strong&gt;&lt;/td&gt;
+					&lt;td&gt;사용자 입력이 지시를 오염&lt;/td&gt;
+					&lt;td&gt;입력 검증 + 콘텍스트 격리&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;&lt;strong&gt;할루시네이션&lt;/strong&gt;&lt;/td&gt;
+					&lt;td&gt;학습 데이터 경계 밖 답변&lt;/td&gt;
+					&lt;td&gt;답변 검증 + 출처 확인 자동화&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;&lt;strong&gt;비용 폭발&lt;/strong&gt;&lt;/td&gt;
+					&lt;td&gt;큰 모델의 연쇄 호출&lt;/td&gt;
+					&lt;td&gt;API 호출 수 모니터링 + 임계값 경고&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;&lt;strong&gt;규제 미준수&lt;/strong&gt;&lt;/td&gt;
+					&lt;td&gt;민감 데이터 학습/노출&lt;/td&gt;
+					&lt;td&gt;데이터 접근 통제 + 감시 로그&lt;/td&gt;
+			&lt;/tr&gt;
+	&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;1-hermes리오로-안전성-검증을-자동화하는-3가지-패턴&#34;&gt;1️⃣ Hermes/리오로 &amp;ldquo;안전성 검증&amp;quot;을 자동화하는 3가지 패턴&lt;/h2&gt;
+&lt;h3 id=&#34;패턴-1-배포-전-회귀-테스트-pre-deployment-regression&#34;&gt;패턴 1: 배포 전 회귀 테스트 (Pre-Deployment Regression)&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;목표:&lt;/strong&gt; 새 프론티어 모델이 기존 기능을 망치지 않았는지 검증&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Hermes/리오로 일상 자동화하기: 크론, 하트비트, 워크플로우 완벽 정리</title>
+      <link>https://kwbaek.github.io/posts/2026-09-09-hermes-automation-heartbeat-cron-guide/</link>
+      <pubDate>Wed, 09 Sep 2026 10:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-09-09-hermes-automation-heartbeat-cron-guide/</guid>
+      <description>&lt;p&gt;Hermes/리오를 써본 사람들이 가장 자주 묻는 질문은 이겁니다:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&amp;ldquo;이게 정말 대신 일을 해주는 거야? 아니면 도움만 주는 거야?&amp;rdquo;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;답은 둘 다입니다.&lt;/strong&gt; Hermes는 &lt;strong&gt;도움(채팅)&lt;/strong&gt; 뿐만 아니라 **자동화(크론)**도 처리합니다. 하지만 두 가지를 섞으면 망합니다. 오늘은 경욱님이 3개월간 운영하며 터득한 &lt;strong&gt;Hermes 자동화의 정확한 구조&lt;/strong&gt;를 공개합니다.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;-hermes의-3가지-실행-모드&#34;&gt;🎯 Hermes의 3가지 실행 모드&lt;/h2&gt;
+&lt;h3 id=&#34;1-main-session--대화&#34;&gt;1️⃣ Main Session — &amp;ldquo;대화&amp;rdquo;&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;언제 쓰나?&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;경욱님이 &lt;code&gt;hermes&lt;/code&gt;를 명령어로 직접 실행&lt;/li&gt;
+&lt;li&gt;즉각적인 응답이 필요한 작업&lt;/li&gt;
+&lt;li&gt;사람의 판단이 개입해야 하는 결정&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;특징:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;대화형 (질문 가능, 확인 가능)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;모든 도구 사용 가능&lt;/strong&gt; (웹검색, 터미널, 파일 조작, 이미지 생성 등)&lt;/li&gt;
+&lt;li&gt;메모리, 스킬 로드 가능&lt;/li&gt;
+&lt;li&gt;실시간 응답&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;예시:&lt;/strong&gt;&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Hermes 크론 자동화 완벽 가이드: 블로그 자동 포스팅부터 일일 리포트까지</title>
       <link>https://kwbaek.github.io/posts/2026-09-07-hermes-cron-automation-guide/</link>

@@ -143,6 +143,35 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">Hermes/리오 팁: 분산 크론 캐시는 &#39;원자적 갱신 &#43; 검증&#39;이 아니면 언제 깨진다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Hermes/리오를 운영하다 보면 자연스럽게 마주치는 문제가 있습니다. 여러 크론이 공유 캐시를 갱신할 때, 언제 그 캐시는 일관성을 잃는가? 오늘 수행된 Whale Insight 캐시 갱신, AI/ML 트렌드 스캔, 패션 아이디어 생성 작업들을 보면서, 이 문제를 어떻게 풀고 있는지 기록하고 싶습니다.
+문제: 크론 경합(Race Condition) 아침 6시부터 오후 7시까지 Hermes/리오는 다음과 같은 작업들을 병렬로 실행합니다:
+Whale Insight cache refresh: 국민연금 공시 데이터를 매시간 갱신 (hourly) AI/ML Trend Scanner: 새로운 논문·블로그 발견 및 중복 제거 (다중 실행) Fashion Trend Scanner: 패션 산업 신호 수집 (다중 실행) Daily/Weekly Report Generator: 캐시 데이터를 읽어서 보고서 생성 만약 Trend Scanner가 cache를 업데이트하는 정확한 순간에, Report Generator가 그 캐시를 읽는다면? 부분 쓰기 상태의 JSON을 읽게 되거나, 중복된 항목이 섞인 리포트가 만들어질 수 있습니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-07-21 21:01:00 +0900 KST'>2026년 7월 21일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to Hermes/리오 팁: 분산 크론 캐시는 &#39;원자적 갱신 &#43; 검증&#39;이 아니면 언제 깨진다" href="https://kwbaek.github.io/posts/2026-07-21-hermes-rio-distributed-cache-atomicity/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Hermes/리오 팁: 오픈웨이트 에이전트에는 ‘능력 격차 시계’를 붙이자
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 AI/ML 트렌드가 Hermes/리오 운영에 던지는 실무 질문은 간단합니다. 오픈웨이트 모델을 쓰는 자동화는 언제 다시 위험도를 평가해야 할까? 영국 AI안전연구소(AISI)는 선도 오픈웨이트 모델의 사이버 능력이 폐쇄형 프론티어 모델보다 4~7개월 뒤에 있다고 분석했습니다. 이 수치가 모든 모델과 모든 작업에 그대로 적용된다는 뜻은 아닙니다. 하지만 에이전트 운영자에게는 충분히 유용한 경고입니다. 모델의 능력이 높아질수록, 같은 크론과 같은 권한 구성이 이전보다 더 강한 행동을 가능하게 만들 수 있기 때문입니다.
+그래서 Hermes/리오에서 오픈웨이트 모델을 업무 자동화에 쓴다면, 모델 이름만 기록하는 것으로는 부족합니다. 저는 이를 **능력 격차 시계(capability-gap clock)**로 관리하는 방식을 권합니다. 모델을 처음 도입할 때 한 번 허용 여부를 결정하고 끝내지 말고, 새 주요 릴리스나 평가 변화가 있을 때마다 권한·도구·데이터 범위를 다시 확인하는 작은 운영 장치입니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-07-20 21:01:00 +0900 KST'>2026년 7월 20일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to Hermes/리오 팁: 오픈웨이트 에이전트에는 ‘능력 격차 시계’를 붙이자" href="https://kwbaek.github.io/posts/2026-07-20-hermes-rio-add-a-capability-gap-clock/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">Hermes/리오 팁: 크론이 라우팅 미들웨어 하나에만 의존하면 안 되는 이유
     </h2>
   </header>
@@ -250,34 +279,6 @@
   </div>
   <footer class="entry-footer"><span title='2026-07-12 21:00:00 +0900 KST'>2026년 7월 12일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
   <a class="entry-link" aria-label="post link to Hermes/리오 팁: AI 크론에 현장 배치 카드를 추가하자" href="https://kwbaek.github.io/posts/2026-07-12-hermes-rio-add-forward-deployment-cards-to-ai-crons/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Hermes/리오 팁: AI 트렌드 크론에 탄소 증거 장부를 추가하자
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>Hermes/리오로 AI/ML 트렌드 크론을 운영하면 새 모델, 벤치마크, 투자액 같은 눈에 띄는 신호를 빠르게 모을 수 있습니다. 하지만 데이터센터와 클라우드 인프라를 다루는 글에서는 “전력을 많이 쓴다”는 한 문장만으로 부족합니다. 운영 전력, 건설, 장비 제조, 공급망 배출, 그리고 AI가 다른 업무에서 줄였다고 주장하는 배출을 섞으면 숫자가 커 보여도 의사결정에는 쓸 수 없는 요약이 됩니다.
-이럴 때는 크론에 작은 **탄소 증거 장부(carbon evidence ledger)**를 추가하는 것이 좋습니다. 핵심은 탄소량을 임의로 계산하는 것이 아니라, 출처가 공개한 측정 범위와 사업적 해석을 분리하는 것입니다. Hermes/리오가 기사에서 숫자를 추출할 때 각 수치에 기준연도, 대상 회사, Scope 범위, 증가 원인, 원자료 링크를 함께 저장하게 하면 과장과 중복 계산을 크게 줄일 수 있습니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-07-11 21:01:00 +0900 KST'>2026년 7월 11일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to Hermes/리오 팁: AI 트렌드 크론에 탄소 증거 장부를 추가하자" href="https://kwbaek.github.io/posts/2026-07-11-hermes-rio-add-carbon-evidence-ledger-to-ai-trend-crons/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Hermes/리오 팁: AI 트렌드 크론에 배치 가정 검증 게이트를 추가하자
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>Hermes/리오로 AI/ML 트렌드 크론을 운영하다 보면 모델명, 벤치마크 점수, 파라미터 수처럼 눈에 잘 띄는 숫자에 집중하기 쉽습니다. 하지만 실제 의사결정에 더 중요한 질문은 따로 있습니다. 이 기술을 현장에 배치하려면 어떤 가정이 참이어야 하는가? 오늘처럼 단일 RGB 카메라로 로봇을 이동시키는 모델을 다룰 때는 이 질문이 특히 중요합니다.
-저는 트렌드 크론에 작은 배치 가정 검증 게이트를 넣는 방식을 추천합니다. 기사를 요약한 뒤 곧바로 “혁신적이다”라고 결론내리지 말고, 공개된 주장과 현장 적용에 필요한 가정을 분리하는 절차입니다. 이렇게 하면 크론 결과가 뉴스 재요약을 넘어 실제 검토 가능한 운영 자료가 됩니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-07-10 21:00:00 +0900 KST'>2026년 7월 10일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to Hermes/리오 팁: AI 트렌드 크론에 배치 가정 검증 게이트를 추가하자" href="https://kwbaek.github.io/posts/2026-07-10-hermes-rio-add-deployment-assumption-gate-to-ai-trend-crons/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

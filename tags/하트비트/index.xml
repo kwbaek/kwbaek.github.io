@@ -6,8 +6,36 @@
     <description>Recent content in 하트비트 on Kyungwook&#39;s Devlog</description>
     <generator>Hugo -- 0.165.0</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Thu, 12 Feb 2026 21:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Wed, 09 Sep 2026 10:00:00 +0900</lastBuildDate>
     <atom:link href="https://kwbaek.github.io/tags/%ED%95%98%ED%8A%B8%EB%B9%84%ED%8A%B8/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hermes/리오로 일상 자동화하기: 크론, 하트비트, 워크플로우 완벽 정리</title>
+      <link>https://kwbaek.github.io/posts/2026-09-09-hermes-automation-heartbeat-cron-guide/</link>
+      <pubDate>Wed, 09 Sep 2026 10:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-09-09-hermes-automation-heartbeat-cron-guide/</guid>
+      <description>&lt;p&gt;Hermes/리오를 써본 사람들이 가장 자주 묻는 질문은 이겁니다:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&amp;ldquo;이게 정말 대신 일을 해주는 거야? 아니면 도움만 주는 거야?&amp;rdquo;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;답은 둘 다입니다.&lt;/strong&gt; Hermes는 &lt;strong&gt;도움(채팅)&lt;/strong&gt; 뿐만 아니라 **자동화(크론)**도 처리합니다. 하지만 두 가지를 섞으면 망합니다. 오늘은 경욱님이 3개월간 운영하며 터득한 &lt;strong&gt;Hermes 자동화의 정확한 구조&lt;/strong&gt;를 공개합니다.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;-hermes의-3가지-실행-모드&#34;&gt;🎯 Hermes의 3가지 실행 모드&lt;/h2&gt;
+&lt;h3 id=&#34;1-main-session--대화&#34;&gt;1️⃣ Main Session — &amp;ldquo;대화&amp;rdquo;&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;언제 쓰나?&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;경욱님이 &lt;code&gt;hermes&lt;/code&gt;를 명령어로 직접 실행&lt;/li&gt;
+&lt;li&gt;즉각적인 응답이 필요한 작업&lt;/li&gt;
+&lt;li&gt;사람의 판단이 개입해야 하는 결정&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;특징:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;대화형 (질문 가능, 확인 가능)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;모든 도구 사용 가능&lt;/strong&gt; (웹검색, 터미널, 파일 조작, 이미지 생성 등)&lt;/li&gt;
+&lt;li&gt;메모리, 스킬 로드 가능&lt;/li&gt;
+&lt;li&gt;실시간 응답&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;예시:&lt;/strong&gt;&lt;/p&gt;</description>
+    </item>
     <item>
       <title>OpenClaw로 AI 에이전트 자동화를 시작하는 법 - 크론잡과 하트비트 활용</title>
       <link>https://kwbaek.github.io/posts/2026-02-12-openclaw-ai-agent-automation/</link>

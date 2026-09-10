@@ -143,6 +143,21 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">Hermes/리오 실전 팁: &#39;데모 통과&#39;와 &#39;무인 운영 통과&#39;를 분리하는 게이트
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 AI/ML 트렌드에서 나온 숫자를 다시 보면, Codex는 회사 안에서 98% 채택됐지만 고객 조직에서는 17%였고, 로봇 파운데이션 모델은 한 번 보여준 동작을 59% 확률로 재현했습니다. 두 경우 모두 “작동하는 걸 봤다&#34;와 “믿고 맡길 수 있다&#34;는 서로 다른 기준선입니다.
+Hermes/리오가 매일 돌리는 크론 작업에도 똑같은 함정이 있습니다. 한 번 실행해서 좋은 결과가 나온 것과, 무인으로 계속 돌려도 괜찮다는 것은 다른 검증입니다. 오늘은 이 둘을 분리하는 게이트를 이야기해봅니다.
+왜 “한 번 잘 됐다&#34;가 위험한 신호인가 크론 작업을 새로 만들거나 고칠 때 흔한 흐름은 이렇습니다. 프롬프트를 짜고, 한 번 실행해보고, 결과가 그럴듯하면 “됐다&#34;고 판단하고 스케줄을 켭니다. 이건 정확히 원샷 성공률만 보고 로봇을 현장에 배치하는 것과 같은 판단입니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-08-25 22:20:00 +0900 KST'>2026년 8월 25일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to Hermes/리오 실전 팁: &#39;데모 통과&#39;와 &#39;무인 운영 통과&#39;를 분리하는 게이트" href="https://kwbaek.github.io/posts/2026-08-25-hermes-rio-demo-to-production-gate/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">Hermes/리오 실전 팁: 크론 하네스를 점검하는 6줄 체크
     </h2>
   </header>
@@ -268,20 +283,6 @@
   </div>
   <footer class="entry-footer"><span title='2026-08-12 21:00:00 +0900 KST'>2026년 8월 12일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
   <a class="entry-link" aria-label="post link to Hermes/리오 크론에 기억과 로컬 모델 경계를 넣는 법 — 메모리는 캐시가 아니다" href="https://kwbaek.github.io/posts/2026-08-12-hermes-rio-memory-and-local-model-boundaries/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Hermes/리오 크론에 에이전트 실행 표면을 설계하는 법 — 세션·도구·토큰을 운영 데이터로 만들기
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>OpenAI의 workspace agents와 GitHub Copilot SDK for Java가 보여주는 공통된 변화는 에이전트가 더 이상 프롬프트 한 번으로 끝나는 기능이 아니라는 점입니다. 팀 컨텍스트를 읽고, 도구를 호출하고, 세션을 이어가며, 결과를 업무 화면에 남기는 실행 표면이 제품의 중심이 되고 있습니다. Hermes/리오의 무인 크론도 같은 관점으로 설계하면 “모델이 무슨 말을 했는가”보다 “업무 계약을 지켰는가”를 안정적으로 검증할 수 있습니다.
-1. 세션을 대화가 아니라 실행 단위로 정의하기 크론 작업마다 실행 ID를 먼저 부여하고, 입력 시점·사용한 모델·도구 호출 목록·최종 산출물·실패 사유를 한 묶음으로 기록합니다. 세션은 단순한 대화 이력이 아니라 하나의 업무 트랜잭션입니다. 예를 들어 AI/ML 트렌드 스캐너라면 동일한 실행 안에서 후보 수집, canonical URL 확인, 중복 판정, 캐시 업데이트가 어떻게 이어졌는지 재현할 수 있어야 합니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-08-11 21:00:00 +0900 KST'>2026년 8월 11일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to Hermes/리오 크론에 에이전트 실행 표면을 설계하는 법 — 세션·도구·토큰을 운영 데이터로 만들기" href="https://kwbaek.github.io/posts/2026-08-11-hermes-rio-agent-runtime-observability/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

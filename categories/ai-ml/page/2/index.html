@@ -143,6 +143,34 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">AI/ML 트렌드: 추론 칩 경쟁은 결국 전기요금 경쟁이다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>같은 주에 나온 두 발표를 나란히 놓으면 지금 AI 인프라 경쟁이 어디로 향하는지가 보입니다. 하나는 OpenAI의 첫 자체 추론칩 첫 실측 결과, 다른 하나는 NVIDIA Vera Rubin NVL72 양산랙의 본격 출하입니다. 둘 다 “더 빠른 모델&#34;이 아니라 “같은 전력으로 얼마나 많은 일을 하느냐&#34;를 다투고 있습니다.
+Jalapeño: 칩 대 칩이 아니라 와트 대 와트 OpenAI가 공개한 자체 추론칩 Jalapeño의 첫 실측 결과는 GPT-OSS 120B, DeepSeek R1, Kimi K2.5 1T 세 모델 모두에서 기존 상용 시스템 대비 와트당 1.51.9배 더 많은 작업을 처리하면서, 엔드투엔드 지연시간은 1.73.6배 낮췄다고 밝혔습니다. 고도로 인터랙티브한 워크로드에서는 성능 격차가 2.1~4.1배까지 벌어졌습니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-08-27 21:10:00 +0900 KST'>2026년 8월 27일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 추론 칩 경쟁은 결국 전기요금 경쟁이다" href="https://kwbaek.github.io/posts/2026-08-27-ai-ml-trends-inference-chip-is-a-power-bill/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">AI/ML 트렌드: 시범 성공률과 조직 채택률은 다른 숫자다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>같은 날 나온 두 소식을 나란히 놓으면 패턴이 하나 보입니다. 하나는 소프트웨어 에이전트의 조직 내 채택률 데이터, 다른 하나는 로봇 파운데이션 모델의 원샷 학습 성공률 데이터입니다. 둘 다 “모델이 무엇을 할 수 있는가&#34;와 “조직이 그것을 실제로 쓰는가&#34;가 서로 다른 숫자라는 걸 보여줍니다.
+사내 98% vs 기업 구독자 17% TechCrunch가 인용한 OpenAI 후원 연구에 따르면 지난 6월 기준 OpenAI 내부 직원의 98%가 코딩 에이전트 Codex를 쓰고 있었지만, 조직(기업) 구독자 중에서는 17%, 개인 구독자 중에서는 1% 미만만 실제로 이 에이전트 기능을 사용했습니다. 같은 도구, 같은 회사인데도 “만든 사람들이 매일 쓰는 것&#34;과 “고객이 실제로 쓰는 것” 사이에 80%p 넘는 격차가 있는 셈입니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-08-25 22:15:00 +0900 KST'>2026년 8월 25일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 시범 성공률과 조직 채택률은 다른 숫자다" href="https://kwbaek.github.io/posts/2026-08-25-ai-ml-trends-demo-rate-is-not-adoption-rate/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">AI/ML 트렌드: 추론 비용은 토큰 단가가 아니라 스케줄링 문제다
     </h2>
   </header>
@@ -251,34 +279,6 @@
   </div>
   <footer class="entry-footer"><span title='2026-08-17 21:00:47 +0900 KST'>2026년 8월 17일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
   <a class="entry-link" aria-label="post link to AI/ML 트렌드: 에이전트 하네스는 플러그인 경계에서 운영체제가 된다" href="https://kwbaek.github.io/posts/2026-08-17-ai-ml-trends-plugin-first-agent-harness/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">AI/ML 트렌드: 로컬 LLM 런타임의 다음 전장은 구조화 콘텐츠 계약이다
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>오늘 AI/ML 트렌드에서 눈여겨볼 신호는 거대한 새 모델의 등장보다 모델을 호출하는 입력 계약이 런타임의 핵심 제품 표면으로 내려오고 있다는 점입니다. llama.cpp의 b10452 릴리스는 supports_string_content와 supports_typed_content 처리를 리팩터링하고, messages_inp_normalizer를 보강했습니다. 겉으로는 내부 채팅 입력 처리의 작은 변경처럼 보이지만, 실제로는 텍스트·이미지·도구 결과처럼 타입이 다른 콘텐츠를 어떤 형태로 정규화해 모델에 전달할지에 관한 호환성 문제입니다.
-입력 포맷은 더 이상 주변부가 아니다 LLM 애플리케이션은 이제 단순한 문자열 프롬프트만 보내지 않습니다. 대화 메시지 안에 텍스트 블록, 이미지 참조, 파일 내용, 도구 호출 결과, 구조화된 JSON이 함께 들어갑니다. 클라우드 API에서는 SDK가 이 차이를 흡수해 주지만, 로컬 런타임에서는 각 모델의 chat template과 서버 구현이 경계면을 직접 책임져야 합니다. 문자열을 기대하는 경로에 typed content를 넣거나, 반대로 구조화된 블록을 문자열로 평탄화하면 답변 품질이 떨어지는 수준을 넘어 이미지가 사라지거나 도구 인자가 깨질 수 있습니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-08-16 21:00:00 +0900 KST'>2026년 8월 16일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 로컬 LLM 런타임의 다음 전장은 구조화 콘텐츠 계약이다" href="https://kwbaek.github.io/posts/2026-08-16-ai-ml-trends-structured-content-runtime-contract/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">AI/ML 트렌드: 코딩 에이전트의 빠른 릴리스 경쟁, 이제 회귀검증이 제품 기능이다
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>최근 OpenAI Codex CLI 0.148.0-alpha.19 릴리스가 보여주는 중요한 신호는 단순히 “새 버전이 나왔다”가 아닙니다. 터미널에서 파일을 수정하고 명령을 실행하는 코딩 에이전트가 빠른 주기로 계속 업데이트되면서, 모델 성능 경쟁이 곧 실행면의 호환성·안전성·회귀검증 경쟁으로 바뀌고 있다는 점입니다. 릴리스 페이지의 게시 시각은 2026년 8월 15일 02:21 UTC로 확인되며, 현재 버전은 알파 채널입니다.
-알파 릴리스가 던지는 운영 질문 CLI 에이전트는 일반적인 자동완성 도구와 다릅니다. 출력이 마음에 들지 않으면 다시 질문하면 되는 수준을 넘어, 저장소의 파일·Git 상태·셸 명령·테스트 실행과 직접 연결됩니다. 따라서 업데이트의 위험은 “답변 문장이 조금 달라졌다”에 그치지 않습니다. 같은 프롬프트라도 수정 파일의 범위가 넓어지거나, 승인 없이 실행되는 명령의 종류가 달라지거나, 실패 후 재개 동작이 바뀔 수 있습니다. 특히 알파 버전은 새 기능을 빨리 받는 대신 이러한 경계면이 아직 안정화되지 않았을 가능성을 전제로 써야 합니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-08-15 21:00:00 +0900 KST'>2026년 8월 15일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 코딩 에이전트의 빠른 릴리스 경쟁, 이제 회귀검증이 제품 기능이다" href="https://kwbaek.github.io/posts/2026-08-15-ai-ml-trends-coding-agent-releases-need-regression-gates/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

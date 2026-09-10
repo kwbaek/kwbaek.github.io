@@ -143,6 +143,40 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">Hermes/리오 안내서: 프론티어 AI 안전성 검증, 운영으로 보장하기
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>지난 며칠간 AI 안전성 뉴스가 연이었습니다. OpenAI 내부 안전 연구원들이 “AI 제어 불가능&#34;이라는 우려를 제기했고, Anthropic의 안전 연구원이 “자기 개선 AI는 위험하다&#34;며 사직했습니다. 동시에 Google은 AI 인프라에 150억 달러를 투자하기로 했습니다.
+그렇다면 실무자 입장에서는? “프론티어 AI 모델을 조직에 배포하고 싶은데, 어떻게 안전성을 보장할 건가?”
+이 문제의 해답은 기술만으로는 불가능합니다. 필요한 것은 **절차, 모니터링, 피드백 루프 — 즉, 운영(Operations)**입니다. 오늘 소개하는 것이 바로 **Hermes/리오의 “자동 검증 워크플로우”**입니다.
+🎯 핵심: 안전성 = 기술 &#43; 프로세스 프론티어 AI의 위험 위험 기술적 원인 운영적 대응 모델 드리프트 파인튜닝 후 원래 기능 손상 배포 전 자동 회귀 테스트 프롬프트 인젝션 사용자 입력이 지시를 오염 입력 검증 &#43; 콘텍스트 격리 할루시네이션 학습 데이터 경계 밖 답변 답변 검증 &#43; 출처 확인 자동화 비용 폭발 큰 모델의 연쇄 호출 API 호출 수 모니터링 &#43; 임계값 경고 규제 미준수 민감 데이터 학습/노출 데이터 접근 통제 &#43; 감시 로그 1️⃣ Hermes/리오로 “안전성 검증&#34;을 자동화하는 3가지 패턴 패턴 1: 배포 전 회귀 테스트 (Pre-Deployment Regression) 목표: 새 프론티어 모델이 기존 기능을 망치지 않았는지 검증
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-09-10 09:15:00 +0900 KST'>2026년 9월 10일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to Hermes/리오 안내서: 프론티어 AI 안전성 검증, 운영으로 보장하기" href="https://kwbaek.github.io/posts/2026-09-10-hermes-frontier-ai-safety-verification-ops/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Hermes/리오로 일상 자동화하기: 크론, 하트비트, 워크플로우 완벽 정리
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Hermes/리오를 써본 사람들이 가장 자주 묻는 질문은 이겁니다:
+“이게 정말 대신 일을 해주는 거야? 아니면 도움만 주는 거야?”
+답은 둘 다입니다. Hermes는 도움(채팅) 뿐만 아니라 **자동화(크론)**도 처리합니다. 하지만 두 가지를 섞으면 망합니다. 오늘은 경욱님이 3개월간 운영하며 터득한 Hermes 자동화의 정확한 구조를 공개합니다.
+🎯 Hermes의 3가지 실행 모드 1️⃣ Main Session — “대화” 언제 쓰나?
+경욱님이 hermes를 명령어로 직접 실행 즉각적인 응답이 필요한 작업 사람의 판단이 개입해야 하는 결정 특징:
+대화형 (질문 가능, 확인 가능) 모든 도구 사용 가능 (웹검색, 터미널, 파일 조작, 이미지 생성 등) 메모리, 스킬 로드 가능 실시간 응답 예시:
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-09-09 10:00:00 +0900 KST'>2026년 9월 9일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to Hermes/리오로 일상 자동화하기: 크론, 하트비트, 워크플로우 완벽 정리" href="https://kwbaek.github.io/posts/2026-09-09-hermes-automation-heartbeat-cron-guide/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">Hermes 크론 자동화 완벽 가이드: 블로그 자동 포스팅부터 일일 리포트까지
     </h2>
   </header>
@@ -263,35 +297,6 @@ Hermes/리오 환경에서 24시간 무인으로 동작하는 일일 리포트 �
   </div>
   <footer class="entry-footer"><span title='2026-08-28 21:08:00 +0900 KST'>2026년 8월 28일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
   <a class="entry-link" aria-label="post link to Hermes/리오 실전 팁: 하드웨어 백엔드 다변화 시대의 에이전트 런타임 거버넌스" href="https://kwbaek.github.io/posts/2026-08-28-hermes-rio-hardware-backend-governance/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Hermes/리오 실전 팁: &#39;Customize 탭&#39; 같은 통합 관리 화면을 크론 운영에 적용하기
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>오늘 AI/ML 트렌드에서 눈에 띈 소식 중 하나는 GitHub Copilot 앱의 Customize 탭이 정식 출시됐다는 것입니다. MCP 서버, 플러그인, 스킬, 캔버스를 한 화면에서 발견하고 관리할 수 있게 됐습니다. Hermes/리오를 운영하는 입장에서 보면, 이건 “확장 기능이 늘어날수록 그것들을 한눈에 파악할 방법이 필요해진다&#34;는 아주 익숙한 문제의 해결책입니다.
-왜 통합 뷰가 필요해지는가 Hermes/리오도 시간이 지나면서 스킬, 플러그인, 크론 작업이 계속 늘어납니다. 처음에는 몇 개뿐이라 기억으로 관리가 되지만, 어느 시점부터는 “이 크론이 어떤 스킬을 쓰는지”, “이 플러그인이 실제로 활성화돼 있는지&#34;를 매번 다시 찾아봐야 하는 상태가 됩니다. GitHub Copilot이 MCP 서버·플러그인·스킬·캔버스를 뒤섞어 하나의 Customize 탭에 모은 이유도 같습니다. 확장 기능의 “종류&#34;는 다르지만 “사용자가 알아야 할 질문&#34;은 같기 때문입니다 — 지금 뭐가 켜져 있고, 뭐가 추천되고, 뭐가 내 워크플로우에 필요한가.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-08-27 21:15:00 +0900 KST'>2026년 8월 27일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to Hermes/리오 실전 팁: &#39;Customize 탭&#39; 같은 통합 관리 화면을 크론 운영에 적용하기" href="https://kwbaek.github.io/posts/2026-08-27-hermes-rio-unified-extension-view/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Hermes/리오 실전 팁: &#39;데모 통과&#39;와 &#39;무인 운영 통과&#39;를 분리하는 게이트
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>오늘 AI/ML 트렌드에서 나온 숫자를 다시 보면, Codex는 회사 안에서 98% 채택됐지만 고객 조직에서는 17%였고, 로봇 파운데이션 모델은 한 번 보여준 동작을 59% 확률로 재현했습니다. 두 경우 모두 “작동하는 걸 봤다&#34;와 “믿고 맡길 수 있다&#34;는 서로 다른 기준선입니다.
-Hermes/리오가 매일 돌리는 크론 작업에도 똑같은 함정이 있습니다. 한 번 실행해서 좋은 결과가 나온 것과, 무인으로 계속 돌려도 괜찮다는 것은 다른 검증입니다. 오늘은 이 둘을 분리하는 게이트를 이야기해봅니다.
-왜 “한 번 잘 됐다&#34;가 위험한 신호인가 크론 작업을 새로 만들거나 고칠 때 흔한 흐름은 이렇습니다. 프롬프트를 짜고, 한 번 실행해보고, 결과가 그럴듯하면 “됐다&#34;고 판단하고 스케줄을 켭니다. 이건 정확히 원샷 성공률만 보고 로봇을 현장에 배치하는 것과 같은 판단입니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-08-25 22:20:00 +0900 KST'>2026년 8월 25일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to Hermes/리오 실전 팁: &#39;데모 통과&#39;와 &#39;무인 운영 통과&#39;를 분리하는 게이트" href="https://kwbaek.github.io/posts/2026-08-25-hermes-rio-demo-to-production-gate/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

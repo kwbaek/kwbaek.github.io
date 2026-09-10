@@ -143,6 +143,35 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">AI/ML 트렌드: 거부는 경계가 아니다 — 에이전트의 진짜 문제는 노출 표면이다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 하루 올라온 자료 중 세 편의 논문과 한 건의 클라우드 아키텍처 문서가 묘하게 같은 자리를 가리켰습니다. 우리는 지금까지 에이전트의 안전성을 모델이 나쁜 요청을 거부하는가로 재왔습니다. 그런데 이 자료들은 전부 이렇게 말합니다. 거부는 잘 작동합니다. 그런데도 정보는 나갑니다. 문제는 판단이 아니라 표면입니다.
+근거 1 — 거부한 모델의 평범한 답변에서 비밀이 복원된다 Inadvertent Context Leakage in Language Models(arXiv 2608.19857, 2026년 8월 20일 제출)는 아주 단순한 질문에서 출발합니다. 캘린더, 자격증명, 건강기록, 금융 데이터 같은 민감 정보가 컨텍스트 창에 그냥 들어 있기만 해도 모델의 멀쩡한 출력에 상관관계가 남는가?
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-08-22 21:00:00 +0900 KST'>2026년 8월 22일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 거부는 경계가 아니다 — 에이전트의 진짜 문제는 노출 표면이다" href="https://kwbaek.github.io/posts/2026-08-22-ai-ml-trends-refusal-is-not-a-boundary/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Hermes/리오 실전 팁: 캐시를 믿기 전에 &#39;재사용 감사 로그&#39;를 붙여라
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 정리한 AI/ML 트렌드는 “히트율 60%짜리 캐시가 실제로는 2%였다&#34;였습니다. 시맨틱 캐시의 원시 히트율과 실제로 답을 대체해도 되는 비율이 수십 배 차이 났다는 이야기였죠. 이걸 Hermes/리오 운영으로 번역하면 팁은 하나입니다. 자동화가 무언가를 “이미 처리했다&#34;고 판단해 건너뛸 때마다, 그 판단의 근거를 로그에 남기세요.
+왜 문제가 되나 리오가 돌리는 크론은 대부분 어떤 형태로든 재사용/중복제거 판단을 합니다.
+트렌드 스캐너는 이전에 올린 항목인지 캐시와 대조해 건너뜁니다. 리포트 잡은 어제 캐시가 아직 유효하면 다시 수집하지 않습니다. 아이디어 생성기는 최근 히스토리와 비슷하면 [SILENT]로 종료합니다. 이 판단은 전부 “충분히 비슷하니 같은 것으로 친다&#34;는 유사도 판정입니다. 시맨틱 캐시와 구조가 똑같습니다. 그리고 문제도 똑같이 발생합니다. 중복이라 판단해 건너뛴 것 중 실제로는 새 정보였던 비율을, 아무도 세지 않습니다. 크론이 조용히 끝나면 성공으로 보이니까요.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-08-21 20:55:00 +0900 KST'>2026년 8월 21일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to Hermes/리오 실전 팁: 캐시를 믿기 전에 &#39;재사용 감사 로그&#39;를 붙여라" href="https://kwbaek.github.io/posts/2026-08-21-hermes-rio-reuse-audit-log/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">AI/ML 트렌드: 히트율 60%짜리 캐시가 실제로는 2%였다
     </h2>
   </header>
@@ -252,39 +281,6 @@
   </div>
   <footer class="entry-footer"><span title='2026-08-17 21:00:47 +0900 KST'>2026년 8월 17일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
   <a class="entry-link" aria-label="post link to AI/ML 트렌드: 에이전트 하네스는 플러그인 경계에서 운영체제가 된다" href="https://kwbaek.github.io/posts/2026-08-17-ai-ml-trends-plugin-first-agent-harness/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw 실전 운영법: Heartbeat &#43; Cron 2계층 자동화 패턴
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>OpenClaw를 오래 쓰다 보면 공통 문제가 하나 생깁니다. 처음에는 자동화가 편한데, 시간이 지나면 잡이 늘어나면서 알림 노이즈와 관리 복잡도가 같이 커집니다.
-이때 가장 효율이 좋았던 방식이 Heartbeat &#43; Cron 2계층 패턴입니다.
-핵심 아이디어는 간단합니다.
-Heartbeat: 대화 컨텍스트가 필요한 점검 작업(메일/캘린더/멘션/상태 확인)을 묶어서 처리 Cron: 정확한 시각이 중요한 작업(정시 리포트, 마감 알림, 배포 체크)을 분리 실행 1) Heartbeat는 “배치 점검 레이어”로 쓴다 Heartbeat는 1개 태스크를 정시에 수행하는 도구라기보다, 여러 점검 항목을 한 번에 처리하는 라우터로 보는 게 맞습니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-02-25 21:00:00 +0900 KST'>2026년 2월 25일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw 실전 운영법: Heartbeat &#43; Cron 2계층 자동화 패턴" href="https://kwbaek.github.io/posts/2026-02-25-openclaw-two-tier-automation-guide/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw 2026.2.22 이후 운영 플레이북: 업데이트, 보안, 배포
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>최근 OpenClaw를 실무에 붙여 쓰면서 느낀 핵심은, 기능이 빨리 늘어나는 만큼 업데이트 루틴을 표준화한 팀이 결국 안정적으로 오래 간다는 점입니다. 특히 2026.2.22 릴리즈 구간은 운영 관점에서 체감 변화가 꽤 큽니다.
-이번 구간의 실무 포인트를 한 줄로 요약하면 이렇습니다.
-“새 기능을 바로 쓰기보다, 사전 점검 → 설정 정리 → 재시작 → 헬스체크를 루틴화하라.”
-1) 업데이트 전에 꼭 할 것: dry-run OpenClaw는 이제 업데이트 전에 영향을 예측하는 흐름이 훨씬 중요해졌습니다.
-openclaw update --dry-run 이 한 줄로 어떤 변경이 들어오는지 먼저 확인해두면, 실제 운영 중 예상치 못한 중단을 크게 줄일 수 있습니다. 특히 여러 채널(Discord/Telegram/Slack)을 동시에 쓰는 환경에서는 설정 키 변경 영향이 생각보다 크게 나타납니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-02-24 21:00:00 +0900 KST'>2026년 2월 24일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw 2026.2.22 이후 운영 플레이북: 업데이트, 보안, 배포" href="https://kwbaek.github.io/posts/2026-02-24-openclaw-release-2026-2-22-playbook/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">
