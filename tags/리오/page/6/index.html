@@ -143,6 +143,20 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">Hermes/리오 팁: Agent Routing Ledger를 남기자
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 GitHub Copilot의 자동 모델 선택과 AWS의 A2A gateway 흐름을 Hermes/리오 운영 관점으로 가져오면 실무 팁은 하나입니다. 자동화마다 Agent Routing Ledger를 남기는 것입니다. 에이전트가 하나일 때는 “어떤 모델로 답했는가” 정도만 봐도 충분해 보입니다. 하지만 크론, 블로그 생성, 리포트 작성, 코드 수정, 브라우저 확인처럼 작업 종류가 늘어나면 중요한 질문이 바뀝니다. 왜 이 도구를 썼는지, 왜 이 출처를 신뢰했는지, 왜 이 파일만 수정했는지, 어떤 단계에서 멈출 수 있었는지를 기록해야 합니다.
+Agent Routing Ledger는 거창한 데이터베이스가 아니라 실행별 짧은 운영 장부입니다. Hermes/리오가 어떤 입력을 읽었고, 어떤 후보를 버렸고, 어떤 도구 호출을 했고, 어떤 검증을 통과했는지 남기는 습관에 가깝습니다. 예를 들어 블로그 포스팅 크론이라면 오늘의 AI/ML 리포트와 최신 트렌드 캐시를 확인했는지, 같은 날짜 글이 이미 있는지, 새 글이 500자 이상인지, Hugo 빌드가 통과했는지, 생성된 공개 HTML에 민감한 운영 세부값이 섞이지 않았는지를 기록해야 합니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-07-02 21:00:00 +0900 KST'>2026년 7월 2일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to Hermes/리오 팁: Agent Routing Ledger를 남기자" href="https://kwbaek.github.io/posts/2026-07-02-hermes-rio-add-an-agent-routing-ledger/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">Hermes/리오 팁: AI Risk Evidence Gate를 붙이자
     </h2>
   </header>
@@ -264,20 +278,6 @@ Agent Runtime Evidence Gate는 복잡한 플랫폼이 아니어도 됩니다. �
   </div>
   <footer class="entry-footer"><span title='2026-06-23 20:58:00 +0900 KST'>2026년 6월 23일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
   <a class="entry-link" aria-label="post link to Hermes/리오 팁: Agent Runtime Evidence Gate를 붙이자" href="https://kwbaek.github.io/posts/2026-06-23-hermes-rio-add-an-agent-runtime-evidence-gate/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Hermes/리오 팁: AI 자동화에는 Region-Provider Readiness Gate를 붙이자
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>오늘 Reuters의 AI 공급망·전력 병목 뉴스를 Hermes/리오 운영 관점으로 가져오면 실무 팁은 하나입니다. AI 자동화를 만들 때 모델 이름만 기록하지 말고, 실행 전후에 Region-Provider Readiness Gate를 붙이는 편이 안전합니다. 크론, 리포트 생성, 코드 리뷰, 고객 응대, 데이터 분석처럼 반복 실행되는 자동화는 처음에는 작은 작업처럼 보이지만, 시간이 지나면 특정 모델 공급자, 특정 리전, 특정 데이터 경로에 조용히 의존하게 됩니다.
-Region-Provider Readiness Gate는 “이 작업을 어느 모델로 돌릴까?”보다 한 단계 넓은 질문입니다. 첫째, 입력 데이터가 어느 지역 규제나 고객 계약의 영향을 받는가. 둘째, 현재 쓰는 모델·클라우드 공급자가 막히면 대체 경로가 있는가. 셋째, 대체 모델로 바뀌었을 때 품질·비용·응답시간이 얼마나 달라지는가. 넷째, 대량 실행이나 장시간 작업이라면 전력·인프라 비용 가정이 현실적인가. 이 네 가지를 작업 카드 앞단에 짧게 적어두면 자동화가 커져도 운영 리스크를 놓치기 어렵습니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-06-22 20:55:00 +0900 KST'>2026년 6월 22일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to Hermes/리오 팁: AI 자동화에는 Region-Provider Readiness Gate를 붙이자" href="https://kwbaek.github.io/posts/2026-06-22-hermes-rio-add-a-region-provider-readiness-gate/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

@@ -143,6 +143,22 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">Hermes/리오 가이드: 크론 자동화로 매일 블로그 포스트 발행하기
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>“매일 블로그 포스트를 쓰고 싶은데, 손으로 쓰기엔 너무 시간이 오래 걸린다.”
+이것이 콘텐츠 제작자들의 공통 고민입니다. Hermes/리오의 크론 자동화를 활용하면, AI가 매일 트렌드를 수집 → 분석 → 포스트 작성 → 발행까지 자동으로 처리할 수 있습니다.
+오늘은 경욱님이 실제로 운영하고 있는 “매일 블로그 포스트 자동 생성 및 배포” 워크플로우를 상세히 소개합니다.
+🎯 전체 아키텍처: “주제 선택 → 작성 → 빌드 → 배포” ┌─────────────────────────────────────────────────────────────┐ │ Hermes/리오 Daily Cron │ ├─────────────────────────────────────────────────────────────┤ │ │ │ Step 1: Discord 트렌드 채널 읽기 │ │ └─ #ai-ml-trends 채널의 오늘 메시지 수집 │ │ (Discord 게이트웨이 연동) │ │ │ │ Step 2: 트렌드 분석 및 선별 │ │ └─ 1주일 내 중복 아이템 제외 │ │ └─ 가장 영향력 있는 5개 항목 선정 │ │ │ │ Step 3: Hugo 포스트 작성 │ │ ├─ AI/ML 트렌드 포스트 1개 생성 │ │ │ (카테고리: ai-ml, 최소 500자) │ │ │ │ │ └─ Hermes/리오 팁 포스트 1개 생성 │ │ (카테고리: openclaw, 최소 500자) │ │ │ │ Step 4: Git 커밋 및 푸시 │ │ ├─ /workspace/blog에 git add/commit/push │ │ │ │ │ └─ Hugo 빌드 │ │ hugo build → public/ 생성 │ │ │ │ Step 5: public/ 레포에 푸시 │ │ └─ kwbaek.github.io로 자동 배포 │ │ │ │ Step 6: 결과 리포트 │ │ └─ 성공/실패 여부 및 포스트 링크 반환 │ │ │ └─────────────────────────────────────────────────────────────┘ 1️⃣ Step 1: Discord 트렌드 채널에서 오늘 메시지 수집 Discord 게이트웨이 연동 Hermes는 Discord 게이트웨이 기능을 통해 특정 채널의 메시지를 자동으로 읽을 수 있습니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-09-11 10:40:00 +0900 KST'>2026년 9월 11일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to Hermes/리오 가이드: 크론 자동화로 매일 블로그 포스트 발행하기" href="https://kwbaek.github.io/posts/2026-09-11-hermes-cron-blog-automation/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">Hermes/리오로 일상 자동화하기: 크론, 하트비트, 워크플로우 완벽 정리
     </h2>
   </header>
@@ -279,21 +295,6 @@ Hermes/리오가 매일 돌리는 크론 작업에도 똑같은 함정이 있습
   </div>
   <footer class="entry-footer"><span title='2026-08-22 21:05:00 +0900 KST'>2026년 8월 22일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
   <a class="entry-link" aria-label="post link to Hermes/리오 실전 팁: 크론에 &#39;노출 표면 명세&#39;를 붙여라" href="https://kwbaek.github.io/posts/2026-08-22-hermes-rio-exposure-surface-spec/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Hermes/리오 실전 팁: 캐시를 믿기 전에 &#39;재사용 감사 로그&#39;를 붙여라
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>오늘 정리한 AI/ML 트렌드는 “히트율 60%짜리 캐시가 실제로는 2%였다&#34;였습니다. 시맨틱 캐시의 원시 히트율과 실제로 답을 대체해도 되는 비율이 수십 배 차이 났다는 이야기였죠. 이걸 Hermes/리오 운영으로 번역하면 팁은 하나입니다. 자동화가 무언가를 “이미 처리했다&#34;고 판단해 건너뛸 때마다, 그 판단의 근거를 로그에 남기세요.
-왜 문제가 되나 리오가 돌리는 크론은 대부분 어떤 형태로든 재사용/중복제거 판단을 합니다.
-트렌드 스캐너는 이전에 올린 항목인지 캐시와 대조해 건너뜁니다. 리포트 잡은 어제 캐시가 아직 유효하면 다시 수집하지 않습니다. 아이디어 생성기는 최근 히스토리와 비슷하면 [SILENT]로 종료합니다. 이 판단은 전부 “충분히 비슷하니 같은 것으로 친다&#34;는 유사도 판정입니다. 시맨틱 캐시와 구조가 똑같습니다. 그리고 문제도 똑같이 발생합니다. 중복이라 판단해 건너뛴 것 중 실제로는 새 정보였던 비율을, 아무도 세지 않습니다. 크론이 조용히 끝나면 성공으로 보이니까요.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-08-21 20:55:00 +0900 KST'>2026년 8월 21일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to Hermes/리오 실전 팁: 캐시를 믿기 전에 &#39;재사용 감사 로그&#39;를 붙여라" href="https://kwbaek.github.io/posts/2026-08-21-hermes-rio-reuse-audit-log/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

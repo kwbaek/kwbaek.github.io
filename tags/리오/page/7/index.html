@@ -143,6 +143,20 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">Hermes/리오 팁: AI 자동화에는 Region-Provider Readiness Gate를 붙이자
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 Reuters의 AI 공급망·전력 병목 뉴스를 Hermes/리오 운영 관점으로 가져오면 실무 팁은 하나입니다. AI 자동화를 만들 때 모델 이름만 기록하지 말고, 실행 전후에 Region-Provider Readiness Gate를 붙이는 편이 안전합니다. 크론, 리포트 생성, 코드 리뷰, 고객 응대, 데이터 분석처럼 반복 실행되는 자동화는 처음에는 작은 작업처럼 보이지만, 시간이 지나면 특정 모델 공급자, 특정 리전, 특정 데이터 경로에 조용히 의존하게 됩니다.
+Region-Provider Readiness Gate는 “이 작업을 어느 모델로 돌릴까?”보다 한 단계 넓은 질문입니다. 첫째, 입력 데이터가 어느 지역 규제나 고객 계약의 영향을 받는가. 둘째, 현재 쓰는 모델·클라우드 공급자가 막히면 대체 경로가 있는가. 셋째, 대체 모델로 바뀌었을 때 품질·비용·응답시간이 얼마나 달라지는가. 넷째, 대량 실행이나 장시간 작업이라면 전력·인프라 비용 가정이 현실적인가. 이 네 가지를 작업 카드 앞단에 짧게 적어두면 자동화가 커져도 운영 리스크를 놓치기 어렵습니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-06-22 20:55:00 +0900 KST'>2026년 6월 22일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to Hermes/리오 팁: AI 자동화에는 Region-Provider Readiness Gate를 붙이자" href="https://kwbaek.github.io/posts/2026-06-22-hermes-rio-add-a-region-provider-readiness-gate/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">Hermes/리오 팁: 코딩 에이전트에는 Model Routing Gate가 필요하다
     </h2>
   </header>
@@ -265,20 +279,6 @@ Action Card는 agent가 수행할 한 단계 작업을 작은 카드처럼 정�
   </div>
   <footer class="entry-footer"><span title='2026-06-13 21:00:00 +0900 KST'>2026년 6월 13일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
   <a class="entry-link" aria-label="post link to Hermes/리오 팁: 무거운 RAG 앞에 가벼운 메모리 라우터 두기" href="https://kwbaek.github.io/posts/2026-06-13-hermes-rio-add-a-lightweight-memory-router/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Hermes/리오 팁: 에이전트 상태 저장소를 공격면으로 보기
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>오늘 AI/ML 트렌드가 금융 AI 감독과 LangGraph checkpointer 취약점을 동시에 보여줬다면, Hermes/리오 운영에 바로 적용할 수 있는 교훈은 분명합니다. 에이전트의 상태 저장소를 편의 캐시가 아니라 공격면으로 취급해야 한다는 것입니다. 크론, 장기 작업, 지식베이스, 히스토리 파일, 임시 JSON 캐시는 모두 다음 실행의 판단에 영향을 줍니다. 따라서 “저장만 해두면 나중에 편하겠지”라는 접근은 장기 자동화에서 위험합니다.
-첫 번째 원칙은 상태의 등급을 나누는 것입니다. 모든 기록이 같은 무게를 갖지는 않습니다. 사용자에게 보여준 최종 결과, 다음 실행에서 중복 제거에 쓰는 캐시, 내부 디버깅 로그, 원자료는 서로 목적과 수명이 다릅니다. Hermes/리오 크론을 설계할 때는 파일 하나에 모든 것을 섞기보다 “최신 결과”, “히스토리”, “원자료”, “보고서”를 분리하는 편이 안전합니다. 그래야 다음 실행이 오래된 디버그 문장을 사실처럼 읽거나, 민감한 운영 메모를 공개 문구에 섞는 실수를 줄일 수 있습니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-06-12 21:00:00 +0900 KST'>2026년 6월 12일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to Hermes/리오 팁: 에이전트 상태 저장소를 공격면으로 보기" href="https://kwbaek.github.io/posts/2026-06-12-hermes-rio-treat-agent-state-as-an-attack-surface/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

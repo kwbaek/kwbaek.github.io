@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>프론티어AI on Kyungwook&#39;s Devlog</title>
+    <link>https://kwbaek.github.io/tags/%ED%94%84%EB%A1%A0%ED%8B%B0%EC%96%B4ai/</link>
+    <description>Recent content in 프론티어AI on Kyungwook&#39;s Devlog</description>
+    <generator>Hugo -- 0.165.0</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Thu, 10 Sep 2026 09:15:00 +0900</lastBuildDate>
+    <atom:link href="https://kwbaek.github.io/tags/%ED%94%84%EB%A1%A0%ED%8B%B0%EC%96%B4ai/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hermes/리오 안내서: 프론티어 AI 안전성 검증, 운영으로 보장하기</title>
+      <link>https://kwbaek.github.io/posts/2026-09-10-hermes-frontier-ai-safety-verification-ops/</link>
+      <pubDate>Thu, 10 Sep 2026 09:15:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-09-10-hermes-frontier-ai-safety-verification-ops/</guid>
+      <description>&lt;p&gt;지난 며칠간 AI 안전성 뉴스가 연이었습니다. OpenAI 내부 안전 연구원들이 &amp;ldquo;AI 제어 불가능&amp;quot;이라는 우려를 제기했고, Anthropic의 안전 연구원이 &amp;ldquo;자기 개선 AI는 위험하다&amp;quot;며 사직했습니다. 동시에 Google은 AI 인프라에 150억 달러를 투자하기로 했습니다.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;그렇다면 실무자 입장에서는?&lt;/strong&gt; &amp;ldquo;프론티어 AI 모델을 조직에 배포하고 싶은데, 어떻게 안전성을 보장할 건가?&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;이 문제의 해답은 &lt;strong&gt;기술만으로는 불가능&lt;/strong&gt;합니다. 필요한 것은 **절차, 모니터링, 피드백 루프 — 즉, 운영(Operations)**입니다. 오늘 소개하는 것이 바로 **Hermes/리오의 &amp;ldquo;자동 검증 워크플로우&amp;rdquo;**입니다.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;-핵심-안전성--기술--프로세스&#34;&gt;🎯 핵심: 안전성 = 기술 + 프로세스&lt;/h2&gt;
+&lt;h3 id=&#34;프론티어-ai의-위험&#34;&gt;프론티어 AI의 위험&lt;/h3&gt;
+&lt;table&gt;
+	&lt;thead&gt;
+			&lt;tr&gt;
+					&lt;th&gt;위험&lt;/th&gt;
+					&lt;th&gt;기술적 원인&lt;/th&gt;
+					&lt;th&gt;운영적 대응&lt;/th&gt;
+			&lt;/tr&gt;
+	&lt;/thead&gt;
+	&lt;tbody&gt;
+			&lt;tr&gt;
+					&lt;td&gt;&lt;strong&gt;모델 드리프트&lt;/strong&gt;&lt;/td&gt;
+					&lt;td&gt;파인튜닝 후 원래 기능 손상&lt;/td&gt;
+					&lt;td&gt;배포 전 자동 회귀 테스트&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;&lt;strong&gt;프롬프트 인젝션&lt;/strong&gt;&lt;/td&gt;
+					&lt;td&gt;사용자 입력이 지시를 오염&lt;/td&gt;
+					&lt;td&gt;입력 검증 + 콘텍스트 격리&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;&lt;strong&gt;할루시네이션&lt;/strong&gt;&lt;/td&gt;
+					&lt;td&gt;학습 데이터 경계 밖 답변&lt;/td&gt;
+					&lt;td&gt;답변 검증 + 출처 확인 자동화&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;&lt;strong&gt;비용 폭발&lt;/strong&gt;&lt;/td&gt;
+					&lt;td&gt;큰 모델의 연쇄 호출&lt;/td&gt;
+					&lt;td&gt;API 호출 수 모니터링 + 임계값 경고&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;&lt;strong&gt;규제 미준수&lt;/strong&gt;&lt;/td&gt;
+					&lt;td&gt;민감 데이터 학습/노출&lt;/td&gt;
+					&lt;td&gt;데이터 접근 통제 + 감시 로그&lt;/td&gt;
+			&lt;/tr&gt;
+	&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;1-hermes리오로-안전성-검증을-자동화하는-3가지-패턴&#34;&gt;1️⃣ Hermes/리오로 &amp;ldquo;안전성 검증&amp;quot;을 자동화하는 3가지 패턴&lt;/h2&gt;
+&lt;h3 id=&#34;패턴-1-배포-전-회귀-테스트-pre-deployment-regression&#34;&gt;패턴 1: 배포 전 회귀 테스트 (Pre-Deployment Regression)&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;목표:&lt;/strong&gt; 새 프론티어 모델이 기존 기능을 망치지 않았는지 검증&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
