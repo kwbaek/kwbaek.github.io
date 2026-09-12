@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>최적화 on Kyungwook&#39;s Devlog</title>
+    <link>https://kwbaek.github.io/tags/%EC%B5%9C%EC%A0%81%ED%99%94/</link>
+    <description>Recent content in 최적화 on Kyungwook&#39;s Devlog</description>
+    <generator>Hugo -- 0.165.0</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Sat, 12 Sep 2026 20:30:00 +0900</lastBuildDate>
+    <atom:link href="https://kwbaek.github.io/tags/%EC%B5%9C%EC%A0%81%ED%99%94/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hermes/리오 크론 최적화: 대용량 캐시와 I/O 병목 제거하기</title>
+      <link>https://kwbaek.github.io/posts/2026-09-12-hermes-cron-optimization/</link>
+      <pubDate>Sat, 12 Sep 2026 20:30:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-09-12-hermes-cron-optimization/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;&amp;ldquo;크론이 너무 자주 돌면서 디스크가 자꾸 바빠진다&amp;rdquo;&lt;/strong&gt; — 이것은 스케일링되는 자동화 시스템이 맞닥뜨리는 흔한 문제입니다.&lt;/p&gt;
+&lt;p&gt;Hermes/리오 환경에서 AI/ML 트렌드 스캐너, 캐시 갱신, 블로그 생성 같은 여러 크론이 매시간 돌 때, 디스크 I/O가 병목이 되곤 합니다.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;-문제-상황&#34;&gt;🎯 문제 상황&lt;/h2&gt;
+&lt;table&gt;
+	&lt;thead&gt;
+			&lt;tr&gt;
+					&lt;th&gt;증상&lt;/th&gt;
+					&lt;th&gt;원인&lt;/th&gt;
+			&lt;/tr&gt;
+	&lt;/thead&gt;
+	&lt;tbody&gt;
+			&lt;tr&gt;
+					&lt;td&gt;크론 실행 중 Mac 팬 소리&lt;/td&gt;
+					&lt;td&gt;파일 과도한 읽기/쓰기&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;100MB 캐시 파일을 매번 통째로 로드&lt;/td&gt;
+					&lt;td&gt;메모리 낭비 + 느린 파싱&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;로그 파일 크기 급증&lt;/td&gt;
+					&lt;td&gt;로테이션 미설정&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;Hugo 빌드 &amp;gt; 5초&lt;/td&gt;
+					&lt;td&gt;다른 크론과 파일 경합&lt;/td&gt;
+			&lt;/tr&gt;
+	&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;-해결책-3가지&#34;&gt;✅ 해결책 3가지&lt;/h2&gt;
+&lt;h3 id=&#34;1-캐시-포맷-최적화-json--jsonl&#34;&gt;1. 캐시 포맷 최적화: JSON → JSONL&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Before (JSON):&lt;/strong&gt;&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
