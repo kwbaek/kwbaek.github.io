@@ -143,6 +143,21 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">Hermes/리오 운영가이드: API 악용 추적과 위협 모니터링 체크리스트
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Anthropic의 14개 위협 행위자 공시 이후, Hermes/리오 크론 운영에 API 보안이 핵심 항목이 되었습니다.
+혼자서 여러 Claude API 키를 관리하고, 자동 에이전트가 시간마다 이를 호출할 때 — 키 탈취나 악용이 발생해도 감지하기 어렵습니다. 이번 가이드는 Hermes 크론 환경에서 실행 가능한 API 보안 체크리스트를 제시합니다.
+🎯 상황: Hermes에서 Claude를 쓸 때, 뭐가 리스크인가? Hermes 환경의 구조 Hermes 크론 (MD Agent, 트렌드 스캐너, 블로그 자동화) ↓ 여러 Claude API 호출 ↓ 로그 → /memory, /tmp, Discord (가끔) 현재 추적 불가능한 항목 이 API 키가 정상적으로만 쓰이는가? 야간에 비정상 호출이 있었나? 한 키로 여러 크론이 동시에 호출하면 어떻게 구분하나? Claude 응답이 실제로 그 크론에서 쓰인 게 맞나? ✅ 실행 체크리스트 (이번 주) 1단계: 현황 파악 (30분) 당신의 Claude API 키 목록
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-09-13 21:45:00 +0900 KST'>2026년 9월 13일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to Hermes/리오 운영가이드: API 악용 추적과 위협 모니터링 체크리스트" href="https://kwbaek.github.io/posts/2026-09-13-hermes-api-security/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">Hermes/리오 안내서: 프론티어 AI 안전성 검증, 운영으로 보장하기
     </h2>
   </header>
@@ -278,21 +293,6 @@ Hermes/리오가 매일 돌리는 크론 작업에도 똑같은 함정이 있습
   </div>
   <footer class="entry-footer"><span title='2026-08-23 21:00:00 +0900 KST'>2026년 8월 23일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
   <a class="entry-link" aria-label="post link to AI/ML 트렌드: 모델을 바꾸기 전에 하네스를 고쳐라" href="https://kwbaek.github.io/posts/2026-08-23-ai-ml-trends-the-harness-is-the-product/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Hermes/리오 실전 팁: 크론에 &#39;노출 표면 명세&#39;를 붙여라
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>오늘 정리한 AI/ML 트렌드의 결론은 “거부는 경계가 아니다&#34;였습니다. 모델이 직접 요구를 거절해도 컨텍스트에 있던 4자리 비밀이 82% 복원되고, 툴 호출 사이 구간에서 숨겨진 추론이 뽑히고, 스킬 탐지기는 처음 보는 출처에서 무너집니다. 이걸 Hermes/리오 운영 언어로 번역하면 팁은 하나입니다.
-크론 작업마다 “이 작업이 무엇을 어디에 노출하는가&#34;를 한 장으로 적어두세요. 모델을 믿는 대신, 표면을 세는 겁니다.
-왜 필요한가 — 자동화는 노출을 조용히 늘린다 크론 작업은 사람 없이 돌기 때문에 노출이 축적되는 걸 아무도 못 봅니다. 전형적인 경로는 이렇습니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-08-22 21:05:00 +0900 KST'>2026년 8월 22일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to Hermes/리오 실전 팁: 크론에 &#39;노출 표면 명세&#39;를 붙여라" href="https://kwbaek.github.io/posts/2026-08-22-hermes-rio-exposure-surface-spec/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

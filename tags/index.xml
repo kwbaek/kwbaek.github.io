@@ -6,20 +6,300 @@
     <description>Recent content in Tags on Kyungwook&#39;s Devlog</description>
     <generator>Hugo -- 0.165.0</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Thu, 10 Sep 2026 09:15:00 +0900</lastBuildDate>
+    <lastBuildDate>Tue, 15 Sep 2026 21:00:00 +0900</lastBuildDate>
     <atom:link href="https://kwbaek.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>AI정렬</title>
-      <link>https://kwbaek.github.io/tags/ai%EC%A0%95%EB%A0%AC/</link>
-      <pubDate>Thu, 10 Sep 2026 09:15:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/tags/ai%EC%A0%95%EB%A0%AC/</guid>
+      <title>Anthropic</title>
+      <link>https://kwbaek.github.io/tags/anthropic/</link>
+      <pubDate>Tue, 15 Sep 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/tags/anthropic/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>AppSec</title>
+      <link>https://kwbaek.github.io/tags/appsec/</link>
+      <pubDate>Tue, 15 Sep 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/tags/appsec/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>OpenAI</title>
+      <link>https://kwbaek.github.io/tags/openai/</link>
+      <pubDate>Tue, 15 Sep 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/tags/openai/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>보안성숙도</title>
+      <link>https://kwbaek.github.io/tags/%EB%B3%B4%EC%95%88%EC%84%B1%EC%88%99%EB%8F%84/</link>
+      <pubDate>Tue, 15 Sep 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/tags/%EB%B3%B4%EC%95%88%EC%84%B1%EC%88%99%EB%8F%84/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>에이전트보안</title>
+      <link>https://kwbaek.github.io/tags/%EC%97%90%EC%9D%B4%EC%A0%84%ED%8A%B8%EB%B3%B4%EC%95%88/</link>
+      <pubDate>Tue, 15 Sep 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/tags/%EC%97%90%EC%9D%B4%EC%A0%84%ED%8A%B8%EB%B3%B4%EC%95%88/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>위협모니터링</title>
+      <link>https://kwbaek.github.io/tags/%EC%9C%84%ED%98%91%EB%AA%A8%EB%8B%88%ED%84%B0%EB%A7%81/</link>
+      <pubDate>Tue, 15 Sep 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/tags/%EC%9C%84%ED%98%91%EB%AA%A8%EB%8B%88%ED%84%B0%EB%A7%81/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>적대적공격</title>
+      <link>https://kwbaek.github.io/tags/%EC%A0%81%EB%8C%80%EC%A0%81%EA%B3%B5%EA%B2%A9/</link>
+      <pubDate>Tue, 15 Sep 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/tags/%EC%A0%81%EB%8C%80%EC%A0%81%EA%B3%B5%EA%B2%A9/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>API보안</title>
+      <link>https://kwbaek.github.io/tags/api%EB%B3%B4%EC%95%88/</link>
+      <pubDate>Sun, 13 Sep 2026 21:45:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/tags/api%EB%B3%B4%EC%95%88/</guid>
       <description></description>
     </item>
     <item>
       <title>Hermes</title>
       <link>https://kwbaek.github.io/tags/hermes/</link>
-      <pubDate>Thu, 10 Sep 2026 09:15:00 +0900</pubDate>
+      <pubDate>Sun, 13 Sep 2026 21:45:00 +0900</pubDate>
       <guid>https://kwbaek.github.io/tags/hermes/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>로그</title>
+      <link>https://kwbaek.github.io/tags/%EB%A1%9C%EA%B7%B8/</link>
+      <pubDate>Sun, 13 Sep 2026 21:45:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/tags/%EB%A1%9C%EA%B7%B8/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>리오</title>
+      <link>https://kwbaek.github.io/tags/%EB%A6%AC%EC%98%A4/</link>
+      <pubDate>Sun, 13 Sep 2026 21:45:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/tags/%EB%A6%AC%EC%98%A4/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>모니터링</title>
+      <link>https://kwbaek.github.io/tags/%EB%AA%A8%EB%8B%88%ED%84%B0%EB%A7%81/</link>
+      <pubDate>Sun, 13 Sep 2026 21:45:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/tags/%EB%AA%A8%EB%8B%88%ED%84%B0%EB%A7%81/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>운영</title>
+      <link>https://kwbaek.github.io/tags/%EC%9A%B4%EC%98%81/</link>
+      <pubDate>Sun, 13 Sep 2026 21:45:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/tags/%EC%9A%B4%EC%98%81/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>API악용</title>
+      <link>https://kwbaek.github.io/tags/api%EC%95%85%EC%9A%A9/</link>
+      <pubDate>Sun, 13 Sep 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/tags/api%EC%95%85%EC%9A%A9/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>보안</title>
+      <link>https://kwbaek.github.io/tags/%EB%B3%B4%EC%95%88/</link>
+      <pubDate>Sun, 13 Sep 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/tags/%EB%B3%B4%EC%95%88/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>엔터프라이즈보안</title>
+      <link>https://kwbaek.github.io/tags/%EC%97%94%ED%84%B0%ED%94%84%EB%9D%BC%EC%9D%B4%EC%A6%88%EB%B3%B4%EC%95%88/</link>
+      <pubDate>Sun, 13 Sep 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/tags/%EC%97%94%ED%84%B0%ED%94%84%EB%9D%BC%EC%9D%B4%EC%A6%88%EB%B3%B4%EC%95%88/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>위협행위자</title>
+      <link>https://kwbaek.github.io/tags/%EC%9C%84%ED%98%91%ED%96%89%EC%9C%84%EC%9E%90/</link>
+      <pubDate>Sun, 13 Sep 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/tags/%EC%9C%84%ED%98%91%ED%96%89%EC%9C%84%EC%9E%90/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>프론티어모델</title>
+      <link>https://kwbaek.github.io/tags/%ED%94%84%EB%A1%A0%ED%8B%B0%EC%96%B4%EB%AA%A8%EB%8D%B8/</link>
+      <pubDate>Sun, 13 Sep 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/tags/%ED%94%84%EB%A1%A0%ED%8B%B0%EC%96%B4%EB%AA%A8%EB%8D%B8/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>성능</title>
+      <link>https://kwbaek.github.io/tags/%EC%84%B1%EB%8A%A5/</link>
+      <pubDate>Sat, 12 Sep 2026 20:30:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/tags/%EC%84%B1%EB%8A%A5/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>최적화</title>
+      <link>https://kwbaek.github.io/tags/%EC%B5%9C%EC%A0%81%ED%99%94/</link>
+      <pubDate>Sat, 12 Sep 2026 20:30:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/tags/%EC%B5%9C%EC%A0%81%ED%99%94/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>크론</title>
+      <link>https://kwbaek.github.io/tags/%ED%81%AC%EB%A1%A0/</link>
+      <pubDate>Sat, 12 Sep 2026 20:30:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/tags/%ED%81%AC%EB%A1%A0/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Meta</title>
+      <link>https://kwbaek.github.io/tags/meta/</link>
+      <pubDate>Sat, 12 Sep 2026 20:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/tags/meta/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>NVIDIA</title>
+      <link>https://kwbaek.github.io/tags/nvidia/</link>
+      <pubDate>Sat, 12 Sep 2026 20:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/tags/nvidia/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>로컬인퍼런스</title>
+      <link>https://kwbaek.github.io/tags/%EB%A1%9C%EC%BB%AC%EC%9D%B8%ED%8D%BC%EB%9F%B0%EC%8A%A4/</link>
+      <pubDate>Sat, 12 Sep 2026 20:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/tags/%EB%A1%9C%EC%BB%AC%EC%9D%B8%ED%8D%BC%EB%9F%B0%EC%8A%A4/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>비용최적화</title>
+      <link>https://kwbaek.github.io/tags/%EB%B9%84%EC%9A%A9%EC%B5%9C%EC%A0%81%ED%99%94/</link>
+      <pubDate>Sat, 12 Sep 2026 20:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/tags/%EB%B9%84%EC%9A%A9%EC%B5%9C%EC%A0%81%ED%99%94/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>엣지AI</title>
+      <link>https://kwbaek.github.io/tags/%EC%97%A3%EC%A7%80ai/</link>
+      <pubDate>Sat, 12 Sep 2026 20:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/tags/%EC%97%A3%EC%A7%80ai/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>인프라</title>
+      <link>https://kwbaek.github.io/tags/%EC%9D%B8%ED%94%84%EB%9D%BC/</link>
+      <pubDate>Sat, 12 Sep 2026 20:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/tags/%EC%9D%B8%ED%94%84%EB%9D%BC/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>칩주권</title>
+      <link>https://kwbaek.github.io/tags/%EC%B9%A9%EC%A3%BC%EA%B6%8C/</link>
+      <pubDate>Sat, 12 Sep 2026 20:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/tags/%EC%B9%A9%EC%A3%BC%EA%B6%8C/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>하드웨어</title>
+      <link>https://kwbaek.github.io/tags/%ED%95%98%EB%93%9C%EC%9B%A8%EC%96%B4/</link>
+      <pubDate>Sat, 12 Sep 2026 20:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/tags/%ED%95%98%EB%93%9C%EC%9B%A8%EC%96%B4/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Hugo</title>
+      <link>https://kwbaek.github.io/tags/hugo/</link>
+      <pubDate>Fri, 11 Sep 2026 10:40:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/tags/hugo/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>블로그</title>
+      <link>https://kwbaek.github.io/tags/%EB%B8%94%EB%A1%9C%EA%B7%B8/</link>
+      <pubDate>Fri, 11 Sep 2026 10:40:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/tags/%EB%B8%94%EB%A1%9C%EA%B7%B8/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>생산성</title>
+      <link>https://kwbaek.github.io/tags/%EC%83%9D%EC%82%B0%EC%84%B1/</link>
+      <pubDate>Fri, 11 Sep 2026 10:40:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/tags/%EC%83%9D%EC%82%B0%EC%84%B1/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>워크플로우</title>
+      <link>https://kwbaek.github.io/tags/%EC%9B%8C%ED%81%AC%ED%94%8C%EB%A1%9C%EC%9A%B0/</link>
+      <pubDate>Fri, 11 Sep 2026 10:40:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/tags/%EC%9B%8C%ED%81%AC%ED%94%8C%EB%A1%9C%EC%9A%B0/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>자동화</title>
+      <link>https://kwbaek.github.io/tags/%EC%9E%90%EB%8F%99%ED%99%94/</link>
+      <pubDate>Fri, 11 Sep 2026 10:40:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/tags/%EC%9E%90%EB%8F%99%ED%99%94/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>DeepSeek</title>
+      <link>https://kwbaek.github.io/tags/deepseek/</link>
+      <pubDate>Fri, 11 Sep 2026 10:35:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/tags/deepseek/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>금융AI</title>
+      <link>https://kwbaek.github.io/tags/%EA%B8%88%EC%9C%B5ai/</link>
+      <pubDate>Fri, 11 Sep 2026 10:35:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/tags/%EA%B8%88%EC%9C%B5ai/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>번역</title>
+      <link>https://kwbaek.github.io/tags/%EB%B2%88%EC%97%AD/</link>
+      <pubDate>Fri, 11 Sep 2026 10:35:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/tags/%EB%B2%88%EC%97%AD/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>에이전트</title>
+      <link>https://kwbaek.github.io/tags/%EC%97%90%EC%9D%B4%EC%A0%84%ED%8A%B8/</link>
+      <pubDate>Fri, 11 Sep 2026 10:35:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/tags/%EC%97%90%EC%9D%B4%EC%A0%84%ED%8A%B8/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>음성AI</title>
+      <link>https://kwbaek.github.io/tags/%EC%9D%8C%EC%84%B1ai/</link>
+      <pubDate>Fri, 11 Sep 2026 10:35:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/tags/%EC%9D%8C%EC%84%B1ai/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>코딩AI</title>
+      <link>https://kwbaek.github.io/tags/%EC%BD%94%EB%94%A9ai/</link>
+      <pubDate>Fri, 11 Sep 2026 10:35:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/tags/%EC%BD%94%EB%94%A9ai/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>토큰최적화</title>
+      <link>https://kwbaek.github.io/tags/%ED%86%A0%ED%81%B0%EC%B5%9C%EC%A0%81%ED%99%94/</link>
+      <pubDate>Fri, 11 Sep 2026 10:35:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/tags/%ED%86%A0%ED%81%B0%EC%B5%9C%EC%A0%81%ED%99%94/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>AI정렬</title>
+      <link>https://kwbaek.github.io/tags/ai%EC%A0%95%EB%A0%AC/</link>
+      <pubDate>Thu, 10 Sep 2026 09:15:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/tags/ai%EC%A0%95%EB%A0%AC/</guid>
       <description></description>
     </item>
     <item>
@@ -37,24 +317,10 @@
       <description></description>
     </item>
     <item>
-      <title>리오</title>
-      <link>https://kwbaek.github.io/tags/%EB%A6%AC%EC%98%A4/</link>
-      <pubDate>Thu, 10 Sep 2026 09:15:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/tags/%EB%A6%AC%EC%98%A4/</guid>
-      <description></description>
-    </item>
-    <item>
       <title>안전성</title>
       <link>https://kwbaek.github.io/tags/%EC%95%88%EC%A0%84%EC%84%B1/</link>
       <pubDate>Thu, 10 Sep 2026 09:15:00 +0900</pubDate>
       <guid>https://kwbaek.github.io/tags/%EC%95%88%EC%A0%84%EC%84%B1/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>운영</title>
-      <link>https://kwbaek.github.io/tags/%EC%9A%B4%EC%98%81/</link>
-      <pubDate>Thu, 10 Sep 2026 09:15:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/tags/%EC%9A%B4%EC%98%81/</guid>
       <description></description>
     </item>
     <item>
@@ -65,7 +331,7 @@
       <description></description>
     </item>
     <item>
-      <title>AI</title>
+      <title>Ai</title>
       <link>https://kwbaek.github.io/tags/ai/</link>
       <pubDate>Thu, 10 Sep 2026 08:45:00 +0900</pubDate>
       <guid>https://kwbaek.github.io/tags/ai/</guid>
@@ -86,13 +352,6 @@
       <description></description>
     </item>
     <item>
-      <title>Openai</title>
-      <link>https://kwbaek.github.io/tags/openai/</link>
-      <pubDate>Thu, 10 Sep 2026 08:45:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/tags/openai/</guid>
-      <description></description>
-    </item>
-    <item>
       <title>과학연구</title>
       <link>https://kwbaek.github.io/tags/%EA%B3%BC%ED%95%99%EC%97%B0%EA%B5%AC/</link>
       <pubDate>Thu, 10 Sep 2026 08:45:00 +0900</pubDate>
@@ -107,38 +366,10 @@
       <description></description>
     </item>
     <item>
-      <title>에이전트</title>
-      <link>https://kwbaek.github.io/tags/%EC%97%90%EC%9D%B4%EC%A0%84%ED%8A%B8/</link>
-      <pubDate>Thu, 10 Sep 2026 08:45:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/tags/%EC%97%90%EC%9D%B4%EC%A0%84%ED%8A%B8/</guid>
-      <description></description>
-    </item>
-    <item>
       <title>전산유체역학</title>
       <link>https://kwbaek.github.io/tags/%EC%A0%84%EC%82%B0%EC%9C%A0%EC%B2%B4%EC%97%AD%ED%95%99/</link>
       <pubDate>Thu, 10 Sep 2026 08:45:00 +0900</pubDate>
       <guid>https://kwbaek.github.io/tags/%EC%A0%84%EC%82%B0%EC%9C%A0%EC%B2%B4%EC%97%AD%ED%95%99/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>워크플로우</title>
-      <link>https://kwbaek.github.io/tags/%EC%9B%8C%ED%81%AC%ED%94%8C%EB%A1%9C%EC%9A%B0/</link>
-      <pubDate>Wed, 09 Sep 2026 10:00:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/tags/%EC%9B%8C%ED%81%AC%ED%94%8C%EB%A1%9C%EC%9A%B0/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>자동화</title>
-      <link>https://kwbaek.github.io/tags/%EC%9E%90%EB%8F%99%ED%99%94/</link>
-      <pubDate>Wed, 09 Sep 2026 10:00:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/tags/%EC%9E%90%EB%8F%99%ED%99%94/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>크론</title>
-      <link>https://kwbaek.github.io/tags/%ED%81%AC%EB%A1%A0/</link>
-      <pubDate>Wed, 09 Sep 2026 10:00:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/tags/%ED%81%AC%EB%A1%A0/</guid>
       <description></description>
     </item>
     <item>
@@ -191,13 +422,6 @@
       <description></description>
     </item>
     <item>
-      <title>블로그</title>
-      <link>https://kwbaek.github.io/tags/%EB%B8%94%EB%A1%9C%EA%B7%B8/</link>
-      <pubDate>Mon, 07 Sep 2026 10:00:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/tags/%EB%B8%94%EB%A1%9C%EA%B7%B8/</guid>
-      <description></description>
-    </item>
-    <item>
       <title>AI안전</title>
       <link>https://kwbaek.github.io/tags/ai%EC%95%88%EC%A0%84/</link>
       <pubDate>Mon, 07 Sep 2026 09:00:00 +0900</pubDate>
@@ -209,13 +433,6 @@
       <link>https://kwbaek.github.io/tags/%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D/</link>
       <pubDate>Mon, 07 Sep 2026 09:00:00 +0900</pubDate>
       <guid>https://kwbaek.github.io/tags/%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>프론티어모델</title>
-      <link>https://kwbaek.github.io/tags/%ED%94%84%EB%A1%A0%ED%8B%B0%EC%96%B4%EB%AA%A8%EB%8D%B8/</link>
-      <pubDate>Mon, 07 Sep 2026 09:00:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/tags/%ED%94%84%EB%A1%A0%ED%8B%B0%EC%96%B4%EB%AA%A8%EB%8D%B8/</guid>
       <description></description>
     </item>
     <item>
@@ -275,31 +492,10 @@
       <description></description>
     </item>
     <item>
-      <title>보안</title>
-      <link>https://kwbaek.github.io/tags/%EB%B3%B4%EC%95%88/</link>
-      <pubDate>Wed, 02 Sep 2026 21:06:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/tags/%EB%B3%B4%EC%95%88/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Anthropic</title>
-      <link>https://kwbaek.github.io/tags/anthropic/</link>
-      <pubDate>Wed, 02 Sep 2026 21:05:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/tags/anthropic/</guid>
-      <description></description>
-    </item>
-    <item>
       <title>HuggingFace</title>
       <link>https://kwbaek.github.io/tags/huggingface/</link>
       <pubDate>Wed, 02 Sep 2026 21:05:00 +0900</pubDate>
       <guid>https://kwbaek.github.io/tags/huggingface/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Meta</title>
-      <link>https://kwbaek.github.io/tags/meta/</link>
-      <pubDate>Wed, 02 Sep 2026 21:05:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/tags/meta/</guid>
       <description></description>
     </item>
     <item>
@@ -401,13 +597,6 @@
       <description></description>
     </item>
     <item>
-      <title>Nvidia</title>
-      <link>https://kwbaek.github.io/tags/nvidia/</link>
-      <pubDate>Tue, 01 Sep 2026 21:10:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/tags/nvidia/</guid>
-      <description></description>
-    </item>
-    <item>
       <title>PACE</title>
       <link>https://kwbaek.github.io/tags/pace/</link>
       <pubDate>Mon, 31 Aug 2026 21:01:00 +0900</pubDate>
@@ -419,13 +608,6 @@
       <link>https://kwbaek.github.io/tags/%EB%8D%B0%EC%9D%B4%ED%84%B0%ED%8C%8C%EC%9D%B4%ED%94%84%EB%9D%BC%EC%9D%B8/</link>
       <pubDate>Mon, 31 Aug 2026 21:01:00 +0900</pubDate>
       <guid>https://kwbaek.github.io/tags/%EB%8D%B0%EC%9D%B4%ED%84%B0%ED%8C%8C%EC%9D%B4%ED%94%84%EB%9D%BC%EC%9D%B8/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>비용최적화</title>
-      <link>https://kwbaek.github.io/tags/%EB%B9%84%EC%9A%A9%EC%B5%9C%EC%A0%81%ED%99%94/</link>
-      <pubDate>Mon, 31 Aug 2026 21:01:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/tags/%EB%B9%84%EC%9A%A9%EC%B5%9C%EC%A0%81%ED%99%94/</guid>
       <description></description>
     </item>
     <item>
@@ -727,13 +909,6 @@
       <link>https://kwbaek.github.io/tags/%EC%BB%A8%ED%85%8D%EC%8A%A4%ED%8A%B8/</link>
       <pubDate>Sat, 22 Aug 2026 21:05:00 +0900</pubDate>
       <guid>https://kwbaek.github.io/tags/%EC%BB%A8%ED%85%8D%EC%8A%A4%ED%8A%B8/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>에이전트보안</title>
-      <link>https://kwbaek.github.io/tags/%EC%97%90%EC%9D%B4%EC%A0%84%ED%8A%B8%EB%B3%B4%EC%95%88/</link>
-      <pubDate>Sat, 22 Aug 2026 21:00:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/tags/%EC%97%90%EC%9D%B4%EC%A0%84%ED%8A%B8%EB%B3%B4%EC%95%88/</guid>
       <description></description>
     </item>
     <item>
@@ -1101,7 +1276,7 @@
       <description></description>
     </item>
     <item>
-      <title>Llm</title>
+      <title>LLM</title>
       <link>https://kwbaek.github.io/tags/llm/</link>
       <pubDate>Wed, 12 Aug 2026 21:00:00 +0900</pubDate>
       <guid>https://kwbaek.github.io/tags/llm/</guid>
@@ -1133,13 +1308,6 @@
       <link>https://kwbaek.github.io/tags/%EA%B4%80%EC%B8%A1%EC%84%B1/</link>
       <pubDate>Tue, 11 Aug 2026 21:00:00 +0900</pubDate>
       <guid>https://kwbaek.github.io/tags/%EA%B4%80%EC%B8%A1%EC%84%B1/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>생산성</title>
-      <link>https://kwbaek.github.io/tags/%EC%83%9D%EC%82%B0%EC%84%B1/</link>
-      <pubDate>Tue, 11 Aug 2026 21:00:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/tags/%EC%83%9D%EC%82%B0%EC%84%B1/</guid>
       <description></description>
     </item>
     <item>
@@ -1423,7 +1591,7 @@
       <description></description>
     </item>
     <item>
-      <title>Ai-Agents</title>
+      <title>AI Agents</title>
       <link>https://kwbaek.github.io/tags/ai-agents/</link>
       <pubDate>Fri, 31 Jul 2026 21:01:00 +0900</pubDate>
       <guid>https://kwbaek.github.io/tags/ai-agents/</guid>
@@ -1644,13 +1812,6 @@
       <link>https://kwbaek.github.io/tags/cybersecurity/</link>
       <pubDate>Mon, 20 Jul 2026 21:00:00 +0900</pubDate>
       <guid>https://kwbaek.github.io/tags/cybersecurity/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>DeepSeek</title>
-      <link>https://kwbaek.github.io/tags/deepseek/</link>
-      <pubDate>Mon, 20 Jul 2026 21:00:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/tags/deepseek/</guid>
       <description></description>
     </item>
     <item>
@@ -2120,13 +2281,6 @@
       <link>https://kwbaek.github.io/tags/blog/</link>
       <pubDate>Sun, 05 Jul 2026 21:00:00 +0900</pubDate>
       <guid>https://kwbaek.github.io/tags/blog/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Hugo</title>
-      <link>https://kwbaek.github.io/tags/hugo/</link>
-      <pubDate>Sun, 05 Jul 2026 21:00:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/tags/hugo/</guid>
       <description></description>
     </item>
     <item>
@@ -2746,7 +2900,7 @@
       <description></description>
     </item>
     <item>
-      <title>OpenClaw</title>
+      <title>Openclaw</title>
       <link>https://kwbaek.github.io/tags/openclaw/</link>
       <pubDate>Wed, 27 May 2026 21:00:00 +0900</pubDate>
       <guid>https://kwbaek.github.io/tags/openclaw/</guid>
@@ -3915,20 +4069,6 @@
       <description></description>
     </item>
     <item>
-      <title>모니터링</title>
-      <link>https://kwbaek.github.io/tags/%EB%AA%A8%EB%8B%88%ED%84%B0%EB%A7%81/</link>
-      <pubDate>Wed, 25 Feb 2026 21:00:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/tags/%EB%AA%A8%EB%8B%88%ED%84%B0%EB%A7%81/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>인프라</title>
-      <link>https://kwbaek.github.io/tags/%EC%9D%B8%ED%94%84%EB%9D%BC/</link>
-      <pubDate>Wed, 25 Feb 2026 21:00:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/tags/%EC%9D%B8%ED%94%84%EB%9D%BC/</guid>
-      <description></description>
-    </item>
-    <item>
       <title>전력</title>
       <link>https://kwbaek.github.io/tags/%EC%A0%84%EB%A0%A5/</link>
       <pubDate>Wed, 25 Feb 2026 21:00:00 +0900</pubDate>
@@ -3968,13 +4108,6 @@
       <link>https://kwbaek.github.io/tags/synology-chat/</link>
       <pubDate>Tue, 24 Feb 2026 21:00:00 +0900</pubDate>
       <guid>https://kwbaek.github.io/tags/synology-chat/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>금융AI</title>
-      <link>https://kwbaek.github.io/tags/%EA%B8%88%EC%9C%B5ai/</link>
-      <pubDate>Tue, 24 Feb 2026 21:00:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/tags/%EA%B8%88%EC%9C%B5ai/</guid>
       <description></description>
     </item>
     <item>

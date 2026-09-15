@@ -6,8 +6,95 @@
     <description>Recent content in 크론 on Kyungwook&#39;s Devlog</description>
     <generator>Hugo -- 0.165.0</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Wed, 09 Sep 2026 10:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Sat, 12 Sep 2026 20:30:00 +0900</lastBuildDate>
     <atom:link href="https://kwbaek.github.io/tags/%ED%81%AC%EB%A1%A0/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hermes/리오 크론 최적화: 대용량 캐시와 I/O 병목 제거하기</title>
+      <link>https://kwbaek.github.io/posts/2026-09-12-hermes-cron-optimization/</link>
+      <pubDate>Sat, 12 Sep 2026 20:30:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-09-12-hermes-cron-optimization/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;&amp;ldquo;크론이 너무 자주 돌면서 디스크가 자꾸 바빠진다&amp;rdquo;&lt;/strong&gt; — 이것은 스케일링되는 자동화 시스템이 맞닥뜨리는 흔한 문제입니다.&lt;/p&gt;
+&lt;p&gt;Hermes/리오 환경에서 AI/ML 트렌드 스캐너, 캐시 갱신, 블로그 생성 같은 여러 크론이 매시간 돌 때, 디스크 I/O가 병목이 되곤 합니다.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;-문제-상황&#34;&gt;🎯 문제 상황&lt;/h2&gt;
+&lt;table&gt;
+	&lt;thead&gt;
+			&lt;tr&gt;
+					&lt;th&gt;증상&lt;/th&gt;
+					&lt;th&gt;원인&lt;/th&gt;
+			&lt;/tr&gt;
+	&lt;/thead&gt;
+	&lt;tbody&gt;
+			&lt;tr&gt;
+					&lt;td&gt;크론 실행 중 Mac 팬 소리&lt;/td&gt;
+					&lt;td&gt;파일 과도한 읽기/쓰기&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;100MB 캐시 파일을 매번 통째로 로드&lt;/td&gt;
+					&lt;td&gt;메모리 낭비 + 느린 파싱&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;로그 파일 크기 급증&lt;/td&gt;
+					&lt;td&gt;로테이션 미설정&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;Hugo 빌드 &amp;gt; 5초&lt;/td&gt;
+					&lt;td&gt;다른 크론과 파일 경합&lt;/td&gt;
+			&lt;/tr&gt;
+	&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;-해결책-3가지&#34;&gt;✅ 해결책 3가지&lt;/h2&gt;
+&lt;h3 id=&#34;1-캐시-포맷-최적화-json--jsonl&#34;&gt;1. 캐시 포맷 최적화: JSON → JSONL&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Before (JSON):&lt;/strong&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Hermes/리오 가이드: 크론 자동화로 매일 블로그 포스트 발행하기</title>
+      <link>https://kwbaek.github.io/posts/2026-09-11-hermes-cron-blog-automation/</link>
+      <pubDate>Fri, 11 Sep 2026 10:40:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-09-11-hermes-cron-blog-automation/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;&amp;ldquo;매일 블로그 포스트를 쓰고 싶은데, 손으로 쓰기엔 너무 시간이 오래 걸린다.&amp;rdquo;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;이것이 콘텐츠 제작자들의 공통 고민입니다. Hermes/리오의 크론 자동화를 활용하면, &lt;strong&gt;AI가 매일 트렌드를 수집 → 분석 → 포스트 작성 → 발행까지 자동으로 처리&lt;/strong&gt;할 수 있습니다.&lt;/p&gt;
+&lt;p&gt;오늘은 경욱님이 실제로 운영하고 있는 &lt;strong&gt;&amp;ldquo;매일 블로그 포스트 자동 생성 및 배포&amp;rdquo; 워크플로우&lt;/strong&gt;를 상세히 소개합니다.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;-전체-아키텍처-주제-선택--작성--빌드--배포&#34;&gt;🎯 전체 아키텍처: &amp;ldquo;주제 선택 → 작성 → 빌드 → 배포&amp;rdquo;&lt;/h2&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;┌─────────────────────────────────────────────────────────────┐
+│                  Hermes/리오 Daily Cron                      │
+├─────────────────────────────────────────────────────────────┤
+│                                                              │
+│  Step 1: Discord 트렌드 채널 읽기                            │
+│  └─ #ai-ml-trends 채널의 오늘 메시지 수집                   │
+│     (Discord 게이트웨이 연동)                                │
+│                                                              │
+│  Step 2: 트렌드 분석 및 선별                                 │
+│  └─ 1주일 내 중복 아이템 제외                                │
+│  └─ 가장 영향력 있는 5개 항목 선정                           │
+│                                                              │
+│  Step 3: Hugo 포스트 작성                                    │
+│  ├─ AI/ML 트렌드 포스트 1개 생성                             │
+│  │  (카테고리: ai-ml, 최소 500자)                           │
+│  │                                                           │
+│  └─ Hermes/리오 팁 포스트 1개 생성                           │
+│     (카테고리: openclaw, 최소 500자)                        │
+│                                                              │
+│  Step 4: Git 커밋 및 푸시                                    │
+│  ├─ /workspace/blog에 git add/commit/push                   │
+│  │                                                           │
+│  └─ Hugo 빌드                                                │
+│     hugo build → public/ 생성                               │
+│                                                              │
+│  Step 5: public/ 레포에 푸시                                 │
+│  └─ kwbaek.github.io로 자동 배포                            │
+│                                                              │
+│  Step 6: 결과 리포트                                         │
+│  └─ 성공/실패 여부 및 포스트 링크 반환                       │
+│                                                              │
+└─────────────────────────────────────────────────────────────┘
+&lt;/code&gt;&lt;/pre&gt;&lt;hr&gt;
+&lt;h2 id=&#34;1-step-1-discord-트렌드-채널에서-오늘-메시지-수집&#34;&gt;1️⃣ Step 1: Discord 트렌드 채널에서 오늘 메시지 수집&lt;/h2&gt;
+&lt;h3 id=&#34;discord-게이트웨이-연동&#34;&gt;Discord 게이트웨이 연동&lt;/h3&gt;
+&lt;p&gt;Hermes는 &lt;strong&gt;Discord 게이트웨이&lt;/strong&gt; 기능을 통해 특정 채널의 메시지를 자동으로 읽을 수 있습니다.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Hermes/리오로 일상 자동화하기: 크론, 하트비트, 워크플로우 완벽 정리</title>
       <link>https://kwbaek.github.io/posts/2026-09-09-hermes-automation-heartbeat-cron-guide/</link>

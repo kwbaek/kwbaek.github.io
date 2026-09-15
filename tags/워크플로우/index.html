@@ -143,6 +143,22 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">Hermes/리오 가이드: 크론 자동화로 매일 블로그 포스트 발행하기
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>“매일 블로그 포스트를 쓰고 싶은데, 손으로 쓰기엔 너무 시간이 오래 걸린다.”
+이것이 콘텐츠 제작자들의 공통 고민입니다. Hermes/리오의 크론 자동화를 활용하면, AI가 매일 트렌드를 수집 → 분석 → 포스트 작성 → 발행까지 자동으로 처리할 수 있습니다.
+오늘은 경욱님이 실제로 운영하고 있는 “매일 블로그 포스트 자동 생성 및 배포” 워크플로우를 상세히 소개합니다.
+🎯 전체 아키텍처: “주제 선택 → 작성 → 빌드 → 배포” ┌─────────────────────────────────────────────────────────────┐ │ Hermes/리오 Daily Cron │ ├─────────────────────────────────────────────────────────────┤ │ │ │ Step 1: Discord 트렌드 채널 읽기 │ │ └─ #ai-ml-trends 채널의 오늘 메시지 수집 │ │ (Discord 게이트웨이 연동) │ │ │ │ Step 2: 트렌드 분석 및 선별 │ │ └─ 1주일 내 중복 아이템 제외 │ │ └─ 가장 영향력 있는 5개 항목 선정 │ │ │ │ Step 3: Hugo 포스트 작성 │ │ ├─ AI/ML 트렌드 포스트 1개 생성 │ │ │ (카테고리: ai-ml, 최소 500자) │ │ │ │ │ └─ Hermes/리오 팁 포스트 1개 생성 │ │ (카테고리: openclaw, 최소 500자) │ │ │ │ Step 4: Git 커밋 및 푸시 │ │ ├─ /workspace/blog에 git add/commit/push │ │ │ │ │ └─ Hugo 빌드 │ │ hugo build → public/ 생성 │ │ │ │ Step 5: public/ 레포에 푸시 │ │ └─ kwbaek.github.io로 자동 배포 │ │ │ │ Step 6: 결과 리포트 │ │ └─ 성공/실패 여부 및 포스트 링크 반환 │ │ │ └─────────────────────────────────────────────────────────────┘ 1️⃣ Step 1: Discord 트렌드 채널에서 오늘 메시지 수집 Discord 게이트웨이 연동 Hermes는 Discord 게이트웨이 기능을 통해 특정 채널의 메시지를 자동으로 읽을 수 있습니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-09-11 10:40:00 +0900 KST'>2026년 9월 11일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to Hermes/리오 가이드: 크론 자동화로 매일 블로그 포스트 발행하기" href="https://kwbaek.github.io/posts/2026-09-11-hermes-cron-blog-automation/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">Hermes/리오로 일상 자동화하기: 크론, 하트비트, 워크플로우 완벽 정리
     </h2>
   </header>
