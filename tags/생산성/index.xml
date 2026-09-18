@@ -1,109 +1,66 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
-  <channel>
-    <title>생산성 on Kyungwook&#39;s Devlog</title>
-    <link>https://kwbaek.github.io/tags/%EC%83%9D%EC%82%B0%EC%84%B1/</link>
-    <description>Recent content in 생산성 on Kyungwook&#39;s Devlog</description>
-    <generator>Hugo -- 0.165.0</generator>
-    <language>ko-kr</language>
-    <lastBuildDate>Fri, 11 Sep 2026 10:40:00 +0900</lastBuildDate>
-    <atom:link href="https://kwbaek.github.io/tags/%EC%83%9D%EC%82%B0%EC%84%B1/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Hermes/리오 가이드: 크론 자동화로 매일 블로그 포스트 발행하기</title>
-      <link>https://kwbaek.github.io/posts/2026-09-11-hermes-cron-blog-automation/</link>
-      <pubDate>Fri, 11 Sep 2026 10:40:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/posts/2026-09-11-hermes-cron-blog-automation/</guid>
-      <description>&lt;p&gt;&lt;strong&gt;&amp;ldquo;매일 블로그 포스트를 쓰고 싶은데, 손으로 쓰기엔 너무 시간이 오래 걸린다.&amp;rdquo;&lt;/strong&gt;&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>생산성 on Kyungwook's Devlog</title><link>https://kwbaek.github.io/tags/%EC%83%9D%EC%82%B0%EC%84%B1/</link><description>Recent content in 생산성 on Kyungwook's Devlog</description><generator>Hugo -- 0.165.0</generator><language>ko-kr</language><lastBuildDate>Fri, 11 Sep 2026 10:40:00 +0900</lastBuildDate><atom:link href="https://kwbaek.github.io/tags/%EC%83%9D%EC%82%B0%EC%84%B1/index.xml" rel="self" type="application/rss+xml"/><item><title>Hermes/리오 가이드: 크론 자동화로 매일 블로그 포스트 발행하기</title><link>https://kwbaek.github.io/posts/2026-09-11-hermes-cron-blog-automation/</link><pubDate>Fri, 11 Sep 2026 10:40:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-09-11-hermes-cron-blog-automation/</guid><description>&lt;p&gt;&lt;strong&gt;&amp;ldquo;매일 블로그 포스트를 쓰고 싶은데, 손으로 쓰기엔 너무 시간이 오래 걸린다.&amp;rdquo;&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;이것이 콘텐츠 제작자들의 공통 고민입니다. Hermes/리오의 크론 자동화를 활용하면, &lt;strong&gt;AI가 매일 트렌드를 수집 → 분석 → 포스트 작성 → 발행까지 자동으로 처리&lt;/strong&gt;할 수 있습니다.&lt;/p&gt;
 &lt;p&gt;오늘은 경욱님이 실제로 운영하고 있는 &lt;strong&gt;&amp;ldquo;매일 블로그 포스트 자동 생성 및 배포&amp;rdquo; 워크플로우&lt;/strong&gt;를 상세히 소개합니다.&lt;/p&gt;
 &lt;hr&gt;
-&lt;h2 id=&#34;-전체-아키텍처-주제-선택--작성--빌드--배포&#34;&gt;🎯 전체 아키텍처: &amp;ldquo;주제 선택 → 작성 → 빌드 → 배포&amp;rdquo;&lt;/h2&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;┌─────────────────────────────────────────────────────────────┐
-│                  Hermes/리오 Daily Cron                      │
+&lt;h2 id="-전체-아키텍처-주제-선택--작성--빌드--배포"&gt;🎯 전체 아키텍처: &amp;ldquo;주제 선택 → 작성 → 빌드 → 배포&amp;rdquo;&lt;/h2&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;┌─────────────────────────────────────────────────────────────┐
+│ Hermes/리오 Daily Cron │
 ├─────────────────────────────────────────────────────────────┤
-│                                                              │
-│  Step 1: Discord 트렌드 채널 읽기                            │
-│  └─ #ai-ml-trends 채널의 오늘 메시지 수집                   │
-│     (Discord 게이트웨이 연동)                                │
-│                                                              │
-│  Step 2: 트렌드 분석 및 선별                                 │
-│  └─ 1주일 내 중복 아이템 제외                                │
-│  └─ 가장 영향력 있는 5개 항목 선정                           │
-│                                                              │
-│  Step 3: Hugo 포스트 작성                                    │
-│  ├─ AI/ML 트렌드 포스트 1개 생성                             │
-│  │  (카테고리: ai-ml, 최소 500자)                           │
-│  │                                                           │
-│  └─ Hermes/리오 팁 포스트 1개 생성                           │
-│     (카테고리: openclaw, 최소 500자)                        │
-│                                                              │
-│  Step 4: Git 커밋 및 푸시                                    │
-│  ├─ /workspace/blog에 git add/commit/push                   │
-│  │                                                           │
-│  └─ Hugo 빌드                                                │
-│     hugo build → public/ 생성                               │
-│                                                              │
-│  Step 5: public/ 레포에 푸시                                 │
-│  └─ kwbaek.github.io로 자동 배포                            │
-│                                                              │
-│  Step 6: 결과 리포트                                         │
-│  └─ 성공/실패 여부 및 포스트 링크 반환                       │
-│                                                              │
+│ │
+│ Step 1: Discord 트렌드 채널 읽기 │
+│ └─ #ai-ml-trends 채널의 오늘 메시지 수집 │
+│ (Discord 게이트웨이 연동) │
+│ │
+│ Step 2: 트렌드 분석 및 선별 │
+│ └─ 1주일 내 중복 아이템 제외 │
+│ └─ 가장 영향력 있는 5개 항목 선정 │
+│ │
+│ Step 3: Hugo 포스트 작성 │
+│ ├─ AI/ML 트렌드 포스트 1개 생성 │
+│ │ (카테고리: ai-ml, 최소 500자) │
+│ │ │
+│ └─ Hermes/리오 팁 포스트 1개 생성 │
+│ (카테고리: openclaw, 최소 500자) │
+│ │
+│ Step 4: Git 커밋 및 푸시 │
+│ ├─ /workspace/blog에 git add/commit/push │
+│ │ │
+│ └─ Hugo 빌드 │
+│ hugo build → public/ 생성 │
+│ │
+│ Step 5: public/ 레포에 푸시 │
+│ └─ kwbaek.github.io로 자동 배포 │
+│ │
+│ Step 6: 결과 리포트 │
+│ └─ 성공/실패 여부 및 포스트 링크 반환 │
+│ │
 └─────────────────────────────────────────────────────────────┘
 &lt;/code&gt;&lt;/pre&gt;&lt;hr&gt;
-&lt;h2 id=&#34;1-step-1-discord-트렌드-채널에서-오늘-메시지-수집&#34;&gt;1️⃣ Step 1: Discord 트렌드 채널에서 오늘 메시지 수집&lt;/h2&gt;
-&lt;h3 id=&#34;discord-게이트웨이-연동&#34;&gt;Discord 게이트웨이 연동&lt;/h3&gt;
-&lt;p&gt;Hermes는 &lt;strong&gt;Discord 게이트웨이&lt;/strong&gt; 기능을 통해 특정 채널의 메시지를 자동으로 읽을 수 있습니다.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>에이전트 경쟁의 중심이 모델에서 실행 표면으로 이동한다 — Workspace Agents와 Copilot SDK</title>
-      <link>https://kwbaek.github.io/posts/2026-08-11-ai-ml-trends-agent-runtime-becomes-the-product/</link>
-      <pubDate>Tue, 11 Aug 2026 21:00:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/posts/2026-08-11-ai-ml-trends-agent-runtime-becomes-the-product/</guid>
-      <description>&lt;p&gt;오늘의 AI/ML 흐름에서 가장 중요한 신호는 새로운 모델의 벤치마크 점수가 아니라, 에이전트가 실제 업무 시스템 안으로 들어오는 방식이 구체화되고 있다는 점입니다. OpenAI는 ChatGPT 안에서 팀의 컨텍스트와 도구를 묶어 업무를 수행하는 workspace agents를 소개했습니다. 같은 날 GitHub는 Java 서버 코드가 Copilot 에이전트 세션을 만들고, 도구를 등록하며, 구조화된 응답을 받도록 하는 Copilot SDK for Java를 공개했습니다.&lt;/p&gt;
-&lt;p&gt;두 발표는 서로 다른 제품이지만 공통된 방향을 보여줍니다. 에이전트가 단순한 채팅창이 아니라 &lt;strong&gt;상태를 가진 실행 런타임&lt;/strong&gt;이 되고 있다는 것입니다. Workspace agent의 핵심은 팀 자료와 연결된 컨텍스트, 반복 업무를 수행하는 도구, 그리고 사람이 결과를 검토할 수 있는 업무 표면입니다. Copilot SDK for Java는 이를 애플리케이션 서버의 관점에서 구체화합니다. Java 코드가 세션을 생성하고, 함수나 애너테이션으로 도구를 정의하고, 여러 요청을 병렬로 처리하는 agent harness를 직접 구성할 수 있습니다.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>OpenClaw 하트비트(Heartbeat) 활용: AI 에이전트를 능동적으로 만드는 법</title>
-      <link>https://kwbaek.github.io/posts/2026-02-23-openclaw-heartbeat-automation/</link>
-      <pubDate>Mon, 23 Feb 2026 21:00:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/posts/2026-02-23-openclaw-heartbeat-automation/</guid>
-      <description>&lt;p&gt;OpenClaw를 사용하다 보면 &amp;ldquo;AI가 좀 더 능동적으로 움직였으면 좋겠다&amp;quot;는 생각을 하게 됩니다. 매번 명령을 내리는 것이 아니라, AI가 스스로 주기적으로 상태를 확인하고 필요한 작업을 수행한다면 얼마나 편할까요?&lt;/p&gt;
+&lt;h2 id="1-step-1-discord-트렌드-채널에서-오늘-메시지-수집"&gt;1️⃣ Step 1: Discord 트렌드 채널에서 오늘 메시지 수집&lt;/h2&gt;
+&lt;h3 id="discord-게이트웨이-연동"&gt;Discord 게이트웨이 연동&lt;/h3&gt;
+&lt;p&gt;Hermes는 &lt;strong&gt;Discord 게이트웨이&lt;/strong&gt; 기능을 통해 특정 채널의 메시지를 자동으로 읽을 수 있습니다.&lt;/p&gt;</description></item><item><title>에이전트 경쟁의 중심이 모델에서 실행 표면으로 이동한다 — Workspace Agents와 Copilot SDK</title><link>https://kwbaek.github.io/posts/2026-08-11-ai-ml-trends-agent-runtime-becomes-the-product/</link><pubDate>Tue, 11 Aug 2026 21:00:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-08-11-ai-ml-trends-agent-runtime-becomes-the-product/</guid><description>&lt;p&gt;오늘의 AI/ML 흐름에서 가장 중요한 신호는 새로운 모델의 벤치마크 점수가 아니라, 에이전트가 실제 업무 시스템 안으로 들어오는 방식이 구체화되고 있다는 점입니다. OpenAI는 ChatGPT 안에서 팀의 컨텍스트와 도구를 묶어 업무를 수행하는 workspace agents를 소개했습니다. 같은 날 GitHub는 Java 서버 코드가 Copilot 에이전트 세션을 만들고, 도구를 등록하며, 구조화된 응답을 받도록 하는 Copilot SDK for Java를 공개했습니다.&lt;/p&gt;
+&lt;p&gt;두 발표는 서로 다른 제품이지만 공통된 방향을 보여줍니다. 에이전트가 단순한 채팅창이 아니라 &lt;strong&gt;상태를 가진 실행 런타임&lt;/strong&gt;이 되고 있다는 것입니다. Workspace agent의 핵심은 팀 자료와 연결된 컨텍스트, 반복 업무를 수행하는 도구, 그리고 사람이 결과를 검토할 수 있는 업무 표면입니다. Copilot SDK for Java는 이를 애플리케이션 서버의 관점에서 구체화합니다. Java 코드가 세션을 생성하고, 함수나 애너테이션으로 도구를 정의하고, 여러 요청을 병렬로 처리하는 agent harness를 직접 구성할 수 있습니다.&lt;/p&gt;</description></item><item><title>OpenClaw 하트비트(Heartbeat) 활용: AI 에이전트를 능동적으로 만드는 법</title><link>https://kwbaek.github.io/posts/2026-02-23-openclaw-heartbeat-automation/</link><pubDate>Mon, 23 Feb 2026 21:00:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-02-23-openclaw-heartbeat-automation/</guid><description>&lt;p&gt;OpenClaw를 사용하다 보면 &amp;ldquo;AI가 좀 더 능동적으로 움직였으면 좋겠다&amp;quot;는 생각을 하게 됩니다. 매번 명령을 내리는 것이 아니라, AI가 스스로 주기적으로 상태를 확인하고 필요한 작업을 수행한다면 얼마나 편할까요?&lt;/p&gt;
 &lt;p&gt;바로 이것이 &lt;strong&gt;하트비트(Heartbeat)&lt;/strong&gt; 기능이 해결하는 문제입니다.&lt;/p&gt;
-&lt;h2 id=&#34;하트비트란-무엇인가&#34;&gt;하트비트란 무엇인가?&lt;/h2&gt;
+&lt;h2 id="하트비트란-무엇인가"&gt;하트비트란 무엇인가?&lt;/h2&gt;
 &lt;p&gt;하트비트는 OpenClaw 에이전트가 일정 주기로 받는 &amp;ldquo;펄스(pulse)&amp;ldquo;입니다. 심장 박동처럼 규칙적으로 발생하며, 에이전트는 이 신호를 받을 때마다 &amp;ldquo;지금 내가 해야 할 일이 있나?&amp;ldquo;를 스스로 판단합니다.&lt;/p&gt;
 &lt;p&gt;기본 하트비트 프롬프트는 다음과 같습니다:&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;Read HEARTBEAT.md if it exists (workspace context). 
-Follow it strictly. Do not infer or repeat old tasks from prior chats. 
+&lt;pre tabindex="0"&gt;&lt;code&gt;Read HEARTBEAT.md if it exists (workspace context).
+Follow it strictly. Do not infer or repeat old tasks from prior chats.
 If nothing needs attention, reply HEARTBEAT_OK.
-&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;하트비트-vs-cron-언제-무엇을-쓸까&#34;&gt;하트비트 vs Cron: 언제 무엇을 쓸까?&lt;/h2&gt;
-&lt;p&gt;OpenClaw에는 Cron도 있는데, 하트비트와 어떻게 다를까요?&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>OpenClaw 완전정복: Heartbeat과 Cron으로 AI 비서를 자동화하기</title>
-      <link>https://kwbaek.github.io/posts/2026-02-18-openclaw-heartbeat-cron-guide/</link>
-      <pubDate>Wed, 18 Feb 2026 21:00:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/posts/2026-02-18-openclaw-heartbeat-cron-guide/</guid>
-      <description>&lt;h2 id=&#34;openclaw를-진정한-비서로-만드는-법&#34;&gt;OpenClaw를 진정한 비서로 만드는 법&lt;/h2&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id="하트비트-vs-cron-언제-무엇을-쓸까"&gt;하트비트 vs Cron: 언제 무엇을 쓸까?&lt;/h2&gt;
+&lt;p&gt;OpenClaw에는 Cron도 있는데, 하트비트와 어떻게 다를까요?&lt;/p&gt;</description></item><item><title>OpenClaw 완전정복: Heartbeat과 Cron으로 AI 비서를 자동화하기</title><link>https://kwbaek.github.io/posts/2026-02-18-openclaw-heartbeat-cron-guide/</link><pubDate>Wed, 18 Feb 2026 21:00:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-02-18-openclaw-heartbeat-cron-guide/</guid><description>&lt;h2 id="openclaw를-진정한-비서로-만드는-법"&gt;OpenClaw를 진정한 비서로 만드는 법&lt;/h2&gt;
 &lt;p&gt;OpenClaw를 사용하고 계신가요? 챗봇처럼 매번 명령을 내려야 하는 게 불편하지 않으셨나요? 오늘은 OpenClaw를 &lt;strong&gt;진짜 비서처럼 자동으로 움직이게&lt;/strong&gt; 만드는 두 가지 핵심 기능을 소개합니다.&lt;/p&gt;
 &lt;p&gt;바로 &lt;strong&gt;Heartbeat&lt;/strong&gt;과 &lt;strong&gt;Cron&lt;/strong&gt;입니다.&lt;/p&gt;
-&lt;h2 id=&#34;heartbeat-비서의-심장박동&#34;&gt;Heartbeat: 비서의 심장박동&lt;/h2&gt;
-&lt;h3 id=&#34;heartbeat이란&#34;&gt;Heartbeat이란?&lt;/h3&gt;
+&lt;h2 id="heartbeat-비서의-심장박동"&gt;Heartbeat: 비서의 심장박동&lt;/h2&gt;
+&lt;h3 id="heartbeat이란"&gt;Heartbeat이란?&lt;/h3&gt;
 &lt;p&gt;Heartbeat은 OpenClaw가 주기적으로 &amp;ldquo;지금 내가 해야 할 일이 있나?&amp;ldquo;라고 스스로 체크하는 기능입니다. 마치 사람 비서가 30분마다 &amp;ldquo;혹시 필요한 거 없으세요?&amp;ldquo;라고 물어보는 것과 같습니다.&lt;/p&gt;
-&lt;h3 id=&#34;기본-설정&#34;&gt;기본 설정&lt;/h3&gt;
+&lt;h3 id="기본-설정"&gt;기본 설정&lt;/h3&gt;
 &lt;p&gt;OpenClaw의 기본 Heartbeat 프롬프트는 다음과 같습니다:&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;Read HEARTBEAT.md if it exists (workspace context). Follow it strictly. 
-Do not infer or repeat old tasks from prior chats. 
+&lt;pre tabindex="0"&gt;&lt;code&gt;Read HEARTBEAT.md if it exists (workspace context). Follow it strictly.
+Do not infer or repeat old tasks from prior chats.
 If nothing needs attention, reply HEARTBEAT_OK.
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;즉, &lt;code&gt;HEARTBEAT.md&lt;/code&gt; 파일에 체크할 항목을 적어두면, OpenClaw가 주기적으로 그 파일을 읽고 필요한 작업을 수행합니다.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>OpenClaw 서브에이전트로 반복 작업 자동화하기</title>
-      <link>https://kwbaek.github.io/posts/2026-02-09-openclaw-subagent-automation/</link>
-      <pubDate>Mon, 09 Feb 2026 23:00:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/posts/2026-02-09-openclaw-subagent-automation/</guid>
-      <description>&lt;p&gt;OpenClaw를 쓰면서 가장 생산성이 올라간 기능 중 하나가 바로 &lt;strong&gt;서브에이전트(Subagent)&lt;/strong&gt; 시스템입니다. 이 글에서는 서브에이전트가 무엇인지, 어떻게 활용하면 좋은지 실제 경험을 바탕으로 공유합니다.&lt;/p&gt;
-&lt;h2 id=&#34;서브에이전트란&#34;&gt;서브에이전트란?&lt;/h2&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;즉, &lt;code&gt;HEARTBEAT.md&lt;/code&gt; 파일에 체크할 항목을 적어두면, OpenClaw가 주기적으로 그 파일을 읽고 필요한 작업을 수행합니다.&lt;/p&gt;</description></item><item><title>OpenClaw 서브에이전트로 반복 작업 자동화하기</title><link>https://kwbaek.github.io/posts/2026-02-09-openclaw-subagent-automation/</link><pubDate>Mon, 09 Feb 2026 23:00:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-02-09-openclaw-subagent-automation/</guid><description>&lt;p&gt;OpenClaw를 쓰면서 가장 생산성이 올라간 기능 중 하나가 바로 &lt;strong&gt;서브에이전트(Subagent)&lt;/strong&gt; 시스템입니다. 이 글에서는 서브에이전트가 무엇인지, 어떻게 활용하면 좋은지 실제 경험을 바탕으로 공유합니다.&lt;/p&gt;
+&lt;h2 id="서브에이전트란"&gt;서브에이전트란?&lt;/h2&gt;
 &lt;p&gt;서브에이전트는 메인 에이전트가 특정 작업을 위해 &lt;strong&gt;독립적으로 생성하는 하위 에이전트&lt;/strong&gt;입니다. 메인 에이전트와 별도의 세션에서 동작하며, 작업이 완료되면 결과를 메인 에이전트에게 보고합니다.&lt;/p&gt;
 &lt;p&gt;핵심 특징:&lt;/p&gt;
 &lt;ul&gt;
@@ -111,8 +68,5 @@ If nothing needs attention, reply HEARTBEAT_OK.
 &lt;li&gt;&lt;strong&gt;작업 집중&lt;/strong&gt;: 할당된 작업만 수행하고 종료&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;병렬 처리&lt;/strong&gt;: 여러 서브에이전트를 동시에 띄울 수 있음&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;실제-활용-사례-블로그-포스팅-자동화&#34;&gt;실제 활용 사례: 블로그 포스팅 자동화&lt;/h2&gt;
-&lt;p&gt;이 블로그 포스트 자체가 서브에이전트로 작성되고 있습니다! 워크플로우는 다음과 같습니다:&lt;/p&gt;</description>
-    </item>
-  </channel>
-</rss>
+&lt;h2 id="실제-활용-사례-블로그-포스팅-자동화"&gt;실제 활용 사례: 블로그 포스팅 자동화&lt;/h2&gt;
+&lt;p&gt;이 블로그 포스트 자체가 서브에이전트로 작성되고 있습니다! 워크플로우는 다음과 같습니다:&lt;/p&gt;</description></item></channel></rss>

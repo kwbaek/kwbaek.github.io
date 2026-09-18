@@ -1,23 +1,5 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
-  <channel>
-    <title>전력인프라 on Kyungwook&#39;s Devlog</title>
-    <link>https://kwbaek.github.io/tags/%EC%A0%84%EB%A0%A5%EC%9D%B8%ED%94%84%EB%9D%BC/</link>
-    <description>Recent content in 전력인프라 on Kyungwook&#39;s Devlog</description>
-    <generator>Hugo -- 0.165.0</generator>
-    <language>ko-kr</language>
-    <lastBuildDate>Mon, 31 Aug 2026 21:00:00 +0900</lastBuildDate>
-    <atom:link href="https://kwbaek.github.io/tags/%EC%A0%84%EB%A0%A5%EC%9D%B8%ED%94%84%EB%9D%BC/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>AI/ML 트렌드: 소프트뱅크-OpenAI의 55억 달러 워런트와 기가와트(GW)급 전력 확보전 — AI 인프라의 금융 결합과 런타임 제로 오버헤드 기술</title>
-      <link>https://kwbaek.github.io/posts/2026-08-31-ai-ml-trends-sb-energy-openai-warrants-pace/</link>
-      <pubDate>Mon, 31 Aug 2026 21:00:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/posts/2026-08-31-ai-ml-trends-sb-energy-openai-warrants-pace/</guid>
-      <description>&lt;p&gt;2026년 8월 말 AI 산업은 거시적 인프라 투자와 미시적 런타임 최적화라는 양 극단에서 중대한 분기점을 맞이하고 있습니다. 하나는 &lt;strong&gt;기가와트(GW)급 전력을 확보하기 위해 금융 파생상품(신주인수권)까지 동원되는 초대형 데이터센터 파이낸싱&lt;/strong&gt;이며, 다른 하나는 &lt;strong&gt;런타임 LLM 호출 비용을 0으로 만들거나 디코딩 병목을 인덱스로 치환하는 극단적 시스템 최적화 연구&lt;/strong&gt;입니다.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>전력인프라 on Kyungwook's Devlog</title><link>https://kwbaek.github.io/tags/%EC%A0%84%EB%A0%A5%EC%9D%B8%ED%94%84%EB%9D%BC/</link><description>Recent content in 전력인프라 on Kyungwook's Devlog</description><generator>Hugo -- 0.165.0</generator><language>ko-kr</language><lastBuildDate>Mon, 31 Aug 2026 21:00:00 +0900</lastBuildDate><atom:link href="https://kwbaek.github.io/tags/%EC%A0%84%EB%A0%A5%EC%9D%B8%ED%94%84%EB%9D%BC/index.xml" rel="self" type="application/rss+xml"/><item><title>AI/ML 트렌드: 소프트뱅크-OpenAI의 55억 달러 워런트와 기가와트(GW)급 전력 확보전 — AI 인프라의 금융 결합과 런타임 제로 오버헤드 기술</title><link>https://kwbaek.github.io/posts/2026-08-31-ai-ml-trends-sb-energy-openai-warrants-pace/</link><pubDate>Mon, 31 Aug 2026 21:00:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-08-31-ai-ml-trends-sb-energy-openai-warrants-pace/</guid><description>&lt;p&gt;2026년 8월 말 AI 산업은 거시적 인프라 투자와 미시적 런타임 최적화라는 양 극단에서 중대한 분기점을 맞이하고 있습니다. 하나는 &lt;strong&gt;기가와트(GW)급 전력을 확보하기 위해 금융 파생상품(신주인수권)까지 동원되는 초대형 데이터센터 파이낸싱&lt;/strong&gt;이며, 다른 하나는 &lt;strong&gt;런타임 LLM 호출 비용을 0으로 만들거나 디코딩 병목을 인덱스로 치환하는 극단적 시스템 최적화 연구&lt;/strong&gt;입니다.&lt;/p&gt;
 &lt;p&gt;이 두 흐름은 AI 기술의 중심축이 단순한 &amp;lsquo;모델 스케일업&amp;rsquo;을 넘어, **&amp;lsquo;전력·자본 조달의 현실적 구조화&amp;rsquo;와 &amp;lsquo;배포 단위에서의 효율성 극대화&amp;rsquo;**로 완전히 이동했음을 입증하고 있습니다.&lt;/p&gt;
 &lt;hr&gt;
-&lt;h2 id=&#34;1-기가와트gw-시대를-여는-데이터센터-파이낸싱-소프트뱅크의-55억-달러-워런트&#34;&gt;1. 기가와트(GW) 시대를 여는 데이터센터 파이낸싱: 소프트뱅크의 55억 달러 워런트&lt;/h2&gt;
-&lt;p&gt;월스트리트저널(WSJ)에 따르면, 소프트뱅크의 재생에너지 자회사 &lt;strong&gt;SB Energy&lt;/strong&gt;는 미국 증시 IPO를 앞두고 OpenAI를 핵심 앵커 테넌트(Anchor Tenant)로 유치하기 위해 **55억 달러(약 7조 6,000억 원) 규모의 신주인수권(Warrants)**을 제공했습니다.&lt;/p&gt;</description>
-    </item>
-  </channel>
-</rss>
+&lt;h2 id="1-기가와트gw-시대를-여는-데이터센터-파이낸싱-소프트뱅크의-55억-달러-워런트"&gt;1. 기가와트(GW) 시대를 여는 데이터센터 파이낸싱: 소프트뱅크의 55억 달러 워런트&lt;/h2&gt;
+&lt;p&gt;월스트리트저널(WSJ)에 따르면, 소프트뱅크의 재생에너지 자회사 &lt;strong&gt;SB Energy&lt;/strong&gt;는 미국 증시 IPO를 앞두고 OpenAI를 핵심 앵커 테넌트(Anchor Tenant)로 유치하기 위해 **55억 달러(약 7조 6,000억 원) 규모의 신주인수권(Warrants)**을 제공했습니다.&lt;/p&gt;</description></item></channel></rss>

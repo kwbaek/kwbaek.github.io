@@ -1,21 +1,3 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
-  <channel>
-    <title>HuggingFace on Kyungwook&#39;s Devlog</title>
-    <link>https://kwbaek.github.io/tags/huggingface/</link>
-    <description>Recent content in HuggingFace on Kyungwook&#39;s Devlog</description>
-    <generator>Hugo -- 0.165.0</generator>
-    <language>ko-kr</language>
-    <lastBuildDate>Wed, 02 Sep 2026 21:05:00 +0900</lastBuildDate>
-    <atom:link href="https://kwbaek.github.io/tags/huggingface/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>AI/ML 트렌드: Anthropic &#39;고객 소유 클라우드&#39; 안전장치와 Meta의 20인 화자분리 음성인식</title>
-      <link>https://kwbaek.github.io/posts/2026-09-02-ai-ml-trends-anthropic-safeguards-meta-voice/</link>
-      <pubDate>Wed, 02 Sep 2026 21:05:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/posts/2026-09-02-ai-ml-trends-anthropic-safeguards-meta-voice/</guid>
-      <description>&lt;p&gt;9월 2일 AI/ML 업계에서 눈에 띄는 흐름은 **&amp;ldquo;모델 성능&amp;quot;보다 &amp;ldquo;엔터프라이즈가 실제로 도입할 수 있는 조건&amp;rdquo;**을 만드는 발표들입니다. 데이터 주권 문제를 해결한 안전장치, 실전 회의에 바로 쓸 수 있는 화자분리 음성인식, 그리고 브라우저에서 돌아가는 오픈소스 추론 커널까지 - 오늘의 소식을 정리합니다.&lt;/p&gt;
-&lt;h2 id=&#34;1-anthropic-enterprise-frontier-safeguards--모니터링-데이터를-고객-클라우드에-그대로-둔다&#34;&gt;1. Anthropic Enterprise Frontier Safeguards — 모니터링 데이터를 고객 클라우드에 그대로 둔다&lt;/h2&gt;
-&lt;p&gt;Anthropic이 공식 블로그를 통해 **Enterprise Frontier Safeguards(EFS)**를 발표했습니다. 기존에는 오남용 탐지를 위한 모니터링 데이터를 Anthropic이 30일간 보관하는 정책이었는데, 규제 산업(금융·의료·공공)에서 &amp;ldquo;우리 데이터가 외부에 저장되는 건 곤란하다&amp;quot;는 반발이 계속 있었습니다.&lt;/p&gt;</description>
-    </item>
-  </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>HuggingFace on Kyungwook's Devlog</title><link>https://kwbaek.github.io/tags/huggingface/</link><description>Recent content in HuggingFace on Kyungwook's Devlog</description><generator>Hugo -- 0.165.0</generator><language>ko-kr</language><lastBuildDate>Wed, 02 Sep 2026 21:05:00 +0900</lastBuildDate><atom:link href="https://kwbaek.github.io/tags/huggingface/index.xml" rel="self" type="application/rss+xml"/><item><title>AI/ML 트렌드: Anthropic '고객 소유 클라우드' 안전장치와 Meta의 20인 화자분리 음성인식</title><link>https://kwbaek.github.io/posts/2026-09-02-ai-ml-trends-anthropic-safeguards-meta-voice/</link><pubDate>Wed, 02 Sep 2026 21:05:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-09-02-ai-ml-trends-anthropic-safeguards-meta-voice/</guid><description>&lt;p&gt;9월 2일 AI/ML 업계에서 눈에 띄는 흐름은 **&amp;ldquo;모델 성능&amp;quot;보다 &amp;ldquo;엔터프라이즈가 실제로 도입할 수 있는 조건&amp;rdquo;**을 만드는 발표들입니다. 데이터 주권 문제를 해결한 안전장치, 실전 회의에 바로 쓸 수 있는 화자분리 음성인식, 그리고 브라우저에서 돌아가는 오픈소스 추론 커널까지 - 오늘의 소식을 정리합니다.&lt;/p&gt;
+&lt;h2 id="1-anthropic-enterprise-frontier-safeguards--모니터링-데이터를-고객-클라우드에-그대로-둔다"&gt;1. Anthropic Enterprise Frontier Safeguards — 모니터링 데이터를 고객 클라우드에 그대로 둔다&lt;/h2&gt;
+&lt;p&gt;Anthropic이 공식 블로그를 통해 **Enterprise Frontier Safeguards(EFS)**를 발표했습니다. 기존에는 오남용 탐지를 위한 모니터링 데이터를 Anthropic이 30일간 보관하는 정책이었는데, 규제 산업(금융·의료·공공)에서 &amp;ldquo;우리 데이터가 외부에 저장되는 건 곤란하다&amp;quot;는 반발이 계속 있었습니다.&lt;/p&gt;</description></item></channel></rss>

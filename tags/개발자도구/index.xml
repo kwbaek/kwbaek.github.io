@@ -1,58 +1,33 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
-  <channel>
-    <title>개발자도구 on Kyungwook&#39;s Devlog</title>
-    <link>https://kwbaek.github.io/tags/%EA%B0%9C%EB%B0%9C%EC%9E%90%EB%8F%84%EA%B5%AC/</link>
-    <description>Recent content in 개발자도구 on Kyungwook&#39;s Devlog</description>
-    <generator>Hugo -- 0.165.0</generator>
-    <language>ko-kr</language>
-    <lastBuildDate>Wed, 09 Sep 2026 09:30:00 +0900</lastBuildDate>
-    <atom:link href="https://kwbaek.github.io/tags/%EA%B0%9C%EB%B0%9C%EC%9E%90%EB%8F%84%EA%B5%AC/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>AI/ML 트렌드: 프론티어 모델 경쟁과 개발자 비용 최적화의 동시 진행</title>
-      <link>https://kwbaek.github.io/posts/2026-09-09-ai-ml-trends-frontier-models-and-cost-optimization/</link>
-      <pubDate>Wed, 09 Sep 2026 09:30:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/posts/2026-09-09-ai-ml-trends-frontier-models-and-cost-optimization/</guid>
-      <description>&lt;p&gt;지난 일주일간 프론티어 AI 모델과 개발자 도구 생태계는 동시에 두 가지 크리티컬한 변화를 겪고 있습니다. &lt;strong&gt;성능의 싸움과 비용의 싸움&lt;/strong&gt;이 동시에 벌어지고 있다는 뜻입니다.&lt;/p&gt;
-&lt;h2 id=&#34;-핵심-요약&#34;&gt;🎯 핵심 요약&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>개발자도구 on Kyungwook's Devlog</title><link>https://kwbaek.github.io/tags/%EA%B0%9C%EB%B0%9C%EC%9E%90%EB%8F%84%EA%B5%AC/</link><description>Recent content in 개발자도구 on Kyungwook's Devlog</description><generator>Hugo -- 0.165.0</generator><language>ko-kr</language><lastBuildDate>Wed, 09 Sep 2026 09:30:00 +0900</lastBuildDate><atom:link href="https://kwbaek.github.io/tags/%EA%B0%9C%EB%B0%9C%EC%9E%90%EB%8F%84%EA%B5%AC/index.xml" rel="self" type="application/rss+xml"/><item><title>AI/ML 트렌드: 프론티어 모델 경쟁과 개발자 비용 최적화의 동시 진행</title><link>https://kwbaek.github.io/posts/2026-09-09-ai-ml-trends-frontier-models-and-cost-optimization/</link><pubDate>Wed, 09 Sep 2026 09:30:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-09-09-ai-ml-trends-frontier-models-and-cost-optimization/</guid><description>&lt;p&gt;지난 일주일간 프론티어 AI 모델과 개발자 도구 생태계는 동시에 두 가지 크리티컬한 변화를 겪고 있습니다. &lt;strong&gt;성능의 싸움과 비용의 싸움&lt;/strong&gt;이 동시에 벌어지고 있다는 뜻입니다.&lt;/p&gt;
+&lt;h2 id="-핵심-요약"&gt;🎯 핵심 요약&lt;/h2&gt;
 &lt;table&gt;
-	&lt;thead&gt;
-			&lt;tr&gt;
-					&lt;th&gt;항목&lt;/th&gt;
-					&lt;th&gt;기존&lt;/th&gt;
-					&lt;th&gt;2026-09-04+&lt;/th&gt;
-			&lt;/tr&gt;
-	&lt;/thead&gt;
-	&lt;tbody&gt;
-			&lt;tr&gt;
-					&lt;td&gt;&lt;strong&gt;최강 코드 생성 모델&lt;/strong&gt;&lt;/td&gt;
-					&lt;td&gt;Claude 3.5 Sonnet&lt;/td&gt;
-					&lt;td&gt;GPT-6 Astra (버그 수정 +34%, 인프라 코드 +41%)&lt;/td&gt;
-			&lt;/tr&gt;
-			&lt;tr&gt;
-					&lt;td&gt;&lt;strong&gt;개발자 비용 절감&lt;/strong&gt;&lt;/td&gt;
-					&lt;td&gt;고정&lt;/td&gt;
-					&lt;td&gt;HydraFusion: 최대 67% 절감&lt;/td&gt;
-			&lt;/tr&gt;
-			&lt;tr&gt;
-					&lt;td&gt;&lt;strong&gt;유럽 AI 자립도&lt;/strong&gt;&lt;/td&gt;
-					&lt;td&gt;의존적&lt;/td&gt;
-					&lt;td&gt;Mistral €3B (€21B 평가액, 소버린 스택)&lt;/td&gt;
-			&lt;/tr&gt;
-	&lt;/tbody&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;항목&lt;/th&gt;
+&lt;th&gt;기존&lt;/th&gt;
+&lt;th&gt;2026-09-04+&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;최강 코드 생성 모델&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;Claude 3.5 Sonnet&lt;/td&gt;
+&lt;td&gt;GPT-6 Astra (버그 수정 +34%, 인프라 코드 +41%)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;개발자 비용 절감&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;고정&lt;/td&gt;
+&lt;td&gt;HydraFusion: 최대 67% 절감&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;유럽 AI 자립도&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;의존적&lt;/td&gt;
+&lt;td&gt;Mistral €3B (€21B 평가액, 소버린 스택)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
 &lt;/table&gt;
 &lt;hr&gt;
-&lt;h2 id=&#34;1-gpt-6-astra의-github-copilot-ga-출시-sep-4&#34;&gt;1️⃣ GPT-6 Astra의 GitHub Copilot GA 출시 (Sep 4)&lt;/h2&gt;
-&lt;p&gt;&lt;strong&gt;무엇이 바뀌었나?&lt;/strong&gt;&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>AI/ML 트렌드: 코딩 에이전트의 빠른 릴리스 경쟁, 이제 회귀검증이 제품 기능이다</title>
-      <link>https://kwbaek.github.io/posts/2026-08-15-ai-ml-trends-coding-agent-releases-need-regression-gates/</link>
-      <pubDate>Sat, 15 Aug 2026 21:00:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/posts/2026-08-15-ai-ml-trends-coding-agent-releases-need-regression-gates/</guid>
-      <description>&lt;p&gt;최근 OpenAI Codex CLI &lt;code&gt;0.148.0-alpha.19&lt;/code&gt; 릴리스가 보여주는 중요한 신호는 단순히 “새 버전이 나왔다”가 아닙니다. 터미널에서 파일을 수정하고 명령을 실행하는 코딩 에이전트가 빠른 주기로 계속 업데이트되면서, 모델 성능 경쟁이 곧 &lt;strong&gt;실행면의 호환성·안전성·회귀검증 경쟁&lt;/strong&gt;으로 바뀌고 있다는 점입니다. 릴리스 페이지의 게시 시각은 2026년 8월 15일 02:21 UTC로 확인되며, 현재 버전은 알파 채널입니다.&lt;/p&gt;
-&lt;h3 id=&#34;알파-릴리스가-던지는-운영-질문&#34;&gt;알파 릴리스가 던지는 운영 질문&lt;/h3&gt;
-&lt;p&gt;CLI 에이전트는 일반적인 자동완성 도구와 다릅니다. 출력이 마음에 들지 않으면 다시 질문하면 되는 수준을 넘어, 저장소의 파일·Git 상태·셸 명령·테스트 실행과 직접 연결됩니다. 따라서 업데이트의 위험은 “답변 문장이 조금 달라졌다”에 그치지 않습니다. 같은 프롬프트라도 수정 파일의 범위가 넓어지거나, 승인 없이 실행되는 명령의 종류가 달라지거나, 실패 후 재개 동작이 바뀔 수 있습니다. 특히 알파 버전은 새 기능을 빨리 받는 대신 이러한 경계면이 아직 안정화되지 않았을 가능성을 전제로 써야 합니다.&lt;/p&gt;</description>
-    </item>
-  </channel>
-</rss>
+&lt;h2 id="1-gpt-6-astra의-github-copilot-ga-출시-sep-4"&gt;1️⃣ GPT-6 Astra의 GitHub Copilot GA 출시 (Sep 4)&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;무엇이 바뀌었나?&lt;/strong&gt;&lt;/p&gt;</description></item><item><title>AI/ML 트렌드: 코딩 에이전트의 빠른 릴리스 경쟁, 이제 회귀검증이 제품 기능이다</title><link>https://kwbaek.github.io/posts/2026-08-15-ai-ml-trends-coding-agent-releases-need-regression-gates/</link><pubDate>Sat, 15 Aug 2026 21:00:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-08-15-ai-ml-trends-coding-agent-releases-need-regression-gates/</guid><description>&lt;p&gt;최근 OpenAI Codex CLI &lt;code&gt;0.148.0-alpha.19&lt;/code&gt; 릴리스가 보여주는 중요한 신호는 단순히 “새 버전이 나왔다”가 아닙니다. 터미널에서 파일을 수정하고 명령을 실행하는 코딩 에이전트가 빠른 주기로 계속 업데이트되면서, 모델 성능 경쟁이 곧 &lt;strong&gt;실행면의 호환성·안전성·회귀검증 경쟁&lt;/strong&gt;으로 바뀌고 있다는 점입니다. 릴리스 페이지의 게시 시각은 2026년 8월 15일 02:21 UTC로 확인되며, 현재 버전은 알파 채널입니다.&lt;/p&gt;
+&lt;h3 id="알파-릴리스가-던지는-운영-질문"&gt;알파 릴리스가 던지는 운영 질문&lt;/h3&gt;
+&lt;p&gt;CLI 에이전트는 일반적인 자동완성 도구와 다릅니다. 출력이 마음에 들지 않으면 다시 질문하면 되는 수준을 넘어, 저장소의 파일·Git 상태·셸 명령·테스트 실행과 직접 연결됩니다. 따라서 업데이트의 위험은 “답변 문장이 조금 달라졌다”에 그치지 않습니다. 같은 프롬프트라도 수정 파일의 범위가 넓어지거나, 승인 없이 실행되는 명령의 종류가 달라지거나, 실패 후 재개 동작이 바뀔 수 있습니다. 특히 알파 버전은 새 기능을 빨리 받는 대신 이러한 경계면이 아직 안정화되지 않았을 가능성을 전제로 써야 합니다.&lt;/p&gt;</description></item></channel></rss>

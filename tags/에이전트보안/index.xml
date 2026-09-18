@@ -1,30 +1,5 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
-  <channel>
-    <title>에이전트보안 on Kyungwook&#39;s Devlog</title>
-    <link>https://kwbaek.github.io/tags/%EC%97%90%EC%9D%B4%EC%A0%84%ED%8A%B8%EB%B3%B4%EC%95%88/</link>
-    <description>Recent content in 에이전트보안 on Kyungwook&#39;s Devlog</description>
-    <generator>Hugo -- 0.165.0</generator>
-    <language>ko-kr</language>
-    <lastBuildDate>Tue, 15 Sep 2026 21:00:00 +0900</lastBuildDate>
-    <atom:link href="https://kwbaek.github.io/tags/%EC%97%90%EC%9D%B4%EC%A0%84%ED%8A%B8%EB%B3%B4%EC%95%88/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>AI/ML 트렌드: AI 에이전트의 적대적 공격 탐지 — 보안 성숙도 검증의 시대</title>
-      <link>https://kwbaek.github.io/posts/2026-09-15-ai-ml-trends-adversarial-agent-security/</link>
-      <pubDate>Tue, 15 Sep 2026 21:00:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/posts/2026-09-15-ai-ml-trends-adversarial-agent-security/</guid>
-      <description>&lt;p&gt;&lt;strong&gt;지난 72시간, OpenAI, Anthropic, Hugging Face가 동시에 폭로한 사건들이 명확히 보여줍니다: 프론티어 모델 기반 에이전트는 더 이상 &amp;ldquo;신뢰할 수 있는 시스템&amp;quot;이 아니라, 체계적인 적대적 공격의 표적입니다.&lt;/strong&gt;&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>에이전트보안 on Kyungwook's Devlog</title><link>https://kwbaek.github.io/tags/%EC%97%90%EC%9D%B4%EC%A0%84%ED%8A%B8%EB%B3%B4%EC%95%88/</link><description>Recent content in 에이전트보안 on Kyungwook's Devlog</description><generator>Hugo -- 0.165.0</generator><language>ko-kr</language><lastBuildDate>Tue, 15 Sep 2026 21:00:00 +0900</lastBuildDate><atom:link href="https://kwbaek.github.io/tags/%EC%97%90%EC%9D%B4%EC%A0%84%ED%8A%B8%EB%B3%B4%EC%95%88/index.xml" rel="self" type="application/rss+xml"/><item><title>AI/ML 트렌드: AI 에이전트의 적대적 공격 탐지 — 보안 성숙도 검증의 시대</title><link>https://kwbaek.github.io/posts/2026-09-15-ai-ml-trends-adversarial-agent-security/</link><pubDate>Tue, 15 Sep 2026 21:00:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-09-15-ai-ml-trends-adversarial-agent-security/</guid><description>&lt;p&gt;&lt;strong&gt;지난 72시간, OpenAI, Anthropic, Hugging Face가 동시에 폭로한 사건들이 명확히 보여줍니다: 프론티어 모델 기반 에이전트는 더 이상 &amp;ldquo;신뢰할 수 있는 시스템&amp;quot;이 아니라, 체계적인 적대적 공격의 표적입니다.&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;Anthropic의 위협 보고서(Sep 13)는 14개국의 위협 행위자가 Claude API를 악용해 무기 코드, 감시 시스템, 사이버작전 도구를 개발했음을 공식 인정했습니다. 동시에 OpenAI와 Hugging Face는 자신의 모델이 사이버 공격 대상이 되었음을 확인했고, 중국의 7개 AI 랩이 Claude를 역공학하려는 시도를 추적했습니다.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;이제 보안 팀의 질문은 더 이상 &amp;ldquo;공격이 가능한가?&amp;ldquo;가 아닙니다. &amp;ldquo;우리 에이전트가 이미 공격을 받고 있는가?&amp;ldquo;입니다.&lt;/strong&gt;&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>AI/ML 트렌드: 거부는 경계가 아니다 — 에이전트의 진짜 문제는 노출 표면이다</title>
-      <link>https://kwbaek.github.io/posts/2026-08-22-ai-ml-trends-refusal-is-not-a-boundary/</link>
-      <pubDate>Sat, 22 Aug 2026 21:00:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/posts/2026-08-22-ai-ml-trends-refusal-is-not-a-boundary/</guid>
-      <description>&lt;p&gt;오늘 하루 올라온 자료 중 세 편의 논문과 한 건의 클라우드 아키텍처 문서가 묘하게 같은 자리를 가리켰습니다. 우리는 지금까지 에이전트의 안전성을 &lt;strong&gt;모델이 나쁜 요청을 거부하는가&lt;/strong&gt;로 재왔습니다. 그런데 이 자료들은 전부 이렇게 말합니다. 거부는 잘 작동합니다. 그런데도 정보는 나갑니다. 문제는 판단이 아니라 &lt;strong&gt;표면&lt;/strong&gt;입니다.&lt;/p&gt;
-&lt;h2 id=&#34;근거-1--거부한-모델의-평범한-답변에서-비밀이-복원된다&#34;&gt;근거 1 — 거부한 모델의 평범한 답변에서 비밀이 복원된다&lt;/h2&gt;
-&lt;p&gt;&lt;a href=&#34;https://arxiv.org/abs/2608.19857&#34;&gt;Inadvertent Context Leakage in Language Models&lt;/a&gt;(arXiv 2608.19857, 2026년 8월 20일 제출)는 아주 단순한 질문에서 출발합니다. 캘린더, 자격증명, 건강기록, 금융 데이터 같은 민감 정보가 &lt;strong&gt;컨텍스트 창에 그냥 들어 있기만 해도&lt;/strong&gt; 모델의 멀쩡한 출력에 상관관계가 남는가?&lt;/p&gt;</description>
-    </item>
-  </channel>
-</rss>
+&lt;p&gt;&lt;strong&gt;이제 보안 팀의 질문은 더 이상 &amp;ldquo;공격이 가능한가?&amp;ldquo;가 아닙니다. &amp;ldquo;우리 에이전트가 이미 공격을 받고 있는가?&amp;ldquo;입니다.&lt;/strong&gt;&lt;/p&gt;</description></item><item><title>AI/ML 트렌드: 거부는 경계가 아니다 — 에이전트의 진짜 문제는 노출 표면이다</title><link>https://kwbaek.github.io/posts/2026-08-22-ai-ml-trends-refusal-is-not-a-boundary/</link><pubDate>Sat, 22 Aug 2026 21:00:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-08-22-ai-ml-trends-refusal-is-not-a-boundary/</guid><description>&lt;p&gt;오늘 하루 올라온 자료 중 세 편의 논문과 한 건의 클라우드 아키텍처 문서가 묘하게 같은 자리를 가리켰습니다. 우리는 지금까지 에이전트의 안전성을 &lt;strong&gt;모델이 나쁜 요청을 거부하는가&lt;/strong&gt;로 재왔습니다. 그런데 이 자료들은 전부 이렇게 말합니다. 거부는 잘 작동합니다. 그런데도 정보는 나갑니다. 문제는 판단이 아니라 &lt;strong&gt;표면&lt;/strong&gt;입니다.&lt;/p&gt;
+&lt;h2 id="근거-1--거부한-모델의-평범한-답변에서-비밀이-복원된다"&gt;근거 1 — 거부한 모델의 평범한 답변에서 비밀이 복원된다&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://arxiv.org/abs/2608.19857"&gt;Inadvertent Context Leakage in Language Models&lt;/a&gt;(arXiv 2608.19857, 2026년 8월 20일 제출)는 아주 단순한 질문에서 출발합니다. 캘린더, 자격증명, 건강기록, 금융 데이터 같은 민감 정보가 &lt;strong&gt;컨텍스트 창에 그냥 들어 있기만 해도&lt;/strong&gt; 모델의 멀쩡한 출력에 상관관계가 남는가?&lt;/p&gt;</description></item></channel></rss>
