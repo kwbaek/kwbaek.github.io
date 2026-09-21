@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Hermes/리오 운영가이드: AI 에이전트 보안 검증 워크플로우 구축하기 | Kyungwook&#39;s Devlog</title>
+<meta name="keywords" content="에이전트운영, 보안검증, 모니터링, 위협탐지, 워크플로우, AutomationOps">
+<meta name="description" content="프론티어 모델 기반 에이전트가 프로덕션에 들어가는 순간, 보안 검증은 배포 후 체크리스트가 아니라 실시간 운영 인프라가 되어야 합니다.
+지난주 Anthropic의 위협 보고서와 OpenAI의 보안 사고를 보면, 보안 팀은 이제 다음 질문을 매일 묻고 있습니다:
+&ldquo;오늘 우리 에이전트가 악의적으로 악용되었는가? 어떻게 감지할 것인가?&rdquo;
+Hermes/리오를 통해 이 질문에 매분 답할 수 있는 자동화 워크플로우를 구축해봅시다.
+
+🛠 제1원칙: 에이전트 보안 검증의 세 계층
+레이어 1: 진입점 보안 (API Key Level)
+# 1. API 키 접근 권한 세분화
+api_keys:
+  production_agent:
+    - scope: &#34;chat.completions only&#34;
+    - models: [&#34;claude-opus-5&#34;]  # 특정 모델만 허용
+    - rate_limit: 100/min  # 낮은 임계값
+    - ip_whitelist: [&#34;10.0.0.0/8&#34;]  # 내부망만
+    
+  data_extraction_agent:
+    - scope: &#34;embeddings only&#34;  # 특정 기능만 허용
+    - rate_limit: 10/min  # 매우 낮음
+    - alert_on_spike: true
+체크리스트:">
+<meta name="author" content="map[email: name:Kyungwook Baek]">
+<link rel="canonical" href="https://kwbaek.github.io/posts/2026-09-15-hermes-agent-security-verification/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.199042e659bc7245f5609d333d6c044eb554a0640849bb874e1dff8eb0f57209.css" integrity="sha256-GZBC5lm8ckX1YJ0zPWwETrVUoGQISbuHTh3/jrD1cgk=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://kwbaek.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://kwbaek.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://kwbaek.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://kwbaek.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://kwbaek.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://kwbaek.github.io/posts/2026-09-15-hermes-agent-security-verification/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="https://kwbaek.github.io/posts/2026-09-15-hermes-agent-security-verification/">
+  <meta property="og:site_name" content="Kyungwook&#39;s Devlog">
+  <meta property="og:title" content="Hermes/리오 운영가이드: AI 에이전트 보안 검증 워크플로우 구축하기">
+  <meta property="og:description" content="프론티어 모델 기반 에이전트가 프로덕션에 들어가는 순간, 보안 검증은 배포 후 체크리스트가 아니라 실시간 운영 인프라가 되어야 합니다.
+지난주 Anthropic의 위협 보고서와 OpenAI의 보안 사고를 보면, 보안 팀은 이제 다음 질문을 매일 묻고 있습니다:
+“오늘 우리 에이전트가 악의적으로 악용되었는가? 어떻게 감지할 것인가?”
+Hermes/리오를 통해 이 질문에 매분 답할 수 있는 자동화 워크플로우를 구축해봅시다.
+🛠 제1원칙: 에이전트 보안 검증의 세 계층 레이어 1: 진입점 보안 (API Key Level) # 1. API 키 접근 권한 세분화 api_keys: production_agent: - scope: &#34;chat.completions only&#34; - models: [&#34;claude-opus-5&#34;] # 특정 모델만 허용 - rate_limit: 100/min # 낮은 임계값 - ip_whitelist: [&#34;10.0.0.0/8&#34;] # 내부망만 data_extraction_agent: - scope: &#34;embeddings only&#34; # 특정 기능만 허용 - rate_limit: 10/min # 매우 낮음 - alert_on_spike: true 체크리스트:">
+  <meta property="og:locale" content="ko-kr">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2026-09-15T21:30:00+09:00">
+    <meta property="article:modified_time" content="2026-09-15T21:30:00+09:00">
+    <meta property="article:tag" content="에이전트운영">
+    <meta property="article:tag" content="보안검증">
+    <meta property="article:tag" content="모니터링">
+    <meta property="article:tag" content="위협탐지">
+    <meta property="article:tag" content="워크플로우">
+    <meta property="article:tag" content="AutomationOps">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hermes/리오 운영가이드: AI 에이전트 보안 검증 워크플로우 구축하기">
+<meta name="twitter:description" content="프론티어 모델 기반 에이전트가 프로덕션에 들어가는 순간, 보안 검증은 배포 후 체크리스트가 아니라 실시간 운영 인프라가 되어야 합니다.
+지난주 Anthropic의 위협 보고서와 OpenAI의 보안 사고를 보면, 보안 팀은 이제 다음 질문을 매일 묻고 있습니다:
+&ldquo;오늘 우리 에이전트가 악의적으로 악용되었는가? 어떻게 감지할 것인가?&rdquo;
+Hermes/리오를 통해 이 질문에 매분 답할 수 있는 자동화 워크플로우를 구축해봅시다.
+
+🛠 제1원칙: 에이전트 보안 검증의 세 계층
+레이어 1: 진입점 보안 (API Key Level)
+# 1. API 키 접근 권한 세분화
+api_keys:
+  production_agent:
+    - scope: &#34;chat.completions only&#34;
+    - models: [&#34;claude-opus-5&#34;]  # 특정 모델만 허용
+    - rate_limit: 100/min  # 낮은 임계값
+    - ip_whitelist: [&#34;10.0.0.0/8&#34;]  # 내부망만
+    
+  data_extraction_agent:
+    - scope: &#34;embeddings only&#34;  # 특정 기능만 허용
+    - rate_limit: 10/min  # 매우 낮음
+    - alert_on_spike: true
+체크리스트:">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://kwbaek.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Hermes/리오 운영가이드: AI 에이전트 보안 검증 워크플로우 구축하기",
+      "item": "https://kwbaek.github.io/posts/2026-09-15-hermes-agent-security-verification/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Hermes/리오 운영가이드: AI 에이전트 보안 검증 워크플로우 구축하기",
+  "name": "Hermes\/리오 운영가이드: AI 에이전트 보안 검증 워크플로우 구축하기",
+  "description": "프론티어 모델 기반 에이전트가 프로덕션에 들어가는 순간, 보안 검증은 배포 후 체크리스트가 아니라 실시간 운영 인프라가 되어야 합니다.\n지난주 Anthropic의 위협 보고서와 OpenAI의 보안 사고를 보면, 보안 팀은 이제 다음 질문을 매일 묻고 있습니다:\n\u0026ldquo;오늘 우리 에이전트가 악의적으로 악용되었는가? 어떻게 감지할 것인가?\u0026rdquo;\nHermes/리오를 통해 이 질문에 매분 답할 수 있는 자동화 워크플로우를 구축해봅시다.\n🛠 제1원칙: 에이전트 보안 검증의 세 계층 레이어 1: 진입점 보안 (API Key Level) # 1. API 키 접근 권한 세분화 api_keys: production_agent: - scope: \u0026#34;chat.completions only\u0026#34; - models: [\u0026#34;claude-opus-5\u0026#34;] # 특정 모델만 허용 - rate_limit: 100/min # 낮은 임계값 - ip_whitelist: [\u0026#34;10.0.0.0/8\u0026#34;] # 내부망만 data_extraction_agent: - scope: \u0026#34;embeddings only\u0026#34; # 특정 기능만 허용 - rate_limit: 10/min # 매우 낮음 - alert_on_spike: true 체크리스트:\n",
+  "keywords": [
+    "에이전트운영", "보안검증", "모니터링", "위협탐지", "워크플로우", "AutomationOps"
+  ],
+  "articleBody": "프론티어 모델 기반 에이전트가 프로덕션에 들어가는 순간, 보안 검증은 배포 후 체크리스트가 아니라 실시간 운영 인프라가 되어야 합니다.\n지난주 Anthropic의 위협 보고서와 OpenAI의 보안 사고를 보면, 보안 팀은 이제 다음 질문을 매일 묻고 있습니다:\n“오늘 우리 에이전트가 악의적으로 악용되었는가? 어떻게 감지할 것인가?”\nHermes/리오를 통해 이 질문에 매분 답할 수 있는 자동화 워크플로우를 구축해봅시다.\n🛠 제1원칙: 에이전트 보안 검증의 세 계층 레이어 1: 진입점 보안 (API Key Level) # 1. API 키 접근 권한 세분화 api_keys: production_agent: - scope: \"chat.completions only\" - models: [\"claude-opus-5\"] # 특정 모델만 허용 - rate_limit: 100/min # 낮은 임계값 - ip_whitelist: [\"10.0.0.0/8\"] # 내부망만 data_extraction_agent: - scope: \"embeddings only\" # 특정 기능만 허용 - rate_limit: 10/min # 매우 낮음 - alert_on_spike: true 체크리스트:\n각 에이전트마다 별도의 API 키를 발급했는가? 각 키의 권한이 최소인가? (full access ❌ → specific model + endpoint ✅) 키가 코드/노트북에 하드코딩되지 않았는가? (환경변수 또는 시크릿 스토어만) 월간 키 로테이션 스케줄을 실행 중인가? 레이어 2: 쿼리 내용 모니터링 (Intent Level) 기존 API 로그:\n{ \"timestamp\": \"2026-09-15T21:00:00Z\", \"model\": \"claude-opus-5\", \"tokens\": 2450, \"status\": \"success\" // \"의도\"는 없음 } 필요한 추가 신호:\n# Hermes/리오 에이전트가 매 호출마다 수행할 검증 def check_query_intent(prompt_text): \"\"\" 호출 내용을 분석해 \"정상 업무\"인지 \"악의적 목적\"인지 평가 \"\"\" danger_patterns = { \"무기_코드\": [\"drone control\", \"missile guidance\", \"weapon system\"], \"데이터_유출\": [\"export all\", \"copy database\", \"extract sensitive\"], \"감시_시스템\": [\"mass surveillance\", \"monitoring system\", \"tracking\"], \"역공학\": [\"how does claude work\", \"internal mechanism\", \"model behavior\"], \"사기\": [\"social engineering\", \"phishing script\", \"identity spoofing\"], } risk_score = 0 detected_patterns = [] for category, patterns in danger_patterns.items(): for pattern in patterns: if pattern.lower() in prompt_text.lower(): risk_score += 25 detected_patterns.append(category) return { \"risk_score\": risk_score, # 0-100 \"categories\": detected_patterns, \"action\": \"ALLOW\" if risk_score \u003c 30 else \"ALERT_SECURITY\", \"timestamp\": datetime.now() } Hermes/리오 크론으로 구현:\n# 매 에이전트 호출마다 (실시간 인라인) 또는 # 매 5분마다 (배치 검증) # 다음을 실행: 1. API 로그에서 최근 호출들 읽기 2. 각 호출의 프롬프트 내용 분석 (gemini_enterprise_assist로 의도 분류) 3. 위험 점수 \u003e= 50이면 → 보안팀에 Slack 알림 4. 월간 \"쿼리 의도 분포\" 리포트 생성 체크리스트:\n에이전트가 로그에 프롬프트 내용을 기록하고 있는가? 위험 패턴을 감지하는 분류기 또는 LLM 검증이 있는가? 의심 호출에 대해 자동 알림이 설정되어 있는가? 월간 **“쿼리 의도 리포트”**를 생성 중인가? 레이어 3: 행동 패턴 모니터링 (Behavioral Anomaly) 정상 에이전트 vs 악용된 에이전트의 패턴 차이:\n메트릭 정상 업무 악의적 악용 호출 빈도 시간당 10-50회 (예측 가능) 시간당 500+ (비정상 스파이크) 쿼리 길이 200-1000 토큰 (일정) 10-50 토큰 (짧은 반복) 시간대 업무 시간 (09:00-18:00) 야간/주말 반복 (외부 악용 신호) 토큰/응답 비율 균형잡힌 분포 특정 패턴 반복 (데이터 추출 시뮬레이션) Hermes/리오 구현 예:\n# 매일 06:00 KST 크론으로 실행 def check_behavior_anomaly(): \"\"\" 어제 24시간의 에이전트 호출 패턴을 분석 \"\"\" yesterday_logs = read_api_logs(hours=24) # 베이스라인: 지난 30일 평균 baseline = { \"calls_per_hour\": 25, \"avg_tokens\": 450, \"peak_hour\": 14, # 오후 2시 } actual = { \"calls_per_hour\": yesterday_logs.avg_calls_per_hour, \"avg_tokens\": yesterday_logs.avg_tokens, \"peak_hour\": yesterday_logs.peak_hour, \"unusual_times\": [h for h in yesterday_logs.hours if h \u003e 22 or h \u003c 6], } anomaly_score = 0 if actual[\"calls_per_hour\"] \u003e baseline[\"calls_per_hour\"] * 2: anomaly_score += 30 # 호출 급증 if len(actual[\"unusual_times\"]) \u003e 5: anomaly_score += 25 # 야간 호출 비정상 증가 if actual[\"avg_tokens\"] \u003c baseline[\"avg_tokens\"] * 0.5: anomaly_score += 20 # 비정상적 짧은 쿼리 if anomaly_score \u003e= 50: send_alert_to_security( title=\"Agent Behavioral Anomaly Detected\", details=f\"Anomaly Score: {anomaly_score}/100\", logs=yesterday_logs ) return { \"date\": datetime.now(), \"baseline\": baseline, \"actual\": actual, \"anomaly_score\": anomaly_score, \"status\": \"NORMAL\" if anomaly_score \u003c 50 else \"ALERT\" } 체크리스트:\n에이전트 호출의 시계열 데이터를 보관 중인가? (최소 30일) 베이스라인 (정상 호출 패턴)이 정의되어 있는가? 비정상 패턴을 감지하는 자동 알림이 있는가? 주간/월간 이상 탐지 리포트를 생성하고 있는가? 📋 운영 체크리스트: 매주 실행 # AI 에이전트 보안 검증 — 매주 체크리스트 (금요일 16:00 KST) ## 레이어 1: 진입점 (API Key) - [ ] 지난주 새 에이전트 배포가 있었는가? → 별도 키 발급 확인 - [ ] 만료된 키가 활성 상태인가? → 즉시 비활성화 - [ ] IP 화이트리스트가 초기화되지 않았는가? (점진적 확대 확인) ## 레이어 2: 의도 (Query Content) - [ ] 지난주 \"위험 패턴\" 감지 건수: __건 - 위험 범주별 분포: 무기(__)건, 데이터유출(__)건, 감시(__)건, 역공학(__)건 - [ ] 거짓 양성(오탐)이 있었는가? → 분류기 재조정 - [ ] 보안팀이 감지된 의심 호출을 수조사했는가? ## 레이어 3: 행동 (Behavioral) - [ ] 월간 이상 탐지 리포트: 비정상 패턴 __건 - 호출 스파이크: __건 (어느 에이전트? 어느 시간대?) - 야간 비정상 호출: __건 - 짧은 쿼리 반복: __건 - [ ] 각 이상에 대해 근본 원인 분석(RCA) 완료? (정상 업데이트 vs 악용) ## 월간 요약 (매월 말 금요일) - 총 호출 수: __ 건 (전월 대비 %) - 의도 기반 위험 호출: __ 건 (%) - 행동 이상 탐지: __ 건 (%) - CISO 보고 내용: - 보안 성숙도 점수: __ / 100 - 주요 개선 사항: ___ - 다음월 액션: ___ 🚀 Hermes/리오로 구현하기 1단계: 데이터 수집 (매시간 크론) # cron: hourly job_id: agent-security-log-collect script: | curl https://api.anthropic.com/v1/usage \\ -H \"Authorization: Bearer $CLAUDE_API_KEY\" \\ \u003e /workspace/logs/agent-usage-$(date +%Y%m%d-%H%M%S).json # 로컬 캐시에 최근 1000개 호출 추가 jq '.data[] | {timestamp, tokens, model, status}' \\ \u003e\u003e /workspace/cache/agent-calls-24h.jsonl 2단계: 의도 분석 (매 5분 크론) # cron: 5min job_id: agent-intent-check provider: gemini_enterprise script: | # 최근 호출의 프롬프트를 읽고 의도 분류 for log in $(tail -10 /workspace/cache/agent-calls-24h.jsonl); do intent=$( gemini_enterprise_assist \\ query=\"Classify the intent: ${log.prompt}\" \\ web_grounding: false ) if [ \"$intent.risk_score\" -gt 50 ]; then send_slack_alert \"Security Alert: High-risk query detected\" fi done 3단계: 월간 리포트 (매월 초 크론) # cron: monthly (1st, 00:00 KST) job_id: agent-monthly-security-report output: /workspace/reports/agent-security-$(date +%Y%m).md 📊 성공 신호 이 워크플로우가 제대로 작동하면:\n✅ 위협 행위자가 회사 API를 악용하는 순간, 30분 내 보안팀이 알림을 받음\n✅ 월간 리포트에서 **“의도별 쿼리 분포”**를 정량화\n✅ CISO가 **“우리 에이전트의 보안 성숙도”**를 정확히 점수화\n✅ 규제 감시(FedRAMP, SOC2) 시 “실시간 모니터링 증거” 제시 가능\n참고 자료 Anthropic API Security Guidelines NIST AI Risk Management Framework — Appendix F: API Controls Hermes/리오 크론 운영 가이드 ",
+  "wordCount" : "946",
+  "inLanguage": "en",
+  "datePublished": "2026-09-15T21:30:00+09:00",
+  "dateModified": "2026-09-15T21:30:00+09:00",
+  "author":{
+    "@type": "Person",
+    "name": {"email":"","name":"Kyungwook Baek"}
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://kwbaek.github.io/posts/2026-09-15-hermes-agent-security-verification/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Kyungwook's Devlog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://kwbaek.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://kwbaek.github.io/" accesskey="h" title="Kyungwook&#39;s Devlog (Alt + H)">Kyungwook&#39;s Devlog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://kwbaek.github.io/categories/" title="categories">
+                    <span>categories</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kwbaek.github.io/tags/" title="tags">
+                    <span>tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kwbaek.github.io/" title="Kyungwook&#39;s Devlog">
+                    <span>Kyungwook&#39;s Devlog</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      Hermes/리오 운영가이드: AI 에이전트 보안 검증 워크플로우 구축하기
+    </h1>
+    <div class="post-meta"><span title='2026-09-15 21:30:00 +0900 KST'>2026년 9월 15일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span>
+
+</div>
+  </header> 
+  <div class="post-content"><p><strong>프론티어 모델 기반 에이전트가 프로덕션에 들어가는 순간, 보안 검증은 배포 후 체크리스트가 아니라 실시간 운영 인프라가 되어야 합니다.</strong></p>
+<p>지난주 Anthropic의 위협 보고서와 OpenAI의 보안 사고를 보면, 보안 팀은 이제 다음 질문을 매일 묻고 있습니다:</p>
+<p><strong>&ldquo;오늘 우리 에이전트가 악의적으로 악용되었는가? 어떻게 감지할 것인가?&rdquo;</strong></p>
+<p>Hermes/리오를 통해 <strong>이 질문에 매분 답할 수 있는 자동화 워크플로우</strong>를 구축해봅시다.</p>
+<hr>
+<h2 id="-제1원칙-에이전트-보안-검증의-세-계층">🛠 제1원칙: 에이전트 보안 검증의 세 계층<a hidden class="anchor" aria-hidden="true" href="#-제1원칙-에이전트-보안-검증의-세-계층">#</a></h2>
+<h3 id="레이어-1-진입점-보안-api-key-level">레이어 1: 진입점 보안 (API Key Level)<a hidden class="anchor" aria-hidden="true" href="#레이어-1-진입점-보안-api-key-level">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#75715e"># 1. API 키 접근 권한 세분화</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">api_keys</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">production_agent</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">scope</span>: <span style="color:#e6db74">&#34;chat.completions only&#34;</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">models</span>: [<span style="color:#e6db74">&#34;claude-opus-5&#34;</span>]  <span style="color:#75715e"># 특정 모델만 허용</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">rate_limit</span>: <span style="color:#ae81ff">100</span><span style="color:#ae81ff">/min </span> <span style="color:#75715e"># 낮은 임계값</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">ip_whitelist</span>: [<span style="color:#e6db74">&#34;10.0.0.0/8&#34;</span>]  <span style="color:#75715e"># 내부망만</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">data_extraction_agent</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">scope</span>: <span style="color:#e6db74">&#34;embeddings only&#34;</span>  <span style="color:#75715e"># 특정 기능만 허용</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">rate_limit</span>: <span style="color:#ae81ff">10</span><span style="color:#ae81ff">/min </span> <span style="color:#75715e"># 매우 낮음</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">alert_on_spike</span>: <span style="color:#66d9ef">true</span>
+</span></span></code></pre></div><p><strong>체크리스트:</strong></p>
+<ul>
+<li><input disabled="" type="checkbox"> 각 에이전트마다 <strong>별도의 API 키</strong>를 발급했는가?</li>
+<li><input disabled="" type="checkbox"> 각 키의 <strong>권한이 최소</strong>인가? (full access ❌ → specific model + endpoint ✅)</li>
+<li><input disabled="" type="checkbox"> 키가 코드/노트북에 하드코딩되지 않았는가? (환경변수 또는 시크릿 스토어만)</li>
+<li><input disabled="" type="checkbox"> 월간 키 로테이션 스케줄을 실행 중인가?</li>
+</ul>
+<hr>
+<h3 id="레이어-2-쿼리-내용-모니터링-intent-level">레이어 2: 쿼리 내용 모니터링 (Intent Level)<a hidden class="anchor" aria-hidden="true" href="#레이어-2-쿼리-내용-모니터링-intent-level">#</a></h3>
+<p>기존 API 로그:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;timestamp&#34;</span>: <span style="color:#e6db74">&#34;2026-09-15T21:00:00Z&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;model&#34;</span>: <span style="color:#e6db74">&#34;claude-opus-5&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;tokens&#34;</span>: <span style="color:#ae81ff">2450</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;status&#34;</span>: <span style="color:#e6db74">&#34;success&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// &#34;의도&#34;는 없음
+</span></span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p><strong>필요한 추가 신호:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Hermes/리오 에이전트가 매 호출마다 수행할 검증</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">check_query_intent</span>(prompt_text):
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    호출 내용을 분석해 &#34;정상 업무&#34;인지 &#34;악의적 목적&#34;인지 평가
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    danger_patterns <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;무기_코드&#34;</span>: [<span style="color:#e6db74">&#34;drone control&#34;</span>, <span style="color:#e6db74">&#34;missile guidance&#34;</span>, <span style="color:#e6db74">&#34;weapon system&#34;</span>],
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;데이터_유출&#34;</span>: [<span style="color:#e6db74">&#34;export all&#34;</span>, <span style="color:#e6db74">&#34;copy database&#34;</span>, <span style="color:#e6db74">&#34;extract sensitive&#34;</span>],
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;감시_시스템&#34;</span>: [<span style="color:#e6db74">&#34;mass surveillance&#34;</span>, <span style="color:#e6db74">&#34;monitoring system&#34;</span>, <span style="color:#e6db74">&#34;tracking&#34;</span>],
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;역공학&#34;</span>: [<span style="color:#e6db74">&#34;how does claude work&#34;</span>, <span style="color:#e6db74">&#34;internal mechanism&#34;</span>, <span style="color:#e6db74">&#34;model behavior&#34;</span>],
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;사기&#34;</span>: [<span style="color:#e6db74">&#34;social engineering&#34;</span>, <span style="color:#e6db74">&#34;phishing script&#34;</span>, <span style="color:#e6db74">&#34;identity spoofing&#34;</span>],
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    risk_score <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>    detected_patterns <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> category, patterns <span style="color:#f92672">in</span> danger_patterns<span style="color:#f92672">.</span>items():
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> pattern <span style="color:#f92672">in</span> patterns:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> pattern<span style="color:#f92672">.</span>lower() <span style="color:#f92672">in</span> prompt_text<span style="color:#f92672">.</span>lower():
+</span></span><span style="display:flex;"><span>                risk_score <span style="color:#f92672">+=</span> <span style="color:#ae81ff">25</span>
+</span></span><span style="display:flex;"><span>                detected_patterns<span style="color:#f92672">.</span>append(category)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;risk_score&#34;</span>: risk_score,  <span style="color:#75715e"># 0-100</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;categories&#34;</span>: detected_patterns,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;action&#34;</span>: <span style="color:#e6db74">&#34;ALLOW&#34;</span> <span style="color:#66d9ef">if</span> risk_score <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">30</span> <span style="color:#66d9ef">else</span> <span style="color:#e6db74">&#34;ALERT_SECURITY&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;timestamp&#34;</span>: datetime<span style="color:#f92672">.</span>now()
+</span></span><span style="display:flex;"><span>    }
+</span></span></code></pre></div><p><strong>Hermes/리오 크론으로 구현:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 매 에이전트 호출마다 (실시간 인라인) 또는</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 매 5분마다 (배치 검증)</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 다음을 실행:</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>1. API 로그에서 최근 호출들 읽기
+</span></span><span style="display:flex;"><span>2. 각 호출의 프롬프트 내용 분석 <span style="color:#f92672">(</span>gemini_enterprise_assist로 의도 분류<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>3. 위험 점수 &gt;<span style="color:#f92672">=</span> 50이면 → 보안팀에 Slack 알림
+</span></span><span style="display:flex;"><span>4. 월간 <span style="color:#e6db74">&#34;쿼리 의도 분포&#34;</span> 리포트 생성
+</span></span></code></pre></div><p><strong>체크리스트:</strong></p>
+<ul>
+<li><input disabled="" type="checkbox"> 에이전트가 <strong>로그에 프롬프트 내용을 기록</strong>하고 있는가?</li>
+<li><input disabled="" type="checkbox"> 위험 패턴을 감지하는 <strong>분류기 또는 LLM 검증</strong>이 있는가?</li>
+<li><input disabled="" type="checkbox"> 의심 호출에 대해 <strong>자동 알림</strong>이 설정되어 있는가?</li>
+<li><input disabled="" type="checkbox"> 월간 **&ldquo;쿼리 의도 리포트&rdquo;**를 생성 중인가?</li>
+</ul>
+<hr>
+<h3 id="레이어-3-행동-패턴-모니터링-behavioral-anomaly">레이어 3: 행동 패턴 모니터링 (Behavioral Anomaly)<a hidden class="anchor" aria-hidden="true" href="#레이어-3-행동-패턴-모니터링-behavioral-anomaly">#</a></h3>
+<p>정상 에이전트 vs 악용된 에이전트의 패턴 차이:</p>
+<table>
+	<thead>
+			<tr>
+					<th>메트릭</th>
+					<th>정상 업무</th>
+					<th>악의적 악용</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><strong>호출 빈도</strong></td>
+					<td>시간당 10-50회 (예측 가능)</td>
+					<td>시간당 500+ (비정상 스파이크)</td>
+			</tr>
+			<tr>
+					<td><strong>쿼리 길이</strong></td>
+					<td>200-1000 토큰 (일정)</td>
+					<td>10-50 토큰 (짧은 반복)</td>
+			</tr>
+			<tr>
+					<td><strong>시간대</strong></td>
+					<td>업무 시간 (09:00-18:00)</td>
+					<td>야간/주말 반복 (외부 악용 신호)</td>
+			</tr>
+			<tr>
+					<td><strong>토큰/응답 비율</strong></td>
+					<td>균형잡힌 분포</td>
+					<td>특정 패턴 반복 (데이터 추출 시뮬레이션)</td>
+			</tr>
+	</tbody>
+</table>
+<p><strong>Hermes/리오 구현 예:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># 매일 06:00 KST 크론으로 실행</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">check_behavior_anomaly</span>():
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    어제 24시간의 에이전트 호출 패턴을 분석
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    yesterday_logs <span style="color:#f92672">=</span> read_api_logs(hours<span style="color:#f92672">=</span><span style="color:#ae81ff">24</span>)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 베이스라인: 지난 30일 평균</span>
+</span></span><span style="display:flex;"><span>    baseline <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;calls_per_hour&#34;</span>: <span style="color:#ae81ff">25</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;avg_tokens&#34;</span>: <span style="color:#ae81ff">450</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;peak_hour&#34;</span>: <span style="color:#ae81ff">14</span>,  <span style="color:#75715e"># 오후 2시</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    actual <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;calls_per_hour&#34;</span>: yesterday_logs<span style="color:#f92672">.</span>avg_calls_per_hour,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;avg_tokens&#34;</span>: yesterday_logs<span style="color:#f92672">.</span>avg_tokens,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;peak_hour&#34;</span>: yesterday_logs<span style="color:#f92672">.</span>peak_hour,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;unusual_times&#34;</span>: [h <span style="color:#66d9ef">for</span> h <span style="color:#f92672">in</span> yesterday_logs<span style="color:#f92672">.</span>hours <span style="color:#66d9ef">if</span> h <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">22</span> <span style="color:#f92672">or</span> h <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">6</span>],
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    anomaly_score <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> actual[<span style="color:#e6db74">&#34;calls_per_hour&#34;</span>] <span style="color:#f92672">&gt;</span> baseline[<span style="color:#e6db74">&#34;calls_per_hour&#34;</span>] <span style="color:#f92672">*</span> <span style="color:#ae81ff">2</span>:
+</span></span><span style="display:flex;"><span>        anomaly_score <span style="color:#f92672">+=</span> <span style="color:#ae81ff">30</span>  <span style="color:#75715e"># 호출 급증</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> len(actual[<span style="color:#e6db74">&#34;unusual_times&#34;</span>]) <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">5</span>:
+</span></span><span style="display:flex;"><span>        anomaly_score <span style="color:#f92672">+=</span> <span style="color:#ae81ff">25</span>  <span style="color:#75715e"># 야간 호출 비정상 증가</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> actual[<span style="color:#e6db74">&#34;avg_tokens&#34;</span>] <span style="color:#f92672">&lt;</span> baseline[<span style="color:#e6db74">&#34;avg_tokens&#34;</span>] <span style="color:#f92672">*</span> <span style="color:#ae81ff">0.5</span>:
+</span></span><span style="display:flex;"><span>        anomaly_score <span style="color:#f92672">+=</span> <span style="color:#ae81ff">20</span>  <span style="color:#75715e"># 비정상적 짧은 쿼리</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> anomaly_score <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">50</span>:
+</span></span><span style="display:flex;"><span>        send_alert_to_security(
+</span></span><span style="display:flex;"><span>            title<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Agent Behavioral Anomaly Detected&#34;</span>,
+</span></span><span style="display:flex;"><span>            details<span style="color:#f92672">=</span><span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Anomaly Score: </span><span style="color:#e6db74">{</span>anomaly_score<span style="color:#e6db74">}</span><span style="color:#e6db74">/100&#34;</span>,
+</span></span><span style="display:flex;"><span>            logs<span style="color:#f92672">=</span>yesterday_logs
+</span></span><span style="display:flex;"><span>        )
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;date&#34;</span>: datetime<span style="color:#f92672">.</span>now(),
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;baseline&#34;</span>: baseline,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;actual&#34;</span>: actual,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;anomaly_score&#34;</span>: anomaly_score,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;status&#34;</span>: <span style="color:#e6db74">&#34;NORMAL&#34;</span> <span style="color:#66d9ef">if</span> anomaly_score <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">50</span> <span style="color:#66d9ef">else</span> <span style="color:#e6db74">&#34;ALERT&#34;</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span></code></pre></div><p><strong>체크리스트:</strong></p>
+<ul>
+<li><input disabled="" type="checkbox"> 에이전트 호출의 <strong>시계열 데이터</strong>를 보관 중인가? (최소 30일)</li>
+<li><input disabled="" type="checkbox"> <strong>베이스라인</strong> (정상 호출 패턴)이 정의되어 있는가?</li>
+<li><input disabled="" type="checkbox"> <strong>비정상 패턴</strong>을 감지하는 자동 알림이 있는가?</li>
+<li><input disabled="" type="checkbox"> <strong>주간/월간 이상 탐지 리포트</strong>를 생성하고 있는가?</li>
+</ul>
+<hr>
+<h2 id="-운영-체크리스트-매주-실행">📋 운영 체크리스트: 매주 실행<a hidden class="anchor" aria-hidden="true" href="#-운영-체크리스트-매주-실행">#</a></h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span># AI 에이전트 보안 검증 — 매주 체크리스트 (금요일 16:00 KST)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## 레이어 1: 진입점 (API Key)
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">- [ ]</span> 지난주 새 에이전트 배포가 있었는가? → 별도 키 발급 확인
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">- [ ]</span> 만료된 키가 활성 상태인가? → 즉시 비활성화
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">- [ ]</span> IP 화이트리스트가 초기화되지 않았는가? (점진적 확대 확인)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## 레이어 2: 의도 (Query Content)
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">- [ ]</span> 지난주 &#34;위험 패턴&#34; 감지 건수: __건
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">-</span> 위험 범주별 분포: 무기(__)건, 데이터유출(__)건, 감시(__)건, 역공학(__)건
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">- [ ]</span> 거짓 양성(오탐)이 있었는가? → 분류기 재조정
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">- [ ]</span> 보안팀이 감지된 의심 호출을 수조사했는가?
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## 레이어 3: 행동 (Behavioral)
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">- [ ]</span> 월간 이상 탐지 리포트: 비정상 패턴 __건
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">-</span> 호출 스파이크: __건 (어느 에이전트? 어느 시간대?)
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">-</span> 야간 비정상 호출: __건
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">-</span> 짧은 쿼리 반복: __건
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">- [ ]</span> 각 이상에 대해 근본 원인 분석(RCA) 완료? (정상 업데이트 vs 악용)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## 월간 요약 (매월 말 금요일)
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 총 호출 수: <span style="font-style:italic">__</span> 건 (전월 대비 %)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 의도 기반 위험 호출: <span style="font-style:italic">__</span> 건 (%)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 행동 이상 탐지: <span style="font-style:italic">__</span> 건 (%)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> CISO 보고 내용:
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">-</span> 보안 성숙도 점수: <span style="font-style:italic">__</span> / 100
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">-</span> 주요 개선 사항: ___
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">-</span> 다음월 액션: ___
+</span></span></code></pre></div><hr>
+<h2 id="-hermes리오로-구현하기">🚀 Hermes/리오로 구현하기<a hidden class="anchor" aria-hidden="true" href="#-hermes리오로-구현하기">#</a></h2>
+<h3 id="1단계-데이터-수집-매시간-크론">1단계: 데이터 수집 (매시간 크론)<a hidden class="anchor" aria-hidden="true" href="#1단계-데이터-수집-매시간-크론">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># cron: hourly</span>
+</span></span><span style="display:flex;"><span>job_id: agent-security-log-collect
+</span></span><span style="display:flex;"><span>script: |
+</span></span><span style="display:flex;"><span>  curl https://api.anthropic.com/v1/usage <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>    -H <span style="color:#e6db74">&#34;Authorization: Bearer </span>$CLAUDE_API_KEY<span style="color:#e6db74">&#34;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>    &gt; /workspace/logs/agent-usage-<span style="color:#66d9ef">$(</span>date +%Y%m%d-%H%M%S<span style="color:#66d9ef">)</span>.json
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># 로컬 캐시에 최근 1000개 호출 추가</span>
+</span></span><span style="display:flex;"><span>  jq <span style="color:#e6db74">&#39;.data[] | {timestamp, tokens, model, status}&#39;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>    &gt;&gt; /workspace/cache/agent-calls-24h.jsonl
+</span></span></code></pre></div><h3 id="2단계-의도-분석-매-5분-크론">2단계: 의도 분석 (매 5분 크론)<a hidden class="anchor" aria-hidden="true" href="#2단계-의도-분석-매-5분-크론">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># cron: 5min</span>
+</span></span><span style="display:flex;"><span>job_id: agent-intent-check
+</span></span><span style="display:flex;"><span>provider: gemini_enterprise
+</span></span><span style="display:flex;"><span>script: |
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># 최근 호출의 프롬프트를 읽고 의도 분류</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">for</span> log in <span style="color:#66d9ef">$(</span>tail -10 /workspace/cache/agent-calls-24h.jsonl<span style="color:#66d9ef">)</span>; <span style="color:#66d9ef">do</span>
+</span></span><span style="display:flex;"><span>    intent<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>
+</span></span><span style="display:flex;"><span>      gemini_enterprise_assist <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>        query<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Classify the intent: </span><span style="color:#e6db74">${</span>log.prompt<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>        web_grounding: false
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">)</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> <span style="color:#e6db74">&#34;</span>$intent<span style="color:#e6db74">.risk_score&#34;</span> -gt <span style="color:#ae81ff">50</span> <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
+</span></span><span style="display:flex;"><span>      send_slack_alert <span style="color:#e6db74">&#34;Security Alert: High-risk query detected&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">fi</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">done</span>
+</span></span></code></pre></div><h3 id="3단계-월간-리포트-매월-초-크론">3단계: 월간 리포트 (매월 초 크론)<a hidden class="anchor" aria-hidden="true" href="#3단계-월간-리포트-매월-초-크론">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># cron: monthly (1st, 00:00 KST)</span>
+</span></span><span style="display:flex;"><span>job_id: agent-monthly-security-report
+</span></span><span style="display:flex;"><span>output: /workspace/reports/agent-security-<span style="color:#66d9ef">$(</span>date +%Y%m<span style="color:#66d9ef">)</span>.md
+</span></span></code></pre></div><hr>
+<h2 id="-성공-신호">📊 성공 신호<a hidden class="anchor" aria-hidden="true" href="#-성공-신호">#</a></h2>
+<p><strong>이 워크플로우가 제대로 작동하면:</strong></p>
+<p>✅ 위협 행위자가 회사 API를 악용하는 순간, <strong>30분 내 보안팀이 알림을 받음</strong><br>
+✅ 월간 리포트에서 **&ldquo;의도별 쿼리 분포&rdquo;**를 정량화<br>
+✅ CISO가 **&ldquo;우리 에이전트의 보안 성숙도&rdquo;**를 정확히 점수화<br>
+✅ 규제 감시(FedRAMP, SOC2) 시 <strong>&ldquo;실시간 모니터링 증거&rdquo;</strong> 제시 가능</p>
+<hr>
+<h2 id="참고-자료">참고 자료<a hidden class="anchor" aria-hidden="true" href="#참고-자료">#</a></h2>
+<ul>
+<li><a href="https://docs.anthropic.com/en/docs/build-a-bot/security">Anthropic API Security Guidelines</a></li>
+<li><a href="https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.600-1.pdf">NIST AI Risk Management Framework — Appendix F: API Controls</a></li>
+<li><a href="../2026-09-11-hermes-cron-blog-automation/">Hermes/리오 크론 운영 가이드</a></li>
+</ul>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://kwbaek.github.io/tags/%EC%97%90%EC%9D%B4%EC%A0%84%ED%8A%B8%EC%9A%B4%EC%98%81/">에이전트운영</a></li>
+      <li><a href="https://kwbaek.github.io/tags/%EB%B3%B4%EC%95%88%EA%B2%80%EC%A6%9D/">보안검증</a></li>
+      <li><a href="https://kwbaek.github.io/tags/%EB%AA%A8%EB%8B%88%ED%84%B0%EB%A7%81/">모니터링</a></li>
+      <li><a href="https://kwbaek.github.io/tags/%EC%9C%84%ED%98%91%ED%83%90%EC%A7%80/">위협탐지</a></li>
+      <li><a href="https://kwbaek.github.io/tags/%EC%9B%8C%ED%81%AC%ED%94%8C%EB%A1%9C%EC%9A%B0/">워크플로우</a></li>
+      <li><a href="https://kwbaek.github.io/tags/automationops/">AutomationOps</a></li>
+    </ul>
+  </footer><script src="https://utteranc.es/client.js"
+        repo="kwbaek/blog-comments"
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://kwbaek.github.io/">Kyungwook&#39;s Devlog</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>
