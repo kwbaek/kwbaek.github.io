@@ -1,29 +1,14 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
-  <channel>
-    <title>API보안 on Kyungwook&#39;s Devlog</title>
-    <link>https://kwbaek.github.io/tags/api%EB%B3%B4%EC%95%88/</link>
-    <description>Recent content in API보안 on Kyungwook&#39;s Devlog</description>
-    <generator>Hugo -- 0.165.0</generator>
-    <language>ko-kr</language>
-    <lastBuildDate>Sun, 13 Sep 2026 21:45:00 +0900</lastBuildDate>
-    <atom:link href="https://kwbaek.github.io/tags/api%EB%B3%B4%EC%95%88/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Hermes/리오 운영가이드: API 악용 추적과 위협 모니터링 체크리스트</title>
-      <link>https://kwbaek.github.io/posts/2026-09-13-hermes-api-security/</link>
-      <pubDate>Sun, 13 Sep 2026 21:45:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/posts/2026-09-13-hermes-api-security/</guid>
-      <description>&lt;p&gt;&lt;strong&gt;Anthropic의 14개 위협 행위자 공시 이후, Hermes/리오 크론 운영에 API 보안이 핵심 항목이 되었습니다.&lt;/strong&gt;&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>API보안 on Kyungwook's Devlog</title><link>https://kwbaek.github.io/tags/api%EB%B3%B4%EC%95%88/</link><description>Recent content in API보안 on Kyungwook's Devlog</description><generator>Hugo -- 0.165.0</generator><language>ko-kr</language><lastBuildDate>Sun, 13 Sep 2026 21:45:00 +0900</lastBuildDate><atom:link href="https://kwbaek.github.io/tags/api%EB%B3%B4%EC%95%88/index.xml" rel="self" type="application/rss+xml"/><item><title>Hermes/리오 운영가이드: API 악용 추적과 위협 모니터링 체크리스트</title><link>https://kwbaek.github.io/posts/2026-09-13-hermes-api-security/</link><pubDate>Sun, 13 Sep 2026 21:45:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-09-13-hermes-api-security/</guid><description>&lt;p&gt;&lt;strong&gt;Anthropic의 14개 위협 행위자 공시 이후, Hermes/리오 크론 운영에 API 보안이 핵심 항목이 되었습니다.&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;혼자서 여러 Claude API 키를 관리하고, 자동 에이전트가 시간마다 이를 호출할 때 — 키 탈취나 악용이 발생해도 감지하기 어렵습니다. 이번 가이드는 Hermes 크론 환경에서 &lt;strong&gt;실행 가능한&lt;/strong&gt; API 보안 체크리스트를 제시합니다.&lt;/p&gt;
 &lt;hr&gt;
-&lt;h2 id=&#34;-상황-hermes에서-claude를-쓸-때-뭐가-리스크인가&#34;&gt;🎯 상황: Hermes에서 Claude를 쓸 때, 뭐가 리스크인가?&lt;/h2&gt;
-&lt;h3 id=&#34;hermes-환경의-구조&#34;&gt;Hermes 환경의 구조&lt;/h3&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;Hermes 크론 (MD Agent, 트렌드 스캐너, 블로그 자동화)
-  ↓
-  여러 Claude API 호출
-  ↓
-  로그 → /memory, /tmp, Discord (가끔)
-&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;현재-추적-불가능한-항목&#34;&gt;현재 추적 불가능한 항목&lt;/h3&gt;
+&lt;h2 id="-상황-hermes에서-claude를-쓸-때-뭐가-리스크인가"&gt;🎯 상황: Hermes에서 Claude를 쓸 때, 뭐가 리스크인가?&lt;/h2&gt;
+&lt;h3 id="hermes-환경의-구조"&gt;Hermes 환경의 구조&lt;/h3&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;Hermes 크론 (MD Agent, 트렌드 스캐너, 블로그 자동화)
+↓
+여러 Claude API 호출
+↓
+로그 → /memory, /tmp, Discord (가끔)
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id="현재-추적-불가능한-항목"&gt;현재 추적 불가능한 항목&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;이 API 키가 정상적으로만 쓰이는가?&lt;/li&gt;
 &lt;li&gt;야간에 비정상 호출이 있었나?&lt;/li&gt;
@@ -31,9 +16,6 @@
 &lt;li&gt;Claude 응답이 실제로 그 크론에서 쓰인 게 맞나?&lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr&gt;
-&lt;h2 id=&#34;-실행-체크리스트-이번-주&#34;&gt;✅ 실행 체크리스트 (이번 주)&lt;/h2&gt;
-&lt;h3 id=&#34;1단계-현황-파악-30분&#34;&gt;1단계: 현황 파악 (30분)&lt;/h3&gt;
-&lt;p&gt;&lt;strong&gt;당신의 Claude API 키 목록&lt;/strong&gt;&lt;/p&gt;</description>
-    </item>
-  </channel>
-</rss>
+&lt;h2 id="-실행-체크리스트-이번-주"&gt;✅ 실행 체크리스트 (이번 주)&lt;/h2&gt;
+&lt;h3 id="1단계-현황-파악-30분"&gt;1단계: 현황 파악 (30분)&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;당신의 Claude API 키 목록&lt;/strong&gt;&lt;/p&gt;</description></item></channel></rss>

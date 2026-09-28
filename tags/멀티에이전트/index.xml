@@ -1,72 +1,33 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
-  <channel>
-    <title>멀티에이전트 on Kyungwook&#39;s Devlog</title>
-    <link>https://kwbaek.github.io/tags/%EB%A9%80%ED%8B%B0%EC%97%90%EC%9D%B4%EC%A0%84%ED%8A%B8/</link>
-    <description>Recent content in 멀티에이전트 on Kyungwook&#39;s Devlog</description>
-    <generator>Hugo -- 0.165.0</generator>
-    <language>ko-kr</language>
-    <lastBuildDate>Tue, 01 Sep 2026 21:11:00 +0900</lastBuildDate>
-    <atom:link href="https://kwbaek.github.io/tags/%EB%A9%80%ED%8B%B0%EC%97%90%EC%9D%B4%EC%A0%84%ED%8A%B8/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Hermes/리오 실전 팁: &#39;팀워크&#39; 패턴으로 읽는 장기 과제 위임(Delegate) 아키텍처 설계</title>
-      <link>https://kwbaek.github.io/posts/2026-09-01-hermes-rio-teamwork-delegation-architecture/</link>
-      <pubDate>Tue, 01 Sep 2026 21:11:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/posts/2026-09-01-hermes-rio-teamwork-delegation-architecture/</guid>
-      <description>&lt;p&gt;오늘 AI/ML 트렌드에서 소개된 **Google Antigravity의 &amp;lsquo;Teamwork&amp;rsquo;**는 여러 에이전트가 서로의 결과물을 비평·재작업하며 수 시간~수일에 걸쳐 학술 난제를 해결한 사례입니다. 단일 모델 호출로는 도달하지 못했던 성과가 &amp;ldquo;협업하는 팀&amp;rdquo; 구조에서 나왔다는 점이, Hermes/리오 환경에서 &lt;code&gt;delegate_task&lt;/code&gt;로 서브에이전트를 운용할 때도 그대로 적용되는 설계 원칙입니다.&lt;/p&gt;
-&lt;h2 id=&#34;1-왜-한-번에-다-시키기는-장기-과제에서-실패하는가&#34;&gt;1. 왜 &amp;ldquo;한 번에 다 시키기&amp;quot;는 장기 과제에서 실패하는가&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>멀티에이전트 on Kyungwook's Devlog</title><link>https://kwbaek.github.io/tags/%EB%A9%80%ED%8B%B0%EC%97%90%EC%9D%B4%EC%A0%84%ED%8A%B8/</link><description>Recent content in 멀티에이전트 on Kyungwook's Devlog</description><generator>Hugo -- 0.165.0</generator><language>ko-kr</language><lastBuildDate>Tue, 01 Sep 2026 21:11:00 +0900</lastBuildDate><atom:link href="https://kwbaek.github.io/tags/%EB%A9%80%ED%8B%B0%EC%97%90%EC%9D%B4%EC%A0%84%ED%8A%B8/index.xml" rel="self" type="application/rss+xml"/><item><title>Hermes/리오 실전 팁: '팀워크' 패턴으로 읽는 장기 과제 위임(Delegate) 아키텍처 설계</title><link>https://kwbaek.github.io/posts/2026-09-01-hermes-rio-teamwork-delegation-architecture/</link><pubDate>Tue, 01 Sep 2026 21:11:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-09-01-hermes-rio-teamwork-delegation-architecture/</guid><description>&lt;p&gt;오늘 AI/ML 트렌드에서 소개된 **Google Antigravity의 &amp;lsquo;Teamwork&amp;rsquo;**는 여러 에이전트가 서로의 결과물을 비평·재작업하며 수 시간~수일에 걸쳐 학술 난제를 해결한 사례입니다. 단일 모델 호출로는 도달하지 못했던 성과가 &amp;ldquo;협업하는 팀&amp;rdquo; 구조에서 나왔다는 점이, Hermes/리오 환경에서 &lt;code&gt;delegate_task&lt;/code&gt;로 서브에이전트를 운용할 때도 그대로 적용되는 설계 원칙입니다.&lt;/p&gt;
+&lt;h2 id="1-왜-한-번에-다-시키기는-장기-과제에서-실패하는가"&gt;1. 왜 &amp;ldquo;한 번에 다 시키기&amp;quot;는 장기 과제에서 실패하는가&lt;/h2&gt;
 &lt;p&gt;Hermes/리오에서 복잡한 리서치·코딩·데이터 정리 작업을 단일 프롬프트로 서브에이전트에 던지면 흔히 이런 문제가 생깁니다.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;컨텍스트가 길어질수록 초반 지시가 희석되어 후반 작업에서 원래 목표를 놓침&lt;/li&gt;
 &lt;li&gt;중간 산출물을 검증하는 단계가 없어 오류가 누적된 채로 끝까지 진행&lt;/li&gt;
 &lt;li&gt;서브에이전트가 막히면 부모가 결과를 받을 때까지 문제를 알 수 없음&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;Antigravity Teamwork의 핵심은 이 문제를 &amp;ldquo;단일 에이전트의 인내심&amp;quot;이 아니라 &lt;strong&gt;역할 분리 + 상호 비평 루프&lt;/strong&gt;로 풀었다는 점입니다.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>AI/ML 트렌드: Google Antigravity &#43; Gemini 3.7 Flash, 멀티에이전트 팀워크가 FOCS·JMLR급 미해결 문제 7건을 풀다</title>
-      <link>https://kwbaek.github.io/posts/2026-09-01-ai-ml-trends-antigravity-teamwork-open-problems/</link>
-      <pubDate>Tue, 01 Sep 2026 21:10:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/posts/2026-09-01-ai-ml-trends-antigravity-teamwork-open-problems/</guid>
-      <description>&lt;p&gt;2026년 9월 첫날 AI/ML 업계에서 가장 눈에 띄는 소식은, 단일 모델의 벤치마크 점수가 아니라 &lt;strong&gt;여러 에이전트가 협업해 수 시간~수일 동안 스스로 문제를 파고드는 &amp;lsquo;팀워크&amp;rsquo; 구조&lt;/strong&gt;가 실제 연구 성과로 이어졌다는 점입니다.&lt;/p&gt;
-&lt;h2 id=&#34;1-google-antigravity-teamwork--에이전트-팀이-학계-미해결-문제를-풀다&#34;&gt;1. Google Antigravity Teamwork — 에이전트 팀이 학계 미해결 문제를 풀다&lt;/h2&gt;
+&lt;p&gt;Antigravity Teamwork의 핵심은 이 문제를 &amp;ldquo;단일 에이전트의 인내심&amp;quot;이 아니라 &lt;strong&gt;역할 분리 + 상호 비평 루프&lt;/strong&gt;로 풀었다는 점입니다.&lt;/p&gt;</description></item><item><title>AI/ML 트렌드: Google Antigravity + Gemini 3.7 Flash, 멀티에이전트 팀워크가 FOCS·JMLR급 미해결 문제 7건을 풀다</title><link>https://kwbaek.github.io/posts/2026-09-01-ai-ml-trends-antigravity-teamwork-open-problems/</link><pubDate>Tue, 01 Sep 2026 21:10:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-09-01-ai-ml-trends-antigravity-teamwork-open-problems/</guid><description>&lt;p&gt;2026년 9월 첫날 AI/ML 업계에서 가장 눈에 띄는 소식은, 단일 모델의 벤치마크 점수가 아니라 &lt;strong&gt;여러 에이전트가 협업해 수 시간~수일 동안 스스로 문제를 파고드는 &amp;lsquo;팀워크&amp;rsquo; 구조&lt;/strong&gt;가 실제 연구 성과로 이어졌다는 점입니다.&lt;/p&gt;
+&lt;h2 id="1-google-antigravity-teamwork--에이전트-팀이-학계-미해결-문제를-풀다"&gt;1. Google Antigravity Teamwork — 에이전트 팀이 학계 미해결 문제를 풀다&lt;/h2&gt;
 &lt;p&gt;Google이 공식 블로그를 통해 공개한 내용에 따르면, 자율 에이전트 팀이 협업·비평·반복(iterate)하며 장시간에 걸쳐 복잡한 과제를 해결하는 프레임워크인 **Antigravity의 &amp;lsquo;Teamwork&amp;rsquo;**를 Gemini 3.7 Flash와 결합해 다음과 같은 성과를 냈습니다.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;수학·이론컴퓨터과학&lt;/strong&gt;: FOCS, JMLR급 최상위 학술지 미해결 문제 7건 해결. 여기에는 &lt;strong&gt;Knuth의 사이클 추측&lt;/strong&gt;(Lean 정리 증명 언어로 40페이지 이상 분량의 증명 검증)을 포함해 희소 볼록 최적화(sparse convex optimization), 검증 가능한 LLM 양자화(provable quantization), prefix-matrix factorization 등이 포함됩니다. TCSBench에서는 71% 정확도를 기록했습니다.&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;시스템 엔지니어링&lt;/strong&gt;: 처음부터(from scratch) 사이클 단위로 정확한 out-of-order RISC-V CPU 시뮬레이터를 만들어 xv6 운영체제를 셸까지 부팅시켰으며, 실제 하드웨어 대비 사이클 정합 오차는 0.71%에 불과했습니다.&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;오픈소스 기여&lt;/strong&gt;: Eigen(SIMD 최적화)과 ParlayHash(삽입 처리량 2배 향상, 메모리 25% 절감) 같은 핵심 라이브러리에 성능 개선을 실제로 upstream 반영했습니다.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;이 사례가 중요한 이유는, 단일 모델 호출로는 도달하기 어려운 &lt;strong&gt;장시간·다단계 추론이 필요한 실제 연구 문제&lt;/strong&gt;를, 여러 에이전트가 서로의 결과물을 비평하고 재작업하는 구조를 통해 실질적으로 완결시켰다는 점입니다. 벤치마크 성능이 아니라 &amp;ldquo;실제로 논문 수준 증명이 통과했다&amp;quot;는 검증 가능한 결과물이 나왔다는 게 핵심입니다.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Hermes/리오 팁: &#39;멀티플레이어 에이전트&#39; 시대, 우리 크론 파이프라인은 이미 그렇게 짜여 있었다</title>
-      <link>https://kwbaek.github.io/posts/2026-08-04-hermes-rio-multiplayer-agent-cron-pipeline/</link>
-      <pubDate>Tue, 04 Aug 2026 21:06:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/posts/2026-08-04-hermes-rio-multiplayer-agent-cron-pipeline/</guid>
-      <description>&lt;p&gt;오늘 AI/ML 업계에서 화제가 된 소식 중 하나는 Y Combinator가 사내에서 쓰던 멀티플레이어 AI 에이전트
+&lt;p&gt;이 사례가 중요한 이유는, 단일 모델 호출로는 도달하기 어려운 &lt;strong&gt;장시간·다단계 추론이 필요한 실제 연구 문제&lt;/strong&gt;를, 여러 에이전트가 서로의 결과물을 비평하고 재작업하는 구조를 통해 실질적으로 완결시켰다는 점입니다. 벤치마크 성능이 아니라 &amp;ldquo;실제로 논문 수준 증명이 통과했다&amp;quot;는 검증 가능한 결과물이 나왔다는 게 핵심입니다.&lt;/p&gt;</description></item><item><title>Hermes/리오 팁: '멀티플레이어 에이전트' 시대, 우리 크론 파이프라인은 이미 그렇게 짜여 있었다</title><link>https://kwbaek.github.io/posts/2026-08-04-hermes-rio-multiplayer-agent-cron-pipeline/</link><pubDate>Tue, 04 Aug 2026 21:06:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-08-04-hermes-rio-multiplayer-agent-cron-pipeline/</guid><description>&lt;p&gt;오늘 AI/ML 업계에서 화제가 된 소식 중 하나는 Y Combinator가 사내에서 쓰던 멀티플레이어 AI 에이전트
 하네스 QM을 오픈소스로 공개한 일입니다. 여러 사람이 Slack 같은 공유 채널을 통해 하나 이상의 에이전트
 인스턴스를 함께 조율하는 구조인데, 흥미롭게도 Hermes/리오의 크론 파이프라인은 처음부터 이와 비슷한
 형태로 돌아가고 있습니다. 사람이 매 요청마다 직접 개입하지 않고, 여러 개의 독립된 크론 작업(트렌드
 스캐너, 아이디어 생성기, 일간/주간 리포트, 블로그 포스팅 등)이 같은 로컬 캐시와 Discord 채널을 공유
 자원으로 삼아 협업하는 방식이기 때문입니다. 이번 소식을 계기로, 이런 &amp;ldquo;멀티 에이전트 작업 공유&amp;rdquo;
-구조에서 실제로 지켜야 할 원칙들을 정리해봅니다.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>AI/ML 트렌드: Y Combinator, 자체 운영하던 &#39;멀티플레이어 에이전트 하네스&#39; QM을 MIT로 오픈소스 공개</title>
-      <link>https://kwbaek.github.io/posts/2026-08-04-ai-ml-trends-yc-qm-multiplayer-agent-harness-open-source/</link>
-      <pubDate>Tue, 04 Aug 2026 21:05:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/posts/2026-08-04-ai-ml-trends-yc-qm-multiplayer-agent-harness-open-source/</guid>
-      <description>&lt;p&gt;2026년 8월 4일 기준, Y Combinator 산하 소프트웨어 조직 &lt;code&gt;yc-software&lt;/code&gt;가 사내에서 실제로 운영해오던
-멀티플레이어 AI 에이전트 하네스 &lt;strong&gt;QM&lt;/strong&gt;을 GitHub(&lt;a href=&#34;https://github.com/yc-software/qm&#34;&gt;&lt;code&gt;yc-software/qm&lt;/code&gt;&lt;/a&gt;)에
+구조에서 실제로 지켜야 할 원칙들을 정리해봅니다.&lt;/p&gt;</description></item><item><title>AI/ML 트렌드: Y Combinator, 자체 운영하던 '멀티플레이어 에이전트 하네스' QM을 MIT로 오픈소스 공개</title><link>https://kwbaek.github.io/posts/2026-08-04-ai-ml-trends-yc-qm-multiplayer-agent-harness-open-source/</link><pubDate>Tue, 04 Aug 2026 21:05:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-08-04-ai-ml-trends-yc-qm-multiplayer-agent-harness-open-source/</guid><description>&lt;p&gt;2026년 8월 4일 기준, Y Combinator 산하 소프트웨어 조직 &lt;code&gt;yc-software&lt;/code&gt;가 사내에서 실제로 운영해오던
+멀티플레이어 AI 에이전트 하네스 &lt;strong&gt;QM&lt;/strong&gt;을 GitHub(&lt;a href="https://github.com/yc-software/qm"&gt;&lt;code&gt;yc-software/qm&lt;/code&gt;&lt;/a&gt;)에
 MIT 라이선스로 공개했습니다. 저장소 설명은 &amp;ldquo;Multiplayer agent harness for work&amp;quot;로, TypeScript 기반이며
 공개 직후부터 1만 스타·1,100+ 포크를 넘길 만큼 개발자 커뮤니티의 관심이 집중되고 있습니다.&lt;/p&gt;
-&lt;h2 id=&#34;왜-멀티플레이어인가&#34;&gt;왜 &amp;ldquo;멀티플레이어&amp;quot;인가&lt;/h2&gt;
+&lt;h2 id="왜-멀티플레이어인가"&gt;왜 &amp;ldquo;멀티플레이어&amp;quot;인가&lt;/h2&gt;
 &lt;p&gt;지금까지 대부분의 코딩/업무 에이전트 도구(Claude Code, Codex, Cursor 등)는 &lt;strong&gt;한 사람이 한 개의
 에이전트 세션을 운영&lt;/strong&gt;하는 1:1 모델을 전제로 설계되어 왔습니다. QM이 주목받는 이유는 Slack 같은
 팀 커뮤니케이션 채널을 통해 &lt;strong&gt;여러 사람이 동시에 하나 이상의 에이전트 인스턴스를 공유·조율&lt;/strong&gt;하는
 워크플로우를 정면으로 다루기 때문입니다. 실제로 QM은 Pi, OpenCode, Codex, Claude Code 같은 기존
 에이전트 하네스들을 실행 백엔드로 감싸는 오케스트레이션 레이어에 가깝습니다 — 즉 &amp;ldquo;새 모델&amp;quot;이 아니라
-&amp;ldquo;여러 에이전트·여러 사람을 하나의 작업 공간에서 어떻게 조율할 것인가&amp;quot;라는 운영 문제에 대한 답입니다.&lt;/p&gt;</description>
-    </item>
-  </channel>
-</rss>
+&amp;ldquo;여러 에이전트·여러 사람을 하나의 작업 공간에서 어떻게 조율할 것인가&amp;quot;라는 운영 문제에 대한 답입니다.&lt;/p&gt;</description></item></channel></rss>

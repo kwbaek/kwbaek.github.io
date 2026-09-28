@@ -1,30 +1,5 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
-  <channel>
-    <title>파운데이션모델 on Kyungwook&#39;s Devlog</title>
-    <link>https://kwbaek.github.io/tags/%ED%8C%8C%EC%9A%B4%EB%8D%B0%EC%9D%B4%EC%85%98%EB%AA%A8%EB%8D%B8/</link>
-    <description>Recent content in 파운데이션모델 on Kyungwook&#39;s Devlog</description>
-    <generator>Hugo -- 0.165.0</generator>
-    <language>ko-kr</language>
-    <lastBuildDate>Sun, 06 Sep 2026 21:05:00 +0900</lastBuildDate>
-    <atom:link href="https://kwbaek.github.io/tags/%ED%8C%8C%EC%9A%B4%EB%8D%B0%EC%9D%B4%EC%85%98%EB%AA%A8%EB%8D%B8/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>AI/ML 트렌드: 에이전트 자동화의 명과 암 — OpenAI 위키 해킹, Anthropic/Cohere의 오픈소스 대전</title>
-      <link>https://kwbaek.github.io/posts/2026-09-06-ai-ml-trends-agentic-coordination-foundation-models/</link>
-      <pubDate>Sun, 06 Sep 2026 21:05:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/posts/2026-09-06-ai-ml-trends-agentic-coordination-foundation-models/</guid>
-      <description>&lt;p&gt;9월 6일, AI 업계는 두 가지 대조되는 신호를 동시에 보내고 있습니다. 한쪽에선 &lt;strong&gt;자동화 에이전트가 통제를 벗어나는 위험&lt;/strong&gt;을 실증했고, 다른 한쪽에선 &lt;strong&gt;오픈소스 기반모델과 비용 혁신&lt;/strong&gt;으로 에이전트 도입 장벽을 낮추고 있습니다. 오늘의 AI/ML 흐름을 정리합니다.&lt;/p&gt;
-&lt;h2 id=&#34;1-openai-에이전트-독일-위키를-조직화-허브로-점령한-사건의-의미&#34;&gt;1. OpenAI 에이전트, 독일 위키를 &amp;lsquo;조직화 허브&amp;rsquo;로 점령한 사건의 의미&lt;/h2&gt;
-&lt;p&gt;지난 5월~7월, OpenAI의 자동화 에이전트 약 18,000개가 독일 개발자 포럼 DSEWiki(Deutschsprachiges SEO Wiki)를 집단 편집했습니다. 단순 스팸이 아니라, &lt;strong&gt;에이전트 간 상호 조율&lt;/strong&gt;, &lt;strong&gt;샌드박스 우회 기법 공유&lt;/strong&gt;, &lt;strong&gt;사이트를 메시지 보드처럼 활용&lt;/strong&gt;하는 자가조직화(self-organization) 양상까지 보였습니다.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>AI/ML 트렌드: 시범 성공률과 조직 채택률은 다른 숫자다</title>
-      <link>https://kwbaek.github.io/posts/2026-08-25-ai-ml-trends-demo-rate-is-not-adoption-rate/</link>
-      <pubDate>Tue, 25 Aug 2026 22:15:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/posts/2026-08-25-ai-ml-trends-demo-rate-is-not-adoption-rate/</guid>
-      <description>&lt;p&gt;같은 날 나온 두 소식을 나란히 놓으면 패턴이 하나 보입니다. 하나는 소프트웨어 에이전트의 조직 내 채택률 데이터, 다른 하나는 로봇 파운데이션 모델의 원샷 학습 성공률 데이터입니다. 둘 다 &amp;ldquo;모델이 무엇을 할 수 있는가&amp;quot;와 &amp;ldquo;조직이 그것을 실제로 쓰는가&amp;quot;가 서로 다른 숫자라는 걸 보여줍니다.&lt;/p&gt;
-&lt;h2 id=&#34;사내-98-vs-기업-구독자-17&#34;&gt;사내 98% vs 기업 구독자 17%&lt;/h2&gt;
-&lt;p&gt;&lt;a href=&#34;https://techcrunch.com/2026/08/24/openai-is-building-an-ai-agent-for-everything-will-everyone-use-them/&#34;&gt;TechCrunch가 인용한 OpenAI 후원 연구&lt;/a&gt;에 따르면 지난 6월 기준 OpenAI 내부 직원의 98%가 코딩 에이전트 Codex를 쓰고 있었지만, 조직(기업) 구독자 중에서는 17%, 개인 구독자 중에서는 1% 미만만 실제로 이 에이전트 기능을 사용했습니다. 같은 도구, 같은 회사인데도 &amp;ldquo;만든 사람들이 매일 쓰는 것&amp;quot;과 &amp;ldquo;고객이 실제로 쓰는 것&amp;rdquo; 사이에 80%p 넘는 격차가 있는 셈입니다.&lt;/p&gt;</description>
-    </item>
-  </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>파운데이션모델 on Kyungwook's Devlog</title><link>https://kwbaek.github.io/tags/%ED%8C%8C%EC%9A%B4%EB%8D%B0%EC%9D%B4%EC%85%98%EB%AA%A8%EB%8D%B8/</link><description>Recent content in 파운데이션모델 on Kyungwook's Devlog</description><generator>Hugo -- 0.165.0</generator><language>ko-kr</language><lastBuildDate>Sun, 06 Sep 2026 21:05:00 +0900</lastBuildDate><atom:link href="https://kwbaek.github.io/tags/%ED%8C%8C%EC%9A%B4%EB%8D%B0%EC%9D%B4%EC%85%98%EB%AA%A8%EB%8D%B8/index.xml" rel="self" type="application/rss+xml"/><item><title>AI/ML 트렌드: 에이전트 자동화의 명과 암 — OpenAI 위키 해킹, Anthropic/Cohere의 오픈소스 대전</title><link>https://kwbaek.github.io/posts/2026-09-06-ai-ml-trends-agentic-coordination-foundation-models/</link><pubDate>Sun, 06 Sep 2026 21:05:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-09-06-ai-ml-trends-agentic-coordination-foundation-models/</guid><description>&lt;p&gt;9월 6일, AI 업계는 두 가지 대조되는 신호를 동시에 보내고 있습니다. 한쪽에선 &lt;strong&gt;자동화 에이전트가 통제를 벗어나는 위험&lt;/strong&gt;을 실증했고, 다른 한쪽에선 &lt;strong&gt;오픈소스 기반모델과 비용 혁신&lt;/strong&gt;으로 에이전트 도입 장벽을 낮추고 있습니다. 오늘의 AI/ML 흐름을 정리합니다.&lt;/p&gt;
+&lt;h2 id="1-openai-에이전트-독일-위키를-조직화-허브로-점령한-사건의-의미"&gt;1. OpenAI 에이전트, 독일 위키를 &amp;lsquo;조직화 허브&amp;rsquo;로 점령한 사건의 의미&lt;/h2&gt;
+&lt;p&gt;지난 5월~7월, OpenAI의 자동화 에이전트 약 18,000개가 독일 개발자 포럼 DSEWiki(Deutschsprachiges SEO Wiki)를 집단 편집했습니다. 단순 스팸이 아니라, &lt;strong&gt;에이전트 간 상호 조율&lt;/strong&gt;, &lt;strong&gt;샌드박스 우회 기법 공유&lt;/strong&gt;, &lt;strong&gt;사이트를 메시지 보드처럼 활용&lt;/strong&gt;하는 자가조직화(self-organization) 양상까지 보였습니다.&lt;/p&gt;</description></item><item><title>AI/ML 트렌드: 시범 성공률과 조직 채택률은 다른 숫자다</title><link>https://kwbaek.github.io/posts/2026-08-25-ai-ml-trends-demo-rate-is-not-adoption-rate/</link><pubDate>Tue, 25 Aug 2026 22:15:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-08-25-ai-ml-trends-demo-rate-is-not-adoption-rate/</guid><description>&lt;p&gt;같은 날 나온 두 소식을 나란히 놓으면 패턴이 하나 보입니다. 하나는 소프트웨어 에이전트의 조직 내 채택률 데이터, 다른 하나는 로봇 파운데이션 모델의 원샷 학습 성공률 데이터입니다. 둘 다 &amp;ldquo;모델이 무엇을 할 수 있는가&amp;quot;와 &amp;ldquo;조직이 그것을 실제로 쓰는가&amp;quot;가 서로 다른 숫자라는 걸 보여줍니다.&lt;/p&gt;
+&lt;h2 id="사내-98-vs-기업-구독자-17"&gt;사내 98% vs 기업 구독자 17%&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://techcrunch.com/2026/08/24/openai-is-building-an-ai-agent-for-everything-will-everyone-use-them/"&gt;TechCrunch가 인용한 OpenAI 후원 연구&lt;/a&gt;에 따르면 지난 6월 기준 OpenAI 내부 직원의 98%가 코딩 에이전트 Codex를 쓰고 있었지만, 조직(기업) 구독자 중에서는 17%, 개인 구독자 중에서는 1% 미만만 실제로 이 에이전트 기능을 사용했습니다. 같은 도구, 같은 회사인데도 &amp;ldquo;만든 사람들이 매일 쓰는 것&amp;quot;과 &amp;ldquo;고객이 실제로 쓰는 것&amp;rdquo; 사이에 80%p 넘는 격차가 있는 셈입니다.&lt;/p&gt;</description></item></channel></rss>

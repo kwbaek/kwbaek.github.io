@@ -1,80 +1,27 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
-  <channel>
-    <title>에이전트런타임 on Kyungwook&#39;s Devlog</title>
-    <link>https://kwbaek.github.io/tags/%EC%97%90%EC%9D%B4%EC%A0%84%ED%8A%B8%EB%9F%B0%ED%83%80%EC%9E%84/</link>
-    <description>Recent content in 에이전트런타임 on Kyungwook&#39;s Devlog</description>
-    <generator>Hugo -- 0.165.0</generator>
-    <language>ko-kr</language>
-    <lastBuildDate>Tue, 01 Sep 2026 21:11:00 +0900</lastBuildDate>
-    <atom:link href="https://kwbaek.github.io/tags/%EC%97%90%EC%9D%B4%EC%A0%84%ED%8A%B8%EB%9F%B0%ED%83%80%EC%9E%84/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Hermes/리오 실전 팁: &#39;팀워크&#39; 패턴으로 읽는 장기 과제 위임(Delegate) 아키텍처 설계</title>
-      <link>https://kwbaek.github.io/posts/2026-09-01-hermes-rio-teamwork-delegation-architecture/</link>
-      <pubDate>Tue, 01 Sep 2026 21:11:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/posts/2026-09-01-hermes-rio-teamwork-delegation-architecture/</guid>
-      <description>&lt;p&gt;오늘 AI/ML 트렌드에서 소개된 **Google Antigravity의 &amp;lsquo;Teamwork&amp;rsquo;**는 여러 에이전트가 서로의 결과물을 비평·재작업하며 수 시간~수일에 걸쳐 학술 난제를 해결한 사례입니다. 단일 모델 호출로는 도달하지 못했던 성과가 &amp;ldquo;협업하는 팀&amp;rdquo; 구조에서 나왔다는 점이, Hermes/리오 환경에서 &lt;code&gt;delegate_task&lt;/code&gt;로 서브에이전트를 운용할 때도 그대로 적용되는 설계 원칙입니다.&lt;/p&gt;
-&lt;h2 id=&#34;1-왜-한-번에-다-시키기는-장기-과제에서-실패하는가&#34;&gt;1. 왜 &amp;ldquo;한 번에 다 시키기&amp;quot;는 장기 과제에서 실패하는가&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>에이전트런타임 on Kyungwook's Devlog</title><link>https://kwbaek.github.io/tags/%EC%97%90%EC%9D%B4%EC%A0%84%ED%8A%B8%EB%9F%B0%ED%83%80%EC%9E%84/</link><description>Recent content in 에이전트런타임 on Kyungwook's Devlog</description><generator>Hugo -- 0.165.0</generator><language>ko-kr</language><lastBuildDate>Tue, 01 Sep 2026 21:11:00 +0900</lastBuildDate><atom:link href="https://kwbaek.github.io/tags/%EC%97%90%EC%9D%B4%EC%A0%84%ED%8A%B8%EB%9F%B0%ED%83%80%EC%9E%84/index.xml" rel="self" type="application/rss+xml"/><item><title>Hermes/리오 실전 팁: '팀워크' 패턴으로 읽는 장기 과제 위임(Delegate) 아키텍처 설계</title><link>https://kwbaek.github.io/posts/2026-09-01-hermes-rio-teamwork-delegation-architecture/</link><pubDate>Tue, 01 Sep 2026 21:11:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-09-01-hermes-rio-teamwork-delegation-architecture/</guid><description>&lt;p&gt;오늘 AI/ML 트렌드에서 소개된 **Google Antigravity의 &amp;lsquo;Teamwork&amp;rsquo;**는 여러 에이전트가 서로의 결과물을 비평·재작업하며 수 시간~수일에 걸쳐 학술 난제를 해결한 사례입니다. 단일 모델 호출로는 도달하지 못했던 성과가 &amp;ldquo;협업하는 팀&amp;rdquo; 구조에서 나왔다는 점이, Hermes/리오 환경에서 &lt;code&gt;delegate_task&lt;/code&gt;로 서브에이전트를 운용할 때도 그대로 적용되는 설계 원칙입니다.&lt;/p&gt;
+&lt;h2 id="1-왜-한-번에-다-시키기는-장기-과제에서-실패하는가"&gt;1. 왜 &amp;ldquo;한 번에 다 시키기&amp;quot;는 장기 과제에서 실패하는가&lt;/h2&gt;
 &lt;p&gt;Hermes/리오에서 복잡한 리서치·코딩·데이터 정리 작업을 단일 프롬프트로 서브에이전트에 던지면 흔히 이런 문제가 생깁니다.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;컨텍스트가 길어질수록 초반 지시가 희석되어 후반 작업에서 원래 목표를 놓침&lt;/li&gt;
 &lt;li&gt;중간 산출물을 검증하는 단계가 없어 오류가 누적된 채로 끝까지 진행&lt;/li&gt;
 &lt;li&gt;서브에이전트가 막히면 부모가 결과를 받을 때까지 문제를 알 수 없음&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;Antigravity Teamwork의 핵심은 이 문제를 &amp;ldquo;단일 에이전트의 인내심&amp;quot;이 아니라 &lt;strong&gt;역할 분리 + 상호 비평 루프&lt;/strong&gt;로 풀었다는 점입니다.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Hermes/리오 실전 팁: PACE 패턴을 적용한 &#39;오프라인 에이전트 탐색 - 런타임 결정론적 실행&#39; 무비용 크론 파이프라인</title>
-      <link>https://kwbaek.github.io/posts/2026-08-31-hermes-rio-pace-pattern-zero-cost-cron/</link>
-      <pubDate>Mon, 31 Aug 2026 21:01:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/posts/2026-08-31-hermes-rio-pace-pattern-zero-cost-cron/</guid>
-      <description>&lt;p&gt;오늘 AI/ML 트렌드에서 소개된 논문 **&amp;ldquo;PACE: Publisher-Adaptive Content Extraction&amp;rdquo; (arXiv:2608.27466)**은 24시간 자율 에이전트 시스템을 운영하는 엔지니어들에게 매우 중요한 아키텍처적 통찰을 제공합니다.&lt;/p&gt;
+&lt;p&gt;Antigravity Teamwork의 핵심은 이 문제를 &amp;ldquo;단일 에이전트의 인내심&amp;quot;이 아니라 &lt;strong&gt;역할 분리 + 상호 비평 루프&lt;/strong&gt;로 풀었다는 점입니다.&lt;/p&gt;</description></item><item><title>Hermes/리오 실전 팁: PACE 패턴을 적용한 '오프라인 에이전트 탐색 - 런타임 결정론적 실행' 무비용 크론 파이프라인</title><link>https://kwbaek.github.io/posts/2026-08-31-hermes-rio-pace-pattern-zero-cost-cron/</link><pubDate>Mon, 31 Aug 2026 21:01:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-08-31-hermes-rio-pace-pattern-zero-cost-cron/</guid><description>&lt;p&gt;오늘 AI/ML 트렌드에서 소개된 논문 **&amp;ldquo;PACE: Publisher-Adaptive Content Extraction&amp;rdquo; (arXiv:2608.27466)**은 24시간 자율 에이전트 시스템을 운영하는 엔지니어들에게 매우 중요한 아키텍처적 통찰을 제공합니다.&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;&amp;ldquo;정기적으로 반복되는 수집·분석 크론 작업에서, 왜 매 실행마다 비싼 LLM API를 호출하여 비정형 HTML을 파싱해야 하는가? 똑똑한 에이전트는 &amp;lsquo;오프라인(빌드 타임)&amp;lsquo;에서만 일하고, 실제 운영되는 &amp;lsquo;런타임 크론&amp;rsquo;은 무비용 결정론적 코드로 돌아가야 한다.&amp;rdquo;&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;Hermes/리오 환경에서 24/7 무인 크론 파이프라인의 API 비용을 획기적으로 절감하고 처리 속도와 안정성을 극대화하기 위해 적용할 수 있는 &lt;strong&gt;&amp;lsquo;오프라인 에이전트 탐색 - 런타임 결정론적 실행(Offline Exploration &amp;amp; Deterministic Runtime)&amp;rsquo; 아키텍처 패턴&lt;/strong&gt;을 정리해 소개합니다.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Hermes/리오 실전 팁: 24/7 무인 크론 에이전트를 위한 예산 거버넌스와 온디맨드 스킬 라이프사이클</title>
-      <link>https://kwbaek.github.io/posts/2026-08-30-hermes-rio-budget-governance-and-skill-lifecycle/</link>
-      <pubDate>Sun, 30 Aug 2026 21:01:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/posts/2026-08-30-hermes-rio-budget-governance-and-skill-lifecycle/</guid>
-      <description>&lt;p&gt;오늘 AI/ML 트렌드에서 살펴본 **&amp;lsquo;EcoAgent-Bench&amp;rsquo;(arXiv:2608.05519)**와 &lt;strong&gt;&amp;lsquo;Demystifying Agent Skills&amp;rsquo;(arXiv:2608.14036)&lt;/strong&gt; 연구는 자율 에이전트 시스템을 24시간 무인으로 운영할 때 직면하는 가장 현실적인 질문을 던집니다.&lt;/p&gt;
+&lt;p&gt;Hermes/리오 환경에서 24/7 무인 크론 파이프라인의 API 비용을 획기적으로 절감하고 처리 속도와 안정성을 극대화하기 위해 적용할 수 있는 &lt;strong&gt;&amp;lsquo;오프라인 에이전트 탐색 - 런타임 결정론적 실행(Offline Exploration &amp;amp; Deterministic Runtime)&amp;rsquo; 아키텍처 패턴&lt;/strong&gt;을 정리해 소개합니다.&lt;/p&gt;</description></item><item><title>Hermes/리오 실전 팁: 24/7 무인 크론 에이전트를 위한 예산 거버넌스와 온디맨드 스킬 라이프사이클</title><link>https://kwbaek.github.io/posts/2026-08-30-hermes-rio-budget-governance-and-skill-lifecycle/</link><pubDate>Sun, 30 Aug 2026 21:01:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-08-30-hermes-rio-budget-governance-and-skill-lifecycle/</guid><description>&lt;p&gt;오늘 AI/ML 트렌드에서 살펴본 **&amp;lsquo;EcoAgent-Bench&amp;rsquo;(arXiv:2608.05519)**와 &lt;strong&gt;&amp;lsquo;Demystifying Agent Skills&amp;rsquo;(arXiv:2608.14036)&lt;/strong&gt; 연구는 자율 에이전트 시스템을 24시간 무인으로 운영할 때 직면하는 가장 현실적인 질문을 던집니다.&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;&amp;ldquo;매시간, 매일 정기적으로 실행되는 수십 개의 크론 작업과 분석 파이프라인에서, 어떻게 API 비용과 컨텍스트 오염을 최소화하면서도 99% 이상의 완주율과 고품질 산출물을 유지할 것인가?&amp;rdquo;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;Hermes/리오 환경에서 안정적이고 경제적인 자율 에이전트 시스템을 구축하기 위해 실제 적용하고 있는 &lt;strong&gt;4대 예산 거버넌스 및 스킬 라이프사이클 실전 아키텍처 패턴&lt;/strong&gt;을 공유합니다.&lt;/p&gt;
 &lt;hr&gt;
-&lt;h2 id=&#34;1-계층적-모델-라우팅과-점진적-에스컬레이션-tiered-model-routing&#34;&gt;1. 계층적 모델 라우팅과 점진적 에스컬레이션 (Tiered Model Routing)&lt;/h2&gt;
-&lt;p&gt;모든 작업에 최고 사양의 프론티어 모델을 투입하는 것은 대표적인 리소스 낭비입니다. Hermes/리오에서는 작업의 성격과 단계에 따라 모델을 3단계로 차등 배치합니다.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Hermes/리오 실전 팁: 장기 실행 무인 크론 에이전트를 위한 인플라이트(In-Flight) 오류 격리와 자가치유 패턴</title>
-      <link>https://kwbaek.github.io/posts/2026-08-29-hermes-rio-in-flight-error-isolation/</link>
-      <pubDate>Sat, 29 Aug 2026 21:01:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/posts/2026-08-29-hermes-rio-in-flight-error-isolation/</guid>
-      <description>&lt;p&gt;오늘 AI/ML 트렌드에서 소개된 &lt;strong&gt;&amp;lsquo;PILOT in the Loop&amp;rsquo;(arXiv:2608.26530)&lt;/strong&gt; 논문은 자율 에이전트가 긴 호흡의 작업을 수행할 때 발생하는 연쇄 오류를 어떻게 실시간으로 격리하고 자가 치유하는지 명쾌한 통찰을 제공합니다.&lt;/p&gt;
+&lt;h2 id="1-계층적-모델-라우팅과-점진적-에스컬레이션-tiered-model-routing"&gt;1. 계층적 모델 라우팅과 점진적 에스컬레이션 (Tiered Model Routing)&lt;/h2&gt;
+&lt;p&gt;모든 작업에 최고 사양의 프론티어 모델을 투입하는 것은 대표적인 리소스 낭비입니다. Hermes/리오에서는 작업의 성격과 단계에 따라 모델을 3단계로 차등 배치합니다.&lt;/p&gt;</description></item><item><title>Hermes/리오 실전 팁: 장기 실행 무인 크론 에이전트를 위한 인플라이트(In-Flight) 오류 격리와 자가치유 패턴</title><link>https://kwbaek.github.io/posts/2026-08-29-hermes-rio-in-flight-error-isolation/</link><pubDate>Sat, 29 Aug 2026 21:01:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-08-29-hermes-rio-in-flight-error-isolation/</guid><description>&lt;p&gt;오늘 AI/ML 트렌드에서 소개된 &lt;strong&gt;&amp;lsquo;PILOT in the Loop&amp;rsquo;(arXiv:2608.26530)&lt;/strong&gt; 논문은 자율 에이전트가 긴 호흡의 작업을 수행할 때 발생하는 연쇄 오류를 어떻게 실시간으로 격리하고 자가 치유하는지 명쾌한 통찰을 제공합니다.&lt;/p&gt;
 &lt;p&gt;Hermes/리오 환경에서 24시간 무인으로 동작하는 일일 리포트 생성, 다채널 트렌드 스캐너, 코드 베이스 리팩토링 크론(Cron) 작업을 운영하다 보면, 네트워크 일시 순단, 특정 API 응답 포맷 변경, 로컬 캐시 손상 등으로 인해 에이전트가 엉뚱한 루프에 빠지는 경험을 자주 하게 됩니다.&lt;/p&gt;
-&lt;p&gt;이러한 문제를 방지하고 크론 작업의 무인 완주율을 99% 이상으로 끌어올리기 위한 &lt;strong&gt;Hermes/리오 런타임 오류 격리 및 자가치유 4대 실전 패턴&lt;/strong&gt;을 정리합니다.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Hermes/리오 실전 팁: 하드웨어 백엔드 다변화 시대의 에이전트 런타임 거버넌스</title>
-      <link>https://kwbaek.github.io/posts/2026-08-28-hermes-rio-hardware-backend-governance/</link>
-      <pubDate>Fri, 28 Aug 2026 21:08:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/posts/2026-08-28-hermes-rio-hardware-backend-governance/</guid>
-      <description>&lt;p&gt;오늘 AI/ML 트렌드에서 전해진 AMD ROCm 10 공식 출시와 OpenAI의 추론 칩 Jalapeño 실측 결과는 한 가지 공통된 흐름을 가리킵니다. 바로 **&amp;ldquo;AI 에이전트를 가동하는 하드웨어와 추론 백엔드가 급격히 다변화되고 있다&amp;rdquo;**는 사실입니다.&lt;/p&gt;
+&lt;p&gt;이러한 문제를 방지하고 크론 작업의 무인 완주율을 99% 이상으로 끌어올리기 위한 &lt;strong&gt;Hermes/리오 런타임 오류 격리 및 자가치유 4대 실전 패턴&lt;/strong&gt;을 정리합니다.&lt;/p&gt;</description></item><item><title>Hermes/리오 실전 팁: 하드웨어 백엔드 다변화 시대의 에이전트 런타임 거버넌스</title><link>https://kwbaek.github.io/posts/2026-08-28-hermes-rio-hardware-backend-governance/</link><pubDate>Fri, 28 Aug 2026 21:08:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-08-28-hermes-rio-hardware-backend-governance/</guid><description>&lt;p&gt;오늘 AI/ML 트렌드에서 전해진 AMD ROCm 10 공식 출시와 OpenAI의 추론 칩 Jalapeño 실측 결과는 한 가지 공통된 흐름을 가리킵니다. 바로 **&amp;ldquo;AI 에이전트를 가동하는 하드웨어와 추론 백엔드가 급격히 다변화되고 있다&amp;rdquo;**는 사실입니다.&lt;/p&gt;
 &lt;p&gt;초기에는 대형 클라우드 벤더의 상위 모델 API 하나에 전적으로 의존했다면, 이제는 온디바이스 NPU, 로컬/온프레미스 GPU 클러스터, 그리고 다양한 클라우드 백엔드가 혼합된 하이브리드 환경이 표준이 되어가고 있습니다.&lt;/p&gt;
-&lt;p&gt;이러한 환경에서 Hermes/리오와 같은 자율 에이전트를 안정적이고 비용 효율적으로 24시간 무인 가동(Cron)하기 위해 필요한 &lt;strong&gt;런타임 거버넌스 3대 원칙&lt;/strong&gt;을 정리해 봅니다.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>AI/ML 트렌드: AMD ROCm 10이 던진 승부수, &#39;에이전틱 워크로드&#39;와 칩 생태계 다변화</title>
-      <link>https://kwbaek.github.io/posts/2026-08-28-ai-ml-trends-amd-rocm-10-agentic-stack/</link>
-      <pubDate>Fri, 28 Aug 2026 21:05:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/posts/2026-08-28-ai-ml-trends-amd-rocm-10-agentic-stack/</guid>
-      <description>&lt;p&gt;AMD가 Instinct GPU 및 EPYC 서버 환경을 위한 차세대 소프트웨어 플랫폼인 &lt;strong&gt;ROCm 10&lt;/strong&gt;을 정식 출시했습니다. 이번 릴리즈에서 가장 주목할 부분은 단순한 부동소수점 연산 성능(TFLOPS) 향상에 그치지 않고, 최근 급부상한 **&amp;ldquo;에이전틱 AI(Agentic AI) 개발 및 서빙 최적화&amp;rdquo;**를 공식적인 핵심 축으로 내세웠다는 점입니다.&lt;/p&gt;
+&lt;p&gt;이러한 환경에서 Hermes/리오와 같은 자율 에이전트를 안정적이고 비용 효율적으로 24시간 무인 가동(Cron)하기 위해 필요한 &lt;strong&gt;런타임 거버넌스 3대 원칙&lt;/strong&gt;을 정리해 봅니다.&lt;/p&gt;</description></item><item><title>AI/ML 트렌드: AMD ROCm 10이 던진 승부수, '에이전틱 워크로드'와 칩 생태계 다변화</title><link>https://kwbaek.github.io/posts/2026-08-28-ai-ml-trends-amd-rocm-10-agentic-stack/</link><pubDate>Fri, 28 Aug 2026 21:05:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-08-28-ai-ml-trends-amd-rocm-10-agentic-stack/</guid><description>&lt;p&gt;AMD가 Instinct GPU 및 EPYC 서버 환경을 위한 차세대 소프트웨어 플랫폼인 &lt;strong&gt;ROCm 10&lt;/strong&gt;을 정식 출시했습니다. 이번 릴리즈에서 가장 주목할 부분은 단순한 부동소수점 연산 성능(TFLOPS) 향상에 그치지 않고, 최근 급부상한 **&amp;ldquo;에이전틱 AI(Agentic AI) 개발 및 서빙 최적화&amp;rdquo;**를 공식적인 핵심 축으로 내세웠다는 점입니다.&lt;/p&gt;
 &lt;p&gt;NVIDIA의 CUDA 생태계가 오랜 기간 장악해 온 AI 인프라 시장에서, AMD가 소프트웨어 스택의 전면적 체질 개선을 통해 엔터프라이즈 에이전트 런타임의 실질적인 대안으로 자리 잡으려는 의도가 명확히 드러납니다.&lt;/p&gt;
-&lt;h2 id=&#34;rocm-10의-핵심-변화-에이전틱-런타임-중심의-도구-체계&#34;&gt;ROCm 10의 핵심 변화: 에이전틱 런타임 중심의 도구 체계&lt;/h2&gt;
-&lt;p&gt;ROCm 10은 기존의 복잡했던 빌드 및 드라이버 의존성을 대폭 정리하고, AI 네이티브 개발 경험을 위한 신규 컴포넌트들을 대거 도입했습니다.&lt;/p&gt;</description>
-    </item>
-  </channel>
-</rss>
+&lt;h2 id="rocm-10의-핵심-변화-에이전틱-런타임-중심의-도구-체계"&gt;ROCm 10의 핵심 변화: 에이전틱 런타임 중심의 도구 체계&lt;/h2&gt;
+&lt;p&gt;ROCm 10은 기존의 복잡했던 빌드 및 드라이버 의존성을 대폭 정리하고, AI 네이티브 개발 경험을 위한 신규 컴포넌트들을 대거 도입했습니다.&lt;/p&gt;</description></item></channel></rss>
