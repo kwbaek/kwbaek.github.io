@@ -1,19 +1,43 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
-  <channel>
-    <title>모니터링 on Kyungwook&#39;s Devlog</title>
-    <link>https://kwbaek.github.io/tags/%EB%AA%A8%EB%8B%88%ED%84%B0%EB%A7%81/</link>
-    <description>Recent content in 모니터링 on Kyungwook&#39;s Devlog</description>
-    <generator>Hugo -- 0.165.0</generator>
-    <language>ko-kr</language>
-    <lastBuildDate>Wed, 25 Feb 2026 21:00:00 +0900</lastBuildDate>
-    <atom:link href="https://kwbaek.github.io/tags/%EB%AA%A8%EB%8B%88%ED%84%B0%EB%A7%81/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>OpenClaw 실전 운영법: Heartbeat &#43; Cron 2계층 자동화 패턴</title>
-      <link>https://kwbaek.github.io/posts/2026-02-25-openclaw-two-tier-automation-guide/</link>
-      <pubDate>Wed, 25 Feb 2026 21:00:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/posts/2026-02-25-openclaw-two-tier-automation-guide/</guid>
-      <description>&lt;p&gt;OpenClaw를 오래 쓰다 보면 공통 문제가 하나 생깁니다.
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>모니터링 on Kyungwook's Devlog</title><link>https://kwbaek.github.io/tags/%EB%AA%A8%EB%8B%88%ED%84%B0%EB%A7%81/</link><description>Recent content in 모니터링 on Kyungwook's Devlog</description><generator>Hugo -- 0.165.0</generator><language>ko-kr</language><lastBuildDate>Tue, 15 Sep 2026 21:30:00 +0900</lastBuildDate><atom:link href="https://kwbaek.github.io/tags/%EB%AA%A8%EB%8B%88%ED%84%B0%EB%A7%81/index.xml" rel="self" type="application/rss+xml"/><item><title>Hermes/리오 운영가이드: AI 에이전트 보안 검증 워크플로우 구축하기</title><link>https://kwbaek.github.io/posts/2026-09-15-hermes-agent-security-verification/</link><pubDate>Tue, 15 Sep 2026 21:30:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-09-15-hermes-agent-security-verification/</guid><description>&lt;p&gt;&lt;strong&gt;프론티어 모델 기반 에이전트가 프로덕션에 들어가는 순간, 보안 검증은 배포 후 체크리스트가 아니라 실시간 운영 인프라가 되어야 합니다.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;지난주 Anthropic의 위협 보고서와 OpenAI의 보안 사고를 보면, 보안 팀은 이제 다음 질문을 매일 묻고 있습니다:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&amp;ldquo;오늘 우리 에이전트가 악의적으로 악용되었는가? 어떻게 감지할 것인가?&amp;rdquo;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Hermes/리오를 통해 &lt;strong&gt;이 질문에 매분 답할 수 있는 자동화 워크플로우&lt;/strong&gt;를 구축해봅시다.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id="-제1원칙-에이전트-보안-검증의-세-계층"&gt;🛠 제1원칙: 에이전트 보안 검증의 세 계층&lt;/h2&gt;
+&lt;h3 id="레이어-1-진입점-보안-api-key-level"&gt;레이어 1: 진입점 보안 (API Key Level)&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-yaml" data-lang="yaml"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# 1. API 키 접근 권한 세분화&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;api_keys&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;production_agent&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; - &lt;span style="color:#f92672"&gt;scope&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;chat.completions only&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; - &lt;span style="color:#f92672"&gt;models&lt;/span&gt;: [&lt;span style="color:#e6db74"&gt;&amp;#34;claude-opus-5&amp;#34;&lt;/span&gt;] &lt;span style="color:#75715e"&gt;# 특정 모델만 허용&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; - &lt;span style="color:#f92672"&gt;rate_limit&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;100&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;/min &lt;/span&gt; &lt;span style="color:#75715e"&gt;# 낮은 임계값&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; - &lt;span style="color:#f92672"&gt;ip_whitelist&lt;/span&gt;: [&lt;span style="color:#e6db74"&gt;&amp;#34;10.0.0.0/8&amp;#34;&lt;/span&gt;] &lt;span style="color:#75715e"&gt;# 내부망만&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;data_extraction_agent&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; - &lt;span style="color:#f92672"&gt;scope&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;embeddings only&amp;#34;&lt;/span&gt; &lt;span style="color:#75715e"&gt;# 특정 기능만 허용&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; - &lt;span style="color:#f92672"&gt;rate_limit&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;10&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;/min &lt;/span&gt; &lt;span style="color:#75715e"&gt;# 매우 낮음&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; - &lt;span style="color:#f92672"&gt;alert_on_spike&lt;/span&gt;: &lt;span style="color:#66d9ef"&gt;true&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;체크리스트:&lt;/strong&gt;&lt;/p&gt;</description></item><item><title>Hermes/리오 운영가이드: API 악용 추적과 위협 모니터링 체크리스트</title><link>https://kwbaek.github.io/posts/2026-09-13-hermes-api-security/</link><pubDate>Sun, 13 Sep 2026 21:45:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-09-13-hermes-api-security/</guid><description>&lt;p&gt;&lt;strong&gt;Anthropic의 14개 위협 행위자 공시 이후, Hermes/리오 크론 운영에 API 보안이 핵심 항목이 되었습니다.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;혼자서 여러 Claude API 키를 관리하고, 자동 에이전트가 시간마다 이를 호출할 때 — 키 탈취나 악용이 발생해도 감지하기 어렵습니다. 이번 가이드는 Hermes 크론 환경에서 &lt;strong&gt;실행 가능한&lt;/strong&gt; API 보안 체크리스트를 제시합니다.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id="-상황-hermes에서-claude를-쓸-때-뭐가-리스크인가"&gt;🎯 상황: Hermes에서 Claude를 쓸 때, 뭐가 리스크인가?&lt;/h2&gt;
+&lt;h3 id="hermes-환경의-구조"&gt;Hermes 환경의 구조&lt;/h3&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;Hermes 크론 (MD Agent, 트렌드 스캐너, 블로그 자동화)
+↓
+여러 Claude API 호출
+↓
+로그 → /memory, /tmp, Discord (가끔)
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id="현재-추적-불가능한-항목"&gt;현재 추적 불가능한 항목&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;이 API 키가 정상적으로만 쓰이는가?&lt;/li&gt;
+&lt;li&gt;야간에 비정상 호출이 있었나?&lt;/li&gt;
+&lt;li&gt;한 키로 여러 크론이 동시에 호출하면 어떻게 구분하나?&lt;/li&gt;
+&lt;li&gt;Claude 응답이 실제로 그 크론에서 쓰인 게 맞나?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id="-실행-체크리스트-이번-주"&gt;✅ 실행 체크리스트 (이번 주)&lt;/h2&gt;
+&lt;h3 id="1단계-현황-파악-30분"&gt;1단계: 현황 파악 (30분)&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;당신의 Claude API 키 목록&lt;/strong&gt;&lt;/p&gt;</description></item><item><title>OpenClaw 실전 운영법: Heartbeat + Cron 2계층 자동화 패턴</title><link>https://kwbaek.github.io/posts/2026-02-25-openclaw-two-tier-automation-guide/</link><pubDate>Wed, 25 Feb 2026 21:00:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-02-25-openclaw-two-tier-automation-guide/</guid><description>&lt;p&gt;OpenClaw를 오래 쓰다 보면 공통 문제가 하나 생깁니다.
 처음에는 자동화가 편한데, 시간이 지나면 잡이 늘어나면서 알림 노이즈와 관리 복잡도가 같이 커집니다.&lt;/p&gt;
 &lt;p&gt;이때 가장 효율이 좋았던 방식이 &lt;strong&gt;Heartbeat + Cron 2계층 패턴&lt;/strong&gt;입니다.&lt;/p&gt;
 &lt;p&gt;핵심 아이디어는 간단합니다.&lt;/p&gt;
@@ -21,8 +45,5 @@
 &lt;li&gt;&lt;strong&gt;Heartbeat&lt;/strong&gt;: 대화 컨텍스트가 필요한 점검 작업(메일/캘린더/멘션/상태 확인)을 묶어서 처리&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Cron&lt;/strong&gt;: 정확한 시각이 중요한 작업(정시 리포트, 마감 알림, 배포 체크)을 분리 실행&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;1-heartbeat는-배치-점검-레이어로-쓴다&#34;&gt;1) Heartbeat는 “배치 점검 레이어”로 쓴다&lt;/h2&gt;
-&lt;p&gt;Heartbeat는 1개 태스크를 정시에 수행하는 도구라기보다, 여러 점검 항목을 한 번에 처리하는 라우터로 보는 게 맞습니다.&lt;/p&gt;</description>
-    </item>
-  </channel>
-</rss>
+&lt;h2 id="1-heartbeat는-배치-점검-레이어로-쓴다"&gt;1) Heartbeat는 “배치 점검 레이어”로 쓴다&lt;/h2&gt;
+&lt;p&gt;Heartbeat는 1개 태스크를 정시에 수행하는 도구라기보다, 여러 점검 항목을 한 번에 처리하는 라우터로 보는 게 맞습니다.&lt;/p&gt;</description></item></channel></rss>

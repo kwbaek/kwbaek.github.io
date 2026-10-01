@@ -1,29 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
-  <channel>
-    <title>자가치유 on Kyungwook&#39;s Devlog</title>
-    <link>https://kwbaek.github.io/tags/%EC%9E%90%EA%B0%80%EC%B9%98%EC%9C%A0/</link>
-    <description>Recent content in 자가치유 on Kyungwook&#39;s Devlog</description>
-    <generator>Hugo -- 0.165.0</generator>
-    <language>ko-kr</language>
-    <lastBuildDate>Sat, 29 Aug 2026 21:01:00 +0900</lastBuildDate>
-    <atom:link href="https://kwbaek.github.io/tags/%EC%9E%90%EA%B0%80%EC%B9%98%EC%9C%A0/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Hermes/리오 실전 팁: 장기 실행 무인 크론 에이전트를 위한 인플라이트(In-Flight) 오류 격리와 자가치유 패턴</title>
-      <link>https://kwbaek.github.io/posts/2026-08-29-hermes-rio-in-flight-error-isolation/</link>
-      <pubDate>Sat, 29 Aug 2026 21:01:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/posts/2026-08-29-hermes-rio-in-flight-error-isolation/</guid>
-      <description>&lt;p&gt;오늘 AI/ML 트렌드에서 소개된 &lt;strong&gt;&amp;lsquo;PILOT in the Loop&amp;rsquo;(arXiv:2608.26530)&lt;/strong&gt; 논문은 자율 에이전트가 긴 호흡의 작업을 수행할 때 발생하는 연쇄 오류를 어떻게 실시간으로 격리하고 자가 치유하는지 명쾌한 통찰을 제공합니다.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>자가치유 on Kyungwook's Devlog</title><link>https://kwbaek.github.io/tags/%EC%9E%90%EA%B0%80%EC%B9%98%EC%9C%A0/</link><description>Recent content in 자가치유 on Kyungwook's Devlog</description><generator>Hugo -- 0.165.0</generator><language>ko-kr</language><lastBuildDate>Sat, 29 Aug 2026 21:01:00 +0900</lastBuildDate><atom:link href="https://kwbaek.github.io/tags/%EC%9E%90%EA%B0%80%EC%B9%98%EC%9C%A0/index.xml" rel="self" type="application/rss+xml"/><item><title>Hermes/리오 실전 팁: 장기 실행 무인 크론 에이전트를 위한 인플라이트(In-Flight) 오류 격리와 자가치유 패턴</title><link>https://kwbaek.github.io/posts/2026-08-29-hermes-rio-in-flight-error-isolation/</link><pubDate>Sat, 29 Aug 2026 21:01:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-08-29-hermes-rio-in-flight-error-isolation/</guid><description>&lt;p&gt;오늘 AI/ML 트렌드에서 소개된 &lt;strong&gt;&amp;lsquo;PILOT in the Loop&amp;rsquo;(arXiv:2608.26530)&lt;/strong&gt; 논문은 자율 에이전트가 긴 호흡의 작업을 수행할 때 발생하는 연쇄 오류를 어떻게 실시간으로 격리하고 자가 치유하는지 명쾌한 통찰을 제공합니다.&lt;/p&gt;
 &lt;p&gt;Hermes/리오 환경에서 24시간 무인으로 동작하는 일일 리포트 생성, 다채널 트렌드 스캐너, 코드 베이스 리팩토링 크론(Cron) 작업을 운영하다 보면, 네트워크 일시 순단, 특정 API 응답 포맷 변경, 로컬 캐시 손상 등으로 인해 에이전트가 엉뚱한 루프에 빠지는 경험을 자주 하게 됩니다.&lt;/p&gt;
-&lt;p&gt;이러한 문제를 방지하고 크론 작업의 무인 완주율을 99% 이상으로 끌어올리기 위한 &lt;strong&gt;Hermes/리오 런타임 오류 격리 및 자가치유 4대 실전 패턴&lt;/strong&gt;을 정리합니다.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>AI/ML 트렌드: 장기 실행 에이전트의 런타임 자가치유, &#39;PILOT in the Loop&#39;와 연쇄 실패 방어</title>
-      <link>https://kwbaek.github.io/posts/2026-08-29-ai-ml-trends-pilot-in-the-loop-long-horizon-agents/</link>
-      <pubDate>Sat, 29 Aug 2026 21:00:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/posts/2026-08-29-ai-ml-trends-pilot-in-the-loop-long-horizon-agents/</guid>
-      <description>&lt;p&gt;최근 발표된 연구 논문 &lt;strong&gt;&amp;ldquo;PILOT in the Loop: Live Self-Improvement for Long-Horizon Agents&amp;rdquo;&lt;/strong&gt;(arXiv:2608.26530)는 자율 AI 에이전트 엔지니어링 분야에서 가장 골치 아픈 문제 중 하나를 정면으로 다루고 있습니다. 바로 수십~수백 단계의 도구 호출(Tool calling)과 복합 작업을 수행하는 &lt;strong&gt;장기 실행(Long-horizon) 에이전트의 연쇄 실패(Cascading Failure) 문제&lt;/strong&gt;입니다.&lt;/p&gt;
-&lt;p&gt;에이전트 시스템이 단순한 1회성 챗봇을 넘어 대규모 코드 마이그레이션, 자동화된 회계 검증, 24시간 무인 데이터 파이프라인 등 복잡한 워크플로우를 처리하게 되면서, 실행 도중 발생하는 사소한 환경 변화나 도구 인자 불일치를 실시간으로 수습하는 능력이 프로덕션 배포의 핵심 병목으로 떠올랐습니다.&lt;/p&gt;</description>
-    </item>
-  </channel>
-</rss>
+&lt;p&gt;이러한 문제를 방지하고 크론 작업의 무인 완주율을 99% 이상으로 끌어올리기 위한 &lt;strong&gt;Hermes/리오 런타임 오류 격리 및 자가치유 4대 실전 패턴&lt;/strong&gt;을 정리합니다.&lt;/p&gt;</description></item><item><title>AI/ML 트렌드: 장기 실행 에이전트의 런타임 자가치유, 'PILOT in the Loop'와 연쇄 실패 방어</title><link>https://kwbaek.github.io/posts/2026-08-29-ai-ml-trends-pilot-in-the-loop-long-horizon-agents/</link><pubDate>Sat, 29 Aug 2026 21:00:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-08-29-ai-ml-trends-pilot-in-the-loop-long-horizon-agents/</guid><description>&lt;p&gt;최근 발표된 연구 논문 &lt;strong&gt;&amp;ldquo;PILOT in the Loop: Live Self-Improvement for Long-Horizon Agents&amp;rdquo;&lt;/strong&gt;(arXiv:2608.26530)는 자율 AI 에이전트 엔지니어링 분야에서 가장 골치 아픈 문제 중 하나를 정면으로 다루고 있습니다. 바로 수십~수백 단계의 도구 호출(Tool calling)과 복합 작업을 수행하는 &lt;strong&gt;장기 실행(Long-horizon) 에이전트의 연쇄 실패(Cascading Failure) 문제&lt;/strong&gt;입니다.&lt;/p&gt;
+&lt;p&gt;에이전트 시스템이 단순한 1회성 챗봇을 넘어 대규모 코드 마이그레이션, 자동화된 회계 검증, 24시간 무인 데이터 파이프라인 등 복잡한 워크플로우를 처리하게 되면서, 실행 도중 발생하는 사소한 환경 변화나 도구 인자 불일치를 실시간으로 수습하는 능력이 프로덕션 배포의 핵심 병목으로 떠올랐습니다.&lt;/p&gt;</description></item></channel></rss>

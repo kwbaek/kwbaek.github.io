@@ -1,20 +1,5 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
-  <channel>
-    <title>Deep-Think on Kyungwook&#39;s Devlog</title>
-    <link>https://kwbaek.github.io/tags/deep-think/</link>
-    <description>Recent content in Deep-Think on Kyungwook&#39;s Devlog</description>
-    <generator>Hugo -- 0.165.0</generator>
-    <language>ko-kr</language>
-    <lastBuildDate>Fri, 13 Feb 2026 21:00:00 +0900</lastBuildDate>
-    <atom:link href="https://kwbaek.github.io/tags/deep-think/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>2026년 2월 AI 모델 러시: Gemini 3 Deep Think와 격화되는 경쟁</title>
-      <link>https://kwbaek.github.io/posts/2026-02-13-gemini-3-deep-think-ai-model-rush/</link>
-      <pubDate>Fri, 13 Feb 2026 21:00:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/posts/2026-02-13-gemini-3-deep-think-ai-model-rush/</guid>
-      <description>&lt;p&gt;2026년 2월, AI 업계는 그야말로 &lt;strong&gt;모델 러시(Model Rush)&lt;/strong&gt; 시대에 돌입했습니다. Google의 Gemini 3 Deep Think 출시를 시작으로, Anthropic의 Claude Opus 4.6, OpenAI의 GPT-5.3-Codex, 그리고 중국의 GLM-5까지 연이어 출시되며 전례 없는 경쟁이 펼쳐지고 있습니다.&lt;/p&gt;
-&lt;h2 id=&#34;-gemini-3-deep-think-과학연구-특화-추론-모델&#34;&gt;🔬 Gemini 3 Deep Think: 과학/연구 특화 추론 모델&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Deep-Think on Kyungwook's Devlog</title><link>https://kwbaek.github.io/tags/deep-think/</link><description>Recent content in Deep-Think on Kyungwook's Devlog</description><generator>Hugo -- 0.165.0</generator><language>ko-kr</language><lastBuildDate>Fri, 13 Feb 2026 21:00:00 +0900</lastBuildDate><atom:link href="https://kwbaek.github.io/tags/deep-think/index.xml" rel="self" type="application/rss+xml"/><item><title>2026년 2월 AI 모델 러시: Gemini 3 Deep Think와 격화되는 경쟁</title><link>https://kwbaek.github.io/posts/2026-02-13-gemini-3-deep-think-ai-model-rush/</link><pubDate>Fri, 13 Feb 2026 21:00:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-02-13-gemini-3-deep-think-ai-model-rush/</guid><description>&lt;p&gt;2026년 2월, AI 업계는 그야말로 &lt;strong&gt;모델 러시(Model Rush)&lt;/strong&gt; 시대에 돌입했습니다. Google의 Gemini 3 Deep Think 출시를 시작으로, Anthropic의 Claude Opus 4.6, OpenAI의 GPT-5.3-Codex, 그리고 중국의 GLM-5까지 연이어 출시되며 전례 없는 경쟁이 펼쳐지고 있습니다.&lt;/p&gt;
+&lt;h2 id="-gemini-3-deep-think-과학연구-특화-추론-모델"&gt;🔬 Gemini 3 Deep Think: 과학/연구 특화 추론 모델&lt;/h2&gt;
 &lt;p&gt;Google이 2월 13일(한국 시간 기준) 공개한 &lt;strong&gt;Gemini 3 Deep Think&lt;/strong&gt;는 과학, 연구, 엔지니어링 분야에 특화된 고급 추론 모델입니다.&lt;/p&gt;
 &lt;p&gt;주요 특징:&lt;/p&gt;
 &lt;ul&gt;
@@ -22,7 +7,4 @@
 &lt;li&gt;&lt;strong&gt;Gemini 3 시리즈의 전략적 분화&lt;/strong&gt;: Flash(빠른 처리)와 Deep Think(고급 추론)로 이원화&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;전문 분야 특화 전략&lt;/strong&gt;: 범용 모델에서 벗어나 전문성 강화&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;a href=&#34;https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-deep-think/&#34;&gt;Google 공식 블로그&lt;/a&gt;에서는 &amp;ldquo;과학 연구를 가속화하는 특화된 추론 모드&amp;quot;라고 소개하고 있습니다.&lt;/p&gt;</description>
-    </item>
-  </channel>
-</rss>
+&lt;p&gt;&lt;a href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-deep-think/"&gt;Google 공식 블로그&lt;/a&gt;에서는 &amp;ldquo;과학 연구를 가속화하는 특화된 추론 모드&amp;quot;라고 소개하고 있습니다.&lt;/p&gt;</description></item></channel></rss>

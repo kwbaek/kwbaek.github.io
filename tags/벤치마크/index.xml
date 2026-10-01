@@ -1,63 +1,17 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
-  <channel>
-    <title>벤치마크 on Kyungwook&#39;s Devlog</title>
-    <link>https://kwbaek.github.io/tags/%EB%B2%A4%EC%B9%98%EB%A7%88%ED%81%AC/</link>
-    <description>Recent content in 벤치마크 on Kyungwook&#39;s Devlog</description>
-    <generator>Hugo -- 0.165.0</generator>
-    <language>ko-kr</language>
-    <lastBuildDate>Sun, 30 Aug 2026 21:00:00 +0900</lastBuildDate>
-    <atom:link href="https://kwbaek.github.io/tags/%EB%B2%A4%EC%B9%98%EB%A7%88%ED%81%AC/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>AI/ML 트렌드: &#39;EcoAgent-Bench&#39;와 에이전트 경제학 — 예산 제약 환경의 도구 호출 및 에스컬레이션 최적화</title>
-      <link>https://kwbaek.github.io/posts/2026-08-30-ai-ml-trends-ecoagent-bench-agent-economics/</link>
-      <pubDate>Sun, 30 Aug 2026 21:00:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/posts/2026-08-30-ai-ml-trends-ecoagent-bench-agent-economics/</guid>
-      <description>&lt;p&gt;최근 발표된 연구 논문 &lt;strong&gt;&amp;ldquo;EcoAgent-Bench: Economic Decision-Making and Tool Escalation for Budget-Constrained LLM Agents&amp;rdquo;&lt;/strong&gt;(arXiv:2608.05519)와 &lt;strong&gt;&amp;ldquo;Demystifying Agent Skills: Inference-Time Mechanisms and Failure Modes&amp;rdquo;&lt;/strong&gt;(arXiv:2608.14036)는 자율 AI 에이전트의 개발과 배포가 &amp;lsquo;무제한 벤치마크 점수 경쟁&amp;rsquo;에서 **&amp;lsquo;엄격한 비용과 예산 제약 하의 경제적 합리성&amp;rsquo;**으로 무게중심을 옮겨가고 있음을 뚜렷하게 보여줍니다.&lt;/p&gt;
-&lt;p&gt;그동안 에이전트 성능 평가는 SWE-bench, GAIA, WebArena 등에서 &amp;ldquo;주어진 작업을 끝까지 해결했는가(Pass@1, Success Rate)&amp;ldquo;에만 집중해 왔습니다. 하지만 프로덕션 환경에 배포된 엔터프라이즈 에이전트에게 $10의 토큰 비용과 50회의 불필요한 도구 호출을 거쳐 90% 성공률을 달성하는 모델은, $0.05의 비용과 3회의 정밀 호출로 85%를 달성하는 모델보다 훨씬 비효율적이고 위험합니다.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>AI/ML 트렌드: 모델을 바꾸기 전에 하네스를 고쳐라</title>
-      <link>https://kwbaek.github.io/posts/2026-08-23-ai-ml-trends-the-harness-is-the-product/</link>
-      <pubDate>Sun, 23 Aug 2026 21:00:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/posts/2026-08-23-ai-ml-trends-the-harness-is-the-product/</guid>
-      <description>&lt;p&gt;오늘 올라온 자료를 쭉 읽고 나서 남은 문장은 하나였습니다. &lt;strong&gt;성능이 안 나올 때 우리가 제일 먼저 손대는 곳이 대체로 틀린 곳이었다.&lt;/strong&gt; 모델을 올리고, 프롬프트를 다듬고, 파인튜닝을 검토합니다. 그런데 오늘 나온 근거들은 전부 다른 데를 가리킵니다. 모델을 감싸고 있는 &lt;strong&gt;하네스(harness)&lt;/strong&gt; — 메모리 관리, 감독자 루프, 입력 전달 경로, 정책 검증, 태스크 정의 — 가 실제 성패를 결정하고 있었다는 이야기입니다.&lt;/p&gt;
-&lt;h2 id=&#34;근거-1--같은-모델에-하네스만-붙였더니-30가-100가-됐다&#34;&gt;근거 1 — 같은 모델에 하네스만 붙였더니 30%가 100%가 됐다&lt;/h2&gt;
-&lt;p&gt;가장 극적인 숫자는 NVIDIA에서 나왔습니다. &lt;a href=&#34;https://developer.nvidia.com/blog/nvidia-avo-reaches-100-on-arc-agi-3-demonstrating-a-frontier-level-general-purpose-architecture-for-long-horizon-autonomous-agents/&#34;&gt;NVIDIA AVO가 ARC-AGI-3에서 100%를 기록했다는 발표&lt;/a&gt;(&lt;a href=&#34;https://techcrunch.com/2026/08/21/nvidia-just-showed-that-the-harness-not-the-ai-model-is-now-the-real-hero/&#34;&gt;TechCrunch 정리&lt;/a&gt;)의 핵심은 새 모델이 아닙니다. 기존 프런티어 모델을 그대로 두고, 메모리 관리 컴포넌트와 감독자(supervisor) 컴포넌트를 얹은 범용 아키텍처만 추가했습니다.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>AI/ML 트렌드: 오프라인 점수보다 라이브 평가가 실력을 드러낸다</title>
-      <link>https://kwbaek.github.io/posts/2026-08-18-ai-ml-trends-live-evaluation-beats-offline-scores/</link>
-      <pubDate>Tue, 18 Aug 2026 21:05:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/posts/2026-08-18-ai-ml-trends-live-evaluation-beats-offline-scores/</guid>
-      <description>&lt;p&gt;오늘 눈에 들어온 두 신호는 서로 다른 산업에서 나왔지만 결론이 같습니다. &lt;strong&gt;모델의 오프라인 점수가 아니라, 처음 보는 환경에서 실제로 작동하는지가 실력의 기준이 되고 있다는 것&lt;/strong&gt;입니다.&lt;/p&gt;
-&lt;h3 id=&#34;1-databricks-grounded-reasoning-cup--새-코퍼스에서-라이브로-붙였다&#34;&gt;1. Databricks Grounded Reasoning Cup — 새 코퍼스에서 라이브로 붙였다&lt;/h3&gt;
-&lt;p&gt;Databricks는 첫 Grounded Reasoning Cup을 열어, 기업 문서 컬렉션을 근거로 추론하는 에이전트를 라이브 경쟁 조건에서 평가했습니다. 미국·캐나다 11개 학술팀이 참가해 약 두 달간 OfficeQA 벤치마크로 에이전트를 최적화했고, 대회 당일에는 &lt;strong&gt;그날 새로 공개된 코퍼스&lt;/strong&gt;로 문제를 풀었습니다. 팀별로 OpenAI·Anthropic·Google DeepMind 중 한 파트너 랩의 모델 계열만 쓰도록 제한했습니다.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>AI/ML 트렌드: 연구 재현성이 모델 도입의 증거 레이어가 된다</title>
-      <link>https://kwbaek.github.io/posts/2026-08-14-ai-ml-trends-reproducibility-becomes-deployment-evidence/</link>
-      <pubDate>Fri, 14 Aug 2026 21:00:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/posts/2026-08-14-ai-ml-trends-reproducibility-becomes-deployment-evidence/</guid>
-      <description>&lt;p&gt;오늘 AI/ML 트렌드에서 가장 중요한 신호는 새로운 모델의 발표가 아니라, &lt;strong&gt;논문과 벤치마크 결과를 실제로 다시 실행해 볼 수 있는가&lt;/strong&gt;가 제품 도입의 조건으로 올라오고 있다는 점입니다. Hugging Face가 공개한 ICML 논문 2,200편 규모의 오픈 재현 프로젝트는 연구 결과를 읽고 인용하는 단계에서 벗어나 코드, 데이터, 의존성, 실행 환경을 함께 고정하고 결과를 비교하는 흐름을 보여줍니다. AI의 신뢰성이 논문에 적힌 숫자 하나가 아니라 재현 가능한 실행 증적으로 이동하고 있는 것입니다.&lt;/p&gt;
-&lt;p&gt;이 변화는 연구자만의 문제가 아닙니다. 기업이 새로운 foundation model이나 agent framework를 도입할 때도 공급자가 제시한 benchmark score를 그대로 믿기 어렵습니다. GPU 종류와 드라이버, 라이브러리 버전, 프롬프트 템플릿, 데이터 전처리, 평가 기준이 조금만 달라져도 결과가 달라질 수 있기 때문입니다. 특히 에이전트는 최종 답변만 평가해서는 부족합니다. tool call의 인자 정확도, 실패 후 재시도, 세션 상태 보존, 권한 거절, 테스트 통과 여부까지 함께 재현해야 실제 업무 품질을 알 수 있습니다.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>AI 에이전트의 위험한 과신: 실제로는 22% 성공하지만 77% 성공할 거라 예측</title>
-      <link>https://kwbaek.github.io/posts/2026-02-22-ai-agent-overconfidence/</link>
-      <pubDate>Sun, 22 Feb 2026 21:00:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/posts/2026-02-22-ai-agent-overconfidence/</guid>
-      <description>&lt;h2 id=&#34;ai-에이전트-자신의-능력을-과대평가하다&#34;&gt;AI 에이전트, 자신의 능력을 과대평가하다&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>벤치마크 on Kyungwook's Devlog</title><link>https://kwbaek.github.io/tags/%EB%B2%A4%EC%B9%98%EB%A7%88%ED%81%AC/</link><description>Recent content in 벤치마크 on Kyungwook's Devlog</description><generator>Hugo -- 0.165.0</generator><language>ko-kr</language><lastBuildDate>Sun, 30 Aug 2026 21:00:00 +0900</lastBuildDate><atom:link href="https://kwbaek.github.io/tags/%EB%B2%A4%EC%B9%98%EB%A7%88%ED%81%AC/index.xml" rel="self" type="application/rss+xml"/><item><title>AI/ML 트렌드: 'EcoAgent-Bench'와 에이전트 경제학 — 예산 제약 환경의 도구 호출 및 에스컬레이션 최적화</title><link>https://kwbaek.github.io/posts/2026-08-30-ai-ml-trends-ecoagent-bench-agent-economics/</link><pubDate>Sun, 30 Aug 2026 21:00:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-08-30-ai-ml-trends-ecoagent-bench-agent-economics/</guid><description>&lt;p&gt;최근 발표된 연구 논문 &lt;strong&gt;&amp;ldquo;EcoAgent-Bench: Economic Decision-Making and Tool Escalation for Budget-Constrained LLM Agents&amp;rdquo;&lt;/strong&gt;(arXiv:2608.05519)와 &lt;strong&gt;&amp;ldquo;Demystifying Agent Skills: Inference-Time Mechanisms and Failure Modes&amp;rdquo;&lt;/strong&gt;(arXiv:2608.14036)는 자율 AI 에이전트의 개발과 배포가 &amp;lsquo;무제한 벤치마크 점수 경쟁&amp;rsquo;에서 **&amp;lsquo;엄격한 비용과 예산 제약 하의 경제적 합리성&amp;rsquo;**으로 무게중심을 옮겨가고 있음을 뚜렷하게 보여줍니다.&lt;/p&gt;
+&lt;p&gt;그동안 에이전트 성능 평가는 SWE-bench, GAIA, WebArena 등에서 &amp;ldquo;주어진 작업을 끝까지 해결했는가(Pass@1, Success Rate)&amp;ldquo;에만 집중해 왔습니다. 하지만 프로덕션 환경에 배포된 엔터프라이즈 에이전트에게 $10의 토큰 비용과 50회의 불필요한 도구 호출을 거쳐 90% 성공률을 달성하는 모델은, $0.05의 비용과 3회의 정밀 호출로 85%를 달성하는 모델보다 훨씬 비효율적이고 위험합니다.&lt;/p&gt;</description></item><item><title>AI/ML 트렌드: 모델을 바꾸기 전에 하네스를 고쳐라</title><link>https://kwbaek.github.io/posts/2026-08-23-ai-ml-trends-the-harness-is-the-product/</link><pubDate>Sun, 23 Aug 2026 21:00:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-08-23-ai-ml-trends-the-harness-is-the-product/</guid><description>&lt;p&gt;오늘 올라온 자료를 쭉 읽고 나서 남은 문장은 하나였습니다. &lt;strong&gt;성능이 안 나올 때 우리가 제일 먼저 손대는 곳이 대체로 틀린 곳이었다.&lt;/strong&gt; 모델을 올리고, 프롬프트를 다듬고, 파인튜닝을 검토합니다. 그런데 오늘 나온 근거들은 전부 다른 데를 가리킵니다. 모델을 감싸고 있는 &lt;strong&gt;하네스(harness)&lt;/strong&gt; — 메모리 관리, 감독자 루프, 입력 전달 경로, 정책 검증, 태스크 정의 — 가 실제 성패를 결정하고 있었다는 이야기입니다.&lt;/p&gt;
+&lt;h2 id="근거-1--같은-모델에-하네스만-붙였더니-30가-100가-됐다"&gt;근거 1 — 같은 모델에 하네스만 붙였더니 30%가 100%가 됐다&lt;/h2&gt;
+&lt;p&gt;가장 극적인 숫자는 NVIDIA에서 나왔습니다. &lt;a href="https://developer.nvidia.com/blog/nvidia-avo-reaches-100-on-arc-agi-3-demonstrating-a-frontier-level-general-purpose-architecture-for-long-horizon-autonomous-agents/"&gt;NVIDIA AVO가 ARC-AGI-3에서 100%를 기록했다는 발표&lt;/a&gt;(&lt;a href="https://techcrunch.com/2026/08/21/nvidia-just-showed-that-the-harness-not-the-ai-model-is-now-the-real-hero/"&gt;TechCrunch 정리&lt;/a&gt;)의 핵심은 새 모델이 아닙니다. 기존 프런티어 모델을 그대로 두고, 메모리 관리 컴포넌트와 감독자(supervisor) 컴포넌트를 얹은 범용 아키텍처만 추가했습니다.&lt;/p&gt;</description></item><item><title>AI/ML 트렌드: 오프라인 점수보다 라이브 평가가 실력을 드러낸다</title><link>https://kwbaek.github.io/posts/2026-08-18-ai-ml-trends-live-evaluation-beats-offline-scores/</link><pubDate>Tue, 18 Aug 2026 21:05:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-08-18-ai-ml-trends-live-evaluation-beats-offline-scores/</guid><description>&lt;p&gt;오늘 눈에 들어온 두 신호는 서로 다른 산업에서 나왔지만 결론이 같습니다. &lt;strong&gt;모델의 오프라인 점수가 아니라, 처음 보는 환경에서 실제로 작동하는지가 실력의 기준이 되고 있다는 것&lt;/strong&gt;입니다.&lt;/p&gt;
+&lt;h3 id="1-databricks-grounded-reasoning-cup--새-코퍼스에서-라이브로-붙였다"&gt;1. Databricks Grounded Reasoning Cup — 새 코퍼스에서 라이브로 붙였다&lt;/h3&gt;
+&lt;p&gt;Databricks는 첫 Grounded Reasoning Cup을 열어, 기업 문서 컬렉션을 근거로 추론하는 에이전트를 라이브 경쟁 조건에서 평가했습니다. 미국·캐나다 11개 학술팀이 참가해 약 두 달간 OfficeQA 벤치마크로 에이전트를 최적화했고, 대회 당일에는 &lt;strong&gt;그날 새로 공개된 코퍼스&lt;/strong&gt;로 문제를 풀었습니다. 팀별로 OpenAI·Anthropic·Google DeepMind 중 한 파트너 랩의 모델 계열만 쓰도록 제한했습니다.&lt;/p&gt;</description></item><item><title>AI/ML 트렌드: 연구 재현성이 모델 도입의 증거 레이어가 된다</title><link>https://kwbaek.github.io/posts/2026-08-14-ai-ml-trends-reproducibility-becomes-deployment-evidence/</link><pubDate>Fri, 14 Aug 2026 21:00:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-08-14-ai-ml-trends-reproducibility-becomes-deployment-evidence/</guid><description>&lt;p&gt;오늘 AI/ML 트렌드에서 가장 중요한 신호는 새로운 모델의 발표가 아니라, &lt;strong&gt;논문과 벤치마크 결과를 실제로 다시 실행해 볼 수 있는가&lt;/strong&gt;가 제품 도입의 조건으로 올라오고 있다는 점입니다. Hugging Face가 공개한 ICML 논문 2,200편 규모의 오픈 재현 프로젝트는 연구 결과를 읽고 인용하는 단계에서 벗어나 코드, 데이터, 의존성, 실행 환경을 함께 고정하고 결과를 비교하는 흐름을 보여줍니다. AI의 신뢰성이 논문에 적힌 숫자 하나가 아니라 재현 가능한 실행 증적으로 이동하고 있는 것입니다.&lt;/p&gt;
+&lt;p&gt;이 변화는 연구자만의 문제가 아닙니다. 기업이 새로운 foundation model이나 agent framework를 도입할 때도 공급자가 제시한 benchmark score를 그대로 믿기 어렵습니다. GPU 종류와 드라이버, 라이브러리 버전, 프롬프트 템플릿, 데이터 전처리, 평가 기준이 조금만 달라져도 결과가 달라질 수 있기 때문입니다. 특히 에이전트는 최종 답변만 평가해서는 부족합니다. tool call의 인자 정확도, 실패 후 재시도, 세션 상태 보존, 권한 거절, 테스트 통과 여부까지 함께 재현해야 실제 업무 품질을 알 수 있습니다.&lt;/p&gt;</description></item><item><title>AI 에이전트의 위험한 과신: 실제로는 22% 성공하지만 77% 성공할 거라 예측</title><link>https://kwbaek.github.io/posts/2026-02-22-ai-agent-overconfidence/</link><pubDate>Sun, 22 Feb 2026 21:00:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-02-22-ai-agent-overconfidence/</guid><description>&lt;h2 id="ai-에이전트-자신의-능력을-과대평가하다"&gt;AI 에이전트, 자신의 능력을 과대평가하다&lt;/h2&gt;
 &lt;p&gt;최신 AI 에이전트 연구에서 충격적인 결과가 나왔습니다. AI 에이전트들이 작업 성공 확률을 예측할 때 실제 성능보다 훨씬 높게 평가하는 &lt;strong&gt;체계적인 과신(overconfidence)&lt;/strong&gt; 패턴을 보인다는 것입니다.&lt;/p&gt;
-&lt;p&gt;arXiv에 공개된 &lt;a href=&#34;https://arxiv.org/abs/2602.06948&#34;&gt;&amp;ldquo;Agentic Uncertainty Reveals Agentic Overconfidence&amp;rdquo;&lt;/a&gt; 논문에 따르면, 일부 에이전트는 실제로 22%의 작업만 성공했음에도 불구하고 &lt;strong&gt;77%의 성공률을 예측&lt;/strong&gt;했습니다. 이는 3배 이상의 과대평가입니다.&lt;/p&gt;
-&lt;h3 id=&#34;왜-이-문제가-중요한가&#34;&gt;왜 이 문제가 중요한가?&lt;/h3&gt;
+&lt;p&gt;arXiv에 공개된 &lt;a href="https://arxiv.org/abs/2602.06948"&gt;&amp;ldquo;Agentic Uncertainty Reveals Agentic Overconfidence&amp;rdquo;&lt;/a&gt; 논문에 따르면, 일부 에이전트는 실제로 22%의 작업만 성공했음에도 불구하고 &lt;strong&gt;77%의 성공률을 예측&lt;/strong&gt;했습니다. 이는 3배 이상의 과대평가입니다.&lt;/p&gt;
+&lt;h3 id="왜-이-문제가-중요한가"&gt;왜 이 문제가 중요한가?&lt;/h3&gt;
 &lt;p&gt;AI 에이전트가 실제 업무 환경에 배치되는 상황을 생각해보세요:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;의료 진단 에이전트&lt;/strong&gt;가 자신의 진단 정확도를 과대평가한다면?&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;금융 거래 에이전트&lt;/strong&gt;가 리스크를 과소평가한다면?&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;자율주행 에이전트&lt;/strong&gt;가 자신의 판단 능력을 과신한다면?&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;이런 과신은 단순한 정확도 문제를 넘어 &lt;strong&gt;신뢰와 안전의 문제&lt;/strong&gt;로 직결됩니다.&lt;/p&gt;</description>
-    </item>
-  </channel>
-</rss>
+&lt;p&gt;이런 과신은 단순한 정확도 문제를 넘어 &lt;strong&gt;신뢰와 안전의 문제&lt;/strong&gt;로 직결됩니다.&lt;/p&gt;</description></item></channel></rss>

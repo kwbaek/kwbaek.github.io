@@ -1,23 +1,5 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
-  <channel>
-    <title>데이터파이프라인 on Kyungwook&#39;s Devlog</title>
-    <link>https://kwbaek.github.io/tags/%EB%8D%B0%EC%9D%B4%ED%84%B0%ED%8C%8C%EC%9D%B4%ED%94%84%EB%9D%BC%EC%9D%B8/</link>
-    <description>Recent content in 데이터파이프라인 on Kyungwook&#39;s Devlog</description>
-    <generator>Hugo -- 0.165.0</generator>
-    <language>ko-kr</language>
-    <lastBuildDate>Mon, 31 Aug 2026 21:01:00 +0900</lastBuildDate>
-    <atom:link href="https://kwbaek.github.io/tags/%EB%8D%B0%EC%9D%B4%ED%84%B0%ED%8C%8C%EC%9D%B4%ED%94%84%EB%9D%BC%EC%9D%B8/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Hermes/리오 실전 팁: PACE 패턴을 적용한 &#39;오프라인 에이전트 탐색 - 런타임 결정론적 실행&#39; 무비용 크론 파이프라인</title>
-      <link>https://kwbaek.github.io/posts/2026-08-31-hermes-rio-pace-pattern-zero-cost-cron/</link>
-      <pubDate>Mon, 31 Aug 2026 21:01:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/posts/2026-08-31-hermes-rio-pace-pattern-zero-cost-cron/</guid>
-      <description>&lt;p&gt;오늘 AI/ML 트렌드에서 소개된 논문 **&amp;ldquo;PACE: Publisher-Adaptive Content Extraction&amp;rdquo; (arXiv:2608.27466)**은 24시간 자율 에이전트 시스템을 운영하는 엔지니어들에게 매우 중요한 아키텍처적 통찰을 제공합니다.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>데이터파이프라인 on Kyungwook's Devlog</title><link>https://kwbaek.github.io/tags/%EB%8D%B0%EC%9D%B4%ED%84%B0%ED%8C%8C%EC%9D%B4%ED%94%84%EB%9D%BC%EC%9D%B8/</link><description>Recent content in 데이터파이프라인 on Kyungwook's Devlog</description><generator>Hugo -- 0.165.0</generator><language>ko-kr</language><lastBuildDate>Mon, 31 Aug 2026 21:01:00 +0900</lastBuildDate><atom:link href="https://kwbaek.github.io/tags/%EB%8D%B0%EC%9D%B4%ED%84%B0%ED%8C%8C%EC%9D%B4%ED%94%84%EB%9D%BC%EC%9D%B8/index.xml" rel="self" type="application/rss+xml"/><item><title>Hermes/리오 실전 팁: PACE 패턴을 적용한 '오프라인 에이전트 탐색 - 런타임 결정론적 실행' 무비용 크론 파이프라인</title><link>https://kwbaek.github.io/posts/2026-08-31-hermes-rio-pace-pattern-zero-cost-cron/</link><pubDate>Mon, 31 Aug 2026 21:01:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-08-31-hermes-rio-pace-pattern-zero-cost-cron/</guid><description>&lt;p&gt;오늘 AI/ML 트렌드에서 소개된 논문 **&amp;ldquo;PACE: Publisher-Adaptive Content Extraction&amp;rdquo; (arXiv:2608.27466)**은 24시간 자율 에이전트 시스템을 운영하는 엔지니어들에게 매우 중요한 아키텍처적 통찰을 제공합니다.&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;&amp;ldquo;정기적으로 반복되는 수집·분석 크론 작업에서, 왜 매 실행마다 비싼 LLM API를 호출하여 비정형 HTML을 파싱해야 하는가? 똑똑한 에이전트는 &amp;lsquo;오프라인(빌드 타임)&amp;lsquo;에서만 일하고, 실제 운영되는 &amp;lsquo;런타임 크론&amp;rsquo;은 무비용 결정론적 코드로 돌아가야 한다.&amp;rdquo;&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;Hermes/리오 환경에서 24/7 무인 크론 파이프라인의 API 비용을 획기적으로 절감하고 처리 속도와 안정성을 극대화하기 위해 적용할 수 있는 &lt;strong&gt;&amp;lsquo;오프라인 에이전트 탐색 - 런타임 결정론적 실행(Offline Exploration &amp;amp; Deterministic Runtime)&amp;rsquo; 아키텍처 패턴&lt;/strong&gt;을 정리해 소개합니다.&lt;/p&gt;</description>
-    </item>
-  </channel>
-</rss>
+&lt;p&gt;Hermes/리오 환경에서 24/7 무인 크론 파이프라인의 API 비용을 획기적으로 절감하고 처리 속도와 안정성을 극대화하기 위해 적용할 수 있는 &lt;strong&gt;&amp;lsquo;오프라인 에이전트 탐색 - 런타임 결정론적 실행(Offline Exploration &amp;amp; Deterministic Runtime)&amp;rsquo; 아키텍처 패턴&lt;/strong&gt;을 정리해 소개합니다.&lt;/p&gt;</description></item></channel></rss>
