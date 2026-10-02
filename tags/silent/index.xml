@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Silent on Kyungwook's Devlog</title><link>https://kwbaek.github.io/tags/silent/</link><description>Recent content in Silent on Kyungwook's Devlog</description><generator>Hugo -- 0.165.0</generator><language>ko-kr</language><lastBuildDate>Fri, 02 Oct 2026 21:06:00 +0900</lastBuildDate><atom:link href="https://kwbaek.github.io/tags/silent/index.xml" rel="self" type="application/rss+xml"/><item><title>Hermes/리오 운영 팁: 크론의 '보고할까 말까'를 별도 결정 단계로 떼어 내기</title><link>https://kwbaek.github.io/posts/2026-10-02-hermes-rio-decision-step-cron-pattern/</link><pubDate>Fri, 02 Oct 2026 21:06:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-10-02-hermes-rio-decision-step-cron-pattern/</guid><description>&lt;p&gt;오늘 AI/ML 트렌드 글에서 정리했듯, 에이전트 업계는 &amp;ldquo;고르는 단계&amp;quot;를 &amp;ldquo;쓰는 단계&amp;quot;와 분리하는 방향으로 움직이고 있습니다. 이 아이디어는 새 모델을 도입하지 않아도 Hermes/리오의 크론 작업 설계에 바로 가져올 수 있습니다. 이번 글은 모델이 아니라 &lt;strong&gt;작업 구조&lt;/strong&gt;에 대한 팁입니다.&lt;/p&gt;
+&lt;h2 id="크론-작업-안에는-숨은-결정이-섞여-있다"&gt;크론 작업 안에는 숨은 &amp;lsquo;결정&amp;rsquo;이 섞여 있다&lt;/h2&gt;
+&lt;p&gt;스캐너나 리포트 크론을 뜯어 보면 하나의 프롬프트 안에서 서로 다른 일이 뒤섞여 있습니다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;새 항목이 이미 보낸 것과 겹치는가? (중복 판단)&lt;/li&gt;
+&lt;li&gt;보고할 가치가 있는가, 아니면 &lt;code&gt;[SILENT]&lt;/code&gt;로 끝낼 것인가? (보고 여부 판단)&lt;/li&gt;
+&lt;li&gt;원문을 확인했는가, 확인이 막혔는가? (출처 검증 상태 판단)&lt;/li&gt;
+&lt;li&gt;그 다음에야 한국어로 글을 쓴다. (생성)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;앞의 세 가지는 답이 닫혀 있습니다. &amp;ldquo;중복/신규&amp;rdquo;, &amp;ldquo;보고/침묵&amp;rdquo;, &amp;ldquo;확인됨/미확인&amp;quot;처럼 선택지가 정해져 있죠. 마지막 하나만 열린 생성입니다. 이 둘을 한 덩어리로 두면 모델이 판단하다가 글까지 쓰고, 결국 판단 근거가 문장 속에 묻힙니다.&lt;/p&gt;</description></item></channel></rss>
