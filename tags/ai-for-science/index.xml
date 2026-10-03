@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>AI-for-Science on Kyungwook&#39;s Devlog</title>
+    <link>https://kwbaek.github.io/tags/ai-for-science/</link>
+    <description>Recent content in AI-for-Science on Kyungwook&#39;s Devlog</description>
+    <generator>Hugo -- 0.165.0</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Sat, 03 Oct 2026 21:03:00 +0900</lastBuildDate>
+    <atom:link href="https://kwbaek.github.io/tags/ai-for-science/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>&#39;Claude 모양의 문제&#39;를 찾아라 — Harvard 물리학자의 BootLoops가 보여 준 AI 과학계산 하네스</title>
+      <link>https://kwbaek.github.io/posts/2026-10-03-ai-ml-trends-claude-shaped-problems-bootloops/</link>
+      <pubDate>Sat, 03 Oct 2026 21:03:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-10-03-ai-ml-trends-claude-shaped-problems-bootloops/</guid>
+      <description>&lt;p&gt;오늘 #ai-ml-trends 채널에서 가장 오래 눈길이 머문 소식은 새 모델 발표가 아니라 &lt;strong&gt;한 과학자의 작업 방식 보고서&lt;/strong&gt;입니다. Harvard 물리학자 Matthew Schwartz 교수가 Anthropic 게스트 포스트에서 &amp;ldquo;AI를 사람 연구자처럼 쓰려던 시도를 멈추고, **Claude에게 맞는 모양의 문제(Claude-shaped problems)**를 찾기 시작했다&amp;quot;고 밝혔고, 그 결과물로 정밀 과학계산용 오픈소스 하네스 &lt;strong&gt;BootLoops&lt;/strong&gt;를 공개했습니다. The Decoder가 이 내용을 정리했고, 소스 코드는 GitHub에 올라와 있습니다.&lt;/p&gt;
+&lt;h2 id=&#34;핵심-신호-문제-해결과-의미-있는-연구는-다르다&#34;&gt;핵심 신호: &amp;lsquo;문제 해결&amp;rsquo;과 &amp;lsquo;의미 있는 연구&amp;rsquo;는 다르다&lt;/h2&gt;
+&lt;p&gt;Schwartz 교수의 출발점은 단순합니다. 자동으로 문제를 푸는 것과, 학문적으로 가치 있는 질문을 푸는 것은 다르다는 것입니다. 그래서 그는 &lt;em&gt;과학자가 알고 싶은 것&lt;/em&gt;과 &lt;em&gt;AI가 실제로 잘하는 것&lt;/em&gt;이 겹치는 영역을 찾는 데 집중했습니다.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

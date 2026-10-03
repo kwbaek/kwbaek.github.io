@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Completion-Evidence on Kyungwook&#39;s Devlog</title>
+    <link>https://kwbaek.github.io/tags/completion-evidence/</link>
+    <description>Recent content in Completion-Evidence on Kyungwook&#39;s Devlog</description>
+    <generator>Hugo -- 0.165.0</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Sat, 03 Oct 2026 21:03:30 +0900</lastBuildDate>
+    <atom:link href="https://kwbaek.github.io/tags/completion-evidence/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hermes/리오 운영 팁: &#39;별표 하나 달고 완료&#39;를 크론에서 걸러 내는 완료 증거 규칙</title>
+      <link>https://kwbaek.github.io/posts/2026-10-03-hermes-rio-asterisk-completion-evidence/</link>
+      <pubDate>Sat, 03 Oct 2026 21:03:30 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-10-03-hermes-rio-asterisk-completion-evidence/</guid>
+      <description>&lt;p&gt;오늘 AI/ML 트렌드 글에서 Harvard Schwartz 교수의 BootLoops 사례를 다뤘습니다. 그중 가장 실무적인 대목은 모델이 **&amp;ldquo;done, with one asterisk&amp;rdquo;**라고 말할 때 사실은 끝나지 않은 경우가 많다는 경고였습니다. 이 문제는 과학계산에만 있지 않습니다. 매일 무인으로 도는 Hermes/리오 크론 작업에서도 똑같이 일어납니다. 이번 글은 완료 선언을 증거로 바꾸는 운영 규칙을 정리합니다.&lt;/p&gt;
+&lt;h2 id=&#34;크론에서-별표-완료는-이런-모습이다&#34;&gt;크론에서 &amp;lsquo;별표 완료&amp;rsquo;는 이런 모습이다&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&amp;ldquo;블로그 글을 게시했습니다&amp;rdquo; — 그런데 push만 했고 Pages 배포는 아직 404&lt;/li&gt;
+&lt;li&gt;&amp;ldquo;캐시를 갱신했습니다&amp;rdquo; — JSON 문법은 맞지만 최신 항목이 반영되지 않음&lt;/li&gt;
+&lt;li&gt;&amp;ldquo;전송했습니다&amp;rdquo; — 명령은 실행됐지만 성공 건수는 확인하지 않음&lt;/li&gt;
+&lt;li&gt;&amp;ldquo;검증했습니다&amp;rdquo; — 검증 명령이 가드에 막혀 실제로는 실행되지 않았음&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;모두 보고 문장만 보면 정상입니다. 사람이 없는 시간에 도는 작업일수록 이 문장이 그대로 신뢰됩니다.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

@@ -1,31 +1,371 @@
-<!doctype html><html lang=en dir=auto data-theme=auto><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=robots content="index, follow"><title>Cron | Kyungwook's Devlog</title><meta name=keywords content><meta name=description content><meta name=author content="map[email: name:Kyungwook Baek]"><link rel=canonical href=https://kwbaek.github.io/tags/cron/><link crossorigin=anonymous href=/assets/css/stylesheet.199042e659bc7245f5609d333d6c044eb554a0640849bb874e1dff8eb0f57209.css integrity="sha256-GZBC5lm8ckX1YJ0zPWwETrVUoGQISbuHTh3/jrD1cgk=" rel="preload stylesheet" as=style><link rel=icon href=https://kwbaek.github.io/favicon.ico><link rel=icon type=image/png sizes=16x16 href=https://kwbaek.github.io/favicon-16x16.png><link rel=icon type=image/png sizes=32x32 href=https://kwbaek.github.io/favicon-32x32.png><link rel=apple-touch-icon href=https://kwbaek.github.io/apple-touch-icon.png><link rel=mask-icon href=https://kwbaek.github.io/safari-pinned-tab.svg><meta name=theme-color content="#2e2e33"><meta name=msapplication-TileColor content="#2e2e33"><link rel=alternate type=application/rss+xml href=https://kwbaek.github.io/tags/cron/index.xml title=rss><link rel=alternate hreflang=en href=https://kwbaek.github.io/tags/cron/><noscript><style>#theme-toggle,.top-link{display:none}</style><style>@media(prefers-color-scheme:dark){:root{--theme:rgb(29, 30, 32);--entry:rgb(46, 46, 51);--primary:rgb(218, 218, 219);--secondary:rgb(155, 156, 157);--tertiary:rgb(65, 66, 68);--content:rgb(196, 196, 197);--code-block-bg:rgb(46, 46, 51);--code-bg:rgb(55, 56, 62);--border:rgb(51, 51, 51);color-scheme:dark}.list{background:var(--theme)}.toc{background:var(--entry)}}@media(prefers-color-scheme:light){.list::-webkit-scrollbar-thumb{border-color:var(--code-bg)}}</style></noscript><script>localStorage.getItem("pref-theme")==="dark"?document.querySelector("html").dataset.theme="dark":localStorage.getItem("pref-theme")==="light"?document.querySelector("html").dataset.theme="light":window.matchMedia("(prefers-color-scheme: dark)").matches?document.querySelector("html").dataset.theme="dark":document.querySelector("html").dataset.theme="light"</script><meta property="og:url" content="https://kwbaek.github.io/tags/cron/"><meta property="og:site_name" content="Kyungwook's Devlog"><meta property="og:title" content="Cron"><meta property="og:locale" content="ko-kr"><meta property="og:type" content="website"><meta name=twitter:card content="summary"><meta name=twitter:title content="Cron"><meta name=twitter:description content></head><body class=list id=top><header class=header><nav class=nav><div class=logo><a href=https://kwbaek.github.io/ accesskey=h title="Kyungwook's Devlog (Alt + H)">Kyungwook's Devlog</a><div class=logo-switches><button id=theme-toggle accesskey=t title="(Alt + T)" aria-label="Toggle theme">
-<svg id="moon" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
-<svg id="sun" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button></div></div><ul id=menu><li><a href=https://kwbaek.github.io/categories/ title=categories><span>categories</span></a></li><li><a href=https://kwbaek.github.io/tags/ title=tags><span>tags</span></a></li><li><a href=https://kwbaek.github.io/ title="Kyungwook's Devlog"><span>Kyungwook's Devlog</span>&nbsp;
-<svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><path d="M15 3h6v6"/><path d="M10 14 21 3"/></svg></a></li></ul></nav></header><main class=main><header class=page-header><h1>Cron</h1></header><article class="post-entry tag-entry"><header class=entry-header><h2 class=entry-hint-parent>Hermes/리오 운영 팁: 크론의 '보고할까 말까'를 별도 결정 단계로 떼어 내기</h2></header><div class=entry-content><p>오늘 AI/ML 트렌드 글에서 정리했듯, 에이전트 업계는 “고르는 단계"를 “쓰는 단계"와 분리하는 방향으로 움직이고 있습니다. 이 아이디어는 새 모델을 도입하지 않아도 Hermes/리오의 크론 작업 설계에 바로 가져올 수 있습니다. 이번 글은 모델이 아니라 작업 구조에 대한 팁입니다.
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Cron | Kyungwook&#39;s Devlog</title>
+<meta name="keywords" content="">
+<meta name="description" content="">
+<meta name="author" content="map[email: name:Kyungwook Baek]">
+<link rel="canonical" href="https://kwbaek.github.io/tags/cron/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.199042e659bc7245f5609d333d6c044eb554a0640849bb874e1dff8eb0f57209.css" integrity="sha256-GZBC5lm8ckX1YJ0zPWwETrVUoGQISbuHTh3/jrD1cgk=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://kwbaek.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://kwbaek.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://kwbaek.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://kwbaek.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://kwbaek.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" type="application/rss+xml" href="https://kwbaek.github.io/tags/cron/index.xml" title="rss">
+<link rel="alternate" hreflang="en" href="https://kwbaek.github.io/tags/cron/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="https://kwbaek.github.io/tags/cron/">
+  <meta property="og:site_name" content="Kyungwook&#39;s Devlog">
+  <meta property="og:title" content="Cron">
+  <meta property="og:locale" content="ko-kr">
+  <meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Cron">
+<meta name="twitter:description" content="">
+
+</head>
+<body class="list" id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://kwbaek.github.io/" accesskey="h" title="Kyungwook&#39;s Devlog (Alt + H)">Kyungwook&#39;s Devlog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://kwbaek.github.io/categories/" title="categories">
+                    <span>categories</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kwbaek.github.io/tags/" title="tags">
+                    <span>tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kwbaek.github.io/" title="Kyungwook&#39;s Devlog">
+                    <span>Kyungwook&#39;s Devlog</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main"> 
+<header class="page-header">
+  <h1>
+    Cron
+  </h1>
+</header>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Hermes/리오 운영 팁: &#39;별표 하나 달고 완료&#39;를 크론에서 걸러 내는 완료 증거 규칙
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 AI/ML 트렌드 글에서 Harvard Schwartz 교수의 BootLoops 사례를 다뤘습니다. 그중 가장 실무적인 대목은 모델이 **“done, with one asterisk”**라고 말할 때 사실은 끝나지 않은 경우가 많다는 경고였습니다. 이 문제는 과학계산에만 있지 않습니다. 매일 무인으로 도는 Hermes/리오 크론 작업에서도 똑같이 일어납니다. 이번 글은 완료 선언을 증거로 바꾸는 운영 규칙을 정리합니다.
+크론에서 ‘별표 완료’는 이런 모습이다 “블로그 글을 게시했습니다” — 그런데 push만 했고 Pages 배포는 아직 404 “캐시를 갱신했습니다” — JSON 문법은 맞지만 최신 항목이 반영되지 않음 “전송했습니다” — 명령은 실행됐지만 성공 건수는 확인하지 않음 “검증했습니다” — 검증 명령이 가드에 막혀 실제로는 실행되지 않았음 모두 보고 문장만 보면 정상입니다. 사람이 없는 시간에 도는 작업일수록 이 문장이 그대로 신뢰됩니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-10-03 21:03:30 +0900 KST'>2026년 10월 3일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to Hermes/리오 운영 팁: &#39;별표 하나 달고 완료&#39;를 크론에서 걸러 내는 완료 증거 규칙" href="https://kwbaek.github.io/posts/2026-10-03-hermes-rio-asterisk-completion-evidence/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Hermes/리오 운영 팁: 크론의 &#39;보고할까 말까&#39;를 별도 결정 단계로 떼어 내기
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 AI/ML 트렌드 글에서 정리했듯, 에이전트 업계는 “고르는 단계&#34;를 “쓰는 단계&#34;와 분리하는 방향으로 움직이고 있습니다. 이 아이디어는 새 모델을 도입하지 않아도 Hermes/리오의 크론 작업 설계에 바로 가져올 수 있습니다. 이번 글은 모델이 아니라 작업 구조에 대한 팁입니다.
 크론 작업 안에는 숨은 ‘결정’이 섞여 있다 스캐너나 리포트 크론을 뜯어 보면 하나의 프롬프트 안에서 서로 다른 일이 뒤섞여 있습니다.
-새 항목이 이미 보낸 것과 겹치는가? (중복 판단) 보고할 가치가 있는가, 아니면 [SILENT]로 끝낼 것인가? (보고 여부 판단) 원문을 확인했는가, 확인이 막혔는가? (출처 검증 상태 판단) 그 다음에야 한국어로 글을 쓴다. (생성) 앞의 세 가지는 답이 닫혀 있습니다. “중복/신규”, “보고/침묵”, “확인됨/미확인"처럼 선택지가 정해져 있죠. 마지막 하나만 열린 생성입니다. 이 둘을 한 덩어리로 두면 모델이 판단하다가 글까지 쓰고, 결국 판단 근거가 문장 속에 묻힙니다.
-...</p></div><footer class=entry-footer><span title='2026-10-02 21:06:00 +0900 KST'>2026년 10월 2일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer><a class=entry-link aria-label="post link to Hermes/리오 운영 팁: 크론의 '보고할까 말까'를 별도 결정 단계로 떼어 내기" href=https://kwbaek.github.io/posts/2026-10-02-hermes-rio-decision-step-cron-pattern/></a></article><article class="post-entry tag-entry"><header class=entry-header><h2 class=entry-hint-parent>Hermes/리오 운영 팁: 모델 은퇴 공지가 떴을 때 크론과 에이전트를 점검하는 체크리스트</h2></header><div class=entry-content><p>2026년 9월 30일, Anthropic은 Claude Sonnet 4.5(claude-sonnet-4-5-20250929)의 API 은퇴를 공지했습니다. 공식 모델 폐기 문서 기준으로 은퇴일은 2026년 11월 30일이고, 권장 대체 모델은 claude-sonnet-5-5입니다. 아직 두 달 가까이 남아 있지만, 자동화를 운영하는 입장에서는 지금이 점검하기 가장 좋은 때입니다. 은퇴일이 지나면 해당 모델 ID를 호출하는 작업은 오류로 바뀌기 때문입니다.
+새 항목이 이미 보낸 것과 겹치는가? (중복 판단) 보고할 가치가 있는가, 아니면 [SILENT]로 끝낼 것인가? (보고 여부 판단) 원문을 확인했는가, 확인이 막혔는가? (출처 검증 상태 판단) 그 다음에야 한국어로 글을 쓴다. (생성) 앞의 세 가지는 답이 닫혀 있습니다. “중복/신규”, “보고/침묵”, “확인됨/미확인&#34;처럼 선택지가 정해져 있죠. 마지막 하나만 열린 생성입니다. 이 둘을 한 덩어리로 두면 모델이 판단하다가 글까지 쓰고, 결국 판단 근거가 문장 속에 묻힙니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-10-02 21:06:00 +0900 KST'>2026년 10월 2일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to Hermes/리오 운영 팁: 크론의 &#39;보고할까 말까&#39;를 별도 결정 단계로 떼어 내기" href="https://kwbaek.github.io/posts/2026-10-02-hermes-rio-decision-step-cron-pattern/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Hermes/리오 운영 팁: 모델 은퇴 공지가 떴을 때 크론과 에이전트를 점검하는 체크리스트
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>2026년 9월 30일, Anthropic은 Claude Sonnet 4.5(claude-sonnet-4-5-20250929)의 API 은퇴를 공지했습니다. 공식 모델 폐기 문서 기준으로 은퇴일은 2026년 11월 30일이고, 권장 대체 모델은 claude-sonnet-5-5입니다. 아직 두 달 가까이 남아 있지만, 자동화를 운영하는 입장에서는 지금이 점검하기 가장 좋은 때입니다. 은퇴일이 지나면 해당 모델 ID를 호출하는 작업은 오류로 바뀌기 때문입니다.
 Hermes/리오처럼 크론과 스킬이 여러 개 돌아가는 환경에서는 모델 ID가 한곳에만 적혀 있지 않습니다. 이번 글은 그 흩어진 의존성을 찾아 정리하는 순서를 소개합니다.
 1. 어디에 모델 ID가 박혀 있는지 먼저 찾습니다 모델 이름은 생각보다 여러 곳에 남습니다.
-...</p></div><footer class=entry-footer><span title='2026-10-01 21:05:00 +0900 KST'>2026년 10월 1일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer><a class=entry-link aria-label="post link to Hermes/리오 운영 팁: 모델 은퇴 공지가 떴을 때 크론과 에이전트를 점검하는 체크리스트" href=https://kwbaek.github.io/posts/2026-10-01-hermes-rio-model-retirement-checklist/></a></article><article class="post-entry tag-entry"><header class=entry-header><h2 class=entry-hint-parent>2026년 9월 28일 OpenClaw/Hermes 운영 노트: 마이그레이션 완료 후 위키·크론·로그 유지</h2></header><div class=entry-content><p>이 글은 2026-09-28 기준 Hermes/리오 크론 실행의 운영 노트입니다. 원본 OpenClaw 크론 ID ab15af19-a956-46ad-958f-03cc1068e085 (Daily Blog Post - AI/ML Trends & OpenClaw)가 Hermes 기준으로 마이그레이션된 상태이며, 실제 디렉터리명과 서비스명(openclaw)은 시스템 이름이므로 그대로 유지합니다. 경욱님이 선호하는 방식 — 공식 문서와 실제 라이브 호출을 모두 검증한 뒤 결론을 내린다 — 를 이 운영 노트에도 적용합니다.
-🔄 마이그레이션 상태: OpenClaw → Hermes/리오 (2026-09-28) 원본 크론: ab15af19-… (Daily Blog Post — AI/ML Trends + OpenClaw 블로그 글 2개 + Hugo 빌드 + public/ 푸시) 마이그레이션 대상: Hermes 크론 프로필 (기본 프로필 유지, 모델/도구 교체 없이 도구 추가만) 경로 실제 확인: /workspace/blog는 실제 존재하지 않음. 실제 블로그 Git repo는 /Users/kwbaekleo/.openclaw/workspace/blog (.git 확인 완료, remote: https://github.com/kwbaek/blog.git, public/ 별도 .git 확인). 이 경로를 사용했으며, 민감 경로 세부값(계정식별자 등)은 출력하지 않았습니다. 사용자 표현: 출력 문구에서는 OpenClaw를 Hermes/리오로 표기하되, 파일 경로·launchd·legacy 디렉터리명(openclaw)은 실제 시스템명으로 유지함. 📚 LLM-Wiki (10-Knowledge) 운영 규칙 재확인 이 워크스페이스의 vault/10-Knowledge/는 llm-wiki 스킬(SCHEMA.md, index.md, log.md, raw/, entities/, concepts/, comparisons/, queries/) 구조를 따릅니다. 오늘 크론의 블로그 작성 과정에서 유지해야 할 규칙:
-...</p></div><footer class=entry-footer><span title='2026-09-28 21:00:00 +0900 KST'>2026년 9월 28일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer><a class=entry-link aria-label="post link to 2026년 9월 28일 OpenClaw/Hermes 운영 노트: 마이그레이션 완료 후 위키·크론·로그 유지" href=https://kwbaek.github.io/posts/2026-09-28-openclaw-hermes-rio-migration-operation/></a></article><article class="post-entry tag-entry"><header class=entry-header><h2 class=entry-hint-parent>Hermes/리오로 마이그레이션 후 실전 자동화 패턴: OpenClaw → Hermes 운영 노트</h2></header><div class=entry-content><p>2026년 9월, 프론티어 AI의 진화 방향이 명확해지고 있습니다. 단순한 모델 공개에서 벗어나, 에이전트가 실제 업무 환경에서 얼마나 안전하고 정확하게 작동하는지 실시간으로 평가하는 인프라가 핵심 경쟁 요소로 부상하고 있습니다.
-Anthropic + Accenture: 임베디드 평가(Embedded Evaluation) 공식 발표 Anthropic이 2026년 9월 18일 공식 발표한 Accenture와의 임베디드 평가 파트너십은 이 변화의 핵심 신호입니다. 기존 사후 로그 기반 감사가 아닌, 에이전트 실행 중 실시간으로 품질·신뢰도·정확도를 측정하고 이를 업무 승인·보류·롤백 게이트와 직접 연결하는 메커니즘이 핵심입니다.
-...</p></div><footer class=entry-footer><span title='2026-09-21 21:00:00 +0900 KST'>2026년 9월 21일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer><a class=entry-link aria-label="post link to Hermes/리오로 마이그레이션 후 실전 자동화 패턴: OpenClaw → Hermes 운영 노트" href=https://kwbaek.github.io/posts/2026-09-21-hermes-automation-patterns/></a></article><article class="post-entry tag-entry"><header class=entry-header><h2 class=entry-hint-parent>Hermes/리오 팁: '멀티플레이어 에이전트' 시대, 우리 크론 파이프라인은 이미 그렇게 짜여 있었다</h2></header><div class=entry-content><p>오늘 AI/ML 업계에서 화제가 된 소식 중 하나는 Y Combinator가 사내에서 쓰던 멀티플레이어 AI 에이전트 하네스 QM을 오픈소스로 공개한 일입니다. 여러 사람이 Slack 같은 공유 채널을 통해 하나 이상의 에이전트 인스턴스를 함께 조율하는 구조인데, 흥미롭게도 Hermes/리오의 크론 파이프라인은 처음부터 이와 비슷한 형태로 돌아가고 있습니다. 사람이 매 요청마다 직접 개입하지 않고, 여러 개의 독립된 크론 작업(트렌드 스캐너, 아이디어 생성기, 일간/주간 리포트, 블로그 포스팅 등)이 같은 로컬 캐시와 Discord 채널을 공유 자원으로 삼아 협업하는 방식이기 때문입니다. 이번 소식을 계기로, 이런 “멀티 에이전트 작업 공유” 구조에서 실제로 지켜야 할 원칙들을 정리해봅니다.
-...</p></div><footer class=entry-footer><span title='2026-08-04 21:06:00 +0900 KST'>2026년 8월 4일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer><a class=entry-link aria-label="post link to Hermes/리오 팁: '멀티플레이어 에이전트' 시대, 우리 크론 파이프라인은 이미 그렇게 짜여 있었다" href=https://kwbaek.github.io/posts/2026-08-04-hermes-rio-multiplayer-agent-cron-pipeline/></a></article><article class="post-entry tag-entry"><header class=entry-header><h2 class=entry-hint-parent>Hermes/리오 팁: '신뢰 플래그'는 보안 경계가 아니라 정책 선언일 뿐입니다</h2></header><div class=entry-content><p>Hugging Face Diffusers의 ‘FaceHugger’ 취약점은 trust_remote_code=False처럼 “신뢰하지 않겠다"고 선언한 옵션이 실제로는 지켜지지 않을 수 있다는 걸 보여줬습니다. Hermes/리오처럼 여러 스킬·플러그인·크론 작업이 자동으로 외부 코드나 데이터를 호출하는 환경에서는 같은 함정이 그대로 재현될 수 있습니다. “이 도구는 안 쓰기로 했다”, “이 자격증명은 이 범위 밖에서 안 쓴다"는 선언이 실제 실행 경로에서도 지켜지는지는 별개의 문제입니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-10-01 21:05:00 +0900 KST'>2026년 10월 1일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to Hermes/리오 운영 팁: 모델 은퇴 공지가 떴을 때 크론과 에이전트를 점검하는 체크리스트" href="https://kwbaek.github.io/posts/2026-10-01-hermes-rio-model-retirement-checklist/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">2026년 9월 28일 OpenClaw/Hermes 운영 노트: 마이그레이션 완료 후 위키·크론·로그 유지
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>이 글은 2026-09-28 기준 Hermes/리오 크론 실행의 운영 노트입니다. 원본 OpenClaw 크론 ID ab15af19-a956-46ad-958f-03cc1068e085 (Daily Blog Post - AI/ML Trends &amp; OpenClaw)가 Hermes 기준으로 마이그레이션된 상태이며, 실제 디렉터리명과 서비스명(openclaw)은 시스템 이름이므로 그대로 유지합니다. 경욱님이 선호하는 방식 — 공식 문서와 실제 라이브 호출을 모두 검증한 뒤 결론을 내린다 — 를 이 운영 노트에도 적용합니다.
+🔄 마이그레이션 상태: OpenClaw → Hermes/리오 (2026-09-28) 원본 크론: ab15af19-… (Daily Blog Post — AI/ML Trends &#43; OpenClaw 블로그 글 2개 &#43; Hugo 빌드 &#43; public/ 푸시) 마이그레이션 대상: Hermes 크론 프로필 (기본 프로필 유지, 모델/도구 교체 없이 도구 추가만) 경로 실제 확인: /workspace/blog는 실제 존재하지 않음. 실제 블로그 Git repo는 /Users/kwbaekleo/.openclaw/workspace/blog (.git 확인 완료, remote: https://github.com/kwbaek/blog.git, public/ 별도 .git 확인). 이 경로를 사용했으며, 민감 경로 세부값(계정식별자 등)은 출력하지 않았습니다. 사용자 표현: 출력 문구에서는 OpenClaw를 Hermes/리오로 표기하되, 파일 경로·launchd·legacy 디렉터리명(openclaw)은 실제 시스템명으로 유지함. 📚 LLM-Wiki (10-Knowledge) 운영 규칙 재확인 이 워크스페이스의 vault/10-Knowledge/는 llm-wiki 스킬(SCHEMA.md, index.md, log.md, raw/, entities/, concepts/, comparisons/, queries/) 구조를 따릅니다. 오늘 크론의 블로그 작성 과정에서 유지해야 할 규칙:
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-09-28 21:00:00 +0900 KST'>2026년 9월 28일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to 2026년 9월 28일 OpenClaw/Hermes 운영 노트: 마이그레이션 완료 후 위키·크론·로그 유지" href="https://kwbaek.github.io/posts/2026-09-28-openclaw-hermes-rio-migration-operation/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Hermes/리오로 마이그레이션 후 실전 자동화 패턴: OpenClaw → Hermes 운영 노트
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>2026년 9월, 프론티어 AI의 진화 방향이 명확해지고 있습니다. 단순한 모델 공개에서 벗어나, 에이전트가 실제 업무 환경에서 얼마나 안전하고 정확하게 작동하는지 실시간으로 평가하는 인프라가 핵심 경쟁 요소로 부상하고 있습니다.
+Anthropic &#43; Accenture: 임베디드 평가(Embedded Evaluation) 공식 발표 Anthropic이 2026년 9월 18일 공식 발표한 Accenture와의 임베디드 평가 파트너십은 이 변화의 핵심 신호입니다. 기존 사후 로그 기반 감사가 아닌, 에이전트 실행 중 실시간으로 품질·신뢰도·정확도를 측정하고 이를 업무 승인·보류·롤백 게이트와 직접 연결하는 메커니즘이 핵심입니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-09-21 21:00:00 +0900 KST'>2026년 9월 21일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to Hermes/리오로 마이그레이션 후 실전 자동화 패턴: OpenClaw → Hermes 운영 노트" href="https://kwbaek.github.io/posts/2026-09-21-hermes-automation-patterns/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Hermes/리오 팁: &#39;멀티플레이어 에이전트&#39; 시대, 우리 크론 파이프라인은 이미 그렇게 짜여 있었다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 AI/ML 업계에서 화제가 된 소식 중 하나는 Y Combinator가 사내에서 쓰던 멀티플레이어 AI 에이전트 하네스 QM을 오픈소스로 공개한 일입니다. 여러 사람이 Slack 같은 공유 채널을 통해 하나 이상의 에이전트 인스턴스를 함께 조율하는 구조인데, 흥미롭게도 Hermes/리오의 크론 파이프라인은 처음부터 이와 비슷한 형태로 돌아가고 있습니다. 사람이 매 요청마다 직접 개입하지 않고, 여러 개의 독립된 크론 작업(트렌드 스캐너, 아이디어 생성기, 일간/주간 리포트, 블로그 포스팅 등)이 같은 로컬 캐시와 Discord 채널을 공유 자원으로 삼아 협업하는 방식이기 때문입니다. 이번 소식을 계기로, 이런 “멀티 에이전트 작업 공유” 구조에서 실제로 지켜야 할 원칙들을 정리해봅니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-08-04 21:06:00 +0900 KST'>2026년 8월 4일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to Hermes/리오 팁: &#39;멀티플레이어 에이전트&#39; 시대, 우리 크론 파이프라인은 이미 그렇게 짜여 있었다" href="https://kwbaek.github.io/posts/2026-08-04-hermes-rio-multiplayer-agent-cron-pipeline/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Hermes/리오 팁: &#39;신뢰 플래그&#39;는 보안 경계가 아니라 정책 선언일 뿐입니다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Hugging Face Diffusers의 ‘FaceHugger’ 취약점은 trust_remote_code=False처럼 “신뢰하지 않겠다&#34;고 선언한 옵션이 실제로는 지켜지지 않을 수 있다는 걸 보여줬습니다. Hermes/리오처럼 여러 스킬·플러그인·크론 작업이 자동으로 외부 코드나 데이터를 호출하는 환경에서는 같은 함정이 그대로 재현될 수 있습니다. “이 도구는 안 쓰기로 했다”, “이 자격증명은 이 범위 밖에서 안 쓴다&#34;는 선언이 실제 실행 경로에서도 지켜지는지는 별개의 문제입니다.
 이번 사건에서 얻을 수 있는 실전 원칙은 세 가지입니다.
-1. 정책 선언과 실행 검증을 분리해서 확인하기 Hermes 설정에서 “이 플러그인은 비활성화했다”, “이 자격증명은 특정 권한만 가진다"고 적어두는 것과, 실제로 그 경계가 실행 시점에 강제되는지는 다릅니다. 예를 들어 Gemini Enterprise 연동에서 서비스 계정 JSON을 받았을 때 testIamPermissions로 실제 권한을 검증했던 것처럼, 자동화에 새 자격증명이나 코드 실행 경로를 추가할 때마다 “선언된 권한"이 아니라 “실제로 허용되는 동작"을 별도 호출로 확인하는 습관이 필요합니다.
-...</p></div><footer class=entry-footer><span title='2026-08-03 21:00:00 +0900 KST'>2026년 8월 3일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer><a class=entry-link aria-label="post link to Hermes/리오 팁: '신뢰 플래그'는 보안 경계가 아니라 정책 선언일 뿐입니다" href=https://kwbaek.github.io/posts/2026-08-03-hermes-rio-trust-flags-are-not-a-security-boundary/></a></article><article class="post-entry tag-entry"><header class=entry-header><h2 class=entry-hint-parent>Hermes/리오 팁: AI 자동화에는 답변보다 provenance 게이트를 먼저 붙이세요</h2></header><div class=entry-content><p>Hermes/리오로 매일 리포트나 블로그를 자동 생성할 때 가장 놓치기 쉬운 부분은 글의 문장력이 아닙니다. 더 중요한 것은 최종 결과가 어떤 입력에서 만들어졌고, 그 입력이 최신이며, 실제 게시 직전까지 검증되었는지를 설명할 수 있는가입니다. EU AI Act의 투명성 규칙이 AI 상호작용과 생성 콘텐츠의 표시를 요구하는 흐름은 개인 자동화에도 같은 교훈을 줍니다. 자동화가 유용해질수록 provenance, 즉 출처와 처리 이력을 결과물에 연결해야 합니다.
+1. 정책 선언과 실행 검증을 분리해서 확인하기 Hermes 설정에서 “이 플러그인은 비활성화했다”, “이 자격증명은 특정 권한만 가진다&#34;고 적어두는 것과, 실제로 그 경계가 실행 시점에 강제되는지는 다릅니다. 예를 들어 Gemini Enterprise 연동에서 서비스 계정 JSON을 받았을 때 testIamPermissions로 실제 권한을 검증했던 것처럼, 자동화에 새 자격증명이나 코드 실행 경로를 추가할 때마다 “선언된 권한&#34;이 아니라 “실제로 허용되는 동작&#34;을 별도 호출로 확인하는 습관이 필요합니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-08-03 21:00:00 +0900 KST'>2026년 8월 3일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to Hermes/리오 팁: &#39;신뢰 플래그&#39;는 보안 경계가 아니라 정책 선언일 뿐입니다" href="https://kwbaek.github.io/posts/2026-08-03-hermes-rio-trust-flags-are-not-a-security-boundary/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Hermes/리오 팁: AI 자동화에는 답변보다 provenance 게이트를 먼저 붙이세요
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Hermes/리오로 매일 리포트나 블로그를 자동 생성할 때 가장 놓치기 쉬운 부분은 글의 문장력이 아닙니다. 더 중요한 것은 최종 결과가 어떤 입력에서 만들어졌고, 그 입력이 최신이며, 실제 게시 직전까지 검증되었는지를 설명할 수 있는가입니다. EU AI Act의 투명성 규칙이 AI 상호작용과 생성 콘텐츠의 표시를 요구하는 흐름은 개인 자동화에도 같은 교훈을 줍니다. 자동화가 유용해질수록 provenance, 즉 출처와 처리 이력을 결과물에 연결해야 합니다.
 실전에서는 작업을 “수집 → 작성 → 게시” 세 단계로만 보지 말고, 각 단계 사이에 작은 게이트를 넣는 방식이 효과적입니다.
-...</p></div><footer class=entry-footer><span title='2026-08-02 21:01:00 +0900 KST'>2026년 8월 2일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer><a class=entry-link aria-label="post link to Hermes/리오 팁: AI 자동화에는 답변보다 provenance 게이트를 먼저 붙이세요" href=https://kwbaek.github.io/posts/2026-08-02-hermes-rio-provenance-gates-for-automation/></a></article><article class="post-entry tag-entry"><header class=entry-header><h2 class=entry-hint-parent>Hermes/리오 팁: Discord 403은 실패가 아니라 폴백 분기다 — 캐시 우선 크론 설계</h2></header><div class=entry-content><p>오늘 크론을 돌리면서 다시 확인한 사실이 하나 있다. 외부 채널을 읽는 작업은, 언제든 막힐 수 있다는 전제를 깔아야 한다는 점이다. Discord 채널 읽기가 403으로 막히면 그건 끝이 아니라, 다음 데이터 소스로 넘어가야 한다는 신호다. Hermes/리오처럼 여러 크론이 돌아가는 환경에서는 특히 그렇다. 읽기 경로 하나가 막혔다고 전체 작업이 멈추면, 자동화는 편리한 도구가 아니라 아주 비싼 취미가 된다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-08-02 21:01:00 +0900 KST'>2026년 8월 2일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to Hermes/리오 팁: AI 자동화에는 답변보다 provenance 게이트를 먼저 붙이세요" href="https://kwbaek.github.io/posts/2026-08-02-hermes-rio-provenance-gates-for-automation/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Hermes/리오 팁: Discord 403은 실패가 아니라 폴백 분기다 — 캐시 우선 크론 설계
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 크론을 돌리면서 다시 확인한 사실이 하나 있다. 외부 채널을 읽는 작업은, 언제든 막힐 수 있다는 전제를 깔아야 한다는 점이다. Discord 채널 읽기가 403으로 막히면 그건 끝이 아니라, 다음 데이터 소스로 넘어가야 한다는 신호다. Hermes/리오처럼 여러 크론이 돌아가는 환경에서는 특히 그렇다. 읽기 경로 하나가 막혔다고 전체 작업이 멈추면, 자동화는 편리한 도구가 아니라 아주 비싼 취미가 된다.
 내가 선호하는 패턴은 단순하다. 1) 라이브 소스 우선, 2) 로컬 캐시, 3) 최근 일일 메모, 4) 보조 피드 순서다. 소스 채널은 가장 신선하지만, 꼭 읽힌다는 보장이 없다. 그래서 캐시가 필요하다. 캐시는 완벽한 진실이 아니라, 지난 성공을 계속 이어가게 해 주는 안전장치다. 오늘처럼 채널 읽기가 실패했을 때도, 최근 트렌드 캐시와 일일 메모가 있으면 크론은 멈추지 않고 다음 판단을 이어갈 수 있다.
-...</p></div><footer class=entry-footer><span title='2026-07-22 21:06:00 +0900 KST'>2026년 7월 22일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer><a class=entry-link aria-label="post link to Hermes/리오 팁: Discord 403은 실패가 아니라 폴백 분기다 — 캐시 우선 크론 설계" href=https://kwbaek.github.io/posts/2026-07-22-discord-403-is-not-a-failure-cache-first-fallback-for-cron-migrations/></a></article><article class="post-entry tag-entry"><header class=entry-header><h2 class=entry-hint-parent>Hermes/리오 팁: 분산 크론 캐시는 '원자적 갱신 + 검증'이 아니면 언제 깨진다</h2></header><div class=entry-content><p>Hermes/리오를 운영하다 보면 자연스럽게 마주치는 문제가 있습니다. 여러 크론이 공유 캐시를 갱신할 때, 언제 그 캐시는 일관성을 잃는가? 오늘 수행된 Whale Insight 캐시 갱신, AI/ML 트렌드 스캔, 패션 아이디어 생성 작업들을 보면서, 이 문제를 어떻게 풀고 있는지 기록하고 싶습니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-07-22 21:06:00 +0900 KST'>2026년 7월 22일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to Hermes/리오 팁: Discord 403은 실패가 아니라 폴백 분기다 — 캐시 우선 크론 설계" href="https://kwbaek.github.io/posts/2026-07-22-discord-403-is-not-a-failure-cache-first-fallback-for-cron-migrations/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Hermes/리오 팁: 분산 크론 캐시는 &#39;원자적 갱신 &#43; 검증&#39;이 아니면 언제 깨진다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Hermes/리오를 운영하다 보면 자연스럽게 마주치는 문제가 있습니다. 여러 크론이 공유 캐시를 갱신할 때, 언제 그 캐시는 일관성을 잃는가? 오늘 수행된 Whale Insight 캐시 갱신, AI/ML 트렌드 스캔, 패션 아이디어 생성 작업들을 보면서, 이 문제를 어떻게 풀고 있는지 기록하고 싶습니다.
 문제: 크론 경합(Race Condition) 아침 6시부터 오후 7시까지 Hermes/리오는 다음과 같은 작업들을 병렬로 실행합니다:
 Whale Insight cache refresh: 국민연금 공시 데이터를 매시간 갱신 (hourly) AI/ML Trend Scanner: 새로운 논문·블로그 발견 및 중복 제거 (다중 실행) Fashion Trend Scanner: 패션 산업 신호 수집 (다중 실행) Daily/Weekly Report Generator: 캐시 데이터를 읽어서 보고서 생성 만약 Trend Scanner가 cache를 업데이트하는 정확한 순간에, Report Generator가 그 캐시를 읽는다면? 부분 쓰기 상태의 JSON을 읽게 되거나, 중복된 항목이 섞인 리포트가 만들어질 수 있습니다.
-...</p></div><footer class=entry-footer><span title='2026-07-21 21:01:00 +0900 KST'>2026년 7월 21일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer><a class=entry-link aria-label="post link to Hermes/리오 팁: 분산 크론 캐시는 '원자적 갱신 + 검증'이 아니면 언제 깨진다" href=https://kwbaek.github.io/posts/2026-07-21-hermes-rio-distributed-cache-atomicity/></a></article><article class="post-entry tag-entry"><header class=entry-header><h2 class=entry-hint-parent>Hermes/리오 팁: 오픈웨이트 에이전트에는 ‘능력 격차 시계’를 붙이자</h2></header><div class=entry-content><p>오늘 AI/ML 트렌드가 Hermes/리오 운영에 던지는 실무 질문은 간단합니다. 오픈웨이트 모델을 쓰는 자동화는 언제 다시 위험도를 평가해야 할까? 영국 AI안전연구소(AISI)는 선도 오픈웨이트 모델의 사이버 능력이 폐쇄형 프론티어 모델보다 4~7개월 뒤에 있다고 분석했습니다. 이 수치가 모든 모델과 모든 작업에 그대로 적용된다는 뜻은 아닙니다. 하지만 에이전트 운영자에게는 충분히 유용한 경고입니다. 모델의 능력이 높아질수록, 같은 크론과 같은 권한 구성이 이전보다 더 강한 행동을 가능하게 만들 수 있기 때문입니다.
-그래서 Hermes/리오에서 오픈웨이트 모델을 업무 자동화에 쓴다면, 모델 이름만 기록하는 것으로는 부족합니다. 저는 이를 **능력 격차 시계(capability-gap clock)**로 관리하는 방식을 권합니다. 모델을 처음 도입할 때 한 번 허용 여부를 결정하고 끝내지 말고, 새 주요 릴리스나 평가 변화가 있을 때마다 권한·도구·데이터 범위를 다시 확인하는 작은 운영 장치입니다.
-...</p></div><footer class=entry-footer><span title='2026-07-20 21:01:00 +0900 KST'>2026년 7월 20일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer><a class=entry-link aria-label="post link to Hermes/리오 팁: 오픈웨이트 에이전트에는 ‘능력 격차 시계’를 붙이자" href=https://kwbaek.github.io/posts/2026-07-20-hermes-rio-add-a-capability-gap-clock/></a></article><footer class=page-footer><nav class=pagination><a class=next href=https://kwbaek.github.io/tags/cron/page/2/>Next&nbsp;&nbsp;»</a></nav></footer></main><footer class=footer><span>&copy; 2026 <a href=https://kwbaek.github.io/>Kyungwook's Devlog</a></span> ·
-<span>Powered by
-<a href=https://gohugo.io/ rel="noopener noreferrer" target=_blank>Hugo</a> &
-<a href=https://github.com/adityatelange/hugo-PaperMod/ rel=noopener target=_blank>PaperMod</a></span></footer><a href=#top aria-label="go to top" title="Go to Top (Alt + G)" class=top-link id=top-link accesskey=g><svg viewBox="0 0 12 6" fill="currentColor"><path d="M12 6H0l6-6z"/></svg>
-</a><script>let menu=document.getElementById("menu");if(menu){const e=localStorage.getItem("menu-scroll-position");e&&(menu.scrollLeft=parseInt(e,10)),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)}}document.querySelectorAll('a[href^="#"]').forEach(e=>{e.addEventListener("click",function(e){e.preventDefault();var t=this.getAttribute("href").substr(1);window.matchMedia("(prefers-reduced-motion: reduce)").matches?document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView({behavior:"smooth"}),t==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${t}`)})})</script><script>var mybutton=document.getElementById("top-link");window.onscroll=function(){document.body.scrollTop>800||document.documentElement.scrollTop>800?(mybutton.style.visibility="visible",mybutton.style.opacity="1"):(mybutton.style.visibility="hidden",mybutton.style.opacity="0")}</script><script>document.getElementById("theme-toggle").addEventListener("click",()=>{const e=document.querySelector("html");e.dataset.theme==="dark"?(e.dataset.theme="light",localStorage.setItem("pref-theme","light")):(e.dataset.theme="dark",localStorage.setItem("pref-theme","dark"))})</script></body></html>
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-07-21 21:01:00 +0900 KST'>2026년 7월 21일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to Hermes/리오 팁: 분산 크론 캐시는 &#39;원자적 갱신 &#43; 검증&#39;이 아니면 언제 깨진다" href="https://kwbaek.github.io/posts/2026-07-21-hermes-rio-distributed-cache-atomicity/"></a>
+</article>
+<footer class="page-footer">
+  <nav class="pagination">
+    <a class="next" href="https://kwbaek.github.io/tags/cron/page/2/">Next&nbsp;&nbsp;»
+    </a>
+  </nav>
+</footer>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://kwbaek.github.io/">Kyungwook&#39;s Devlog</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>
