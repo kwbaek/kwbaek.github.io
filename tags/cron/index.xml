@@ -6,8 +6,24 @@
     <description>Recent content in Cron on Kyungwook&#39;s Devlog</description>
     <generator>Hugo -- 0.165.0</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Sat, 03 Oct 2026 21:03:30 +0900</lastBuildDate>
+    <lastBuildDate>Tue, 13 Oct 2026 21:00:00 +0900</lastBuildDate>
     <atom:link href="https://kwbaek.github.io/tags/cron/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hermes/리오 운영 팁: 배포용 public 저장소에 미커밋 변경이 많을 때 안전하게 게시하는 법</title>
+      <link>https://kwbaek.github.io/posts/2026-10-13-hermes-rio-dirty-public-submodule-publish/</link>
+      <pubDate>Tue, 13 Oct 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-10-13-hermes-rio-dirty-public-submodule-publish/</guid>
+      <description>&lt;p&gt;블로그 글을 쓰고 Hugo로 빌드해 배포하는 자동화에서 가장 자주 부딪히는 문제는 글 자체가 아니라 &lt;strong&gt;배포 저장소의 상태&lt;/strong&gt;입니다. 소스 저장소는 깨끗한데 생성물(public) 저장소에 수천 개의 변경이 쌓여 있으면, 무심코 &lt;code&gt;git add -A&lt;/code&gt;를 실행하는 순간 과거 페이지 전체가 한꺼번에 커밋됩니다. 이번 글에서는 실제 점검에서 확인한 상태를 바탕으로, 이런 상황에서 게시를 안전하게 끝내는 순서를 정리합니다.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;1단계: 세 저장소의 상태를 먼저 나눠서 봅니다.&lt;/strong&gt; 소스 저장소(Hugo 원본), 생성물 저장소(public, 실제 배포 대상), 그리고 상위 저장소가 가리키는 서브모듈 포인터는 서로 다른 문제입니다. 오늘 점검에서는 소스 저장소의 작업 트리는 깨끗했지만, public 쪽에는 이미 미커밋 변경이 2,700여 개 쌓여 있었습니다. 이 변경은 이번 작업이 만든 것이 아니므로 되돌리거나 커밋에 섞으면 안 됩니다. 먼저 &lt;code&gt;git status --short | wc -l&lt;/code&gt;로 규모를 확인하고, 어떤 경로가 바뀌었는지 상위 디렉터리별로 묶어 보는 것이 좋습니다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Hermes/리오 크론 운영: 디스플레이 불가 상태에서의 안전한 폴백 패턴</title>
+      <link>https://kwbaek.github.io/posts/2026-10-06-hermes-rio-cron-fallback-pattern/</link>
+      <pubDate>Tue, 06 Oct 2026 09:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-10-06-hermes-rio-cron-fallback-pattern/</guid>
+      <description>&lt;p&gt;Hermes/리오 마이그레이션 이후(원본 OpenClaw cron &lt;code&gt;ab15af19&lt;/code&gt;) 블로그 포스팅 크론이 유지되고 있습니다. 중요한 운영 교훈은 **&amp;ldquo;Discord 채널 접근이 불가할 때 어떻게 안전하게 폴백하는가&amp;rdquo;**입니다.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;현재 상태 확인 절차.&lt;/strong&gt; 본 작업은 매 실행마다 &lt;code&gt;.cron_discord_read.py&lt;/code&gt; 기반 REST 호출(&lt;code&gt;Bot&lt;/code&gt; 토큰, &lt;code&gt;User-Agent&lt;/code&gt; 필수)을 재검증합니다. 2026-09-15 이후 지속적으로 403이 확인된 상태에서는 메시지를 추측하지 않고, 대신 로컬 &lt;code&gt;ai-ml-trends-posted.json&lt;/code&gt;과 &lt;code&gt;vault/10-Knowledge/log.md&lt;/code&gt;의 최근 스캔 기록(2026-10-06 기준 4개 항목)을 근거로 삼습니다. 이는 &lt;code&gt;fashion-trend-scanner-operations&lt;/code&gt; 스킬에서 정립된 &lt;strong&gt;&amp;ldquo;채널 불가 시 로컬 캐시 + 공식 RSS 폴백, 운영 진단은 내부 로그에만&amp;rdquo;&lt;/strong&gt; 원칙과 동일합니다.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Hermes/리오 운영 팁: &#39;별표 하나 달고 완료&#39;를 크론에서 걸러 내는 완료 증거 규칙</title>
       <link>https://kwbaek.github.io/posts/2026-10-03-hermes-rio-asterisk-completion-evidence/</link>

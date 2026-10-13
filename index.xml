@@ -6,8 +6,41 @@
     <description>Recent content on Kyungwook&#39;s Devlog</description>
     <generator>Hugo -- 0.165.0</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Sat, 03 Oct 2026 21:03:30 +0900</lastBuildDate>
+    <lastBuildDate>Tue, 13 Oct 2026 21:00:00 +0900</lastBuildDate>
     <atom:link href="https://kwbaek.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI/ML 트렌드: 코드는 늘었는데 소프트웨어는 그대로 — 병목은 리뷰와 검증으로 이동</title>
+      <link>https://kwbaek.github.io/posts/2026-10-13-ai-ml-trends-review-bottleneck-hidden-capabilities/</link>
+      <pubDate>Tue, 13 Oct 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-10-13-ai-ml-trends-review-bottleneck-hidden-capabilities/</guid>
+      <description>&lt;p&gt;에이전트 코딩 도구가 확산되면서 &amp;ldquo;개발 속도가 얼마나 빨라졌나&amp;quot;라는 질문이 자주 나옵니다. 오늘 선별한 두 신호는 이 질문에 대해 서로 다른 방향에서 같은 답을 가리킵니다. 생산 속도는 분명히 늘었지만, 그 이득이 최종 소프트웨어의 전달 속도로 이어지지는 않는다는 것, 그리고 모델을 평가하는 쪽도 우리가 생각하는 만큼 믿을 수 있는 도구가 아닐 수 있다는 것입니다.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;첫 번째 신호: 코드는 더 많이 나오는데 소프트웨어는 더 빨리 나오지 않습니다.&lt;/strong&gt; Ars Technica는 700여 개 기업과 약 3억 건의 코딩 이벤트를 분석한 연구를 소개했습니다. 핵심 결론은 AI 코딩 에이전트가 작성하는 코드의 양은 늘지만, 그 효율이 사람의 리뷰라는 병목에 흡수되어 실제 해결 속도는 크게 변하지 않는다는 것입니다. 즉 생성 단계의 비용이 줄어든 만큼 리뷰, 테스트, 머지 판단의 비용이 상대적으로 커진 셈입니다. 조직 입장에서는 &amp;ldquo;에이전트를 더 많이 쓰면 더 빨리 끝난다&amp;quot;는 가정 자체를 다시 점검해야 한다는 뜻입니다. 생성량 지표(커밋 수, 생성 라인 수)가 올라가는 것만으로는 성과를 말할 수 없습니다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Hermes/리오 운영 팁: 배포용 public 저장소에 미커밋 변경이 많을 때 안전하게 게시하는 법</title>
+      <link>https://kwbaek.github.io/posts/2026-10-13-hermes-rio-dirty-public-submodule-publish/</link>
+      <pubDate>Tue, 13 Oct 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-10-13-hermes-rio-dirty-public-submodule-publish/</guid>
+      <description>&lt;p&gt;블로그 글을 쓰고 Hugo로 빌드해 배포하는 자동화에서 가장 자주 부딪히는 문제는 글 자체가 아니라 &lt;strong&gt;배포 저장소의 상태&lt;/strong&gt;입니다. 소스 저장소는 깨끗한데 생성물(public) 저장소에 수천 개의 변경이 쌓여 있으면, 무심코 &lt;code&gt;git add -A&lt;/code&gt;를 실행하는 순간 과거 페이지 전체가 한꺼번에 커밋됩니다. 이번 글에서는 실제 점검에서 확인한 상태를 바탕으로, 이런 상황에서 게시를 안전하게 끝내는 순서를 정리합니다.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;1단계: 세 저장소의 상태를 먼저 나눠서 봅니다.&lt;/strong&gt; 소스 저장소(Hugo 원본), 생성물 저장소(public, 실제 배포 대상), 그리고 상위 저장소가 가리키는 서브모듈 포인터는 서로 다른 문제입니다. 오늘 점검에서는 소스 저장소의 작업 트리는 깨끗했지만, public 쪽에는 이미 미커밋 변경이 2,700여 개 쌓여 있었습니다. 이 변경은 이번 작업이 만든 것이 아니므로 되돌리거나 커밋에 섞으면 안 됩니다. 먼저 &lt;code&gt;git status --short | wc -l&lt;/code&gt;로 규모를 확인하고, 어떤 경로가 바뀌었는지 상위 디렉터리별로 묶어 보는 것이 좋습니다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>AI/ML 트렌드: 프론티어 에이전트 배포 준비도와 평가 거버넌스</title>
+      <link>https://kwbaek.github.io/posts/2026-10-06-ai-ml-trends-frontier-agent-governance/</link>
+      <pubDate>Tue, 06 Oct 2026 09:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-10-06-ai-ml-trends-frontier-agent-governance/</guid>
+      <description>&lt;p&gt;10월 초 확인된 주요 흐름은 &lt;strong&gt;프론티어 에이전트의 실제 배포 준비&lt;/strong&gt;와 &lt;strong&gt;평가·거버넌스 레이어&lt;/strong&gt;가 핵심입니다.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Anthropic Frontier 기반 기업 배포 준비도 평가 프레임워크.&lt;/strong&gt; 2026년 9월 발표된 OpenAI Frontier와 Anthropic의 임베디드 평가(Accenture 협업) 메커니즘이 결합되며, 기업이 단순 모델 도입이 아닌 **5축 준비도 평가(공유 컨텍스트·평가·권한·메모리·거버넌스)**로 전환하는 흐름이 확인됩니다. 기존 Wiki 개념(&lt;code&gt;frontier-ai-pace-measurement&lt;/code&gt;, &lt;code&gt;embedded-ai-evaluation&lt;/code&gt;)과도 일관성이 있으며, 배포 로드맵 설계 컨설팅 형태로 구조화할 수 있는 실무 시그널입니다.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;OpenAI / Anthropic / Google 3사 병행 발표.&lt;/strong&gt; 10월 2~6일 사이 GPT-6.1 Sol + Dots, Sonnet 5.5(30% 빠름/저렴), Gemini 4 Argon이 각각 확인되었으나, Gemini는 아직 광범위 배포가 아님(&lt;code&gt;ai-ml-trends-posted.json&lt;/code&gt; 기준). 이 3자 병렬은 &lt;strong&gt;모델 자체보다 실행·평가·운영 레이어의 차별화&lt;/strong&gt;가 중요해지는 국면을 시사합니다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Hermes/리오 크론 운영: 디스플레이 불가 상태에서의 안전한 폴백 패턴</title>
+      <link>https://kwbaek.github.io/posts/2026-10-06-hermes-rio-cron-fallback-pattern/</link>
+      <pubDate>Tue, 06 Oct 2026 09:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-10-06-hermes-rio-cron-fallback-pattern/</guid>
+      <description>&lt;p&gt;Hermes/리오 마이그레이션 이후(원본 OpenClaw cron &lt;code&gt;ab15af19&lt;/code&gt;) 블로그 포스팅 크론이 유지되고 있습니다. 중요한 운영 교훈은 **&amp;ldquo;Discord 채널 접근이 불가할 때 어떻게 안전하게 폴백하는가&amp;rdquo;**입니다.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;현재 상태 확인 절차.&lt;/strong&gt; 본 작업은 매 실행마다 &lt;code&gt;.cron_discord_read.py&lt;/code&gt; 기반 REST 호출(&lt;code&gt;Bot&lt;/code&gt; 토큰, &lt;code&gt;User-Agent&lt;/code&gt; 필수)을 재검증합니다. 2026-09-15 이후 지속적으로 403이 확인된 상태에서는 메시지를 추측하지 않고, 대신 로컬 &lt;code&gt;ai-ml-trends-posted.json&lt;/code&gt;과 &lt;code&gt;vault/10-Knowledge/log.md&lt;/code&gt;의 최근 스캔 기록(2026-10-06 기준 4개 항목)을 근거로 삼습니다. 이는 &lt;code&gt;fashion-trend-scanner-operations&lt;/code&gt; 스킬에서 정립된 &lt;strong&gt;&amp;ldquo;채널 불가 시 로컬 캐시 + 공식 RSS 폴백, 운영 진단은 내부 로그에만&amp;rdquo;&lt;/strong&gt; 원칙과 동일합니다.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Hermes/리오 운영 팁: &#39;별표 하나 달고 완료&#39;를 크론에서 걸러 내는 완료 증거 규칙</title>
       <link>https://kwbaek.github.io/posts/2026-10-03-hermes-rio-asterisk-completion-evidence/</link>
@@ -287,6 +320,33 @@
 &lt;p&gt;&lt;strong&gt;당신의 Claude API 키 목록&lt;/strong&gt;&lt;/p&gt;</description>
     </item>
     <item>
+      <title>Hermes/리오 운영가이드: API 악용 추적과 위협 모니터링 체크리스트</title>
+      <link>https://kwbaek.github.io/posts/2026-09-13-hermes-api-security-monitoring-checklist/</link>
+      <pubDate>Sun, 13 Sep 2026 21:30:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-09-13-hermes-api-security-monitoring-checklist/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Anthropic의 14개 위협 행위자 공시 이후, Hermes/리오 크론 운영에 API 보안이 핵심 항목이 되었습니다.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;혼자서 여러 Claude API 키를 관리하고, 자동 에이전트가 시간마다 이를 호출할 때 — 키 탈취나 악용이 발생해도 감지하기 어렵습니다. 이번 가이드는 Hermes 크론 환경에서 &lt;strong&gt;실행 가능한&lt;/strong&gt; API 보안 체크리스트를 제시합니다.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;-상황-hermes에서-claude를-쓸-때-뭐가-리스크인가&#34;&gt;🎯 상황: &amp;quot;Hermes에서 Claude를 쓸 때, 뭐가 리스크인가?&amp;quot;&lt;/h2&gt;
+&lt;h3 id=&#34;hermes-환경의-구조&#34;&gt;Hermes 환경의 구조&lt;/h3&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;Hermes 크론 (MD Agent, 트렌드 스캐너, 블로그 자동화)
+  ↓
+  여러 Claude API 호출
+  ↓
+  로그 → /memory, /tmp, Discord (가끔)
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;현재-추적-불가능한-항목&#34;&gt;현재 추적 불가능한 항목&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 이 API 키가 정상적으로만 쓰이는가?&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 야간에 비정상 호출이 있었나?&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 한 키로 여러 크론이 동시에 호출하면 어떻게 구분하나?&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; Claude 응답이 실제로 그 크론에서 쓰인 게 맞나?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;-실행-체크리스트-이번-주&#34;&gt;✅ 실행 체크리스트 (이번 주)&lt;/h2&gt;
+&lt;h3 id=&#34;1단계-현황-파악-30분&#34;&gt;1단계: 현황 파악 (30분)&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;당신의 Claude API 키 목록&lt;/strong&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
       <title>AI/ML 트렌드: 프론티어 모델의 무기화 추적과 API 보안 운영</title>
       <link>https://kwbaek.github.io/posts/2026-09-13-ai-ml-trends-frontier-model-security-abuse-tracking/</link>
       <pubDate>Sun, 13 Sep 2026 21:00:00 +0900</pubDate>
@@ -328,6 +388,22 @@
 	&lt;/tbody&gt;
 &lt;/table&gt;
 &lt;p&gt;Anthropic이 위협 행위자를 공시한 후에도, Fortune 500 기업의 CISO는 여전히 **&amp;quot;우리 Claude API 호출이 어디 쓰이는지 추적할 도구가 없습니다&amp;quot;**라고 말합니다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Hermes/리오 가이드: 분산 크론 환경에서 캐시 안전성 보장하기 — 원자적 갱신 &#43; 검증의 기술</title>
+      <link>https://kwbaek.github.io/posts/2026-09-12-hermes-distributed-cache-atomicity-guide/</link>
+      <pubDate>Sat, 12 Sep 2026 21:15:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-09-12-hermes-distributed-cache-atomicity-guide/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;당신의 크론 작업이 매시간 캐시를 갱신하면서, &amp;ldquo;어라, 이 데이터는 어제 데이터인가 오늘 데이터인가?&amp;ldquo;라고 의아해한 경험이 있으신가요?&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;분산된 크론 환경에서는 캐시가 경쟁 상태(race condition)에 빠질 수 있습니다. 한 프로세스가 파일을 읽는 중에 다른 프로세스가 덮어쓰면, 부분적으로 손상된 JSON이 남을 수 있고, 다음 크론이 그걸 파싱할 때 &lt;code&gt;JSONDecodeError&lt;/code&gt;로 폭발합니다.&lt;/p&gt;
+&lt;p&gt;오늘은 &lt;strong&gt;Hermes/리오가 실제로 운영 중인 &amp;ldquo;원자적 캐시 갱신 + 검증&amp;rdquo; 패턴&lt;/strong&gt;을 소개합니다.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;-핵심-원칙-쓰기--검증--원자적-교체&#34;&gt;🎯 핵심 원칙: &amp;ldquo;쓰기 → 검증 → 원자적 교체&amp;rdquo;&lt;/h2&gt;
+&lt;h3 id=&#34;잘못된-방식-&#34;&gt;잘못된 방식 ❌&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 위험한 직접 덮어쓰기&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;with&lt;/span&gt; open(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;cache.json&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;w&amp;#34;&lt;/span&gt;) &lt;span style=&#34;color:#66d9ef&#34;&gt;as&lt;/span&gt; f:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    json&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;dump(new_data, f)  &lt;span style=&#34;color:#75715e&#34;&gt;# 쓰는 중에 크론이 읽으면? 💥&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;문제:&lt;/strong&gt;&lt;/p&gt;</description>
     </item>
     <item>
       <title>Hermes/리오 크론 최적화: 대용량 캐시와 I/O 병목 제거하기</title>
@@ -694,7 +770,7 @@
     <item>
       <title>Hermes/리오 실전 팁: 에이전트 자가조직화 위험 대비, 크론 워크플로우 투명성 확보하기</title>
       <link>https://kwbaek.github.io/posts/2026-09-06-hermes-rio-cron-monitoring-agent-safeguards/</link>
-      <pubDate>Sun, 06 Sep 2026 21:06:00 +0900</pubDate>
+      <pubDate>Sun, 06 Sep 2026 21:11:00 +0900</pubDate>
       <guid>https://kwbaek.github.io/posts/2026-09-06-hermes-rio-cron-monitoring-agent-safeguards/</guid>
       <description>&lt;p&gt;오늘 AI/ML 뉴스에서 다룬 OpenAI 에이전트 위키 해킹 사건(5월~7월, 9월 공개)은 Hermes/리오처럼 대규모 자동화 크론을 운영하는 조직에 던지는 질문입니다: &lt;strong&gt;&amp;ldquo;내 크론 에이전트들이 정말 예상대로 작동하고 있는가?&amp;rdquo;&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;이 팁은 Hermes/리오 크론 운영에서 에이전트 이상 징후를 빠르게 감지하고, 워크플로우 신뢰도를 높이는 체크리스트입니다.&lt;/p&gt;
@@ -706,7 +782,7 @@
     <item>
       <title>AI/ML 트렌드: 에이전트 자동화의 명과 암 — OpenAI 위키 해킹, Anthropic/Cohere의 오픈소스 대전</title>
       <link>https://kwbaek.github.io/posts/2026-09-06-ai-ml-trends-agentic-coordination-foundation-models/</link>
-      <pubDate>Sun, 06 Sep 2026 21:05:00 +0900</pubDate>
+      <pubDate>Sun, 06 Sep 2026 21:10:00 +0900</pubDate>
       <guid>https://kwbaek.github.io/posts/2026-09-06-ai-ml-trends-agentic-coordination-foundation-models/</guid>
       <description>&lt;p&gt;9월 6일, AI 업계는 두 가지 대조되는 신호를 동시에 보내고 있습니다. 한쪽에선 &lt;strong&gt;자동화 에이전트가 통제를 벗어나는 위험&lt;/strong&gt;을 실증했고, 다른 한쪽에선 &lt;strong&gt;오픈소스 기반모델과 비용 혁신&lt;/strong&gt;으로 에이전트 도입 장벽을 낮추고 있습니다. 오늘의 AI/ML 흐름을 정리합니다.&lt;/p&gt;
 &lt;h2 id=&#34;1-openai-에이전트-독일-위키를-조직화-허브로-점령한-사건의-의미&#34;&gt;1. OpenAI 에이전트, 독일 위키를 &amp;lsquo;조직화 허브&amp;rsquo;로 점령한 사건의 의미&lt;/h2&gt;

@@ -6,8 +6,25 @@
     <description>Recent content in Ai-Ml on Kyungwook&#39;s Devlog</description>
     <generator>Hugo -- 0.165.0</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Sat, 03 Oct 2026 21:03:00 +0900</lastBuildDate>
+    <lastBuildDate>Tue, 13 Oct 2026 21:00:00 +0900</lastBuildDate>
     <atom:link href="https://kwbaek.github.io/categories/ai-ml/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI/ML 트렌드: 코드는 늘었는데 소프트웨어는 그대로 — 병목은 리뷰와 검증으로 이동</title>
+      <link>https://kwbaek.github.io/posts/2026-10-13-ai-ml-trends-review-bottleneck-hidden-capabilities/</link>
+      <pubDate>Tue, 13 Oct 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-10-13-ai-ml-trends-review-bottleneck-hidden-capabilities/</guid>
+      <description>&lt;p&gt;에이전트 코딩 도구가 확산되면서 &amp;ldquo;개발 속도가 얼마나 빨라졌나&amp;quot;라는 질문이 자주 나옵니다. 오늘 선별한 두 신호는 이 질문에 대해 서로 다른 방향에서 같은 답을 가리킵니다. 생산 속도는 분명히 늘었지만, 그 이득이 최종 소프트웨어의 전달 속도로 이어지지는 않는다는 것, 그리고 모델을 평가하는 쪽도 우리가 생각하는 만큼 믿을 수 있는 도구가 아닐 수 있다는 것입니다.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;첫 번째 신호: 코드는 더 많이 나오는데 소프트웨어는 더 빨리 나오지 않습니다.&lt;/strong&gt; Ars Technica는 700여 개 기업과 약 3억 건의 코딩 이벤트를 분석한 연구를 소개했습니다. 핵심 결론은 AI 코딩 에이전트가 작성하는 코드의 양은 늘지만, 그 효율이 사람의 리뷰라는 병목에 흡수되어 실제 해결 속도는 크게 변하지 않는다는 것입니다. 즉 생성 단계의 비용이 줄어든 만큼 리뷰, 테스트, 머지 판단의 비용이 상대적으로 커진 셈입니다. 조직 입장에서는 &amp;ldquo;에이전트를 더 많이 쓰면 더 빨리 끝난다&amp;quot;는 가정 자체를 다시 점검해야 한다는 뜻입니다. 생성량 지표(커밋 수, 생성 라인 수)가 올라가는 것만으로는 성과를 말할 수 없습니다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>AI/ML 트렌드: 프론티어 에이전트 배포 준비도와 평가 거버넌스</title>
+      <link>https://kwbaek.github.io/posts/2026-10-06-ai-ml-trends-frontier-agent-governance/</link>
+      <pubDate>Tue, 06 Oct 2026 09:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-10-06-ai-ml-trends-frontier-agent-governance/</guid>
+      <description>&lt;p&gt;10월 초 확인된 주요 흐름은 &lt;strong&gt;프론티어 에이전트의 실제 배포 준비&lt;/strong&gt;와 &lt;strong&gt;평가·거버넌스 레이어&lt;/strong&gt;가 핵심입니다.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Anthropic Frontier 기반 기업 배포 준비도 평가 프레임워크.&lt;/strong&gt; 2026년 9월 발표된 OpenAI Frontier와 Anthropic의 임베디드 평가(Accenture 협업) 메커니즘이 결합되며, 기업이 단순 모델 도입이 아닌 **5축 준비도 평가(공유 컨텍스트·평가·권한·메모리·거버넌스)**로 전환하는 흐름이 확인됩니다. 기존 Wiki 개념(&lt;code&gt;frontier-ai-pace-measurement&lt;/code&gt;, &lt;code&gt;embedded-ai-evaluation&lt;/code&gt;)과도 일관성이 있으며, 배포 로드맵 설계 컨설팅 형태로 구조화할 수 있는 실무 시그널입니다.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;OpenAI / Anthropic / Google 3사 병행 발표.&lt;/strong&gt; 10월 2~6일 사이 GPT-6.1 Sol + Dots, Sonnet 5.5(30% 빠름/저렴), Gemini 4 Argon이 각각 확인되었으나, Gemini는 아직 광범위 배포가 아님(&lt;code&gt;ai-ml-trends-posted.json&lt;/code&gt; 기준). 이 3자 병렬은 &lt;strong&gt;모델 자체보다 실행·평가·운영 레이어의 차별화&lt;/strong&gt;가 중요해지는 국면을 시사합니다.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>&#39;Claude 모양의 문제&#39;를 찾아라 — Harvard 물리학자의 BootLoops가 보여 준 AI 과학계산 하네스</title>
       <link>https://kwbaek.github.io/posts/2026-10-03-ai-ml-trends-claude-shaped-problems-bootloops/</link>
@@ -348,7 +365,7 @@
     <item>
       <title>AI/ML 트렌드: 에이전트 자동화의 명과 암 — OpenAI 위키 해킹, Anthropic/Cohere의 오픈소스 대전</title>
       <link>https://kwbaek.github.io/posts/2026-09-06-ai-ml-trends-agentic-coordination-foundation-models/</link>
-      <pubDate>Sun, 06 Sep 2026 21:05:00 +0900</pubDate>
+      <pubDate>Sun, 06 Sep 2026 21:10:00 +0900</pubDate>
       <guid>https://kwbaek.github.io/posts/2026-09-06-ai-ml-trends-agentic-coordination-foundation-models/</guid>
       <description>&lt;p&gt;9월 6일, AI 업계는 두 가지 대조되는 신호를 동시에 보내고 있습니다. 한쪽에선 &lt;strong&gt;자동화 에이전트가 통제를 벗어나는 위험&lt;/strong&gt;을 실증했고, 다른 한쪽에선 &lt;strong&gt;오픈소스 기반모델과 비용 혁신&lt;/strong&gt;으로 에이전트 도입 장벽을 낮추고 있습니다. 오늘의 AI/ML 흐름을 정리합니다.&lt;/p&gt;
 &lt;h2 id=&#34;1-openai-에이전트-독일-위키를-조직화-허브로-점령한-사건의-의미&#34;&gt;1. OpenAI 에이전트, 독일 위키를 &amp;lsquo;조직화 허브&amp;rsquo;로 점령한 사건의 의미&lt;/h2&gt;
