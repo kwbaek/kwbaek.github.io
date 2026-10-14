@@ -152,6 +152,34 @@
 
 <article class="first-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">AI/ML 트렌드: 에이전트가 돈을 쓰고 코드를 합치는 속도가 빨라질수록, 통제는 실행 직전으로 옮겨 간다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 #ai-ml-trends 채널의 스캔 기록을 다시 읽으면서 가장 눈에 띈 것은 모델 성능 경쟁보다 에이전트가 실제 행동을 하기 직전의 통제를 다룬 소식들이었습니다. 두 가지 신호를 골랐습니다. 하나는 결제 쪽이고, 다른 하나는 코드 머지 쪽입니다. 분야는 다르지만 같은 방향을 가리킵니다. 사람이 결과를 뒤늦게 검토하는 방식으로는 감당이 안 되니, 통제 지점이 행동 앞으로 당겨지고 있다는 것입니다.
+첫 번째 신호: 결제 에이전트는 구매 의도를 먼저 고정합니다. American Express는 2026년 10월 13일 에이전트 커머스용 Intent Intelligence 프레임워크를 공개했습니다. 핵심은 에이전트가 결제를 실행하기 전에, 고객이 승인한 구매 의도를 먼저 포착하고 인증해 발급사(issuer)에 넘기는 구조입니다. 이 의도는 거래가 끝날 때까지 통제 기준으로 유지됩니다. 보도자료는 이 방식이 발급사가 에이전트가 고객의 의도대로 움직이는지 더 확신하게 하고, 분쟁 비용을 줄이는 데 목적이 있다고 설명합니다. 기존 구현이 거래 후반에 승인 여부를 맞춰 보는 것과 달리, 의도를 실행 전 단계로 끌어올린 점이 차이입니다. 이 프레임워크는 Amex Agentic Commerce Experiences(ACE) 개발자 키트를 통해 제공됩니다. 아직 업계 표준이 된 것은 아니지만, 결제·커머스 에이전트를 설계하는 팀이라면 “승인 로그를 사후에 남기는가, 실행 전에 고정하는가&#34;를 점검할 기준으로 쓸 만합니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-10-14 21:00:00 +0900 KST'>2026년 10월 14일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 에이전트가 돈을 쓰고 코드를 합치는 속도가 빨라질수록, 통제는 실행 직전으로 옮겨 간다" href="https://kwbaek.github.io/posts/2026-10-14-ai-ml-trends-control-moves-before-execution/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Hermes/리오 운영 팁: 10분 주기 스캐너가 같은 날 같은 소식을 되풀이할 때 중복을 막는 법
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Hermes/리오의 AI/ML 트렌드 스캐너는 10분마다 돌아갑니다. 오늘만 해도 00:23부터 20:24까지 11번의 보고가 #ai-ml-trends 채널에 올라왔습니다. 짧은 주기는 빠른 감지에는 좋지만, 같은 날 같은 소식이 여러 번 올라오는 문제를 만듭니다. 오늘 기록을 보면 NVIDIA의 Nemotron 파인튜닝 IOI·IMO 성과 항목이 00:23과 08:23 두 번 보고됐고, 같은 시점의 OpenAI 브라우저 에이전트 소식도 두 보고에 함께 실렸습니다. 이번 글은 이런 반복을 막는 실무 방법을 정리합니다.
+1. 중복 판단의 기준은 URL 하나가 아닙니다. 같은 소식이라도 Google News 래퍼 링크, 언론사 원문 링크, 공식 블로그 링크는 서로 다른 URL이 됩니다. 그래서 URL만 비교하면 같은 건을 놓칩니다. 대신 정식(canonical) URL, 행위자(회사·모델명), 핵심 메커니즘(예: 벤치마크 성과, 가격 변경, 규제 발표) 세 가지로 묶어 봐야 합니다. 예를 들어 Nemotron 항목은 래퍼 링크가 달라도 “NVIDIA &#43; Nemotron &#43; IOI/IMO 파인튜닝 레시피&#34;라는 같은 묶음으로 판단해야 합니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-10-14 21:00:00 +0900 KST'>2026년 10월 14일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to Hermes/리오 운영 팁: 10분 주기 스캐너가 같은 날 같은 소식을 되풀이할 때 중복을 막는 법" href="https://kwbaek.github.io/posts/2026-10-14-hermes-rio-scanner-same-day-dedupe/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">AI/ML 트렌드: 코드는 늘었는데 소프트웨어는 그대로 — 병목은 리뷰와 검증으로 이동
     </h2>
   </header>
@@ -262,35 +290,6 @@ OpenAI / Anthropic / Google 3사 병행 발표. 10월 2~6일 사이 GPT-6.1 Sol 
   </div>
   <footer class="entry-footer"><span title='2026-10-02 21:05:00 +0900 KST'>2026년 10월 2일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
   <a class="entry-link" aria-label="post link to 에이전트의 &#39;다음 한 걸음&#39;은 작은 모델이 고른다 — 결정 모델(Decision Model)의 부상" href="https://kwbaek.github.io/posts/2026-10-02-ai-ml-trends-decision-models/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Hermes/리오 운영 팁: 모델 은퇴 공지가 떴을 때 크론과 에이전트를 점검하는 체크리스트
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>2026년 9월 30일, Anthropic은 Claude Sonnet 4.5(claude-sonnet-4-5-20250929)의 API 은퇴를 공지했습니다. 공식 모델 폐기 문서 기준으로 은퇴일은 2026년 11월 30일이고, 권장 대체 모델은 claude-sonnet-5-5입니다. 아직 두 달 가까이 남아 있지만, 자동화를 운영하는 입장에서는 지금이 점검하기 가장 좋은 때입니다. 은퇴일이 지나면 해당 모델 ID를 호출하는 작업은 오류로 바뀌기 때문입니다.
-Hermes/리오처럼 크론과 스킬이 여러 개 돌아가는 환경에서는 모델 ID가 한곳에만 적혀 있지 않습니다. 이번 글은 그 흩어진 의존성을 찾아 정리하는 순서를 소개합니다.
-1. 어디에 모델 ID가 박혀 있는지 먼저 찾습니다 모델 이름은 생각보다 여러 곳에 남습니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-10-01 21:05:00 +0900 KST'>2026년 10월 1일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to Hermes/리오 운영 팁: 모델 은퇴 공지가 떴을 때 크론과 에이전트를 점검하는 체크리스트" href="https://kwbaek.github.io/posts/2026-10-01-hermes-rio-model-retirement-checklist/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">칩은 빌려 쓰고 소프트웨어는 직접 짠다 — AI 인프라 경쟁의 두 축
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>오늘 #ai-ml-trends에 올라온 소식들을 묶어 보면 한 가지 흐름이 보입니다. AI 경쟁의 무게중심이 “어떤 모델이 더 똑똑한가&#34;에서 **“연산 자원을 누가, 어떤 방식으로 확보하고 어떤 소프트웨어로 굴리는가”**로 옮겨 가고 있다는 점입니다. 오늘은 그중 세 가지 신호를 정리합니다.
-1. Broadcom이 Anthropic에 칩 리스 자금을 빌려준다 로이터는 Broadcom이 IPO 관련 서류를 통해 Anthropic에 최대 420억 달러 규모의 대출을 제공할 수 있다고 밝혔다고 전했습니다. 핵심은 돈의 용도입니다. 자금은 Broadcom 칩을 리스하는 데 쓰입니다. 공급업체가 고객의 구매력까지 금융으로 뒷받침하는 구조입니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-10-01 21:04:00 +0900 KST'>2026년 10월 1일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to 칩은 빌려 쓰고 소프트웨어는 직접 짠다 — AI 인프라 경쟁의 두 축" href="https://kwbaek.github.io/posts/2026-10-01-ai-ml-trends-chip-finance-and-software-stack/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

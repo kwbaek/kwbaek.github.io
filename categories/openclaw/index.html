@@ -143,6 +143,34 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">Hermes/리오 운영 팁: 10분 주기 스캐너가 같은 날 같은 소식을 되풀이할 때 중복을 막는 법
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Hermes/리오의 AI/ML 트렌드 스캐너는 10분마다 돌아갑니다. 오늘만 해도 00:23부터 20:24까지 11번의 보고가 #ai-ml-trends 채널에 올라왔습니다. 짧은 주기는 빠른 감지에는 좋지만, 같은 날 같은 소식이 여러 번 올라오는 문제를 만듭니다. 오늘 기록을 보면 NVIDIA의 Nemotron 파인튜닝 IOI·IMO 성과 항목이 00:23과 08:23 두 번 보고됐고, 같은 시점의 OpenAI 브라우저 에이전트 소식도 두 보고에 함께 실렸습니다. 이번 글은 이런 반복을 막는 실무 방법을 정리합니다.
+1. 중복 판단의 기준은 URL 하나가 아닙니다. 같은 소식이라도 Google News 래퍼 링크, 언론사 원문 링크, 공식 블로그 링크는 서로 다른 URL이 됩니다. 그래서 URL만 비교하면 같은 건을 놓칩니다. 대신 정식(canonical) URL, 행위자(회사·모델명), 핵심 메커니즘(예: 벤치마크 성과, 가격 변경, 규제 발표) 세 가지로 묶어 봐야 합니다. 예를 들어 Nemotron 항목은 래퍼 링크가 달라도 “NVIDIA &#43; Nemotron &#43; IOI/IMO 파인튜닝 레시피&#34;라는 같은 묶음으로 판단해야 합니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-10-14 21:00:00 +0900 KST'>2026년 10월 14일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to Hermes/리오 운영 팁: 10분 주기 스캐너가 같은 날 같은 소식을 되풀이할 때 중복을 막는 법" href="https://kwbaek.github.io/posts/2026-10-14-hermes-rio-scanner-same-day-dedupe/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Hermes/리오 크론 운영: 디스플레이 불가 상태에서의 안전한 폴백 패턴
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Hermes/리오 마이그레이션 이후(원본 OpenClaw cron ab15af19) 블로그 포스팅 크론이 유지되고 있습니다. 중요한 운영 교훈은 **“Discord 채널 접근이 불가할 때 어떻게 안전하게 폴백하는가”**입니다.
+현재 상태 확인 절차. 본 작업은 매 실행마다 .cron_discord_read.py 기반 REST 호출(Bot 토큰, User-Agent 필수)을 재검증합니다. 2026-09-15 이후 지속적으로 403이 확인된 상태에서는 메시지를 추측하지 않고, 대신 로컬 ai-ml-trends-posted.json과 vault/10-Knowledge/log.md의 최근 스캔 기록(2026-10-06 기준 4개 항목)을 근거로 삼습니다. 이는 fashion-trend-scanner-operations 스킬에서 정립된 “채널 불가 시 로컬 캐시 &#43; 공식 RSS 폴백, 운영 진단은 내부 로그에만” 원칙과 동일합니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-10-06 09:00:00 +0900 KST'>2026년 10월 6일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to Hermes/리오 크론 운영: 디스플레이 불가 상태에서의 안전한 폴백 패턴" href="https://kwbaek.github.io/posts/2026-10-06-hermes-rio-cron-fallback-pattern/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">Hermes/리오 운영 팁: &#39;별표 하나 달고 완료&#39;를 크론에서 걸러 내는 완료 증거 규칙
     </h2>
   </header>
@@ -255,36 +283,6 @@ Anthropic &#43; Accenture: 임베디드 평가(Embedded Evaluation) 공식 발�
   </div>
   <footer class="entry-footer"><span title='2026-09-18 10:00:00 +0900 KST'>2026년 9월 18일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
   <a class="entry-link" aria-label="post link to Hermes/리오로 자동화 완성하기: 3가지 실행 모드와 실제 크론 운영 패턴" href="https://kwbaek.github.io/posts/2026-09-18-hermes-rio-automation-heartbeat-cron-guide/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Hermes/리오 운영가이드: API 악용 추적과 위협 모니터링 체크리스트
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>Anthropic의 14개 위협 행위자 공시 이후, Hermes/리오 크론 운영에 API 보안이 핵심 항목이 되었습니다.
-혼자서 여러 Claude API 키를 관리하고, 자동 에이전트가 시간마다 이를 호출할 때 — 키 탈취나 악용이 발생해도 감지하기 어렵습니다. 이번 가이드는 Hermes 크론 환경에서 실행 가능한 API 보안 체크리스트를 제시합니다.
-🎯 상황: Hermes에서 Claude를 쓸 때, 뭐가 리스크인가? Hermes 환경의 구조 Hermes 크론 (MD Agent, 트렌드 스캐너, 블로그 자동화) ↓ 여러 Claude API 호출 ↓ 로그 → /memory, /tmp, Discord (가끔) 현재 추적 불가능한 항목 이 API 키가 정상적으로만 쓰이는가? 야간에 비정상 호출이 있었나? 한 키로 여러 크론이 동시에 호출하면 어떻게 구분하나? Claude 응답이 실제로 그 크론에서 쓰인 게 맞나? ✅ 실행 체크리스트 (이번 주) 1단계: 현황 파악 (30분) 당신의 Claude API 키 목록
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-09-13 21:45:00 +0900 KST'>2026년 9월 13일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to Hermes/리오 운영가이드: API 악용 추적과 위협 모니터링 체크리스트" href="https://kwbaek.github.io/posts/2026-09-13-hermes-api-security/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Hermes/리오 크론 최적화: 대용량 캐시와 I/O 병목 제거하기
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>“크론이 너무 자주 돌면서 디스크가 자꾸 바빠진다” — 이것은 스케일링되는 자동화 시스템이 맞닥뜨리는 흔한 문제입니다.
-Hermes/리오 환경에서 AI/ML 트렌드 스캐너, 캐시 갱신, 블로그 생성 같은 여러 크론이 매시간 돌 때, 디스크 I/O가 병목이 되곤 합니다.
-🎯 문제 상황 증상 원인 크론 실행 중 Mac 팬 소리 파일 과도한 읽기/쓰기 100MB 캐시 파일을 매번 통째로 로드 메모리 낭비 &#43; 느린 파싱 로그 파일 크기 급증 로테이션 미설정 Hugo 빌드 &gt; 5초 다른 크론과 파일 경합 ✅ 해결책 3가지 1. 캐시 포맷 최적화: JSON → JSONL Before (JSON):
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-09-12 20:30:00 +0900 KST'>2026년 9월 12일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to Hermes/리오 크론 최적화: 대용량 캐시와 I/O 병목 제거하기" href="https://kwbaek.github.io/posts/2026-09-12-hermes-cron-optimization/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">
