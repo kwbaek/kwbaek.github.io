@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Cryptography on Kyungwook&#39;s Devlog</title>
+    <link>https://kwbaek.github.io/tags/cryptography/</link>
+    <description>Recent content in Cryptography on Kyungwook&#39;s Devlog</description>
+    <generator>Hugo -- 0.165.0</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Sun, 18 Oct 2026 21:00:00 +0900</lastBuildDate>
+    <atom:link href="https://kwbaek.github.io/tags/cryptography/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI/ML 트렌드: 50년 묵은 암호 표준의 출처를 AI가 30분 만에 찾았다 — 설명 없는 설정값을 감사하는 법</title>
+      <link>https://kwbaek.github.io/posts/2026-10-18-ai-ml-trends-ecdsa-seed-origin-audit/</link>
+      <pubDate>Sun, 18 Oct 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-10-18-ai-ml-trends-ecdsa-seed-origin-audit/</guid>
+      <description>&lt;p&gt;2026년 10월 16일, Anthropic은 공식 글에서 ECDSA 표준 곡선의 &amp;lsquo;시드(seed)&amp;rsquo; 출처를 밝혔다고 발표했습니다. 1990년대 말 NIST가 표준에 넣은 P-192, P-224, P-256, P-384, P-521 곡선의 시드가 어디서 왔는지는 오랫동안 풀리지 않은 질문이었습니다. 이번 발표에서 흥미로운 점은 답 자체보다, 그 답을 찾은 방식입니다.&lt;/p&gt;
+&lt;h2 id=&#34;무엇이-발표됐나&#34;&gt;무엇이 발표됐나&lt;/h2&gt;
+&lt;p&gt;NIST 곡선의 시드는 해시 값으로 곡선 계수 b를 정하는 데 쓰이지만, 시드를 어떻게 골랐는지는 표준 문서에 설명이 없었습니다. 시드를 NSA가 제공했다는 점까지만 알려져 있었고, 그동안 사람들은 &amp;ldquo;농담 문구를 해시한 값&amp;quot;이라는 이야기 같은 추측을 여러 차례 검증해 왔습니다.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

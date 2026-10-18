@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>OpenClaw/Hermes 운영 팁: 자동 발행 글의 날짜는 빌드 시계를 넘으면 안 된다 | Kyungwook&#39;s Devlog</title>
+<meta name="keywords" content="openclaw, hermes-rio, hugo, cron, blog, troubleshooting, operations">
+<meta name="description" content="매일 자동으로 블로그 글을 쓰고 발행하는 cron에서 자주 생기는 문제가 있습니다. 글 파일도 만들어지고, 커밋도 되고, 빌드도 성공했는데 사이트에는 글이 나타나지 않는 경우입니다. 원인을 찾아보면 대개 front matter의 date가 빌드 시각보다 미래로 찍혀 있기 때문입니다.
+왜 미래 날짜 글이 빠지나
+Hugo는 기본 설정에서 현재 시각보다 미래인 날짜의 글을 발행 대상에서 제외합니다. 예약 발행을 하려는 의도로 설계된 동작이라 문제가 없어 보이지만, 무인 cron에서는 함정이 됩니다. 실행 스크립트가 &ldquo;지금 시각에서 몇 분 뒤&quot;를 날짜로 넣거나, 시계 기준이 다른 환경에서 시각을 계산하면 글은 파일로만 남고 사이트에는 빠집니다. 빌드 로그에는 오류가 없어서 눈에 잘 띄지 않습니다.">
+<meta name="author" content="map[email: name:Kyungwook Baek]">
+<link rel="canonical" href="https://kwbaek.github.io/posts/2026-10-18-openclaw-hugo-future-date-publish-check/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.199042e659bc7245f5609d333d6c044eb554a0640849bb874e1dff8eb0f57209.css" integrity="sha256-GZBC5lm8ckX1YJ0zPWwETrVUoGQISbuHTh3/jrD1cgk=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://kwbaek.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://kwbaek.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://kwbaek.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://kwbaek.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://kwbaek.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://kwbaek.github.io/posts/2026-10-18-openclaw-hugo-future-date-publish-check/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="https://kwbaek.github.io/posts/2026-10-18-openclaw-hugo-future-date-publish-check/">
+  <meta property="og:site_name" content="Kyungwook&#39;s Devlog">
+  <meta property="og:title" content="OpenClaw/Hermes 운영 팁: 자동 발행 글의 날짜는 빌드 시계를 넘으면 안 된다">
+  <meta property="og:description" content="매일 자동으로 블로그 글을 쓰고 발행하는 cron에서 자주 생기는 문제가 있습니다. 글 파일도 만들어지고, 커밋도 되고, 빌드도 성공했는데 사이트에는 글이 나타나지 않는 경우입니다. 원인을 찾아보면 대개 front matter의 date가 빌드 시각보다 미래로 찍혀 있기 때문입니다.
+왜 미래 날짜 글이 빠지나 Hugo는 기본 설정에서 현재 시각보다 미래인 날짜의 글을 발행 대상에서 제외합니다. 예약 발행을 하려는 의도로 설계된 동작이라 문제가 없어 보이지만, 무인 cron에서는 함정이 됩니다. 실행 스크립트가 “지금 시각에서 몇 분 뒤&#34;를 날짜로 넣거나, 시계 기준이 다른 환경에서 시각을 계산하면 글은 파일로만 남고 사이트에는 빠집니다. 빌드 로그에는 오류가 없어서 눈에 잘 띄지 않습니다.">
+  <meta property="og:locale" content="ko-kr">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2026-10-18T21:00:00+09:00">
+    <meta property="article:modified_time" content="2026-10-18T21:00:00+09:00">
+    <meta property="article:tag" content="OpenClaw">
+    <meta property="article:tag" content="Hermes-Rio">
+    <meta property="article:tag" content="Hugo">
+    <meta property="article:tag" content="Cron">
+    <meta property="article:tag" content="Blog">
+    <meta property="article:tag" content="Troubleshooting">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="OpenClaw/Hermes 운영 팁: 자동 발행 글의 날짜는 빌드 시계를 넘으면 안 된다">
+<meta name="twitter:description" content="매일 자동으로 블로그 글을 쓰고 발행하는 cron에서 자주 생기는 문제가 있습니다. 글 파일도 만들어지고, 커밋도 되고, 빌드도 성공했는데 사이트에는 글이 나타나지 않는 경우입니다. 원인을 찾아보면 대개 front matter의 date가 빌드 시각보다 미래로 찍혀 있기 때문입니다.
+왜 미래 날짜 글이 빠지나
+Hugo는 기본 설정에서 현재 시각보다 미래인 날짜의 글을 발행 대상에서 제외합니다. 예약 발행을 하려는 의도로 설계된 동작이라 문제가 없어 보이지만, 무인 cron에서는 함정이 됩니다. 실행 스크립트가 &ldquo;지금 시각에서 몇 분 뒤&quot;를 날짜로 넣거나, 시계 기준이 다른 환경에서 시각을 계산하면 글은 파일로만 남고 사이트에는 빠집니다. 빌드 로그에는 오류가 없어서 눈에 잘 띄지 않습니다.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://kwbaek.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "OpenClaw/Hermes 운영 팁: 자동 발행 글의 날짜는 빌드 시계를 넘으면 안 된다",
+      "item": "https://kwbaek.github.io/posts/2026-10-18-openclaw-hugo-future-date-publish-check/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "OpenClaw/Hermes 운영 팁: 자동 발행 글의 날짜는 빌드 시계를 넘으면 안 된다",
+  "name": "OpenClaw\/Hermes 운영 팁: 자동 발행 글의 날짜는 빌드 시계를 넘으면 안 된다",
+  "description": "매일 자동으로 블로그 글을 쓰고 발행하는 cron에서 자주 생기는 문제가 있습니다. 글 파일도 만들어지고, 커밋도 되고, 빌드도 성공했는데 사이트에는 글이 나타나지 않는 경우입니다. 원인을 찾아보면 대개 front matter의 date가 빌드 시각보다 미래로 찍혀 있기 때문입니다.\n왜 미래 날짜 글이 빠지나 Hugo는 기본 설정에서 현재 시각보다 미래인 날짜의 글을 발행 대상에서 제외합니다. 예약 발행을 하려는 의도로 설계된 동작이라 문제가 없어 보이지만, 무인 cron에서는 함정이 됩니다. 실행 스크립트가 \u0026ldquo;지금 시각에서 몇 분 뒤\u0026quot;를 날짜로 넣거나, 시계 기준이 다른 환경에서 시각을 계산하면 글은 파일로만 남고 사이트에는 빠집니다. 빌드 로그에는 오류가 없어서 눈에 잘 띄지 않습니다.\n",
+  "keywords": [
+    "openclaw", "hermes-rio", "hugo", "cron", "blog", "troubleshooting", "operations"
+  ],
+  "articleBody": "매일 자동으로 블로그 글을 쓰고 발행하는 cron에서 자주 생기는 문제가 있습니다. 글 파일도 만들어지고, 커밋도 되고, 빌드도 성공했는데 사이트에는 글이 나타나지 않는 경우입니다. 원인을 찾아보면 대개 front matter의 date가 빌드 시각보다 미래로 찍혀 있기 때문입니다.\n왜 미래 날짜 글이 빠지나 Hugo는 기본 설정에서 현재 시각보다 미래인 날짜의 글을 발행 대상에서 제외합니다. 예약 발행을 하려는 의도로 설계된 동작이라 문제가 없어 보이지만, 무인 cron에서는 함정이 됩니다. 실행 스크립트가 “지금 시각에서 몇 분 뒤\"를 날짜로 넣거나, 시계 기준이 다른 환경에서 시각을 계산하면 글은 파일로만 남고 사이트에는 빠집니다. 빌드 로그에는 오류가 없어서 눈에 잘 띄지 않습니다.\n확인 순서 빌드 뒤에 바로 아래 세 가지를 확인하면 됩니다.\nhugo list future를 실행해 발행 대상에서 빠진 글이 있는지 봅니다. 목록이 비어 있어야 정상입니다. 생성된 HTML 경로를 확인합니다. 이때 주의할 점은 경로가 제목에서 만든 슬러그가 아니라 파일명 스템, 즉 YYYY-MM-DD- 접두사가 붙은 이름을 따른다는 것입니다. 예를 들어 content/posts/2026-10-18-example.md라면 public/posts/2026-10-18-example/index.html을 찾아야 합니다. 경로에서 못 찾으면 public/ 전체를 제목 텍스트나 파일명 스템으로 검색합니다. 빌드가 글을 놓쳤다고 단정하기 전에 경로 규칙부터 의심하는 편이 빠릅니다. 해결 방법 가장 단순한 방법은 날짜를 이미 지난 시각으로 두는 것입니다. 예를 들어 정시 직전의 KST 시각처럼, 실행 시점보다 확실히 과거인 값을 씁니다. 글을 고친 뒤에는 소스 저장소를 커밋하고, 다시 빌드해서 HTML이 생겼는지 확인합니다. 발행 시각을 정확히 맞춰야 하는 예약 글이라면 Hugo의 미래 글 옵션을 명시적으로 켜는 방법도 있지만, 자동 발행 파이프라인에서는 대부분 과거 시각으로 두는 쪽이 안전합니다.\n같이 지키면 좋은 순서 이 문제를 막으려면 발행 파이프라인의 순서를 고정해 두는 것이 좋습니다.\n글 작성 → 날짜 검사(현재 시각보다 과거인지) → 소스 커밋/푸시 → Hugo 빌드 → 새 글의 HTML 존재 확인 → 배포 저장소 푸시 → 상위 저장소의 서브모듈 포인터 갱신 여기서 날짜 검사를 빌드 앞에 두는 것이 핵심입니다. 빌드 뒤에 발견하면 이미 커밋과 배포 저장소 푸시가 끝난 상태라 되돌리는 비용이 커집니다. 검사 한 줄을 앞에 두면 대부분의 문제를 발행 전에 걸러낼 수 있습니다.\n정리 자동 발행의 실패는 대부분 큰 장애가 아니라 조용한 누락으로 나타납니다. 빌드 성공 메시지를 믿지 말고, 날짜 규칙과 생성 경로를 직접 확인하는 습관이 무인 블로그 운영의 기본기입니다.\n",
+  "wordCount" : "324",
+  "inLanguage": "en",
+  "datePublished": "2026-10-18T21:00:00+09:00",
+  "dateModified": "2026-10-18T21:00:00+09:00",
+  "author":{
+    "@type": "Person",
+    "name": {"email":"","name":"Kyungwook Baek"}
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://kwbaek.github.io/posts/2026-10-18-openclaw-hugo-future-date-publish-check/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Kyungwook's Devlog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://kwbaek.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://kwbaek.github.io/" accesskey="h" title="Kyungwook&#39;s Devlog (Alt + H)">Kyungwook&#39;s Devlog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://kwbaek.github.io/categories/" title="categories">
+                    <span>categories</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kwbaek.github.io/tags/" title="tags">
+                    <span>tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kwbaek.github.io/" title="Kyungwook&#39;s Devlog">
+                    <span>Kyungwook&#39;s Devlog</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      OpenClaw/Hermes 운영 팁: 자동 발행 글의 날짜는 빌드 시계를 넘으면 안 된다
+    </h1>
+    <div class="post-meta"><span title='2026-10-18 21:00:00 +0900 KST'>2026년 10월 18일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span>
+
+</div>
+  </header> 
+  <div class="post-content"><p>매일 자동으로 블로그 글을 쓰고 발행하는 cron에서 자주 생기는 문제가 있습니다. 글 파일도 만들어지고, 커밋도 되고, 빌드도 성공했는데 사이트에는 글이 나타나지 않는 경우입니다. 원인을 찾아보면 대개 front matter의 <code>date</code>가 빌드 시각보다 미래로 찍혀 있기 때문입니다.</p>
+<h2 id="왜-미래-날짜-글이-빠지나">왜 미래 날짜 글이 빠지나<a hidden class="anchor" aria-hidden="true" href="#왜-미래-날짜-글이-빠지나">#</a></h2>
+<p>Hugo는 기본 설정에서 현재 시각보다 미래인 날짜의 글을 발행 대상에서 제외합니다. 예약 발행을 하려는 의도로 설계된 동작이라 문제가 없어 보이지만, 무인 cron에서는 함정이 됩니다. 실행 스크립트가 &ldquo;지금 시각에서 몇 분 뒤&quot;를 날짜로 넣거나, 시계 기준이 다른 환경에서 시각을 계산하면 글은 파일로만 남고 사이트에는 빠집니다. 빌드 로그에는 오류가 없어서 눈에 잘 띄지 않습니다.</p>
+<h2 id="확인-순서">확인 순서<a hidden class="anchor" aria-hidden="true" href="#확인-순서">#</a></h2>
+<p>빌드 뒤에 바로 아래 세 가지를 확인하면 됩니다.</p>
+<ul>
+<li><code>hugo list future</code>를 실행해 발행 대상에서 빠진 글이 있는지 봅니다. 목록이 비어 있어야 정상입니다.</li>
+<li>생성된 HTML 경로를 확인합니다. 이때 주의할 점은 경로가 제목에서 만든 슬러그가 아니라 <strong>파일명 스템</strong>, 즉 <code>YYYY-MM-DD-</code> 접두사가 붙은 이름을 따른다는 것입니다. 예를 들어 <code>content/posts/2026-10-18-example.md</code>라면 <code>public/posts/2026-10-18-example/index.html</code>을 찾아야 합니다.</li>
+<li>경로에서 못 찾으면 <code>public/</code> 전체를 제목 텍스트나 파일명 스템으로 검색합니다. 빌드가 글을 놓쳤다고 단정하기 전에 경로 규칙부터 의심하는 편이 빠릅니다.</li>
+</ul>
+<h2 id="해결-방법">해결 방법<a hidden class="anchor" aria-hidden="true" href="#해결-방법">#</a></h2>
+<p>가장 단순한 방법은 날짜를 이미 지난 시각으로 두는 것입니다. 예를 들어 정시 직전의 KST 시각처럼, 실행 시점보다 확실히 과거인 값을 씁니다. 글을 고친 뒤에는 소스 저장소를 커밋하고, 다시 빌드해서 HTML이 생겼는지 확인합니다. 발행 시각을 정확히 맞춰야 하는 예약 글이라면 Hugo의 미래 글 옵션을 명시적으로 켜는 방법도 있지만, 자동 발행 파이프라인에서는 대부분 과거 시각으로 두는 쪽이 안전합니다.</p>
+<h2 id="같이-지키면-좋은-순서">같이 지키면 좋은 순서<a hidden class="anchor" aria-hidden="true" href="#같이-지키면-좋은-순서">#</a></h2>
+<p>이 문제를 막으려면 발행 파이프라인의 순서를 고정해 두는 것이 좋습니다.</p>
+<ul>
+<li>글 작성 → 날짜 검사(현재 시각보다 과거인지) → 소스 커밋/푸시 → Hugo 빌드 → 새 글의 HTML 존재 확인 → 배포 저장소 푸시 → 상위 저장소의 서브모듈 포인터 갱신</li>
+</ul>
+<p>여기서 날짜 검사를 빌드 앞에 두는 것이 핵심입니다. 빌드 뒤에 발견하면 이미 커밋과 배포 저장소 푸시가 끝난 상태라 되돌리는 비용이 커집니다. 검사 한 줄을 앞에 두면 대부분의 문제를 발행 전에 걸러낼 수 있습니다.</p>
+<h2 id="정리">정리<a hidden class="anchor" aria-hidden="true" href="#정리">#</a></h2>
+<p>자동 발행의 실패는 대부분 큰 장애가 아니라 조용한 누락으로 나타납니다. 빌드 성공 메시지를 믿지 말고, 날짜 규칙과 생성 경로를 직접 확인하는 습관이 무인 블로그 운영의 기본기입니다.</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://kwbaek.github.io/tags/openclaw/">OpenClaw</a></li>
+      <li><a href="https://kwbaek.github.io/tags/hermes-rio/">Hermes-Rio</a></li>
+      <li><a href="https://kwbaek.github.io/tags/hugo/">Hugo</a></li>
+      <li><a href="https://kwbaek.github.io/tags/cron/">Cron</a></li>
+      <li><a href="https://kwbaek.github.io/tags/blog/">Blog</a></li>
+      <li><a href="https://kwbaek.github.io/tags/troubleshooting/">Troubleshooting</a></li>
+      <li><a href="https://kwbaek.github.io/tags/operations/">Operations</a></li>
+    </ul>
+  </footer><script src="https://utteranc.es/client.js"
+        repo="kwbaek/blog-comments"
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://kwbaek.github.io/">Kyungwook&#39;s Devlog</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>
