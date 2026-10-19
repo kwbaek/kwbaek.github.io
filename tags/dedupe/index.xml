@@ -1,2 +1,20 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Dedupe on Kyungwook's Devlog</title><link>https://kwbaek.github.io/tags/dedupe/</link><description>Recent content in Dedupe on Kyungwook's Devlog</description><generator>Hugo -- 0.165.0</generator><language>ko-kr</language><lastBuildDate>Wed, 14 Oct 2026 21:00:00 +0900</lastBuildDate><atom:link href="https://kwbaek.github.io/tags/dedupe/index.xml" rel="self" type="application/rss+xml"/><item><title>Hermes/리오 운영 팁: 10분 주기 스캐너가 같은 날 같은 소식을 되풀이할 때 중복을 막는 법</title><link>https://kwbaek.github.io/posts/2026-10-14-hermes-rio-scanner-same-day-dedupe/</link><pubDate>Wed, 14 Oct 2026 21:00:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-10-14-hermes-rio-scanner-same-day-dedupe/</guid><description>&lt;p&gt;Hermes/리오의 AI/ML 트렌드 스캐너는 10분마다 돌아갑니다. 오늘만 해도 00:23부터 20:24까지 11번의 보고가 #ai-ml-trends 채널에 올라왔습니다. 짧은 주기는 빠른 감지에는 좋지만, 같은 날 같은 소식이 여러 번 올라오는 문제를 만듭니다. 오늘 기록을 보면 NVIDIA의 Nemotron 파인튜닝 IOI·IMO 성과 항목이 00:23과 08:23 두 번 보고됐고, 같은 시점의 OpenAI 브라우저 에이전트 소식도 두 보고에 함께 실렸습니다. 이번 글은 이런 반복을 막는 실무 방법을 정리합니다.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;1. 중복 판단의 기준은 URL 하나가 아닙니다.&lt;/strong&gt; 같은 소식이라도 Google News 래퍼 링크, 언론사 원문 링크, 공식 블로그 링크는 서로 다른 URL이 됩니다. 그래서 URL만 비교하면 같은 건을 놓칩니다. 대신 &lt;strong&gt;정식(canonical) URL&lt;/strong&gt;, &lt;strong&gt;행위자(회사·모델명)&lt;/strong&gt;, &lt;strong&gt;핵심 메커니즘&lt;/strong&gt;(예: 벤치마크 성과, 가격 변경, 규제 발표) 세 가지로 묶어 봐야 합니다. 예를 들어 Nemotron 항목은 래퍼 링크가 달라도 &amp;ldquo;NVIDIA + Nemotron + IOI/IMO 파인튜닝 레시피&amp;quot;라는 같은 묶음으로 판단해야 합니다.&lt;/p&gt;</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Dedupe on Kyungwook&#39;s Devlog</title>
+    <link>https://kwbaek.github.io/tags/dedupe/</link>
+    <description>Recent content in Dedupe on Kyungwook&#39;s Devlog</description>
+    <generator>Hugo -- 0.165.0</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Wed, 14 Oct 2026 21:00:00 +0900</lastBuildDate>
+    <atom:link href="https://kwbaek.github.io/tags/dedupe/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hermes/리오 운영 팁: 10분 주기 스캐너가 같은 날 같은 소식을 되풀이할 때 중복을 막는 법</title>
+      <link>https://kwbaek.github.io/posts/2026-10-14-hermes-rio-scanner-same-day-dedupe/</link>
+      <pubDate>Wed, 14 Oct 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-10-14-hermes-rio-scanner-same-day-dedupe/</guid>
+      <description>&lt;p&gt;Hermes/리오의 AI/ML 트렌드 스캐너는 10분마다 돌아갑니다. 오늘만 해도 00:23부터 20:24까지 11번의 보고가 #ai-ml-trends 채널에 올라왔습니다. 짧은 주기는 빠른 감지에는 좋지만, 같은 날 같은 소식이 여러 번 올라오는 문제를 만듭니다. 오늘 기록을 보면 NVIDIA의 Nemotron 파인튜닝 IOI·IMO 성과 항목이 00:23과 08:23 두 번 보고됐고, 같은 시점의 OpenAI 브라우저 에이전트 소식도 두 보고에 함께 실렸습니다. 이번 글은 이런 반복을 막는 실무 방법을 정리합니다.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;1. 중복 판단의 기준은 URL 하나가 아닙니다.&lt;/strong&gt; 같은 소식이라도 Google News 래퍼 링크, 언론사 원문 링크, 공식 블로그 링크는 서로 다른 URL이 됩니다. 그래서 URL만 비교하면 같은 건을 놓칩니다. 대신 &lt;strong&gt;정식(canonical) URL&lt;/strong&gt;, &lt;strong&gt;행위자(회사·모델명)&lt;/strong&gt;, &lt;strong&gt;핵심 메커니즘&lt;/strong&gt;(예: 벤치마크 성과, 가격 변경, 규제 발표) 세 가지로 묶어 봐야 합니다. 예를 들어 Nemotron 항목은 래퍼 링크가 달라도 &amp;ldquo;NVIDIA + Nemotron + IOI/IMO 파인튜닝 레시피&amp;quot;라는 같은 묶음으로 판단해야 합니다.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

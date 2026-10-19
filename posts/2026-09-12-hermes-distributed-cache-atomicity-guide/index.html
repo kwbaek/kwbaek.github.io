@@ -1,195 +1,625 @@
-<!doctype html><html lang=en dir=auto data-theme=auto><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=robots content="index, follow"><title>Hermes/리오 가이드: 분산 크론 환경에서 캐시 안전성 보장하기 — 원자적 갱신 + 검증의 기술 | Kyungwook's Devlog</title><meta name=keywords content="Hermes,리오,크론,분산시스템,캐시,원자성,JSON,안전성,자동화"><meta name=description content='당신의 크론 작업이 매시간 캐시를 갱신하면서, &ldquo;어라, 이 데이터는 어제 데이터인가 오늘 데이터인가?&ldquo;라고 의아해한 경험이 있으신가요?
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Hermes/리오 가이드: 분산 크론 환경에서 캐시 안전성 보장하기 — 원자적 갱신 &#43; 검증의 기술 | Kyungwook&#39;s Devlog</title>
+<meta name="keywords" content="Hermes, 리오, 크론, 분산시스템, 캐시, 원자성, JSON, 안전성, 자동화">
+<meta name="description" content="당신의 크론 작업이 매시간 캐시를 갱신하면서, &ldquo;어라, 이 데이터는 어제 데이터인가 오늘 데이터인가?&ldquo;라고 의아해한 경험이 있으신가요?
 분산된 크론 환경에서는 캐시가 경쟁 상태(race condition)에 빠질 수 있습니다. 한 프로세스가 파일을 읽는 중에 다른 프로세스가 덮어쓰면, 부분적으로 손상된 JSON이 남을 수 있고, 다음 크론이 그걸 파싱할 때 JSONDecodeError로 폭발합니다.
-오늘은 Hermes/리오가 실제로 운영 중인 &ldquo;원자적 캐시 갱신 + 검증&rdquo; 패턴을 소개합니다.
+오늘은 Hermes/리오가 실제로 운영 중인 &ldquo;원자적 캐시 갱신 &#43; 검증&rdquo; 패턴을 소개합니다.
 
 🎯 핵심 원칙: &ldquo;쓰기 → 검증 → 원자적 교체&rdquo;
 잘못된 방식 ❌
 # 위험한 직접 덮어쓰기
-with open("cache.json", "w") as f:
+with open(&#34;cache.json&#34;, &#34;w&#34;) as f:
     json.dump(new_data, f)  # 쓰는 중에 크론이 읽으면? 💥
-문제:'><meta name=author content="map[email: name:Kyungwook Baek]"><link rel=canonical href=https://kwbaek.github.io/posts/2026-09-12-hermes-distributed-cache-atomicity-guide/><link crossorigin=anonymous href=/assets/css/stylesheet.199042e659bc7245f5609d333d6c044eb554a0640849bb874e1dff8eb0f57209.css integrity="sha256-GZBC5lm8ckX1YJ0zPWwETrVUoGQISbuHTh3/jrD1cgk=" rel="preload stylesheet" as=style><link rel=icon href=https://kwbaek.github.io/favicon.ico><link rel=icon type=image/png sizes=16x16 href=https://kwbaek.github.io/favicon-16x16.png><link rel=icon type=image/png sizes=32x32 href=https://kwbaek.github.io/favicon-32x32.png><link rel=apple-touch-icon href=https://kwbaek.github.io/apple-touch-icon.png><link rel=mask-icon href=https://kwbaek.github.io/safari-pinned-tab.svg><meta name=theme-color content="#2e2e33"><meta name=msapplication-TileColor content="#2e2e33"><link rel=alternate hreflang=en href=https://kwbaek.github.io/posts/2026-09-12-hermes-distributed-cache-atomicity-guide/><noscript><style>#theme-toggle,.top-link{display:none}</style><style>@media(prefers-color-scheme:dark){:root{--theme:rgb(29, 30, 32);--entry:rgb(46, 46, 51);--primary:rgb(218, 218, 219);--secondary:rgb(155, 156, 157);--tertiary:rgb(65, 66, 68);--content:rgb(196, 196, 197);--code-block-bg:rgb(46, 46, 51);--code-bg:rgb(55, 56, 62);--border:rgb(51, 51, 51);color-scheme:dark}.list{background:var(--theme)}.toc{background:var(--entry)}}@media(prefers-color-scheme:light){.list::-webkit-scrollbar-thumb{border-color:var(--code-bg)}}</style></noscript><script>localStorage.getItem("pref-theme")==="dark"?document.querySelector("html").dataset.theme="dark":localStorage.getItem("pref-theme")==="light"?document.querySelector("html").dataset.theme="light":window.matchMedia("(prefers-color-scheme: dark)").matches?document.querySelector("html").dataset.theme="dark":document.querySelector("html").dataset.theme="light"</script><meta property="og:url" content="https://kwbaek.github.io/posts/2026-09-12-hermes-distributed-cache-atomicity-guide/"><meta property="og:site_name" content="Kyungwook's Devlog"><meta property="og:title" content="Hermes/리오 가이드: 분산 크론 환경에서 캐시 안전성 보장하기 — 원자적 갱신 + 검증의 기술"><meta property="og:description" content='당신의 크론 작업이 매시간 캐시를 갱신하면서, “어라, 이 데이터는 어제 데이터인가 오늘 데이터인가?“라고 의아해한 경험이 있으신가요?
+문제:">
+<meta name="author" content="map[email: name:Kyungwook Baek]">
+<link rel="canonical" href="https://kwbaek.github.io/posts/2026-09-12-hermes-distributed-cache-atomicity-guide/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.199042e659bc7245f5609d333d6c044eb554a0640849bb874e1dff8eb0f57209.css" integrity="sha256-GZBC5lm8ckX1YJ0zPWwETrVUoGQISbuHTh3/jrD1cgk=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://kwbaek.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://kwbaek.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://kwbaek.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://kwbaek.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://kwbaek.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://kwbaek.github.io/posts/2026-09-12-hermes-distributed-cache-atomicity-guide/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="https://kwbaek.github.io/posts/2026-09-12-hermes-distributed-cache-atomicity-guide/">
+  <meta property="og:site_name" content="Kyungwook&#39;s Devlog">
+  <meta property="og:title" content="Hermes/리오 가이드: 분산 크론 환경에서 캐시 안전성 보장하기 — 원자적 갱신 &#43; 검증의 기술">
+  <meta property="og:description" content="당신의 크론 작업이 매시간 캐시를 갱신하면서, “어라, 이 데이터는 어제 데이터인가 오늘 데이터인가?“라고 의아해한 경험이 있으신가요?
 분산된 크론 환경에서는 캐시가 경쟁 상태(race condition)에 빠질 수 있습니다. 한 프로세스가 파일을 읽는 중에 다른 프로세스가 덮어쓰면, 부분적으로 손상된 JSON이 남을 수 있고, 다음 크론이 그걸 파싱할 때 JSONDecodeError로 폭발합니다.
-오늘은 Hermes/리오가 실제로 운영 중인 “원자적 캐시 갱신 + 검증” 패턴을 소개합니다.
-🎯 핵심 원칙: “쓰기 → 검증 → 원자적 교체” 잘못된 방식 ❌ # 위험한 직접 덮어쓰기 with open("cache.json", "w") as f: json.dump(new_data, f) # 쓰는 중에 크론이 읽으면? 💥 문제:'><meta property="og:locale" content="ko-kr"><meta property="og:type" content="article"><meta property="article:section" content="posts"><meta property="article:published_time" content="2026-09-12T21:15:00+09:00"><meta property="article:modified_time" content="2026-09-12T21:15:00+09:00"><meta property="article:tag" content="Hermes"><meta property="article:tag" content="리오"><meta property="article:tag" content="크론"><meta property="article:tag" content="분산시스템"><meta property="article:tag" content="캐시"><meta property="article:tag" content="원자성"><meta name=twitter:card content="summary"><meta name=twitter:title content="Hermes/리오 가이드: 분산 크론 환경에서 캐시 안전성 보장하기 — 원자적 갱신 + 검증의 기술"><meta name=twitter:description content='당신의 크론 작업이 매시간 캐시를 갱신하면서, &ldquo;어라, 이 데이터는 어제 데이터인가 오늘 데이터인가?&ldquo;라고 의아해한 경험이 있으신가요?
+오늘은 Hermes/리오가 실제로 운영 중인 “원자적 캐시 갱신 &#43; 검증” 패턴을 소개합니다.
+🎯 핵심 원칙: “쓰기 → 검증 → 원자적 교체” 잘못된 방식 ❌ # 위험한 직접 덮어쓰기 with open(&#34;cache.json&#34;, &#34;w&#34;) as f: json.dump(new_data, f) # 쓰는 중에 크론이 읽으면? 💥 문제:">
+  <meta property="og:locale" content="ko-kr">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2026-09-12T21:15:00+09:00">
+    <meta property="article:modified_time" content="2026-09-12T21:15:00+09:00">
+    <meta property="article:tag" content="Hermes">
+    <meta property="article:tag" content="리오">
+    <meta property="article:tag" content="크론">
+    <meta property="article:tag" content="분산시스템">
+    <meta property="article:tag" content="캐시">
+    <meta property="article:tag" content="원자성">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hermes/리오 가이드: 분산 크론 환경에서 캐시 안전성 보장하기 — 원자적 갱신 &#43; 검증의 기술">
+<meta name="twitter:description" content="당신의 크론 작업이 매시간 캐시를 갱신하면서, &ldquo;어라, 이 데이터는 어제 데이터인가 오늘 데이터인가?&ldquo;라고 의아해한 경험이 있으신가요?
 분산된 크론 환경에서는 캐시가 경쟁 상태(race condition)에 빠질 수 있습니다. 한 프로세스가 파일을 읽는 중에 다른 프로세스가 덮어쓰면, 부분적으로 손상된 JSON이 남을 수 있고, 다음 크론이 그걸 파싱할 때 JSONDecodeError로 폭발합니다.
-오늘은 Hermes/리오가 실제로 운영 중인 &ldquo;원자적 캐시 갱신 + 검증&rdquo; 패턴을 소개합니다.
+오늘은 Hermes/리오가 실제로 운영 중인 &ldquo;원자적 캐시 갱신 &#43; 검증&rdquo; 패턴을 소개합니다.
 
 🎯 핵심 원칙: &ldquo;쓰기 → 검증 → 원자적 교체&rdquo;
 잘못된 방식 ❌
 # 위험한 직접 덮어쓰기
-with open("cache.json", "w") as f:
+with open(&#34;cache.json&#34;, &#34;w&#34;) as f:
     json.dump(new_data, f)  # 쓰는 중에 크론이 읽으면? 💥
-문제:'><script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Posts","item":"https://kwbaek.github.io/posts/"},{"@type":"ListItem","position":2,"name":"Hermes/리오 가이드: 분산 크론 환경에서 캐시 안전성 보장하기 — 원자적 갱신 + 검증의 기술","item":"https://kwbaek.github.io/posts/2026-09-12-hermes-distributed-cache-atomicity-guide/"}]}</script><script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"Hermes/리오 가이드: 분산 크론 환경에서 캐시 안전성 보장하기 — 원자적 갱신 + 검증의 기술","name":"Hermes\/리오 가이드: 분산 크론 환경에서 캐시 안전성 보장하기 — 원자적 갱신 \u002b 검증의 기술","description":"당신의 크론 작업이 매시간 캐시를 갱신하면서, \u0026ldquo;어라, 이 데이터는 어제 데이터인가 오늘 데이터인가?\u0026ldquo;라고 의아해한 경험이 있으신가요?\n분산된 크론 환경에서는 캐시가 경쟁 상태(race condition)에 빠질 수 있습니다. 한 프로세스가 파일을 읽는 중에 다른 프로세스가 덮어쓰면, 부분적으로 손상된 JSON이 남을 수 있고, 다음 크론이 그걸 파싱할 때 JSONDecodeError로 폭발합니다.\n오늘은 Hermes/리오가 실제로 운영 중인 \u0026ldquo;원자적 캐시 갱신 + 검증\u0026rdquo; 패턴을 소개합니다.\n🎯 핵심 원칙: \u0026ldquo;쓰기 → 검증 → 원자적 교체\u0026rdquo; 잘못된 방식 ❌ # 위험한 직접 덮어쓰기 with open(\u0026#34;cache.json\u0026#34;, \u0026#34;w\u0026#34;) as f: json.dump(new_data, f) # 쓰는 중에 크론이 읽으면? 💥 문제:\n","keywords":["Hermes","리오","크론","분산시스템","캐시","원자성","JSON","안전성","자동화"],"articleBody":"당신의 크론 작업이 매시간 캐시를 갱신하면서, “어라, 이 데이터는 어제 데이터인가 오늘 데이터인가?“라고 의아해한 경험이 있으신가요?\n분산된 크론 환경에서는 캐시가 경쟁 상태(race condition)에 빠질 수 있습니다. 한 프로세스가 파일을 읽는 중에 다른 프로세스가 덮어쓰면, 부분적으로 손상된 JSON이 남을 수 있고, 다음 크론이 그걸 파싱할 때 JSONDecodeError로 폭발합니다.\n오늘은 Hermes/리오가 실제로 운영 중인 “원자적 캐시 갱신 + 검증” 패턴을 소개합니다.\n🎯 핵심 원칙: “쓰기 → 검증 → 원자적 교체” 잘못된 방식 ❌ # 위험한 직접 덮어쓰기 with open(\"cache.json\", \"w\") as f: json.dump(new_data, f) # 쓰는 중에 크론이 읽으면? 💥 문제:\n프로세스 A가 쓰는 중 (50% 완료) 프로세스 B가 동시에 읽음 → 파일이 {...truncated 상태로 남음 → 다음 번 읽기에서 JSON 파싱 에러 올바른 방식 ✅ import json, tempfile, os # Step 1: 임시 파일에 쓰기 with tempfile.NamedTemporaryFile(mode='w', dir=os.path.dirname(cache_path), delete=False, suffix='.json') as tmp: json.dump(new_data, tmp) tmp_path = tmp.name # Step 2: 유효성 검증 (쓰기 전 확인) try: with open(tmp_path, 'r') as f: json.load(f) # 파싱 가능한가? print(\"✅ JSON 검증 성공\") except json.JSONDecodeError as e: os.unlink(tmp_path) # 손상된 파일 삭제 raise ValueError(f\"유효하지 않은 JSON: {e}\") # Step 3: 원자적 교체 (move는 Linux에서 원자적) os.replace(tmp_path, cache_path) # 안전한 덮어쓰기 print(f\"✅ 캐시 업데이트 완료: {cache_path}\") 왜 이게 더 안전한가?\n임시 파일에서 완전히 작성 → 메인 파일 건드리지 않음 검증 단계 → 손상된 데이터를 확인하고 폐기 원자적 교체 → 순간에 완전한 새 파일로 교체 (부분 쓰기 불가) 🔄 실제 적용 사례: AI/ML 트렌드 캐시 갱신 상황 Hermes 크론 작업:\n매시간 AI/ML 트렌드 스캐너 실행 새로운 아이템을 ai-ml-trends-latest.json에 추가 전체 히스토리는 ai-ml-trends-history.json에 유지 포스트된 항목 추적: ai-ml-trends-posted.json 문제:\n트렌드 스캐너가 10분마다 캐시 업데이트 동시에 블로그 생성 크론이 2시간마다 캐시 읽음 경쟁: “지금 읽는 중인데 스캐너가 덮어썼다!” 해결책: 원자적 캐시 갱신 패턴 import json, tempfile, os, shutil from datetime import datetime CACHE_DIR = \"/Users/kwbaekleo/.openclaw/workspace/memory\" LATEST_CACHE = os.path.join(CACHE_DIR, \"ai-ml-trends-latest.json\") HISTORY_CACHE = os.path.join(CACHE_DIR, \"ai-ml-trends-history.json\") def safe_update_trend_cache(new_items): \"\"\" 원자적 + 검증된 캐시 갱신 \"\"\" # Step 1: 기존 히스토리 로드 history = [] if os.path.exists(HISTORY_CACHE): with open(HISTORY_CACHE, 'r') as f: try: history = json.load(f) except json.JSONDecodeError: print(\"⚠️ 히스토리 파일 손상, 재구성 중...\") history = [] # Step 2: 새 항목 검증 + 중복 제거 validated_items = [] seen_urls = set() # 이미 포스트된 항목 스킵 for item in new_items: url = item.get('url') if not url: print(f\"⚠️ URL 없음, 스킵: {item}\") continue # 중복 확인 (latest + history 합쳐서) if url in seen_urls: continue # 히스토리에도 없는지 확인 if not any(h['url'] == url for h in history): validated_items.append({ **item, 'timestamp': datetime.utcnow().isoformat() + 'Z', 'addedAt': datetime.now(tz=timezone.utc).isoformat() }) seen_urls.add(url) # Step 3: Latest 임시 파일에 쓰기 with tempfile.NamedTemporaryFile(mode='w', dir=CACHE_DIR, delete=False, suffix='.json') as tmp_latest: json.dump(validated_items, tmp_latest) tmp_latest_path = tmp_latest.name # Step 4: History 임시 파일에 쓰기 (prepend 패턴) with tempfile.NamedTemporaryFile(mode='w', dir=CACHE_DIR, delete=False, suffix='.json') as tmp_history: new_history = validated_items + history # 최신 먼저 json.dump(new_history, tmp_history) tmp_history_path = tmp_history.name # Step 5: 유효성 검증 (파싱 가능?) try: with open(tmp_latest_path, 'r') as f: json.load(f) with open(tmp_history_path, 'r') as f: json.load(f) print(\"✅ JSON 검증 완료\") except json.JSONDecodeError as e: # 손상된 임시 파일 삭제 os.unlink(tmp_latest_path) os.unlink(tmp_history_path) raise ValueError(f\"JSON 검증 실패: {e}\") # Step 6: 원자적 교체 os.replace(tmp_latest_path, LATEST_CACHE) os.replace(tmp_history_path, HISTORY_CACHE) print(f\"✅ 캐시 업데이트 완료\") print(f\" - Latest: {len(validated_items)} items\") print(f\" - History: {len(new_history)} items total\") return len(validated_items) # 크론에서 호출 if __name__ == \"__main__\": new_trends = fetch_ai_ml_trends() # 스캐너에서 새 트렌드 수집 safe_update_trend_cache(new_trends) 🛡️ 추가 안전장치: 읽을 때도 방어적으로 캐시 읽기도 실패할 수 있다 def safe_read_latest_cache(): \"\"\" 안전한 캐시 읽기 with fallback \"\"\" try: with open(LATEST_CACHE, 'r') as f: data = json.load(f) print(f\"✅ 캐시 로드: {len(data)} items\") return data except json.JSONDecodeError: print(\"⚠️ 캐시 JSON 손상, 히스토리에서 복구 시도...\") try: with open(HISTORY_CACHE, 'r') as f: history = json.load(f) # 최근 24시간 항목만 반환 cutoff = datetime.utcnow() - timedelta(hours=24) recent = [h for h in history if datetime.fromisoformat(h['timestamp'].rstrip('Z')) \u003e cutoff] print(f\"✅ 히스토리에서 복구: {len(recent)} items (24h)\") return recent except: print(\"❌ 복구 실패, 빈 목록 반환\") return [] except FileNotFoundError: print(\"⚠️ 캐시 파일 없음 (첫 실행?)\") return [] 📋 체크리스트: 분산 크론 캐시 안전성 항목 구현 자동화 ✅ 임시 파일 쓰기 tempfile.NamedTemporaryFile O ✅ JSON 유효성 검증 json.load() try-except O ✅ 원자적 교체 os.replace() O ✅ 중복 제거 URL 기반 seen_urls set O ✅ 히스토리 유지 Prepend 패턴 + length limit O ✅ 읽기 폴백 safe_read_latest_cache() O ✅ 로깅 각 단계에 print() 또는 logger O 🚀 Hermes 통합: 크론 테스크에 적용하기 크론 구성 예시 # ~/.hermes/profiles/default/cron/ai-ml-trends-scanner.json { \"name\": \"AI/ML Trend Scanner — Safe Cache Update\", \"id\": \"ai-ml-trends-scanner-safe\", \"frequency\": \"0 * * * *\", # 매 시간 정각 \"command\": \"python /Users/kwbaekleo/.openclaw/workspace/scripts/trend_scanner_safe.py\", \"description\": \"Scan AI/ML trends, atomically update cache with validation\" } Python 스크립트 (메인 로직) # scripts/trend_scanner_safe.py #!/usr/bin/env python3 import sys, os sys.path.insert(0, '/Users/kwbaekleo/.openclaw/workspace') from memory.cache_utils import safe_update_trend_cache, safe_read_latest_cache from trend_scanner import scan_ai_ml_trends # Step 1: 새로운 트렌드 스캔 print(\"[INFO] AI/ML 트렌드 스캔 시작...\") new_trends = scan_ai_ml_trends() # RSS + Google News + 공식 블로그 # Step 2: 원자적 캐시 갱신 print(f\"[INFO] {len(new_trends)} 개 항목 발견\") try: added = safe_update_trend_cache(new_trends) print(f\"[SUCCESS] {added}개 신규 항목 추가됨\") except Exception as e: print(f\"[ERROR] 캐시 갱신 실패: {e}\") sys.exit(1) # Step 3: 갱신 확인 cached = safe_read_latest_cache() print(f\"[VERIFY] 캐시에 현재 {len(cached)}개 항목 저장됨\") 💡 실무 교훈 “한 번 배워두면 영원히 쓴다” 프로토타입: 단순 덮어쓰기로 시작해도 됩니다. 문제 발생 시: “JSON 손상” 또는 “데이터 누락” → 이 패턴으로 업그레이드 스케일링: 하루에 10번, 시간에 100번으로 늘어나도 원자적 갱신 + 검증은 자동으로 확장됩니다. “캐시 안전성 = 전체 크론 안정성” 캐시가 한 번 손상되면:\n블로그 생성 크론이 실패 아이디어 생성이 폭발 모니터링 대시보드가 빈 데이터를 표시 반대로, 원자적 갱신을 보장하면:\n캐시는 항상 “완전 + 유효” 크론들이 서로 간섭하지 않음 장애 복구가 간단 (히스토리에서 복구 가능) 📚 출처 및 참고 Python tempfile 모듈: docs.python.org/tempfile os.replace() 원자성: POSIX rename() 표준 Hermes 크론 아키텍처: Hermes 공식 문서 JSON 스트리밍 읽기/쓰기: RFC 8259 다음 편에서는: 크론 간의 순서 보장 (DAG 스케줄링)과 크로스-크론 데이터 패싱에 대해 다루겠습니다.\n","wordCount":"942","inLanguage":"en","datePublished":"2026-09-12T21:15:00+09:00","dateModified":"2026-09-12T21:15:00+09:00","author":{"@type":"Person","name":{"email":"","name":"Kyungwook Baek"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://kwbaek.github.io/posts/2026-09-12-hermes-distributed-cache-atomicity-guide/"},"publisher":{"@type":"Organization","name":"Kyungwook's Devlog","logo":{"@type":"ImageObject","url":"https://kwbaek.github.io/favicon.ico"}}}</script></head><body id=top><header class=header><nav class=nav><div class=logo><a href=https://kwbaek.github.io/ accesskey=h title="Kyungwook's Devlog (Alt + H)">Kyungwook's Devlog</a><div class=logo-switches><button id=theme-toggle accesskey=t title="(Alt + T)" aria-label="Toggle theme">
-<svg id="moon" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
-<svg id="sun" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button></div></div><ul id=menu><li><a href=https://kwbaek.github.io/categories/ title=categories><span>categories</span></a></li><li><a href=https://kwbaek.github.io/tags/ title=tags><span>tags</span></a></li><li><a href=https://kwbaek.github.io/ title="Kyungwook's Devlog"><span>Kyungwook's Devlog</span>&nbsp;
-<svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><path d="M15 3h6v6"/><path d="M10 14 21 3"/></svg></a></li></ul></nav></header><main class=main><article class=post-single><header class=post-header><h1 class="post-title entry-hint-parent">Hermes/리오 가이드: 분산 크론 환경에서 캐시 안전성 보장하기 — 원자적 갱신 + 검증의 기술</h1><div class=post-meta><span title='2026-09-12 21:15:00 +0900 KST'>2026년 9월 12일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></div></header><div class=post-content><p><strong>당신의 크론 작업이 매시간 캐시를 갱신하면서, &ldquo;어라, 이 데이터는 어제 데이터인가 오늘 데이터인가?&ldquo;라고 의아해한 경험이 있으신가요?</strong></p><p>분산된 크론 환경에서는 캐시가 경쟁 상태(race condition)에 빠질 수 있습니다. 한 프로세스가 파일을 읽는 중에 다른 프로세스가 덮어쓰면, 부분적으로 손상된 JSON이 남을 수 있고, 다음 크론이 그걸 파싱할 때 <code>JSONDecodeError</code>로 폭발합니다.</p><p>오늘은 <strong>Hermes/리오가 실제로 운영 중인 &ldquo;원자적 캐시 갱신 + 검증&rdquo; 패턴</strong>을 소개합니다.</p><hr><h2 id=-핵심-원칙-쓰기--검증--원자적-교체>🎯 핵심 원칙: &ldquo;쓰기 → 검증 → 원자적 교체&rdquo;<a hidden class=anchor aria-hidden=true href=#-핵심-원칙-쓰기--검증--원자적-교체>#</a></h2><h3 id=잘못된-방식->잘못된 방식 ❌<a hidden class=anchor aria-hidden=true href=#잘못된-방식->#</a></h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#75715e># 위험한 직접 덮어쓰기</span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>with</span> open(<span style=color:#e6db74>&#34;cache.json&#34;</span>, <span style=color:#e6db74>&#34;w&#34;</span>) <span style=color:#66d9ef>as</span> f:
-</span></span><span style=display:flex><span>    json<span style=color:#f92672>.</span>dump(new_data, f)  <span style=color:#75715e># 쓰는 중에 크론이 읽으면? 💥</span>
-</span></span></code></pre></div><p><strong>문제:</strong></p><ul><li>프로세스 A가 쓰는 중 (50% 완료)</li><li>프로세스 B가 동시에 읽음</li><li>→ 파일이 <code>{...truncated</code> 상태로 남음</li><li>→ 다음 번 읽기에서 JSON 파싱 에러</li></ul><h3 id=올바른-방식->올바른 방식 ✅<a hidden class=anchor aria-hidden=true href=#올바른-방식->#</a></h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#f92672>import</span> json<span style=color:#f92672>,</span> tempfile<span style=color:#f92672>,</span> os
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#75715e># Step 1: 임시 파일에 쓰기</span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>with</span> tempfile<span style=color:#f92672>.</span>NamedTemporaryFile(mode<span style=color:#f92672>=</span><span style=color:#e6db74>&#39;w&#39;</span>, dir<span style=color:#f92672>=</span>os<span style=color:#f92672>.</span>path<span style=color:#f92672>.</span>dirname(cache_path), 
-</span></span><span style=display:flex><span>                                  delete<span style=color:#f92672>=</span><span style=color:#66d9ef>False</span>, suffix<span style=color:#f92672>=</span><span style=color:#e6db74>&#39;.json&#39;</span>) <span style=color:#66d9ef>as</span> tmp:
-</span></span><span style=display:flex><span>    json<span style=color:#f92672>.</span>dump(new_data, tmp)
-</span></span><span style=display:flex><span>    tmp_path <span style=color:#f92672>=</span> tmp<span style=color:#f92672>.</span>name
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#75715e># Step 2: 유효성 검증 (쓰기 전 확인)</span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>try</span>:
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>with</span> open(tmp_path, <span style=color:#e6db74>&#39;r&#39;</span>) <span style=color:#66d9ef>as</span> f:
-</span></span><span style=display:flex><span>        json<span style=color:#f92672>.</span>load(f)  <span style=color:#75715e># 파싱 가능한가?</span>
-</span></span><span style=display:flex><span>    print(<span style=color:#e6db74>&#34;✅ JSON 검증 성공&#34;</span>)
-</span></span><span style=display:flex><span><span style=color:#66d9ef>except</span> json<span style=color:#f92672>.</span>JSONDecodeError <span style=color:#66d9ef>as</span> e:
-</span></span><span style=display:flex><span>    os<span style=color:#f92672>.</span>unlink(tmp_path)  <span style=color:#75715e># 손상된 파일 삭제</span>
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>raise</span> <span style=color:#a6e22e>ValueError</span>(<span style=color:#e6db74>f</span><span style=color:#e6db74>&#34;유효하지 않은 JSON: </span><span style=color:#e6db74>{</span>e<span style=color:#e6db74>}</span><span style=color:#e6db74>&#34;</span>)
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#75715e># Step 3: 원자적 교체 (move는 Linux에서 원자적)</span>
-</span></span><span style=display:flex><span>os<span style=color:#f92672>.</span>replace(tmp_path, cache_path)  <span style=color:#75715e># 안전한 덮어쓰기</span>
-</span></span><span style=display:flex><span>print(<span style=color:#e6db74>f</span><span style=color:#e6db74>&#34;✅ 캐시 업데이트 완료: </span><span style=color:#e6db74>{</span>cache_path<span style=color:#e6db74>}</span><span style=color:#e6db74>&#34;</span>)
-</span></span></code></pre></div><p><strong>왜 이게 더 안전한가?</strong></p><ol><li><strong>임시 파일에서 완전히 작성</strong> → 메인 파일 건드리지 않음</li><li><strong>검증 단계</strong> → 손상된 데이터를 확인하고 폐기</li><li><strong>원자적 교체</strong> → 순간에 완전한 새 파일로 교체 (부분 쓰기 불가)</li></ol><hr><h2 id=-실제-적용-사례-aiml-트렌드-캐시-갱신>🔄 실제 적용 사례: AI/ML 트렌드 캐시 갱신<a hidden class=anchor aria-hidden=true href=#-실제-적용-사례-aiml-트렌드-캐시-갱신>#</a></h2><h3 id=상황>상황<a hidden class=anchor aria-hidden=true href=#상황>#</a></h3><p><strong>Hermes 크론 작업:</strong></p><ul><li>매시간 AI/ML 트렌드 스캐너 실행</li><li>새로운 아이템을 <code>ai-ml-trends-latest.json</code>에 추가</li><li>전체 히스토리는 <code>ai-ml-trends-history.json</code>에 유지</li><li>포스트된 항목 추적: <code>ai-ml-trends-posted.json</code></li></ul><p><strong>문제:</strong></p><ul><li>트렌드 스캐너가 10분마다 캐시 업데이트</li><li>동시에 블로그 생성 크론이 2시간마다 캐시 읽음</li><li>경쟁: &ldquo;지금 읽는 중인데 스캐너가 덮어썼다!&rdquo;</li></ul><h3 id=해결책-원자적-캐시-갱신-패턴>해결책: 원자적 캐시 갱신 패턴<a hidden class=anchor aria-hidden=true href=#해결책-원자적-캐시-갱신-패턴>#</a></h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#f92672>import</span> json<span style=color:#f92672>,</span> tempfile<span style=color:#f92672>,</span> os<span style=color:#f92672>,</span> shutil
-</span></span><span style=display:flex><span><span style=color:#f92672>from</span> datetime <span style=color:#f92672>import</span> datetime
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>CACHE_DIR <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;/Users/kwbaekleo/.openclaw/workspace/memory&#34;</span>
-</span></span><span style=display:flex><span>LATEST_CACHE <span style=color:#f92672>=</span> os<span style=color:#f92672>.</span>path<span style=color:#f92672>.</span>join(CACHE_DIR, <span style=color:#e6db74>&#34;ai-ml-trends-latest.json&#34;</span>)
-</span></span><span style=display:flex><span>HISTORY_CACHE <span style=color:#f92672>=</span> os<span style=color:#f92672>.</span>path<span style=color:#f92672>.</span>join(CACHE_DIR, <span style=color:#e6db74>&#34;ai-ml-trends-history.json&#34;</span>)
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>safe_update_trend_cache</span>(new_items):
-</span></span><span style=display:flex><span>    <span style=color:#e6db74>&#34;&#34;&#34;
-</span></span></span><span style=display:flex><span><span style=color:#e6db74>    원자적 + 검증된 캐시 갱신
-</span></span></span><span style=display:flex><span><span style=color:#e6db74>    &#34;&#34;&#34;</span>
-</span></span><span style=display:flex><span>    <span style=color:#75715e># Step 1: 기존 히스토리 로드</span>
-</span></span><span style=display:flex><span>    history <span style=color:#f92672>=</span> []
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> os<span style=color:#f92672>.</span>path<span style=color:#f92672>.</span>exists(HISTORY_CACHE):
-</span></span><span style=display:flex><span>        <span style=color:#66d9ef>with</span> open(HISTORY_CACHE, <span style=color:#e6db74>&#39;r&#39;</span>) <span style=color:#66d9ef>as</span> f:
-</span></span><span style=display:flex><span>            <span style=color:#66d9ef>try</span>:
-</span></span><span style=display:flex><span>                history <span style=color:#f92672>=</span> json<span style=color:#f92672>.</span>load(f)
-</span></span><span style=display:flex><span>            <span style=color:#66d9ef>except</span> json<span style=color:#f92672>.</span>JSONDecodeError:
-</span></span><span style=display:flex><span>                print(<span style=color:#e6db74>&#34;⚠️  히스토리 파일 손상, 재구성 중...&#34;</span>)
-</span></span><span style=display:flex><span>                history <span style=color:#f92672>=</span> []
-</span></span><span style=display:flex><span>    
-</span></span><span style=display:flex><span>    <span style=color:#75715e># Step 2: 새 항목 검증 + 중복 제거</span>
-</span></span><span style=display:flex><span>    validated_items <span style=color:#f92672>=</span> []
-</span></span><span style=display:flex><span>    seen_urls <span style=color:#f92672>=</span> set()
-</span></span><span style=display:flex><span>    
-</span></span><span style=display:flex><span>    <span style=color:#75715e># 이미 포스트된 항목 스킵</span>
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>for</span> item <span style=color:#f92672>in</span> new_items:
-</span></span><span style=display:flex><span>        url <span style=color:#f92672>=</span> item<span style=color:#f92672>.</span>get(<span style=color:#e6db74>&#39;url&#39;</span>)
-</span></span><span style=display:flex><span>        <span style=color:#66d9ef>if</span> <span style=color:#f92672>not</span> url:
-</span></span><span style=display:flex><span>            print(<span style=color:#e6db74>f</span><span style=color:#e6db74>&#34;⚠️  URL 없음, 스킵: </span><span style=color:#e6db74>{</span>item<span style=color:#e6db74>}</span><span style=color:#e6db74>&#34;</span>)
-</span></span><span style=display:flex><span>            <span style=color:#66d9ef>continue</span>
-</span></span><span style=display:flex><span>        
-</span></span><span style=display:flex><span>        <span style=color:#75715e># 중복 확인 (latest + history 합쳐서)</span>
-</span></span><span style=display:flex><span>        <span style=color:#66d9ef>if</span> url <span style=color:#f92672>in</span> seen_urls:
-</span></span><span style=display:flex><span>            <span style=color:#66d9ef>continue</span>
-</span></span><span style=display:flex><span>        
-</span></span><span style=display:flex><span>        <span style=color:#75715e># 히스토리에도 없는지 확인</span>
-</span></span><span style=display:flex><span>        <span style=color:#66d9ef>if</span> <span style=color:#f92672>not</span> any(h[<span style=color:#e6db74>&#39;url&#39;</span>] <span style=color:#f92672>==</span> url <span style=color:#66d9ef>for</span> h <span style=color:#f92672>in</span> history):
-</span></span><span style=display:flex><span>            validated_items<span style=color:#f92672>.</span>append({
-</span></span><span style=display:flex><span>                <span style=color:#f92672>**</span>item,
-</span></span><span style=display:flex><span>                <span style=color:#e6db74>&#39;timestamp&#39;</span>: datetime<span style=color:#f92672>.</span>utcnow()<span style=color:#f92672>.</span>isoformat() <span style=color:#f92672>+</span> <span style=color:#e6db74>&#39;Z&#39;</span>,
-</span></span><span style=display:flex><span>                <span style=color:#e6db74>&#39;addedAt&#39;</span>: datetime<span style=color:#f92672>.</span>now(tz<span style=color:#f92672>=</span>timezone<span style=color:#f92672>.</span>utc)<span style=color:#f92672>.</span>isoformat()
-</span></span><span style=display:flex><span>            })
-</span></span><span style=display:flex><span>            seen_urls<span style=color:#f92672>.</span>add(url)
-</span></span><span style=display:flex><span>    
-</span></span><span style=display:flex><span>    <span style=color:#75715e># Step 3: Latest 임시 파일에 쓰기</span>
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>with</span> tempfile<span style=color:#f92672>.</span>NamedTemporaryFile(mode<span style=color:#f92672>=</span><span style=color:#e6db74>&#39;w&#39;</span>, dir<span style=color:#f92672>=</span>CACHE_DIR, 
-</span></span><span style=display:flex><span>                                      delete<span style=color:#f92672>=</span><span style=color:#66d9ef>False</span>, suffix<span style=color:#f92672>=</span><span style=color:#e6db74>&#39;.json&#39;</span>) <span style=color:#66d9ef>as</span> tmp_latest:
-</span></span><span style=display:flex><span>        json<span style=color:#f92672>.</span>dump(validated_items, tmp_latest)
-</span></span><span style=display:flex><span>        tmp_latest_path <span style=color:#f92672>=</span> tmp_latest<span style=color:#f92672>.</span>name
-</span></span><span style=display:flex><span>    
-</span></span><span style=display:flex><span>    <span style=color:#75715e># Step 4: History 임시 파일에 쓰기 (prepend 패턴)</span>
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>with</span> tempfile<span style=color:#f92672>.</span>NamedTemporaryFile(mode<span style=color:#f92672>=</span><span style=color:#e6db74>&#39;w&#39;</span>, dir<span style=color:#f92672>=</span>CACHE_DIR, 
-</span></span><span style=display:flex><span>                                      delete<span style=color:#f92672>=</span><span style=color:#66d9ef>False</span>, suffix<span style=color:#f92672>=</span><span style=color:#e6db74>&#39;.json&#39;</span>) <span style=color:#66d9ef>as</span> tmp_history:
-</span></span><span style=display:flex><span>        new_history <span style=color:#f92672>=</span> validated_items <span style=color:#f92672>+</span> history  <span style=color:#75715e># 최신 먼저</span>
-</span></span><span style=display:flex><span>        json<span style=color:#f92672>.</span>dump(new_history, tmp_history)
-</span></span><span style=display:flex><span>        tmp_history_path <span style=color:#f92672>=</span> tmp_history<span style=color:#f92672>.</span>name
-</span></span><span style=display:flex><span>    
-</span></span><span style=display:flex><span>    <span style=color:#75715e># Step 5: 유효성 검증 (파싱 가능?)</span>
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>try</span>:
-</span></span><span style=display:flex><span>        <span style=color:#66d9ef>with</span> open(tmp_latest_path, <span style=color:#e6db74>&#39;r&#39;</span>) <span style=color:#66d9ef>as</span> f:
-</span></span><span style=display:flex><span>            json<span style=color:#f92672>.</span>load(f)
-</span></span><span style=display:flex><span>        <span style=color:#66d9ef>with</span> open(tmp_history_path, <span style=color:#e6db74>&#39;r&#39;</span>) <span style=color:#66d9ef>as</span> f:
-</span></span><span style=display:flex><span>            json<span style=color:#f92672>.</span>load(f)
-</span></span><span style=display:flex><span>        print(<span style=color:#e6db74>&#34;✅ JSON 검증 완료&#34;</span>)
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>except</span> json<span style=color:#f92672>.</span>JSONDecodeError <span style=color:#66d9ef>as</span> e:
-</span></span><span style=display:flex><span>        <span style=color:#75715e># 손상된 임시 파일 삭제</span>
-</span></span><span style=display:flex><span>        os<span style=color:#f92672>.</span>unlink(tmp_latest_path)
-</span></span><span style=display:flex><span>        os<span style=color:#f92672>.</span>unlink(tmp_history_path)
-</span></span><span style=display:flex><span>        <span style=color:#66d9ef>raise</span> <span style=color:#a6e22e>ValueError</span>(<span style=color:#e6db74>f</span><span style=color:#e6db74>&#34;JSON 검증 실패: </span><span style=color:#e6db74>{</span>e<span style=color:#e6db74>}</span><span style=color:#e6db74>&#34;</span>)
-</span></span><span style=display:flex><span>    
-</span></span><span style=display:flex><span>    <span style=color:#75715e># Step 6: 원자적 교체</span>
-</span></span><span style=display:flex><span>    os<span style=color:#f92672>.</span>replace(tmp_latest_path, LATEST_CACHE)
-</span></span><span style=display:flex><span>    os<span style=color:#f92672>.</span>replace(tmp_history_path, HISTORY_CACHE)
-</span></span><span style=display:flex><span>    
-</span></span><span style=display:flex><span>    print(<span style=color:#e6db74>f</span><span style=color:#e6db74>&#34;✅ 캐시 업데이트 완료&#34;</span>)
-</span></span><span style=display:flex><span>    print(<span style=color:#e6db74>f</span><span style=color:#e6db74>&#34;   - Latest: </span><span style=color:#e6db74>{</span>len(validated_items)<span style=color:#e6db74>}</span><span style=color:#e6db74> items&#34;</span>)
-</span></span><span style=display:flex><span>    print(<span style=color:#e6db74>f</span><span style=color:#e6db74>&#34;   - History: </span><span style=color:#e6db74>{</span>len(new_history)<span style=color:#e6db74>}</span><span style=color:#e6db74> items total&#34;</span>)
-</span></span><span style=display:flex><span>    
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> len(validated_items)
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#75715e># 크론에서 호출</span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>if</span> __name__ <span style=color:#f92672>==</span> <span style=color:#e6db74>&#34;__main__&#34;</span>:
-</span></span><span style=display:flex><span>    new_trends <span style=color:#f92672>=</span> fetch_ai_ml_trends()  <span style=color:#75715e># 스캐너에서 새 트렌드 수집</span>
-</span></span><span style=display:flex><span>    safe_update_trend_cache(new_trends)
-</span></span></code></pre></div><hr><h2 id=-추가-안전장치-읽을-때도-방어적으로>🛡️ 추가 안전장치: 읽을 때도 방어적으로<a hidden class=anchor aria-hidden=true href=#-추가-안전장치-읽을-때도-방어적으로>#</a></h2><h3 id=캐시-읽기도-실패할-수-있다>캐시 읽기도 실패할 수 있다<a hidden class=anchor aria-hidden=true href=#캐시-읽기도-실패할-수-있다>#</a></h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>safe_read_latest_cache</span>():
-</span></span><span style=display:flex><span>    <span style=color:#e6db74>&#34;&#34;&#34;
-</span></span></span><span style=display:flex><span><span style=color:#e6db74>    안전한 캐시 읽기 with fallback
-</span></span></span><span style=display:flex><span><span style=color:#e6db74>    &#34;&#34;&#34;</span>
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>try</span>:
-</span></span><span style=display:flex><span>        <span style=color:#66d9ef>with</span> open(LATEST_CACHE, <span style=color:#e6db74>&#39;r&#39;</span>) <span style=color:#66d9ef>as</span> f:
-</span></span><span style=display:flex><span>            data <span style=color:#f92672>=</span> json<span style=color:#f92672>.</span>load(f)
-</span></span><span style=display:flex><span>        print(<span style=color:#e6db74>f</span><span style=color:#e6db74>&#34;✅ 캐시 로드: </span><span style=color:#e6db74>{</span>len(data)<span style=color:#e6db74>}</span><span style=color:#e6db74> items&#34;</span>)
-</span></span><span style=display:flex><span>        <span style=color:#66d9ef>return</span> data
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>except</span> json<span style=color:#f92672>.</span>JSONDecodeError:
-</span></span><span style=display:flex><span>        print(<span style=color:#e6db74>&#34;⚠️  캐시 JSON 손상, 히스토리에서 복구 시도...&#34;</span>)
-</span></span><span style=display:flex><span>        <span style=color:#66d9ef>try</span>:
-</span></span><span style=display:flex><span>            <span style=color:#66d9ef>with</span> open(HISTORY_CACHE, <span style=color:#e6db74>&#39;r&#39;</span>) <span style=color:#66d9ef>as</span> f:
-</span></span><span style=display:flex><span>                history <span style=color:#f92672>=</span> json<span style=color:#f92672>.</span>load(f)
-</span></span><span style=display:flex><span>            <span style=color:#75715e># 최근 24시간 항목만 반환</span>
-</span></span><span style=display:flex><span>            cutoff <span style=color:#f92672>=</span> datetime<span style=color:#f92672>.</span>utcnow() <span style=color:#f92672>-</span> timedelta(hours<span style=color:#f92672>=</span><span style=color:#ae81ff>24</span>)
-</span></span><span style=display:flex><span>            recent <span style=color:#f92672>=</span> [h <span style=color:#66d9ef>for</span> h <span style=color:#f92672>in</span> history 
-</span></span><span style=display:flex><span>                     <span style=color:#66d9ef>if</span> datetime<span style=color:#f92672>.</span>fromisoformat(h[<span style=color:#e6db74>&#39;timestamp&#39;</span>]<span style=color:#f92672>.</span>rstrip(<span style=color:#e6db74>&#39;Z&#39;</span>)) <span style=color:#f92672>&gt;</span> cutoff]
-</span></span><span style=display:flex><span>            print(<span style=color:#e6db74>f</span><span style=color:#e6db74>&#34;✅ 히스토리에서 복구: </span><span style=color:#e6db74>{</span>len(recent)<span style=color:#e6db74>}</span><span style=color:#e6db74> items (24h)&#34;</span>)
-</span></span><span style=display:flex><span>            <span style=color:#66d9ef>return</span> recent
-</span></span><span style=display:flex><span>        <span style=color:#66d9ef>except</span>:
-</span></span><span style=display:flex><span>            print(<span style=color:#e6db74>&#34;❌ 복구 실패, 빈 목록 반환&#34;</span>)
-</span></span><span style=display:flex><span>            <span style=color:#66d9ef>return</span> []
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>except</span> <span style=color:#a6e22e>FileNotFoundError</span>:
-</span></span><span style=display:flex><span>        print(<span style=color:#e6db74>&#34;⚠️  캐시 파일 없음 (첫 실행?)&#34;</span>)
-</span></span><span style=display:flex><span>        <span style=color:#66d9ef>return</span> []
-</span></span></code></pre></div><hr><h2 id=-체크리스트-분산-크론-캐시-안전성>📋 체크리스트: 분산 크론 캐시 안전성<a hidden class=anchor aria-hidden=true href=#-체크리스트-분산-크론-캐시-안전성>#</a></h2><table><thead><tr><th>항목</th><th>구현</th><th>자동화</th></tr></thead><tbody><tr><td>✅ 임시 파일 쓰기</td><td><code>tempfile.NamedTemporaryFile</code></td><td>O</td></tr><tr><td>✅ JSON 유효성 검증</td><td><code>json.load()</code> try-except</td><td>O</td></tr><tr><td>✅ 원자적 교체</td><td><code>os.replace()</code></td><td>O</td></tr><tr><td>✅ 중복 제거</td><td>URL 기반 <code>seen_urls</code> set</td><td>O</td></tr><tr><td>✅ 히스토리 유지</td><td>Prepend 패턴 + length limit</td><td>O</td></tr><tr><td>✅ 읽기 폴백</td><td><code>safe_read_latest_cache()</code></td><td>O</td></tr><tr><td>✅ 로깅</td><td>각 단계에 <code>print()</code> 또는 logger</td><td>O</td></tr></tbody></table><hr><h2 id=-hermes-통합-크론-테스크에-적용하기>🚀 Hermes 통합: 크론 테스크에 적용하기<a hidden class=anchor aria-hidden=true href=#-hermes-통합-크론-테스크에-적용하기>#</a></h2><h3 id=크론-구성-예시>크론 구성 예시<a hidden class=anchor aria-hidden=true href=#크론-구성-예시>#</a></h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-yaml data-lang=yaml><span style=display:flex><span><span style=color:#75715e># ~/.hermes/profiles/default/cron/ai-ml-trends-scanner.json</span>
-</span></span><span style=display:flex><span>{
-</span></span><span style=display:flex><span>  <span style=color:#f92672>&#34;name&#34;: </span><span style=color:#e6db74>&#34;AI/ML Trend Scanner — Safe Cache Update&#34;</span>,
-</span></span><span style=display:flex><span>  <span style=color:#f92672>&#34;id&#34;: </span><span style=color:#e6db74>&#34;ai-ml-trends-scanner-safe&#34;</span>,
-</span></span><span style=display:flex><span>  <span style=color:#f92672>&#34;frequency&#34;: </span><span style=color:#e6db74>&#34;0 * * * *&#34;</span>,  <span style=color:#75715e># 매 시간 정각</span>
-</span></span><span style=display:flex><span>  <span style=color:#f92672>&#34;command&#34;: </span><span style=color:#e6db74>&#34;python /Users/kwbaekleo/.openclaw/workspace/scripts/trend_scanner_safe.py&#34;</span>,
-</span></span><span style=display:flex><span>  <span style=color:#f92672>&#34;description&#34;: </span><span style=color:#e6db74>&#34;Scan AI/ML trends, atomically update cache with validation&#34;</span>
-</span></span><span style=display:flex><span>}
-</span></span></code></pre></div><h3 id=python-스크립트-메인-로직>Python 스크립트 (메인 로직)<a hidden class=anchor aria-hidden=true href=#python-스크립트-메인-로직>#</a></h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#75715e># scripts/trend_scanner_safe.py</span>
-</span></span><span style=display:flex><span><span style=color:#75715e>#!/usr/bin/env python3</span>
-</span></span><span style=display:flex><span><span style=color:#f92672>import</span> sys<span style=color:#f92672>,</span> os
-</span></span><span style=display:flex><span>sys<span style=color:#f92672>.</span>path<span style=color:#f92672>.</span>insert(<span style=color:#ae81ff>0</span>, <span style=color:#e6db74>&#39;/Users/kwbaekleo/.openclaw/workspace&#39;</span>)
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#f92672>from</span> memory.cache_utils <span style=color:#f92672>import</span> safe_update_trend_cache, safe_read_latest_cache
-</span></span><span style=display:flex><span><span style=color:#f92672>from</span> trend_scanner <span style=color:#f92672>import</span> scan_ai_ml_trends
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#75715e># Step 1: 새로운 트렌드 스캔</span>
-</span></span><span style=display:flex><span>print(<span style=color:#e6db74>&#34;[INFO] AI/ML 트렌드 스캔 시작...&#34;</span>)
-</span></span><span style=display:flex><span>new_trends <span style=color:#f92672>=</span> scan_ai_ml_trends()  <span style=color:#75715e># RSS + Google News + 공식 블로그</span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#75715e># Step 2: 원자적 캐시 갱신</span>
-</span></span><span style=display:flex><span>print(<span style=color:#e6db74>f</span><span style=color:#e6db74>&#34;[INFO] </span><span style=color:#e6db74>{</span>len(new_trends)<span style=color:#e6db74>}</span><span style=color:#e6db74> 개 항목 발견&#34;</span>)
-</span></span><span style=display:flex><span><span style=color:#66d9ef>try</span>:
-</span></span><span style=display:flex><span>    added <span style=color:#f92672>=</span> safe_update_trend_cache(new_trends)
-</span></span><span style=display:flex><span>    print(<span style=color:#e6db74>f</span><span style=color:#e6db74>&#34;[SUCCESS] </span><span style=color:#e6db74>{</span>added<span style=color:#e6db74>}</span><span style=color:#e6db74>개 신규 항목 추가됨&#34;</span>)
-</span></span><span style=display:flex><span><span style=color:#66d9ef>except</span> <span style=color:#a6e22e>Exception</span> <span style=color:#66d9ef>as</span> e:
-</span></span><span style=display:flex><span>    print(<span style=color:#e6db74>f</span><span style=color:#e6db74>&#34;[ERROR] 캐시 갱신 실패: </span><span style=color:#e6db74>{</span>e<span style=color:#e6db74>}</span><span style=color:#e6db74>&#34;</span>)
-</span></span><span style=display:flex><span>    sys<span style=color:#f92672>.</span>exit(<span style=color:#ae81ff>1</span>)
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#75715e># Step 3: 갱신 확인</span>
-</span></span><span style=display:flex><span>cached <span style=color:#f92672>=</span> safe_read_latest_cache()
-</span></span><span style=display:flex><span>print(<span style=color:#e6db74>f</span><span style=color:#e6db74>&#34;[VERIFY] 캐시에 현재 </span><span style=color:#e6db74>{</span>len(cached)<span style=color:#e6db74>}</span><span style=color:#e6db74>개 항목 저장됨&#34;</span>)
-</span></span></code></pre></div><hr><h2 id=-실무-교훈>💡 실무 교훈<a hidden class=anchor aria-hidden=true href=#-실무-교훈>#</a></h2><h3 id=한-번-배워두면-영원히-쓴다>&ldquo;한 번 배워두면 영원히 쓴다&rdquo;<a hidden class=anchor aria-hidden=true href=#한-번-배워두면-영원히-쓴다>#</a></h3><ol><li><strong>프로토타입</strong>: 단순 덮어쓰기로 시작해도 됩니다.</li><li><strong>문제 발생 시</strong>: &ldquo;JSON 손상&rdquo; 또는 &ldquo;데이터 누락&rdquo; → 이 패턴으로 업그레이드</li><li><strong>스케일링</strong>: 하루에 10번, 시간에 100번으로 늘어나도 <strong>원자적 갱신 + 검증</strong>은 자동으로 확장됩니다.</li></ol><h3 id=캐시-안전성--전체-크론-안정성>&ldquo;캐시 안전성 = 전체 크론 안정성&rdquo;<a hidden class=anchor aria-hidden=true href=#캐시-안전성--전체-크론-안정성>#</a></h3><p>캐시가 한 번 손상되면:</p><ul><li>블로그 생성 크론이 실패</li><li>아이디어 생성이 폭발</li><li>모니터링 대시보드가 빈 데이터를 표시</li></ul><p>반대로, <strong>원자적 갱신을 보장하면:</strong></p><ul><li>캐시는 항상 &ldquo;완전 + 유효&rdquo;</li><li>크론들이 서로 간섭하지 않음</li><li>장애 복구가 간단 (히스토리에서 복구 가능)</li></ul><hr><h2 id=-출처-및-참고>📚 출처 및 참고<a hidden class=anchor aria-hidden=true href=#-출처-및-참고>#</a></h2><ul><li>Python <code>tempfile</code> 모듈: <a href=https://docs.python.org/3/library/tempfile.html>docs.python.org/tempfile</a></li><li><code>os.replace()</code> 원자성: POSIX rename() 표준</li><li>Hermes 크론 아키텍처: <a href=https://claude-code.nousresearch.com/docs>Hermes 공식 문서</a></li><li>JSON 스트리밍 읽기/쓰기: <a href=https://tools.ietf.org/html/rfc8259>RFC 8259</a></li></ul><p><strong>다음 편에서는:</strong> 크론 간의 순서 보장 (DAG 스케줄링)과 크로스-크론 데이터 패싱에 대해 다루겠습니다.</p></div><footer class=post-footer><ul class=post-tags><li><a href=https://kwbaek.github.io/tags/hermes/>Hermes</a></li><li><a href=https://kwbaek.github.io/tags/%EB%A6%AC%EC%98%A4/>리오</a></li><li><a href=https://kwbaek.github.io/tags/%ED%81%AC%EB%A1%A0/>크론</a></li><li><a href=https://kwbaek.github.io/tags/%EB%B6%84%EC%82%B0%EC%8B%9C%EC%8A%A4%ED%85%9C/>분산시스템</a></li><li><a href=https://kwbaek.github.io/tags/%EC%BA%90%EC%8B%9C/>캐시</a></li><li><a href=https://kwbaek.github.io/tags/%EC%9B%90%EC%9E%90%EC%84%B1/>원자성</a></li><li><a href=https://kwbaek.github.io/tags/json/>JSON</a></li><li><a href=https://kwbaek.github.io/tags/%EC%95%88%EC%A0%84%EC%84%B1/>안전성</a></li><li><a href=https://kwbaek.github.io/tags/%EC%9E%90%EB%8F%99%ED%99%94/>자동화</a></li></ul></footer><script src=https://utteranc.es/client.js repo=kwbaek/blog-comments issue-term=pathname theme=github-light crossorigin=anonymous async></script></article></main><footer class=footer><span>&copy; 2026 <a href=https://kwbaek.github.io/>Kyungwook's Devlog</a></span> ·
-<span>Powered by
-<a href=https://gohugo.io/ rel="noopener noreferrer" target=_blank>Hugo</a> &
-<a href=https://github.com/adityatelange/hugo-PaperMod/ rel=noopener target=_blank>PaperMod</a></span></footer><a href=#top aria-label="go to top" title="Go to Top (Alt + G)" class=top-link id=top-link accesskey=g><svg viewBox="0 0 12 6" fill="currentColor"><path d="M12 6H0l6-6z"/></svg>
-</a><script>let menu=document.getElementById("menu");if(menu){const e=localStorage.getItem("menu-scroll-position");e&&(menu.scrollLeft=parseInt(e,10)),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)}}document.querySelectorAll('a[href^="#"]').forEach(e=>{e.addEventListener("click",function(e){e.preventDefault();var t=this.getAttribute("href").substr(1);window.matchMedia("(prefers-reduced-motion: reduce)").matches?document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView({behavior:"smooth"}),t==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${t}`)})})</script><script>var mybutton=document.getElementById("top-link");window.onscroll=function(){document.body.scrollTop>800||document.documentElement.scrollTop>800?(mybutton.style.visibility="visible",mybutton.style.opacity="1"):(mybutton.style.visibility="hidden",mybutton.style.opacity="0")}</script><script>document.getElementById("theme-toggle").addEventListener("click",()=>{const e=document.querySelector("html");e.dataset.theme==="dark"?(e.dataset.theme="light",localStorage.setItem("pref-theme","light")):(e.dataset.theme="dark",localStorage.setItem("pref-theme","dark"))})</script></body></html>
+문제:">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://kwbaek.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Hermes/리오 가이드: 분산 크론 환경에서 캐시 안전성 보장하기 — 원자적 갱신 + 검증의 기술",
+      "item": "https://kwbaek.github.io/posts/2026-09-12-hermes-distributed-cache-atomicity-guide/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Hermes/리오 가이드: 분산 크론 환경에서 캐시 안전성 보장하기 — 원자적 갱신 + 검증의 기술",
+  "name": "Hermes\/리오 가이드: 분산 크론 환경에서 캐시 안전성 보장하기 — 원자적 갱신 \u002b 검증의 기술",
+  "description": "당신의 크론 작업이 매시간 캐시를 갱신하면서, \u0026ldquo;어라, 이 데이터는 어제 데이터인가 오늘 데이터인가?\u0026ldquo;라고 의아해한 경험이 있으신가요?\n분산된 크론 환경에서는 캐시가 경쟁 상태(race condition)에 빠질 수 있습니다. 한 프로세스가 파일을 읽는 중에 다른 프로세스가 덮어쓰면, 부분적으로 손상된 JSON이 남을 수 있고, 다음 크론이 그걸 파싱할 때 JSONDecodeError로 폭발합니다.\n오늘은 Hermes/리오가 실제로 운영 중인 \u0026ldquo;원자적 캐시 갱신 + 검증\u0026rdquo; 패턴을 소개합니다.\n🎯 핵심 원칙: \u0026ldquo;쓰기 → 검증 → 원자적 교체\u0026rdquo; 잘못된 방식 ❌ # 위험한 직접 덮어쓰기 with open(\u0026#34;cache.json\u0026#34;, \u0026#34;w\u0026#34;) as f: json.dump(new_data, f) # 쓰는 중에 크론이 읽으면? 💥 문제:\n",
+  "keywords": [
+    "Hermes", "리오", "크론", "분산시스템", "캐시", "원자성", "JSON", "안전성", "자동화"
+  ],
+  "articleBody": "당신의 크론 작업이 매시간 캐시를 갱신하면서, “어라, 이 데이터는 어제 데이터인가 오늘 데이터인가?“라고 의아해한 경험이 있으신가요?\n분산된 크론 환경에서는 캐시가 경쟁 상태(race condition)에 빠질 수 있습니다. 한 프로세스가 파일을 읽는 중에 다른 프로세스가 덮어쓰면, 부분적으로 손상된 JSON이 남을 수 있고, 다음 크론이 그걸 파싱할 때 JSONDecodeError로 폭발합니다.\n오늘은 Hermes/리오가 실제로 운영 중인 “원자적 캐시 갱신 + 검증” 패턴을 소개합니다.\n🎯 핵심 원칙: “쓰기 → 검증 → 원자적 교체” 잘못된 방식 ❌ # 위험한 직접 덮어쓰기 with open(\"cache.json\", \"w\") as f: json.dump(new_data, f) # 쓰는 중에 크론이 읽으면? 💥 문제:\n프로세스 A가 쓰는 중 (50% 완료) 프로세스 B가 동시에 읽음 → 파일이 {...truncated 상태로 남음 → 다음 번 읽기에서 JSON 파싱 에러 올바른 방식 ✅ import json, tempfile, os # Step 1: 임시 파일에 쓰기 with tempfile.NamedTemporaryFile(mode='w', dir=os.path.dirname(cache_path), delete=False, suffix='.json') as tmp: json.dump(new_data, tmp) tmp_path = tmp.name # Step 2: 유효성 검증 (쓰기 전 확인) try: with open(tmp_path, 'r') as f: json.load(f) # 파싱 가능한가? print(\"✅ JSON 검증 성공\") except json.JSONDecodeError as e: os.unlink(tmp_path) # 손상된 파일 삭제 raise ValueError(f\"유효하지 않은 JSON: {e}\") # Step 3: 원자적 교체 (move는 Linux에서 원자적) os.replace(tmp_path, cache_path) # 안전한 덮어쓰기 print(f\"✅ 캐시 업데이트 완료: {cache_path}\") 왜 이게 더 안전한가?\n임시 파일에서 완전히 작성 → 메인 파일 건드리지 않음 검증 단계 → 손상된 데이터를 확인하고 폐기 원자적 교체 → 순간에 완전한 새 파일로 교체 (부분 쓰기 불가) 🔄 실제 적용 사례: AI/ML 트렌드 캐시 갱신 상황 Hermes 크론 작업:\n매시간 AI/ML 트렌드 스캐너 실행 새로운 아이템을 ai-ml-trends-latest.json에 추가 전체 히스토리는 ai-ml-trends-history.json에 유지 포스트된 항목 추적: ai-ml-trends-posted.json 문제:\n트렌드 스캐너가 10분마다 캐시 업데이트 동시에 블로그 생성 크론이 2시간마다 캐시 읽음 경쟁: “지금 읽는 중인데 스캐너가 덮어썼다!” 해결책: 원자적 캐시 갱신 패턴 import json, tempfile, os, shutil from datetime import datetime CACHE_DIR = \"/Users/kwbaekleo/.openclaw/workspace/memory\" LATEST_CACHE = os.path.join(CACHE_DIR, \"ai-ml-trends-latest.json\") HISTORY_CACHE = os.path.join(CACHE_DIR, \"ai-ml-trends-history.json\") def safe_update_trend_cache(new_items): \"\"\" 원자적 + 검증된 캐시 갱신 \"\"\" # Step 1: 기존 히스토리 로드 history = [] if os.path.exists(HISTORY_CACHE): with open(HISTORY_CACHE, 'r') as f: try: history = json.load(f) except json.JSONDecodeError: print(\"⚠️ 히스토리 파일 손상, 재구성 중...\") history = [] # Step 2: 새 항목 검증 + 중복 제거 validated_items = [] seen_urls = set() # 이미 포스트된 항목 스킵 for item in new_items: url = item.get('url') if not url: print(f\"⚠️ URL 없음, 스킵: {item}\") continue # 중복 확인 (latest + history 합쳐서) if url in seen_urls: continue # 히스토리에도 없는지 확인 if not any(h['url'] == url for h in history): validated_items.append({ **item, 'timestamp': datetime.utcnow().isoformat() + 'Z', 'addedAt': datetime.now(tz=timezone.utc).isoformat() }) seen_urls.add(url) # Step 3: Latest 임시 파일에 쓰기 with tempfile.NamedTemporaryFile(mode='w', dir=CACHE_DIR, delete=False, suffix='.json') as tmp_latest: json.dump(validated_items, tmp_latest) tmp_latest_path = tmp_latest.name # Step 4: History 임시 파일에 쓰기 (prepend 패턴) with tempfile.NamedTemporaryFile(mode='w', dir=CACHE_DIR, delete=False, suffix='.json') as tmp_history: new_history = validated_items + history # 최신 먼저 json.dump(new_history, tmp_history) tmp_history_path = tmp_history.name # Step 5: 유효성 검증 (파싱 가능?) try: with open(tmp_latest_path, 'r') as f: json.load(f) with open(tmp_history_path, 'r') as f: json.load(f) print(\"✅ JSON 검증 완료\") except json.JSONDecodeError as e: # 손상된 임시 파일 삭제 os.unlink(tmp_latest_path) os.unlink(tmp_history_path) raise ValueError(f\"JSON 검증 실패: {e}\") # Step 6: 원자적 교체 os.replace(tmp_latest_path, LATEST_CACHE) os.replace(tmp_history_path, HISTORY_CACHE) print(f\"✅ 캐시 업데이트 완료\") print(f\" - Latest: {len(validated_items)} items\") print(f\" - History: {len(new_history)} items total\") return len(validated_items) # 크론에서 호출 if __name__ == \"__main__\": new_trends = fetch_ai_ml_trends() # 스캐너에서 새 트렌드 수집 safe_update_trend_cache(new_trends) 🛡️ 추가 안전장치: 읽을 때도 방어적으로 캐시 읽기도 실패할 수 있다 def safe_read_latest_cache(): \"\"\" 안전한 캐시 읽기 with fallback \"\"\" try: with open(LATEST_CACHE, 'r') as f: data = json.load(f) print(f\"✅ 캐시 로드: {len(data)} items\") return data except json.JSONDecodeError: print(\"⚠️ 캐시 JSON 손상, 히스토리에서 복구 시도...\") try: with open(HISTORY_CACHE, 'r') as f: history = json.load(f) # 최근 24시간 항목만 반환 cutoff = datetime.utcnow() - timedelta(hours=24) recent = [h for h in history if datetime.fromisoformat(h['timestamp'].rstrip('Z')) \u003e cutoff] print(f\"✅ 히스토리에서 복구: {len(recent)} items (24h)\") return recent except: print(\"❌ 복구 실패, 빈 목록 반환\") return [] except FileNotFoundError: print(\"⚠️ 캐시 파일 없음 (첫 실행?)\") return [] 📋 체크리스트: 분산 크론 캐시 안전성 항목 구현 자동화 ✅ 임시 파일 쓰기 tempfile.NamedTemporaryFile O ✅ JSON 유효성 검증 json.load() try-except O ✅ 원자적 교체 os.replace() O ✅ 중복 제거 URL 기반 seen_urls set O ✅ 히스토리 유지 Prepend 패턴 + length limit O ✅ 읽기 폴백 safe_read_latest_cache() O ✅ 로깅 각 단계에 print() 또는 logger O 🚀 Hermes 통합: 크론 테스크에 적용하기 크론 구성 예시 # ~/.hermes/profiles/default/cron/ai-ml-trends-scanner.json { \"name\": \"AI/ML Trend Scanner — Safe Cache Update\", \"id\": \"ai-ml-trends-scanner-safe\", \"frequency\": \"0 * * * *\", # 매 시간 정각 \"command\": \"python /Users/kwbaekleo/.openclaw/workspace/scripts/trend_scanner_safe.py\", \"description\": \"Scan AI/ML trends, atomically update cache with validation\" } Python 스크립트 (메인 로직) # scripts/trend_scanner_safe.py #!/usr/bin/env python3 import sys, os sys.path.insert(0, '/Users/kwbaekleo/.openclaw/workspace') from memory.cache_utils import safe_update_trend_cache, safe_read_latest_cache from trend_scanner import scan_ai_ml_trends # Step 1: 새로운 트렌드 스캔 print(\"[INFO] AI/ML 트렌드 스캔 시작...\") new_trends = scan_ai_ml_trends() # RSS + Google News + 공식 블로그 # Step 2: 원자적 캐시 갱신 print(f\"[INFO] {len(new_trends)} 개 항목 발견\") try: added = safe_update_trend_cache(new_trends) print(f\"[SUCCESS] {added}개 신규 항목 추가됨\") except Exception as e: print(f\"[ERROR] 캐시 갱신 실패: {e}\") sys.exit(1) # Step 3: 갱신 확인 cached = safe_read_latest_cache() print(f\"[VERIFY] 캐시에 현재 {len(cached)}개 항목 저장됨\") 💡 실무 교훈 “한 번 배워두면 영원히 쓴다” 프로토타입: 단순 덮어쓰기로 시작해도 됩니다. 문제 발생 시: “JSON 손상” 또는 “데이터 누락” → 이 패턴으로 업그레이드 스케일링: 하루에 10번, 시간에 100번으로 늘어나도 원자적 갱신 + 검증은 자동으로 확장됩니다. “캐시 안전성 = 전체 크론 안정성” 캐시가 한 번 손상되면:\n블로그 생성 크론이 실패 아이디어 생성이 폭발 모니터링 대시보드가 빈 데이터를 표시 반대로, 원자적 갱신을 보장하면:\n캐시는 항상 “완전 + 유효” 크론들이 서로 간섭하지 않음 장애 복구가 간단 (히스토리에서 복구 가능) 📚 출처 및 참고 Python tempfile 모듈: docs.python.org/tempfile os.replace() 원자성: POSIX rename() 표준 Hermes 크론 아키텍처: Hermes 공식 문서 JSON 스트리밍 읽기/쓰기: RFC 8259 다음 편에서는: 크론 간의 순서 보장 (DAG 스케줄링)과 크로스-크론 데이터 패싱에 대해 다루겠습니다.\n",
+  "wordCount" : "942",
+  "inLanguage": "en",
+  "datePublished": "2026-09-12T21:15:00+09:00",
+  "dateModified": "2026-09-12T21:15:00+09:00",
+  "author":{
+    "@type": "Person",
+    "name": {"email":"","name":"Kyungwook Baek"}
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://kwbaek.github.io/posts/2026-09-12-hermes-distributed-cache-atomicity-guide/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Kyungwook's Devlog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://kwbaek.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://kwbaek.github.io/" accesskey="h" title="Kyungwook&#39;s Devlog (Alt + H)">Kyungwook&#39;s Devlog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://kwbaek.github.io/categories/" title="categories">
+                    <span>categories</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kwbaek.github.io/tags/" title="tags">
+                    <span>tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kwbaek.github.io/" title="Kyungwook&#39;s Devlog">
+                    <span>Kyungwook&#39;s Devlog</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      Hermes/리오 가이드: 분산 크론 환경에서 캐시 안전성 보장하기 — 원자적 갱신 &#43; 검증의 기술
+    </h1>
+    <div class="post-meta"><span title='2026-09-12 21:15:00 +0900 KST'>2026년 9월 12일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span>
+
+</div>
+  </header> 
+  <div class="post-content"><p><strong>당신의 크론 작업이 매시간 캐시를 갱신하면서, &ldquo;어라, 이 데이터는 어제 데이터인가 오늘 데이터인가?&ldquo;라고 의아해한 경험이 있으신가요?</strong></p>
+<p>분산된 크론 환경에서는 캐시가 경쟁 상태(race condition)에 빠질 수 있습니다. 한 프로세스가 파일을 읽는 중에 다른 프로세스가 덮어쓰면, 부분적으로 손상된 JSON이 남을 수 있고, 다음 크론이 그걸 파싱할 때 <code>JSONDecodeError</code>로 폭발합니다.</p>
+<p>오늘은 <strong>Hermes/리오가 실제로 운영 중인 &ldquo;원자적 캐시 갱신 + 검증&rdquo; 패턴</strong>을 소개합니다.</p>
+<hr>
+<h2 id="-핵심-원칙-쓰기--검증--원자적-교체">🎯 핵심 원칙: &ldquo;쓰기 → 검증 → 원자적 교체&rdquo;<a hidden class="anchor" aria-hidden="true" href="#-핵심-원칙-쓰기--검증--원자적-교체">#</a></h2>
+<h3 id="잘못된-방식-">잘못된 방식 ❌<a hidden class="anchor" aria-hidden="true" href="#잘못된-방식-">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># 위험한 직접 덮어쓰기</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">with</span> open(<span style="color:#e6db74">&#34;cache.json&#34;</span>, <span style="color:#e6db74">&#34;w&#34;</span>) <span style="color:#66d9ef">as</span> f:
+</span></span><span style="display:flex;"><span>    json<span style="color:#f92672">.</span>dump(new_data, f)  <span style="color:#75715e"># 쓰는 중에 크론이 읽으면? 💥</span>
+</span></span></code></pre></div><p><strong>문제:</strong></p>
+<ul>
+<li>프로세스 A가 쓰는 중 (50% 완료)</li>
+<li>프로세스 B가 동시에 읽음</li>
+<li>→ 파일이 <code>{...truncated</code> 상태로 남음</li>
+<li>→ 다음 번 읽기에서 JSON 파싱 에러</li>
+</ul>
+<h3 id="올바른-방식-">올바른 방식 ✅<a hidden class="anchor" aria-hidden="true" href="#올바른-방식-">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> json<span style="color:#f92672">,</span> tempfile<span style="color:#f92672">,</span> os
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Step 1: 임시 파일에 쓰기</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">with</span> tempfile<span style="color:#f92672">.</span>NamedTemporaryFile(mode<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;w&#39;</span>, dir<span style="color:#f92672">=</span>os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>dirname(cache_path), 
+</span></span><span style="display:flex;"><span>                                  delete<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>, suffix<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;.json&#39;</span>) <span style="color:#66d9ef">as</span> tmp:
+</span></span><span style="display:flex;"><span>    json<span style="color:#f92672">.</span>dump(new_data, tmp)
+</span></span><span style="display:flex;"><span>    tmp_path <span style="color:#f92672">=</span> tmp<span style="color:#f92672">.</span>name
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Step 2: 유효성 검증 (쓰기 전 확인)</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">try</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">with</span> open(tmp_path, <span style="color:#e6db74">&#39;r&#39;</span>) <span style="color:#66d9ef">as</span> f:
+</span></span><span style="display:flex;"><span>        json<span style="color:#f92672">.</span>load(f)  <span style="color:#75715e"># 파싱 가능한가?</span>
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">&#34;✅ JSON 검증 성공&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">except</span> json<span style="color:#f92672">.</span>JSONDecodeError <span style="color:#66d9ef">as</span> e:
+</span></span><span style="display:flex;"><span>    os<span style="color:#f92672">.</span>unlink(tmp_path)  <span style="color:#75715e"># 손상된 파일 삭제</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">raise</span> <span style="color:#a6e22e">ValueError</span>(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;유효하지 않은 JSON: </span><span style="color:#e6db74">{</span>e<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Step 3: 원자적 교체 (move는 Linux에서 원자적)</span>
+</span></span><span style="display:flex;"><span>os<span style="color:#f92672">.</span>replace(tmp_path, cache_path)  <span style="color:#75715e"># 안전한 덮어쓰기</span>
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;✅ 캐시 업데이트 완료: </span><span style="color:#e6db74">{</span>cache_path<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span></code></pre></div><p><strong>왜 이게 더 안전한가?</strong></p>
+<ol>
+<li><strong>임시 파일에서 완전히 작성</strong> → 메인 파일 건드리지 않음</li>
+<li><strong>검증 단계</strong> → 손상된 데이터를 확인하고 폐기</li>
+<li><strong>원자적 교체</strong> → 순간에 완전한 새 파일로 교체 (부분 쓰기 불가)</li>
+</ol>
+<hr>
+<h2 id="-실제-적용-사례-aiml-트렌드-캐시-갱신">🔄 실제 적용 사례: AI/ML 트렌드 캐시 갱신<a hidden class="anchor" aria-hidden="true" href="#-실제-적용-사례-aiml-트렌드-캐시-갱신">#</a></h2>
+<h3 id="상황">상황<a hidden class="anchor" aria-hidden="true" href="#상황">#</a></h3>
+<p><strong>Hermes 크론 작업:</strong></p>
+<ul>
+<li>매시간 AI/ML 트렌드 스캐너 실행</li>
+<li>새로운 아이템을 <code>ai-ml-trends-latest.json</code>에 추가</li>
+<li>전체 히스토리는 <code>ai-ml-trends-history.json</code>에 유지</li>
+<li>포스트된 항목 추적: <code>ai-ml-trends-posted.json</code></li>
+</ul>
+<p><strong>문제:</strong></p>
+<ul>
+<li>트렌드 스캐너가 10분마다 캐시 업데이트</li>
+<li>동시에 블로그 생성 크론이 2시간마다 캐시 읽음</li>
+<li>경쟁: &ldquo;지금 읽는 중인데 스캐너가 덮어썼다!&rdquo;</li>
+</ul>
+<h3 id="해결책-원자적-캐시-갱신-패턴">해결책: 원자적 캐시 갱신 패턴<a hidden class="anchor" aria-hidden="true" href="#해결책-원자적-캐시-갱신-패턴">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> json<span style="color:#f92672">,</span> tempfile<span style="color:#f92672">,</span> os<span style="color:#f92672">,</span> shutil
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> datetime <span style="color:#f92672">import</span> datetime
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>CACHE_DIR <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;/Users/kwbaekleo/.openclaw/workspace/memory&#34;</span>
+</span></span><span style="display:flex;"><span>LATEST_CACHE <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>join(CACHE_DIR, <span style="color:#e6db74">&#34;ai-ml-trends-latest.json&#34;</span>)
+</span></span><span style="display:flex;"><span>HISTORY_CACHE <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>join(CACHE_DIR, <span style="color:#e6db74">&#34;ai-ml-trends-history.json&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">safe_update_trend_cache</span>(new_items):
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    원자적 + 검증된 캐시 갱신
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Step 1: 기존 히스토리 로드</span>
+</span></span><span style="display:flex;"><span>    history <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>exists(HISTORY_CACHE):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">with</span> open(HISTORY_CACHE, <span style="color:#e6db74">&#39;r&#39;</span>) <span style="color:#66d9ef">as</span> f:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">try</span>:
+</span></span><span style="display:flex;"><span>                history <span style="color:#f92672">=</span> json<span style="color:#f92672">.</span>load(f)
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">except</span> json<span style="color:#f92672">.</span>JSONDecodeError:
+</span></span><span style="display:flex;"><span>                print(<span style="color:#e6db74">&#34;⚠️  히스토리 파일 손상, 재구성 중...&#34;</span>)
+</span></span><span style="display:flex;"><span>                history <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Step 2: 새 항목 검증 + 중복 제거</span>
+</span></span><span style="display:flex;"><span>    validated_items <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>    seen_urls <span style="color:#f92672">=</span> set()
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 이미 포스트된 항목 스킵</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> item <span style="color:#f92672">in</span> new_items:
+</span></span><span style="display:flex;"><span>        url <span style="color:#f92672">=</span> item<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;url&#39;</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> url:
+</span></span><span style="display:flex;"><span>            print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;⚠️  URL 없음, 스킵: </span><span style="color:#e6db74">{</span>item<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">continue</span>
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># 중복 확인 (latest + history 합쳐서)</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> url <span style="color:#f92672">in</span> seen_urls:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">continue</span>
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># 히스토리에도 없는지 확인</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> any(h[<span style="color:#e6db74">&#39;url&#39;</span>] <span style="color:#f92672">==</span> url <span style="color:#66d9ef">for</span> h <span style="color:#f92672">in</span> history):
+</span></span><span style="display:flex;"><span>            validated_items<span style="color:#f92672">.</span>append({
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">**</span>item,
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#39;timestamp&#39;</span>: datetime<span style="color:#f92672">.</span>utcnow()<span style="color:#f92672">.</span>isoformat() <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;Z&#39;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#39;addedAt&#39;</span>: datetime<span style="color:#f92672">.</span>now(tz<span style="color:#f92672">=</span>timezone<span style="color:#f92672">.</span>utc)<span style="color:#f92672">.</span>isoformat()
+</span></span><span style="display:flex;"><span>            })
+</span></span><span style="display:flex;"><span>            seen_urls<span style="color:#f92672">.</span>add(url)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Step 3: Latest 임시 파일에 쓰기</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">with</span> tempfile<span style="color:#f92672">.</span>NamedTemporaryFile(mode<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;w&#39;</span>, dir<span style="color:#f92672">=</span>CACHE_DIR, 
+</span></span><span style="display:flex;"><span>                                      delete<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>, suffix<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;.json&#39;</span>) <span style="color:#66d9ef">as</span> tmp_latest:
+</span></span><span style="display:flex;"><span>        json<span style="color:#f92672">.</span>dump(validated_items, tmp_latest)
+</span></span><span style="display:flex;"><span>        tmp_latest_path <span style="color:#f92672">=</span> tmp_latest<span style="color:#f92672">.</span>name
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Step 4: History 임시 파일에 쓰기 (prepend 패턴)</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">with</span> tempfile<span style="color:#f92672">.</span>NamedTemporaryFile(mode<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;w&#39;</span>, dir<span style="color:#f92672">=</span>CACHE_DIR, 
+</span></span><span style="display:flex;"><span>                                      delete<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>, suffix<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;.json&#39;</span>) <span style="color:#66d9ef">as</span> tmp_history:
+</span></span><span style="display:flex;"><span>        new_history <span style="color:#f92672">=</span> validated_items <span style="color:#f92672">+</span> history  <span style="color:#75715e"># 최신 먼저</span>
+</span></span><span style="display:flex;"><span>        json<span style="color:#f92672">.</span>dump(new_history, tmp_history)
+</span></span><span style="display:flex;"><span>        tmp_history_path <span style="color:#f92672">=</span> tmp_history<span style="color:#f92672">.</span>name
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Step 5: 유효성 검증 (파싱 가능?)</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">try</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">with</span> open(tmp_latest_path, <span style="color:#e6db74">&#39;r&#39;</span>) <span style="color:#66d9ef">as</span> f:
+</span></span><span style="display:flex;"><span>            json<span style="color:#f92672">.</span>load(f)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">with</span> open(tmp_history_path, <span style="color:#e6db74">&#39;r&#39;</span>) <span style="color:#66d9ef">as</span> f:
+</span></span><span style="display:flex;"><span>            json<span style="color:#f92672">.</span>load(f)
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">&#34;✅ JSON 검증 완료&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">except</span> json<span style="color:#f92672">.</span>JSONDecodeError <span style="color:#66d9ef">as</span> e:
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># 손상된 임시 파일 삭제</span>
+</span></span><span style="display:flex;"><span>        os<span style="color:#f92672">.</span>unlink(tmp_latest_path)
+</span></span><span style="display:flex;"><span>        os<span style="color:#f92672">.</span>unlink(tmp_history_path)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">raise</span> <span style="color:#a6e22e">ValueError</span>(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;JSON 검증 실패: </span><span style="color:#e6db74">{</span>e<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Step 6: 원자적 교체</span>
+</span></span><span style="display:flex;"><span>    os<span style="color:#f92672">.</span>replace(tmp_latest_path, LATEST_CACHE)
+</span></span><span style="display:flex;"><span>    os<span style="color:#f92672">.</span>replace(tmp_history_path, HISTORY_CACHE)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;✅ 캐시 업데이트 완료&#34;</span>)
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;   - Latest: </span><span style="color:#e6db74">{</span>len(validated_items)<span style="color:#e6db74">}</span><span style="color:#e6db74"> items&#34;</span>)
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;   - History: </span><span style="color:#e6db74">{</span>len(new_history)<span style="color:#e6db74">}</span><span style="color:#e6db74"> items total&#34;</span>)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> len(validated_items)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 크론에서 호출</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;__main__&#34;</span>:
+</span></span><span style="display:flex;"><span>    new_trends <span style="color:#f92672">=</span> fetch_ai_ml_trends()  <span style="color:#75715e"># 스캐너에서 새 트렌드 수집</span>
+</span></span><span style="display:flex;"><span>    safe_update_trend_cache(new_trends)
+</span></span></code></pre></div><hr>
+<h2 id="-추가-안전장치-읽을-때도-방어적으로">🛡️ 추가 안전장치: 읽을 때도 방어적으로<a hidden class="anchor" aria-hidden="true" href="#-추가-안전장치-읽을-때도-방어적으로">#</a></h2>
+<h3 id="캐시-읽기도-실패할-수-있다">캐시 읽기도 실패할 수 있다<a hidden class="anchor" aria-hidden="true" href="#캐시-읽기도-실패할-수-있다">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">safe_read_latest_cache</span>():
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    안전한 캐시 읽기 with fallback
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">try</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">with</span> open(LATEST_CACHE, <span style="color:#e6db74">&#39;r&#39;</span>) <span style="color:#66d9ef">as</span> f:
+</span></span><span style="display:flex;"><span>            data <span style="color:#f92672">=</span> json<span style="color:#f92672">.</span>load(f)
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;✅ 캐시 로드: </span><span style="color:#e6db74">{</span>len(data)<span style="color:#e6db74">}</span><span style="color:#e6db74"> items&#34;</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> data
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">except</span> json<span style="color:#f92672">.</span>JSONDecodeError:
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">&#34;⚠️  캐시 JSON 손상, 히스토리에서 복구 시도...&#34;</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">try</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">with</span> open(HISTORY_CACHE, <span style="color:#e6db74">&#39;r&#39;</span>) <span style="color:#66d9ef">as</span> f:
+</span></span><span style="display:flex;"><span>                history <span style="color:#f92672">=</span> json<span style="color:#f92672">.</span>load(f)
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e"># 최근 24시간 항목만 반환</span>
+</span></span><span style="display:flex;"><span>            cutoff <span style="color:#f92672">=</span> datetime<span style="color:#f92672">.</span>utcnow() <span style="color:#f92672">-</span> timedelta(hours<span style="color:#f92672">=</span><span style="color:#ae81ff">24</span>)
+</span></span><span style="display:flex;"><span>            recent <span style="color:#f92672">=</span> [h <span style="color:#66d9ef">for</span> h <span style="color:#f92672">in</span> history 
+</span></span><span style="display:flex;"><span>                     <span style="color:#66d9ef">if</span> datetime<span style="color:#f92672">.</span>fromisoformat(h[<span style="color:#e6db74">&#39;timestamp&#39;</span>]<span style="color:#f92672">.</span>rstrip(<span style="color:#e6db74">&#39;Z&#39;</span>)) <span style="color:#f92672">&gt;</span> cutoff]
+</span></span><span style="display:flex;"><span>            print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;✅ 히스토리에서 복구: </span><span style="color:#e6db74">{</span>len(recent)<span style="color:#e6db74">}</span><span style="color:#e6db74"> items (24h)&#34;</span>)
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> recent
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">except</span>:
+</span></span><span style="display:flex;"><span>            print(<span style="color:#e6db74">&#34;❌ 복구 실패, 빈 목록 반환&#34;</span>)
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> []
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">except</span> <span style="color:#a6e22e">FileNotFoundError</span>:
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">&#34;⚠️  캐시 파일 없음 (첫 실행?)&#34;</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> []
+</span></span></code></pre></div><hr>
+<h2 id="-체크리스트-분산-크론-캐시-안전성">📋 체크리스트: 분산 크론 캐시 안전성<a hidden class="anchor" aria-hidden="true" href="#-체크리스트-분산-크론-캐시-안전성">#</a></h2>
+<table>
+	<thead>
+			<tr>
+					<th>항목</th>
+					<th>구현</th>
+					<th>자동화</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>✅ 임시 파일 쓰기</td>
+					<td><code>tempfile.NamedTemporaryFile</code></td>
+					<td>O</td>
+			</tr>
+			<tr>
+					<td>✅ JSON 유효성 검증</td>
+					<td><code>json.load()</code> try-except</td>
+					<td>O</td>
+			</tr>
+			<tr>
+					<td>✅ 원자적 교체</td>
+					<td><code>os.replace()</code></td>
+					<td>O</td>
+			</tr>
+			<tr>
+					<td>✅ 중복 제거</td>
+					<td>URL 기반 <code>seen_urls</code> set</td>
+					<td>O</td>
+			</tr>
+			<tr>
+					<td>✅ 히스토리 유지</td>
+					<td>Prepend 패턴 + length limit</td>
+					<td>O</td>
+			</tr>
+			<tr>
+					<td>✅ 읽기 폴백</td>
+					<td><code>safe_read_latest_cache()</code></td>
+					<td>O</td>
+			</tr>
+			<tr>
+					<td>✅ 로깅</td>
+					<td>각 단계에 <code>print()</code> 또는 logger</td>
+					<td>O</td>
+			</tr>
+	</tbody>
+</table>
+<hr>
+<h2 id="-hermes-통합-크론-테스크에-적용하기">🚀 Hermes 통합: 크론 테스크에 적용하기<a hidden class="anchor" aria-hidden="true" href="#-hermes-통합-크론-테스크에-적용하기">#</a></h2>
+<h3 id="크론-구성-예시">크론 구성 예시<a hidden class="anchor" aria-hidden="true" href="#크론-구성-예시">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#75715e"># ~/.hermes/profiles/default/cron/ai-ml-trends-scanner.json</span>
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;name&#34;: </span><span style="color:#e6db74">&#34;AI/ML Trend Scanner — Safe Cache Update&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;id&#34;: </span><span style="color:#e6db74">&#34;ai-ml-trends-scanner-safe&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;frequency&#34;: </span><span style="color:#e6db74">&#34;0 * * * *&#34;</span>,  <span style="color:#75715e"># 매 시간 정각</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;command&#34;: </span><span style="color:#e6db74">&#34;python /Users/kwbaekleo/.openclaw/workspace/scripts/trend_scanner_safe.py&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;description&#34;: </span><span style="color:#e6db74">&#34;Scan AI/ML trends, atomically update cache with validation&#34;</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="python-스크립트-메인-로직">Python 스크립트 (메인 로직)<a hidden class="anchor" aria-hidden="true" href="#python-스크립트-메인-로직">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># scripts/trend_scanner_safe.py</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#!/usr/bin/env python3</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> sys<span style="color:#f92672">,</span> os
+</span></span><span style="display:flex;"><span>sys<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>insert(<span style="color:#ae81ff">0</span>, <span style="color:#e6db74">&#39;/Users/kwbaekleo/.openclaw/workspace&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> memory.cache_utils <span style="color:#f92672">import</span> safe_update_trend_cache, safe_read_latest_cache
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> trend_scanner <span style="color:#f92672">import</span> scan_ai_ml_trends
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Step 1: 새로운 트렌드 스캔</span>
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">&#34;[INFO] AI/ML 트렌드 스캔 시작...&#34;</span>)
+</span></span><span style="display:flex;"><span>new_trends <span style="color:#f92672">=</span> scan_ai_ml_trends()  <span style="color:#75715e"># RSS + Google News + 공식 블로그</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Step 2: 원자적 캐시 갱신</span>
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;[INFO] </span><span style="color:#e6db74">{</span>len(new_trends)<span style="color:#e6db74">}</span><span style="color:#e6db74"> 개 항목 발견&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">try</span>:
+</span></span><span style="display:flex;"><span>    added <span style="color:#f92672">=</span> safe_update_trend_cache(new_trends)
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;[SUCCESS] </span><span style="color:#e6db74">{</span>added<span style="color:#e6db74">}</span><span style="color:#e6db74">개 신규 항목 추가됨&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">except</span> <span style="color:#a6e22e">Exception</span> <span style="color:#66d9ef">as</span> e:
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;[ERROR] 캐시 갱신 실패: </span><span style="color:#e6db74">{</span>e<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>    sys<span style="color:#f92672">.</span>exit(<span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Step 3: 갱신 확인</span>
+</span></span><span style="display:flex;"><span>cached <span style="color:#f92672">=</span> safe_read_latest_cache()
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;[VERIFY] 캐시에 현재 </span><span style="color:#e6db74">{</span>len(cached)<span style="color:#e6db74">}</span><span style="color:#e6db74">개 항목 저장됨&#34;</span>)
+</span></span></code></pre></div><hr>
+<h2 id="-실무-교훈">💡 실무 교훈<a hidden class="anchor" aria-hidden="true" href="#-실무-교훈">#</a></h2>
+<h3 id="한-번-배워두면-영원히-쓴다">&ldquo;한 번 배워두면 영원히 쓴다&rdquo;<a hidden class="anchor" aria-hidden="true" href="#한-번-배워두면-영원히-쓴다">#</a></h3>
+<ol>
+<li><strong>프로토타입</strong>: 단순 덮어쓰기로 시작해도 됩니다.</li>
+<li><strong>문제 발생 시</strong>: &ldquo;JSON 손상&rdquo; 또는 &ldquo;데이터 누락&rdquo; → 이 패턴으로 업그레이드</li>
+<li><strong>스케일링</strong>: 하루에 10번, 시간에 100번으로 늘어나도 <strong>원자적 갱신 + 검증</strong>은 자동으로 확장됩니다.</li>
+</ol>
+<h3 id="캐시-안전성--전체-크론-안정성">&ldquo;캐시 안전성 = 전체 크론 안정성&rdquo;<a hidden class="anchor" aria-hidden="true" href="#캐시-안전성--전체-크론-안정성">#</a></h3>
+<p>캐시가 한 번 손상되면:</p>
+<ul>
+<li>블로그 생성 크론이 실패</li>
+<li>아이디어 생성이 폭발</li>
+<li>모니터링 대시보드가 빈 데이터를 표시</li>
+</ul>
+<p>반대로, <strong>원자적 갱신을 보장하면:</strong></p>
+<ul>
+<li>캐시는 항상 &ldquo;완전 + 유효&rdquo;</li>
+<li>크론들이 서로 간섭하지 않음</li>
+<li>장애 복구가 간단 (히스토리에서 복구 가능)</li>
+</ul>
+<hr>
+<h2 id="-출처-및-참고">📚 출처 및 참고<a hidden class="anchor" aria-hidden="true" href="#-출처-및-참고">#</a></h2>
+<ul>
+<li>Python <code>tempfile</code> 모듈: <a href="https://docs.python.org/3/library/tempfile.html">docs.python.org/tempfile</a></li>
+<li><code>os.replace()</code> 원자성: POSIX rename() 표준</li>
+<li>Hermes 크론 아키텍처: <a href="https://claude-code.nousresearch.com/docs">Hermes 공식 문서</a></li>
+<li>JSON 스트리밍 읽기/쓰기: <a href="https://tools.ietf.org/html/rfc8259">RFC 8259</a></li>
+</ul>
+<p><strong>다음 편에서는:</strong> 크론 간의 순서 보장 (DAG 스케줄링)과 크로스-크론 데이터 패싱에 대해 다루겠습니다.</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://kwbaek.github.io/tags/hermes/">Hermes</a></li>
+      <li><a href="https://kwbaek.github.io/tags/%EB%A6%AC%EC%98%A4/">리오</a></li>
+      <li><a href="https://kwbaek.github.io/tags/%ED%81%AC%EB%A1%A0/">크론</a></li>
+      <li><a href="https://kwbaek.github.io/tags/%EB%B6%84%EC%82%B0%EC%8B%9C%EC%8A%A4%ED%85%9C/">분산시스템</a></li>
+      <li><a href="https://kwbaek.github.io/tags/%EC%BA%90%EC%8B%9C/">캐시</a></li>
+      <li><a href="https://kwbaek.github.io/tags/%EC%9B%90%EC%9E%90%EC%84%B1/">원자성</a></li>
+      <li><a href="https://kwbaek.github.io/tags/json/">JSON</a></li>
+      <li><a href="https://kwbaek.github.io/tags/%EC%95%88%EC%A0%84%EC%84%B1/">안전성</a></li>
+      <li><a href="https://kwbaek.github.io/tags/%EC%9E%90%EB%8F%99%ED%99%94/">자동화</a></li>
+    </ul>
+  </footer><script src="https://utteranc.es/client.js"
+        repo="kwbaek/blog-comments"
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://kwbaek.github.io/">Kyungwook&#39;s Devlog</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

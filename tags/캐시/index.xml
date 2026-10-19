@@ -1,20 +1,52 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>캐시 on Kyungwook's Devlog</title><link>https://kwbaek.github.io/tags/%EC%BA%90%EC%8B%9C/</link><description>Recent content in 캐시 on Kyungwook's Devlog</description><generator>Hugo -- 0.165.0</generator><language>ko-kr</language><lastBuildDate>Sat, 12 Sep 2026 21:15:00 +0900</lastBuildDate><atom:link href="https://kwbaek.github.io/tags/%EC%BA%90%EC%8B%9C/index.xml" rel="self" type="application/rss+xml"/><item><title>Hermes/리오 가이드: 분산 크론 환경에서 캐시 안전성 보장하기 — 원자적 갱신 + 검증의 기술</title><link>https://kwbaek.github.io/posts/2026-09-12-hermes-distributed-cache-atomicity-guide/</link><pubDate>Sat, 12 Sep 2026 21:15:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-09-12-hermes-distributed-cache-atomicity-guide/</guid><description>&lt;p&gt;&lt;strong&gt;당신의 크론 작업이 매시간 캐시를 갱신하면서, &amp;ldquo;어라, 이 데이터는 어제 데이터인가 오늘 데이터인가?&amp;ldquo;라고 의아해한 경험이 있으신가요?&lt;/strong&gt;&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>캐시 on Kyungwook&#39;s Devlog</title>
+    <link>https://kwbaek.github.io/tags/%EC%BA%90%EC%8B%9C/</link>
+    <description>Recent content in 캐시 on Kyungwook&#39;s Devlog</description>
+    <generator>Hugo -- 0.165.0</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Sat, 12 Sep 2026 21:15:00 +0900</lastBuildDate>
+    <atom:link href="https://kwbaek.github.io/tags/%EC%BA%90%EC%8B%9C/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hermes/리오 가이드: 분산 크론 환경에서 캐시 안전성 보장하기 — 원자적 갱신 &#43; 검증의 기술</title>
+      <link>https://kwbaek.github.io/posts/2026-09-12-hermes-distributed-cache-atomicity-guide/</link>
+      <pubDate>Sat, 12 Sep 2026 21:15:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-09-12-hermes-distributed-cache-atomicity-guide/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;당신의 크론 작업이 매시간 캐시를 갱신하면서, &amp;ldquo;어라, 이 데이터는 어제 데이터인가 오늘 데이터인가?&amp;ldquo;라고 의아해한 경험이 있으신가요?&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;분산된 크론 환경에서는 캐시가 경쟁 상태(race condition)에 빠질 수 있습니다. 한 프로세스가 파일을 읽는 중에 다른 프로세스가 덮어쓰면, 부분적으로 손상된 JSON이 남을 수 있고, 다음 크론이 그걸 파싱할 때 &lt;code&gt;JSONDecodeError&lt;/code&gt;로 폭발합니다.&lt;/p&gt;
 &lt;p&gt;오늘은 &lt;strong&gt;Hermes/리오가 실제로 운영 중인 &amp;ldquo;원자적 캐시 갱신 + 검증&amp;rdquo; 패턴&lt;/strong&gt;을 소개합니다.&lt;/p&gt;
 &lt;hr&gt;
-&lt;h2 id="-핵심-원칙-쓰기--검증--원자적-교체"&gt;🎯 핵심 원칙: &amp;ldquo;쓰기 → 검증 → 원자적 교체&amp;rdquo;&lt;/h2&gt;
-&lt;h3 id="잘못된-방식-"&gt;잘못된 방식 ❌&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# 위험한 직접 덮어쓰기&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;with&lt;/span&gt; open(&lt;span style="color:#e6db74"&gt;&amp;#34;cache.json&amp;#34;&lt;/span&gt;, &lt;span style="color:#e6db74"&gt;&amp;#34;w&amp;#34;&lt;/span&gt;) &lt;span style="color:#66d9ef"&gt;as&lt;/span&gt; f:
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; json&lt;span style="color:#f92672"&gt;.&lt;/span&gt;dump(new_data, f) &lt;span style="color:#75715e"&gt;# 쓰는 중에 크론이 읽으면? 💥&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;문제:&lt;/strong&gt;&lt;/p&gt;</description></item><item><title>Hermes/리오 실전 팁: 캐시를 믿기 전에 '재사용 감사 로그'를 붙여라</title><link>https://kwbaek.github.io/posts/2026-08-21-hermes-rio-reuse-audit-log/</link><pubDate>Fri, 21 Aug 2026 20:55:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-08-21-hermes-rio-reuse-audit-log/</guid><description>&lt;p&gt;오늘 정리한 AI/ML 트렌드는 &amp;ldquo;히트율 60%짜리 캐시가 실제로는 2%였다&amp;quot;였습니다. 시맨틱 캐시의 원시 히트율과 실제로 답을 대체해도 되는 비율이 수십 배 차이 났다는 이야기였죠. 이걸 Hermes/리오 운영으로 번역하면 팁은 하나입니다. &lt;strong&gt;자동화가 무언가를 &amp;ldquo;이미 처리했다&amp;quot;고 판단해 건너뛸 때마다, 그 판단의 근거를 로그에 남기세요.&lt;/strong&gt;&lt;/p&gt;
-&lt;h2 id="왜-문제가-되나"&gt;왜 문제가 되나&lt;/h2&gt;
+&lt;h2 id=&#34;-핵심-원칙-쓰기--검증--원자적-교체&#34;&gt;🎯 핵심 원칙: &amp;ldquo;쓰기 → 검증 → 원자적 교체&amp;rdquo;&lt;/h2&gt;
+&lt;h3 id=&#34;잘못된-방식-&#34;&gt;잘못된 방식 ❌&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 위험한 직접 덮어쓰기&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;with&lt;/span&gt; open(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;cache.json&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;w&amp;#34;&lt;/span&gt;) &lt;span style=&#34;color:#66d9ef&#34;&gt;as&lt;/span&gt; f:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    json&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;dump(new_data, f)  &lt;span style=&#34;color:#75715e&#34;&gt;# 쓰는 중에 크론이 읽으면? 💥&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;문제:&lt;/strong&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Hermes/리오 실전 팁: 캐시를 믿기 전에 &#39;재사용 감사 로그&#39;를 붙여라</title>
+      <link>https://kwbaek.github.io/posts/2026-08-21-hermes-rio-reuse-audit-log/</link>
+      <pubDate>Fri, 21 Aug 2026 20:55:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-08-21-hermes-rio-reuse-audit-log/</guid>
+      <description>&lt;p&gt;오늘 정리한 AI/ML 트렌드는 &amp;ldquo;히트율 60%짜리 캐시가 실제로는 2%였다&amp;quot;였습니다. 시맨틱 캐시의 원시 히트율과 실제로 답을 대체해도 되는 비율이 수십 배 차이 났다는 이야기였죠. 이걸 Hermes/리오 운영으로 번역하면 팁은 하나입니다. &lt;strong&gt;자동화가 무언가를 &amp;ldquo;이미 처리했다&amp;quot;고 판단해 건너뛸 때마다, 그 판단의 근거를 로그에 남기세요.&lt;/strong&gt;&lt;/p&gt;
+&lt;h2 id=&#34;왜-문제가-되나&#34;&gt;왜 문제가 되나&lt;/h2&gt;
 &lt;p&gt;리오가 돌리는 크론은 대부분 어떤 형태로든 재사용/중복제거 판단을 합니다.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;트렌드 스캐너는 이전에 올린 항목인지 캐시와 대조해 건너뜁니다.&lt;/li&gt;
 &lt;li&gt;리포트 잡은 어제 캐시가 아직 유효하면 다시 수집하지 않습니다.&lt;/li&gt;
 &lt;li&gt;아이디어 생성기는 최근 히스토리와 비슷하면 &lt;code&gt;[SILENT]&lt;/code&gt;로 종료합니다.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;이 판단은 전부 &amp;ldquo;충분히 비슷하니 같은 것으로 친다&amp;quot;는 유사도 판정입니다. 시맨틱 캐시와 구조가 똑같습니다. 그리고 문제도 똑같이 발생합니다. &lt;strong&gt;중복이라 판단해 건너뛴 것 중 실제로는 새 정보였던 비율을, 아무도 세지 않습니다.&lt;/strong&gt; 크론이 조용히 끝나면 성공으로 보이니까요.&lt;/p&gt;</description></item><item><title>Hermes/리오 크론에서 임베딩 기반 검색을 운영하는 법 — 결과보다 근거 레이어를 보존하라</title><link>https://kwbaek.github.io/posts/2026-08-13-hermes-rio-embedding-search-evidence-layer/</link><pubDate>Thu, 13 Aug 2026 21:00:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-08-13-hermes-rio-embedding-search-evidence-layer/</guid><description>&lt;p&gt;OlmoEarth embeddings가 보여주는 중요한 운영 교훈은 임베딩을 생성하는 것보다 &lt;strong&gt;나중에 다시 검색하고 검증할 수 있게 저장하는 것&lt;/strong&gt;이 어렵다는 점입니다. Hermes/리오 크론에서 트렌드 후보, 문서 조각, 상품 이미지, 현장 데이터를 임베딩으로 축적하려면 “가장 비슷한 결과”만 캐시해서는 안 됩니다. 검색 결과가 왜 나왔는지 재현할 수 있는 원본과 생성 조건까지 함께 보존해야 합니다.&lt;/p&gt;
-&lt;h3 id="1-임베딩-캐시와-게시-상태를-분리하기"&gt;1. 임베딩 캐시와 게시 상태를 분리하기&lt;/h3&gt;
-&lt;p&gt;첫째, 후보 검색 결과와 최종 게시·실행 상태를 다른 파일이나 다른 레코드 층으로 나누십시오. 후보는 새 모델이나 새 질의가 나오면 다시 계산될 수 있지만, 이미 사용자에게 전달된 결과는 별도의 멱등 키와 게시 시각을 가져야 합니다. URL만 중복 키로 쓰면 같은 주제의 업데이트를 놓치고, 반대로 제목만 비교하면 표현이 조금 바뀐 동일 항목을 반복 게시할 수 있습니다. &lt;code&gt;source_url&lt;/code&gt;, &lt;code&gt;content_hash&lt;/code&gt;, &lt;code&gt;embedding_model&lt;/code&gt;, &lt;code&gt;model_version&lt;/code&gt;, &lt;code&gt;created_at&lt;/code&gt;, &lt;code&gt;topic_key&lt;/code&gt;를 최소 필드로 두면 재처리와 중복 판정을 분리할 수 있습니다.&lt;/p&gt;</description></item></channel></rss>
+&lt;p&gt;이 판단은 전부 &amp;ldquo;충분히 비슷하니 같은 것으로 친다&amp;quot;는 유사도 판정입니다. 시맨틱 캐시와 구조가 똑같습니다. 그리고 문제도 똑같이 발생합니다. &lt;strong&gt;중복이라 판단해 건너뛴 것 중 실제로는 새 정보였던 비율을, 아무도 세지 않습니다.&lt;/strong&gt; 크론이 조용히 끝나면 성공으로 보이니까요.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Hermes/리오 크론에서 임베딩 기반 검색을 운영하는 법 — 결과보다 근거 레이어를 보존하라</title>
+      <link>https://kwbaek.github.io/posts/2026-08-13-hermes-rio-embedding-search-evidence-layer/</link>
+      <pubDate>Thu, 13 Aug 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-08-13-hermes-rio-embedding-search-evidence-layer/</guid>
+      <description>&lt;p&gt;OlmoEarth embeddings가 보여주는 중요한 운영 교훈은 임베딩을 생성하는 것보다 &lt;strong&gt;나중에 다시 검색하고 검증할 수 있게 저장하는 것&lt;/strong&gt;이 어렵다는 점입니다. Hermes/리오 크론에서 트렌드 후보, 문서 조각, 상품 이미지, 현장 데이터를 임베딩으로 축적하려면 “가장 비슷한 결과”만 캐시해서는 안 됩니다. 검색 결과가 왜 나왔는지 재현할 수 있는 원본과 생성 조건까지 함께 보존해야 합니다.&lt;/p&gt;
+&lt;h3 id=&#34;1-임베딩-캐시와-게시-상태를-분리하기&#34;&gt;1. 임베딩 캐시와 게시 상태를 분리하기&lt;/h3&gt;
+&lt;p&gt;첫째, 후보 검색 결과와 최종 게시·실행 상태를 다른 파일이나 다른 레코드 층으로 나누십시오. 후보는 새 모델이나 새 질의가 나오면 다시 계산될 수 있지만, 이미 사용자에게 전달된 결과는 별도의 멱등 키와 게시 시각을 가져야 합니다. URL만 중복 키로 쓰면 같은 주제의 업데이트를 놓치고, 반대로 제목만 비교하면 표현이 조금 바뀐 동일 항목을 반복 게시할 수 있습니다. &lt;code&gt;source_url&lt;/code&gt;, &lt;code&gt;content_hash&lt;/code&gt;, &lt;code&gt;embedding_model&lt;/code&gt;, &lt;code&gt;model_version&lt;/code&gt;, &lt;code&gt;created_at&lt;/code&gt;, &lt;code&gt;topic_key&lt;/code&gt;를 최소 필드로 두면 재처리와 중복 판정을 분리할 수 있습니다.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>AI/ML 트렌드: 에이전트가 &#39;길게, 혼자&#39; 일할수록 사용 정책은 행동 단위로 쓰여야 한다 | Kyungwook&#39;s Devlog</title>
+<meta name="keywords" content="ai-ml, usage-policy, ai-agent, governance, compliance, anthropic">
+<meta name="description" content="오늘 #ai-ml-trends 스캔에서 제가 가장 오래 붙들고 본 소식은 Anthropic의 2026 Usage Policy 개정입니다. 발표일은 10월 8일이고, 새 정책은 11월 12일부터 시행됩니다. 여러 매체가 다룬 이슈 중 하나지만, 정책 원문을 직접 확인해 보니 이번 개정은 단순한 문구 정리가 아니었습니다. 에이전트가 더 길고 독립적으로 일하게 되면서 &ldquo;무엇을 하면 안 되는가&quot;를 행동 단위로 다시 적어야 한다는 신호에 가까웠습니다.
+원문에 따르면 이번 업데이트 대부분은 기존 규칙을 명확히 하는 목적입니다. 다만 발표문은 &ldquo;지난 1년 동안 Claude가 더 길고 독립적인 작업을 맡게 되었다&quot;는 점을 이유로 들고, 그 능력에 맞춰 새 예시를 추가했다고 설명합니다. 즉 규칙의 뼈대는 같아도, 규칙이 적용되는 장면이 바뀌었다는 뜻입니다.">
+<meta name="author" content="map[email: name:Kyungwook Baek]">
+<link rel="canonical" href="https://kwbaek.github.io/posts/2026-10-17-ai-ml-trends-usage-policy-autonomy/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.199042e659bc7245f5609d333d6c044eb554a0640849bb874e1dff8eb0f57209.css" integrity="sha256-GZBC5lm8ckX1YJ0zPWwETrVUoGQISbuHTh3/jrD1cgk=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://kwbaek.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://kwbaek.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://kwbaek.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://kwbaek.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://kwbaek.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://kwbaek.github.io/posts/2026-10-17-ai-ml-trends-usage-policy-autonomy/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="https://kwbaek.github.io/posts/2026-10-17-ai-ml-trends-usage-policy-autonomy/">
+  <meta property="og:site_name" content="Kyungwook&#39;s Devlog">
+  <meta property="og:title" content="AI/ML 트렌드: 에이전트가 &#39;길게, 혼자&#39; 일할수록 사용 정책은 행동 단위로 쓰여야 한다">
+  <meta property="og:description" content="오늘 #ai-ml-trends 스캔에서 제가 가장 오래 붙들고 본 소식은 Anthropic의 2026 Usage Policy 개정입니다. 발표일은 10월 8일이고, 새 정책은 11월 12일부터 시행됩니다. 여러 매체가 다룬 이슈 중 하나지만, 정책 원문을 직접 확인해 보니 이번 개정은 단순한 문구 정리가 아니었습니다. 에이전트가 더 길고 독립적으로 일하게 되면서 “무엇을 하면 안 되는가&#34;를 행동 단위로 다시 적어야 한다는 신호에 가까웠습니다.
+원문에 따르면 이번 업데이트 대부분은 기존 규칙을 명확히 하는 목적입니다. 다만 발표문은 “지난 1년 동안 Claude가 더 길고 독립적인 작업을 맡게 되었다&#34;는 점을 이유로 들고, 그 능력에 맞춰 새 예시를 추가했다고 설명합니다. 즉 규칙의 뼈대는 같아도, 규칙이 적용되는 장면이 바뀌었다는 뜻입니다.">
+  <meta property="og:locale" content="ko-kr">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2026-10-17T21:00:00+09:00">
+    <meta property="article:modified_time" content="2026-10-17T21:00:00+09:00">
+    <meta property="article:tag" content="Ai-Ml">
+    <meta property="article:tag" content="Usage-Policy">
+    <meta property="article:tag" content="Ai-Agent">
+    <meta property="article:tag" content="Governance">
+    <meta property="article:tag" content="Compliance">
+    <meta property="article:tag" content="Anthropic">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="AI/ML 트렌드: 에이전트가 &#39;길게, 혼자&#39; 일할수록 사용 정책은 행동 단위로 쓰여야 한다">
+<meta name="twitter:description" content="오늘 #ai-ml-trends 스캔에서 제가 가장 오래 붙들고 본 소식은 Anthropic의 2026 Usage Policy 개정입니다. 발표일은 10월 8일이고, 새 정책은 11월 12일부터 시행됩니다. 여러 매체가 다룬 이슈 중 하나지만, 정책 원문을 직접 확인해 보니 이번 개정은 단순한 문구 정리가 아니었습니다. 에이전트가 더 길고 독립적으로 일하게 되면서 &ldquo;무엇을 하면 안 되는가&quot;를 행동 단위로 다시 적어야 한다는 신호에 가까웠습니다.
+원문에 따르면 이번 업데이트 대부분은 기존 규칙을 명확히 하는 목적입니다. 다만 발표문은 &ldquo;지난 1년 동안 Claude가 더 길고 독립적인 작업을 맡게 되었다&quot;는 점을 이유로 들고, 그 능력에 맞춰 새 예시를 추가했다고 설명합니다. 즉 규칙의 뼈대는 같아도, 규칙이 적용되는 장면이 바뀌었다는 뜻입니다.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://kwbaek.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "AI/ML 트렌드: 에이전트가 '길게, 혼자' 일할수록 사용 정책은 행동 단위로 쓰여야 한다",
+      "item": "https://kwbaek.github.io/posts/2026-10-17-ai-ml-trends-usage-policy-autonomy/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "AI/ML 트렌드: 에이전트가 '길게, 혼자' 일할수록 사용 정책은 행동 단위로 쓰여야 한다",
+  "name": "AI\/ML 트렌드: 에이전트가 \u0027길게, 혼자\u0027 일할수록 사용 정책은 행동 단위로 쓰여야 한다",
+  "description": "오늘 #ai-ml-trends 스캔에서 제가 가장 오래 붙들고 본 소식은 Anthropic의 2026 Usage Policy 개정입니다. 발표일은 10월 8일이고, 새 정책은 11월 12일부터 시행됩니다. 여러 매체가 다룬 이슈 중 하나지만, 정책 원문을 직접 확인해 보니 이번 개정은 단순한 문구 정리가 아니었습니다. 에이전트가 더 길고 독립적으로 일하게 되면서 \u0026ldquo;무엇을 하면 안 되는가\u0026quot;를 행동 단위로 다시 적어야 한다는 신호에 가까웠습니다.\n원문에 따르면 이번 업데이트 대부분은 기존 규칙을 명확히 하는 목적입니다. 다만 발표문은 \u0026ldquo;지난 1년 동안 Claude가 더 길고 독립적인 작업을 맡게 되었다\u0026quot;는 점을 이유로 들고, 그 능력에 맞춰 새 예시를 추가했다고 설명합니다. 즉 규칙의 뼈대는 같아도, 규칙이 적용되는 장면이 바뀌었다는 뜻입니다.\n",
+  "keywords": [
+    "ai-ml", "usage-policy", "ai-agent", "governance", "compliance", "anthropic"
+  ],
+  "articleBody": "오늘 #ai-ml-trends 스캔에서 제가 가장 오래 붙들고 본 소식은 Anthropic의 2026 Usage Policy 개정입니다. 발표일은 10월 8일이고, 새 정책은 11월 12일부터 시행됩니다. 여러 매체가 다룬 이슈 중 하나지만, 정책 원문을 직접 확인해 보니 이번 개정은 단순한 문구 정리가 아니었습니다. 에이전트가 더 길고 독립적으로 일하게 되면서 “무엇을 하면 안 되는가\"를 행동 단위로 다시 적어야 한다는 신호에 가까웠습니다.\n원문에 따르면 이번 업데이트 대부분은 기존 규칙을 명확히 하는 목적입니다. 다만 발표문은 “지난 1년 동안 Claude가 더 길고 독립적인 작업을 맡게 되었다\"는 점을 이유로 들고, 그 능력에 맞춰 새 예시를 추가했다고 설명합니다. 즉 규칙의 뼈대는 같아도, 규칙이 적용되는 장면이 바뀌었다는 뜻입니다.\n가장 눈에 띄는 변화는 기만적 캠페인과 인위적 활동을 한 섹션으로 묶은 점입니다. 발표문에 따르면 국가 미디어, 선전 기관, 상업 기업이 Claude로 가짜 계정 네트워크와 조작된 뉴스 사이트를 운영하려 한 사례가 있었고, 기존에는 이 금지가 선거 관련 조항 등에 흩어져 있었습니다. 이제는 정치적이든 상업적이든, 메시지의 출처를 가리거나 가짜 계정과 조작된 활동으로 콘텐츠를 증폭하는 모든 행위를 하나의 조항으로 다룹니다. 여기서 중요한 것은 목적보다 활동 형태를 기준으로 판단한다는 점입니다.\n이 변화가 실무에 주는 함의는 세 가지로 정리됩니다.\n행위 기준 정책 점검: 우리 조직의 에이전트가 무엇을 할 수 있는지가 아니라, 무엇을 해도 되는 행위로 정의했는지 문서로 남겨야 합니다. “마케팅 자동화\"처럼 목적으로 쓰인 권한 설명은 감사에서 설득력이 약합니다. 자율 실행 구간의 승인 게이트: 장시간 독립 작업은 중간 승인이 줄어들기 때문에, 외부 발신·계정 생성·대량 게시처럼 되돌리기 어려운 행동에는 사람 확인 지점을 명시해야 합니다. 고위험 용도 분류: 이번 개정은 건강·금융 같은 고위험 사용에 요건을 더 명확히 했습니다. 해당 도메인을 쓰는 팀은 정책 변경 전까지 사용 사례를 분류하고 체크리스트를 갱신해 두는 편이 안전합니다. 한편 같은 스캔에서 본 Anthropic의 프런티어 AI 안전 법안 초안 보도는 Politico 원문에 접근하지 못해 보도 요약 수준으로만 확인했습니다. 모델 출시 중단 조건을 얼마나 좁힐지 같은 세부 수치는 원문을 직접 확인한 뒤 판단하시기 바랍니다.\n정리하면, 이번 개정은 “AI 회사가 규칙을 강화했다\"보다 에이전트 시대의 규칙은 행동과 권한 단위로 감사 가능해야 한다는 이야기에 가깝습니다. 11월 12일 전에 우리 에이전트의 행동 목록을 정책 조항과 한 줄씩 대조해 보는 것을 다음 액션으로 추천합니다.\n출처: https://www.anthropic.com/news/2026-usage-policy-update\n",
+  "wordCount" : "323",
+  "inLanguage": "en",
+  "datePublished": "2026-10-17T21:00:00+09:00",
+  "dateModified": "2026-10-17T21:00:00+09:00",
+  "author":{
+    "@type": "Person",
+    "name": {"email":"","name":"Kyungwook Baek"}
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://kwbaek.github.io/posts/2026-10-17-ai-ml-trends-usage-policy-autonomy/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Kyungwook's Devlog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://kwbaek.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://kwbaek.github.io/" accesskey="h" title="Kyungwook&#39;s Devlog (Alt + H)">Kyungwook&#39;s Devlog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://kwbaek.github.io/categories/" title="categories">
+                    <span>categories</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kwbaek.github.io/tags/" title="tags">
+                    <span>tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kwbaek.github.io/" title="Kyungwook&#39;s Devlog">
+                    <span>Kyungwook&#39;s Devlog</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      AI/ML 트렌드: 에이전트가 &#39;길게, 혼자&#39; 일할수록 사용 정책은 행동 단위로 쓰여야 한다
+    </h1>
+    <div class="post-meta"><span title='2026-10-17 21:00:00 +0900 KST'>2026년 10월 17일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span>
+
+</div>
+  </header> 
+  <div class="post-content"><p>오늘 #ai-ml-trends 스캔에서 제가 가장 오래 붙들고 본 소식은 Anthropic의 <strong>2026 Usage Policy 개정</strong>입니다. 발표일은 10월 8일이고, 새 정책은 <strong>11월 12일</strong>부터 시행됩니다. 여러 매체가 다룬 이슈 중 하나지만, 정책 원문을 직접 확인해 보니 이번 개정은 단순한 문구 정리가 아니었습니다. 에이전트가 더 길고 독립적으로 일하게 되면서 &ldquo;무엇을 하면 안 되는가&quot;를 행동 단위로 다시 적어야 한다는 신호에 가까웠습니다.</p>
+<p>원문에 따르면 이번 업데이트 대부분은 기존 규칙을 명확히 하는 목적입니다. 다만 발표문은 &ldquo;지난 1년 동안 Claude가 더 길고 독립적인 작업을 맡게 되었다&quot;는 점을 이유로 들고, 그 능력에 맞춰 새 예시를 추가했다고 설명합니다. 즉 규칙의 뼈대는 같아도, 규칙이 적용되는 장면이 바뀌었다는 뜻입니다.</p>
+<p>가장 눈에 띄는 변화는 <strong>기만적 캠페인과 인위적 활동</strong>을 한 섹션으로 묶은 점입니다. 발표문에 따르면 국가 미디어, 선전 기관, 상업 기업이 Claude로 가짜 계정 네트워크와 조작된 뉴스 사이트를 운영하려 한 사례가 있었고, 기존에는 이 금지가 선거 관련 조항 등에 흩어져 있었습니다. 이제는 정치적이든 상업적이든, 메시지의 출처를 가리거나 가짜 계정과 조작된 활동으로 콘텐츠를 증폭하는 모든 행위를 하나의 조항으로 다룹니다. 여기서 중요한 것은 목적보다 <strong>활동 형태</strong>를 기준으로 판단한다는 점입니다.</p>
+<p>이 변화가 실무에 주는 함의는 세 가지로 정리됩니다.</p>
+<ul>
+<li><strong>행위 기준 정책 점검:</strong> 우리 조직의 에이전트가 무엇을 할 수 있는지가 아니라, 무엇을 <em>해도 되는 행위</em>로 정의했는지 문서로 남겨야 합니다. &ldquo;마케팅 자동화&quot;처럼 목적으로 쓰인 권한 설명은 감사에서 설득력이 약합니다.</li>
+<li><strong>자율 실행 구간의 승인 게이트:</strong> 장시간 독립 작업은 중간 승인이 줄어들기 때문에, 외부 발신·계정 생성·대량 게시처럼 되돌리기 어려운 행동에는 사람 확인 지점을 명시해야 합니다.</li>
+<li><strong>고위험 용도 분류:</strong> 이번 개정은 건강·금융 같은 고위험 사용에 요건을 더 명확히 했습니다. 해당 도메인을 쓰는 팀은 정책 변경 전까지 사용 사례를 분류하고 체크리스트를 갱신해 두는 편이 안전합니다.</li>
+</ul>
+<p>한편 같은 스캔에서 본 Anthropic의 프런티어 AI 안전 법안 초안 보도는 Politico 원문에 접근하지 못해 <strong>보도 요약 수준으로만 확인</strong>했습니다. 모델 출시 중단 조건을 얼마나 좁힐지 같은 세부 수치는 원문을 직접 확인한 뒤 판단하시기 바랍니다.</p>
+<p>정리하면, 이번 개정은 &ldquo;AI 회사가 규칙을 강화했다&quot;보다 <strong>에이전트 시대의 규칙은 행동과 권한 단위로 감사 가능해야 한다</strong>는 이야기에 가깝습니다. 11월 12일 전에 우리 에이전트의 행동 목록을 정책 조항과 한 줄씩 대조해 보는 것을 다음 액션으로 추천합니다.</p>
+<p>출처: <a href="https://www.anthropic.com/news/2026-usage-policy-update">https://www.anthropic.com/news/2026-usage-policy-update</a></p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://kwbaek.github.io/tags/ai-ml/">Ai-Ml</a></li>
+      <li><a href="https://kwbaek.github.io/tags/usage-policy/">Usage-Policy</a></li>
+      <li><a href="https://kwbaek.github.io/tags/ai-agent/">Ai-Agent</a></li>
+      <li><a href="https://kwbaek.github.io/tags/governance/">Governance</a></li>
+      <li><a href="https://kwbaek.github.io/tags/compliance/">Compliance</a></li>
+      <li><a href="https://kwbaek.github.io/tags/anthropic/">Anthropic</a></li>
+    </ul>
+  </footer><script src="https://utteranc.es/client.js"
+        repo="kwbaek/blog-comments"
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://kwbaek.github.io/">Kyungwook&#39;s Devlog</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

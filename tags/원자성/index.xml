@@ -1,10 +1,28 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>원자성 on Kyungwook's Devlog</title><link>https://kwbaek.github.io/tags/%EC%9B%90%EC%9E%90%EC%84%B1/</link><description>Recent content in 원자성 on Kyungwook's Devlog</description><generator>Hugo -- 0.165.0</generator><language>ko-kr</language><lastBuildDate>Sat, 12 Sep 2026 21:15:00 +0900</lastBuildDate><atom:link href="https://kwbaek.github.io/tags/%EC%9B%90%EC%9E%90%EC%84%B1/index.xml" rel="self" type="application/rss+xml"/><item><title>Hermes/리오 가이드: 분산 크론 환경에서 캐시 안전성 보장하기 — 원자적 갱신 + 검증의 기술</title><link>https://kwbaek.github.io/posts/2026-09-12-hermes-distributed-cache-atomicity-guide/</link><pubDate>Sat, 12 Sep 2026 21:15:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-09-12-hermes-distributed-cache-atomicity-guide/</guid><description>&lt;p&gt;&lt;strong&gt;당신의 크론 작업이 매시간 캐시를 갱신하면서, &amp;ldquo;어라, 이 데이터는 어제 데이터인가 오늘 데이터인가?&amp;ldquo;라고 의아해한 경험이 있으신가요?&lt;/strong&gt;&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>원자성 on Kyungwook&#39;s Devlog</title>
+    <link>https://kwbaek.github.io/tags/%EC%9B%90%EC%9E%90%EC%84%B1/</link>
+    <description>Recent content in 원자성 on Kyungwook&#39;s Devlog</description>
+    <generator>Hugo -- 0.165.0</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Sat, 12 Sep 2026 21:15:00 +0900</lastBuildDate>
+    <atom:link href="https://kwbaek.github.io/tags/%EC%9B%90%EC%9E%90%EC%84%B1/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hermes/리오 가이드: 분산 크론 환경에서 캐시 안전성 보장하기 — 원자적 갱신 &#43; 검증의 기술</title>
+      <link>https://kwbaek.github.io/posts/2026-09-12-hermes-distributed-cache-atomicity-guide/</link>
+      <pubDate>Sat, 12 Sep 2026 21:15:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-09-12-hermes-distributed-cache-atomicity-guide/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;당신의 크론 작업이 매시간 캐시를 갱신하면서, &amp;ldquo;어라, 이 데이터는 어제 데이터인가 오늘 데이터인가?&amp;ldquo;라고 의아해한 경험이 있으신가요?&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;분산된 크론 환경에서는 캐시가 경쟁 상태(race condition)에 빠질 수 있습니다. 한 프로세스가 파일을 읽는 중에 다른 프로세스가 덮어쓰면, 부분적으로 손상된 JSON이 남을 수 있고, 다음 크론이 그걸 파싱할 때 &lt;code&gt;JSONDecodeError&lt;/code&gt;로 폭발합니다.&lt;/p&gt;
 &lt;p&gt;오늘은 &lt;strong&gt;Hermes/리오가 실제로 운영 중인 &amp;ldquo;원자적 캐시 갱신 + 검증&amp;rdquo; 패턴&lt;/strong&gt;을 소개합니다.&lt;/p&gt;
 &lt;hr&gt;
-&lt;h2 id="-핵심-원칙-쓰기--검증--원자적-교체"&gt;🎯 핵심 원칙: &amp;ldquo;쓰기 → 검증 → 원자적 교체&amp;rdquo;&lt;/h2&gt;
-&lt;h3 id="잘못된-방식-"&gt;잘못된 방식 ❌&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# 위험한 직접 덮어쓰기&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;with&lt;/span&gt; open(&lt;span style="color:#e6db74"&gt;&amp;#34;cache.json&amp;#34;&lt;/span&gt;, &lt;span style="color:#e6db74"&gt;&amp;#34;w&amp;#34;&lt;/span&gt;) &lt;span style="color:#66d9ef"&gt;as&lt;/span&gt; f:
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; json&lt;span style="color:#f92672"&gt;.&lt;/span&gt;dump(new_data, f) &lt;span style="color:#75715e"&gt;# 쓰는 중에 크론이 읽으면? 💥&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;문제:&lt;/strong&gt;&lt;/p&gt;</description></item></channel></rss>
+&lt;h2 id=&#34;-핵심-원칙-쓰기--검증--원자적-교체&#34;&gt;🎯 핵심 원칙: &amp;ldquo;쓰기 → 검증 → 원자적 교체&amp;rdquo;&lt;/h2&gt;
+&lt;h3 id=&#34;잘못된-방식-&#34;&gt;잘못된 방식 ❌&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 위험한 직접 덮어쓰기&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;with&lt;/span&gt; open(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;cache.json&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;w&amp;#34;&lt;/span&gt;) &lt;span style=&#34;color:#66d9ef&#34;&gt;as&lt;/span&gt; f:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    json&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;dump(new_data, f)  &lt;span style=&#34;color:#75715e&#34;&gt;# 쓰는 중에 크론이 읽으면? 💥&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;문제:&lt;/strong&gt;&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

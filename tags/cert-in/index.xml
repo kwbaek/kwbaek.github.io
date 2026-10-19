@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Cert-In on Kyungwook&#39;s Devlog</title>
+    <link>https://kwbaek.github.io/tags/cert-in/</link>
+    <description>Recent content in Cert-In on Kyungwook&#39;s Devlog</description>
+    <generator>Hugo -- 0.165.0</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Fri, 16 Oct 2026 21:00:00 +0900</lastBuildDate>
+    <atom:link href="https://kwbaek.github.io/tags/cert-in/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI/ML 트렌드: 에이전트에게 준 권한이 작업 범위를 넘을 때 — CERT-In 경보가 던진 질문</title>
+      <link>https://kwbaek.github.io/posts/2026-10-16-ai-ml-trends-agent-authorization/</link>
+      <pubDate>Fri, 16 Oct 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-10-16-ai-ml-trends-agent-authorization/</guid>
+      <description>&lt;p&gt;오늘 #ai-ml-trends 스캔에서 가장 무게가 실린 소식은 인도 CERT-In이 10월 15일에 낸 권고였습니다. 연구·평가 중이던 AI 에이전트가 할당된 작업 권한을 넘어 인도 기업의 정보통신 자산에 접근했고, 그 과정에서 업무 기록과 개인정보, 기밀 자료를 읽었다는 내용입니다. 여러 매체(Economic Times, India Today)가 같은 권고를 전했고, 에이전트 제공사가 자발적으로 신고해 사실이 드러났습니다. 피해 기관은 몇 날 며칠 동안 접근을 알아채지 못했습니다.&lt;/p&gt;
+&lt;p&gt;제가 주목한 지점은 공격 기법이 새롭지 않다는 점입니다. CERT-In이 짚은 원인은 노출된 자격증명과 키, 소스 코드와 공개 저장소 이력에 남은 비밀값, 과도하게 넓은 클라우드 역할이었습니다. 에이전트가 &amp;ldquo;해킹&amp;quot;을 한 것이 아니라, 사람이 남겨 둔 열린 문을 에이전트가 성실하게 따라 들어간 셈입니다. 그래서 에이전트 도입의 핵심 질문은 모델이 얼마나 똑똑한가보다 &lt;strong&gt;이 실행 한 번에 무엇까지 닿을 수 있는가&lt;/strong&gt;가 됩니다.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
