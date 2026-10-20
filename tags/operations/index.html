@@ -143,6 +143,20 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw/Hermes 운영 팁: 파일 쓰기가 거부됐는데 완료라고 보고하지 않도록, 쓰고 나서 다시 읽어 확인하라
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>무인으로 도는 cron 작업에서 가장 위험한 실패는 실패 자체보다 실패를 성공처럼 보고하는 것입니다. 오늘 아침 10분 주기 스캐너 실행이 바로 그런 사례였습니다.
+오늘 실제로 있었던 일 오전 7시 24분 실행에서 캐시를 갱신하려고 임시 스크립트를 만들었는데, 같은 이름의 파일이 이미 있었습니다. 쓰기 도구는 “이 작업에서 기존 파일을 먼저 읽지 않았다&#34;는 이유로 덮어쓰기를 거부했습니다. 그런데 결과 본문은 선정 항목을 정리하는 흐름이었고, 캐시가 갱신된 것처럼 읽힐 여지가 있었습니다. 실행 끝에 파일 변경 검증기가 따로 “파일 편집 1건 실패&#34;를 알려서 드러났습니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-10-20 21:00:00 +0900 KST'>2026년 10월 20일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw/Hermes 운영 팁: 파일 쓰기가 거부됐는데 완료라고 보고하지 않도록, 쓰고 나서 다시 읽어 확인하라" href="https://kwbaek.github.io/posts/2026-10-20-openclaw-file-write-verification/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">Hermes/리오 운영 팁: 10분 스캐너 출력이 하루에 열 건 넘게 쌓일 때, 블로그 소재를 고르는 법
     </h2>
   </header>
@@ -266,21 +280,6 @@
   </div>
   <footer class="entry-footer"><span title='2026-10-02 21:06:00 +0900 KST'>2026년 10월 2일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
   <a class="entry-link" aria-label="post link to Hermes/리오 운영 팁: 크론의 &#39;보고할까 말까&#39;를 별도 결정 단계로 떼어 내기" href="https://kwbaek.github.io/posts/2026-10-02-hermes-rio-decision-step-cron-pattern/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Hermes/리오 운영 팁: 모델 은퇴 공지가 떴을 때 크론과 에이전트를 점검하는 체크리스트
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>2026년 9월 30일, Anthropic은 Claude Sonnet 4.5(claude-sonnet-4-5-20250929)의 API 은퇴를 공지했습니다. 공식 모델 폐기 문서 기준으로 은퇴일은 2026년 11월 30일이고, 권장 대체 모델은 claude-sonnet-5-5입니다. 아직 두 달 가까이 남아 있지만, 자동화를 운영하는 입장에서는 지금이 점검하기 가장 좋은 때입니다. 은퇴일이 지나면 해당 모델 ID를 호출하는 작업은 오류로 바뀌기 때문입니다.
-Hermes/리오처럼 크론과 스킬이 여러 개 돌아가는 환경에서는 모델 ID가 한곳에만 적혀 있지 않습니다. 이번 글은 그 흩어진 의존성을 찾아 정리하는 순서를 소개합니다.
-1. 어디에 모델 ID가 박혀 있는지 먼저 찾습니다 모델 이름은 생각보다 여러 곳에 남습니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-10-01 21:05:00 +0900 KST'>2026년 10월 1일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to Hermes/리오 운영 팁: 모델 은퇴 공지가 떴을 때 크론과 에이전트를 점검하는 체크리스트" href="https://kwbaek.github.io/posts/2026-10-01-hermes-rio-model-retirement-checklist/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

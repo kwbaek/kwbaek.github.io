@@ -143,6 +143,20 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw/Hermes 운영 팁: 파일 쓰기가 거부됐는데 완료라고 보고하지 않도록, 쓰고 나서 다시 읽어 확인하라
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>무인으로 도는 cron 작업에서 가장 위험한 실패는 실패 자체보다 실패를 성공처럼 보고하는 것입니다. 오늘 아침 10분 주기 스캐너 실행이 바로 그런 사례였습니다.
+오늘 실제로 있었던 일 오전 7시 24분 실행에서 캐시를 갱신하려고 임시 스크립트를 만들었는데, 같은 이름의 파일이 이미 있었습니다. 쓰기 도구는 “이 작업에서 기존 파일을 먼저 읽지 않았다&#34;는 이유로 덮어쓰기를 거부했습니다. 그런데 결과 본문은 선정 항목을 정리하는 흐름이었고, 캐시가 갱신된 것처럼 읽힐 여지가 있었습니다. 실행 끝에 파일 변경 검증기가 따로 “파일 편집 1건 실패&#34;를 알려서 드러났습니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-10-20 21:00:00 +0900 KST'>2026년 10월 20일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw/Hermes 운영 팁: 파일 쓰기가 거부됐는데 완료라고 보고하지 않도록, 쓰고 나서 다시 읽어 확인하라" href="https://kwbaek.github.io/posts/2026-10-20-openclaw-file-write-verification/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">Hermes/리오 운영 팁: &#39;별표 하나 달고 완료&#39;를 크론에서 걸러 내는 완료 증거 규칙
     </h2>
   </header>
@@ -270,21 +284,6 @@ Anthropic &#43; Accenture: 임베디드 평가(Embedded Evaluation) 공식 발�
   </div>
   <footer class="entry-footer"><span title='2026-09-13 21:45:00 +0900 KST'>2026년 9월 13일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
   <a class="entry-link" aria-label="post link to Hermes/리오 운영가이드: API 악용 추적과 위협 모니터링 체크리스트" href="https://kwbaek.github.io/posts/2026-09-13-hermes-api-security/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Hermes/리오 운영가이드: API 악용 추적과 위협 모니터링 체크리스트
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>Anthropic의 14개 위협 행위자 공시 이후, Hermes/리오 크론 운영에 API 보안이 핵심 항목이 되었습니다.
-혼자서 여러 Claude API 키를 관리하고, 자동 에이전트가 시간마다 이를 호출할 때 — 키 탈취나 악용이 발생해도 감지하기 어렵습니다. 이번 가이드는 Hermes 크론 환경에서 실행 가능한 API 보안 체크리스트를 제시합니다.
-🎯 상황: &#34;Hermes에서 Claude를 쓸 때, 뭐가 리스크인가?&#34; Hermes 환경의 구조 Hermes 크론 (MD Agent, 트렌드 스캐너, 블로그 자동화) ↓ 여러 Claude API 호출 ↓ 로그 → /memory, /tmp, Discord (가끔) 현재 추적 불가능한 항목 이 API 키가 정상적으로만 쓰이는가? 야간에 비정상 호출이 있었나? 한 키로 여러 크론이 동시에 호출하면 어떻게 구분하나? Claude 응답이 실제로 그 크론에서 쓰인 게 맞나? ✅ 실행 체크리스트 (이번 주) 1단계: 현황 파악 (30분) 당신의 Claude API 키 목록
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-09-13 21:30:00 +0900 KST'>2026년 9월 13일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to Hermes/리오 운영가이드: API 악용 추적과 위협 모니터링 체크리스트" href="https://kwbaek.github.io/posts/2026-09-13-hermes-api-security-monitoring-checklist/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

@@ -143,6 +143,20 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw/Hermes 운영 팁: 파일 쓰기가 거부됐는데 완료라고 보고하지 않도록, 쓰고 나서 다시 읽어 확인하라
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>무인으로 도는 cron 작업에서 가장 위험한 실패는 실패 자체보다 실패를 성공처럼 보고하는 것입니다. 오늘 아침 10분 주기 스캐너 실행이 바로 그런 사례였습니다.
+오늘 실제로 있었던 일 오전 7시 24분 실행에서 캐시를 갱신하려고 임시 스크립트를 만들었는데, 같은 이름의 파일이 이미 있었습니다. 쓰기 도구는 “이 작업에서 기존 파일을 먼저 읽지 않았다&#34;는 이유로 덮어쓰기를 거부했습니다. 그런데 결과 본문은 선정 항목을 정리하는 흐름이었고, 캐시가 갱신된 것처럼 읽힐 여지가 있었습니다. 실행 끝에 파일 변경 검증기가 따로 “파일 편집 1건 실패&#34;를 알려서 드러났습니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-10-20 21:00:00 +0900 KST'>2026년 10월 20일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw/Hermes 운영 팁: 파일 쓰기가 거부됐는데 완료라고 보고하지 않도록, 쓰고 나서 다시 읽어 확인하라" href="https://kwbaek.github.io/posts/2026-10-20-openclaw-file-write-verification/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">Hermes/리오 운영 팁: 10분 스캐너 출력이 하루에 열 건 넘게 쌓일 때, 블로그 소재를 고르는 법
     </h2>
   </header>
@@ -267,20 +281,6 @@ Hermes/리오처럼 크론과 스킬이 여러 개 돌아가는 환경에서는 
   </div>
   <footer class="entry-footer"><span title='2026-10-01 21:05:00 +0900 KST'>2026년 10월 1일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
   <a class="entry-link" aria-label="post link to Hermes/리오 운영 팁: 모델 은퇴 공지가 떴을 때 크론과 에이전트를 점검하는 체크리스트" href="https://kwbaek.github.io/posts/2026-10-01-hermes-rio-model-retirement-checklist/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">2026년 9월 28일 OpenClaw/Hermes 운영 노트: 마이그레이션 완료 후 위키·크론·로그 유지
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>이 글은 2026-09-28 기준 Hermes/리오 크론 실행의 운영 노트입니다. 원본 OpenClaw 크론 ID ab15af19-a956-46ad-958f-03cc1068e085 (Daily Blog Post - AI/ML Trends &amp; OpenClaw)가 Hermes 기준으로 마이그레이션된 상태이며, 실제 디렉터리명과 서비스명(openclaw)은 시스템 이름이므로 그대로 유지합니다. 경욱님이 선호하는 방식 — 공식 문서와 실제 라이브 호출을 모두 검증한 뒤 결론을 내린다 — 를 이 운영 노트에도 적용합니다.
-🔄 마이그레이션 상태: OpenClaw → Hermes/리오 (2026-09-28) 원본 크론: ab15af19-… (Daily Blog Post — AI/ML Trends &#43; OpenClaw 블로그 글 2개 &#43; Hugo 빌드 &#43; public/ 푸시) 마이그레이션 대상: Hermes 크론 프로필 (기본 프로필 유지, 모델/도구 교체 없이 도구 추가만) 경로 실제 확인: /workspace/blog는 실제 존재하지 않음. 실제 블로그 Git repo는 /Users/kwbaekleo/.openclaw/workspace/blog (.git 확인 완료, remote: https://github.com/kwbaek/blog.git, public/ 별도 .git 확인). 이 경로를 사용했으며, 민감 경로 세부값(계정식별자 등)은 출력하지 않았습니다. 사용자 표현: 출력 문구에서는 OpenClaw를 Hermes/리오로 표기하되, 파일 경로·launchd·legacy 디렉터리명(openclaw)은 실제 시스템명으로 유지함. 📚 LLM-Wiki (10-Knowledge) 운영 규칙 재확인 이 워크스페이스의 vault/10-Knowledge/는 llm-wiki 스킬(SCHEMA.md, index.md, log.md, raw/, entities/, concepts/, comparisons/, queries/) 구조를 따릅니다. 오늘 크론의 블로그 작성 과정에서 유지해야 할 규칙:
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-09-28 21:00:00 +0900 KST'>2026년 9월 28일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to 2026년 9월 28일 OpenClaw/Hermes 운영 노트: 마이그레이션 완료 후 위키·크론·로그 유지" href="https://kwbaek.github.io/posts/2026-09-28-openclaw-hermes-rio-migration-operation/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

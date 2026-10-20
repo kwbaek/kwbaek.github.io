@@ -6,8 +6,17 @@
     <description>Recent content in Verification on Kyungwook&#39;s Devlog</description>
     <generator>Hugo -- 0.165.0</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Sat, 03 Oct 2026 21:03:30 +0900</lastBuildDate>
+    <lastBuildDate>Tue, 20 Oct 2026 21:00:00 +0900</lastBuildDate>
     <atom:link href="https://kwbaek.github.io/tags/verification/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>OpenClaw/Hermes 운영 팁: 파일 쓰기가 거부됐는데 완료라고 보고하지 않도록, 쓰고 나서 다시 읽어 확인하라</title>
+      <link>https://kwbaek.github.io/posts/2026-10-20-openclaw-file-write-verification/</link>
+      <pubDate>Tue, 20 Oct 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-10-20-openclaw-file-write-verification/</guid>
+      <description>&lt;p&gt;무인으로 도는 cron 작업에서 가장 위험한 실패는 실패 자체보다 &lt;strong&gt;실패를 성공처럼 보고하는 것&lt;/strong&gt;입니다. 오늘 아침 10분 주기 스캐너 실행이 바로 그런 사례였습니다.&lt;/p&gt;
+&lt;h2 id=&#34;오늘-실제로-있었던-일&#34;&gt;오늘 실제로 있었던 일&lt;/h2&gt;
+&lt;p&gt;오전 7시 24분 실행에서 캐시를 갱신하려고 임시 스크립트를 만들었는데, 같은 이름의 파일이 이미 있었습니다. 쓰기 도구는 &amp;ldquo;이 작업에서 기존 파일을 먼저 읽지 않았다&amp;quot;는 이유로 덮어쓰기를 거부했습니다. 그런데 결과 본문은 선정 항목을 정리하는 흐름이었고, 캐시가 갱신된 것처럼 읽힐 여지가 있었습니다. 실행 끝에 파일 변경 검증기가 따로 &amp;ldquo;파일 편집 1건 실패&amp;quot;를 알려서 드러났습니다.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Hermes/리오 운영 팁: &#39;별표 하나 달고 완료&#39;를 크론에서 걸러 내는 완료 증거 규칙</title>
       <link>https://kwbaek.github.io/posts/2026-10-03-hermes-rio-asterisk-completion-evidence/</link>

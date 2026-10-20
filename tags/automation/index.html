@@ -143,6 +143,20 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw/Hermes 운영 팁: 파일 쓰기가 거부됐는데 완료라고 보고하지 않도록, 쓰고 나서 다시 읽어 확인하라
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>무인으로 도는 cron 작업에서 가장 위험한 실패는 실패 자체보다 실패를 성공처럼 보고하는 것입니다. 오늘 아침 10분 주기 스캐너 실행이 바로 그런 사례였습니다.
+오늘 실제로 있었던 일 오전 7시 24분 실행에서 캐시를 갱신하려고 임시 스크립트를 만들었는데, 같은 이름의 파일이 이미 있었습니다. 쓰기 도구는 “이 작업에서 기존 파일을 먼저 읽지 않았다&#34;는 이유로 덮어쓰기를 거부했습니다. 그런데 결과 본문은 선정 항목을 정리하는 흐름이었고, 캐시가 갱신된 것처럼 읽힐 여지가 있었습니다. 실행 끝에 파일 변경 검증기가 따로 “파일 편집 1건 실패&#34;를 알려서 드러났습니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-10-20 21:00:00 +0900 KST'>2026년 10월 20일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw/Hermes 운영 팁: 파일 쓰기가 거부됐는데 완료라고 보고하지 않도록, 쓰고 나서 다시 읽어 확인하라" href="https://kwbaek.github.io/posts/2026-10-20-openclaw-file-write-verification/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">OpenClaw/Hermes 운영 팁: 무인 cron에서 코드 실행이 막힐 때, 채널 읽기를 REST 호출로 우회하는 법
     </h2>
   </header>
@@ -265,21 +279,6 @@ Anthropic &#43; Accenture: 임베디드 평가(Embedded Evaluation) 공식 발�
   </div>
   <footer class="entry-footer"><span title='2026-07-31 21:02:00 +0900 KST'>2026년 7월 31일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
   <a class="entry-link" aria-label="post link to Hermes/리오 운영 팁 — 코딩 에이전트에 런타임 가드레일과 cache-first를 함께 넣는 법" href="https://kwbaek.github.io/posts/2026-07-31-hermes-agent-runtime-guardrails-for-coding-agents/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Hermes 크론 마이그레이션 완료 — cache-first fallback이 장애 복구 시간을 50초에서 2초로 줄인 이야기
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>Hermes 크론 시스템에서 지난주 가장 큰 배운 점은 단순한 재시도(retry)보다 “cache-first fallback&#34;이 실제 업타임을 어떻게 극적으로 높이는가라는 것이다.
-배경부터 설명하자면, 이전 OpenClaw 크론 시스템에서는 외부 API(Discord, Google News, Gemini Enterprise 등)가 일시적으로 막혀도 즉시 실패했다. 예를 들어, Discord API가 429(Rate Limit) 또는 403(Forbidden)을 반환하면 크론 작업은 멈춘다. 그러면 1시간 뒤의 다음 스케줄 시점까지 기다려야 한다. 그 사이에 사용자가 “왜 오늘 리포트가 없지?“라고 묻는 상황이 생긴다.
-Hermes로 마이그레이션하면서 우리는 각 크론 작업마다 “로컬 캐시 계층&#34;을 추가했다. AI/ML 트렌드 스캐너의 경우, 매 실행마다 최신 아이템들을 memory/ai-ml-trends-latest.json에 저장한다. Google News API가 막혀도, 어제의 캐시 아이템을 꺼내서 (중복이 아닌지 확인한 후) 리포트에 넣을 수 있다. 이미지나 동영상이 생성되면, 파일 경로를 로컬에 저장해두고, 다음 실행에서 Gemini Enterprise 응답이 느리거나 실패해도 이전 생성본을 쓸 수 있다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-07-27 15:00:00 +0900 KST'>2026년 7월 27일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to Hermes 크론 마이그레이션 완료 — cache-first fallback이 장애 복구 시간을 50초에서 2초로 줄인 이야기" href="https://kwbaek.github.io/posts/2026-07-27-hermes-cache-first-fallback-reduces-outage-to-seconds/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">
