@@ -1,10 +1,28 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Vera-Rubin on Kyungwook's Devlog</title><link>https://kwbaek.github.io/tags/vera-rubin/</link><description>Recent content in Vera-Rubin on Kyungwook's Devlog</description><generator>Hugo -- 0.165.0</generator><language>ko-kr</language><lastBuildDate>Wed, 21 Oct 2026 20:55:00 +0900</lastBuildDate><atom:link href="https://kwbaek.github.io/tags/vera-rubin/index.xml" rel="self" type="application/rss+xml"/><item><title>AI/ML 트렌드: AI 데이터센터의 병목은 칩에서 현장 공사로 옮겨가고 있다 — NVIDIA DSX POD</title><link>https://kwbaek.github.io/posts/2026-10-21-ai-ml-trends-nvidia-dsx-pod-factory-bottleneck/</link><pubDate>Wed, 21 Oct 2026 20:55:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-10-21-ai-ml-trends-nvidia-dsx-pod-factory-bottleneck/</guid><description>&lt;p&gt;NVIDIA가 GTC Berlin에서 DSX POD를 공개했습니다. 파트너가 모듈형 컨테이너 안에서 Vera Rubin 기반 AI 팩토리를 미리 조립하고 검증한 뒤 출하하는 구조입니다. 칩 성능 경쟁보다 &amp;ldquo;AI 공장을 얼마나 빨리 가동하느냐&amp;quot;가 다음 경쟁 축이 되고 있다는 신호로 읽을 만합니다.&lt;/p&gt;
-&lt;h2 id="무엇이-발표됐나"&gt;무엇이 발표됐나&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Vera-Rubin on Kyungwook&#39;s Devlog</title>
+    <link>https://kwbaek.github.io/tags/vera-rubin/</link>
+    <description>Recent content in Vera-Rubin on Kyungwook&#39;s Devlog</description>
+    <generator>Hugo -- 0.165.0</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Wed, 21 Oct 2026 20:55:00 +0900</lastBuildDate>
+    <atom:link href="https://kwbaek.github.io/tags/vera-rubin/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI/ML 트렌드: AI 데이터센터의 병목은 칩에서 현장 공사로 옮겨가고 있다 — NVIDIA DSX POD</title>
+      <link>https://kwbaek.github.io/posts/2026-10-21-ai-ml-trends-nvidia-dsx-pod-factory-bottleneck/</link>
+      <pubDate>Wed, 21 Oct 2026 20:55:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-10-21-ai-ml-trends-nvidia-dsx-pod-factory-bottleneck/</guid>
+      <description>&lt;p&gt;NVIDIA가 GTC Berlin에서 DSX POD를 공개했습니다. 파트너가 모듈형 컨테이너 안에서 Vera Rubin 기반 AI 팩토리를 미리 조립하고 검증한 뒤 출하하는 구조입니다. 칩 성능 경쟁보다 &amp;ldquo;AI 공장을 얼마나 빨리 가동하느냐&amp;quot;가 다음 경쟁 축이 되고 있다는 신호로 읽을 만합니다.&lt;/p&gt;
+&lt;h2 id=&#34;무엇이-발표됐나&#34;&gt;무엇이 발표됐나&lt;/h2&gt;
 &lt;p&gt;NVIDIA 뉴스룸 발표(2026-10-21) 기준 핵심은 다음과 같습니다.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;파트너가 모듈형 컨테이너에서 Vera Rubin AI 팩토리를 사전 조립·검증한 뒤 현장으로 출하합니다.&lt;/li&gt;
 &lt;li&gt;도입 기간은 기존 약 6개월에서 &lt;strong&gt;준비된 부지 기준 최대 14일&lt;/strong&gt;로 줄어든다고 제시했습니다.&lt;/li&gt;
 &lt;li&gt;파트너 전달은 2027년 초로 예정되어 있습니다.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id="왜-중요한가"&gt;왜 중요한가&lt;/h2&gt;
-&lt;p&gt;대규모 AI 인프라 프로젝트에서 자주 막히는 곳은 GPU 수급 자체보다 현장 공사, 전력 연결, 냉각 설치 같은 물리적 단계입니다. 공장에서 미리 만들어 현장에 붙이는 방식은 이 구간의 시간을 줄이려는 시도입니다. 모델 개발팀 입장에서는 학습 자원이 &amp;ldquo;언제 실제로 돌기 시작하는지&amp;quot;가 달라지므로, 용량 계획을 세울 때 칩 출하 일정과 함께 부지·전력 준비 일정을 같이 봐야 합니다.&lt;/p&gt;</description></item></channel></rss>
+&lt;h2 id=&#34;왜-중요한가&#34;&gt;왜 중요한가&lt;/h2&gt;
+&lt;p&gt;대규모 AI 인프라 프로젝트에서 자주 막히는 곳은 GPU 수급 자체보다 현장 공사, 전력 연결, 냉각 설치 같은 물리적 단계입니다. 공장에서 미리 만들어 현장에 붙이는 방식은 이 구간의 시간을 줄이려는 시도입니다. 모델 개발팀 입장에서는 학습 자원이 &amp;ldquo;언제 실제로 돌기 시작하는지&amp;quot;가 달라지므로, 용량 계획을 세울 때 칩 출하 일정과 함께 부지·전력 준비 일정을 같이 봐야 합니다.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

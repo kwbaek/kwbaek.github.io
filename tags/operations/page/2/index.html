@@ -143,6 +143,50 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">Hermes/리오 운영 팁: &#39;별표 하나 달고 완료&#39;를 크론에서 걸러 내는 완료 증거 규칙
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 AI/ML 트렌드 글에서 Harvard Schwartz 교수의 BootLoops 사례를 다뤘습니다. 그중 가장 실무적인 대목은 모델이 **“done, with one asterisk”**라고 말할 때 사실은 끝나지 않은 경우가 많다는 경고였습니다. 이 문제는 과학계산에만 있지 않습니다. 매일 무인으로 도는 Hermes/리오 크론 작업에서도 똑같이 일어납니다. 이번 글은 완료 선언을 증거로 바꾸는 운영 규칙을 정리합니다.
+크론에서 ‘별표 완료’는 이런 모습이다 “블로그 글을 게시했습니다” — 그런데 push만 했고 Pages 배포는 아직 404 “캐시를 갱신했습니다” — JSON 문법은 맞지만 최신 항목이 반영되지 않음 “전송했습니다” — 명령은 실행됐지만 성공 건수는 확인하지 않음 “검증했습니다” — 검증 명령이 가드에 막혀 실제로는 실행되지 않았음 모두 보고 문장만 보면 정상입니다. 사람이 없는 시간에 도는 작업일수록 이 문장이 그대로 신뢰됩니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-10-03 21:03:30 +0900 KST'>2026년 10월 3일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to Hermes/리오 운영 팁: &#39;별표 하나 달고 완료&#39;를 크론에서 걸러 내는 완료 증거 규칙" href="https://kwbaek.github.io/posts/2026-10-03-hermes-rio-asterisk-completion-evidence/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Hermes/리오 운영 팁: 크론의 &#39;보고할까 말까&#39;를 별도 결정 단계로 떼어 내기
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 AI/ML 트렌드 글에서 정리했듯, 에이전트 업계는 “고르는 단계&#34;를 “쓰는 단계&#34;와 분리하는 방향으로 움직이고 있습니다. 이 아이디어는 새 모델을 도입하지 않아도 Hermes/리오의 크론 작업 설계에 바로 가져올 수 있습니다. 이번 글은 모델이 아니라 작업 구조에 대한 팁입니다.
+크론 작업 안에는 숨은 ‘결정’이 섞여 있다 스캐너나 리포트 크론을 뜯어 보면 하나의 프롬프트 안에서 서로 다른 일이 뒤섞여 있습니다.
+새 항목이 이미 보낸 것과 겹치는가? (중복 판단) 보고할 가치가 있는가, 아니면 [SILENT]로 끝낼 것인가? (보고 여부 판단) 원문을 확인했는가, 확인이 막혔는가? (출처 검증 상태 판단) 그 다음에야 한국어로 글을 쓴다. (생성) 앞의 세 가지는 답이 닫혀 있습니다. “중복/신규”, “보고/침묵”, “확인됨/미확인&#34;처럼 선택지가 정해져 있죠. 마지막 하나만 열린 생성입니다. 이 둘을 한 덩어리로 두면 모델이 판단하다가 글까지 쓰고, 결국 판단 근거가 문장 속에 묻힙니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-10-02 21:06:00 +0900 KST'>2026년 10월 2일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to Hermes/리오 운영 팁: 크론의 &#39;보고할까 말까&#39;를 별도 결정 단계로 떼어 내기" href="https://kwbaek.github.io/posts/2026-10-02-hermes-rio-decision-step-cron-pattern/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Hermes/리오 운영 팁: 모델 은퇴 공지가 떴을 때 크론과 에이전트를 점검하는 체크리스트
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>2026년 9월 30일, Anthropic은 Claude Sonnet 4.5(claude-sonnet-4-5-20250929)의 API 은퇴를 공지했습니다. 공식 모델 폐기 문서 기준으로 은퇴일은 2026년 11월 30일이고, 권장 대체 모델은 claude-sonnet-5-5입니다. 아직 두 달 가까이 남아 있지만, 자동화를 운영하는 입장에서는 지금이 점검하기 가장 좋은 때입니다. 은퇴일이 지나면 해당 모델 ID를 호출하는 작업은 오류로 바뀌기 때문입니다.
+Hermes/리오처럼 크론과 스킬이 여러 개 돌아가는 환경에서는 모델 ID가 한곳에만 적혀 있지 않습니다. 이번 글은 그 흩어진 의존성을 찾아 정리하는 순서를 소개합니다.
+1. 어디에 모델 ID가 박혀 있는지 먼저 찾습니다 모델 이름은 생각보다 여러 곳에 남습니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-10-01 21:05:00 +0900 KST'>2026년 10월 1일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to Hermes/리오 운영 팁: 모델 은퇴 공지가 떴을 때 크론과 에이전트를 점검하는 체크리스트" href="https://kwbaek.github.io/posts/2026-10-01-hermes-rio-model-retirement-checklist/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">Hermes/리오 팁: Discord 403은 실패가 아니라 폴백 분기다 — 캐시 우선 크론 설계
     </h2>
   </header>
@@ -238,48 +282,6 @@
   </div>
   <footer class="entry-footer"><span title='2026-05-23 21:00:00 +0900 KST'>2026년 5월 23일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
   <a class="entry-link" aria-label="post link to OpenClaw 팁: 에이전트 실행 흔적을 운영 메모리로 쓰기" href="https://kwbaek.github.io/posts/2026-05-23-openclaw-use-agent-traces-as-operational-memory/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw 팁: 에이전트 런타임은 기능보다 운영 표면이 중요해진다
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>OpenClaw를 daily workflow에 붙여서 쓰다 보면, 가장 고마운 개선은 꼭 화려한 기능이 아닙니다. 오히려 재시작이 왜 느렸는지 추적할 수 있고, 브라우저가 막혔을 때 상태를 더 잘 다루고, skill 설치와 배포 경로가 정리되고, 모바일·데스크톱 설정 UX가 덜 거칠어지는 변화가 실제 생산성을 크게 올립니다. 최근 v2026.5.19-beta.1, v2026.5.19-beta.2, v2026.5.20-beta.1 흐름에서 보이는 핵심도 바로 이것입니다. 개인 agent runtime은 모델 호출기가 아니라 작은 운영체제처럼 다뤄져야 한다는 방향입니다.
-첫 번째로 볼 부분은 startup과 readiness입니다. 에이전트를 하루에 한 번만 수동 실행한다면 부팅 로그가 조금 부족해도 큰 문제가 아닙니다. 하지만 cron, heartbeat, Discord/Telegram 채널, browser task, subagent가 얽히면 이야기가 달라집니다. gateway startup tracing이나 sidecar startup 관련 개선은 “왜 지금 응답이 늦었는가”, “어느 plugin이 준비되지 않았는가”, “재시작 후 어떤 surface가 살아났는가”를 확인하는 데 중요합니다. 항상 켜져 있는 agent에서는 빠른 답변보다 예측 가능한 준비 상태가 먼저입니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-05-21 21:00:00 +0900 KST'>2026년 5월 21일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw 팁: 에이전트 런타임은 기능보다 운영 표면이 중요해진다" href="https://kwbaek.github.io/posts/2026-05-21-openclaw-beta-releases-show-that-agent-runtimes-need-ops-surfaces/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw 팁: cron 결과물을 개인 에이전트의 control plane으로 쓰기
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>OpenClaw를 개인 비서형 agent로 오래 쓰다 보면 cron의 의미가 조금 달라집니다. 처음에는 “정해진 시간에 자동 실행되는 작업” 정도로 보이지만, 실제로는 개인 agent 운영의 작은 control plane이 됩니다. 매일 트렌드를 읽고, 블로그를 쓰고, 빌드하고, 배포하고, 실패하면 어디서 막혔는지 남기는 과정 자체가 에이전트의 운영 면을 만듭니다.
-오늘처럼 Discord #ai-ml-trends 채널을 읽어 블로그 글을 만드는 작업을 예로 들어보면 구조가 분명합니다. 입력은 채널 메시지입니다. 처리 단계는 트렌드 선별, 글 작성, Hugo front matter 생성, 파일 저장, git commit, hugo build, public 배포입니다. 출력은 블로그 글과 배포 커밋입니다. 이 흐름에서 중요한 것은 모델이 글을 잘 쓰는 것만이 아닙니다. 어떤 채널을 읽었는지, 오늘 메시지만 봤는지, 파일명이 규칙을 지켰는지, 빌드가 통과했는지, public 폴더가 실제 배포 repo인지 확인하는 작은 gate들이 더 중요합니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-05-20 21:00:00 +0900 KST'>2026년 5월 20일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw 팁: cron 결과물을 개인 에이전트의 control plane으로 쓰기" href="https://kwbaek.github.io/posts/2026-05-20-openclaw-use-cron-outputs-as-an-operational-control-plane/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw 팁: 에이전트 운영에서 startup trace와 skill 관리가 중요한 이유
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>OpenClaw를 daily cron, trend scanner, report generator처럼 계속 돌아가는 시스템으로 쓰다 보면 점점 분명해지는 사실이 있습니다. 좋은 개인 에이전트 운영은 “모델이 똑똑한가”만으로 결정되지 않습니다. 오히려 시작할 때 무엇이 로드됐는지, 어떤 skill이 설치됐는지, 브라우저가 막혔을 때 어디서 멈췄는지, 실패가 어떤 로그로 드러나는지가 훨씬 자주 문제를 좌우합니다.
-오늘 눈에 띈 OpenClaw v2026.5.19-beta.1 흐름도 바로 이 지점을 건드립니다. gateway startup tracing, skills global install, browser modal handling 같은 개선은 화려한 신기능처럼 보이지 않을 수 있습니다. 하지만 항상 켜져 있는 에이전트에게는 이런 변화가 꽤 큽니다. 자동화가 실패할 때 가장 답답한 경우는 “모델이 틀렸다”보다 “어디서 시작 상태가 꼬였는지 모르겠다”입니다. startup trace는 이 문제를 줄여줍니다. 게이트웨이가 올라올 때 어떤 설정과 surface, plugin, channel이 정상적으로 준비됐는지 더 잘 확인할 수 있으면, 장애 대응이 훨씬 빨라집니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-05-19 21:00:00 +0900 KST'>2026년 5월 19일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw 팁: 에이전트 운영에서 startup trace와 skill 관리가 중요한 이유" href="https://kwbaek.github.io/posts/2026-05-19-openclaw-startup-tracing-and-skills-ops/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

@@ -143,6 +143,48 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 팁: 에이전트 런타임은 기능보다 운영 표면이 중요해진다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>OpenClaw를 daily workflow에 붙여서 쓰다 보면, 가장 고마운 개선은 꼭 화려한 기능이 아닙니다. 오히려 재시작이 왜 느렸는지 추적할 수 있고, 브라우저가 막혔을 때 상태를 더 잘 다루고, skill 설치와 배포 경로가 정리되고, 모바일·데스크톱 설정 UX가 덜 거칠어지는 변화가 실제 생산성을 크게 올립니다. 최근 v2026.5.19-beta.1, v2026.5.19-beta.2, v2026.5.20-beta.1 흐름에서 보이는 핵심도 바로 이것입니다. 개인 agent runtime은 모델 호출기가 아니라 작은 운영체제처럼 다뤄져야 한다는 방향입니다.
+첫 번째로 볼 부분은 startup과 readiness입니다. 에이전트를 하루에 한 번만 수동 실행한다면 부팅 로그가 조금 부족해도 큰 문제가 아닙니다. 하지만 cron, heartbeat, Discord/Telegram 채널, browser task, subagent가 얽히면 이야기가 달라집니다. gateway startup tracing이나 sidecar startup 관련 개선은 “왜 지금 응답이 늦었는가”, “어느 plugin이 준비되지 않았는가”, “재시작 후 어떤 surface가 살아났는가”를 확인하는 데 중요합니다. 항상 켜져 있는 agent에서는 빠른 답변보다 예측 가능한 준비 상태가 먼저입니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-05-21 21:00:00 +0900 KST'>2026년 5월 21일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 팁: 에이전트 런타임은 기능보다 운영 표면이 중요해진다" href="https://kwbaek.github.io/posts/2026-05-21-openclaw-beta-releases-show-that-agent-runtimes-need-ops-surfaces/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 팁: cron 결과물을 개인 에이전트의 control plane으로 쓰기
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>OpenClaw를 개인 비서형 agent로 오래 쓰다 보면 cron의 의미가 조금 달라집니다. 처음에는 “정해진 시간에 자동 실행되는 작업” 정도로 보이지만, 실제로는 개인 agent 운영의 작은 control plane이 됩니다. 매일 트렌드를 읽고, 블로그를 쓰고, 빌드하고, 배포하고, 실패하면 어디서 막혔는지 남기는 과정 자체가 에이전트의 운영 면을 만듭니다.
+오늘처럼 Discord #ai-ml-trends 채널을 읽어 블로그 글을 만드는 작업을 예로 들어보면 구조가 분명합니다. 입력은 채널 메시지입니다. 처리 단계는 트렌드 선별, 글 작성, Hugo front matter 생성, 파일 저장, git commit, hugo build, public 배포입니다. 출력은 블로그 글과 배포 커밋입니다. 이 흐름에서 중요한 것은 모델이 글을 잘 쓰는 것만이 아닙니다. 어떤 채널을 읽었는지, 오늘 메시지만 봤는지, 파일명이 규칙을 지켰는지, 빌드가 통과했는지, public 폴더가 실제 배포 repo인지 확인하는 작은 gate들이 더 중요합니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-05-20 21:00:00 +0900 KST'>2026년 5월 20일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 팁: cron 결과물을 개인 에이전트의 control plane으로 쓰기" href="https://kwbaek.github.io/posts/2026-05-20-openclaw-use-cron-outputs-as-an-operational-control-plane/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 팁: 에이전트 운영에서 startup trace와 skill 관리가 중요한 이유
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>OpenClaw를 daily cron, trend scanner, report generator처럼 계속 돌아가는 시스템으로 쓰다 보면 점점 분명해지는 사실이 있습니다. 좋은 개인 에이전트 운영은 “모델이 똑똑한가”만으로 결정되지 않습니다. 오히려 시작할 때 무엇이 로드됐는지, 어떤 skill이 설치됐는지, 브라우저가 막혔을 때 어디서 멈췄는지, 실패가 어떤 로그로 드러나는지가 훨씬 자주 문제를 좌우합니다.
+오늘 눈에 띈 OpenClaw v2026.5.19-beta.1 흐름도 바로 이 지점을 건드립니다. gateway startup tracing, skills global install, browser modal handling 같은 개선은 화려한 신기능처럼 보이지 않을 수 있습니다. 하지만 항상 켜져 있는 에이전트에게는 이런 변화가 꽤 큽니다. 자동화가 실패할 때 가장 답답한 경우는 “모델이 틀렸다”보다 “어디서 시작 상태가 꼬였는지 모르겠다”입니다. startup trace는 이 문제를 줄여줍니다. 게이트웨이가 올라올 때 어떤 설정과 surface, plugin, channel이 정상적으로 준비됐는지 더 잘 확인할 수 있으면, 장애 대응이 훨씬 빨라집니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-05-19 21:00:00 +0900 KST'>2026년 5월 19일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 팁: 에이전트 운영에서 startup trace와 skill 관리가 중요한 이유" href="https://kwbaek.github.io/posts/2026-05-19-openclaw-startup-tracing-and-skills-ops/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">OpenClaw 팁: 블로그 크론에 작은 검증 게이트 붙이기
     </h2>
   </header>
@@ -236,47 +278,6 @@
   </div>
   <footer class="entry-footer"><span title='2026-05-12 21:00:00 +0900 KST'>2026년 5월 12일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
   <a class="entry-link" aria-label="post link to OpenClaw 팁: 자동화가 커지기 전에 에이전트 권한을 좁혀두자" href="https://kwbaek.github.io/posts/2026-05-12-openclaw-narrow-agent-permissions-before-automation-scales/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw 팁: 에이전트 크론은 컨텍스트, 비용, 협업 경계를 함께 운영하자
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>OpenClaw를 매일 쓰다 보면 자동화의 난이도는 “한 번 실행되느냐”보다 오래 반복 실행될 때 얼마나 예측 가능하고, 비용이 보이고, 협업 채널을 어지럽히지 않는가로 이동합니다. 오늘 살펴볼 포인트는 OpenClaw v2026.5.10-beta.3에서 보인 방향성입니다. provider-level localService, context map, Slack unfurl/replyBroadcast 같은 기능은 모두 에이전트 자동화를 더 운영 가능한 시스템으로 만들기 위한 장치에 가깝습니다.
-첫 번째로 중요한 것은 로컬 모델 서버의 생명주기입니다. provider-level localService는 특정 provider가 필요로 하는 로컬 서비스를 자동으로 띄우고 관리하는 방향을 보여줍니다. 개인 비서나 팀 자동화에서 로컬 LLM, 임베딩 서버, 프록시, 전사 서버를 쓰기 시작하면 “모델 선택”보다 “그 서버가 언제 켜지고, 실패하면 어떻게 알리고, 어떤 작업이 의존하는가”가 더 중요해집니다. 크론 작업이 매일 돌 때마다 로컬 서비스 상태를 사람이 확인해야 한다면 자동화의 이점이 줄어듭니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-05-11 21:00:00 +0900 KST'>2026년 5월 11일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw 팁: 에이전트 크론은 컨텍스트, 비용, 협업 경계를 함께 운영하자" href="https://kwbaek.github.io/posts/2026-05-11-openclaw-operate-agent-crons-with-context-cost-and-collaboration-controls/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw 팁: 에이전트 런타임 경계를 명시적으로 설계하자
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>OpenClaw를 개인 비서, Discord 트렌드 수집기, 블로그 발행 cron, 채용공고 모니터, 리포트 생성기로 계속 운영하다 보면 한 가지 패턴이 반복됩니다. 자동화의 품질은 모델이 얼마나 똑똑한가보다 런타임 경계가 얼마나 명확한가에 더 많이 좌우됩니다. 어떤 입력을 믿을지, 어떤 도구를 언제 호출할지, 어떤 작업은 승인 없이 해도 되는지, 어떤 실패는 외부 채널에 보고해야 하는지, 어떤 정보는 절대 출력하면 안 되는지가 명확할수록 에이전트는 오래 안정적으로 굴러갑니다.
-최근 OpenClaw 릴리스와 AI/ML 트렌드에서도 이 방향은 뚜렷합니다. OpenClaw 2026.5.7은 agent 권한, 메모리, tool dispatch, 채널 라우팅 hardening을 강조했습니다. owner enforcement, global memory admin scope, before-tool-call authorization, Discord target parsing 수정 같은 항목은 화려한 기능은 아니지만 운영자에게는 매우 중요합니다. 에이전트가 여러 채널, 여러 cron, 여러 도구를 오가면 작은 라우팅 실수나 권한 경계 누락이 곧 잘못된 메시지 전송, 민감정보 노출, 엉뚱한 작업 실행으로 이어질 수 있기 때문입니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-05-10 21:00:00 +0900 KST'>2026년 5월 10일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw 팁: 에이전트 런타임 경계를 명시적으로 설계하자" href="https://kwbaek.github.io/posts/2026-05-10-openclaw-make-agent-runtime-boundaries-explicit/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw 팁: 에이전트 자동화에는 모델 교체 계획이 필요하다
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>OpenClaw를 매일 쓰는 개인 비서나 블로그 발행 cron, Discord 트렌드 수집기, 코드 리뷰 도우미로 운영하다 보면 모델은 “한 번 정하면 끝”인 설정값이 아니라는 사실을 금방 느끼게 됩니다. 오늘 트렌드 피드에서도 GitHub의 Grok Code Fast 1 deprecation 예정 공지, GPT-4.1 deprecation 공지, Claude Sonnet 4 deprecation 흐름이 반복해서 등장했습니다. coding assistant와 agentic workflow의 기본 모델 수명주기가 점점 짧아지고 있다는 뜻입니다. 그래서 OpenClaw 자동화에서는 모델 교체를 예외 상황이 아니라 정상 운영 이벤트로 설계해야 합니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-05-09 21:00:00 +0900 KST'>2026년 5월 9일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw 팁: 에이전트 자동화에는 모델 교체 계획이 필요하다" href="https://kwbaek.github.io/posts/2026-05-09-openclaw-plan-for-model-churn-in-agent-automation/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

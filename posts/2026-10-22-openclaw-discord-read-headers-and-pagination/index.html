@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>OpenClaw/Hermes 운영 팁: cron에서 Discord 채널을 읽을 때는 봇 토큰보다 헤더와 페이지네이션을 먼저 확인하라 | Kyungwook&#39;s Devlog</title>
+<meta name="keywords" content="openclaw, hermes, cron, discord, api, operations, debugging">
+<meta name="description" content="자동 실행 작업에서 Discord 채널 기록을 읽어야 할 때가 있습니다. 예를 들어 트렌드 스캐너가 같은 채널의 기존 게시물을 확인해 중복을 거르는 경우입니다. 이때 &ldquo;채널 읽기 권한이 없다&quot;는 결론을 내리기 전에 확인할 순서가 있습니다. 오늘 실제로 같은 증상을 겪고 정리한 내용입니다.
+1. 토큰이 있다고 바로 성공하지 않는다
+Hermes 환경 파일에 봇 토큰이 있어도 요청이 실패할 수 있습니다. 먼저 HTTP 상태 코드를 분리해서 봐야 합니다.
+
+401이면 토큰 자체가 잘못됐거나 만료된 경우입니다.
+403이면 토큰은 유효하지만 해당 채널 권한이 없는 경우입니다.
+404나 빈 응답이면 채널 ID나 API 경로를 다시 확인해야 합니다.
+
+403을 바로 &ldquo;읽기 불가&quot;로 단정하면 안 됩니다. 실제로는 요청 헤더 문제로 막힌 경우도 있었습니다.">
+<meta name="author" content="map[email: name:Kyungwook Baek]">
+<link rel="canonical" href="https://kwbaek.github.io/posts/2026-10-22-openclaw-discord-read-headers-and-pagination/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.199042e659bc7245f5609d333d6c044eb554a0640849bb874e1dff8eb0f57209.css" integrity="sha256-GZBC5lm8ckX1YJ0zPWwETrVUoGQISbuHTh3/jrD1cgk=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://kwbaek.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://kwbaek.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://kwbaek.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://kwbaek.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://kwbaek.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://kwbaek.github.io/posts/2026-10-22-openclaw-discord-read-headers-and-pagination/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="https://kwbaek.github.io/posts/2026-10-22-openclaw-discord-read-headers-and-pagination/">
+  <meta property="og:site_name" content="Kyungwook&#39;s Devlog">
+  <meta property="og:title" content="OpenClaw/Hermes 운영 팁: cron에서 Discord 채널을 읽을 때는 봇 토큰보다 헤더와 페이지네이션을 먼저 확인하라">
+  <meta property="og:description" content="자동 실행 작업에서 Discord 채널 기록을 읽어야 할 때가 있습니다. 예를 들어 트렌드 스캐너가 같은 채널의 기존 게시물을 확인해 중복을 거르는 경우입니다. 이때 “채널 읽기 권한이 없다&#34;는 결론을 내리기 전에 확인할 순서가 있습니다. 오늘 실제로 같은 증상을 겪고 정리한 내용입니다.
+1. 토큰이 있다고 바로 성공하지 않는다 Hermes 환경 파일에 봇 토큰이 있어도 요청이 실패할 수 있습니다. 먼저 HTTP 상태 코드를 분리해서 봐야 합니다.
+401이면 토큰 자체가 잘못됐거나 만료된 경우입니다. 403이면 토큰은 유효하지만 해당 채널 권한이 없는 경우입니다. 404나 빈 응답이면 채널 ID나 API 경로를 다시 확인해야 합니다. 403을 바로 “읽기 불가&#34;로 단정하면 안 됩니다. 실제로는 요청 헤더 문제로 막힌 경우도 있었습니다.">
+  <meta property="og:locale" content="ko-kr">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2026-10-22T20:50:00+09:00">
+    <meta property="article:modified_time" content="2026-10-22T20:50:00+09:00">
+    <meta property="article:tag" content="Openclaw">
+    <meta property="article:tag" content="Hermes">
+    <meta property="article:tag" content="Cron">
+    <meta property="article:tag" content="Discord">
+    <meta property="article:tag" content="Api">
+    <meta property="article:tag" content="Operations">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="OpenClaw/Hermes 운영 팁: cron에서 Discord 채널을 읽을 때는 봇 토큰보다 헤더와 페이지네이션을 먼저 확인하라">
+<meta name="twitter:description" content="자동 실행 작업에서 Discord 채널 기록을 읽어야 할 때가 있습니다. 예를 들어 트렌드 스캐너가 같은 채널의 기존 게시물을 확인해 중복을 거르는 경우입니다. 이때 &ldquo;채널 읽기 권한이 없다&quot;는 결론을 내리기 전에 확인할 순서가 있습니다. 오늘 실제로 같은 증상을 겪고 정리한 내용입니다.
+1. 토큰이 있다고 바로 성공하지 않는다
+Hermes 환경 파일에 봇 토큰이 있어도 요청이 실패할 수 있습니다. 먼저 HTTP 상태 코드를 분리해서 봐야 합니다.
+
+401이면 토큰 자체가 잘못됐거나 만료된 경우입니다.
+403이면 토큰은 유효하지만 해당 채널 권한이 없는 경우입니다.
+404나 빈 응답이면 채널 ID나 API 경로를 다시 확인해야 합니다.
+
+403을 바로 &ldquo;읽기 불가&quot;로 단정하면 안 됩니다. 실제로는 요청 헤더 문제로 막힌 경우도 있었습니다.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://kwbaek.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "OpenClaw/Hermes 운영 팁: cron에서 Discord 채널을 읽을 때는 봇 토큰보다 헤더와 페이지네이션을 먼저 확인하라",
+      "item": "https://kwbaek.github.io/posts/2026-10-22-openclaw-discord-read-headers-and-pagination/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "OpenClaw/Hermes 운영 팁: cron에서 Discord 채널을 읽을 때는 봇 토큰보다 헤더와 페이지네이션을 먼저 확인하라",
+  "name": "OpenClaw\/Hermes 운영 팁: cron에서 Discord 채널을 읽을 때는 봇 토큰보다 헤더와 페이지네이션을 먼저 확인하라",
+  "description": "자동 실행 작업에서 Discord 채널 기록을 읽어야 할 때가 있습니다. 예를 들어 트렌드 스캐너가 같은 채널의 기존 게시물을 확인해 중복을 거르는 경우입니다. 이때 \u0026ldquo;채널 읽기 권한이 없다\u0026quot;는 결론을 내리기 전에 확인할 순서가 있습니다. 오늘 실제로 같은 증상을 겪고 정리한 내용입니다.\n1. 토큰이 있다고 바로 성공하지 않는다 Hermes 환경 파일에 봇 토큰이 있어도 요청이 실패할 수 있습니다. 먼저 HTTP 상태 코드를 분리해서 봐야 합니다.\n401이면 토큰 자체가 잘못됐거나 만료된 경우입니다. 403이면 토큰은 유효하지만 해당 채널 권한이 없는 경우입니다. 404나 빈 응답이면 채널 ID나 API 경로를 다시 확인해야 합니다. 403을 바로 \u0026ldquo;읽기 불가\u0026quot;로 단정하면 안 됩니다. 실제로는 요청 헤더 문제로 막힌 경우도 있었습니다.\n",
+  "keywords": [
+    "openclaw", "hermes", "cron", "discord", "api", "operations", "debugging"
+  ],
+  "articleBody": "자동 실행 작업에서 Discord 채널 기록을 읽어야 할 때가 있습니다. 예를 들어 트렌드 스캐너가 같은 채널의 기존 게시물을 확인해 중복을 거르는 경우입니다. 이때 “채널 읽기 권한이 없다\"는 결론을 내리기 전에 확인할 순서가 있습니다. 오늘 실제로 같은 증상을 겪고 정리한 내용입니다.\n1. 토큰이 있다고 바로 성공하지 않는다 Hermes 환경 파일에 봇 토큰이 있어도 요청이 실패할 수 있습니다. 먼저 HTTP 상태 코드를 분리해서 봐야 합니다.\n401이면 토큰 자체가 잘못됐거나 만료된 경우입니다. 403이면 토큰은 유효하지만 해당 채널 권한이 없는 경우입니다. 404나 빈 응답이면 채널 ID나 API 경로를 다시 확인해야 합니다. 403을 바로 “읽기 불가\"로 단정하면 안 됩니다. 실제로는 요청 헤더 문제로 막힌 경우도 있었습니다.\n2. User-Agent 헤더를 넣는다 Discord REST API 호출 시 일부 환경에서는 User-Agent가 없는 요청이 차단됩니다. 봇 요청임을 식별할 수 있는 값을 함께 보내면 같은 엔드포인트가 정상 응답을 주는 경우가 있습니다. 토큰 값과 함께 헤더 값도 로그에 그대로 남기지 않는 것이 좋습니다.\n3. 한 번에 100개만 읽고 끝내지 않는다 메시지 목록은 기본적으로 최신순으로 옵니다. 하루치 기록을 확인하려면 limit을 지정하고, 마지막 메시지 ID를 before 파라미터로 넘겨 이전 페이지를 이어 읽어야 합니다. 특히 봇이 10분마다 글을 올리는 채널에서는 100개가 금방 지나가므로, 오늘 날짜 필터를 적용하기 전에 페이지가 날짜 경계를 넘었는지 확인해야 합니다.\n4. 읽은 결과는 날짜와 ID로 검증한다 수집이 끝나면 다음 세 가지를 확인합니다.\n기대한 날짜 범위의 메시지가 실제로 포함됐는지 같은 메시지 ID가 중복되지 않았는지 본문이 비어 있는 임베드·첨부 메시지를 텍스트 항목으로 잘못 세지 않았는지 이 검증을 건너뛰면 “오늘 메시지가 없다\"와 “API 호출이 잘못됐다\"를 구분하지 못합니다.\n오늘 점검에서는 User-Agent를 넣은 요청으로 최근 100개 메시지가 정상 조회됐고, 그중 당일 날짜 메시지를 골라낼 수 있었습니다. 페이지를 더 넘겨 읽는 경우에는 위 기준을 그대로 적용하는 것이 안전합니다.\n정리 채널 읽기 실패는 권한 문제와 요청 형식 문제를 분리해서 진단하세요. 403 한 번으로 불가 판정을 내리지 말고, 헤더와 엔드포인트를 바꿔 재확인하세요. 페이지네이션과 날짜 경계를 확인한 뒤에만 “오늘 기록 없음\"을 결론으로 쓰세요. ",
+  "wordCount" : "294",
+  "inLanguage": "en",
+  "datePublished": "2026-10-22T20:50:00+09:00",
+  "dateModified": "2026-10-22T20:50:00+09:00",
+  "author":{
+    "@type": "Person",
+    "name": {"email":"","name":"Kyungwook Baek"}
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://kwbaek.github.io/posts/2026-10-22-openclaw-discord-read-headers-and-pagination/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Kyungwook's Devlog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://kwbaek.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://kwbaek.github.io/" accesskey="h" title="Kyungwook&#39;s Devlog (Alt + H)">Kyungwook&#39;s Devlog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://kwbaek.github.io/categories/" title="categories">
+                    <span>categories</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kwbaek.github.io/tags/" title="tags">
+                    <span>tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kwbaek.github.io/" title="Kyungwook&#39;s Devlog">
+                    <span>Kyungwook&#39;s Devlog</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      OpenClaw/Hermes 운영 팁: cron에서 Discord 채널을 읽을 때는 봇 토큰보다 헤더와 페이지네이션을 먼저 확인하라
+    </h1>
+    <div class="post-meta"><span title='2026-10-22 20:50:00 +0900 KST'>2026년 10월 22일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span>
+
+</div>
+  </header> 
+  <div class="post-content"><p>자동 실행 작업에서 Discord 채널 기록을 읽어야 할 때가 있습니다. 예를 들어 트렌드 스캐너가 같은 채널의 기존 게시물을 확인해 중복을 거르는 경우입니다. 이때 &ldquo;채널 읽기 권한이 없다&quot;는 결론을 내리기 전에 확인할 순서가 있습니다. 오늘 실제로 같은 증상을 겪고 정리한 내용입니다.</p>
+<h2 id="1-토큰이-있다고-바로-성공하지-않는다">1. 토큰이 있다고 바로 성공하지 않는다<a hidden class="anchor" aria-hidden="true" href="#1-토큰이-있다고-바로-성공하지-않는다">#</a></h2>
+<p>Hermes 환경 파일에 봇 토큰이 있어도 요청이 실패할 수 있습니다. 먼저 HTTP 상태 코드를 분리해서 봐야 합니다.</p>
+<ul>
+<li>401이면 토큰 자체가 잘못됐거나 만료된 경우입니다.</li>
+<li>403이면 토큰은 유효하지만 해당 채널 권한이 없는 경우입니다.</li>
+<li>404나 빈 응답이면 채널 ID나 API 경로를 다시 확인해야 합니다.</li>
+</ul>
+<p>403을 바로 &ldquo;읽기 불가&quot;로 단정하면 안 됩니다. 실제로는 요청 헤더 문제로 막힌 경우도 있었습니다.</p>
+<h2 id="2-user-agent-헤더를-넣는다">2. User-Agent 헤더를 넣는다<a hidden class="anchor" aria-hidden="true" href="#2-user-agent-헤더를-넣는다">#</a></h2>
+<p>Discord REST API 호출 시 일부 환경에서는 User-Agent가 없는 요청이 차단됩니다. 봇 요청임을 식별할 수 있는 값을 함께 보내면 같은 엔드포인트가 정상 응답을 주는 경우가 있습니다. 토큰 값과 함께 헤더 값도 로그에 그대로 남기지 않는 것이 좋습니다.</p>
+<h2 id="3-한-번에-100개만-읽고-끝내지-않는다">3. 한 번에 100개만 읽고 끝내지 않는다<a hidden class="anchor" aria-hidden="true" href="#3-한-번에-100개만-읽고-끝내지-않는다">#</a></h2>
+<p>메시지 목록은 기본적으로 최신순으로 옵니다. 하루치 기록을 확인하려면 <code>limit</code>을 지정하고, 마지막 메시지 ID를 <code>before</code> 파라미터로 넘겨 이전 페이지를 이어 읽어야 합니다. 특히 봇이 10분마다 글을 올리는 채널에서는 100개가 금방 지나가므로, 오늘 날짜 필터를 적용하기 전에 페이지가 날짜 경계를 넘었는지 확인해야 합니다.</p>
+<h2 id="4-읽은-결과는-날짜와-id로-검증한다">4. 읽은 결과는 날짜와 ID로 검증한다<a hidden class="anchor" aria-hidden="true" href="#4-읽은-결과는-날짜와-id로-검증한다">#</a></h2>
+<p>수집이 끝나면 다음 세 가지를 확인합니다.</p>
+<ul>
+<li>기대한 날짜 범위의 메시지가 실제로 포함됐는지</li>
+<li>같은 메시지 ID가 중복되지 않았는지</li>
+<li>본문이 비어 있는 임베드·첨부 메시지를 텍스트 항목으로 잘못 세지 않았는지</li>
+</ul>
+<p>이 검증을 건너뛰면 &ldquo;오늘 메시지가 없다&quot;와 &ldquo;API 호출이 잘못됐다&quot;를 구분하지 못합니다.</p>
+<p>오늘 점검에서는 User-Agent를 넣은 요청으로 최근 100개 메시지가 정상 조회됐고, 그중 당일 날짜 메시지를 골라낼 수 있었습니다. 페이지를 더 넘겨 읽는 경우에는 위 기준을 그대로 적용하는 것이 안전합니다.</p>
+<h2 id="정리">정리<a hidden class="anchor" aria-hidden="true" href="#정리">#</a></h2>
+<ul>
+<li>채널 읽기 실패는 권한 문제와 요청 형식 문제를 분리해서 진단하세요.</li>
+<li>403 한 번으로 불가 판정을 내리지 말고, 헤더와 엔드포인트를 바꿔 재확인하세요.</li>
+<li>페이지네이션과 날짜 경계를 확인한 뒤에만 &ldquo;오늘 기록 없음&quot;을 결론으로 쓰세요.</li>
+</ul>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://kwbaek.github.io/tags/openclaw/">Openclaw</a></li>
+      <li><a href="https://kwbaek.github.io/tags/hermes/">Hermes</a></li>
+      <li><a href="https://kwbaek.github.io/tags/cron/">Cron</a></li>
+      <li><a href="https://kwbaek.github.io/tags/discord/">Discord</a></li>
+      <li><a href="https://kwbaek.github.io/tags/api/">Api</a></li>
+      <li><a href="https://kwbaek.github.io/tags/operations/">Operations</a></li>
+      <li><a href="https://kwbaek.github.io/tags/debugging/">Debugging</a></li>
+    </ul>
+  </footer><script src="https://utteranc.es/client.js"
+        repo="kwbaek/blog-comments"
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://kwbaek.github.io/">Kyungwook&#39;s Devlog</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

@@ -143,6 +143,47 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 팁: always-on 에이전트일수록 모델보다 운영 표면이 먼저다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 OpenClaw 관련 흐름을 보며 다시 느낀 건, always-on 에이전트에서 중요한 건 모델의 화려함보다 운영 표면(ops surface) 이라는 점입니다. NVIDIA가 OpenClaw &#43; NemoClaw 조합으로 로컬 상시형 에이전트 아키텍처를 소개한 것도 결국 같은 이야기입니다. 상시형 에이전트는 한 번 똑똑하게 답하는 것으로 끝나지 않습니다. 메시지를 읽고, 도구를 호출하고, 상태를 남기고, 실패하면 다시 이어서 작업하고, 사람에게는 정말 필요할 때만 끼어들어야 합니다. 즉 문제의 중심이 “무슨 모델을 쓰느냐”에서 “이 에이전트를 어떻게 굴리느냐”로 바뀝니다.
+OpenClaw의 강점은 바로 이 운영 표면을 꽤 현실적으로 제공한다는 데 있습니다. message 같은 first-class 채널 도구가 있고, sessions_spawn으로 일을 분리할 수 있고, heartbeat와 cron으로 주기 작업과 즉시 반응 작업을 나눌 수 있습니다. 이 차이가 큽니다. 많은 로컬 AI 데모는 모델을 띄우는 데까지는 성공하지만, 며칠 동안 조용히 돌아가며 무엇을 언제 해야 하는지 판단하고, 실패를 드러내고, 반복 작업을 안전하게 이어가는 구조까지는 잘 못 갑니다. OpenClaw는 바로 그 지점을 운영 문제로 다룹니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-04-27 21:05:00 +0900 KST'>2026년 4월 27일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 팁: always-on 에이전트일수록 모델보다 운영 표면이 먼저다" href="https://kwbaek.github.io/posts/2026-04-27-openclaw-always-on-agents-need-clear-ops-surfaces/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 팁: 데일리 퍼블리싱은 선별·작성·배포를 분리할수록 더 안정적이다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>OpenClaw로 매일 글을 발행하다 보면, 결국 중요한 건 멋진 한 방 자동화가 아니라 작업을 어디서 끊고 어떻게 넘기느냐라는 걸 자주 느끼게 됩니다. 특히 데일리 블로그 포스팅처럼 “트렌드 읽기 → 핵심 선별 → 글 작성 → Git 커밋 → 정적 사이트 빌드 → 배포 저장소 반영”이 한 줄로 이어진 작업은, 보기에는 단순해도 실제로는 성격이 꽤 다른 단계들이 섞여 있습니다. 이럴 때 가장 안정적인 방식은 전체를 하나의 거대한 셸 스크립트로 밀어붙이는 것보다, 선별·작성·배포를 서로 다른 책임으로 분리하는 것입니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-04-25 21:05:00 +0900 KST'>2026년 4월 25일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 팁: 데일리 퍼블리싱은 선별·작성·배포를 분리할수록 더 안정적이다" href="https://kwbaek.github.io/posts/2026-04-25-openclaw-daily-publishing-works-best-when-selection-writing-and-deploy-are-separated/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 팁: cron 자동화는 셸 래퍼보다 first-class 도구를 쓸 때 덜 깨진다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>OpenClaw로 주기 작업을 오래 돌려보면 금방 체감하는 게 있습니다. 같은 일을 하더라도 셸에서 CLI를 한 번 더 감싸는 방식보다, 가능한 한 first-class 도구를 직접 쓰는 쪽이 훨씬 덜 깨집니다. 겉보기에는 둘 다 자동화처럼 보이지만 운영 품질은 꽤 다릅니다. 특히 cron처럼 정해진 시간에 조용히, 반복적으로, 같은 일을 계속해야 하는 작업에서는 그 차이가 더 크게 드러납니다.
+이유는 단순합니다. 셸 래퍼는 경로, 권한, 출력 형식, 승인 정책, 종료 코드, quoting 같은 주변 조건에 자주 흔들립니다. 반면 OpenClaw의 first-class 도구는 애초에 에이전트 실행 환경 안에서 쓰도록 설계되어 있어서, 메시지 읽기/보내기, 파일 쓰기, 브라우저 조작 같은 핵심 동작을 더 짧은 경로로 처리합니다. 실제로 Discord 채널을 읽고 포스팅 아이디어를 만들거나, dedupe를 확인하고 바로 결과를 발행하는 흐름에서는 message 같은 내장 도구가 셸 경유 CLI보다 훨씬 예측 가능했습니다. 운영자는 화려한 우회보다 실패 지점이 적은 경로를 선택하는 편이 낫습니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-04-24 21:05:00 +0900 KST'>2026년 4월 24일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 팁: cron 자동화는 셸 래퍼보다 first-class 도구를 쓸 때 덜 깨진다" href="https://kwbaek.github.io/posts/2026-04-24-openclaw-first-class-tools-make-cron-automation-less-fragile/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">OpenClaw 팁: 글 작성과 배포를 두 단계 릴리즈로 나누면 자동화가 훨씬 믿을 만해진다
     </h2>
   </header>
@@ -237,49 +278,6 @@
   </div>
   <footer class="entry-footer"><span title='2026-04-16 21:27:00 +0900 KST'>2026년 4월 16일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
   <a class="entry-link" aria-label="post link to OpenClaw 팁: 일일 블로그 워크플로를 에이전트 실행처럼 구조화하면 훨씬 덜 흔들린다" href="https://kwbaek.github.io/posts/2026-04-16-openclaw-openclaw-gets-more-useful-when-your-daily-blog-workflow-is-structured-like-an-agent-run/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw 팁: instruction file 기반 cron 워크플로는 일일 퍼블리싱을 좋은 의미로 boring하게 만든다
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>매일 반복되는 콘텐츠 작업을 OpenClaw로 굴리다 보면, 결국 중요한 건 모델의 화려함보다 실행 인터페이스가 얼마나 명확한가라는 점을 자주 느끼게 됩니다. 오늘처럼 cron이 특정 instruction file을 읽고, Discord 채널에서 신호를 고르고, Hugo 포스트를 만들고, 빌드와 배포까지 이어지는 루틴에서는 특히 그렇습니다. 잘 설계된 자동화는 눈에 띄지 않아야 합니다. 즉, 매번 설명이 필요하지 않고, 같은 규칙으로 조용히 돌아가야 합니다.
-제가 요즘 OpenClaw 워크플로에서 특히 좋다고 느끼는 패턴은 instruction file 기반 cron입니다. 작업의 입력, 산출물 형식, 실패 시 행동, 후속 빌드 단계가 한 파일에 모여 있으면 에이전트가 추측할 여지가 줄어듭니다. 이건 별것 아닌 것처럼 보여도 실무에서는 꽤 큽니다. 자동화가 흔들리는 가장 흔한 이유는 모델이 멍청해서가 아니라, 해야 할 일의 경계가 흐리기 때문입니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-04-13 21:05:00 +0900 KST'>2026년 4월 13일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw 팁: instruction file 기반 cron 워크플로는 일일 퍼블리싱을 좋은 의미로 boring하게 만든다" href="https://kwbaek.github.io/posts/2026-04-13-openclaw-instruction-driven-cron-workflows-make-daily-publishing-boring-in-a-good-way/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw 팁: 일일 블로그 자동화는 리서치와 퍼블리싱이 한 흐름으로 붙어 있을 때 더 좋아진다
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>오늘처럼 OpenClaw로 매일 블로그 포스팅을 만드는 작업을 돌리다 보면, 결국 중요한 건 거창한 생성 능력보다 리서치, 글쓰기, 배포가 하나의 연속된 흐름으로 잘 붙어 있느냐라는 점이라는 걸 다시 느끼게 됩니다. 특히 Discord 채널 읽기 → 핵심 트렌드 선별 → Hugo 포스트 작성 → git 커밋 → hugo 빌드 → public 배포처럼 끝이 분명한 루틴에서는, 각 단계를 따로 최적화하는 것보다 중간 맥락이 끊기지 않게 유지하는 설계가 훨씬 중요합니다.
-왜 이게 중요할까요. 자동화는 보통 두 종류의 실패를 냅니다. 하나는 기술적 실패입니다. 파일이 없거나, 경로가 틀리거나, 빌드가 깨지는 경우죠. 다른 하나는 더 흔하지만 덜 눈에 띄는 실패인데, 앞 단계에서 얻은 맥락이 뒤 단계로 자연스럽게 이어지지 않는 실패입니다. 예를 들어 트렌드는 잘 골랐는데 글이 엉뚱한 방향으로 가거나, 글은 괜찮은데 파일명과 카테고리 체계가 흔들리거나, 콘텐츠는 좋은데 배포 루틴이 들쑥날쑥하면 전체 자동화 품질은 금방 떨어집니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-04-12 21:05:00 +0900 KST'>2026년 4월 12일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw 팁: 일일 블로그 자동화는 리서치와 퍼블리싱이 한 흐름으로 붙어 있을 때 더 좋아진다" href="https://kwbaek.github.io/posts/2026-04-12-openclaw-daily-blog-automation-gets-better-when-research-and-publishing-stay-coupled/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw에서 cron과 세션 워크플로를 제대로 쓰는 법
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>OpenClaw를 조금만 오래 써보면 금방 느끼는 게 있습니다. 문제는 “도구가 많다&#34;가 아니라, 언제 cron을 쓰고 언제 세션을 분리하느냐가 운영 품질을 크게 좌우한다는 점입니다. 처음에는 모든 작업을 한 세션에 몰아넣기 쉽지만, 그렇게 하면 문맥이 무거워지고 스케줄 작업과 실시간 대화가 서로 방해하기 시작합니다.
-핵심 원칙: 정확한 시각은 cron, 긴 문맥 작업은 세션 제가 가장 유용하다고 느끼는 기준은 이렇습니다.
-정확한 시간 실행이 필요하면 cron 배치성 리서치/작성 작업은 분리된 세션이나 isolated run 즉시성 있는 대화는 현재 세션 유지 반복 점검은 heartbeat 또는 cron 중 목적에 맞게 선택 예를 들어 “매일 밤 블로그 초안 쓰기” 같은 작업은 cron이 잘 맞습니다. 반대로 복잡한 구현, 디버깅, 장문 리서치처럼 중간 상태가 많은 일은 별도 세션으로 분리하는 편이 훨씬 안정적입니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-04-11 21:41:00 +0900 KST'>2026년 4월 11일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw에서 cron과 세션 워크플로를 제대로 쓰는 법" href="https://kwbaek.github.io/posts/2026-04-11-openclaw-cron-and-session-workflows-that-actually-scale/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

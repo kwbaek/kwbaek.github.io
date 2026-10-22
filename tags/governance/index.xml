@@ -6,8 +6,24 @@
     <description>Recent content in Governance on Kyungwook&#39;s Devlog</description>
     <generator>Hugo -- 0.165.0</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Sat, 17 Oct 2026 21:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Thu, 22 Oct 2026 20:50:00 +0900</lastBuildDate>
     <atom:link href="https://kwbaek.github.io/tags/governance/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI/ML 트렌드: 엔터프라이즈 에이전트는 데이터 지식층과 실행 경계를 같이 가져야 한다 — NVIDIA Agent Toolkit 확장</title>
+      <link>https://kwbaek.github.io/posts/2026-10-22-ai-ml-trends-nvidia-agent-toolkit-knowledge-and-boundary/</link>
+      <pubDate>Thu, 22 Oct 2026 20:50:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-10-22-ai-ml-trends-nvidia-agent-toolkit-knowledge-and-boundary/</guid>
+      <description>&lt;p&gt;NVIDIA가 GTC Berlin에서 오픈소스 Agent Toolkit을 확장했습니다. 눈에 띄는 점은 모델 성능이 아니라 구성입니다. 기업 데이터를 에이전트가 쓸 수 있는 형태로 만드는 지식 계층(Agent Knowledge Foundation)과, 에이전트가 무엇에 접근하고 무엇을 실행할 수 있는지 정하는 런타임 경계(OpenShell)를 한 묶음으로 내놓았습니다.&lt;/p&gt;
+&lt;h2 id=&#34;무엇이-발표됐나&#34;&gt;무엇이 발표됐나&lt;/h2&gt;
+&lt;p&gt;NVIDIA 블로그(2026-10-21) 기준 구성은 다음과 같습니다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Agent Knowledge Foundation&lt;/strong&gt;: CUDA-X 데이터 라이브러리(cuDF, cuGraph, cuML, cuOpt, cuVS)와 원시 데이터를 고객·제품·주문 같은 업무 개념으로 바꾸는 Auto-Ontology 라이브러리를 포함합니다.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;오픈 모델&lt;/strong&gt;: Nemotron Retriever(검색·재정렬)와 Kumo 계열 구조화 데이터 모델(Tabular, Relational, Time Series, Forecast)을 제공합니다.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;OpenShell&lt;/strong&gt;: 에이전트가 접근하고 실행할 수 있는 범위를 통제하는 보안 런타임입니다.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;NemoClaw 블루프린트&lt;/strong&gt;: 보안 설계가 들어간 전문 에이전트 참조 설계입니다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;발표문은 Palantir Foundry·AIP, Databricks Genie, Snowflake Notebook 연동 사례를 함께 제시합니다. 검색 쪽에서는 SAP 리랭커가 약 3배 빨라졌고 ServiceNow는 지연 시간을 약 4분의 1 줄였다는 고객 수치가 있습니다.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>AI/ML 트렌드: 에이전트가 &#39;길게, 혼자&#39; 일할수록 사용 정책은 행동 단위로 쓰여야 한다</title>
       <link>https://kwbaek.github.io/posts/2026-10-17-ai-ml-trends-usage-policy-autonomy/</link>

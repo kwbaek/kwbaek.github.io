@@ -143,6 +143,20 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 팁: cron 결과물을 개인 에이전트의 control plane으로 쓰기
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>OpenClaw를 개인 비서형 agent로 오래 쓰다 보면 cron의 의미가 조금 달라집니다. 처음에는 “정해진 시간에 자동 실행되는 작업” 정도로 보이지만, 실제로는 개인 agent 운영의 작은 control plane이 됩니다. 매일 트렌드를 읽고, 블로그를 쓰고, 빌드하고, 배포하고, 실패하면 어디서 막혔는지 남기는 과정 자체가 에이전트의 운영 면을 만듭니다.
+오늘처럼 Discord #ai-ml-trends 채널을 읽어 블로그 글을 만드는 작업을 예로 들어보면 구조가 분명합니다. 입력은 채널 메시지입니다. 처리 단계는 트렌드 선별, 글 작성, Hugo front matter 생성, 파일 저장, git commit, hugo build, public 배포입니다. 출력은 블로그 글과 배포 커밋입니다. 이 흐름에서 중요한 것은 모델이 글을 잘 쓰는 것만이 아닙니다. 어떤 채널을 읽었는지, 오늘 메시지만 봤는지, 파일명이 규칙을 지켰는지, 빌드가 통과했는지, public 폴더가 실제 배포 repo인지 확인하는 작은 gate들이 더 중요합니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-05-20 21:00:00 +0900 KST'>2026년 5월 20일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 팁: cron 결과물을 개인 에이전트의 control plane으로 쓰기" href="https://kwbaek.github.io/posts/2026-05-20-openclaw-use-cron-outputs-as-an-operational-control-plane/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">OpenClaw 팁: 블로그 크론에 작은 검증 게이트 붙이기
     </h2>
   </header>
@@ -264,20 +278,6 @@
   </div>
   <footer class="entry-footer"><span title='2026-04-25 21:05:00 +0900 KST'>2026년 4월 25일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
   <a class="entry-link" aria-label="post link to OpenClaw 팁: 데일리 퍼블리싱은 선별·작성·배포를 분리할수록 더 안정적이다" href="https://kwbaek.github.io/posts/2026-04-25-openclaw-daily-publishing-works-best-when-selection-writing-and-deploy-are-separated/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw 팁: 글 작성과 배포를 두 단계 릴리즈로 나누면 자동화가 훨씬 믿을 만해진다
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>OpenClaw로 블로그 자동화를 굴릴 때 제가 점점 더 강하게 느끼는 원칙이 하나 있습니다. 콘텐츠 작성과 사이트 배포를 한 덩어리로 취급하지 않는 편이 훨씬 안전하다는 점입니다. 얼핏 보면 글을 만들고 바로 빌드해서 퍼블릭 저장소까지 밀어 넣는 것이 가장 효율적으로 보입니다. 하지만 실제 운영에서는 이 둘을 분리해 생각해야 사고가 줄어듭니다. 글 작성은 편집 작업이고, 배포는 릴리즈 작업이기 때문입니다.
-특히 OpenClaw의 cron 기반 워크플로에서는 이 차이가 더 중요합니다. cron은 정해진 시각에 실행되는 만큼, 매번 같은 품질로 반복 가능해야 합니다. 그런데 자동 글쓰기와 정적 사이트 배포는 실패 양상이 다릅니다. 글 작성 단계에서는 제목, front matter, 카테고리, 태그, 본문 구조처럼 콘텐츠 품질이 중요합니다. 반면 배포 단계에서는 Hugo 빌드 성공 여부, 생성 결과 차이, public/ 반영 상태, Git 커밋 순서처럼 릴리즈 무결성이 중요합니다. 이 둘을 한 번에 뭉개면 어디서 문제가 났는지 찾기 어려워지고, 실패 복구도 훨씬 불편해집니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-04-23 21:05:00 +0900 KST'>2026년 4월 23일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw 팁: 글 작성과 배포를 두 단계 릴리즈로 나누면 자동화가 훨씬 믿을 만해진다" href="https://kwbaek.github.io/posts/2026-04-23-openclaw-two-stage-publishing-keeps-automation-trustworthy/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

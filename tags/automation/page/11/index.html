@@ -143,6 +143,21 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 실무 메모: 과금 유연화·vLLM 진화가 만드는 코딩 에이전트 운영 전략
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>#ai-ml-trends 채널에서 오늘 가장 즉시 적용 가능한 OpenClaw 포인트는 두 가지입니다. 하나는 비용 구조, 하나는 서빙 체인입니다.
+첫 번째는 OpenAI의 Codex 팀용 과금 완화(토큰 기반 유연 과금)입니다. 이건 단순 가격 공지 같지만, 팀 운영 입장에선 꽤 다릅니다. 고정 좌석 비용이 부담이던 환경에서는 사용량이 작을 때 과금 손실이 컸고, 과금 변동성이 크면 팀이 에이전트 사용을 회피하기도 합니다. 사용량 기반으로 바뀌면 OpenClaw에서는 에이전트 사용을 ‘실험 구간/운영 구간’으로 나눠 운영하기 쉬워집니다.
+즉, 아이디어가 필요할 때는 짧게 강하게, 업무 피크 구간에서만 과감하게 뽑아 쓰고, 휴식 구간에서는 가볍게 돌아가도록 정책을 짜는 식입니다. 결과적으로 같은 작업도 월간 총비용을 더 안정적으로 통제할 수 있습니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-04-06 21:34:00 +0900 KST'>2026년 4월 6일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 실무 메모: 과금 유연화·vLLM 진화가 만드는 코딩 에이전트 운영 전략" href="https://kwbaek.github.io/posts/2026-04-06-openclaw-pricing-serving-and-ops-choices/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">OpenClaw 운영 팁: 가격 구조 변화와 추론 스택 변화가 가져온 코딩 에이전트 운영 포인트
     </h2>
   </header>
@@ -266,20 +281,6 @@ pdf 도구가 왜 반가운가를 먼저 보면, 이전에는 PDF 처리 작업�
   </div>
   <footer class="entry-footer"><span title='2026-03-23 21:00:00 +0900 KST'>2026년 3월 23일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
   <a class="entry-link" aria-label="post link to OpenClaw 팁: 매일 쓰는 자동화일수록 새 기능보다 신뢰성 패치가 더 중요하다" href="https://kwbaek.github.io/posts/2026-03-23-openclaw-reliability-beats-feature-chasing-in-daily-ops/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw 팁: heartbeat 하나로 릴리즈 체크와 운영 보고를 가볍게 돌리는 법
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>OpenClaw를 오래 돌리다 보면, 거창한 자동화보다 더 자주 필요한 작업이 있습니다. 바로 “오늘 바뀐 게 있는지 짧게 확인하고, 있으면 바로 요약해서 남기는 일” 입니다. 릴리즈 체크, 운영 이슈 확인, 간단한 헬스체크, 팀 채널 보고 같은 루틴이 대표적이죠. 이런 작업은 중요하지만 너무 무겁게 설계하면 금방 귀찮아지고, 반대로 너무 느슨하면 놓치기 쉽습니다. 이럴 때 잘 맞는 패턴이 heartbeat &#43; 짧은 구조화 보고 조합입니다.
-핵심 아이디어는 단순합니다. heartbeat는 정확히 정각에 돌아야 하는 잡이 아니라, “주기적으로 상태를 살핀다&#34;는 성격의 작업에 더 잘 맞습니다. 예를 들어 브라우저 연결 상태를 확인하고, 최신 릴리즈가 있는지 보고, 있으면 요약 포인트 2~3개만 정리해 특정 채널에 남기는 흐름입니다. 이 방식의 장점은, 여러 개의 작은 운영 점검을 하나의 문맥 안에 묶을 수 있다는 점입니다. 메일 체크 하나, 릴리즈 확인 하나, 헬스 엔드포인트 점검 하나를 각각 별도 잡으로 쪼개는 것보다 훨씬 가볍습니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-03-22 21:00:00 +0900 KST'>2026년 3월 22일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw 팁: heartbeat 하나로 릴리즈 체크와 운영 보고를 가볍게 돌리는 법" href="https://kwbaek.github.io/posts/2026-03-22-openclaw-heartbeat-release-watch-pattern/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

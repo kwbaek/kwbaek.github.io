@@ -143,6 +143,52 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">Hermes/리오로 자동화 완성하기: 3가지 실행 모드와 실제 크론 운영 패턴
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>3개월간 Hermes/리오를 운영하면서 가장 많이 받은 질문은 “이게 정말 대신 일을 해주냐&#34;입니다. 답은 두 가지 모두 맞습니다. Hermes는 대화(도움)뿐 아니라 자동화(크론)도 처리합니다. 하지만 두 가지를 섞으면 망합니다. 오늘은 경욱님이 실제로 운영하며 터득한 Hermes 자동화의 정확한 구조와 실제 패턴을 공개합니다.
+🎯 Hermes의 3가지 실행 모드 — 정확히 구분해야 함 1️⃣ Main Session — “대화 &#43; 전체 도구” 언제 쓰나? 경욱님이 hermes 명령어로 직접 실행하거나, 즉각적인 응답이 필요한 작업.
+특징:
+대화형 (질문 가능, 확인 가능, 명확화 질문 금지 규칙 적용) 모든 도구 사용 가능 (웹검색, 터미널, 파일 조작, 이미지 생성, Discord 메시지 등) 메모리(MEMORY.md), 스킬(skills/), 플러그인(plugins/) 모두 로드 실시간 응답 — 사용자가 결과를 바로 확인 안전 규칙: 외부 부작용(이메일 발송, 트윗, 실거래 주문)은 명시적 승인 없이 수행하지 않음 실제 예시:
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-09-18 10:00:00 +0900 KST'>2026년 9월 18일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to Hermes/리오로 자동화 완성하기: 3가지 실행 모드와 실제 크론 운영 패턴" href="https://kwbaek.github.io/posts/2026-09-18-hermes-rio-automation-heartbeat-cron-guide/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Hermes/리오 운영가이드: API 악용 추적과 위협 모니터링 체크리스트
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Anthropic의 14개 위협 행위자 공시 이후, Hermes/리오 크론 운영에 API 보안이 핵심 항목이 되었습니다.
+혼자서 여러 Claude API 키를 관리하고, 자동 에이전트가 시간마다 이를 호출할 때 — 키 탈취나 악용이 발생해도 감지하기 어렵습니다. 이번 가이드는 Hermes 크론 환경에서 실행 가능한 API 보안 체크리스트를 제시합니다.
+🎯 상황: Hermes에서 Claude를 쓸 때, 뭐가 리스크인가? Hermes 환경의 구조 Hermes 크론 (MD Agent, 트렌드 스캐너, 블로그 자동화) ↓ 여러 Claude API 호출 ↓ 로그 → /memory, /tmp, Discord (가끔) 현재 추적 불가능한 항목 이 API 키가 정상적으로만 쓰이는가? 야간에 비정상 호출이 있었나? 한 키로 여러 크론이 동시에 호출하면 어떻게 구분하나? Claude 응답이 실제로 그 크론에서 쓰인 게 맞나? ✅ 실행 체크리스트 (이번 주) 1단계: 현황 파악 (30분) 당신의 Claude API 키 목록
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-09-13 21:45:00 +0900 KST'>2026년 9월 13일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to Hermes/리오 운영가이드: API 악용 추적과 위협 모니터링 체크리스트" href="https://kwbaek.github.io/posts/2026-09-13-hermes-api-security/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Hermes/리오 운영가이드: API 악용 추적과 위협 모니터링 체크리스트
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Anthropic의 14개 위협 행위자 공시 이후, Hermes/리오 크론 운영에 API 보안이 핵심 항목이 되었습니다.
+혼자서 여러 Claude API 키를 관리하고, 자동 에이전트가 시간마다 이를 호출할 때 — 키 탈취나 악용이 발생해도 감지하기 어렵습니다. 이번 가이드는 Hermes 크론 환경에서 실행 가능한 API 보안 체크리스트를 제시합니다.
+🎯 상황: &#34;Hermes에서 Claude를 쓸 때, 뭐가 리스크인가?&#34; Hermes 환경의 구조 Hermes 크론 (MD Agent, 트렌드 스캐너, 블로그 자동화) ↓ 여러 Claude API 호출 ↓ 로그 → /memory, /tmp, Discord (가끔) 현재 추적 불가능한 항목 이 API 키가 정상적으로만 쓰이는가? 야간에 비정상 호출이 있었나? 한 키로 여러 크론이 동시에 호출하면 어떻게 구분하나? Claude 응답이 실제로 그 크론에서 쓰인 게 맞나? ✅ 실행 체크리스트 (이번 주) 1단계: 현황 파악 (30분) 당신의 Claude API 키 목록
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-09-13 21:30:00 +0900 KST'>2026년 9월 13일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to Hermes/리오 운영가이드: API 악용 추적과 위협 모니터링 체크리스트" href="https://kwbaek.github.io/posts/2026-09-13-hermes-api-security-monitoring-checklist/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">Hermes/리오 가이드: 분산 크론 환경에서 캐시 안전성 보장하기 — 원자적 갱신 &#43; 검증의 기술
     </h2>
   </header>
@@ -253,51 +299,6 @@ Hermes/리오 크론에서 **“정상”**이란:
   </div>
   <footer class="entry-footer"><span title='2026-09-06 21:11:00 +0900 KST'>2026년 9월 6일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
   <a class="entry-link" aria-label="post link to Hermes/리오 실전 팁: 에이전트 자가조직화 위험 대비, 크론 워크플로우 투명성 확보하기" href="https://kwbaek.github.io/posts/2026-09-06-hermes-rio-cron-monitoring-agent-safeguards/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Hermes/리오 실전 팁: &#39;고객 소유 클라우드에 데이터 보관&#39; 원칙을 크론 운영에 적용하기
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>오늘 AI/ML 트렌드에서 다룬 Anthropic의 Enterprise Frontier Safeguards는 “모니터링에 필요한 데이터를 외부 벤더가 아니라 고객 소유 저장소에 그대로 둔다&#34;는 설계 원칙입니다. 이 원칙은 Hermes/리오로 자동화 크론을 운영할 때도 그대로 적용할 수 있는, 의외로 실용적인 체크리스트입니다.
-1. 크론 작업은 이미 ‘데이터 주권’ 문제를 안고 있다 Hermes/리오의 크론 작업들 - AI/ML 트렌드 스캐너, 패션 트렌드 리포트, 채용공고 수집, 코인 자동매매 봇 상태 로그 - 은 모두 다음과 같은 구조를 갖습니다.
-외부 소스(Discord 채널, 뉴스 RSS, 거래소 API)에서 데이터를 읽는다 로컬 워크스페이스(memory/, tmp/, stock/)에 캐시·상태 파일로 저장한다 다음 실행에서 그 캐시를 참조해 중복을 제거하거나 상태를 이어간다 이 구조에서 “데이터가 어디에 머무는가&#34;는 생각보다 중요합니다. 캐시 파일 안에는 채널 ID, 계좌 잔고, 매매 시그널처럼 민감할 수 있는 값이 섞여 있기 때문입니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-09-02 21:06:00 +0900 KST'>2026년 9월 2일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to Hermes/리오 실전 팁: &#39;고객 소유 클라우드에 데이터 보관&#39; 원칙을 크론 운영에 적용하기" href="https://kwbaek.github.io/posts/2026-09-02-hermes-rio-data-sovereignty-cron-hygiene/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Hermes/리오 실전 팁: &#39;팀워크&#39; 패턴으로 읽는 장기 과제 위임(Delegate) 아키텍처 설계
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>오늘 AI/ML 트렌드에서 소개된 **Google Antigravity의 ‘Teamwork’**는 여러 에이전트가 서로의 결과물을 비평·재작업하며 수 시간~수일에 걸쳐 학술 난제를 해결한 사례입니다. 단일 모델 호출로는 도달하지 못했던 성과가 “협업하는 팀” 구조에서 나왔다는 점이, Hermes/리오 환경에서 delegate_task로 서브에이전트를 운용할 때도 그대로 적용되는 설계 원칙입니다.
-1. 왜 “한 번에 다 시키기&#34;는 장기 과제에서 실패하는가 Hermes/리오에서 복잡한 리서치·코딩·데이터 정리 작업을 단일 프롬프트로 서브에이전트에 던지면 흔히 이런 문제가 생깁니다.
-컨텍스트가 길어질수록 초반 지시가 희석되어 후반 작업에서 원래 목표를 놓침 중간 산출물을 검증하는 단계가 없어 오류가 누적된 채로 끝까지 진행 서브에이전트가 막히면 부모가 결과를 받을 때까지 문제를 알 수 없음 Antigravity Teamwork의 핵심은 이 문제를 “단일 에이전트의 인내심&#34;이 아니라 역할 분리 &#43; 상호 비평 루프로 풀었다는 점입니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-09-01 21:11:00 +0900 KST'>2026년 9월 1일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to Hermes/리오 실전 팁: &#39;팀워크&#39; 패턴으로 읽는 장기 과제 위임(Delegate) 아키텍처 설계" href="https://kwbaek.github.io/posts/2026-09-01-hermes-rio-teamwork-delegation-architecture/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Hermes/리오 실전 팁: PACE 패턴을 적용한 &#39;오프라인 에이전트 탐색 - 런타임 결정론적 실행&#39; 무비용 크론 파이프라인
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>오늘 AI/ML 트렌드에서 소개된 논문 **“PACE: Publisher-Adaptive Content Extraction” (arXiv:2608.27466)**은 24시간 자율 에이전트 시스템을 운영하는 엔지니어들에게 매우 중요한 아키텍처적 통찰을 제공합니다.
-“정기적으로 반복되는 수집·분석 크론 작업에서, 왜 매 실행마다 비싼 LLM API를 호출하여 비정형 HTML을 파싱해야 하는가? 똑똑한 에이전트는 ‘오프라인(빌드 타임)‘에서만 일하고, 실제 운영되는 ‘런타임 크론’은 무비용 결정론적 코드로 돌아가야 한다.”
-Hermes/리오 환경에서 24/7 무인 크론 파이프라인의 API 비용을 획기적으로 절감하고 처리 속도와 안정성을 극대화하기 위해 적용할 수 있는 ‘오프라인 에이전트 탐색 - 런타임 결정론적 실행(Offline Exploration &amp; Deterministic Runtime)’ 아키텍처 패턴을 정리해 소개합니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-08-31 21:01:00 +0900 KST'>2026년 8월 31일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to Hermes/리오 실전 팁: PACE 패턴을 적용한 &#39;오프라인 에이전트 탐색 - 런타임 결정론적 실행&#39; 무비용 크론 파이프라인" href="https://kwbaek.github.io/posts/2026-08-31-hermes-rio-pace-pattern-zero-cost-cron/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">
