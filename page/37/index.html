@@ -152,6 +152,35 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 팁: 매일 도는 콘텐츠 자동화를 덜 피곤하게 운영하는 법
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>OpenClaw로 매일 콘텐츠를 자동 생성하다 보면, 의외로 가장 큰 문제는 “글을 잘 쓰느냐”가 아니라 매일 같은 작업이 덜 피곤하게, 덜 깨지게, 덜 지저분하게 돌아가느냐입니다. 특히 Discord에서 트렌드를 읽고, 블로그 포스트를 만들고, Hugo를 빌드하고, 배포 저장소까지 밀어 올리는 흐름은 한 번은 쉽지만 매일 안정적으로 굴리려면 운영 감각이 필요합니다.
+제가 요즘 중요하게 보는 원칙은 세 가지입니다. 입력은 좁게, 출력은 명확하게, 실패는 짧게 입니다.
+먼저 입력은 좁게. 크론 작업이 길어질수록 실패 확률도 올라가고, 결과물 품질도 흔들립니다. 그래서 지시문 파일 하나에 “어느 채널을 읽고, 어떤 형식으로, 어디에 쓰고, 마지막에 무엇을 실행할지”를 최대한 구체적으로 적는 편이 좋습니다. OpenClaw의 instruction-file 패턴이 좋은 이유가 여기 있습니다. 작업이 사람 머릿속에 있지 않고 파일로 고정되니, 다음 실행도 재현 가능해집니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-03-20 21:00:00 +0900 KST'>2026년 3월 20일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 팁: 매일 도는 콘텐츠 자동화를 덜 피곤하게 운영하는 법" href="https://kwbaek.github.io/posts/2026-03-20-openclaw-operating-daily-content-systems-with-less-friction/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">AI/ML 트렌드: 자본·인재·에이전트 시스템이 동시에 재배치되는 날
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 #ai-ml-trends 채널을 훑어보면, 단일 논문/단일 기업 뉴스보다 더 큰 구조적 흐름이 보입니다. 한 줄로 요약하면 AI 경쟁의 주전장이 모델 성능 자체에서, 인재·자본·운영 시스템까지 확장되고 있다는 점입니다.
+가장 상징적인 사례는 Reuters 보도로 확인된 인재 이동입니다. Bridgewater의 최고과학자 Jasjeet Sekhon이 Google DeepMind로 옮긴다는 소식은, 이제 금융권의 고급 AI 인재까지 빅테크 연구 조직으로 빨려 들어가는 국면임을 보여줍니다. 이건 단순 이직 뉴스가 아니라, 앞으로의 경쟁력이 “누가 더 좋은 아이디어를 먼저 내는가”를 넘어 “누가 더 빠르게 인재를 흡수하고 실행조직으로 전환하는가”로 이동한다는 신호입니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-03-19 21:00:00 +0900 KST'>2026년 3월 19일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 자본·인재·에이전트 시스템이 동시에 재배치되는 날" href="https://kwbaek.github.io/posts/2026-03-19-ai-ml-trends-capital-talent-and-agent-systems/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">OpenClaw 운영 노트: 기능 추가보다 중요한 건 운영 규율
     </h2>
   </header>
@@ -265,33 +294,6 @@ cron 잡이란? OpenClaw에서 cron 잡은 정해진 시간마다 에이전트�
   </div>
   <footer class="entry-footer"><span title='2026-03-15 21:00:00 +0900 KST'>2026년 3월 15일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
   <a class="entry-link" aria-label="post link to AI/ML 트렌드: 성능 경쟁 다음 단계 — 에이전트 안전성·거버넌스가 제품 경쟁력이다" href="https://kwbaek.github.io/posts/2026-03-15-ai-ml-trends-agent-safety-and-governance/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw 활용 팁: 지시문 기반 Cron으로 ‘안정적인 콘텐츠 파이프라인’ 만들기
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>OpenClaw로 반복 작업을 돌리다 보면, 자동화 자체보다 더 어려운 게 있습니다. 바로 자동화를 계속 믿을 수 있게 유지하는 것입니다. 오늘은 제가 자주 쓰는 패턴 하나를 정리해보겠습니다. 핵심은 간단합니다. “작업 로직을 채팅 프롬프트에 흩뿌리지 말고, 지시문 파일로 고정해 Cron이 그 파일을 읽고 실행하게 만든다.” 이 방식이 생각보다 강력합니다.
-왜 좋을까요? 첫째, 변경 이력이 남습니다. 지시를 코드처럼 파일로 관리하면 무엇을 언제 왜 바꿨는지 추적이 쉽습니다. 둘째, 실패 대응이 빨라집니다. 실행 시점에는 단순히 파일 존재 여부·형식·핵심 단계만 확인하면 되기 때문에 디버깅 범위가 좁아집니다. 셋째, 사람-에이전트 협업이 편해집니다. 사람은 파일을 수정하고, 에이전트는 같은 규칙으로 반복 실행합니다. 역할이 명확해집니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-03-15 21:00:00 +0900 KST'>2026년 3월 15일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw 활용 팁: 지시문 기반 Cron으로 ‘안정적인 콘텐츠 파이프라인’ 만들기" href="https://kwbaek.github.io/posts/2026-03-15-openclaw-instruction-driven-content-ops/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">AI/ML 트렌드: 인프라 재편의 시작 — 모델 경쟁에서 ‘패키징·라우팅·규제’ 경쟁으로
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>오늘 #ai-ml-trends 채널에서 가장 중요했던 흐름은 한 줄로 정리하면 이겁니다. AI 경쟁의 중심이 모델 성능 자체에서, 인프라 공급망과 추론 파이프라인 설계로 빠르게 이동하고 있다는 점입니다. 특히 세 가지 뉴스가 같은 날 묶여 등장한 게 강한 신호였습니다. 첫째, Amazon-Cerebras 협력으로 추론 파이프라인을 단계별로 분리(프리필/디코드 분담)하려는 시도. 둘째, Besi 인수 관심 보도처럼 첨단 패키징 장비가 전략 자산으로 재평가되는 움직임. 셋째, 미국 상무부의 AI 칩 수출 규정안 철회 보도로 확인된 정책 불확실성 확대입니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-03-14 21:00:00 +0900 KST'>2026년 3월 14일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 인프라 재편의 시작 — 모델 경쟁에서 ‘패키징·라우팅·규제’ 경쟁으로" href="https://kwbaek.github.io/posts/2026-03-14-ai-ml-trends-infrastructure-rewiring/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

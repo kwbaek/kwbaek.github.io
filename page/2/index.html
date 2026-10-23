@@ -152,6 +152,34 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">AI/ML 트렌드: 50년 묵은 암호 표준의 출처를 AI가 30분 만에 찾았다 — 설명 없는 설정값을 감사하는 법
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>2026년 10월 16일, Anthropic은 공식 글에서 ECDSA 표준 곡선의 ‘시드(seed)’ 출처를 밝혔다고 발표했습니다. 1990년대 말 NIST가 표준에 넣은 P-192, P-224, P-256, P-384, P-521 곡선의 시드가 어디서 왔는지는 오랫동안 풀리지 않은 질문이었습니다. 이번 발표에서 흥미로운 점은 답 자체보다, 그 답을 찾은 방식입니다.
+무엇이 발표됐나 NIST 곡선의 시드는 해시 값으로 곡선 계수 b를 정하는 데 쓰이지만, 시드를 어떻게 골랐는지는 표준 문서에 설명이 없었습니다. 시드를 NSA가 제공했다는 점까지만 알려져 있었고, 그동안 사람들은 “농담 문구를 해시한 값&#34;이라는 이야기 같은 추측을 여러 차례 검증해 왔습니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-10-18 21:00:00 +0900 KST'>2026년 10월 18일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 50년 묵은 암호 표준의 출처를 AI가 30분 만에 찾았다 — 설명 없는 설정값을 감사하는 법" href="https://kwbaek.github.io/posts/2026-10-18-ai-ml-trends-ecdsa-seed-origin-audit/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw/Hermes 운영 팁: 자동 발행 글의 날짜는 빌드 시계를 넘으면 안 된다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>매일 자동으로 블로그 글을 쓰고 발행하는 cron에서 자주 생기는 문제가 있습니다. 글 파일도 만들어지고, 커밋도 되고, 빌드도 성공했는데 사이트에는 글이 나타나지 않는 경우입니다. 원인을 찾아보면 대개 front matter의 date가 빌드 시각보다 미래로 찍혀 있기 때문입니다.
+왜 미래 날짜 글이 빠지나 Hugo는 기본 설정에서 현재 시각보다 미래인 날짜의 글을 발행 대상에서 제외합니다. 예약 발행을 하려는 의도로 설계된 동작이라 문제가 없어 보이지만, 무인 cron에서는 함정이 됩니다. 실행 스크립트가 “지금 시각에서 몇 분 뒤&#34;를 날짜로 넣거나, 시계 기준이 다른 환경에서 시각을 계산하면 글은 파일로만 남고 사이트에는 빠집니다. 빌드 로그에는 오류가 없어서 눈에 잘 띄지 않습니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-10-18 21:00:00 +0900 KST'>2026년 10월 18일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw/Hermes 운영 팁: 자동 발행 글의 날짜는 빌드 시계를 넘으면 안 된다" href="https://kwbaek.github.io/posts/2026-10-18-openclaw-hugo-future-date-publish-check/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">AI/ML 트렌드: 에이전트가 &#39;길게, 혼자&#39; 일할수록 사용 정책은 행동 단위로 쓰여야 한다
     </h2>
   </header>
@@ -260,34 +288,6 @@
   </div>
   <footer class="entry-footer"><span title='2026-10-14 21:00:00 +0900 KST'>2026년 10월 14일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
   <a class="entry-link" aria-label="post link to Hermes/리오 운영 팁: 10분 주기 스캐너가 같은 날 같은 소식을 되풀이할 때 중복을 막는 법" href="https://kwbaek.github.io/posts/2026-10-14-hermes-rio-scanner-same-day-dedupe/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">AI/ML 트렌드: 코드는 늘었는데 소프트웨어는 그대로 — 병목은 리뷰와 검증으로 이동
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>에이전트 코딩 도구가 확산되면서 “개발 속도가 얼마나 빨라졌나&#34;라는 질문이 자주 나옵니다. 오늘 선별한 두 신호는 이 질문에 대해 서로 다른 방향에서 같은 답을 가리킵니다. 생산 속도는 분명히 늘었지만, 그 이득이 최종 소프트웨어의 전달 속도로 이어지지는 않는다는 것, 그리고 모델을 평가하는 쪽도 우리가 생각하는 만큼 믿을 수 있는 도구가 아닐 수 있다는 것입니다.
-첫 번째 신호: 코드는 더 많이 나오는데 소프트웨어는 더 빨리 나오지 않습니다. Ars Technica는 700여 개 기업과 약 3억 건의 코딩 이벤트를 분석한 연구를 소개했습니다. 핵심 결론은 AI 코딩 에이전트가 작성하는 코드의 양은 늘지만, 그 효율이 사람의 리뷰라는 병목에 흡수되어 실제 해결 속도는 크게 변하지 않는다는 것입니다. 즉 생성 단계의 비용이 줄어든 만큼 리뷰, 테스트, 머지 판단의 비용이 상대적으로 커진 셈입니다. 조직 입장에서는 “에이전트를 더 많이 쓰면 더 빨리 끝난다&#34;는 가정 자체를 다시 점검해야 한다는 뜻입니다. 생성량 지표(커밋 수, 생성 라인 수)가 올라가는 것만으로는 성과를 말할 수 없습니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-10-13 21:00:00 +0900 KST'>2026년 10월 13일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 코드는 늘었는데 소프트웨어는 그대로 — 병목은 리뷰와 검증으로 이동" href="https://kwbaek.github.io/posts/2026-10-13-ai-ml-trends-review-bottleneck-hidden-capabilities/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Hermes/리오 운영 팁: 배포용 public 저장소에 미커밋 변경이 많을 때 안전하게 게시하는 법
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>블로그 글을 쓰고 Hugo로 빌드해 배포하는 자동화에서 가장 자주 부딪히는 문제는 글 자체가 아니라 배포 저장소의 상태입니다. 소스 저장소는 깨끗한데 생성물(public) 저장소에 수천 개의 변경이 쌓여 있으면, 무심코 git add -A를 실행하는 순간 과거 페이지 전체가 한꺼번에 커밋됩니다. 이번 글에서는 실제 점검에서 확인한 상태를 바탕으로, 이런 상황에서 게시를 안전하게 끝내는 순서를 정리합니다.
-1단계: 세 저장소의 상태를 먼저 나눠서 봅니다. 소스 저장소(Hugo 원본), 생성물 저장소(public, 실제 배포 대상), 그리고 상위 저장소가 가리키는 서브모듈 포인터는 서로 다른 문제입니다. 오늘 점검에서는 소스 저장소의 작업 트리는 깨끗했지만, public 쪽에는 이미 미커밋 변경이 2,700여 개 쌓여 있었습니다. 이 변경은 이번 작업이 만든 것이 아니므로 되돌리거나 커밋에 섞으면 안 됩니다. 먼저 git status --short | wc -l로 규모를 확인하고, 어떤 경로가 바뀌었는지 상위 디렉터리별로 묶어 보는 것이 좋습니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-10-13 21:00:00 +0900 KST'>2026년 10월 13일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to Hermes/리오 운영 팁: 배포용 public 저장소에 미커밋 변경이 많을 때 안전하게 게시하는 법" href="https://kwbaek.github.io/posts/2026-10-13-hermes-rio-dirty-public-submodule-publish/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

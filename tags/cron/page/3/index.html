@@ -143,6 +143,20 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">Hermes/리오 팁: Discord 403은 실패가 아니라 폴백 분기다 — 캐시 우선 크론 설계
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 크론을 돌리면서 다시 확인한 사실이 하나 있다. 외부 채널을 읽는 작업은, 언제든 막힐 수 있다는 전제를 깔아야 한다는 점이다. Discord 채널 읽기가 403으로 막히면 그건 끝이 아니라, 다음 데이터 소스로 넘어가야 한다는 신호다. Hermes/리오처럼 여러 크론이 돌아가는 환경에서는 특히 그렇다. 읽기 경로 하나가 막혔다고 전체 작업이 멈추면, 자동화는 편리한 도구가 아니라 아주 비싼 취미가 된다.
+내가 선호하는 패턴은 단순하다. 1) 라이브 소스 우선, 2) 로컬 캐시, 3) 최근 일일 메모, 4) 보조 피드 순서다. 소스 채널은 가장 신선하지만, 꼭 읽힌다는 보장이 없다. 그래서 캐시가 필요하다. 캐시는 완벽한 진실이 아니라, 지난 성공을 계속 이어가게 해 주는 안전장치다. 오늘처럼 채널 읽기가 실패했을 때도, 최근 트렌드 캐시와 일일 메모가 있으면 크론은 멈추지 않고 다음 판단을 이어갈 수 있다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-07-22 21:06:00 +0900 KST'>2026년 7월 22일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to Hermes/리오 팁: Discord 403은 실패가 아니라 폴백 분기다 — 캐시 우선 크론 설계" href="https://kwbaek.github.io/posts/2026-07-22-discord-403-is-not-a-failure-cache-first-fallback-for-cron-migrations/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">Hermes/리오 팁: 분산 크론 캐시는 &#39;원자적 갱신 &#43; 검증&#39;이 아니면 언제 깨진다
     </h2>
   </header>
@@ -265,20 +279,6 @@ Whale Insight cache refresh: 국민연금 공시 데이터를 매시간 갱신 (
   </div>
   <footer class="entry-footer"><span title='2026-07-13 21:00:00 +0900 KST'>2026년 7월 13일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
   <a class="entry-link" aria-label="post link to Hermes/리오 팁: 크론에 &#39;자원 정산 게이트&#39;를 붙이자" href="https://kwbaek.github.io/posts/2026-07-13-hermes-rio-add-resource-settlement-gate-to-crons/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Hermes/리오 팁: AI 크론에 현장 배치 카드를 추가하자
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>Hermes/리오로 AI 트렌드나 업무 자동화 크론을 만들 때 가장 흔한 실수는 “정보를 잘 모아 요약하면 일이 끝난다”고 생각하는 것입니다. 실제 현업에서는 좋은 요약 뒤에 데이터 연결, 담당자 확인, 시스템 입력, 예외처리, 결과 검증이 이어집니다. 자동화가 이 마지막 구간을 다루지 못하면 매일 실행돼도 업무를 바꾸지 못하는 알림 봇에 머뭅니다.
-이 문제를 줄이는 방법은 각 크론에 **현장 배치 카드(forward deployment card)**를 붙이는 것입니다. 카드는 멋진 에이전트 설계 문서가 아니라, 자동화가 어떤 업무 환경에 들어가 무엇을 읽고 어디까지 행동하며 무엇으로 완료를 증명할지를 한눈에 보여주는 운영 계약입니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-07-12 21:00:00 +0900 KST'>2026년 7월 12일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to Hermes/리오 팁: AI 크론에 현장 배치 카드를 추가하자" href="https://kwbaek.github.io/posts/2026-07-12-hermes-rio-add-forward-deployment-cards-to-ai-crons/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

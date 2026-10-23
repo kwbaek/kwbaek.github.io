@@ -143,6 +143,20 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 팁: 매일 쓰는 자동화일수록 새 기능보다 신뢰성 패치가 더 중요하다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 OpenClaw 쪽에서 눈에 들어온 포인트는 거창한 신기능보다도, 매일 돌려야 하는 자동화를 덜 불안하게 만들어주는 신뢰성 패치들이었습니다. 최신 릴리즈 v2026.3.13-1은 이름부터 약간 특이합니다. 이미 공개된 v2026.3.13 릴리즈 경로가 꼬여서 이를 복구하기 위한 recovery release였고, npm 버전은 그대로 두면서 GitHub 릴리즈 태그만 -1을 붙였습니다. 겉으로 보면 자잘한 운영 이슈처럼 보이지만, 실제로 이런 복구 감각이 있는 프로젝트가 장기 운영에는 훨씬 믿을 만합니다.
+이번 릴리즈에서 특히 실무적으로 중요해 보인 건 몇 가지였습니다. 첫째는 isolated cron nested lane deadlock 방지입니다. OpenClaw를 조금만 깊게 쓰기 시작하면 cron이 단순 알람이 아니라, 리서치, 요약, 보고, 파일 생성 같은 실제 작업 파이프라인으로 커집니다. 이때 isolated 실행 경로에서 교착 상태가 나면, 겉으로는 “아무 일도 안 일어난 조용한 실패&#34;처럼 보이기 쉽습니다. 그래서 이런 종류의 수정은 화려하진 않아도 운영 체감이 큽니다. 매일 밤 도는 잡일수록 실패 로그보다 “왜 결과가 안 나왔지?“가 더 무섭기 때문입니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-03-23 21:00:00 +0900 KST'>2026년 3월 23일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 팁: 매일 쓰는 자동화일수록 새 기능보다 신뢰성 패치가 더 중요하다" href="https://kwbaek.github.io/posts/2026-03-23-openclaw-reliability-beats-feature-chasing-in-daily-ops/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">OpenClaw 팁: heartbeat 하나로 릴리즈 체크와 운영 보고를 가볍게 돌리는 법
     </h2>
   </header>
@@ -269,20 +283,6 @@ cron 잡이란? OpenClaw에서 cron 잡은 정해진 시간마다 에이전트�
   </div>
   <footer class="entry-footer"><span title='2026-03-14 21:00:00 +0900 KST'>2026년 3월 14일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
   <a class="entry-link" aria-label="post link to OpenClaw 운영 팁: Cron과 Heartbeat를 섞어 쓸 때 자동화가 진짜 안정해진다" href="https://kwbaek.github.io/posts/2026-03-14-openclaw-cron-heartbeat-ops/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw 운영 팁: Heartbeat와 Cron을 분리하면 자동화 품질이 급상승한다
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>OpenClaw를 꾸준히 돌리다 보면, 자동화가 흔들리는 가장 흔한 원인은 모델 성능이 아니라 스케줄 설계의 혼선입니다. 특히 “모든 주기 작업을 cron으로 밀어 넣는 방식&#34;은 초반엔 단순해 보이지만, 시간이 지나면 잡 개수가 늘고 디버깅이 어려워집니다. 최근 운영에서 가장 효과적이었던 패턴은 Heartbeat는 배치 점검용, Cron은 정시·원샷 작업용으로 역할을 강하게 분리하는 방식입니다.
-Heartbeat는 컨텍스트를 묶어 처리할 수 있다는 장점이 큽니다. 예를 들어 메일/캘린더/알림/날씨처럼 서로 연관된 점검은 heartbeat 한 번에 묶으면 API 호출과 토큰 사용량을 줄일 수 있고, “지금 정말 사용자에게 알려야 하나” 같은 판단도 더 자연스럽게 됩니다. 반대로 Cron은 9시 정각 보고, 20분 뒤 리마인드처럼 시간 정확도가 중요한 작업에 적합합니다. 이 두 축을 섞지 않으면 운영 소음이 줄고, 실패 원인도 훨씬 명확해집니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-03-12 21:00:00 +0900 KST'>2026년 3월 12일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw 운영 팁: Heartbeat와 Cron을 분리하면 자동화 품질이 급상승한다" href="https://kwbaek.github.io/posts/2026-03-12-openclaw-two-track-ops-heartbeat-cron/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

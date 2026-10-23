@@ -143,6 +143,20 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">AI/ML 트렌드: 수출통제는 이제 물류 레이어에서 집행된다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 AI/ML 트렌드에서 가장 눈에 띄는 신호는 Reuters가 전한 말레이시아 쿠알라룸푸르 공항의 AI chip 서버 압수 사례입니다. 말레이시아가 고성능 AI chip 재수출에 전략물자 허가를 요구한 뒤, 약 1,300만 달러 규모의 서버가 실제로 세관에서 붙잡혔다는 내용입니다. 이 뉴스가 중요한 이유는 AI 반도체 수출통제가 더 이상 정책 문서나 법무팀 검토 단계에 머물지 않고, 공항·보세구역·서버 완제품 물류 레이어에서 집행되는 운영 리스크가 됐다는 점입니다.
+그동안 AI 인프라 리스크를 말할 때는 GPU 확보, HBM 가격, 전력, 데이터센터 용량을 주로 봤습니다. 하지만 이번 사례는 공급망의 병목이 물량 부족만이 아니라 “어떤 경로로 어느 국가를 지나 어떤 형태의 장비로 이동하는가”에도 있다는 것을 보여줍니다. 칩 단품이 아니라 서버 완제품 단위로 이동하는 경우, 원산지·최종 사용자·재수출 허가·운송 문서가 모두 AI 인프라 조달의 일부가 됩니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-06-26 20:55:00 +0900 KST'>2026년 6월 26일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 수출통제는 이제 물류 레이어에서 집행된다" href="https://kwbaek.github.io/posts/2026-06-26-ai-ml-trends-export-controls-move-to-the-logistics-layer/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">Hermes/리오 팁: 트렌드 크론에 Capacity Customs Check를 붙이자
     </h2>
   </header>
@@ -265,20 +279,6 @@ Colab CLI의 의미는 단순히 “노트북을 커맨드라인에서 돌릴 �
   </div>
   <footer class="entry-footer"><span title='2026-06-12 21:00:00 +0900 KST'>2026년 6월 12일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
   <a class="entry-link" aria-label="post link to AI/ML 트렌드: Agentic AI는 이제 감사 인프라다" href="https://kwbaek.github.io/posts/2026-06-12-ai-ml-trends-agentic-ai-is-becoming-audit-infrastructure/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Hermes/리오 팁: 에이전트 상태 저장소를 공격면으로 보기
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>오늘 AI/ML 트렌드가 금융 AI 감독과 LangGraph checkpointer 취약점을 동시에 보여줬다면, Hermes/리오 운영에 바로 적용할 수 있는 교훈은 분명합니다. 에이전트의 상태 저장소를 편의 캐시가 아니라 공격면으로 취급해야 한다는 것입니다. 크론, 장기 작업, 지식베이스, 히스토리 파일, 임시 JSON 캐시는 모두 다음 실행의 판단에 영향을 줍니다. 따라서 “저장만 해두면 나중에 편하겠지”라는 접근은 장기 자동화에서 위험합니다.
-첫 번째 원칙은 상태의 등급을 나누는 것입니다. 모든 기록이 같은 무게를 갖지는 않습니다. 사용자에게 보여준 최종 결과, 다음 실행에서 중복 제거에 쓰는 캐시, 내부 디버깅 로그, 원자료는 서로 목적과 수명이 다릅니다. Hermes/리오 크론을 설계할 때는 파일 하나에 모든 것을 섞기보다 “최신 결과”, “히스토리”, “원자료”, “보고서”를 분리하는 편이 안전합니다. 그래야 다음 실행이 오래된 디버그 문장을 사실처럼 읽거나, 민감한 운영 메모를 공개 문구에 섞는 실수를 줄일 수 있습니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-06-12 21:00:00 +0900 KST'>2026년 6월 12일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to Hermes/리오 팁: 에이전트 상태 저장소를 공격면으로 보기" href="https://kwbaek.github.io/posts/2026-06-12-hermes-rio-treat-agent-state-as-an-attack-surface/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

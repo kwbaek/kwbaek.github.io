@@ -152,6 +152,34 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">AI/ML 트렌드: 히트율 60%짜리 캐시가 실제로는 2%였다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 살펴본 두 자료는 분야가 전혀 다릅니다. 하나는 LLM 시맨틱 캐시의 축출정책을 전수 비교한 학술 논문이고, 다른 하나는 Amazon Bedrock의 리전 라우팅 기능 공지입니다. 그런데 둘 다 같은 지점을 찌릅니다. 추론 최적화에서 우리가 개선했다고 믿는 숫자와, 실제로 개선된 것이 서로 다르다는 이야기입니다.
+근거 1 — 캐시 히트율 5160%, 품질 보정 후 1.12.2% arXiv에 올라온 Which Eviction Policy Should an LLM Cache Use?(2026년 8월 20일 제출)는 CLEVER라는 공통 프로토콜을 만들어 FIFO, LRU, LFU, ARC, GDSF, SISO의 단일 패스 스트리밍 변형, 그리고 시맨틱 중복도 기반 정책까지 한 판에 놓고 비교했습니다. 정렬·중복제거된 세 개 쿼리 코퍼스 × 세 가지 캐시 용량 × 두 개 인코더, 총 18개 설정입니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-08-21 20:50:00 +0900 KST'>2026년 8월 21일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 히트율 60%짜리 캐시가 실제로는 2%였다" href="https://kwbaek.github.io/posts/2026-08-21-ai-ml-trends-cache-hit-rate-illusion/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Hermes/리오 실전 팁: 자동화에 &#39;실행 모델 원장&#39;을 남겨라
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 정리한 AI/ML 트렌드는 “쓸 수 있는 모델과 존재하는 모델은 다르다&#34;였습니다. 프론티어 랩은 최상위 모델을 사내에 두고, 지역과 계약이 남은 선택지를 다시 깎아냅니다. 이걸 Hermes/리오 운영으로 번역하면 팁은 하나입니다. 자동화가 어떤 모델로 실행됐는지를 매번 기록하는 ‘실행 모델 원장(Model Execution Ledger)‘을 붙이세요.
+왜 필요한가 대부분의 자동화는 “이 작업은 A 모델로 돌린다&#34;고 한 번 정해두고 잊어버립니다. 문제는 그 결정이 조용히 바뀐다는 데 있습니다. 크레딧이 떨어져서 fallback으로 넘어가고, 지역 정책 때문에 특정 공급자가 막히고, 레이트리밋 때문에 재시도가 다른 경로로 나가고, 설정 파일을 손댄 뒤 프로필별 기본값이 달라집니다. 결과물은 계속 나오기 때문에 아무도 눈치채지 못합니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-08-20 20:55:00 +0900 KST'>2026년 8월 20일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to Hermes/리오 실전 팁: 자동화에 &#39;실행 모델 원장&#39;을 남겨라" href="https://kwbaek.github.io/posts/2026-08-20-hermes-rio-model-execution-ledger/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">AI/ML 트렌드: 쓸 수 있는 모델과 존재하는 모델은 다르다
     </h2>
   </header>
@@ -262,34 +290,6 @@
   </div>
   <footer class="entry-footer"><span title='2026-08-16 21:00:00 +0900 KST'>2026년 8월 16일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
   <a class="entry-link" aria-label="post link to AI/ML 트렌드: 로컬 LLM 런타임의 다음 전장은 구조화 콘텐츠 계약이다" href="https://kwbaek.github.io/posts/2026-08-16-ai-ml-trends-structured-content-runtime-contract/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Hermes/리오 팁: 로컬 모델 업데이트에는 입력 계약 게이트를 붙이자
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>로컬 LLM 런타임은 빠르게 업데이트됩니다. 이번에는 llama.cpp b10452가 문자열 콘텐츠와 typed 콘텐츠의 지원 판정 및 메시지 입력 정규화를 손봤습니다. 이런 변경은 단순한 내부 리팩터링으로 지나갈 수 있지만, Hermes/리오에서 문서·이미지·검색 결과를 조합하는 크론을 운영한다면 반드시 작은 입력 계약 Release Gate를 거치는 편이 안전합니다. 모델이 답변을 생성했다는 사실보다, 작업에 필요한 콘텐츠가 런타임을 통과해 그대로 전달됐는지가 먼저이기 때문입니다.
-1. 크론의 대표 입력을 고정한다 먼저 실제 업무에서 자주 쓰는 메시지를 세 가지 정도 고정하십시오. 예를 들어 텍스트만 있는 질의, 이미지와 텍스트가 섞인 상품 분석, 검색 결과와 JSON 도구 출력이 함께 들어오는 리포트 생성 작업입니다. 테스트 입력에는 예상되는 콘텐츠 타입과 완료 조건을 적어 둡니다. 그래야 런타임을 바꾼 뒤 “대충 비슷하게 답했다”가 아니라 입력 보존 여부와 도구 호출 결과를 비교할 수 있습니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-08-16 21:00:00 +0900 KST'>2026년 8월 16일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to Hermes/리오 팁: 로컬 모델 업데이트에는 입력 계약 게이트를 붙이자" href="https://kwbaek.github.io/posts/2026-08-16-hermes-rio-structured-input-release-gate/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">AI/ML 트렌드: 코딩 에이전트의 빠른 릴리스 경쟁, 이제 회귀검증이 제품 기능이다
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>최근 OpenAI Codex CLI 0.148.0-alpha.19 릴리스가 보여주는 중요한 신호는 단순히 “새 버전이 나왔다”가 아닙니다. 터미널에서 파일을 수정하고 명령을 실행하는 코딩 에이전트가 빠른 주기로 계속 업데이트되면서, 모델 성능 경쟁이 곧 실행면의 호환성·안전성·회귀검증 경쟁으로 바뀌고 있다는 점입니다. 릴리스 페이지의 게시 시각은 2026년 8월 15일 02:21 UTC로 확인되며, 현재 버전은 알파 채널입니다.
-알파 릴리스가 던지는 운영 질문 CLI 에이전트는 일반적인 자동완성 도구와 다릅니다. 출력이 마음에 들지 않으면 다시 질문하면 되는 수준을 넘어, 저장소의 파일·Git 상태·셸 명령·테스트 실행과 직접 연결됩니다. 따라서 업데이트의 위험은 “답변 문장이 조금 달라졌다”에 그치지 않습니다. 같은 프롬프트라도 수정 파일의 범위가 넓어지거나, 승인 없이 실행되는 명령의 종류가 달라지거나, 실패 후 재개 동작이 바뀔 수 있습니다. 특히 알파 버전은 새 기능을 빨리 받는 대신 이러한 경계면이 아직 안정화되지 않았을 가능성을 전제로 써야 합니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-08-15 21:00:00 +0900 KST'>2026년 8월 15일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 코딩 에이전트의 빠른 릴리스 경쟁, 이제 회귀검증이 제품 기능이다" href="https://kwbaek.github.io/posts/2026-08-15-ai-ml-trends-coding-agent-releases-need-regression-gates/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

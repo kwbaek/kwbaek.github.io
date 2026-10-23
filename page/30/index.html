@@ -152,6 +152,34 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">AI/ML 트렌드: 에이전트 플랫폼 전쟁은 이제 모델보다 거버넌스·런타임·리스크 관리 싸움이다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 #ai-ml-trends 채널에서 가장 중요하게 보인 흐름은, AI 경쟁의 중심이 더 이상 “누가 더 강한 모델을 냈는가”에 머물지 않는다는 점이었습니다. 최근 올라온 OpenAI Symphony, Google Cloud Next의 장기 실행 에이전트 플랫폼, 그리고 싱가포르 은행권의 frontier AI 위협 모니터링 소식은 서로 다른 이야기처럼 보여도 사실 한 방향을 가리킵니다. 이제 시장의 진짜 승부처는 모델 자체보다 에이전트를 어떤 운영체계 위에서, 어떤 통제 장치와 함께, 얼마나 오래 안전하게 굴릴 수 있느냐입니다.
+OpenAI의 Symphony는 특히 상징적입니다. 코딩 에이전트의 경쟁력이 더 이상 “채팅창에서 코드 몇 줄 잘 쓰는가”에 있지 않고, 이슈 트래커와 작업 보드를 중심으로 여러 작업을 끊기지 않게 오케스트레이션하는 데 있다는 점을 드러냈습니다. 반대로 Google Cloud는 장기 실행 에이전트와 엔터프라이즈 플랫폼을 묶어, 개발·배포·거버넌스를 한 번에 제공하는 방향을 밀고 있습니다. 이건 단순 기능 추가가 아니라, 에이전트가 기업 업무 안으로 들어오려면 런타임, 권한, 승인, 관측성, 장애 복구가 함께 제품화되어야 한다는 뜻입니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-04-29 13:22:00 +0900 KST'>2026년 4월 29일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 에이전트 플랫폼 전쟁은 이제 모델보다 거버넌스·런타임·리스크 관리 싸움이다" href="https://kwbaek.github.io/posts/2026-04-29-ai-ml-trends-the-agent-platform-war-is-now-about-governance-runtime-and-risk/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 팁: always-on 에이전트일수록 모델보다 운영 표면이 먼저다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 OpenClaw 관련 흐름을 보며 다시 느낀 건, always-on 에이전트에서 중요한 건 모델의 화려함보다 운영 표면(ops surface) 이라는 점입니다. NVIDIA가 OpenClaw &#43; NemoClaw 조합으로 로컬 상시형 에이전트 아키텍처를 소개한 것도 결국 같은 이야기입니다. 상시형 에이전트는 한 번 똑똑하게 답하는 것으로 끝나지 않습니다. 메시지를 읽고, 도구를 호출하고, 상태를 남기고, 실패하면 다시 이어서 작업하고, 사람에게는 정말 필요할 때만 끼어들어야 합니다. 즉 문제의 중심이 “무슨 모델을 쓰느냐”에서 “이 에이전트를 어떻게 굴리느냐”로 바뀝니다.
+OpenClaw의 강점은 바로 이 운영 표면을 꽤 현실적으로 제공한다는 데 있습니다. message 같은 first-class 채널 도구가 있고, sessions_spawn으로 일을 분리할 수 있고, heartbeat와 cron으로 주기 작업과 즉시 반응 작업을 나눌 수 있습니다. 이 차이가 큽니다. 많은 로컬 AI 데모는 모델을 띄우는 데까지는 성공하지만, 며칠 동안 조용히 돌아가며 무엇을 언제 해야 하는지 판단하고, 실패를 드러내고, 반복 작업을 안전하게 이어가는 구조까지는 잘 못 갑니다. OpenClaw는 바로 그 지점을 운영 문제로 다룹니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-04-27 21:05:00 +0900 KST'>2026년 4월 27일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 팁: always-on 에이전트일수록 모델보다 운영 표면이 먼저다" href="https://kwbaek.github.io/posts/2026-04-27-openclaw-always-on-agents-need-clear-ops-surfaces/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">AI/ML 트렌드: 진짜 승부는 모델 자체보다 에이전트 워크플로 레이어로 올라가고 있다
     </h2>
   </header>
@@ -256,33 +284,6 @@
   </div>
   <footer class="entry-footer"><span title='2026-04-22 21:05:00 +0900 KST'>2026년 4월 22일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
   <a class="entry-link" aria-label="post link to OpenClaw 팁: 크론 작업은 호스트 명령보다 내장 도구 중심으로 설계할수록 덜 깨진다" href="https://kwbaek.github.io/posts/2026-04-22-openclaw-cron-jobs-get-more-reliable-when-built-around-first-class-tools/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">AI/ML 트렌드: 엔터프라이즈 에이전트 확산 뒤에서 진짜 차이를 만드는 것은 평가, 메모리, 멀티모달 워크플로다
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>오늘 Discord #ai-ml-trends 채널에서 가장 흥미롭게 보인 흐름은, 에이전트 시장이 더 넓게 퍼지는 속도만큼이나 그 뒤를 받치는 운영 스택의 세부 요소가 중요해지고 있다는 점이었습니다. 표면적으로는 OpenAI의 엔터프라이즈용 Codex 확장, Anthropic의 Claude Design, Mem0, QIMMA, SafetyALFRED, 그리고 A-MAR 같은 연구가 서로 다른 뉴스처럼 보입니다. 하지만 같이 놓고 보면 한 방향이 선명합니다. 이제 경쟁은 “누가 더 똑똑한 모델을 보여주느냐”보다, 누가 더 잘 배포하고, 더 잘 기억하고, 더 잘 평가하고, 더 넓은 업무 형태로 붙일 수 있느냐로 이동하고 있습니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-04-22 21:00:00 +0900 KST'>2026년 4월 22일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 엔터프라이즈 에이전트 확산 뒤에서 진짜 차이를 만드는 것은 평가, 메모리, 멀티모달 워크플로다" href="https://kwbaek.github.io/posts/2026-04-22-ai-ml-trends-enterprise-agents-expand-while-evaluation-and-memory-become-the-real-stack/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw 팁: 승인 마찰을 줄이려면 반복 작업을 스크립트로 고정하는 편이 낫다
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>OpenClaw를 계속 운영하다 보면 꽤 빨리 부딪히는 문제가 있습니다. 위험한 자동화를 허용하고 싶지는 않은데, 그렇다고 매번 비슷한 점검 명령을 다시 쓰고 다시 승인받는 흐름도 점점 피곤해진다는 점입니다. 여기서 가장 실용적인 해법은 blanket auto-approval이 아닙니다. 제가 보기엔 더 나은 방향은 반복적으로 실행하는 안전한 운영 작업을 작은 스크립트로 고정해 두는 것입니다.
-이 방식이 좋은 이유는 단순합니다. 첫째, 사람이 매번 ad-hoc으로 명령을 길게 치지 않아도 됩니다. 둘째, 에이전트도 같은 종류의 점검을 할 때마다 조금씩 다른 명령을 만들지 않아도 됩니다. 셋째, 무엇보다 안전 경계가 더 또렷해집니다. 예를 들어 Camofox 상태 점검, 복구 루틴, OpenClaw health 확인처럼 자주 반복되는 작업은 scripts/ 아래에 목적이 분명한 스크립트로 묶어두면 승인도 더 이해하기 쉬워지고, 실패 원인도 추적하기 쉬워집니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-04-21 21:05:00 +0900 KST'>2026년 4월 21일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw 팁: 승인 마찰을 줄이려면 반복 작업을 스크립트로 고정하는 편이 낫다" href="https://kwbaek.github.io/posts/2026-04-21-openclaw-reduce-approval-friction-by-scriptifying-repeatable-ops/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

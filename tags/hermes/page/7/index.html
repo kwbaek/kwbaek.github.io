@@ -143,6 +143,20 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">Hermes(리오) 활용법: 크론에 &#39;인프라 의존성 선언&#39;을 붙여라
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 AI/ML 신호(뉴욕 주정부의 데이터센터 승인 보류, Reflection의 10억 달러 컴퓨트 계약)가 던지는 실무 교훈은 하나입니다. 당신의 자동화가 어떤 컴퓨트·사업자·지역에 걸려 있는지 모르면, 그 뒤의 공급 제약이 조용히 당신을 망가뜨린다. Hermes(리오)로 매일 크론을 돌리는 사람에게 이건 남의 얘기가 아닙니다. 스캐너, 리포트, 블로그 포스팅 크론은 전부 특정 모델·API·지역 인프라 위에서 돕니다.
+그래서 오늘 제안하는 습관은 크론마다 ‘인프라 의존성’을 한 블록으로 선언해두는 것입니다. 거창한 도구가 아니라, 지시문 상단에 5줄짜리 명세를 박아두는 일입니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-07-14 21:05:00 +0900 KST'>2026년 7월 14일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to Hermes(리오) 활용법: 크론에 &#39;인프라 의존성 선언&#39;을 붙여라" href="https://kwbaek.github.io/posts/2026-07-14-hermes-rio-add-an-infra-dependency-declaration-to-crons/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">Hermes/리오 팁: 크론에 &#39;자원 정산 게이트&#39;를 붙이자
     </h2>
   </header>
@@ -265,20 +279,6 @@ GitHub이 Copilot usage metrics API에 review cycle과 time-to-review 지표를 
   </div>
   <footer class="entry-footer"><span title='2026-07-05 21:00:00 +0900 KST'>2026년 7월 5일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
   <a class="entry-link" aria-label="post link to Hermes/리오 팁: 블로그 크론에 출판 게이트를 붙이자" href="https://kwbaek.github.io/posts/2026-07-05-hermes-rio-add-a-publishing-gate-to-crons/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Hermes/리오 팁: 에이전트 컨텍스트 계약서를 붙이자
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>오늘의 AI/ML 흐름을 Hermes/리오 운영 팁으로 바꾸면 핵심은 단순합니다. 자동화가 읽고 쓰는 컨텍스트에 대해 에이전트 컨텍스트 계약서를 붙여야 합니다. 에이전트가 한두 개의 파일만 읽을 때는 “필요한 자료를 알아서 찾아봐”도 괜찮아 보입니다. 하지만 크론, 리포트, 블로그, 배포, 캐시, MCP 도구가 연결되면 컨텍스트는 곧 운영 상태가 됩니다. 어떤 입력을 믿을 수 있는지, 어떤 상태를 갱신할 수 있는지, 무엇을 공개 문구에 절대 넣으면 안 되는지를 명시하지 않으면 자동화는 점점 불안정해집니다.
-컨텍스트 계약서는 복잡한 문서가 아니어도 됩니다. 작업별로 입력 원천, 신뢰도, 갱신 권한, 실패 시 대체 경로, 검증 방법을 적어두면 충분합니다. 예를 들어 블로그 포스팅 크론이라면 입력은 최신 AI/ML 트렌드 캐시와 일간 리포트, 중복 기준은 최근 블로그 글, 쓰기 대상은 Hugo 글과 생성 사이트, 검증은 글 길이·빌드 성공·생성 HTML 확인·공개 문구 점검입니다. 이렇게 적어두면 다음 실행에서 “무엇을 근거로 글을 썼는지”와 “어디까지 자동으로 해도 되는지”가 분리됩니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-07-04 21:00:00 +0900 KST'>2026년 7월 4일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to Hermes/리오 팁: 에이전트 컨텍스트 계약서를 붙이자" href="https://kwbaek.github.io/posts/2026-07-04-hermes-rio-add-an-agent-context-contract/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

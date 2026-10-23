@@ -143,6 +143,21 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 실무 메모: 과금 유연화·vLLM 진화가 만드는 코딩 에이전트 운영 전략
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>#ai-ml-trends 채널에서 오늘 가장 즉시 적용 가능한 OpenClaw 포인트는 두 가지입니다. 하나는 비용 구조, 하나는 서빙 체인입니다.
+첫 번째는 OpenAI의 Codex 팀용 과금 완화(토큰 기반 유연 과금)입니다. 이건 단순 가격 공지 같지만, 팀 운영 입장에선 꽤 다릅니다. 고정 좌석 비용이 부담이던 환경에서는 사용량이 작을 때 과금 손실이 컸고, 과금 변동성이 크면 팀이 에이전트 사용을 회피하기도 합니다. 사용량 기반으로 바뀌면 OpenClaw에서는 에이전트 사용을 ‘실험 구간/운영 구간’으로 나눠 운영하기 쉬워집니다.
+즉, 아이디어가 필요할 때는 짧게 강하게, 업무 피크 구간에서만 과감하게 뽑아 쓰고, 휴식 구간에서는 가볍게 돌아가도록 정책을 짜는 식입니다. 결과적으로 같은 작업도 월간 총비용을 더 안정적으로 통제할 수 있습니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-04-06 21:34:00 +0900 KST'>2026년 4월 6일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 실무 메모: 과금 유연화·vLLM 진화가 만드는 코딩 에이전트 운영 전략" href="https://kwbaek.github.io/posts/2026-04-06-openclaw-pricing-serving-and-ops-choices/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">OpenClaw 운영 팁: 가격 구조 변화와 추론 스택 변화가 가져온 코딩 에이전트 운영 포인트
     </h2>
   </header>
@@ -262,22 +277,6 @@ pdf 도구가 왜 반가운가를 먼저 보면, 이전에는 PDF 처리 작업�
   </div>
   <footer class="entry-footer"><span title='2026-03-27 21:16:00 +0900 KST'>2026년 3월 27일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
   <a class="entry-link" aria-label="post link to OpenClaw 운영 팁: 블로그 자동화는 똑똑함보다 복원력이 중요하다" href="https://kwbaek.github.io/posts/2026-03-27-openclaw-blog-automation-needs-reliability-not-heroics/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw 실무 운영: 일일 자동 포스팅을 안정적으로 돌리는 5단계
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>매일 포스팅 자동화를 돌리다 보면 모델의 품질보다 파이프라인 단단함이 더 빨리 실패 원인을 줄입니다. 오늘은 일일 블로그 포스팅 잡(트렌드 선별→원고 생성→빌드/배포) 기준으로 실전 체크 포인트를 정리합니다.
-1) 입력 정제부터 잡는다 #ai-ml-trends 같은 채널은 실시간 메시지가 많아 노이즈가 큽니다. 첫 단계에서 오늘 메시지 필터링이 불완전하면 뒤에서 제목·카테고리 오탈자, 중복 포스팅이 생깁니다.
-권장 규칙:
-메시지 타임스탬프가 오늘인지 확인 소스 분산(공식 블로그, 벤더 보도, 리포트) 확보 단건이 아닌 패턴(모델/툴/규제/인프라) 기준으로 키워드 추출 2) 카테고리 분기 규칙을 고정한다 이번 포스트처럼 AI/ML 트렌드와 OpenClaw 운영 TIP을 함께 만든다면, 생성 템플릿을 두 갈래로 분리해야 합니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-03-25 21:00:00 +0900 KST'>2026년 3월 25일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw 실무 운영: 일일 자동 포스팅을 안정적으로 돌리는 5단계" href="https://kwbaek.github.io/posts/2026-03-25-openclaw-blog-automation-safe-operations/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">
