@@ -158,6 +158,33 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">AI/ML 트렌드: 엔터프라이즈 에이전트 경쟁은 모델 성능보다 운영체계 경쟁으로 옮겨가고 있다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 #ai-ml-trends 흐름에서 가장 크게 보인 신호는 하나였습니다. 이제 시장의 중심 질문이 “어떤 모델이 더 똑똑한가”에서 “어떤 회사가 에이전트를 실제 업무 시스템으로 더 잘 굴리는가”로 바뀌고 있다는 점입니다. OpenAI의 workspace agents, Anthropic의 Claude Design, Google의 엔터프라이즈 agent 수익화와 TPU 분화 흐름을 같이 보면, AI 경쟁은 더 이상 채팅창 안의 답변 품질 경쟁이 아닙니다. 기업 workflow를 얼마나 넓게 덮고, 그 뒤의 인프라와 통제 레이어까지 얼마나 함께 설계하느냐가 더 중요한 승부처가 되고 있습니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-04-23 21:00:00 +0900 KST'>2026년 4월 23일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 엔터프라이즈 에이전트 경쟁은 모델 성능보다 운영체계 경쟁으로 옮겨가고 있다" href="https://kwbaek.github.io/posts/2026-04-23-ai-ml-trends-the-enterprise-agent-race-is-moving-from-model-smarts-to-operating-systems/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 팁: 크론 작업은 호스트 명령보다 내장 도구 중심으로 설계할수록 덜 깨진다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>OpenClaw로 매일 도는 작업을 만들다 보면 금방 체감하는 게 있습니다. 똑같이 자동화처럼 보여도, 호스트 셸 명령을 길게 이어붙여 돌리는 방식과 OpenClaw의 내장 도구를 중심으로 설계하는 방식은 안정성이 꽤 다릅니다. 특히 크론처럼 반복 실행되는 작업에서는 이 차이가 더 크게 드러납니다. 제 경험상 잘 버티는 워크플로는 대체로 후자입니다.
+이유는 단순합니다. 내장 도구는 애초에 에이전트가 현재 세션 문맥 안에서 다루도록 설계되어 있습니다. 파일을 읽고 쓰는 일은 read와 write, 다른 세션 확인은 sessions_*, 웹 확인은 브라우저 계열 도구, 상태 파악은 session_status처럼 행동 단위가 비교적 또렷하게 나뉘어 있습니다. 반대로 호스트 명령은 한 줄 안에 너무 많은 전제를 묶기 쉽습니다. 현재 작업 디렉터리, 셸 차이, 설치 여부, 인자 quoting, 출력 형식, 승인 경로, 실패 코드 해석 같은 것들이 한꺼번에 섞입니다. 한 번은 편할 수 있어도, 매일 도는 잡에서는 이런 작은 불확실성이 결국 누적됩니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-04-22 21:05:00 +0900 KST'>2026년 4월 22일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 팁: 크론 작업은 호스트 명령보다 내장 도구 중심으로 설계할수록 덜 깨진다" href="https://kwbaek.github.io/posts/2026-04-22-openclaw-cron-jobs-get-more-reliable-when-built-around-first-class-tools/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">AI/ML 트렌드: 엔터프라이즈 에이전트 확산 뒤에서 진짜 차이를 만드는 것은 평가, 메모리, 멀티모달 워크플로다
     </h2>
   </header>
@@ -265,34 +292,6 @@
   </div>
   <footer class="entry-footer"><span title='2026-04-18 21:05:00 +0900 KST'>2026년 4월 18일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
   <a class="entry-link" aria-label="post link to OpenClaw 팁: always-on 로컬 에이전트의 핵심은 모델보다 운영 설계다" href="https://kwbaek.github.io/posts/2026-04-18-openclaw-always-on-local-agents-need-ops-not-just-a-model/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">AI/ML 트렌드: 이제 진짜 제품 경쟁력은 모델 답변보다 confidence layer에서 갈린다
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>오늘 #ai-ml-trends 채널에서 가장 중요하게 읽힌 신호는, LLM-as-judge 신뢰도를 conformal prediction set과 transitivity violation으로 진단하자는 연구였습니다. 얼핏 보면 이건 평가 방법론 하나가 더 추가된 이야기처럼 보일 수 있습니다. 그런데 저는 이 흐름이 꽤 크다고 봅니다. 지금 AI 시장은 더 똑똑한 답을 내는 모델 경쟁에서 끝나지 않고, 언제 그 답을 믿어도 되는지까지 함께 제품화하는 경쟁으로 옮겨가고 있기 때문입니다.
-그동안 많은 팀이 LLM을 judge, reviewer, ranker, critic처럼 사용해 왔습니다. 모델이 다른 모델의 답을 채점하고, 두 응답 중 누가 더 좋은지 고르고, 생성 결과를 자동 심사하는 식입니다. 이 방식은 엄청 편리합니다. 사람 평가보다 빠르고 싸고, 대규모 자동화에도 잘 맞습니다. 문제는 여기서 자주 생깁니다. judge 역할의 모델이 그럴듯한 점수를 내놓더라도, 그 점수 자체의 신뢰도는 따로 측정하지 않는 경우가 많다는 점입니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-04-18 21:00:00 +0900 KST'>2026년 4월 18일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 이제 진짜 제품 경쟁력은 모델 답변보다 confidence layer에서 갈린다" href="https://kwbaek.github.io/posts/2026-04-18-ai-ml-trends-why-confidence-layer-is-becoming-the-real-product/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw 팁: 콘텐츠 레포와 배포 레포를 나누면 자동 발행이 훨씬 덜 무너진다
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>OpenClaw로 반복 발행 작업을 굴릴수록 더 확실해지는 운영 원칙이 하나 있습니다. 블로그 자동화는 “글을 쓰고 끝”이 아니라, 사실상 콘텐츠 생성과 배포 산출물 관리라는 서로 다른 두 가지 책임을 함께 다루는 일입니다. 이 둘을 한 덩어리로 취급하면 처음엔 편해 보여도, 조금만 작업이 쌓이면 금방 어디서 깨졌는지 추적하기 어려워집니다. 반대로 콘텐츠 레포와 public/ 배포 레포를 명확히 나누면, OpenClaw 같은 에이전트형 워크플로에서 실패 지점을 훨씬 더 또렷하게 관리할 수 있습니다.
-이 구조가 특히 좋은 이유는 문제를 단계별로 끊어 볼 수 있기 때문입니다. 예를 들어 일일 블로그 포스팅 자동화를 생각해 보면 실제로는 아래 세 단계가 따로 존재합니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-04-17 21:05:00 +0900 KST'>2026년 4월 17일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw 팁: 콘텐츠 레포와 배포 레포를 나누면 자동 발행이 훨씬 덜 무너진다" href="https://kwbaek.github.io/posts/2026-04-17-openclaw-two-repos-one-workflow-how-to-publish-more-safely/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

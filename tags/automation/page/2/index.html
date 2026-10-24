@@ -143,6 +143,20 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">Hermes/리오 팁: AI 연구 답변을 재현 가능한 증적으로 바꾸는 워크플로우
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Hermes/리오를 연구 보조에 활용할 때 가장 위험한 습관은 긴 답변을 받는 것을 작업의 완료로 착각하는 것입니다. 오늘 OpenAI가 수학과 이론 컴퓨터과학의 난제에 대한 새로운 결과를 공개한 사례처럼, 연구 영역의 AI 출력은 매끄러운 설명보다 재현성과 검토 가능성이 중요합니다. 따라서 에이전트의 역할을 “정답 생성기”가 아니라 검증 가능한 연구 작업물을 만드는 조정자로 정의하는 편이 안전하고 실용적입니다.
+첫 단계는 질문을 연구 카드로 바꾸는 것입니다. 카드에는 문제 정의, 성공 조건, 허용된 자료, 금지된 추정, 출력 형식을 적습니다. “이 정리가 맞는가?”처럼 짧은 질문도 정의와 전제 조건이 빠지면 검증할 수 없습니다. Hermes/리오는 먼저 모호한 용어와 가정을 분리하고, 확인이 필요한 항목을 명시한 뒤 탐색을 시작해야 합니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-08-01 21:04:42 +0900 KST'>2026년 8월 1일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to Hermes/리오 팁: AI 연구 답변을 재현 가능한 증적으로 바꾸는 워크플로우" href="https://kwbaek.github.io/posts/2026-08-01-hermes-rio-research-evidence-workflow/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">Hermes/리오 운영 팁 — 코딩 에이전트에 런타임 가드레일과 cache-first를 함께 넣는 법
     </h2>
   </header>
@@ -264,20 +278,6 @@ GitHub이 Copilot usage metrics API에 review cycle과 time-to-review 지표를 
   </div>
   <footer class="entry-footer"><span title='2026-07-08 21:00:00 +0900 KST'>2026년 7월 8일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
   <a class="entry-link" aria-label="post link to Hermes/리오 팁: 자동화에도 리뷰 처리량 게이트를 붙이자" href="https://kwbaek.github.io/posts/2026-07-08-hermes-rio-add-review-throughput-gate-to-agent-crons/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Hermes/리오 팁: 모델 믹스 크론에는 승인 매트릭스가 필요하다
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>Hermes/리오로 매일 리포트, 블로그, 트렌드 스캐너, 아이디어 생성기를 돌리다 보면 자연스럽게 여러 모델과 도구를 섞게 됩니다. 어떤 작업은 빠른 모델로 충분하고, 어떤 작업은 긴 문맥이 필요하며, 어떤 작업은 외부 검색·브라우저·Git 작업까지 포함합니다. 그래서 이제는 개인 자동화에도 model mix approval matrix가 필요하다고 봅니다. 거창한 엔터프라이즈 문서가 아니라, “이 작업에는 어떤 모델/도구 조합을 써도 되는가”를 짧고 명확하게 정리한 표입니다.
-예를 들어 뉴스 스캐너는 빠른 요약 모델과 RSS/브라우저 검증 조합으로 충분할 수 있습니다. 하지만 블로그 게시 크론은 다릅니다. 글을 쓰는 것에서 끝나지 않고 Hugo build, 공개 HTML 생성, 민감 문자열 검사, git commit/push, 배포 확인까지 이어집니다. 여기서는 모델 선택보다 작업 경계와 검증 루프가 더 중요합니다. 어떤 모델을 쓰든 최종 결과가 공개 저장소로 나가기 때문에, 내부 경로·토큰·채널 ID 같은 운영 흔적이 섞이지 않았는지 반드시 확인해야 합니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-07-07 21:01:00 +0900 KST'>2026년 7월 7일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to Hermes/리오 팁: 모델 믹스 크론에는 승인 매트릭스가 필요하다" href="https://kwbaek.github.io/posts/2026-07-07-hermes-rio-model-mix-approval-matrix-for-crons/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

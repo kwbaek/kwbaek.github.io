@@ -152,6 +152,34 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">AI/ML 트렌드: 이제 진짜 제품 경쟁력은 모델 답변보다 confidence layer에서 갈린다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 #ai-ml-trends 채널에서 가장 중요하게 읽힌 신호는, LLM-as-judge 신뢰도를 conformal prediction set과 transitivity violation으로 진단하자는 연구였습니다. 얼핏 보면 이건 평가 방법론 하나가 더 추가된 이야기처럼 보일 수 있습니다. 그런데 저는 이 흐름이 꽤 크다고 봅니다. 지금 AI 시장은 더 똑똑한 답을 내는 모델 경쟁에서 끝나지 않고, 언제 그 답을 믿어도 되는지까지 함께 제품화하는 경쟁으로 옮겨가고 있기 때문입니다.
+그동안 많은 팀이 LLM을 judge, reviewer, ranker, critic처럼 사용해 왔습니다. 모델이 다른 모델의 답을 채점하고, 두 응답 중 누가 더 좋은지 고르고, 생성 결과를 자동 심사하는 식입니다. 이 방식은 엄청 편리합니다. 사람 평가보다 빠르고 싸고, 대규모 자동화에도 잘 맞습니다. 문제는 여기서 자주 생깁니다. judge 역할의 모델이 그럴듯한 점수를 내놓더라도, 그 점수 자체의 신뢰도는 따로 측정하지 않는 경우가 많다는 점입니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-04-18 21:00:00 +0900 KST'>2026년 4월 18일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 이제 진짜 제품 경쟁력은 모델 답변보다 confidence layer에서 갈린다" href="https://kwbaek.github.io/posts/2026-04-18-ai-ml-trends-why-confidence-layer-is-becoming-the-real-product/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 팁: 콘텐츠 레포와 배포 레포를 나누면 자동 발행이 훨씬 덜 무너진다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>OpenClaw로 반복 발행 작업을 굴릴수록 더 확실해지는 운영 원칙이 하나 있습니다. 블로그 자동화는 “글을 쓰고 끝”이 아니라, 사실상 콘텐츠 생성과 배포 산출물 관리라는 서로 다른 두 가지 책임을 함께 다루는 일입니다. 이 둘을 한 덩어리로 취급하면 처음엔 편해 보여도, 조금만 작업이 쌓이면 금방 어디서 깨졌는지 추적하기 어려워집니다. 반대로 콘텐츠 레포와 public/ 배포 레포를 명확히 나누면, OpenClaw 같은 에이전트형 워크플로에서 실패 지점을 훨씬 더 또렷하게 관리할 수 있습니다.
+이 구조가 특히 좋은 이유는 문제를 단계별로 끊어 볼 수 있기 때문입니다. 예를 들어 일일 블로그 포스팅 자동화를 생각해 보면 실제로는 아래 세 단계가 따로 존재합니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-04-17 21:05:00 +0900 KST'>2026년 4월 17일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 팁: 콘텐츠 레포와 배포 레포를 나누면 자동 발행이 훨씬 덜 무너진다" href="https://kwbaek.github.io/posts/2026-04-17-openclaw-two-repos-one-workflow-how-to-publish-more-safely/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">AI/ML 트렌드: 이제 병목은 모델 능력보다 신뢰 가능한 확신 표현에 있다
     </h2>
   </header>
@@ -259,34 +287,6 @@
   </div>
   <footer class="entry-footer"><span title='2026-04-12 21:05:00 +0900 KST'>2026년 4월 12일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
   <a class="entry-link" aria-label="post link to OpenClaw 팁: 일일 블로그 자동화는 리서치와 퍼블리싱이 한 흐름으로 붙어 있을 때 더 좋아진다" href="https://kwbaek.github.io/posts/2026-04-12-openclaw-daily-blog-automation-gets-better-when-research-and-publishing-stay-coupled/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">AI/ML 트렌드: 에이전트 평가는 이제 모델 시험이 아니라 인프라 운영 discipline이 되고 있다
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>오늘 #ai-ml-trends 채널에서 가장 중요하게 읽힌 신호는, Anthropic이 공개한 agentic coding eval에서 인프라 설정만으로 점수 차이가 최대 6%p까지 날 수 있다는 이야기였습니다. 겉으로 보면 이건 평가 노이즈에 대한 기술 블로그처럼 보일 수 있습니다. 하지만 저는 이걸 훨씬 더 큰 흐름으로 봅니다. 이제 에이전트 경쟁은 단순히 “어떤 모델이 더 똑똑한가”를 겨루는 단계에서, 어떤 실행 환경과 평가 설계를 갖췄을 때 실제 능력을 더 안정적으로 끌어내는가를 겨루는 단계로 이동하고 있습니다.
-이 변화가 중요한 이유는 간단합니다. 코딩 에이전트는 순수한 언어모델이 아니라, 런타임과 샌드박스와 도구 호출과 자원 제한 위에서 움직이는 시스템이기 때문입니다. 같은 모델이라도 CPU나 메모리 제한이 다르고, 파일 시스템 접근 방식이 다르고, 네트워크 허용 범위가 다르고, 타임아웃 정책이 다르면 결과는 쉽게 달라집니다. 다시 말해 에이전트 성능은 모델 파라미터 안에만 들어 있지 않습니다. 모델 바깥의 운영 조건이 이미 성능의 일부가 됐다는 뜻입니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-04-12 21:00:00 +0900 KST'>2026년 4월 12일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 에이전트 평가는 이제 모델 시험이 아니라 인프라 운영 discipline이 되고 있다" href="https://kwbaek.github.io/posts/2026-04-12-ai-ml-trends-agent-evals-are-becoming-an-infrastructure-discipline/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">AI 에이전트 시대, 다음 경쟁력은 툴체인 보안이다
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>오늘 Discord #ai-ml-trends 채널에서 가장 눈에 띈 신호는 OpenAI가 Axios developer tool compromise 대응 내용을 공개한 사건이었습니다. 이 이슈가 중요한 이유는 단순한 보안 사고 하나로 끝나지 않기 때문입니다. 이제 AI 경쟁은 모델 벤치마크 점수만으로 설명되지 않습니다. 실제 제품 환경에서는 모델이 연결되는 개발자 도구, 플러그인, 워크플로, 서드파티 서비스가 곧 공격면이 됩니다.
-왜 이 흐름이 중요한가 그동안 많은 팀이 “어떤 모델이 더 똑똑한가&#34;에 집중해 왔습니다. 그런데 에이전트가 코드를 읽고, 파일을 수정하고, 외부 API를 호출하고, 자동화된 액션을 수행하기 시작하면 이야기가 달라집니다. 이때 위험은 모델 내부보다도 모델 바깥의 도구 연결부에서 훨씬 더 자주 터집니다. 공급망에 포함된 작은 유틸리티 하나, 인증 흐름 하나, 서드파티 SDK 하나가 전체 에이전트 시스템의 신뢰도를 무너뜨릴 수 있습니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-04-11 21:41:00 +0900 KST'>2026년 4월 11일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to AI 에이전트 시대, 다음 경쟁력은 툴체인 보안이다" href="https://kwbaek.github.io/posts/2026-04-11-ai-agent-toolchain-security-is-the-next-frontier/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

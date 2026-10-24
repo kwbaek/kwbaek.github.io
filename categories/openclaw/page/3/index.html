@@ -143,6 +143,21 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">Hermes/리오 운영가이드: API 악용 추적과 위협 모니터링 체크리스트
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Anthropic의 14개 위협 행위자 공시 이후, Hermes/리오 크론 운영에 API 보안이 핵심 항목이 되었습니다.
+혼자서 여러 Claude API 키를 관리하고, 자동 에이전트가 시간마다 이를 호출할 때 — 키 탈취나 악용이 발생해도 감지하기 어렵습니다. 이번 가이드는 Hermes 크론 환경에서 실행 가능한 API 보안 체크리스트를 제시합니다.
+🎯 상황: &#34;Hermes에서 Claude를 쓸 때, 뭐가 리스크인가?&#34; Hermes 환경의 구조 Hermes 크론 (MD Agent, 트렌드 스캐너, 블로그 자동화) ↓ 여러 Claude API 호출 ↓ 로그 → /memory, /tmp, Discord (가끔) 현재 추적 불가능한 항목 이 API 키가 정상적으로만 쓰이는가? 야간에 비정상 호출이 있었나? 한 키로 여러 크론이 동시에 호출하면 어떻게 구분하나? Claude 응답이 실제로 그 크론에서 쓰인 게 맞나? ✅ 실행 체크리스트 (이번 주) 1단계: 현황 파악 (30분) 당신의 Claude API 키 목록
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-09-13 21:30:00 +0900 KST'>2026년 9월 13일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to Hermes/리오 운영가이드: API 악용 추적과 위협 모니터링 체크리스트" href="https://kwbaek.github.io/posts/2026-09-13-hermes-api-security-monitoring-checklist/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">Hermes/리오 가이드: 분산 크론 환경에서 캐시 안전성 보장하기 — 원자적 갱신 &#43; 검증의 기술
     </h2>
   </header>
@@ -283,21 +298,6 @@ Hermes/리오 크론에서 **“정상”**이란:
   </div>
   <footer class="entry-footer"><span title='2026-09-01 21:11:00 +0900 KST'>2026년 9월 1일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
   <a class="entry-link" aria-label="post link to Hermes/리오 실전 팁: &#39;팀워크&#39; 패턴으로 읽는 장기 과제 위임(Delegate) 아키텍처 설계" href="https://kwbaek.github.io/posts/2026-09-01-hermes-rio-teamwork-delegation-architecture/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Hermes/리오 실전 팁: PACE 패턴을 적용한 &#39;오프라인 에이전트 탐색 - 런타임 결정론적 실행&#39; 무비용 크론 파이프라인
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>오늘 AI/ML 트렌드에서 소개된 논문 **“PACE: Publisher-Adaptive Content Extraction” (arXiv:2608.27466)**은 24시간 자율 에이전트 시스템을 운영하는 엔지니어들에게 매우 중요한 아키텍처적 통찰을 제공합니다.
-“정기적으로 반복되는 수집·분석 크론 작업에서, 왜 매 실행마다 비싼 LLM API를 호출하여 비정형 HTML을 파싱해야 하는가? 똑똑한 에이전트는 ‘오프라인(빌드 타임)‘에서만 일하고, 실제 운영되는 ‘런타임 크론’은 무비용 결정론적 코드로 돌아가야 한다.”
-Hermes/리오 환경에서 24/7 무인 크론 파이프라인의 API 비용을 획기적으로 절감하고 처리 속도와 안정성을 극대화하기 위해 적용할 수 있는 ‘오프라인 에이전트 탐색 - 런타임 결정론적 실행(Offline Exploration &amp; Deterministic Runtime)’ 아키텍처 패턴을 정리해 소개합니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-08-31 21:01:00 +0900 KST'>2026년 8월 31일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to Hermes/리오 실전 팁: PACE 패턴을 적용한 &#39;오프라인 에이전트 탐색 - 런타임 결정론적 실행&#39; 무비용 크론 파이프라인" href="https://kwbaek.github.io/posts/2026-08-31-hermes-rio-pace-pattern-zero-cost-cron/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

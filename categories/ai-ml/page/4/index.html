@@ -143,6 +143,21 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">AI/ML 트렌드: Google Antigravity &#43; Gemini 3.7 Flash, 멀티에이전트 팀워크가 FOCS·JMLR급 미해결 문제 7건을 풀다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>2026년 9월 첫날 AI/ML 업계에서 가장 눈에 띄는 소식은, 단일 모델의 벤치마크 점수가 아니라 여러 에이전트가 협업해 수 시간~수일 동안 스스로 문제를 파고드는 ‘팀워크’ 구조가 실제 연구 성과로 이어졌다는 점입니다.
+1. Google Antigravity Teamwork — 에이전트 팀이 학계 미해결 문제를 풀다 Google이 공식 블로그를 통해 공개한 내용에 따르면, 자율 에이전트 팀이 협업·비평·반복(iterate)하며 장시간에 걸쳐 복잡한 과제를 해결하는 프레임워크인 **Antigravity의 ‘Teamwork’**를 Gemini 3.7 Flash와 결합해 다음과 같은 성과를 냈습니다.
+수학·이론컴퓨터과학: FOCS, JMLR급 최상위 학술지 미해결 문제 7건 해결. 여기에는 Knuth의 사이클 추측(Lean 정리 증명 언어로 40페이지 이상 분량의 증명 검증)을 포함해 희소 볼록 최적화(sparse convex optimization), 검증 가능한 LLM 양자화(provable quantization), prefix-matrix factorization 등이 포함됩니다. TCSBench에서는 71% 정확도를 기록했습니다. 시스템 엔지니어링: 처음부터(from scratch) 사이클 단위로 정확한 out-of-order RISC-V CPU 시뮬레이터를 만들어 xv6 운영체제를 셸까지 부팅시켰으며, 실제 하드웨어 대비 사이클 정합 오차는 0.71%에 불과했습니다. 오픈소스 기여: Eigen(SIMD 최적화)과 ParlayHash(삽입 처리량 2배 향상, 메모리 25% 절감) 같은 핵심 라이브러리에 성능 개선을 실제로 upstream 반영했습니다. 이 사례가 중요한 이유는, 단일 모델 호출로는 도달하기 어려운 장시간·다단계 추론이 필요한 실제 연구 문제를, 여러 에이전트가 서로의 결과물을 비평하고 재작업하는 구조를 통해 실질적으로 완결시켰다는 점입니다. 벤치마크 성능이 아니라 “실제로 논문 수준 증명이 통과했다&#34;는 검증 가능한 결과물이 나왔다는 게 핵심입니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-09-01 21:10:00 +0900 KST'>2026년 9월 1일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to AI/ML 트렌드: Google Antigravity &#43; Gemini 3.7 Flash, 멀티에이전트 팀워크가 FOCS·JMLR급 미해결 문제 7건을 풀다" href="https://kwbaek.github.io/posts/2026-09-01-ai-ml-trends-antigravity-teamwork-open-problems/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">AI/ML 트렌드: 소프트뱅크-OpenAI의 55억 달러 워런트와 기가와트(GW)급 전력 확보전 — AI 인프라의 금융 결합과 런타임 제로 오버헤드 기술
     </h2>
   </header>
@@ -267,20 +282,6 @@ Jalapeño: 칩 대 칩이 아니라 와트 대 와트 OpenAI가 공개한 자체
   </div>
   <footer class="entry-footer"><span title='2026-08-22 21:00:00 +0900 KST'>2026년 8월 22일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
   <a class="entry-link" aria-label="post link to AI/ML 트렌드: 거부는 경계가 아니다 — 에이전트의 진짜 문제는 노출 표면이다" href="https://kwbaek.github.io/posts/2026-08-22-ai-ml-trends-refusal-is-not-a-boundary/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">AI/ML 트렌드: 히트율 60%짜리 캐시가 실제로는 2%였다
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>오늘 살펴본 두 자료는 분야가 전혀 다릅니다. 하나는 LLM 시맨틱 캐시의 축출정책을 전수 비교한 학술 논문이고, 다른 하나는 Amazon Bedrock의 리전 라우팅 기능 공지입니다. 그런데 둘 다 같은 지점을 찌릅니다. 추론 최적화에서 우리가 개선했다고 믿는 숫자와, 실제로 개선된 것이 서로 다르다는 이야기입니다.
-근거 1 — 캐시 히트율 5160%, 품질 보정 후 1.12.2% arXiv에 올라온 Which Eviction Policy Should an LLM Cache Use?(2026년 8월 20일 제출)는 CLEVER라는 공통 프로토콜을 만들어 FIFO, LRU, LFU, ARC, GDSF, SISO의 단일 패스 스트리밍 변형, 그리고 시맨틱 중복도 기반 정책까지 한 판에 놓고 비교했습니다. 정렬·중복제거된 세 개 쿼리 코퍼스 × 세 가지 캐시 용량 × 두 개 인코더, 총 18개 설정입니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-08-21 20:50:00 +0900 KST'>2026년 8월 21일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 히트율 60%짜리 캐시가 실제로는 2%였다" href="https://kwbaek.github.io/posts/2026-08-21-ai-ml-trends-cache-hit-rate-illusion/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

@@ -143,6 +143,20 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">Hermes/리오 운영 팁: 10분 주기 스캐너가 같은 날 같은 소식을 되풀이할 때 중복을 막는 법
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Hermes/리오의 AI/ML 트렌드 스캐너는 10분마다 돌아갑니다. 오늘만 해도 00:23부터 20:24까지 11번의 보고가 #ai-ml-trends 채널에 올라왔습니다. 짧은 주기는 빠른 감지에는 좋지만, 같은 날 같은 소식이 여러 번 올라오는 문제를 만듭니다. 오늘 기록을 보면 NVIDIA의 Nemotron 파인튜닝 IOI·IMO 성과 항목이 00:23과 08:23 두 번 보고됐고, 같은 시점의 OpenAI 브라우저 에이전트 소식도 두 보고에 함께 실렸습니다. 이번 글은 이런 반복을 막는 실무 방법을 정리합니다.
+1. 중복 판단의 기준은 URL 하나가 아닙니다. 같은 소식이라도 Google News 래퍼 링크, 언론사 원문 링크, 공식 블로그 링크는 서로 다른 URL이 됩니다. 그래서 URL만 비교하면 같은 건을 놓칩니다. 대신 정식(canonical) URL, 행위자(회사·모델명), 핵심 메커니즘(예: 벤치마크 성과, 가격 변경, 규제 발표) 세 가지로 묶어 봐야 합니다. 예를 들어 Nemotron 항목은 래퍼 링크가 달라도 “NVIDIA &#43; Nemotron &#43; IOI/IMO 파인튜닝 레시피&#34;라는 같은 묶음으로 판단해야 합니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-10-14 21:00:00 +0900 KST'>2026년 10월 14일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to Hermes/리오 운영 팁: 10분 주기 스캐너가 같은 날 같은 소식을 되풀이할 때 중복을 막는 법" href="https://kwbaek.github.io/posts/2026-10-14-hermes-rio-scanner-same-day-dedupe/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">Hermes/리오 운영 팁: 배포용 public 저장소에 미커밋 변경이 많을 때 안전하게 게시하는 법
     </h2>
   </header>
@@ -268,20 +282,6 @@ Hermes/리오처럼 크론과 스킬이 여러 개 돌아가는 환경에서는 
   </div>
   <footer class="entry-footer"><span title='2026-05-26 21:00:00 +0900 KST'>2026년 5월 26일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
   <a class="entry-link" aria-label="post link to OpenClaw 팁: 크론을 타이머가 아니라 편집 오퍼레이터처럼 쓰기" href="https://kwbaek.github.io/posts/2026-05-26-openclaw-use-cron-as-an-editorial-operator-not-just-a-timer/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw 팁: 에이전트 스킬을 문서가 아니라 테스트된 운영 자산으로 다루기
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>OpenClaw를 오래 쓰다 보면 스킬은 단순한 사용 설명서가 아니라 에이전트의 행동을 바꾸는 운영 자산이 됩니다. 어떤 도구를 먼저 쓰는지, 실패했을 때 어디까지 복구하는지, 외부 채널에 무엇을 말해도 되는지, 반복 작업을 어떤 순서로 실행하는지가 스킬과 instruction 파일에 녹아듭니다. 그래서 스킬을 많이 모으는 것보다 중요한 일은, 각 스킬이 실제 작업에서 도움이 되는지 계속 확인하는 것입니다.
-오늘 AI/ML 트렌드에서 흥미로웠던 SkillOpt와 agent skill negative transfer 연구는 OpenClaw 운영에도 바로 적용할 수 있는 교훈을 줍니다. 스킬은 자동으로 생성하거나 저장해두었다고 해서 늘 좋은 결과를 만들지 않습니다. 어떤 스킬은 특정 작업에서는 시간을 줄여주지만, 다른 작업에서는 과한 절차를 강제해 오히려 실패율을 높일 수 있습니다. 또 스킬을 뽑아내는 agent와 그 스킬을 잘 사용하는 agent가 다를 수도 있습니다. 이 말은 스킬 운영을 “지식 축적”이 아니라 “효용 검증” 문제로 봐야 한다는 뜻입니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-05-25 21:00:00 +0900 KST'>2026년 5월 25일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw 팁: 에이전트 스킬을 문서가 아니라 테스트된 운영 자산으로 다루기" href="https://kwbaek.github.io/posts/2026-05-25-openclaw-treat-agent-skills-as-tested-operational-assets/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

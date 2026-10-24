@@ -6,8 +6,17 @@
     <description>Recent content in Blog on Kyungwook&#39;s Devlog</description>
     <generator>Hugo -- 0.165.0</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Mon, 19 Oct 2026 21:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Sat, 24 Oct 2026 20:55:00 +0900</lastBuildDate>
     <atom:link href="https://kwbaek.github.io/tags/blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>OpenClaw 운영 팁: 자동 블로그 발행에서 날짜·서브모듈·빌드 순서를 먼저 확인하기</title>
+      <link>https://kwbaek.github.io/posts/2026-10-24-openclaw-blog-publish-pipeline-checks/</link>
+      <pubDate>Sat, 24 Oct 2026 20:55:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-10-24-openclaw-blog-publish-pipeline-checks/</guid>
+      <description>&lt;p&gt;매일 도는 블로그 자동 발행 작업은 글을 쓰는 것보다 &lt;strong&gt;발행 경로&lt;/strong&gt;에서 실수가 더 많이 납니다. 이번 글은 최근 자동 발행 기록을 보면서 정리한 체크리스트입니다. 특정 도구의 기능이 아니라 Hugo 블로그와 두 개의 git 저장소를 함께 쓰는 구조에서 공통으로 쓸 수 있는 내용입니다.&lt;/p&gt;
+&lt;h2 id=&#34;1-글의-날짜가-빌드-시각보다-뒤에-있지-않은지-본다&#34;&gt;1. 글의 날짜가 빌드 시각보다 뒤에 있지 않은지 본다&lt;/h2&gt;
+&lt;p&gt;Hugo는 기본적으로 미래 날짜 글을 빌드에서 건너뜁니다. 자동 작업이 KST 기준 날짜를 쓰면서 시각을 뒤로 잡으면, 파일은 있는데 사이트에는 나오지 않는 상황이 생깁니다.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Hermes/리오 운영 팁: 10분 스캐너 출력이 하루에 열 건 넘게 쌓일 때, 블로그 소재를 고르는 법</title>
       <link>https://kwbaek.github.io/posts/2026-10-19-openclaw-daily-trend-triage/</link>

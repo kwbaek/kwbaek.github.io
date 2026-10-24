@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
-<title>OpenClaw | Kyungwook&#39;s Devlog</title>
+<title>Openclaw | Kyungwook&#39;s Devlog</title>
 <meta name="keywords" content="">
 <meta name="description" content="">
 <meta name="author" content="map[email: name:Kyungwook Baek]">
@@ -73,11 +73,11 @@
 
 </script><meta property="og:url" content="https://kwbaek.github.io/tags/openclaw/">
   <meta property="og:site_name" content="Kyungwook&#39;s Devlog">
-  <meta property="og:title" content="OpenClaw">
+  <meta property="og:title" content="Openclaw">
   <meta property="og:locale" content="ko-kr">
   <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="OpenClaw">
+<meta name="twitter:title" content="Openclaw">
 <meta name="twitter:description" content="">
 
 </head>
@@ -137,9 +137,23 @@
 <main class="main"> 
 <header class="page-header">
   <h1>
-    OpenClaw
+    Openclaw
   </h1>
 </header>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 운영 팁: 자동 블로그 발행에서 날짜·서브모듈·빌드 순서를 먼저 확인하기
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>매일 도는 블로그 자동 발행 작업은 글을 쓰는 것보다 발행 경로에서 실수가 더 많이 납니다. 이번 글은 최근 자동 발행 기록을 보면서 정리한 체크리스트입니다. 특정 도구의 기능이 아니라 Hugo 블로그와 두 개의 git 저장소를 함께 쓰는 구조에서 공통으로 쓸 수 있는 내용입니다.
+1. 글의 날짜가 빌드 시각보다 뒤에 있지 않은지 본다 Hugo는 기본적으로 미래 날짜 글을 빌드에서 건너뜁니다. 자동 작업이 KST 기준 날짜를 쓰면서 시각을 뒤로 잡으면, 파일은 있는데 사이트에는 나오지 않는 상황이 생깁니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-10-24 20:55:00 +0900 KST'>2026년 10월 24일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 운영 팁: 자동 블로그 발행에서 날짜·서브모듈·빌드 순서를 먼저 확인하기" href="https://kwbaek.github.io/posts/2026-10-24-openclaw-blog-publish-pipeline-checks/"></a>
+</article>
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
@@ -268,20 +282,6 @@
   </div>
   <footer class="entry-footer"><span title='2026-10-06 09:00:00 +0900 KST'>2026년 10월 6일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
   <a class="entry-link" aria-label="post link to Hermes/리오 크론 운영: 디스플레이 불가 상태에서의 안전한 폴백 패턴" href="https://kwbaek.github.io/posts/2026-10-06-hermes-rio-cron-fallback-pattern/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Hermes/리오 운영 팁: &#39;별표 하나 달고 완료&#39;를 크론에서 걸러 내는 완료 증거 규칙
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>오늘 AI/ML 트렌드 글에서 Harvard Schwartz 교수의 BootLoops 사례를 다뤘습니다. 그중 가장 실무적인 대목은 모델이 **“done, with one asterisk”**라고 말할 때 사실은 끝나지 않은 경우가 많다는 경고였습니다. 이 문제는 과학계산에만 있지 않습니다. 매일 무인으로 도는 Hermes/리오 크론 작업에서도 똑같이 일어납니다. 이번 글은 완료 선언을 증거로 바꾸는 운영 규칙을 정리합니다.
-크론에서 ‘별표 완료’는 이런 모습이다 “블로그 글을 게시했습니다” — 그런데 push만 했고 Pages 배포는 아직 404 “캐시를 갱신했습니다” — JSON 문법은 맞지만 최신 항목이 반영되지 않음 “전송했습니다” — 명령은 실행됐지만 성공 건수는 확인하지 않음 “검증했습니다” — 검증 명령이 가드에 막혀 실제로는 실행되지 않았음 모두 보고 문장만 보면 정상입니다. 사람이 없는 시간에 도는 작업일수록 이 문장이 그대로 신뢰됩니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-10-03 21:03:30 +0900 KST'>2026년 10월 3일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to Hermes/리오 운영 팁: &#39;별표 하나 달고 완료&#39;를 크론에서 걸러 내는 완료 증거 규칙" href="https://kwbaek.github.io/posts/2026-10-03-hermes-rio-asterisk-completion-evidence/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

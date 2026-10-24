@@ -143,6 +143,20 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">Hermes/리오 팁: Agent 크론 앞에 컨텍스트 권한 게이트를 둬라
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 AWS의 Context와 Bedrock AgentCore 흐름을 Hermes/리오 운영에 적용하면 팁은 하나입니다. agent 크론 앞에 컨텍스트 권한 게이트를 둬야 합니다. 자동화가 실패하는 이유는 항상 모델이 멍청해서가 아닙니다. 어떤 입력을 읽어도 되는지, 어느 캐시가 최신인지, 어떤 자료는 공개 결과에 쓰면 안 되는지, fallback을 썼을 때 신뢰도를 어떻게 낮출지 정하지 않았기 때문에 흔들리는 경우가 많습니다.
+첫 번째 게이트는 입력 목록입니다. 크론이 실행될 때 “오늘 메시지”, “최근 리포트”, “캐시 파일”, “RSS”, “블로그 기존 글”, “Git 상태”처럼 읽은 자료를 작업 단위로 분리해 기록해야 합니다. 중요한 것은 많이 읽는 것이 아니라, 각 입력이 어떤 역할인지 구분하는 것입니다. 최신 트렌드는 오늘의 각도를 정하고, 기존 글은 중복을 막고, 캐시는 live source 실패 시 fallback이 됩니다. 이 구분이 없으면 agent는 오래된 자료를 최신 근거처럼 쓰거나 같은 주제를 반복하기 쉽습니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-06-18 21:00:00 +0900 KST'>2026년 6월 18일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to Hermes/리오 팁: Agent 크론 앞에 컨텍스트 권한 게이트를 둬라" href="https://kwbaek.github.io/posts/2026-06-18-hermes-rio-add-a-context-permission-gate-to-agent-crons/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">AI/ML 트렌드: 기업 AI는 파일럿을 지나 운영 체계로 넘어가고 있다
     </h2>
   </header>
@@ -262,20 +276,6 @@ Colab CLI의 의미는 단순히 “노트북을 커맨드라인에서 돌릴 �
   </div>
   <footer class="entry-footer"><span title='2026-05-23 21:00:00 +0900 KST'>2026년 5월 23일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
   <a class="entry-link" aria-label="post link to AI/ML 트렌드: 프론티어 AI는 운영 인프라 문제로 이동한다" href="https://kwbaek.github.io/posts/2026-05-23-ai-ml-trends-frontier-ai-is-becoming-operational-infrastructure/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw 팁: 에이전트 실행 흔적을 운영 메모리로 쓰기
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>OpenClaw를 매일 쓰다 보면 가장 가치 있는 데이터는 완성된 답변만이 아니라 에이전트가 어떤 입력을 보고, 어떤 선택을 하고, 어디서 실패했고, 무엇을 고쳤는지에 대한 실행 흔적이라는 것을 알게 됩니다. 오늘 AI/ML 트렌드에서도 Hugging Face가 agent trace를 장기 메모리로 쓰는 Buckets 워크플로를 제안한 내용이 올라왔습니다. 이 아이디어는 OpenClaw 운영에도 바로 적용할 수 있습니다. 에이전트 로그와 크론 결과를 그냥 흘려보내지 말고, 다음 실행의 품질을 높이는 운영 메모리로 다루는 것입니다.
-가장 간단한 패턴은 세 층으로 나누는 것입니다. 첫째, Discord 채널이나 크론 출력처럼 원본 이벤트가 들어오는 raw inbox가 있습니다. 둘째, memory/YYYY-MM-DD.md 같은 daily note에 그날의 중요한 작업, 실패, 판단을 짧게 기록합니다. 셋째, 반복적으로 재사용할 교훈은 MEMORY.md, TOOLS.md, skill 문서, cron instruction으로 승격합니다. raw log는 많고 noisy해도 괜찮지만, 장기 메모리는 짧고 실행 가능해야 합니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-05-23 21:00:00 +0900 KST'>2026년 5월 23일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw 팁: 에이전트 실행 흔적을 운영 메모리로 쓰기" href="https://kwbaek.github.io/posts/2026-05-23-openclaw-use-agent-traces-as-operational-memory/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

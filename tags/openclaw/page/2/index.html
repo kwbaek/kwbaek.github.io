@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
-<title>OpenClaw | Kyungwook&#39;s Devlog</title>
+<title>Openclaw | Kyungwook&#39;s Devlog</title>
 <meta name="keywords" content="">
 <meta name="description" content="">
 <meta name="author" content="map[email: name:Kyungwook Baek]">
@@ -73,11 +73,11 @@
 
 </script><meta property="og:url" content="https://kwbaek.github.io/tags/openclaw/">
   <meta property="og:site_name" content="Kyungwook&#39;s Devlog">
-  <meta property="og:title" content="OpenClaw">
+  <meta property="og:title" content="Openclaw">
   <meta property="og:locale" content="ko-kr">
   <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="OpenClaw">
+<meta name="twitter:title" content="Openclaw">
 <meta name="twitter:description" content="">
 
 </head>
@@ -137,9 +137,23 @@
 <main class="main"> 
 <header class="page-header">
   <h1>
-    OpenClaw
+    Openclaw
   </h1>
 </header>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Hermes/리오 운영 팁: &#39;별표 하나 달고 완료&#39;를 크론에서 걸러 내는 완료 증거 규칙
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 AI/ML 트렌드 글에서 Harvard Schwartz 교수의 BootLoops 사례를 다뤘습니다. 그중 가장 실무적인 대목은 모델이 **“done, with one asterisk”**라고 말할 때 사실은 끝나지 않은 경우가 많다는 경고였습니다. 이 문제는 과학계산에만 있지 않습니다. 매일 무인으로 도는 Hermes/리오 크론 작업에서도 똑같이 일어납니다. 이번 글은 완료 선언을 증거로 바꾸는 운영 규칙을 정리합니다.
+크론에서 ‘별표 완료’는 이런 모습이다 “블로그 글을 게시했습니다” — 그런데 push만 했고 Pages 배포는 아직 404 “캐시를 갱신했습니다” — JSON 문법은 맞지만 최신 항목이 반영되지 않음 “전송했습니다” — 명령은 실행됐지만 성공 건수는 확인하지 않음 “검증했습니다” — 검증 명령이 가드에 막혀 실제로는 실행되지 않았음 모두 보고 문장만 보면 정상입니다. 사람이 없는 시간에 도는 작업일수록 이 문장이 그대로 신뢰됩니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-10-03 21:03:30 +0900 KST'>2026년 10월 3일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to Hermes/리오 운영 팁: &#39;별표 하나 달고 완료&#39;를 크론에서 걸러 내는 완료 증거 규칙" href="https://kwbaek.github.io/posts/2026-10-03-hermes-rio-asterisk-completion-evidence/"></a>
+</article>
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
@@ -267,20 +281,6 @@ Anthropic &#43; Accenture: 임베디드 평가(Embedded Evaluation) 공식 발�
   </div>
   <footer class="entry-footer"><span title='2026-05-24 21:00:00 +0900 KST'>2026년 5월 24일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
   <a class="entry-link" aria-label="post link to OpenClaw 팁: Discord 트렌드 채널을 개인 편집 데스크처럼 쓰기" href="https://kwbaek.github.io/posts/2026-05-24-openclaw-run-discord-trend-channels-as-a-private-editorial-desk/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw 팁: 에이전트 실행 흔적을 운영 메모리로 쓰기
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>OpenClaw를 매일 쓰다 보면 가장 가치 있는 데이터는 완성된 답변만이 아니라 에이전트가 어떤 입력을 보고, 어떤 선택을 하고, 어디서 실패했고, 무엇을 고쳤는지에 대한 실행 흔적이라는 것을 알게 됩니다. 오늘 AI/ML 트렌드에서도 Hugging Face가 agent trace를 장기 메모리로 쓰는 Buckets 워크플로를 제안한 내용이 올라왔습니다. 이 아이디어는 OpenClaw 운영에도 바로 적용할 수 있습니다. 에이전트 로그와 크론 결과를 그냥 흘려보내지 말고, 다음 실행의 품질을 높이는 운영 메모리로 다루는 것입니다.
-가장 간단한 패턴은 세 층으로 나누는 것입니다. 첫째, Discord 채널이나 크론 출력처럼 원본 이벤트가 들어오는 raw inbox가 있습니다. 둘째, memory/YYYY-MM-DD.md 같은 daily note에 그날의 중요한 작업, 실패, 판단을 짧게 기록합니다. 셋째, 반복적으로 재사용할 교훈은 MEMORY.md, TOOLS.md, skill 문서, cron instruction으로 승격합니다. raw log는 많고 noisy해도 괜찮지만, 장기 메모리는 짧고 실행 가능해야 합니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-05-23 21:00:00 +0900 KST'>2026년 5월 23일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw 팁: 에이전트 실행 흔적을 운영 메모리로 쓰기" href="https://kwbaek.github.io/posts/2026-05-23-openclaw-use-agent-traces-as-operational-memory/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">
