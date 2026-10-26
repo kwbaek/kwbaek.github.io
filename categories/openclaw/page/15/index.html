@@ -143,6 +143,21 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw v2026.3.2 실전 팁 — Secrets 워크플로와 스트리밍 설정 완전 정리
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>OpenClaw v2026.3.2가 안정화된 지 며칠이 지났다. 이번 릴리즈에서 조용히 바뀐 것들 중 실제 운영에서 체감하는 두 가지 — Secrets 워크플로와 스트리밍 설정 — 를 집중 정리한다.
+Secrets 워크플로: audit → configure → apply → reload v2026.2.26부터 정식화된 Secrets 관리 워크플로가 이제 꽤 안정적으로 쓸 수 있는 상태다. 기본 순서는 이렇다:
+# 1. 현재 상태 점검 openclaw secrets audit --check # 2. 미설정 항목 구성 openclaw secrets configure # 3. 드라이런으로 영향 확인 openclaw secrets apply --dry-run # 4. 실제 적용 openclaw secrets apply # 5. 게이트웨이에 반영 openclaw secrets reload 특히 --dry-run 단계를 절대 건너뛰지 말 것. active surface에서 unresolved secret ref가 있으면 fail-fast로 즉시 실패 처리되기 때문에, 실수로 운영 중단이 생길 수 있다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-03-06 21:00:00 +0900 KST'>2026년 3월 6일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw v2026.3.2 실전 팁 — Secrets 워크플로와 스트리밍 설정 완전 정리" href="https://kwbaek.github.io/posts/2026-03-06-openclaw-secrets-and-streaming/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">OpenClaw v2026.3.2 업그레이드 가이드: SecretRef, pdf 도구, 그리고 운영 안정성
     </h2>
   </header>
@@ -273,23 +288,6 @@ Heartbeat: 대화 컨텍스트가 필요한 점검 작업(메일/캘린더/멘�
   </div>
   <footer class="entry-footer"><span title='2026-02-25 21:00:00 +0900 KST'>2026년 2월 25일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
   <a class="entry-link" aria-label="post link to OpenClaw 실전 운영법: Heartbeat &#43; Cron 2계층 자동화 패턴" href="https://kwbaek.github.io/posts/2026-02-25-openclaw-two-tier-automation-guide/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw 2026.2.22 이후 운영 플레이북: 업데이트, 보안, 배포
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>최근 OpenClaw를 실무에 붙여 쓰면서 느낀 핵심은, 기능이 빨리 늘어나는 만큼 업데이트 루틴을 표준화한 팀이 결국 안정적으로 오래 간다는 점입니다. 특히 2026.2.22 릴리즈 구간은 운영 관점에서 체감 변화가 꽤 큽니다.
-이번 구간의 실무 포인트를 한 줄로 요약하면 이렇습니다.
-“새 기능을 바로 쓰기보다, 사전 점검 → 설정 정리 → 재시작 → 헬스체크를 루틴화하라.”
-1) 업데이트 전에 꼭 할 것: dry-run OpenClaw는 이제 업데이트 전에 영향을 예측하는 흐름이 훨씬 중요해졌습니다.
-openclaw update --dry-run 이 한 줄로 어떤 변경이 들어오는지 먼저 확인해두면, 실제 운영 중 예상치 못한 중단을 크게 줄일 수 있습니다. 특히 여러 채널(Discord/Telegram/Slack)을 동시에 쓰는 환경에서는 설정 키 변경 영향이 생각보다 크게 나타납니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-02-24 21:00:00 +0900 KST'>2026년 2월 24일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw 2026.2.22 이후 운영 플레이북: 업데이트, 보안, 배포" href="https://kwbaek.github.io/posts/2026-02-24-openclaw-release-2026-2-22-playbook/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

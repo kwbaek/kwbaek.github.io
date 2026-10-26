@@ -143,6 +143,20 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">Hermes/리오 팁: 자동화 결과에 근거 레이어 붙이기
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 AI/ML 트렌드에서 WHO의 evidence-informed health policy 논의와 WeChat AI agent 보도가 같이 눈에 들어왔습니다. 두 뉴스가 Hermes/리오 운영에 주는 힌트는 분명합니다. agent가 더 많은 일을 대신할수록 결과물만 잘 만드는 것으로는 부족하고, 그 결과가 어디에서 왔는지와 어떤 판단으로 선택됐는지를 보여주는 근거 레이어가 필요합니다.
+Hermes/리오 크론을 예로 들면, 매일 리포트나 블로그 글을 자동으로 생성하는 작업은 단순히 “파일을 만들었다”에서 끝나지 않습니다. 좋은 자동화는 어떤 입력을 읽었는지, 어떤 입력이 막혔을 때 어떤 폴백을 썼는지, 최근 글과 중복되는 논지를 어떻게 피했는지, 최종 산출물에 민감한 정보가 섞이지 않았는지까지 확인해야 합니다. 이 과정을 내부적으로는 실행 로그로 남기고, 사용자에게는 필요한 만큼만 간결하게 보고하는 구조가 안전합니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-06-02 21:00:00 +0900 KST'>2026년 6월 2일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to Hermes/리오 팁: 자동화 결과에 근거 레이어 붙이기" href="https://kwbaek.github.io/posts/2026-06-02-hermes-rio-add-an-evidence-layer-to-automation/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">Hermes/리오 팁: 크론 자동화를 작은 AI Factory처럼 운영하기
     </h2>
   </header>
@@ -265,20 +279,6 @@ Hermes/리오 작업을 설계할 때는 먼저 행동을 세 등급으로 나�
   </div>
   <footer class="entry-footer"><span title='2026-05-23 21:00:00 +0900 KST'>2026년 5월 23일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
   <a class="entry-link" aria-label="post link to OpenClaw 팁: 에이전트 실행 흔적을 운영 메모리로 쓰기" href="https://kwbaek.github.io/posts/2026-05-23-openclaw-use-agent-traces-as-operational-memory/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw 팁: 매일 블로그 크론을 작은 편집 파이프라인처럼 운영하기
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>OpenClaw로 매일 블로그 포스팅을 자동화할 때 핵심은 “글을 자동으로 쓴다”가 아닙니다. 더 중요한 것은 입력 수집, 선별, 작성, 빌드, 배포를 작고 검증 가능한 편집 파이프라인으로 나누는 것입니다. 오늘 같은 daily blog cron은 Discord 트렌드 채널을 읽고, 그중 가장 중요한 AI/ML 흐름을 고른 뒤, Hugo 포스트를 만들고, 블로그 레포와 public/ 배포 레포를 각각 커밋하는 구조입니다. 겉으로 보면 단순하지만, 실제로는 운영 자동화의 좋은 축소판입니다.
-첫 번째 원칙은 입력 채널을 명확히 나누는 것입니다. #ai-ml-trends 같은 Discord 채널은 raw feed가 아니라 이미 한 번 걸러진 editorial inbox로 쓰는 편이 좋습니다. RSS, GitHub release, 논문, 뉴스가 모두 섞여 있어도 채널 메시지에는 “왜 중요한가”가 짧게 적혀 있습니다. OpenClaw cron은 여기서 다시 오늘 날짜 메시지만 읽고, 중복 URL이나 오래된 토픽을 제외한 뒤 글의 중심 문장을 잡으면 됩니다. 이렇게 하면 모델이 웹을 무작정 떠돌며 소재를 찾는 시간을 줄이고, 매일 글의 품질도 더 안정됩니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-05-22 21:00:00 +0900 KST'>2026년 5월 22일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw 팁: 매일 블로그 크론을 작은 편집 파이프라인처럼 운영하기" href="https://kwbaek.github.io/posts/2026-05-22-openclaw-use-cron-blogging-as-a-small-editorial-pipeline/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

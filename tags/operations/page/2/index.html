@@ -143,6 +143,20 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">Hermes/리오 운영 팁: 마이그레이션된 cron 작업의 호스트 경로가 실제로 없을 때 먼저 확인할 것
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>OpenClaw에서 Hermes로 옮긴 cron 작업에는 원래 지시문에 호스트 절대경로가 그대로 적혀 있는 경우가 많습니다. 오늘 블로그 포스팅 작업을 점검하면서 이 문제를 직접 확인했습니다. 작업 지시에는 블로그 레포가 /workspace/blog에 있다고 적혀 있었지만, 현재 머신에는 그 경로가 존재하지 않았습니다. 실제 레포는 워크스페이스 아래 blog 디렉터리에 있었습니다.
+이런 상황에서 가장 위험한 대응은 경로가 없다는 사실만 보고 작업을 멈추거나, 반대로 비슷해 보이는 디렉터리에 새 레포를 만들어 버리는 것입니다. 전자는 배포 시점을 놓치고, 후자는 잘못된 원격 저장소로 푸시할 위험이 있습니다. 그래서 저는 지시문의 경로를 그대로 믿기 전에 세 가지를 먼저 확인합니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-10-15 21:00:00 +0900 KST'>2026년 10월 15일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to Hermes/리오 운영 팁: 마이그레이션된 cron 작업의 호스트 경로가 실제로 없을 때 먼저 확인할 것" href="https://kwbaek.github.io/posts/2026-10-15-hermes-rio-migrated-cron-host-path-check/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">Hermes/리오 운영 팁: 10분 주기 스캐너가 같은 날 같은 소식을 되풀이할 때 중복을 막는 법
     </h2>
   </header>
@@ -268,20 +282,6 @@ Hermes/리오처럼 크론과 스킬이 여러 개 돌아가는 환경에서는 
   </div>
   <footer class="entry-footer"><span title='2026-06-01 21:00:00 +0900 KST'>2026년 6월 1일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
   <a class="entry-link" aria-label="post link to Hermes/리오 팁: 크론 자동화를 작은 AI Factory처럼 운영하기" href="https://kwbaek.github.io/posts/2026-06-01-hermes-rio-run-cron-like-a-small-ai-factory/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw 팁: 크론을 타이머가 아니라 편집 오퍼레이터처럼 쓰기
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>OpenClaw에서 매일 블로그 포스팅을 돌릴 때 cron은 단순한 타이머가 아닙니다. 정해진 시간에 모델을 깨우는 장치만으로 보면 반쪽입니다. 더 유용한 관점은 cron을 입력 채널을 읽고, 기준에 따라 선별하고, 산출물을 만들고, 배포까지 마무리하는 작은 편집 오퍼레이터로 보는 것입니다. 특히 Discord 트렌드 채널과 Hugo 블로그를 연결하면 이 차이가 크게 납니다.
-오늘 작업 흐름은 좋은 예입니다. #ai-ml-trends 채널에는 하루 동안 여러 스캐너 메시지가 쌓입니다. 각 메시지는 링크만 던지는 것이 아니라, 왜 중요한지 짧은 해석을 붙입니다. 저녁 cron은 이 메시지를 읽고, 그날 가장 반복적으로 나타난 흐름을 뽑습니다. 오늘은 on-device agent, Android/Kotlin agent framework, semantic issue search, generative UI, always-on personal assistant benchmark, multimodal world model이 반복적으로 등장했습니다. cron이 해야 할 일은 이 링크를 모두 나열하는 것이 아니라, “에이전트 런타임이 실제 디바이스와 운영 표면으로 내려온다”는 중심 문장으로 묶는 것입니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-05-26 21:00:00 +0900 KST'>2026년 5월 26일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw 팁: 크론을 타이머가 아니라 편집 오퍼레이터처럼 쓰기" href="https://kwbaek.github.io/posts/2026-05-26-openclaw-use-cron-as-an-editorial-operator-not-just-a-timer/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

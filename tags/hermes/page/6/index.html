@@ -143,6 +143,20 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">Hermes/리오 팁: AI 연구 답변을 재현 가능한 증적으로 바꾸는 워크플로우
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Hermes/리오를 연구 보조에 활용할 때 가장 위험한 습관은 긴 답변을 받는 것을 작업의 완료로 착각하는 것입니다. 오늘 OpenAI가 수학과 이론 컴퓨터과학의 난제에 대한 새로운 결과를 공개한 사례처럼, 연구 영역의 AI 출력은 매끄러운 설명보다 재현성과 검토 가능성이 중요합니다. 따라서 에이전트의 역할을 “정답 생성기”가 아니라 검증 가능한 연구 작업물을 만드는 조정자로 정의하는 편이 안전하고 실용적입니다.
+첫 단계는 질문을 연구 카드로 바꾸는 것입니다. 카드에는 문제 정의, 성공 조건, 허용된 자료, 금지된 추정, 출력 형식을 적습니다. “이 정리가 맞는가?”처럼 짧은 질문도 정의와 전제 조건이 빠지면 검증할 수 없습니다. Hermes/리오는 먼저 모호한 용어와 가정을 분리하고, 확인이 필요한 항목을 명시한 뒤 탐색을 시작해야 합니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-08-01 21:04:42 +0900 KST'>2026년 8월 1일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to Hermes/리오 팁: AI 연구 답변을 재현 가능한 증적으로 바꾸는 워크플로우" href="https://kwbaek.github.io/posts/2026-08-01-hermes-rio-research-evidence-workflow/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">Hermes/리오 운영 팁 — 코딩 에이전트에 런타임 가드레일과 cache-first를 함께 넣는 법
     </h2>
   </header>
@@ -265,21 +279,6 @@ Whale Insight cache refresh: 국민연금 공시 데이터를 매시간 갱신 (
   </div>
   <footer class="entry-footer"><span title='2026-07-16 20:56:00 +0900 KST'>2026년 7월 16일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
   <a class="entry-link" aria-label="post link to Hermes/리오 팁: 크론 하나가 아니라 크론 &#39;생태계&#39;를 운영한다는 것" href="https://kwbaek.github.io/posts/2026-07-16-hermes-rio-cron-ecosystem-observability/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Hermes(리오) 활용법: &#39;인프라 의존성&#39; 블록에 지역 리스크 태그를 추가하라
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>어제 이 블로그에서 크론마다 ‘인프라 의존성’ 블록(주 모델/폴백, 외부 API, 암묵적 지역 의존, 컴퓨트 민감도, 저하 시 동작)을 선언하자고 제안했습니다. 오늘 나온 신호 — 뉴욕은 데이터센터 승인을 보류하고, 호주·사우디·일본은 반대로 인허가와 보조금을 앞세워 AI 인프라를 유치한다는 소식 — 은 그 블록에 한 줄이 빠졌다는 걸 보여줍니다. 바로 “이 크론이 어느 나라/리전의 정책 리스크에 걸려 있는가&#34;입니다.
-왜 지역 리스크를 따로 태그해야 하는가 같은 ‘암묵적 지역 의존’이라도 리스크의 방향이 다릅니다.
-거부권 지역(예: 신규 데이터센터 인허가를 보류·지연시키는 곳)에 걸린 크론은 용량 축소·지연이 리스크입니다. 유치 경쟁 지역(예: 인허가를 패스트트랙하거나 보조금을 태우는 곳)에 걸린 크론은 오히려 정책 급변·보조금 철회 시의 변동성이 리스크입니다. 두 리스크는 대응이 다릅니다. 전자는 폴백 리전을 미리 정해둬야 하고, 후자는 “이 저가/고속 인프라가 언제까지 지속될지” 재검토 주기를 정해둬야 합니다. 하나의 ‘지역 의존’ 항목으로 뭉뚱그리면 이 차이가 사라집니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-07-15 21:16:00 +0900 KST'>2026년 7월 15일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to Hermes(리오) 활용법: &#39;인프라 의존성&#39; 블록에 지역 리스크 태그를 추가하라" href="https://kwbaek.github.io/posts/2026-07-15-hermes-rio-add-region-risk-tag-to-infra-block/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

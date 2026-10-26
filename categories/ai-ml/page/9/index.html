@@ -143,6 +143,33 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">AI/ML 트렌드: AI 인프라는 이제 공공 자본 루프까지 설계해야 한다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 AI/ML 트렌드에서 가장 크게 보이는 신호는 AI 인프라 경쟁이 모델 성능이나 GPU 구매 경쟁을 넘어 국가 단위 자본 배분 문제로 커지고 있다는 점입니다. Reuters가 보도한 한국의 Future Response Fund 구상은 이 흐름을 잘 보여줍니다. 반도체 호황에서 나온 세수를 physical AI, 데이터센터, AI chip 경쟁력 같은 장기 프로젝트에 다시 넣겠다는 구조이기 때문입니다. 단순 보조금이 아니라 “반도체 사이클 → 세수 → 전략 인프라 투자 → 다음 AI 산업 기반”으로 이어지는 루프가 만들어지는 셈입니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-07-05 21:00:00 +0900 KST'>2026년 7월 5일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to AI/ML 트렌드: AI 인프라는 이제 공공 자본 루프까지 설계해야 한다" href="https://kwbaek.github.io/posts/2026-07-05-ai-ml-trends-ai-infra-needs-a-public-capital-loop/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">AI/ML 트렌드: 에이전트 데이터 플레인이 새 RAG 레이어가 된다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 AI/ML 트렌드에서 가장 눈에 띈 흐름은 에이전트 경쟁의 초점이 모델 호출 자체에서 운영 데이터 계층으로 옮겨가고 있다는 점입니다. Couchbase가 발표한 AI Data Plane GA는 이 변화를 잘 보여줍니다. 기업형 에이전트가 실제 업무에 들어가면 필요한 것은 더 긴 답변만이 아닙니다. 지속되는 메모리, 최신 컨텍스트 검색, 클라우드와 엣지의 데이터 접근, MCP 기반 도구 연결, 그리고 이 모든 것을 관리할 수 있는 권한·감사 구조가 필요합니다.
+초기의 RAG는 “문서를 임베딩해서 검색한 뒤 모델에 넣는다”에 가까웠습니다. 하지만 agentic workflow에서는 그 정도로 부족합니다. 에이전트는 고객 상태, 업무 이력, 실시간 이벤트, 세션 기록, 승인 조건을 계속 읽고 갱신합니다. 즉 검색 인프라는 더 이상 부가 기능이 아니라 에이전트가 현실 세계를 이해하는 운영 기반이 됩니다. 이 계층이 약하면 모델이 좋아져도 같은 질문을 반복하거나, 오래된 정보를 근거로 행동하거나, 팀별 데이터 정책을 어길 수 있습니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-07-04 21:00:00 +0900 KST'>2026년 7월 4일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 에이전트 데이터 플레인이 새 RAG 레이어가 된다" href="https://kwbaek.github.io/posts/2026-07-04-ai-ml-trends-agent-data-plane-becomes-the-new-rag-layer/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">AI/ML 트렌드: 에이전트 보안은 런타임 레이어로 내려온다
     </h2>
   </header>
@@ -248,34 +275,6 @@ frontier model 경쟁을 볼 때 우리는 보통 성능, 벤치마크, 가격, 
   </div>
   <footer class="entry-footer"><span title='2026-06-26 20:55:00 +0900 KST'>2026년 6월 26일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
   <a class="entry-link" aria-label="post link to AI/ML 트렌드: 수출통제는 이제 물류 레이어에서 집행된다" href="https://kwbaek.github.io/posts/2026-06-26-ai-ml-trends-export-controls-move-to-the-logistics-layer/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">AI/ML 트렌드: 모델 접근권은 새로운 공급망 리스크다
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>오늘 AI/ML 트렌드에서 가장 흥미로운 신호는 Reuters가 보도한 중국 Z.ai 소식입니다. Anthropic이 중국 관련 접근을 차단한 뒤, Z.ai가 frontier model 격차를 좁히고 홍콩·상하이 dual listing을 추진한다는 내용입니다. 표면적으로는 한 중국 AI 기업의 성장 뉴스처럼 보이지만, 더 크게 보면 모델 접근권 자체가 새로운 공급망 리스크가 되고 있다는 뜻입니다.
-그동안 AI 공급망이라고 하면 GPU, HBM, 데이터센터, 전력 같은 물리적 인프라를 먼저 떠올렸습니다. 하지만 기업이 실제 AI 제품을 만들 때는 모델 API 접근권, 지역별 사용 가능 여부, 약관 변경, 제재 리스크, 대체 모델 조달 가능성도 같은 수준의 운영 변수입니다. 특정 국가나 조직이 어느 날 주요 모델에 접근하지 못하게 되면, 이는 단순한 벤더 교체가 아니라 제품 로드맵, 데이터 파이프라인, 평가 기준, 비용 구조를 모두 흔드는 사건이 됩니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-06-25 21:00:00 +0900 KST'>2026년 6월 25일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 모델 접근권은 새로운 공급망 리스크다" href="https://kwbaek.github.io/posts/2026-06-25-ai-ml-trends-model-access-is-now-geopolitical-supply-chain/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">AI/ML 트렌드: AI 메모리는 자본시장 이슈가 되고 있다
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>오늘 AI/ML 트렌드에서 가장 흥미로운 신호는 Reuters가 보도한 SK hynix의 29억 달러 규모 미국 ADR 상장 계획입니다. 표면적으로는 한국 반도체 기업의 자금조달 뉴스처럼 보이지만, AI/ML 관점에서는 더 큰 의미가 있습니다. HBM과 AI 메모리 경쟁이 이제 단순한 기술·수주 경쟁을 넘어 자본시장 접근성, 증설 재원, 공급망 신뢰도의 경쟁으로 확장되고 있다는 뜻입니다.
-지난 1~2년 동안 AI 인프라 논의는 주로 GPU에 집중됐습니다. 하지만 실제 AI 서비스가 커질수록 병목은 GPU 하나로 설명되지 않습니다. HBM, advanced packaging, 전력, 냉각, 데이터센터 부지, 장기 공급계약, 재고 리스크가 모두 묶여야 모델이 안정적으로 운영됩니다. 특히 HBM은 대형 모델 학습과 고성능 추론의 핵심 부품이기 때문에, 메모리 업체의 투자 여력은 곧 클라우드와 모델 기업의 공급 안정성으로 연결됩니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-06-24 20:58:00 +0900 KST'>2026년 6월 24일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to AI/ML 트렌드: AI 메모리는 자본시장 이슈가 되고 있다" href="https://kwbaek.github.io/posts/2026-06-24-ai-ml-trends-ai-memory-is-becoming-a-capital-markets-story/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

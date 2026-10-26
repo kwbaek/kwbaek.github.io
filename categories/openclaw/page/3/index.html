@@ -149,6 +149,21 @@
   <div class="entry-content">
     <p>Anthropic의 14개 위협 행위자 공시 이후, Hermes/리오 크론 운영에 API 보안이 핵심 항목이 되었습니다.
 혼자서 여러 Claude API 키를 관리하고, 자동 에이전트가 시간마다 이를 호출할 때 — 키 탈취나 악용이 발생해도 감지하기 어렵습니다. 이번 가이드는 Hermes 크론 환경에서 실행 가능한 API 보안 체크리스트를 제시합니다.
+🎯 상황: Hermes에서 Claude를 쓸 때, 뭐가 리스크인가? Hermes 환경의 구조 Hermes 크론 (MD Agent, 트렌드 스캐너, 블로그 자동화) ↓ 여러 Claude API 호출 ↓ 로그 → /memory, /tmp, Discord (가끔) 현재 추적 불가능한 항목 이 API 키가 정상적으로만 쓰이는가? 야간에 비정상 호출이 있었나? 한 키로 여러 크론이 동시에 호출하면 어떻게 구분하나? Claude 응답이 실제로 그 크론에서 쓰인 게 맞나? ✅ 실행 체크리스트 (이번 주) 1단계: 현황 파악 (30분) 당신의 Claude API 키 목록
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-09-13 21:45:00 +0900 KST'>2026년 9월 13일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to Hermes/리오 운영가이드: API 악용 추적과 위협 모니터링 체크리스트" href="https://kwbaek.github.io/posts/2026-09-13-hermes-api-security/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Hermes/리오 운영가이드: API 악용 추적과 위협 모니터링 체크리스트
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Anthropic의 14개 위협 행위자 공시 이후, Hermes/리오 크론 운영에 API 보안이 핵심 항목이 되었습니다.
+혼자서 여러 Claude API 키를 관리하고, 자동 에이전트가 시간마다 이를 호출할 때 — 키 탈취나 악용이 발생해도 감지하기 어렵습니다. 이번 가이드는 Hermes 크론 환경에서 실행 가능한 API 보안 체크리스트를 제시합니다.
 🎯 상황: &#34;Hermes에서 Claude를 쓸 때, 뭐가 리스크인가?&#34; Hermes 환경의 구조 Hermes 크론 (MD Agent, 트렌드 스캐너, 블로그 자동화) ↓ 여러 Claude API 호출 ↓ 로그 → /memory, /tmp, Discord (가끔) 현재 추적 불가능한 항목 이 API 키가 정상적으로만 쓰이는가? 야간에 비정상 호출이 있었나? 한 키로 여러 크론이 동시에 호출하면 어떻게 구분하나? Claude 응답이 실제로 그 크론에서 쓰인 게 맞나? ✅ 실행 체크리스트 (이번 주) 1단계: 현황 파악 (30분) 당신의 Claude API 키 목록
 ...</p>
   </div>
@@ -283,21 +298,6 @@ Hermes/리오 크론에서 **“정상”**이란:
   </div>
   <footer class="entry-footer"><span title='2026-09-02 21:06:00 +0900 KST'>2026년 9월 2일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
   <a class="entry-link" aria-label="post link to Hermes/리오 실전 팁: &#39;고객 소유 클라우드에 데이터 보관&#39; 원칙을 크론 운영에 적용하기" href="https://kwbaek.github.io/posts/2026-09-02-hermes-rio-data-sovereignty-cron-hygiene/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Hermes/리오 실전 팁: &#39;팀워크&#39; 패턴으로 읽는 장기 과제 위임(Delegate) 아키텍처 설계
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>오늘 AI/ML 트렌드에서 소개된 **Google Antigravity의 ‘Teamwork’**는 여러 에이전트가 서로의 결과물을 비평·재작업하며 수 시간~수일에 걸쳐 학술 난제를 해결한 사례입니다. 단일 모델 호출로는 도달하지 못했던 성과가 “협업하는 팀” 구조에서 나왔다는 점이, Hermes/리오 환경에서 delegate_task로 서브에이전트를 운용할 때도 그대로 적용되는 설계 원칙입니다.
-1. 왜 “한 번에 다 시키기&#34;는 장기 과제에서 실패하는가 Hermes/리오에서 복잡한 리서치·코딩·데이터 정리 작업을 단일 프롬프트로 서브에이전트에 던지면 흔히 이런 문제가 생깁니다.
-컨텍스트가 길어질수록 초반 지시가 희석되어 후반 작업에서 원래 목표를 놓침 중간 산출물을 검증하는 단계가 없어 오류가 누적된 채로 끝까지 진행 서브에이전트가 막히면 부모가 결과를 받을 때까지 문제를 알 수 없음 Antigravity Teamwork의 핵심은 이 문제를 “단일 에이전트의 인내심&#34;이 아니라 역할 분리 &#43; 상호 비평 루프로 풀었다는 점입니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-09-01 21:11:00 +0900 KST'>2026년 9월 1일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to Hermes/리오 실전 팁: &#39;팀워크&#39; 패턴으로 읽는 장기 과제 위임(Delegate) 아키텍처 설계" href="https://kwbaek.github.io/posts/2026-09-01-hermes-rio-teamwork-delegation-architecture/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

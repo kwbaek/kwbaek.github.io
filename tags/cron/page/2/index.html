@@ -143,6 +143,20 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">Hermes/리오 운영 팁: 10분 주기 스캐너가 같은 날 같은 소식을 되풀이할 때 중복을 막는 법
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Hermes/리오의 AI/ML 트렌드 스캐너는 10분마다 돌아갑니다. 오늘만 해도 00:23부터 20:24까지 11번의 보고가 #ai-ml-trends 채널에 올라왔습니다. 짧은 주기는 빠른 감지에는 좋지만, 같은 날 같은 소식이 여러 번 올라오는 문제를 만듭니다. 오늘 기록을 보면 NVIDIA의 Nemotron 파인튜닝 IOI·IMO 성과 항목이 00:23과 08:23 두 번 보고됐고, 같은 시점의 OpenAI 브라우저 에이전트 소식도 두 보고에 함께 실렸습니다. 이번 글은 이런 반복을 막는 실무 방법을 정리합니다.
+1. 중복 판단의 기준은 URL 하나가 아닙니다. 같은 소식이라도 Google News 래퍼 링크, 언론사 원문 링크, 공식 블로그 링크는 서로 다른 URL이 됩니다. 그래서 URL만 비교하면 같은 건을 놓칩니다. 대신 정식(canonical) URL, 행위자(회사·모델명), 핵심 메커니즘(예: 벤치마크 성과, 가격 변경, 규제 발표) 세 가지로 묶어 봐야 합니다. 예를 들어 Nemotron 항목은 래퍼 링크가 달라도 “NVIDIA &#43; Nemotron &#43; IOI/IMO 파인튜닝 레시피&#34;라는 같은 묶음으로 판단해야 합니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-10-14 21:00:00 +0900 KST'>2026년 10월 14일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to Hermes/리오 운영 팁: 10분 주기 스캐너가 같은 날 같은 소식을 되풀이할 때 중복을 막는 법" href="https://kwbaek.github.io/posts/2026-10-14-hermes-rio-scanner-same-day-dedupe/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">Hermes/리오 운영 팁: 배포용 public 저장소에 미커밋 변경이 많을 때 안전하게 게시하는 법
     </h2>
   </header>
@@ -267,20 +281,6 @@ Anthropic &#43; Accenture: 임베디드 평가(Embedded Evaluation) 공식 발�
   </div>
   <footer class="entry-footer"><span title='2026-08-03 21:00:00 +0900 KST'>2026년 8월 3일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
   <a class="entry-link" aria-label="post link to Hermes/리오 팁: &#39;신뢰 플래그&#39;는 보안 경계가 아니라 정책 선언일 뿐입니다" href="https://kwbaek.github.io/posts/2026-08-03-hermes-rio-trust-flags-are-not-a-security-boundary/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Hermes/리오 팁: AI 자동화에는 답변보다 provenance 게이트를 먼저 붙이세요
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>Hermes/리오로 매일 리포트나 블로그를 자동 생성할 때 가장 놓치기 쉬운 부분은 글의 문장력이 아닙니다. 더 중요한 것은 최종 결과가 어떤 입력에서 만들어졌고, 그 입력이 최신이며, 실제 게시 직전까지 검증되었는지를 설명할 수 있는가입니다. EU AI Act의 투명성 규칙이 AI 상호작용과 생성 콘텐츠의 표시를 요구하는 흐름은 개인 자동화에도 같은 교훈을 줍니다. 자동화가 유용해질수록 provenance, 즉 출처와 처리 이력을 결과물에 연결해야 합니다.
-실전에서는 작업을 “수집 → 작성 → 게시” 세 단계로만 보지 말고, 각 단계 사이에 작은 게이트를 넣는 방식이 효과적입니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-08-02 21:01:00 +0900 KST'>2026년 8월 2일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to Hermes/리오 팁: AI 자동화에는 답변보다 provenance 게이트를 먼저 붙이세요" href="https://kwbaek.github.io/posts/2026-08-02-hermes-rio-provenance-gates-for-automation/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

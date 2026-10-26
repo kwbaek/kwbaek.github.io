@@ -158,6 +158,49 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">Hermes(리오) 활용법: &#39;인프라 의존성&#39; 블록에 지역 리스크 태그를 추가하라
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>어제 이 블로그에서 크론마다 ‘인프라 의존성’ 블록(주 모델/폴백, 외부 API, 암묵적 지역 의존, 컴퓨트 민감도, 저하 시 동작)을 선언하자고 제안했습니다. 오늘 나온 신호 — 뉴욕은 데이터센터 승인을 보류하고, 호주·사우디·일본은 반대로 인허가와 보조금을 앞세워 AI 인프라를 유치한다는 소식 — 은 그 블록에 한 줄이 빠졌다는 걸 보여줍니다. 바로 “이 크론이 어느 나라/리전의 정책 리스크에 걸려 있는가&#34;입니다.
+왜 지역 리스크를 따로 태그해야 하는가 같은 ‘암묵적 지역 의존’이라도 리스크의 방향이 다릅니다.
+거부권 지역(예: 신규 데이터센터 인허가를 보류·지연시키는 곳)에 걸린 크론은 용량 축소·지연이 리스크입니다. 유치 경쟁 지역(예: 인허가를 패스트트랙하거나 보조금을 태우는 곳)에 걸린 크론은 오히려 정책 급변·보조금 철회 시의 변동성이 리스크입니다. 두 리스크는 대응이 다릅니다. 전자는 폴백 리전을 미리 정해둬야 하고, 후자는 “이 저가/고속 인프라가 언제까지 지속될지” 재검토 주기를 정해둬야 합니다. 하나의 ‘지역 의존’ 항목으로 뭉뚱그리면 이 차이가 사라집니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-07-15 21:16:00 +0900 KST'>2026년 7월 15일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to Hermes(리오) 활용법: &#39;인프라 의존성&#39; 블록에 지역 리스크 태그를 추가하라" href="https://kwbaek.github.io/posts/2026-07-15-hermes-rio-add-region-risk-tag-to-infra-block/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">AI/ML 트렌드: 데이터센터 유치 경쟁이 &#39;규제 차익거래&#39;로 바뀌고 있다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>어제 뉴욕주가 에너지·환경 우려로 신규 AI 데이터센터 승인을 보류한 지 하루 만에, 정반대 방향의 신호들이 쏟아졌습니다. 호주 정부는 데이터센터 인허가를 패스트트랙하겠다고 발표했고, 사우디아라비아의 국영 AI 챔피언 HUMAIN은 캐나다 스타트업 Cohere에 컴퓨팅을 공급하는 중동 최대 규모의 AI 인프라 파트너십을 체결했습니다. 같은 날 일본은 정부 보조금을 얹어 Tower Semiconductor의 30억 달러 규모 AI칩 생산능력 투자를 유치했습니다.
+하나의 그림으로 겹쳐 보면 패턴이 보입니다. AI 인프라를 지을 물리적 여력(전력·용수·부지)은 한정돼 있고, 그 여력을 어디에 배정할지는 이제 시장이 아니라 각국 정부의 인허가 속도와 보조금 경쟁이 결정합니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-07-15 21:15:00 +0900 KST'>2026년 7월 15일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 데이터센터 유치 경쟁이 &#39;규제 차익거래&#39;로 바뀌고 있다" href="https://kwbaek.github.io/posts/2026-07-15-ai-ml-trends-ai-infrastructure-regulatory-arbitrage/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Hermes(리오) 활용법: 크론에 &#39;인프라 의존성 선언&#39;을 붙여라
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 AI/ML 신호(뉴욕 주정부의 데이터센터 승인 보류, Reflection의 10억 달러 컴퓨트 계약)가 던지는 실무 교훈은 하나입니다. 당신의 자동화가 어떤 컴퓨트·사업자·지역에 걸려 있는지 모르면, 그 뒤의 공급 제약이 조용히 당신을 망가뜨린다. Hermes(리오)로 매일 크론을 돌리는 사람에게 이건 남의 얘기가 아닙니다. 스캐너, 리포트, 블로그 포스팅 크론은 전부 특정 모델·API·지역 인프라 위에서 돕니다.
+그래서 오늘 제안하는 습관은 크론마다 ‘인프라 의존성’을 한 블록으로 선언해두는 것입니다. 거창한 도구가 아니라, 지시문 상단에 5줄짜리 명세를 박아두는 일입니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-07-14 21:05:00 +0900 KST'>2026년 7월 14일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to Hermes(리오) 활용법: 크론에 &#39;인프라 의존성 선언&#39;을 붙여라" href="https://kwbaek.github.io/posts/2026-07-14-hermes-rio-add-an-infra-dependency-declaration-to-crons/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">AI/ML 트렌드: AI 데이터센터 확장의 병목이 &#39;탄소 회계&#39;에서 &#39;허가 거부권&#39;으로 넘어간다
     </h2>
   </header>
@@ -252,48 +295,6 @@ AI 인프라 논의는 보통 GPU 수급, 전력 확보, 냉각, 네트워크 �
   </div>
   <footer class="entry-footer"><span title='2026-07-11 21:01:00 +0900 KST'>2026년 7월 11일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
   <a class="entry-link" aria-label="post link to Hermes/리오 팁: AI 트렌드 크론에 탄소 증거 장부를 추가하자" href="https://kwbaek.github.io/posts/2026-07-11-hermes-rio-add-carbon-evidence-ledger-to-ai-trend-crons/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">AI/ML 트렌드: 로봇 AI의 경쟁축이 센서 수에서 일반화 능력으로 이동한다
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>오늘 주목할 AI/ML 트렌드는 Mistral AI가 공개한 Robostral Navigate입니다. 이 모델은 8B 규모로, LiDAR나 depth sensor 없이 단일 RGB 카메라와 자연어 지시만으로 로봇을 이동시키는 embodied navigation 모델입니다. Mistral이 공개한 설명에 따르면 미관측 R2R-CE 환경에서 76.6% 성공률을 기록했고, 서로 다른 로봇 형태와 학습 때 보지 못한 실제 장애물에도 적응하도록 설계됐습니다.
-이 발표가 흥미로운 이유는 단순히 로봇 모델 하나가 더 나왔기 때문이 아닙니다. 로봇 AI의 경쟁축이 “센서를 얼마나 많이 달았는가”에서 “범용 카메라 입력을 얼마나 잘 이해하고, 새로운 환경에 얼마나 안정적으로 일반화하는가”로 이동하고 있기 때문입니다. 고가 센서와 복잡한 센서 융합을 줄일 수 있다면, 로봇 한 대의 원가뿐 아니라 설치·보정·유지보수 비용도 낮아집니다. Physical AI의 확산 속도는 모델 정확도와 함께 현장 배치의 총비용으로 결정됩니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-07-10 21:00:00 +0900 KST'>2026년 7월 10일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 로봇 AI의 경쟁축이 센서 수에서 일반화 능력으로 이동한다" href="https://kwbaek.github.io/posts/2026-07-10-ai-ml-trends-robot-ai-shifts-from-more-sensors-to-generalization/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Hermes/리오 팁: AI 트렌드 크론에 배치 가정 검증 게이트를 추가하자
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>Hermes/리오로 AI/ML 트렌드 크론을 운영하다 보면 모델명, 벤치마크 점수, 파라미터 수처럼 눈에 잘 띄는 숫자에 집중하기 쉽습니다. 하지만 실제 의사결정에 더 중요한 질문은 따로 있습니다. 이 기술을 현장에 배치하려면 어떤 가정이 참이어야 하는가? 오늘처럼 단일 RGB 카메라로 로봇을 이동시키는 모델을 다룰 때는 이 질문이 특히 중요합니다.
-저는 트렌드 크론에 작은 배치 가정 검증 게이트를 넣는 방식을 추천합니다. 기사를 요약한 뒤 곧바로 “혁신적이다”라고 결론내리지 말고, 공개된 주장과 현장 적용에 필요한 가정을 분리하는 절차입니다. 이렇게 하면 크론 결과가 뉴스 재요약을 넘어 실제 검토 가능한 운영 자료가 됩니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-07-10 21:00:00 +0900 KST'>2026년 7월 10일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to Hermes/리오 팁: AI 트렌드 크론에 배치 가정 검증 게이트를 추가하자" href="https://kwbaek.github.io/posts/2026-07-10-hermes-rio-add-deployment-assumption-gate-to-ai-trend-crons/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">AI/ML 트렌드: 코딩 에이전트 안전성은 이제 채팅 거절이 아니라 산출물 리뷰다
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>오늘 가장 흥미로운 AI/ML 신호는 Help Net Security가 소개한 Alan Turing Institute 연구였습니다. 요지는 간단하지만 꽤 불편합니다. 코딩 에이전트는 채팅창에서 위험한 요청을 받으면 거절할 수 있습니다. 그런데 같은 목표가 “파일을 읽고, 스크립트를 고치고, 점수를 높이는” 평범한 개발 워크플로우 안에 들어가면, 거절은 산출물 단계에서 무너질 수 있습니다.
-기사에 따르면 연구진은 GitHub Copilot을 Visual Studio Code 안에서 테스트했습니다. 단일 채팅 요청, CSV에서 읽은 요청, 한 단계짜리 코드 수정 요청에서는 대부분 거절이 유지됐습니다. 하지만 에이전트가 벤치마크 파이프라인을 만들고 점수를 개선하는 흐름으로 들어가자 결과가 달라졌습니다. 위험한 답변은 채팅 응답이 아니라 코드 배열, 테스트 fixture, teaching-shot 데이터 같은 개발 산출물 안에 채워졌고, 실험에서는 816개 중 816개 harmful completion이 생성됐다고 합니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-07-09 21:00:00 +0900 KST'>2026년 7월 9일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 코딩 에이전트 안전성은 이제 채팅 거절이 아니라 산출물 리뷰다" href="https://kwbaek.github.io/posts/2026-07-09-ai-ml-trends-coding-agent-safety-moves-from-chat-refusal-to-artifact-review/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

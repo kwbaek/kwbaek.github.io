@@ -143,6 +143,20 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">Hermes/리오 팁: AI 자동화에는 답변보다 provenance 게이트를 먼저 붙이세요
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Hermes/리오로 매일 리포트나 블로그를 자동 생성할 때 가장 놓치기 쉬운 부분은 글의 문장력이 아닙니다. 더 중요한 것은 최종 결과가 어떤 입력에서 만들어졌고, 그 입력이 최신이며, 실제 게시 직전까지 검증되었는지를 설명할 수 있는가입니다. EU AI Act의 투명성 규칙이 AI 상호작용과 생성 콘텐츠의 표시를 요구하는 흐름은 개인 자동화에도 같은 교훈을 줍니다. 자동화가 유용해질수록 provenance, 즉 출처와 처리 이력을 결과물에 연결해야 합니다.
+실전에서는 작업을 “수집 → 작성 → 게시” 세 단계로만 보지 말고, 각 단계 사이에 작은 게이트를 넣는 방식이 효과적입니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-08-02 21:01:00 +0900 KST'>2026년 8월 2일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to Hermes/리오 팁: AI 자동화에는 답변보다 provenance 게이트를 먼저 붙이세요" href="https://kwbaek.github.io/posts/2026-08-02-hermes-rio-provenance-gates-for-automation/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">Hermes/리오 팁: Discord 403은 실패가 아니라 폴백 분기다 — 캐시 우선 크론 설계
     </h2>
   </header>
@@ -265,20 +279,6 @@ Whale Insight cache refresh: 국민연금 공시 데이터를 매시간 갱신 (
   </div>
   <footer class="entry-footer"><span title='2026-07-14 21:05:00 +0900 KST'>2026년 7월 14일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
   <a class="entry-link" aria-label="post link to Hermes(리오) 활용법: 크론에 &#39;인프라 의존성 선언&#39;을 붙여라" href="https://kwbaek.github.io/posts/2026-07-14-hermes-rio-add-an-infra-dependency-declaration-to-crons/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Hermes/리오 팁: 크론에 &#39;자원 정산 게이트&#39;를 붙이자
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>오늘 AI/ML 트렌드 글에서 다룬 주제 — 에이전트의 ‘완료’가 응답 생성에서 실행 정산으로 이동한다 — 는 개인 자동화에도 그대로 적용됩니다. Hermes/리오로 크론을 돌리다 보면, 최종 메시지는 멀쩡히 나왔는데 뒤에서 뭔가 계속 남아 있는 상황을 자주 만납니다. 임시 파일이 쌓이고, background 프로세스가 안 죽고, 열어 둔 파일 핸들이 다음 실행과 충돌합니다. 오늘은 이걸 막는 자원 정산 게이트(resource settlement gate) 를 소개합니다.
-왜 ‘보고 완료’가 진짜 완료가 아닌가 블로그 크론을 예로 들어 봅니다. 글을 쓰고, git commit·push하고, hugo 빌드하고, public을 배포합니다. 여기서 “글을 잘 썼다&#34;는 것과 “실제 공개 페이지에 반영됐다&#34;는 것은 전혀 다른 사건입니다. 마찬가지로 트렌드 스캐너 크론에서 “요약을 만들었다&#34;와 “중복 캐시를 갱신하고 JSON을 검증했다&#34;는 다릅니다. 자동화가 앞 단계에서 멈추면, 매일 실행돼도 상태가 조용히 어긋납니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-07-13 21:00:00 +0900 KST'>2026년 7월 13일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to Hermes/리오 팁: 크론에 &#39;자원 정산 게이트&#39;를 붙이자" href="https://kwbaek.github.io/posts/2026-07-13-hermes-rio-add-resource-settlement-gate-to-crons/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">
