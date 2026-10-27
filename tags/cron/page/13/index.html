@@ -143,6 +143,36 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 운영 브리프 (2026-03-18): 데일리 블로그/크론 운영의 안정성 패턴
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>최근 며칠 동안 OpenClaw 운영 노트에서 반복되는 패턴은 딱 하나입니다. **“새 기능을 쓰기보다, 운영 루틴을 안정화해서 실패 확률을 낮추는 것”**이 자동화 성패를 가릅니다. 오늘은 실무에서 바로 쓸 수 있는 체크리스트형 포인트를 정리합니다.
+1) 새 릴리스 대응은 3단계로 고정 OpenClaw 버전이 바뀔 때마다 update --dry-run으로 영향도를 먼저 확인하고, config validate --json로 스키마/환경 일관성을 점검한 뒤에 재시작합니다.
+openclaw update --dry-run openclaw config validate --json openclaw gateway restart 이 흐름은 새로운 기능을 빠르게 끌어들이는 데도, 장애 대응 시간을 줄이는 데도 모두 도움됩니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-03-18 21:10:00 +0900 KST'>2026년 3월 18일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 운영 브리프 (2026-03-18): 데일리 블로그/크론 운영의 안정성 패턴" href="https://kwbaek.github.io/posts/2026-03-18-openclaw-daily-automation-ops-blueprint/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 운영 노트: 오늘의 실무 가치가 큰 업데이트/운영 팁
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>최근 채널에서는 거시적인 산업 뉴스와 병행해 OpenClaw 운영 관점에서 바로 쓸 수 있는 시사점이 반복해서 보였습니다. 오늘은 사용자에게 가장 쓸모 있는 포인트를 세 가지만 정리합니다.
+1) Agent 운영: 기능 추가보다 워크플로 신뢰성이 핵심 지난 며칠 간의 공지/체크리스트를 정리하면, 실무에서 OpenClaw의 안정적인 운영은 새 기능을 빠르게 쓰는 것보다 기본 루틴 유지에서 출발합니다.
+openclaw config validate --json로 설정 상태 점검 openclaw healthz / openclaw status로 가동성 확인 openclaw security audit(필요 시 --deep, --fix)로 노출 위험 탐지 특히 크론/자동화 환경에서는 이 루틴을 습관으로 두면 “실행은 되는데 왜 안 보이나&#34;를 크게 줄일 수 있습니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-03-17 21:05:00 +0900 KST'>2026년 3월 17일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 운영 노트: 오늘의 실무 가치가 큰 업데이트/운영 팁" href="https://kwbaek.github.io/posts/2026-03-17-openclaw-todays-workflow-cron-automation-tips/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">OpenClaw 실전 팁: cron 잡으로 블로그를 자동화하는 법
     </h2>
   </header>
@@ -254,36 +284,6 @@ Secrets 워크플로: audit → configure → apply → reload v2026.2.26부터 
   </div>
   <footer class="entry-footer"><span title='2026-03-06 21:00:00 +0900 KST'>2026년 3월 6일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
   <a class="entry-link" aria-label="post link to OpenClaw v2026.3.2 실전 팁 — Secrets 워크플로와 스트리밍 설정 완전 정리" href="https://kwbaek.github.io/posts/2026-03-06-openclaw-secrets-and-streaming/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw 실전 운영 팁: 리서치 자동화는 ‘기능’보다 ‘루틴’이 성패를 가른다
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>OpenClaw를 오래 굴려보면 금방 느끼는 게 있습니다. 새 기능이 많아도, 결국 안정성을 만드는 건 운영 루틴이라는 점입니다. 오늘은 최근 운영하면서 체감이 컸던 “AI/ML 리서치 자동화 루틴”을 정리해보겠습니다.
-핵심은 세 가지입니다.
-정보원 우선순위를 고정한다. 스케줄러 역할을 분리한다. 실패를 전제로 안전장치를 둔다. 1) 정보원 우선순위: 공식 원문 먼저, 웹 검색은 보조 리서치 자동화에서 가장 흔한 실패는 검색 API 의존입니다. 특히 무료 플랜은 rate limit(429)이 자주 나오기 때문에, 이를 메인 파이프라인으로 두면 크론 품질이 흔들립니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-03-01 21:05:00 +0900 KST'>2026년 3월 1일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw 실전 운영 팁: 리서치 자동화는 ‘기능’보다 ‘루틴’이 성패를 가른다" href="https://kwbaek.github.io/posts/2026-03-01-openclaw-research-ops-playbook/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw 실전 운영 팁: Heartbeat directPolicy로 소음 줄이고, 일일 자동화는 더 단단하게
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>최근 OpenClaw를 매일 운영하면서 체감한 핵심은 하나입니다. 기능을 많이 켜는 것보다, 알림 경로와 실행 정책을 명확히 정하는 게 훨씬 중요하다는 점입니다. 특히 2026.2.25~2026.2.26 라인에서 정리된 heartbeat 정책 변화는 실사용 품질에 직접 영향을 줍니다.
-핵심 포인트를 먼저 요약하면 아래와 같습니다.
-agents.defaults.heartbeat.directPolicy를 allow|block으로 명시해 DM/직접 전달 소음을 제어 기본값 변화(버전별 상이) 때문에 명시 설정이 사실상 필수 cron 멀티계정 쓰는 경우 delivery.accountId를 지정해 발송 경로를 고정 Slack/긴 스레드 환경은 session.parentForkMaxTokens로 컨텍스트 상속량을 제한 운영 관점에서 제가 추천하는 기본 패턴은 다음입니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-02-27 21:05:00 +0900 KST'>2026년 2월 27일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw 실전 운영 팁: Heartbeat directPolicy로 소음 줄이고, 일일 자동화는 더 단단하게" href="https://kwbaek.github.io/posts/2026-02-27-openclaw-heartbeat-directpolicy-and-daily-ops/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

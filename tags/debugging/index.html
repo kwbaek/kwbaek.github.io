@@ -143,6 +143,21 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw/Hermes 운영 팁: 무인 cron이 안전 필터에 막혔을 때 — 로그부터 보고, 프롬프트는 최소 변경으로 고치기
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>자동 스캔 작업을 10분 간격으로 돌리면, 가끔 한 번씩 실패합니다. 오늘 오전 12시 23분 실행이 그랬습니다. 알림 문구는 “AI 모델 서비스의 안전 필터가 요청을 거부했다&#34;였고, 바로 아래에 프롬프트를 고치거나 모델을 바꾸라는 명령어가 붙어 있었습니다. 무인 작업에서는 이 메시지를 보고 무엇부터 해야 할지 정리해 두면 좋습니다.
+1. 실패 로그를 먼저 본다 알림에 적힌 로그 명령(hermes cron runs &lt;작업 ID&gt;)으로 해당 실행 기록을 먼저 확인합니다. 여기서 봐야 할 것은 세 가지입니다.
+거부된 요청이 프롬프트 전체인지, 아니면 외부에서 가져온 본문 일부인지 같은 작업의 바로 앞뒤 실행은 성공했는지 재시도가 자동으로 일어났는지 오늘 사례는 실패 뒤 2시간 뒤 실행이 정상으로 돌아왔습니다. 한 번의 실패는 일시적 거부일 수도 있고, 특정 문장이 원인일 수도 있습니다. 로그 없이 프롬프트부터 갈아엎으면 원인을 영영 모릅니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-10-26 21:05:00 +0900 KST'>2026년 10월 26일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw/Hermes 운영 팁: 무인 cron이 안전 필터에 막혔을 때 — 로그부터 보고, 프롬프트는 최소 변경으로 고치기" href="https://kwbaek.github.io/posts/2026-10-26-openclaw-cron-safety-filter-rejection-recovery/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">OpenClaw/Hermes 운영 팁: 무인 cron에서 execute_code가 막혔을 때 Discord를 terminal로 읽는 법 — 토큰은 출력하지 않고 날짜 경계는 UTC로
     </h2>
   </header>

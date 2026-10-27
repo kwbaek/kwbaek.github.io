@@ -143,6 +143,33 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 팁: validate·healthz·instruction 파일이 cron 운영을 사람답게 만든다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>OpenClaw를 계속 굴리다 보면 점점 더 분명해지는 게 있습니다. 자동화의 품질은 멋진 프롬프트보다 운영 루틴의 단순함과 복구 가능성에서 갈리는 경우가 많다는 점입니다. 특히 cron 기반 작업은 더 그렇습니다. 한 번 잘 도는 것보다, 다음 날도 비슷하게 돌고, 실패했을 때 원인을 빨리 찾고, 수정했을 때 반영 경로가 명확한 구조가 훨씬 중요합니다. 최근 OpenClaw 운영 메모를 보면 저는 그 핵심이 세 가지라고 생각합니다. config validate, /healthz와 /readyz 같은 프로브, 그리고 작업별 instruction 파일입니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-04-04 21:05:00 +0900 KST'>2026년 4월 4일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 팁: validate·healthz·instruction 파일이 cron 운영을 사람답게 만든다" href="https://kwbaek.github.io/posts/2026-04-04-openclaw-validate-healthz-and-instruction-files-make-cron-ops-scalable/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 팁: cron instruction 파일은 숨은 프롬프트보다 더 좋은 운영 인터페이스다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 블로그 자동화 작업을 돌리면서 다시 한 번 느낀 게 있습니다. OpenClaw를 오래 안정적으로 쓰려면, 좋은 자동화는 단지 모델이 똑똑해서 되는 게 아니라 지시가 어디에, 어떤 형태로 저장되고 관리되는가에서 꽤 많이 갈립니다. 최근 운영 메모와 실제 작업 흐름을 같이 보면, 저는 OpenClaw의 cron-instructions/ 패턴이 생각보다 아주 좋은 운영 인터페이스라고 봅니다.
+왜 그렇게 느끼냐면, 자동화가 복잡해질수록 문제는 거의 항상 “모델이 말을 못 알아들었다”보다 사람이 나중에 그 작업의 기준을 다시 찾기 어렵다는 데서 터지기 때문입니다. heartbeat 안에 숨어 있는 규칙, 세션 문맥에만 남아 있는 의도, 예전에 한 번 말하고 지나간 운영 기준은 그 순간엔 편해 보여도 시간이 지나면 관리가 어려워집니다. 반면 cron-instructions/작업ID-설명.md처럼 작업별 지시문이 파일로 분리되어 있으면, 기준이 눈에 보이고 수정도 쉬우며 실패 원인도 훨씬 빨리 좁힐 수 있습니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-04-03 21:05:00 +0900 KST'>2026년 4월 3일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 팁: cron instruction 파일은 숨은 프롬프트보다 더 좋은 운영 인터페이스다" href="https://kwbaek.github.io/posts/2026-04-03-openclaw-cron-instruction-files-are-a-better-ops-interface-than-hidden-prompts/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">OpenClaw 팁: 지속 바인딩과 봇 멘션 필터가 일상 자동화를 덜 깨지게 만든다
     </h2>
   </header>
@@ -253,34 +280,6 @@ pdf 도구가 왜 반가운가를 먼저 보면, 이전에는 PDF 처리 작업�
   </div>
   <footer class="entry-footer"><span title='2026-03-23 21:00:00 +0900 KST'>2026년 3월 23일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
   <a class="entry-link" aria-label="post link to OpenClaw 팁: 매일 쓰는 자동화일수록 새 기능보다 신뢰성 패치가 더 중요하다" href="https://kwbaek.github.io/posts/2026-03-23-openclaw-reliability-beats-feature-chasing-in-daily-ops/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw 팁: heartbeat 하나로 릴리즈 체크와 운영 보고를 가볍게 돌리는 법
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>OpenClaw를 오래 돌리다 보면, 거창한 자동화보다 더 자주 필요한 작업이 있습니다. 바로 “오늘 바뀐 게 있는지 짧게 확인하고, 있으면 바로 요약해서 남기는 일” 입니다. 릴리즈 체크, 운영 이슈 확인, 간단한 헬스체크, 팀 채널 보고 같은 루틴이 대표적이죠. 이런 작업은 중요하지만 너무 무겁게 설계하면 금방 귀찮아지고, 반대로 너무 느슨하면 놓치기 쉽습니다. 이럴 때 잘 맞는 패턴이 heartbeat &#43; 짧은 구조화 보고 조합입니다.
-핵심 아이디어는 단순합니다. heartbeat는 정확히 정각에 돌아야 하는 잡이 아니라, “주기적으로 상태를 살핀다&#34;는 성격의 작업에 더 잘 맞습니다. 예를 들어 브라우저 연결 상태를 확인하고, 최신 릴리즈가 있는지 보고, 있으면 요약 포인트 2~3개만 정리해 특정 채널에 남기는 흐름입니다. 이 방식의 장점은, 여러 개의 작은 운영 점검을 하나의 문맥 안에 묶을 수 있다는 점입니다. 메일 체크 하나, 릴리즈 확인 하나, 헬스 엔드포인트 점검 하나를 각각 별도 잡으로 쪼개는 것보다 훨씬 가볍습니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-03-22 21:00:00 +0900 KST'>2026년 3월 22일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw 팁: heartbeat 하나로 릴리즈 체크와 운영 보고를 가볍게 돌리는 법" href="https://kwbaek.github.io/posts/2026-03-22-openclaw-heartbeat-release-watch-pattern/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw 팁: 매일 도는 크론 작업은 instruction file부터 단단해야 한다
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>OpenClaw로 매일 반복 작업을 굴리다 보면, 모델 성능보다 더 중요하게 느껴지는 것이 하나 있습니다. 바로 작업의 시작점이 얼마나 명확하게 고정되어 있느냐입니다. 특히 Discord 채널을 읽고, 내용을 선별하고, Markdown 파일을 만들고, Hugo를 빌드하고, 배포 저장소까지 업데이트하는 흐름은 단계가 많아서 작은 흔들림도 금방 전체 실패로 번집니다.
-이럴 때 가장 효과적인 패턴이 바로 instruction file 기반 크론 작업입니다. 즉 “오늘 뭘 해야 하는지”를 채팅 프롬프트 안에 흩뿌리지 말고, 별도 파일 하나에 작업 순서와 실패 규칙까지 명시해두는 방식입니다. 이 패턴의 장점은 단순합니다. 작업이 사람 기억이나 직전 대화 맥락에 덜 의존하게 되고, 매일 같은 작업을 해도 입력 조건이 일정하게 유지됩니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-03-21 21:00:00 +0900 KST'>2026년 3월 21일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw 팁: 매일 도는 크론 작업은 instruction file부터 단단해야 한다" href="https://kwbaek.github.io/posts/2026-03-21-openclaw-use-instruction-files-to-stabilize-daily-cron-work/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

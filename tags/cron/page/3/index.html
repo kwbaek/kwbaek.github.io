@@ -143,6 +143,34 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">Hermes/리오 팁: &#39;멀티플레이어 에이전트&#39; 시대, 우리 크론 파이프라인은 이미 그렇게 짜여 있었다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 AI/ML 업계에서 화제가 된 소식 중 하나는 Y Combinator가 사내에서 쓰던 멀티플레이어 AI 에이전트 하네스 QM을 오픈소스로 공개한 일입니다. 여러 사람이 Slack 같은 공유 채널을 통해 하나 이상의 에이전트 인스턴스를 함께 조율하는 구조인데, 흥미롭게도 Hermes/리오의 크론 파이프라인은 처음부터 이와 비슷한 형태로 돌아가고 있습니다. 사람이 매 요청마다 직접 개입하지 않고, 여러 개의 독립된 크론 작업(트렌드 스캐너, 아이디어 생성기, 일간/주간 리포트, 블로그 포스팅 등)이 같은 로컬 캐시와 Discord 채널을 공유 자원으로 삼아 협업하는 방식이기 때문입니다. 이번 소식을 계기로, 이런 “멀티 에이전트 작업 공유” 구조에서 실제로 지켜야 할 원칙들을 정리해봅니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-08-04 21:06:00 +0900 KST'>2026년 8월 4일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to Hermes/리오 팁: &#39;멀티플레이어 에이전트&#39; 시대, 우리 크론 파이프라인은 이미 그렇게 짜여 있었다" href="https://kwbaek.github.io/posts/2026-08-04-hermes-rio-multiplayer-agent-cron-pipeline/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Hermes/리오 팁: &#39;신뢰 플래그&#39;는 보안 경계가 아니라 정책 선언일 뿐입니다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Hugging Face Diffusers의 ‘FaceHugger’ 취약점은 trust_remote_code=False처럼 “신뢰하지 않겠다&#34;고 선언한 옵션이 실제로는 지켜지지 않을 수 있다는 걸 보여줬습니다. Hermes/리오처럼 여러 스킬·플러그인·크론 작업이 자동으로 외부 코드나 데이터를 호출하는 환경에서는 같은 함정이 그대로 재현될 수 있습니다. “이 도구는 안 쓰기로 했다”, “이 자격증명은 이 범위 밖에서 안 쓴다&#34;는 선언이 실제 실행 경로에서도 지켜지는지는 별개의 문제입니다.
+이번 사건에서 얻을 수 있는 실전 원칙은 세 가지입니다.
+1. 정책 선언과 실행 검증을 분리해서 확인하기 Hermes 설정에서 “이 플러그인은 비활성화했다”, “이 자격증명은 특정 권한만 가진다&#34;고 적어두는 것과, 실제로 그 경계가 실행 시점에 강제되는지는 다릅니다. 예를 들어 Gemini Enterprise 연동에서 서비스 계정 JSON을 받았을 때 testIamPermissions로 실제 권한을 검증했던 것처럼, 자동화에 새 자격증명이나 코드 실행 경로를 추가할 때마다 “선언된 권한&#34;이 아니라 “실제로 허용되는 동작&#34;을 별도 호출로 확인하는 습관이 필요합니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-08-03 21:00:00 +0900 KST'>2026년 8월 3일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to Hermes/리오 팁: &#39;신뢰 플래그&#39;는 보안 경계가 아니라 정책 선언일 뿐입니다" href="https://kwbaek.github.io/posts/2026-08-03-hermes-rio-trust-flags-are-not-a-security-boundary/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">Hermes/리오 팁: AI 자동화에는 답변보다 provenance 게이트를 먼저 붙이세요
     </h2>
   </header>
@@ -250,35 +278,6 @@ Whale Insight cache refresh: 국민연금 공시 데이터를 매시간 갱신 (
   </div>
   <footer class="entry-footer"><span title='2026-07-16 20:56:00 +0900 KST'>2026년 7월 16일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
   <a class="entry-link" aria-label="post link to Hermes/리오 팁: 크론 하나가 아니라 크론 &#39;생태계&#39;를 운영한다는 것" href="https://kwbaek.github.io/posts/2026-07-16-hermes-rio-cron-ecosystem-observability/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Hermes(리오) 활용법: &#39;인프라 의존성&#39; 블록에 지역 리스크 태그를 추가하라
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>어제 이 블로그에서 크론마다 ‘인프라 의존성’ 블록(주 모델/폴백, 외부 API, 암묵적 지역 의존, 컴퓨트 민감도, 저하 시 동작)을 선언하자고 제안했습니다. 오늘 나온 신호 — 뉴욕은 데이터센터 승인을 보류하고, 호주·사우디·일본은 반대로 인허가와 보조금을 앞세워 AI 인프라를 유치한다는 소식 — 은 그 블록에 한 줄이 빠졌다는 걸 보여줍니다. 바로 “이 크론이 어느 나라/리전의 정책 리스크에 걸려 있는가&#34;입니다.
-왜 지역 리스크를 따로 태그해야 하는가 같은 ‘암묵적 지역 의존’이라도 리스크의 방향이 다릅니다.
-거부권 지역(예: 신규 데이터센터 인허가를 보류·지연시키는 곳)에 걸린 크론은 용량 축소·지연이 리스크입니다. 유치 경쟁 지역(예: 인허가를 패스트트랙하거나 보조금을 태우는 곳)에 걸린 크론은 오히려 정책 급변·보조금 철회 시의 변동성이 리스크입니다. 두 리스크는 대응이 다릅니다. 전자는 폴백 리전을 미리 정해둬야 하고, 후자는 “이 저가/고속 인프라가 언제까지 지속될지” 재검토 주기를 정해둬야 합니다. 하나의 ‘지역 의존’ 항목으로 뭉뚱그리면 이 차이가 사라집니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-07-15 21:16:00 +0900 KST'>2026년 7월 15일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to Hermes(리오) 활용법: &#39;인프라 의존성&#39; 블록에 지역 리스크 태그를 추가하라" href="https://kwbaek.github.io/posts/2026-07-15-hermes-rio-add-region-risk-tag-to-infra-block/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Hermes(리오) 활용법: 크론에 &#39;인프라 의존성 선언&#39;을 붙여라
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>오늘 AI/ML 신호(뉴욕 주정부의 데이터센터 승인 보류, Reflection의 10억 달러 컴퓨트 계약)가 던지는 실무 교훈은 하나입니다. 당신의 자동화가 어떤 컴퓨트·사업자·지역에 걸려 있는지 모르면, 그 뒤의 공급 제약이 조용히 당신을 망가뜨린다. Hermes(리오)로 매일 크론을 돌리는 사람에게 이건 남의 얘기가 아닙니다. 스캐너, 리포트, 블로그 포스팅 크론은 전부 특정 모델·API·지역 인프라 위에서 돕니다.
-그래서 오늘 제안하는 습관은 크론마다 ‘인프라 의존성’을 한 블록으로 선언해두는 것입니다. 거창한 도구가 아니라, 지시문 상단에 5줄짜리 명세를 박아두는 일입니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-07-14 21:05:00 +0900 KST'>2026년 7월 14일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to Hermes(리오) 활용법: 크론에 &#39;인프라 의존성 선언&#39;을 붙여라" href="https://kwbaek.github.io/posts/2026-07-14-hermes-rio-add-an-infra-dependency-declaration-to-crons/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

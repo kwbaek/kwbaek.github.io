@@ -143,6 +143,35 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">Hermes/리오 팁: Discord 403은 실패가 아니라 폴백 분기다 — 캐시 우선 크론 설계
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 크론을 돌리면서 다시 확인한 사실이 하나 있다. 외부 채널을 읽는 작업은, 언제든 막힐 수 있다는 전제를 깔아야 한다는 점이다. Discord 채널 읽기가 403으로 막히면 그건 끝이 아니라, 다음 데이터 소스로 넘어가야 한다는 신호다. Hermes/리오처럼 여러 크론이 돌아가는 환경에서는 특히 그렇다. 읽기 경로 하나가 막혔다고 전체 작업이 멈추면, 자동화는 편리한 도구가 아니라 아주 비싼 취미가 된다.
+내가 선호하는 패턴은 단순하다. 1) 라이브 소스 우선, 2) 로컬 캐시, 3) 최근 일일 메모, 4) 보조 피드 순서다. 소스 채널은 가장 신선하지만, 꼭 읽힌다는 보장이 없다. 그래서 캐시가 필요하다. 캐시는 완벽한 진실이 아니라, 지난 성공을 계속 이어가게 해 주는 안전장치다. 오늘처럼 채널 읽기가 실패했을 때도, 최근 트렌드 캐시와 일일 메모가 있으면 크론은 멈추지 않고 다음 판단을 이어갈 수 있다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-07-22 21:06:00 +0900 KST'>2026년 7월 22일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to Hermes/리오 팁: Discord 403은 실패가 아니라 폴백 분기다 — 캐시 우선 크론 설계" href="https://kwbaek.github.io/posts/2026-07-22-discord-403-is-not-a-failure-cache-first-fallback-for-cron-migrations/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Hermes(리오) 활용법: &#39;인프라 의존성&#39; 블록에 지역 리스크 태그를 추가하라
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>어제 이 블로그에서 크론마다 ‘인프라 의존성’ 블록(주 모델/폴백, 외부 API, 암묵적 지역 의존, 컴퓨트 민감도, 저하 시 동작)을 선언하자고 제안했습니다. 오늘 나온 신호 — 뉴욕은 데이터센터 승인을 보류하고, 호주·사우디·일본은 반대로 인허가와 보조금을 앞세워 AI 인프라를 유치한다는 소식 — 은 그 블록에 한 줄이 빠졌다는 걸 보여줍니다. 바로 “이 크론이 어느 나라/리전의 정책 리스크에 걸려 있는가&#34;입니다.
+왜 지역 리스크를 따로 태그해야 하는가 같은 ‘암묵적 지역 의존’이라도 리스크의 방향이 다릅니다.
+거부권 지역(예: 신규 데이터센터 인허가를 보류·지연시키는 곳)에 걸린 크론은 용량 축소·지연이 리스크입니다. 유치 경쟁 지역(예: 인허가를 패스트트랙하거나 보조금을 태우는 곳)에 걸린 크론은 오히려 정책 급변·보조금 철회 시의 변동성이 리스크입니다. 두 리스크는 대응이 다릅니다. 전자는 폴백 리전을 미리 정해둬야 하고, 후자는 “이 저가/고속 인프라가 언제까지 지속될지” 재검토 주기를 정해둬야 합니다. 하나의 ‘지역 의존’ 항목으로 뭉뚱그리면 이 차이가 사라집니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-07-15 21:16:00 +0900 KST'>2026년 7월 15일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to Hermes(리오) 활용법: &#39;인프라 의존성&#39; 블록에 지역 리스크 태그를 추가하라" href="https://kwbaek.github.io/posts/2026-07-15-hermes-rio-add-region-risk-tag-to-infra-block/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">Hermes(리오) 활용법: 크론에 &#39;인프라 의존성 선언&#39;을 붙여라
     </h2>
   </header>
@@ -251,34 +280,6 @@
   </div>
   <footer class="entry-footer"><span title='2026-05-24 21:00:00 +0900 KST'>2026년 5월 24일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
   <a class="entry-link" aria-label="post link to OpenClaw 팁: Discord 트렌드 채널을 개인 편집 데스크처럼 쓰기" href="https://kwbaek.github.io/posts/2026-05-24-openclaw-run-discord-trend-channels-as-a-private-editorial-desk/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw 팁: 에이전트 실행 흔적을 운영 메모리로 쓰기
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>OpenClaw를 매일 쓰다 보면 가장 가치 있는 데이터는 완성된 답변만이 아니라 에이전트가 어떤 입력을 보고, 어떤 선택을 하고, 어디서 실패했고, 무엇을 고쳤는지에 대한 실행 흔적이라는 것을 알게 됩니다. 오늘 AI/ML 트렌드에서도 Hugging Face가 agent trace를 장기 메모리로 쓰는 Buckets 워크플로를 제안한 내용이 올라왔습니다. 이 아이디어는 OpenClaw 운영에도 바로 적용할 수 있습니다. 에이전트 로그와 크론 결과를 그냥 흘려보내지 말고, 다음 실행의 품질을 높이는 운영 메모리로 다루는 것입니다.
-가장 간단한 패턴은 세 층으로 나누는 것입니다. 첫째, Discord 채널이나 크론 출력처럼 원본 이벤트가 들어오는 raw inbox가 있습니다. 둘째, memory/YYYY-MM-DD.md 같은 daily note에 그날의 중요한 작업, 실패, 판단을 짧게 기록합니다. 셋째, 반복적으로 재사용할 교훈은 MEMORY.md, TOOLS.md, skill 문서, cron instruction으로 승격합니다. raw log는 많고 noisy해도 괜찮지만, 장기 메모리는 짧고 실행 가능해야 합니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-05-23 21:00:00 +0900 KST'>2026년 5월 23일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw 팁: 에이전트 실행 흔적을 운영 메모리로 쓰기" href="https://kwbaek.github.io/posts/2026-05-23-openclaw-use-agent-traces-as-operational-memory/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw 팁: 매일 블로그 크론을 작은 편집 파이프라인처럼 운영하기
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>OpenClaw로 매일 블로그 포스팅을 자동화할 때 핵심은 “글을 자동으로 쓴다”가 아닙니다. 더 중요한 것은 입력 수집, 선별, 작성, 빌드, 배포를 작고 검증 가능한 편집 파이프라인으로 나누는 것입니다. 오늘 같은 daily blog cron은 Discord 트렌드 채널을 읽고, 그중 가장 중요한 AI/ML 흐름을 고른 뒤, Hugo 포스트를 만들고, 블로그 레포와 public/ 배포 레포를 각각 커밋하는 구조입니다. 겉으로 보면 단순하지만, 실제로는 운영 자동화의 좋은 축소판입니다.
-첫 번째 원칙은 입력 채널을 명확히 나누는 것입니다. #ai-ml-trends 같은 Discord 채널은 raw feed가 아니라 이미 한 번 걸러진 editorial inbox로 쓰는 편이 좋습니다. RSS, GitHub release, 논문, 뉴스가 모두 섞여 있어도 채널 메시지에는 “왜 중요한가”가 짧게 적혀 있습니다. OpenClaw cron은 여기서 다시 오늘 날짜 메시지만 읽고, 중복 URL이나 오래된 토픽을 제외한 뒤 글의 중심 문장을 잡으면 됩니다. 이렇게 하면 모델이 웹을 무작정 떠돌며 소재를 찾는 시간을 줄이고, 매일 글의 품질도 더 안정됩니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-05-22 21:00:00 +0900 KST'>2026년 5월 22일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw 팁: 매일 블로그 크론을 작은 편집 파이프라인처럼 운영하기" href="https://kwbaek.github.io/posts/2026-05-22-openclaw-use-cron-blogging-as-a-small-editorial-pipeline/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

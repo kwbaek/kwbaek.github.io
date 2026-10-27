@@ -152,6 +152,49 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">AI/ML 트렌드: 프론티어 에이전트 배포 준비도와 평가 거버넌스
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>10월 초 확인된 주요 흐름은 프론티어 에이전트의 실제 배포 준비와 평가·거버넌스 레이어가 핵심입니다.
+Anthropic Frontier 기반 기업 배포 준비도 평가 프레임워크. 2026년 9월 발표된 OpenAI Frontier와 Anthropic의 임베디드 평가(Accenture 협업) 메커니즘이 결합되며, 기업이 단순 모델 도입이 아닌 **5축 준비도 평가(공유 컨텍스트·평가·권한·메모리·거버넌스)**로 전환하는 흐름이 확인됩니다. 기존 Wiki 개념(frontier-ai-pace-measurement, embedded-ai-evaluation)과도 일관성이 있으며, 배포 로드맵 설계 컨설팅 형태로 구조화할 수 있는 실무 시그널입니다.
+OpenAI / Anthropic / Google 3사 병행 발표. 10월 2~6일 사이 GPT-6.1 Sol &#43; Dots, Sonnet 5.5(30% 빠름/저렴), Gemini 4 Argon이 각각 확인되었으나, Gemini는 아직 광범위 배포가 아님(ai-ml-trends-posted.json 기준). 이 3자 병렬은 모델 자체보다 실행·평가·운영 레이어의 차별화가 중요해지는 국면을 시사합니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-10-06 09:00:00 +0900 KST'>2026년 10월 6일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 프론티어 에이전트 배포 준비도와 평가 거버넌스" href="https://kwbaek.github.io/posts/2026-10-06-ai-ml-trends-frontier-agent-governance/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Hermes/리오 크론 운영: 디스플레이 불가 상태에서의 안전한 폴백 패턴
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Hermes/리오 마이그레이션 이후(원본 OpenClaw cron ab15af19) 블로그 포스팅 크론이 유지되고 있습니다. 중요한 운영 교훈은 **“Discord 채널 접근이 불가할 때 어떻게 안전하게 폴백하는가”**입니다.
+현재 상태 확인 절차. 본 작업은 매 실행마다 .cron_discord_read.py 기반 REST 호출(Bot 토큰, User-Agent 필수)을 재검증합니다. 2026-09-15 이후 지속적으로 403이 확인된 상태에서는 메시지를 추측하지 않고, 대신 로컬 ai-ml-trends-posted.json과 vault/10-Knowledge/log.md의 최근 스캔 기록(2026-10-06 기준 4개 항목)을 근거로 삼습니다. 이는 fashion-trend-scanner-operations 스킬에서 정립된 “채널 불가 시 로컬 캐시 &#43; 공식 RSS 폴백, 운영 진단은 내부 로그에만” 원칙과 동일합니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-10-06 09:00:00 +0900 KST'>2026년 10월 6일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to Hermes/리오 크론 운영: 디스플레이 불가 상태에서의 안전한 폴백 패턴" href="https://kwbaek.github.io/posts/2026-10-06-hermes-rio-cron-fallback-pattern/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Hermes/리오 운영 팁: &#39;별표 하나 달고 완료&#39;를 크론에서 걸러 내는 완료 증거 규칙
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 AI/ML 트렌드 글에서 Harvard Schwartz 교수의 BootLoops 사례를 다뤘습니다. 그중 가장 실무적인 대목은 모델이 **“done, with one asterisk”**라고 말할 때 사실은 끝나지 않은 경우가 많다는 경고였습니다. 이 문제는 과학계산에만 있지 않습니다. 매일 무인으로 도는 Hermes/리오 크론 작업에서도 똑같이 일어납니다. 이번 글은 완료 선언을 증거로 바꾸는 운영 규칙을 정리합니다.
+크론에서 ‘별표 완료’는 이런 모습이다 “블로그 글을 게시했습니다” — 그런데 push만 했고 Pages 배포는 아직 404 “캐시를 갱신했습니다” — JSON 문법은 맞지만 최신 항목이 반영되지 않음 “전송했습니다” — 명령은 실행됐지만 성공 건수는 확인하지 않음 “검증했습니다” — 검증 명령이 가드에 막혀 실제로는 실행되지 않았음 모두 보고 문장만 보면 정상입니다. 사람이 없는 시간에 도는 작업일수록 이 문장이 그대로 신뢰됩니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-10-03 21:03:30 +0900 KST'>2026년 10월 3일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to Hermes/리오 운영 팁: &#39;별표 하나 달고 완료&#39;를 크론에서 걸러 내는 완료 증거 규칙" href="https://kwbaek.github.io/posts/2026-10-03-hermes-rio-asterisk-completion-evidence/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">&#39;Claude 모양의 문제&#39;를 찾아라 — Harvard 물리학자의 BootLoops가 보여 준 AI 과학계산 하네스
     </h2>
   </header>
@@ -248,48 +291,6 @@ Hermes/리오처럼 크론과 스킬이 여러 개 돌아가는 환경에서는 
   </div>
   <footer class="entry-footer"><span title='2026-09-28 08:00:00 +0900 KST'>2026년 9월 28일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
   <a class="entry-link" aria-label="post link to 2026년 9월 28일 AI/ML 트렌드: 에이전트 샌드박스 탈출·임베디드 평가·OpenAI Daybreak" href="https://kwbaek.github.io/posts/2026-09-28-ai-ml-trends-agent-sandbox-evaluation-and-daybreak/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Agentic AI의 실시간 평가: Anthropic-Accenture 임베디드 평가와 전문 영역 인증의 부상
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>2026년 9월, 프론티어 AI의 진화 방향이 명확해지고 있습니다. 단순한 모델 공개에서 벗어나, 에이전트가 실제 업무 환경에서 얼마나 안전하고 정확하게 작동하는지 실시간으로 평가하는 인프라가 핵심 경쟁 요소로 부상하고 있습니다.
-Anthropic &#43; Accenture: 임베디드 평가(Embedded Evaluation) 공식 발표 Anthropic이 2026년 9월 18일 공식 발표한 Accenture와의 임베디드 평가 파트너십은 이 변화의 핵심 신호입니다. 기존 사후 로그 기반 감사가 아닌, 에이전트 실행 중 실시간으로 품질·신뢰도·정확도를 측정하고 이를 업무 승인·보류·롤백 게이트와 직접 연결하는 메커니즘이 핵심입니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-09-21 21:00:00 +0900 KST'>2026년 9월 21일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to Agentic AI의 실시간 평가: Anthropic-Accenture 임베디드 평가와 전문 영역 인증의 부상" href="https://kwbaek.github.io/posts/2026-09-21-ai-ml-trends-agent-evaluation/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Hermes/리오로 마이그레이션 후 실전 자동화 패턴: OpenClaw → Hermes 운영 노트
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>2026년 9월, 프론티어 AI의 진화 방향이 명확해지고 있습니다. 단순한 모델 공개에서 벗어나, 에이전트가 실제 업무 환경에서 얼마나 안전하고 정확하게 작동하는지 실시간으로 평가하는 인프라가 핵심 경쟁 요소로 부상하고 있습니다.
-Anthropic &#43; Accenture: 임베디드 평가(Embedded Evaluation) 공식 발표 Anthropic이 2026년 9월 18일 공식 발표한 Accenture와의 임베디드 평가 파트너십은 이 변화의 핵심 신호입니다. 기존 사후 로그 기반 감사가 아닌, 에이전트 실행 중 실시간으로 품질·신뢰도·정확도를 측정하고 이를 업무 승인·보류·롤백 게이트와 직접 연결하는 메커니즘이 핵심입니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-09-21 21:00:00 +0900 KST'>2026년 9월 21일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to Hermes/리오로 마이그레이션 후 실전 자동화 패턴: OpenClaw → Hermes 운영 노트" href="https://kwbaek.github.io/posts/2026-09-21-hermes-automation-patterns/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">AI/ML 트렌드 2026-09-20: 프론티어 모델 속도와 기업 안전 평가의 교차
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>2026년 9월 20일 기준, AI 업계는 프론티어 모델 개발 속도의 급격한 단축과 기업 평가·보안 요구의 구조화라는 두 축이 동시에 강화되는 시점에 있습니다. 이번 주 확인된 주요 흐름을 정리합니다.
-프론티어 개발 속도 — Anthropic의 “11일 간격” 메커니즘 Anthropic은 2026년 9월 공개 자료를 통해 프론티어 AI 개발 속도·투명성 가시화 메커니즘을 제안했습니다. 핵심은 단순한 모델 성능 경쟁이 아니라, 개발 주기, 평가 기준, 공개 시점의 표준화를 통해 시장 참여자가 “어떤 속도로, 어떤 기준으로” 진행 중인지 판단할 수 있게 만드는 구조입니다. 이는 기존의 “모델 출시 → 벤치마크 발표” 단선형 흐름에서 벗어나, 연구 거버넌스 개념으로 확장되는 중요한 전환점입니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-09-20 09:00:00 +0900 KST'>2026년 9월 20일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to AI/ML 트렌드 2026-09-20: 프론티어 모델 속도와 기업 안전 평가의 교차" href="https://kwbaek.github.io/posts/2026-09-20-ai-ml-trends-frontier-pace-and-evaluation/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

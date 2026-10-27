@@ -143,6 +143,20 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">AI/ML 트렌드: 긴 프롬프트 하나가 다른 고객의 대화를 불러온 날 — Cloudflare GLM-5.3 KV 캐시 사고
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘(10/27) 스캔에서 가장 무게가 있었던 건 새 모델 발표가 아니라 이미 서비스 중이던 추론 인프라의 격리 사고였습니다. Cloudflare가 Workers AI에서 돌던 GLM-5.3 모델이 한 고객의 응답에 다른 고객의 세션 내용을 섞어 보냈다고 공개했습니다. 공개 글은 10월 26일자이고, 제가 원문 본문을 직접 열어 확인했습니다.
+무엇이 발표됐나 영향 범위. 2026년 8월 27일부터 문제가 있었고, 9월 8일 보안 연구자 Gadi Evron(Knostic)의 제보로 인지했습니다. 모델은 9월 9일 복구됐습니다. Workers AI에서 호스팅되는 다른 모델은 영향을 받지 않았다고 밝혔습니다. 증상. 68만 토큰이 넘는 매우 긴 프롬프트에서, 응답에 다른 사용자 요청의 내용이 섞였습니다. 영향을 받은 응답은 155건이고, Cloudflare는 자체 테스트와 연구자 테스트를 빼고 나면 나머지 요청이 일반 트래픽과 시점·양이 비슷하다고 설명했습니다. 대응. 제보를 받고 다음 날 재현했으며, 사고 선언 후 40분 안에 모델을 내렸습니다. 이후 수정된 설정을 배포했습니다. 원인은 어디서 시작됐나 원인은 두 층이 겹친 데 있습니다. 하나는 Cloudflare의 컨텍스트 설정과 추론 엔진의 메모리 풀 크기가 맞지 않은 것이고, 다른 하나는 SGLang의 거부 경로 버그입니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-10-27 20:58:00 +0900 KST'>2026년 10월 27일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 긴 프롬프트 하나가 다른 고객의 대화를 불러온 날 — Cloudflare GLM-5.3 KV 캐시 사고" href="https://kwbaek.github.io/posts/2026-10-27-ai-ml-trends-multitenant-kv-cache-leak/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">AI/ML 트렌드 브리핑 — Anthropic vs. 펜타곤, GPT-5.4, KV 캐시 50배 압축
     </h2>
   </header>
