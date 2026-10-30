@@ -1,30 +1,7 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
-  <channel>
-    <title>Alignment on Kyungwook&#39;s Devlog</title>
-    <link>https://kwbaek.github.io/tags/alignment/</link>
-    <description>Recent content in Alignment on Kyungwook&#39;s Devlog</description>
-    <generator>Hugo -- 0.165.0</generator>
-    <language>ko-kr</language>
-    <lastBuildDate>Sat, 24 Oct 2026 20:50:00 +0900</lastBuildDate>
-    <atom:link href="https://kwbaek.github.io/tags/alignment/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>AI/ML 트렌드: 학습 환경까지 인터넷에서 끊는다 — OpenAI의 프런티어 모델 학습 격리 정책</title>
-      <link>https://kwbaek.github.io/posts/2026-10-24-ai-ml-trends-frontier-training-no-internet/</link>
-      <pubDate>Sat, 24 Oct 2026 20:50:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/posts/2026-10-24-ai-ml-trends-frontier-training-no-internet/</guid>
-      <description>&lt;p&gt;오늘 가장 눈여겨볼 소식은 OpenAI가 프런티어 모델의 &lt;strong&gt;학습·평가 환경을 인터넷에서 분리했다&lt;/strong&gt;고 밝힌 글입니다. 모델 성능 경쟁이 아니라, 모델이 샌드박스를 벗어나지 못하게 하는 방법에 대한 1차 자료라서 에이전트를 운영하는 입장에서 읽을 가치가 큽니다.&lt;/p&gt;
-&lt;h2 id=&#34;무슨-일이-있었나&#34;&gt;무슨 일이 있었나&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Alignment on Kyungwook's Devlog</title><link>https://kwbaek.github.io/tags/alignment/</link><description>Recent content in Alignment on Kyungwook's Devlog</description><generator>Hugo -- 0.165.0</generator><language>ko-kr</language><lastBuildDate>Fri, 30 Oct 2026 20:50:00 +0900</lastBuildDate><atom:link href="https://kwbaek.github.io/tags/alignment/index.xml" rel="self" type="application/rss+xml"/><item><title>AI/ML 트렌드: 전문가는 에이전트의 판단을 얼마나 따르는가 — 'human in the loop'의 한계</title><link>https://kwbaek.github.io/posts/2026-10-30-ai-ml-trends-agent-judgment-deference/</link><pubDate>Fri, 30 Oct 2026 20:50:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-10-30-ai-ml-trends-agent-judgment-deference/</guid><description>&lt;p&gt;오늘(10/30) 스캔에서 가장 오래 남은 신호는 새 모델 출시가 아니라 &lt;strong&gt;사람이 에이전트의 결과를 검토할 때 실제로 무엇을 판단하고 있는가&lt;/strong&gt;에 관한 연구였습니다. Anthropic이 10월 27일 공개한 실험인데, 에이전트를 쓰는 조직이라면 검토 절차 자체를 다시 설계해야 할 근거가 됩니다.&lt;/p&gt;
+&lt;h2 id="무엇이-확인됐나"&gt;무엇이 확인됐나&lt;/h2&gt;
+&lt;p&gt;연구진은 인과추론 경험이 있는 전문 분석가 50명에게 Claude Code로 통계 분석을 맡겼습니다. 과제는 농협 자문 서비스의 효과를 판단하고 확장할지 권고하는 것이었습니다. 분석 중에는 두 가지 합리적인 선택지가 있는 결정이 네 번 나오는데, 예를 들어 생산성을 헥타르당 수확량으로 볼지 운영비 단위당 수확량으로 볼지 같은 문제입니다.&lt;/p&gt;</description></item><item><title>AI/ML 트렌드: 학습 환경까지 인터넷에서 끊는다 — OpenAI의 프런티어 모델 학습 격리 정책</title><link>https://kwbaek.github.io/posts/2026-10-24-ai-ml-trends-frontier-training-no-internet/</link><pubDate>Sat, 24 Oct 2026 20:50:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-10-24-ai-ml-trends-frontier-training-no-internet/</guid><description>&lt;p&gt;오늘 가장 눈여겨볼 소식은 OpenAI가 프런티어 모델의 &lt;strong&gt;학습·평가 환경을 인터넷에서 분리했다&lt;/strong&gt;고 밝힌 글입니다. 모델 성능 경쟁이 아니라, 모델이 샌드박스를 벗어나지 못하게 하는 방법에 대한 1차 자료라서 에이전트를 운영하는 입장에서 읽을 가치가 큽니다.&lt;/p&gt;
+&lt;h2 id="무슨-일이-있었나"&gt;무슨 일이 있었나&lt;/h2&gt;
 &lt;p&gt;OpenAI는 글에서 학습 환경이 일반 고객용 배포 환경과 다르다는 점을 먼저 밝혔습니다. 개발 중인 모델은 안전성·정렬 학습을 아직 끝내지 않았을 수 있고, 그래서 일부러 적대적 조건에서 약점을 드러내는 테스트를 한다는 설명입니다.&lt;/p&gt;
-&lt;p&gt;핵심 정책은 한 문장입니다. 현재의 정렬 연구, 모니터링 시스템, 인터넷 인프라의 보안 수준을 고려할 때 &lt;strong&gt;프런티어 모델 학습은 인터넷 접근 없이 진행한다&lt;/strong&gt;는 것이고, 이 정책을 실제로 적용해 두었으며 관련 안전장치가 충분히 발전하기 전까지 유지하겠다고 밝혔습니다.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>AI/ML 트렌드: 코드는 늘었는데 소프트웨어는 그대로 — 병목은 리뷰와 검증으로 이동</title>
-      <link>https://kwbaek.github.io/posts/2026-10-13-ai-ml-trends-review-bottleneck-hidden-capabilities/</link>
-      <pubDate>Tue, 13 Oct 2026 21:00:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/posts/2026-10-13-ai-ml-trends-review-bottleneck-hidden-capabilities/</guid>
-      <description>&lt;p&gt;에이전트 코딩 도구가 확산되면서 &amp;ldquo;개발 속도가 얼마나 빨라졌나&amp;quot;라는 질문이 자주 나옵니다. 오늘 선별한 두 신호는 이 질문에 대해 서로 다른 방향에서 같은 답을 가리킵니다. 생산 속도는 분명히 늘었지만, 그 이득이 최종 소프트웨어의 전달 속도로 이어지지는 않는다는 것, 그리고 모델을 평가하는 쪽도 우리가 생각하는 만큼 믿을 수 있는 도구가 아닐 수 있다는 것입니다.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;첫 번째 신호: 코드는 더 많이 나오는데 소프트웨어는 더 빨리 나오지 않습니다.&lt;/strong&gt; Ars Technica는 700여 개 기업과 약 3억 건의 코딩 이벤트를 분석한 연구를 소개했습니다. 핵심 결론은 AI 코딩 에이전트가 작성하는 코드의 양은 늘지만, 그 효율이 사람의 리뷰라는 병목에 흡수되어 실제 해결 속도는 크게 변하지 않는다는 것입니다. 즉 생성 단계의 비용이 줄어든 만큼 리뷰, 테스트, 머지 판단의 비용이 상대적으로 커진 셈입니다. 조직 입장에서는 &amp;ldquo;에이전트를 더 많이 쓰면 더 빨리 끝난다&amp;quot;는 가정 자체를 다시 점검해야 한다는 뜻입니다. 생성량 지표(커밋 수, 생성 라인 수)가 올라가는 것만으로는 성과를 말할 수 없습니다.&lt;/p&gt;</description>
-    </item>
-  </channel>
-</rss>
+&lt;p&gt;핵심 정책은 한 문장입니다. 현재의 정렬 연구, 모니터링 시스템, 인터넷 인프라의 보안 수준을 고려할 때 &lt;strong&gt;프런티어 모델 학습은 인터넷 접근 없이 진행한다&lt;/strong&gt;는 것이고, 이 정책을 실제로 적용해 두었으며 관련 안전장치가 충분히 발전하기 전까지 유지하겠다고 밝혔습니다.&lt;/p&gt;</description></item><item><title>AI/ML 트렌드: 코드는 늘었는데 소프트웨어는 그대로 — 병목은 리뷰와 검증으로 이동</title><link>https://kwbaek.github.io/posts/2026-10-13-ai-ml-trends-review-bottleneck-hidden-capabilities/</link><pubDate>Tue, 13 Oct 2026 21:00:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-10-13-ai-ml-trends-review-bottleneck-hidden-capabilities/</guid><description>&lt;p&gt;에이전트 코딩 도구가 확산되면서 &amp;ldquo;개발 속도가 얼마나 빨라졌나&amp;quot;라는 질문이 자주 나옵니다. 오늘 선별한 두 신호는 이 질문에 대해 서로 다른 방향에서 같은 답을 가리킵니다. 생산 속도는 분명히 늘었지만, 그 이득이 최종 소프트웨어의 전달 속도로 이어지지는 않는다는 것, 그리고 모델을 평가하는 쪽도 우리가 생각하는 만큼 믿을 수 있는 도구가 아닐 수 있다는 것입니다.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;첫 번째 신호: 코드는 더 많이 나오는데 소프트웨어는 더 빨리 나오지 않습니다.&lt;/strong&gt; Ars Technica는 700여 개 기업과 약 3억 건의 코딩 이벤트를 분석한 연구를 소개했습니다. 핵심 결론은 AI 코딩 에이전트가 작성하는 코드의 양은 늘지만, 그 효율이 사람의 리뷰라는 병목에 흡수되어 실제 해결 속도는 크게 변하지 않는다는 것입니다. 즉 생성 단계의 비용이 줄어든 만큼 리뷰, 테스트, 머지 판단의 비용이 상대적으로 커진 셈입니다. 조직 입장에서는 &amp;ldquo;에이전트를 더 많이 쓰면 더 빨리 끝난다&amp;quot;는 가정 자체를 다시 점검해야 한다는 뜻입니다. 생성량 지표(커밋 수, 생성 라인 수)가 올라가는 것만으로는 성과를 말할 수 없습니다.&lt;/p&gt;</description></item></channel></rss>
