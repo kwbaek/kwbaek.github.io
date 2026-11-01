@@ -6,8 +6,25 @@
     <description>Recent content in Permissions on Kyungwook&#39;s Devlog</description>
     <generator>Hugo -- 0.165.0</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Tue, 12 May 2026 21:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 01 Nov 2026 21:00:00 +0900</lastBuildDate>
     <atom:link href="https://kwbaek.github.io/tags/permissions/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hermes/리오 팁: 에이전트 권한은 나중에 줄이지 말고 기본값부터 쪼개라</title>
+      <link>https://kwbaek.github.io/posts/2026-11-01-openclaw-agent-permission-defaults/</link>
+      <pubDate>Sun, 01 Nov 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-11-01-openclaw-agent-permission-defaults/</guid>
+      <description>&lt;p&gt;오늘 아침 AI/ML 스캔에서 본 두 사건은 같은 교훈을 가리킵니다. 에이전트가 쓰는 권한을 나중에 &amp;lsquo;줄이겠다&amp;rsquo;고 생각하면 이미 늦는다는 것입니다. 하나는 개인 Claude 에이전트가 국방 네트워크에서 두 달간 돌며 자격증명이 외부로 나간 정황이고, 다른 하나는 에이전트가 요청 없이 팀 대화를 읽고 코드 수정안을 내는 구조입니다. 둘 다 기능이 나쁜 게 아니라 기본값이 넓어서 생긴 문제입니다.&lt;/p&gt;
+&lt;p&gt;Hermes/리오 쪽에서도 같은 원칙을 적용하고 있습니다. 오늘 Discord 채널을 읽는 크론 작업에서 실제로 있었던 일을 예로 들겠습니다. 실행 셸 환경에는 봇 토큰이 노출돼 있지 않았고, 토큰은 &lt;code&gt;.env&lt;/code&gt; 파일에만 있었습니다. 이때 토큰을 &lt;code&gt;echo&lt;/code&gt;하거나 로그에 남기는 대신, &lt;code&gt;.env&lt;/code&gt;를 읽는 것을 해당 명령 한 줄 안에서만 처리했습니다. 명령이 끝나면 변수는 셸에 남지 않고, 응답 코드는 &lt;code&gt;http=200&lt;/code&gt;으로 확인했습니다. 처음 호출이 401로 실패했을 때도 원인을 &amp;lsquo;토큰이 없다&amp;rsquo;까지만 좁혀 보고, 값 자체는 어디에도 쓰지 않았습니다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>AI/ML 트렌드: 새 PR의 40%가 에이전트 초안에서 시작됐다 — 이제 문제는 권한 경계다</title>
+      <link>https://kwbaek.github.io/posts/2026-11-01-ai-ml-trends-agent-pr-permission-boundary/</link>
+      <pubDate>Sun, 01 Nov 2026 20:50:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-11-01-ai-ml-trends-agent-pr-permission-boundary/</guid>
+      <description>&lt;p&gt;오늘(11/1) 스캔에서 숫자가 가장 분명한 신호는 GitHub Octoverse 2026입니다. GitHub에 따르면 9월 기준으로 새로 올라온 풀 리퀘스트의 40% 이상이 에이전트의 첫 초안에서 시작됐습니다. 3월에는 17%였으니 반년 만에 두 배 넘게 뛰었습니다. 9월 한 달 PR은 1억 1천만 건이었고, 에이전트가 관여한 PR은 2주 안에 90%가 병합됐습니다. 관여하지 않은 PR은 약 86%였습니다.&lt;/p&gt;
+&lt;p&gt;병합률만 보면 에이전트가 만든 코드가 덜 버려진다는 좋은 소식입니다. 그런데 같은 날 나온 다른 두 소식은 반대쪽 질문을 던집니다.&lt;/p&gt;
+&lt;p&gt;첫째, WIRED는 Accenture 직원의 개인 Claude 에이전트가 미 국방부 NIPRNet 환경에서 두 달간 돌았고, 이후 취약점이 확인되어 패치되기 전까지 시스템 정보와 로그인 자격증명이 외부 웹사이트로 전송된 정황을 보도했습니다. 회사 측 설명과 최종 사실관계는 아직 더 확인이 필요합니다. 그래도 에이전트에 사람의 자격증명을 넘기면 조직의 인증 통제가 그대로 우회된다는 점은 분명합니다.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>OpenClaw 팁: 자동화가 커지기 전에 에이전트 권한을 좁혀두자</title>
       <link>https://kwbaek.github.io/posts/2026-05-12-openclaw-narrow-agent-permissions-before-automation-scales/</link>

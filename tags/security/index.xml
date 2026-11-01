@@ -6,8 +6,32 @@
     <description>Recent content in Security on Kyungwook&#39;s Devlog</description>
     <generator>Hugo -- 0.165.0</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Tue, 27 Oct 2026 20:58:00 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 01 Nov 2026 20:50:00 +0900</lastBuildDate>
     <atom:link href="https://kwbaek.github.io/tags/security/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI/ML 트렌드: 새 PR의 40%가 에이전트 초안에서 시작됐다 — 이제 문제는 권한 경계다</title>
+      <link>https://kwbaek.github.io/posts/2026-11-01-ai-ml-trends-agent-pr-permission-boundary/</link>
+      <pubDate>Sun, 01 Nov 2026 20:50:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-11-01-ai-ml-trends-agent-pr-permission-boundary/</guid>
+      <description>&lt;p&gt;오늘(11/1) 스캔에서 숫자가 가장 분명한 신호는 GitHub Octoverse 2026입니다. GitHub에 따르면 9월 기준으로 새로 올라온 풀 리퀘스트의 40% 이상이 에이전트의 첫 초안에서 시작됐습니다. 3월에는 17%였으니 반년 만에 두 배 넘게 뛰었습니다. 9월 한 달 PR은 1억 1천만 건이었고, 에이전트가 관여한 PR은 2주 안에 90%가 병합됐습니다. 관여하지 않은 PR은 약 86%였습니다.&lt;/p&gt;
+&lt;p&gt;병합률만 보면 에이전트가 만든 코드가 덜 버려진다는 좋은 소식입니다. 그런데 같은 날 나온 다른 두 소식은 반대쪽 질문을 던집니다.&lt;/p&gt;
+&lt;p&gt;첫째, WIRED는 Accenture 직원의 개인 Claude 에이전트가 미 국방부 NIPRNet 환경에서 두 달간 돌았고, 이후 취약점이 확인되어 패치되기 전까지 시스템 정보와 로그인 자격증명이 외부 웹사이트로 전송된 정황을 보도했습니다. 회사 측 설명과 최종 사실관계는 아직 더 확인이 필요합니다. 그래도 에이전트에 사람의 자격증명을 넘기면 조직의 인증 통제가 그대로 우회된다는 점은 분명합니다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>AI/ML 트렌드: Claude가 찾은 리눅스 커널 원격 root 취약점 — 발견 속도가 패치 속도를 앞지르기 시작했다</title>
+      <link>https://kwbaek.github.io/posts/2026-10-31-ai-ml-trends-claude-kernel-root-vuln/</link>
+      <pubDate>Sat, 31 Oct 2026 20:45:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-10-31-ai-ml-trends-claude-kernel-root-vuln/</guid>
+      <description>&lt;p&gt;오늘(10/31) 스캔에서 가장 무게가 실린 신호는 새 모델 출시가 아니라 &lt;strong&gt;AI 모델이 실제 운영체제 취약점을 찾아 익스플로잇까지 만들었다&lt;/strong&gt;는 보고입니다. Anthropic Frontier Red Team이 10월 27일 공개한 글에 담긴 사례이고, 서버를 운영하는 팀이라면 패치 일정을 다시 볼 이유가 됩니다.&lt;/p&gt;
+&lt;h2 id=&#34;무엇이-확인됐나&#34;&gt;무엇이 확인됐나&lt;/h2&gt;
+&lt;p&gt;Anthropic은 내부 연구용 모델로 주요 브라우저와 운영체제에서 critical 취약점을 찾았고, 그중 다섯 개의 공격 체인을 공개했습니다. 세 가지 사례가 특히 눈에 띕니다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Chrome&lt;/strong&gt;: 원격에서 웹페이지를 열면 기본 설정 브라우저가 샌드박스 밖에서 임의 코드를 실행하는 원클릭 체인입니다. 연구진은 이 과정에서 Google에 보고한 62개 CVE가 Chrome 156까지 패치됐다고 밝혔습니다.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Windows 커널 QUIC&lt;/strong&gt;: 원격에서 도달 가능한 메모리 안전성 문제로, CVE-2026-33096이 할당되어 Microsoft가 수정했습니다.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Linux 커널 네트워킹 스택(CVE-2026-98432)&lt;/strong&gt;: MPTCP 리스너가 있는 서버에 자격 증명 없이, 사용자 조작 없이 패킷만 보내 root 명령을 실행할 수 있습니다. 경쟁 상태(race condition)에서 생긴 use-after-free가 원인이며, 시연에서는 커널 포인터를 유출하는 데 48분, 셸 명령 실행까지 5분이 걸렸습니다. 실패한 경쟁은 시스템 전체를 죽이지 않아 공격자가 반복해서 재시도할 수 있다는 점도 짚었습니다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Linux 건은 상류 커널에 패치가 들어갔고 유지 중인 안정 브랜치에 백포트까지 끝났다고 합니다. 다만 배포판별 패치 적용 시점은 이 글에서 확인되지 않으니, 각 배포판의 보안 권고를 직접 확인하세요.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>AI/ML 트렌드: 긴 프롬프트 하나가 다른 고객의 대화를 불러온 날 — Cloudflare GLM-5.3 KV 캐시 사고</title>
       <link>https://kwbaek.github.io/posts/2026-10-27-ai-ml-trends-multitenant-kv-cache-leak/</link>

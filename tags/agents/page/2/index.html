@@ -143,6 +143,48 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">Hermes/리오 팁: 코딩 에이전트에는 Model Routing Gate가 필요하다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Poolside Laguna M.1 같은 open weight 코딩 모델 소식을 Hermes/리오 운영 관점으로 가져오면 실무 팁은 하나입니다. 코딩 자동화에 모델을 하나만 고정하지 말고, 작업 성격에 따라 어떤 모델을 쓸지 결정하는 Model Routing Gate를 두는 편이 안전합니다. 코딩 에이전트는 문서 요약보다 부작용이 큽니다. 파일을 고치고, 테스트를 돌리고, git 상태를 바꾸고, 때로는 배포 파이프라인까지 건드립니다. 그래서 “좋은 모델을 붙였다”보다 “어떤 작업을 어느 모델에게 맡겼고 무엇으로 검증했는가”가 더 중요합니다.
+Model Routing Gate는 어렵게 만들 필요가 없습니다. Hermes/리오 크론이나 개발 자동화 앞단에 작은 판단표를 두면 됩니다. 예를 들어 문서 정리, 반복적인 lint 수정, 테스트 로그 요약처럼 민감도가 낮고 비용이 많이 드는 작업은 저비용 또는 자체 배포 모델 후보로 분류합니다. 반대로 아키텍처 변경, 보안 관련 코드, 데이터 삭제 가능성이 있는 명령, 공개 배포 전 검토처럼 실패 비용이 큰 작업은 더 강한 모델과 더 엄격한 사람 검토를 요구합니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-06-21 21:00:00 +0900 KST'>2026년 6월 21일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to Hermes/리오 팁: 코딩 에이전트에는 Model Routing Gate가 필요하다" href="https://kwbaek.github.io/posts/2026-06-21-hermes-rio-add-a-model-routing-gate-for-coding-agents/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">AI/ML 트렌드: Creative AI는 이제 앱 기능이 아니라 Workflow Agent Layer다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 AI/ML 트렌드에서 가장 흥미로운 신호는 Adobe가 Creative Agent를 Firefly와 Photoshop, Premiere를 포함한 Creative Cloud 전반으로 확장한다고 발표한 점입니다. 생성형 AI가 이미지 한 장을 만들어주는 기능으로 머무는 단계는 빠르게 지나가고 있습니다. 이제 핵심은 사용자가 원하는 결과를 자연어로 설명하면, 여러 앱과 편집 단계를 넘나들며 작업을 조율하는 creative workflow agent입니다.
+이 변화가 중요한 이유는 창작 업무의 병목이 더 이상 단일 모델의 품질만이 아니기 때문입니다. 실제 마케팅, 콘텐츠, 디자인 업무에서는 이미지 생성, 배경 제거, 영상 컷 편집, 브랜드 톤 적용, 포맷 변환, 피드백 반영, 배포용 asset 정리까지 여러 도구가 이어집니다. 모델이 한 번에 멋진 결과물을 만들어도 이 연결 과정이 끊기면 실무 생산성은 제한됩니다. Adobe가 Creative Agent를 Creative Cloud 전체와 ChatGPT, Claude, Copilot, Gemini, Slack 같은 업무 표면으로 넓히려는 이유도 여기에 있습니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-06-20 20:58:00 +0900 KST'>2026년 6월 20일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to AI/ML 트렌드: Creative AI는 이제 앱 기능이 아니라 Workflow Agent Layer다" href="https://kwbaek.github.io/posts/2026-06-20-ai-ml-trends-creative-ai-is-becoming-a-workflow-agent-layer/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Hermes/리오 팁: 창작 자동화는 Action Card로 쪼개야 안전하다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Adobe의 Creative Agent 확장 소식을 Hermes/리오 운영 관점으로 가져오면 실무 팁은 하나입니다. 창작 자동화를 한 번의 거대한 프롬프트로 처리하지 말고, Action Card 단위로 쪼개야 합니다. 블로그 글, 이미지, 쇼츠 대본, 리포트, 뉴스레터처럼 공개 결과물이 있는 작업일수록 “멋진 초안 만들기”보다 “어떤 작업을 어떤 근거로 실행했는지”가 더 중요합니다.
+Action Card는 agent가 수행할 한 단계 작업을 작은 카드처럼 정의하는 방식입니다. 예를 들어 트렌드 글 자동화라면 소스 수집, 핵심 주장 선택, 공개 가능한 링크 확인, 초안 작성, 레거시 명칭 점검, 생성된 HTML 확인, 배포를 각각 별도 카드로 둡니다. 카드마다 입력, 허용 도구, 금지 정보, 완료 조건, 검증 방법을 적어두면 Hermes/리오가 작업을 이어가더라도 중간 판단이 흐려지지 않습니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-06-20 20:58:00 +0900 KST'>2026년 6월 20일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to Hermes/리오 팁: 창작 자동화는 Action Card로 쪼개야 안전하다" href="https://kwbaek.github.io/posts/2026-06-20-hermes-rio-turn-creative-automation-into-action-cards/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">AI/ML 트렌드: RAG 다음 경쟁은 권한 있는 컨텍스트 그래프다
     </h2>
   </header>
@@ -237,46 +279,6 @@ Colab CLI의 의미는 단순히 “노트북을 커맨드라인에서 돌릴 �
   </div>
   <footer class="entry-footer"><span title='2026-05-27 21:00:00 +0900 KST'>2026년 5월 27일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
   <a class="entry-link" aria-label="post link to AI/ML 트렌드: AI 인프라는 모델 밖으로 확장되고 있다" href="https://kwbaek.github.io/posts/2026-05-27-ai-ml-trends-ai-infrastructure-is-expanding-beyond-the-model/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">AI/ML 트렌드: 에이전트 런타임은 디바이스와 운영 표면으로 내려온다
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>오늘 Discord #ai-ml-trends 채널에서 가장 눈에 띈 흐름은 에이전트가 클라우드 챗봇 안에 머무르지 않고, 모바일 디바이스, 개발자 터미널, 운영 UI, 연구 워크플로로 퍼지고 있다는 점입니다. Google의 ADK for Kotlin/Android, LiteRT-LM, Gemini CLI의 Antigravity CLI 전환, Hugging Face의 generative UI 모델과 personal assistant benchmark, GitHub Copilot의 semantic issue search, 그리고 여러 multimodal agent 연구는 서로 다른 소식처럼 보입니다. 하지만 한 문장으로 묶으면 “모델 성능 다음의 전쟁터는 에이전트가 실제 환경에서 어디에 붙고 어떻게 움직이는가”입니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-05-26 21:00:00 +0900 KST'>2026년 5월 26일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 에이전트 런타임은 디바이스와 운영 표면으로 내려온다" href="https://kwbaek.github.io/posts/2026-05-26-ai-ml-trends-agent-runtime-moves-onto-devices-and-operating-surfaces/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">AI/ML 트렌드: 에이전트 스킬과 월드 모델 평가는 운영 문제로 이동한다
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>오늘 Discord #ai-ml-trends 채널에서 가장 흥미로운 흐름은 AI 연구의 초점이 단일 모델 성능에서, 에이전트가 지식을 저장하고 멀티모달 세계를 검증하는 운영 방식으로 옮겨가고 있다는 점입니다. Andrej Karpathy가 Anthropic pre-training team에 합류했다는 소식, SkillOpt와 agent skill negative transfer 연구, Google AI Edge Gallery의 MCP 연동, SciAtlas 과학 지식그래프, VLM과 world model 평가 논문들은 서로 다른 분야처럼 보입니다. 하지만 모두 “모델이 더 똑똑해지는 것” 이후의 질문을 다룹니다. 지식은 어디에 저장할 것인가, 어떤 스킬이 실제로 도움이 되는가, 시각·공간·시간 이해는 어떻게 검증할 것인가, 그리고 이 모든 것을 어떤 런타임에서 반복 가능하게 운영할 것인가의 문제입니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-05-25 21:00:00 +0900 KST'>2026년 5월 25일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 에이전트 스킬과 월드 모델 평가는 운영 문제로 이동한다" href="https://kwbaek.github.io/posts/2026-05-25-ai-ml-trends-agent-skills-and-world-model-evals/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">AI/ML 트렌드: 에이전트 경제성과 신뢰 경계가 핵심 지표가 된다
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>오늘 Discord #ai-ml-trends 채널에서 가장 흥미로운 흐름은 AI가 더 똑똑해지는 문제에서, 실제 조직 안에서 비용과 신뢰 경계를 어떻게 운영할 것인가의 문제로 이동하고 있다는 점입니다. DeepSeek의 V4-Pro 가격 고정, Hugging Face와 IBM의 Open Agent Leaderboard, NVIDIA의 token-metered AI service, Anthropic Project Glasswing, OpenAI의 수학 반례 발견, 그리고 AI 음성·오디오북 저작권 논쟁은 서로 다른 뉴스처럼 보입니다. 하지만 한 문장으로 묶으면 “모델 성능은 전제이고, 이제는 경제성·검증·책임이 경쟁력”이라는 이야기입니다.
-먼저 가격 경쟁이 구조화되고 있습니다. DeepSeek가 V4-Pro API 할인 가격을 영구 가격으로 전환했다는 소식은 frontier급 API 가격이 일회성 프로모션이 아니라 지속 압박으로 바뀌고 있음을 보여줍니다. 기업 입장에서는 모델 선택 기준이 단순 benchmark 점수에서 input/output 단가, latency, context 길이, cache 효율, 장애 대응까지 확장됩니다. 모델이 충분히 좋아졌기 때문에 오히려 운영비가 더 날카로운 의사결정 기준이 됩니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-05-24 21:00:00 +0900 KST'>2026년 5월 24일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 에이전트 경제성과 신뢰 경계가 핵심 지표가 된다" href="https://kwbaek.github.io/posts/2026-05-24-ai-ml-trends-agent-economics-and-trust-boundaries/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">
