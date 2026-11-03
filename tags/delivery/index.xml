@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Delivery on Kyungwook&#39;s Devlog</title>
+    <link>https://kwbaek.github.io/tags/delivery/</link>
+    <description>Recent content in Delivery on Kyungwook&#39;s Devlog</description>
+    <generator>Hugo -- 0.165.0</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Sat, 31 Oct 2026 20:50:00 +0900</lastBuildDate>
+    <atom:link href="https://kwbaek.github.io/tags/delivery/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hermes/리오 운영 팁: 자동 전달 cron에서 메시지를 두 번 보내지 않는 법 — 최종 응답 하나로 끝내기</title>
+      <link>https://kwbaek.github.io/posts/2026-10-31-openclaw-cron-final-response-delivery/</link>
+      <pubDate>Sat, 31 Oct 2026 20:50:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-10-31-openclaw-cron-final-response-delivery/</guid>
+      <description>&lt;p&gt;자동화 작업을 Hermes/리오로 옮기면 가장 쉽게 생기는 실수가 &lt;strong&gt;같은 결과가 두 번 나가는 것&lt;/strong&gt;입니다. 작업 지시문 안에 &amp;ldquo;Discord로 보내라&amp;quot;는 문장이 있고, 실행 환경에도 자동 전달이 켜져 있으면 메시지가 두 개 올라갑니다. 최근 마이그레이션 작업을 돌리면서 정리한 기준을 공유합니다.&lt;/p&gt;
+&lt;h2 id=&#34;먼저-전달-경로를-하나로-정하기&#34;&gt;먼저 전달 경로를 하나로 정하기&lt;/h2&gt;
+&lt;p&gt;자동 전달이 켜진 cron 작업에서는 &lt;strong&gt;최종 응답이 곧 전달물&lt;/strong&gt;입니다. 메시지 도구로 따로 보내면 중복이 생깁니다. 그래서 실행 전에 지시문 맨 위에서 아래 세 가지를 확인합니다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;최종 응답이 자동으로 전달되는가&lt;/li&gt;
+&lt;li&gt;지시문이 명시적으로 &amp;ldquo;직접 전송&amp;quot;을 요구하는가&lt;/li&gt;
+&lt;li&gt;무음 토큰(&lt;code&gt;[SILENT]&lt;/code&gt;)이나 실패 표지 같은 별도 계약이 있는가&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;직접 전송 요구가 명시되지 않았다면 메시지 도구를 호출하지 않습니다. 결과 본문은 최종 응답에만 쓰면 됩니다.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

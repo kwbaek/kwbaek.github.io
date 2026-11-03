@@ -6,62 +6,356 @@
     <description>Recent content in Tags on Kyungwook&#39;s Devlog</description>
     <generator>Hugo -- 0.165.0</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Tue, 27 Oct 2026 21:01:00 +0900</lastBuildDate>
+    <lastBuildDate>Tue, 03 Nov 2026 21:02:00 +0900</lastBuildDate>
     <atom:link href="https://kwbaek.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Automation</title>
       <link>https://kwbaek.github.io/tags/automation/</link>
-      <pubDate>Tue, 27 Oct 2026 21:01:00 +0900</pubDate>
+      <pubDate>Tue, 03 Nov 2026 21:02:00 +0900</pubDate>
       <guid>https://kwbaek.github.io/tags/automation/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Cron</title>
-      <link>https://kwbaek.github.io/tags/cron/</link>
-      <pubDate>Tue, 27 Oct 2026 21:01:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/tags/cron/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Git</title>
-      <link>https://kwbaek.github.io/tags/git/</link>
-      <pubDate>Tue, 27 Oct 2026 21:01:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/tags/git/</guid>
       <description></description>
     </item>
     <item>
       <title>Hermes</title>
       <link>https://kwbaek.github.io/tags/hermes/</link>
-      <pubDate>Tue, 27 Oct 2026 21:01:00 +0900</pubDate>
+      <pubDate>Tue, 03 Nov 2026 21:02:00 +0900</pubDate>
       <guid>https://kwbaek.github.io/tags/hermes/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Hugo</title>
-      <link>https://kwbaek.github.io/tags/hugo/</link>
-      <pubDate>Tue, 27 Oct 2026 21:01:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/tags/hugo/</guid>
       <description></description>
     </item>
     <item>
       <title>OpenClaw</title>
       <link>https://kwbaek.github.io/tags/openclaw/</link>
-      <pubDate>Tue, 27 Oct 2026 21:01:00 +0900</pubDate>
+      <pubDate>Tue, 03 Nov 2026 21:02:00 +0900</pubDate>
       <guid>https://kwbaek.github.io/tags/openclaw/</guid>
       <description></description>
     </item>
     <item>
-      <title>Operations</title>
-      <link>https://kwbaek.github.io/tags/operations/</link>
-      <pubDate>Tue, 27 Oct 2026 21:01:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/tags/operations/</guid>
+      <title>Source-Quality</title>
+      <link>https://kwbaek.github.io/tags/source-quality/</link>
+      <pubDate>Tue, 03 Nov 2026 21:02:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/tags/source-quality/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Tips</title>
+      <link>https://kwbaek.github.io/tags/tips/</link>
+      <pubDate>Tue, 03 Nov 2026 21:02:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/tags/tips/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Verification</title>
+      <link>https://kwbaek.github.io/tags/verification/</link>
+      <pubDate>Tue, 03 Nov 2026 21:02:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/tags/verification/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Agents</title>
+      <link>https://kwbaek.github.io/tags/agents/</link>
+      <pubDate>Tue, 03 Nov 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/tags/agents/</guid>
       <description></description>
     </item>
     <item>
       <title>Ai-Ml</title>
       <link>https://kwbaek.github.io/tags/ai-ml/</link>
-      <pubDate>Tue, 27 Oct 2026 20:58:00 +0900</pubDate>
+      <pubDate>Tue, 03 Nov 2026 21:00:00 +0900</pubDate>
       <guid>https://kwbaek.github.io/tags/ai-ml/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Ci</title>
+      <link>https://kwbaek.github.io/tags/ci/</link>
+      <pubDate>Tue, 03 Nov 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/tags/ci/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Developer-Infrastructure</title>
+      <link>https://kwbaek.github.io/tags/developer-infrastructure/</link>
+      <pubDate>Tue, 03 Nov 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/tags/developer-infrastructure/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Git</title>
+      <link>https://kwbaek.github.io/tags/git/</link>
+      <pubDate>Tue, 03 Nov 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/tags/git/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Monorepo</title>
+      <link>https://kwbaek.github.io/tags/monorepo/</link>
+      <pubDate>Tue, 03 Nov 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/tags/monorepo/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Capacity-Planning</title>
+      <link>https://kwbaek.github.io/tags/capacity-planning/</link>
+      <pubDate>Mon, 02 Nov 2026 21:02:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/tags/capacity-planning/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Compute-Access</title>
+      <link>https://kwbaek.github.io/tags/compute-access/</link>
+      <pubDate>Mon, 02 Nov 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/tags/compute-access/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>GPU</title>
+      <link>https://kwbaek.github.io/tags/gpu/</link>
+      <pubDate>Mon, 02 Nov 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/tags/gpu/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Infrastructure</title>
+      <link>https://kwbaek.github.io/tags/infrastructure/</link>
+      <pubDate>Mon, 02 Nov 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/tags/infrastructure/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Sovereign-Ai</title>
+      <link>https://kwbaek.github.io/tags/sovereign-ai/</link>
+      <pubDate>Mon, 02 Nov 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/tags/sovereign-ai/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Supercomputer</title>
+      <link>https://kwbaek.github.io/tags/supercomputer/</link>
+      <pubDate>Mon, 02 Nov 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/tags/supercomputer/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Credentials</title>
+      <link>https://kwbaek.github.io/tags/credentials/</link>
+      <pubDate>Sun, 01 Nov 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/tags/credentials/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Permissions</title>
+      <link>https://kwbaek.github.io/tags/permissions/</link>
+      <pubDate>Sun, 01 Nov 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/tags/permissions/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Coding Agent</title>
+      <link>https://kwbaek.github.io/tags/coding-agent/</link>
+      <pubDate>Sun, 01 Nov 2026 20:50:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/tags/coding-agent/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>GitHub</title>
+      <link>https://kwbaek.github.io/tags/github/</link>
+      <pubDate>Sun, 01 Nov 2026 20:50:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/tags/github/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Security</title>
+      <link>https://kwbaek.github.io/tags/security/</link>
+      <pubDate>Sun, 01 Nov 2026 20:50:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/tags/security/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Cron</title>
+      <link>https://kwbaek.github.io/tags/cron/</link>
+      <pubDate>Sat, 31 Oct 2026 20:50:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/tags/cron/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Delivery</title>
+      <link>https://kwbaek.github.io/tags/delivery/</link>
+      <pubDate>Sat, 31 Oct 2026 20:50:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/tags/delivery/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Claude</title>
+      <link>https://kwbaek.github.io/tags/claude/</link>
+      <pubDate>Sat, 31 Oct 2026 20:45:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/tags/claude/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Linux</title>
+      <link>https://kwbaek.github.io/tags/linux/</link>
+      <pubDate>Sat, 31 Oct 2026 20:45:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/tags/linux/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Patch-Management</title>
+      <link>https://kwbaek.github.io/tags/patch-management/</link>
+      <pubDate>Sat, 31 Oct 2026 20:45:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/tags/patch-management/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Vulnerability</title>
+      <link>https://kwbaek.github.io/tags/vulnerability/</link>
+      <pubDate>Sat, 31 Oct 2026 20:45:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/tags/vulnerability/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Memory</title>
+      <link>https://kwbaek.github.io/tags/memory/</link>
+      <pubDate>Fri, 30 Oct 2026 20:55:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/tags/memory/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Skills</title>
+      <link>https://kwbaek.github.io/tags/skills/</link>
+      <pubDate>Fri, 30 Oct 2026 20:55:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/tags/skills/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Alignment</title>
+      <link>https://kwbaek.github.io/tags/alignment/</link>
+      <pubDate>Fri, 30 Oct 2026 20:50:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/tags/alignment/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Claude-Code</title>
+      <link>https://kwbaek.github.io/tags/claude-code/</link>
+      <pubDate>Fri, 30 Oct 2026 20:50:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/tags/claude-code/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Governance</title>
+      <link>https://kwbaek.github.io/tags/governance/</link>
+      <pubDate>Fri, 30 Oct 2026 20:50:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/tags/governance/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Human-in-the-Loop</title>
+      <link>https://kwbaek.github.io/tags/human-in-the-loop/</link>
+      <pubDate>Fri, 30 Oct 2026 20:50:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/tags/human-in-the-loop/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Deployment</title>
+      <link>https://kwbaek.github.io/tags/deployment/</link>
+      <pubDate>Thu, 29 Oct 2026 21:02:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/tags/deployment/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Hugo</title>
+      <link>https://kwbaek.github.io/tags/hugo/</link>
+      <pubDate>Thu, 29 Oct 2026 21:02:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/tags/hugo/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Cost</title>
+      <link>https://kwbaek.github.io/tags/cost/</link>
+      <pubDate>Thu, 29 Oct 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/tags/cost/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Enterprise AI</title>
+      <link>https://kwbaek.github.io/tags/enterprise-ai/</link>
+      <pubDate>Thu, 29 Oct 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/tags/enterprise-ai/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Model Routing</title>
+      <link>https://kwbaek.github.io/tags/model-routing/</link>
+      <pubDate>Thu, 29 Oct 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/tags/model-routing/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Pricing</title>
+      <link>https://kwbaek.github.io/tags/pricing/</link>
+      <pubDate>Thu, 29 Oct 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/tags/pricing/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Sap</title>
+      <link>https://kwbaek.github.io/tags/sap/</link>
+      <pubDate>Thu, 29 Oct 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/tags/sap/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Dedupe</title>
+      <link>https://kwbaek.github.io/tags/dedupe/</link>
+      <pubDate>Wed, 28 Oct 2026 21:05:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/tags/dedupe/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Discord</title>
+      <link>https://kwbaek.github.io/tags/discord/</link>
+      <pubDate>Wed, 28 Oct 2026 21:05:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/tags/discord/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Operations</title>
+      <link>https://kwbaek.github.io/tags/operations/</link>
+      <pubDate>Wed, 28 Oct 2026 21:05:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/tags/operations/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Brookfield</title>
+      <link>https://kwbaek.github.io/tags/brookfield/</link>
+      <pubDate>Wed, 28 Oct 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/tags/brookfield/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Data-Center</title>
+      <link>https://kwbaek.github.io/tags/data-center/</link>
+      <pubDate>Wed, 28 Oct 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/tags/data-center/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Financing</title>
+      <link>https://kwbaek.github.io/tags/financing/</link>
+      <pubDate>Wed, 28 Oct 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/tags/financing/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Inference</title>
+      <link>https://kwbaek.github.io/tags/inference/</link>
+      <pubDate>Wed, 28 Oct 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/tags/inference/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Naver</title>
+      <link>https://kwbaek.github.io/tags/naver/</link>
+      <pubDate>Wed, 28 Oct 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/tags/naver/</guid>
       <description></description>
     </item>
     <item>
@@ -69,13 +363,6 @@
       <link>https://kwbaek.github.io/tags/cloudflare/</link>
       <pubDate>Tue, 27 Oct 2026 20:58:00 +0900</pubDate>
       <guid>https://kwbaek.github.io/tags/cloudflare/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Inference</title>
-      <link>https://kwbaek.github.io/tags/inference/</link>
-      <pubDate>Tue, 27 Oct 2026 20:58:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/tags/inference/</guid>
       <description></description>
     </item>
     <item>
@@ -90,13 +377,6 @@
       <link>https://kwbaek.github.io/tags/multi-tenant/</link>
       <pubDate>Tue, 27 Oct 2026 20:58:00 +0900</pubDate>
       <guid>https://kwbaek.github.io/tags/multi-tenant/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Security</title>
-      <link>https://kwbaek.github.io/tags/security/</link>
-      <pubDate>Tue, 27 Oct 2026 20:58:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/tags/security/</guid>
       <description></description>
     </item>
     <item>
@@ -121,13 +401,6 @@
       <description></description>
     </item>
     <item>
-      <title>Agents</title>
-      <link>https://kwbaek.github.io/tags/agents/</link>
-      <pubDate>Mon, 26 Oct 2026 21:00:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/tags/agents/</guid>
-      <description></description>
-    </item>
-    <item>
       <title>Compliance</title>
       <link>https://kwbaek.github.io/tags/compliance/</link>
       <pubDate>Mon, 26 Oct 2026 21:00:00 +0900</pubDate>
@@ -142,24 +415,10 @@
       <description></description>
     </item>
     <item>
-      <title>Governance</title>
-      <link>https://kwbaek.github.io/tags/governance/</link>
-      <pubDate>Mon, 26 Oct 2026 21:00:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/tags/governance/</guid>
-      <description></description>
-    </item>
-    <item>
       <title>Training-Data</title>
       <link>https://kwbaek.github.io/tags/training-data/</link>
       <pubDate>Mon, 26 Oct 2026 21:00:00 +0900</pubDate>
       <guid>https://kwbaek.github.io/tags/training-data/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Discord</title>
-      <link>https://kwbaek.github.io/tags/discord/</link>
-      <pubDate>Sun, 25 Oct 2026 21:05:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/tags/discord/</guid>
       <description></description>
     </item>
     <item>
@@ -191,13 +450,6 @@
       <description></description>
     </item>
     <item>
-      <title>Infrastructure</title>
-      <link>https://kwbaek.github.io/tags/infrastructure/</link>
-      <pubDate>Sun, 25 Oct 2026 21:00:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/tags/infrastructure/</guid>
-      <description></description>
-    </item>
-    <item>
       <title>Blog</title>
       <link>https://kwbaek.github.io/tags/blog/</link>
       <pubDate>Sat, 24 Oct 2026 20:55:00 +0900</pubDate>
@@ -209,13 +461,6 @@
       <link>https://kwbaek.github.io/tags/submodule/</link>
       <pubDate>Sat, 24 Oct 2026 20:55:00 +0900</pubDate>
       <guid>https://kwbaek.github.io/tags/submodule/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Alignment</title>
-      <link>https://kwbaek.github.io/tags/alignment/</link>
-      <pubDate>Sat, 24 Oct 2026 20:50:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/tags/alignment/</guid>
       <description></description>
     </item>
     <item>
@@ -233,7 +478,7 @@
       <description></description>
     </item>
     <item>
-      <title>Mcp</title>
+      <title>MCP</title>
       <link>https://kwbaek.github.io/tags/mcp/</link>
       <pubDate>Fri, 23 Oct 2026 20:40:00 +0900</pubDate>
       <guid>https://kwbaek.github.io/tags/mcp/</guid>
@@ -244,13 +489,6 @@
       <link>https://kwbaek.github.io/tags/monitoring/</link>
       <pubDate>Fri, 23 Oct 2026 20:40:00 +0900</pubDate>
       <guid>https://kwbaek.github.io/tags/monitoring/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Skills</title>
-      <link>https://kwbaek.github.io/tags/skills/</link>
-      <pubDate>Fri, 23 Oct 2026 20:40:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/tags/skills/</guid>
       <description></description>
     </item>
     <item>
@@ -275,7 +513,7 @@
       <description></description>
     </item>
     <item>
-      <title>Nvidia</title>
+      <title>NVIDIA</title>
       <link>https://kwbaek.github.io/tags/nvidia/</link>
       <pubDate>Thu, 22 Oct 2026 20:50:00 +0900</pubDate>
       <guid>https://kwbaek.github.io/tags/nvidia/</guid>
@@ -286,20 +524,6 @@
       <link>https://kwbaek.github.io/tags/runtime/</link>
       <pubDate>Thu, 22 Oct 2026 20:50:00 +0900</pubDate>
       <guid>https://kwbaek.github.io/tags/runtime/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Data-Center</title>
-      <link>https://kwbaek.github.io/tags/data-center/</link>
-      <pubDate>Wed, 21 Oct 2026 20:55:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/tags/data-center/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Deployment</title>
-      <link>https://kwbaek.github.io/tags/deployment/</link>
-      <pubDate>Wed, 21 Oct 2026 20:55:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/tags/deployment/</guid>
       <description></description>
     </item>
     <item>
@@ -352,14 +576,7 @@
       <description></description>
     </item>
     <item>
-      <title>Verification</title>
-      <link>https://kwbaek.github.io/tags/verification/</link>
-      <pubDate>Tue, 20 Oct 2026 21:00:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/tags/verification/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Ai-Agent</title>
+      <title>AI-Agent</title>
       <link>https://kwbaek.github.io/tags/ai-agent/</link>
       <pubDate>Mon, 19 Oct 2026 21:00:00 +0900</pubDate>
       <guid>https://kwbaek.github.io/tags/ai-agent/</guid>
@@ -485,7 +702,7 @@
       <description></description>
     </item>
     <item>
-      <title>AI Regulation</title>
+      <title>Ai-Regulation</title>
       <link>https://kwbaek.github.io/tags/ai-regulation/</link>
       <pubDate>Thu, 15 Oct 2026 21:00:00 +0900</pubDate>
       <guid>https://kwbaek.github.io/tags/ai-regulation/</guid>
@@ -541,13 +758,6 @@
       <description></description>
     </item>
     <item>
-      <title>Dedupe</title>
-      <link>https://kwbaek.github.io/tags/dedupe/</link>
-      <pubDate>Wed, 14 Oct 2026 21:00:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/tags/dedupe/</guid>
-      <description></description>
-    </item>
-    <item>
       <title>Evaluation</title>
       <link>https://kwbaek.github.io/tags/evaluation/</link>
       <pubDate>Wed, 14 Oct 2026 21:00:00 +0900</pubDate>
@@ -580,13 +790,6 @@
       <link>https://kwbaek.github.io/tags/code-review/</link>
       <pubDate>Tue, 13 Oct 2026 21:00:00 +0900</pubDate>
       <guid>https://kwbaek.github.io/tags/code-review/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Coding-Agent</title>
-      <link>https://kwbaek.github.io/tags/coding-agent/</link>
-      <pubDate>Tue, 13 Oct 2026 21:00:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/tags/coding-agent/</guid>
       <description></description>
     </item>
     <item>
@@ -639,13 +842,6 @@
       <description></description>
     </item>
     <item>
-      <title>Claude</title>
-      <link>https://kwbaek.github.io/tags/claude/</link>
-      <pubDate>Sat, 03 Oct 2026 21:03:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/tags/claude/</guid>
-      <description></description>
-    </item>
-    <item>
       <title>Schwartz</title>
       <link>https://kwbaek.github.io/tags/schwartz/</link>
       <pubDate>Sat, 03 Oct 2026 21:03:00 +0900</pubDate>
@@ -681,7 +877,7 @@
       <description></description>
     </item>
     <item>
-      <title>Inference Cost</title>
+      <title>Inference-Cost</title>
       <link>https://kwbaek.github.io/tags/inference-cost/</link>
       <pubDate>Fri, 02 Oct 2026 21:05:00 +0900</pubDate>
       <guid>https://kwbaek.github.io/tags/inference-cost/</guid>
@@ -730,7 +926,7 @@
       <description></description>
     </item>
     <item>
-      <title>AI Infrastructure</title>
+      <title>AI-Infrastructure</title>
       <link>https://kwbaek.github.io/tags/ai-infrastructure/</link>
       <pubDate>Thu, 01 Oct 2026 21:04:00 +0900</pubDate>
       <guid>https://kwbaek.github.io/tags/ai-infrastructure/</guid>
@@ -821,7 +1017,7 @@
       <description></description>
     </item>
     <item>
-      <title>ML</title>
+      <title>Ml</title>
       <link>https://kwbaek.github.io/tags/ml/</link>
       <pubDate>Mon, 28 Sep 2026 08:00:00 +0900</pubDate>
       <guid>https://kwbaek.github.io/tags/ml/</guid>
@@ -839,13 +1035,6 @@
       <link>https://kwbaek.github.io/tags/accenture/</link>
       <pubDate>Mon, 21 Sep 2026 21:00:00 +0900</pubDate>
       <guid>https://kwbaek.github.io/tags/accenture/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Enterprise-AI</title>
-      <link>https://kwbaek.github.io/tags/enterprise-ai/</link>
-      <pubDate>Mon, 21 Sep 2026 21:00:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/tags/enterprise-ai/</guid>
       <description></description>
     </item>
     <item>
@@ -2067,7 +2256,7 @@
       <description></description>
     </item>
     <item>
-      <title>MLOps</title>
+      <title>Mlops</title>
       <link>https://kwbaek.github.io/tags/mlops/</link>
       <pubDate>Fri, 14 Aug 2026 21:00:00 +0900</pubDate>
       <guid>https://kwbaek.github.io/tags/mlops/</guid>
@@ -2130,7 +2319,7 @@
       <description></description>
     </item>
     <item>
-      <title>Llm</title>
+      <title>LLM</title>
       <link>https://kwbaek.github.io/tags/llm/</link>
       <pubDate>Wed, 12 Aug 2026 21:00:00 +0900</pubDate>
       <guid>https://kwbaek.github.io/tags/llm/</guid>
@@ -2389,7 +2578,7 @@
       <description></description>
     </item>
     <item>
-      <title>AI Agents</title>
+      <title>Ai-Agents</title>
       <link>https://kwbaek.github.io/tags/ai-agents/</link>
       <pubDate>Fri, 31 Jul 2026 21:01:00 +0900</pubDate>
       <guid>https://kwbaek.github.io/tags/ai-agents/</guid>
@@ -2463,13 +2652,6 @@
       <link>https://kwbaek.github.io/tags/copilot/</link>
       <pubDate>Wed, 22 Jul 2026 21:05:00 +0900</pubDate>
       <guid>https://kwbaek.github.io/tags/copilot/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>GitHub</title>
-      <link>https://kwbaek.github.io/tags/github/</link>
-      <pubDate>Wed, 22 Jul 2026 21:05:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/tags/github/</guid>
       <description></description>
     </item>
     <item>
@@ -2568,13 +2750,6 @@
       <link>https://kwbaek.github.io/tags/model-governance/</link>
       <pubDate>Mon, 20 Jul 2026 21:00:00 +0900</pubDate>
       <guid>https://kwbaek.github.io/tags/model-governance/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Model Routing</title>
-      <link>https://kwbaek.github.io/tags/model-routing/</link>
-      <pubDate>Sun, 19 Jul 2026 20:56:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/tags/model-routing/</guid>
       <description></description>
     </item>
     <item>
@@ -2725,14 +2900,7 @@
       <description></description>
     </item>
     <item>
-      <title>Sovereign AI</title>
-      <link>https://kwbaek.github.io/tags/sovereign-ai/</link>
-      <pubDate>Wed, 15 Jul 2026 21:15:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/tags/sovereign-ai/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Capex</title>
+      <title>CAPEX</title>
       <link>https://kwbaek.github.io/tags/capex/</link>
       <pubDate>Tue, 14 Jul 2026 21:00:00 +0900</pubDate>
       <guid>https://kwbaek.github.io/tags/capex/</guid>
@@ -3096,7 +3264,7 @@
       <description></description>
     </item>
     <item>
-      <title>Supply-Chain</title>
+      <title>Supply Chain</title>
       <link>https://kwbaek.github.io/tags/supply-chain/</link>
       <pubDate>Fri, 26 Jun 2026 20:55:00 +0900</pubDate>
       <guid>https://kwbaek.github.io/tags/supply-chain/</guid>
@@ -3268,13 +3436,6 @@
       <link>https://kwbaek.github.io/tags/embedding/</link>
       <pubDate>Sat, 13 Jun 2026 21:00:00 +0900</pubDate>
       <guid>https://kwbaek.github.io/tags/embedding/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Memory</title>
-      <link>https://kwbaek.github.io/tags/memory/</link>
-      <pubDate>Sat, 13 Jun 2026 21:00:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/tags/memory/</guid>
       <description></description>
     </item>
     <item>
@@ -3509,7 +3670,7 @@
       <description></description>
     </item>
     <item>
-      <title>Edge AI</title>
+      <title>Edge-Ai</title>
       <link>https://kwbaek.github.io/tags/edge-ai/</link>
       <pubDate>Wed, 27 May 2026 21:00:00 +0900</pubDate>
       <guid>https://kwbaek.github.io/tags/edge-ai/</guid>
@@ -3558,13 +3719,6 @@
       <description></description>
     </item>
     <item>
-      <title>Pricing</title>
-      <link>https://kwbaek.github.io/tags/pricing/</link>
-      <pubDate>Sun, 24 May 2026 21:00:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/tags/pricing/</guid>
-      <description></description>
-    </item>
-    <item>
       <title>Video Generation</title>
       <link>https://kwbaek.github.io/tags/video-generation/</link>
       <pubDate>Fri, 22 May 2026 21:00:00 +0900</pubDate>
@@ -3583,13 +3737,6 @@
       <link>https://kwbaek.github.io/tags/control-plane/</link>
       <pubDate>Wed, 20 May 2026 21:00:00 +0900</pubDate>
       <guid>https://kwbaek.github.io/tags/control-plane/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Cost</title>
-      <link>https://kwbaek.github.io/tags/cost/</link>
-      <pubDate>Mon, 18 May 2026 21:00:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/tags/cost/</guid>
       <description></description>
     </item>
     <item>
@@ -3625,13 +3772,6 @@
       <link>https://kwbaek.github.io/tags/diagnostics/</link>
       <pubDate>Tue, 12 May 2026 21:00:00 +0900</pubDate>
       <guid>https://kwbaek.github.io/tags/diagnostics/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Permissions</title>
-      <link>https://kwbaek.github.io/tags/permissions/</link>
-      <pubDate>Tue, 12 May 2026 21:00:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/tags/permissions/</guid>
       <description></description>
     </item>
     <item>
@@ -4062,7 +4202,7 @@
       <description></description>
     </item>
     <item>
-      <title>Agentic-Ai</title>
+      <title>Agentic AI</title>
       <link>https://kwbaek.github.io/tags/agentic-ai/</link>
       <pubDate>Tue, 24 Mar 2026 21:00:00 +0900</pubDate>
       <guid>https://kwbaek.github.io/tags/agentic-ai/</guid>
@@ -4167,13 +4307,6 @@
       <description></description>
     </item>
     <item>
-      <title>GPU</title>
-      <link>https://kwbaek.github.io/tags/gpu/</link>
-      <pubDate>Fri, 20 Mar 2026 21:00:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/tags/gpu/</guid>
-      <description></description>
-    </item>
-    <item>
       <title>Robustness</title>
       <link>https://kwbaek.github.io/tags/robustness/</link>
       <pubDate>Fri, 20 Mar 2026 21:00:00 +0900</pubDate>
@@ -4234,13 +4367,6 @@
       <link>https://kwbaek.github.io/tags/mamba/</link>
       <pubDate>Tue, 17 Mar 2026 21:00:00 +0900</pubDate>
       <guid>https://kwbaek.github.io/tags/mamba/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Tips</title>
-      <link>https://kwbaek.github.io/tags/tips/</link>
-      <pubDate>Mon, 16 Mar 2026 21:00:00 +0900</pubDate>
-      <guid>https://kwbaek.github.io/tags/tips/</guid>
       <description></description>
     </item>
     <item>
@@ -4983,13 +5109,6 @@
       <link>https://kwbaek.github.io/tags/%EC%84%9C%EB%B8%8C%EC%97%90%EC%9D%B4%EC%A0%84%ED%8A%B8/</link>
       <pubDate>Mon, 09 Feb 2026 23:00:00 +0900</pubDate>
       <guid>https://kwbaek.github.io/tags/%EC%84%9C%EB%B8%8C%EC%97%90%EC%9D%B4%EC%A0%84%ED%8A%B8/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Linux</title>
-      <link>https://kwbaek.github.io/tags/linux/</link>
-      <pubDate>Thu, 09 Feb 2023 16:11:40 +0900</pubDate>
-      <guid>https://kwbaek.github.io/tags/linux/</guid>
       <description></description>
     </item>
     <item>

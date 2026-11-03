@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Ci on Kyungwook&#39;s Devlog</title>
+    <link>https://kwbaek.github.io/tags/ci/</link>
+    <description>Recent content in Ci on Kyungwook&#39;s Devlog</description>
+    <generator>Hugo -- 0.165.0</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Tue, 03 Nov 2026 21:00:00 +0900</lastBuildDate>
+    <atom:link href="https://kwbaek.github.io/tags/ci/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI/ML 트렌드: 에이전트가 코드를 늘리자 Git 서버가 먼저 무너졌다</title>
+      <link>https://kwbaek.github.io/posts/2026-11-03-ai-ml-trends-git-backend-agent-scale/</link>
+      <pubDate>Tue, 03 Nov 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-11-03-ai-ml-trends-git-backend-agent-scale/</guid>
+      <description>&lt;p&gt;오늘(11/3) 스캔에서 가장 구체적인 신호는 OpenAI가 사내 모노레포를 위해 만든 Git 백엔드 &amp;lsquo;Pando&amp;rsquo;입니다. 공식 글을 직접 열어 확인했고, 핵심 주장은 명확합니다. Codex가 개발 속도를 바꾸면서 엔지니어 한 명이 여러 변경을 동시에 CI에 올리고, 각 푸시마다 여러 작업이 같은 커밋을 다시 받아가는 구조가 됐다는 것입니다. 그 결과 기존 Git 서버에서 느린 fetch와 push, 실패하는 merge가 쌓였고, 한때 신뢰도가 90%를 밑돌았다고 밝혔습니다.&lt;/p&gt;
+&lt;p&gt;Pando는 Git 프로토콜과 클라이언트 호환을 유지하면서 쓰기 확장성을 높인 백엔드입니다. 회사 발표에 따르면 중앙값 push 지연은 거의 5배 줄었고, 하루 약 1PB의 Git 데이터를 처리합니다. 다만 이 수치는 OpenAI 자체 보고이므로 독립 벤치마크처럼 읽으면 안 됩니다. 그래도 병목이 어디서 생기는지 설명한 방식은 참고할 만합니다.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

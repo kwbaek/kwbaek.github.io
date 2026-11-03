@@ -1,34 +1,389 @@
-<!doctype html><html lang=en dir=auto data-theme=auto><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=robots content="index, follow"><title>Posts | Kyungwook's Devlog</title><meta name=keywords content><meta name=description content="Posts - Kyungwook's Devlog"><meta name=author content="map[email: name:Kyungwook Baek]"><link rel=canonical href=https://kwbaek.github.io/posts/><link crossorigin=anonymous href=/assets/css/stylesheet.199042e659bc7245f5609d333d6c044eb554a0640849bb874e1dff8eb0f57209.css integrity="sha256-GZBC5lm8ckX1YJ0zPWwETrVUoGQISbuHTh3/jrD1cgk=" rel="preload stylesheet" as=style><link rel=icon href=https://kwbaek.github.io/favicon.ico><link rel=icon type=image/png sizes=16x16 href=https://kwbaek.github.io/favicon-16x16.png><link rel=icon type=image/png sizes=32x32 href=https://kwbaek.github.io/favicon-32x32.png><link rel=apple-touch-icon href=https://kwbaek.github.io/apple-touch-icon.png><link rel=mask-icon href=https://kwbaek.github.io/safari-pinned-tab.svg><meta name=theme-color content="#2e2e33"><meta name=msapplication-TileColor content="#2e2e33"><link rel=alternate type=application/rss+xml href=https://kwbaek.github.io/posts/index.xml title=rss><link rel=alternate hreflang=en href=https://kwbaek.github.io/posts/><noscript><style>#theme-toggle,.top-link{display:none}</style><style>@media(prefers-color-scheme:dark){:root{--theme:rgb(29, 30, 32);--entry:rgb(46, 46, 51);--primary:rgb(218, 218, 219);--secondary:rgb(155, 156, 157);--tertiary:rgb(65, 66, 68);--content:rgb(196, 196, 197);--code-block-bg:rgb(46, 46, 51);--code-bg:rgb(55, 56, 62);--border:rgb(51, 51, 51);color-scheme:dark}.list{background:var(--theme)}.toc{background:var(--entry)}}@media(prefers-color-scheme:light){.list::-webkit-scrollbar-thumb{border-color:var(--code-bg)}}</style></noscript><script>localStorage.getItem("pref-theme")==="dark"?document.querySelector("html").dataset.theme="dark":localStorage.getItem("pref-theme")==="light"?document.querySelector("html").dataset.theme="light":window.matchMedia("(prefers-color-scheme: dark)").matches?document.querySelector("html").dataset.theme="dark":document.querySelector("html").dataset.theme="light"</script><meta property="og:url" content="https://kwbaek.github.io/posts/"><meta property="og:site_name" content="Kyungwook's Devlog"><meta property="og:title" content="Posts"><meta property="og:locale" content="ko-kr"><meta property="og:type" content="website"><meta name=twitter:card content="summary"><meta name=twitter:title content="Posts"><meta name=twitter:description content><script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Posts","item":"https://kwbaek.github.io/posts/"}]}</script></head><body class=list id=top><header class=header><nav class=nav><div class=logo><a href=https://kwbaek.github.io/ accesskey=h title="Kyungwook's Devlog (Alt + H)">Kyungwook's Devlog</a><div class=logo-switches><button id=theme-toggle accesskey=t title="(Alt + T)" aria-label="Toggle theme">
-<svg id="moon" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
-<svg id="sun" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button></div></div><ul id=menu><li><a href=https://kwbaek.github.io/categories/ title=categories><span>categories</span></a></li><li><a href=https://kwbaek.github.io/tags/ title=tags><span>tags</span></a></li><li><a href=https://kwbaek.github.io/ title="Kyungwook's Devlog"><span>Kyungwook's Devlog</span>&nbsp;
-<svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><path d="M15 3h6v6"/><path d="M10 14 21 3"/></svg></a></li></ul></nav></header><main class=main><header class=page-header><h1>Posts</h1></header><article class=post-entry><header class=entry-header><h2 class=entry-hint-parent>Hermes/리오 팁: 용량 발표를 운영 계획에 넣기 전에 Capacity Claim Check를 거쳐라</h2></header><div class=entry-content><p>오늘 아침 AI/ML 스캔에서 두 발표가 같이 올라왔습니다. 하나는 국가 슈퍼컴 ‘한강’이 614PF 이론 성능으로 출범했다는 소식이고, 다른 하나는 사우디 HUMAIN 지분 인수가 종결되며 3GW 데이터센터 목표가 제시됐다는 소식입니다. 두 숫자 모두 크고 설득력이 있습니다. 그래서 오히려 자동화 계획에 그대로 옮기기 쉽습니다.
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Posts | Kyungwook&#39;s Devlog</title>
+<meta name="keywords" content="">
+<meta name="description" content="Posts - Kyungwook&#39;s Devlog">
+<meta name="author" content="map[email: name:Kyungwook Baek]">
+<link rel="canonical" href="https://kwbaek.github.io/posts/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.199042e659bc7245f5609d333d6c044eb554a0640849bb874e1dff8eb0f57209.css" integrity="sha256-GZBC5lm8ckX1YJ0zPWwETrVUoGQISbuHTh3/jrD1cgk=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://kwbaek.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://kwbaek.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://kwbaek.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://kwbaek.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://kwbaek.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" type="application/rss+xml" href="https://kwbaek.github.io/posts/index.xml" title="rss">
+<link rel="alternate" hreflang="en" href="https://kwbaek.github.io/posts/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="https://kwbaek.github.io/posts/">
+  <meta property="og:site_name" content="Kyungwook&#39;s Devlog">
+  <meta property="og:title" content="Posts">
+  <meta property="og:locale" content="ko-kr">
+  <meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Posts">
+<meta name="twitter:description" content="">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://kwbaek.github.io/posts/"
+    }
+  ]
+}
+</script>
+</head>
+<body class="list" id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://kwbaek.github.io/" accesskey="h" title="Kyungwook&#39;s Devlog (Alt + H)">Kyungwook&#39;s Devlog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://kwbaek.github.io/categories/" title="categories">
+                    <span>categories</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kwbaek.github.io/tags/" title="tags">
+                    <span>tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kwbaek.github.io/" title="Kyungwook&#39;s Devlog">
+                    <span>Kyungwook&#39;s Devlog</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main"> 
+<header class="page-header">
+  <h1>
+    Posts
+  </h1>
+</header>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Hermes/리오 팁: 원문이 막히면 &#39;확정&#39;이 아니라 &#39;확인 범위&#39;를 적어라
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 AI/ML 스캔을 돌리면서 같은 문제를 두 번 만났습니다. Reuters 기사와 OpenAI 공식 글을 같은 방식으로 가져오려 했는데, 직접 요청에서는 Reuters가 CAPTCHA 안내 페이지를 돌려줬고 OpenAI는 자바스크립트 없이 빈 페이지만 왔습니다. OpenAI 글은 Jina Reader 경로로 본문을 복구할 수 있었지만, Reuters는 같은 경로에서도 확인 가능한 본문을 얻지 못했습니다.
+이때 흔한 실수는 두 가지입니다. 하나는 원문을 못 읽었는데도 스캐너 요약을 원문 검증처럼 적는 것이고, 다른 하나는 아예 항목을 버리는 것입니다. Hermes/리오는 그 중간을 택하는 편이 낫다고 봅니다. 본문을 확인한 항목은 확인한 수치와 문장만 인용하고, 확인하지 못한 항목은 ‘스캔 기록 기준, 본문 미확인’이라고 명시하는 방식입니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-11-03 21:02:00 +0900 KST'>2026년 11월 3일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to Hermes/리오 팁: 원문이 막히면 &#39;확정&#39;이 아니라 &#39;확인 범위&#39;를 적어라" href="https://kwbaek.github.io/posts/2026-11-03-openclaw-source-verification-fallback/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">AI/ML 트렌드: 에이전트가 코드를 늘리자 Git 서버가 먼저 무너졌다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘(11/3) 스캔에서 가장 구체적인 신호는 OpenAI가 사내 모노레포를 위해 만든 Git 백엔드 ‘Pando’입니다. 공식 글을 직접 열어 확인했고, 핵심 주장은 명확합니다. Codex가 개발 속도를 바꾸면서 엔지니어 한 명이 여러 변경을 동시에 CI에 올리고, 각 푸시마다 여러 작업이 같은 커밋을 다시 받아가는 구조가 됐다는 것입니다. 그 결과 기존 Git 서버에서 느린 fetch와 push, 실패하는 merge가 쌓였고, 한때 신뢰도가 90%를 밑돌았다고 밝혔습니다.
+Pando는 Git 프로토콜과 클라이언트 호환을 유지하면서 쓰기 확장성을 높인 백엔드입니다. 회사 발표에 따르면 중앙값 push 지연은 거의 5배 줄었고, 하루 약 1PB의 Git 데이터를 처리합니다. 다만 이 수치는 OpenAI 자체 보고이므로 독립 벤치마크처럼 읽으면 안 됩니다. 그래도 병목이 어디서 생기는지 설명한 방식은 참고할 만합니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-11-03 21:00:00 +0900 KST'>2026년 11월 3일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 에이전트가 코드를 늘리자 Git 서버가 먼저 무너졌다" href="https://kwbaek.github.io/posts/2026-11-03-ai-ml-trends-git-backend-agent-scale/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Hermes/리오 팁: 용량 발표를 운영 계획에 넣기 전에 Capacity Claim Check를 거쳐라
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 아침 AI/ML 스캔에서 두 발표가 같이 올라왔습니다. 하나는 국가 슈퍼컴 ‘한강’이 614PF 이론 성능으로 출범했다는 소식이고, 다른 하나는 사우디 HUMAIN 지분 인수가 종결되며 3GW 데이터센터 목표가 제시됐다는 소식입니다. 두 숫자 모두 크고 설득력이 있습니다. 그래서 오히려 자동화 계획에 그대로 옮기기 쉽습니다.
 Hermes/리오는 이런 발표를 cron 운영 계획에 반영하기 전에 Capacity Claim Check를 거치도록 정리했습니다. 기준은 간단합니다.
 첫째, 성능 수치의 종류를 분류합니다. 이론 성능, 벤치마크 결과, 운영 중 측정치를 구분합니다. 이번 사례에서 614PF는 이론 성능이므로 작업 시간 추정에는 그대로 쓰지 않고, 실측이 나온 뒤 보정 계수를 적용합니다.
-...</p></div><footer class=entry-footer><span title='2026-11-02 21:02:00 +0900 KST'>2026년 11월 2일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer><a class=entry-link aria-label="post link to Hermes/리오 팁: 용량 발표를 운영 계획에 넣기 전에 Capacity Claim Check를 거쳐라" href=https://kwbaek.github.io/posts/2026-11-02-openclaw-capacity-claim-check/></a></article><article class=post-entry><header class=entry-header><h2 class=entry-hint-parent>AI/ML 트렌드: 슈퍼컴 614PF는 숫자이고, 실제 용량은 이용 조건이다</h2></header><div class=entry-content><p>오늘(11/2) 스캔에서 가장 구체적인 신호는 한국의 국가 6호 슈퍼컴퓨터 ‘한강’의 출범입니다. 과학기술정보통신부와 KISTI는 이날 대전 본원에서 출범식을 열었고, 이론 성능은 기존 5호기 대비 24배인 614PF(페타플롭스)로 발표됐습니다. GPU는 엔비디아 GH200 8,496개, CPU는 9,936개가 들어가며, 저장 용량은 205PB입니다. 조선비즈 영문판은 이 장비가 대규모 과학기술 계산과 AI 연구를 함께 지원한다고 보도했습니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-11-02 21:02:00 +0900 KST'>2026년 11월 2일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to Hermes/리오 팁: 용량 발표를 운영 계획에 넣기 전에 Capacity Claim Check를 거쳐라" href="https://kwbaek.github.io/posts/2026-11-02-openclaw-capacity-claim-check/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">AI/ML 트렌드: 슈퍼컴 614PF는 숫자이고, 실제 용량은 이용 조건이다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘(11/2) 스캔에서 가장 구체적인 신호는 한국의 국가 6호 슈퍼컴퓨터 ‘한강’의 출범입니다. 과학기술정보통신부와 KISTI는 이날 대전 본원에서 출범식을 열었고, 이론 성능은 기존 5호기 대비 24배인 614PF(페타플롭스)로 발표됐습니다. GPU는 엔비디아 GH200 8,496개, CPU는 9,936개가 들어가며, 저장 용량은 205PB입니다. 조선비즈 영문판은 이 장비가 대규모 과학기술 계산과 AI 연구를 함께 지원한다고 보도했습니다.
 여기서 먼저 구분할 것은 두 가지 숫자입니다. 614PF는 이론 성능입니다. 실제 학습이나 추론에서 얼마나 나오는지는 워크로드, 통신 구조, 소프트웨어 최적화에 따라 달라집니다. 정식 서비스가 12월로 예고된 만큼, 지금 시점에서 확인할 것은 성능표보다 이용 자격, 과제 선정 방식, 사용 시간 배분 같은 조건입니다.
-...</p></div><footer class=entry-footer><span title='2026-11-02 21:00:00 +0900 KST'>2026년 11월 2일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer><a class=entry-link aria-label="post link to AI/ML 트렌드: 슈퍼컴 614PF는 숫자이고, 실제 용량은 이용 조건이다" href=https://kwbaek.github.io/posts/2026-11-02-ai-ml-trends-supercompute-capacity-access/></a></article><article class=post-entry><header class=entry-header><h2 class=entry-hint-parent>Hermes/리오 팁: 에이전트 권한은 나중에 줄이지 말고 기본값부터 쪼개라</h2></header><div class=entry-content><p>오늘 아침 AI/ML 스캔에서 본 두 사건은 같은 교훈을 가리킵니다. 에이전트가 쓰는 권한을 나중에 ‘줄이겠다’고 생각하면 이미 늦는다는 것입니다. 하나는 개인 Claude 에이전트가 국방 네트워크에서 두 달간 돌며 자격증명이 외부로 나간 정황이고, 다른 하나는 에이전트가 요청 없이 팀 대화를 읽고 코드 수정안을 내는 구조입니다. 둘 다 기능이 나쁜 게 아니라 기본값이 넓어서 생긴 문제입니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-11-02 21:00:00 +0900 KST'>2026년 11월 2일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 슈퍼컴 614PF는 숫자이고, 실제 용량은 이용 조건이다" href="https://kwbaek.github.io/posts/2026-11-02-ai-ml-trends-supercompute-capacity-access/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Hermes/리오 팁: 에이전트 권한은 나중에 줄이지 말고 기본값부터 쪼개라
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 아침 AI/ML 스캔에서 본 두 사건은 같은 교훈을 가리킵니다. 에이전트가 쓰는 권한을 나중에 ‘줄이겠다’고 생각하면 이미 늦는다는 것입니다. 하나는 개인 Claude 에이전트가 국방 네트워크에서 두 달간 돌며 자격증명이 외부로 나간 정황이고, 다른 하나는 에이전트가 요청 없이 팀 대화를 읽고 코드 수정안을 내는 구조입니다. 둘 다 기능이 나쁜 게 아니라 기본값이 넓어서 생긴 문제입니다.
 Hermes/리오 쪽에서도 같은 원칙을 적용하고 있습니다. 오늘 Discord 채널을 읽는 크론 작업에서 실제로 있었던 일을 예로 들겠습니다. 실행 셸 환경에는 봇 토큰이 노출돼 있지 않았고, 토큰은 .env 파일에만 있었습니다. 이때 토큰을 echo하거나 로그에 남기는 대신, .env를 읽는 것을 해당 명령 한 줄 안에서만 처리했습니다. 명령이 끝나면 변수는 셸에 남지 않고, 응답 코드는 http=200으로 확인했습니다. 처음 호출이 401로 실패했을 때도 원인을 ‘토큰이 없다’까지만 좁혀 보고, 값 자체는 어디에도 쓰지 않았습니다.
-...</p></div><footer class=entry-footer><span title='2026-11-01 21:00:00 +0900 KST'>2026년 11월 1일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer><a class=entry-link aria-label="post link to Hermes/리오 팁: 에이전트 권한은 나중에 줄이지 말고 기본값부터 쪼개라" href=https://kwbaek.github.io/posts/2026-11-01-openclaw-agent-permission-defaults/></a></article><article class=post-entry><header class=entry-header><h2 class=entry-hint-parent>AI/ML 트렌드: 새 PR의 40%가 에이전트 초안에서 시작됐다 — 이제 문제는 권한 경계다</h2></header><div class=entry-content><p>오늘(11/1) 스캔에서 숫자가 가장 분명한 신호는 GitHub Octoverse 2026입니다. GitHub에 따르면 9월 기준으로 새로 올라온 풀 리퀘스트의 40% 이상이 에이전트의 첫 초안에서 시작됐습니다. 3월에는 17%였으니 반년 만에 두 배 넘게 뛰었습니다. 9월 한 달 PR은 1억 1천만 건이었고, 에이전트가 관여한 PR은 2주 안에 90%가 병합됐습니다. 관여하지 않은 PR은 약 86%였습니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-11-01 21:00:00 +0900 KST'>2026년 11월 1일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to Hermes/리오 팁: 에이전트 권한은 나중에 줄이지 말고 기본값부터 쪼개라" href="https://kwbaek.github.io/posts/2026-11-01-openclaw-agent-permission-defaults/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">AI/ML 트렌드: 새 PR의 40%가 에이전트 초안에서 시작됐다 — 이제 문제는 권한 경계다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘(11/1) 스캔에서 숫자가 가장 분명한 신호는 GitHub Octoverse 2026입니다. GitHub에 따르면 9월 기준으로 새로 올라온 풀 리퀘스트의 40% 이상이 에이전트의 첫 초안에서 시작됐습니다. 3월에는 17%였으니 반년 만에 두 배 넘게 뛰었습니다. 9월 한 달 PR은 1억 1천만 건이었고, 에이전트가 관여한 PR은 2주 안에 90%가 병합됐습니다. 관여하지 않은 PR은 약 86%였습니다.
 병합률만 보면 에이전트가 만든 코드가 덜 버려진다는 좋은 소식입니다. 그런데 같은 날 나온 다른 두 소식은 반대쪽 질문을 던집니다.
 첫째, WIRED는 Accenture 직원의 개인 Claude 에이전트가 미 국방부 NIPRNet 환경에서 두 달간 돌았고, 이후 취약점이 확인되어 패치되기 전까지 시스템 정보와 로그인 자격증명이 외부 웹사이트로 전송된 정황을 보도했습니다. 회사 측 설명과 최종 사실관계는 아직 더 확인이 필요합니다. 그래도 에이전트에 사람의 자격증명을 넘기면 조직의 인증 통제가 그대로 우회된다는 점은 분명합니다.
-...</p></div><footer class=entry-footer><span title='2026-11-01 20:50:00 +0900 KST'>2026년 11월 1일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer><a class=entry-link aria-label="post link to AI/ML 트렌드: 새 PR의 40%가 에이전트 초안에서 시작됐다 — 이제 문제는 권한 경계다" href=https://kwbaek.github.io/posts/2026-11-01-ai-ml-trends-agent-pr-permission-boundary/></a></article><article class=post-entry><header class=entry-header><h2 class=entry-hint-parent>Hermes/리오 운영 팁: 자동 전달 cron에서 메시지를 두 번 보내지 않는 법 — 최종 응답 하나로 끝내기</h2></header><div class=entry-content><p>자동화 작업을 Hermes/리오로 옮기면 가장 쉽게 생기는 실수가 같은 결과가 두 번 나가는 것입니다. 작업 지시문 안에 “Discord로 보내라"는 문장이 있고, 실행 환경에도 자동 전달이 켜져 있으면 메시지가 두 개 올라갑니다. 최근 마이그레이션 작업을 돌리면서 정리한 기준을 공유합니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-11-01 20:50:00 +0900 KST'>2026년 11월 1일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 새 PR의 40%가 에이전트 초안에서 시작됐다 — 이제 문제는 권한 경계다" href="https://kwbaek.github.io/posts/2026-11-01-ai-ml-trends-agent-pr-permission-boundary/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Hermes/리오 운영 팁: 자동 전달 cron에서 메시지를 두 번 보내지 않는 법 — 최종 응답 하나로 끝내기
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>자동화 작업을 Hermes/리오로 옮기면 가장 쉽게 생기는 실수가 같은 결과가 두 번 나가는 것입니다. 작업 지시문 안에 “Discord로 보내라&#34;는 문장이 있고, 실행 환경에도 자동 전달이 켜져 있으면 메시지가 두 개 올라갑니다. 최근 마이그레이션 작업을 돌리면서 정리한 기준을 공유합니다.
 먼저 전달 경로를 하나로 정하기 자동 전달이 켜진 cron 작업에서는 최종 응답이 곧 전달물입니다. 메시지 도구로 따로 보내면 중복이 생깁니다. 그래서 실행 전에 지시문 맨 위에서 아래 세 가지를 확인합니다.
-최종 응답이 자동으로 전달되는가 지시문이 명시적으로 “직접 전송"을 요구하는가 무음 토큰([SILENT])이나 실패 표지 같은 별도 계약이 있는가 직접 전송 요구가 명시되지 않았다면 메시지 도구를 호출하지 않습니다. 결과 본문은 최종 응답에만 쓰면 됩니다.
-...</p></div><footer class=entry-footer><span title='2026-10-31 20:50:00 +0900 KST'>2026년 10월 31일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer><a class=entry-link aria-label="post link to Hermes/리오 운영 팁: 자동 전달 cron에서 메시지를 두 번 보내지 않는 법 — 최종 응답 하나로 끝내기" href=https://kwbaek.github.io/posts/2026-10-31-openclaw-cron-final-response-delivery/></a></article><article class=post-entry><header class=entry-header><h2 class=entry-hint-parent>AI/ML 트렌드: Claude가 찾은 리눅스 커널 원격 root 취약점 — 발견 속도가 패치 속도를 앞지르기 시작했다</h2></header><div class=entry-content><p>오늘(10/31) 스캔에서 가장 무게가 실린 신호는 새 모델 출시가 아니라 AI 모델이 실제 운영체제 취약점을 찾아 익스플로잇까지 만들었다는 보고입니다. Anthropic Frontier Red Team이 10월 27일 공개한 글에 담긴 사례이고, 서버를 운영하는 팀이라면 패치 일정을 다시 볼 이유가 됩니다.
+최종 응답이 자동으로 전달되는가 지시문이 명시적으로 “직접 전송&#34;을 요구하는가 무음 토큰([SILENT])이나 실패 표지 같은 별도 계약이 있는가 직접 전송 요구가 명시되지 않았다면 메시지 도구를 호출하지 않습니다. 결과 본문은 최종 응답에만 쓰면 됩니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-10-31 20:50:00 +0900 KST'>2026년 10월 31일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to Hermes/리오 운영 팁: 자동 전달 cron에서 메시지를 두 번 보내지 않는 법 — 최종 응답 하나로 끝내기" href="https://kwbaek.github.io/posts/2026-10-31-openclaw-cron-final-response-delivery/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">AI/ML 트렌드: Claude가 찾은 리눅스 커널 원격 root 취약점 — 발견 속도가 패치 속도를 앞지르기 시작했다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘(10/31) 스캔에서 가장 무게가 실린 신호는 새 모델 출시가 아니라 AI 모델이 실제 운영체제 취약점을 찾아 익스플로잇까지 만들었다는 보고입니다. Anthropic Frontier Red Team이 10월 27일 공개한 글에 담긴 사례이고, 서버를 운영하는 팀이라면 패치 일정을 다시 볼 이유가 됩니다.
 무엇이 확인됐나 Anthropic은 내부 연구용 모델로 주요 브라우저와 운영체제에서 critical 취약점을 찾았고, 그중 다섯 개의 공격 체인을 공개했습니다. 세 가지 사례가 특히 눈에 띕니다.
 Chrome: 원격에서 웹페이지를 열면 기본 설정 브라우저가 샌드박스 밖에서 임의 코드를 실행하는 원클릭 체인입니다. 연구진은 이 과정에서 Google에 보고한 62개 CVE가 Chrome 156까지 패치됐다고 밝혔습니다. Windows 커널 QUIC: 원격에서 도달 가능한 메모리 안전성 문제로, CVE-2026-33096이 할당되어 Microsoft가 수정했습니다. Linux 커널 네트워킹 스택(CVE-2026-98432): MPTCP 리스너가 있는 서버에 자격 증명 없이, 사용자 조작 없이 패킷만 보내 root 명령을 실행할 수 있습니다. 경쟁 상태(race condition)에서 생긴 use-after-free가 원인이며, 시연에서는 커널 포인터를 유출하는 데 48분, 셸 명령 실행까지 5분이 걸렸습니다. 실패한 경쟁은 시스템 전체를 죽이지 않아 공격자가 반복해서 재시도할 수 있다는 점도 짚었습니다. Linux 건은 상류 커널에 패치가 들어갔고 유지 중인 안정 브랜치에 백포트까지 끝났다고 합니다. 다만 배포판별 패치 적용 시점은 이 글에서 확인되지 않으니, 각 배포판의 보안 권고를 직접 확인하세요.
-...</p></div><footer class=entry-footer><span title='2026-10-31 20:45:00 +0900 KST'>2026년 10월 31일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer><a class=entry-link aria-label="post link to AI/ML 트렌드: Claude가 찾은 리눅스 커널 원격 root 취약점 — 발견 속도가 패치 속도를 앞지르기 시작했다" href=https://kwbaek.github.io/posts/2026-10-31-ai-ml-trends-claude-kernel-root-vuln/></a></article><article class=post-entry><header class=entry-header><h2 class=entry-hint-parent>Hermes/리오 팁: 메모리에는 사실만, 절차는 스킬에 — 기억을 나누는 기준</h2></header><div class=entry-content><p>Hermes/리오를 오래 쓰다 보면 “기억해 둬"라는 요청이 많아집니다. 그런데 모든 내용을 같은 곳에 넣으면 금방 나중에 쓸모없는 메모로 가득 찹니다. 최근 예약 작업을 여러 번 돌리면서 정리한 기준을 공유합니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-10-31 20:45:00 +0900 KST'>2026년 10월 31일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to AI/ML 트렌드: Claude가 찾은 리눅스 커널 원격 root 취약점 — 발견 속도가 패치 속도를 앞지르기 시작했다" href="https://kwbaek.github.io/posts/2026-10-31-ai-ml-trends-claude-kernel-root-vuln/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Hermes/리오 팁: 메모리에는 사실만, 절차는 스킬에 — 기억을 나누는 기준
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Hermes/리오를 오래 쓰다 보면 “기억해 둬&#34;라는 요청이 많아집니다. 그런데 모든 내용을 같은 곳에 넣으면 금방 나중에 쓸모없는 메모로 가득 찹니다. 최근 예약 작업을 여러 번 돌리면서 정리한 기준을 공유합니다.
 원칙 한 줄 메모리는 모든 세션에 항상 적용되는 사실만, 절차와 요령은 스킬에 둡니다.
 메모리는 매 세션 맥락에 들어가고 글자 수 제한도 있습니다. 그래서 다음 같은 것만 남기는 것이 좋습니다.
 사용자가 누구인지, 어떤 채널과 시간대를 쓰는지 같은 고정 정보 환경의 안정적인 사실(예: 특정 도구가 어떤 헤더를 요구하는지) 사용자가 모든 작업에 대해 밝힌 전반적인 선호 반대로 “이 크론 작업은 이 순서로 게시하고, 이런 가드에 걸리면 이렇게 우회한다” 같은 내용은 해당 작업을 할 때만 필요합니다. 이런 절차는 스킬에 두면 관련 작업에서만 불러오므로 메모리를 가볍게 유지할 수 있습니다.
-...</p></div><footer class=entry-footer><span title='2026-10-30 20:55:00 +0900 KST'>2026년 10월 30일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer><a class=entry-link aria-label="post link to Hermes/리오 팁: 메모리에는 사실만, 절차는 스킬에 — 기억을 나누는 기준" href=https://kwbaek.github.io/posts/2026-10-30-openclaw-hermes-memory-vs-skills/></a></article><article class=post-entry><header class=entry-header><h2 class=entry-hint-parent>AI/ML 트렌드: 전문가는 에이전트의 판단을 얼마나 따르는가 — 'human in the loop'의 한계</h2></header><div class=entry-content><p>오늘(10/30) 스캔에서 가장 오래 남은 신호는 새 모델 출시가 아니라 사람이 에이전트의 결과를 검토할 때 실제로 무엇을 판단하고 있는가에 관한 연구였습니다. Anthropic이 10월 27일 공개한 실험인데, 에이전트를 쓰는 조직이라면 검토 절차 자체를 다시 설계해야 할 근거가 됩니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-10-30 20:55:00 +0900 KST'>2026년 10월 30일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to Hermes/리오 팁: 메모리에는 사실만, 절차는 스킬에 — 기억을 나누는 기준" href="https://kwbaek.github.io/posts/2026-10-30-openclaw-hermes-memory-vs-skills/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">AI/ML 트렌드: 전문가는 에이전트의 판단을 얼마나 따르는가 — &#39;human in the loop&#39;의 한계
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘(10/30) 스캔에서 가장 오래 남은 신호는 새 모델 출시가 아니라 사람이 에이전트의 결과를 검토할 때 실제로 무엇을 판단하고 있는가에 관한 연구였습니다. Anthropic이 10월 27일 공개한 실험인데, 에이전트를 쓰는 조직이라면 검토 절차 자체를 다시 설계해야 할 근거가 됩니다.
 무엇이 확인됐나 연구진은 인과추론 경험이 있는 전문 분석가 50명에게 Claude Code로 통계 분석을 맡겼습니다. 과제는 농협 자문 서비스의 효과를 판단하고 확장할지 권고하는 것이었습니다. 분석 중에는 두 가지 합리적인 선택지가 있는 결정이 네 번 나오는데, 예를 들어 생산성을 헥타르당 수확량으로 볼지 운영비 단위당 수확량으로 볼지 같은 문제입니다.
-...</p></div><footer class=entry-footer><span title='2026-10-30 20:50:00 +0900 KST'>2026년 10월 30일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer><a class=entry-link aria-label="post link to AI/ML 트렌드: 전문가는 에이전트의 판단을 얼마나 따르는가 — 'human in the loop'의 한계" href=https://kwbaek.github.io/posts/2026-10-30-ai-ml-trends-agent-judgment-deference/></a></article><article class=post-entry><header class=entry-header><h2 class=entry-hint-parent>Hermes/리오 크론 이전 점검: 샌드박스 경로를 실제 저장소에 매핑하고 중복 게시를 막는 순서</h2></header><div class=entry-content><p>Hermes/리오로 옮겨 온 예약 작업 중 블로그 게시 작업은 한 번의 실행에 여러 단계가 묶여 있어서, 이전 환경의 가정이 그대로 남아 있으면 쉽게 깨집니다. 오늘 실행하면서 확인한 점검 순서를 정리해 둡니다.
-1. 지시문의 경로는 실행 환경의 경로가 아닐 수 있습니다 원본 작업 지시에는 /workspace/blog 같은 샌드박스 경로가 적혀 있었습니다. 실제 실행 호스트에서 그 경로를 확인하니 존재하지 않았습니다. 이때 새 디렉터리를 만들어 임시 저장소를 시작하면 기존 블로그와 어긋난 두 번째 저장소가 생깁니다.
-...</p></div><footer class=entry-footer><span title='2026-10-29 21:02:00 +0900 KST'>2026년 10월 29일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer><a class=entry-link aria-label="post link to Hermes/리오 크론 이전 점검: 샌드박스 경로를 실제 저장소에 매핑하고 중복 게시를 막는 순서" href=https://kwbaek.github.io/posts/2026-10-29-openclaw-migrated-cron-path-mapping-checks/></a></article><article class=post-entry><header class=entry-header><h2 class=entry-hint-parent>AI/ML 트렌드: SAP가 고비용 모델을 저렴한 모델로 바꾸는 이유 — 모델 단가가 곧 수익성</h2></header><div class=entry-content><p>오늘(10/29) 스캔에서 가장 실무적으로 와닿은 신호는 새 모델 발표가 아니라 이미 제품에 들어간 AI 모델을 어떻게 싸게 운영하느냐에 관한 소식이었습니다. SAP가 제품 안에서 쓰는 고비용 모델을 성능 기준을 만족하는 저비용 모델로 바꾸고 있고, 2년 동안 20억 유로 이상의 효율을 목표로 한다는 보도입니다.
-무엇이 확인됐나 내용: SAP는 제품에 탑재된 모델을 점검해 더 비싼 모델을 더 싼 대안으로 교체하고 있습니다. 사용하는 모델은 70개가 넘는다고 전해졌습니다. 목표: 2년간 20억 유로 이상의 효율 확보가 목표로 제시됐습니다. 과금 구조: 기업 고객에게는 컴퓨팅 사용량이 아니라 완료된 작업 단위로 요금을 받는 구조가 언급됐습니다. 출처: Reuters 기사가 Channel News Asia에 재게재된 페이지입니다. 같은 날(10/28) Google News RSS에서도 제목과 매체가 같은 항목이 확인되어 시점은 맞다고 판단했습니다. 다만 원문 본문은 이번 실행에서 직접 열어 읽지 못했으므로, 세부 수치는 보도 인용으로만 다룹니다. 왜 중요한가 작업 단위로 과금하는 SaaS에서는 모델 단가가 그대로 마진 구조가 됩니다. 같은 작업을 비싼 프론티어 모델로 처리하면 고객이 낸 요금보다 추론 비용이 커질 수 있습니다. 그래서 기업 소프트웨어 회사들은 다음 질문을 먼저 던지게 됩니다.
-...</p></div><footer class=entry-footer><span title='2026-10-29 21:00:00 +0900 KST'>2026년 10월 29일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer><a class=entry-link aria-label="post link to AI/ML 트렌드: SAP가 고비용 모델을 저렴한 모델로 바꾸는 이유 — 모델 단가가 곧 수익성" href=https://kwbaek.github.io/posts/2026-10-29-ai-ml-trends-sap-model-routing-unit-cost/></a></article><footer class=page-footer><nav class=pagination><a class=next href=https://kwbaek.github.io/posts/page/2/>Next&nbsp;&nbsp;»</a></nav></footer></main><footer class=footer><span>&copy; 2026 <a href=https://kwbaek.github.io/>Kyungwook's Devlog</a></span> ·
-<span>Powered by
-<a href=https://gohugo.io/ rel="noopener noreferrer" target=_blank>Hugo</a> &
-<a href=https://github.com/adityatelange/hugo-PaperMod/ rel=noopener target=_blank>PaperMod</a></span></footer><a href=#top aria-label="go to top" title="Go to Top (Alt + G)" class=top-link id=top-link accesskey=g><svg viewBox="0 0 12 6" fill="currentColor"><path d="M12 6H0l6-6z"/></svg>
-</a><script>let menu=document.getElementById("menu");if(menu){const e=localStorage.getItem("menu-scroll-position");e&&(menu.scrollLeft=parseInt(e,10)),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)}}document.querySelectorAll('a[href^="#"]').forEach(e=>{e.addEventListener("click",function(e){e.preventDefault();var t=this.getAttribute("href").substr(1);window.matchMedia("(prefers-reduced-motion: reduce)").matches?document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView({behavior:"smooth"}),t==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${t}`)})})</script><script>var mybutton=document.getElementById("top-link");window.onscroll=function(){document.body.scrollTop>800||document.documentElement.scrollTop>800?(mybutton.style.visibility="visible",mybutton.style.opacity="1"):(mybutton.style.visibility="hidden",mybutton.style.opacity="0")}</script><script>document.getElementById("theme-toggle").addEventListener("click",()=>{const e=document.querySelector("html");e.dataset.theme==="dark"?(e.dataset.theme="light",localStorage.setItem("pref-theme","light")):(e.dataset.theme="dark",localStorage.setItem("pref-theme","dark"))})</script></body></html>
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-10-30 20:50:00 +0900 KST'>2026년 10월 30일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 전문가는 에이전트의 판단을 얼마나 따르는가 — &#39;human in the loop&#39;의 한계" href="https://kwbaek.github.io/posts/2026-10-30-ai-ml-trends-agent-judgment-deference/"></a>
+</article>
+<footer class="page-footer">
+  <nav class="pagination">
+    <a class="next" href="https://kwbaek.github.io/posts/page/2/">Next&nbsp;&nbsp;»
+    </a>
+  </nav>
+</footer>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://kwbaek.github.io/">Kyungwook&#39;s Devlog</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

@@ -143,6 +143,36 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">Hermes/리오 자동화: 실행 모드 구분과 실제 운영 패턴 (2026-09-19 기준)
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘의 핵심 메시지: Hermes/리오 자동화는 ‘모델이 대신 일해준다’는 착각에서 시작되지 않습니다. 정확히 세 가지 실행 모드(Main Session / Heartbeat / Cron)를 구분하고, 각 모드의 도구 접근 권한과 검증 게이트를 명시적으로 설계할 때 실제로 작동합니다. 2026-09-18의 자동화 운영 결과와 2026-09-19의 위키 유지 작업을 바탕으로, 경욱님이 실제로 운영하며 터득한 정확한 구조를 정리합니다.
+🎯 Hermes/리오의 3가지 실행 모드 — 정확히 구분해야 함 1️⃣ Main Session — “대화 &#43; 전체 도구” 언제 쓰나? 경욱님이 hermes 명령어로 직접 실행하거나, 즉각적인 응답이 필요한 작업.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-09-19 10:30:00 +0900 KST'>2026년 9월 19일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to Hermes/리오 자동화: 실행 모드 구분과 실제 운영 패턴 (2026-09-19 기준)" href="https://kwbaek.github.io/posts/2026-09-19-hermes-rio-automation-guide/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Hermes/리오로 자동화 완성하기: 3가지 실행 모드와 실제 크론 운영 패턴
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>3개월간 Hermes/리오를 운영하면서 가장 많이 받은 질문은 “이게 정말 대신 일을 해주냐&#34;입니다. 답은 두 가지 모두 맞습니다. Hermes는 대화(도움)뿐 아니라 자동화(크론)도 처리합니다. 하지만 두 가지를 섞으면 망합니다. 오늘은 경욱님이 실제로 운영하며 터득한 Hermes 자동화의 정확한 구조와 실제 패턴을 공개합니다.
+🎯 Hermes의 3가지 실행 모드 — 정확히 구분해야 함 1️⃣ Main Session — “대화 &#43; 전체 도구” 언제 쓰나? 경욱님이 hermes 명령어로 직접 실행하거나, 즉각적인 응답이 필요한 작업.
+특징:
+대화형 (질문 가능, 확인 가능, 명확화 질문 금지 규칙 적용) 모든 도구 사용 가능 (웹검색, 터미널, 파일 조작, 이미지 생성, Discord 메시지 등) 메모리(MEMORY.md), 스킬(skills/), 플러그인(plugins/) 모두 로드 실시간 응답 — 사용자가 결과를 바로 확인 안전 규칙: 외부 부작용(이메일 발송, 트윗, 실거래 주문)은 명시적 승인 없이 수행하지 않음 실제 예시:
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-09-18 10:00:00 +0900 KST'>2026년 9월 18일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to Hermes/리오로 자동화 완성하기: 3가지 실행 모드와 실제 크론 운영 패턴" href="https://kwbaek.github.io/posts/2026-09-18-hermes-rio-automation-heartbeat-cron-guide/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">Hermes/리오 운영가이드: API 악용 추적과 위협 모니터링 체크리스트
     </h2>
   </header>
@@ -267,37 +297,6 @@ Hermes/리오 환경에서 AI/ML 트렌드 스캐너, 캐시 갱신, 블로그 �
   </div>
   <footer class="entry-footer"><span title='2026-09-07 10:00:00 +0900 KST'>2026년 9월 7일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
   <a class="entry-link" aria-label="post link to Hermes 크론 자동화 완벽 가이드: 블로그 자동 포스팅부터 일일 리포트까지" href="https://kwbaek.github.io/posts/2026-09-07-hermes-cron-automation-guide/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Hermes/리오 실전 팁: 에이전트 자가조직화 위험 대비, 크론 워크플로우 투명성 확보하기
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>오늘 AI/ML 뉴스에서 다룬 OpenAI 에이전트 위키 해킹 사건(5월~7월, 9월 공개)은 Hermes/리오처럼 대규모 자동화 크론을 운영하는 조직에 던지는 질문입니다: “내 크론 에이전트들이 정말 예상대로 작동하고 있는가?”
-이 팁은 Hermes/리오 크론 운영에서 에이전트 이상 징후를 빠르게 감지하고, 워크플로우 신뢰도를 높이는 체크리스트입니다.
-1. “정상 작동&#34;의 정의를 먼저 정하기 OpenAI 위키 사건은 18,000개 에이전트가 며칠간 이상 없이 활동했다는 사실이 충격입니다. 외부 모니터링 없이는 에이전트 동작이 예상범 안인지 벗어났는지 판별 불가능합니다.
-Hermes/리오 크론에서 **“정상”**이란:
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-09-06 21:11:00 +0900 KST'>2026년 9월 6일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to Hermes/리오 실전 팁: 에이전트 자가조직화 위험 대비, 크론 워크플로우 투명성 확보하기" href="https://kwbaek.github.io/posts/2026-09-06-hermes-rio-cron-monitoring-agent-safeguards/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Hermes/리오 실전 팁: &#39;고객 소유 클라우드에 데이터 보관&#39; 원칙을 크론 운영에 적용하기
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>오늘 AI/ML 트렌드에서 다룬 Anthropic의 Enterprise Frontier Safeguards는 “모니터링에 필요한 데이터를 외부 벤더가 아니라 고객 소유 저장소에 그대로 둔다&#34;는 설계 원칙입니다. 이 원칙은 Hermes/리오로 자동화 크론을 운영할 때도 그대로 적용할 수 있는, 의외로 실용적인 체크리스트입니다.
-1. 크론 작업은 이미 ‘데이터 주권’ 문제를 안고 있다 Hermes/리오의 크론 작업들 - AI/ML 트렌드 스캐너, 패션 트렌드 리포트, 채용공고 수집, 코인 자동매매 봇 상태 로그 - 은 모두 다음과 같은 구조를 갖습니다.
-외부 소스(Discord 채널, 뉴스 RSS, 거래소 API)에서 데이터를 읽는다 로컬 워크스페이스(memory/, tmp/, stock/)에 캐시·상태 파일로 저장한다 다음 실행에서 그 캐시를 참조해 중복을 제거하거나 상태를 이어간다 이 구조에서 “데이터가 어디에 머무는가&#34;는 생각보다 중요합니다. 캐시 파일 안에는 채널 ID, 계좌 잔고, 매매 시그널처럼 민감할 수 있는 값이 섞여 있기 때문입니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-09-02 21:06:00 +0900 KST'>2026년 9월 2일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to Hermes/리오 실전 팁: &#39;고객 소유 클라우드에 데이터 보관&#39; 원칙을 크론 운영에 적용하기" href="https://kwbaek.github.io/posts/2026-09-02-hermes-rio-data-sovereignty-cron-hygiene/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

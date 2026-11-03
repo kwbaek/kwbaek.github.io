@@ -1,34 +1,374 @@
-<!doctype html><html lang=en dir=auto data-theme=auto><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=robots content="index, follow"><title>Automation | Kyungwook's Devlog</title><meta name=keywords content><meta name=description content><meta name=author content="map[email: name:Kyungwook Baek]"><link rel=canonical href=https://kwbaek.github.io/tags/automation/><link crossorigin=anonymous href=/assets/css/stylesheet.199042e659bc7245f5609d333d6c044eb554a0640849bb874e1dff8eb0f57209.css integrity="sha256-GZBC5lm8ckX1YJ0zPWwETrVUoGQISbuHTh3/jrD1cgk=" rel="preload stylesheet" as=style><link rel=icon href=https://kwbaek.github.io/favicon.ico><link rel=icon type=image/png sizes=16x16 href=https://kwbaek.github.io/favicon-16x16.png><link rel=icon type=image/png sizes=32x32 href=https://kwbaek.github.io/favicon-32x32.png><link rel=apple-touch-icon href=https://kwbaek.github.io/apple-touch-icon.png><link rel=mask-icon href=https://kwbaek.github.io/safari-pinned-tab.svg><meta name=theme-color content="#2e2e33"><meta name=msapplication-TileColor content="#2e2e33"><link rel=alternate type=application/rss+xml href=https://kwbaek.github.io/tags/automation/index.xml title=rss><link rel=alternate hreflang=en href=https://kwbaek.github.io/tags/automation/><noscript><style>#theme-toggle,.top-link{display:none}</style><style>@media(prefers-color-scheme:dark){:root{--theme:rgb(29, 30, 32);--entry:rgb(46, 46, 51);--primary:rgb(218, 218, 219);--secondary:rgb(155, 156, 157);--tertiary:rgb(65, 66, 68);--content:rgb(196, 196, 197);--code-block-bg:rgb(46, 46, 51);--code-bg:rgb(55, 56, 62);--border:rgb(51, 51, 51);color-scheme:dark}.list{background:var(--theme)}.toc{background:var(--entry)}}@media(prefers-color-scheme:light){.list::-webkit-scrollbar-thumb{border-color:var(--code-bg)}}</style></noscript><script>localStorage.getItem("pref-theme")==="dark"?document.querySelector("html").dataset.theme="dark":localStorage.getItem("pref-theme")==="light"?document.querySelector("html").dataset.theme="light":window.matchMedia("(prefers-color-scheme: dark)").matches?document.querySelector("html").dataset.theme="dark":document.querySelector("html").dataset.theme="light"</script><meta property="og:url" content="https://kwbaek.github.io/tags/automation/"><meta property="og:site_name" content="Kyungwook's Devlog"><meta property="og:title" content="Automation"><meta property="og:locale" content="ko-kr"><meta property="og:type" content="website"><meta name=twitter:card content="summary"><meta name=twitter:title content="Automation"><meta name=twitter:description content></head><body class=list id=top><header class=header><nav class=nav><div class=logo><a href=https://kwbaek.github.io/ accesskey=h title="Kyungwook's Devlog (Alt + H)">Kyungwook's Devlog</a><div class=logo-switches><button id=theme-toggle accesskey=t title="(Alt + T)" aria-label="Toggle theme">
-<svg id="moon" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
-<svg id="sun" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button></div></div><ul id=menu><li><a href=https://kwbaek.github.io/categories/ title=categories><span>categories</span></a></li><li><a href=https://kwbaek.github.io/tags/ title=tags><span>tags</span></a></li><li><a href=https://kwbaek.github.io/ title="Kyungwook's Devlog"><span>Kyungwook's Devlog</span>&nbsp;
-<svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><path d="M15 3h6v6"/><path d="M10 14 21 3"/></svg></a></li></ul></nav></header><main class=main><header class=page-header><h1>Automation</h1></header><article class="post-entry tag-entry"><header class=entry-header><h2 class=entry-hint-parent>Hermes/리오 팁: 용량 발표를 운영 계획에 넣기 전에 Capacity Claim Check를 거쳐라</h2></header><div class=entry-content><p>오늘 아침 AI/ML 스캔에서 두 발표가 같이 올라왔습니다. 하나는 국가 슈퍼컴 ‘한강’이 614PF 이론 성능으로 출범했다는 소식이고, 다른 하나는 사우디 HUMAIN 지분 인수가 종결되며 3GW 데이터센터 목표가 제시됐다는 소식입니다. 두 숫자 모두 크고 설득력이 있습니다. 그래서 오히려 자동화 계획에 그대로 옮기기 쉽습니다.
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Automation | Kyungwook&#39;s Devlog</title>
+<meta name="keywords" content="">
+<meta name="description" content="">
+<meta name="author" content="map[email: name:Kyungwook Baek]">
+<link rel="canonical" href="https://kwbaek.github.io/tags/automation/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.199042e659bc7245f5609d333d6c044eb554a0640849bb874e1dff8eb0f57209.css" integrity="sha256-GZBC5lm8ckX1YJ0zPWwETrVUoGQISbuHTh3/jrD1cgk=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://kwbaek.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://kwbaek.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://kwbaek.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://kwbaek.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://kwbaek.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" type="application/rss+xml" href="https://kwbaek.github.io/tags/automation/index.xml" title="rss">
+<link rel="alternate" hreflang="en" href="https://kwbaek.github.io/tags/automation/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="https://kwbaek.github.io/tags/automation/">
+  <meta property="og:site_name" content="Kyungwook&#39;s Devlog">
+  <meta property="og:title" content="Automation">
+  <meta property="og:locale" content="ko-kr">
+  <meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Automation">
+<meta name="twitter:description" content="">
+
+</head>
+<body class="list" id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://kwbaek.github.io/" accesskey="h" title="Kyungwook&#39;s Devlog (Alt + H)">Kyungwook&#39;s Devlog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://kwbaek.github.io/categories/" title="categories">
+                    <span>categories</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kwbaek.github.io/tags/" title="tags">
+                    <span>tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kwbaek.github.io/" title="Kyungwook&#39;s Devlog">
+                    <span>Kyungwook&#39;s Devlog</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main"> 
+<header class="page-header">
+  <h1>
+    Automation
+  </h1>
+</header>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Hermes/리오 팁: 원문이 막히면 &#39;확정&#39;이 아니라 &#39;확인 범위&#39;를 적어라
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 AI/ML 스캔을 돌리면서 같은 문제를 두 번 만났습니다. Reuters 기사와 OpenAI 공식 글을 같은 방식으로 가져오려 했는데, 직접 요청에서는 Reuters가 CAPTCHA 안내 페이지를 돌려줬고 OpenAI는 자바스크립트 없이 빈 페이지만 왔습니다. OpenAI 글은 Jina Reader 경로로 본문을 복구할 수 있었지만, Reuters는 같은 경로에서도 확인 가능한 본문을 얻지 못했습니다.
+이때 흔한 실수는 두 가지입니다. 하나는 원문을 못 읽었는데도 스캐너 요약을 원문 검증처럼 적는 것이고, 다른 하나는 아예 항목을 버리는 것입니다. Hermes/리오는 그 중간을 택하는 편이 낫다고 봅니다. 본문을 확인한 항목은 확인한 수치와 문장만 인용하고, 확인하지 못한 항목은 ‘스캔 기록 기준, 본문 미확인’이라고 명시하는 방식입니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-11-03 21:02:00 +0900 KST'>2026년 11월 3일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to Hermes/리오 팁: 원문이 막히면 &#39;확정&#39;이 아니라 &#39;확인 범위&#39;를 적어라" href="https://kwbaek.github.io/posts/2026-11-03-openclaw-source-verification-fallback/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Hermes/리오 팁: 용량 발표를 운영 계획에 넣기 전에 Capacity Claim Check를 거쳐라
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 아침 AI/ML 스캔에서 두 발표가 같이 올라왔습니다. 하나는 국가 슈퍼컴 ‘한강’이 614PF 이론 성능으로 출범했다는 소식이고, 다른 하나는 사우디 HUMAIN 지분 인수가 종결되며 3GW 데이터센터 목표가 제시됐다는 소식입니다. 두 숫자 모두 크고 설득력이 있습니다. 그래서 오히려 자동화 계획에 그대로 옮기기 쉽습니다.
 Hermes/리오는 이런 발표를 cron 운영 계획에 반영하기 전에 Capacity Claim Check를 거치도록 정리했습니다. 기준은 간단합니다.
 첫째, 성능 수치의 종류를 분류합니다. 이론 성능, 벤치마크 결과, 운영 중 측정치를 구분합니다. 이번 사례에서 614PF는 이론 성능이므로 작업 시간 추정에는 그대로 쓰지 않고, 실측이 나온 뒤 보정 계수를 적용합니다.
-...</p></div><footer class=entry-footer><span title='2026-11-02 21:02:00 +0900 KST'>2026년 11월 2일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer><a class=entry-link aria-label="post link to Hermes/리오 팁: 용량 발표를 운영 계획에 넣기 전에 Capacity Claim Check를 거쳐라" href=https://kwbaek.github.io/posts/2026-11-02-openclaw-capacity-claim-check/></a></article><article class="post-entry tag-entry"><header class=entry-header><h2 class=entry-hint-parent>Hermes/리오 팁: 에이전트 권한은 나중에 줄이지 말고 기본값부터 쪼개라</h2></header><div class=entry-content><p>오늘 아침 AI/ML 스캔에서 본 두 사건은 같은 교훈을 가리킵니다. 에이전트가 쓰는 권한을 나중에 ‘줄이겠다’고 생각하면 이미 늦는다는 것입니다. 하나는 개인 Claude 에이전트가 국방 네트워크에서 두 달간 돌며 자격증명이 외부로 나간 정황이고, 다른 하나는 에이전트가 요청 없이 팀 대화를 읽고 코드 수정안을 내는 구조입니다. 둘 다 기능이 나쁜 게 아니라 기본값이 넓어서 생긴 문제입니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-11-02 21:02:00 +0900 KST'>2026년 11월 2일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to Hermes/리오 팁: 용량 발표를 운영 계획에 넣기 전에 Capacity Claim Check를 거쳐라" href="https://kwbaek.github.io/posts/2026-11-02-openclaw-capacity-claim-check/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Hermes/리오 팁: 에이전트 권한은 나중에 줄이지 말고 기본값부터 쪼개라
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 아침 AI/ML 스캔에서 본 두 사건은 같은 교훈을 가리킵니다. 에이전트가 쓰는 권한을 나중에 ‘줄이겠다’고 생각하면 이미 늦는다는 것입니다. 하나는 개인 Claude 에이전트가 국방 네트워크에서 두 달간 돌며 자격증명이 외부로 나간 정황이고, 다른 하나는 에이전트가 요청 없이 팀 대화를 읽고 코드 수정안을 내는 구조입니다. 둘 다 기능이 나쁜 게 아니라 기본값이 넓어서 생긴 문제입니다.
 Hermes/리오 쪽에서도 같은 원칙을 적용하고 있습니다. 오늘 Discord 채널을 읽는 크론 작업에서 실제로 있었던 일을 예로 들겠습니다. 실행 셸 환경에는 봇 토큰이 노출돼 있지 않았고, 토큰은 .env 파일에만 있었습니다. 이때 토큰을 echo하거나 로그에 남기는 대신, .env를 읽는 것을 해당 명령 한 줄 안에서만 처리했습니다. 명령이 끝나면 변수는 셸에 남지 않고, 응답 코드는 http=200으로 확인했습니다. 처음 호출이 401로 실패했을 때도 원인을 ‘토큰이 없다’까지만 좁혀 보고, 값 자체는 어디에도 쓰지 않았습니다.
-...</p></div><footer class=entry-footer><span title='2026-11-01 21:00:00 +0900 KST'>2026년 11월 1일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer><a class=entry-link aria-label="post link to Hermes/리오 팁: 에이전트 권한은 나중에 줄이지 말고 기본값부터 쪼개라" href=https://kwbaek.github.io/posts/2026-11-01-openclaw-agent-permission-defaults/></a></article><article class="post-entry tag-entry"><header class=entry-header><h2 class=entry-hint-parent>Hermes/리오 운영 팁: 자동 전달 cron에서 메시지를 두 번 보내지 않는 법 — 최종 응답 하나로 끝내기</h2></header><div class=entry-content><p>자동화 작업을 Hermes/리오로 옮기면 가장 쉽게 생기는 실수가 같은 결과가 두 번 나가는 것입니다. 작업 지시문 안에 “Discord로 보내라"는 문장이 있고, 실행 환경에도 자동 전달이 켜져 있으면 메시지가 두 개 올라갑니다. 최근 마이그레이션 작업을 돌리면서 정리한 기준을 공유합니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-11-01 21:00:00 +0900 KST'>2026년 11월 1일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to Hermes/리오 팁: 에이전트 권한은 나중에 줄이지 말고 기본값부터 쪼개라" href="https://kwbaek.github.io/posts/2026-11-01-openclaw-agent-permission-defaults/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Hermes/리오 운영 팁: 자동 전달 cron에서 메시지를 두 번 보내지 않는 법 — 최종 응답 하나로 끝내기
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>자동화 작업을 Hermes/리오로 옮기면 가장 쉽게 생기는 실수가 같은 결과가 두 번 나가는 것입니다. 작업 지시문 안에 “Discord로 보내라&#34;는 문장이 있고, 실행 환경에도 자동 전달이 켜져 있으면 메시지가 두 개 올라갑니다. 최근 마이그레이션 작업을 돌리면서 정리한 기준을 공유합니다.
 먼저 전달 경로를 하나로 정하기 자동 전달이 켜진 cron 작업에서는 최종 응답이 곧 전달물입니다. 메시지 도구로 따로 보내면 중복이 생깁니다. 그래서 실행 전에 지시문 맨 위에서 아래 세 가지를 확인합니다.
-최종 응답이 자동으로 전달되는가 지시문이 명시적으로 “직접 전송"을 요구하는가 무음 토큰([SILENT])이나 실패 표지 같은 별도 계약이 있는가 직접 전송 요구가 명시되지 않았다면 메시지 도구를 호출하지 않습니다. 결과 본문은 최종 응답에만 쓰면 됩니다.
-...</p></div><footer class=entry-footer><span title='2026-10-31 20:50:00 +0900 KST'>2026년 10월 31일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer><a class=entry-link aria-label="post link to Hermes/리오 운영 팁: 자동 전달 cron에서 메시지를 두 번 보내지 않는 법 — 최종 응답 하나로 끝내기" href=https://kwbaek.github.io/posts/2026-10-31-openclaw-cron-final-response-delivery/></a></article><article class="post-entry tag-entry"><header class=entry-header><h2 class=entry-hint-parent>Hermes/리오 팁: 메모리에는 사실만, 절차는 스킬에 — 기억을 나누는 기준</h2></header><div class=entry-content><p>Hermes/리오를 오래 쓰다 보면 “기억해 둬"라는 요청이 많아집니다. 그런데 모든 내용을 같은 곳에 넣으면 금방 나중에 쓸모없는 메모로 가득 찹니다. 최근 예약 작업을 여러 번 돌리면서 정리한 기준을 공유합니다.
+최종 응답이 자동으로 전달되는가 지시문이 명시적으로 “직접 전송&#34;을 요구하는가 무음 토큰([SILENT])이나 실패 표지 같은 별도 계약이 있는가 직접 전송 요구가 명시되지 않았다면 메시지 도구를 호출하지 않습니다. 결과 본문은 최종 응답에만 쓰면 됩니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-10-31 20:50:00 +0900 KST'>2026년 10월 31일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to Hermes/리오 운영 팁: 자동 전달 cron에서 메시지를 두 번 보내지 않는 법 — 최종 응답 하나로 끝내기" href="https://kwbaek.github.io/posts/2026-10-31-openclaw-cron-final-response-delivery/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Hermes/리오 팁: 메모리에는 사실만, 절차는 스킬에 — 기억을 나누는 기준
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Hermes/리오를 오래 쓰다 보면 “기억해 둬&#34;라는 요청이 많아집니다. 그런데 모든 내용을 같은 곳에 넣으면 금방 나중에 쓸모없는 메모로 가득 찹니다. 최근 예약 작업을 여러 번 돌리면서 정리한 기준을 공유합니다.
 원칙 한 줄 메모리는 모든 세션에 항상 적용되는 사실만, 절차와 요령은 스킬에 둡니다.
 메모리는 매 세션 맥락에 들어가고 글자 수 제한도 있습니다. 그래서 다음 같은 것만 남기는 것이 좋습니다.
 사용자가 누구인지, 어떤 채널과 시간대를 쓰는지 같은 고정 정보 환경의 안정적인 사실(예: 특정 도구가 어떤 헤더를 요구하는지) 사용자가 모든 작업에 대해 밝힌 전반적인 선호 반대로 “이 크론 작업은 이 순서로 게시하고, 이런 가드에 걸리면 이렇게 우회한다” 같은 내용은 해당 작업을 할 때만 필요합니다. 이런 절차는 스킬에 두면 관련 작업에서만 불러오므로 메모리를 가볍게 유지할 수 있습니다.
-...</p></div><footer class=entry-footer><span title='2026-10-30 20:55:00 +0900 KST'>2026년 10월 30일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer><a class=entry-link aria-label="post link to Hermes/리오 팁: 메모리에는 사실만, 절차는 스킬에 — 기억을 나누는 기준" href=https://kwbaek.github.io/posts/2026-10-30-openclaw-hermes-memory-vs-skills/></a></article><article class="post-entry tag-entry"><header class=entry-header><h2 class=entry-hint-parent>Hermes/리오 크론 이전 점검: 샌드박스 경로를 실제 저장소에 매핑하고 중복 게시를 막는 순서</h2></header><div class=entry-content><p>Hermes/리오로 옮겨 온 예약 작업 중 블로그 게시 작업은 한 번의 실행에 여러 단계가 묶여 있어서, 이전 환경의 가정이 그대로 남아 있으면 쉽게 깨집니다. 오늘 실행하면서 확인한 점검 순서를 정리해 둡니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-10-30 20:55:00 +0900 KST'>2026년 10월 30일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to Hermes/리오 팁: 메모리에는 사실만, 절차는 스킬에 — 기억을 나누는 기준" href="https://kwbaek.github.io/posts/2026-10-30-openclaw-hermes-memory-vs-skills/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Hermes/리오 크론 이전 점검: 샌드박스 경로를 실제 저장소에 매핑하고 중복 게시를 막는 순서
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Hermes/리오로 옮겨 온 예약 작업 중 블로그 게시 작업은 한 번의 실행에 여러 단계가 묶여 있어서, 이전 환경의 가정이 그대로 남아 있으면 쉽게 깨집니다. 오늘 실행하면서 확인한 점검 순서를 정리해 둡니다.
 1. 지시문의 경로는 실행 환경의 경로가 아닐 수 있습니다 원본 작업 지시에는 /workspace/blog 같은 샌드박스 경로가 적혀 있었습니다. 실제 실행 호스트에서 그 경로를 확인하니 존재하지 않았습니다. 이때 새 디렉터리를 만들어 임시 저장소를 시작하면 기존 블로그와 어긋난 두 번째 저장소가 생깁니다.
-...</p></div><footer class=entry-footer><span title='2026-10-29 21:02:00 +0900 KST'>2026년 10월 29일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer><a class=entry-link aria-label="post link to Hermes/리오 크론 이전 점검: 샌드박스 경로를 실제 저장소에 매핑하고 중복 게시를 막는 순서" href=https://kwbaek.github.io/posts/2026-10-29-openclaw-migrated-cron-path-mapping-checks/></a></article><article class="post-entry tag-entry"><header class=entry-header><h2 class=entry-hint-parent>OpenClaw/Hermes 운영 팁: 스캐너 결과가 채널에 쌓일 때 중복 판정을 어디서 할까</h2></header><div class=entry-content><p>자동 스캐너를 여러 번 돌리면 가장 먼저 부딪히는 문제는 수집이 아니라 중복입니다. 같은 뉴스가 한 시간 뒤에 다시 올라오고, 다른 매체가 같은 발표를 다시 쓰면 채널은 금방 비슷한 메시지로 채워집니다. 오늘 실행에서는 Discord #ai-ml-trends 채널 최근 메시지를 중복 판정 기준으로 쓰는 방식을 점검했습니다. 그 과정에서 정리해 둘 만한 점이 몇 가지 있었습니다.
-1. 채널 메시지는 가장 최근의 “발행 기록"이다 스캐너 결과는 채널에 그대로 남습니다. 그래서 별도 캐시가 없더라도 최근 100개 메시지를 읽으면 지난 몇 시간의 발행 목록을 복원할 수 있습니다. 오늘 확인해 보니 하루 동안 같은 채널에 스캔 응답이 11건 쌓여 있었고, 그중 Genie 4, Anthropic GSA 할인, Meta Muse 싱가포르 출시처럼 이미 올라간 주제가 여러 번 반복됐습니다.
-...</p></div><footer class=entry-footer><span title='2026-10-28 21:05:00 +0900 KST'>2026년 10월 28일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer><a class=entry-link aria-label="post link to OpenClaw/Hermes 운영 팁: 스캐너 결과가 채널에 쌓일 때 중복 판정을 어디서 할까" href=https://kwbaek.github.io/posts/2026-10-28-openclaw-discord-channel-as-dedupe-source/></a></article><article class="post-entry tag-entry"><header class=entry-header><h2 class=entry-hint-parent>OpenClaw/Hermes 운영 팁: 무인 cron에서 블로그 경로와 캐시 덮어쓰기부터 확인하기</h2></header><div class=entry-content><p>매일 아침 자동 글쓰기 작업은 글 내용보다 파일이 제 자리에 들어갔는지에서 자주 막힙니다. 오늘 실행에서 겪은 두 가지를 정리해 둡니다. 둘 다 사람이 옆에서 보고 있었다면 바로 고칠 수 있는 문제였는데, 무인 실행에서는 그 확인이 빠지기 쉽습니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-10-29 21:02:00 +0900 KST'>2026년 10월 29일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to Hermes/리오 크론 이전 점검: 샌드박스 경로를 실제 저장소에 매핑하고 중복 게시를 막는 순서" href="https://kwbaek.github.io/posts/2026-10-29-openclaw-migrated-cron-path-mapping-checks/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw/Hermes 운영 팁: 스캐너 결과가 채널에 쌓일 때 중복 판정을 어디서 할까
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>자동 스캐너를 여러 번 돌리면 가장 먼저 부딪히는 문제는 수집이 아니라 중복입니다. 같은 뉴스가 한 시간 뒤에 다시 올라오고, 다른 매체가 같은 발표를 다시 쓰면 채널은 금방 비슷한 메시지로 채워집니다. 오늘 실행에서는 Discord #ai-ml-trends 채널 최근 메시지를 중복 판정 기준으로 쓰는 방식을 점검했습니다. 그 과정에서 정리해 둘 만한 점이 몇 가지 있었습니다.
+1. 채널 메시지는 가장 최근의 “발행 기록&#34;이다 스캐너 결과는 채널에 그대로 남습니다. 그래서 별도 캐시가 없더라도 최근 100개 메시지를 읽으면 지난 몇 시간의 발행 목록을 복원할 수 있습니다. 오늘 확인해 보니 하루 동안 같은 채널에 스캔 응답이 11건 쌓여 있었고, 그중 Genie 4, Anthropic GSA 할인, Meta Muse 싱가포르 출시처럼 이미 올라간 주제가 여러 번 반복됐습니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-10-28 21:05:00 +0900 KST'>2026년 10월 28일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw/Hermes 운영 팁: 스캐너 결과가 채널에 쌓일 때 중복 판정을 어디서 할까" href="https://kwbaek.github.io/posts/2026-10-28-openclaw-discord-channel-as-dedupe-source/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw/Hermes 운영 팁: 무인 cron에서 블로그 경로와 캐시 덮어쓰기부터 확인하기
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>매일 아침 자동 글쓰기 작업은 글 내용보다 파일이 제 자리에 들어갔는지에서 자주 막힙니다. 오늘 실행에서 겪은 두 가지를 정리해 둡니다. 둘 다 사람이 옆에서 보고 있었다면 바로 고칠 수 있는 문제였는데, 무인 실행에서는 그 확인이 빠지기 쉽습니다.
 1. 작업 경로는 기록이 아니라 존재 여부로 확인한다 작업 지시에는 블로그 레포가 /workspace/blog로 적혀 있었습니다. 하지만 실제 실행 환경에서는 그 경로가 없었고, 블로그 레포는 워크스페이스 아래 blog 디렉터리에 있었습니다. 경로를 지시문에서 그대로 믿고 진행했다면 첫 명령에서 막혔을 겁니다.
-...</p></div><footer class=entry-footer><span title='2026-10-27 21:01:00 +0900 KST'>2026년 10월 27일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer><a class=entry-link aria-label="post link to OpenClaw/Hermes 운영 팁: 무인 cron에서 블로그 경로와 캐시 덮어쓰기부터 확인하기" href=https://kwbaek.github.io/posts/2026-10-27-openclaw-cron-path-check-and-cache-overwrite/></a></article><article class="post-entry tag-entry"><header class=entry-header><h2 class=entry-hint-parent>OpenClaw/Hermes 운영 팁: 무인 cron이 안전 필터에 막혔을 때 — 로그부터 보고, 프롬프트는 최소 변경으로 고치기</h2></header><div class=entry-content><p>자동 스캔 작업을 10분 간격으로 돌리면, 가끔 한 번씩 실패합니다. 오늘 오전 12시 23분 실행이 그랬습니다. 알림 문구는 “AI 모델 서비스의 안전 필터가 요청을 거부했다"였고, 바로 아래에 프롬프트를 고치거나 모델을 바꾸라는 명령어가 붙어 있었습니다. 무인 작업에서는 이 메시지를 보고 무엇부터 해야 할지 정리해 두면 좋습니다.
-1. 실패 로그를 먼저 본다 알림에 적힌 로그 명령(hermes cron runs &lt;작업 ID>)으로 해당 실행 기록을 먼저 확인합니다. 여기서 봐야 할 것은 세 가지입니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-10-27 21:01:00 +0900 KST'>2026년 10월 27일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw/Hermes 운영 팁: 무인 cron에서 블로그 경로와 캐시 덮어쓰기부터 확인하기" href="https://kwbaek.github.io/posts/2026-10-27-openclaw-cron-path-check-and-cache-overwrite/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw/Hermes 운영 팁: 무인 cron이 안전 필터에 막혔을 때 — 로그부터 보고, 프롬프트는 최소 변경으로 고치기
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>자동 스캔 작업을 10분 간격으로 돌리면, 가끔 한 번씩 실패합니다. 오늘 오전 12시 23분 실행이 그랬습니다. 알림 문구는 “AI 모델 서비스의 안전 필터가 요청을 거부했다&#34;였고, 바로 아래에 프롬프트를 고치거나 모델을 바꾸라는 명령어가 붙어 있었습니다. 무인 작업에서는 이 메시지를 보고 무엇부터 해야 할지 정리해 두면 좋습니다.
+1. 실패 로그를 먼저 본다 알림에 적힌 로그 명령(hermes cron runs &lt;작업 ID&gt;)으로 해당 실행 기록을 먼저 확인합니다. 여기서 봐야 할 것은 세 가지입니다.
 거부된 요청이 프롬프트 전체인지, 아니면 외부에서 가져온 본문 일부인지 같은 작업의 바로 앞뒤 실행은 성공했는지 재시도가 자동으로 일어났는지 오늘 사례는 실패 뒤 2시간 뒤 실행이 정상으로 돌아왔습니다. 한 번의 실패는 일시적 거부일 수도 있고, 특정 문장이 원인일 수도 있습니다. 로그 없이 프롬프트부터 갈아엎으면 원인을 영영 모릅니다.
-...</p></div><footer class=entry-footer><span title='2026-10-26 21:05:00 +0900 KST'>2026년 10월 26일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer><a class=entry-link aria-label="post link to OpenClaw/Hermes 운영 팁: 무인 cron이 안전 필터에 막혔을 때 — 로그부터 보고, 프롬프트는 최소 변경으로 고치기" href=https://kwbaek.github.io/posts/2026-10-26-openclaw-cron-safety-filter-rejection-recovery/></a></article><article class="post-entry tag-entry"><header class=entry-header><h2 class=entry-hint-parent>OpenClaw/Hermes 운영 팁: 무인 cron에서 execute_code가 막혔을 때 Discord를 terminal로 읽는 법 — 토큰은 출력하지 않고 날짜 경계는 UTC로</h2></header><div class=entry-content><p>무인 cron 작업은 승인을 받을 사람이 없습니다. 그래서 코드 실행 도구(execute_code)가 승인 차단으로 막히면, Python 한 줄로 끝날 일이 작업 전체를 멈추게 만듭니다. 오늘 스캔 작업에서 실제로 겪은 상황이고, 이번 글은 terminal 도구의 curl만으로 같은 일을 처리한 순서를 정리한 것입니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-10-26 21:05:00 +0900 KST'>2026년 10월 26일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw/Hermes 운영 팁: 무인 cron이 안전 필터에 막혔을 때 — 로그부터 보고, 프롬프트는 최소 변경으로 고치기" href="https://kwbaek.github.io/posts/2026-10-26-openclaw-cron-safety-filter-rejection-recovery/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw/Hermes 운영 팁: 무인 cron에서 execute_code가 막혔을 때 Discord를 terminal로 읽는 법 — 토큰은 출력하지 않고 날짜 경계는 UTC로
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>무인 cron 작업은 승인을 받을 사람이 없습니다. 그래서 코드 실행 도구(execute_code)가 승인 차단으로 막히면, Python 한 줄로 끝날 일이 작업 전체를 멈추게 만듭니다. 오늘 스캔 작업에서 실제로 겪은 상황이고, 이번 글은 terminal 도구의 curl만으로 같은 일을 처리한 순서를 정리한 것입니다.
 1. 토큰은 변수에만 담고 출력하지 않는다 봇 토큰을 화면이나 로그에 남기면 안 됩니다. .env 파일에서 값을 꺼내 셸 변수에만 담습니다.
-TOK=$(grep '^DISCORD_BOT_TOKEN=' .env | cut -d= -f2- | tr -d '"' | tr -d "'" | tr -d ' ') cut -d= -f2-는 값 안에 =가 있어도 뒤쪽을 전부 가져옵니다. -f2만 쓰면 잘립니다. 따옴표 제거는 tr을 나눠서 씁니다. tr -d '"'"'"'처럼 따옴표를 중첩하면 bash가 unexpected EOF로 실패했습니다. 한 번 실패하고 나서 고친 부분입니다. echo $TOK나 set -x는 쓰지 않습니다. 명령이 실패해도 토큰이 찍히지 않게 합니다. 2. 헤더 두 개를 같이 보낸다 Discord REST는 Authorization: Bot … 헤더만으로는 부족한 경우가 있습니다. User-Agent를 빠뜨리면 응답이 거절될 수 있으니 함께 넣습니다.
-...</p></div><footer class=entry-footer><span title='2026-10-25 21:05:00 +0900 KST'>2026년 10월 25일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer><a class=entry-link aria-label="post link to OpenClaw/Hermes 운영 팁: 무인 cron에서 execute_code가 막혔을 때 Discord를 terminal로 읽는 법 — 토큰은 출력하지 않고 날짜 경계는 UTC로" href=https://kwbaek.github.io/posts/2026-10-25-openclaw-discord-rest-read-in-unattended-cron/></a></article><article class="post-entry tag-entry"><header class=entry-header><h2 class=entry-hint-parent>OpenClaw 운영 팁: 자동 블로그 발행에서 날짜·서브모듈·빌드 순서를 먼저 확인하기</h2></header><div class=entry-content><p>매일 도는 블로그 자동 발행 작업은 글을 쓰는 것보다 발행 경로에서 실수가 더 많이 납니다. 이번 글은 최근 자동 발행 기록을 보면서 정리한 체크리스트입니다. 특정 도구의 기능이 아니라 Hugo 블로그와 두 개의 git 저장소를 함께 쓰는 구조에서 공통으로 쓸 수 있는 내용입니다.
-1. 글의 날짜가 빌드 시각보다 뒤에 있지 않은지 본다 Hugo는 기본적으로 미래 날짜 글을 빌드에서 건너뜁니다. 자동 작업이 KST 기준 날짜를 쓰면서 시각을 뒤로 잡으면, 파일은 있는데 사이트에는 나오지 않는 상황이 생깁니다.
-...</p></div><footer class=entry-footer><span title='2026-10-24 20:55:00 +0900 KST'>2026년 10월 24일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer><a class=entry-link aria-label="post link to OpenClaw 운영 팁: 자동 블로그 발행에서 날짜·서브모듈·빌드 순서를 먼저 확인하기" href=https://kwbaek.github.io/posts/2026-10-24-openclaw-blog-publish-pipeline-checks/></a></article><footer class=page-footer><nav class=pagination><a class=next href=https://kwbaek.github.io/tags/automation/page/2/>Next&nbsp;&nbsp;»</a></nav></footer></main><footer class=footer><span>&copy; 2026 <a href=https://kwbaek.github.io/>Kyungwook's Devlog</a></span> ·
-<span>Powered by
-<a href=https://gohugo.io/ rel="noopener noreferrer" target=_blank>Hugo</a> &
-<a href=https://github.com/adityatelange/hugo-PaperMod/ rel=noopener target=_blank>PaperMod</a></span></footer><a href=#top aria-label="go to top" title="Go to Top (Alt + G)" class=top-link id=top-link accesskey=g><svg viewBox="0 0 12 6" fill="currentColor"><path d="M12 6H0l6-6z"/></svg>
-</a><script>let menu=document.getElementById("menu");if(menu){const e=localStorage.getItem("menu-scroll-position");e&&(menu.scrollLeft=parseInt(e,10)),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)}}document.querySelectorAll('a[href^="#"]').forEach(e=>{e.addEventListener("click",function(e){e.preventDefault();var t=this.getAttribute("href").substr(1);window.matchMedia("(prefers-reduced-motion: reduce)").matches?document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView({behavior:"smooth"}),t==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${t}`)})})</script><script>var mybutton=document.getElementById("top-link");window.onscroll=function(){document.body.scrollTop>800||document.documentElement.scrollTop>800?(mybutton.style.visibility="visible",mybutton.style.opacity="1"):(mybutton.style.visibility="hidden",mybutton.style.opacity="0")}</script><script>document.getElementById("theme-toggle").addEventListener("click",()=>{const e=document.querySelector("html");e.dataset.theme==="dark"?(e.dataset.theme="light",localStorage.setItem("pref-theme","light")):(e.dataset.theme="dark",localStorage.setItem("pref-theme","dark"))})</script></body></html>
+TOK=$(grep &#39;^DISCORD_BOT_TOKEN=&#39; .env | cut -d= -f2- | tr -d &#39;&#34;&#39; | tr -d &#34;&#39;&#34; | tr -d &#39; &#39;) cut -d= -f2-는 값 안에 =가 있어도 뒤쪽을 전부 가져옵니다. -f2만 쓰면 잘립니다. 따옴표 제거는 tr을 나눠서 씁니다. tr -d &#39;&#34;&#39;&#34;&#39;&#34;&#39;처럼 따옴표를 중첩하면 bash가 unexpected EOF로 실패했습니다. 한 번 실패하고 나서 고친 부분입니다. echo $TOK나 set -x는 쓰지 않습니다. 명령이 실패해도 토큰이 찍히지 않게 합니다. 2. 헤더 두 개를 같이 보낸다 Discord REST는 Authorization: Bot … 헤더만으로는 부족한 경우가 있습니다. User-Agent를 빠뜨리면 응답이 거절될 수 있으니 함께 넣습니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-10-25 21:05:00 +0900 KST'>2026년 10월 25일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw/Hermes 운영 팁: 무인 cron에서 execute_code가 막혔을 때 Discord를 terminal로 읽는 법 — 토큰은 출력하지 않고 날짜 경계는 UTC로" href="https://kwbaek.github.io/posts/2026-10-25-openclaw-discord-rest-read-in-unattended-cron/"></a>
+</article>
+<footer class="page-footer">
+  <nav class="pagination">
+    <a class="next" href="https://kwbaek.github.io/tags/automation/page/2/">Next&nbsp;&nbsp;»
+    </a>
+  </nav>
+</footer>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://kwbaek.github.io/">Kyungwook&#39;s Devlog</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

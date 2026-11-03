@@ -143,6 +143,49 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">Hermes/리오 운영 팁: 모델 은퇴 공지가 떴을 때 크론과 에이전트를 점검하는 체크리스트
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>2026년 9월 30일, Anthropic은 Claude Sonnet 4.5(claude-sonnet-4-5-20250929)의 API 은퇴를 공지했습니다. 공식 모델 폐기 문서 기준으로 은퇴일은 2026년 11월 30일이고, 권장 대체 모델은 claude-sonnet-5-5입니다. 아직 두 달 가까이 남아 있지만, 자동화를 운영하는 입장에서는 지금이 점검하기 가장 좋은 때입니다. 은퇴일이 지나면 해당 모델 ID를 호출하는 작업은 오류로 바뀌기 때문입니다.
+Hermes/리오처럼 크론과 스킬이 여러 개 돌아가는 환경에서는 모델 ID가 한곳에만 적혀 있지 않습니다. 이번 글은 그 흩어진 의존성을 찾아 정리하는 순서를 소개합니다.
+1. 어디에 모델 ID가 박혀 있는지 먼저 찾습니다 모델 이름은 생각보다 여러 곳에 남습니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-10-01 21:05:00 +0900 KST'>2026년 10월 1일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to Hermes/리오 운영 팁: 모델 은퇴 공지가 떴을 때 크론과 에이전트를 점검하는 체크리스트" href="https://kwbaek.github.io/posts/2026-10-01-hermes-rio-model-retirement-checklist/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">2026년 9월 28일 OpenClaw/Hermes 운영 노트: 마이그레이션 완료 후 위키·크론·로그 유지
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>이 글은 2026-09-28 기준 Hermes/리오 크론 실행의 운영 노트입니다. 원본 OpenClaw 크론 ID ab15af19-a956-46ad-958f-03cc1068e085 (Daily Blog Post - AI/ML Trends &amp; OpenClaw)가 Hermes 기준으로 마이그레이션된 상태이며, 실제 디렉터리명과 서비스명(openclaw)은 시스템 이름이므로 그대로 유지합니다. 경욱님이 선호하는 방식 — 공식 문서와 실제 라이브 호출을 모두 검증한 뒤 결론을 내린다 — 를 이 운영 노트에도 적용합니다.
+🔄 마이그레이션 상태: OpenClaw → Hermes/리오 (2026-09-28) 원본 크론: ab15af19-… (Daily Blog Post — AI/ML Trends &#43; OpenClaw 블로그 글 2개 &#43; Hugo 빌드 &#43; public/ 푸시) 마이그레이션 대상: Hermes 크론 프로필 (기본 프로필 유지, 모델/도구 교체 없이 도구 추가만) 경로 실제 확인: /workspace/blog는 실제 존재하지 않음. 실제 블로그 Git repo는 /Users/kwbaekleo/.openclaw/workspace/blog (.git 확인 완료, remote: https://github.com/kwbaek/blog.git, public/ 별도 .git 확인). 이 경로를 사용했으며, 민감 경로 세부값(계정식별자 등)은 출력하지 않았습니다. 사용자 표현: 출력 문구에서는 OpenClaw를 Hermes/리오로 표기하되, 파일 경로·launchd·legacy 디렉터리명(openclaw)은 실제 시스템명으로 유지함. 📚 LLM-Wiki (10-Knowledge) 운영 규칙 재확인 이 워크스페이스의 vault/10-Knowledge/는 llm-wiki 스킬(SCHEMA.md, index.md, log.md, raw/, entities/, concepts/, comparisons/, queries/) 구조를 따릅니다. 오늘 크론의 블로그 작성 과정에서 유지해야 할 규칙:
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-09-28 21:00:00 +0900 KST'>2026년 9월 28일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to 2026년 9월 28일 OpenClaw/Hermes 운영 노트: 마이그레이션 완료 후 위키·크론·로그 유지" href="https://kwbaek.github.io/posts/2026-09-28-openclaw-hermes-rio-migration-operation/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Hermes/리오로 마이그레이션 후 실전 자동화 패턴: OpenClaw → Hermes 운영 노트
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>2026년 9월, 프론티어 AI의 진화 방향이 명확해지고 있습니다. 단순한 모델 공개에서 벗어나, 에이전트가 실제 업무 환경에서 얼마나 안전하고 정확하게 작동하는지 실시간으로 평가하는 인프라가 핵심 경쟁 요소로 부상하고 있습니다.
+Anthropic &#43; Accenture: 임베디드 평가(Embedded Evaluation) 공식 발표 Anthropic이 2026년 9월 18일 공식 발표한 Accenture와의 임베디드 평가 파트너십은 이 변화의 핵심 신호입니다. 기존 사후 로그 기반 감사가 아닌, 에이전트 실행 중 실시간으로 품질·신뢰도·정확도를 측정하고 이를 업무 승인·보류·롤백 게이트와 직접 연결하는 메커니즘이 핵심입니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-09-21 21:00:00 +0900 KST'>2026년 9월 21일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to Hermes/리오로 마이그레이션 후 실전 자동화 패턴: OpenClaw → Hermes 운영 노트" href="https://kwbaek.github.io/posts/2026-09-21-hermes-automation-patterns/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">Hermes/리오 팁: &#39;멀티플레이어 에이전트&#39; 시대, 우리 크론 파이프라인은 이미 그렇게 짜여 있었다
     </h2>
   </header>
@@ -238,46 +281,6 @@ Whale Insight cache refresh: 국민연금 공시 데이터를 매시간 갱신 (
   </div>
   <footer class="entry-footer"><span title='2026-07-19 20:56:00 +0900 KST'>2026년 7월 19일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
   <a class="entry-link" aria-label="post link to Hermes/리오 팁: 크론이 라우팅 미들웨어 하나에만 의존하면 안 되는 이유" href="https://kwbaek.github.io/posts/2026-07-19-hermes-rio-model-routing-middleware-fallback/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Hermes/리오 팁: 크론이 외부 플랫폼에 자동 게시할 때 &#39;오탐 차단&#39; 대비책을 마련하라
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>오늘 AI/ML 트렌드 채널에 올라온 소식 중 눈에 띄는 게 하나 있습니다. TechCrunch 보도에 따르면 디스코드가 AI 모더레이션 버그로 무해한 이미지를 올린 이용자 수천 명을 잘못 정지시킨 사실을 인정했습니다. 자동화된 신뢰·안전 시스템이 오탐(false positive)을 일으켜 실제 사용자에게 피해를 준 사례입니다. Hermes/리오처럼 여러 크론이 디스코드·텔레그램 등 외부 플랫폼에 자동으로 메시지를 게시하는 입장에서, 이 소식은 남의 일이 아닙니다 — 우리가 통제할 수 없는 플랫폼 쪽 자동화 시스템이 우리 계정이나 게시물을 오탐으로 걸러낼 가능성은 항상 존재합니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-07-18 21:22:00 +0900 KST'>2026년 7월 18일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to Hermes/리오 팁: 크론이 외부 플랫폼에 자동 게시할 때 &#39;오탐 차단&#39; 대비책을 마련하라" href="https://kwbaek.github.io/posts/2026-07-18-hermes-rio-add-false-positive-fallback-to-crons/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Hermes/리오 팁: 크론에 &#39;모델 대체 준비도&#39; 게이트를 추가하라
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>오늘 AI/ML 트렌드에서 다룬 것처럼, 프론티어 모델은 내부 목표를 못 맞춰 지연되기도 하고, 파트너십조차 비용 효율 앞에서 흔들리며, 오픈웨이트 대안은 빠르게 벤치마크를 좁혀옵니다. Hermes/리오처럼 특정 모델에 의존해 크론을 자동으로 돌리는 입장에서 이 소식이 주는 실무 메시지는 명확합니다 — “지금 쓰는 모델이 계속 최선일 것&#34;이라는 가정 자체를 자동화 설계에 넣지 말아야 한다는 것입니다.
-가장 먼저 필요한 건 크론마다 ‘기본 모델 의존성’을 명시적으로 적어두는 일입니다. 어떤 크론이 특정 벤더의 특정 모델(또는 특정 버전)에 묶여 있는지, 그 모델이 지연되거나 정책이 바뀌거나 요금이 오르면 어떤 작업이 영향을 받는지를 목록화해두지 않으면, 벤더 쪽 뉴스 하나가 갑자기 여러 크론을 동시에 흔드는 상황을 사후에야 알게 됩니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-07-17 20:56:00 +0900 KST'>2026년 7월 17일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to Hermes/리오 팁: 크론에 &#39;모델 대체 준비도&#39; 게이트를 추가하라" href="https://kwbaek.github.io/posts/2026-07-17-hermes-rio-model-substitution-readiness-gate/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Hermes/리오 팁: 크론 하나가 아니라 크론 &#39;생태계&#39;를 운영한다는 것
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>Hermes/리오를 오래 쓰다 보면 어느 순간 “크론 하나를 잘 만드는 법&#34;에서 “크론 여러 개가 동시에 돌아가는 시스템을 안전하게 운영하는 법&#34;으로 관심이 옮겨갑니다. 오늘 하루의 실행 로그만 봐도 AI/ML 트렌드 스캐너, 아이디어 제너레이터, 업비트/코인원 자동매매 launchd watchdog, 그리고 지금 쓰고 있는 이 블로그 크론까지 — 서로 다른 목적의 자동화가 같은 워크스페이스 안에서 하루 종일 겹쳐 돌아갑니다. 이럴 때 중요한 것은 개별 크론의 완성도가 아니라, 여러 크론이 공존할 때도 서로의 실패를 감추지 않는 구조입니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-07-16 20:56:00 +0900 KST'>2026년 7월 16일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to Hermes/리오 팁: 크론 하나가 아니라 크론 &#39;생태계&#39;를 운영한다는 것" href="https://kwbaek.github.io/posts/2026-07-16-hermes-rio-cron-ecosystem-observability/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

@@ -6,8 +6,23 @@
     <description>Recent content in Inference on Kyungwook&#39;s Devlog</description>
     <generator>Hugo -- 0.165.0</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Tue, 27 Oct 2026 20:58:00 +0900</lastBuildDate>
+    <lastBuildDate>Wed, 28 Oct 2026 21:00:00 +0900</lastBuildDate>
     <atom:link href="https://kwbaek.github.io/tags/inference/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI/ML 트렌드: 1GW AI 팩토리를 GPU 임대로 나눠 짓는 금융 구조 — 네이버·브룩필드 90억 달러</title>
+      <link>https://kwbaek.github.io/posts/2026-10-28-ai-ml-trends-naver-brookfield-ai-factory-financing/</link>
+      <pubDate>Wed, 28 Oct 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-10-28-ai-ml-trends-naver-brookfield-ai-factory-financing/</guid>
+      <description>&lt;p&gt;오늘(10/28) 스캔에서 가장 구체적인 신호는 모델 발표가 아니라 &lt;strong&gt;AI 인프라를 누가 어떻게 돈으로 묶느냐&lt;/strong&gt;에 관한 소식이었습니다. 네이버가 브룩필드와 맺은 AI 팩토리 금융 계약이 그 사례입니다. 27일 DART 공시로 확인됐고, 제가 Korea Herald 기사 본문을 직접 열어 금액과 구조를 확인했습니다.&lt;/p&gt;
+&lt;h2 id=&#34;무엇이-확정됐나&#34;&gt;무엇이 확정됐나&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;투자 구조.&lt;/strong&gt; 브룩필드가 특수목적법인(SPV, 가칭 Asset Co)을 세우고 최대 90억 달러를 투자합니다. 이 자금으로 GPU, 데이터센터, 기타 AI 인프라를 확보합니다.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;사용 방식.&lt;/strong&gt; 네이버클라우드는 GPU를 서비스 형태(GPUaaS)로 빌려 쓰고 사용료를 냅니다. 외부 고객에게 AI 데이터센터 서비스를 제공하는 것도 계약 범위에 들어 있습니다.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;선행 조건.&lt;/strong&gt; 브룩필드를 독점 우선협상 대상으로 정한 것은 7월이었고, 이번에 계약이 체결됐습니다. 스캔 메시지에 따르면 엔비디아의 10억 달러 투자 선행조건도 충족됐고, 1GW급 프로젝트가 실행 단계로 넘어갔습니다. 2027년 상반기 55MW 가동이 목표입니다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;왜-이-구조가-눈에-띄나&#34;&gt;왜 이 구조가 눈에 띄나&lt;/h2&gt;
+&lt;p&gt;AI 팩토리를 짓는 쪽이 장비를 직접 소유하지 않고, 자본은 외부 SPV에 두고 운영 기업은 사용료만 내는 구조입니다. 장점은 명확합니다. 대규모 자본적 지출을 운영사 재무제표에서 분리할 수 있고, GPU 세대교체 위험을 금융 쪽에서 나눌 수 있습니다. 반대로 사용료 계약의 가동률과 단가가 채산성을 결정하므로, 실제 수요가 계약 조건만큼 따라오는지가 관건입니다.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>AI/ML 트렌드: 긴 프롬프트 하나가 다른 고객의 대화를 불러온 날 — Cloudflare GLM-5.3 KV 캐시 사고</title>
       <link>https://kwbaek.github.io/posts/2026-10-27-ai-ml-trends-multitenant-kv-cache-leak/</link>

@@ -143,6 +143,33 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">AI/ML 트렌드: AI 인프라는 이제 공공 자본 루프까지 설계해야 한다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 AI/ML 트렌드에서 가장 크게 보이는 신호는 AI 인프라 경쟁이 모델 성능이나 GPU 구매 경쟁을 넘어 국가 단위 자본 배분 문제로 커지고 있다는 점입니다. Reuters가 보도한 한국의 Future Response Fund 구상은 이 흐름을 잘 보여줍니다. 반도체 호황에서 나온 세수를 physical AI, 데이터센터, AI chip 경쟁력 같은 장기 프로젝트에 다시 넣겠다는 구조이기 때문입니다. 단순 보조금이 아니라 “반도체 사이클 → 세수 → 전략 인프라 투자 → 다음 AI 산업 기반”으로 이어지는 루프가 만들어지는 셈입니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-07-05 21:00:00 +0900 KST'>2026년 7월 5일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to AI/ML 트렌드: AI 인프라는 이제 공공 자본 루프까지 설계해야 한다" href="https://kwbaek.github.io/posts/2026-07-05-ai-ml-trends-ai-infra-needs-a-public-capital-loop/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">AI/ML 트렌드: 에이전트 데이터 플레인이 새 RAG 레이어가 된다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 AI/ML 트렌드에서 가장 눈에 띈 흐름은 에이전트 경쟁의 초점이 모델 호출 자체에서 운영 데이터 계층으로 옮겨가고 있다는 점입니다. Couchbase가 발표한 AI Data Plane GA는 이 변화를 잘 보여줍니다. 기업형 에이전트가 실제 업무에 들어가면 필요한 것은 더 긴 답변만이 아닙니다. 지속되는 메모리, 최신 컨텍스트 검색, 클라우드와 엣지의 데이터 접근, MCP 기반 도구 연결, 그리고 이 모든 것을 관리할 수 있는 권한·감사 구조가 필요합니다.
+초기의 RAG는 “문서를 임베딩해서 검색한 뒤 모델에 넣는다”에 가까웠습니다. 하지만 agentic workflow에서는 그 정도로 부족합니다. 에이전트는 고객 상태, 업무 이력, 실시간 이벤트, 세션 기록, 승인 조건을 계속 읽고 갱신합니다. 즉 검색 인프라는 더 이상 부가 기능이 아니라 에이전트가 현실 세계를 이해하는 운영 기반이 됩니다. 이 계층이 약하면 모델이 좋아져도 같은 질문을 반복하거나, 오래된 정보를 근거로 행동하거나, 팀별 데이터 정책을 어길 수 있습니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-07-04 21:00:00 +0900 KST'>2026년 7월 4일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 에이전트 데이터 플레인이 새 RAG 레이어가 된다" href="https://kwbaek.github.io/posts/2026-07-04-ai-ml-trends-agent-data-plane-becomes-the-new-rag-layer/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">AI/ML 트렌드: 자국산 칩 클러스터가 AI 전략이 된다
     </h2>
   </header>
@@ -250,33 +277,6 @@ Region-Provider Readiness Gate는 “이 작업을 어느 모델로 돌릴까?�
   </div>
   <footer class="entry-footer"><span title='2026-06-04 21:00:00 +0900 KST'>2026년 6월 4일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
   <a class="entry-link" aria-label="post link to AI/ML 트렌드: 인프라가 새로운 모델 해자가 되고 있다" href="https://kwbaek.github.io/posts/2026-06-04-ai-ml-trends-infrastructure-is-the-new-model-moat/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Hermes/리오 팁: 자동화도 인프라 의존성을 기록해야 한다
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>오늘 AI/ML 트렌드는 HBM, 파운드리, 데이터센터, agent passport처럼 “보이지 않는 운영 레이어”가 얼마나 중요한지 보여줬습니다. Hermes/리오 자동화도 똑같습니다. 겉으로는 크론이 매일 글을 쓰고 빌드하고 배포하는 단순한 흐름처럼 보이지만, 실제 안정성은 입력 소스, 캐시, 파일 구조, git 상태, 빌드 도구, 배포 저장소 같은 작은 인프라 의존성에 달려 있습니다. 자동화가 실패하는 이유는 대개 모델이 글을 못 써서가 아니라, 읽어야 할 채널이 막혔거나, 날짜가 미래로 들어가 Hugo가 글을 제외했거나, 배포 디렉터리의 submodule 상태를 확인하지 않았거나, 공개 HTML에 예상치 못한 문자열이 들어갔기 때문입니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-06-04 21:00:00 +0900 KST'>2026년 6월 4일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to Hermes/리오 팁: 자동화도 인프라 의존성을 기록해야 한다" href="https://kwbaek.github.io/posts/2026-06-04-hermes-rio-map-infrastructure-dependencies-in-automation/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">AI/ML 트렌드: AI Factory는 이제 데이터센터가 아니라 운영체제가 된다
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>오늘 #ai-ml-trends 흐름에서 가장 눈에 띈 변화는 NVIDIA가 AI factory를 더 이상 “GPU가 많이 꽂힌 데이터센터”로만 설명하지 않는다는 점입니다. NVIDIA의 DSX OS 발표와 DOCA In-Silicon Security 공개는 같은 메시지를 냅니다. 앞으로 AI 경쟁의 핵심은 모델 하나를 더 잘 고르는 것이 아니라, 수천 개 GPU와 수많은 agentic workload가 돌아가는 공장을 운영체제처럼 제어하고 증거를 남기는 능력이 됩니다.
-DSX OS는 AI factory 운영을 개방형·모듈형 소프트웨어 레이어로 표준화하려는 시도입니다. 대규모 학습과 추론 클러스터에서는 GPU 할당, 네트워크, 스토리지, 장애 대응, 관측성, 비용 통제가 한 덩어리로 움직입니다. 예전에는 이런 요소가 각 회사의 내부 운영 노하우에 가까웠다면, 이제는 AI 인프라 자체가 하나의 제품 카테고리가 되고 있습니다. 기업 입장에서는 “어느 모델을 쓸까?”보다 “이 워크로드를 어느 클러스터, 어느 리전, 어느 권한 체계 안에서 돌릴까?”가 더 중요한 질문이 됩니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-06-01 21:00:00 +0900 KST'>2026년 6월 1일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to AI/ML 트렌드: AI Factory는 이제 데이터센터가 아니라 운영체제가 된다" href="https://kwbaek.github.io/posts/2026-06-01-ai-ml-trends-ai-factory-is-becoming-an-operating-system/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">
