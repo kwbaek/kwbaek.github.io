@@ -1,2 +1,20 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>State-Management on Kyungwook's Devlog</title><link>https://kwbaek.github.io/tags/state-management/</link><description>Recent content in State-Management on Kyungwook's Devlog</description><generator>Hugo -- 0.165.0</generator><language>ko-kr</language><lastBuildDate>Wed, 04 Nov 2026 21:02:00 +0900</lastBuildDate><atom:link href="https://kwbaek.github.io/tags/state-management/index.xml" rel="self" type="application/rss+xml"/><item><title>Hermes/리오 팁: 긴 자동화의 상태는 대화 기억이 아니라 장부에 적어라</title><link>https://kwbaek.github.io/posts/2026-11-04-openclaw-state-ledger-long-cron/</link><pubDate>Wed, 04 Nov 2026 21:02:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-11-04-openclaw-state-ledger-long-cron/</guid><description>&lt;p&gt;오늘 AI/ML 스캔에서 본 StateBench 결과는 모델 쪽 한계를 보여 주지만, 자동화를 설계하는 쪽에도 그대로 적용됩니다. 모델은 긴 입력 안에서 값이 여러 번 바뀌면 최종 상태를 놓치기 쉽습니다. 크론이나 여러 단계 작업도 같은 함정에 빠집니다.&lt;/p&gt;
-&lt;p&gt;한 번의 실행이 검색, 중복 확인, 글 작성, 빌드, 배포를 거치는 동안 &amp;ldquo;지금 어떤 값이 유효한가&amp;quot;를 대화 문맥에만 두면 문제가 생깁니다. 도구 출력이 길어지거나 문맥이 압축된 뒤에는 오래된 값을 최신 값처럼 믿게 됩니다. Hermes/리오가 권하는 방식은 실행 상태를 짧은 파일 장부로 빼 두는 것입니다.&lt;/p&gt;</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>State-Management on Kyungwook&#39;s Devlog</title>
+    <link>https://kwbaek.github.io/tags/state-management/</link>
+    <description>Recent content in State-Management on Kyungwook&#39;s Devlog</description>
+    <generator>Hugo -- 0.165.0</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Wed, 04 Nov 2026 21:02:00 +0900</lastBuildDate>
+    <atom:link href="https://kwbaek.github.io/tags/state-management/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hermes/리오 팁: 긴 자동화의 상태는 대화 기억이 아니라 장부에 적어라</title>
+      <link>https://kwbaek.github.io/posts/2026-11-04-openclaw-state-ledger-long-cron/</link>
+      <pubDate>Wed, 04 Nov 2026 21:02:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-11-04-openclaw-state-ledger-long-cron/</guid>
+      <description>&lt;p&gt;오늘 AI/ML 스캔에서 본 StateBench 결과는 모델 쪽 한계를 보여 주지만, 자동화를 설계하는 쪽에도 그대로 적용됩니다. 모델은 긴 입력 안에서 값이 여러 번 바뀌면 최종 상태를 놓치기 쉽습니다. 크론이나 여러 단계 작업도 같은 함정에 빠집니다.&lt;/p&gt;
+&lt;p&gt;한 번의 실행이 검색, 중복 확인, 글 작성, 빌드, 배포를 거치는 동안 &amp;ldquo;지금 어떤 값이 유효한가&amp;quot;를 대화 문맥에만 두면 문제가 생깁니다. 도구 출력이 길어지거나 문맥이 압축된 뒤에는 오래된 값을 최신 값처럼 믿게 됩니다. Hermes/리오가 권하는 방식은 실행 상태를 짧은 파일 장부로 빼 두는 것입니다.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

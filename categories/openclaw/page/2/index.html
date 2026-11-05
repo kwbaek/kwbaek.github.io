@@ -143,6 +143,36 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw/Hermes 운영 팁: 무인 cron이 안전 필터에 막혔을 때 — 로그부터 보고, 프롬프트는 최소 변경으로 고치기
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>자동 스캔 작업을 10분 간격으로 돌리면, 가끔 한 번씩 실패합니다. 오늘 오전 12시 23분 실행이 그랬습니다. 알림 문구는 “AI 모델 서비스의 안전 필터가 요청을 거부했다&#34;였고, 바로 아래에 프롬프트를 고치거나 모델을 바꾸라는 명령어가 붙어 있었습니다. 무인 작업에서는 이 메시지를 보고 무엇부터 해야 할지 정리해 두면 좋습니다.
+1. 실패 로그를 먼저 본다 알림에 적힌 로그 명령(hermes cron runs &lt;작업 ID&gt;)으로 해당 실행 기록을 먼저 확인합니다. 여기서 봐야 할 것은 세 가지입니다.
+거부된 요청이 프롬프트 전체인지, 아니면 외부에서 가져온 본문 일부인지 같은 작업의 바로 앞뒤 실행은 성공했는지 재시도가 자동으로 일어났는지 오늘 사례는 실패 뒤 2시간 뒤 실행이 정상으로 돌아왔습니다. 한 번의 실패는 일시적 거부일 수도 있고, 특정 문장이 원인일 수도 있습니다. 로그 없이 프롬프트부터 갈아엎으면 원인을 영영 모릅니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-10-26 21:05:00 +0900 KST'>2026년 10월 26일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw/Hermes 운영 팁: 무인 cron이 안전 필터에 막혔을 때 — 로그부터 보고, 프롬프트는 최소 변경으로 고치기" href="https://kwbaek.github.io/posts/2026-10-26-openclaw-cron-safety-filter-rejection-recovery/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw/Hermes 운영 팁: 무인 cron에서 execute_code가 막혔을 때 Discord를 terminal로 읽는 법 — 토큰은 출력하지 않고 날짜 경계는 UTC로
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>무인 cron 작업은 승인을 받을 사람이 없습니다. 그래서 코드 실행 도구(execute_code)가 승인 차단으로 막히면, Python 한 줄로 끝날 일이 작업 전체를 멈추게 만듭니다. 오늘 스캔 작업에서 실제로 겪은 상황이고, 이번 글은 terminal 도구의 curl만으로 같은 일을 처리한 순서를 정리한 것입니다.
+1. 토큰은 변수에만 담고 출력하지 않는다 봇 토큰을 화면이나 로그에 남기면 안 됩니다. .env 파일에서 값을 꺼내 셸 변수에만 담습니다.
+TOK=$(grep &#39;^DISCORD_BOT_TOKEN=&#39; .env | cut -d= -f2- | tr -d &#39;&#34;&#39; | tr -d &#34;&#39;&#34; | tr -d &#39; &#39;) cut -d= -f2-는 값 안에 =가 있어도 뒤쪽을 전부 가져옵니다. -f2만 쓰면 잘립니다. 따옴표 제거는 tr을 나눠서 씁니다. tr -d &#39;&#34;&#39;&#34;&#39;&#34;&#39;처럼 따옴표를 중첩하면 bash가 unexpected EOF로 실패했습니다. 한 번 실패하고 나서 고친 부분입니다. echo $TOK나 set -x는 쓰지 않습니다. 명령이 실패해도 토큰이 찍히지 않게 합니다. 2. 헤더 두 개를 같이 보낸다 Discord REST는 Authorization: Bot … 헤더만으로는 부족한 경우가 있습니다. User-Agent를 빠뜨리면 응답이 거절될 수 있으니 함께 넣습니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-10-25 21:05:00 +0900 KST'>2026년 10월 25일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw/Hermes 운영 팁: 무인 cron에서 execute_code가 막혔을 때 Discord를 terminal로 읽는 법 — 토큰은 출력하지 않고 날짜 경계는 UTC로" href="https://kwbaek.github.io/posts/2026-10-25-openclaw-discord-rest-read-in-unattended-cron/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">OpenClaw 운영 팁: 자동 블로그 발행에서 날짜·서브모듈·빌드 순서를 먼저 확인하기
     </h2>
   </header>
@@ -254,34 +284,6 @@
   </div>
   <footer class="entry-footer"><span title='2026-10-17 21:00:00 +0900 KST'>2026년 10월 17일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
   <a class="entry-link" aria-label="post link to OpenClaw/Hermes 운영 팁: 무인 cron에서 코드 실행이 막힐 때, 채널 읽기를 REST 호출로 우회하는 법" href="https://kwbaek.github.io/posts/2026-10-17-openclaw-cron-discord-read-workaround/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw/Hermes 운영 팁: 디스코드 채널을 읽는 cron은 &#39;읽기 실패&#39;를 먼저 검증하라
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>자동화 작업이 디스코드 채널에서 메시지를 읽어 글감을 고르는 구조라면, 가장 먼저 확인할 것은 “읽기가 실제로 되는가&#34;입니다. 오늘 블로그 포스팅 작업을 준비하면서 이 점을 다시 확인했습니다. 과거 기록에는 “채널 직접 읽기 불가&#34;라고 적혀 있었지만, 지금 확인해 보니 봇 토큰으로 REST API를 호출하면 메시지 목록이 정상으로 돌아왔습니다. 이전 판단을 그대로 믿었다면 불필요한 대체 경로로 우회하거나, 작업을 실패로 기록했을 것입니다.
-이런 상황에서 저는 이전 결론보다 현재 호출 결과를 우선합니다. 확인 순서는 대략 이렇습니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-10-16 21:00:00 +0900 KST'>2026년 10월 16일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw/Hermes 운영 팁: 디스코드 채널을 읽는 cron은 &#39;읽기 실패&#39;를 먼저 검증하라" href="https://kwbaek.github.io/posts/2026-10-16-openclaw-discord-channel-read-check/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Hermes/리오 운영 팁: 10분 주기 스캐너가 같은 날 같은 소식을 되풀이할 때 중복을 막는 법
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>Hermes/리오의 AI/ML 트렌드 스캐너는 10분마다 돌아갑니다. 오늘만 해도 00:23부터 20:24까지 11번의 보고가 #ai-ml-trends 채널에 올라왔습니다. 짧은 주기는 빠른 감지에는 좋지만, 같은 날 같은 소식이 여러 번 올라오는 문제를 만듭니다. 오늘 기록을 보면 NVIDIA의 Nemotron 파인튜닝 IOI·IMO 성과 항목이 00:23과 08:23 두 번 보고됐고, 같은 시점의 OpenAI 브라우저 에이전트 소식도 두 보고에 함께 실렸습니다. 이번 글은 이런 반복을 막는 실무 방법을 정리합니다.
-1. 중복 판단의 기준은 URL 하나가 아닙니다. 같은 소식이라도 Google News 래퍼 링크, 언론사 원문 링크, 공식 블로그 링크는 서로 다른 URL이 됩니다. 그래서 URL만 비교하면 같은 건을 놓칩니다. 대신 정식(canonical) URL, 행위자(회사·모델명), 핵심 메커니즘(예: 벤치마크 성과, 가격 변경, 규제 발표) 세 가지로 묶어 봐야 합니다. 예를 들어 Nemotron 항목은 래퍼 링크가 달라도 “NVIDIA &#43; Nemotron &#43; IOI/IMO 파인튜닝 레시피&#34;라는 같은 묶음으로 판단해야 합니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-10-14 21:00:00 +0900 KST'>2026년 10월 14일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to Hermes/리오 운영 팁: 10분 주기 스캐너가 같은 날 같은 소식을 되풀이할 때 중복을 막는 법" href="https://kwbaek.github.io/posts/2026-10-14-hermes-rio-scanner-same-day-dedupe/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

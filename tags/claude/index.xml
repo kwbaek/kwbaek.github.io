@@ -6,8 +6,16 @@
     <description>Recent content in Claude on Kyungwook&#39;s Devlog</description>
     <generator>Hugo -- 0.165.0</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Sat, 31 Oct 2026 20:45:00 +0900</lastBuildDate>
+    <lastBuildDate>Thu, 05 Nov 2026 21:00:00 +0900</lastBuildDate>
     <atom:link href="https://kwbaek.github.io/tags/claude/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI/ML 트렌드: 실험 속도는 Claude가 올렸고, 발견을 확인하는 일은 아직 사람이 맡는다</title>
+      <link>https://kwbaek.github.io/posts/2026-11-05-ai-ml-trends-claude-vault-particle-wet-lab/</link>
+      <pubDate>Thu, 05 Nov 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-11-05-ai-ml-trends-claude-vault-particle-wet-lab/</guid>
+      <description>&lt;p&gt;오늘(11/5) 스캔에서 가장 구체적인 사례는 Anthropic 생물학 연구팀이 공개한 vault 입자 연구입니다. vault는 세포 안에 존재하는 크고 속이 빈 단백질 통 모양 구조로, 1986년 처음 발견된 뒤에도 기능이 확정되지 않았습니다. 이번 발표는 세균 세포와 세균을 감염시키는 바이러스(박테리오파지)에서 vault 구조를 찾아 3차원 구조를 밝힌 작업입니다. 게시일은 2026-11-04이고, 공식 연구 페이지 본문을 직접 확인했습니다.&lt;/p&gt;
+&lt;p&gt;Claude가 맡은 단계가 구체적으로 적혀 있습니다. 단백질 서열 문헌과 데이터베이스를 찾아보았고, DNA 구조물을 설계했으며, 입자를 분리하는 방법을 최적화했고, 현미경 데이터를 처리했습니다. 회사가 밝힌 수치로는 vault 정제에 보통 3일 걸리던 작업이 약 90분으로 줄었고, 첫 구조 모델은 34시간 만에 나왔습니다. 연구팀은 기존 방식이었다면 이보다 훨씬 오래 걸렸을 것으로 추정합니다.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>AI/ML 트렌드: Claude가 찾은 리눅스 커널 원격 root 취약점 — 발견 속도가 패치 속도를 앞지르기 시작했다</title>
       <link>https://kwbaek.github.io/posts/2026-10-31-ai-ml-trends-claude-kernel-root-vuln/</link>

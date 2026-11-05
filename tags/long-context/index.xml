@@ -1,2 +1,20 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Long-Context on Kyungwook's Devlog</title><link>https://kwbaek.github.io/tags/long-context/</link><description>Recent content in Long-Context on Kyungwook's Devlog</description><generator>Hugo -- 0.165.0</generator><language>ko-kr</language><lastBuildDate>Wed, 04 Nov 2026 21:00:00 +0900</lastBuildDate><atom:link href="https://kwbaek.github.io/tags/long-context/index.xml" rel="self" type="application/rss+xml"/><item><title>AI/ML 트렌드: 긴 문서 속 '최종 상태'를 모델이 끝까지 따라가지 못한다</title><link>https://kwbaek.github.io/posts/2026-11-04-ai-ml-trends-statebench-state-tracking/</link><pubDate>Wed, 04 Nov 2026 21:00:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-11-04-ai-ml-trends-statebench-state-tracking/</guid><description>&lt;p&gt;오늘(11/4) 스캔에서 가장 구체적인 신호는 Ai2가 공개한 벤치마크 StateBench입니다. 긴 문서 안에서 개체의 상태가 여러 번 바뀔 때 언어 모델이 그 상태를 얼마나 정확히 따라가는지 측정합니다. 공식 Hugging Face 블로그 본문을 직접 확인했고, 게시일은 2026-11-03입니다.&lt;/p&gt;
-&lt;p&gt;StateBench는 상태 추적을 네 단계로 나눕니다. 값이 한 번 정해지고 바뀌지 않는 R-trivial, 가장 최근 값만 찾으면 되는 aperiodic, 이전 값에 계속 더해 가는 soluble, 변수끼리 참조하며 순서가 얽히는 general finite입니다. 블로그는 이를 생일(고정), 온도조절기(최신 값), 게임 점수(누적), 컵 속 공 찾기(교환 추적)에 비유합니다. 뒤로 갈수록 한 번의 놓침이 최종 답 전체를 틀리게 만듭니다.&lt;/p&gt;</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Long-Context on Kyungwook&#39;s Devlog</title>
+    <link>https://kwbaek.github.io/tags/long-context/</link>
+    <description>Recent content in Long-Context on Kyungwook&#39;s Devlog</description>
+    <generator>Hugo -- 0.165.0</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Wed, 04 Nov 2026 21:00:00 +0900</lastBuildDate>
+    <atom:link href="https://kwbaek.github.io/tags/long-context/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI/ML 트렌드: 긴 문서 속 &#39;최종 상태&#39;를 모델이 끝까지 따라가지 못한다</title>
+      <link>https://kwbaek.github.io/posts/2026-11-04-ai-ml-trends-statebench-state-tracking/</link>
+      <pubDate>Wed, 04 Nov 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-11-04-ai-ml-trends-statebench-state-tracking/</guid>
+      <description>&lt;p&gt;오늘(11/4) 스캔에서 가장 구체적인 신호는 Ai2가 공개한 벤치마크 StateBench입니다. 긴 문서 안에서 개체의 상태가 여러 번 바뀔 때 언어 모델이 그 상태를 얼마나 정확히 따라가는지 측정합니다. 공식 Hugging Face 블로그 본문을 직접 확인했고, 게시일은 2026-11-03입니다.&lt;/p&gt;
+&lt;p&gt;StateBench는 상태 추적을 네 단계로 나눕니다. 값이 한 번 정해지고 바뀌지 않는 R-trivial, 가장 최근 값만 찾으면 되는 aperiodic, 이전 값에 계속 더해 가는 soluble, 변수끼리 참조하며 순서가 얽히는 general finite입니다. 블로그는 이를 생일(고정), 온도조절기(최신 값), 게임 점수(누적), 컵 속 공 찾기(교환 추적)에 비유합니다. 뒤로 갈수록 한 번의 놓침이 최종 답 전체를 틀리게 만듭니다.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

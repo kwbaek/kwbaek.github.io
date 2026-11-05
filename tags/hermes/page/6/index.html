@@ -143,6 +143,34 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">Hermes/리오 팁: 크론 결과를 재현 가능한 증거 번들로 만드는 법
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>AI 연구 재현성 프로젝트가 Hermes/리오 크론에 주는 가장 실용적인 교훈은 간단합니다. 성공했다는 문장보다 성공을 다시 확인할 수 있는 증거 번들이 중요하다는 것입니다. 무인 크론은 마지막 응답만 보면 그럴듯하게 끝났어도 입력이 오래됐는지, 출처가 바뀌었는지, 모델이 다른 경로를 탔는지, 중간 파일이 반쯤 기록됐는지 알기 어렵습니다. 따라서 결과물과 함께 실행 조건을 남기는 구조가 필요합니다.
+1. 실행마다 고유한 증거 묶음을 만든다 크론 시작 시 실행 ID를 만들고 입력 시각, instruction 버전, 사용한 모델, 도구 호출 목록, 원본 URL, 최종 산출물 경로를 한 묶음으로 기록하십시오. 트렌드 스캐너라면 후보 수집 → canonical URL 확인 → 본문 검증 → 중복 판정 → 캐시 갱신의 단계별 상태를 남기면 됩니다. 최종 글만 저장하는 것보다 어떤 후보가 왜 탈락했는지까지 보존하는 편이 다음 실행의 재현성과 디버깅에 훨씬 유리합니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-08-14 21:00:00 +0900 KST'>2026년 8월 14일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to Hermes/리오 팁: 크론 결과를 재현 가능한 증거 번들로 만드는 법" href="https://kwbaek.github.io/posts/2026-08-14-hermes-rio-reproducible-agent-cron-evidence/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Hermes/리오 크론에서 임베딩 기반 검색을 운영하는 법 — 결과보다 근거 레이어를 보존하라
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>OlmoEarth embeddings가 보여주는 중요한 운영 교훈은 임베딩을 생성하는 것보다 나중에 다시 검색하고 검증할 수 있게 저장하는 것이 어렵다는 점입니다. Hermes/리오 크론에서 트렌드 후보, 문서 조각, 상품 이미지, 현장 데이터를 임베딩으로 축적하려면 “가장 비슷한 결과”만 캐시해서는 안 됩니다. 검색 결과가 왜 나왔는지 재현할 수 있는 원본과 생성 조건까지 함께 보존해야 합니다.
+1. 임베딩 캐시와 게시 상태를 분리하기 첫째, 후보 검색 결과와 최종 게시·실행 상태를 다른 파일이나 다른 레코드 층으로 나누십시오. 후보는 새 모델이나 새 질의가 나오면 다시 계산될 수 있지만, 이미 사용자에게 전달된 결과는 별도의 멱등 키와 게시 시각을 가져야 합니다. URL만 중복 키로 쓰면 같은 주제의 업데이트를 놓치고, 반대로 제목만 비교하면 표현이 조금 바뀐 동일 항목을 반복 게시할 수 있습니다. source_url, content_hash, embedding_model, model_version, created_at, topic_key를 최소 필드로 두면 재처리와 중복 판정을 분리할 수 있습니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-08-13 21:00:00 +0900 KST'>2026년 8월 13일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to Hermes/리오 크론에서 임베딩 기반 검색을 운영하는 법 — 결과보다 근거 레이어를 보존하라" href="https://kwbaek.github.io/posts/2026-08-13-hermes-rio-embedding-search-evidence-layer/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">Hermes/리오 크론에 기억과 로컬 모델 경계를 넣는 법 — 메모리는 캐시가 아니다
     </h2>
   </header>
@@ -251,34 +279,6 @@ Hermes/리오 크론이 이미 하고 있는 격리 Hermes/리오로 운영 중�
   </div>
   <footer class="entry-footer"><span title='2026-08-03 21:00:00 +0900 KST'>2026년 8월 3일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
   <a class="entry-link" aria-label="post link to Hermes/리오 팁: &#39;신뢰 플래그&#39;는 보안 경계가 아니라 정책 선언일 뿐입니다" href="https://kwbaek.github.io/posts/2026-08-03-hermes-rio-trust-flags-are-not-a-security-boundary/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Hermes/리오 팁: AI 자동화에는 답변보다 provenance 게이트를 먼저 붙이세요
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>Hermes/리오로 매일 리포트나 블로그를 자동 생성할 때 가장 놓치기 쉬운 부분은 글의 문장력이 아닙니다. 더 중요한 것은 최종 결과가 어떤 입력에서 만들어졌고, 그 입력이 최신이며, 실제 게시 직전까지 검증되었는지를 설명할 수 있는가입니다. EU AI Act의 투명성 규칙이 AI 상호작용과 생성 콘텐츠의 표시를 요구하는 흐름은 개인 자동화에도 같은 교훈을 줍니다. 자동화가 유용해질수록 provenance, 즉 출처와 처리 이력을 결과물에 연결해야 합니다.
-실전에서는 작업을 “수집 → 작성 → 게시” 세 단계로만 보지 말고, 각 단계 사이에 작은 게이트를 넣는 방식이 효과적입니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-08-02 21:01:00 +0900 KST'>2026년 8월 2일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to Hermes/리오 팁: AI 자동화에는 답변보다 provenance 게이트를 먼저 붙이세요" href="https://kwbaek.github.io/posts/2026-08-02-hermes-rio-provenance-gates-for-automation/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Hermes/리오 팁: AI 연구 답변을 재현 가능한 증적으로 바꾸는 워크플로우
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>Hermes/리오를 연구 보조에 활용할 때 가장 위험한 습관은 긴 답변을 받는 것을 작업의 완료로 착각하는 것입니다. 오늘 OpenAI가 수학과 이론 컴퓨터과학의 난제에 대한 새로운 결과를 공개한 사례처럼, 연구 영역의 AI 출력은 매끄러운 설명보다 재현성과 검토 가능성이 중요합니다. 따라서 에이전트의 역할을 “정답 생성기”가 아니라 검증 가능한 연구 작업물을 만드는 조정자로 정의하는 편이 안전하고 실용적입니다.
-첫 단계는 질문을 연구 카드로 바꾸는 것입니다. 카드에는 문제 정의, 성공 조건, 허용된 자료, 금지된 추정, 출력 형식을 적습니다. “이 정리가 맞는가?”처럼 짧은 질문도 정의와 전제 조건이 빠지면 검증할 수 없습니다. Hermes/리오는 먼저 모호한 용어와 가정을 분리하고, 확인이 필요한 항목을 명시한 뒤 탐색을 시작해야 합니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-08-01 21:04:42 +0900 KST'>2026년 8월 1일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to Hermes/리오 팁: AI 연구 답변을 재현 가능한 증적으로 바꾸는 워크플로우" href="https://kwbaek.github.io/posts/2026-08-01-hermes-rio-research-evidence-workflow/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

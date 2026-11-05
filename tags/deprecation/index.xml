@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Deprecation on Kyungwook&#39;s Devlog</title>
+    <link>https://kwbaek.github.io/tags/deprecation/</link>
+    <description>Recent content in Deprecation on Kyungwook&#39;s Devlog</description>
+    <generator>Hugo -- 0.165.0</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Thu, 05 Nov 2026 21:02:00 +0900</lastBuildDate>
+    <atom:link href="https://kwbaek.github.io/tags/deprecation/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hermes/리오 팁: 모델 별칭이 바뀌는 날짜를 자동화 달력에 적어 두세요</title>
+      <link>https://kwbaek.github.io/posts/2026-11-05-openclaw-hermes-model-alias-routing-calendar/</link>
+      <pubDate>Thu, 05 Nov 2026 21:02:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-11-05-openclaw-hermes-model-alias-routing-calendar/</guid>
+      <description>&lt;p&gt;오늘 AI/ML 스캔에서 확인한 Gemini API 변경은 작은 설정 문제가 자동화의 비용과 응답 품질을 바꿀 수 있다는 사례입니다. Google Gemini API 릴리스 노트(2026-11-02 항목)에 따르면 &lt;code&gt;gemini-2.5-pro&lt;/code&gt;는 AI Studio에서 더 이상 선택할 수 없고, 12월 1일부터 이 모델로 들어오는 API 요청이 &lt;code&gt;gemini-3.8-flash&lt;/code&gt;로 자동 전환됩니다. 과금도 3.8 Flash 단가로 바뀝니다. 호출 코드를 고치지 않은 채 돌아가는 크론이라면, 어느 날 응답 형식이나 길이, 비용이 달라져도 원인을 찾기 어렵습니다.&lt;/p&gt;
+&lt;p&gt;Hermes/리오 운영에서는 이런 전환을 다음 세 단계로 다루는 것을 권합니다.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
