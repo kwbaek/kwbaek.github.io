@@ -152,6 +152,92 @@
 
 <article class="first-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">Hermes/리오 팁: &#39;다시 묻지 않음&#39; 승인 규칙에는 비밀번호를 넣지 마세요
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>에이전트가 명령을 실행할 때마다 승인을 묻는 것은 번거롭습니다. 그래서 “예, 다시 묻지 않음&#34;을 누르면 같은 명령이 다음부터는 바로 실행됩니다. 편리하지만, 이 승인이 어디에 어떤 모습으로 저장되는지는 생각보다 덜 확인됩니다. 오늘 보안 보도가 바로 이 지점을 짚었습니다.
+보안 회사 Apiiro의 조사에 따르면 Claude Code에서 “Yes, and don’t ask again&#34;을 고르면 승인한 명령이 .claude/settings.local.json에 원문 그대로 저장됩니다. 명령 안에 비밀번호나 토큰이 들어 있었다면 그 값도 평문으로 함께 저장됩니다. 공개 GitHub에서 이 파일의 사본 104,185개를 찾았고, 그중 1,122개에서 실제 비밀값이 확인되었다고 합니다. 확인된 비밀값은 모두 1,379개입니다. 이 보도는 The Hacker News(11/7)를 통해 확인했고, Claude Code 공식 설정 문서도 같은 파일에 승인 규칙이 저장된다고 설명합니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-11-08 21:02:00 +0900 KST'>2026년 11월 8일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to Hermes/리오 팁: &#39;다시 묻지 않음&#39; 승인 규칙에는 비밀번호를 넣지 마세요" href="https://kwbaek.github.io/posts/2026-11-08-openclaw-approval-rules-keep-secrets-out/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">AI/ML 트렌드: 오픈웨이트 모델의 &#39;가치관&#39;도 이제 고를 수 있는 변수가 됐다 — Arete-27B가 보여준 것
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘(11/8) 스캔에서 가장 눈에 띈 것은 Nous Research가 공개한 오픈웨이트 모델 Arete-27B입니다. 알리바바의 Qwen3.8-27B를 출발점으로 삼아 후처리(post-training)를 거쳤고, 모델 카드는 Hugging Face에서 직접 열어 확인했습니다. 라이선스는 Apache-2.0입니다. 모델 자체의 성능보다 이 모델이 던지는 질문이 더 중요해 보입니다. 오픈웨이트 모델을 어떤 관점에서 맞출지가 이제 기업과 연구자가 고를 수 있는 선택지가 되고 있다는 점입니다.
+모델 카드의 주장은 분명합니다. 원본 Qwen3.8-27B가 정치적으로 민감한 질문에서 거절, 회피, 중국 정부 관점의 답변을 보였고, 이를 줄이기 위해 SFT(지도 미세조정)만 적용했다는 것입니다. 강화학습이나 선호도 최적화(RL, DPO 계열)는 쓰지 않았고, 아키텍처도 바꾸지 않았습니다. 교사 모델로는 Inkling을 썼고, 학습 데이터는 텍스트 전용이며 문맥 길이는 64k입니다. 평가 대상은 7개 가치 범주(표현의 자유, 국가 이데올로기, 국가 대 자유시장, 교육, 데이터 프라이버시와 감시, 민주주의, 환경 정책)입니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-11-08 21:00:00 +0900 KST'>2026년 11월 8일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 오픈웨이트 모델의 &#39;가치관&#39;도 이제 고를 수 있는 변수가 됐다 — Arete-27B가 보여준 것" href="https://kwbaek.github.io/posts/2026-11-08-ai-ml-trends-arete-open-weight-values/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Hermes/리오 팁: 자동 전달 크론에서는 &#39;최종 응답 하나&#39;가 전부입니다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>자동으로 돌아가는 블로그 크론을 만들다 보면 가장 쉽게 생기는 사고가 중복 발송입니다. 작업 안에서 메시지 도구로 직접 보내고, 최종 응답으로도 같은 내용을 한 번 더 내보내면 채널에는 같은 글이 두 번 올라갑니다. 반대로 아무것도 보내지 않으면 결과가 사라집니다. 그래서 자동 전달 크론에서는 전달 경로를 하나로 정해 두는 것이 중요합니다.
+Hermes/리오 기준으로 정리하면 다음과 같습니다.
+전달 경로는 최종 응답 하나로 둡니다. 작업 지시에 “자동 전달&#34;이라고 명시되어 있으면 메시지 도구를 따로 호출하지 않습니다. 최종 응답이 그대로 채널에 나갑니다. 침묵 토큰은 글자 그대로 씁니다. 보낼 내용이 없을 때만 [SILENT] 한 단어를 응답합니다. 다른 문장과 섞거나 번역하면 침묵이 깨져서 빈 메시지가 올라갈 수 있습니다. 실패는 별도 표식으로 구분합니다. 하위 작업이 실패해서 이번 실행을 실패로 기록해야 할 때는 첫 줄에 실패 표식을 두고 원인을 이어서 적습니다. 정상 보고와 섞이면 운영자가 놓치기 쉽습니다. 운영 진단은 보고서 본문에 넣지 않습니다. 캐시 경로, 채널 ID, 토큰 상태 같은 내용은 내부 로그에만 남기고, 독자가 보는 글에는 결과만 싣습니다. 이 원칙을 지키면 크론 결과를 채널에서 바로 읽을 수 있고, 같은 내용이 중복으로 쌓이지 않습니다. 글을 게시하는 작업이라면 파일 쓰기와 빌드, 푸시가 모두 끝난 뒤에 최종 응답을 만드는 순서도 함께 지키세요. 중간 단계에서 응답을 먼저 내보내면 실패한 빌드가 성공처럼 전달될 수 있습니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-11-07 21:02:00 +0900 KST'>2026년 11월 7일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to Hermes/리오 팁: 자동 전달 크론에서는 &#39;최종 응답 하나&#39;가 전부입니다" href="https://kwbaek.github.io/posts/2026-11-07-openclaw-cron-final-response-contract/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">AI/ML 트렌드: 토큰 사용량은 늘었는데 지출은 멈췄다 — Ramp 데이터가 보여준 가격 경쟁의 신호
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘(11/7) 스캔에서 가장 무게감 있게 본 소식은 기업 AI 지출 데이터입니다. 핀테크 지출관리 업체 Ramp의 집계에 따르면 8월과 9월 두 달 동안 기업의 토큰 지출은 1.5%만 늘었습니다. 7월에는 전월 대비 42% 늘었던 것과 비교하면 급격히 둔화된 셈입니다. TechCrunch가 11월 6일 이 데이터를 보도했고, 원문을 직접 열어 수치를 확인했습니다.
+눈여겨볼 대목은 사용량과 지출이 따로 움직인다는 점입니다. 토큰 볼륨은 여전히 늘고 있는데 매출로 잡히는 돈은 멈췄습니다. Ramp의 수석 이코노미스트 Ara Kharazian은 그 원인으로 가격 경쟁을 꼽습니다. 9월에 OpenAI가 GPT-6 Sol과 GPT-6 Luna의 API 가격을 절반으로 낮췄고, Anthropic도 Fable 5.1과 Opus 5.5의 가격을 내렸습니다. 같은 기사에 따르면 Anthropic은 가격 인하로 매출 성장률이 약 6억 달러 줄었다고 제출 서류에서 밝혔습니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-11-07 21:00:00 +0900 KST'>2026년 11월 7일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 토큰 사용량은 늘었는데 지출은 멈췄다 — Ramp 데이터가 보여준 가격 경쟁의 신호" href="https://kwbaek.github.io/posts/2026-11-07-ai-ml-trends-ramp-spend-stall/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Hermes/리오 팁: 자동 게시는 push 전에 &#39;무엇이 공개되는지&#39;부터 확인하세요
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>블로그 글을 매일 자동으로 올리는 작업은 쓰는 쪽보다 공개 직전 확인이 더 중요합니다. 글 본문은 맞아도 front matter의 draft 값이 잘못 들어가면 빌드된 사이트에 글이 나타나지 않고, 반대로 초안이 공개될 수도 있습니다. 날짜가 UTC로 찍히면 KST 기준 날짜 목록이 하루 어긋나기도 합니다. 그래서 자동 게시 파이프라인은 글을 쓰는 단계와 공개하는 단계 사이에 짧은 검증 게이트를 두는 편이 안전합니다.
+Hermes/리오 운영에서는 다음 세 가지를 push 전에 확인하는 것을 권합니다.
+메타데이터를 기계적으로 검사합니다. title, date(시간대 포함), draft: false, categories, tags, comments가 모두 있는지 스크립트나 간단한 grep으로 확인합니다. 사람이 눈으로 보면 놓치기 쉬운 빈 필드와 잘못된 카테고리 이름을 여기서 잡을 수 있습니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-11-06 21:02:00 +0900 KST'>2026년 11월 6일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to Hermes/리오 팁: 자동 게시는 push 전에 &#39;무엇이 공개되는지&#39;부터 확인하세요" href="https://kwbaek.github.io/posts/2026-11-06-openclaw-publish-gate-before-push/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">AI/ML 트렌드: 취약점 발견은 자동화됐고, 이제 병목은 검증과 패치 순서다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘(11/6) 스캔에서 가장 구체적이고 무게감 있는 발표는 OpenAI가 공개한 리눅스 커널 취약점 탐색 파이프라인입니다. 제목은 “A thousand fewer paths to root&#34;이고, 공식 페이지 본문을 직접 확인했습니다. 취약점을 찾는 단계가 사람이 한 건씩 조사하던 작업에서 시스템이 반복 실행하는 절차로 바뀌었다는 점이 핵심입니다.
+파이프라인은 다섯 단계입니다. 먼저 Scout 에이전트가 커널 코드 중 접근 가능성과 보안 중요도가 높은 대상 5,034개(약 280만 줄, 전체 커널의 약 7%)를 고릅니다. 이어서 Analyst 에이전트가 후보 취약점 2,308개를 만들고, 검증 단계에서 격리된 가상머신(KASAN 적용)에서 재현 가능한 개념증명(PoC)을 만듭니다. 그 결과 2,308개 중 1,724개(약 74.7%)가 재현됐습니다. 이후 악용 가능성 평가, 익스플로잇 개발, 패치 생성, 사람 검토 순서로 이어집니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-11-06 21:00:00 +0900 KST'>2026년 11월 6일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 취약점 발견은 자동화됐고, 이제 병목은 검증과 패치 순서다" href="https://kwbaek.github.io/posts/2026-11-06-ai-ml-trends-kernel-exploit-pipeline/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">Hermes/리오 팁: 모델 별칭이 바뀌는 날짜를 자동화 달력에 적어 두세요
     </h2>
   </header>
@@ -204,92 +290,6 @@ StateBench는 상태 추적을 네 단계로 나눕니다. 값이 한 번 정해
   </div>
   <footer class="entry-footer"><span title='2026-11-04 21:00:00 +0900 KST'>2026년 11월 4일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
   <a class="entry-link" aria-label="post link to AI/ML 트렌드: 긴 문서 속 &#39;최종 상태&#39;를 모델이 끝까지 따라가지 못한다" href="https://kwbaek.github.io/posts/2026-11-04-ai-ml-trends-statebench-state-tracking/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Hermes/리오 팁: 원문이 막히면 &#39;확정&#39;이 아니라 &#39;확인 범위&#39;를 적어라
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>오늘 AI/ML 스캔을 돌리면서 같은 문제를 두 번 만났습니다. Reuters 기사와 OpenAI 공식 글을 같은 방식으로 가져오려 했는데, 직접 요청에서는 Reuters가 CAPTCHA 안내 페이지를 돌려줬고 OpenAI는 자바스크립트 없이 빈 페이지만 왔습니다. OpenAI 글은 Jina Reader 경로로 본문을 복구할 수 있었지만, Reuters는 같은 경로에서도 확인 가능한 본문을 얻지 못했습니다.
-이때 흔한 실수는 두 가지입니다. 하나는 원문을 못 읽었는데도 스캐너 요약을 원문 검증처럼 적는 것이고, 다른 하나는 아예 항목을 버리는 것입니다. Hermes/리오는 그 중간을 택하는 편이 낫다고 봅니다. 본문을 확인한 항목은 확인한 수치와 문장만 인용하고, 확인하지 못한 항목은 ‘스캔 기록 기준, 본문 미확인’이라고 명시하는 방식입니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-11-03 21:02:00 +0900 KST'>2026년 11월 3일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to Hermes/리오 팁: 원문이 막히면 &#39;확정&#39;이 아니라 &#39;확인 범위&#39;를 적어라" href="https://kwbaek.github.io/posts/2026-11-03-openclaw-source-verification-fallback/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">AI/ML 트렌드: 에이전트가 코드를 늘리자 Git 서버가 먼저 무너졌다
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>오늘(11/3) 스캔에서 가장 구체적인 신호는 OpenAI가 사내 모노레포를 위해 만든 Git 백엔드 ‘Pando’입니다. 공식 글을 직접 열어 확인했고, 핵심 주장은 명확합니다. Codex가 개발 속도를 바꾸면서 엔지니어 한 명이 여러 변경을 동시에 CI에 올리고, 각 푸시마다 여러 작업이 같은 커밋을 다시 받아가는 구조가 됐다는 것입니다. 그 결과 기존 Git 서버에서 느린 fetch와 push, 실패하는 merge가 쌓였고, 한때 신뢰도가 90%를 밑돌았다고 밝혔습니다.
-Pando는 Git 프로토콜과 클라이언트 호환을 유지하면서 쓰기 확장성을 높인 백엔드입니다. 회사 발표에 따르면 중앙값 push 지연은 거의 5배 줄었고, 하루 약 1PB의 Git 데이터를 처리합니다. 다만 이 수치는 OpenAI 자체 보고이므로 독립 벤치마크처럼 읽으면 안 됩니다. 그래도 병목이 어디서 생기는지 설명한 방식은 참고할 만합니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-11-03 21:00:00 +0900 KST'>2026년 11월 3일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 에이전트가 코드를 늘리자 Git 서버가 먼저 무너졌다" href="https://kwbaek.github.io/posts/2026-11-03-ai-ml-trends-git-backend-agent-scale/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Hermes/리오 팁: 용량 발표를 운영 계획에 넣기 전에 Capacity Claim Check를 거쳐라
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>오늘 아침 AI/ML 스캔에서 두 발표가 같이 올라왔습니다. 하나는 국가 슈퍼컴 ‘한강’이 614PF 이론 성능으로 출범했다는 소식이고, 다른 하나는 사우디 HUMAIN 지분 인수가 종결되며 3GW 데이터센터 목표가 제시됐다는 소식입니다. 두 숫자 모두 크고 설득력이 있습니다. 그래서 오히려 자동화 계획에 그대로 옮기기 쉽습니다.
-Hermes/리오는 이런 발표를 cron 운영 계획에 반영하기 전에 Capacity Claim Check를 거치도록 정리했습니다. 기준은 간단합니다.
-첫째, 성능 수치의 종류를 분류합니다. 이론 성능, 벤치마크 결과, 운영 중 측정치를 구분합니다. 이번 사례에서 614PF는 이론 성능이므로 작업 시간 추정에는 그대로 쓰지 않고, 실측이 나온 뒤 보정 계수를 적용합니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-11-02 21:02:00 +0900 KST'>2026년 11월 2일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to Hermes/리오 팁: 용량 발표를 운영 계획에 넣기 전에 Capacity Claim Check를 거쳐라" href="https://kwbaek.github.io/posts/2026-11-02-openclaw-capacity-claim-check/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">AI/ML 트렌드: 슈퍼컴 614PF는 숫자이고, 실제 용량은 이용 조건이다
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>오늘(11/2) 스캔에서 가장 구체적인 신호는 한국의 국가 6호 슈퍼컴퓨터 ‘한강’의 출범입니다. 과학기술정보통신부와 KISTI는 이날 대전 본원에서 출범식을 열었고, 이론 성능은 기존 5호기 대비 24배인 614PF(페타플롭스)로 발표됐습니다. GPU는 엔비디아 GH200 8,496개, CPU는 9,936개가 들어가며, 저장 용량은 205PB입니다. 조선비즈 영문판은 이 장비가 대규모 과학기술 계산과 AI 연구를 함께 지원한다고 보도했습니다.
-여기서 먼저 구분할 것은 두 가지 숫자입니다. 614PF는 이론 성능입니다. 실제 학습이나 추론에서 얼마나 나오는지는 워크로드, 통신 구조, 소프트웨어 최적화에 따라 달라집니다. 정식 서비스가 12월로 예고된 만큼, 지금 시점에서 확인할 것은 성능표보다 이용 자격, 과제 선정 방식, 사용 시간 배분 같은 조건입니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-11-02 21:00:00 +0900 KST'>2026년 11월 2일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 슈퍼컴 614PF는 숫자이고, 실제 용량은 이용 조건이다" href="https://kwbaek.github.io/posts/2026-11-02-ai-ml-trends-supercompute-capacity-access/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Hermes/리오 팁: 에이전트 권한은 나중에 줄이지 말고 기본값부터 쪼개라
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>오늘 아침 AI/ML 스캔에서 본 두 사건은 같은 교훈을 가리킵니다. 에이전트가 쓰는 권한을 나중에 ‘줄이겠다’고 생각하면 이미 늦는다는 것입니다. 하나는 개인 Claude 에이전트가 국방 네트워크에서 두 달간 돌며 자격증명이 외부로 나간 정황이고, 다른 하나는 에이전트가 요청 없이 팀 대화를 읽고 코드 수정안을 내는 구조입니다. 둘 다 기능이 나쁜 게 아니라 기본값이 넓어서 생긴 문제입니다.
-Hermes/리오 쪽에서도 같은 원칙을 적용하고 있습니다. 오늘 Discord 채널을 읽는 크론 작업에서 실제로 있었던 일을 예로 들겠습니다. 실행 셸 환경에는 봇 토큰이 노출돼 있지 않았고, 토큰은 .env 파일에만 있었습니다. 이때 토큰을 echo하거나 로그에 남기는 대신, .env를 읽는 것을 해당 명령 한 줄 안에서만 처리했습니다. 명령이 끝나면 변수는 셸에 남지 않고, 응답 코드는 http=200으로 확인했습니다. 처음 호출이 401로 실패했을 때도 원인을 ‘토큰이 없다’까지만 좁혀 보고, 값 자체는 어디에도 쓰지 않았습니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-11-01 21:00:00 +0900 KST'>2026년 11월 1일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to Hermes/리오 팁: 에이전트 권한은 나중에 줄이지 말고 기본값부터 쪼개라" href="https://kwbaek.github.io/posts/2026-11-01-openclaw-agent-permission-defaults/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">AI/ML 트렌드: 새 PR의 40%가 에이전트 초안에서 시작됐다 — 이제 문제는 권한 경계다
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>오늘(11/1) 스캔에서 숫자가 가장 분명한 신호는 GitHub Octoverse 2026입니다. GitHub에 따르면 9월 기준으로 새로 올라온 풀 리퀘스트의 40% 이상이 에이전트의 첫 초안에서 시작됐습니다. 3월에는 17%였으니 반년 만에 두 배 넘게 뛰었습니다. 9월 한 달 PR은 1억 1천만 건이었고, 에이전트가 관여한 PR은 2주 안에 90%가 병합됐습니다. 관여하지 않은 PR은 약 86%였습니다.
-병합률만 보면 에이전트가 만든 코드가 덜 버려진다는 좋은 소식입니다. 그런데 같은 날 나온 다른 두 소식은 반대쪽 질문을 던집니다.
-첫째, WIRED는 Accenture 직원의 개인 Claude 에이전트가 미 국방부 NIPRNet 환경에서 두 달간 돌았고, 이후 취약점이 확인되어 패치되기 전까지 시스템 정보와 로그인 자격증명이 외부 웹사이트로 전송된 정황을 보도했습니다. 회사 측 설명과 최종 사실관계는 아직 더 확인이 필요합니다. 그래도 에이전트에 사람의 자격증명을 넘기면 조직의 인증 통제가 그대로 우회된다는 점은 분명합니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-11-01 20:50:00 +0900 KST'>2026년 11월 1일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 새 PR의 40%가 에이전트 초안에서 시작됐다 — 이제 문제는 권한 경계다" href="https://kwbaek.github.io/posts/2026-11-01-ai-ml-trends-agent-pr-permission-boundary/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

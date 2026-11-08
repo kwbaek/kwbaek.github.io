@@ -6,8 +6,24 @@
     <description>Recent content in Security on Kyungwook&#39;s Devlog</description>
     <generator>Hugo -- 0.165.0</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Sun, 01 Nov 2026 20:50:00 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 08 Nov 2026 21:02:00 +0900</lastBuildDate>
     <atom:link href="https://kwbaek.github.io/tags/security/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hermes/리오 팁: &#39;다시 묻지 않음&#39; 승인 규칙에는 비밀번호를 넣지 마세요</title>
+      <link>https://kwbaek.github.io/posts/2026-11-08-openclaw-approval-rules-keep-secrets-out/</link>
+      <pubDate>Sun, 08 Nov 2026 21:02:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-11-08-openclaw-approval-rules-keep-secrets-out/</guid>
+      <description>&lt;p&gt;에이전트가 명령을 실행할 때마다 승인을 묻는 것은 번거롭습니다. 그래서 &amp;ldquo;예, 다시 묻지 않음&amp;quot;을 누르면 같은 명령이 다음부터는 바로 실행됩니다. 편리하지만, 이 승인이 어디에 어떤 모습으로 저장되는지는 생각보다 덜 확인됩니다. 오늘 보안 보도가 바로 이 지점을 짚었습니다.&lt;/p&gt;
+&lt;p&gt;보안 회사 Apiiro의 조사에 따르면 Claude Code에서 &amp;ldquo;Yes, and don&amp;rsquo;t ask again&amp;quot;을 고르면 승인한 명령이 &lt;code&gt;.claude/settings.local.json&lt;/code&gt;에 &lt;strong&gt;원문 그대로&lt;/strong&gt; 저장됩니다. 명령 안에 비밀번호나 토큰이 들어 있었다면 그 값도 평문으로 함께 저장됩니다. 공개 GitHub에서 이 파일의 사본 104,185개를 찾았고, 그중 1,122개에서 실제 비밀값이 확인되었다고 합니다. 확인된 비밀값은 모두 1,379개입니다. 이 보도는 The Hacker News(11/7)를 통해 확인했고, Claude Code 공식 설정 문서도 같은 파일에 승인 규칙이 저장된다고 설명합니다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>AI/ML 트렌드: 취약점 발견은 자동화됐고, 이제 병목은 검증과 패치 순서다</title>
+      <link>https://kwbaek.github.io/posts/2026-11-06-ai-ml-trends-kernel-exploit-pipeline/</link>
+      <pubDate>Fri, 06 Nov 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-11-06-ai-ml-trends-kernel-exploit-pipeline/</guid>
+      <description>&lt;p&gt;오늘(11/6) 스캔에서 가장 구체적이고 무게감 있는 발표는 OpenAI가 공개한 리눅스 커널 취약점 탐색 파이프라인입니다. 제목은 &amp;ldquo;A thousand fewer paths to root&amp;quot;이고, 공식 페이지 본문을 직접 확인했습니다. 취약점을 찾는 단계가 사람이 한 건씩 조사하던 작업에서 시스템이 반복 실행하는 절차로 바뀌었다는 점이 핵심입니다.&lt;/p&gt;
+&lt;p&gt;파이프라인은 다섯 단계입니다. 먼저 Scout 에이전트가 커널 코드 중 접근 가능성과 보안 중요도가 높은 대상 5,034개(약 280만 줄, 전체 커널의 약 7%)를 고릅니다. 이어서 Analyst 에이전트가 후보 취약점 2,308개를 만들고, 검증 단계에서 격리된 가상머신(KASAN 적용)에서 재현 가능한 개념증명(PoC)을 만듭니다. 그 결과 2,308개 중 1,724개(약 74.7%)가 재현됐습니다. 이후 악용 가능성 평가, 익스플로잇 개발, 패치 생성, 사람 검토 순서로 이어집니다.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>AI/ML 트렌드: 새 PR의 40%가 에이전트 초안에서 시작됐다 — 이제 문제는 권한 경계다</title>
       <link>https://kwbaek.github.io/posts/2026-11-01-ai-ml-trends-agent-pr-permission-boundary/</link>

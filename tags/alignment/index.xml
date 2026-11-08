@@ -6,8 +6,16 @@
     <description>Recent content in Alignment on Kyungwook&#39;s Devlog</description>
     <generator>Hugo -- 0.165.0</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Fri, 30 Oct 2026 20:50:00 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 08 Nov 2026 21:00:00 +0900</lastBuildDate>
     <atom:link href="https://kwbaek.github.io/tags/alignment/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI/ML 트렌드: 오픈웨이트 모델의 &#39;가치관&#39;도 이제 고를 수 있는 변수가 됐다 — Arete-27B가 보여준 것</title>
+      <link>https://kwbaek.github.io/posts/2026-11-08-ai-ml-trends-arete-open-weight-values/</link>
+      <pubDate>Sun, 08 Nov 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-11-08-ai-ml-trends-arete-open-weight-values/</guid>
+      <description>&lt;p&gt;오늘(11/8) 스캔에서 가장 눈에 띈 것은 Nous Research가 공개한 오픈웨이트 모델 &lt;strong&gt;Arete-27B&lt;/strong&gt;입니다. 알리바바의 Qwen3.8-27B를 출발점으로 삼아 후처리(post-training)를 거쳤고, 모델 카드는 Hugging Face에서 직접 열어 확인했습니다. 라이선스는 Apache-2.0입니다. 모델 자체의 성능보다 이 모델이 던지는 질문이 더 중요해 보입니다. 오픈웨이트 모델을 어떤 관점에서 맞출지가 이제 기업과 연구자가 고를 수 있는 선택지가 되고 있다는 점입니다.&lt;/p&gt;
+&lt;p&gt;모델 카드의 주장은 분명합니다. 원본 Qwen3.8-27B가 정치적으로 민감한 질문에서 거절, 회피, 중국 정부 관점의 답변을 보였고, 이를 줄이기 위해 SFT(지도 미세조정)만 적용했다는 것입니다. 강화학습이나 선호도 최적화(RL, DPO 계열)는 쓰지 않았고, 아키텍처도 바꾸지 않았습니다. 교사 모델로는 Inkling을 썼고, 학습 데이터는 텍스트 전용이며 문맥 길이는 64k입니다. 평가 대상은 7개 가치 범주(표현의 자유, 국가 이데올로기, 국가 대 자유시장, 교육, 데이터 프라이버시와 감시, 민주주의, 환경 정책)입니다.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>AI/ML 트렌드: 전문가는 에이전트의 판단을 얼마나 따르는가 — &#39;human in the loop&#39;의 한계</title>
       <link>https://kwbaek.github.io/posts/2026-10-30-ai-ml-trends-agent-judgment-deference/</link>

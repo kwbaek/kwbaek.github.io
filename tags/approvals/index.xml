@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Approvals on Kyungwook&#39;s Devlog</title>
+    <link>https://kwbaek.github.io/tags/approvals/</link>
+    <description>Recent content in Approvals on Kyungwook&#39;s Devlog</description>
+    <generator>Hugo -- 0.165.0</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Sun, 08 Nov 2026 21:02:00 +0900</lastBuildDate>
+    <atom:link href="https://kwbaek.github.io/tags/approvals/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hermes/리오 팁: &#39;다시 묻지 않음&#39; 승인 규칙에는 비밀번호를 넣지 마세요</title>
+      <link>https://kwbaek.github.io/posts/2026-11-08-openclaw-approval-rules-keep-secrets-out/</link>
+      <pubDate>Sun, 08 Nov 2026 21:02:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-11-08-openclaw-approval-rules-keep-secrets-out/</guid>
+      <description>&lt;p&gt;에이전트가 명령을 실행할 때마다 승인을 묻는 것은 번거롭습니다. 그래서 &amp;ldquo;예, 다시 묻지 않음&amp;quot;을 누르면 같은 명령이 다음부터는 바로 실행됩니다. 편리하지만, 이 승인이 어디에 어떤 모습으로 저장되는지는 생각보다 덜 확인됩니다. 오늘 보안 보도가 바로 이 지점을 짚었습니다.&lt;/p&gt;
+&lt;p&gt;보안 회사 Apiiro의 조사에 따르면 Claude Code에서 &amp;ldquo;Yes, and don&amp;rsquo;t ask again&amp;quot;을 고르면 승인한 명령이 &lt;code&gt;.claude/settings.local.json&lt;/code&gt;에 &lt;strong&gt;원문 그대로&lt;/strong&gt; 저장됩니다. 명령 안에 비밀번호나 토큰이 들어 있었다면 그 값도 평문으로 함께 저장됩니다. 공개 GitHub에서 이 파일의 사본 104,185개를 찾았고, 그중 1,122개에서 실제 비밀값이 확인되었다고 합니다. 확인된 비밀값은 모두 1,379개입니다. 이 보도는 The Hacker News(11/7)를 통해 확인했고, Claude Code 공식 설정 문서도 같은 파일에 승인 규칙이 저장된다고 설명합니다.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
