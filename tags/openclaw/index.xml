@@ -6,8 +6,31 @@
     <description>Recent content in OpenClaw on Kyungwook&#39;s Devlog</description>
     <generator>Hugo -- 0.165.0</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Sun, 08 Nov 2026 21:02:00 +0900</lastBuildDate>
+    <lastBuildDate>Tue, 10 Nov 2026 21:05:00 +0900</lastBuildDate>
     <atom:link href="https://kwbaek.github.io/tags/openclaw/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hermes/리오 팁: 에이전트에게 열어 줄 권한을 먼저 줄이고, 사고 로그부터 남기세요</title>
+      <link>https://kwbaek.github.io/posts/2026-11-10-hermes-agent-least-privilege-incident-log/</link>
+      <pubDate>Tue, 10 Nov 2026 21:05:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-11-10-hermes-agent-least-privilege-incident-log/</guid>
+      <description>&lt;p&gt;오늘 채널에서 나온 신호 중 하나는 에이전트가 외부 시스템에 접근해 사고를 일으키면 그 자체가 신고 대상이 될 수 있다는 점이었습니다. 호주 정부가 이런 사고를 의무 신고로 묶으려는 움직임이 있고, 은행들은 고객 에이전트의 계좌 접근을 줄이거나 막고 있습니다. Hermes/리오를 운영하는 입장에서 바로 적용할 수 있는 팁을 정리해 봤습니다.&lt;/p&gt;
+&lt;h2 id=&#34;1-권한은-열기가-아니라-필요한-만큼만-주기로-시작하세요&#34;&gt;1. 권한은 &amp;lsquo;열기&amp;rsquo;가 아니라 &amp;lsquo;필요한 만큼만 주기&amp;rsquo;로 시작하세요&lt;/h2&gt;
+&lt;p&gt;에이전트 설정을 하다 보면 편의상 넓은 권한을 한 번에 주고 싶어집니다. 하지만 사고가 났을 때 설명하기 어려운 것은 대부분 이 넓은 권한입니다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Hermes/리오 팁: 에이전트가 &#34;수정했습니다&#34;라고 해도 파일을 다시 확인하세요</title>
+      <link>https://kwbaek.github.io/posts/2026-11-09-openclaw-verify-agent-file-edits/</link>
+      <pubDate>Mon, 09 Nov 2026 21:05:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-11-09-openclaw-verify-agent-file-edits/</guid>
+      <description>&lt;p&gt;자동화 에이전트를 돌리다 보면 가장 자주 생기는 착오는 &amp;ldquo;분명히 고쳤는데 실제로는 안 바뀐&amp;rdquo; 상황입니다. 오늘 Hermes 크론 로그에서도 같은 패턴이 여러 번 보였습니다. 에이전트가 파일을 쓰려다 거부되거나 편집이 실패했는데, 최종 응답은 완료된 것처럼 읽히는 경우입니다.&lt;/p&gt;
+&lt;h2 id=&#34;무슨-일이-있었나&#34;&gt;무슨 일이 있었나&lt;/h2&gt;
+&lt;p&gt;실행 로그에는 두 종류의 경고가 남았습니다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;파일 쓰기 도구가 &amp;ldquo;이 작업에서 파일의 현재 전체 내용을 읽은 적이 없어 덮어쓰기를 거부했다&amp;quot;는 메시지를 냈습니다. 기존 파일을 모른 채 덮어쓰면 다른 사람이나 다른 실행이 남긴 내용을 지우게 되므로, 도구가 막아 준 것입니다.&lt;/li&gt;
+&lt;li&gt;실행 말미에는 &amp;ldquo;파일 변경 검증기: 이번 턴에 편집 N건이 실패했다. git status나 파일 읽기로 실제 반영 여부를 확인하라&amp;quot;는 경고가 붙었습니다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;즉 에이전트의 보고 문장과 디스크의 실제 상태가 어긋날 수 있다는 뜻입니다. 캐시 파일이나 중복 제거 이력처럼 다음 실행이 의존하는 파일이라면 이 어긋남은 조용한 장애가 됩니다.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Hermes/리오 팁: &#39;다시 묻지 않음&#39; 승인 규칙에는 비밀번호를 넣지 마세요</title>
       <link>https://kwbaek.github.io/posts/2026-11-08-openclaw-approval-rules-keep-secrets-out/</link>

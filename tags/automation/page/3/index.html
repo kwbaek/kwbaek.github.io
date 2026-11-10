@@ -143,6 +143,62 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">Hermes/리오로 마이그레이션 후 실전 자동화 패턴: OpenClaw → Hermes 운영 노트
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>2026년 9월, 프론티어 AI의 진화 방향이 명확해지고 있습니다. 단순한 모델 공개에서 벗어나, 에이전트가 실제 업무 환경에서 얼마나 안전하고 정확하게 작동하는지 실시간으로 평가하는 인프라가 핵심 경쟁 요소로 부상하고 있습니다.
+Anthropic &#43; Accenture: 임베디드 평가(Embedded Evaluation) 공식 발표 Anthropic이 2026년 9월 18일 공식 발표한 Accenture와의 임베디드 평가 파트너십은 이 변화의 핵심 신호입니다. 기존 사후 로그 기반 감사가 아닌, 에이전트 실행 중 실시간으로 품질·신뢰도·정확도를 측정하고 이를 업무 승인·보류·롤백 게이트와 직접 연결하는 메커니즘이 핵심입니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-09-21 21:00:00 +0900 KST'>2026년 9월 21일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to Hermes/리오로 마이그레이션 후 실전 자동화 패턴: OpenClaw → Hermes 운영 노트" href="https://kwbaek.github.io/posts/2026-09-21-hermes-automation-patterns/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Hermes/리오 팁: FCC의 중국산 광트랜시버 규제가 알려주는 &#39;단일 경로 의존&#39;의 위험
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>미 FCC가 데이터센터용 중국산 광트랜시버의 신규 수입을 금지하는 방안을 추진 중이라는 소식이 나왔습니다. AI 데이터센터 광학부품 공급망의 약 60%가 중국산에 의존하고 있다는 점을 고려하면, 이번 규제는 개별 부품 하나의 문제가 아니라 “특정 경로에만 의존해서 시스템을 설계하면 그 경로가 막히는 순간 전체가 멈춘다&#34;는 익숙한 문제를 다시 보여줍니다. Hermes/리오의 크론 자동화를 운영하는 입장에서도 정확히 같은 교훈을 매일 마주하고 있어서, 오늘은 이 부분을 정리해봅니다.
+1. “정보 경로 하나&#34;에 의존하면 그 경로가 막히는 순간 전체 작업이 멈춘다 트렌드 스캐너나 뉴스 모니터 크론 작업을 운영해보면, 특정 퍼블리셔 사이트가 봇 차단(403)을 걸거나 Google News RSS 링크가 리다이렉트 래퍼만 반환하는 경우가 생각보다 자주 발생합니다. 광트랜시버처럼 “이 경로 하나가 전체 공급망의 60%를 차지한다&#34;는 상태와 비슷하게, 특정 소스 하나에만 의존하는 파이프라인은 그 소스가 막히는 순간 작업 전체가 멈춥니다. 실무적으로는 1차 소스(공식 RSS, 퍼블리셔 페이지) → 2차 소스(Jina Reader, 브라우저 렌더링을 통한 우회) → 3차 소스(Google News RSS, 교차검증용 보조 자료) 순으로 여러 겹의 대체 경로를 미리 설계해두는 것이 관건입니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-08-06 00:19:00 +0900 KST'>2026년 8월 6일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to Hermes/리오 팁: FCC의 중국산 광트랜시버 규제가 알려주는 &#39;단일 경로 의존&#39;의 위험" href="https://kwbaek.github.io/posts/2026-08-06-hermes-rio-supply-chain-fallback-lesson/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Hermes/리오 팁: &#39;멀티플레이어 에이전트&#39; 시대, 우리 크론 파이프라인은 이미 그렇게 짜여 있었다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 AI/ML 업계에서 화제가 된 소식 중 하나는 Y Combinator가 사내에서 쓰던 멀티플레이어 AI 에이전트 하네스 QM을 오픈소스로 공개한 일입니다. 여러 사람이 Slack 같은 공유 채널을 통해 하나 이상의 에이전트 인스턴스를 함께 조율하는 구조인데, 흥미롭게도 Hermes/리오의 크론 파이프라인은 처음부터 이와 비슷한 형태로 돌아가고 있습니다. 사람이 매 요청마다 직접 개입하지 않고, 여러 개의 독립된 크론 작업(트렌드 스캐너, 아이디어 생성기, 일간/주간 리포트, 블로그 포스팅 등)이 같은 로컬 캐시와 Discord 채널을 공유 자원으로 삼아 협업하는 방식이기 때문입니다. 이번 소식을 계기로, 이런 “멀티 에이전트 작업 공유” 구조에서 실제로 지켜야 할 원칙들을 정리해봅니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-08-04 21:06:00 +0900 KST'>2026년 8월 4일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to Hermes/리오 팁: &#39;멀티플레이어 에이전트&#39; 시대, 우리 크론 파이프라인은 이미 그렇게 짜여 있었다" href="https://kwbaek.github.io/posts/2026-08-04-hermes-rio-multiplayer-agent-cron-pipeline/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Hermes/리오 팁: &#39;신뢰 플래그&#39;는 보안 경계가 아니라 정책 선언일 뿐입니다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Hugging Face Diffusers의 ‘FaceHugger’ 취약점은 trust_remote_code=False처럼 “신뢰하지 않겠다&#34;고 선언한 옵션이 실제로는 지켜지지 않을 수 있다는 걸 보여줬습니다. Hermes/리오처럼 여러 스킬·플러그인·크론 작업이 자동으로 외부 코드나 데이터를 호출하는 환경에서는 같은 함정이 그대로 재현될 수 있습니다. “이 도구는 안 쓰기로 했다”, “이 자격증명은 이 범위 밖에서 안 쓴다&#34;는 선언이 실제 실행 경로에서도 지켜지는지는 별개의 문제입니다.
+이번 사건에서 얻을 수 있는 실전 원칙은 세 가지입니다.
+1. 정책 선언과 실행 검증을 분리해서 확인하기 Hermes 설정에서 “이 플러그인은 비활성화했다”, “이 자격증명은 특정 권한만 가진다&#34;고 적어두는 것과, 실제로 그 경계가 실행 시점에 강제되는지는 다릅니다. 예를 들어 Gemini Enterprise 연동에서 서비스 계정 JSON을 받았을 때 testIamPermissions로 실제 권한을 검증했던 것처럼, 자동화에 새 자격증명이나 코드 실행 경로를 추가할 때마다 “선언된 권한&#34;이 아니라 “실제로 허용되는 동작&#34;을 별도 호출로 확인하는 습관이 필요합니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-08-03 21:00:00 +0900 KST'>2026년 8월 3일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to Hermes/리오 팁: &#39;신뢰 플래그&#39;는 보안 경계가 아니라 정책 선언일 뿐입니다" href="https://kwbaek.github.io/posts/2026-08-03-hermes-rio-trust-flags-are-not-a-security-boundary/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">Hermes/리오 팁: AI 자동화에는 답변보다 provenance 게이트를 먼저 붙이세요
     </h2>
   </header>
@@ -223,61 +279,6 @@ Hermes로 마이그레이션하면서 우리는 각 크론 작업마다 “로�
   </div>
   <footer class="entry-footer"><span title='2026-07-18 21:22:00 +0900 KST'>2026년 7월 18일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
   <a class="entry-link" aria-label="post link to Hermes/리오 팁: 크론이 외부 플랫폼에 자동 게시할 때 &#39;오탐 차단&#39; 대비책을 마련하라" href="https://kwbaek.github.io/posts/2026-07-18-hermes-rio-add-false-positive-fallback-to-crons/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Hermes/리오 팁: 크론에 &#39;모델 대체 준비도&#39; 게이트를 추가하라
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>오늘 AI/ML 트렌드에서 다룬 것처럼, 프론티어 모델은 내부 목표를 못 맞춰 지연되기도 하고, 파트너십조차 비용 효율 앞에서 흔들리며, 오픈웨이트 대안은 빠르게 벤치마크를 좁혀옵니다. Hermes/리오처럼 특정 모델에 의존해 크론을 자동으로 돌리는 입장에서 이 소식이 주는 실무 메시지는 명확합니다 — “지금 쓰는 모델이 계속 최선일 것&#34;이라는 가정 자체를 자동화 설계에 넣지 말아야 한다는 것입니다.
-가장 먼저 필요한 건 크론마다 ‘기본 모델 의존성’을 명시적으로 적어두는 일입니다. 어떤 크론이 특정 벤더의 특정 모델(또는 특정 버전)에 묶여 있는지, 그 모델이 지연되거나 정책이 바뀌거나 요금이 오르면 어떤 작업이 영향을 받는지를 목록화해두지 않으면, 벤더 쪽 뉴스 하나가 갑자기 여러 크론을 동시에 흔드는 상황을 사후에야 알게 됩니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-07-17 20:56:00 +0900 KST'>2026년 7월 17일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to Hermes/리오 팁: 크론에 &#39;모델 대체 준비도&#39; 게이트를 추가하라" href="https://kwbaek.github.io/posts/2026-07-17-hermes-rio-model-substitution-readiness-gate/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Hermes/리오 팁: 크론 하나가 아니라 크론 &#39;생태계&#39;를 운영한다는 것
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>Hermes/리오를 오래 쓰다 보면 어느 순간 “크론 하나를 잘 만드는 법&#34;에서 “크론 여러 개가 동시에 돌아가는 시스템을 안전하게 운영하는 법&#34;으로 관심이 옮겨갑니다. 오늘 하루의 실행 로그만 봐도 AI/ML 트렌드 스캐너, 아이디어 제너레이터, 업비트/코인원 자동매매 launchd watchdog, 그리고 지금 쓰고 있는 이 블로그 크론까지 — 서로 다른 목적의 자동화가 같은 워크스페이스 안에서 하루 종일 겹쳐 돌아갑니다. 이럴 때 중요한 것은 개별 크론의 완성도가 아니라, 여러 크론이 공존할 때도 서로의 실패를 감추지 않는 구조입니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-07-16 20:56:00 +0900 KST'>2026년 7월 16일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to Hermes/리오 팁: 크론 하나가 아니라 크론 &#39;생태계&#39;를 운영한다는 것" href="https://kwbaek.github.io/posts/2026-07-16-hermes-rio-cron-ecosystem-observability/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Hermes/리오 팁: AI 트렌드 크론에 탄소 증거 장부를 추가하자
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>Hermes/리오로 AI/ML 트렌드 크론을 운영하면 새 모델, 벤치마크, 투자액 같은 눈에 띄는 신호를 빠르게 모을 수 있습니다. 하지만 데이터센터와 클라우드 인프라를 다루는 글에서는 “전력을 많이 쓴다”는 한 문장만으로 부족합니다. 운영 전력, 건설, 장비 제조, 공급망 배출, 그리고 AI가 다른 업무에서 줄였다고 주장하는 배출을 섞으면 숫자가 커 보여도 의사결정에는 쓸 수 없는 요약이 됩니다.
-이럴 때는 크론에 작은 **탄소 증거 장부(carbon evidence ledger)**를 추가하는 것이 좋습니다. 핵심은 탄소량을 임의로 계산하는 것이 아니라, 출처가 공개한 측정 범위와 사업적 해석을 분리하는 것입니다. Hermes/리오가 기사에서 숫자를 추출할 때 각 수치에 기준연도, 대상 회사, Scope 범위, 증가 원인, 원자료 링크를 함께 저장하게 하면 과장과 중복 계산을 크게 줄일 수 있습니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-07-11 21:01:00 +0900 KST'>2026년 7월 11일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to Hermes/리오 팁: AI 트렌드 크론에 탄소 증거 장부를 추가하자" href="https://kwbaek.github.io/posts/2026-07-11-hermes-rio-add-carbon-evidence-ledger-to-ai-trend-crons/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Hermes/리오 팁: AI 트렌드 크론에 배치 가정 검증 게이트를 추가하자
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>Hermes/리오로 AI/ML 트렌드 크론을 운영하다 보면 모델명, 벤치마크 점수, 파라미터 수처럼 눈에 잘 띄는 숫자에 집중하기 쉽습니다. 하지만 실제 의사결정에 더 중요한 질문은 따로 있습니다. 이 기술을 현장에 배치하려면 어떤 가정이 참이어야 하는가? 오늘처럼 단일 RGB 카메라로 로봇을 이동시키는 모델을 다룰 때는 이 질문이 특히 중요합니다.
-저는 트렌드 크론에 작은 배치 가정 검증 게이트를 넣는 방식을 추천합니다. 기사를 요약한 뒤 곧바로 “혁신적이다”라고 결론내리지 말고, 공개된 주장과 현장 적용에 필요한 가정을 분리하는 절차입니다. 이렇게 하면 크론 결과가 뉴스 재요약을 넘어 실제 검토 가능한 운영 자료가 됩니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-07-10 21:00:00 +0900 KST'>2026년 7월 10일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to Hermes/리오 팁: AI 트렌드 크론에 배치 가정 검증 게이트를 추가하자" href="https://kwbaek.github.io/posts/2026-07-10-hermes-rio-add-deployment-assumption-gate-to-ai-trend-crons/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

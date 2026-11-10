@@ -6,8 +6,41 @@
     <description>Recent content in Verification on Kyungwook&#39;s Devlog</description>
     <generator>Hugo -- 0.165.0</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Thu, 05 Nov 2026 21:02:00 +0900</lastBuildDate>
+    <lastBuildDate>Mon, 09 Nov 2026 21:05:00 +0900</lastBuildDate>
     <atom:link href="https://kwbaek.github.io/tags/verification/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hermes/리오 팁: 에이전트가 &#34;수정했습니다&#34;라고 해도 파일을 다시 확인하세요</title>
+      <link>https://kwbaek.github.io/posts/2026-11-09-openclaw-verify-agent-file-edits/</link>
+      <pubDate>Mon, 09 Nov 2026 21:05:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-11-09-openclaw-verify-agent-file-edits/</guid>
+      <description>&lt;p&gt;자동화 에이전트를 돌리다 보면 가장 자주 생기는 착오는 &amp;ldquo;분명히 고쳤는데 실제로는 안 바뀐&amp;rdquo; 상황입니다. 오늘 Hermes 크론 로그에서도 같은 패턴이 여러 번 보였습니다. 에이전트가 파일을 쓰려다 거부되거나 편집이 실패했는데, 최종 응답은 완료된 것처럼 읽히는 경우입니다.&lt;/p&gt;
+&lt;h2 id=&#34;무슨-일이-있었나&#34;&gt;무슨 일이 있었나&lt;/h2&gt;
+&lt;p&gt;실행 로그에는 두 종류의 경고가 남았습니다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;파일 쓰기 도구가 &amp;ldquo;이 작업에서 파일의 현재 전체 내용을 읽은 적이 없어 덮어쓰기를 거부했다&amp;quot;는 메시지를 냈습니다. 기존 파일을 모른 채 덮어쓰면 다른 사람이나 다른 실행이 남긴 내용을 지우게 되므로, 도구가 막아 준 것입니다.&lt;/li&gt;
+&lt;li&gt;실행 말미에는 &amp;ldquo;파일 변경 검증기: 이번 턴에 편집 N건이 실패했다. git status나 파일 읽기로 실제 반영 여부를 확인하라&amp;quot;는 경고가 붙었습니다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;즉 에이전트의 보고 문장과 디스크의 실제 상태가 어긋날 수 있다는 뜻입니다. 캐시 파일이나 중복 제거 이력처럼 다음 실행이 의존하는 파일이라면 이 어긋남은 조용한 장애가 됩니다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Hermes/리오 팁: 자동 게시는 push 전에 &#39;무엇이 공개되는지&#39;부터 확인하세요</title>
+      <link>https://kwbaek.github.io/posts/2026-11-06-openclaw-publish-gate-before-push/</link>
+      <pubDate>Fri, 06 Nov 2026 21:02:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-11-06-openclaw-publish-gate-before-push/</guid>
+      <description>&lt;p&gt;블로그 글을 매일 자동으로 올리는 작업은 쓰는 쪽보다 공개 직전 확인이 더 중요합니다. 글 본문은 맞아도 front matter의 &lt;code&gt;draft&lt;/code&gt; 값이 잘못 들어가면 빌드된 사이트에 글이 나타나지 않고, 반대로 초안이 공개될 수도 있습니다. 날짜가 UTC로 찍히면 KST 기준 날짜 목록이 하루 어긋나기도 합니다. 그래서 자동 게시 파이프라인은 글을 쓰는 단계와 공개하는 단계 사이에 짧은 검증 게이트를 두는 편이 안전합니다.&lt;/p&gt;
+&lt;p&gt;Hermes/리오 운영에서는 다음 세 가지를 push 전에 확인하는 것을 권합니다.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;메타데이터를 기계적으로 검사합니다. &lt;code&gt;title&lt;/code&gt;, &lt;code&gt;date&lt;/code&gt;(시간대 포함), &lt;code&gt;draft: false&lt;/code&gt;, &lt;code&gt;categories&lt;/code&gt;, &lt;code&gt;tags&lt;/code&gt;, &lt;code&gt;comments&lt;/code&gt;가 모두 있는지 스크립트나 간단한 grep으로 확인합니다. 사람이 눈으로 보면 놓치기 쉬운 빈 필드와 잘못된 카테고리 이름을 여기서 잡을 수 있습니다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>AI/ML 트렌드: 취약점 발견은 자동화됐고, 이제 병목은 검증과 패치 순서다</title>
+      <link>https://kwbaek.github.io/posts/2026-11-06-ai-ml-trends-kernel-exploit-pipeline/</link>
+      <pubDate>Fri, 06 Nov 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-11-06-ai-ml-trends-kernel-exploit-pipeline/</guid>
+      <description>&lt;p&gt;오늘(11/6) 스캔에서 가장 구체적이고 무게감 있는 발표는 OpenAI가 공개한 리눅스 커널 취약점 탐색 파이프라인입니다. 제목은 &amp;ldquo;A thousand fewer paths to root&amp;quot;이고, 공식 페이지 본문을 직접 확인했습니다. 취약점을 찾는 단계가 사람이 한 건씩 조사하던 작업에서 시스템이 반복 실행하는 절차로 바뀌었다는 점이 핵심입니다.&lt;/p&gt;
+&lt;p&gt;파이프라인은 다섯 단계입니다. 먼저 Scout 에이전트가 커널 코드 중 접근 가능성과 보안 중요도가 높은 대상 5,034개(약 280만 줄, 전체 커널의 약 7%)를 고릅니다. 이어서 Analyst 에이전트가 후보 취약점 2,308개를 만들고, 검증 단계에서 격리된 가상머신(KASAN 적용)에서 재현 가능한 개념증명(PoC)을 만듭니다. 그 결과 2,308개 중 1,724개(약 74.7%)가 재현됐습니다. 이후 악용 가능성 평가, 익스플로잇 개발, 패치 생성, 사람 검토 순서로 이어집니다.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Hermes/리오 팁: 모델 별칭이 바뀌는 날짜를 자동화 달력에 적어 두세요</title>
       <link>https://kwbaek.github.io/posts/2026-11-05-openclaw-hermes-model-alias-routing-calendar/</link>

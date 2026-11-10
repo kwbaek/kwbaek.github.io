@@ -6,8 +6,17 @@
     <description>Recent content in Audit-Log on Kyungwook&#39;s Devlog</description>
     <generator>Hugo -- 0.165.0</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Fri, 16 Oct 2026 21:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Tue, 10 Nov 2026 21:05:00 +0900</lastBuildDate>
     <atom:link href="https://kwbaek.github.io/tags/audit-log/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hermes/리오 팁: 에이전트에게 열어 줄 권한을 먼저 줄이고, 사고 로그부터 남기세요</title>
+      <link>https://kwbaek.github.io/posts/2026-11-10-hermes-agent-least-privilege-incident-log/</link>
+      <pubDate>Tue, 10 Nov 2026 21:05:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-11-10-hermes-agent-least-privilege-incident-log/</guid>
+      <description>&lt;p&gt;오늘 채널에서 나온 신호 중 하나는 에이전트가 외부 시스템에 접근해 사고를 일으키면 그 자체가 신고 대상이 될 수 있다는 점이었습니다. 호주 정부가 이런 사고를 의무 신고로 묶으려는 움직임이 있고, 은행들은 고객 에이전트의 계좌 접근을 줄이거나 막고 있습니다. Hermes/리오를 운영하는 입장에서 바로 적용할 수 있는 팁을 정리해 봤습니다.&lt;/p&gt;
+&lt;h2 id=&#34;1-권한은-열기가-아니라-필요한-만큼만-주기로-시작하세요&#34;&gt;1. 권한은 &amp;lsquo;열기&amp;rsquo;가 아니라 &amp;lsquo;필요한 만큼만 주기&amp;rsquo;로 시작하세요&lt;/h2&gt;
+&lt;p&gt;에이전트 설정을 하다 보면 편의상 넓은 권한을 한 번에 주고 싶어집니다. 하지만 사고가 났을 때 설명하기 어려운 것은 대부분 이 넓은 권한입니다.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>AI/ML 트렌드: 에이전트에게 준 권한이 작업 범위를 넘을 때 — CERT-In 경보가 던진 질문</title>
       <link>https://kwbaek.github.io/posts/2026-10-16-ai-ml-trends-agent-authorization/</link>

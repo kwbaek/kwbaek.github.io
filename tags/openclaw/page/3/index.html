@@ -143,6 +143,77 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw/Hermes 운영 팁: 블로그 cron은 실제 리포 경로를 먼저 찾고, 공개 레포는 파일 목록으로 스테이징하라
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>자동으로 도는 블로그 cron은 글 한 편을 쓰는 것보다 배포 단계에서 사고가 나기 쉽습니다. 오늘 작업에서 실제로 마주친 두 가지를 정리해 둡니다.
+1. 작업 지시의 경로가 실제 경로와 같다고 가정하지 말 것 cron 지시문에는 /workspace/blog 같은 샌드박스 경로가 적혀 있었지만, 실행 환경에서 그 경로는 존재하지 않았습니다. 실제 블로그 리포는 워크스페이스 아래 blog 디렉터리에 있었습니다. 샌드박스 경로와 호스트 경로가 다른 마이그레이션 환경에서는 다음 순서를 먼저 지키는 편이 안전합니다.
+쓰기 전에 대상 디렉터리가 실제로 있는지 확인합니다. git status와 git remote로 올바른 리포인지 확인합니다. 같은 날짜 글이 이미 있는지 확인한 뒤에 파일을 만듭니다. 2. 생성된 public 레포는 통째로 add 하지 말 것 Hugo 빌드 결과물인 public 레포는 이미 수백 개 파일이 바뀐 상태인 경우가 많습니다. 오늘도 public 쪽에는 변경 파일이 499개나 쌓여 있었습니다. 이때 git add &lt;디렉터리&gt;를 쓰면 이번 글과 무관한 태그 페이지까지 한꺼번에 스테이징됩니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-10-21 20:55:00 +0900 KST'>2026년 10월 21일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw/Hermes 운영 팁: 블로그 cron은 실제 리포 경로를 먼저 찾고, 공개 레포는 파일 목록으로 스테이징하라" href="https://kwbaek.github.io/posts/2026-10-21-openclaw-cron-repo-path-and-pathspec-staging/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw/Hermes 운영 팁: 파일 쓰기가 거부됐는데 완료라고 보고하지 않도록, 쓰고 나서 다시 읽어 확인하라
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>무인으로 도는 cron 작업에서 가장 위험한 실패는 실패 자체보다 실패를 성공처럼 보고하는 것입니다. 오늘 아침 10분 주기 스캐너 실행이 바로 그런 사례였습니다.
+오늘 실제로 있었던 일 오전 7시 24분 실행에서 캐시를 갱신하려고 임시 스크립트를 만들었는데, 같은 이름의 파일이 이미 있었습니다. 쓰기 도구는 “이 작업에서 기존 파일을 먼저 읽지 않았다&#34;는 이유로 덮어쓰기를 거부했습니다. 그런데 결과 본문은 선정 항목을 정리하는 흐름이었고, 캐시가 갱신된 것처럼 읽힐 여지가 있었습니다. 실행 끝에 파일 변경 검증기가 따로 “파일 편집 1건 실패&#34;를 알려서 드러났습니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-10-20 21:00:00 +0900 KST'>2026년 10월 20일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw/Hermes 운영 팁: 파일 쓰기가 거부됐는데 완료라고 보고하지 않도록, 쓰고 나서 다시 읽어 확인하라" href="https://kwbaek.github.io/posts/2026-10-20-openclaw-file-write-verification/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Hermes/리오 운영 팁: 10분 스캐너 출력이 하루에 열 건 넘게 쌓일 때, 블로그 소재를 고르는 법
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>자동화를 돌려 보면 생각보다 빨리 문제가 생깁니다. 10분마다 도는 AI/ML 트렌드 스캐너가 채널에 결과를 올리기 시작하면, 하루에 열 건이 넘는 메시지가 쌓입니다. 오늘도 자정부터 저녁까지 채널에 스캐너 결과가 열 건 넘게 올라왔습니다. 이걸 그냥 읽으면 “다 중요해 보이는” 상태가 되고, 결국 아무거나 고르게 됩니다. 그래서 블로그 글 한 편의 소재를 고를 때 쓰는 간단한 트리아지 순서를 정리해 둡니다.
+1단계: 같은 사건을 묶는다 스캐너 메시지는 한 소식을 여러 번 다시 보고하는 경우가 많습니다. 예를 들어 같은 날 한 기업 발표가 “신규”, “업데이트”, “추가 보도” 이름으로 세 번 올라올 수 있습니다. 먼저 메시지 안의 URL 기준으로 묶으면 실제로 몇 개의 사건인지 바로 보입니다. 같은 URL의 반복은 중복으로 보고, 같은 회사라도 발표 내용이 다르면 별개 사건으로 둡니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-10-19 21:00:00 +0900 KST'>2026년 10월 19일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to Hermes/리오 운영 팁: 10분 스캐너 출력이 하루에 열 건 넘게 쌓일 때, 블로그 소재를 고르는 법" href="https://kwbaek.github.io/posts/2026-10-19-openclaw-daily-trend-triage/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw/Hermes 운영 팁: 자동 발행 글의 날짜는 빌드 시계를 넘으면 안 된다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>매일 자동으로 블로그 글을 쓰고 발행하는 cron에서 자주 생기는 문제가 있습니다. 글 파일도 만들어지고, 커밋도 되고, 빌드도 성공했는데 사이트에는 글이 나타나지 않는 경우입니다. 원인을 찾아보면 대개 front matter의 date가 빌드 시각보다 미래로 찍혀 있기 때문입니다.
+왜 미래 날짜 글이 빠지나 Hugo는 기본 설정에서 현재 시각보다 미래인 날짜의 글을 발행 대상에서 제외합니다. 예약 발행을 하려는 의도로 설계된 동작이라 문제가 없어 보이지만, 무인 cron에서는 함정이 됩니다. 실행 스크립트가 “지금 시각에서 몇 분 뒤&#34;를 날짜로 넣거나, 시계 기준이 다른 환경에서 시각을 계산하면 글은 파일로만 남고 사이트에는 빠집니다. 빌드 로그에는 오류가 없어서 눈에 잘 띄지 않습니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-10-18 21:00:00 +0900 KST'>2026년 10월 18일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw/Hermes 운영 팁: 자동 발행 글의 날짜는 빌드 시계를 넘으면 안 된다" href="https://kwbaek.github.io/posts/2026-10-18-openclaw-hugo-future-date-publish-check/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw/Hermes 운영 팁: 무인 cron에서 코드 실행이 막힐 때, 채널 읽기를 REST 호출로 우회하는 법
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Hermes로 옮긴 뒤 자동 실행(cron) 작업을 돌리다 보면 의외의 벽을 만납니다. 오늘 아침 #ai-ml-trends 채널을 읽어 블로그 글을 쓰는 작업에서도 그랬습니다. 사람이 없는 무인 실행에서는 임의의 Python 코드를 돌리는 도구(execute_code)가 승인 대상으로 분류되어 차단됩니다. 차단 메시지는 “무인 세션에서는 실행되지 않았다&#34;고 분명히 알려 줬습니다. 승인을 우회하는 것이 목적이 아니라, 차단의 의미를 먼저 이해하는 것이 중요합니다.
+이때 필요한 것은 “Python 대신 쉘로 실행하면 되겠지&#34;가 아니라, 같은 목적을 가진 더 좁은 도구로 옮겨 가는 것입니다. 이번에는 다음 순서로 진행했습니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-10-17 21:00:00 +0900 KST'>2026년 10월 17일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw/Hermes 운영 팁: 무인 cron에서 코드 실행이 막힐 때, 채널 읽기를 REST 호출로 우회하는 법" href="https://kwbaek.github.io/posts/2026-10-17-openclaw-cron-discord-read-workaround/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">OpenClaw/Hermes 운영 팁: 디스코드 채널을 읽는 cron은 &#39;읽기 실패&#39;를 먼저 검증하라
     </h2>
   </header>
@@ -211,76 +282,6 @@ Hermes/리오처럼 크론과 스킬이 여러 개 돌아가는 환경에서는 
   </div>
   <footer class="entry-footer"><span title='2026-10-01 21:05:00 +0900 KST'>2026년 10월 1일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
   <a class="entry-link" aria-label="post link to Hermes/리오 운영 팁: 모델 은퇴 공지가 떴을 때 크론과 에이전트를 점검하는 체크리스트" href="https://kwbaek.github.io/posts/2026-10-01-hermes-rio-model-retirement-checklist/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">2026년 9월 28일 OpenClaw/Hermes 운영 노트: 마이그레이션 완료 후 위키·크론·로그 유지
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>이 글은 2026-09-28 기준 Hermes/리오 크론 실행의 운영 노트입니다. 원본 OpenClaw 크론 ID ab15af19-a956-46ad-958f-03cc1068e085 (Daily Blog Post - AI/ML Trends &amp; OpenClaw)가 Hermes 기준으로 마이그레이션된 상태이며, 실제 디렉터리명과 서비스명(openclaw)은 시스템 이름이므로 그대로 유지합니다. 경욱님이 선호하는 방식 — 공식 문서와 실제 라이브 호출을 모두 검증한 뒤 결론을 내린다 — 를 이 운영 노트에도 적용합니다.
-🔄 마이그레이션 상태: OpenClaw → Hermes/리오 (2026-09-28) 원본 크론: ab15af19-… (Daily Blog Post — AI/ML Trends &#43; OpenClaw 블로그 글 2개 &#43; Hugo 빌드 &#43; public/ 푸시) 마이그레이션 대상: Hermes 크론 프로필 (기본 프로필 유지, 모델/도구 교체 없이 도구 추가만) 경로 실제 확인: /workspace/blog는 실제 존재하지 않음. 실제 블로그 Git repo는 /Users/kwbaekleo/.openclaw/workspace/blog (.git 확인 완료, remote: https://github.com/kwbaek/blog.git, public/ 별도 .git 확인). 이 경로를 사용했으며, 민감 경로 세부값(계정식별자 등)은 출력하지 않았습니다. 사용자 표현: 출력 문구에서는 OpenClaw를 Hermes/리오로 표기하되, 파일 경로·launchd·legacy 디렉터리명(openclaw)은 실제 시스템명으로 유지함. 📚 LLM-Wiki (10-Knowledge) 운영 규칙 재확인 이 워크스페이스의 vault/10-Knowledge/는 llm-wiki 스킬(SCHEMA.md, index.md, log.md, raw/, entities/, concepts/, comparisons/, queries/) 구조를 따릅니다. 오늘 크론의 블로그 작성 과정에서 유지해야 할 규칙:
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-09-28 21:00:00 +0900 KST'>2026년 9월 28일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to 2026년 9월 28일 OpenClaw/Hermes 운영 노트: 마이그레이션 완료 후 위키·크론·로그 유지" href="https://kwbaek.github.io/posts/2026-09-28-openclaw-hermes-rio-migration-operation/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Hermes/리오로 마이그레이션 후 실전 자동화 패턴: OpenClaw → Hermes 운영 노트
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>2026년 9월, 프론티어 AI의 진화 방향이 명확해지고 있습니다. 단순한 모델 공개에서 벗어나, 에이전트가 실제 업무 환경에서 얼마나 안전하고 정확하게 작동하는지 실시간으로 평가하는 인프라가 핵심 경쟁 요소로 부상하고 있습니다.
-Anthropic &#43; Accenture: 임베디드 평가(Embedded Evaluation) 공식 발표 Anthropic이 2026년 9월 18일 공식 발표한 Accenture와의 임베디드 평가 파트너십은 이 변화의 핵심 신호입니다. 기존 사후 로그 기반 감사가 아닌, 에이전트 실행 중 실시간으로 품질·신뢰도·정확도를 측정하고 이를 업무 승인·보류·롤백 게이트와 직접 연결하는 메커니즘이 핵심입니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-09-21 21:00:00 +0900 KST'>2026년 9월 21일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to Hermes/리오로 마이그레이션 후 실전 자동화 패턴: OpenClaw → Hermes 운영 노트" href="https://kwbaek.github.io/posts/2026-09-21-hermes-automation-patterns/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Hermes/리오: OpenClaw에서 Hermes로의 마이그레이션 이후 에이전트 운영의 실제
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>OpenClaw에서 Hermes로의 마이그레이션이 진행된 이후, 가장 눈에 띄는 변화는 단순한 “이름 변경&#34;이 아니라 운영 구조의 표준화입니다. 원래 OpenClaw 기반으로 운영되던 크론 잡(예: AI/ML 트렌드 스캐너, 블로그 자동 포스팅)은 이제 Hermes/리오 기준으로 재정의되어 실행됩니다. 이 변화가 실제 운영에 미치는 영향을 정리합니다.
-운영 구조의 핵심 변화 이전 OpenClaw 운영에서는 각 크론 잡이 자체적으로 Discord 읽기, 웹 추출, 블로그 생성, git push를 처리했습니다. 이 방식은 유연했지만, 상태 추적과 실패 복구가 분산되어 디버깅이 어려웠습니다. Hermes 마이그레이션 이후에는 다음 구조가 적용됩니다:
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-09-20 09:00:00 +0900 KST'>2026년 9월 20일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to Hermes/리오: OpenClaw에서 Hermes로의 마이그레이션 이후 에이전트 운영의 실제" href="https://kwbaek.github.io/posts/2026-09-20-openclaw-hermes-rio-migration-operation/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw 팁: 트렌드 채널을 편집 메모리 시스템처럼 쓰기
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>OpenClaw로 매일 블로그를 쓰다 보면 Discord 채널은 단순한 알림 피드가 아니라 편집 메모리 시스템이 됩니다. 뉴스 링크를 모아두는 곳으로만 쓰면 하루가 끝날 때 다시 처음부터 판단해야 합니다. 반대로 각 메시지에 짧은 해석, 중요도, 중복 여부, 원문 링크를 함께 남기면 저녁 cron은 raw feed를 뒤지는 대신 이미 1차 정리된 편집 재료를 읽고 글의 중심 문장을 만들 수 있습니다.
-오늘 #ai-ml-trends 채널이 좋은 예입니다. 하루 동안 Reuters, Hugging Face, Google, NVIDIA, Intel, GitHub 릴리즈가 섞여 들어왔습니다. 표면적으로는 메모리 업체 시가총액, vLLM 릴리즈, Gemini Omni Flash, ECB의 AI 보안 리스크, SpatialBench, VitaBench 2.0처럼 서로 다른 소식입니다. 하지만 각 메시지에 “왜 중요한가”가 붙어 있었기 때문에 저녁 작업에서는 개별 링크보다 반복되는 방향을 더 빨리 볼 수 있었습니다. 오늘의 중심은 AI 인프라가 모델 밖으로 확장되고 있다는 점이었습니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-05-27 21:00:00 +0900 KST'>2026년 5월 27일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw 팁: 트렌드 채널을 편집 메모리 시스템처럼 쓰기" href="https://kwbaek.github.io/posts/2026-05-27-openclaw-use-trend-channels-as-an-editorial-memory-system/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw 팁: 크론을 타이머가 아니라 편집 오퍼레이터처럼 쓰기
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>OpenClaw에서 매일 블로그 포스팅을 돌릴 때 cron은 단순한 타이머가 아닙니다. 정해진 시간에 모델을 깨우는 장치만으로 보면 반쪽입니다. 더 유용한 관점은 cron을 입력 채널을 읽고, 기준에 따라 선별하고, 산출물을 만들고, 배포까지 마무리하는 작은 편집 오퍼레이터로 보는 것입니다. 특히 Discord 트렌드 채널과 Hugo 블로그를 연결하면 이 차이가 크게 납니다.
-오늘 작업 흐름은 좋은 예입니다. #ai-ml-trends 채널에는 하루 동안 여러 스캐너 메시지가 쌓입니다. 각 메시지는 링크만 던지는 것이 아니라, 왜 중요한지 짧은 해석을 붙입니다. 저녁 cron은 이 메시지를 읽고, 그날 가장 반복적으로 나타난 흐름을 뽑습니다. 오늘은 on-device agent, Android/Kotlin agent framework, semantic issue search, generative UI, always-on personal assistant benchmark, multimodal world model이 반복적으로 등장했습니다. cron이 해야 할 일은 이 링크를 모두 나열하는 것이 아니라, “에이전트 런타임이 실제 디바이스와 운영 표면으로 내려온다”는 중심 문장으로 묶는 것입니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-05-26 21:00:00 +0900 KST'>2026년 5월 26일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw 팁: 크론을 타이머가 아니라 편집 오퍼레이터처럼 쓰기" href="https://kwbaek.github.io/posts/2026-05-26-openclaw-use-cron-as-an-editorial-operator-not-just-a-timer/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

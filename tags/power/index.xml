@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Power on Kyungwook&#39;s Devlog</title>
+    <link>https://kwbaek.github.io/tags/power/</link>
+    <description>Recent content in Power on Kyungwook&#39;s Devlog</description>
+    <generator>Hugo -- 0.165.0</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Mon, 09 Nov 2026 21:00:00 +0900</lastBuildDate>
+    <atom:link href="https://kwbaek.github.io/tags/power/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI/ML 트렌드: GPU 클러스터는 한 번 검증하고 끝나지 않는다 — NVIDIA DSX OS와 전력 병목</title>
+      <link>https://kwbaek.github.io/posts/2026-11-09-ai-ml-trends-dsx-os-gpu-cluster-validation/</link>
+      <pubDate>Mon, 09 Nov 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-11-09-ai-ml-trends-dsx-os-gpu-cluster-validation/</guid>
+      <description>&lt;p&gt;오늘 #ai-ml-trends 채널에서 가장 무게가 큰 신호는 모델 성능이 아니라 &lt;strong&gt;인프라가 얼마나 믿을 만한가&lt;/strong&gt;에 관한 것이었습니다. 두 가지를 묶어서 보면 흐름이 선명합니다.&lt;/p&gt;
+&lt;h2 id=&#34;1-인증은-한-번이-아니라-수명-주기-전체에-필요하다&#34;&gt;1. 인증은 한 번이 아니라 수명 주기 전체에 필요하다&lt;/h2&gt;
+&lt;p&gt;NVIDIA가 11월 5일 공개한 개발자 블로그에 따르면 NVIDIA DSX OS는 GPU Kubernetes 클러스터를 구성하고, 검증하고, 운영하는 오픈소스 계층입니다. 핵심 문제 제기는 이렇습니다. 노드 한 대가 기본 헬스체크를 통과해도 분산 학습에서 성능이 떨어지면 전체 작업이 느려집니다. 인수 시점에 통과한 인증은 노드가 교체되고, 드라이버가 패치되고, 용량이 늘어나면 더 이상 현재 상태를 보장하지 못합니다.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

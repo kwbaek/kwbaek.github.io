@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>AI/ML 트렌드: GPU 클러스터는 한 번 검증하고 끝나지 않는다 — NVIDIA DSX OS와 전력 병목 | Kyungwook&#39;s Devlog</title>
+<meta name="keywords" content="ai-ml, nvidia, kubernetes, gpu, data-center, infrastructure, power">
+<meta name="description" content="오늘 #ai-ml-trends 채널에서 가장 무게가 큰 신호는 모델 성능이 아니라 인프라가 얼마나 믿을 만한가에 관한 것이었습니다. 두 가지를 묶어서 보면 흐름이 선명합니다.
+1. 인증은 한 번이 아니라 수명 주기 전체에 필요하다
+NVIDIA가 11월 5일 공개한 개발자 블로그에 따르면 NVIDIA DSX OS는 GPU Kubernetes 클러스터를 구성하고, 검증하고, 운영하는 오픈소스 계층입니다. 핵심 문제 제기는 이렇습니다. 노드 한 대가 기본 헬스체크를 통과해도 분산 학습에서 성능이 떨어지면 전체 작업이 느려집니다. 인수 시점에 통과한 인증은 노드가 교체되고, 드라이버가 패치되고, 용량이 늘어나면 더 이상 현재 상태를 보장하지 못합니다.">
+<meta name="author" content="map[email: name:Kyungwook Baek]">
+<link rel="canonical" href="https://kwbaek.github.io/posts/2026-11-09-ai-ml-trends-dsx-os-gpu-cluster-validation/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.199042e659bc7245f5609d333d6c044eb554a0640849bb874e1dff8eb0f57209.css" integrity="sha256-GZBC5lm8ckX1YJ0zPWwETrVUoGQISbuHTh3/jrD1cgk=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://kwbaek.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://kwbaek.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://kwbaek.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://kwbaek.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://kwbaek.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://kwbaek.github.io/posts/2026-11-09-ai-ml-trends-dsx-os-gpu-cluster-validation/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="https://kwbaek.github.io/posts/2026-11-09-ai-ml-trends-dsx-os-gpu-cluster-validation/">
+  <meta property="og:site_name" content="Kyungwook&#39;s Devlog">
+  <meta property="og:title" content="AI/ML 트렌드: GPU 클러스터는 한 번 검증하고 끝나지 않는다 — NVIDIA DSX OS와 전력 병목">
+  <meta property="og:description" content="오늘 #ai-ml-trends 채널에서 가장 무게가 큰 신호는 모델 성능이 아니라 인프라가 얼마나 믿을 만한가에 관한 것이었습니다. 두 가지를 묶어서 보면 흐름이 선명합니다.
+1. 인증은 한 번이 아니라 수명 주기 전체에 필요하다 NVIDIA가 11월 5일 공개한 개발자 블로그에 따르면 NVIDIA DSX OS는 GPU Kubernetes 클러스터를 구성하고, 검증하고, 운영하는 오픈소스 계층입니다. 핵심 문제 제기는 이렇습니다. 노드 한 대가 기본 헬스체크를 통과해도 분산 학습에서 성능이 떨어지면 전체 작업이 느려집니다. 인수 시점에 통과한 인증은 노드가 교체되고, 드라이버가 패치되고, 용량이 늘어나면 더 이상 현재 상태를 보장하지 못합니다.">
+  <meta property="og:locale" content="ko-kr">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2026-11-09T21:00:00+09:00">
+    <meta property="article:modified_time" content="2026-11-09T21:00:00+09:00">
+    <meta property="article:tag" content="Ai-Ml">
+    <meta property="article:tag" content="Nvidia">
+    <meta property="article:tag" content="Kubernetes">
+    <meta property="article:tag" content="Gpu">
+    <meta property="article:tag" content="Data-Center">
+    <meta property="article:tag" content="Infrastructure">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="AI/ML 트렌드: GPU 클러스터는 한 번 검증하고 끝나지 않는다 — NVIDIA DSX OS와 전력 병목">
+<meta name="twitter:description" content="오늘 #ai-ml-trends 채널에서 가장 무게가 큰 신호는 모델 성능이 아니라 인프라가 얼마나 믿을 만한가에 관한 것이었습니다. 두 가지를 묶어서 보면 흐름이 선명합니다.
+1. 인증은 한 번이 아니라 수명 주기 전체에 필요하다
+NVIDIA가 11월 5일 공개한 개발자 블로그에 따르면 NVIDIA DSX OS는 GPU Kubernetes 클러스터를 구성하고, 검증하고, 운영하는 오픈소스 계층입니다. 핵심 문제 제기는 이렇습니다. 노드 한 대가 기본 헬스체크를 통과해도 분산 학습에서 성능이 떨어지면 전체 작업이 느려집니다. 인수 시점에 통과한 인증은 노드가 교체되고, 드라이버가 패치되고, 용량이 늘어나면 더 이상 현재 상태를 보장하지 못합니다.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://kwbaek.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "AI/ML 트렌드: GPU 클러스터는 한 번 검증하고 끝나지 않는다 — NVIDIA DSX OS와 전력 병목",
+      "item": "https://kwbaek.github.io/posts/2026-11-09-ai-ml-trends-dsx-os-gpu-cluster-validation/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "AI/ML 트렌드: GPU 클러스터는 한 번 검증하고 끝나지 않는다 — NVIDIA DSX OS와 전력 병목",
+  "name": "AI\/ML 트렌드: GPU 클러스터는 한 번 검증하고 끝나지 않는다 — NVIDIA DSX OS와 전력 병목",
+  "description": "오늘 #ai-ml-trends 채널에서 가장 무게가 큰 신호는 모델 성능이 아니라 인프라가 얼마나 믿을 만한가에 관한 것이었습니다. 두 가지를 묶어서 보면 흐름이 선명합니다.\n1. 인증은 한 번이 아니라 수명 주기 전체에 필요하다 NVIDIA가 11월 5일 공개한 개발자 블로그에 따르면 NVIDIA DSX OS는 GPU Kubernetes 클러스터를 구성하고, 검증하고, 운영하는 오픈소스 계층입니다. 핵심 문제 제기는 이렇습니다. 노드 한 대가 기본 헬스체크를 통과해도 분산 학습에서 성능이 떨어지면 전체 작업이 느려집니다. 인수 시점에 통과한 인증은 노드가 교체되고, 드라이버가 패치되고, 용량이 늘어나면 더 이상 현재 상태를 보장하지 못합니다.\n",
+  "keywords": [
+    "ai-ml", "nvidia", "kubernetes", "gpu", "data-center", "infrastructure", "power"
+  ],
+  "articleBody": "오늘 #ai-ml-trends 채널에서 가장 무게가 큰 신호는 모델 성능이 아니라 인프라가 얼마나 믿을 만한가에 관한 것이었습니다. 두 가지를 묶어서 보면 흐름이 선명합니다.\n1. 인증은 한 번이 아니라 수명 주기 전체에 필요하다 NVIDIA가 11월 5일 공개한 개발자 블로그에 따르면 NVIDIA DSX OS는 GPU Kubernetes 클러스터를 구성하고, 검증하고, 운영하는 오픈소스 계층입니다. 핵심 문제 제기는 이렇습니다. 노드 한 대가 기본 헬스체크를 통과해도 분산 학습에서 성능이 떨어지면 전체 작업이 느려집니다. 인수 시점에 통과한 인증은 노드가 교체되고, 드라이버가 패치되고, 용량이 늘어나면 더 이상 현재 상태를 보장하지 못합니다.\n그래서 이 스택은 구성(AICR로 버전 고정 레시피 적용), 인증(NCCL 테스트와 학습 워크로드 검증), 운영(수리한 노드가 복귀하기 전 재검증)의 세 단계를 제시합니다. 실무에서 눈여겨볼 지표는 사용률보다 굿풋(goodput), 즉 실제로 끝난 작업량입니다. 사용률은 실패하는 노드가 바쁘게 돌고 있어도 높게 찍히기 때문입니다.\n2. 그 인프라를 돌릴 전력이 다음 병목이다 같은 날 Reuters 분석 보도(Discord 스캔에서 확인, 원문 직접 열람은 못 했습니다)는 AI 데이터센터가 중고 가스터빈과 항공기 엔진 발전기를 찾기 시작했다고 전했습니다. 신규 가스터빈은 미국 기준 납기가 평균 6년으로 잡히고, 중고 장비는 MW당 약 150170만 달러로 신규(200250만 달러)보다 싸지만 정비 이력과 잔여 수명 리스크가 따릅니다.\n같은 흐름에서 11월 8일 FT 보도로 전해진 Anthropic의 34억 달러 규모 가스 발전 계약도 확인됐습니다. 프런티어 연구소가 전력을 직접 조달하기 시작했다는 뜻입니다. 이 두 소식을 합치면, 모델 경쟁의 비용 구조에서 GPU 가격만큼 전력 확보 일정과 장비 수명이 중요해졌다고 볼 수 있습니다.\n실무 체크포인트 GPU 클러스터는 구축 직후 한 번 검증하고 넘기지 말고, 노드 교체·드라이버 업그레이드·증설 뒤마다 재검증하는 절차를 두세요. 운영 지표는 사용률 대신 완료된 학습 작업량(굿풋)과 노드별 편차를 함께 보세요. 전력 계약이나 중고 장비 도입을 검토한다면 정비 이력과 잔여 수명을 계약 조건에 명시하세요. 출처 NVIDIA Developer Blog, “Configure, Certify, and Operate Kubernetes GPU Clusters with NVIDIA DSX OS” (2026-11-05): https://developer.nvidia.com/blog/configure-certify-and-operate-kubernetes-gpu-clusters-with-nvidia-dsx-os/ Reuters 분석, “AI power rush sends data centres hunting for used turbines and jet engines” (2026-11-09, Discord 스캔 기준): https://money.usnews.com/investing/news/articles/2026-11-09/analysis-ai-power-rush-sends-data-centres-hunting-for-used-turbines-and-jet-engines Anthropic 가스 발전 계약 보도 (FT 인용 Reuters, 2026-11-08, Discord 스캔 기준): https://www.reuters.com/business/energy/anthropic-secures-34-billion-generator-deal-ai-data-centers-ft-reports-2026-11-08/ ",
+  "wordCount" : "306",
+  "inLanguage": "en",
+  "datePublished": "2026-11-09T21:00:00+09:00",
+  "dateModified": "2026-11-09T21:00:00+09:00",
+  "author":{
+    "@type": "Person",
+    "name": {"email":"","name":"Kyungwook Baek"}
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://kwbaek.github.io/posts/2026-11-09-ai-ml-trends-dsx-os-gpu-cluster-validation/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Kyungwook's Devlog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://kwbaek.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://kwbaek.github.io/" accesskey="h" title="Kyungwook&#39;s Devlog (Alt + H)">Kyungwook&#39;s Devlog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://kwbaek.github.io/categories/" title="categories">
+                    <span>categories</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kwbaek.github.io/tags/" title="tags">
+                    <span>tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kwbaek.github.io/" title="Kyungwook&#39;s Devlog">
+                    <span>Kyungwook&#39;s Devlog</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      AI/ML 트렌드: GPU 클러스터는 한 번 검증하고 끝나지 않는다 — NVIDIA DSX OS와 전력 병목
+    </h1>
+    <div class="post-meta"><span title='2026-11-09 21:00:00 +0900 KST'>2026년 11월 9일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span>
+
+</div>
+  </header> 
+  <div class="post-content"><p>오늘 #ai-ml-trends 채널에서 가장 무게가 큰 신호는 모델 성능이 아니라 <strong>인프라가 얼마나 믿을 만한가</strong>에 관한 것이었습니다. 두 가지를 묶어서 보면 흐름이 선명합니다.</p>
+<h2 id="1-인증은-한-번이-아니라-수명-주기-전체에-필요하다">1. 인증은 한 번이 아니라 수명 주기 전체에 필요하다<a hidden class="anchor" aria-hidden="true" href="#1-인증은-한-번이-아니라-수명-주기-전체에-필요하다">#</a></h2>
+<p>NVIDIA가 11월 5일 공개한 개발자 블로그에 따르면 NVIDIA DSX OS는 GPU Kubernetes 클러스터를 구성하고, 검증하고, 운영하는 오픈소스 계층입니다. 핵심 문제 제기는 이렇습니다. 노드 한 대가 기본 헬스체크를 통과해도 분산 학습에서 성능이 떨어지면 전체 작업이 느려집니다. 인수 시점에 통과한 인증은 노드가 교체되고, 드라이버가 패치되고, 용량이 늘어나면 더 이상 현재 상태를 보장하지 못합니다.</p>
+<p>그래서 이 스택은 구성(AICR로 버전 고정 레시피 적용), 인증(NCCL 테스트와 학습 워크로드 검증), 운영(수리한 노드가 복귀하기 전 재검증)의 세 단계를 제시합니다. 실무에서 눈여겨볼 지표는 사용률보다 <strong>굿풋(goodput)</strong>, 즉 실제로 끝난 작업량입니다. 사용률은 실패하는 노드가 바쁘게 돌고 있어도 높게 찍히기 때문입니다.</p>
+<h2 id="2-그-인프라를-돌릴-전력이-다음-병목이다">2. 그 인프라를 돌릴 전력이 다음 병목이다<a hidden class="anchor" aria-hidden="true" href="#2-그-인프라를-돌릴-전력이-다음-병목이다">#</a></h2>
+<p>같은 날 Reuters 분석 보도(Discord 스캔에서 확인, 원문 직접 열람은 못 했습니다)는 AI 데이터센터가 중고 가스터빈과 항공기 엔진 발전기를 찾기 시작했다고 전했습니다. 신규 가스터빈은 미국 기준 납기가 평균 6년으로 잡히고, 중고 장비는 MW당 약 150<del>170만 달러로 신규(200</del>250만 달러)보다 싸지만 정비 이력과 잔여 수명 리스크가 따릅니다.</p>
+<p>같은 흐름에서 11월 8일 FT 보도로 전해진 Anthropic의 34억 달러 규모 가스 발전 계약도 확인됐습니다. 프런티어 연구소가 전력을 직접 조달하기 시작했다는 뜻입니다. 이 두 소식을 합치면, 모델 경쟁의 비용 구조에서 GPU 가격만큼 <strong>전력 확보 일정과 장비 수명</strong>이 중요해졌다고 볼 수 있습니다.</p>
+<h2 id="실무-체크포인트">실무 체크포인트<a hidden class="anchor" aria-hidden="true" href="#실무-체크포인트">#</a></h2>
+<ul>
+<li>GPU 클러스터는 구축 직후 한 번 검증하고 넘기지 말고, 노드 교체·드라이버 업그레이드·증설 뒤마다 재검증하는 절차를 두세요.</li>
+<li>운영 지표는 사용률 대신 완료된 학습 작업량(굿풋)과 노드별 편차를 함께 보세요.</li>
+<li>전력 계약이나 중고 장비 도입을 검토한다면 정비 이력과 잔여 수명을 계약 조건에 명시하세요.</li>
+</ul>
+<h2 id="출처">출처<a hidden class="anchor" aria-hidden="true" href="#출처">#</a></h2>
+<ul>
+<li>NVIDIA Developer Blog, &ldquo;Configure, Certify, and Operate Kubernetes GPU Clusters with NVIDIA DSX OS&rdquo; (2026-11-05): <a href="https://developer.nvidia.com/blog/configure-certify-and-operate-kubernetes-gpu-clusters-with-nvidia-dsx-os/">https://developer.nvidia.com/blog/configure-certify-and-operate-kubernetes-gpu-clusters-with-nvidia-dsx-os/</a></li>
+<li>Reuters 분석, &ldquo;AI power rush sends data centres hunting for used turbines and jet engines&rdquo; (2026-11-09, Discord 스캔 기준): <a href="https://money.usnews.com/investing/news/articles/2026-11-09/analysis-ai-power-rush-sends-data-centres-hunting-for-used-turbines-and-jet-engines">https://money.usnews.com/investing/news/articles/2026-11-09/analysis-ai-power-rush-sends-data-centres-hunting-for-used-turbines-and-jet-engines</a></li>
+<li>Anthropic 가스 발전 계약 보도 (FT 인용 Reuters, 2026-11-08, Discord 스캔 기준): <a href="https://www.reuters.com/business/energy/anthropic-secures-34-billion-generator-deal-ai-data-centers-ft-reports-2026-11-08/">https://www.reuters.com/business/energy/anthropic-secures-34-billion-generator-deal-ai-data-centers-ft-reports-2026-11-08/</a></li>
+</ul>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://kwbaek.github.io/tags/ai-ml/">Ai-Ml</a></li>
+      <li><a href="https://kwbaek.github.io/tags/nvidia/">Nvidia</a></li>
+      <li><a href="https://kwbaek.github.io/tags/kubernetes/">Kubernetes</a></li>
+      <li><a href="https://kwbaek.github.io/tags/gpu/">Gpu</a></li>
+      <li><a href="https://kwbaek.github.io/tags/data-center/">Data-Center</a></li>
+      <li><a href="https://kwbaek.github.io/tags/infrastructure/">Infrastructure</a></li>
+      <li><a href="https://kwbaek.github.io/tags/power/">Power</a></li>
+    </ul>
+  </footer><script src="https://utteranc.es/client.js"
+        repo="kwbaek/blog-comments"
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://kwbaek.github.io/">Kyungwook&#39;s Devlog</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

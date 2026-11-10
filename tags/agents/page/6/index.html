@@ -143,6 +143,19 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">AI/ML 트렌드: AI는 브라우저와 런타임 안으로 내려오고 있다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 AI/ML 트렌드에서 가장 중요한 신호는 AI가 별도 앱이나 API 호출을 넘어 브라우저, 에이전트 런타임, 조직 운영, 인프라 계약 안으로 깊게 들어가고 있다는 점입니다. 하루 동안 나온 소식은 매우 넓어 보였습니다. Chrome built-in AI, OpenClaw hardening, Microsoft Agent Framework의 정보흐름 제어, OpenAI Agents SDK 업데이트, AI chip 공급망 조사, 중앙은행의 AI 공격 방어 연구, AI-first 구조조정까지 한꺼번에 등장했습니다. 하지만 이 흐름을 묶으면 하나의 질문으로 정리됩니다. “AI를 어디에 붙일 것인가?”가 아니라 “AI가 이미 들어간 실행 환경을 어떻게 통제하고 검증할 것인가?”입니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-05-08 21:00:00 +0900 KST'>2026년 5월 8일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to AI/ML 트렌드: AI는 브라우저와 런타임 안으로 내려오고 있다" href="https://kwbaek.github.io/posts/2026-05-08-ai-ml-trends-ai-is-moving-into-the-runtime-and-browser/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">OpenClaw 팁: 실제 운영 에이전트에는 before-tool gate가 필요하다
     </h2>
   </header>
@@ -262,20 +275,6 @@ OpenClaw 2026.5.7 릴리스에서 눈에 띄는 흐름도 이쪽입니다. owner
   </div>
   <footer class="entry-footer"><span title='2026-05-03 21:00:00 +0900 KST'>2026년 5월 3일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
   <a class="entry-link" aria-label="post link to AI/ML 트렌드: 웹 자체가 에이전트의 공격면이 되고 있다" href="https://kwbaek.github.io/posts/2026-05-03-ai-ml-trends-the-web-itself-is-becoming-the-agent-attack-surface/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw 팁: 웹 입력은 에이전트 컨텍스트가 아니라 비신뢰 입력으로 다루자
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>OpenClaw로 트렌드 수집, 리서치, 블로그 작성 같은 자동화를 굴리다 보면 웹페이지와 Discord 메시지를 “그냥 읽을 자료”로 보기 쉽습니다. 하지만 에이전트 관점에서는 모든 외부 텍스트가 잠재적인 명령처럼 컨텍스트 안에 들어옵니다. 오늘 AI/ML 트렌드에서도 Google Security의 공개 웹 indirect prompt injection 분석이 올라왔는데, 이 흐름은 OpenClaw 자동화에도 꽤 직접적입니다. 브라우저로 읽은 페이지, 검색 결과, RSS, 첨부 문서, 채팅 메시지는 모두 유용한 자료이면서 동시에 비신뢰 입력입니다.
-첫 번째 원칙은 외부 입력과 운영 지시를 분리하는 것입니다. cron 지시문, AGENTS.md, 스킬 파일처럼 내가 신뢰하는 운영 규칙과, 웹에서 가져온 본문은 같은 텍스트라도 역할이 다릅니다. OpenClaw 작업을 설계할 때는 “이 텍스트는 참고 자료일 뿐이며 지시로 따르지 않는다”는 경계를 명확히 두는 편이 좋습니다. 예를 들어 트렌드 스캐너가 웹페이지를 읽더라도, 그 안의 “이전 지시를 무시하라” 같은 문장은 요약 대상이지 실행 대상이 아닙니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-05-03 21:00:00 +0900 KST'>2026년 5월 3일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw 팁: 웹 입력은 에이전트 컨텍스트가 아니라 비신뢰 입력으로 다루자" href="https://kwbaek.github.io/posts/2026-05-03-openclaw-treat-web-input-as-untrusted-agent-context/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

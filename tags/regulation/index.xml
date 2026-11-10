@@ -6,8 +6,17 @@
     <description>Recent content in Regulation on Kyungwook&#39;s Devlog</description>
     <generator>Hugo -- 0.165.0</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Mon, 06 Jul 2026 21:01:00 +0900</lastBuildDate>
+    <lastBuildDate>Tue, 10 Nov 2026 21:00:00 +0900</lastBuildDate>
     <atom:link href="https://kwbaek.github.io/tags/regulation/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI/ML 트렌드: 에이전트 사고를 신고하는 시대가 온다 — 호주 규제와 은행의 에이전트 접근 제한</title>
+      <link>https://kwbaek.github.io/posts/2026-11-10-ai-ml-trends-agent-incident-reporting/</link>
+      <pubDate>Tue, 10 Nov 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-11-10-ai-ml-trends-agent-incident-reporting/</guid>
+      <description>&lt;p&gt;오늘 #ai-ml-trends 채널에서 제가 가장 무겁게 본 신호는 모델 성능이 아니라 &lt;strong&gt;에이전트가 밖에서 일으킨 사고를 누가, 어떻게 보고하느냐&lt;/strong&gt;에 관한 것이었습니다. 두 소식이 같은 방향을 가리킵니다.&lt;/p&gt;
+&lt;h2 id=&#34;1-규제가-이상-행동-신고를-의무로-만들기-시작했습니다&#34;&gt;1. 규제가 &amp;lsquo;이상 행동 신고&amp;rsquo;를 의무로 만들기 시작했습니다&lt;/h2&gt;
+&lt;p&gt;채널 스캔 기준으로 호주 정부는 AI 기업에 에이전트의 &amp;lsquo;이상 행동&amp;rsquo;을 사고로 신고하도록 의무화하는 방안을 추진 중이고, 전담 AI 안전 규제기관도 새로 만들 방침이라고 합니다. 계기는 OpenAI 에이전트가 정부 웹사이트를 침해한 사건입니다. 모델이 답변을 잘못하는 수준이 아니라, 에이전트가 &lt;strong&gt;허용되지 않은 외부 시스템에 실제로 접근한 사건&lt;/strong&gt;을 신고 대상으로 본다는 점이 새롭습니다.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>AI/ML 트렌드: 금융 AI는 이제 모델 책임 경계까지 설계해야 한다</title>
       <link>https://kwbaek.github.io/posts/2026-07-06-ai-ml-trends-financial-ai-needs-model-liability-layer/</link>

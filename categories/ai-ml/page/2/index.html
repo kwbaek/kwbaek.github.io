@@ -143,6 +143,77 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">AI/ML 트렌드: Claude가 찾은 리눅스 커널 원격 root 취약점 — 발견 속도가 패치 속도를 앞지르기 시작했다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘(10/31) 스캔에서 가장 무게가 실린 신호는 새 모델 출시가 아니라 AI 모델이 실제 운영체제 취약점을 찾아 익스플로잇까지 만들었다는 보고입니다. Anthropic Frontier Red Team이 10월 27일 공개한 글에 담긴 사례이고, 서버를 운영하는 팀이라면 패치 일정을 다시 볼 이유가 됩니다.
+무엇이 확인됐나 Anthropic은 내부 연구용 모델로 주요 브라우저와 운영체제에서 critical 취약점을 찾았고, 그중 다섯 개의 공격 체인을 공개했습니다. 세 가지 사례가 특히 눈에 띕니다.
+Chrome: 원격에서 웹페이지를 열면 기본 설정 브라우저가 샌드박스 밖에서 임의 코드를 실행하는 원클릭 체인입니다. 연구진은 이 과정에서 Google에 보고한 62개 CVE가 Chrome 156까지 패치됐다고 밝혔습니다. Windows 커널 QUIC: 원격에서 도달 가능한 메모리 안전성 문제로, CVE-2026-33096이 할당되어 Microsoft가 수정했습니다. Linux 커널 네트워킹 스택(CVE-2026-98432): MPTCP 리스너가 있는 서버에 자격 증명 없이, 사용자 조작 없이 패킷만 보내 root 명령을 실행할 수 있습니다. 경쟁 상태(race condition)에서 생긴 use-after-free가 원인이며, 시연에서는 커널 포인터를 유출하는 데 48분, 셸 명령 실행까지 5분이 걸렸습니다. 실패한 경쟁은 시스템 전체를 죽이지 않아 공격자가 반복해서 재시도할 수 있다는 점도 짚었습니다. Linux 건은 상류 커널에 패치가 들어갔고 유지 중인 안정 브랜치에 백포트까지 끝났다고 합니다. 다만 배포판별 패치 적용 시점은 이 글에서 확인되지 않으니, 각 배포판의 보안 권고를 직접 확인하세요.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-10-31 20:45:00 +0900 KST'>2026년 10월 31일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to AI/ML 트렌드: Claude가 찾은 리눅스 커널 원격 root 취약점 — 발견 속도가 패치 속도를 앞지르기 시작했다" href="https://kwbaek.github.io/posts/2026-10-31-ai-ml-trends-claude-kernel-root-vuln/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">AI/ML 트렌드: 전문가는 에이전트의 판단을 얼마나 따르는가 — &#39;human in the loop&#39;의 한계
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘(10/30) 스캔에서 가장 오래 남은 신호는 새 모델 출시가 아니라 사람이 에이전트의 결과를 검토할 때 실제로 무엇을 판단하고 있는가에 관한 연구였습니다. Anthropic이 10월 27일 공개한 실험인데, 에이전트를 쓰는 조직이라면 검토 절차 자체를 다시 설계해야 할 근거가 됩니다.
+무엇이 확인됐나 연구진은 인과추론 경험이 있는 전문 분석가 50명에게 Claude Code로 통계 분석을 맡겼습니다. 과제는 농협 자문 서비스의 효과를 판단하고 확장할지 권고하는 것이었습니다. 분석 중에는 두 가지 합리적인 선택지가 있는 결정이 네 번 나오는데, 예를 들어 생산성을 헥타르당 수확량으로 볼지 운영비 단위당 수확량으로 볼지 같은 문제입니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-10-30 20:50:00 +0900 KST'>2026년 10월 30일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 전문가는 에이전트의 판단을 얼마나 따르는가 — &#39;human in the loop&#39;의 한계" href="https://kwbaek.github.io/posts/2026-10-30-ai-ml-trends-agent-judgment-deference/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">AI/ML 트렌드: SAP가 고비용 모델을 저렴한 모델로 바꾸는 이유 — 모델 단가가 곧 수익성
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘(10/29) 스캔에서 가장 실무적으로 와닿은 신호는 새 모델 발표가 아니라 이미 제품에 들어간 AI 모델을 어떻게 싸게 운영하느냐에 관한 소식이었습니다. SAP가 제품 안에서 쓰는 고비용 모델을 성능 기준을 만족하는 저비용 모델로 바꾸고 있고, 2년 동안 20억 유로 이상의 효율을 목표로 한다는 보도입니다.
+무엇이 확인됐나 내용: SAP는 제품에 탑재된 모델을 점검해 더 비싼 모델을 더 싼 대안으로 교체하고 있습니다. 사용하는 모델은 70개가 넘는다고 전해졌습니다. 목표: 2년간 20억 유로 이상의 효율 확보가 목표로 제시됐습니다. 과금 구조: 기업 고객에게는 컴퓨팅 사용량이 아니라 완료된 작업 단위로 요금을 받는 구조가 언급됐습니다. 출처: Reuters 기사가 Channel News Asia에 재게재된 페이지입니다. 같은 날(10/28) Google News RSS에서도 제목과 매체가 같은 항목이 확인되어 시점은 맞다고 판단했습니다. 다만 원문 본문은 이번 실행에서 직접 열어 읽지 못했으므로, 세부 수치는 보도 인용으로만 다룹니다. 왜 중요한가 작업 단위로 과금하는 SaaS에서는 모델 단가가 그대로 마진 구조가 됩니다. 같은 작업을 비싼 프론티어 모델로 처리하면 고객이 낸 요금보다 추론 비용이 커질 수 있습니다. 그래서 기업 소프트웨어 회사들은 다음 질문을 먼저 던지게 됩니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-10-29 21:00:00 +0900 KST'>2026년 10월 29일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to AI/ML 트렌드: SAP가 고비용 모델을 저렴한 모델로 바꾸는 이유 — 모델 단가가 곧 수익성" href="https://kwbaek.github.io/posts/2026-10-29-ai-ml-trends-sap-model-routing-unit-cost/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">AI/ML 트렌드: 1GW AI 팩토리를 GPU 임대로 나눠 짓는 금융 구조 — 네이버·브룩필드 90억 달러
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘(10/28) 스캔에서 가장 구체적인 신호는 모델 발표가 아니라 AI 인프라를 누가 어떻게 돈으로 묶느냐에 관한 소식이었습니다. 네이버가 브룩필드와 맺은 AI 팩토리 금융 계약이 그 사례입니다. 27일 DART 공시로 확인됐고, 제가 Korea Herald 기사 본문을 직접 열어 금액과 구조를 확인했습니다.
+무엇이 확정됐나 투자 구조. 브룩필드가 특수목적법인(SPV, 가칭 Asset Co)을 세우고 최대 90억 달러를 투자합니다. 이 자금으로 GPU, 데이터센터, 기타 AI 인프라를 확보합니다. 사용 방식. 네이버클라우드는 GPU를 서비스 형태(GPUaaS)로 빌려 쓰고 사용료를 냅니다. 외부 고객에게 AI 데이터센터 서비스를 제공하는 것도 계약 범위에 들어 있습니다. 선행 조건. 브룩필드를 독점 우선협상 대상으로 정한 것은 7월이었고, 이번에 계약이 체결됐습니다. 스캔 메시지에 따르면 엔비디아의 10억 달러 투자 선행조건도 충족됐고, 1GW급 프로젝트가 실행 단계로 넘어갔습니다. 2027년 상반기 55MW 가동이 목표입니다. 왜 이 구조가 눈에 띄나 AI 팩토리를 짓는 쪽이 장비를 직접 소유하지 않고, 자본은 외부 SPV에 두고 운영 기업은 사용료만 내는 구조입니다. 장점은 명확합니다. 대규모 자본적 지출을 운영사 재무제표에서 분리할 수 있고, GPU 세대교체 위험을 금융 쪽에서 나눌 수 있습니다. 반대로 사용료 계약의 가동률과 단가가 채산성을 결정하므로, 실제 수요가 계약 조건만큼 따라오는지가 관건입니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-10-28 21:00:00 +0900 KST'>2026년 10월 28일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 1GW AI 팩토리를 GPU 임대로 나눠 짓는 금융 구조 — 네이버·브룩필드 90억 달러" href="https://kwbaek.github.io/posts/2026-10-28-ai-ml-trends-naver-brookfield-ai-factory-financing/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">AI/ML 트렌드: 긴 프롬프트 하나가 다른 고객의 대화를 불러온 날 — Cloudflare GLM-5.3 KV 캐시 사고
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘(10/27) 스캔에서 가장 무게가 있었던 건 새 모델 발표가 아니라 이미 서비스 중이던 추론 인프라의 격리 사고였습니다. Cloudflare가 Workers AI에서 돌던 GLM-5.3 모델이 한 고객의 응답에 다른 고객의 세션 내용을 섞어 보냈다고 공개했습니다. 공개 글은 10월 26일자이고, 제가 원문 본문을 직접 열어 확인했습니다.
+무엇이 발표됐나 영향 범위. 2026년 8월 27일부터 문제가 있었고, 9월 8일 보안 연구자 Gadi Evron(Knostic)의 제보로 인지했습니다. 모델은 9월 9일 복구됐습니다. Workers AI에서 호스팅되는 다른 모델은 영향을 받지 않았다고 밝혔습니다. 증상. 68만 토큰이 넘는 매우 긴 프롬프트에서, 응답에 다른 사용자 요청의 내용이 섞였습니다. 영향을 받은 응답은 155건이고, Cloudflare는 자체 테스트와 연구자 테스트를 빼고 나면 나머지 요청이 일반 트래픽과 시점·양이 비슷하다고 설명했습니다. 대응. 제보를 받고 다음 날 재현했으며, 사고 선언 후 40분 안에 모델을 내렸습니다. 이후 수정된 설정을 배포했습니다. 원인은 어디서 시작됐나 원인은 두 층이 겹친 데 있습니다. 하나는 Cloudflare의 컨텍스트 설정과 추론 엔진의 메모리 풀 크기가 맞지 않은 것이고, 다른 하나는 SGLang의 거부 경로 버그입니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-10-27 20:58:00 +0900 KST'>2026년 10월 27일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 긴 프롬프트 하나가 다른 고객의 대화를 불러온 날 — Cloudflare GLM-5.3 KV 캐시 사고" href="https://kwbaek.github.io/posts/2026-10-27-ai-ml-trends-multitenant-kv-cache-leak/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">AI/ML 트렌드: 학습 데이터보다 먼저 막히는 것은 데이터 접근 권한이다 — 기업 운영데이터 매입과 에이전트의 무단 접근 사례
     </h2>
   </header>
@@ -212,77 +283,6 @@ Agent Knowledge Foundation: CUDA-X 데이터 라이브러리(cuDF, cuGraph, cuML
   </div>
   <footer class="entry-footer"><span title='2026-10-22 20:50:00 +0900 KST'>2026년 10월 22일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
   <a class="entry-link" aria-label="post link to AI/ML 트렌드: 엔터프라이즈 에이전트는 데이터 지식층과 실행 경계를 같이 가져야 한다 — NVIDIA Agent Toolkit 확장" href="https://kwbaek.github.io/posts/2026-10-22-ai-ml-trends-nvidia-agent-toolkit-knowledge-and-boundary/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">AI/ML 트렌드: AI 데이터센터의 병목은 칩에서 현장 공사로 옮겨가고 있다 — NVIDIA DSX POD
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>NVIDIA가 GTC Berlin에서 DSX POD를 공개했습니다. 파트너가 모듈형 컨테이너 안에서 Vera Rubin 기반 AI 팩토리를 미리 조립하고 검증한 뒤 출하하는 구조입니다. 칩 성능 경쟁보다 “AI 공장을 얼마나 빨리 가동하느냐&#34;가 다음 경쟁 축이 되고 있다는 신호로 읽을 만합니다.
-무엇이 발표됐나 NVIDIA 뉴스룸 발표(2026-10-21) 기준 핵심은 다음과 같습니다.
-파트너가 모듈형 컨테이너에서 Vera Rubin AI 팩토리를 사전 조립·검증한 뒤 현장으로 출하합니다. 도입 기간은 기존 약 6개월에서 준비된 부지 기준 최대 14일로 줄어든다고 제시했습니다. 파트너 전달은 2027년 초로 예정되어 있습니다. 왜 중요한가 대규모 AI 인프라 프로젝트에서 자주 막히는 곳은 GPU 수급 자체보다 현장 공사, 전력 연결, 냉각 설치 같은 물리적 단계입니다. 공장에서 미리 만들어 현장에 붙이는 방식은 이 구간의 시간을 줄이려는 시도입니다. 모델 개발팀 입장에서는 학습 자원이 “언제 실제로 돌기 시작하는지&#34;가 달라지므로, 용량 계획을 세울 때 칩 출하 일정과 함께 부지·전력 준비 일정을 같이 봐야 합니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-10-21 20:55:00 +0900 KST'>2026년 10월 21일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to AI/ML 트렌드: AI 데이터센터의 병목은 칩에서 현장 공사로 옮겨가고 있다 — NVIDIA DSX POD" href="https://kwbaek.github.io/posts/2026-10-21-ai-ml-trends-nvidia-dsx-pod-factory-bottleneck/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">AI/ML 트렌드: 대규모 학습의 성능은 GPU 수보다 중단 간격이 정한다 — Meta Prometheus가 공개한 숫자
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>Meta가 기가와트급 슈퍼클러스터 Prometheus의 1단계 완료와 학습 안정성 지표를 공개했습니다. 최신 Muse 모델 계열을 뒷받침한 인프라를 설명하는 엔지니어링 글인데, GPU 숫자보다 “학습이 얼마나 멈추지 않고 돌았는가&#34;를 앞세웠다는 점이 눈에 띕니다.
-무엇이 공개됐나 1단계 완료: 오하이오주 New Albany에 짓고 있는 Prometheus의 첫 단계가 끝났고, 약 100만 GPU 규모로 확장하는 것이 목표입니다. 폐쇄 루프 액체 냉각 같은 전력 효율 설계도 함께 적용됐습니다. Goodput 85% 이상: 사전학습(pre-training) 실행의 goodput이 85%를 넘었다고 밝혔습니다. 강화학습(RL) 실행은 90%를 넘었습니다. 평균 중단 간격(MTBI) 약 4.7만 → 5.4만 GPU시간: 초기 학습 실행에서 약 47k GPU시간이었던 MTBI가, 펌웨어 수정 등 이후 변경으로 54k GPU시간을 넘겼다고 설명합니다. 여기서 goodput은 클러스터가 실제로 유효한 연산을 한 시간의 비율로 읽으면 됩니다. 한 호스트의 문제가 학습 잡 전체를 느리게 하거나 멈출 수 있으므로, 개별 장비의 장애율이 곧 전체 학습 효율을 결정합니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-10-20 21:00:00 +0900 KST'>2026년 10월 20일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 대규모 학습의 성능은 GPU 수보다 중단 간격이 정한다 — Meta Prometheus가 공개한 숫자" href="https://kwbaek.github.io/posts/2026-10-20-ai-ml-trends-meta-prometheus-goodput/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">AI/ML 트렌드: 신입 기술 채용 비중 27%에서 9%로 — 회사는 실행 능력보다 판단력을 뽑기 시작했다
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>Anthropic이 자사 고용 변화를 분석한 리서치 글 「How employment is changing at Anthropic」을 공개했습니다. AI 회사가 자기 조직을 실험실로 삼아 측정한 자료라서, 수치 하나하나보다 변화의 방향이 흥미롭습니다. 오늘 AI/ML 트렌드 채널에 올라온 스캐너 결과에서도 이 글이 반복해서 보였는데, 그만큼 기업 채용 담당자들이 주목하고 있다는 뜻으로 읽힙니다.
-무엇이 드러났나 신입 기술 채용 비중 급감: 기술 부서 전체 인원 중 주니어 비중은 2025년 초 21%에서 14%로 줄었습니다. 같은 기간 주니어 기술 채용(신규 입사자) 비중은 27%에서 9%로 떨어졌습니다. 조직이 커지는 와중에도 주니어 채용만 뚜렷하게 줄었다는 점이 핵심입니다. 에이전트 작업 시간이 사람을 추월: 세션 텔레메트리 기준으로 2026년 3월에 에이전트 작업 시간이 사람 작업 시간을 처음 넘었고, 8월에는 대화형 에이전트 작업 시간이 직원 작업 시간의 여섯 배에 달했습니다. 채용 기준의 이동: 기술 후보자 면접 평가 카드를 분석하니 ‘자율성’과 ‘판단력’에 관한 코멘트가 가장 크게 늘었고, 도메인 전문성에 관한 언급은 줄었습니다. 한 매니저는 모델이 구현을 계속 잘하게 될 것을 전제로 뽑는다고 설명했습니다. 왜 이런 변화가 생기나 생산성 숫자 자체보다 병목의 위치가 바뀌었다는 점이 중요합니다. 같은 보고서에 따르면 코드 커밋 속도는 6개월 전보다 다섯 배가 됐고, 에이전트 출력을 모두 읽는 데 비기술직도 주당 근무시간의 절반이 든다고 합니다. 생산 속도가 빨라질수록 사람의 주의력과 검토 능력이 병목이 됩니다. 실제로 직원들이 작성하는 에이전트 관리 작업(에이전트 스펙 작성, 다른 에이전트 결과 검토, 파이프라인 모니터링)은 2025년 가을 평균 10%에서 2026년 봄 22%로 늘었습니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-10-19 21:00:00 +0900 KST'>2026년 10월 19일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 신입 기술 채용 비중 27%에서 9%로 — 회사는 실행 능력보다 판단력을 뽑기 시작했다" href="https://kwbaek.github.io/posts/2026-10-19-ai-ml-trends-junior-hiring-judgment/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">AI/ML 트렌드: 50년 묵은 암호 표준의 출처를 AI가 30분 만에 찾았다 — 설명 없는 설정값을 감사하는 법
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>2026년 10월 16일, Anthropic은 공식 글에서 ECDSA 표준 곡선의 ‘시드(seed)’ 출처를 밝혔다고 발표했습니다. 1990년대 말 NIST가 표준에 넣은 P-192, P-224, P-256, P-384, P-521 곡선의 시드가 어디서 왔는지는 오랫동안 풀리지 않은 질문이었습니다. 이번 발표에서 흥미로운 점은 답 자체보다, 그 답을 찾은 방식입니다.
-무엇이 발표됐나 NIST 곡선의 시드는 해시 값으로 곡선 계수 b를 정하는 데 쓰이지만, 시드를 어떻게 골랐는지는 표준 문서에 설명이 없었습니다. 시드를 NSA가 제공했다는 점까지만 알려져 있었고, 그동안 사람들은 “농담 문구를 해시한 값&#34;이라는 이야기 같은 추측을 여러 차례 검증해 왔습니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-10-18 21:00:00 +0900 KST'>2026년 10월 18일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 50년 묵은 암호 표준의 출처를 AI가 30분 만에 찾았다 — 설명 없는 설정값을 감사하는 법" href="https://kwbaek.github.io/posts/2026-10-18-ai-ml-trends-ecdsa-seed-origin-audit/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">AI/ML 트렌드: 에이전트가 &#39;길게, 혼자&#39; 일할수록 사용 정책은 행동 단위로 쓰여야 한다
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>오늘 #ai-ml-trends 스캔에서 제가 가장 오래 붙들고 본 소식은 Anthropic의 2026 Usage Policy 개정입니다. 발표일은 10월 8일이고, 새 정책은 11월 12일부터 시행됩니다. 여러 매체가 다룬 이슈 중 하나지만, 정책 원문을 직접 확인해 보니 이번 개정은 단순한 문구 정리가 아니었습니다. 에이전트가 더 길고 독립적으로 일하게 되면서 “무엇을 하면 안 되는가&#34;를 행동 단위로 다시 적어야 한다는 신호에 가까웠습니다.
-원문에 따르면 이번 업데이트 대부분은 기존 규칙을 명확히 하는 목적입니다. 다만 발표문은 “지난 1년 동안 Claude가 더 길고 독립적인 작업을 맡게 되었다&#34;는 점을 이유로 들고, 그 능력에 맞춰 새 예시를 추가했다고 설명합니다. 즉 규칙의 뼈대는 같아도, 규칙이 적용되는 장면이 바뀌었다는 뜻입니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-10-17 21:00:00 +0900 KST'>2026년 10월 17일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 에이전트가 &#39;길게, 혼자&#39; 일할수록 사용 정책은 행동 단위로 쓰여야 한다" href="https://kwbaek.github.io/posts/2026-10-17-ai-ml-trends-usage-policy-autonomy/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>AI/ML 트렌드: 토큰 사용량은 늘었는데 지출은 멈췄다 — Ramp 데이터가 보여준 가격 경쟁의 신호 | Kyungwook&#39;s Devlog</title>
+<meta name="keywords" content="ai-ml, enterprise-ai, pricing, ai-spending, anthropic, openai">
+<meta name="description" content="오늘(11/7) 스캔에서 가장 무게감 있게 본 소식은 기업 AI 지출 데이터입니다. 핀테크 지출관리 업체 Ramp의 집계에 따르면 8월과 9월 두 달 동안 기업의 토큰 지출은 1.5%만 늘었습니다. 7월에는 전월 대비 42% 늘었던 것과 비교하면 급격히 둔화된 셈입니다. TechCrunch가 11월 6일 이 데이터를 보도했고, 원문을 직접 열어 수치를 확인했습니다.
+눈여겨볼 대목은 사용량과 지출이 따로 움직인다는 점입니다. 토큰 볼륨은 여전히 늘고 있는데 매출로 잡히는 돈은 멈췄습니다. Ramp의 수석 이코노미스트 Ara Kharazian은 그 원인으로 가격 경쟁을 꼽습니다. 9월에 OpenAI가 GPT-6 Sol과 GPT-6 Luna의 API 가격을 절반으로 낮췄고, Anthropic도 Fable 5.1과 Opus 5.5의 가격을 내렸습니다. 같은 기사에 따르면 Anthropic은 가격 인하로 매출 성장률이 약 6억 달러 줄었다고 제출 서류에서 밝혔습니다.">
+<meta name="author" content="map[email: name:Kyungwook Baek]">
+<link rel="canonical" href="https://kwbaek.github.io/posts/2026-11-07-ai-ml-trends-ramp-spend-stall/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.199042e659bc7245f5609d333d6c044eb554a0640849bb874e1dff8eb0f57209.css" integrity="sha256-GZBC5lm8ckX1YJ0zPWwETrVUoGQISbuHTh3/jrD1cgk=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://kwbaek.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://kwbaek.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://kwbaek.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://kwbaek.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://kwbaek.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://kwbaek.github.io/posts/2026-11-07-ai-ml-trends-ramp-spend-stall/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="https://kwbaek.github.io/posts/2026-11-07-ai-ml-trends-ramp-spend-stall/">
+  <meta property="og:site_name" content="Kyungwook&#39;s Devlog">
+  <meta property="og:title" content="AI/ML 트렌드: 토큰 사용량은 늘었는데 지출은 멈췄다 — Ramp 데이터가 보여준 가격 경쟁의 신호">
+  <meta property="og:description" content="오늘(11/7) 스캔에서 가장 무게감 있게 본 소식은 기업 AI 지출 데이터입니다. 핀테크 지출관리 업체 Ramp의 집계에 따르면 8월과 9월 두 달 동안 기업의 토큰 지출은 1.5%만 늘었습니다. 7월에는 전월 대비 42% 늘었던 것과 비교하면 급격히 둔화된 셈입니다. TechCrunch가 11월 6일 이 데이터를 보도했고, 원문을 직접 열어 수치를 확인했습니다.
+눈여겨볼 대목은 사용량과 지출이 따로 움직인다는 점입니다. 토큰 볼륨은 여전히 늘고 있는데 매출로 잡히는 돈은 멈췄습니다. Ramp의 수석 이코노미스트 Ara Kharazian은 그 원인으로 가격 경쟁을 꼽습니다. 9월에 OpenAI가 GPT-6 Sol과 GPT-6 Luna의 API 가격을 절반으로 낮췄고, Anthropic도 Fable 5.1과 Opus 5.5의 가격을 내렸습니다. 같은 기사에 따르면 Anthropic은 가격 인하로 매출 성장률이 약 6억 달러 줄었다고 제출 서류에서 밝혔습니다.">
+  <meta property="og:locale" content="ko-kr">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2026-11-07T21:00:00+09:00">
+    <meta property="article:modified_time" content="2026-11-07T21:00:00+09:00">
+    <meta property="article:tag" content="Ai-Ml">
+    <meta property="article:tag" content="Enterprise-Ai">
+    <meta property="article:tag" content="Pricing">
+    <meta property="article:tag" content="Ai-Spending">
+    <meta property="article:tag" content="Anthropic">
+    <meta property="article:tag" content="OpenAI">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="AI/ML 트렌드: 토큰 사용량은 늘었는데 지출은 멈췄다 — Ramp 데이터가 보여준 가격 경쟁의 신호">
+<meta name="twitter:description" content="오늘(11/7) 스캔에서 가장 무게감 있게 본 소식은 기업 AI 지출 데이터입니다. 핀테크 지출관리 업체 Ramp의 집계에 따르면 8월과 9월 두 달 동안 기업의 토큰 지출은 1.5%만 늘었습니다. 7월에는 전월 대비 42% 늘었던 것과 비교하면 급격히 둔화된 셈입니다. TechCrunch가 11월 6일 이 데이터를 보도했고, 원문을 직접 열어 수치를 확인했습니다.
+눈여겨볼 대목은 사용량과 지출이 따로 움직인다는 점입니다. 토큰 볼륨은 여전히 늘고 있는데 매출로 잡히는 돈은 멈췄습니다. Ramp의 수석 이코노미스트 Ara Kharazian은 그 원인으로 가격 경쟁을 꼽습니다. 9월에 OpenAI가 GPT-6 Sol과 GPT-6 Luna의 API 가격을 절반으로 낮췄고, Anthropic도 Fable 5.1과 Opus 5.5의 가격을 내렸습니다. 같은 기사에 따르면 Anthropic은 가격 인하로 매출 성장률이 약 6억 달러 줄었다고 제출 서류에서 밝혔습니다.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://kwbaek.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "AI/ML 트렌드: 토큰 사용량은 늘었는데 지출은 멈췄다 — Ramp 데이터가 보여준 가격 경쟁의 신호",
+      "item": "https://kwbaek.github.io/posts/2026-11-07-ai-ml-trends-ramp-spend-stall/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "AI/ML 트렌드: 토큰 사용량은 늘었는데 지출은 멈췄다 — Ramp 데이터가 보여준 가격 경쟁의 신호",
+  "name": "AI\/ML 트렌드: 토큰 사용량은 늘었는데 지출은 멈췄다 — Ramp 데이터가 보여준 가격 경쟁의 신호",
+  "description": "오늘(11/7) 스캔에서 가장 무게감 있게 본 소식은 기업 AI 지출 데이터입니다. 핀테크 지출관리 업체 Ramp의 집계에 따르면 8월과 9월 두 달 동안 기업의 토큰 지출은 1.5%만 늘었습니다. 7월에는 전월 대비 42% 늘었던 것과 비교하면 급격히 둔화된 셈입니다. TechCrunch가 11월 6일 이 데이터를 보도했고, 원문을 직접 열어 수치를 확인했습니다.\n눈여겨볼 대목은 사용량과 지출이 따로 움직인다는 점입니다. 토큰 볼륨은 여전히 늘고 있는데 매출로 잡히는 돈은 멈췄습니다. Ramp의 수석 이코노미스트 Ara Kharazian은 그 원인으로 가격 경쟁을 꼽습니다. 9월에 OpenAI가 GPT-6 Sol과 GPT-6 Luna의 API 가격을 절반으로 낮췄고, Anthropic도 Fable 5.1과 Opus 5.5의 가격을 내렸습니다. 같은 기사에 따르면 Anthropic은 가격 인하로 매출 성장률이 약 6억 달러 줄었다고 제출 서류에서 밝혔습니다.\n",
+  "keywords": [
+    "ai-ml", "enterprise-ai", "pricing", "ai-spending", "anthropic", "openai"
+  ],
+  "articleBody": "오늘(11/7) 스캔에서 가장 무게감 있게 본 소식은 기업 AI 지출 데이터입니다. 핀테크 지출관리 업체 Ramp의 집계에 따르면 8월과 9월 두 달 동안 기업의 토큰 지출은 1.5%만 늘었습니다. 7월에는 전월 대비 42% 늘었던 것과 비교하면 급격히 둔화된 셈입니다. TechCrunch가 11월 6일 이 데이터를 보도했고, 원문을 직접 열어 수치를 확인했습니다.\n눈여겨볼 대목은 사용량과 지출이 따로 움직인다는 점입니다. 토큰 볼륨은 여전히 늘고 있는데 매출로 잡히는 돈은 멈췄습니다. Ramp의 수석 이코노미스트 Ara Kharazian은 그 원인으로 가격 경쟁을 꼽습니다. 9월에 OpenAI가 GPT-6 Sol과 GPT-6 Luna의 API 가격을 절반으로 낮췄고, Anthropic도 Fable 5.1과 Opus 5.5의 가격을 내렸습니다. 같은 기사에 따르면 Anthropic은 가격 인하로 매출 성장률이 약 6억 달러 줄었다고 제출 서류에서 밝혔습니다.\n지출 구조도 한쪽으로 치우쳐 있습니다. 중간값 기업은 직원 1인당 월 1215달러, 상위 10%는 6001,000달러를 쓰고 있습니다. 가장 ‘AI에 익숙한’ 상위 1% 기업은 직원 1인당 월 1만 달러 수준까지 갔었는데, 8~9월에는 그보다 약간 낮아졌다고 합니다. Ramp의 분석대로라면 AI 매출은 이 상위 1%의 지출 흐름에 크게 기대고 있는 셈입니다. Kharazian의 표현을 빌리면 지금은 구매자 시장입니다.\n10월 데이터에서는 9월 23일부터 10월 23일 사이 토큰 지출이 8.9% 늘며 다시 가속하는 모습도 보였습니다. 다만 같은 데이터 출처가 가격 압력을 계속 지적하고 있어, 한 달의 반등을 추세로 읽기는 이릅니다.\n실무에서 확인할 점 단가와 사용량을 따로 추적하세요. 토큰 사용량이 늘어도 단가가 내려가면 비용 예측이 빗나갑니다. 모델별 단가 변경일을 로그에 함께 남기는 것이 좋습니다. 상위 사용자 집중도를 점검하세요. 상위 1%의 지출 둔화가 전체 흐름을 흔든다는 것이 이번 데이터의 핵심입니다. 사내에서도 소수 팀에 지출이 몰려 있다면 같은 위험이 있습니다. 벤더 할인 계약을 다시 보세요. 지출 약정 할인은 벤더 입장에서 매출 목표를 채우는 수단이 되기도 합니다. 고객 쪽에서는 약정 기간과 단가 재협상 조건을 함께 검토할 만합니다. AI 성장 가정을 보수적으로 잡으세요. 투자자와 벤더가 가정하는 성장률과 실제 기업 지출 증가율 사이에 차이가 있다면, 예산 계획은 실제 지출 데이터를 기준으로 짜는 편이 안전합니다. 이번 소식은 모델 성능 발표가 아니라 돈의 흐름에 관한 데이터입니다. 그래서 기술 뉴스보다 조직의 AI 예산과 계약 구조를 점검하는 신호로 읽는 편이 맞습니다.\n출처: TechCrunch, “Ramp data shows AI spending stalling just as Anthropic nears its IPO” (2026-11-06)\n",
+  "wordCount" : "325",
+  "inLanguage": "en",
+  "datePublished": "2026-11-07T21:00:00+09:00",
+  "dateModified": "2026-11-07T21:00:00+09:00",
+  "author":{
+    "@type": "Person",
+    "name": {"email":"","name":"Kyungwook Baek"}
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://kwbaek.github.io/posts/2026-11-07-ai-ml-trends-ramp-spend-stall/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Kyungwook's Devlog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://kwbaek.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://kwbaek.github.io/" accesskey="h" title="Kyungwook&#39;s Devlog (Alt + H)">Kyungwook&#39;s Devlog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://kwbaek.github.io/categories/" title="categories">
+                    <span>categories</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kwbaek.github.io/tags/" title="tags">
+                    <span>tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kwbaek.github.io/" title="Kyungwook&#39;s Devlog">
+                    <span>Kyungwook&#39;s Devlog</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      AI/ML 트렌드: 토큰 사용량은 늘었는데 지출은 멈췄다 — Ramp 데이터가 보여준 가격 경쟁의 신호
+    </h1>
+    <div class="post-meta"><span title='2026-11-07 21:00:00 +0900 KST'>2026년 11월 7일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span>
+
+</div>
+  </header> 
+  <div class="post-content"><p>오늘(11/7) 스캔에서 가장 무게감 있게 본 소식은 기업 AI 지출 데이터입니다. 핀테크 지출관리 업체 Ramp의 집계에 따르면 8월과 9월 두 달 동안 기업의 토큰 지출은 1.5%만 늘었습니다. 7월에는 전월 대비 42% 늘었던 것과 비교하면 급격히 둔화된 셈입니다. TechCrunch가 11월 6일 이 데이터를 보도했고, 원문을 직접 열어 수치를 확인했습니다.</p>
+<p>눈여겨볼 대목은 사용량과 지출이 따로 움직인다는 점입니다. 토큰 볼륨은 여전히 늘고 있는데 매출로 잡히는 돈은 멈췄습니다. Ramp의 수석 이코노미스트 Ara Kharazian은 그 원인으로 가격 경쟁을 꼽습니다. 9월에 OpenAI가 GPT-6 Sol과 GPT-6 Luna의 API 가격을 절반으로 낮췄고, Anthropic도 Fable 5.1과 Opus 5.5의 가격을 내렸습니다. 같은 기사에 따르면 Anthropic은 가격 인하로 매출 성장률이 약 6억 달러 줄었다고 제출 서류에서 밝혔습니다.</p>
+<p>지출 구조도 한쪽으로 치우쳐 있습니다. 중간값 기업은 직원 1인당 월 12<del>15달러, 상위 10%는 600</del>1,000달러를 쓰고 있습니다. 가장 &lsquo;AI에 익숙한&rsquo; 상위 1% 기업은 직원 1인당 월 1만 달러 수준까지 갔었는데, 8~9월에는 그보다 약간 낮아졌다고 합니다. Ramp의 분석대로라면 AI 매출은 이 상위 1%의 지출 흐름에 크게 기대고 있는 셈입니다. Kharazian의 표현을 빌리면 지금은 구매자 시장입니다.</p>
+<p>10월 데이터에서는 9월 23일부터 10월 23일 사이 토큰 지출이 8.9% 늘며 다시 가속하는 모습도 보였습니다. 다만 같은 데이터 출처가 가격 압력을 계속 지적하고 있어, 한 달의 반등을 추세로 읽기는 이릅니다.</p>
+<h2 id="실무에서-확인할-점">실무에서 확인할 점<a hidden class="anchor" aria-hidden="true" href="#실무에서-확인할-점">#</a></h2>
+<ul>
+<li><strong>단가와 사용량을 따로 추적하세요.</strong> 토큰 사용량이 늘어도 단가가 내려가면 비용 예측이 빗나갑니다. 모델별 단가 변경일을 로그에 함께 남기는 것이 좋습니다.</li>
+<li><strong>상위 사용자 집중도를 점검하세요.</strong> 상위 1%의 지출 둔화가 전체 흐름을 흔든다는 것이 이번 데이터의 핵심입니다. 사내에서도 소수 팀에 지출이 몰려 있다면 같은 위험이 있습니다.</li>
+<li><strong>벤더 할인 계약을 다시 보세요.</strong> 지출 약정 할인은 벤더 입장에서 매출 목표를 채우는 수단이 되기도 합니다. 고객 쪽에서는 약정 기간과 단가 재협상 조건을 함께 검토할 만합니다.</li>
+<li><strong>AI 성장 가정을 보수적으로 잡으세요.</strong> 투자자와 벤더가 가정하는 성장률과 실제 기업 지출 증가율 사이에 차이가 있다면, 예산 계획은 실제 지출 데이터를 기준으로 짜는 편이 안전합니다.</li>
+</ul>
+<p>이번 소식은 모델 성능 발표가 아니라 돈의 흐름에 관한 데이터입니다. 그래서 기술 뉴스보다 조직의 AI 예산과 계약 구조를 점검하는 신호로 읽는 편이 맞습니다.</p>
+<p>출처: TechCrunch, &ldquo;Ramp data shows AI spending stalling just as Anthropic nears its IPO&rdquo; (2026-11-06)</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://kwbaek.github.io/tags/ai-ml/">Ai-Ml</a></li>
+      <li><a href="https://kwbaek.github.io/tags/enterprise-ai/">Enterprise-Ai</a></li>
+      <li><a href="https://kwbaek.github.io/tags/pricing/">Pricing</a></li>
+      <li><a href="https://kwbaek.github.io/tags/ai-spending/">Ai-Spending</a></li>
+      <li><a href="https://kwbaek.github.io/tags/anthropic/">Anthropic</a></li>
+      <li><a href="https://kwbaek.github.io/tags/openai/">OpenAI</a></li>
+    </ul>
+  </footer><script src="https://utteranc.es/client.js"
+        repo="kwbaek/blog-comments"
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://kwbaek.github.io/">Kyungwook&#39;s Devlog</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

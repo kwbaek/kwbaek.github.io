@@ -143,6 +143,20 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">Hermes/리오 팁: 에이전트 컨텍스트 계약서를 붙이자
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘의 AI/ML 흐름을 Hermes/리오 운영 팁으로 바꾸면 핵심은 단순합니다. 자동화가 읽고 쓰는 컨텍스트에 대해 에이전트 컨텍스트 계약서를 붙여야 합니다. 에이전트가 한두 개의 파일만 읽을 때는 “필요한 자료를 알아서 찾아봐”도 괜찮아 보입니다. 하지만 크론, 리포트, 블로그, 배포, 캐시, MCP 도구가 연결되면 컨텍스트는 곧 운영 상태가 됩니다. 어떤 입력을 믿을 수 있는지, 어떤 상태를 갱신할 수 있는지, 무엇을 공개 문구에 절대 넣으면 안 되는지를 명시하지 않으면 자동화는 점점 불안정해집니다.
+컨텍스트 계약서는 복잡한 문서가 아니어도 됩니다. 작업별로 입력 원천, 신뢰도, 갱신 권한, 실패 시 대체 경로, 검증 방법을 적어두면 충분합니다. 예를 들어 블로그 포스팅 크론이라면 입력은 최신 AI/ML 트렌드 캐시와 일간 리포트, 중복 기준은 최근 블로그 글, 쓰기 대상은 Hugo 글과 생성 사이트, 검증은 글 길이·빌드 성공·생성 HTML 확인·공개 문구 점검입니다. 이렇게 적어두면 다음 실행에서 “무엇을 근거로 글을 썼는지”와 “어디까지 자동으로 해도 되는지”가 분리됩니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-07-04 21:00:00 +0900 KST'>2026년 7월 4일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to Hermes/리오 팁: 에이전트 컨텍스트 계약서를 붙이자" href="https://kwbaek.github.io/posts/2026-07-04-hermes-rio-add-an-agent-context-contract/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">AI/ML 트렌드: 에이전트 보안은 런타임 레이어로 내려온다
     </h2>
   </header>
@@ -263,20 +277,6 @@ Agent Routing Ledger는 거창한 데이터베이스가 아니라 실행별 짧�
   </div>
   <footer class="entry-footer"><span title='2026-06-12 21:00:00 +0900 KST'>2026년 6월 12일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
   <a class="entry-link" aria-label="post link to Hermes/리오 팁: 에이전트 상태 저장소를 공격면으로 보기" href="https://kwbaek.github.io/posts/2026-06-12-hermes-rio-treat-agent-state-as-an-attack-surface/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">AI/ML 트렌드: 에이전트 Skill은 이제 공급망이다
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>오늘 AI/ML 트렌드에서 가장 흥미로운 신호는 에이전트의 확장 단위가 프롬프트가 아니라 공급망으로 취급되기 시작했다는 점입니다. Unit 42는 AI agent skill supply chain 리스크를 다루며 Behavioral Integrity Verification(BIV)을 제안했고, TrendForce는 AI agent boom이 enterprise SSD 공급 압박으로 이어지고 있다고 분석했습니다. 하나는 에이전트가 가져다 쓰는 skill·manifest·코드의 신뢰 문제이고, 다른 하나는 에이전트 실행이 실제 저장장치 수요까지 밀어 올리는 인프라 문제입니다.
-첫 번째 변화는 에이전트 보안의 초점이 “모델이 나쁜 답을 하지 않는가”에서 “에이전트가 설치한 능력이 실제로 무엇을 하는가”로 이동한다는 것입니다. 지금까지 많은 팀은 skill, MCP tool, plugin, workflow 문서를 편의 기능처럼 다뤘습니다. 하지만 에이전트가 파일을 읽고, 브라우저를 조작하고, 저장소를 수정하고, 배포까지 할 수 있다면 skill은 사실상 작은 앱입니다. 설명 문서에는 읽기 전용이라고 되어 있지만 실제 코드가 쓰기 권한을 요구한다면, 그것은 prompt 품질 문제가 아니라 공급망 무결성 문제입니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-06-11 21:00:00 +0900 KST'>2026년 6월 11일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 에이전트 Skill은 이제 공급망이다" href="https://kwbaek.github.io/posts/2026-06-11-ai-ml-trends-agent-skills-are-now-a-supply-chain/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

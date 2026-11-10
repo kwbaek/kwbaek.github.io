@@ -6,8 +6,16 @@
     <description>Recent content in Agents on Kyungwook&#39;s Devlog</description>
     <generator>Hugo -- 0.165.0</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Wed, 04 Nov 2026 21:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Fri, 06 Nov 2026 21:00:00 +0900</lastBuildDate>
     <atom:link href="https://kwbaek.github.io/tags/agents/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI/ML 트렌드: 취약점 발견은 자동화됐고, 이제 병목은 검증과 패치 순서다</title>
+      <link>https://kwbaek.github.io/posts/2026-11-06-ai-ml-trends-kernel-exploit-pipeline/</link>
+      <pubDate>Fri, 06 Nov 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-11-06-ai-ml-trends-kernel-exploit-pipeline/</guid>
+      <description>&lt;p&gt;오늘(11/6) 스캔에서 가장 구체적이고 무게감 있는 발표는 OpenAI가 공개한 리눅스 커널 취약점 탐색 파이프라인입니다. 제목은 &amp;ldquo;A thousand fewer paths to root&amp;quot;이고, 공식 페이지 본문을 직접 확인했습니다. 취약점을 찾는 단계가 사람이 한 건씩 조사하던 작업에서 시스템이 반복 실행하는 절차로 바뀌었다는 점이 핵심입니다.&lt;/p&gt;
+&lt;p&gt;파이프라인은 다섯 단계입니다. 먼저 Scout 에이전트가 커널 코드 중 접근 가능성과 보안 중요도가 높은 대상 5,034개(약 280만 줄, 전체 커널의 약 7%)를 고릅니다. 이어서 Analyst 에이전트가 후보 취약점 2,308개를 만들고, 검증 단계에서 격리된 가상머신(KASAN 적용)에서 재현 가능한 개념증명(PoC)을 만듭니다. 그 결과 2,308개 중 1,724개(약 74.7%)가 재현됐습니다. 이후 악용 가능성 평가, 익스플로잇 개발, 패치 생성, 사람 검토 순서로 이어집니다.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>AI/ML 트렌드: 긴 문서 속 &#39;최종 상태&#39;를 모델이 끝까지 따라가지 못한다</title>
       <link>https://kwbaek.github.io/posts/2026-11-04-ai-ml-trends-statebench-state-tracking/</link>
