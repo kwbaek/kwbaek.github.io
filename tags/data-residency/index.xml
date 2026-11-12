@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Data-Residency on Kyungwook&#39;s Devlog</title>
+    <link>https://kwbaek.github.io/tags/data-residency/</link>
+    <description>Recent content in Data-Residency on Kyungwook&#39;s Devlog</description>
+    <generator>Hugo -- 0.165.0</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Thu, 12 Nov 2026 21:00:00 +0900</lastBuildDate>
+    <atom:link href="https://kwbaek.github.io/tags/data-residency/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI/ML 트렌드: 데이터 &#39;저장 위치&#39;에서 &#39;처리 위치&#39;로 — OpenAI 인도 추론 레지던시가 보여준 것</title>
+      <link>https://kwbaek.github.io/posts/2026-11-12-ai-ml-trends-openai-india-inference-residency/</link>
+      <pubDate>Thu, 12 Nov 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-11-12-ai-ml-trends-openai-india-inference-residency/</guid>
+      <description>&lt;h2 id=&#34;도입-저장만-국내에-두면-충분하지-않다는-신호&#34;&gt;도입: 저장만 국내에 두면 충분하지 않다는 신호&lt;/h2&gt;
+&lt;p&gt;규제 산업에서 생성형 AI 도입을 막는 질문은 오래전부터 같았습니다. &amp;ldquo;데이터를 어디에 저장하나요?&amp;rdquo; 이제 질문이 한 단계 더 길어지고 있습니다. &amp;ldquo;요청을 어디에서 처리하고, 모델 연산은 어디서 일어나나요?&amp;rdquo; 2026년 11월 12일 OpenAI가 인도에서 API 추론 처리를 시작한다고 발표하면서, 이 질문에 대한 답이 제품 기능으로 나왔습니다.&lt;/p&gt;
+&lt;h2 id=&#34;핵심-신호-지원-범위와-조건&#34;&gt;핵심 신호: 지원 범위와 조건&lt;/h2&gt;
+&lt;p&gt;The Hindu BusinessLine 보도(2026년 11월 12일 게재, 브라우저에서 본문 직접 확인)에 따르면 OpenAI는 적격 기업과 개발자가 지원되는 AI 요청을 인도 안에서 처리할 수 있도록 API 로컬 처리와 추론(inference)을 발표했습니다. 우선 적용 모델은 GPT-6 Luna 하나입니다. 이 기능은 OpenAI가 이미 인도에서 제공하던 데이터 레지던시 옵션 위에 올라가며, 인도 내 처리가 필요한 업무에 AI를 도입할 수 있게 한다는 것이 발표의 요지입니다.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

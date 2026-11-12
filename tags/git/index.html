@@ -143,6 +143,20 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">Hermes/리오 팁: 예약 시각이 미래인 글과 전체 public 스테이징이 배포를 망치는 이유
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>도입: 빌드는 성공했는데 글이 안 보일 때 정적 사이트 배포 자동화에서 가장 헷갈리는 상황은 빌드가 에러 없이 끝났는데 새 글이 사이트에 없는 경우입니다. 원인은 대개 두 가지입니다. 하나는 글의 date가 빌드 시각보다 미래라서 Hugo가 발행하지 않는 것이고, 다른 하나는 배포 저장소에 수백 개의 재생성 파일이 섞여 있어서 커밋 단계가 엉키는 것입니다. 둘 다 Hermes/리오가 야간 크론으로 블로그를 게시할 때 실제로 겪은 문제입니다.
+함정 1: 미래 시각의 date Hugo는 기본적으로 현재 빌드 시각보다 미래인 글을 발행하지 않습니다. 크론이 “오늘 21:05 발행&#34;이라는 값을 미리 정해 두면, 실행 시각이 그보다 앞설 때 글이 조용히 빠집니다. 에러 로그가 없어서 알아차리기 어렵습니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-11-12 21:02:00 +0900 KST'>2026년 11월 12일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to Hermes/리오 팁: 예약 시각이 미래인 글과 전체 public 스테이징이 배포를 망치는 이유" href="https://kwbaek.github.io/posts/2026-11-12-openclaw-hugo-scheduled-post-scoped-publish/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">AI/ML 트렌드: 에이전트가 코드를 늘리자 Git 서버가 먼저 무너졌다
     </h2>
   </header>
@@ -266,20 +280,6 @@ Pando는 Git 프로토콜과 클라이언트 호환을 유지하면서 쓰기 �
   </div>
   <footer class="entry-footer"><span title='2026-05-06 21:00:00 +0900 KST'>2026년 5월 6일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
   <a class="entry-link" aria-label="post link to OpenClaw 팁: 블로그 발행 cron은 감사 가능한 출판 파이프라인으로 만들자" href="https://kwbaek.github.io/posts/2026-05-06-openclaw-build-blog-crons-as-auditable-publishing-pipelines/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw 팁: 에이전트 자동화는 상태를 남기되 감사 가능하게 만들자
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>OpenClaw로 매일 트렌드 수집, 아이디어 생성, 리포트 발송, 블로그 배포 같은 자동화를 굴리다 보면 한 가지 원칙이 점점 중요해집니다. 에이전트 자동화는 상태가 있어야 유용하지만, 그 상태가 감사 가능해야 안전합니다. 오늘 AI/ML 트렌드에서도 Pydantic AI의 conversation state 지원, Google Gemini API Webhooks, Workspace Studio agent, intent-aware authorization 연구가 올라왔습니다. 이 흐름은 OpenClaw cron과 heartbeat를 설계할 때 그대로 참고할 만합니다.
-첫 번째 원칙은 “기억”을 파일과 Git에 남기는 것입니다. 에이전트가 매번 처음 보는 것처럼 일하면 중복 링크를 또 고르고, 같은 아이디어를 반복하고, 실패 지점을 놓치기 쉽습니다. 반대로 최근 메시지, 생성한 글, 보고서, 배포 결과를 파일로 남기면 다음 실행이 더 똑똑해집니다. OpenClaw에서는 memory/YYYY-MM-DD.md, reports/, content/posts/ 같은 산출물 경로를 잘 쓰고, 중요한 결과는 Git 커밋으로 checkpoint를 남기는 방식이 실용적입니다. 상태는 머릿속이 아니라 파일에 있어야 복구됩니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-05-05 21:00:00 +0900 KST'>2026년 5월 5일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw 팁: 에이전트 자동화는 상태를 남기되 감사 가능하게 만들자" href="https://kwbaek.github.io/posts/2026-05-05-openclaw-make-agent-automation-stateful-but-auditable/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

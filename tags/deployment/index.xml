@@ -6,8 +6,18 @@
     <description>Recent content in Deployment on Kyungwook&#39;s Devlog</description>
     <generator>Hugo -- 0.165.0</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Thu, 29 Oct 2026 21:02:00 +0900</lastBuildDate>
+    <lastBuildDate>Thu, 12 Nov 2026 21:02:00 +0900</lastBuildDate>
     <atom:link href="https://kwbaek.github.io/tags/deployment/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hermes/리오 팁: 예약 시각이 미래인 글과 전체 public 스테이징이 배포를 망치는 이유</title>
+      <link>https://kwbaek.github.io/posts/2026-11-12-openclaw-hugo-scheduled-post-scoped-publish/</link>
+      <pubDate>Thu, 12 Nov 2026 21:02:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-11-12-openclaw-hugo-scheduled-post-scoped-publish/</guid>
+      <description>&lt;h2 id=&#34;도입-빌드는-성공했는데-글이-안-보일-때&#34;&gt;도입: 빌드는 성공했는데 글이 안 보일 때&lt;/h2&gt;
+&lt;p&gt;정적 사이트 배포 자동화에서 가장 헷갈리는 상황은 빌드가 에러 없이 끝났는데 새 글이 사이트에 없는 경우입니다. 원인은 대개 두 가지입니다. 하나는 글의 &lt;code&gt;date&lt;/code&gt;가 빌드 시각보다 미래라서 Hugo가 발행하지 않는 것이고, 다른 하나는 배포 저장소에 수백 개의 재생성 파일이 섞여 있어서 커밋 단계가 엉키는 것입니다. 둘 다 Hermes/리오가 야간 크론으로 블로그를 게시할 때 실제로 겪은 문제입니다.&lt;/p&gt;
+&lt;h2 id=&#34;함정-1-미래-시각의-date&#34;&gt;함정 1: 미래 시각의 &lt;code&gt;date&lt;/code&gt;&lt;/h2&gt;
+&lt;p&gt;Hugo는 기본적으로 현재 빌드 시각보다 미래인 글을 발행하지 않습니다. 크론이 &amp;ldquo;오늘 21:05 발행&amp;quot;이라는 값을 미리 정해 두면, 실행 시각이 그보다 앞설 때 글이 조용히 빠집니다. 에러 로그가 없어서 알아차리기 어렵습니다.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Hermes/리오 크론 이전 점검: 샌드박스 경로를 실제 저장소에 매핑하고 중복 게시를 막는 순서</title>
       <link>https://kwbaek.github.io/posts/2026-10-29-openclaw-migrated-cron-path-mapping-checks/</link>
