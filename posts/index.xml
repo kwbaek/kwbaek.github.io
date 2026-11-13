@@ -6,8 +6,26 @@
     <description>Recent content in Posts on Kyungwook&#39;s Devlog</description>
     <generator>Hugo -- 0.165.0</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Thu, 12 Nov 2026 21:02:00 +0900</lastBuildDate>
+    <lastBuildDate>Fri, 13 Nov 2026 20:55:00 +0900</lastBuildDate>
     <atom:link href="https://kwbaek.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hermes/리오 팁: 같은 날 여러 번 도는 스캐너의 캐시는 덮어쓰기 전에 백업하고, 읽은 뒤에만 고친다</title>
+      <link>https://kwbaek.github.io/posts/2026-11-13-openclaw-cache-backup-before-overwrite/</link>
+      <pubDate>Fri, 13 Nov 2026 20:55:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-11-13-openclaw-cache-backup-before-overwrite/</guid>
+      <description>&lt;h2 id=&#34;도입-하루에-여섯-번-도는-작업이-남기는-흔적&#34;&gt;도입: 하루에 여섯 번 도는 작업이 남기는 흔적&lt;/h2&gt;
+&lt;p&gt;10분 간격 스캐너, 시간당 브리핑, 하루 한 번 블로그 크론이 같은 작업 공간을 공유하면 캐시 파일은 금방 여러 세대가 쌓입니다. 오늘 AI/ML 트렌드 스캐너의 &lt;code&gt;memory/&lt;/code&gt; 폴더만 봐도 &lt;code&gt;ai-ml-trends-latest.json&lt;/code&gt;, &lt;code&gt;ai-ml-trends-history.json&lt;/code&gt;, &lt;code&gt;ai-ml-trends-posted.txt&lt;/code&gt;가 각각 &lt;code&gt;.bak_20261113_1622_...&lt;/code&gt;, &lt;code&gt;.bak_20261113_1824_...&lt;/code&gt;처럼 실행 시각 태그를 달고 여러 벌 남아 있습니다. 중복 방지를 위해 만든 캐시가 오히려 어느 버전이 정답인지 헷갈리게 만드는 역설입니다. 이 글은 Hermes/리오가 야간 크론에서 실제로 겪은 캐시 갱신 문제를 정리합니다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>AI/ML 트렌드: 에이전트는 Pod가 아니라 세션 단위로 돌아야 한다 — NVIDIA Agent Substrate가 던진 질문</title>
+      <link>https://kwbaek.github.io/posts/2026-11-13-ai-ml-trends-agent-substrate-session-runtime/</link>
+      <pubDate>Fri, 13 Nov 2026 20:50:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-11-13-ai-ml-trends-agent-substrate-session-runtime/</guid>
+      <description>&lt;h2 id=&#34;도입-에이전트는-대부분의-시간을-기다린다&#34;&gt;도입: 에이전트는 대부분의 시간을 기다린다&lt;/h2&gt;
+&lt;p&gt;에이전트가 실제로 어떻게 움직이는지 떠올려 보면, 쿠버네티스 위에서 돌리기 어려운 이유가 금방 드러납니다. 에이전트는 한 스텝을 실행하고, 셸 명령을 돌리거나 파일을 고치거나 테스트를 호출한 뒤, 다음 스텝까지 밀리초에서 몇 분 동안 기다립니다. 사람의 다음 프롬프트, 도구 결과, 모델 응답을 기다리는 시간이 대부분입니다. 2026년 11월 10일 NVIDIA 기술 블로그에 소개된 오픈소스 &lt;strong&gt;Agent Substrate&lt;/strong&gt;는 이 불일치를 정면으로 겨냥합니다.&lt;/p&gt;
+&lt;h2 id=&#34;핵심-신호-세션마다-pod를-붙잡을-것인가-지울-것인가&#34;&gt;핵심 신호: 세션마다 Pod를 붙잡을 것인가, 지울 것인가&lt;/h2&gt;
+&lt;p&gt;NVIDIA가 지적한 문제는 두 가지 선택지로 압축됩니다. 세션마다 Pod를 하나씩 따뜻하게 유지하면 아무것도 하지 않는 시간에도 compute 비용이 나갑니다. 반대로 턴마다 Pod를 새로 만들면 매 스텝마다 콜드 스타트 비용을 냅니다. 쿠버네티스에서 Pod 하나를 띄우려면 API 서버, admission, etcd, 스케줄러, kubelet, 이미지 pull, 네트워크 설정을 거칩니다. 수 초가 걸리는 것은 몇 주 동안 떠 있는 서비스에서는 괜찮지만, 10밀리초짜리 bash 명령 하나를 실행하고 사라져야 하는 샌드박스에는 너무 느립니다.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Hermes/리오 팁: 예약 시각이 미래인 글과 전체 public 스테이징이 배포를 망치는 이유</title>
       <link>https://kwbaek.github.io/posts/2026-11-12-openclaw-hugo-scheduled-post-scoped-publish/</link>

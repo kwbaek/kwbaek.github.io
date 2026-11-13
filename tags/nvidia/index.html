@@ -143,6 +143,20 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">AI/ML 트렌드: 에이전트는 Pod가 아니라 세션 단위로 돌아야 한다 — NVIDIA Agent Substrate가 던진 질문
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>도입: 에이전트는 대부분의 시간을 기다린다 에이전트가 실제로 어떻게 움직이는지 떠올려 보면, 쿠버네티스 위에서 돌리기 어려운 이유가 금방 드러납니다. 에이전트는 한 스텝을 실행하고, 셸 명령을 돌리거나 파일을 고치거나 테스트를 호출한 뒤, 다음 스텝까지 밀리초에서 몇 분 동안 기다립니다. 사람의 다음 프롬프트, 도구 결과, 모델 응답을 기다리는 시간이 대부분입니다. 2026년 11월 10일 NVIDIA 기술 블로그에 소개된 오픈소스 Agent Substrate는 이 불일치를 정면으로 겨냥합니다.
+핵심 신호: 세션마다 Pod를 붙잡을 것인가, 지울 것인가 NVIDIA가 지적한 문제는 두 가지 선택지로 압축됩니다. 세션마다 Pod를 하나씩 따뜻하게 유지하면 아무것도 하지 않는 시간에도 compute 비용이 나갑니다. 반대로 턴마다 Pod를 새로 만들면 매 스텝마다 콜드 스타트 비용을 냅니다. 쿠버네티스에서 Pod 하나를 띄우려면 API 서버, admission, etcd, 스케줄러, kubelet, 이미지 pull, 네트워크 설정을 거칩니다. 수 초가 걸리는 것은 몇 주 동안 떠 있는 서비스에서는 괜찮지만, 10밀리초짜리 bash 명령 하나를 실행하고 사라져야 하는 샌드박스에는 너무 느립니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-11-13 20:50:00 +0900 KST'>2026년 11월 13일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 에이전트는 Pod가 아니라 세션 단위로 돌아야 한다 — NVIDIA Agent Substrate가 던진 질문" href="https://kwbaek.github.io/posts/2026-11-13-ai-ml-trends-agent-substrate-session-runtime/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">AI/ML 트렌드: GPU 클러스터는 한 번 검증하고 끝나지 않는다 — NVIDIA DSX OS와 전력 병목
     </h2>
   </header>
@@ -270,20 +284,6 @@ DSX OS는 AI factory 운영을 개방형·모듈형 소프트웨어 레이어로
   </div>
   <footer class="entry-footer"><span title='2026-03-24 21:00:00 +0900 KST'>2026년 3월 24일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
   <a class="entry-link" aria-label="post link to AI/ML 트렌드: 오늘의 축은 ‘모델 성능’에서 ‘칩·에이전트·거버넌스’ 동시 경쟁으로" href="https://kwbaek.github.io/posts/2026-03-24-ai-ml-trends-agentic-ai-shifts-to-infrastructure-and-governance/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">학습보다 추론이 전장: Nvidia 새 칩 소식이 보여준 AI 인프라의 무게중심 이동
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>오늘 Discord #ai-ml-trends 채널에서 가장 중요한 신호는 Reuters가 보도한 Nvidia의 신규 추론(inference) 가속 시스템 준비 뉴스였습니다. 겉으로는 또 하나의 칩 출시 소식처럼 보이지만, 실제로는 AI 산업의 중심축이 어디로 이동하고 있는지를 보여주는 상징적인 사건이라고 봅니다.
-지난 2년은 “누가 더 큰 모델을 더 빨리 학습시키는가”가 핵심 경쟁이었습니다. 그래서 시장의 관심도 자연스럽게 학습용 GPU 수급, 대형 클러스터, CAPEX 규모에 쏠려 있었습니다. 그런데 지금은 상황이 달라졌습니다. 생성형 AI가 대중 서비스와 기업 워크플로우에 본격 탑재되면서, 비용과 성능의 병목이 학습보다 추론 단계에서 더 크게 드러나고 있습니다. 사용자가 실제로 체감하는 것은 학습 성과가 아니라 응답 지연(latency), 처리량(throughput), 그리고 토큰당 비용이기 때문입니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-02-28 21:00:00 +0900 KST'>2026년 2월 28일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to 학습보다 추론이 전장: Nvidia 새 칩 소식이 보여준 AI 인프라의 무게중심 이동" href="https://kwbaek.github.io/posts/2026-02-28-inference-is-the-new-ai-bottleneck/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

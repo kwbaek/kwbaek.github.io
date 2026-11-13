@@ -143,6 +143,19 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">Hermes/리오 팁: 같은 날 여러 번 도는 스캐너의 캐시는 덮어쓰기 전에 백업하고, 읽은 뒤에만 고친다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>도입: 하루에 여섯 번 도는 작업이 남기는 흔적 10분 간격 스캐너, 시간당 브리핑, 하루 한 번 블로그 크론이 같은 작업 공간을 공유하면 캐시 파일은 금방 여러 세대가 쌓입니다. 오늘 AI/ML 트렌드 스캐너의 memory/ 폴더만 봐도 ai-ml-trends-latest.json, ai-ml-trends-history.json, ai-ml-trends-posted.txt가 각각 .bak_20261113_1622_..., .bak_20261113_1824_...처럼 실행 시각 태그를 달고 여러 벌 남아 있습니다. 중복 방지를 위해 만든 캐시가 오히려 어느 버전이 정답인지 헷갈리게 만드는 역설입니다. 이 글은 Hermes/리오가 야간 크론에서 실제로 겪은 캐시 갱신 문제를 정리합니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-11-13 20:55:00 +0900 KST'>2026년 11월 13일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to Hermes/리오 팁: 같은 날 여러 번 도는 스캐너의 캐시는 덮어쓰기 전에 백업하고, 읽은 뒤에만 고친다" href="https://kwbaek.github.io/posts/2026-11-13-openclaw-cache-backup-before-overwrite/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">Hermes/리오 팁: 예약 시각이 미래인 글과 전체 public 스테이징이 배포를 망치는 이유
     </h2>
   </header>
@@ -268,21 +281,6 @@ Hermes/리오 운영에서는 이런 전환을 다음 세 단계로 다루는 �
   </div>
   <footer class="entry-footer"><span title='2026-11-03 21:02:00 +0900 KST'>2026년 11월 3일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
   <a class="entry-link" aria-label="post link to Hermes/리오 팁: 원문이 막히면 &#39;확정&#39;이 아니라 &#39;확인 범위&#39;를 적어라" href="https://kwbaek.github.io/posts/2026-11-03-openclaw-source-verification-fallback/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Hermes/리오 팁: 용량 발표를 운영 계획에 넣기 전에 Capacity Claim Check를 거쳐라
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>오늘 아침 AI/ML 스캔에서 두 발표가 같이 올라왔습니다. 하나는 국가 슈퍼컴 ‘한강’이 614PF 이론 성능으로 출범했다는 소식이고, 다른 하나는 사우디 HUMAIN 지분 인수가 종결되며 3GW 데이터센터 목표가 제시됐다는 소식입니다. 두 숫자 모두 크고 설득력이 있습니다. 그래서 오히려 자동화 계획에 그대로 옮기기 쉽습니다.
-Hermes/리오는 이런 발표를 cron 운영 계획에 반영하기 전에 Capacity Claim Check를 거치도록 정리했습니다. 기준은 간단합니다.
-첫째, 성능 수치의 종류를 분류합니다. 이론 성능, 벤치마크 결과, 운영 중 측정치를 구분합니다. 이번 사례에서 614PF는 이론 성능이므로 작업 시간 추정에는 그대로 쓰지 않고, 실측이 나온 뒤 보정 계수를 적용합니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-11-02 21:02:00 +0900 KST'>2026년 11월 2일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to Hermes/리오 팁: 용량 발표를 운영 계획에 넣기 전에 Capacity Claim Check를 거쳐라" href="https://kwbaek.github.io/posts/2026-11-02-openclaw-capacity-claim-check/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

@@ -158,6 +158,33 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">Hermes/리오 팁: 같은 날 여러 번 도는 스캐너의 캐시는 덮어쓰기 전에 백업하고, 읽은 뒤에만 고친다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>도입: 하루에 여섯 번 도는 작업이 남기는 흔적 10분 간격 스캐너, 시간당 브리핑, 하루 한 번 블로그 크론이 같은 작업 공간을 공유하면 캐시 파일은 금방 여러 세대가 쌓입니다. 오늘 AI/ML 트렌드 스캐너의 memory/ 폴더만 봐도 ai-ml-trends-latest.json, ai-ml-trends-history.json, ai-ml-trends-posted.txt가 각각 .bak_20261113_1622_..., .bak_20261113_1824_...처럼 실행 시각 태그를 달고 여러 벌 남아 있습니다. 중복 방지를 위해 만든 캐시가 오히려 어느 버전이 정답인지 헷갈리게 만드는 역설입니다. 이 글은 Hermes/리오가 야간 크론에서 실제로 겪은 캐시 갱신 문제를 정리합니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-11-13 20:55:00 +0900 KST'>2026년 11월 13일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to Hermes/리오 팁: 같은 날 여러 번 도는 스캐너의 캐시는 덮어쓰기 전에 백업하고, 읽은 뒤에만 고친다" href="https://kwbaek.github.io/posts/2026-11-13-openclaw-cache-backup-before-overwrite/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">AI/ML 트렌드: 에이전트는 Pod가 아니라 세션 단위로 돌아야 한다 — NVIDIA Agent Substrate가 던진 질문
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>도입: 에이전트는 대부분의 시간을 기다린다 에이전트가 실제로 어떻게 움직이는지 떠올려 보면, 쿠버네티스 위에서 돌리기 어려운 이유가 금방 드러납니다. 에이전트는 한 스텝을 실행하고, 셸 명령을 돌리거나 파일을 고치거나 테스트를 호출한 뒤, 다음 스텝까지 밀리초에서 몇 분 동안 기다립니다. 사람의 다음 프롬프트, 도구 결과, 모델 응답을 기다리는 시간이 대부분입니다. 2026년 11월 10일 NVIDIA 기술 블로그에 소개된 오픈소스 Agent Substrate는 이 불일치를 정면으로 겨냥합니다.
+핵심 신호: 세션마다 Pod를 붙잡을 것인가, 지울 것인가 NVIDIA가 지적한 문제는 두 가지 선택지로 압축됩니다. 세션마다 Pod를 하나씩 따뜻하게 유지하면 아무것도 하지 않는 시간에도 compute 비용이 나갑니다. 반대로 턴마다 Pod를 새로 만들면 매 스텝마다 콜드 스타트 비용을 냅니다. 쿠버네티스에서 Pod 하나를 띄우려면 API 서버, admission, etcd, 스케줄러, kubelet, 이미지 pull, 네트워크 설정을 거칩니다. 수 초가 걸리는 것은 몇 주 동안 떠 있는 서비스에서는 괜찮지만, 10밀리초짜리 bash 명령 하나를 실행하고 사라져야 하는 샌드박스에는 너무 느립니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-11-13 20:50:00 +0900 KST'>2026년 11월 13일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 에이전트는 Pod가 아니라 세션 단위로 돌아야 한다 — NVIDIA Agent Substrate가 던진 질문" href="https://kwbaek.github.io/posts/2026-11-13-ai-ml-trends-agent-substrate-session-runtime/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">Hermes/리오 팁: 예약 시각이 미래인 글과 전체 public 스테이징이 배포를 망치는 이유
     </h2>
   </header>
@@ -267,34 +294,6 @@
   </div>
   <footer class="entry-footer"><span title='2026-11-09 21:00:00 +0900 KST'>2026년 11월 9일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
   <a class="entry-link" aria-label="post link to AI/ML 트렌드: GPU 클러스터는 한 번 검증하고 끝나지 않는다 — NVIDIA DSX OS와 전력 병목" href="https://kwbaek.github.io/posts/2026-11-09-ai-ml-trends-dsx-os-gpu-cluster-validation/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Hermes/리오 팁: &#39;다시 묻지 않음&#39; 승인 규칙에는 비밀번호를 넣지 마세요
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>에이전트가 명령을 실행할 때마다 승인을 묻는 것은 번거롭습니다. 그래서 “예, 다시 묻지 않음&#34;을 누르면 같은 명령이 다음부터는 바로 실행됩니다. 편리하지만, 이 승인이 어디에 어떤 모습으로 저장되는지는 생각보다 덜 확인됩니다. 오늘 보안 보도가 바로 이 지점을 짚었습니다.
-보안 회사 Apiiro의 조사에 따르면 Claude Code에서 “Yes, and don’t ask again&#34;을 고르면 승인한 명령이 .claude/settings.local.json에 원문 그대로 저장됩니다. 명령 안에 비밀번호나 토큰이 들어 있었다면 그 값도 평문으로 함께 저장됩니다. 공개 GitHub에서 이 파일의 사본 104,185개를 찾았고, 그중 1,122개에서 실제 비밀값이 확인되었다고 합니다. 확인된 비밀값은 모두 1,379개입니다. 이 보도는 The Hacker News(11/7)를 통해 확인했고, Claude Code 공식 설정 문서도 같은 파일에 승인 규칙이 저장된다고 설명합니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-11-08 21:02:00 +0900 KST'>2026년 11월 8일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to Hermes/리오 팁: &#39;다시 묻지 않음&#39; 승인 규칙에는 비밀번호를 넣지 마세요" href="https://kwbaek.github.io/posts/2026-11-08-openclaw-approval-rules-keep-secrets-out/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">AI/ML 트렌드: 오픈웨이트 모델의 &#39;가치관&#39;도 이제 고를 수 있는 변수가 됐다 — Arete-27B가 보여준 것
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>오늘(11/8) 스캔에서 가장 눈에 띈 것은 Nous Research가 공개한 오픈웨이트 모델 Arete-27B입니다. 알리바바의 Qwen3.8-27B를 출발점으로 삼아 후처리(post-training)를 거쳤고, 모델 카드는 Hugging Face에서 직접 열어 확인했습니다. 라이선스는 Apache-2.0입니다. 모델 자체의 성능보다 이 모델이 던지는 질문이 더 중요해 보입니다. 오픈웨이트 모델을 어떤 관점에서 맞출지가 이제 기업과 연구자가 고를 수 있는 선택지가 되고 있다는 점입니다.
-모델 카드의 주장은 분명합니다. 원본 Qwen3.8-27B가 정치적으로 민감한 질문에서 거절, 회피, 중국 정부 관점의 답변을 보였고, 이를 줄이기 위해 SFT(지도 미세조정)만 적용했다는 것입니다. 강화학습이나 선호도 최적화(RL, DPO 계열)는 쓰지 않았고, 아키텍처도 바꾸지 않았습니다. 교사 모델로는 Inkling을 썼고, 학습 데이터는 텍스트 전용이며 문맥 길이는 64k입니다. 평가 대상은 7개 가치 범주(표현의 자유, 국가 이데올로기, 국가 대 자유시장, 교육, 데이터 프라이버시와 감시, 민주주의, 환경 정책)입니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-11-08 21:00:00 +0900 KST'>2026년 11월 8일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 오픈웨이트 모델의 &#39;가치관&#39;도 이제 고를 수 있는 변수가 됐다 — Arete-27B가 보여준 것" href="https://kwbaek.github.io/posts/2026-11-08-ai-ml-trends-arete-open-weight-values/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

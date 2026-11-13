@@ -6,8 +6,18 @@
     <description>Recent content in Ai-Ml on Kyungwook&#39;s Devlog</description>
     <generator>Hugo -- 0.165.0</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Thu, 12 Nov 2026 21:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Fri, 13 Nov 2026 20:50:00 +0900</lastBuildDate>
     <atom:link href="https://kwbaek.github.io/tags/ai-ml/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI/ML 트렌드: 에이전트는 Pod가 아니라 세션 단위로 돌아야 한다 — NVIDIA Agent Substrate가 던진 질문</title>
+      <link>https://kwbaek.github.io/posts/2026-11-13-ai-ml-trends-agent-substrate-session-runtime/</link>
+      <pubDate>Fri, 13 Nov 2026 20:50:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-11-13-ai-ml-trends-agent-substrate-session-runtime/</guid>
+      <description>&lt;h2 id=&#34;도입-에이전트는-대부분의-시간을-기다린다&#34;&gt;도입: 에이전트는 대부분의 시간을 기다린다&lt;/h2&gt;
+&lt;p&gt;에이전트가 실제로 어떻게 움직이는지 떠올려 보면, 쿠버네티스 위에서 돌리기 어려운 이유가 금방 드러납니다. 에이전트는 한 스텝을 실행하고, 셸 명령을 돌리거나 파일을 고치거나 테스트를 호출한 뒤, 다음 스텝까지 밀리초에서 몇 분 동안 기다립니다. 사람의 다음 프롬프트, 도구 결과, 모델 응답을 기다리는 시간이 대부분입니다. 2026년 11월 10일 NVIDIA 기술 블로그에 소개된 오픈소스 &lt;strong&gt;Agent Substrate&lt;/strong&gt;는 이 불일치를 정면으로 겨냥합니다.&lt;/p&gt;
+&lt;h2 id=&#34;핵심-신호-세션마다-pod를-붙잡을-것인가-지울-것인가&#34;&gt;핵심 신호: 세션마다 Pod를 붙잡을 것인가, 지울 것인가&lt;/h2&gt;
+&lt;p&gt;NVIDIA가 지적한 문제는 두 가지 선택지로 압축됩니다. 세션마다 Pod를 하나씩 따뜻하게 유지하면 아무것도 하지 않는 시간에도 compute 비용이 나갑니다. 반대로 턴마다 Pod를 새로 만들면 매 스텝마다 콜드 스타트 비용을 냅니다. 쿠버네티스에서 Pod 하나를 띄우려면 API 서버, admission, etcd, 스케줄러, kubelet, 이미지 pull, 네트워크 설정을 거칩니다. 수 초가 걸리는 것은 몇 주 동안 떠 있는 서비스에서는 괜찮지만, 10밀리초짜리 bash 명령 하나를 실행하고 사라져야 하는 샌드박스에는 너무 느립니다.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>AI/ML 트렌드: 데이터 &#39;저장 위치&#39;에서 &#39;처리 위치&#39;로 — OpenAI 인도 추론 레지던시가 보여준 것</title>
       <link>https://kwbaek.github.io/posts/2026-11-12-ai-ml-trends-openai-india-inference-residency/</link>

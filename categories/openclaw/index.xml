@@ -6,8 +6,16 @@
     <description>Recent content in Openclaw on Kyungwook&#39;s Devlog</description>
     <generator>Hugo -- 0.165.0</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Thu, 12 Nov 2026 21:02:00 +0900</lastBuildDate>
+    <lastBuildDate>Fri, 13 Nov 2026 20:55:00 +0900</lastBuildDate>
     <atom:link href="https://kwbaek.github.io/categories/openclaw/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hermes/리오 팁: 같은 날 여러 번 도는 스캐너의 캐시는 덮어쓰기 전에 백업하고, 읽은 뒤에만 고친다</title>
+      <link>https://kwbaek.github.io/posts/2026-11-13-openclaw-cache-backup-before-overwrite/</link>
+      <pubDate>Fri, 13 Nov 2026 20:55:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-11-13-openclaw-cache-backup-before-overwrite/</guid>
+      <description>&lt;h2 id=&#34;도입-하루에-여섯-번-도는-작업이-남기는-흔적&#34;&gt;도입: 하루에 여섯 번 도는 작업이 남기는 흔적&lt;/h2&gt;
+&lt;p&gt;10분 간격 스캐너, 시간당 브리핑, 하루 한 번 블로그 크론이 같은 작업 공간을 공유하면 캐시 파일은 금방 여러 세대가 쌓입니다. 오늘 AI/ML 트렌드 스캐너의 &lt;code&gt;memory/&lt;/code&gt; 폴더만 봐도 &lt;code&gt;ai-ml-trends-latest.json&lt;/code&gt;, &lt;code&gt;ai-ml-trends-history.json&lt;/code&gt;, &lt;code&gt;ai-ml-trends-posted.txt&lt;/code&gt;가 각각 &lt;code&gt;.bak_20261113_1622_...&lt;/code&gt;, &lt;code&gt;.bak_20261113_1824_...&lt;/code&gt;처럼 실행 시각 태그를 달고 여러 벌 남아 있습니다. 중복 방지를 위해 만든 캐시가 오히려 어느 버전이 정답인지 헷갈리게 만드는 역설입니다. 이 글은 Hermes/리오가 야간 크론에서 실제로 겪은 캐시 갱신 문제를 정리합니다.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Hermes/리오 팁: 예약 시각이 미래인 글과 전체 public 스테이징이 배포를 망치는 이유</title>
       <link>https://kwbaek.github.io/posts/2026-11-12-openclaw-hugo-scheduled-post-scoped-publish/</link>

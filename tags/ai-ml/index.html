@@ -143,6 +143,20 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">AI/ML 트렌드: 에이전트는 Pod가 아니라 세션 단위로 돌아야 한다 — NVIDIA Agent Substrate가 던진 질문
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>도입: 에이전트는 대부분의 시간을 기다린다 에이전트가 실제로 어떻게 움직이는지 떠올려 보면, 쿠버네티스 위에서 돌리기 어려운 이유가 금방 드러납니다. 에이전트는 한 스텝을 실행하고, 셸 명령을 돌리거나 파일을 고치거나 테스트를 호출한 뒤, 다음 스텝까지 밀리초에서 몇 분 동안 기다립니다. 사람의 다음 프롬프트, 도구 결과, 모델 응답을 기다리는 시간이 대부분입니다. 2026년 11월 10일 NVIDIA 기술 블로그에 소개된 오픈소스 Agent Substrate는 이 불일치를 정면으로 겨냥합니다.
+핵심 신호: 세션마다 Pod를 붙잡을 것인가, 지울 것인가 NVIDIA가 지적한 문제는 두 가지 선택지로 압축됩니다. 세션마다 Pod를 하나씩 따뜻하게 유지하면 아무것도 하지 않는 시간에도 compute 비용이 나갑니다. 반대로 턴마다 Pod를 새로 만들면 매 스텝마다 콜드 스타트 비용을 냅니다. 쿠버네티스에서 Pod 하나를 띄우려면 API 서버, admission, etcd, 스케줄러, kubelet, 이미지 pull, 네트워크 설정을 거칩니다. 수 초가 걸리는 것은 몇 주 동안 떠 있는 서비스에서는 괜찮지만, 10밀리초짜리 bash 명령 하나를 실행하고 사라져야 하는 샌드박스에는 너무 느립니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-11-13 20:50:00 +0900 KST'>2026년 11월 13일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 에이전트는 Pod가 아니라 세션 단위로 돌아야 한다 — NVIDIA Agent Substrate가 던진 질문" href="https://kwbaek.github.io/posts/2026-11-13-ai-ml-trends-agent-substrate-session-runtime/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">AI/ML 트렌드: 데이터 &#39;저장 위치&#39;에서 &#39;처리 위치&#39;로 — OpenAI 인도 추론 레지던시가 보여준 것
     </h2>
   </header>
@@ -265,20 +279,6 @@ StateBench는 상태 추적을 네 단계로 나눕니다. 값이 한 번 정해
   </div>
   <footer class="entry-footer"><span title='2026-11-04 21:00:00 +0900 KST'>2026년 11월 4일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
   <a class="entry-link" aria-label="post link to AI/ML 트렌드: 긴 문서 속 &#39;최종 상태&#39;를 모델이 끝까지 따라가지 못한다" href="https://kwbaek.github.io/posts/2026-11-04-ai-ml-trends-statebench-state-tracking/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">AI/ML 트렌드: 에이전트가 코드를 늘리자 Git 서버가 먼저 무너졌다
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>오늘(11/3) 스캔에서 가장 구체적인 신호는 OpenAI가 사내 모노레포를 위해 만든 Git 백엔드 ‘Pando’입니다. 공식 글을 직접 열어 확인했고, 핵심 주장은 명확합니다. Codex가 개발 속도를 바꾸면서 엔지니어 한 명이 여러 변경을 동시에 CI에 올리고, 각 푸시마다 여러 작업이 같은 커밋을 다시 받아가는 구조가 됐다는 것입니다. 그 결과 기존 Git 서버에서 느린 fetch와 push, 실패하는 merge가 쌓였고, 한때 신뢰도가 90%를 밑돌았다고 밝혔습니다.
-Pando는 Git 프로토콜과 클라이언트 호환을 유지하면서 쓰기 확장성을 높인 백엔드입니다. 회사 발표에 따르면 중앙값 push 지연은 거의 5배 줄었고, 하루 약 1PB의 Git 데이터를 처리합니다. 다만 이 수치는 OpenAI 자체 보고이므로 독립 벤치마크처럼 읽으면 안 됩니다. 그래도 병목이 어디서 생기는지 설명한 방식은 참고할 만합니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-11-03 21:00:00 +0900 KST'>2026년 11월 3일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 에이전트가 코드를 늘리자 Git 서버가 먼저 무너졌다" href="https://kwbaek.github.io/posts/2026-11-03-ai-ml-trends-git-backend-agent-scale/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">
