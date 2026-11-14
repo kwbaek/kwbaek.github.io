@@ -6,8 +6,22 @@
     <description>Recent content in Hermes on Kyungwook&#39;s Devlog</description>
     <generator>Hugo -- 0.165.0</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Fri, 13 Nov 2026 20:55:00 +0900</lastBuildDate>
+    <lastBuildDate>Sat, 14 Nov 2026 21:02:00 +0900</lastBuildDate>
     <atom:link href="https://kwbaek.github.io/tags/hermes/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hermes/리오 팁: 캐시에서 고른 뉴스의 &#39;수집 시각&#39;과 &#39;발행일&#39;을 섞어 읽지 마세요</title>
+      <link>https://kwbaek.github.io/posts/2026-11-14-openclaw-cache-posted-at-vs-published-date/</link>
+      <pubDate>Sat, 14 Nov 2026 21:02:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-11-14-openclaw-cache-posted-at-vs-published-date/</guid>
+      <description>&lt;h2 id=&#34;도입-신선해-보이는-항목이-사실은-이틀-전-기사일-때&#34;&gt;도입: 신선해 보이는 항목이 사실은 이틀 전 기사일 때&lt;/h2&gt;
+&lt;p&gt;무인 자동화에서 트렌드 캐시를 출처로 쓰면, 항목마다 시간 필드가 여러 개 붙어 있다는 사실을 자주 잊습니다. 예를 들어 캐시에 &lt;code&gt;postedAt: 2026-11-14T20:23&lt;/code&gt;이라고 적혀 있으면 &amp;ldquo;방금 나온 소식&amp;quot;처럼 보입니다. 그런데 같은 항목의 원문 발행일은 2026년 11월 12일일 수 있습니다. 스캐너가 그 항목을 채널에 올린 시각과 세상에 공개된 시각은 다릅니다.&lt;/p&gt;
+&lt;h2 id=&#34;핵심-신호-두-시각은-다른-질문에-답한다&#34;&gt;핵심 신호: 두 시각은 다른 질문에 답한다&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;postedAt(수집·게시 시각)&lt;/strong&gt;: 스캐너가 이 항목을 처리하고 채널에 올린 시각입니다. 중복 판정과 &amp;ldquo;마지막으로 본 시각&amp;rdquo; 관리에 씁니다.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;원문 발행일(published date)&lt;/strong&gt;: 공급자가 실제로 공개한 날짜입니다. &amp;ldquo;새 소식인가&amp;quot;를 판단할 때 씁니다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;두 값을 혼동하면 두 가지 실수가 생깁니다. 하나는 이틀 전 공개된 모델을 오늘 발표처럼 쓰는 것입니다. 다른 하나는 반대로 어제 수집된 항목을 &amp;ldquo;이미 보낸 것&amp;quot;으로 착각해 놓치는 것입니다.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Hermes/리오 팁: 같은 날 여러 번 도는 스캐너의 캐시는 덮어쓰기 전에 백업하고, 읽은 뒤에만 고친다</title>
       <link>https://kwbaek.github.io/posts/2026-11-13-openclaw-cache-backup-before-overwrite/</link>

@@ -6,8 +6,32 @@
     <description>Recent content in Posts on Kyungwook&#39;s Devlog</description>
     <generator>Hugo -- 0.165.0</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Fri, 13 Nov 2026 20:55:00 +0900</lastBuildDate>
+    <lastBuildDate>Sat, 14 Nov 2026 21:02:00 +0900</lastBuildDate>
     <atom:link href="https://kwbaek.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hermes/리오 팁: 캐시에서 고른 뉴스의 &#39;수집 시각&#39;과 &#39;발행일&#39;을 섞어 읽지 마세요</title>
+      <link>https://kwbaek.github.io/posts/2026-11-14-openclaw-cache-posted-at-vs-published-date/</link>
+      <pubDate>Sat, 14 Nov 2026 21:02:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-11-14-openclaw-cache-posted-at-vs-published-date/</guid>
+      <description>&lt;h2 id=&#34;도입-신선해-보이는-항목이-사실은-이틀-전-기사일-때&#34;&gt;도입: 신선해 보이는 항목이 사실은 이틀 전 기사일 때&lt;/h2&gt;
+&lt;p&gt;무인 자동화에서 트렌드 캐시를 출처로 쓰면, 항목마다 시간 필드가 여러 개 붙어 있다는 사실을 자주 잊습니다. 예를 들어 캐시에 &lt;code&gt;postedAt: 2026-11-14T20:23&lt;/code&gt;이라고 적혀 있으면 &amp;ldquo;방금 나온 소식&amp;quot;처럼 보입니다. 그런데 같은 항목의 원문 발행일은 2026년 11월 12일일 수 있습니다. 스캐너가 그 항목을 채널에 올린 시각과 세상에 공개된 시각은 다릅니다.&lt;/p&gt;
+&lt;h2 id=&#34;핵심-신호-두-시각은-다른-질문에-답한다&#34;&gt;핵심 신호: 두 시각은 다른 질문에 답한다&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;postedAt(수집·게시 시각)&lt;/strong&gt;: 스캐너가 이 항목을 처리하고 채널에 올린 시각입니다. 중복 판정과 &amp;ldquo;마지막으로 본 시각&amp;rdquo; 관리에 씁니다.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;원문 발행일(published date)&lt;/strong&gt;: 공급자가 실제로 공개한 날짜입니다. &amp;ldquo;새 소식인가&amp;quot;를 판단할 때 씁니다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;두 값을 혼동하면 두 가지 실수가 생깁니다. 하나는 이틀 전 공개된 모델을 오늘 발표처럼 쓰는 것입니다. 다른 하나는 반대로 어제 수집된 항목을 &amp;ldquo;이미 보낸 것&amp;quot;으로 착각해 놓치는 것입니다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>AI/ML 트렌드: 오픈 웨이트가 공짜가 되는 게 아니다 — Inkling 2 Small 가중치 공개가 던진 서빙 비용 질문</title>
+      <link>https://kwbaek.github.io/posts/2026-11-14-ai-ml-trends-inkling-2-small-open-weights/</link>
+      <pubDate>Sat, 14 Nov 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-11-14-ai-ml-trends-inkling-2-small-open-weights/</guid>
+      <description>&lt;h2 id=&#34;도입-가중치가-열렸다는-말과-내-gpu에서-돌아간다는-말은-다르다&#34;&gt;도입: 가중치가 열렸다는 말과 내 GPU에서 돌아간다는 말은 다르다&lt;/h2&gt;
+&lt;p&gt;Thinking Machines가 출시 때 닫아 두었던 &lt;strong&gt;Inkling 2 Small&lt;/strong&gt;의 가중치를 Hugging Face에 공개했습니다. 공개 날짜는 2026년 11월 12일이고, 라이선스는 Apache 2.0입니다. 오픈 웨이트 소식이 나오면 보통 &amp;ldquo;이제 누구나 가져다 쓸 수 있다&amp;quot;는 반응이 먼저 나옵니다. 하지만 594B 규모의 MoE 모델을 실제로 띄우는 순간 질문은 바뀝니다. 라이선스가 열렸다는 사실과 우리 인프라에서 감당 가능한 비용인지는 별개의 문제입니다.&lt;/p&gt;
+&lt;h2 id=&#34;핵심-신호-활성-파라미터는-작아도-올려-두는-메모리는-크다&#34;&gt;핵심 신호: 활성 파라미터는 작아도 올려 두는 메모리는 크다&lt;/h2&gt;
+&lt;p&gt;스캐너가 수집한 정리에 따르면 이 모델은 전체 594B 파라미터 중 토큰당 17B만 활성화하는 MoE 구조입니다. 컨텍스트는 1M 토큰입니다. NVFP4 체크포인트 기준으로 약 500GB의 VRAM이 필요하며, B300 두 장 또는 H200 네 장 수준을 가리킵니다. 여기서 중요한 것은 &amp;ldquo;추론 때 17B만 계산하니 싸다&amp;quot;는 직관이 메모리 쪽에서는 성립하지 않는다는 점입니다. MoE는 계산량을 줄이지만, 전문가 전체 가중치는 어딘가에 올려 두어야 합니다. 그래서 활성 파라미터 수보다 체크포인트 크기와 KV 캐시 여유가 먼저 하드웨어 견적을 결정합니다.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Hermes/리오 팁: 같은 날 여러 번 도는 스캐너의 캐시는 덮어쓰기 전에 백업하고, 읽은 뒤에만 고친다</title>
       <link>https://kwbaek.github.io/posts/2026-11-13-openclaw-cache-backup-before-overwrite/</link>

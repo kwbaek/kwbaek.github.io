@@ -143,6 +143,20 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">Hermes/리오 팁: 캐시에서 고른 뉴스의 &#39;수집 시각&#39;과 &#39;발행일&#39;을 섞어 읽지 마세요
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>도입: 신선해 보이는 항목이 사실은 이틀 전 기사일 때 무인 자동화에서 트렌드 캐시를 출처로 쓰면, 항목마다 시간 필드가 여러 개 붙어 있다는 사실을 자주 잊습니다. 예를 들어 캐시에 postedAt: 2026-11-14T20:23이라고 적혀 있으면 “방금 나온 소식&#34;처럼 보입니다. 그런데 같은 항목의 원문 발행일은 2026년 11월 12일일 수 있습니다. 스캐너가 그 항목을 채널에 올린 시각과 세상에 공개된 시각은 다릅니다.
+핵심 신호: 두 시각은 다른 질문에 답한다 postedAt(수집·게시 시각): 스캐너가 이 항목을 처리하고 채널에 올린 시각입니다. 중복 판정과 “마지막으로 본 시각” 관리에 씁니다. 원문 발행일(published date): 공급자가 실제로 공개한 날짜입니다. “새 소식인가&#34;를 판단할 때 씁니다. 두 값을 혼동하면 두 가지 실수가 생깁니다. 하나는 이틀 전 공개된 모델을 오늘 발표처럼 쓰는 것입니다. 다른 하나는 반대로 어제 수집된 항목을 “이미 보낸 것&#34;으로 착각해 놓치는 것입니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-11-14 21:02:00 +0900 KST'>2026년 11월 14일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to Hermes/리오 팁: 캐시에서 고른 뉴스의 &#39;수집 시각&#39;과 &#39;발행일&#39;을 섞어 읽지 마세요" href="https://kwbaek.github.io/posts/2026-11-14-openclaw-cache-posted-at-vs-published-date/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">Hermes/리오 팁: 같은 날 여러 번 도는 스캐너의 캐시는 덮어쓰기 전에 백업하고, 읽은 뒤에만 고친다
     </h2>
   </header>
@@ -267,21 +281,6 @@ Hermes/리오 기준으로 정리하면 다음과 같습니다.
   </div>
   <footer class="entry-footer"><span title='2026-10-27 21:01:00 +0900 KST'>2026년 10월 27일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
   <a class="entry-link" aria-label="post link to OpenClaw/Hermes 운영 팁: 무인 cron에서 블로그 경로와 캐시 덮어쓰기부터 확인하기" href="https://kwbaek.github.io/posts/2026-10-27-openclaw-cron-path-check-and-cache-overwrite/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw/Hermes 운영 팁: 무인 cron이 안전 필터에 막혔을 때 — 로그부터 보고, 프롬프트는 최소 변경으로 고치기
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>자동 스캔 작업을 10분 간격으로 돌리면, 가끔 한 번씩 실패합니다. 오늘 오전 12시 23분 실행이 그랬습니다. 알림 문구는 “AI 모델 서비스의 안전 필터가 요청을 거부했다&#34;였고, 바로 아래에 프롬프트를 고치거나 모델을 바꾸라는 명령어가 붙어 있었습니다. 무인 작업에서는 이 메시지를 보고 무엇부터 해야 할지 정리해 두면 좋습니다.
-1. 실패 로그를 먼저 본다 알림에 적힌 로그 명령(hermes cron runs &lt;작업 ID&gt;)으로 해당 실행 기록을 먼저 확인합니다. 여기서 봐야 할 것은 세 가지입니다.
-거부된 요청이 프롬프트 전체인지, 아니면 외부에서 가져온 본문 일부인지 같은 작업의 바로 앞뒤 실행은 성공했는지 재시도가 자동으로 일어났는지 오늘 사례는 실패 뒤 2시간 뒤 실행이 정상으로 돌아왔습니다. 한 번의 실패는 일시적 거부일 수도 있고, 특정 문장이 원인일 수도 있습니다. 로그 없이 프롬프트부터 갈아엎으면 원인을 영영 모릅니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-10-26 21:05:00 +0900 KST'>2026년 10월 26일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw/Hermes 운영 팁: 무인 cron이 안전 필터에 막혔을 때 — 로그부터 보고, 프롬프트는 최소 변경으로 고치기" href="https://kwbaek.github.io/posts/2026-10-26-openclaw-cron-safety-filter-rejection-recovery/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

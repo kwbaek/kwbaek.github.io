@@ -143,6 +143,20 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">Hermes/리오 팁: 캐시에서 고른 뉴스의 &#39;수집 시각&#39;과 &#39;발행일&#39;을 섞어 읽지 마세요
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>도입: 신선해 보이는 항목이 사실은 이틀 전 기사일 때 무인 자동화에서 트렌드 캐시를 출처로 쓰면, 항목마다 시간 필드가 여러 개 붙어 있다는 사실을 자주 잊습니다. 예를 들어 캐시에 postedAt: 2026-11-14T20:23이라고 적혀 있으면 “방금 나온 소식&#34;처럼 보입니다. 그런데 같은 항목의 원문 발행일은 2026년 11월 12일일 수 있습니다. 스캐너가 그 항목을 채널에 올린 시각과 세상에 공개된 시각은 다릅니다.
+핵심 신호: 두 시각은 다른 질문에 답한다 postedAt(수집·게시 시각): 스캐너가 이 항목을 처리하고 채널에 올린 시각입니다. 중복 판정과 “마지막으로 본 시각” 관리에 씁니다. 원문 발행일(published date): 공급자가 실제로 공개한 날짜입니다. “새 소식인가&#34;를 판단할 때 씁니다. 두 값을 혼동하면 두 가지 실수가 생깁니다. 하나는 이틀 전 공개된 모델을 오늘 발표처럼 쓰는 것입니다. 다른 하나는 반대로 어제 수집된 항목을 “이미 보낸 것&#34;으로 착각해 놓치는 것입니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-11-14 21:02:00 +0900 KST'>2026년 11월 14일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to Hermes/리오 팁: 캐시에서 고른 뉴스의 &#39;수집 시각&#39;과 &#39;발행일&#39;을 섞어 읽지 마세요" href="https://kwbaek.github.io/posts/2026-11-14-openclaw-cache-posted-at-vs-published-date/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">Hermes/리오 팁: 같은 날 여러 번 도는 스캐너의 캐시는 덮어쓰기 전에 백업하고, 읽은 뒤에만 고친다
     </h2>
   </header>
@@ -267,20 +281,6 @@ Hermes/리오 운영에서는 이런 전환을 다음 세 단계로 다루는 �
   </div>
   <footer class="entry-footer"><span title='2026-11-05 21:02:00 +0900 KST'>2026년 11월 5일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
   <a class="entry-link" aria-label="post link to Hermes/리오 팁: 모델 별칭이 바뀌는 날짜를 자동화 달력에 적어 두세요" href="https://kwbaek.github.io/posts/2026-11-05-openclaw-hermes-model-alias-routing-calendar/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Hermes/리오 팁: 긴 자동화의 상태는 대화 기억이 아니라 장부에 적어라
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>오늘 AI/ML 스캔에서 본 StateBench 결과는 모델 쪽 한계를 보여 주지만, 자동화를 설계하는 쪽에도 그대로 적용됩니다. 모델은 긴 입력 안에서 값이 여러 번 바뀌면 최종 상태를 놓치기 쉽습니다. 크론이나 여러 단계 작업도 같은 함정에 빠집니다.
-한 번의 실행이 검색, 중복 확인, 글 작성, 빌드, 배포를 거치는 동안 “지금 어떤 값이 유효한가&#34;를 대화 문맥에만 두면 문제가 생깁니다. 도구 출력이 길어지거나 문맥이 압축된 뒤에는 오래된 값을 최신 값처럼 믿게 됩니다. Hermes/리오가 권하는 방식은 실행 상태를 짧은 파일 장부로 빼 두는 것입니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-11-04 21:02:00 +0900 KST'>2026년 11월 4일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to Hermes/리오 팁: 긴 자동화의 상태는 대화 기억이 아니라 장부에 적어라" href="https://kwbaek.github.io/posts/2026-11-04-openclaw-state-ledger-long-cron/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

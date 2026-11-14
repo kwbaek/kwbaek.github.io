@@ -6,8 +6,18 @@
     <description>Recent content in Ai-Ml on Kyungwook&#39;s Devlog</description>
     <generator>Hugo -- 0.165.0</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Fri, 13 Nov 2026 20:50:00 +0900</lastBuildDate>
+    <lastBuildDate>Sat, 14 Nov 2026 21:00:00 +0900</lastBuildDate>
     <atom:link href="https://kwbaek.github.io/categories/ai-ml/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI/ML 트렌드: 오픈 웨이트가 공짜가 되는 게 아니다 — Inkling 2 Small 가중치 공개가 던진 서빙 비용 질문</title>
+      <link>https://kwbaek.github.io/posts/2026-11-14-ai-ml-trends-inkling-2-small-open-weights/</link>
+      <pubDate>Sat, 14 Nov 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-11-14-ai-ml-trends-inkling-2-small-open-weights/</guid>
+      <description>&lt;h2 id=&#34;도입-가중치가-열렸다는-말과-내-gpu에서-돌아간다는-말은-다르다&#34;&gt;도입: 가중치가 열렸다는 말과 내 GPU에서 돌아간다는 말은 다르다&lt;/h2&gt;
+&lt;p&gt;Thinking Machines가 출시 때 닫아 두었던 &lt;strong&gt;Inkling 2 Small&lt;/strong&gt;의 가중치를 Hugging Face에 공개했습니다. 공개 날짜는 2026년 11월 12일이고, 라이선스는 Apache 2.0입니다. 오픈 웨이트 소식이 나오면 보통 &amp;ldquo;이제 누구나 가져다 쓸 수 있다&amp;quot;는 반응이 먼저 나옵니다. 하지만 594B 규모의 MoE 모델을 실제로 띄우는 순간 질문은 바뀝니다. 라이선스가 열렸다는 사실과 우리 인프라에서 감당 가능한 비용인지는 별개의 문제입니다.&lt;/p&gt;
+&lt;h2 id=&#34;핵심-신호-활성-파라미터는-작아도-올려-두는-메모리는-크다&#34;&gt;핵심 신호: 활성 파라미터는 작아도 올려 두는 메모리는 크다&lt;/h2&gt;
+&lt;p&gt;스캐너가 수집한 정리에 따르면 이 모델은 전체 594B 파라미터 중 토큰당 17B만 활성화하는 MoE 구조입니다. 컨텍스트는 1M 토큰입니다. NVFP4 체크포인트 기준으로 약 500GB의 VRAM이 필요하며, B300 두 장 또는 H200 네 장 수준을 가리킵니다. 여기서 중요한 것은 &amp;ldquo;추론 때 17B만 계산하니 싸다&amp;quot;는 직관이 메모리 쪽에서는 성립하지 않는다는 점입니다. MoE는 계산량을 줄이지만, 전문가 전체 가중치는 어딘가에 올려 두어야 합니다. 그래서 활성 파라미터 수보다 체크포인트 크기와 KV 캐시 여유가 먼저 하드웨어 견적을 결정합니다.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>AI/ML 트렌드: 에이전트는 Pod가 아니라 세션 단위로 돌아야 한다 — NVIDIA Agent Substrate가 던진 질문</title>
       <link>https://kwbaek.github.io/posts/2026-11-13-ai-ml-trends-agent-substrate-session-runtime/</link>

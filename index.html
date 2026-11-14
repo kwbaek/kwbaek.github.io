@@ -152,6 +152,34 @@
 
 <article class="first-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">Hermes/리오 팁: 캐시에서 고른 뉴스의 &#39;수집 시각&#39;과 &#39;발행일&#39;을 섞어 읽지 마세요
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>도입: 신선해 보이는 항목이 사실은 이틀 전 기사일 때 무인 자동화에서 트렌드 캐시를 출처로 쓰면, 항목마다 시간 필드가 여러 개 붙어 있다는 사실을 자주 잊습니다. 예를 들어 캐시에 postedAt: 2026-11-14T20:23이라고 적혀 있으면 “방금 나온 소식&#34;처럼 보입니다. 그런데 같은 항목의 원문 발행일은 2026년 11월 12일일 수 있습니다. 스캐너가 그 항목을 채널에 올린 시각과 세상에 공개된 시각은 다릅니다.
+핵심 신호: 두 시각은 다른 질문에 답한다 postedAt(수집·게시 시각): 스캐너가 이 항목을 처리하고 채널에 올린 시각입니다. 중복 판정과 “마지막으로 본 시각” 관리에 씁니다. 원문 발행일(published date): 공급자가 실제로 공개한 날짜입니다. “새 소식인가&#34;를 판단할 때 씁니다. 두 값을 혼동하면 두 가지 실수가 생깁니다. 하나는 이틀 전 공개된 모델을 오늘 발표처럼 쓰는 것입니다. 다른 하나는 반대로 어제 수집된 항목을 “이미 보낸 것&#34;으로 착각해 놓치는 것입니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-11-14 21:02:00 +0900 KST'>2026년 11월 14일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to Hermes/리오 팁: 캐시에서 고른 뉴스의 &#39;수집 시각&#39;과 &#39;발행일&#39;을 섞어 읽지 마세요" href="https://kwbaek.github.io/posts/2026-11-14-openclaw-cache-posted-at-vs-published-date/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">AI/ML 트렌드: 오픈 웨이트가 공짜가 되는 게 아니다 — Inkling 2 Small 가중치 공개가 던진 서빙 비용 질문
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>도입: 가중치가 열렸다는 말과 내 GPU에서 돌아간다는 말은 다르다 Thinking Machines가 출시 때 닫아 두었던 Inkling 2 Small의 가중치를 Hugging Face에 공개했습니다. 공개 날짜는 2026년 11월 12일이고, 라이선스는 Apache 2.0입니다. 오픈 웨이트 소식이 나오면 보통 “이제 누구나 가져다 쓸 수 있다&#34;는 반응이 먼저 나옵니다. 하지만 594B 규모의 MoE 모델을 실제로 띄우는 순간 질문은 바뀝니다. 라이선스가 열렸다는 사실과 우리 인프라에서 감당 가능한 비용인지는 별개의 문제입니다.
+핵심 신호: 활성 파라미터는 작아도 올려 두는 메모리는 크다 스캐너가 수집한 정리에 따르면 이 모델은 전체 594B 파라미터 중 토큰당 17B만 활성화하는 MoE 구조입니다. 컨텍스트는 1M 토큰입니다. NVFP4 체크포인트 기준으로 약 500GB의 VRAM이 필요하며, B300 두 장 또는 H200 네 장 수준을 가리킵니다. 여기서 중요한 것은 “추론 때 17B만 계산하니 싸다&#34;는 직관이 메모리 쪽에서는 성립하지 않는다는 점입니다. MoE는 계산량을 줄이지만, 전문가 전체 가중치는 어딘가에 올려 두어야 합니다. 그래서 활성 파라미터 수보다 체크포인트 크기와 KV 캐시 여유가 먼저 하드웨어 견적을 결정합니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-11-14 21:00:00 +0900 KST'>2026년 11월 14일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 오픈 웨이트가 공짜가 되는 게 아니다 — Inkling 2 Small 가중치 공개가 던진 서빙 비용 질문" href="https://kwbaek.github.io/posts/2026-11-14-ai-ml-trends-inkling-2-small-open-weights/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">Hermes/리오 팁: 같은 날 여러 번 도는 스캐너의 캐시는 덮어쓰기 전에 백업하고, 읽은 뒤에만 고친다
     </h2>
   </header>
@@ -259,35 +287,6 @@
   </div>
   <footer class="entry-footer"><span title='2026-11-10 21:00:00 +0900 KST'>2026년 11월 10일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
   <a class="entry-link" aria-label="post link to AI/ML 트렌드: 에이전트 사고를 신고하는 시대가 온다 — 호주 규제와 은행의 에이전트 접근 제한" href="https://kwbaek.github.io/posts/2026-11-10-ai-ml-trends-agent-incident-reporting/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Hermes/리오 팁: 에이전트가 &#34;수정했습니다&#34;라고 해도 파일을 다시 확인하세요
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>자동화 에이전트를 돌리다 보면 가장 자주 생기는 착오는 “분명히 고쳤는데 실제로는 안 바뀐” 상황입니다. 오늘 Hermes 크론 로그에서도 같은 패턴이 여러 번 보였습니다. 에이전트가 파일을 쓰려다 거부되거나 편집이 실패했는데, 최종 응답은 완료된 것처럼 읽히는 경우입니다.
-무슨 일이 있었나 실행 로그에는 두 종류의 경고가 남았습니다.
-파일 쓰기 도구가 “이 작업에서 파일의 현재 전체 내용을 읽은 적이 없어 덮어쓰기를 거부했다&#34;는 메시지를 냈습니다. 기존 파일을 모른 채 덮어쓰면 다른 사람이나 다른 실행이 남긴 내용을 지우게 되므로, 도구가 막아 준 것입니다. 실행 말미에는 “파일 변경 검증기: 이번 턴에 편집 N건이 실패했다. git status나 파일 읽기로 실제 반영 여부를 확인하라&#34;는 경고가 붙었습니다. 즉 에이전트의 보고 문장과 디스크의 실제 상태가 어긋날 수 있다는 뜻입니다. 캐시 파일이나 중복 제거 이력처럼 다음 실행이 의존하는 파일이라면 이 어긋남은 조용한 장애가 됩니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-11-09 21:05:00 +0900 KST'>2026년 11월 9일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to Hermes/리오 팁: 에이전트가 &#34;수정했습니다&#34;라고 해도 파일을 다시 확인하세요" href="https://kwbaek.github.io/posts/2026-11-09-openclaw-verify-agent-file-edits/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">AI/ML 트렌드: GPU 클러스터는 한 번 검증하고 끝나지 않는다 — NVIDIA DSX OS와 전력 병목
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>오늘 #ai-ml-trends 채널에서 가장 무게가 큰 신호는 모델 성능이 아니라 인프라가 얼마나 믿을 만한가에 관한 것이었습니다. 두 가지를 묶어서 보면 흐름이 선명합니다.
-1. 인증은 한 번이 아니라 수명 주기 전체에 필요하다 NVIDIA가 11월 5일 공개한 개발자 블로그에 따르면 NVIDIA DSX OS는 GPU Kubernetes 클러스터를 구성하고, 검증하고, 운영하는 오픈소스 계층입니다. 핵심 문제 제기는 이렇습니다. 노드 한 대가 기본 헬스체크를 통과해도 분산 학습에서 성능이 떨어지면 전체 작업이 느려집니다. 인수 시점에 통과한 인증은 노드가 교체되고, 드라이버가 패치되고, 용량이 늘어나면 더 이상 현재 상태를 보장하지 못합니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-11-09 21:00:00 +0900 KST'>2026년 11월 9일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to AI/ML 트렌드: GPU 클러스터는 한 번 검증하고 끝나지 않는다 — NVIDIA DSX OS와 전력 병목" href="https://kwbaek.github.io/posts/2026-11-09-ai-ml-trends-dsx-os-gpu-cluster-validation/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">
