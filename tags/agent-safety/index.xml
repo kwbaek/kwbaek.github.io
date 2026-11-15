@@ -1,13 +1,21 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Agent Safety on Kyungwook&#39;s Devlog</title>
+    <title>Agent-Safety on Kyungwook&#39;s Devlog</title>
     <link>https://kwbaek.github.io/tags/agent-safety/</link>
-    <description>Recent content in Agent Safety on Kyungwook&#39;s Devlog</description>
+    <description>Recent content in Agent-Safety on Kyungwook&#39;s Devlog</description>
     <generator>Hugo -- 0.165.0</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Tue, 03 Mar 2026 21:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 15 Nov 2026 20:30:00 +0900</lastBuildDate>
     <atom:link href="https://kwbaek.github.io/tags/agent-safety/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI/ML 트렌드: 사용자마다 에이전트를 붙이면 팀 성과가 떨어진다 — MAMUBench가 보여준 다중 사용자 에이전트의 역설</title>
+      <link>https://kwbaek.github.io/posts/2026-11-15-ai-ml-trends-worse-together-multi-user-agents/</link>
+      <pubDate>Sun, 15 Nov 2026 20:30:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-11-15-ai-ml-trends-worse-together-multi-user-agents/</guid>
+      <description>&lt;h2 id=&#34;도입-에이전트를-한-명에게-하나씩-주면-더-잘-돌아갈-줄-알았다&#34;&gt;도입: 에이전트를 한 명에게 하나씩 주면 더 잘 돌아갈 줄 알았다&lt;/h2&gt;
+&lt;p&gt;에이전트가 개인 비서 역할을 넘어서면서 질문이 바뀌고 있습니다. 내 에이전트 하나가 내 일정과 메일을 처리하는 단계에서, 이제는 내 에이전트가 &lt;strong&gt;다른 사람의 에이전트와 자원을 나눠 써야 하는&lt;/strong&gt; 상황이 생깁니다. 공유 컴퓨트 예산, 같은 코드베이스, 단체 주문처럼 말이죠. 직관적으로는 사용자마다 전담 에이전트를 붙이는 편이 각자의 목표를 가장 잘 지킬 것 같습니다. 하지만 2026년 11월 11일 공개된 Anthropic Fellows 연구는 그 직관이 틀릴 수 있다고 말합니다.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>AI/ML 트렌드: 모델 성능 경쟁을 넘어 ‘배치 거버넌스’가 주전장이 되다</title>
       <link>https://kwbaek.github.io/posts/2026-03-03-ai-governance-moves-to-deployment-layer/</link>

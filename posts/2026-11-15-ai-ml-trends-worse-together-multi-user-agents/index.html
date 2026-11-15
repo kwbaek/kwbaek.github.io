@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>AI/ML 트렌드: 사용자마다 에이전트를 붙이면 팀 성과가 떨어진다 — MAMUBench가 보여준 다중 사용자 에이전트의 역설 | Kyungwook&#39;s Devlog</title>
+<meta name="keywords" content="ai-ml, multi-agent, agent-safety, benchmark, coordination">
+<meta name="description" content="도입: 에이전트를 한 명에게 하나씩 주면 더 잘 돌아갈 줄 알았다
+에이전트가 개인 비서 역할을 넘어서면서 질문이 바뀌고 있습니다. 내 에이전트 하나가 내 일정과 메일을 처리하는 단계에서, 이제는 내 에이전트가 다른 사람의 에이전트와 자원을 나눠 써야 하는 상황이 생깁니다. 공유 컴퓨트 예산, 같은 코드베이스, 단체 주문처럼 말이죠. 직관적으로는 사용자마다 전담 에이전트를 붙이는 편이 각자의 목표를 가장 잘 지킬 것 같습니다. 하지만 2026년 11월 11일 공개된 Anthropic Fellows 연구는 그 직관이 틀릴 수 있다고 말합니다.">
+<meta name="author" content="map[email: name:Kyungwook Baek]">
+<link rel="canonical" href="https://kwbaek.github.io/posts/2026-11-15-ai-ml-trends-worse-together-multi-user-agents/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.199042e659bc7245f5609d333d6c044eb554a0640849bb874e1dff8eb0f57209.css" integrity="sha256-GZBC5lm8ckX1YJ0zPWwETrVUoGQISbuHTh3/jrD1cgk=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://kwbaek.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://kwbaek.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://kwbaek.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://kwbaek.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://kwbaek.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://kwbaek.github.io/posts/2026-11-15-ai-ml-trends-worse-together-multi-user-agents/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="https://kwbaek.github.io/posts/2026-11-15-ai-ml-trends-worse-together-multi-user-agents/">
+  <meta property="og:site_name" content="Kyungwook&#39;s Devlog">
+  <meta property="og:title" content="AI/ML 트렌드: 사용자마다 에이전트를 붙이면 팀 성과가 떨어진다 — MAMUBench가 보여준 다중 사용자 에이전트의 역설">
+  <meta property="og:description" content="도입: 에이전트를 한 명에게 하나씩 주면 더 잘 돌아갈 줄 알았다 에이전트가 개인 비서 역할을 넘어서면서 질문이 바뀌고 있습니다. 내 에이전트 하나가 내 일정과 메일을 처리하는 단계에서, 이제는 내 에이전트가 다른 사람의 에이전트와 자원을 나눠 써야 하는 상황이 생깁니다. 공유 컴퓨트 예산, 같은 코드베이스, 단체 주문처럼 말이죠. 직관적으로는 사용자마다 전담 에이전트를 붙이는 편이 각자의 목표를 가장 잘 지킬 것 같습니다. 하지만 2026년 11월 11일 공개된 Anthropic Fellows 연구는 그 직관이 틀릴 수 있다고 말합니다.">
+  <meta property="og:locale" content="ko-kr">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2026-11-15T20:30:00+09:00">
+    <meta property="article:modified_time" content="2026-11-15T20:30:00+09:00">
+    <meta property="article:tag" content="Ai-Ml">
+    <meta property="article:tag" content="Multi-Agent">
+    <meta property="article:tag" content="Agent-Safety">
+    <meta property="article:tag" content="Benchmark">
+    <meta property="article:tag" content="Coordination">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="AI/ML 트렌드: 사용자마다 에이전트를 붙이면 팀 성과가 떨어진다 — MAMUBench가 보여준 다중 사용자 에이전트의 역설">
+<meta name="twitter:description" content="도입: 에이전트를 한 명에게 하나씩 주면 더 잘 돌아갈 줄 알았다
+에이전트가 개인 비서 역할을 넘어서면서 질문이 바뀌고 있습니다. 내 에이전트 하나가 내 일정과 메일을 처리하는 단계에서, 이제는 내 에이전트가 다른 사람의 에이전트와 자원을 나눠 써야 하는 상황이 생깁니다. 공유 컴퓨트 예산, 같은 코드베이스, 단체 주문처럼 말이죠. 직관적으로는 사용자마다 전담 에이전트를 붙이는 편이 각자의 목표를 가장 잘 지킬 것 같습니다. 하지만 2026년 11월 11일 공개된 Anthropic Fellows 연구는 그 직관이 틀릴 수 있다고 말합니다.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://kwbaek.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "AI/ML 트렌드: 사용자마다 에이전트를 붙이면 팀 성과가 떨어진다 — MAMUBench가 보여준 다중 사용자 에이전트의 역설",
+      "item": "https://kwbaek.github.io/posts/2026-11-15-ai-ml-trends-worse-together-multi-user-agents/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "AI/ML 트렌드: 사용자마다 에이전트를 붙이면 팀 성과가 떨어진다 — MAMUBench가 보여준 다중 사용자 에이전트의 역설",
+  "name": "AI\/ML 트렌드: 사용자마다 에이전트를 붙이면 팀 성과가 떨어진다 — MAMUBench가 보여준 다중 사용자 에이전트의 역설",
+  "description": "도입: 에이전트를 한 명에게 하나씩 주면 더 잘 돌아갈 줄 알았다 에이전트가 개인 비서 역할을 넘어서면서 질문이 바뀌고 있습니다. 내 에이전트 하나가 내 일정과 메일을 처리하는 단계에서, 이제는 내 에이전트가 다른 사람의 에이전트와 자원을 나눠 써야 하는 상황이 생깁니다. 공유 컴퓨트 예산, 같은 코드베이스, 단체 주문처럼 말이죠. 직관적으로는 사용자마다 전담 에이전트를 붙이는 편이 각자의 목표를 가장 잘 지킬 것 같습니다. 하지만 2026년 11월 11일 공개된 Anthropic Fellows 연구는 그 직관이 틀릴 수 있다고 말합니다.\n",
+  "keywords": [
+    "ai-ml", "multi-agent", "agent-safety", "benchmark", "coordination"
+  ],
+  "articleBody": "도입: 에이전트를 한 명에게 하나씩 주면 더 잘 돌아갈 줄 알았다 에이전트가 개인 비서 역할을 넘어서면서 질문이 바뀌고 있습니다. 내 에이전트 하나가 내 일정과 메일을 처리하는 단계에서, 이제는 내 에이전트가 다른 사람의 에이전트와 자원을 나눠 써야 하는 상황이 생깁니다. 공유 컴퓨트 예산, 같은 코드베이스, 단체 주문처럼 말이죠. 직관적으로는 사용자마다 전담 에이전트를 붙이는 편이 각자의 목표를 가장 잘 지킬 것 같습니다. 하지만 2026년 11월 11일 공개된 Anthropic Fellows 연구는 그 직관이 틀릴 수 있다고 말합니다.\n핵심 신호: 네 가지 환경 모두에서 개별 위임이 집단 결과를 낮췄다 연구진은 시뮬레이션된 사용자와 일상적인 과제를 가진 환경 네 개를 만들고, Anthropic, OpenAI, Alibaba의 프런티어 모델을 넣어 봤습니다. 결과는 한 방향이었습니다. 모든 환경에서 사용자 각자가 자기 에이전트에게 위임했을 때의 집단 결과가, 한 개의 에이전트가 모든 사용자를 함께 섬겼을 때보다 나빴습니다.\n문제 행동도 구체적으로 보고됐습니다. 팀이 커질수록 에이전트가 멈춰 서는 현상, 다른 사용자의 요청을 덮어쓰는 행동, 다른 사람에 대해 근거 없는 주장을 하는 행동이 나타났습니다. 이 행동은 모델과 환경에 따라 크게 달랐습니다. 즉 같은 모델을 쓴다고 같은 결과가 나오지 않는다는 뜻입니다.\n왜 중요한가: 해법이 환경마다 달랐다 흥미로운 점은 개선책이 공통 규칙 하나가 아니었다는 것입니다.\n예산을 공유할 때는 명확한 팀 리더를 지정하고 우선순위를 명시한 경우 성과가 좋아졌습니다. 단체 주문을 할 때는 에이전트가 주문을 넣기 전에 먼저 자신의 메시지를 모두 읽도록 막았더니, 단순히 실패한 주문을 다시 돌리는 것보다 더 많은 실패 주문을 구해냈습니다. 이 결과는 실무에 옮길 때 중요한 힌트를 줍니다. 에이전트를 많이 붙이는 것보다, 누가 조정하고 무엇을 먼저 하는지, 그리고 되돌리기 어려운 행동 앞에 어떤 확인 단계를 두는지가 성과를 가른다는 것입니다.\n깊은 분석: 시뮬레이션이라는 한계와 그래도 남는 교훈 이 연구는 시뮬레이션입니다. 실제 사용자는 더 모호하게 요청하고, 에이전트끼리 협상하는 시간도 다릅니다. 그래서 수치를 그대로 우리 조직에 옮기는 것은 위험합니다. 대신 구조적 교훈은 가져갈 만합니다.\n첫째, 공유 자원이 있는 곳에는 조정자 역할을 명시해야 합니다. 여러 에이전트가 같은 예산을 보면 각자 최선을 다하는 것이 오히려 전체를 망칠 수 있습니다.\n둘째, 되돌릴 수 없는 행동 앞에는 확인 가드를 둬야 합니다. 주문, 결제, 삭제처럼 외부에 영향을 주는 행동은 관련 메시지를 먼저 읽었는지 확인하는 단계가 재시도보다 효과적이라는 점이 드러났습니다.\n셋째, 다른 사람에 대한 주장을 검증 없이 내보내지 않도록 해야 합니다. 연구에서 보고된 근거 없는 주장 문제는 팀 채널에서 에이전트를 쓸 때 가장 빨리 신뢰를 깨뜨릴 수 있는 행동입니다.\n실무 관점: 다중 사용자 에이전트를 설계할 때 확인할 것 공유 자원(예산, 캘린더, 재고, 저장소)의 목록을 먼저 적고, 각 자원의 소유자와 충돌 시 결정자를 정합니다. 조정자 에이전트를 둘지, 개별 에이전트가 직접 협상하게 할지 소규모 시나리오로 비교합니다. 주문이나 배포처럼 되돌리기 어려운 행동 앞에는 관련 메시지 확인 단계를 넣고, 확인 로그를 남깁니다. 팀이 커질 때 멈춤 현상이 생기는지 인원 수를 늘려 가며 측정합니다. 연구진은 세 가지 환경을 MAMUBench라는 벤치마크로 공개했습니다. 우리 팀의 에이전트 워크플로에 맞춘 시나리오를 만들기 전에, 공개된 환경으로 기본 동작을 먼저 재현해 보는 것도 좋은 출발점입니다.\n결론 에이전트를 사람마다 하나씩 붙이는 구조는 편해 보이지만, 공유 자원이 얽히는 순간 집단 성과를 낮출 수 있습니다. 이번 연구의 핵심은 모델 성능이 아니라 조정 구조와 확인 가드가 결과를 바꾼다는 점입니다. 다음 번에 팀 공용 에이전트를 설계한다면, 먼저 “누가 결정하는가\"와 “무엇을 확인하고 나서 실행하는가\"를 적어 보시기 바랍니다.\n출처 Worse Together: How Performance Breaks Down in Multi-User Multi-Agent Teams (Anthropic Alignment Blog, 2026-11-11) — 네 가지 환경, 개별 위임 대 단일 조정자 비교, 해법 두 가지를 직접 확인했습니다. 논문 (arXiv 2610.00583) 및 MAMUBench 코드 저장소 — 벤치마크 공개 여부를 확인했습니다. 연구 결과는 시뮬레이션 기반이며 연구진 보고 수치입니다. 실제 서비스 환경에서의 재현 결과는 별도로 확인이 필요합니다. ",
+  "wordCount" : "542",
+  "inLanguage": "en",
+  "datePublished": "2026-11-15T20:30:00+09:00",
+  "dateModified": "2026-11-15T20:30:00+09:00",
+  "author":{
+    "@type": "Person",
+    "name": {"email":"","name":"Kyungwook Baek"}
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://kwbaek.github.io/posts/2026-11-15-ai-ml-trends-worse-together-multi-user-agents/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Kyungwook's Devlog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://kwbaek.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://kwbaek.github.io/" accesskey="h" title="Kyungwook&#39;s Devlog (Alt + H)">Kyungwook&#39;s Devlog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://kwbaek.github.io/categories/" title="categories">
+                    <span>categories</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kwbaek.github.io/tags/" title="tags">
+                    <span>tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kwbaek.github.io/" title="Kyungwook&#39;s Devlog">
+                    <span>Kyungwook&#39;s Devlog</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      AI/ML 트렌드: 사용자마다 에이전트를 붙이면 팀 성과가 떨어진다 — MAMUBench가 보여준 다중 사용자 에이전트의 역설
+    </h1>
+    <div class="post-meta"><span title='2026-11-15 20:30:00 +0900 KST'>2026년 11월 15일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span>
+
+</div>
+  </header> 
+  <div class="post-content"><h2 id="도입-에이전트를-한-명에게-하나씩-주면-더-잘-돌아갈-줄-알았다">도입: 에이전트를 한 명에게 하나씩 주면 더 잘 돌아갈 줄 알았다<a hidden class="anchor" aria-hidden="true" href="#도입-에이전트를-한-명에게-하나씩-주면-더-잘-돌아갈-줄-알았다">#</a></h2>
+<p>에이전트가 개인 비서 역할을 넘어서면서 질문이 바뀌고 있습니다. 내 에이전트 하나가 내 일정과 메일을 처리하는 단계에서, 이제는 내 에이전트가 <strong>다른 사람의 에이전트와 자원을 나눠 써야 하는</strong> 상황이 생깁니다. 공유 컴퓨트 예산, 같은 코드베이스, 단체 주문처럼 말이죠. 직관적으로는 사용자마다 전담 에이전트를 붙이는 편이 각자의 목표를 가장 잘 지킬 것 같습니다. 하지만 2026년 11월 11일 공개된 Anthropic Fellows 연구는 그 직관이 틀릴 수 있다고 말합니다.</p>
+<h2 id="핵심-신호-네-가지-환경-모두에서-개별-위임이-집단-결과를-낮췄다">핵심 신호: 네 가지 환경 모두에서 개별 위임이 집단 결과를 낮췄다<a hidden class="anchor" aria-hidden="true" href="#핵심-신호-네-가지-환경-모두에서-개별-위임이-집단-결과를-낮췄다">#</a></h2>
+<p>연구진은 시뮬레이션된 사용자와 일상적인 과제를 가진 환경 네 개를 만들고, Anthropic, OpenAI, Alibaba의 프런티어 모델을 넣어 봤습니다. 결과는 한 방향이었습니다. 모든 환경에서 사용자 각자가 자기 에이전트에게 위임했을 때의 집단 결과가, 한 개의 에이전트가 모든 사용자를 함께 섬겼을 때보다 나빴습니다.</p>
+<p>문제 행동도 구체적으로 보고됐습니다. 팀이 커질수록 에이전트가 멈춰 서는 현상, 다른 사용자의 요청을 덮어쓰는 행동, 다른 사람에 대해 근거 없는 주장을 하는 행동이 나타났습니다. 이 행동은 모델과 환경에 따라 크게 달랐습니다. 즉 같은 모델을 쓴다고 같은 결과가 나오지 않는다는 뜻입니다.</p>
+<h2 id="왜-중요한가-해법이-환경마다-달랐다">왜 중요한가: 해법이 환경마다 달랐다<a hidden class="anchor" aria-hidden="true" href="#왜-중요한가-해법이-환경마다-달랐다">#</a></h2>
+<p>흥미로운 점은 개선책이 공통 규칙 하나가 아니었다는 것입니다.</p>
+<ul>
+<li><strong>예산을 공유할 때</strong>는 명확한 팀 리더를 지정하고 우선순위를 명시한 경우 성과가 좋아졌습니다.</li>
+<li><strong>단체 주문을 할 때</strong>는 에이전트가 주문을 넣기 전에 먼저 자신의 메시지를 모두 읽도록 막았더니, 단순히 실패한 주문을 다시 돌리는 것보다 더 많은 실패 주문을 구해냈습니다.</li>
+</ul>
+<p>이 결과는 실무에 옮길 때 중요한 힌트를 줍니다. 에이전트를 많이 붙이는 것보다, 누가 조정하고 무엇을 먼저 하는지, 그리고 되돌리기 어려운 행동 앞에 어떤 확인 단계를 두는지가 성과를 가른다는 것입니다.</p>
+<h2 id="깊은-분석-시뮬레이션이라는-한계와-그래도-남는-교훈">깊은 분석: 시뮬레이션이라는 한계와 그래도 남는 교훈<a hidden class="anchor" aria-hidden="true" href="#깊은-분석-시뮬레이션이라는-한계와-그래도-남는-교훈">#</a></h2>
+<p>이 연구는 시뮬레이션입니다. 실제 사용자는 더 모호하게 요청하고, 에이전트끼리 협상하는 시간도 다릅니다. 그래서 수치를 그대로 우리 조직에 옮기는 것은 위험합니다. 대신 구조적 교훈은 가져갈 만합니다.</p>
+<p>첫째, 공유 자원이 있는 곳에는 조정자 역할을 명시해야 합니다. 여러 에이전트가 같은 예산을 보면 각자 최선을 다하는 것이 오히려 전체를 망칠 수 있습니다.</p>
+<p>둘째, 되돌릴 수 없는 행동 앞에는 확인 가드를 둬야 합니다. 주문, 결제, 삭제처럼 외부에 영향을 주는 행동은 관련 메시지를 먼저 읽었는지 확인하는 단계가 재시도보다 효과적이라는 점이 드러났습니다.</p>
+<p>셋째, 다른 사람에 대한 주장을 검증 없이 내보내지 않도록 해야 합니다. 연구에서 보고된 근거 없는 주장 문제는 팀 채널에서 에이전트를 쓸 때 가장 빨리 신뢰를 깨뜨릴 수 있는 행동입니다.</p>
+<h2 id="실무-관점-다중-사용자-에이전트를-설계할-때-확인할-것">실무 관점: 다중 사용자 에이전트를 설계할 때 확인할 것<a hidden class="anchor" aria-hidden="true" href="#실무-관점-다중-사용자-에이전트를-설계할-때-확인할-것">#</a></h2>
+<ol>
+<li>공유 자원(예산, 캘린더, 재고, 저장소)의 목록을 먼저 적고, 각 자원의 소유자와 충돌 시 결정자를 정합니다.</li>
+<li>조정자 에이전트를 둘지, 개별 에이전트가 직접 협상하게 할지 소규모 시나리오로 비교합니다.</li>
+<li>주문이나 배포처럼 되돌리기 어려운 행동 앞에는 관련 메시지 확인 단계를 넣고, 확인 로그를 남깁니다.</li>
+<li>팀이 커질 때 멈춤 현상이 생기는지 인원 수를 늘려 가며 측정합니다.</li>
+</ol>
+<p>연구진은 세 가지 환경을 MAMUBench라는 벤치마크로 공개했습니다. 우리 팀의 에이전트 워크플로에 맞춘 시나리오를 만들기 전에, 공개된 환경으로 기본 동작을 먼저 재현해 보는 것도 좋은 출발점입니다.</p>
+<h2 id="결론">결론<a hidden class="anchor" aria-hidden="true" href="#결론">#</a></h2>
+<p>에이전트를 사람마다 하나씩 붙이는 구조는 편해 보이지만, 공유 자원이 얽히는 순간 집단 성과를 낮출 수 있습니다. 이번 연구의 핵심은 모델 성능이 아니라 <strong>조정 구조와 확인 가드</strong>가 결과를 바꾼다는 점입니다. 다음 번에 팀 공용 에이전트를 설계한다면, 먼저 &ldquo;누가 결정하는가&quot;와 &ldquo;무엇을 확인하고 나서 실행하는가&quot;를 적어 보시기 바랍니다.</p>
+<h2 id="출처">출처<a hidden class="anchor" aria-hidden="true" href="#출처">#</a></h2>
+<ul>
+<li><a href="https://alignment.anthropic.com/2026/worse-together/">Worse Together: How Performance Breaks Down in Multi-User Multi-Agent Teams (Anthropic Alignment Blog, 2026-11-11)</a> — 네 가지 환경, 개별 위임 대 단일 조정자 비교, 해법 두 가지를 직접 확인했습니다.</li>
+<li><a href="https://arxiv.org/abs/2610.00583">논문 (arXiv 2610.00583)</a> 및 <a href="https://github.com/safety-research/MAMUBench">MAMUBench 코드 저장소</a> — 벤치마크 공개 여부를 확인했습니다.</li>
+<li>연구 결과는 시뮬레이션 기반이며 연구진 보고 수치입니다. 실제 서비스 환경에서의 재현 결과는 별도로 확인이 필요합니다.</li>
+</ul>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://kwbaek.github.io/tags/ai-ml/">Ai-Ml</a></li>
+      <li><a href="https://kwbaek.github.io/tags/multi-agent/">Multi-Agent</a></li>
+      <li><a href="https://kwbaek.github.io/tags/agent-safety/">Agent-Safety</a></li>
+      <li><a href="https://kwbaek.github.io/tags/benchmark/">Benchmark</a></li>
+      <li><a href="https://kwbaek.github.io/tags/coordination/">Coordination</a></li>
+    </ul>
+  </footer><script src="https://utteranc.es/client.js"
+        repo="kwbaek/blog-comments"
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://kwbaek.github.io/">Kyungwook&#39;s Devlog</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>
