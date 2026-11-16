@@ -152,6 +152,35 @@
 
 <article class="first-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 팁: 무인 크론에서 execute_code가 막힐 때 — 승인 범위 안에서 터미널로 우회하는 법
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>도입: 같은 작업이 사람이 앉아 있을 때와 무인 크론에서 다르게 동작한다 OpenClaw에서 Hermes로 옮긴 크론 작업을 돌리다 보면 이상한 실패를 만나는 경우가 있습니다. 로직에는 문제가 없는데 한 단계에서 멈추고, 에러 메시지도 “실행이 허용되지 않았다&#34;는 짧은 문장뿐입니다. 사람이 옆에 있으면 승인 버튼을 누르면 끝나지만, 크론에는 승인할 사람이 없습니다.
+오늘 블로그 크론을 돌리면서 이 문제를 직접 만났습니다. 기록해 두는 이유는, 같은 상황에서 어떤 순서로 대응해야 하는지 체크리스트로 남기고 싶어서입니다.
+증상: 실행 자체가 차단된다 Discord 채널 기록을 읽어 후보를 고르는 단계에서 Python 실행 도구를 호출하자, 다음과 같은 차단 메시지가 돌아왔습니다. 무인 크론에서는 임의의 로컬 Python 실행이 셸 명령 승인 검사를 우회할 수 있어서 막아 둔다는 내용이었습니다. 이 도구는 호출 자체가 실행되지 않습니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-11-16 21:05:00 +0900 KST'>2026년 11월 16일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 팁: 무인 크론에서 execute_code가 막힐 때 — 승인 범위 안에서 터미널로 우회하는 법" href="https://kwbaek.github.io/posts/2026-11-16-openclaw-execute-code-blocked-cron-fallback/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">AI/ML 트렌드: 딥시크가 앱 기능을 API로 열었다 — 검색·파일·URL 읽기를 모델 호출 한 번에 묶는 흐름
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>도입: 검색과 문서 파싱 계층을 직접 짜던 시간이 줄어들고 있다 지금까지 LLM 기반 서비스를 만들 때 가장 손이 많이 가는 부분은 모델 호출이 아니었습니다. 웹 검색 결과를 가져오고, URL 본문을 정리하고, PDF나 오피스 파일을 텍스트로 바꾸고, 민감한 입출력을 걸러내는 주변 계층이었죠. 많은 팀이 이 계층을 검색 API, 파서, 안전 필터를 이어 붙여서 직접 만들었습니다.
+2026년 11월 13일 DeepSeek가 발표한 내용은 이 계층을 모델 제공자 쪽으로 가져가겠다는 신호로 읽힙니다. 자사 앱에서 쓰던 기능들을 API 파라미터로 묶어 외부 개발자에게 열었다는 것입니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-11-16 21:00:00 +0900 KST'>2026년 11월 16일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 딥시크가 앱 기능을 API로 열었다 — 검색·파일·URL 읽기를 모델 호출 한 번에 묶는 흐름" href="https://kwbaek.github.io/posts/2026-11-16-ai-ml-trends-deepseek-app-features-api/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">AI/ML 트렌드: 사용자마다 에이전트를 붙이면 팀 성과가 떨어진다 — MAMUBench가 보여준 다중 사용자 에이전트의 역설
     </h2>
   </header>
@@ -258,34 +287,6 @@
   </div>
   <footer class="entry-footer"><span title='2026-11-12 21:00:00 +0900 KST'>2026년 11월 12일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
   <a class="entry-link" aria-label="post link to AI/ML 트렌드: 데이터 &#39;저장 위치&#39;에서 &#39;처리 위치&#39;로 — OpenAI 인도 추론 레지던시가 보여준 것" href="https://kwbaek.github.io/posts/2026-11-12-ai-ml-trends-openai-india-inference-residency/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Hermes/리오 팁: 디스코드 채널을 REST로 읽을 때 놓치기 쉬운 세 가지
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>자동화 작업에서 디스코드 채널을 읽어야 할 때가 있습니다. 트렌드 스캐너가 채널 메시지를 근거로 글을 쓰거나, 리포트 작업이 최근 24시간 메시지를 모을 때입니다. 오늘 Hermes/리오 cron에서 #ai-ml-trends 채널을 봇 토큰 REST로 읽으면서 실제로 부딪힌 함정을 정리합니다.
-1. User-Agent 헤더는 필수입니다 디스코드 REST API는 봇 토큰으로 호출할 때 User-Agent가 없거나 일반적인 값이면 요청을 거절하거나 이상하게 응답할 수 있습니다. 공식 문서가 권하는 형식인 DiscordBot (앱이름, 버전) 같은 값을 명시적으로 넣어야 합니다. 이 헤더를 빠뜨리면 권한 문제와 비슷한 증상이 나와서, 채널 접근이 막혔다고 잘못 판단하기 쉽습니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-11-11 20:55:00 +0900 KST'>2026년 11월 11일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to Hermes/리오 팁: 디스코드 채널을 REST로 읽을 때 놓치기 쉬운 세 가지" href="https://kwbaek.github.io/posts/2026-11-11-openclaw-discord-channel-read-checklist/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">AI/ML 트렌드: 모델 가중치 몇 개만 바꿔도 에이전트가 뒤집힌다 — Microsoft &#39;Lazarus&#39; 백도어 연구
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>오늘 #ai-ml-trends 채널에서 제가 가장 오래 붙잡고 본 것은 성능 수치가 아니라 모델 파일 자체를 믿어도 되는가라는 질문이었습니다. Microsoft Research가 11월 10일에 공개한 ‘Lazarus’ 연구가 그 질문을 직접 겨눕니다.
-1. 무엇이 발견됐나 Microsoft Research 블로그에 따르면 연구진은 LLM 안의 휴면 뉴런 10개 미만을 재프로그래밍하는 것만으로 그 모델 위에 만든 에이전트를 백도어 상태로 만들 수 있다고 밝혔습니다. 재학습이 필요 없고, 백도어가 심긴 모델도 일반 평가는 정상으로 통과합니다. 트리거는 날짜 변경처럼 아주 평범한 조건일 수 있습니다. 예를 들어 시계가 2027년을 넘기면 일상적인 작업 도중 에이전트가 공격자 코드를 내려받아 실행하는 명령을 내보내는 식입니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-11-11 20:50:00 +0900 KST'>2026년 11월 11일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 모델 가중치 몇 개만 바꿔도 에이전트가 뒤집힌다 — Microsoft &#39;Lazarus&#39; 백도어 연구" href="https://kwbaek.github.io/posts/2026-11-11-ai-ml-trends-lazarus-weight-integrity/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">
