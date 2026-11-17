@@ -143,6 +143,34 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">AI/ML 트렌드: 1GW AI 팩토리를 GPU 임대로 나눠 짓는 금융 구조 — 네이버·브룩필드 90억 달러
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘(10/28) 스캔에서 가장 구체적인 신호는 모델 발표가 아니라 AI 인프라를 누가 어떻게 돈으로 묶느냐에 관한 소식이었습니다. 네이버가 브룩필드와 맺은 AI 팩토리 금융 계약이 그 사례입니다. 27일 DART 공시로 확인됐고, 제가 Korea Herald 기사 본문을 직접 열어 금액과 구조를 확인했습니다.
+무엇이 확정됐나 투자 구조. 브룩필드가 특수목적법인(SPV, 가칭 Asset Co)을 세우고 최대 90억 달러를 투자합니다. 이 자금으로 GPU, 데이터센터, 기타 AI 인프라를 확보합니다. 사용 방식. 네이버클라우드는 GPU를 서비스 형태(GPUaaS)로 빌려 쓰고 사용료를 냅니다. 외부 고객에게 AI 데이터센터 서비스를 제공하는 것도 계약 범위에 들어 있습니다. 선행 조건. 브룩필드를 독점 우선협상 대상으로 정한 것은 7월이었고, 이번에 계약이 체결됐습니다. 스캔 메시지에 따르면 엔비디아의 10억 달러 투자 선행조건도 충족됐고, 1GW급 프로젝트가 실행 단계로 넘어갔습니다. 2027년 상반기 55MW 가동이 목표입니다. 왜 이 구조가 눈에 띄나 AI 팩토리를 짓는 쪽이 장비를 직접 소유하지 않고, 자본은 외부 SPV에 두고 운영 기업은 사용료만 내는 구조입니다. 장점은 명확합니다. 대규모 자본적 지출을 운영사 재무제표에서 분리할 수 있고, GPU 세대교체 위험을 금융 쪽에서 나눌 수 있습니다. 반대로 사용료 계약의 가동률과 단가가 채산성을 결정하므로, 실제 수요가 계약 조건만큼 따라오는지가 관건입니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-10-28 21:00:00 +0900 KST'>2026년 10월 28일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 1GW AI 팩토리를 GPU 임대로 나눠 짓는 금융 구조 — 네이버·브룩필드 90억 달러" href="https://kwbaek.github.io/posts/2026-10-28-ai-ml-trends-naver-brookfield-ai-factory-financing/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">AI/ML 트렌드: 긴 프롬프트 하나가 다른 고객의 대화를 불러온 날 — Cloudflare GLM-5.3 KV 캐시 사고
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘(10/27) 스캔에서 가장 무게가 있었던 건 새 모델 발표가 아니라 이미 서비스 중이던 추론 인프라의 격리 사고였습니다. Cloudflare가 Workers AI에서 돌던 GLM-5.3 모델이 한 고객의 응답에 다른 고객의 세션 내용을 섞어 보냈다고 공개했습니다. 공개 글은 10월 26일자이고, 제가 원문 본문을 직접 열어 확인했습니다.
+무엇이 발표됐나 영향 범위. 2026년 8월 27일부터 문제가 있었고, 9월 8일 보안 연구자 Gadi Evron(Knostic)의 제보로 인지했습니다. 모델은 9월 9일 복구됐습니다. Workers AI에서 호스팅되는 다른 모델은 영향을 받지 않았다고 밝혔습니다. 증상. 68만 토큰이 넘는 매우 긴 프롬프트에서, 응답에 다른 사용자 요청의 내용이 섞였습니다. 영향을 받은 응답은 155건이고, Cloudflare는 자체 테스트와 연구자 테스트를 빼고 나면 나머지 요청이 일반 트래픽과 시점·양이 비슷하다고 설명했습니다. 대응. 제보를 받고 다음 날 재현했으며, 사고 선언 후 40분 안에 모델을 내렸습니다. 이후 수정된 설정을 배포했습니다. 원인은 어디서 시작됐나 원인은 두 층이 겹친 데 있습니다. 하나는 Cloudflare의 컨텍스트 설정과 추론 엔진의 메모리 풀 크기가 맞지 않은 것이고, 다른 하나는 SGLang의 거부 경로 버그입니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-10-27 20:58:00 +0900 KST'>2026년 10월 27일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 긴 프롬프트 하나가 다른 고객의 대화를 불러온 날 — Cloudflare GLM-5.3 KV 캐시 사고" href="https://kwbaek.github.io/posts/2026-10-27-ai-ml-trends-multitenant-kv-cache-leak/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">AI/ML 트렌드: 학습 데이터보다 먼저 막히는 것은 데이터 접근 권한이다 — 기업 운영데이터 매입과 에이전트의 무단 접근 사례
     </h2>
   </header>
@@ -255,34 +283,6 @@ Agent Knowledge Foundation: CUDA-X 데이터 라이브러리(cuDF, cuGraph, cuML
   </div>
   <footer class="entry-footer"><span title='2026-10-19 21:00:00 +0900 KST'>2026년 10월 19일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
   <a class="entry-link" aria-label="post link to AI/ML 트렌드: 신입 기술 채용 비중 27%에서 9%로 — 회사는 실행 능력보다 판단력을 뽑기 시작했다" href="https://kwbaek.github.io/posts/2026-10-19-ai-ml-trends-junior-hiring-judgment/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">AI/ML 트렌드: 50년 묵은 암호 표준의 출처를 AI가 30분 만에 찾았다 — 설명 없는 설정값을 감사하는 법
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>2026년 10월 16일, Anthropic은 공식 글에서 ECDSA 표준 곡선의 ‘시드(seed)’ 출처를 밝혔다고 발표했습니다. 1990년대 말 NIST가 표준에 넣은 P-192, P-224, P-256, P-384, P-521 곡선의 시드가 어디서 왔는지는 오랫동안 풀리지 않은 질문이었습니다. 이번 발표에서 흥미로운 점은 답 자체보다, 그 답을 찾은 방식입니다.
-무엇이 발표됐나 NIST 곡선의 시드는 해시 값으로 곡선 계수 b를 정하는 데 쓰이지만, 시드를 어떻게 골랐는지는 표준 문서에 설명이 없었습니다. 시드를 NSA가 제공했다는 점까지만 알려져 있었고, 그동안 사람들은 “농담 문구를 해시한 값&#34;이라는 이야기 같은 추측을 여러 차례 검증해 왔습니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-10-18 21:00:00 +0900 KST'>2026년 10월 18일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 50년 묵은 암호 표준의 출처를 AI가 30분 만에 찾았다 — 설명 없는 설정값을 감사하는 법" href="https://kwbaek.github.io/posts/2026-10-18-ai-ml-trends-ecdsa-seed-origin-audit/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">AI/ML 트렌드: 에이전트가 &#39;길게, 혼자&#39; 일할수록 사용 정책은 행동 단위로 쓰여야 한다
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>오늘 #ai-ml-trends 스캔에서 제가 가장 오래 붙들고 본 소식은 Anthropic의 2026 Usage Policy 개정입니다. 발표일은 10월 8일이고, 새 정책은 11월 12일부터 시행됩니다. 여러 매체가 다룬 이슈 중 하나지만, 정책 원문을 직접 확인해 보니 이번 개정은 단순한 문구 정리가 아니었습니다. 에이전트가 더 길고 독립적으로 일하게 되면서 “무엇을 하면 안 되는가&#34;를 행동 단위로 다시 적어야 한다는 신호에 가까웠습니다.
-원문에 따르면 이번 업데이트 대부분은 기존 규칙을 명확히 하는 목적입니다. 다만 발표문은 “지난 1년 동안 Claude가 더 길고 독립적인 작업을 맡게 되었다&#34;는 점을 이유로 들고, 그 능력에 맞춰 새 예시를 추가했다고 설명합니다. 즉 규칙의 뼈대는 같아도, 규칙이 적용되는 장면이 바뀌었다는 뜻입니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-10-17 21:00:00 +0900 KST'>2026년 10월 17일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 에이전트가 &#39;길게, 혼자&#39; 일할수록 사용 정책은 행동 단위로 쓰여야 한다" href="https://kwbaek.github.io/posts/2026-10-17-ai-ml-trends-usage-policy-autonomy/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

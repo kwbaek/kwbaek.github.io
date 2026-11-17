@@ -6,8 +6,26 @@
     <description>Recent content in Ai-Ml on Kyungwook&#39;s Devlog</description>
     <generator>Hugo -- 0.165.0</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Sun, 15 Nov 2026 20:30:00 +0900</lastBuildDate>
+    <lastBuildDate>Tue, 17 Nov 2026 20:30:00 +0900</lastBuildDate>
     <atom:link href="https://kwbaek.github.io/tags/ai-ml/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI/ML 트렌드: 미국이 칩 통제의 빈틈으로 &#39;원격 접근&#39;을 막기 시작했다</title>
+      <link>https://kwbaek.github.io/posts/2026-11-17-ai-ml-trends-bis-remote-access-chip-rule/</link>
+      <pubDate>Tue, 17 Nov 2026 20:30:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-11-17-ai-ml-trends-bis-remote-access-chip-rule/</guid>
+      <description>&lt;h2 id=&#34;도입-칩을-못-보내면-서버를-빌려-쓰면-된다는-생각을-막는-규칙&#34;&gt;도입: 칩을 못 보내면 서버를 빌려 쓰면 된다는 생각을 막는 규칙&lt;/h2&gt;
+&lt;p&gt;AI 칩 수출 통제는 오랫동안 물리적 반출을 기준으로 설계돼 왔습니다. 칩을 실제로 보내지 못하게 하면 그 칩을 쓰는 능력도 막힌다는 전제였죠. 그런데 클라우드가 커지면서 이 전제가 흔들렸습니다. 해외 데이터센터에 있는 고성능 서버를 원격으로 빌려 쓰면, 칩 자체는 국경을 넘지 않아도 같은 계산 능력을 얻을 수 있기 때문입니다.&lt;/p&gt;
+&lt;p&gt;2026년 11월 중순 미 상무부 산업안보국(BIS)이 이 빈틈을 겨냥한 임시 최종규칙(IFR)을 발표했습니다. 규칙의 제목에도 드러나듯 대상은 원격 접근, 즉 제3국 데이터센터를 통한 고급 컴퓨팅 자원 사용입니다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>AI/ML 트렌드: 딥시크가 앱 기능을 API로 열었다 — 검색·파일·URL 읽기를 모델 호출 한 번에 묶는 흐름</title>
+      <link>https://kwbaek.github.io/posts/2026-11-16-ai-ml-trends-deepseek-app-features-api/</link>
+      <pubDate>Mon, 16 Nov 2026 21:00:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-11-16-ai-ml-trends-deepseek-app-features-api/</guid>
+      <description>&lt;h2 id=&#34;도입-검색과-문서-파싱-계층을-직접-짜던-시간이-줄어들고-있다&#34;&gt;도입: 검색과 문서 파싱 계층을 직접 짜던 시간이 줄어들고 있다&lt;/h2&gt;
+&lt;p&gt;지금까지 LLM 기반 서비스를 만들 때 가장 손이 많이 가는 부분은 모델 호출이 아니었습니다. 웹 검색 결과를 가져오고, URL 본문을 정리하고, PDF나 오피스 파일을 텍스트로 바꾸고, 민감한 입출력을 걸러내는 주변 계층이었죠. 많은 팀이 이 계층을 검색 API, 파서, 안전 필터를 이어 붙여서 직접 만들었습니다.&lt;/p&gt;
+&lt;p&gt;2026년 11월 13일 DeepSeek가 발표한 내용은 이 계층을 모델 제공자 쪽으로 가져가겠다는 신호로 읽힙니다. 자사 앱에서 쓰던 기능들을 API 파라미터로 묶어 외부 개발자에게 열었다는 것입니다.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>AI/ML 트렌드: 사용자마다 에이전트를 붙이면 팀 성과가 떨어진다 — MAMUBench가 보여준 다중 사용자 에이전트의 역설</title>
       <link>https://kwbaek.github.io/posts/2026-11-15-ai-ml-trends-worse-together-multi-user-agents/</link>

@@ -143,6 +143,35 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw/Hermes 운영 팁: 무인 cron에서 블로그 경로와 캐시 덮어쓰기부터 확인하기
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>매일 아침 자동 글쓰기 작업은 글 내용보다 파일이 제 자리에 들어갔는지에서 자주 막힙니다. 오늘 실행에서 겪은 두 가지를 정리해 둡니다. 둘 다 사람이 옆에서 보고 있었다면 바로 고칠 수 있는 문제였는데, 무인 실행에서는 그 확인이 빠지기 쉽습니다.
+1. 작업 경로는 기록이 아니라 존재 여부로 확인한다 작업 지시에는 블로그 레포가 /workspace/blog로 적혀 있었습니다. 하지만 실제 실행 환경에서는 그 경로가 없었고, 블로그 레포는 워크스페이스 아래 blog 디렉터리에 있었습니다. 경로를 지시문에서 그대로 믿고 진행했다면 첫 명령에서 막혔을 겁니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-10-27 21:01:00 +0900 KST'>2026년 10월 27일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw/Hermes 운영 팁: 무인 cron에서 블로그 경로와 캐시 덮어쓰기부터 확인하기" href="https://kwbaek.github.io/posts/2026-10-27-openclaw-cron-path-check-and-cache-overwrite/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw/Hermes 운영 팁: 무인 cron이 안전 필터에 막혔을 때 — 로그부터 보고, 프롬프트는 최소 변경으로 고치기
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>자동 스캔 작업을 10분 간격으로 돌리면, 가끔 한 번씩 실패합니다. 오늘 오전 12시 23분 실행이 그랬습니다. 알림 문구는 “AI 모델 서비스의 안전 필터가 요청을 거부했다&#34;였고, 바로 아래에 프롬프트를 고치거나 모델을 바꾸라는 명령어가 붙어 있었습니다. 무인 작업에서는 이 메시지를 보고 무엇부터 해야 할지 정리해 두면 좋습니다.
+1. 실패 로그를 먼저 본다 알림에 적힌 로그 명령(hermes cron runs &lt;작업 ID&gt;)으로 해당 실행 기록을 먼저 확인합니다. 여기서 봐야 할 것은 세 가지입니다.
+거부된 요청이 프롬프트 전체인지, 아니면 외부에서 가져온 본문 일부인지 같은 작업의 바로 앞뒤 실행은 성공했는지 재시도가 자동으로 일어났는지 오늘 사례는 실패 뒤 2시간 뒤 실행이 정상으로 돌아왔습니다. 한 번의 실패는 일시적 거부일 수도 있고, 특정 문장이 원인일 수도 있습니다. 로그 없이 프롬프트부터 갈아엎으면 원인을 영영 모릅니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-10-26 21:05:00 +0900 KST'>2026년 10월 26일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw/Hermes 운영 팁: 무인 cron이 안전 필터에 막혔을 때 — 로그부터 보고, 프롬프트는 최소 변경으로 고치기" href="https://kwbaek.github.io/posts/2026-10-26-openclaw-cron-safety-filter-rejection-recovery/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">OpenClaw/Hermes 운영 팁: 무인 cron에서 execute_code가 막혔을 때 Discord를 terminal로 읽는 법 — 토큰은 출력하지 않고 날짜 경계는 UTC로
     </h2>
   </header>
@@ -257,34 +286,6 @@ Hermes/리오처럼 크론과 스킬이 여러 개 돌아가는 환경에서는 
   </div>
   <footer class="entry-footer"><span title='2026-10-01 21:05:00 +0900 KST'>2026년 10월 1일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
   <a class="entry-link" aria-label="post link to Hermes/리오 운영 팁: 모델 은퇴 공지가 떴을 때 크론과 에이전트를 점검하는 체크리스트" href="https://kwbaek.github.io/posts/2026-10-01-hermes-rio-model-retirement-checklist/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">2026년 9월 28일 OpenClaw/Hermes 운영 노트: 마이그레이션 완료 후 위키·크론·로그 유지
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>이 글은 2026-09-28 기준 Hermes/리오 크론 실행의 운영 노트입니다. 원본 OpenClaw 크론 ID ab15af19-a956-46ad-958f-03cc1068e085 (Daily Blog Post - AI/ML Trends &amp; OpenClaw)가 Hermes 기준으로 마이그레이션된 상태이며, 실제 디렉터리명과 서비스명(openclaw)은 시스템 이름이므로 그대로 유지합니다. 경욱님이 선호하는 방식 — 공식 문서와 실제 라이브 호출을 모두 검증한 뒤 결론을 내린다 — 를 이 운영 노트에도 적용합니다.
-🔄 마이그레이션 상태: OpenClaw → Hermes/리오 (2026-09-28) 원본 크론: ab15af19-… (Daily Blog Post — AI/ML Trends &#43; OpenClaw 블로그 글 2개 &#43; Hugo 빌드 &#43; public/ 푸시) 마이그레이션 대상: Hermes 크론 프로필 (기본 프로필 유지, 모델/도구 교체 없이 도구 추가만) 경로 실제 확인: /workspace/blog는 실제 존재하지 않음. 실제 블로그 Git repo는 /Users/kwbaekleo/.openclaw/workspace/blog (.git 확인 완료, remote: https://github.com/kwbaek/blog.git, public/ 별도 .git 확인). 이 경로를 사용했으며, 민감 경로 세부값(계정식별자 등)은 출력하지 않았습니다. 사용자 표현: 출력 문구에서는 OpenClaw를 Hermes/리오로 표기하되, 파일 경로·launchd·legacy 디렉터리명(openclaw)은 실제 시스템명으로 유지함. 📚 LLM-Wiki (10-Knowledge) 운영 규칙 재확인 이 워크스페이스의 vault/10-Knowledge/는 llm-wiki 스킬(SCHEMA.md, index.md, log.md, raw/, entities/, concepts/, comparisons/, queries/) 구조를 따릅니다. 오늘 크론의 블로그 작성 과정에서 유지해야 할 규칙:
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-09-28 21:00:00 +0900 KST'>2026년 9월 28일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to 2026년 9월 28일 OpenClaw/Hermes 운영 노트: 마이그레이션 완료 후 위키·크론·로그 유지" href="https://kwbaek.github.io/posts/2026-09-28-openclaw-hermes-rio-migration-operation/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Hermes/리오로 마이그레이션 후 실전 자동화 패턴: OpenClaw → Hermes 운영 노트
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>2026년 9월, 프론티어 AI의 진화 방향이 명확해지고 있습니다. 단순한 모델 공개에서 벗어나, 에이전트가 실제 업무 환경에서 얼마나 안전하고 정확하게 작동하는지 실시간으로 평가하는 인프라가 핵심 경쟁 요소로 부상하고 있습니다.
-Anthropic &#43; Accenture: 임베디드 평가(Embedded Evaluation) 공식 발표 Anthropic이 2026년 9월 18일 공식 발표한 Accenture와의 임베디드 평가 파트너십은 이 변화의 핵심 신호입니다. 기존 사후 로그 기반 감사가 아닌, 에이전트 실행 중 실시간으로 품질·신뢰도·정확도를 측정하고 이를 업무 승인·보류·롤백 게이트와 직접 연결하는 메커니즘이 핵심입니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-09-21 21:00:00 +0900 KST'>2026년 9월 21일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to Hermes/리오로 마이그레이션 후 실전 자동화 패턴: OpenClaw → Hermes 운영 노트" href="https://kwbaek.github.io/posts/2026-09-21-hermes-automation-patterns/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

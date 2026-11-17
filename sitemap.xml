@@ -2,49 +2,79 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://kwbaek.github.io/tags/automation/</loc>
-    <lastmod>2026-11-16T21:05:00+09:00</lastmod>
-  </url><url>
     <loc>https://kwbaek.github.io/categories/</loc>
+    <lastmod>2026-11-17T20:35:00+09:00</lastmod>
+  </url><url>
+    <loc>https://kwbaek.github.io/tags/cron/</loc>
+    <lastmod>2026-11-17T20:35:00+09:00</lastmod>
+  </url><url>
+    <loc>https://kwbaek.github.io/tags/discord/</loc>
+    <lastmod>2026-11-17T20:35:00+09:00</lastmod>
+  </url><url>
+    <loc>https://kwbaek.github.io/tags/hermes/</loc>
+    <lastmod>2026-11-17T20:35:00+09:00</lastmod>
+  </url><url>
+    <loc>https://kwbaek.github.io/</loc>
+    <lastmod>2026-11-17T20:35:00+09:00</lastmod>
+  </url><url>
+    <loc>https://kwbaek.github.io/tags/links/</loc>
+    <lastmod>2026-11-17T20:35:00+09:00</lastmod>
+  </url><url>
+    <loc>https://kwbaek.github.io/categories/openclaw/</loc>
+    <lastmod>2026-11-17T20:35:00+09:00</lastmod>
+  </url><url>
+    <loc>https://kwbaek.github.io/tags/openclaw/</loc>
+    <lastmod>2026-11-17T20:35:00+09:00</lastmod>
+  </url><url>
+    <loc>https://kwbaek.github.io/posts/2026-11-17-openclaw-discord-summary-link-recovery/</loc>
+    <lastmod>2026-11-17T20:35:00+09:00</lastmod>
+  </url><url>
+    <loc>https://kwbaek.github.io/posts/</loc>
+    <lastmod>2026-11-17T20:35:00+09:00</lastmod>
+  </url><url>
+    <loc>https://kwbaek.github.io/tags/</loc>
+    <lastmod>2026-11-17T20:35:00+09:00</lastmod>
+  </url><url>
+    <loc>https://kwbaek.github.io/tags/verification/</loc>
+    <lastmod>2026-11-17T20:35:00+09:00</lastmod>
+  </url><url>
+    <loc>https://kwbaek.github.io/tags/ai-chips/</loc>
+    <lastmod>2026-11-17T20:30:00+09:00</lastmod>
+  </url><url>
+    <loc>https://kwbaek.github.io/categories/ai-ml/</loc>
+    <lastmod>2026-11-17T20:30:00+09:00</lastmod>
+  </url><url>
+    <loc>https://kwbaek.github.io/tags/ai-ml/</loc>
+    <lastmod>2026-11-17T20:30:00+09:00</lastmod>
+  </url><url>
+    <loc>https://kwbaek.github.io/posts/2026-11-17-ai-ml-trends-bis-remote-access-chip-rule/</loc>
+    <lastmod>2026-11-17T20:30:00+09:00</lastmod>
+  </url><url>
+    <loc>https://kwbaek.github.io/tags/bis/</loc>
+    <lastmod>2026-11-17T20:30:00+09:00</lastmod>
+  </url><url>
+    <loc>https://kwbaek.github.io/tags/cloud/</loc>
+    <lastmod>2026-11-17T20:30:00+09:00</lastmod>
+  </url><url>
+    <loc>https://kwbaek.github.io/tags/compliance/</loc>
+    <lastmod>2026-11-17T20:30:00+09:00</lastmod>
+  </url><url>
+    <loc>https://kwbaek.github.io/tags/export-control/</loc>
+    <lastmod>2026-11-17T20:30:00+09:00</lastmod>
+  </url><url>
+    <loc>https://kwbaek.github.io/tags/automation/</loc>
     <lastmod>2026-11-16T21:05:00+09:00</lastmod>
   </url><url>
     <loc>https://kwbaek.github.io/tags/checklist/</loc>
     <lastmod>2026-11-16T21:05:00+09:00</lastmod>
   </url><url>
-    <loc>https://kwbaek.github.io/tags/cron/</loc>
-    <lastmod>2026-11-16T21:05:00+09:00</lastmod>
-  </url><url>
-    <loc>https://kwbaek.github.io/tags/hermes/</loc>
-    <lastmod>2026-11-16T21:05:00+09:00</lastmod>
-  </url><url>
-    <loc>https://kwbaek.github.io/</loc>
-    <lastmod>2026-11-16T21:05:00+09:00</lastmod>
-  </url><url>
-    <loc>https://kwbaek.github.io/categories/openclaw/</loc>
-    <lastmod>2026-11-16T21:05:00+09:00</lastmod>
-  </url><url>
-    <loc>https://kwbaek.github.io/tags/openclaw/</loc>
-    <lastmod>2026-11-16T21:05:00+09:00</lastmod>
-  </url><url>
     <loc>https://kwbaek.github.io/posts/2026-11-16-openclaw-execute-code-blocked-cron-fallback/</loc>
-    <lastmod>2026-11-16T21:05:00+09:00</lastmod>
-  </url><url>
-    <loc>https://kwbaek.github.io/posts/</loc>
-    <lastmod>2026-11-16T21:05:00+09:00</lastmod>
-  </url><url>
-    <loc>https://kwbaek.github.io/tags/</loc>
     <lastmod>2026-11-16T21:05:00+09:00</lastmod>
   </url><url>
     <loc>https://kwbaek.github.io/tags/troubleshooting/</loc>
     <lastmod>2026-11-16T21:05:00+09:00</lastmod>
   </url><url>
     <loc>https://kwbaek.github.io/tags/agent-infrastructure/</loc>
-    <lastmod>2026-11-16T21:00:00+09:00</lastmod>
-  </url><url>
-    <loc>https://kwbaek.github.io/categories/ai-ml/</loc>
-    <lastmod>2026-11-16T21:00:00+09:00</lastmod>
-  </url><url>
-    <loc>https://kwbaek.github.io/tags/ai-ml/</loc>
     <lastmod>2026-11-16T21:00:00+09:00</lastmod>
   </url><url>
     <loc>https://kwbaek.github.io/posts/2026-11-16-ai-ml-trends-deepseek-app-features-api/</loc>
@@ -155,9 +185,6 @@
     <loc>https://kwbaek.github.io/posts/2026-11-12-ai-ml-trends-openai-india-inference-residency/</loc>
     <lastmod>2026-11-12T21:00:00+09:00</lastmod>
   </url><url>
-    <loc>https://kwbaek.github.io/tags/compliance/</loc>
-    <lastmod>2026-11-12T21:00:00+09:00</lastmod>
-  </url><url>
     <loc>https://kwbaek.github.io/tags/data-residency/</loc>
     <lastmod>2026-11-12T21:00:00+09:00</lastmod>
   </url><url>
@@ -166,9 +193,6 @@
   </url><url>
     <loc>https://kwbaek.github.io/tags/openai/</loc>
     <lastmod>2026-11-12T21:00:00+09:00</lastmod>
-  </url><url>
-    <loc>https://kwbaek.github.io/tags/discord/</loc>
-    <lastmod>2026-11-11T20:55:00+09:00</lastmod>
   </url><url>
     <loc>https://kwbaek.github.io/posts/2026-11-11-openclaw-discord-channel-read-checklist/</loc>
     <lastmod>2026-11-11T20:55:00+09:00</lastmod>
@@ -216,9 +240,6 @@
     <lastmod>2026-11-10T21:00:00+09:00</lastmod>
   </url><url>
     <loc>https://kwbaek.github.io/posts/2026-11-09-openclaw-verify-agent-file-edits/</loc>
-    <lastmod>2026-11-09T21:05:00+09:00</lastmod>
-  </url><url>
-    <loc>https://kwbaek.github.io/tags/verification/</loc>
     <lastmod>2026-11-09T21:05:00+09:00</lastmod>
   </url><url>
     <loc>https://kwbaek.github.io/posts/2026-11-09-ai-ml-trends-dsx-os-gpu-cluster-validation/</loc>
@@ -504,9 +525,6 @@
     <lastmod>2026-10-25T21:00:00+09:00</lastmod>
   </url><url>
     <loc>https://kwbaek.github.io/tags/capacity/</loc>
-    <lastmod>2026-10-25T21:00:00+09:00</lastmod>
-  </url><url>
-    <loc>https://kwbaek.github.io/tags/cloud/</loc>
     <lastmod>2026-10-25T21:00:00+09:00</lastmod>
   </url><url>
     <loc>https://kwbaek.github.io/tags/blog/</loc>
@@ -2153,9 +2171,6 @@
     <loc>https://kwbaek.github.io/posts/2026-06-28-ai-ml-trends-ai-capex-becomes-financial-fragility-risk/</loc>
     <lastmod>2026-06-28T21:00:00+09:00</lastmod>
   </url><url>
-    <loc>https://kwbaek.github.io/tags/bis/</loc>
-    <lastmod>2026-06-28T21:00:00+09:00</lastmod>
-  </url><url>
     <loc>https://kwbaek.github.io/posts/2026-06-28-hermes-rio-add-a-capex-durability-gate/</loc>
     <lastmod>2026-06-28T21:00:00+09:00</lastmod>
   </url><url>
@@ -2176,9 +2191,6 @@
   </url><url>
     <loc>https://kwbaek.github.io/tags/release-management/</loc>
     <lastmod>2026-06-27T21:00:00+09:00</lastmod>
-  </url><url>
-    <loc>https://kwbaek.github.io/tags/ai-chips/</loc>
-    <lastmod>2026-06-26T20:55:00+09:00</lastmod>
   </url><url>
     <loc>https://kwbaek.github.io/posts/2026-06-26-ai-ml-trends-export-controls-move-to-the-logistics-layer/</loc>
     <lastmod>2026-06-26T20:55:00+09:00</lastmod>

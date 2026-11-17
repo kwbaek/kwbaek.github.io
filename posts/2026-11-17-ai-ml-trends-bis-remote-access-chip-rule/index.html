@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>AI/ML 트렌드: 미국이 칩 통제의 빈틈으로 &#39;원격 접근&#39;을 막기 시작했다 | Kyungwook&#39;s Devlog</title>
+<meta name="keywords" content="ai-ml, export-control, bis, ai-chips, cloud, compliance">
+<meta name="description" content="도입: 칩을 못 보내면 서버를 빌려 쓰면 된다는 생각을 막는 규칙
+AI 칩 수출 통제는 오랫동안 물리적 반출을 기준으로 설계돼 왔습니다. 칩을 실제로 보내지 못하게 하면 그 칩을 쓰는 능력도 막힌다는 전제였죠. 그런데 클라우드가 커지면서 이 전제가 흔들렸습니다. 해외 데이터센터에 있는 고성능 서버를 원격으로 빌려 쓰면, 칩 자체는 국경을 넘지 않아도 같은 계산 능력을 얻을 수 있기 때문입니다.
+2026년 11월 중순 미 상무부 산업안보국(BIS)이 이 빈틈을 겨냥한 임시 최종규칙(IFR)을 발표했습니다. 규칙의 제목에도 드러나듯 대상은 원격 접근, 즉 제3국 데이터센터를 통한 고급 컴퓨팅 자원 사용입니다.">
+<meta name="author" content="map[email: name:Kyungwook Baek]">
+<link rel="canonical" href="https://kwbaek.github.io/posts/2026-11-17-ai-ml-trends-bis-remote-access-chip-rule/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.199042e659bc7245f5609d333d6c044eb554a0640849bb874e1dff8eb0f57209.css" integrity="sha256-GZBC5lm8ckX1YJ0zPWwETrVUoGQISbuHTh3/jrD1cgk=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://kwbaek.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://kwbaek.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://kwbaek.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://kwbaek.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://kwbaek.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://kwbaek.github.io/posts/2026-11-17-ai-ml-trends-bis-remote-access-chip-rule/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="https://kwbaek.github.io/posts/2026-11-17-ai-ml-trends-bis-remote-access-chip-rule/">
+  <meta property="og:site_name" content="Kyungwook&#39;s Devlog">
+  <meta property="og:title" content="AI/ML 트렌드: 미국이 칩 통제의 빈틈으로 &#39;원격 접근&#39;을 막기 시작했다">
+  <meta property="og:description" content="도입: 칩을 못 보내면 서버를 빌려 쓰면 된다는 생각을 막는 규칙 AI 칩 수출 통제는 오랫동안 물리적 반출을 기준으로 설계돼 왔습니다. 칩을 실제로 보내지 못하게 하면 그 칩을 쓰는 능력도 막힌다는 전제였죠. 그런데 클라우드가 커지면서 이 전제가 흔들렸습니다. 해외 데이터센터에 있는 고성능 서버를 원격으로 빌려 쓰면, 칩 자체는 국경을 넘지 않아도 같은 계산 능력을 얻을 수 있기 때문입니다.
+2026년 11월 중순 미 상무부 산업안보국(BIS)이 이 빈틈을 겨냥한 임시 최종규칙(IFR)을 발표했습니다. 규칙의 제목에도 드러나듯 대상은 원격 접근, 즉 제3국 데이터센터를 통한 고급 컴퓨팅 자원 사용입니다.">
+  <meta property="og:locale" content="ko-kr">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2026-11-17T20:30:00+09:00">
+    <meta property="article:modified_time" content="2026-11-17T20:30:00+09:00">
+    <meta property="article:tag" content="Ai-Ml">
+    <meta property="article:tag" content="Export-Control">
+    <meta property="article:tag" content="BIS">
+    <meta property="article:tag" content="AI Chips">
+    <meta property="article:tag" content="Cloud">
+    <meta property="article:tag" content="Compliance">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="AI/ML 트렌드: 미국이 칩 통제의 빈틈으로 &#39;원격 접근&#39;을 막기 시작했다">
+<meta name="twitter:description" content="도입: 칩을 못 보내면 서버를 빌려 쓰면 된다는 생각을 막는 규칙
+AI 칩 수출 통제는 오랫동안 물리적 반출을 기준으로 설계돼 왔습니다. 칩을 실제로 보내지 못하게 하면 그 칩을 쓰는 능력도 막힌다는 전제였죠. 그런데 클라우드가 커지면서 이 전제가 흔들렸습니다. 해외 데이터센터에 있는 고성능 서버를 원격으로 빌려 쓰면, 칩 자체는 국경을 넘지 않아도 같은 계산 능력을 얻을 수 있기 때문입니다.
+2026년 11월 중순 미 상무부 산업안보국(BIS)이 이 빈틈을 겨냥한 임시 최종규칙(IFR)을 발표했습니다. 규칙의 제목에도 드러나듯 대상은 원격 접근, 즉 제3국 데이터센터를 통한 고급 컴퓨팅 자원 사용입니다.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://kwbaek.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "AI/ML 트렌드: 미국이 칩 통제의 빈틈으로 '원격 접근'을 막기 시작했다",
+      "item": "https://kwbaek.github.io/posts/2026-11-17-ai-ml-trends-bis-remote-access-chip-rule/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "AI/ML 트렌드: 미국이 칩 통제의 빈틈으로 '원격 접근'을 막기 시작했다",
+  "name": "AI\/ML 트렌드: 미국이 칩 통제의 빈틈으로 \u0027원격 접근\u0027을 막기 시작했다",
+  "description": "도입: 칩을 못 보내면 서버를 빌려 쓰면 된다는 생각을 막는 규칙 AI 칩 수출 통제는 오랫동안 물리적 반출을 기준으로 설계돼 왔습니다. 칩을 실제로 보내지 못하게 하면 그 칩을 쓰는 능력도 막힌다는 전제였죠. 그런데 클라우드가 커지면서 이 전제가 흔들렸습니다. 해외 데이터센터에 있는 고성능 서버를 원격으로 빌려 쓰면, 칩 자체는 국경을 넘지 않아도 같은 계산 능력을 얻을 수 있기 때문입니다.\n2026년 11월 중순 미 상무부 산업안보국(BIS)이 이 빈틈을 겨냥한 임시 최종규칙(IFR)을 발표했습니다. 규칙의 제목에도 드러나듯 대상은 원격 접근, 즉 제3국 데이터센터를 통한 고급 컴퓨팅 자원 사용입니다.\n",
+  "keywords": [
+    "ai-ml", "export-control", "bis", "ai-chips", "cloud", "compliance"
+  ],
+  "articleBody": "도입: 칩을 못 보내면 서버를 빌려 쓰면 된다는 생각을 막는 규칙 AI 칩 수출 통제는 오랫동안 물리적 반출을 기준으로 설계돼 왔습니다. 칩을 실제로 보내지 못하게 하면 그 칩을 쓰는 능력도 막힌다는 전제였죠. 그런데 클라우드가 커지면서 이 전제가 흔들렸습니다. 해외 데이터센터에 있는 고성능 서버를 원격으로 빌려 쓰면, 칩 자체는 국경을 넘지 않아도 같은 계산 능력을 얻을 수 있기 때문입니다.\n2026년 11월 중순 미 상무부 산업안보국(BIS)이 이 빈틈을 겨냥한 임시 최종규칙(IFR)을 발표했습니다. 규칙의 제목에도 드러나듯 대상은 원격 접근, 즉 제3국 데이터센터를 통한 고급 컴퓨팅 자원 사용입니다.\n확인된 내용: 발표 페이지의 목적과 범위 BIS 보도자료 원문(bis.gov, ‘bis-issues-rule-addressing-remote-access-american-super-intelligence-technology’)을 직접 열어 확인한 내용은 다음과 같습니다.\n규칙 형식은 임시 최종규칙(IFR)입니다. 재무부와 국가안전보장회의(NSC)의 지시와 작성 하에 마련됐다고 명시돼 있습니다. 목적은 기존의 미국 기술 접근 제한이 제3국 데이터센터를 통한 원격 컴퓨팅으로 우회되지 않도록 하는 것입니다. 근거로 든 논리는 원격 접근을 물리적 반출과 같은 수준의 통제로 맞춘다는 것입니다. 즉 ‘칩을 보내는 것’과 ‘칩을 빌려 쓰게 하는 것’을 같은 문제로 봤다는 뜻입니다. 아직 확인하지 못한 내용 후속 보도에서 나온 세부 기준은 이 글에서 원문으로 확인하지 못했습니다. 아래 내용은 스캐너가 수집한 2차 요약에 근거한 것이며, 실제 적용 전에는 IFR 전문에서 다시 확인해야 합니다.\n약 12M TPP 이상의 컴퓨트를 중국 등 D:5 국가 기업에 제공하는 데이터센터·네트워크가 라이선스 대상이 된다는 기준 말레이시아, 싱가포르, 인도네시아, 태국, 브라질로의 칩 재수출에 허가가 필요해진다는 내용 해당 국가의 데이터센터 임차 용량을 쓰는 경우 90일 안에 라이선스를 확보해야 한다는 기한 특히 임계값과 국가 목록은 적용 범위를 결정하는 핵심 조건이라, 전문 확인 전에는 단정하지 않는 편이 안전합니다.\n왜 이 규칙이 중요한가 이 규칙이 실제로 적용되면 영향은 칩 제조사보다 그 칩을 쓰는 쪽에 먼저 옵니다.\n동남아나 중남미에 GPU를 두고 클라우드처럼 쓰는 기업은 임차 계약 상대방과 실제 연산 주체를 함께 확인해야 합니다. 해외 리전을 쓰는 AI 서비스 기업은 ‘우리 데이터는 어디서 처리되는가’뿐 아니라 ‘그 컴퓨트가 어느 기업의 통제를 받는가’까지 문서화해야 할 수 있습니다. 재수출 심사가 추가되면 GPU 조달 일정과 원가에 새 변수가 생깁니다. 같은 주에 미·중 정상회담을 앞두고 첨단 칩 통제 강화론이 다시 부상했다는 보도와, 말레이시아가 데이터센터 운영과 칩 사용을 감시하는 법을 검토 중이라는 보도도 있었습니다. 세 가지를 함께 보면 칩 통제가 ‘수출 물량’에서 ‘사용 위치와 사용 주체’로 옮겨가는 흐름으로 읽힙니다.\n실무 체크리스트 해외 GPU 임차나 공동 학습 계약이 있다면 데이터센터 운영자와 최종 사용자를 목록으로 정리합니다. 임차 용량이 중국계 기업이나 D:5 국가 기업에 재제공되는지 계약서 조항을 확인합니다. 90일 라이선스 기한이 실제 프로젝트 일정과 겹치는지 계산합니다. IFR 전문이 공개되면 임계값과 국가 목록을 원문 기준으로 다시 대조합니다. 규칙의 세부 기준은 아직 완전히 확인되지 않았지만, 방향은 분명합니다. 앞으로 AI 인프라 조달에서는 칩을 어디서 샀는지보다 그 연산을 누가, 어디서 쓰는지를 설명할 수 있어야 할 가능성이 큽니다.\n",
+  "wordCount" : "410",
+  "inLanguage": "en",
+  "datePublished": "2026-11-17T20:30:00+09:00",
+  "dateModified": "2026-11-17T20:30:00+09:00",
+  "author":{
+    "@type": "Person",
+    "name": {"email":"","name":"Kyungwook Baek"}
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://kwbaek.github.io/posts/2026-11-17-ai-ml-trends-bis-remote-access-chip-rule/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Kyungwook's Devlog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://kwbaek.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://kwbaek.github.io/" accesskey="h" title="Kyungwook&#39;s Devlog (Alt + H)">Kyungwook&#39;s Devlog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://kwbaek.github.io/categories/" title="categories">
+                    <span>categories</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kwbaek.github.io/tags/" title="tags">
+                    <span>tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kwbaek.github.io/" title="Kyungwook&#39;s Devlog">
+                    <span>Kyungwook&#39;s Devlog</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      AI/ML 트렌드: 미국이 칩 통제의 빈틈으로 &#39;원격 접근&#39;을 막기 시작했다
+    </h1>
+    <div class="post-meta"><span title='2026-11-17 20:30:00 +0900 KST'>2026년 11월 17일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span>
+
+</div>
+  </header> 
+  <div class="post-content"><h2 id="도입-칩을-못-보내면-서버를-빌려-쓰면-된다는-생각을-막는-규칙">도입: 칩을 못 보내면 서버를 빌려 쓰면 된다는 생각을 막는 규칙<a hidden class="anchor" aria-hidden="true" href="#도입-칩을-못-보내면-서버를-빌려-쓰면-된다는-생각을-막는-규칙">#</a></h2>
+<p>AI 칩 수출 통제는 오랫동안 물리적 반출을 기준으로 설계돼 왔습니다. 칩을 실제로 보내지 못하게 하면 그 칩을 쓰는 능력도 막힌다는 전제였죠. 그런데 클라우드가 커지면서 이 전제가 흔들렸습니다. 해외 데이터센터에 있는 고성능 서버를 원격으로 빌려 쓰면, 칩 자체는 국경을 넘지 않아도 같은 계산 능력을 얻을 수 있기 때문입니다.</p>
+<p>2026년 11월 중순 미 상무부 산업안보국(BIS)이 이 빈틈을 겨냥한 임시 최종규칙(IFR)을 발표했습니다. 규칙의 제목에도 드러나듯 대상은 원격 접근, 즉 제3국 데이터센터를 통한 고급 컴퓨팅 자원 사용입니다.</p>
+<h2 id="확인된-내용-발표-페이지의-목적과-범위">확인된 내용: 발표 페이지의 목적과 범위<a hidden class="anchor" aria-hidden="true" href="#확인된-내용-발표-페이지의-목적과-범위">#</a></h2>
+<p>BIS 보도자료 원문(bis.gov, &lsquo;bis-issues-rule-addressing-remote-access-american-super-intelligence-technology&rsquo;)을 직접 열어 확인한 내용은 다음과 같습니다.</p>
+<ul>
+<li>규칙 형식은 임시 최종규칙(IFR)입니다. 재무부와 국가안전보장회의(NSC)의 지시와 작성 하에 마련됐다고 명시돼 있습니다.</li>
+<li>목적은 기존의 미국 기술 접근 제한이 제3국 데이터센터를 통한 원격 컴퓨팅으로 우회되지 않도록 하는 것입니다.</li>
+<li>근거로 든 논리는 원격 접근을 물리적 반출과 같은 수준의 통제로 맞춘다는 것입니다. 즉 &lsquo;칩을 보내는 것&rsquo;과 &lsquo;칩을 빌려 쓰게 하는 것&rsquo;을 같은 문제로 봤다는 뜻입니다.</li>
+</ul>
+<h2 id="아직-확인하지-못한-내용">아직 확인하지 못한 내용<a hidden class="anchor" aria-hidden="true" href="#아직-확인하지-못한-내용">#</a></h2>
+<p>후속 보도에서 나온 세부 기준은 이 글에서 원문으로 확인하지 못했습니다. 아래 내용은 스캐너가 수집한 2차 요약에 근거한 것이며, 실제 적용 전에는 IFR 전문에서 다시 확인해야 합니다.</p>
+<ul>
+<li>약 12M TPP 이상의 컴퓨트를 중국 등 D:5 국가 기업에 제공하는 데이터센터·네트워크가 라이선스 대상이 된다는 기준</li>
+<li>말레이시아, 싱가포르, 인도네시아, 태국, 브라질로의 칩 재수출에 허가가 필요해진다는 내용</li>
+<li>해당 국가의 데이터센터 임차 용량을 쓰는 경우 90일 안에 라이선스를 확보해야 한다는 기한</li>
+</ul>
+<p>특히 임계값과 국가 목록은 적용 범위를 결정하는 핵심 조건이라, 전문 확인 전에는 단정하지 않는 편이 안전합니다.</p>
+<h2 id="왜-이-규칙이-중요한가">왜 이 규칙이 중요한가<a hidden class="anchor" aria-hidden="true" href="#왜-이-규칙이-중요한가">#</a></h2>
+<p>이 규칙이 실제로 적용되면 영향은 칩 제조사보다 그 칩을 쓰는 쪽에 먼저 옵니다.</p>
+<ul>
+<li>동남아나 중남미에 GPU를 두고 클라우드처럼 쓰는 기업은 임차 계약 상대방과 실제 연산 주체를 함께 확인해야 합니다.</li>
+<li>해외 리전을 쓰는 AI 서비스 기업은 &lsquo;우리 데이터는 어디서 처리되는가&rsquo;뿐 아니라 &lsquo;그 컴퓨트가 어느 기업의 통제를 받는가&rsquo;까지 문서화해야 할 수 있습니다.</li>
+<li>재수출 심사가 추가되면 GPU 조달 일정과 원가에 새 변수가 생깁니다.</li>
+</ul>
+<p>같은 주에 미·중 정상회담을 앞두고 첨단 칩 통제 강화론이 다시 부상했다는 보도와, 말레이시아가 데이터센터 운영과 칩 사용을 감시하는 법을 검토 중이라는 보도도 있었습니다. 세 가지를 함께 보면 칩 통제가 &lsquo;수출 물량&rsquo;에서 &lsquo;사용 위치와 사용 주체&rsquo;로 옮겨가는 흐름으로 읽힙니다.</p>
+<h2 id="실무-체크리스트">실무 체크리스트<a hidden class="anchor" aria-hidden="true" href="#실무-체크리스트">#</a></h2>
+<ol>
+<li>해외 GPU 임차나 공동 학습 계약이 있다면 데이터센터 운영자와 최종 사용자를 목록으로 정리합니다.</li>
+<li>임차 용량이 중국계 기업이나 D:5 국가 기업에 재제공되는지 계약서 조항을 확인합니다.</li>
+<li>90일 라이선스 기한이 실제 프로젝트 일정과 겹치는지 계산합니다.</li>
+<li>IFR 전문이 공개되면 임계값과 국가 목록을 원문 기준으로 다시 대조합니다.</li>
+</ol>
+<p>규칙의 세부 기준은 아직 완전히 확인되지 않았지만, 방향은 분명합니다. 앞으로 AI 인프라 조달에서는 칩을 어디서 샀는지보다 그 연산을 누가, 어디서 쓰는지를 설명할 수 있어야 할 가능성이 큽니다.</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://kwbaek.github.io/tags/ai-ml/">Ai-Ml</a></li>
+      <li><a href="https://kwbaek.github.io/tags/export-control/">Export-Control</a></li>
+      <li><a href="https://kwbaek.github.io/tags/bis/">BIS</a></li>
+      <li><a href="https://kwbaek.github.io/tags/ai-chips/">AI Chips</a></li>
+      <li><a href="https://kwbaek.github.io/tags/cloud/">Cloud</a></li>
+      <li><a href="https://kwbaek.github.io/tags/compliance/">Compliance</a></li>
+    </ul>
+  </footer><script src="https://utteranc.es/client.js"
+        repo="kwbaek/blog-comments"
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://kwbaek.github.io/">Kyungwook&#39;s Devlog</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

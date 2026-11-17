@@ -158,6 +158,60 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 팁: 블로그 자동화 cron은 작은 릴리스 파이프라인처럼 운영하기
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>OpenClaw로 매일 블로그를 자동 발행하면 편합니다. Discord에서 트렌드를 읽고, Hugo 포스트를 만들고, git commit과 push를 한 뒤, 다시 Hugo build와 public 배포까지 이어갈 수 있습니다. 하지만 이 흐름은 단순한 글쓰기 자동화가 아니라 사실상 작은 릴리스 파이프라인입니다. 그래서 오늘의 OpenClaw 팁은 명확합니다. 블로그 cron을 “글 생성 작업”이 아니라 “검증 가능한 배포 작업”으로 설계하세요.
+첫 번째 원칙은 입력을 좁히는 것입니다. 블로그 포스트 생성에는 오늘의 트렌드 메시지, 기존 포스트 스타일, Hugo front matter 규칙 정도면 충분합니다. 불필요한 개인 메모리, 토큰, 세션키, 로컬 절대경로, 다른 프로젝트 로그를 섞으면 모델이 헷갈릴 뿐 아니라 실패 보고에서 민감정보가 새어 나갈 위험도 커집니다. OpenClaw cron instruction에 “민감정보 출력 금지”, “실패 시 원인 1줄과 다음 액션 1개만 보고” 같은 규칙을 넣는 이유가 여기에 있습니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-05-14 21:00:00 +0900 KST'>2026년 5월 14일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 팁: 블로그 자동화 cron은 작은 릴리스 파이프라인처럼 운영하기" href="https://kwbaek.github.io/posts/2026-05-14-openclaw-run-blog-crons-like-a-release-pipeline/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">AI/ML 트렌드: 에이전트 AI는 운영 통제 문제로 이동하고 있다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 AI/ML 트렌드에서 가장 흥미로운 신호는 에이전트 AI가 단순한 생산성 도구를 넘어 운영 통제, 권한, 비용, 보안, 조직 재설계의 문제로 이동하고 있다는 점입니다. 하루 동안 나온 소식은 다양했습니다. OpenAI는 재무팀이 Codex를 활용하는 사례를 공개했고, 금융권은 AI cyberattack과 systemic risk를 더 강하게 경고했습니다. Google ADK, Pydantic AI, Dify, Qdrant, n8n, llama.cpp 같은 도구들은 기능 추가보다 durable workflow, native search, 운영 안정성, 메모리 압박 대응, vendor semantics 같은 세부 운영 문제를 계속 보강했습니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-05-13 21:00:00 +0900 KST'>2026년 5월 13일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 에이전트 AI는 운영 통제 문제로 이동하고 있다" href="https://kwbaek.github.io/posts/2026-05-13-ai-ml-trends-agentic-ai-is-becoming-an-operating-control-problem/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 팁: 에이전트별 경계를 나누면 자동화가 훨씬 안전해진다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>OpenClaw를 매일 쓰다 보면 자동화가 편해지는 순간과 위험해지는 순간이 거의 동시에 옵니다. Discord 트렌드 수집, 아이디어 생성, 리포트 이메일, 블로그 발행, git push, Hugo build까지 연결하면 사람 대신 많은 일을 안정적으로 처리할 수 있습니다. 하지만 같은 에이전트가 너무 많은 채널, 너무 많은 도구, 너무 넓은 컨텍스트를 동시에 다루면 작은 실수가 외부 메시지 오발송이나 민감정보 노출로 이어질 수 있습니다. 그래서 오늘의 OpenClaw 팁은 단순합니다. 작업별로 에이전트 경계를 명시적으로 나누고, 각 경계 안에서만 읽고 쓰게 하세요.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-05-13 21:00:00 +0900 KST'>2026년 5월 13일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 팁: 에이전트별 경계를 나누면 자동화가 훨씬 안전해진다" href="https://kwbaek.github.io/posts/2026-05-13-openclaw-use-per-agent-boundaries-for-safer-automation/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">AI/ML 트렌드: AI 스택은 챗봇에서 운영 표면으로 이동하고 있다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 AI/ML 트렌드에서 가장 선명한 흐름은 AI가 챗봇이나 단일 모델 기능에서 벗어나, 실제 업무와 산업 시스템을 움직이는 운영 표면으로 내려가고 있다는 점입니다. 하루 동안 나온 소식들을 묶어보면, 경쟁의 질문은 더 이상 “어떤 모델이 더 똑똑한가?”에 머물지 않습니다. 이제는 “그 모델이 어떤 데이터와 도구를 보고, 어떤 권한으로 행동하며, 어떤 인프라 위에서 감시되고, 어떤 법적·경제적 책임을 남기는가?”가 핵심이 되고 있습니다.
+가장 먼저 눈에 띄는 것은 enterprise deployment의 성숙입니다. OpenAI의 ChatGPT adoption broadened 분석은 AI 사용이 일부 early adopter의 실험을 넘어 더 넓은 사용자와 업무 패턴으로 확산되고 있음을 보여줍니다. 동시에 Capgemini가 OpenAI Deployment Company에 투자했다는 소식은 frontier AI 상업화가 API 판매만으로 끝나지 않는다는 점을 잘 드러냅니다. 기업은 모델을 사는 것이 아니라 use-case 선정, 데이터 연결, 운영 전환, 직원 채택, 리스크 관리까지 묶인 배포 역량을 삽니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-05-12 21:00:00 +0900 KST'>2026년 5월 12일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to AI/ML 트렌드: AI 스택은 챗봇에서 운영 표면으로 이동하고 있다" href="https://kwbaek.github.io/posts/2026-05-12-ai-ml-trends-the-ai-stack-is-moving-from-chatbots-to-operating-surfaces/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">OpenClaw 팁: 자동화가 커지기 전에 에이전트 권한을 좁혀두자
     </h2>
   </header>
@@ -236,60 +290,6 @@
   </div>
   <footer class="entry-footer"><span title='2026-05-09 21:00:00 +0900 KST'>2026년 5월 9일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
   <a class="entry-link" aria-label="post link to AI/ML 트렌드: AI 에이전트는 운영 인프라와 거버넌스로 이동 중" href="https://kwbaek.github.io/posts/2026-05-09-ai-ml-trends-ai-agents-are-becoming-governed-operational-infrastructure/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw 팁: 에이전트 자동화에는 모델 교체 계획이 필요하다
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>OpenClaw를 매일 쓰는 개인 비서나 블로그 발행 cron, Discord 트렌드 수집기, 코드 리뷰 도우미로 운영하다 보면 모델은 “한 번 정하면 끝”인 설정값이 아니라는 사실을 금방 느끼게 됩니다. 오늘 트렌드 피드에서도 GitHub의 Grok Code Fast 1 deprecation 예정 공지, GPT-4.1 deprecation 공지, Claude Sonnet 4 deprecation 흐름이 반복해서 등장했습니다. coding assistant와 agentic workflow의 기본 모델 수명주기가 점점 짧아지고 있다는 뜻입니다. 그래서 OpenClaw 자동화에서는 모델 교체를 예외 상황이 아니라 정상 운영 이벤트로 설계해야 합니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-05-09 21:00:00 +0900 KST'>2026년 5월 9일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw 팁: 에이전트 자동화에는 모델 교체 계획이 필요하다" href="https://kwbaek.github.io/posts/2026-05-09-openclaw-plan-for-model-churn-in-agent-automation/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">AI/ML 트렌드: AI는 브라우저와 런타임 안으로 내려오고 있다
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>오늘 AI/ML 트렌드에서 가장 중요한 신호는 AI가 별도 앱이나 API 호출을 넘어 브라우저, 에이전트 런타임, 조직 운영, 인프라 계약 안으로 깊게 들어가고 있다는 점입니다. 하루 동안 나온 소식은 매우 넓어 보였습니다. Chrome built-in AI, OpenClaw hardening, Microsoft Agent Framework의 정보흐름 제어, OpenAI Agents SDK 업데이트, AI chip 공급망 조사, 중앙은행의 AI 공격 방어 연구, AI-first 구조조정까지 한꺼번에 등장했습니다. 하지만 이 흐름을 묶으면 하나의 질문으로 정리됩니다. “AI를 어디에 붙일 것인가?”가 아니라 “AI가 이미 들어간 실행 환경을 어떻게 통제하고 검증할 것인가?”입니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-05-08 21:00:00 +0900 KST'>2026년 5월 8일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to AI/ML 트렌드: AI는 브라우저와 런타임 안으로 내려오고 있다" href="https://kwbaek.github.io/posts/2026-05-08-ai-ml-trends-ai-is-moving-into-the-runtime-and-browser/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw 팁: 실제 운영 에이전트에는 before-tool gate가 필요하다
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>OpenClaw를 개인 비서, Discord 운영 봇, 리포트 작성기, 블로그 발행 cron처럼 실제 작업에 붙이면 가장 먼저 체감하는 사실이 있습니다. 문제는 모델이 글을 못 쓰는 것이 아니라, 모델이 도구를 너무 쉽게 실제 세계에 연결할 수 있다는 점입니다. 메시지 전송, 파일 수정, git push, 브라우저 접근, 메모리 조회, 외부 API 호출은 모두 작은 부작용을 남깁니다. 그래서 OpenClaw 운영에서는 “좋은 프롬프트”만큼이나 “도구 호출 직전의 권한 확인”이 중요합니다.
-OpenClaw 2026.5.7 릴리스에서 눈에 띄는 흐름도 이쪽입니다. owner enforcement, global memory admin scope, before-tool-call authorization, Discord target parsing hardening 같은 항목은 화려한 기능 추가라기보다 운영 안전성의 기본기를 다지는 변화입니다. 개인 AI assistant가 오래 켜져 있고 여러 채널을 읽고 쓰는 환경에서는 누가 요청했는지, 어떤 메모리에 접근하는지, 어느 채널로 보내는지, 어떤 도구가 실행 직전인지가 모두 보안 경계가 됩니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-05-08 21:00:00 +0900 KST'>2026년 5월 8일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw 팁: 실제 운영 에이전트에는 before-tool gate가 필요하다" href="https://kwbaek.github.io/posts/2026-05-08-openclaw-use-before-tool-gates-for-real-agent-ops/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">AI/ML 트렌드: 에이전트 안전은 이제 런타임 안으로 들어가고 있다
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>오늘 AI/ML 흐름에서 가장 흥미로운 축은 에이전트 안전과 운영 신뢰성이 모델 바깥의 부가 기능이 아니라 런타임 자체의 책임으로 이동하고 있다는 점입니다. 하루 동안 나온 신호를 묶어보면, physical AI, agent runtime, AI 인프라, 정책 리스크가 따로 움직이는 것처럼 보이지만 실제로는 하나의 질문으로 수렴합니다. “AI가 실제 세계의 도구와 시스템을 만질 때, 누가 어떤 의미의 행동을 허용하고 기록하고 중단할 것인가?”
-가장 직접적인 신호는 AgentTrust와 DTap 같은 연구입니다. AgentTrust는 파일, 쉘, HTTP, 데이터베이스 같은 도구 호출을 실행 전에 의미 단위로 평가하고 차단하는 runtime safety layer를 제안합니다. 기존 sandbox가 프로세스 격리나 네트워크 제한에 가까웠다면, 이제는 “이 tool call이 실제로 어떤 업무 행위인가?”를 판단하는 방향으로 확장됩니다. DTap 역시 API key 유출, 데이터 삭제, 무단 거래 같은 장기 action risk를 interactive red-teaming 환경에서 평가합니다. 에이전트 보안 평가는 단일 prompt에 대한 답변 검사가 아니라, 여러 단계의 계획과 실행이 누적될 때 생기는 위험을 봐야 합니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-05-07 21:00:00 +0900 KST'>2026년 5월 7일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 에이전트 안전은 이제 런타임 안으로 들어가고 있다" href="https://kwbaek.github.io/posts/2026-05-07-ai-ml-trends-agent-safety-is-moving-into-the-runtime/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

@@ -158,6 +158,66 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">Hermes/리오 실전 팁: &#39;팀워크&#39; 패턴으로 읽는 장기 과제 위임(Delegate) 아키텍처 설계
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 AI/ML 트렌드에서 소개된 **Google Antigravity의 ‘Teamwork’**는 여러 에이전트가 서로의 결과물을 비평·재작업하며 수 시간~수일에 걸쳐 학술 난제를 해결한 사례입니다. 단일 모델 호출로는 도달하지 못했던 성과가 “협업하는 팀” 구조에서 나왔다는 점이, Hermes/리오 환경에서 delegate_task로 서브에이전트를 운용할 때도 그대로 적용되는 설계 원칙입니다.
+1. 왜 “한 번에 다 시키기&#34;는 장기 과제에서 실패하는가 Hermes/리오에서 복잡한 리서치·코딩·데이터 정리 작업을 단일 프롬프트로 서브에이전트에 던지면 흔히 이런 문제가 생깁니다.
+컨텍스트가 길어질수록 초반 지시가 희석되어 후반 작업에서 원래 목표를 놓침 중간 산출물을 검증하는 단계가 없어 오류가 누적된 채로 끝까지 진행 서브에이전트가 막히면 부모가 결과를 받을 때까지 문제를 알 수 없음 Antigravity Teamwork의 핵심은 이 문제를 “단일 에이전트의 인내심&#34;이 아니라 역할 분리 &#43; 상호 비평 루프로 풀었다는 점입니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-09-01 21:11:00 +0900 KST'>2026년 9월 1일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to Hermes/리오 실전 팁: &#39;팀워크&#39; 패턴으로 읽는 장기 과제 위임(Delegate) 아키텍처 설계" href="https://kwbaek.github.io/posts/2026-09-01-hermes-rio-teamwork-delegation-architecture/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">AI/ML 트렌드: Google Antigravity &#43; Gemini 3.7 Flash, 멀티에이전트 팀워크가 FOCS·JMLR급 미해결 문제 7건을 풀다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>2026년 9월 첫날 AI/ML 업계에서 가장 눈에 띄는 소식은, 단일 모델의 벤치마크 점수가 아니라 여러 에이전트가 협업해 수 시간~수일 동안 스스로 문제를 파고드는 ‘팀워크’ 구조가 실제 연구 성과로 이어졌다는 점입니다.
+1. Google Antigravity Teamwork — 에이전트 팀이 학계 미해결 문제를 풀다 Google이 공식 블로그를 통해 공개한 내용에 따르면, 자율 에이전트 팀이 협업·비평·반복(iterate)하며 장시간에 걸쳐 복잡한 과제를 해결하는 프레임워크인 **Antigravity의 ‘Teamwork’**를 Gemini 3.7 Flash와 결합해 다음과 같은 성과를 냈습니다.
+수학·이론컴퓨터과학: FOCS, JMLR급 최상위 학술지 미해결 문제 7건 해결. 여기에는 Knuth의 사이클 추측(Lean 정리 증명 언어로 40페이지 이상 분량의 증명 검증)을 포함해 희소 볼록 최적화(sparse convex optimization), 검증 가능한 LLM 양자화(provable quantization), prefix-matrix factorization 등이 포함됩니다. TCSBench에서는 71% 정확도를 기록했습니다. 시스템 엔지니어링: 처음부터(from scratch) 사이클 단위로 정확한 out-of-order RISC-V CPU 시뮬레이터를 만들어 xv6 운영체제를 셸까지 부팅시켰으며, 실제 하드웨어 대비 사이클 정합 오차는 0.71%에 불과했습니다. 오픈소스 기여: Eigen(SIMD 최적화)과 ParlayHash(삽입 처리량 2배 향상, 메모리 25% 절감) 같은 핵심 라이브러리에 성능 개선을 실제로 upstream 반영했습니다. 이 사례가 중요한 이유는, 단일 모델 호출로는 도달하기 어려운 장시간·다단계 추론이 필요한 실제 연구 문제를, 여러 에이전트가 서로의 결과물을 비평하고 재작업하는 구조를 통해 실질적으로 완결시켰다는 점입니다. 벤치마크 성능이 아니라 “실제로 논문 수준 증명이 통과했다&#34;는 검증 가능한 결과물이 나왔다는 게 핵심입니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-09-01 21:10:00 +0900 KST'>2026년 9월 1일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to AI/ML 트렌드: Google Antigravity &#43; Gemini 3.7 Flash, 멀티에이전트 팀워크가 FOCS·JMLR급 미해결 문제 7건을 풀다" href="https://kwbaek.github.io/posts/2026-09-01-ai-ml-trends-antigravity-teamwork-open-problems/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Hermes/리오 실전 팁: PACE 패턴을 적용한 &#39;오프라인 에이전트 탐색 - 런타임 결정론적 실행&#39; 무비용 크론 파이프라인
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 AI/ML 트렌드에서 소개된 논문 **“PACE: Publisher-Adaptive Content Extraction” (arXiv:2608.27466)**은 24시간 자율 에이전트 시스템을 운영하는 엔지니어들에게 매우 중요한 아키텍처적 통찰을 제공합니다.
+“정기적으로 반복되는 수집·분석 크론 작업에서, 왜 매 실행마다 비싼 LLM API를 호출하여 비정형 HTML을 파싱해야 하는가? 똑똑한 에이전트는 ‘오프라인(빌드 타임)‘에서만 일하고, 실제 운영되는 ‘런타임 크론’은 무비용 결정론적 코드로 돌아가야 한다.”
+Hermes/리오 환경에서 24/7 무인 크론 파이프라인의 API 비용을 획기적으로 절감하고 처리 속도와 안정성을 극대화하기 위해 적용할 수 있는 ‘오프라인 에이전트 탐색 - 런타임 결정론적 실행(Offline Exploration &amp; Deterministic Runtime)’ 아키텍처 패턴을 정리해 소개합니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-08-31 21:01:00 +0900 KST'>2026년 8월 31일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to Hermes/리오 실전 팁: PACE 패턴을 적용한 &#39;오프라인 에이전트 탐색 - 런타임 결정론적 실행&#39; 무비용 크론 파이프라인" href="https://kwbaek.github.io/posts/2026-08-31-hermes-rio-pace-pattern-zero-cost-cron/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">AI/ML 트렌드: 소프트뱅크-OpenAI의 55억 달러 워런트와 기가와트(GW)급 전력 확보전 — AI 인프라의 금융 결합과 런타임 제로 오버헤드 기술
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>2026년 8월 말 AI 산업은 거시적 인프라 투자와 미시적 런타임 최적화라는 양 극단에서 중대한 분기점을 맞이하고 있습니다. 하나는 기가와트(GW)급 전력을 확보하기 위해 금융 파생상품(신주인수권)까지 동원되는 초대형 데이터센터 파이낸싱이며, 다른 하나는 런타임 LLM 호출 비용을 0으로 만들거나 디코딩 병목을 인덱스로 치환하는 극단적 시스템 최적화 연구입니다.
+이 두 흐름은 AI 기술의 중심축이 단순한 ‘모델 스케일업’을 넘어, **‘전력·자본 조달의 현실적 구조화’와 ‘배포 단위에서의 효율성 극대화’**로 완전히 이동했음을 입증하고 있습니다.
+1. 기가와트(GW) 시대를 여는 데이터센터 파이낸싱: 소프트뱅크의 55억 달러 워런트 월스트리트저널(WSJ)에 따르면, 소프트뱅크의 재생에너지 자회사 SB Energy는 미국 증시 IPO를 앞두고 OpenAI를 핵심 앵커 테넌트(Anchor Tenant)로 유치하기 위해 **55억 달러(약 7조 6,000억 원) 규모의 신주인수권(Warrants)**을 제공했습니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-08-31 21:00:00 +0900 KST'>2026년 8월 31일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 소프트뱅크-OpenAI의 55억 달러 워런트와 기가와트(GW)급 전력 확보전 — AI 인프라의 금융 결합과 런타임 제로 오버헤드 기술" href="https://kwbaek.github.io/posts/2026-08-31-ai-ml-trends-sb-energy-openai-warrants-pace/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">Hermes/리오 실전 팁: 24/7 무인 크론 에이전트를 위한 예산 거버넌스와 온디맨드 스킬 라이프사이클
     </h2>
   </header>
@@ -243,63 +303,6 @@ ROCm 10의 핵심 변화: 에이전틱 런타임 중심의 도구 체계 ROCm 10
   </div>
   <footer class="entry-footer"><span title='2026-08-28 21:05:00 +0900 KST'>2026년 8월 28일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
   <a class="entry-link" aria-label="post link to AI/ML 트렌드: AMD ROCm 10이 던진 승부수, &#39;에이전틱 워크로드&#39;와 칩 생태계 다변화" href="https://kwbaek.github.io/posts/2026-08-28-ai-ml-trends-amd-rocm-10-agentic-stack/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Hermes/리오 실전 팁: &#39;Customize 탭&#39; 같은 통합 관리 화면을 크론 운영에 적용하기
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>오늘 AI/ML 트렌드에서 눈에 띈 소식 중 하나는 GitHub Copilot 앱의 Customize 탭이 정식 출시됐다는 것입니다. MCP 서버, 플러그인, 스킬, 캔버스를 한 화면에서 발견하고 관리할 수 있게 됐습니다. Hermes/리오를 운영하는 입장에서 보면, 이건 “확장 기능이 늘어날수록 그것들을 한눈에 파악할 방법이 필요해진다&#34;는 아주 익숙한 문제의 해결책입니다.
-왜 통합 뷰가 필요해지는가 Hermes/리오도 시간이 지나면서 스킬, 플러그인, 크론 작업이 계속 늘어납니다. 처음에는 몇 개뿐이라 기억으로 관리가 되지만, 어느 시점부터는 “이 크론이 어떤 스킬을 쓰는지”, “이 플러그인이 실제로 활성화돼 있는지&#34;를 매번 다시 찾아봐야 하는 상태가 됩니다. GitHub Copilot이 MCP 서버·플러그인·스킬·캔버스를 뒤섞어 하나의 Customize 탭에 모은 이유도 같습니다. 확장 기능의 “종류&#34;는 다르지만 “사용자가 알아야 할 질문&#34;은 같기 때문입니다 — 지금 뭐가 켜져 있고, 뭐가 추천되고, 뭐가 내 워크플로우에 필요한가.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-08-27 21:15:00 +0900 KST'>2026년 8월 27일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to Hermes/리오 실전 팁: &#39;Customize 탭&#39; 같은 통합 관리 화면을 크론 운영에 적용하기" href="https://kwbaek.github.io/posts/2026-08-27-hermes-rio-unified-extension-view/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">AI/ML 트렌드: 추론 칩 경쟁은 결국 전기요금 경쟁이다
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>같은 주에 나온 두 발표를 나란히 놓으면 지금 AI 인프라 경쟁이 어디로 향하는지가 보입니다. 하나는 OpenAI의 첫 자체 추론칩 첫 실측 결과, 다른 하나는 NVIDIA Vera Rubin NVL72 양산랙의 본격 출하입니다. 둘 다 “더 빠른 모델&#34;이 아니라 “같은 전력으로 얼마나 많은 일을 하느냐&#34;를 다투고 있습니다.
-Jalapeño: 칩 대 칩이 아니라 와트 대 와트 OpenAI가 공개한 자체 추론칩 Jalapeño의 첫 실측 결과는 GPT-OSS 120B, DeepSeek R1, Kimi K2.5 1T 세 모델 모두에서 기존 상용 시스템 대비 와트당 1.51.9배 더 많은 작업을 처리하면서, 엔드투엔드 지연시간은 1.73.6배 낮췄다고 밝혔습니다. 고도로 인터랙티브한 워크로드에서는 성능 격차가 2.1~4.1배까지 벌어졌습니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-08-27 21:10:00 +0900 KST'>2026년 8월 27일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 추론 칩 경쟁은 결국 전기요금 경쟁이다" href="https://kwbaek.github.io/posts/2026-08-27-ai-ml-trends-inference-chip-is-a-power-bill/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Hermes/리오 실전 팁: &#39;데모 통과&#39;와 &#39;무인 운영 통과&#39;를 분리하는 게이트
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>오늘 AI/ML 트렌드에서 나온 숫자를 다시 보면, Codex는 회사 안에서 98% 채택됐지만 고객 조직에서는 17%였고, 로봇 파운데이션 모델은 한 번 보여준 동작을 59% 확률로 재현했습니다. 두 경우 모두 “작동하는 걸 봤다&#34;와 “믿고 맡길 수 있다&#34;는 서로 다른 기준선입니다.
-Hermes/리오가 매일 돌리는 크론 작업에도 똑같은 함정이 있습니다. 한 번 실행해서 좋은 결과가 나온 것과, 무인으로 계속 돌려도 괜찮다는 것은 다른 검증입니다. 오늘은 이 둘을 분리하는 게이트를 이야기해봅니다.
-왜 “한 번 잘 됐다&#34;가 위험한 신호인가 크론 작업을 새로 만들거나 고칠 때 흔한 흐름은 이렇습니다. 프롬프트를 짜고, 한 번 실행해보고, 결과가 그럴듯하면 “됐다&#34;고 판단하고 스케줄을 켭니다. 이건 정확히 원샷 성공률만 보고 로봇을 현장에 배치하는 것과 같은 판단입니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-08-25 22:20:00 +0900 KST'>2026년 8월 25일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to Hermes/리오 실전 팁: &#39;데모 통과&#39;와 &#39;무인 운영 통과&#39;를 분리하는 게이트" href="https://kwbaek.github.io/posts/2026-08-25-hermes-rio-demo-to-production-gate/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">AI/ML 트렌드: 시범 성공률과 조직 채택률은 다른 숫자다
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>같은 날 나온 두 소식을 나란히 놓으면 패턴이 하나 보입니다. 하나는 소프트웨어 에이전트의 조직 내 채택률 데이터, 다른 하나는 로봇 파운데이션 모델의 원샷 학습 성공률 데이터입니다. 둘 다 “모델이 무엇을 할 수 있는가&#34;와 “조직이 그것을 실제로 쓰는가&#34;가 서로 다른 숫자라는 걸 보여줍니다.
-사내 98% vs 기업 구독자 17% TechCrunch가 인용한 OpenAI 후원 연구에 따르면 지난 6월 기준 OpenAI 내부 직원의 98%가 코딩 에이전트 Codex를 쓰고 있었지만, 조직(기업) 구독자 중에서는 17%, 개인 구독자 중에서는 1% 미만만 실제로 이 에이전트 기능을 사용했습니다. 같은 도구, 같은 회사인데도 “만든 사람들이 매일 쓰는 것&#34;과 “고객이 실제로 쓰는 것” 사이에 80%p 넘는 격차가 있는 셈입니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-08-25 22:15:00 +0900 KST'>2026년 8월 25일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 시범 성공률과 조직 채택률은 다른 숫자다" href="https://kwbaek.github.io/posts/2026-08-25-ai-ml-trends-demo-rate-is-not-adoption-rate/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

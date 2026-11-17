@@ -143,6 +143,20 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">Hermes/리오 팁: 자동화에도 리뷰 처리량 게이트를 붙이자
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Hermes/리오로 블로그 작성, 리포트 생성, 코드 수정, 배포 보조 같은 작업을 자동화하다 보면 “작업을 끝냈다”는 말의 기준이 중요해집니다. 파일을 썼다고 끝난 것이 아닙니다. 테스트를 돌리고, 빌드하고, 생성 산출물을 확인하고, 공개될 문장에 내부 운영 흔적이 섞이지 않았는지 살펴봐야 합니다. 그래서 저는 개발 자동화 크론에도 review throughput gate를 붙이는 것이 좋다고 봅니다.
+GitHub이 Copilot usage metrics API에 review cycle과 time-to-review 지표를 추가한 것은 개인 자동화에도 시사점이 큽니다. AI가 코드를 빠르게 만들수록 병목은 “작성”이 아니라 “검토”로 이동합니다. 에이전트가 PR 초안을 만들고, 테스트를 실행하고, 설명을 작성하더라도 사람이 리뷰할 때 맥락이 부족하면 오히려 반복이 늘어납니다. Hermes/리오 자동화도 마찬가지입니다. 결과물을 많이 만드는 것보다, 검토자가 빠르게 판단할 수 있는 증거를 함께 남기는 것이 더 중요합니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-07-08 21:00:00 +0900 KST'>2026년 7월 8일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to Hermes/리오 팁: 자동화에도 리뷰 처리량 게이트를 붙이자" href="https://kwbaek.github.io/posts/2026-07-08-hermes-rio-add-review-throughput-gate-to-agent-crons/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">Hermes/리오 팁: 모델 믹스 크론에는 승인 매트릭스가 필요하다
     </h2>
   </header>
@@ -264,20 +278,6 @@ AI 인프라에서 자국산 칩 클러스터가 중요한 이유는 성능표�
   </div>
   <footer class="entry-footer"><span title='2026-06-29 21:00:00 +0900 KST'>2026년 6월 29일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
   <a class="entry-link" aria-label="post link to Hermes/리오 팁: 자동화에 Model Routing Cost Gate를 붙이자" href="https://kwbaek.github.io/posts/2026-06-29-hermes-rio-add-a-model-routing-cost-gate/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Hermes/리오 팁: 트렌드 크론에 CAPEX Durability Gate를 붙이자
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>오늘 BIS의 AI 투자 붐 경고를 Hermes/리오 운영 관점으로 가져오면 실무 팁은 하나입니다. AI 인프라 트렌드를 다루는 크론에는 CAPEX Durability Gate를 붙이는 것이 좋습니다. 요즘 AI 뉴스는 모델 발표, 반도체 수급, 데이터센터 전력, 클라우드 계약, 국가별 투자 계획이 한꺼번에 섞여 나옵니다. 이때 단순히 “투자가 늘었다”로 요약하면 중요한 것을 놓칩니다. 자동화는 그 투자가 얼마나 오래 지속 가능한지, 어떤 금융·공급망 스트레스에 취약한지까지 구조화해야 합니다.
-CAPEX Durability Gate는 거창한 재무 모델이 아닙니다. 트렌드 크론이 AI 인프라 뉴스를 고를 때 최소한의 질문을 통과시키는 작은 체크리스트입니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-06-28 21:00:00 +0900 KST'>2026년 6월 28일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to Hermes/리오 팁: 트렌드 크론에 CAPEX Durability Gate를 붙이자" href="https://kwbaek.github.io/posts/2026-06-28-hermes-rio-add-a-capex-durability-gate/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

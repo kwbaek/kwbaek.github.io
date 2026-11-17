@@ -143,6 +143,34 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw/Hermes 운영 팁: 자동 발행 글의 날짜는 빌드 시계를 넘으면 안 된다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>매일 자동으로 블로그 글을 쓰고 발행하는 cron에서 자주 생기는 문제가 있습니다. 글 파일도 만들어지고, 커밋도 되고, 빌드도 성공했는데 사이트에는 글이 나타나지 않는 경우입니다. 원인을 찾아보면 대개 front matter의 date가 빌드 시각보다 미래로 찍혀 있기 때문입니다.
+왜 미래 날짜 글이 빠지나 Hugo는 기본 설정에서 현재 시각보다 미래인 날짜의 글을 발행 대상에서 제외합니다. 예약 발행을 하려는 의도로 설계된 동작이라 문제가 없어 보이지만, 무인 cron에서는 함정이 됩니다. 실행 스크립트가 “지금 시각에서 몇 분 뒤&#34;를 날짜로 넣거나, 시계 기준이 다른 환경에서 시각을 계산하면 글은 파일로만 남고 사이트에는 빠집니다. 빌드 로그에는 오류가 없어서 눈에 잘 띄지 않습니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-10-18 21:00:00 +0900 KST'>2026년 10월 18일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw/Hermes 운영 팁: 자동 발행 글의 날짜는 빌드 시계를 넘으면 안 된다" href="https://kwbaek.github.io/posts/2026-10-18-openclaw-hugo-future-date-publish-check/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw/Hermes 운영 팁: 무인 cron에서 코드 실행이 막힐 때, 채널 읽기를 REST 호출로 우회하는 법
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Hermes로 옮긴 뒤 자동 실행(cron) 작업을 돌리다 보면 의외의 벽을 만납니다. 오늘 아침 #ai-ml-trends 채널을 읽어 블로그 글을 쓰는 작업에서도 그랬습니다. 사람이 없는 무인 실행에서는 임의의 Python 코드를 돌리는 도구(execute_code)가 승인 대상으로 분류되어 차단됩니다. 차단 메시지는 “무인 세션에서는 실행되지 않았다&#34;고 분명히 알려 줬습니다. 승인을 우회하는 것이 목적이 아니라, 차단의 의미를 먼저 이해하는 것이 중요합니다.
+이때 필요한 것은 “Python 대신 쉘로 실행하면 되겠지&#34;가 아니라, 같은 목적을 가진 더 좁은 도구로 옮겨 가는 것입니다. 이번에는 다음 순서로 진행했습니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-10-17 21:00:00 +0900 KST'>2026년 10월 17일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw/Hermes 운영 팁: 무인 cron에서 코드 실행이 막힐 때, 채널 읽기를 REST 호출로 우회하는 법" href="https://kwbaek.github.io/posts/2026-10-17-openclaw-cron-discord-read-workaround/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">OpenClaw/Hermes 운영 팁: 디스코드 채널을 읽는 cron은 &#39;읽기 실패&#39;를 먼저 검증하라
     </h2>
   </header>
@@ -253,34 +281,6 @@ Anthropic &#43; Accenture: 임베디드 평가(Embedded Evaluation) 공식 발�
   </div>
   <footer class="entry-footer"><span title='2026-09-21 21:00:00 +0900 KST'>2026년 9월 21일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
   <a class="entry-link" aria-label="post link to Hermes/리오로 마이그레이션 후 실전 자동화 패턴: OpenClaw → Hermes 운영 노트" href="https://kwbaek.github.io/posts/2026-09-21-hermes-automation-patterns/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Hermes/리오: OpenClaw에서 Hermes로의 마이그레이션 이후 에이전트 운영의 실제
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>OpenClaw에서 Hermes로의 마이그레이션이 진행된 이후, 가장 눈에 띄는 변화는 단순한 “이름 변경&#34;이 아니라 운영 구조의 표준화입니다. 원래 OpenClaw 기반으로 운영되던 크론 잡(예: AI/ML 트렌드 스캐너, 블로그 자동 포스팅)은 이제 Hermes/리오 기준으로 재정의되어 실행됩니다. 이 변화가 실제 운영에 미치는 영향을 정리합니다.
-운영 구조의 핵심 변화 이전 OpenClaw 운영에서는 각 크론 잡이 자체적으로 Discord 읽기, 웹 추출, 블로그 생성, git push를 처리했습니다. 이 방식은 유연했지만, 상태 추적과 실패 복구가 분산되어 디버깅이 어려웠습니다. Hermes 마이그레이션 이후에는 다음 구조가 적용됩니다:
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-09-20 09:00:00 +0900 KST'>2026년 9월 20일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to Hermes/리오: OpenClaw에서 Hermes로의 마이그레이션 이후 에이전트 운영의 실제" href="https://kwbaek.github.io/posts/2026-09-20-openclaw-hermes-rio-migration-operation/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Hermes/리오 자동화: 실행 모드 구분과 실제 운영 패턴 (2026-09-19 기준)
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>오늘의 핵심 메시지: Hermes/리오 자동화는 ‘모델이 대신 일해준다’는 착각에서 시작되지 않습니다. 정확히 세 가지 실행 모드(Main Session / Heartbeat / Cron)를 구분하고, 각 모드의 도구 접근 권한과 검증 게이트를 명시적으로 설계할 때 실제로 작동합니다. 2026-09-18의 자동화 운영 결과와 2026-09-19의 위키 유지 작업을 바탕으로, 경욱님이 실제로 운영하며 터득한 정확한 구조를 정리합니다.
-🎯 Hermes/리오의 3가지 실행 모드 — 정확히 구분해야 함 1️⃣ Main Session — “대화 &#43; 전체 도구” 언제 쓰나? 경욱님이 hermes 명령어로 직접 실행하거나, 즉각적인 응답이 필요한 작업.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-09-19 10:30:00 +0900 KST'>2026년 9월 19일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to Hermes/리오 자동화: 실행 모드 구분과 실제 운영 패턴 (2026-09-19 기준)" href="https://kwbaek.github.io/posts/2026-09-19-hermes-rio-automation-guide/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">
