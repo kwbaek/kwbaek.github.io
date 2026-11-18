@@ -143,6 +143,21 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 실전 운영 팁: 매일 블로그 자동화는 워크플로 안정성이 성패를 가른다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘은 수동으로 아이템을 고르는 글쓰기보다 cron-instructions 기반 자동 퍼블리싱이 훨씬 핵심이 되는 날입니다. 특히 #ai-ml-trends처럼 매일 정보가 들어오는 채널은 운영 루틴이 안 잡히면 금방 품질이 떨어집니다. 그래서 OpenClaw를 실제로 쓰는 관점에서 한 가지 분명한 결론이 나옵니다. 좋은 기능 추가보다, 반복 작업이 망가졌을 때 회복되는가가 더 중요하다는 겁니다.
+우선 실무에서 바로 쓸 만한 체크포인트를 정리하면:
+지시문 파일 우선순위 고정 지시서가 여러 곳에 산재하면 판단 분산이 생깁니다. 작업 흐름을 한 파일(cron-instructions/...)로 고정하고, 소스 채널은 읽기만 전담하게 두는 편이 안정적입니다. 채널 읽기 -&gt; 선별 -&gt; 포맷 변환을 분리 Discord 메시지는 원문은 빠르게 변합니다. OpenClaw에게 할 일은 “채널 수집”과 “블로그 포맷 변환”을 분리해 넘기는 것. 그래야 추후 규칙 변경(예: 카테고리, 글자 수)이 생겨도 충돌이 적습니다. Git/빌드/배포 실패를 같은 턴에서 처리 오늘처럼 매일 2개 포스트를 작성해 바로 push해야 하는 워크플로는 빌드 실패 지점(의존성, md front matter, 태그 누락) 하나만 있어도 루틴이 멈춥니다. 그래서 hugo 실행 직전 점검 단계까지 자동화 스크립트에 넣는 게 좋습니다. OpenClaw 운영 보안/설정 루틴과 같이 묶기 openclaw config validate와 openclaw update --dry-run, healthz/health 체크를 블로그 주기와 분리하면 “오늘은 글은 잘 올라오는데 내일 갑자기 실패” 패턴을 줄일 수 있습니다. 오늘 같은 다중 생성 루틴에서는 콘텐츠 품질보다 안정성 우선순위를 한 번에 바꾸는 게 오히려 효과가 큽니다. 특히 다음이 실무에서 체감됩니다:
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-03-24 21:00:00 +0900 KST'>2026년 3월 24일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 실전 운영 팁: 매일 블로그 자동화는 워크플로 안정성이 성패를 가른다" href="https://kwbaek.github.io/posts/2026-03-24-openclaw-practical-ops-for-todays-blog-automation/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">OpenClaw 팁: 매일 쓰는 자동화일수록 새 기능보다 신뢰성 패치가 더 중요하다
     </h2>
   </header>
@@ -269,20 +284,6 @@ cron 잡이란? OpenClaw에서 cron 잡은 정해진 시간마다 에이전트�
   </div>
   <footer class="entry-footer"><span title='2026-03-15 21:00:00 +0900 KST'>2026년 3월 15일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
   <a class="entry-link" aria-label="post link to OpenClaw 활용 팁: 지시문 기반 Cron으로 ‘안정적인 콘텐츠 파이프라인’ 만들기" href="https://kwbaek.github.io/posts/2026-03-15-openclaw-instruction-driven-content-ops/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw 운영 팁: Cron과 Heartbeat를 섞어 쓸 때 자동화가 진짜 안정해진다
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>OpenClaw를 계속 운영하다 보면 자동화 작업이 늘어나면서 비슷한 고민이 생깁니다. “이 작업을 cron으로 넣을까, heartbeat에서 처리할까?” 정답은 하나가 아니라 역할 분리입니다. 실무에서 가장 안정적인 구조는 정확한 시각이 중요한 작업은 cron으로, 여러 점검을 묶어서 문맥 기반으로 판단해야 하는 작업은 heartbeat로 보내는 방식입니다.
-예를 들어 “월요일 09:00 보고서 발송”, “20분 뒤 리마인드”처럼 시간 정확도가 중요한 일은 cron이 맞습니다. 반대로 “이메일/캘린더/알림을 묶어 확인하고, 급한 것만 알려주기” 같은 작업은 heartbeat가 더 효율적입니다. heartbeat는 최근 대화 컨텍스트를 활용해 노이즈를 줄일 수 있고, 여러 체크를 한 번에 처리해서 호출 비용도 아낄 수 있습니다. 즉 cron은 정밀 타이머, heartbeat는 맥락형 배치 처리에 가깝습니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-03-14 21:00:00 +0900 KST'>2026년 3월 14일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw 운영 팁: Cron과 Heartbeat를 섞어 쓸 때 자동화가 진짜 안정해진다" href="https://kwbaek.github.io/posts/2026-03-14-openclaw-cron-heartbeat-ops/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

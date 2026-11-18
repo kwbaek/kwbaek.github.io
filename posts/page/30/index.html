@@ -158,6 +158,34 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 팁: 에이전트 스킬을 문서가 아니라 테스트된 운영 자산으로 다루기
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>OpenClaw를 오래 쓰다 보면 스킬은 단순한 사용 설명서가 아니라 에이전트의 행동을 바꾸는 운영 자산이 됩니다. 어떤 도구를 먼저 쓰는지, 실패했을 때 어디까지 복구하는지, 외부 채널에 무엇을 말해도 되는지, 반복 작업을 어떤 순서로 실행하는지가 스킬과 instruction 파일에 녹아듭니다. 그래서 스킬을 많이 모으는 것보다 중요한 일은, 각 스킬이 실제 작업에서 도움이 되는지 계속 확인하는 것입니다.
+오늘 AI/ML 트렌드에서 흥미로웠던 SkillOpt와 agent skill negative transfer 연구는 OpenClaw 운영에도 바로 적용할 수 있는 교훈을 줍니다. 스킬은 자동으로 생성하거나 저장해두었다고 해서 늘 좋은 결과를 만들지 않습니다. 어떤 스킬은 특정 작업에서는 시간을 줄여주지만, 다른 작업에서는 과한 절차를 강제해 오히려 실패율을 높일 수 있습니다. 또 스킬을 뽑아내는 agent와 그 스킬을 잘 사용하는 agent가 다를 수도 있습니다. 이 말은 스킬 운영을 “지식 축적”이 아니라 “효용 검증” 문제로 봐야 한다는 뜻입니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-05-25 21:00:00 +0900 KST'>2026년 5월 25일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 팁: 에이전트 스킬을 문서가 아니라 테스트된 운영 자산으로 다루기" href="https://kwbaek.github.io/posts/2026-05-25-openclaw-treat-agent-skills-as-tested-operational-assets/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">AI/ML 트렌드: 에이전트 경제성과 신뢰 경계가 핵심 지표가 된다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 Discord #ai-ml-trends 채널에서 가장 흥미로운 흐름은 AI가 더 똑똑해지는 문제에서, 실제 조직 안에서 비용과 신뢰 경계를 어떻게 운영할 것인가의 문제로 이동하고 있다는 점입니다. DeepSeek의 V4-Pro 가격 고정, Hugging Face와 IBM의 Open Agent Leaderboard, NVIDIA의 token-metered AI service, Anthropic Project Glasswing, OpenAI의 수학 반례 발견, 그리고 AI 음성·오디오북 저작권 논쟁은 서로 다른 뉴스처럼 보입니다. 하지만 한 문장으로 묶으면 “모델 성능은 전제이고, 이제는 경제성·검증·책임이 경쟁력”이라는 이야기입니다.
+먼저 가격 경쟁이 구조화되고 있습니다. DeepSeek가 V4-Pro API 할인 가격을 영구 가격으로 전환했다는 소식은 frontier급 API 가격이 일회성 프로모션이 아니라 지속 압박으로 바뀌고 있음을 보여줍니다. 기업 입장에서는 모델 선택 기준이 단순 benchmark 점수에서 input/output 단가, latency, context 길이, cache 효율, 장애 대응까지 확장됩니다. 모델이 충분히 좋아졌기 때문에 오히려 운영비가 더 날카로운 의사결정 기준이 됩니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-05-24 21:00:00 +0900 KST'>2026년 5월 24일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 에이전트 경제성과 신뢰 경계가 핵심 지표가 된다" href="https://kwbaek.github.io/posts/2026-05-24-ai-ml-trends-agent-economics-and-trust-boundaries/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">OpenClaw 팁: Discord 트렌드 채널을 개인 편집 데스크처럼 쓰기
     </h2>
   </header>
@@ -263,33 +291,6 @@
   </div>
   <footer class="entry-footer"><span title='2026-05-20 21:00:00 +0900 KST'>2026년 5월 20일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
   <a class="entry-link" aria-label="post link to AI/ML 트렌드: 에이전트 AI의 다음 전장은 control plane이다" href="https://kwbaek.github.io/posts/2026-05-20-ai-ml-trends-agentic-ai-is-moving-into-control-planes/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw 팁: cron 결과물을 개인 에이전트의 control plane으로 쓰기
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>OpenClaw를 개인 비서형 agent로 오래 쓰다 보면 cron의 의미가 조금 달라집니다. 처음에는 “정해진 시간에 자동 실행되는 작업” 정도로 보이지만, 실제로는 개인 agent 운영의 작은 control plane이 됩니다. 매일 트렌드를 읽고, 블로그를 쓰고, 빌드하고, 배포하고, 실패하면 어디서 막혔는지 남기는 과정 자체가 에이전트의 운영 면을 만듭니다.
-오늘처럼 Discord #ai-ml-trends 채널을 읽어 블로그 글을 만드는 작업을 예로 들어보면 구조가 분명합니다. 입력은 채널 메시지입니다. 처리 단계는 트렌드 선별, 글 작성, Hugo front matter 생성, 파일 저장, git commit, hugo build, public 배포입니다. 출력은 블로그 글과 배포 커밋입니다. 이 흐름에서 중요한 것은 모델이 글을 잘 쓰는 것만이 아닙니다. 어떤 채널을 읽었는지, 오늘 메시지만 봤는지, 파일명이 규칙을 지켰는지, 빌드가 통과했는지, public 폴더가 실제 배포 repo인지 확인하는 작은 gate들이 더 중요합니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-05-20 21:00:00 +0900 KST'>2026년 5월 20일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw 팁: cron 결과물을 개인 에이전트의 control plane으로 쓰기" href="https://kwbaek.github.io/posts/2026-05-20-openclaw-use-cron-outputs-as-an-operational-control-plane/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">AI/ML 트렌드: 에이전트 AI는 이제 기능이 아니라 운영체제가 되고 있다
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>오늘의 AI/ML 흐름에서 가장 흥미로운 공통분모는 agentic AI가 단일 기능이나 데모를 넘어, 기업과 개발 환경의 운영체제처럼 자리 잡기 시작했다는 점입니다. 오늘 #ai-ml-trends에 올라온 소식들은 표면적으로는 꽤 흩어져 있습니다. Anthropic의 Stainless 인수, GitHub Copilot cloud agent의 Actions one-click fix, Google ADK의 persistent task store, Bedrock AgentCore의 custom evaluator, Workday와 KPMG의 enterprise AI 전환, CHI-Bench 같은 healthcare workflow benchmark, 그리고 OpenClaw·Claude Code·Pydantic AI 같은 agent runtime 업데이트까지 다양합니다. 하지만 모두 같은 방향을 가리킵니다. 이제 AI 경쟁의 중심은 “모델이 무엇을 말할 수 있나”가 아니라 에이전트가 어떤 시스템 안에서 오래, 안전하게, 검증 가능하게 일할 수 있나로 이동하고 있습니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-05-19 21:00:00 +0900 KST'>2026년 5월 19일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 에이전트 AI는 이제 기능이 아니라 운영체제가 되고 있다" href="https://kwbaek.github.io/posts/2026-05-19-ai-ml-trends-agentic-ai-is-becoming-an-operating-system/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

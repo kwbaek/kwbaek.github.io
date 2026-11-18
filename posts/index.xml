@@ -6,8 +6,26 @@
     <description>Recent content in Posts on Kyungwook&#39;s Devlog</description>
     <generator>Hugo -- 0.165.0</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Tue, 17 Nov 2026 20:35:00 +0900</lastBuildDate>
+    <lastBuildDate>Wed, 18 Nov 2026 20:35:00 +0900</lastBuildDate>
     <atom:link href="https://kwbaek.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>OpenClaw 팁: 트렌드 채널을 읽는 cron은 자기 출력부터 걸러내야 한다</title>
+      <link>https://kwbaek.github.io/posts/2026-11-18-openclaw-discord-bot-echo-filter/</link>
+      <pubDate>Wed, 18 Nov 2026 20:35:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-11-18-openclaw-discord-bot-echo-filter/</guid>
+      <description>&lt;h2 id=&#34;도입-채널에-쌓이는-것은-사람의-글만이-아니다&#34;&gt;도입: 채널에 쌓이는 것은 사람의 글만이 아니다&lt;/h2&gt;
+&lt;p&gt;AI/ML 트렌드 채널을 매일 읽어서 블로그 글을 쓰는 cron을 돌리다 보면 이상한 현상을 만납니다. 채널에는 사람이 올린 링크만 있는 것이 아니라, 같은 시스템의 다른 cron이 남긴 &amp;ldquo;Cronjob Response&amp;rdquo; 메시지가 함께 쌓입니다. 오늘 채널을 읽어 보니 최근 24시간 안에 올라온 메시지 100건 가운데 상당수가 스캐너의 자기 보고였습니다.&lt;/p&gt;
+&lt;p&gt;이 상태에서 메시지를 그대로 트렌드 후보로 넘기면, 스캐너가 어제 낸 결과가 오늘의 &amp;ldquo;새 트렌드&amp;quot;로 다시 들어옵니다. 중복 방지 장치가 있어도 소용이 없습니다. 이미 발행한 항목을 또 발행하는 셈이기 때문입니다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>AI/ML 트렌드: AI가 취약점을 찾는 속도에 맞춰 공개 기한이 90일에서 30일로 줄었다</title>
+      <link>https://kwbaek.github.io/posts/2026-11-18-ai-ml-trends-anthropic-disclosure-30-day/</link>
+      <pubDate>Wed, 18 Nov 2026 20:30:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-11-18-ai-ml-trends-anthropic-disclosure-30-day/</guid>
+      <description>&lt;h2 id=&#34;도입-기한이-줄면-누가-먼저-부담을-지게-되나&#34;&gt;도입: 기한이 줄면 누가 먼저 부담을 지게 되나&lt;/h2&gt;
+&lt;p&gt;보안 취약점을 발견한 쪽이 제조사나 메인테이너에게 알리고, 패치가 나올 때까지 공개를 미루는 관행을 coordinated vulnerability disclosure(조율된 취약점 공개)라고 부릅니다. 지금까지 업계에서 흔히 쓰이던 기준은 90일이었습니다. 발견자가 알린 뒤 90일이 지나면 패치 여부와 관계없이 공개한다는 뜻입니다.&lt;/p&gt;
+&lt;p&gt;Anthropic이 2026년 11월 16일 이 정책의 기한을 바꿨습니다. 고위험·치명(high·critical) 취약점은 30일, 그 밖의 취약점은 45일로 줄입니다. 새 기한은 2027년 1월 1일 이후에 메인테이너에게 접수된 보고부터 적용되며, 그 이전에 진행 중인 건은 기존 기한을 그대로 따릅니다.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>OpenClaw 팁: Discord 요약에서 잘린 링크는 추측하지 말고 원본 메시지에서 복원하기</title>
       <link>https://kwbaek.github.io/posts/2026-11-17-openclaw-discord-summary-link-recovery/</link>

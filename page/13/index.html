@@ -152,6 +152,36 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">Hermes/리오 실전 팁: 하드웨어 백엔드 다변화 시대의 에이전트 런타임 거버넌스
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 AI/ML 트렌드에서 전해진 AMD ROCm 10 공식 출시와 OpenAI의 추론 칩 Jalapeño 실측 결과는 한 가지 공통된 흐름을 가리킵니다. 바로 **“AI 에이전트를 가동하는 하드웨어와 추론 백엔드가 급격히 다변화되고 있다”**는 사실입니다.
+초기에는 대형 클라우드 벤더의 상위 모델 API 하나에 전적으로 의존했다면, 이제는 온디바이스 NPU, 로컬/온프레미스 GPU 클러스터, 그리고 다양한 클라우드 백엔드가 혼합된 하이브리드 환경이 표준이 되어가고 있습니다.
+이러한 환경에서 Hermes/리오와 같은 자율 에이전트를 안정적이고 비용 효율적으로 24시간 무인 가동(Cron)하기 위해 필요한 런타임 거버넌스 3대 원칙을 정리해 봅니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-08-28 21:08:00 +0900 KST'>2026년 8월 28일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to Hermes/리오 실전 팁: 하드웨어 백엔드 다변화 시대의 에이전트 런타임 거버넌스" href="https://kwbaek.github.io/posts/2026-08-28-hermes-rio-hardware-backend-governance/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">AI/ML 트렌드: AMD ROCm 10이 던진 승부수, &#39;에이전틱 워크로드&#39;와 칩 생태계 다변화
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>AMD가 Instinct GPU 및 EPYC 서버 환경을 위한 차세대 소프트웨어 플랫폼인 ROCm 10을 정식 출시했습니다. 이번 릴리즈에서 가장 주목할 부분은 단순한 부동소수점 연산 성능(TFLOPS) 향상에 그치지 않고, 최근 급부상한 **“에이전틱 AI(Agentic AI) 개발 및 서빙 최적화”**를 공식적인 핵심 축으로 내세웠다는 점입니다.
+NVIDIA의 CUDA 생태계가 오랜 기간 장악해 온 AI 인프라 시장에서, AMD가 소프트웨어 스택의 전면적 체질 개선을 통해 엔터프라이즈 에이전트 런타임의 실질적인 대안으로 자리 잡으려는 의도가 명확히 드러납니다.
+ROCm 10의 핵심 변화: 에이전틱 런타임 중심의 도구 체계 ROCm 10은 기존의 복잡했던 빌드 및 드라이버 의존성을 대폭 정리하고, AI 네이티브 개발 경험을 위한 신규 컴포넌트들을 대거 도입했습니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-08-28 21:05:00 +0900 KST'>2026년 8월 28일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to AI/ML 트렌드: AMD ROCm 10이 던진 승부수, &#39;에이전틱 워크로드&#39;와 칩 생태계 다변화" href="https://kwbaek.github.io/posts/2026-08-28-ai-ml-trends-amd-rocm-10-agentic-stack/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">Hermes/리오 실전 팁: &#39;Customize 탭&#39; 같은 통합 관리 화면을 크론 운영에 적용하기
     </h2>
   </header>
@@ -263,35 +293,6 @@ Hermes/리오가 매일 돌리는 크론 작업에도 똑같은 함정이 있습
   </div>
   <footer class="entry-footer"><span title='2026-08-22 21:05:00 +0900 KST'>2026년 8월 22일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
   <a class="entry-link" aria-label="post link to Hermes/리오 실전 팁: 크론에 &#39;노출 표면 명세&#39;를 붙여라" href="https://kwbaek.github.io/posts/2026-08-22-hermes-rio-exposure-surface-spec/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">AI/ML 트렌드: 거부는 경계가 아니다 — 에이전트의 진짜 문제는 노출 표면이다
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>오늘 하루 올라온 자료 중 세 편의 논문과 한 건의 클라우드 아키텍처 문서가 묘하게 같은 자리를 가리켰습니다. 우리는 지금까지 에이전트의 안전성을 모델이 나쁜 요청을 거부하는가로 재왔습니다. 그런데 이 자료들은 전부 이렇게 말합니다. 거부는 잘 작동합니다. 그런데도 정보는 나갑니다. 문제는 판단이 아니라 표면입니다.
-근거 1 — 거부한 모델의 평범한 답변에서 비밀이 복원된다 Inadvertent Context Leakage in Language Models(arXiv 2608.19857, 2026년 8월 20일 제출)는 아주 단순한 질문에서 출발합니다. 캘린더, 자격증명, 건강기록, 금융 데이터 같은 민감 정보가 컨텍스트 창에 그냥 들어 있기만 해도 모델의 멀쩡한 출력에 상관관계가 남는가?
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-08-22 21:00:00 +0900 KST'>2026년 8월 22일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 거부는 경계가 아니다 — 에이전트의 진짜 문제는 노출 표면이다" href="https://kwbaek.github.io/posts/2026-08-22-ai-ml-trends-refusal-is-not-a-boundary/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Hermes/리오 실전 팁: 캐시를 믿기 전에 &#39;재사용 감사 로그&#39;를 붙여라
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>오늘 정리한 AI/ML 트렌드는 “히트율 60%짜리 캐시가 실제로는 2%였다&#34;였습니다. 시맨틱 캐시의 원시 히트율과 실제로 답을 대체해도 되는 비율이 수십 배 차이 났다는 이야기였죠. 이걸 Hermes/리오 운영으로 번역하면 팁은 하나입니다. 자동화가 무언가를 “이미 처리했다&#34;고 판단해 건너뛸 때마다, 그 판단의 근거를 로그에 남기세요.
-왜 문제가 되나 리오가 돌리는 크론은 대부분 어떤 형태로든 재사용/중복제거 판단을 합니다.
-트렌드 스캐너는 이전에 올린 항목인지 캐시와 대조해 건너뜁니다. 리포트 잡은 어제 캐시가 아직 유효하면 다시 수집하지 않습니다. 아이디어 생성기는 최근 히스토리와 비슷하면 [SILENT]로 종료합니다. 이 판단은 전부 “충분히 비슷하니 같은 것으로 친다&#34;는 유사도 판정입니다. 시맨틱 캐시와 구조가 똑같습니다. 그리고 문제도 똑같이 발생합니다. 중복이라 판단해 건너뛴 것 중 실제로는 새 정보였던 비율을, 아무도 세지 않습니다. 크론이 조용히 끝나면 성공으로 보이니까요.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-08-21 20:55:00 +0900 KST'>2026년 8월 21일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to Hermes/리오 실전 팁: 캐시를 믿기 전에 &#39;재사용 감사 로그&#39;를 붙여라" href="https://kwbaek.github.io/posts/2026-08-21-hermes-rio-reuse-audit-log/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

@@ -143,6 +143,21 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">Hermes/리오 실전 팁: 하드웨어 백엔드 다변화 시대의 에이전트 런타임 거버넌스
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 AI/ML 트렌드에서 전해진 AMD ROCm 10 공식 출시와 OpenAI의 추론 칩 Jalapeño 실측 결과는 한 가지 공통된 흐름을 가리킵니다. 바로 **“AI 에이전트를 가동하는 하드웨어와 추론 백엔드가 급격히 다변화되고 있다”**는 사실입니다.
+초기에는 대형 클라우드 벤더의 상위 모델 API 하나에 전적으로 의존했다면, 이제는 온디바이스 NPU, 로컬/온프레미스 GPU 클러스터, 그리고 다양한 클라우드 백엔드가 혼합된 하이브리드 환경이 표준이 되어가고 있습니다.
+이러한 환경에서 Hermes/리오와 같은 자율 에이전트를 안정적이고 비용 효율적으로 24시간 무인 가동(Cron)하기 위해 필요한 런타임 거버넌스 3대 원칙을 정리해 봅니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-08-28 21:08:00 +0900 KST'>2026년 8월 28일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to Hermes/리오 실전 팁: 하드웨어 백엔드 다변화 시대의 에이전트 런타임 거버넌스" href="https://kwbaek.github.io/posts/2026-08-28-hermes-rio-hardware-backend-governance/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">Hermes/리오 실전 팁: &#39;Customize 탭&#39; 같은 통합 관리 화면을 크론 운영에 적용하기
     </h2>
   </header>
@@ -271,20 +286,6 @@ Hermes/리오가 매일 돌리는 크론 작업에도 똑같은 함정이 있습
   </div>
   <footer class="entry-footer"><span title='2026-08-17 21:00:47 +0900 KST'>2026년 8월 17일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
   <a class="entry-link" aria-label="post link to Hermes/리오 실전 팁: 플러그인 에이전트는 권한·이벤트·롤백 카드로 운영하자" href="https://kwbaek.github.io/posts/2026-08-17-hermes-rio-plugin-boundary-ops/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Hermes/리오 팁: 로컬 모델 업데이트에는 입력 계약 게이트를 붙이자
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>로컬 LLM 런타임은 빠르게 업데이트됩니다. 이번에는 llama.cpp b10452가 문자열 콘텐츠와 typed 콘텐츠의 지원 판정 및 메시지 입력 정규화를 손봤습니다. 이런 변경은 단순한 내부 리팩터링으로 지나갈 수 있지만, Hermes/리오에서 문서·이미지·검색 결과를 조합하는 크론을 운영한다면 반드시 작은 입력 계약 Release Gate를 거치는 편이 안전합니다. 모델이 답변을 생성했다는 사실보다, 작업에 필요한 콘텐츠가 런타임을 통과해 그대로 전달됐는지가 먼저이기 때문입니다.
-1. 크론의 대표 입력을 고정한다 먼저 실제 업무에서 자주 쓰는 메시지를 세 가지 정도 고정하십시오. 예를 들어 텍스트만 있는 질의, 이미지와 텍스트가 섞인 상품 분석, 검색 결과와 JSON 도구 출력이 함께 들어오는 리포트 생성 작업입니다. 테스트 입력에는 예상되는 콘텐츠 타입과 완료 조건을 적어 둡니다. 그래야 런타임을 바꾼 뒤 “대충 비슷하게 답했다”가 아니라 입력 보존 여부와 도구 호출 결과를 비교할 수 있습니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-08-16 21:00:00 +0900 KST'>2026년 8월 16일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to Hermes/리오 팁: 로컬 모델 업데이트에는 입력 계약 게이트를 붙이자" href="https://kwbaek.github.io/posts/2026-08-16-hermes-rio-structured-input-release-gate/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

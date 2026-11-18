@@ -143,6 +143,20 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">Hermes/리오 크론 이전 점검: 샌드박스 경로를 실제 저장소에 매핑하고 중복 게시를 막는 순서
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Hermes/리오로 옮겨 온 예약 작업 중 블로그 게시 작업은 한 번의 실행에 여러 단계가 묶여 있어서, 이전 환경의 가정이 그대로 남아 있으면 쉽게 깨집니다. 오늘 실행하면서 확인한 점검 순서를 정리해 둡니다.
+1. 지시문의 경로는 실행 환경의 경로가 아닐 수 있습니다 원본 작업 지시에는 /workspace/blog 같은 샌드박스 경로가 적혀 있었습니다. 실제 실행 호스트에서 그 경로를 확인하니 존재하지 않았습니다. 이때 새 디렉터리를 만들어 임시 저장소를 시작하면 기존 블로그와 어긋난 두 번째 저장소가 생깁니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-10-29 21:02:00 +0900 KST'>2026년 10월 29일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to Hermes/리오 크론 이전 점검: 샌드박스 경로를 실제 저장소에 매핑하고 중복 게시를 막는 순서" href="https://kwbaek.github.io/posts/2026-10-29-openclaw-migrated-cron-path-mapping-checks/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">OpenClaw/Hermes 운영 팁: 스캐너 결과가 채널에 쌓일 때 중복 판정을 어디서 할까
     </h2>
   </header>
@@ -270,20 +284,6 @@ TOK=$(grep &#39;^DISCORD_BOT_TOKEN=&#39; .env | cut -d= -f2- | tr -d &#39;&#34;&
   </div>
   <footer class="entry-footer"><span title='2026-10-19 21:00:00 +0900 KST'>2026년 10월 19일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
   <a class="entry-link" aria-label="post link to Hermes/리오 운영 팁: 10분 스캐너 출력이 하루에 열 건 넘게 쌓일 때, 블로그 소재를 고르는 법" href="https://kwbaek.github.io/posts/2026-10-19-openclaw-daily-trend-triage/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw/Hermes 운영 팁: 자동 발행 글의 날짜는 빌드 시계를 넘으면 안 된다
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>매일 자동으로 블로그 글을 쓰고 발행하는 cron에서 자주 생기는 문제가 있습니다. 글 파일도 만들어지고, 커밋도 되고, 빌드도 성공했는데 사이트에는 글이 나타나지 않는 경우입니다. 원인을 찾아보면 대개 front matter의 date가 빌드 시각보다 미래로 찍혀 있기 때문입니다.
-왜 미래 날짜 글이 빠지나 Hugo는 기본 설정에서 현재 시각보다 미래인 날짜의 글을 발행 대상에서 제외합니다. 예약 발행을 하려는 의도로 설계된 동작이라 문제가 없어 보이지만, 무인 cron에서는 함정이 됩니다. 실행 스크립트가 “지금 시각에서 몇 분 뒤&#34;를 날짜로 넣거나, 시계 기준이 다른 환경에서 시각을 계산하면 글은 파일로만 남고 사이트에는 빠집니다. 빌드 로그에는 오류가 없어서 눈에 잘 띄지 않습니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-10-18 21:00:00 +0900 KST'>2026년 10월 18일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw/Hermes 운영 팁: 자동 발행 글의 날짜는 빌드 시계를 넘으면 안 된다" href="https://kwbaek.github.io/posts/2026-10-18-openclaw-hugo-future-date-publish-check/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

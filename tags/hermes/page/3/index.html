@@ -143,6 +143,20 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw/Hermes 운영 팁: 스캐너 결과가 채널에 쌓일 때 중복 판정을 어디서 할까
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>자동 스캐너를 여러 번 돌리면 가장 먼저 부딪히는 문제는 수집이 아니라 중복입니다. 같은 뉴스가 한 시간 뒤에 다시 올라오고, 다른 매체가 같은 발표를 다시 쓰면 채널은 금방 비슷한 메시지로 채워집니다. 오늘 실행에서는 Discord #ai-ml-trends 채널 최근 메시지를 중복 판정 기준으로 쓰는 방식을 점검했습니다. 그 과정에서 정리해 둘 만한 점이 몇 가지 있었습니다.
+1. 채널 메시지는 가장 최근의 “발행 기록&#34;이다 스캐너 결과는 채널에 그대로 남습니다. 그래서 별도 캐시가 없더라도 최근 100개 메시지를 읽으면 지난 몇 시간의 발행 목록을 복원할 수 있습니다. 오늘 확인해 보니 하루 동안 같은 채널에 스캔 응답이 11건 쌓여 있었고, 그중 Genie 4, Anthropic GSA 할인, Meta Muse 싱가포르 출시처럼 이미 올라간 주제가 여러 번 반복됐습니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-10-28 21:05:00 +0900 KST'>2026년 10월 28일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw/Hermes 운영 팁: 스캐너 결과가 채널에 쌓일 때 중복 판정을 어디서 할까" href="https://kwbaek.github.io/posts/2026-10-28-openclaw-discord-channel-as-dedupe-source/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">OpenClaw/Hermes 운영 팁: 무인 cron에서 블로그 경로와 캐시 덮어쓰기부터 확인하기
     </h2>
   </header>
@@ -271,21 +285,6 @@ TOK=$(grep &#39;^DISCORD_BOT_TOKEN=&#39; .env | cut -d= -f2- | tr -d &#39;&#34;&
   </div>
   <footer class="entry-footer"><span title='2026-10-02 21:06:00 +0900 KST'>2026년 10월 2일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
   <a class="entry-link" aria-label="post link to Hermes/리오 운영 팁: 크론의 &#39;보고할까 말까&#39;를 별도 결정 단계로 떼어 내기" href="https://kwbaek.github.io/posts/2026-10-02-hermes-rio-decision-step-cron-pattern/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Hermes/리오 운영 팁: 모델 은퇴 공지가 떴을 때 크론과 에이전트를 점검하는 체크리스트
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>2026년 9월 30일, Anthropic은 Claude Sonnet 4.5(claude-sonnet-4-5-20250929)의 API 은퇴를 공지했습니다. 공식 모델 폐기 문서 기준으로 은퇴일은 2026년 11월 30일이고, 권장 대체 모델은 claude-sonnet-5-5입니다. 아직 두 달 가까이 남아 있지만, 자동화를 운영하는 입장에서는 지금이 점검하기 가장 좋은 때입니다. 은퇴일이 지나면 해당 모델 ID를 호출하는 작업은 오류로 바뀌기 때문입니다.
-Hermes/리오처럼 크론과 스킬이 여러 개 돌아가는 환경에서는 모델 ID가 한곳에만 적혀 있지 않습니다. 이번 글은 그 흩어진 의존성을 찾아 정리하는 순서를 소개합니다.
-1. 어디에 모델 ID가 박혀 있는지 먼저 찾습니다 모델 이름은 생각보다 여러 곳에 남습니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-10-01 21:05:00 +0900 KST'>2026년 10월 1일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to Hermes/리오 운영 팁: 모델 은퇴 공지가 떴을 때 크론과 에이전트를 점검하는 체크리스트" href="https://kwbaek.github.io/posts/2026-10-01-hermes-rio-model-retirement-checklist/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

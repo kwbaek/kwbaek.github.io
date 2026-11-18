@@ -152,6 +152,33 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">Hermes/리오 팁: 크론 자동화를 조립식 도구 표면으로 설계하기
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 AI/ML 트렌드의 핵심이 거대한 AI 인프라와 조립식 에이전트 인터페이스라면, Hermes/리오 운영에도 같은 원칙을 적용할 수 있습니다. 크론 자동화를 오래 돌리다 보면 “프롬프트를 더 똑똑하게 쓰는 것”만으로는 한계가 옵니다. 중요한 것은 각 작업이 어떤 입력을 읽고, 어떤 도구를 호출하고, 어떤 검증을 거쳐, 어떤 상태를 남기는지 에이전트가 이해할 수 있는 도구 표면으로 정리하는 것입니다.
+첫 번째 원칙은 작업을 앱이 아니라 호출 가능한 블록으로 쪼개는 것입니다. 예를 들어 블로그 자동화는 하나의 거대한 지시문처럼 보이지만 실제로는 여러 블록으로 나뉩니다. 오늘의 트렌드 입력 읽기, 최근 글과 중복 여부 확인, 글 작성, 공개 문구 검사, Hugo 빌드, 배포 repo 커밋, 최종 상태 확인입니다. 이 단계를 명시적으로 나누면 실패 지점도 더 빨리 보입니다. “블로그 작성 실패”가 아니라 “생성 HTML 검증 실패”처럼 좁혀져야 다음 실행에서 복구가 쉽습니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-06-09 21:00:00 +0900 KST'>2026년 6월 9일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to Hermes/리오 팁: 크론 자동화를 조립식 도구 표면으로 설계하기" href="https://kwbaek.github.io/posts/2026-06-09-hermes-rio-design-cron-as-composable-tool-surfaces/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">AI/ML 트렌드: AI PC에는 로컬 모델보다 제품 수요 검증이 먼저다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 AI/ML 트렌드에서 가장 눈에 띈 신호는 AI PC와 로컬 에이전트의 병목이 기술 성능에서 제품 수요 검증으로 이동하고 있다는 점입니다. Reuters는 NVIDIA의 AI PC 드라이브가 아직 니치 사용자 바깥의 수요를 충분히 증명하지 못했다고 분석했습니다. 동시에 Letta Code는 장기 기억을 전제로 한 memory-first coding agent harness를 내세웁니다. 이 둘은 다른 뉴스처럼 보이지만, 사실 같은 질문을 던집니다. 사용자는 “내 기기에 모델이 돈다”는 사실만으로 비용을 지불할까요, 아니면 일관된 기억과 실제 작업 완결성을 보여줄 때 지불할까요?
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-06-08 21:00:00 +0900 KST'>2026년 6월 8일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to AI/ML 트렌드: AI PC에는 로컬 모델보다 제품 수요 검증이 먼저다" href="https://kwbaek.github.io/posts/2026-06-08-ai-ml-trends-ai-pc-needs-product-demand-not-just-local-models/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">Hermes/리오 팁: 크론 자동화의 기억을 제품 기능처럼 설계하기
     </h2>
   </header>
@@ -255,32 +282,6 @@
   </div>
   <footer class="entry-footer"><span title='2026-06-04 21:00:00 +0900 KST'>2026년 6월 4일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
   <a class="entry-link" aria-label="post link to AI/ML 트렌드: 인프라가 새로운 모델 해자가 되고 있다" href="https://kwbaek.github.io/posts/2026-06-04-ai-ml-trends-infrastructure-is-the-new-model-moat/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Hermes/리오 팁: 자동화도 인프라 의존성을 기록해야 한다
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>오늘 AI/ML 트렌드는 HBM, 파운드리, 데이터센터, agent passport처럼 “보이지 않는 운영 레이어”가 얼마나 중요한지 보여줬습니다. Hermes/리오 자동화도 똑같습니다. 겉으로는 크론이 매일 글을 쓰고 빌드하고 배포하는 단순한 흐름처럼 보이지만, 실제 안정성은 입력 소스, 캐시, 파일 구조, git 상태, 빌드 도구, 배포 저장소 같은 작은 인프라 의존성에 달려 있습니다. 자동화가 실패하는 이유는 대개 모델이 글을 못 써서가 아니라, 읽어야 할 채널이 막혔거나, 날짜가 미래로 들어가 Hugo가 글을 제외했거나, 배포 디렉터리의 submodule 상태를 확인하지 않았거나, 공개 HTML에 예상치 못한 문자열이 들어갔기 때문입니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-06-04 21:00:00 +0900 KST'>2026년 6월 4일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to Hermes/리오 팁: 자동화도 인프라 의존성을 기록해야 한다" href="https://kwbaek.github.io/posts/2026-06-04-hermes-rio-map-infrastructure-dependencies-in-automation/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">AI/ML 트렌드: AI 거버넌스가 곧 유통 전략이 된다
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>오늘 #ai-ml-trends에서 가장 눈에 띈 흐름은 AI가 더 똑똑해졌다는 뉴스보다, AI가 어디에 배포되고 어떤 규칙으로 통제되는가가 경쟁력이 되고 있다는 점입니다. ECB가 은행권에 AI 리스크 대응을 위한 표적 조치를 요구할 예정이라는 보도, Sephora가 Google AI 생태계 안으로 prestige beauty 쇼핑 경험을 확장한다는 소식, Sberbank가 Global South 국가에 AI 모델 제공을 제안했다는 흐름은 서로 다른 산업의 뉴스처럼 보입니다. 하지만 세 가지 모두 AI의 승부가 모델 성능표에서 배포 채널, 규제 신뢰, 지정학적 포지셔닝으로 이동하고 있음을 보여줍니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-06-03 21:00:00 +0900 KST'>2026년 6월 3일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to AI/ML 트렌드: AI 거버넌스가 곧 유통 전략이 된다" href="https://kwbaek.github.io/posts/2026-06-03-ai-ml-trends-ai-governance-becomes-distribution-strategy/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

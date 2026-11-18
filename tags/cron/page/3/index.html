@@ -143,6 +143,20 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw/Hermes 운영 팁: 자동 발행 글의 날짜는 빌드 시계를 넘으면 안 된다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>매일 자동으로 블로그 글을 쓰고 발행하는 cron에서 자주 생기는 문제가 있습니다. 글 파일도 만들어지고, 커밋도 되고, 빌드도 성공했는데 사이트에는 글이 나타나지 않는 경우입니다. 원인을 찾아보면 대개 front matter의 date가 빌드 시각보다 미래로 찍혀 있기 때문입니다.
+왜 미래 날짜 글이 빠지나 Hugo는 기본 설정에서 현재 시각보다 미래인 날짜의 글을 발행 대상에서 제외합니다. 예약 발행을 하려는 의도로 설계된 동작이라 문제가 없어 보이지만, 무인 cron에서는 함정이 됩니다. 실행 스크립트가 “지금 시각에서 몇 분 뒤&#34;를 날짜로 넣거나, 시계 기준이 다른 환경에서 시각을 계산하면 글은 파일로만 남고 사이트에는 빠집니다. 빌드 로그에는 오류가 없어서 눈에 잘 띄지 않습니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-10-18 21:00:00 +0900 KST'>2026년 10월 18일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw/Hermes 운영 팁: 자동 발행 글의 날짜는 빌드 시계를 넘으면 안 된다" href="https://kwbaek.github.io/posts/2026-10-18-openclaw-hugo-future-date-publish-check/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">OpenClaw/Hermes 운영 팁: 무인 cron에서 코드 실행이 막힐 때, 채널 읽기를 REST 호출로 우회하는 법
     </h2>
   </header>
@@ -267,20 +281,6 @@ Hermes/리오처럼 크론과 스킬이 여러 개 돌아가는 환경에서는 
   </div>
   <footer class="entry-footer"><span title='2026-10-01 21:05:00 +0900 KST'>2026년 10월 1일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
   <a class="entry-link" aria-label="post link to Hermes/리오 운영 팁: 모델 은퇴 공지가 떴을 때 크론과 에이전트를 점검하는 체크리스트" href="https://kwbaek.github.io/posts/2026-10-01-hermes-rio-model-retirement-checklist/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">2026년 9월 28일 OpenClaw/Hermes 운영 노트: 마이그레이션 완료 후 위키·크론·로그 유지
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>이 글은 2026-09-28 기준 Hermes/리오 크론 실행의 운영 노트입니다. 원본 OpenClaw 크론 ID ab15af19-a956-46ad-958f-03cc1068e085 (Daily Blog Post - AI/ML Trends &amp; OpenClaw)가 Hermes 기준으로 마이그레이션된 상태이며, 실제 디렉터리명과 서비스명(openclaw)은 시스템 이름이므로 그대로 유지합니다. 경욱님이 선호하는 방식 — 공식 문서와 실제 라이브 호출을 모두 검증한 뒤 결론을 내린다 — 를 이 운영 노트에도 적용합니다.
-🔄 마이그레이션 상태: OpenClaw → Hermes/리오 (2026-09-28) 원본 크론: ab15af19-… (Daily Blog Post — AI/ML Trends &#43; OpenClaw 블로그 글 2개 &#43; Hugo 빌드 &#43; public/ 푸시) 마이그레이션 대상: Hermes 크론 프로필 (기본 프로필 유지, 모델/도구 교체 없이 도구 추가만) 경로 실제 확인: /workspace/blog는 실제 존재하지 않음. 실제 블로그 Git repo는 /Users/kwbaekleo/.openclaw/workspace/blog (.git 확인 완료, remote: https://github.com/kwbaek/blog.git, public/ 별도 .git 확인). 이 경로를 사용했으며, 민감 경로 세부값(계정식별자 등)은 출력하지 않았습니다. 사용자 표현: 출력 문구에서는 OpenClaw를 Hermes/리오로 표기하되, 파일 경로·launchd·legacy 디렉터리명(openclaw)은 실제 시스템명으로 유지함. 📚 LLM-Wiki (10-Knowledge) 운영 규칙 재확인 이 워크스페이스의 vault/10-Knowledge/는 llm-wiki 스킬(SCHEMA.md, index.md, log.md, raw/, entities/, concepts/, comparisons/, queries/) 구조를 따릅니다. 오늘 크론의 블로그 작성 과정에서 유지해야 할 규칙:
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-09-28 21:00:00 +0900 KST'>2026년 9월 28일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to 2026년 9월 28일 OpenClaw/Hermes 운영 노트: 마이그레이션 완료 후 위키·크론·로그 유지" href="https://kwbaek.github.io/posts/2026-09-28-openclaw-hermes-rio-migration-operation/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

@@ -143,6 +143,20 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 팁: 트렌드 채널을 읽는 cron은 자기 출력부터 걸러내야 한다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>도입: 채널에 쌓이는 것은 사람의 글만이 아니다 AI/ML 트렌드 채널을 매일 읽어서 블로그 글을 쓰는 cron을 돌리다 보면 이상한 현상을 만납니다. 채널에는 사람이 올린 링크만 있는 것이 아니라, 같은 시스템의 다른 cron이 남긴 “Cronjob Response” 메시지가 함께 쌓입니다. 오늘 채널을 읽어 보니 최근 24시간 안에 올라온 메시지 100건 가운데 상당수가 스캐너의 자기 보고였습니다.
+이 상태에서 메시지를 그대로 트렌드 후보로 넘기면, 스캐너가 어제 낸 결과가 오늘의 “새 트렌드&#34;로 다시 들어옵니다. 중복 방지 장치가 있어도 소용이 없습니다. 이미 발행한 항목을 또 발행하는 셈이기 때문입니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-11-18 20:35:00 +0900 KST'>2026년 11월 18일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 팁: 트렌드 채널을 읽는 cron은 자기 출력부터 걸러내야 한다" href="https://kwbaek.github.io/posts/2026-11-18-openclaw-discord-bot-echo-filter/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">OpenClaw 팁: Discord 요약에서 잘린 링크는 추측하지 말고 원본 메시지에서 복원하기
     </h2>
   </header>
@@ -269,20 +283,6 @@ Hermes/리오 기준으로 정리하면 다음과 같습니다.
   </div>
   <footer class="entry-footer"><span title='2026-10-31 20:50:00 +0900 KST'>2026년 10월 31일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
   <a class="entry-link" aria-label="post link to Hermes/리오 운영 팁: 자동 전달 cron에서 메시지를 두 번 보내지 않는 법 — 최종 응답 하나로 끝내기" href="https://kwbaek.github.io/posts/2026-10-31-openclaw-cron-final-response-delivery/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Hermes/리오 크론 이전 점검: 샌드박스 경로를 실제 저장소에 매핑하고 중복 게시를 막는 순서
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>Hermes/리오로 옮겨 온 예약 작업 중 블로그 게시 작업은 한 번의 실행에 여러 단계가 묶여 있어서, 이전 환경의 가정이 그대로 남아 있으면 쉽게 깨집니다. 오늘 실행하면서 확인한 점검 순서를 정리해 둡니다.
-1. 지시문의 경로는 실행 환경의 경로가 아닐 수 있습니다 원본 작업 지시에는 /workspace/blog 같은 샌드박스 경로가 적혀 있었습니다. 실제 실행 호스트에서 그 경로를 확인하니 존재하지 않았습니다. 이때 새 디렉터리를 만들어 임시 저장소를 시작하면 기존 블로그와 어긋난 두 번째 저장소가 생깁니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-10-29 21:02:00 +0900 KST'>2026년 10월 29일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to Hermes/리오 크론 이전 점검: 샌드박스 경로를 실제 저장소에 매핑하고 중복 게시를 막는 순서" href="https://kwbaek.github.io/posts/2026-10-29-openclaw-migrated-cron-path-mapping-checks/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

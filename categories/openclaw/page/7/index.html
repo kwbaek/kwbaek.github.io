@@ -143,6 +143,21 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">Hermes/리오 실전 팁: &#39;데모 통과&#39;와 &#39;무인 운영 통과&#39;를 분리하는 게이트
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 AI/ML 트렌드에서 나온 숫자를 다시 보면, Codex는 회사 안에서 98% 채택됐지만 고객 조직에서는 17%였고, 로봇 파운데이션 모델은 한 번 보여준 동작을 59% 확률로 재현했습니다. 두 경우 모두 “작동하는 걸 봤다&#34;와 “믿고 맡길 수 있다&#34;는 서로 다른 기준선입니다.
+Hermes/리오가 매일 돌리는 크론 작업에도 똑같은 함정이 있습니다. 한 번 실행해서 좋은 결과가 나온 것과, 무인으로 계속 돌려도 괜찮다는 것은 다른 검증입니다. 오늘은 이 둘을 분리하는 게이트를 이야기해봅니다.
+왜 “한 번 잘 됐다&#34;가 위험한 신호인가 크론 작업을 새로 만들거나 고칠 때 흔한 흐름은 이렇습니다. 프롬프트를 짜고, 한 번 실행해보고, 결과가 그럴듯하면 “됐다&#34;고 판단하고 스케줄을 켭니다. 이건 정확히 원샷 성공률만 보고 로봇을 현장에 배치하는 것과 같은 판단입니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-08-25 22:20:00 +0900 KST'>2026년 8월 25일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to Hermes/리오 실전 팁: &#39;데모 통과&#39;와 &#39;무인 운영 통과&#39;를 분리하는 게이트" href="https://kwbaek.github.io/posts/2026-08-25-hermes-rio-demo-to-production-gate/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">Hermes/리오 실전 팁: 크론 하네스를 점검하는 6줄 체크
     </h2>
   </header>
@@ -270,20 +285,6 @@
   </div>
   <footer class="entry-footer"><span title='2026-08-15 21:00:00 +0900 KST'>2026년 8월 15일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
   <a class="entry-link" aria-label="post link to Hermes/리오 팁: 코딩 에이전트 업데이트 앞에 작은 Release Gate를 두자" href="https://kwbaek.github.io/posts/2026-08-15-hermes-rio-coding-agent-release-gate/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Hermes/리오 팁: 크론 결과를 재현 가능한 증거 번들로 만드는 법
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>AI 연구 재현성 프로젝트가 Hermes/리오 크론에 주는 가장 실용적인 교훈은 간단합니다. 성공했다는 문장보다 성공을 다시 확인할 수 있는 증거 번들이 중요하다는 것입니다. 무인 크론은 마지막 응답만 보면 그럴듯하게 끝났어도 입력이 오래됐는지, 출처가 바뀌었는지, 모델이 다른 경로를 탔는지, 중간 파일이 반쯤 기록됐는지 알기 어렵습니다. 따라서 결과물과 함께 실행 조건을 남기는 구조가 필요합니다.
-1. 실행마다 고유한 증거 묶음을 만든다 크론 시작 시 실행 ID를 만들고 입력 시각, instruction 버전, 사용한 모델, 도구 호출 목록, 원본 URL, 최종 산출물 경로를 한 묶음으로 기록하십시오. 트렌드 스캐너라면 후보 수집 → canonical URL 확인 → 본문 검증 → 중복 판정 → 캐시 갱신의 단계별 상태를 남기면 됩니다. 최종 글만 저장하는 것보다 어떤 후보가 왜 탈락했는지까지 보존하는 편이 다음 실행의 재현성과 디버깅에 훨씬 유리합니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-08-14 21:00:00 +0900 KST'>2026년 8월 14일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to Hermes/리오 팁: 크론 결과를 재현 가능한 증거 번들로 만드는 법" href="https://kwbaek.github.io/posts/2026-08-14-hermes-rio-reproducible-agent-cron-evidence/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

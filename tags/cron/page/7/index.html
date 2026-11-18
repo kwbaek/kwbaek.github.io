@@ -143,6 +143,20 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">Hermes/리오 팁: Agent 크론 앞에 컨텍스트 권한 게이트를 둬라
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 AWS의 Context와 Bedrock AgentCore 흐름을 Hermes/리오 운영에 적용하면 팁은 하나입니다. agent 크론 앞에 컨텍스트 권한 게이트를 둬야 합니다. 자동화가 실패하는 이유는 항상 모델이 멍청해서가 아닙니다. 어떤 입력을 읽어도 되는지, 어느 캐시가 최신인지, 어떤 자료는 공개 결과에 쓰면 안 되는지, fallback을 썼을 때 신뢰도를 어떻게 낮출지 정하지 않았기 때문에 흔들리는 경우가 많습니다.
+첫 번째 게이트는 입력 목록입니다. 크론이 실행될 때 “오늘 메시지”, “최근 리포트”, “캐시 파일”, “RSS”, “블로그 기존 글”, “Git 상태”처럼 읽은 자료를 작업 단위로 분리해 기록해야 합니다. 중요한 것은 많이 읽는 것이 아니라, 각 입력이 어떤 역할인지 구분하는 것입니다. 최신 트렌드는 오늘의 각도를 정하고, 기존 글은 중복을 막고, 캐시는 live source 실패 시 fallback이 됩니다. 이 구분이 없으면 agent는 오래된 자료를 최신 근거처럼 쓰거나 같은 주제를 반복하기 쉽습니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-06-18 21:00:00 +0900 KST'>2026년 6월 18일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to Hermes/리오 팁: Agent 크론 앞에 컨텍스트 권한 게이트를 둬라" href="https://kwbaek.github.io/posts/2026-06-18-hermes-rio-add-a-context-permission-gate-to-agent-crons/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">Hermes/리오 팁: AI 자동화에 운영 매트릭스를 먼저 붙여라
     </h2>
   </header>
@@ -265,19 +279,6 @@ Change Gate의 첫 번째 역할은 작업을 읽기 전용 단계와 변경 단
   </div>
   <footer class="entry-footer"><span title='2026-06-08 21:00:00 +0900 KST'>2026년 6월 8일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
   <a class="entry-link" aria-label="post link to Hermes/리오 팁: 크론 자동화의 기억을 제품 기능처럼 설계하기" href="https://kwbaek.github.io/posts/2026-06-08-hermes-rio-design-cron-memory-like-a-product-feature/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Hermes/리오 팁: 자동화에 작은 월드 모델을 붙이기
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>Hermes/리오를 매일 쓰다 보면 자동화의 품질을 가르는 기준이 “프롬프트를 얼마나 잘 썼는가”만은 아니라는 걸 자주 느낍니다. 반복 작업이 안정적으로 좋아지려면 에이전트가 매번 처음부터 추론하는 대신, 자기 작업 세계를 작게라도 구조화해서 들고 있어야 합니다. 나는 이것을 자동화용 작은 월드 모델이라고 부르고 싶습니다. 거창한 그래프 데이터베이스가 아니어도 됩니다. 입력 소스가 어디에 있고, 어떤 출력 형식이 필요한지, 최근에 무엇을 했는지, 어떤 표현은 쓰면 안 되는지, 실패하면 어떤 폴백을 써야 하는지를 파일과 링크로 정리해 두는 것만으로도 크론의 품질은 크게 달라집니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-06-06 21:00:00 +0900 KST'>2026년 6월 6일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to Hermes/리오 팁: 자동화에 작은 월드 모델을 붙이기" href="https://kwbaek.github.io/posts/2026-06-06-hermes-rio-add-a-small-world-model-to-automation/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

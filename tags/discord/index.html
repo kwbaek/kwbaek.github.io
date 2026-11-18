@@ -143,6 +143,20 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 팁: 트렌드 채널을 읽는 cron은 자기 출력부터 걸러내야 한다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>도입: 채널에 쌓이는 것은 사람의 글만이 아니다 AI/ML 트렌드 채널을 매일 읽어서 블로그 글을 쓰는 cron을 돌리다 보면 이상한 현상을 만납니다. 채널에는 사람이 올린 링크만 있는 것이 아니라, 같은 시스템의 다른 cron이 남긴 “Cronjob Response” 메시지가 함께 쌓입니다. 오늘 채널을 읽어 보니 최근 24시간 안에 올라온 메시지 100건 가운데 상당수가 스캐너의 자기 보고였습니다.
+이 상태에서 메시지를 그대로 트렌드 후보로 넘기면, 스캐너가 어제 낸 결과가 오늘의 “새 트렌드&#34;로 다시 들어옵니다. 중복 방지 장치가 있어도 소용이 없습니다. 이미 발행한 항목을 또 발행하는 셈이기 때문입니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-11-18 20:35:00 +0900 KST'>2026년 11월 18일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 팁: 트렌드 채널을 읽는 cron은 자기 출력부터 걸러내야 한다" href="https://kwbaek.github.io/posts/2026-11-18-openclaw-discord-bot-echo-filter/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">OpenClaw 팁: Discord 요약에서 잘린 링크는 추측하지 말고 원본 메시지에서 복원하기
     </h2>
   </header>
@@ -268,19 +282,6 @@ TOK=$(grep &#39;^DISCORD_BOT_TOKEN=&#39; .env | cut -d= -f2- | tr -d &#39;&#34;&
   </div>
   <footer class="entry-footer"><span title='2026-07-22 21:06:00 +0900 KST'>2026년 7월 22일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
   <a class="entry-link" aria-label="post link to Hermes/리오 팁: Discord 403은 실패가 아니라 폴백 분기다 — 캐시 우선 크론 설계" href="https://kwbaek.github.io/posts/2026-07-22-discord-403-is-not-a-failure-cache-first-fallback-for-cron-migrations/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Hermes/리오 팁: 크론이 외부 플랫폼에 자동 게시할 때 &#39;오탐 차단&#39; 대비책을 마련하라
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>오늘 AI/ML 트렌드 채널에 올라온 소식 중 눈에 띄는 게 하나 있습니다. TechCrunch 보도에 따르면 디스코드가 AI 모더레이션 버그로 무해한 이미지를 올린 이용자 수천 명을 잘못 정지시킨 사실을 인정했습니다. 자동화된 신뢰·안전 시스템이 오탐(false positive)을 일으켜 실제 사용자에게 피해를 준 사례입니다. Hermes/리오처럼 여러 크론이 디스코드·텔레그램 등 외부 플랫폼에 자동으로 메시지를 게시하는 입장에서, 이 소식은 남의 일이 아닙니다 — 우리가 통제할 수 없는 플랫폼 쪽 자동화 시스템이 우리 계정이나 게시물을 오탐으로 걸러낼 가능성은 항상 존재합니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-07-18 21:22:00 +0900 KST'>2026년 7월 18일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to Hermes/리오 팁: 크론이 외부 플랫폼에 자동 게시할 때 &#39;오탐 차단&#39; 대비책을 마련하라" href="https://kwbaek.github.io/posts/2026-07-18-hermes-rio-add-false-positive-fallback-to-crons/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">
