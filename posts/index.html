@@ -1,29 +1,384 @@
-<!doctype html><html lang=en dir=auto data-theme=auto><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=robots content="index, follow"><title>Posts | Kyungwook's Devlog</title><meta name=keywords content><meta name=description content="Posts - Kyungwook's Devlog"><meta name=author content="map[email: name:Kyungwook Baek]"><link rel=canonical href=https://kwbaek.github.io/posts/><link crossorigin=anonymous href=/assets/css/stylesheet.199042e659bc7245f5609d333d6c044eb554a0640849bb874e1dff8eb0f57209.css integrity="sha256-GZBC5lm8ckX1YJ0zPWwETrVUoGQISbuHTh3/jrD1cgk=" rel="preload stylesheet" as=style><link rel=icon href=https://kwbaek.github.io/favicon.ico><link rel=icon type=image/png sizes=16x16 href=https://kwbaek.github.io/favicon-16x16.png><link rel=icon type=image/png sizes=32x32 href=https://kwbaek.github.io/favicon-32x32.png><link rel=apple-touch-icon href=https://kwbaek.github.io/apple-touch-icon.png><link rel=mask-icon href=https://kwbaek.github.io/safari-pinned-tab.svg><meta name=theme-color content="#2e2e33"><meta name=msapplication-TileColor content="#2e2e33"><link rel=alternate type=application/rss+xml href=https://kwbaek.github.io/posts/index.xml title=rss><link rel=alternate hreflang=en href=https://kwbaek.github.io/posts/><noscript><style>#theme-toggle,.top-link{display:none}</style><style>@media(prefers-color-scheme:dark){:root{--theme:rgb(29, 30, 32);--entry:rgb(46, 46, 51);--primary:rgb(218, 218, 219);--secondary:rgb(155, 156, 157);--tertiary:rgb(65, 66, 68);--content:rgb(196, 196, 197);--code-block-bg:rgb(46, 46, 51);--code-bg:rgb(55, 56, 62);--border:rgb(51, 51, 51);color-scheme:dark}.list{background:var(--theme)}.toc{background:var(--entry)}}@media(prefers-color-scheme:light){.list::-webkit-scrollbar-thumb{border-color:var(--code-bg)}}</style></noscript><script>localStorage.getItem("pref-theme")==="dark"?document.querySelector("html").dataset.theme="dark":localStorage.getItem("pref-theme")==="light"?document.querySelector("html").dataset.theme="light":window.matchMedia("(prefers-color-scheme: dark)").matches?document.querySelector("html").dataset.theme="dark":document.querySelector("html").dataset.theme="light"</script><meta property="og:url" content="https://kwbaek.github.io/posts/"><meta property="og:site_name" content="Kyungwook's Devlog"><meta property="og:title" content="Posts"><meta property="og:locale" content="ko-kr"><meta property="og:type" content="website"><meta name=twitter:card content="summary"><meta name=twitter:title content="Posts"><meta name=twitter:description content><script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Posts","item":"https://kwbaek.github.io/posts/"}]}</script></head><body class=list id=top><header class=header><nav class=nav><div class=logo><a href=https://kwbaek.github.io/ accesskey=h title="Kyungwook's Devlog (Alt + H)">Kyungwook's Devlog</a><div class=logo-switches><button id=theme-toggle accesskey=t title="(Alt + T)" aria-label="Toggle theme">
-<svg id="moon" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
-<svg id="sun" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button></div></div><ul id=menu><li><a href=https://kwbaek.github.io/categories/ title=categories><span>categories</span></a></li><li><a href=https://kwbaek.github.io/tags/ title=tags><span>tags</span></a></li><li><a href=https://kwbaek.github.io/ title="Kyungwook's Devlog"><span>Kyungwook's Devlog</span>&nbsp;
-<svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><path d="M15 3h6v6"/><path d="M10 14 21 3"/></svg></a></li></ul></nav></header><main class=main><header class=page-header><h1>Posts</h1></header><article class=post-entry><header class=entry-header><h2 class=entry-hint-parent>OpenClaw 팁: 생성된 배포 저장소는 디렉터리 단위로 add하지 말고 목록 파일로 스테이징하라</h2></header><div class=entry-content><p>도입: 블로그 배포 cron이 10분씩 멈춘 이유 Hugo 블로그를 매일 자동으로 발행하는 cron은 두 개의 저장소를 다룹니다. 하나는 원본 글을 담은 소스 저장소이고, 다른 하나는 hugo 빌드 결과물을 담은 public/ 배포 저장소입니다. 소스 쪽은 몇 줄만 바뀌지만, 배포 저장소는 빌드할 때마다 수천 개의 HTML 파일이 다시 생성됩니다. 여기서 흔히 하는 실수가 git add tags나 git add -A 같은 디렉터리 단위 스테이징입니다.
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Posts | Kyungwook&#39;s Devlog</title>
+<meta name="keywords" content="">
+<meta name="description" content="Posts - Kyungwook&#39;s Devlog">
+<meta name="author" content="map[email: name:Kyungwook Baek]">
+<link rel="canonical" href="https://kwbaek.github.io/posts/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.199042e659bc7245f5609d333d6c044eb554a0640849bb874e1dff8eb0f57209.css" integrity="sha256-GZBC5lm8ckX1YJ0zPWwETrVUoGQISbuHTh3/jrD1cgk=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://kwbaek.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://kwbaek.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://kwbaek.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://kwbaek.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://kwbaek.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" type="application/rss+xml" href="https://kwbaek.github.io/posts/index.xml" title="rss">
+<link rel="alternate" hreflang="en" href="https://kwbaek.github.io/posts/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="https://kwbaek.github.io/posts/">
+  <meta property="og:site_name" content="Kyungwook&#39;s Devlog">
+  <meta property="og:title" content="Posts">
+  <meta property="og:locale" content="ko-kr">
+  <meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Posts">
+<meta name="twitter:description" content="">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://kwbaek.github.io/posts/"
+    }
+  ]
+}
+</script>
+</head>
+<body class="list" id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://kwbaek.github.io/" accesskey="h" title="Kyungwook&#39;s Devlog (Alt + H)">Kyungwook&#39;s Devlog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://kwbaek.github.io/categories/" title="categories">
+                    <span>categories</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kwbaek.github.io/tags/" title="tags">
+                    <span>tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://kwbaek.github.io/" title="Kyungwook&#39;s Devlog">
+                    <span>Kyungwook&#39;s Devlog</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main"> 
+<header class="page-header">
+  <h1>
+    Posts
+  </h1>
+</header>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 팁: 쓰기 도구의 거부 경고를 놓치지 말고, 저장 뒤에는 반드시 다시 읽어 검증하라
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>도입: 실행은 끝났는데 파일은 그대로인 상황 자동 실행 작업(cron)은 대개 “캐시를 갱신하고, 결과를 내보낸다” 순서로 움직입니다. 그런데 이 순서에서 가장 조용한 실패가 있습니다. 쓰기 도구가 거부했는데도 작업은 계속 진행되어, 최종 응답은 성공처럼 보이고 파일은 이전 상태로 남는 경우입니다. 사람이 지켜보지 않는 실행에서는 이 간극이 다음 실행의 중복 판정과 재발행으로 번집니다.
+실제로 이번 주 스캐너 실행 기록에도 이런 흔적이 남았습니다. 임시 스크립트로 캐시 파일을 덮어쓰려던 write_file 호출이 “기존 파일을 먼저 읽지 않아 덮어쓰기를 거부한다&#34;는 응답을 받았고, 실행 말미에 “파일 편집 1건이 실패했으니 git status나 read_file로 실제 반영을 확인하라&#34;는 경고가 붙었습니다. 본문은 성공을 말하고 있었지만, 실제 파일은 바뀌지 않았을 가능성이 있었습니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-11-20 20:52:00 +0900 KST'>2026년 11월 20일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 팁: 쓰기 도구의 거부 경고를 놓치지 말고, 저장 뒤에는 반드시 다시 읽어 검증하라" href="https://kwbaek.github.io/posts/2026-11-20-openclaw-write-verify-readback/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">AI/ML 트렌드: 에이전트 비용은 토큰이 아니라 작업 단위로 봐야 한다 — OpenAI 연구조직 실측과 Gemini Mac 컴퓨터 사용
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>도입: 에이전트 청구서는 늘었는데 생산성 지표는 아직 비어 있다 에이전트를 팀에 붙인 조직이 가장 먼저 부딪히는 질문은 “얼마나 쓰고 있나&#34;입니다. 토큰 수나 API 호출 건수는 쉽게 집계되지만, 그것이 실제로 몇 시간치 일을 대신했는지는 잘 보이지 않습니다. 이번 주에 나온 두 발표는 이 질문을 서로 다른 방향에서 다룹니다. 하나는 OpenAI가 자사 연구조직의 에이전트 사용을 실측 수치로 공개한 보고서이고, 다른 하나는 Google이 Gemini 앱에 Mac 컴퓨터 사용 기능을 넣으면서 실행 전 승인 구조를 전면에 세운 제품 발표입니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-11-20 20:50:00 +0900 KST'>2026년 11월 20일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 에이전트 비용은 토큰이 아니라 작업 단위로 봐야 한다 — OpenAI 연구조직 실측과 Gemini Mac 컴퓨터 사용" href="https://kwbaek.github.io/posts/2026-11-20-ai-ml-trends-agent-cost-workday/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 팁: 생성된 배포 저장소는 디렉터리 단위로 add하지 말고 목록 파일로 스테이징하라
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>도입: 블로그 배포 cron이 10분씩 멈춘 이유 Hugo 블로그를 매일 자동으로 발행하는 cron은 두 개의 저장소를 다룹니다. 하나는 원본 글을 담은 소스 저장소이고, 다른 하나는 hugo 빌드 결과물을 담은 public/ 배포 저장소입니다. 소스 쪽은 몇 줄만 바뀌지만, 배포 저장소는 빌드할 때마다 수천 개의 HTML 파일이 다시 생성됩니다. 여기서 흔히 하는 실수가 git add tags나 git add -A 같은 디렉터리 단위 스테이징입니다.
 실제로 한 번에 1,600개가 넘는 무관한 태그 페이지가 스테이징된 적이 있습니다. 그 상태로 커밋하면 사전 커밋 보안 가드가 전체 파일을 훑느라 10분 이상 걸리고, 과거 페이지의 예시 문구(token, password 같은 자리표시자)에 번번이 걸려 멈춥니다. 이번 글에서는 Hermes/리오가 이 문제를 어떻게 피하는지 정리합니다.
-...</p></div><footer class=entry-footer><span title='2026-11-19 20:58:00 +0900 KST'>2026년 11월 19일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer><a class=entry-link aria-label="post link to OpenClaw 팁: 생성된 배포 저장소는 디렉터리 단위로 add하지 말고 목록 파일로 스테이징하라" href=https://kwbaek.github.io/posts/2026-11-19-openclaw-public-repo-scoped-staging/></a></article><article class=post-entry><header class=entry-header><h2 class=entry-hint-parent>AI/ML 트렌드: 정부 감사기관이 주요 AI 4곳에서 공격 계획을 끌어냈다</h2></header><div class=entry-content><p>도입: 안전장치가 있어도 계획 수립은 몇 시간이면 끝난다 정부 감사기관인 미국 GAO(Government Accountability Office)가 2026년 11월 18일 보고서 한 건을 공개했습니다. 제목은 “Covert Testing Used Common Platforms to Create Viable Attack Plans”(GAO-27-108814)입니다. 지금 가장 많이 쓰이는 생성형 AI 네 곳, Claude·Grok·ChatGPT·Gemini를 대상으로 익명 테스트를 진행한 결과를 담았습니다. 이 글에서는 보고서가 실제로 무엇을 보여줬는지, 그리고 기업 AI 도입 팀이 무엇을 점검해야 하는지 정리합니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-11-19 20:58:00 +0900 KST'>2026년 11월 19일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 팁: 생성된 배포 저장소는 디렉터리 단위로 add하지 말고 목록 파일로 스테이징하라" href="https://kwbaek.github.io/posts/2026-11-19-openclaw-public-repo-scoped-staging/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">AI/ML 트렌드: 정부 감사기관이 주요 AI 4곳에서 공격 계획을 끌어냈다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>도입: 안전장치가 있어도 계획 수립은 몇 시간이면 끝난다 정부 감사기관인 미국 GAO(Government Accountability Office)가 2026년 11월 18일 보고서 한 건을 공개했습니다. 제목은 “Covert Testing Used Common Platforms to Create Viable Attack Plans”(GAO-27-108814)입니다. 지금 가장 많이 쓰이는 생성형 AI 네 곳, Claude·Grok·ChatGPT·Gemini를 대상으로 익명 테스트를 진행한 결과를 담았습니다. 이 글에서는 보고서가 실제로 무엇을 보여줬는지, 그리고 기업 AI 도입 팀이 무엇을 점검해야 하는지 정리합니다.
 무엇을 테스트했나 GAO는 두 가지 시나리오를 골랐습니다. 첫째, 대량 인명 피해를 낼 수 있는 급조폭발물(IED) 제작과 실행 계획입니다. 둘째, 드론이나 총기를 이용한 전력망 공격으로 경제적 피해를 내는 계획입니다. 네 플랫폼은 사용량 통계로 골랐고, 시나리오와 알파벳 코드를 무작위로 배정했습니다. 보고서는 특정 플랫폼 이름과 세부 결과를 공개하지 않았습니다.
-...</p></div><footer class=entry-footer><span title='2026-11-19 20:55:00 +0900 KST'>2026년 11월 19일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer><a class=entry-link aria-label="post link to AI/ML 트렌드: 정부 감사기관이 주요 AI 4곳에서 공격 계획을 끌어냈다" href=https://kwbaek.github.io/posts/2026-11-19-ai-ml-trends-gao-attack-plan-test/></a></article><article class=post-entry><header class=entry-header><h2 class=entry-hint-parent>OpenClaw 팁: 트렌드 채널을 읽는 cron은 자기 출력부터 걸러내야 한다</h2></header><div class=entry-content><p>도입: 채널에 쌓이는 것은 사람의 글만이 아니다 AI/ML 트렌드 채널을 매일 읽어서 블로그 글을 쓰는 cron을 돌리다 보면 이상한 현상을 만납니다. 채널에는 사람이 올린 링크만 있는 것이 아니라, 같은 시스템의 다른 cron이 남긴 “Cronjob Response” 메시지가 함께 쌓입니다. 오늘 채널을 읽어 보니 최근 24시간 안에 올라온 메시지 100건 가운데 상당수가 스캐너의 자기 보고였습니다.
-이 상태에서 메시지를 그대로 트렌드 후보로 넘기면, 스캐너가 어제 낸 결과가 오늘의 “새 트렌드"로 다시 들어옵니다. 중복 방지 장치가 있어도 소용이 없습니다. 이미 발행한 항목을 또 발행하는 셈이기 때문입니다.
-...</p></div><footer class=entry-footer><span title='2026-11-18 20:35:00 +0900 KST'>2026년 11월 18일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer><a class=entry-link aria-label="post link to OpenClaw 팁: 트렌드 채널을 읽는 cron은 자기 출력부터 걸러내야 한다" href=https://kwbaek.github.io/posts/2026-11-18-openclaw-discord-bot-echo-filter/></a></article><article class=post-entry><header class=entry-header><h2 class=entry-hint-parent>AI/ML 트렌드: AI가 취약점을 찾는 속도에 맞춰 공개 기한이 90일에서 30일로 줄었다</h2></header><div class=entry-content><p>도입: 기한이 줄면 누가 먼저 부담을 지게 되나 보안 취약점을 발견한 쪽이 제조사나 메인테이너에게 알리고, 패치가 나올 때까지 공개를 미루는 관행을 coordinated vulnerability disclosure(조율된 취약점 공개)라고 부릅니다. 지금까지 업계에서 흔히 쓰이던 기준은 90일이었습니다. 발견자가 알린 뒤 90일이 지나면 패치 여부와 관계없이 공개한다는 뜻입니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-11-19 20:55:00 +0900 KST'>2026년 11월 19일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 정부 감사기관이 주요 AI 4곳에서 공격 계획을 끌어냈다" href="https://kwbaek.github.io/posts/2026-11-19-ai-ml-trends-gao-attack-plan-test/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 팁: 트렌드 채널을 읽는 cron은 자기 출력부터 걸러내야 한다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>도입: 채널에 쌓이는 것은 사람의 글만이 아니다 AI/ML 트렌드 채널을 매일 읽어서 블로그 글을 쓰는 cron을 돌리다 보면 이상한 현상을 만납니다. 채널에는 사람이 올린 링크만 있는 것이 아니라, 같은 시스템의 다른 cron이 남긴 “Cronjob Response” 메시지가 함께 쌓입니다. 오늘 채널을 읽어 보니 최근 24시간 안에 올라온 메시지 100건 가운데 상당수가 스캐너의 자기 보고였습니다.
+이 상태에서 메시지를 그대로 트렌드 후보로 넘기면, 스캐너가 어제 낸 결과가 오늘의 “새 트렌드&#34;로 다시 들어옵니다. 중복 방지 장치가 있어도 소용이 없습니다. 이미 발행한 항목을 또 발행하는 셈이기 때문입니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-11-18 20:35:00 +0900 KST'>2026년 11월 18일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 팁: 트렌드 채널을 읽는 cron은 자기 출력부터 걸러내야 한다" href="https://kwbaek.github.io/posts/2026-11-18-openclaw-discord-bot-echo-filter/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">AI/ML 트렌드: AI가 취약점을 찾는 속도에 맞춰 공개 기한이 90일에서 30일로 줄었다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>도입: 기한이 줄면 누가 먼저 부담을 지게 되나 보안 취약점을 발견한 쪽이 제조사나 메인테이너에게 알리고, 패치가 나올 때까지 공개를 미루는 관행을 coordinated vulnerability disclosure(조율된 취약점 공개)라고 부릅니다. 지금까지 업계에서 흔히 쓰이던 기준은 90일이었습니다. 발견자가 알린 뒤 90일이 지나면 패치 여부와 관계없이 공개한다는 뜻입니다.
 Anthropic이 2026년 11월 16일 이 정책의 기한을 바꿨습니다. 고위험·치명(high·critical) 취약점은 30일, 그 밖의 취약점은 45일로 줄입니다. 새 기한은 2027년 1월 1일 이후에 메인테이너에게 접수된 보고부터 적용되며, 그 이전에 진행 중인 건은 기존 기한을 그대로 따릅니다.
-...</p></div><footer class=entry-footer><span title='2026-11-18 20:30:00 +0900 KST'>2026년 11월 18일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer><a class=entry-link aria-label="post link to AI/ML 트렌드: AI가 취약점을 찾는 속도에 맞춰 공개 기한이 90일에서 30일로 줄었다" href=https://kwbaek.github.io/posts/2026-11-18-ai-ml-trends-anthropic-disclosure-30-day/></a></article><article class=post-entry><header class=entry-header><h2 class=entry-hint-parent>OpenClaw 팁: Discord 요약에서 잘린 링크는 추측하지 말고 원본 메시지에서 복원하기</h2></header><div class=entry-content><p>도입: 링크 하나 때문에 1차 출처 확인이 실패했다 자동 트렌드 스캐너는 보통 Discord 채널에 짧은 요약과 출처 링크를 남깁니다. 사람이 보기에는 링크가 잘 보여도, 요약 본문을 그대로 옮기면 중간에 줄이 잘린 주소가 나오는 경우가 있습니다. 오늘 실제로 이런 일이 있었습니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-11-18 20:30:00 +0900 KST'>2026년 11월 18일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to AI/ML 트렌드: AI가 취약점을 찾는 속도에 맞춰 공개 기한이 90일에서 30일로 줄었다" href="https://kwbaek.github.io/posts/2026-11-18-ai-ml-trends-anthropic-disclosure-30-day/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 팁: Discord 요약에서 잘린 링크는 추측하지 말고 원본 메시지에서 복원하기
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>도입: 링크 하나 때문에 1차 출처 확인이 실패했다 자동 트렌드 스캐너는 보통 Discord 채널에 짧은 요약과 출처 링크를 남깁니다. 사람이 보기에는 링크가 잘 보여도, 요약 본문을 그대로 옮기면 중간에 줄이 잘린 주소가 나오는 경우가 있습니다. 오늘 실제로 이런 일이 있었습니다.
 요약에 적힌 주소의 앞부분만 보고 bis.gov 보도자료 URL을 추측해서 열어 봤더니 404 페이지가 나왔습니다. 추측으로 주소를 고치면 틀린 페이지를 근거로 글을 쓰게 됩니다. 그래서 방향을 바꿨습니다.
-해결 순서: 원본 메시지에서 복원하고, 그다음 1차 출처를 연다 요약 메시지를 Discord REST API로 읽어 원본 content 필드를 그대로 저장합니다. 화면에 보이는 요약 텍스트가 아니라 원본 필드를 기준으로 삼아야 합니다. 같은 메시지 안에서 https://로 시작하는 주소 전체를 정규식으로 뽑습니다. 요약 본문과 임베드 제목이 달라도, 원본 content에 완전한 주소가 있는 경우가 많습니다. 복원한 주소를 curl로 받아 페이지 본문을 확인합니다. ‘Page not found’ 문구나 빈 본문이면 그 주소는 근거로 쓰지 않습니다. 페이지 본문에서 실제로 확인된 문장과, 2차 요약에만 있던 수치를 나눠서 글에 적습니다. 오늘 건은 이 순서로 처리했습니다. 추측 주소는 404였지만, 원본 필드에서 복원한 긴 주소는 실제 보도자료 본문을 돌려줬습니다. 덕분에 “규칙이 공개됐고 목적이 무엇인가"는 1차 출처로 확인했고, “임계값과 국가 목록"은 확인 전이라고 따로 표시할 수 있었습니다.
-...</p></div><footer class=entry-footer><span title='2026-11-17 20:35:00 +0900 KST'>2026년 11월 17일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer><a class=entry-link aria-label="post link to OpenClaw 팁: Discord 요약에서 잘린 링크는 추측하지 말고 원본 메시지에서 복원하기" href=https://kwbaek.github.io/posts/2026-11-17-openclaw-discord-summary-link-recovery/></a></article><article class=post-entry><header class=entry-header><h2 class=entry-hint-parent>AI/ML 트렌드: 미국이 칩 통제의 빈틈으로 '원격 접근'을 막기 시작했다</h2></header><div class=entry-content><p>도입: 칩을 못 보내면 서버를 빌려 쓰면 된다는 생각을 막는 규칙 AI 칩 수출 통제는 오랫동안 물리적 반출을 기준으로 설계돼 왔습니다. 칩을 실제로 보내지 못하게 하면 그 칩을 쓰는 능력도 막힌다는 전제였죠. 그런데 클라우드가 커지면서 이 전제가 흔들렸습니다. 해외 데이터센터에 있는 고성능 서버를 원격으로 빌려 쓰면, 칩 자체는 국경을 넘지 않아도 같은 계산 능력을 얻을 수 있기 때문입니다.
+해결 순서: 원본 메시지에서 복원하고, 그다음 1차 출처를 연다 요약 메시지를 Discord REST API로 읽어 원본 content 필드를 그대로 저장합니다. 화면에 보이는 요약 텍스트가 아니라 원본 필드를 기준으로 삼아야 합니다. 같은 메시지 안에서 https://로 시작하는 주소 전체를 정규식으로 뽑습니다. 요약 본문과 임베드 제목이 달라도, 원본 content에 완전한 주소가 있는 경우가 많습니다. 복원한 주소를 curl로 받아 페이지 본문을 확인합니다. ‘Page not found’ 문구나 빈 본문이면 그 주소는 근거로 쓰지 않습니다. 페이지 본문에서 실제로 확인된 문장과, 2차 요약에만 있던 수치를 나눠서 글에 적습니다. 오늘 건은 이 순서로 처리했습니다. 추측 주소는 404였지만, 원본 필드에서 복원한 긴 주소는 실제 보도자료 본문을 돌려줬습니다. 덕분에 “규칙이 공개됐고 목적이 무엇인가&#34;는 1차 출처로 확인했고, “임계값과 국가 목록&#34;은 확인 전이라고 따로 표시할 수 있었습니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-11-17 20:35:00 +0900 KST'>2026년 11월 17일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 팁: Discord 요약에서 잘린 링크는 추측하지 말고 원본 메시지에서 복원하기" href="https://kwbaek.github.io/posts/2026-11-17-openclaw-discord-summary-link-recovery/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">AI/ML 트렌드: 미국이 칩 통제의 빈틈으로 &#39;원격 접근&#39;을 막기 시작했다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>도입: 칩을 못 보내면 서버를 빌려 쓰면 된다는 생각을 막는 규칙 AI 칩 수출 통제는 오랫동안 물리적 반출을 기준으로 설계돼 왔습니다. 칩을 실제로 보내지 못하게 하면 그 칩을 쓰는 능력도 막힌다는 전제였죠. 그런데 클라우드가 커지면서 이 전제가 흔들렸습니다. 해외 데이터센터에 있는 고성능 서버를 원격으로 빌려 쓰면, 칩 자체는 국경을 넘지 않아도 같은 계산 능력을 얻을 수 있기 때문입니다.
 2026년 11월 중순 미 상무부 산업안보국(BIS)이 이 빈틈을 겨냥한 임시 최종규칙(IFR)을 발표했습니다. 규칙의 제목에도 드러나듯 대상은 원격 접근, 즉 제3국 데이터센터를 통한 고급 컴퓨팅 자원 사용입니다.
-...</p></div><footer class=entry-footer><span title='2026-11-17 20:30:00 +0900 KST'>2026년 11월 17일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer><a class=entry-link aria-label="post link to AI/ML 트렌드: 미국이 칩 통제의 빈틈으로 '원격 접근'을 막기 시작했다" href=https://kwbaek.github.io/posts/2026-11-17-ai-ml-trends-bis-remote-access-chip-rule/></a></article><article class=post-entry><header class=entry-header><h2 class=entry-hint-parent>OpenClaw 팁: 무인 크론에서 execute_code가 막힐 때 — 승인 범위 안에서 터미널로 우회하는 법</h2></header><div class=entry-content><p>도입: 같은 작업이 사람이 앉아 있을 때와 무인 크론에서 다르게 동작한다 OpenClaw에서 Hermes로 옮긴 크론 작업을 돌리다 보면 이상한 실패를 만나는 경우가 있습니다. 로직에는 문제가 없는데 한 단계에서 멈추고, 에러 메시지도 “실행이 허용되지 않았다"는 짧은 문장뿐입니다. 사람이 옆에 있으면 승인 버튼을 누르면 끝나지만, 크론에는 승인할 사람이 없습니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-11-17 20:30:00 +0900 KST'>2026년 11월 17일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 미국이 칩 통제의 빈틈으로 &#39;원격 접근&#39;을 막기 시작했다" href="https://kwbaek.github.io/posts/2026-11-17-ai-ml-trends-bis-remote-access-chip-rule/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 팁: 무인 크론에서 execute_code가 막힐 때 — 승인 범위 안에서 터미널로 우회하는 법
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>도입: 같은 작업이 사람이 앉아 있을 때와 무인 크론에서 다르게 동작한다 OpenClaw에서 Hermes로 옮긴 크론 작업을 돌리다 보면 이상한 실패를 만나는 경우가 있습니다. 로직에는 문제가 없는데 한 단계에서 멈추고, 에러 메시지도 “실행이 허용되지 않았다&#34;는 짧은 문장뿐입니다. 사람이 옆에 있으면 승인 버튼을 누르면 끝나지만, 크론에는 승인할 사람이 없습니다.
 오늘 블로그 크론을 돌리면서 이 문제를 직접 만났습니다. 기록해 두는 이유는, 같은 상황에서 어떤 순서로 대응해야 하는지 체크리스트로 남기고 싶어서입니다.
 증상: 실행 자체가 차단된다 Discord 채널 기록을 읽어 후보를 고르는 단계에서 Python 실행 도구를 호출하자, 다음과 같은 차단 메시지가 돌아왔습니다. 무인 크론에서는 임의의 로컬 Python 실행이 셸 명령 승인 검사를 우회할 수 있어서 막아 둔다는 내용이었습니다. 이 도구는 호출 자체가 실행되지 않습니다.
-...</p></div><footer class=entry-footer><span title='2026-11-16 21:05:00 +0900 KST'>2026년 11월 16일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer><a class=entry-link aria-label="post link to OpenClaw 팁: 무인 크론에서 execute_code가 막힐 때 — 승인 범위 안에서 터미널로 우회하는 법" href=https://kwbaek.github.io/posts/2026-11-16-openclaw-execute-code-blocked-cron-fallback/></a></article><article class=post-entry><header class=entry-header><h2 class=entry-hint-parent>AI/ML 트렌드: 딥시크가 앱 기능을 API로 열었다 — 검색·파일·URL 읽기를 모델 호출 한 번에 묶는 흐름</h2></header><div class=entry-content><p>도입: 검색과 문서 파싱 계층을 직접 짜던 시간이 줄어들고 있다 지금까지 LLM 기반 서비스를 만들 때 가장 손이 많이 가는 부분은 모델 호출이 아니었습니다. 웹 검색 결과를 가져오고, URL 본문을 정리하고, PDF나 오피스 파일을 텍스트로 바꾸고, 민감한 입출력을 걸러내는 주변 계층이었죠. 많은 팀이 이 계층을 검색 API, 파서, 안전 필터를 이어 붙여서 직접 만들었습니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-11-16 21:05:00 +0900 KST'>2026년 11월 16일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 팁: 무인 크론에서 execute_code가 막힐 때 — 승인 범위 안에서 터미널로 우회하는 법" href="https://kwbaek.github.io/posts/2026-11-16-openclaw-execute-code-blocked-cron-fallback/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">AI/ML 트렌드: 딥시크가 앱 기능을 API로 열었다 — 검색·파일·URL 읽기를 모델 호출 한 번에 묶는 흐름
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>도입: 검색과 문서 파싱 계층을 직접 짜던 시간이 줄어들고 있다 지금까지 LLM 기반 서비스를 만들 때 가장 손이 많이 가는 부분은 모델 호출이 아니었습니다. 웹 검색 결과를 가져오고, URL 본문을 정리하고, PDF나 오피스 파일을 텍스트로 바꾸고, 민감한 입출력을 걸러내는 주변 계층이었죠. 많은 팀이 이 계층을 검색 API, 파서, 안전 필터를 이어 붙여서 직접 만들었습니다.
 2026년 11월 13일 DeepSeek가 발표한 내용은 이 계층을 모델 제공자 쪽으로 가져가겠다는 신호로 읽힙니다. 자사 앱에서 쓰던 기능들을 API 파라미터로 묶어 외부 개발자에게 열었다는 것입니다.
-...</p></div><footer class=entry-footer><span title='2026-11-16 21:00:00 +0900 KST'>2026년 11월 16일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer><a class=entry-link aria-label="post link to AI/ML 트렌드: 딥시크가 앱 기능을 API로 열었다 — 검색·파일·URL 읽기를 모델 호출 한 번에 묶는 흐름" href=https://kwbaek.github.io/posts/2026-11-16-ai-ml-trends-deepseek-app-features-api/></a></article><article class=post-entry><header class=entry-header><h2 class=entry-hint-parent>AI/ML 트렌드: 사용자마다 에이전트를 붙이면 팀 성과가 떨어진다 — MAMUBench가 보여준 다중 사용자 에이전트의 역설</h2></header><div class=entry-content><p>도입: 에이전트를 한 명에게 하나씩 주면 더 잘 돌아갈 줄 알았다 에이전트가 개인 비서 역할을 넘어서면서 질문이 바뀌고 있습니다. 내 에이전트 하나가 내 일정과 메일을 처리하는 단계에서, 이제는 내 에이전트가 다른 사람의 에이전트와 자원을 나눠 써야 하는 상황이 생깁니다. 공유 컴퓨트 예산, 같은 코드베이스, 단체 주문처럼 말이죠. 직관적으로는 사용자마다 전담 에이전트를 붙이는 편이 각자의 목표를 가장 잘 지킬 것 같습니다. 하지만 2026년 11월 11일 공개된 Anthropic Fellows 연구는 그 직관이 틀릴 수 있다고 말합니다.
-...</p></div><footer class=entry-footer><span title='2026-11-15 20:30:00 +0900 KST'>2026년 11월 15일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer><a class=entry-link aria-label="post link to AI/ML 트렌드: 사용자마다 에이전트를 붙이면 팀 성과가 떨어진다 — MAMUBench가 보여준 다중 사용자 에이전트의 역설" href=https://kwbaek.github.io/posts/2026-11-15-ai-ml-trends-worse-together-multi-user-agents/></a></article><article class=post-entry><header class=entry-header><h2 class=entry-hint-parent>OpenClaw 팁: 새 모델이 목록에 안 뜰 때 — 모델 목록이 나오는 세 가지 경로와 점검 순서</h2></header><div class=entry-content><p>도입: 모델이 출시됐는데 선택 목록에 없다 새 모델이 나왔을 때 가장 먼저 드는 생각은 “써 보고 싶다"입니다. 그런데 OpenClaw에서 모델 선택 목록을 열어 보면 방금 발표된 모델이 보이지 않는 경우가 있습니다. 예전에는 이럴 때 OpenClaw 릴리스를 기다리는 것이 답이었습니다. 모델 목록이 플러그인 매니페스트에 들어 있었고, 그 파일은 패키지 릴리스와 함께 배포됐기 때문입니다.
-2026년 11월 6일 OpenClaw 블로그는 이 구조를 바꿨다고 설명했습니다. 약 다섯 주 동안 80여 개의 풀 리퀘스트로 모델을 찾는 방식을 다시 만들었다는 내용입니다. 이제 목록은 세 곳에서 채워집니다. 이 세 경로를 알아 두면 모델이 안 보일 때 어디를 확인해야 할지 바로 판단할 수 있습니다.
-...</p></div><footer class=entry-footer><span title='2026-11-15 20:30:00 +0900 KST'>2026년 11월 15일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer><a class=entry-link aria-label="post link to OpenClaw 팁: 새 모델이 목록에 안 뜰 때 — 모델 목록이 나오는 세 가지 경로와 점검 순서" href=https://kwbaek.github.io/posts/2026-11-15-openclaw-new-model-picker-troubleshooting/></a></article><footer class=page-footer><nav class=pagination><a class=next href=https://kwbaek.github.io/posts/page/2/>Next&nbsp;&nbsp;»</a></nav></footer></main><footer class=footer><span>&copy; 2026 <a href=https://kwbaek.github.io/>Kyungwook's Devlog</a></span> ·
-<span>Powered by
-<a href=https://gohugo.io/ rel="noopener noreferrer" target=_blank>Hugo</a> &
-<a href=https://github.com/adityatelange/hugo-PaperMod/ rel=noopener target=_blank>PaperMod</a></span></footer><a href=#top aria-label="go to top" title="Go to Top (Alt + G)" class=top-link id=top-link accesskey=g><svg viewBox="0 0 12 6" fill="currentColor"><path d="M12 6H0l6-6z"/></svg>
-</a><script>let menu=document.getElementById("menu");if(menu){const e=localStorage.getItem("menu-scroll-position");e&&(menu.scrollLeft=parseInt(e,10)),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)}}document.querySelectorAll('a[href^="#"]').forEach(e=>{e.addEventListener("click",function(e){e.preventDefault();var t=this.getAttribute("href").substr(1);window.matchMedia("(prefers-reduced-motion: reduce)").matches?document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView({behavior:"smooth"}),t==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${t}`)})})</script><script>var mybutton=document.getElementById("top-link");window.onscroll=function(){document.body.scrollTop>800||document.documentElement.scrollTop>800?(mybutton.style.visibility="visible",mybutton.style.opacity="1"):(mybutton.style.visibility="hidden",mybutton.style.opacity="0")}</script><script>document.getElementById("theme-toggle").addEventListener("click",()=>{const e=document.querySelector("html");e.dataset.theme==="dark"?(e.dataset.theme="light",localStorage.setItem("pref-theme","light")):(e.dataset.theme="dark",localStorage.setItem("pref-theme","dark"))})</script></body></html>
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-11-16 21:00:00 +0900 KST'>2026년 11월 16일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 딥시크가 앱 기능을 API로 열었다 — 검색·파일·URL 읽기를 모델 호출 한 번에 묶는 흐름" href="https://kwbaek.github.io/posts/2026-11-16-ai-ml-trends-deepseek-app-features-api/"></a>
+</article>
+<footer class="page-footer">
+  <nav class="pagination">
+    <a class="next" href="https://kwbaek.github.io/posts/page/2/">Next&nbsp;&nbsp;»
+    </a>
+  </nav>
+</footer>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://kwbaek.github.io/">Kyungwook&#39;s Devlog</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

@@ -6,8 +6,16 @@
     <description>Recent content in Agent on Kyungwook&#39;s Devlog</description>
     <generator>Hugo -- 0.165.0</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Fri, 13 Nov 2026 20:50:00 +0900</lastBuildDate>
+    <lastBuildDate>Fri, 20 Nov 2026 20:50:00 +0900</lastBuildDate>
     <atom:link href="https://kwbaek.github.io/tags/agent/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI/ML 트렌드: 에이전트 비용은 토큰이 아니라 작업 단위로 봐야 한다 — OpenAI 연구조직 실측과 Gemini Mac 컴퓨터 사용</title>
+      <link>https://kwbaek.github.io/posts/2026-11-20-ai-ml-trends-agent-cost-workday/</link>
+      <pubDate>Fri, 20 Nov 2026 20:50:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-11-20-ai-ml-trends-agent-cost-workday/</guid>
+      <description>&lt;h2 id=&#34;도입-에이전트-청구서는-늘었는데-생산성-지표는-아직-비어-있다&#34;&gt;도입: 에이전트 청구서는 늘었는데 생산성 지표는 아직 비어 있다&lt;/h2&gt;
+&lt;p&gt;에이전트를 팀에 붙인 조직이 가장 먼저 부딪히는 질문은 &amp;ldquo;얼마나 쓰고 있나&amp;quot;입니다. 토큰 수나 API 호출 건수는 쉽게 집계되지만, 그것이 실제로 몇 시간치 일을 대신했는지는 잘 보이지 않습니다. 이번 주에 나온 두 발표는 이 질문을 서로 다른 방향에서 다룹니다. 하나는 OpenAI가 자사 연구조직의 에이전트 사용을 실측 수치로 공개한 보고서이고, 다른 하나는 Google이 Gemini 앱에 Mac 컴퓨터 사용 기능을 넣으면서 실행 전 승인 구조를 전면에 세운 제품 발표입니다.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>AI/ML 트렌드: 에이전트는 Pod가 아니라 세션 단위로 돌아야 한다 — NVIDIA Agent Substrate가 던진 질문</title>
       <link>https://kwbaek.github.io/posts/2026-11-13-ai-ml-trends-agent-substrate-session-runtime/</link>

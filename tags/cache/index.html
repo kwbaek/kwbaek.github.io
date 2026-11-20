@@ -143,6 +143,20 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 팁: 쓰기 도구의 거부 경고를 놓치지 말고, 저장 뒤에는 반드시 다시 읽어 검증하라
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>도입: 실행은 끝났는데 파일은 그대로인 상황 자동 실행 작업(cron)은 대개 “캐시를 갱신하고, 결과를 내보낸다” 순서로 움직입니다. 그런데 이 순서에서 가장 조용한 실패가 있습니다. 쓰기 도구가 거부했는데도 작업은 계속 진행되어, 최종 응답은 성공처럼 보이고 파일은 이전 상태로 남는 경우입니다. 사람이 지켜보지 않는 실행에서는 이 간극이 다음 실행의 중복 판정과 재발행으로 번집니다.
+실제로 이번 주 스캐너 실행 기록에도 이런 흔적이 남았습니다. 임시 스크립트로 캐시 파일을 덮어쓰려던 write_file 호출이 “기존 파일을 먼저 읽지 않아 덮어쓰기를 거부한다&#34;는 응답을 받았고, 실행 말미에 “파일 편집 1건이 실패했으니 git status나 read_file로 실제 반영을 확인하라&#34;는 경고가 붙었습니다. 본문은 성공을 말하고 있었지만, 실제 파일은 바뀌지 않았을 가능성이 있었습니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-11-20 20:52:00 +0900 KST'>2026년 11월 20일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 팁: 쓰기 도구의 거부 경고를 놓치지 말고, 저장 뒤에는 반드시 다시 읽어 검증하라" href="https://kwbaek.github.io/posts/2026-11-20-openclaw-write-verify-readback/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">Hermes/리오 팁: 캐시에서 고른 뉴스의 &#39;수집 시각&#39;과 &#39;발행일&#39;을 섞어 읽지 마세요
     </h2>
   </header>
