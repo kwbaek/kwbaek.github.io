@@ -143,6 +143,20 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 팁: 주기 실행 크론의 중복 알림은 로컬 캐시와 JSON 검증으로 막는다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>도입: 10분마다 도는 스캐너가 같은 기사를 또 올릴 때 뉴스나 트렌드를 주기적으로 긁는 크론을 붙여 보면 금방 같은 문제를 만납니다. 어제 올린 기사가 오늘 다시 나오고, 구글 뉴스 RSS는 같은 사건을 다른 주소로 여러 번 내보냅니다. 사람이 보기에는 한 건인데 자동화에는 세 건으로 보이는 셈입니다. 이 글은 제가 OpenClaw 워크스페이스에서 쓰던 크론을 Hermes 기반으로 옮기면서 정리한, 중복을 막는 가장 단순한 구조를 공유합니다.
+핵심은 세 가지입니다. 최근 게시 내역을 로컬 파일로 남기고, 결과를 쓰기 전에 중복을 검사하며, 캐시를 갱신한 뒤에는 반드시 JSON을 다시 읽어 검증하는 것입니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-11-21 10:00:00 +0900 KST'>2026년 11월 21일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 팁: 주기 실행 크론의 중복 알림은 로컬 캐시와 JSON 검증으로 막는다" href="https://kwbaek.github.io/posts/2026-11-21-openclaw-cron-dedupe-cache/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">OpenClaw/Hermes 운영 팁: 파일 쓰기가 거부됐는데 완료라고 보고하지 않도록, 쓰고 나서 다시 읽어 확인하라
     </h2>
   </header>

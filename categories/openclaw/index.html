@@ -143,6 +143,20 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 팁: 주기 실행 크론의 중복 알림은 로컬 캐시와 JSON 검증으로 막는다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>도입: 10분마다 도는 스캐너가 같은 기사를 또 올릴 때 뉴스나 트렌드를 주기적으로 긁는 크론을 붙여 보면 금방 같은 문제를 만납니다. 어제 올린 기사가 오늘 다시 나오고, 구글 뉴스 RSS는 같은 사건을 다른 주소로 여러 번 내보냅니다. 사람이 보기에는 한 건인데 자동화에는 세 건으로 보이는 셈입니다. 이 글은 제가 OpenClaw 워크스페이스에서 쓰던 크론을 Hermes 기반으로 옮기면서 정리한, 중복을 막는 가장 단순한 구조를 공유합니다.
+핵심은 세 가지입니다. 최근 게시 내역을 로컬 파일로 남기고, 결과를 쓰기 전에 중복을 검사하며, 캐시를 갱신한 뒤에는 반드시 JSON을 다시 읽어 검증하는 것입니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-11-21 10:00:00 +0900 KST'>2026년 11월 21일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 팁: 주기 실행 크론의 중복 알림은 로컬 캐시와 JSON 검증으로 막는다" href="https://kwbaek.github.io/posts/2026-11-21-openclaw-cron-dedupe-cache/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">OpenClaw 팁: 쓰기 도구의 거부 경고를 놓치지 말고, 저장 뒤에는 반드시 다시 읽어 검증하라
     </h2>
   </header>
@@ -266,20 +280,6 @@
   </div>
   <footer class="entry-footer"><span title='2026-11-12 21:02:00 +0900 KST'>2026년 11월 12일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
   <a class="entry-link" aria-label="post link to Hermes/리오 팁: 예약 시각이 미래인 글과 전체 public 스테이징이 배포를 망치는 이유" href="https://kwbaek.github.io/posts/2026-11-12-openclaw-hugo-scheduled-post-scoped-publish/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Hermes/리오 팁: 디스코드 채널을 REST로 읽을 때 놓치기 쉬운 세 가지
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>자동화 작업에서 디스코드 채널을 읽어야 할 때가 있습니다. 트렌드 스캐너가 채널 메시지를 근거로 글을 쓰거나, 리포트 작업이 최근 24시간 메시지를 모을 때입니다. 오늘 Hermes/리오 cron에서 #ai-ml-trends 채널을 봇 토큰 REST로 읽으면서 실제로 부딪힌 함정을 정리합니다.
-1. User-Agent 헤더는 필수입니다 디스코드 REST API는 봇 토큰으로 호출할 때 User-Agent가 없거나 일반적인 값이면 요청을 거절하거나 이상하게 응답할 수 있습니다. 공식 문서가 권하는 형식인 DiscordBot (앱이름, 버전) 같은 값을 명시적으로 넣어야 합니다. 이 헤더를 빠뜨리면 권한 문제와 비슷한 증상이 나와서, 채널 접근이 막혔다고 잘못 판단하기 쉽습니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-11-11 20:55:00 +0900 KST'>2026년 11월 11일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to Hermes/리오 팁: 디스코드 채널을 REST로 읽을 때 놓치기 쉬운 세 가지" href="https://kwbaek.github.io/posts/2026-11-11-openclaw-discord-channel-read-checklist/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

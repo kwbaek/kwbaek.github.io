@@ -1,3 +1,21 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Staging on Kyungwook's Devlog</title><link>https://kwbaek.github.io/tags/staging/</link><description>Recent content in Staging on Kyungwook's Devlog</description><generator>Hugo -- 0.165.0</generator><language>ko-kr</language><lastBuildDate>Thu, 19 Nov 2026 20:58:00 +0900</lastBuildDate><atom:link href="https://kwbaek.github.io/tags/staging/index.xml" rel="self" type="application/rss+xml"/><item><title>OpenClaw 팁: 생성된 배포 저장소는 디렉터리 단위로 add하지 말고 목록 파일로 스테이징하라</title><link>https://kwbaek.github.io/posts/2026-11-19-openclaw-public-repo-scoped-staging/</link><pubDate>Thu, 19 Nov 2026 20:58:00 +0900</pubDate><guid>https://kwbaek.github.io/posts/2026-11-19-openclaw-public-repo-scoped-staging/</guid><description>&lt;h2 id="도입-블로그-배포-cron이-10분씩-멈춘-이유"&gt;도입: 블로그 배포 cron이 10분씩 멈춘 이유&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Staging on Kyungwook&#39;s Devlog</title>
+    <link>https://kwbaek.github.io/tags/staging/</link>
+    <description>Recent content in Staging on Kyungwook&#39;s Devlog</description>
+    <generator>Hugo -- 0.165.0</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Thu, 19 Nov 2026 20:58:00 +0900</lastBuildDate>
+    <atom:link href="https://kwbaek.github.io/tags/staging/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>OpenClaw 팁: 생성된 배포 저장소는 디렉터리 단위로 add하지 말고 목록 파일로 스테이징하라</title>
+      <link>https://kwbaek.github.io/posts/2026-11-19-openclaw-public-repo-scoped-staging/</link>
+      <pubDate>Thu, 19 Nov 2026 20:58:00 +0900</pubDate>
+      <guid>https://kwbaek.github.io/posts/2026-11-19-openclaw-public-repo-scoped-staging/</guid>
+      <description>&lt;h2 id=&#34;도입-블로그-배포-cron이-10분씩-멈춘-이유&#34;&gt;도입: 블로그 배포 cron이 10분씩 멈춘 이유&lt;/h2&gt;
 &lt;p&gt;Hugo 블로그를 매일 자동으로 발행하는 cron은 두 개의 저장소를 다룹니다. 하나는 원본 글을 담은 소스 저장소이고, 다른 하나는 &lt;code&gt;hugo&lt;/code&gt; 빌드 결과물을 담은 &lt;code&gt;public/&lt;/code&gt; 배포 저장소입니다. 소스 쪽은 몇 줄만 바뀌지만, 배포 저장소는 빌드할 때마다 수천 개의 HTML 파일이 다시 생성됩니다. 여기서 흔히 하는 실수가 &lt;code&gt;git add tags&lt;/code&gt;나 &lt;code&gt;git add -A&lt;/code&gt; 같은 디렉터리 단위 스테이징입니다.&lt;/p&gt;
-&lt;p&gt;실제로 한 번에 1,600개가 넘는 무관한 태그 페이지가 스테이징된 적이 있습니다. 그 상태로 커밋하면 사전 커밋 보안 가드가 전체 파일을 훑느라 10분 이상 걸리고, 과거 페이지의 예시 문구(&lt;code&gt;token&lt;/code&gt;, &lt;code&gt;password&lt;/code&gt; 같은 자리표시자)에 번번이 걸려 멈춥니다. 이번 글에서는 Hermes/리오가 이 문제를 어떻게 피하는지 정리합니다.&lt;/p&gt;</description></item></channel></rss>
+&lt;p&gt;실제로 한 번에 1,600개가 넘는 무관한 태그 페이지가 스테이징된 적이 있습니다. 그 상태로 커밋하면 사전 커밋 보안 가드가 전체 파일을 훑느라 10분 이상 걸리고, 과거 페이지의 예시 문구(&lt;code&gt;token&lt;/code&gt;, &lt;code&gt;password&lt;/code&gt; 같은 자리표시자)에 번번이 걸려 멈춥니다. 이번 글에서는 Hermes/리오가 이 문제를 어떻게 피하는지 정리합니다.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

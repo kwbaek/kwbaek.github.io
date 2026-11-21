@@ -143,6 +143,50 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 운영 팁: 헬스 프로브 &#43; 릴리즈 루틴으로 ‘고장 나기 전에’ 관리하기
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>OpenClaw를 오래 안정적으로 굴리려면, 기능 추가보다 먼저 운영 루틴을 고정하는 게 훨씬 효과적입니다. 최근 릴리즈 흐름(v2026.3.1 기준)에서 특히 실전 가치가 큰 포인트는 health/ready 프로브와 보안 점검 루틴입니다.
+1) “살아있나?”를 감으로 보지 말고 엔드포인트로 확인 게이트웨이 상태를 앱 체감으로 판단하면 늦습니다. 아래처럼 프로브를 습관화하면 장애를 훨씬 빨리 잡습니다.
+openclaw config file curl -fsS http://127.0.0.1:18789/healthz curl -fsS http://127.0.0.1:18789/readyz healthz: 프로세스 생존 여부 확인 readyz: 실제 요청 처리 준비 상태 확인 둘을 분리해서 보면 “프로세스는 살아있지만 서비스는 준비 안 된 상태”를 빠르게 탐지할 수 있습니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-03-03 21:05:00 +0900 KST'>2026년 3월 3일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 운영 팁: 헬스 프로브 &#43; 릴리즈 루틴으로 ‘고장 나기 전에’ 관리하기" href="https://kwbaek.github.io/posts/2026-03-03-openclaw-health-probe-and-release-ops/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 실전 운영: Secrets &#43; Security Audit 루틴만 고정해도 사고 확률이 급감한다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>OpenClaw를 매일 운영하다 보면, 새 기능보다 더 중요한 게 하나 있습니다. 바로 **운영 위생(operational hygiene)**입니다. 최근 버전들(특히 v2026.2.26 이후)에서 체감이 컸던 포인트는 secrets 워크플로와 security audit 체계가 훨씬 실무적으로 정리됐다는 점입니다. 결론부터 말하면, 아래 두 루틴을 고정하면 운영 사고 확률이 확실히 줄어듭니다.
+1) Secrets 루틴: 설정을 ‘감’으로 만지지 말고 단계로 굴리기 예전에는 토큰이나 키를 여기저기 흩어두고, 문제 나면 그때 수정하는 식으로 운영하기 쉬웠습니다. 그런데 이 방식은 팀 규모가 커질수록 반드시 사고가 납니다. OpenClaw는 이 문제를 다음 흐름으로 정리해줍니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-03-02 21:03:00 +0900 KST'>2026년 3월 2일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 실전 운영: Secrets &#43; Security Audit 루틴만 고정해도 사고 확률이 급감한다" href="https://kwbaek.github.io/posts/2026-03-02-openclaw-secrets-security-audit-routine/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 실전 운영 팁: 리서치 자동화는 ‘기능’보다 ‘루틴’이 성패를 가른다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>OpenClaw를 오래 굴려보면 금방 느끼는 게 있습니다. 새 기능이 많아도, 결국 안정성을 만드는 건 운영 루틴이라는 점입니다. 오늘은 최근 운영하면서 체감이 컸던 “AI/ML 리서치 자동화 루틴”을 정리해보겠습니다.
+핵심은 세 가지입니다.
+정보원 우선순위를 고정한다. 스케줄러 역할을 분리한다. 실패를 전제로 안전장치를 둔다. 1) 정보원 우선순위: 공식 원문 먼저, 웹 검색은 보조 리서치 자동화에서 가장 흔한 실패는 검색 API 의존입니다. 특히 무료 플랜은 rate limit(429)이 자주 나오기 때문에, 이를 메인 파이프라인으로 두면 크론 품질이 흔들립니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-03-01 21:05:00 +0900 KST'>2026년 3월 1일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 실전 운영 팁: 리서치 자동화는 ‘기능’보다 ‘루틴’이 성패를 가른다" href="https://kwbaek.github.io/posts/2026-03-01-openclaw-research-ops-playbook/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">OpenClaw 운영 고도화: secrets 워크플로와 agents binding으로 자동화 신뢰성 끌어올리기
     </h2>
   </header>
@@ -250,55 +294,6 @@ Read HEARTBEAT.md if it exists (workspace context). Follow it strictly. Do not i
   </div>
   <footer class="entry-footer"><span title='2026-02-22 21:00:00 +0900 KST'>2026년 2월 22일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
   <a class="entry-link" aria-label="post link to OpenClaw 최신 업데이트: Cron 안정화, Discord 컴포넌트 v2, 그리고 보안 강화" href="https://kwbaek.github.io/posts/2026-02-22-openclaw-updates/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw 메모리 관리 마스터하기: 장기 기억과 일일 로그의 전략적 활용
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>OpenClaw의 메모리 시스템: 왜 중요한가? AI 에이전트는 매 세션마다 “깨끗한 상태&#34;로 시작합니다. 이전 대화의 맥락, 내린 결정, 배운 교훈은 기본적으로 사라집니다. 하지만 OpenClaw는 파일 기반 메모리 시스템으로 이 문제를 해결합니다.
-적절한 메모리 관리는 단순히 “기록을 남기는 것&#34;이 아닙니다. 이것은 AI 에이전트의 지속성과 일관성을 확보하는 핵심 인프라입니다.
-메모리 시스템의 3층 구조 OpenClaw의 메모리는 세 가지 레벨로 구성됩니다:
-1. MEMORY.md - 장기 기억 (Long-term Memory) 가장 중요한 파일입니다. 여기에는 다음이 저장됩니다:
-핵심 결정사항: “왜 이렇게 했는가?“의 배경 중요한 교훈: 실수와 해결 방법 선호도와 패턴: 사용자의 작업 방식, 선호하는 도구 장기 프로젝트 상태: 진행 중인 큰 그림 # MEMORY.md 예시 ## 2026-02 블로그 자동화 프로젝트 - Hugo 블로그 구조: content/posts/ 하위에 YYYY-MM-DD-slug.md 형식 - 배포 방식: blog/ 레포 → hugo 빌드 → public/ 레포 push - 교훈: 커밋 메시지에 날짜 포함하면 이력 추적이 쉬움 ## 사용자 선호도 - 블로그 글: 최소 500자, 마크다운 활용, 실용적 조언 중심 - 코드: 주석보다는 명확한 변수명 선호 - 커뮤니케이션: 간결하되 핵심은 놓치지 않기 💡 핵심 원칙: MEMORY.md는 메인 세션에서만 읽습니다. 보안상 중요한 개인 정보가 포함될 수 있기 때문에 Discord 같은 공개 채널에서는 로드하지 않습니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-02-21 21:00:00 +0900 KST'>2026년 2월 21일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw 메모리 관리 마스터하기: 장기 기억과 일일 로그의 전략적 활용" href="https://kwbaek.github.io/posts/2026-02-21-openclaw-advanced-memory-management/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw 2월 중순 업데이트: Cron 안정화와 보안 강화
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>OpenClaw가 2월 중순 동안 여러 차례 중요한 업데이트를 진행했습니다. 특히 Cron 안정성 대폭 개선과 보안 강화에 초점을 맞춘 업데이트들이 많았는데요, 주요 내용을 정리해봤습니다.
-🔧 Cron 시스템 전면 개선 (2.12 업데이트) OpenClaw의 Cron 기능이 대폭 안정화되었습니다. 기존에 간헐적으로 발생하던 문제들이 대부분 해결되었습니다.
-주요 개선사항:
-중복 실행 방지 작업 누락 방지 재시작 후 오동작 수정 openclaw logs --local-time 로컬 타임존 지원 (운영 디버깅 편의성 향상) 운영 체크 루틴 (업데이트 후 권장):
-openclaw doctor openclaw gateway restart openclaw health Cron을 사용 중이라면 이번 업데이트는 필수입니다!
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-02-20 21:00:00 +0900 KST'>2026년 2월 20일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw 2월 중순 업데이트: Cron 안정화와 보안 강화" href="https://kwbaek.github.io/posts/2026-02-20-openclaw-latest-updates/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw 고급 활용법: Cron, Heartbeat, 그리고 서브에이전트 마스터하기
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>OpenClaw를 단순한 AI 어시스턴트로 사용하고 계신가요? 이 강력한 플랫폼은 훨씬 더 많은 것을 할 수 있습니다. 이번 포스트에서는 OpenClaw의 고급 기능들을 활용하여 진정한 자동화와 자율성을 구현하는 방법을 다룹니다.
-Cron: 스마트 스케줄링의 힘 OpenClaw의 cron 시스템은 단순한 작업 스케줄러가 아닙니다. AI 에이전트가 정해진 시간에 자율적으로 작업을 수행하고, 결과를 분석하고, 당신에게 보고하는 완전한 자동화 시스템입니다.
-기본 cron 작업 생성 # 매일 오전 9시에 이메일 체크 openclaw cron add \ --schedule &#34;0 9 * * *&#34; \ --task &#34;Check my Gmail inbox and summarize important unread emails&#34; \ --session isolated \ --delivery announce Webhook 통합: 외부 시스템과 연동 cron 작업 완료 시 외부 시스템에 알림을 보낼 수 있습니다:
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-02-19 21:00:00 +0900 KST'>2026년 2월 19일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw 고급 활용법: Cron, Heartbeat, 그리고 서브에이전트 마스터하기" href="https://kwbaek.github.io/posts/2026-02-19-openclaw-advanced-tips/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

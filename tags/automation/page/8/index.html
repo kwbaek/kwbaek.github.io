@@ -143,6 +143,34 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">Hermes/리오 팁: Skill 설치에도 무결성 게이트를 두기
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 AI/ML 트렌드가 에이전트 skill을 공급망으로 보라고 말해준다면, Hermes/리오 운영에도 바로 적용할 수 있는 습관이 있습니다. 새 skill이나 tool을 붙일 때 설치 전 무결성 게이트를 둔다는 원칙입니다. 에이전트 자동화에서 skill은 단순한 도움말이 아닙니다. 어떤 파일을 읽을지, 어떤 명령을 실행할지, 어떤 외부 서비스를 호출할지 결정하는 실행 표면입니다. 따라서 새 skill을 추가하는 순간 자동화의 권한 경계도 함께 바뀝니다.
+첫 번째 체크는 설명과 실제 행동의 일치입니다. skill 문서가 “읽기 전용 분석”을 말한다면 실제 스크립트도 파일 쓰기, 커밋, 네트워크 전송을 하지 않아야 합니다. 반대로 배포나 전송처럼 외부 부작용이 필요한 skill이라면, 그 조건과 검증 단계가 문서에 명시돼 있어야 합니다. Hermes/리오가 자동으로 작업을 수행할수록 “이 skill이 무엇을 한다고 주장하는가”와 “실제로 어떤 권한을 쓰는가”를 비교하는 단계가 중요해집니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-06-11 21:00:00 +0900 KST'>2026년 6월 11일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to Hermes/리오 팁: Skill 설치에도 무결성 게이트를 두기" href="https://kwbaek.github.io/posts/2026-06-11-hermes-rio-add-an-integrity-gate-before-installing-skills/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Hermes/리오 팁: 상태를 바꾸는 자동화 앞에는 Change Gate를 두기
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 AI/ML 트렌드가 에이전트 거버넌스를 데이터베이스 변경까지 확장하는 흐름이라면, Hermes/리오 자동화에도 바로 적용할 수 있는 운영 원칙이 있습니다. 상태를 바꾸는 작업 앞에는 반드시 Change Gate를 둔다는 원칙입니다. 크론 작업이 단순히 정보를 읽고 요약하는 수준이라면 실패해도 피해가 작습니다. 하지만 파일을 쓰고, 블로그를 배포하고, 캐시를 갱신하고, 외부 저장소에 커밋하는 순간부터는 “잘 썼는가”보다 “안전하게 바꿨는가”가 더 중요해집니다.
+Change Gate의 첫 번째 역할은 작업을 읽기 전용 단계와 변경 단계로 분리하는 것입니다. 예를 들어 블로그 자동화라면 트렌드 입력 읽기, 최근 글 확인, 초안 작성까지는 비교적 안전한 영역입니다. 반면 source repo commit, Hugo build, deployment repo push는 공개 결과를 바꾸는 단계입니다. 이 둘을 같은 사고방식으로 처리하면 안 됩니다. 변경 단계로 넘어가기 전에는 입력이 충분한지, 중복 주제가 아닌지, 공개 문구에 레거시 표현이나 민감한 세부값이 섞이지 않았는지 확인해야 합니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-06-10 20:55:00 +0900 KST'>2026년 6월 10일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to Hermes/리오 팁: 상태를 바꾸는 자동화 앞에는 Change Gate를 두기" href="https://kwbaek.github.io/posts/2026-06-10-hermes-rio-put-a-change-gate-before-stateful-automation/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">Hermes/리오 팁: 크론 자동화를 조립식 도구 표면으로 설계하기
     </h2>
   </header>
@@ -249,34 +277,6 @@ Hermes/리오 크론을 예로 들면, 매일 리포트나 블로그 글을 자�
   </div>
   <footer class="entry-footer"><span title='2026-06-02 21:00:00 +0900 KST'>2026년 6월 2일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
   <a class="entry-link" aria-label="post link to Hermes/리오 팁: 자동화 결과에 근거 레이어 붙이기" href="https://kwbaek.github.io/posts/2026-06-02-hermes-rio-add-an-evidence-layer-to-automation/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Hermes/리오 팁: 크론 자동화를 작은 AI Factory처럼 운영하기
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>오늘 AI/ML 트렌드에서 NVIDIA의 AI factory 운영 소프트웨어와 칩 단 보안 발표가 눈에 띄었습니다. 흥미로운 점은 이 원칙이 대형 GPU 클러스터에만 해당하지 않는다는 것입니다. Hermes/리오로 매일 리포트, 블로그, 트렌드 스캔, 개인 업무 자동화를 돌릴 때도 같은 사고방식이 필요합니다. 크론 하나는 작아 보이지만, 여러 개가 쌓이면 결국 개인용 AI factory가 됩니다.
-작은 AI factory의 첫 번째 원칙은 입력 라인 관리입니다. 어떤 크론이 어떤 채널, 리포트, 캐시, 파일을 읽는지 명확해야 합니다. 1순위 입력이 막혔을 때 어떤 폴백을 쓸지, 폴백 자료는 얼마나 최신이어야 하는지, 중복 검사는 무엇으로 할지 정해두면 자동화가 흔들리지 않습니다. “오늘 Discord를 못 읽었으니 아무 말이나 쓰자”가 아니라, “최신 스캐너 캐시와 아침 리포트를 쓰되 최근 발행 글과 겹치지 않게 쓰자”가 되어야 합니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-06-01 21:00:00 +0900 KST'>2026년 6월 1일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to Hermes/리오 팁: 크론 자동화를 작은 AI Factory처럼 운영하기" href="https://kwbaek.github.io/posts/2026-06-01-hermes-rio-run-cron-like-a-small-ai-factory/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Hermes/리오 팁: 자동화 크론에는 입력 폴백과 공개 출력 경계가 필요하다
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>Hermes/리오로 매일 블로그, 리포트, 트렌드 스캔을 자동화할 때 가장 자주 만나는 현실은 “원래 입력이 항상 열려 있지는 않다”는 점입니다. 채널 API가 잠시 막히거나, 외부 검색이 rate limit에 걸리거나, 특정 도구가 현재 세션에서 제공되지 않을 수 있습니다. 이때 좋은 자동화는 바로 실패하지도 않고, 근거 없이 지어내지도 않습니다. 대신 입력 폴백과 공개 출력 경계를 미리 설계해 둡니다.
-입력 폴백은 단순한 예비 파일이 아닙니다. 우선순위가 있는 정보 지도입니다. 예를 들어 트렌드 기반 글쓰기 크론이라면 1순위는 오늘의 원본 채널 메시지입니다. 2순위는 같은 목적을 위해 만들어 둔 최신 스캐너 캐시입니다. 3순위는 오늘 아침 생성된 데일리 리포트입니다. 4순위는 최근 며칠의 발행 글과 히스토리입니다. 이렇게 계층을 정해 두면 live source를 읽지 못해도 작업은 멈추지 않습니다. 동시에 “내가 지금 어떤 품질의 입력을 쓰고 있는가”를 스스로 알 수 있습니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-05-31 21:00:00 +0900 KST'>2026년 5월 31일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to Hermes/리오 팁: 자동화 크론에는 입력 폴백과 공개 출력 경계가 필요하다" href="https://kwbaek.github.io/posts/2026-05-31-hermes-rio-cron-needs-input-fallback-and-public-boundaries/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

@@ -158,6 +158,34 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenClaw 팁: 주기 실행 크론의 중복 알림은 로컬 캐시와 JSON 검증으로 막는다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>도입: 10분마다 도는 스캐너가 같은 기사를 또 올릴 때 뉴스나 트렌드를 주기적으로 긁는 크론을 붙여 보면 금방 같은 문제를 만납니다. 어제 올린 기사가 오늘 다시 나오고, 구글 뉴스 RSS는 같은 사건을 다른 주소로 여러 번 내보냅니다. 사람이 보기에는 한 건인데 자동화에는 세 건으로 보이는 셈입니다. 이 글은 제가 OpenClaw 워크스페이스에서 쓰던 크론을 Hermes 기반으로 옮기면서 정리한, 중복을 막는 가장 단순한 구조를 공유합니다.
+핵심은 세 가지입니다. 최근 게시 내역을 로컬 파일로 남기고, 결과를 쓰기 전에 중복을 검사하며, 캐시를 갱신한 뒤에는 반드시 JSON을 다시 읽어 검증하는 것입니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-11-21 10:00:00 +0900 KST'>2026년 11월 21일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to OpenClaw 팁: 주기 실행 크론의 중복 알림은 로컬 캐시와 JSON 검증으로 막는다" href="https://kwbaek.github.io/posts/2026-11-21-openclaw-cron-dedupe-cache/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">AI/ML 트렌드: 에이전트 행동은 실행 직전에 심사해야 한다 — OpenAI 단계별 안전 검토와 Google 시맨틱 거버넌스 정책
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>도입: 권한을 잘 걸어도 “요청 범위 밖의 호출&#34;은 남는다 에이전트에 도구를 붙이는 팀이 가장 먼저 쓰는 방어선은 권한입니다. 어떤 MCP 서버에 접근할 수 있는지, 어떤 API를 호출할 수 있는지를 IAM으로 정하는 식이죠. 그런데 실제로 사고가 나는 장면을 보면 권한은 맞는데 목적이 틀린 경우가 많습니다. 파일 공유 도구를 쓸 권한은 있지만, 그 파일이 외부 메일 주소로 나가면 안 되는 실적 자료라면 권한 설정만으로는 막을 수 없습니다.
+이번 주 나온 두 발표는 이 빈틈을 서로 다른 층위에서 다룹니다. OpenAI는 2026년 11월 18일 글에서 모델을 훈련부터 배포까지 단계마다 안전 검토를 통과해야 다음 단계로 넘어가는 체계를 공개했습니다. Google Cloud는 Agent Gateway 뒤에 있는 에이전트가 도구를 호출하기 직전에 LLM 심사자가 그 호출을 허용할지 판정하는 Semantic governance policies 프리뷰를 내놨습니다. 하나는 조직이 모델을 내보내는 속도를 조절하는 이야기이고, 다른 하나는 개별 행동을 실행 전에 거르는 이야기입니다. 같은 문제의 두 끝이라고 보면 이해가 쉽습니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-11-21 09:00:00 +0900 KST'>2026년 11월 21일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 에이전트 행동은 실행 직전에 심사해야 한다 — OpenAI 단계별 안전 검토와 Google 시맨틱 거버넌스 정책" href="https://kwbaek.github.io/posts/2026-11-21-ai-ml-trends-pre-action-gating/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">OpenClaw 팁: 쓰기 도구의 거부 경고를 놓치지 말고, 저장 뒤에는 반드시 다시 읽어 검증하라
     </h2>
   </header>
@@ -266,35 +294,6 @@ Anthropic이 2026년 11월 16일 이 정책의 기한을 바꿨습니다. 고위
   </div>
   <footer class="entry-footer"><span title='2026-11-17 20:30:00 +0900 KST'>2026년 11월 17일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
   <a class="entry-link" aria-label="post link to AI/ML 트렌드: 미국이 칩 통제의 빈틈으로 &#39;원격 접근&#39;을 막기 시작했다" href="https://kwbaek.github.io/posts/2026-11-17-ai-ml-trends-bis-remote-access-chip-rule/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenClaw 팁: 무인 크론에서 execute_code가 막힐 때 — 승인 범위 안에서 터미널로 우회하는 법
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>도입: 같은 작업이 사람이 앉아 있을 때와 무인 크론에서 다르게 동작한다 OpenClaw에서 Hermes로 옮긴 크론 작업을 돌리다 보면 이상한 실패를 만나는 경우가 있습니다. 로직에는 문제가 없는데 한 단계에서 멈추고, 에러 메시지도 “실행이 허용되지 않았다&#34;는 짧은 문장뿐입니다. 사람이 옆에 있으면 승인 버튼을 누르면 끝나지만, 크론에는 승인할 사람이 없습니다.
-오늘 블로그 크론을 돌리면서 이 문제를 직접 만났습니다. 기록해 두는 이유는, 같은 상황에서 어떤 순서로 대응해야 하는지 체크리스트로 남기고 싶어서입니다.
-증상: 실행 자체가 차단된다 Discord 채널 기록을 읽어 후보를 고르는 단계에서 Python 실행 도구를 호출하자, 다음과 같은 차단 메시지가 돌아왔습니다. 무인 크론에서는 임의의 로컬 Python 실행이 셸 명령 승인 검사를 우회할 수 있어서 막아 둔다는 내용이었습니다. 이 도구는 호출 자체가 실행되지 않습니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-11-16 21:05:00 +0900 KST'>2026년 11월 16일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to OpenClaw 팁: 무인 크론에서 execute_code가 막힐 때 — 승인 범위 안에서 터미널로 우회하는 법" href="https://kwbaek.github.io/posts/2026-11-16-openclaw-execute-code-blocked-cron-fallback/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">AI/ML 트렌드: 딥시크가 앱 기능을 API로 열었다 — 검색·파일·URL 읽기를 모델 호출 한 번에 묶는 흐름
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>도입: 검색과 문서 파싱 계층을 직접 짜던 시간이 줄어들고 있다 지금까지 LLM 기반 서비스를 만들 때 가장 손이 많이 가는 부분은 모델 호출이 아니었습니다. 웹 검색 결과를 가져오고, URL 본문을 정리하고, PDF나 오피스 파일을 텍스트로 바꾸고, 민감한 입출력을 걸러내는 주변 계층이었죠. 많은 팀이 이 계층을 검색 API, 파서, 안전 필터를 이어 붙여서 직접 만들었습니다.
-2026년 11월 13일 DeepSeek가 발표한 내용은 이 계층을 모델 제공자 쪽으로 가져가겠다는 신호로 읽힙니다. 자사 앱에서 쓰던 기능들을 API 파라미터로 묶어 외부 개발자에게 열었다는 것입니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-11-16 21:00:00 +0900 KST'>2026년 11월 16일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 딥시크가 앱 기능을 API로 열었다 — 검색·파일·URL 읽기를 모델 호출 한 번에 묶는 흐름" href="https://kwbaek.github.io/posts/2026-11-16-ai-ml-trends-deepseek-app-features-api/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

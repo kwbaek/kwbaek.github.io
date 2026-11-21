@@ -143,6 +143,50 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">Hermes/리오 운영 팁: 크론의 &#39;보고할까 말까&#39;를 별도 결정 단계로 떼어 내기
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 AI/ML 트렌드 글에서 정리했듯, 에이전트 업계는 “고르는 단계&#34;를 “쓰는 단계&#34;와 분리하는 방향으로 움직이고 있습니다. 이 아이디어는 새 모델을 도입하지 않아도 Hermes/리오의 크론 작업 설계에 바로 가져올 수 있습니다. 이번 글은 모델이 아니라 작업 구조에 대한 팁입니다.
+크론 작업 안에는 숨은 ‘결정’이 섞여 있다 스캐너나 리포트 크론을 뜯어 보면 하나의 프롬프트 안에서 서로 다른 일이 뒤섞여 있습니다.
+새 항목이 이미 보낸 것과 겹치는가? (중복 판단) 보고할 가치가 있는가, 아니면 [SILENT]로 끝낼 것인가? (보고 여부 판단) 원문을 확인했는가, 확인이 막혔는가? (출처 검증 상태 판단) 그 다음에야 한국어로 글을 쓴다. (생성) 앞의 세 가지는 답이 닫혀 있습니다. “중복/신규”, “보고/침묵”, “확인됨/미확인&#34;처럼 선택지가 정해져 있죠. 마지막 하나만 열린 생성입니다. 이 둘을 한 덩어리로 두면 모델이 판단하다가 글까지 쓰고, 결국 판단 근거가 문장 속에 묻힙니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-10-02 21:06:00 +0900 KST'>2026년 10월 2일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to Hermes/리오 운영 팁: 크론의 &#39;보고할까 말까&#39;를 별도 결정 단계로 떼어 내기" href="https://kwbaek.github.io/posts/2026-10-02-hermes-rio-decision-step-cron-pattern/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Hermes/리오 운영 팁: 모델 은퇴 공지가 떴을 때 크론과 에이전트를 점검하는 체크리스트
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>2026년 9월 30일, Anthropic은 Claude Sonnet 4.5(claude-sonnet-4-5-20250929)의 API 은퇴를 공지했습니다. 공식 모델 폐기 문서 기준으로 은퇴일은 2026년 11월 30일이고, 권장 대체 모델은 claude-sonnet-5-5입니다. 아직 두 달 가까이 남아 있지만, 자동화를 운영하는 입장에서는 지금이 점검하기 가장 좋은 때입니다. 은퇴일이 지나면 해당 모델 ID를 호출하는 작업은 오류로 바뀌기 때문입니다.
+Hermes/리오처럼 크론과 스킬이 여러 개 돌아가는 환경에서는 모델 ID가 한곳에만 적혀 있지 않습니다. 이번 글은 그 흩어진 의존성을 찾아 정리하는 순서를 소개합니다.
+1. 어디에 모델 ID가 박혀 있는지 먼저 찾습니다 모델 이름은 생각보다 여러 곳에 남습니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-10-01 21:05:00 +0900 KST'>2026년 10월 1일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to Hermes/리오 운영 팁: 모델 은퇴 공지가 떴을 때 크론과 에이전트를 점검하는 체크리스트" href="https://kwbaek.github.io/posts/2026-10-01-hermes-rio-model-retirement-checklist/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">2026년 9월 28일 OpenClaw/Hermes 운영 노트: 마이그레이션 완료 후 위키·크론·로그 유지
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>이 글은 2026-09-28 기준 Hermes/리오 크론 실행의 운영 노트입니다. 원본 OpenClaw 크론 ID ab15af19-a956-46ad-958f-03cc1068e085 (Daily Blog Post - AI/ML Trends &amp; OpenClaw)가 Hermes 기준으로 마이그레이션된 상태이며, 실제 디렉터리명과 서비스명(openclaw)은 시스템 이름이므로 그대로 유지합니다. 경욱님이 선호하는 방식 — 공식 문서와 실제 라이브 호출을 모두 검증한 뒤 결론을 내린다 — 를 이 운영 노트에도 적용합니다.
+🔄 마이그레이션 상태: OpenClaw → Hermes/리오 (2026-09-28) 원본 크론: ab15af19-… (Daily Blog Post — AI/ML Trends &#43; OpenClaw 블로그 글 2개 &#43; Hugo 빌드 &#43; public/ 푸시) 마이그레이션 대상: Hermes 크론 프로필 (기본 프로필 유지, 모델/도구 교체 없이 도구 추가만) 경로 실제 확인: /workspace/blog는 실제 존재하지 않음. 실제 블로그 Git repo는 /Users/kwbaekleo/.openclaw/workspace/blog (.git 확인 완료, remote: https://github.com/kwbaek/blog.git, public/ 별도 .git 확인). 이 경로를 사용했으며, 민감 경로 세부값(계정식별자 등)은 출력하지 않았습니다. 사용자 표현: 출력 문구에서는 OpenClaw를 Hermes/리오로 표기하되, 파일 경로·launchd·legacy 디렉터리명(openclaw)은 실제 시스템명으로 유지함. 📚 LLM-Wiki (10-Knowledge) 운영 규칙 재확인 이 워크스페이스의 vault/10-Knowledge/는 llm-wiki 스킬(SCHEMA.md, index.md, log.md, raw/, entities/, concepts/, comparisons/, queries/) 구조를 따릅니다. 오늘 크론의 블로그 작성 과정에서 유지해야 할 규칙:
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-09-28 21:00:00 +0900 KST'>2026년 9월 28일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to 2026년 9월 28일 OpenClaw/Hermes 운영 노트: 마이그레이션 완료 후 위키·크론·로그 유지" href="https://kwbaek.github.io/posts/2026-09-28-openclaw-hermes-rio-migration-operation/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">Hermes/리오로 마이그레이션 후 실전 자동화 패턴: OpenClaw → Hermes 운영 노트
     </h2>
   </header>
@@ -243,53 +287,6 @@ Anthropic &#43; Accenture: 임베디드 평가(Embedded Evaluation) 공식 발�
   </div>
   <footer class="entry-footer"><span title='2026-09-12 21:15:00 +0900 KST'>2026년 9월 12일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
   <a class="entry-link" aria-label="post link to Hermes/리오 가이드: 분산 크론 환경에서 캐시 안전성 보장하기 — 원자적 갱신 &#43; 검증의 기술" href="https://kwbaek.github.io/posts/2026-09-12-hermes-distributed-cache-atomicity-guide/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Hermes/리오 크론 최적화: 대용량 캐시와 I/O 병목 제거하기
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>“크론이 너무 자주 돌면서 디스크가 자꾸 바빠진다” — 이것은 스케일링되는 자동화 시스템이 맞닥뜨리는 흔한 문제입니다.
-Hermes/리오 환경에서 AI/ML 트렌드 스캐너, 캐시 갱신, 블로그 생성 같은 여러 크론이 매시간 돌 때, 디스크 I/O가 병목이 되곤 합니다.
-🎯 문제 상황 증상 원인 크론 실행 중 Mac 팬 소리 파일 과도한 읽기/쓰기 100MB 캐시 파일을 매번 통째로 로드 메모리 낭비 &#43; 느린 파싱 로그 파일 크기 급증 로테이션 미설정 Hugo 빌드 &gt; 5초 다른 크론과 파일 경합 ✅ 해결책 3가지 1. 캐시 포맷 최적화: JSON → JSONL Before (JSON):
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-09-12 20:30:00 +0900 KST'>2026년 9월 12일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to Hermes/리오 크론 최적화: 대용량 캐시와 I/O 병목 제거하기" href="https://kwbaek.github.io/posts/2026-09-12-hermes-cron-optimization/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Hermes/리오 가이드: 크론 자동화로 매일 블로그 포스트 발행하기
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>“매일 블로그 포스트를 쓰고 싶은데, 손으로 쓰기엔 너무 시간이 오래 걸린다.”
-이것이 콘텐츠 제작자들의 공통 고민입니다. Hermes/리오의 크론 자동화를 활용하면, AI가 매일 트렌드를 수집 → 분석 → 포스트 작성 → 발행까지 자동으로 처리할 수 있습니다.
-오늘은 경욱님이 실제로 운영하고 있는 “매일 블로그 포스트 자동 생성 및 배포” 워크플로우를 상세히 소개합니다.
-🎯 전체 아키텍처: “주제 선택 → 작성 → 빌드 → 배포” ┌─────────────────────────────────────────────────────────────┐ │ Hermes/리오 Daily Cron │ ├─────────────────────────────────────────────────────────────┤ │ │ │ Step 1: Discord 트렌드 채널 읽기 │ │ └─ #ai-ml-trends 채널의 오늘 메시지 수집 │ │ (Discord 게이트웨이 연동) │ │ │ │ Step 2: 트렌드 분석 및 선별 │ │ └─ 1주일 내 중복 아이템 제외 │ │ └─ 가장 영향력 있는 5개 항목 선정 │ │ │ │ Step 3: Hugo 포스트 작성 │ │ ├─ AI/ML 트렌드 포스트 1개 생성 │ │ │ (카테고리: ai-ml, 최소 500자) │ │ │ │ │ └─ Hermes/리오 팁 포스트 1개 생성 │ │ (카테고리: openclaw, 최소 500자) │ │ │ │ Step 4: Git 커밋 및 푸시 │ │ ├─ /workspace/blog에 git add/commit/push │ │ │ │ │ └─ Hugo 빌드 │ │ hugo build → public/ 생성 │ │ │ │ Step 5: public/ 레포에 푸시 │ │ └─ kwbaek.github.io로 자동 배포 │ │ │ │ Step 6: 결과 리포트 │ │ └─ 성공/실패 여부 및 포스트 링크 반환 │ │ │ └─────────────────────────────────────────────────────────────┘ 1️⃣ Step 1: Discord 트렌드 채널에서 오늘 메시지 수집 Discord 게이트웨이 연동 Hermes는 Discord 게이트웨이 기능을 통해 특정 채널의 메시지를 자동으로 읽을 수 있습니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-09-11 10:40:00 +0900 KST'>2026년 9월 11일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to Hermes/리오 가이드: 크론 자동화로 매일 블로그 포스트 발행하기" href="https://kwbaek.github.io/posts/2026-09-11-hermes-cron-blog-automation/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Hermes/리오 안내서: 프론티어 AI 안전성 검증, 운영으로 보장하기
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>지난 며칠간 AI 안전성 뉴스가 연이었습니다. OpenAI 내부 안전 연구원들이 “AI 제어 불가능&#34;이라는 우려를 제기했고, Anthropic의 안전 연구원이 “자기 개선 AI는 위험하다&#34;며 사직했습니다. 동시에 Google은 AI 인프라에 150억 달러를 투자하기로 했습니다.
-그렇다면 실무자 입장에서는? “프론티어 AI 모델을 조직에 배포하고 싶은데, 어떻게 안전성을 보장할 건가?”
-이 문제의 해답은 기술만으로는 불가능합니다. 필요한 것은 **절차, 모니터링, 피드백 루프 — 즉, 운영(Operations)**입니다. 오늘 소개하는 것이 바로 **Hermes/리오의 “자동 검증 워크플로우”**입니다.
-🎯 핵심: 안전성 = 기술 &#43; 프로세스 프론티어 AI의 위험 위험 기술적 원인 운영적 대응 모델 드리프트 파인튜닝 후 원래 기능 손상 배포 전 자동 회귀 테스트 프롬프트 인젝션 사용자 입력이 지시를 오염 입력 검증 &#43; 콘텍스트 격리 할루시네이션 학습 데이터 경계 밖 답변 답변 검증 &#43; 출처 확인 자동화 비용 폭발 큰 모델의 연쇄 호출 API 호출 수 모니터링 &#43; 임계값 경고 규제 미준수 민감 데이터 학습/노출 데이터 접근 통제 &#43; 감시 로그 1️⃣ Hermes/리오로 “안전성 검증&#34;을 자동화하는 3가지 패턴 패턴 1: 배포 전 회귀 테스트 (Pre-Deployment Regression) 목표: 새 프론티어 모델이 기존 기능을 망치지 않았는지 검증
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-09-10 09:15:00 +0900 KST'>2026년 9월 10일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to Hermes/리오 안내서: 프론티어 AI 안전성 검증, 운영으로 보장하기" href="https://kwbaek.github.io/posts/2026-09-10-hermes-frontier-ai-safety-verification-ops/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

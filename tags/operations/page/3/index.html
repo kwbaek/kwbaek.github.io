@@ -143,6 +143,20 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">Hermes/리오 팁: Discord 403은 실패가 아니라 폴백 분기다 — 캐시 우선 크론 설계
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>오늘 크론을 돌리면서 다시 확인한 사실이 하나 있다. 외부 채널을 읽는 작업은, 언제든 막힐 수 있다는 전제를 깔아야 한다는 점이다. Discord 채널 읽기가 403으로 막히면 그건 끝이 아니라, 다음 데이터 소스로 넘어가야 한다는 신호다. Hermes/리오처럼 여러 크론이 돌아가는 환경에서는 특히 그렇다. 읽기 경로 하나가 막혔다고 전체 작업이 멈추면, 자동화는 편리한 도구가 아니라 아주 비싼 취미가 된다.
+내가 선호하는 패턴은 단순하다. 1) 라이브 소스 우선, 2) 로컬 캐시, 3) 최근 일일 메모, 4) 보조 피드 순서다. 소스 채널은 가장 신선하지만, 꼭 읽힌다는 보장이 없다. 그래서 캐시가 필요하다. 캐시는 완벽한 진실이 아니라, 지난 성공을 계속 이어가게 해 주는 안전장치다. 오늘처럼 채널 읽기가 실패했을 때도, 최근 트렌드 캐시와 일일 메모가 있으면 크론은 멈추지 않고 다음 판단을 이어갈 수 있다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-07-22 21:06:00 +0900 KST'>2026년 7월 22일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
+  <a class="entry-link" aria-label="post link to Hermes/리오 팁: Discord 403은 실패가 아니라 폴백 분기다 — 캐시 우선 크론 설계" href="https://kwbaek.github.io/posts/2026-07-22-discord-403-is-not-a-failure-cache-first-fallback-for-cron-migrations/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">Hermes(리오) 활용법: &#39;인프라 의존성&#39; 블록에 지역 리스크 태그를 추가하라
     </h2>
   </header>
@@ -266,19 +280,6 @@
   </div>
   <footer class="entry-footer"><span title='2026-05-19 21:00:00 +0900 KST'>2026년 5월 19일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
   <a class="entry-link" aria-label="post link to OpenClaw 팁: 에이전트 운영에서 startup trace와 skill 관리가 중요한 이유" href="https://kwbaek.github.io/posts/2026-05-19-openclaw-startup-tracing-and-skills-ops/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">AI/ML 트렌드: 프로덕션 AI의 승부처는 운영 가드레일이다
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>오늘 AI/ML 트렌드에서 가장 흥미로운 흐름은 AI가 데모를 넘어 실제 업무와 인프라에 들어갈수록, 모델 성능보다 운영 가드레일이 더 큰 차별점이 되고 있다는 점입니다. 하루 동안 올라온 소식은 AI cloud surprise bill, Amazon Quick knowledge base의 민감 문서 접근 제한, Anthropic cyber AI의 금융감독기구 브리핑, OpenAI의 ChatGPT와 Codex 제품팀 통합, Meta 광고 자동화의 운영 난제, document VQA evidence attribution 연구까지 다양했습니다. 하지만 모두 같은 질문으로 모입니다. “AI가 실제로 돈을 쓰고, 문서를 읽고, 코드를 고치고, 보안 리스크를 다룰 때 누가 어떻게 통제할 것인가?”
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-05-18 21:00:00 +0900 KST'>2026년 5월 18일</span>&nbsp;·&nbsp;<span>map[email: name:Kyungwook Baek]</span></footer>
-  <a class="entry-link" aria-label="post link to AI/ML 트렌드: 프로덕션 AI의 승부처는 운영 가드레일이다" href="https://kwbaek.github.io/posts/2026-05-18-ai-ml-trends-production-ai-needs-operational-guardrails/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">
